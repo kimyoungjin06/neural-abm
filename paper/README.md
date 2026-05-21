@@ -17,6 +17,11 @@ Current planning artifacts:
 - [claim-matrix.md](claim-matrix.md)
 - [tables/nabm-unit-v1-manuscript-tables.md](tables/nabm-unit-v1-manuscript-tables.md)
 
+Current draft sections:
+
+- [sections/03-neural-abm-node.md](sections/03-neural-abm-node.md)
+- [sections/06-calibration-and-analysis.md](sections/06-calibration-and-analysis.md)
+
 Current figure candidates:
 
 - [figures/toy1_output_alpha_accuracy_consensus.png](figures/toy1_output_alpha_accuracy_consensus.png)

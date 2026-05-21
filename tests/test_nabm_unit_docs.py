@@ -64,6 +64,10 @@ def test_paper_claim_matrix_records_gate4_boundaries() -> None:
     table_candidates = (
         ROOT / "paper/tables/nabm-unit-v1-manuscript-tables.md"
     ).read_text()
+    section_3 = (ROOT / "paper/sections/03-neural-abm-node.md").read_text()
+    section_6 = (
+        ROOT / "paper/sections/06-calibration-and-analysis.md"
+    ).read_text()
     checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
 
     for supported_claim_artifact in (
@@ -96,6 +100,23 @@ def test_paper_claim_matrix_records_gate4_boundaries() -> None:
     ):
         assert table_value in table_candidates
 
+    for architecture_boundary in (
+        "neural policy generally outperforms Fermi",
+        "Moving Toy-specific rewards",
+        "evidence criteria into the generic unit",
+        "binary policy, revision, readiness, backend commit, and diagnostic lifecycles",
+    ):
+        assert architecture_boundary in section_3
+
+    for evidence_boundary in (
+        "final ceiling hits",
+        "ever ceiling hits",
+        "mean time-to-ceiling",
+        "targeted baseline-fragility evidence, not a general demonstration",
+        "does not yet support general neural dominance",
+    ):
+        assert evidence_boundary in section_6
+
     gate4 = _between(
         checklist,
         "### Gate 4: Manuscript Claim Matrix",
@@ -104,4 +125,6 @@ def test_paper_claim_matrix_records_gate4_boundaries() -> None:
     assert "Status: first pass complete." in gate4
     assert "paper/claim-matrix.md" in gate4
     assert "paper/tables/nabm-unit-v1-manuscript-tables.md" in gate4
+    assert "paper/sections/03-neural-abm-node.md" in gate4
+    assert "paper/sections/06-calibration-and-analysis.md" in gate4
     assert "Deferred claims are explicit" in gate4

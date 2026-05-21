@@ -21,6 +21,8 @@ Working title:
 
 ## 3. Neural ABM Node
 
+Draft: [sections/03-neural-abm-node.md](sections/03-neural-abm-node.md)
+
 - Fast, medium, and slow state.
 - Common node interface.
 - NABM Unit v1 contract: what the reusable unit owns, and which domain
@@ -43,6 +45,9 @@ Working title:
 - Transfer of the same mixer taxonomy from Toy 1.
 
 ## 6. Calibration and Analysis
+
+Draft:
+[sections/06-calibration-and-analysis.md](sections/06-calibration-and-analysis.md)
 
 - Manuscript claim matrix: every claim must map to code path, manifest, result
   artifact, figure/table candidate, and limitation.

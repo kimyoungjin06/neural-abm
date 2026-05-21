@@ -240,6 +240,8 @@ Artifacts:
 
 - `paper/claim-matrix.md`
 - `paper/tables/nabm-unit-v1-manuscript-tables.md`
+- `paper/sections/03-neural-abm-node.md`
+- `paper/sections/06-calibration-and-analysis.md`
 - `paper/outline.md`
 
 Completed work:
@@ -258,6 +260,9 @@ Result:
   robustness.
 - Draft manuscript tables now exist for each primary claim path and carry their
   required limitations with the table content.
+- Draft prose now exists for the architecture section and calibration/analysis
+  section, with explicit insertion notes that keep architecture, diagnostic,
+  and robustness claims separate.
 - Deferred claims are explicit: solved revision operators, finalized basin
   critics, general superiority over classical baselines, and Toy6-Toy10 as full
   NABM evidence cases.
@@ -265,17 +270,17 @@ Result:
 Completion condition:
 
 - First pass complete. A reviewer can trace each listed paper claim to a
-  reproducible artifact, a stated limitation, and a draft manuscript table. The
-  remaining Gate 4 work is to turn the matrix and table candidates into actual
-  manuscript prose and publication figures.
+  reproducible artifact, a stated limitation, a draft manuscript table, and
+  draft prose. The remaining Gate 4 work is to convert the draft prose into the
+  final paper style and add publication figures.
 
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Manuscript prose build-out: turn `paper/claim-matrix.md` and
-  `paper/tables/nabm-unit-v1-manuscript-tables.md` into section drafts.
+- Manuscript figure build-out: decide which table candidates need plotted
+  figures and which should stay as compact manuscript tables.
 - Toy5 control sharpening: add a small case where exposure-only anchoring is
   expected to over-spread or self-excite, while the threshold-aware adapter
   should preserve safety.
