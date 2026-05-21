@@ -178,13 +178,16 @@ Status: first pass complete.
 Artifacts:
 
 - `experiments/results/nabm_effect_matrix/evidence_profile_index_gate3.md`
+- `experiments/results/nabm_effect_matrix/evidence_profile_index_calibration.md`
 - `experiments/results/nabm_effect_matrix/toy24_revision_operator_quick_profile.md`
 - `experiments/results/nabm_effect_matrix/toy24_basin_credit_objective_blend_quick_profile.md`
 - `experiments/results/nabm_effect_matrix/toy24_revision_operator_precommitment_controls_quick_profile.md`
 - `experiments/results/nabm_effect_matrix/toy24_precommitment_peer_evidence_open_boundary_sparse_seed_stress_quick_profile.md`
 - `experiments/results/nabm_effect_matrix/toy24_precommitment_peer_evidence_reputation_fragility_stress_quick_profile.md`
+- `experiments/results/nabm_effect_matrix/toy4_hetero_local_obs_stress_quick_profile.md`
 - `experiments/results/nabm_effect_matrix/toy24_gate3_evidence_triage_findings.md`
 - `experiments/results/nabm_effect_matrix/toy24_precommitment_peer_evidence_reputation_fragility_stress_quick_findings.md`
+- `experiments/results/nabm_effect_matrix/toy4_hetero_local_obs_stress_quick_findings.md`
 - refreshed gate summaries with `trajectory_status` and `failure_mode` fields
   for the same Toy2/Toy4 manifest family.
 
@@ -210,15 +213,22 @@ Result:
   drop reputation imitation to `0/5` final and ever ceiling hits in both Toy2
   and Toy4, while the peer-evidence candidate stays at `5/5` with mean TtC
   `9.4` and `9.0`.
+- The Toy4 heterogeneous local-observation stress extends the resource-local
+  line: with checkerboard extraction heterogeneity and noisy reputation, the
+  local-sustain resource-threshold candidate stays at `5/5` with mean TtC
+  `31.8`, while noisy reputation imitation is `3/5` and the population
+  threshold negative control is `0/5`.
 - Gate JSON/Markdown now reports trajectory outcome separately from pass/fail,
   so final-epoch brittleness is visible without changing the gate threshold.
 
 Completion condition update:
 
 - Gate 3 is complete enough for first-pass evidence triage.
-- The next Toy2/Toy4 evidence step should move beyond reputation-targeted
-  perturbations and test non-reputation fragility, such as delayed/sparse
-  reward, heterogeneous observation quality, or topology bottlenecks.
+- The next Toy2/Toy4 evidence step should stop adding observation-mode variants
+  and either promote bounded claims into the manuscript claim matrix or design a
+  non-reputation baseline-fragility stress where the clean hand-coded baseline
+  fails because the environment objective changes rather than because its
+  ranking signal is externally noised.
 
 ### Gate 4: Manuscript Claim Matrix
 

@@ -2069,6 +2069,114 @@ def test_toy4_resource_threshold_noisy_reputation_local_observation_manifest_con
         assert updates["domain.environment.resource_enabled"] is True
 
 
+def test_toy4_resource_threshold_heterogeneous_local_observation_contract() -> None:
+    manifest, criteria = load_gate_manifest(
+        Path(
+            "experiments/evidence/"
+            "toy4_resource_threshold_heterogeneous_"
+            "local_observation_stress_quick.yaml"
+        )
+    )
+
+    assert manifest.label == "toy4_hetero_local_obs_stress_quick"
+    assert manifest.seeds == (1, 2, 3, 4, 5)
+    assert manifest.epochs == 60
+    assert len(manifest.cases) == 1
+    assert criteria.main_group == "toy4_hetero_local_obs_stress"
+    assert criteria.require_without_teacher_bootstrap_replay is True
+    assert (
+        criteria.cases["toy4_hetero_local_obs_stress"].final_ceiling_min_hits
+        == 4
+    )
+    assert criteria.cases[
+        "toy4_hetero_local_obs_stress"
+    ].mean_time_to_ceiling_lt == pytest.approx(60.0)
+
+    case = manifest.cases[0]
+    assert case.toy == "toy4"
+    assert case.name == "toy4_hetero_local_obs_stress"
+    assert case.nabm_group == "toy4_hetero_local_obs_stress"
+    assert case.ceiling_value == pytest.approx(0.6)
+    assert case.ceiling_tolerance == pytest.approx(0.005)
+
+    variants = {variant.name: variant for variant in case.variants}
+    assert set(variants) == {
+        "rep_clean_hetero",
+        "rep_noisy_s2p0_hetero",
+        "rev_pop_global_obs_noisy_s2p0_hetero",
+        "rev_local_global_obs_noisy_s2p0_hetero",
+        "rev_local_hidden_obs_noisy_s2p0_hetero",
+        "rev_local_sustain_obs_noisy_s2p0_hetero",
+    }
+    assert variants["rep_clean_hetero"].group == "baseline"
+    assert variants["rep_noisy_s2p0_hetero"].group == "diagnostic"
+    assert (
+        variants["rev_local_sustain_obs_noisy_s2p0_hetero"].group
+        == "toy4_hetero_local_obs_stress"
+    )
+
+    clean_updates = variants["rep_clean_hetero"].updates
+    noisy_updates = variants["rep_noisy_s2p0_hetero"].updates
+    assert clean_updates["model.policy.rule"] == "reputation_imitation"
+    assert clean_updates["model.state.reputation.noise"] == pytest.approx(0.0)
+    assert noisy_updates["model.policy.rule"] == "reputation_imitation"
+    assert noisy_updates["model.state.reputation.noise"] == pytest.approx(2.0)
+    for updates in (clean_updates, noisy_updates):
+        assert updates["domain.environment.resource_extraction_heterogeneity"] == (
+            pytest.approx(1.0)
+        )
+        assert (
+            updates["domain.environment.resource_extraction_heterogeneity_mode"]
+            == "checkerboard"
+        )
+
+    expected_modes = {
+        "rev_pop_global_obs_noisy_s2p0_hetero": ("population", "global"),
+        "rev_local_global_obs_noisy_s2p0_hetero": ("local", "global"),
+        "rev_local_hidden_obs_noisy_s2p0_hetero": ("local", "hidden"),
+        "rev_local_sustain_obs_noisy_s2p0_hetero": ("local", "local_sustain"),
+    }
+    for variant_name, (expected_scope, expected_mode) in expected_modes.items():
+        updates = variants[variant_name].updates
+        assert updates["model.policy.rule"] == "neural_policy"
+        assert updates["model.policy.neural_update_backend"] == "loop"
+        assert updates["model.state.reputation.noise"] == pytest.approx(2.0)
+        assert (
+            updates["domain.environment.resource_extraction_heterogeneity"]
+            == pytest.approx(1.0)
+        )
+        assert (
+            updates["domain.environment.resource_extraction_heterogeneity_mode"]
+            == "checkerboard"
+        )
+        assert updates["domain.environment.resource_observation_mode"] == expected_mode
+        assert (
+            updates["model.policy.domain.resource_environment_threshold_scope"]
+            == expected_scope
+        )
+        assert updates[
+            "model.policy.domain.resource_environment_threshold_weight"
+        ] == pytest.approx(1.0)
+        assert updates["model.policy.domain.objective.environment_weight"] == (
+            pytest.approx(2.0)
+        )
+        assert updates["model.policy.domain.basin_credit.objective_weight"] == (
+            pytest.approx(0.5)
+        )
+        assert updates["model.policy.domain.basin_credit.basin_weight"] == (
+            pytest.approx(0.5)
+        )
+        assert updates["model.coordination.revision_operator_enabled"] is True
+        assert updates["model.coordination.precommitment_enabled"] is True
+        assert (
+            updates["model.coordination.precommitment_peer_evidence_enabled"] is True
+        )
+        assert updates[
+            "domain.environment.initial_action_probability"
+        ] == pytest.approx(0.35)
+        assert updates["domain.environment.resource_enabled"] is True
+
+
 def test_toy24_revision_operator_manifest_success_criteria_contract() -> None:
     manifest, criteria = load_gate_manifest(
         Path("experiments/evidence/toy24_revision_operator_quick.yaml")

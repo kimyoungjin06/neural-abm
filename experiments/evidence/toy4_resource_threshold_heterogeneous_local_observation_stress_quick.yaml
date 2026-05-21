@@ -1,0 +1,143 @@
+label: toy4_hetero_local_obs_stress_quick
+seeds: [1, 2, 3, 4, 5]
+epochs: 60
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+success_criteria:
+  main_group: toy4_hetero_local_obs_stress
+  require_without_teacher_bootstrap_replay: true
+  cases:
+    toy4_hetero_local_obs_stress:
+      final_ceiling_min_hits: 4
+      mean_time_to_ceiling_lt: 60
+
+_shared_updates:
+  toy4_resource_heterogeneous: &toy4_resource_heterogeneous
+    domain.environment.initial_action_probability: 0.35
+    domain.environment.resource_enabled: true
+    domain.environment.resource_initial: 60.0
+    domain.environment.resource_carrying_capacity: 100.0
+    domain.environment.resource_recovery_rate: 0.03
+    domain.environment.resource_extraction_per_defector: 0.05
+    domain.environment.resource_extraction_heterogeneity: 1.0
+    domain.environment.resource_extraction_heterogeneity_mode: checkerboard
+    domain.environment.resource_collapse_threshold: 0.0
+  reputation_imitation_base: &reputation_imitation_base
+    model.policy.rule: reputation_imitation
+    model.coordination.mixer: output_average
+    model.coordination.peer_rule: output_similarity
+    model.coordination.alpha: 0.25
+    model.coordination.threshold: 0.0
+  toy4_basin_revision_precommitment_peer: &toy4_basin_revision_precommitment_peer
+    model.policy.rule: neural_policy
+    model.policy.neural_update_backend: loop
+    model.policy.domain.basin_credit.enabled: true
+    model.policy.domain.basin_credit.critic: prototype_phase
+    model.policy.domain.basin_credit.credit_method: one_step_ablation
+    model.policy.domain.basin_credit.objective_weight: 0.5
+    model.policy.domain.basin_credit.individual_weight: 0.0
+    model.policy.domain.basin_credit.local_social_weight: 0.0
+    model.policy.domain.basin_credit.basin_weight: 0.5
+    model.policy.domain.basin_credit.horizon: 1
+    model.policy.domain.basin_credit.target_basin: ceiling
+    model.coordination.mixer: output_average
+    model.coordination.peer_rule: output_similarity
+    model.coordination.alpha: 0.25
+    model.coordination.threshold: 0.0
+    model.coordination.revision_operator_enabled: true
+    model.coordination.revision_operator_source: policy_probability
+    model.coordination.precommitment_enabled: true
+    model.coordination.precommitment_min_policy_probability: 0.75
+    model.coordination.precommitment_min_evidence: 1.5
+    model.coordination.precommitment_evidence_increment: 1.0
+    model.coordination.precommitment_evidence_decay: 0.8
+    model.coordination.precommitment_requires_direction: true
+    model.coordination.precommitment_min_direction: 0.0
+    model.coordination.precommitment_peer_evidence_enabled: true
+    model.coordination.precommitment_peer_evidence_weight: 1.0
+  toy4_objective_common: &toy4_objective_common
+    model.policy.domain.objective.mode: state_continuation
+    model.policy.domain.objective.profile: custom
+    model.policy.domain.objective.material_weight: 1.0
+    model.policy.domain.objective.social_weight: 0.5
+    model.policy.domain.objective.welfare_weight: 2.0
+    model.policy.domain.objective.risk_weight: 0.0
+    model.policy.domain.objective.activation: identity
+    model.policy.domain.objective.activation_scale: 1.0
+    model.policy.domain.objective.social_welfare_interaction_weight: 0.0
+    model.policy.domain.objective.clip_abs: null
+    model.policy.domain.objective.environment_weight: 2.0
+  toy4_threshold_base: &toy4_threshold_base
+    model.policy.domain.resource_environment_pressure_weight: 0.0
+    model.policy.domain.resource_environment_lookahead_weight: 0.0
+    model.policy.domain.resource_environment_threshold_weight: 1.0
+    model.policy.domain.resource_environment_threshold_scope: local
+  reputation_noise_s2p0: &reputation_noise_s2p0
+    model.state.reputation.noise: 2.0
+
+cases:
+  - toy: toy4
+    name: toy4_hetero_local_obs_stress
+    base_config: experiments/configs/toy4_public_goods_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    nabm_group: toy4_hetero_local_obs_stress
+    ceiling_metric: mean_payoff
+    ceiling_value: 0.6
+    ceiling_tolerance: 0.005
+    variants:
+      - name: rep_clean_hetero
+        group: baseline
+        updates:
+          <<:
+            - *reputation_imitation_base
+            - *toy4_resource_heterogeneous
+          model.state.reputation.noise: 0.0
+      - name: rep_noisy_s2p0_hetero
+        group: diagnostic
+        updates:
+          <<:
+            - *reputation_imitation_base
+            - *toy4_resource_heterogeneous
+            - *reputation_noise_s2p0
+      - name: rev_pop_global_obs_noisy_s2p0_hetero
+        group: diagnostic
+        updates:
+          <<:
+            - *toy4_basin_revision_precommitment_peer
+            - *toy4_objective_common
+            - *toy4_threshold_base
+            - *toy4_resource_heterogeneous
+            - *reputation_noise_s2p0
+          model.policy.domain.resource_environment_threshold_scope: population
+          domain.environment.resource_observation_mode: global
+      - name: rev_local_global_obs_noisy_s2p0_hetero
+        group: diagnostic
+        updates:
+          <<:
+            - *toy4_basin_revision_precommitment_peer
+            - *toy4_objective_common
+            - *toy4_threshold_base
+            - *toy4_resource_heterogeneous
+            - *reputation_noise_s2p0
+          domain.environment.resource_observation_mode: global
+      - name: rev_local_hidden_obs_noisy_s2p0_hetero
+        group: diagnostic
+        updates:
+          <<:
+            - *toy4_basin_revision_precommitment_peer
+            - *toy4_objective_common
+            - *toy4_threshold_base
+            - *toy4_resource_heterogeneous
+            - *reputation_noise_s2p0
+          domain.environment.resource_observation_mode: hidden
+      - name: rev_local_sustain_obs_noisy_s2p0_hetero
+        group: toy4_hetero_local_obs_stress
+        updates:
+          <<:
+            - *toy4_basin_revision_precommitment_peer
+            - *toy4_objective_common
+            - *toy4_threshold_base
+            - *toy4_resource_heterogeneous
+            - *reputation_noise_s2p0
+          domain.environment.resource_observation_mode: local_sustain
