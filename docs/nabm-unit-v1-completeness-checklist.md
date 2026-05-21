@@ -96,17 +96,41 @@ Current unsupported claims:
 
 Goal: prevent silent expansion of generic unit semantics.
 
-Required work:
+Status: first pass complete.
+
+Artifacts:
+
+- `src/neural_abm/README.md`
+- `docs/decisions/0010-nabm-unit-v1-contract.md`
+- `docs/nabm-unit-v1-boundary-audit.md`
+- `docs/nabm-unit-v1-completeness-checklist.md`
+- `tests/test_nabm_unit_docs.py`
+
+Completed work:
 
 - Add a short contract note to `src/neural_abm/README.md` pointing to this
   checklist and the boundary audit.
 - Keep Toy2/Toy4/Toy5 policy-unit guard tests active.
 - Require a docs update whenever generic unit APIs gain new responsibilities.
 
-Completion condition:
+Result:
 
 - New unit changes can be classified as lifecycle, typed exchange, backend
   dispatch, diagnostics, or explicit contract-gap remediation.
+- The README now states that generic unit code must not construct rewards,
+  payoffs, thresholds, teacher signals, basin credit, readiness meaning,
+  revision pressure meaning, or evidence criteria.
+- The active guard surface is explicit: `tests/test_spatial_binary_runner.py`
+  for unit-level binary lifecycle tests, `tests/test_toy2_runner.py`,
+  `tests/test_toy4_runner.py`, and `tests/test_toy5_runner.py` for
+  policy-unit adoption, `tests/test_readiness.py` for readiness propagation,
+  and `tests/test_nabm_unit_docs.py` for documentation boundaries.
+
+Completion condition update:
+
+- Gate 1 is complete enough for v1 infrastructure work.
+- Any future generic unit API expansion should update Decision 0010, the
+  boundary audit, and this checklist in the same patch.
 
 ### Gate 2: Hard Holdout Expansion
 
@@ -179,7 +203,11 @@ Completion condition:
 
 ## Recommended Next Slice
 
-The next implementation slice should be Gate 1: freeze the unit contract in
-developer-facing docs. This is cheaper and higher leverage than another
-mechanism sweep because it prevents the reusable unit from absorbing domain
-semantics as the project grows.
+The next implementation slice should avoid another broad parameter sweep. Two
+paths are now useful:
+
+- Gate 3: triage Toy2/Toy4 evidence so stochastic gate brittleness,
+  baseline-favored environments, and true mechanism failures are separated.
+- Toy5 control sharpening: add a small case where exposure-only anchoring is
+  expected to over-spread or self-excite, while the threshold-aware adapter
+  should preserve safety.

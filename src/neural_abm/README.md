@@ -141,6 +141,34 @@ probability construction, action sampling, local update commit, cache refresh,
 and optional post-readout collection. This keeps the lifecycle contract explicit
 without moving domain objectives into the shared unit.
 
+## NABM Unit v1 Contract Freeze
+
+The v1 unit contract is frozen around lifecycle sequencing, typed exchange,
+backend dispatch, and diagnostics. Generic unit APIs may grow only when the
+change can be classified as lifecycle, typed exchange, backend dispatch,
+diagnostics, or explicit contract-gap remediation.
+
+Domain semantics stay outside the unit. New shared unit code must not construct
+rewards, payoffs, thresholds, teacher signals, basin credit, readiness meaning,
+revision pressure meaning, or evidence criteria. Domain adapters supply those
+meanings through callbacks and then use the unit to execute the reusable
+sequence.
+
+Contract changes must update the boundary docs in the same patch:
+
+- `docs/decisions/0010-nabm-unit-v1-contract.md`
+- `docs/nabm-unit-v1-boundary-audit.md`
+- `docs/nabm-unit-v1-completeness-checklist.md`
+
+The active guard tests for the current binary unit migration are:
+
+- `tests/test_spatial_binary_runner.py` for unit-level binary lifecycle and
+  helper contracts;
+- `tests/test_toy2_runner.py`, `tests/test_toy4_runner.py`, and
+  `tests/test_toy5_runner.py` for Toy2/Toy4/Toy5 policy-unit adoption;
+- `tests/test_readiness.py` for readiness propagation boundaries;
+- `tests/test_nabm_unit_docs.py` for this documentation boundary.
+
 Toy runners may keep thin compatibility wrappers, but reusable social updates
 should flow through `NABMStep` when they need both mix and commit diagnostics,
 reusable local learning commits should flow through `NABMLocalStep`, and binary
