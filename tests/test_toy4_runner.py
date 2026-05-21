@@ -2682,6 +2682,86 @@ def test_toy4_tensor_batched_initial_state_uses_torch_arrays(tmp_path: Path) -> 
         assert values.dtype == torch.float64
 
 
+def test_toy4_neural_local_step_routes_through_binary_policy_learning_unit(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    raw = tiny_config_dict(tmp_path, update_rule="neural_policy", mixer="none")
+    raw["simulation"]["epochs"] = 1
+    raw["policy"]["decision"]["mode"] = "argmax"
+    config_path = write_config(tmp_path, raw)
+    config = load_toy4_config(config_path)
+    domain = Toy4SpatialDomain(
+        config=config,
+        config_path=config_path,
+        rng=np.random.default_rng(config.run.seed),
+        reputation_rng=np.random.default_rng(config.run.seed + 3_000_003),
+        mobility_rng=np.random.default_rng(config.run.seed + 4_000_003),
+        device=torch.device("cpu"),
+        neural_update_backend=config.policy.neural_update_backend,
+    )
+    state = domain.initial_state()
+    context = domain.build_step_context(
+        epoch=1,
+        state=state,
+        revision_mask=np.ones(config.agent_count, dtype=bool),
+    )
+    original_unit = toy_public_goods_module.BinaryPolicyLearningUnit
+    seen: dict[str, Any] = {}
+
+    class SpyBinaryPolicyLearningUnit:
+        def __init__(self, *args: Any, **kwargs: Any) -> None:
+            self._inner = original_unit(*args, **kwargs)
+            callbacks = kwargs["callbacks"]
+            seen["agent_count"] = len(kwargs["agents"])
+            seen["context"] = kwargs["context"]
+            seen["callbacks_type"] = type(callbacks).__name__
+            seen["has_collect_policy_probs"] = callable(callbacks.collect_policy_probs)
+            seen["has_decision_action_probs"] = callable(
+                callbacks.decision_action_probs
+            )
+            seen["has_sample_actions"] = callable(callbacks.sample_actions)
+            seen["has_local_update"] = callable(callbacks.local_update)
+            seen["has_refresh_policy_cache"] = callable(callbacks.refresh_policy_cache)
+            seen["has_post_collect_policy_probs"] = callable(
+                callbacks.post_collect_policy_probs
+            )
+
+        def run(self) -> Any:
+            seen["run_called"] = True
+            result = self._inner.run()
+            seen["decision_shape"] = tuple(result.decision_action_probs.shape)
+            seen["post_shape"] = tuple(result.post_local_probs.shape)
+            return result
+
+    monkeypatch.setattr(
+        toy_public_goods_module,
+        "BinaryPolicyLearningUnit",
+        SpyBinaryPolicyLearningUnit,
+    )
+
+    result = domain.local_step(state, context)
+
+    assert seen == {
+        "agent_count": config.agent_count,
+        "context": context,
+        "callbacks_type": "BinaryPolicyLearningCallbacks",
+        "has_collect_policy_probs": True,
+        "has_decision_action_probs": True,
+        "has_sample_actions": True,
+        "has_local_update": True,
+        "has_refresh_policy_cache": True,
+        "has_post_collect_policy_probs": True,
+        "run_called": True,
+        "decision_shape": (config.agent_count, 2),
+        "post_shape": (config.agent_count, 2),
+    }
+    assert result.social_mode == "policy_distill"
+    assert result.actions_after_revision is not None
+    assert result.extras["decision_action_probs"].shape == (config.agent_count, 2)
+    assert "state_continuation_components" in result.extras
+
+
 def test_imitation_candidate_copies_higher_payoff_neighbor() -> None:
     actions = np.asarray([1, 0, 1], dtype=np.int64)
     payoffs = np.asarray([-0.2, 0.8, -0.2], dtype=np.float64)

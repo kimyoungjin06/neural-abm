@@ -2944,6 +2944,92 @@ def test_toy2_well_mixed_context_skips_static_peer_index(tmp_path: Path) -> None
     assert domain._spatial_neural_peer_index() is None
 
 
+def test_toy2_neural_local_step_routes_through_binary_policy_learning_unit(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    config_path = write_tiny_config(
+        tmp_path,
+        mixer="none",
+        peer_rule="none",
+        decision_mode="argmax",
+        epochs=1,
+    )
+    config = load_toy2_config(config_path)
+    domain = Toy2SpatialDomain(
+        config=config,
+        config_path=config_path,
+        rng=np.random.default_rng(config.run.seed),
+        neural_peer_rng=np.random.default_rng(config.run.seed + 1_000_003),
+        interaction_rng=np.random.default_rng(config.run.seed + 2_000_003),
+        reputation_rng=np.random.default_rng(config.run.seed + 3_000_003),
+        mobility_rng=np.random.default_rng(config.run.seed + 4_000_003),
+        device=torch.device("cpu"),
+        neural_update_backend=config.policy.neural_update_backend,
+    )
+    state = domain.initial_state()
+    context = domain.build_step_context(
+        epoch=1,
+        state=state,
+        revision_mask=np.ones(domain.agent_count, dtype=bool),
+    )
+    original_unit = toy_pd_module.BinaryPolicyLearningUnit
+    seen: dict[str, Any] = {}
+
+    class SpyBinaryPolicyLearningUnit:
+        def __init__(self, *args: Any, **kwargs: Any) -> None:
+            self._inner = original_unit(*args, **kwargs)
+            callbacks = kwargs["callbacks"]
+            seen["agent_count"] = len(kwargs["agents"])
+            seen["context"] = kwargs["context"]
+            seen["callbacks_type"] = type(callbacks).__name__
+            seen["has_collect_policy_probs"] = callable(callbacks.collect_policy_probs)
+            seen["has_decision_action_probs"] = callable(
+                callbacks.decision_action_probs
+            )
+            seen["has_sample_actions"] = callable(callbacks.sample_actions)
+            seen["has_local_update"] = callable(callbacks.local_update)
+            seen["has_refresh_policy_cache"] = callable(callbacks.refresh_policy_cache)
+            seen["has_post_collect_policy_probs"] = callable(
+                callbacks.post_collect_policy_probs
+            )
+
+        def run(self) -> Any:
+            seen["run_called"] = True
+            result = self._inner.run()
+            seen["decision_shape"] = tuple(result.decision_action_probs.shape)
+            seen["post_shape"] = tuple(result.post_local_probs.shape)
+            return result
+
+    monkeypatch.setattr(
+        toy_pd_module,
+        "BinaryPolicyLearningUnit",
+        SpyBinaryPolicyLearningUnit,
+    )
+
+    result = domain.local_step(state, context)
+
+    assert seen == {
+        "agent_count": domain.agent_count,
+        "context": context,
+        "callbacks_type": "BinaryPolicyLearningCallbacks",
+        "has_collect_policy_probs": True,
+        "has_decision_action_probs": True,
+        "has_sample_actions": True,
+        "has_local_update": True,
+        "has_refresh_policy_cache": True,
+        "has_post_collect_policy_probs": True,
+        "run_called": True,
+        "decision_shape": (domain.agent_count, 2),
+        "post_shape": (domain.agent_count, 2),
+    }
+    assert isinstance(result, BinaryLocalStepResult)
+    assert result.social_mode == "policy_distill"
+    assert result.actions_after_revision is not None
+    assert result.extras["decision_action_probs"].shape == (domain.agent_count, 2)
+    assert "state_continuation_components" in result.extras
+
+
 @pytest.mark.parametrize(
     "local_update_rule",
     ["sampled_policy_gradient", "counterfactual_advantage"],

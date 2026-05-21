@@ -158,6 +158,53 @@ The next implementation slice should be one of:
 The preferred order is 3, then 1, then 2. This gives a cleaner contract test
 before adding another migration.
 
+## 2026-05-21 Unit Adoption Map
+
+This map records which toy paths currently use the reusable unit lifecycle and
+where domain ownership still begins. It is a structural map, not an endpoint
+performance claim.
+
+| Path | Current unit adoption | Domain-owned boundary | Next pressure test |
+| --- | --- | --- | --- |
+| Toy1 classification | Generic agent protocol and social block concepts | synthetic labels, cluster objective, and classification diagnostics | keep as API smoke unless Toy1 is refactored into a domain runner |
+| Toy2 spatial PD | `BinaryPolicyLearningUnit`, optional `BinaryRevisionLearningUnit`, binary local-update adapters, output-distribution distillation, shared domain-learning diagnostics | payoff family, interaction graph, counterfactual advantages, basin/replay/teacher semantics, ceiling criteria | keep policy-unit guard active while extracting only semantic-free callback plumbing |
+| Toy4 public goods | `BinaryPolicyLearningUnit`, optional `BinaryRevisionLearningUnit`, binary local-update adapters, output-distribution distillation, readiness propagation, shared domain-learning diagnostics | public-goods groups, resource dynamics, threshold meaning, welfare/resource advantages, basin/replay/teacher semantics, ceiling criteria | keep policy-unit guard active before any resource-path extraction |
+| Toy5 contagion | `BinaryPolicyLearningUnit`, readiness propagation, hard holdout evidence through threshold-aware wavefront adapter | exposure, threshold, seed safety, topology, direction score, cascade/non-adoption criteria | expand hard holdout grid before making broader Toy5 robustness claims |
+| Toy6-10 compatible toys | `DomainToyRunner` lifecycle only | domain state, update rules, neural path validity, evidence gates | keep outside full-NABM claim until one path satisfies the holdout criteria |
+| Backend paths | `NABMLocalStep` wrappers for batched/tensor policy-gradient updates and typed social commit reports | objective tensors, action semantics, domain extras, artifact interpretation | add backend-specific guards only when changing backend dispatch |
+
+The adoption target for v1 remains narrow: the unit should own lifecycle
+ordering, typed social mix, commit adapters, and schema plumbing. Domain code
+must continue to own what observations mean, what advantages mean, and what
+success means.
+
+## 2026-05-21 Toy2/Toy4 Policy-Unit Guard Slice
+
+Added Toy2 and Toy4 guard tests matching the earlier Toy5 guard. The tests patch
+each toy module's `BinaryPolicyLearningUnit`, run one neural local step, and
+assert that the domain supplies a `BinaryPolicyLearningCallbacks` object with:
+
+- pre-policy readout;
+- decision probability construction;
+- action sampling;
+- local update commit;
+- cache refresh;
+- post-local readout.
+
+The guards intentionally inspect callback wiring rather than endpoint metrics.
+They prevent Toy2/Toy4 from silently drifting back toward local, toy-specific
+policy loops while leaving payoff, resource, teacher, and basin semantics in the
+domain adapters.
+
+Verification:
+
+- Ran the two new Toy2/Toy4 guard tests directly: `2 passed`.
+- Ran `uv run ruff check src tests scripts`.
+- Ran `uv run pytest tests/test_domain_learning_diagnostics.py
+  tests/test_toy2_runner.py tests/test_toy4_runner.py tests/test_toy5_runner.py
+  tests/test_spatial_binary_runner.py -q`.
+- Result: `388 passed`.
+
 ## 2026-05-21 Contract Fixture Slice
 
 Added a toy-independent `BinaryPolicyLearningUnit` contract fixture in
