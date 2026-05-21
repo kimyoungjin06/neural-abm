@@ -302,15 +302,15 @@ def render_gate_markdown(summary: Mapping[str, Any]) -> str:
         "",
         "## Main Claim Cases",
         "",
-        "| Case | Toy | Status | Best Main Variant | Final Ceiling Hits | Mean TtC | Ever-Final Misses | Terminal Rate | Late Flip Rate | Baseline Improved |",
-        "| --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- |",
+        "| Case | Toy | Status | Best Main Variant | Final Ceiling Hits | Mean TtC | Trajectory | Failure Mode | Ever-Final Misses | Terminal Rate | Late Flip Rate | Baseline Improved |",
+        "| --- | --- | --- | --- | ---: | ---: | --- | --- | ---: | ---: | ---: | --- |",
     ]
     for case in summary["cases"]:
         best_main = case.get("best_main_variant") or {}
         lines.append(
             "| {case} | {toy} | {status} | {variant} | {hits}/{expected} | "
-            "{ttc} | {final_miss} | {terminal_rate} | {late_flip_rate} | "
-            "{improved} |".format(
+            "{ttc} | {trajectory} | {failure_mode} | {final_miss} | "
+            "{terminal_rate} | {late_flip_rate} | {improved} |".format(
                 case=case["case"],
                 toy=case["toy"],
                 status=case["status"],
@@ -318,6 +318,8 @@ def render_gate_markdown(summary: Mapping[str, Any]) -> str:
                 hits=_format_optional_number(best_main.get("final_ceiling_hits")),
                 expected=_format_optional_number(best_main.get("expected_seed_count")),
                 ttc=_format_optional_number(best_main.get("mean_time_to_ceiling")),
+                trajectory=best_main.get("trajectory_status", ""),
+                failure_mode=best_main.get("failure_mode", ""),
                 final_miss=_format_optional_number(
                     best_main.get("ever_ceiling_final_miss_count")
                 ),
@@ -353,16 +355,17 @@ def render_gate_markdown(summary: Mapping[str, Any]) -> str:
             "",
             "## Variant Details",
             "",
-            "| Case | Variant | Group | Eligible Main | Status | Final Hits | Mean TtC | Ever-Final Misses | Terminal Rate | Late Flip Rate | Metric Mean | Reasons |",
-            "| --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |",
+            "| Case | Variant | Group | Eligible Main | Status | Final Hits | Mean TtC | Trajectory | Failure Mode | Ever-Final Misses | Terminal Rate | Late Flip Rate | Metric Mean | Reasons |",
+            "| --- | --- | --- | --- | --- | ---: | ---: | --- | --- | ---: | ---: | ---: | ---: | --- |",
         ]
     )
     for case in summary["cases"]:
         for variant in case["variants"]:
             lines.append(
                 "| {case} | {variant} | {group} | {eligible} | {status} | "
-                "{hits} | {ttc} | {final_miss} | {terminal_rate} | "
-                "{late_flip_rate} | {metric} | {reasons} |".format(
+                "{hits} | {ttc} | {trajectory} | {failure_mode} | "
+                "{final_miss} | {terminal_rate} | {late_flip_rate} | "
+                "{metric} | {reasons} |".format(
                     case=case["case"],
                     variant=variant["variant"],
                     group=variant["group"],
@@ -370,6 +373,8 @@ def render_gate_markdown(summary: Mapping[str, Any]) -> str:
                     status=variant["status"],
                     hits=_format_optional_number(variant["final_ceiling_hits"]),
                     ttc=_format_optional_number(variant["mean_time_to_ceiling"]),
+                    trajectory=variant.get("trajectory_status", ""),
+                    failure_mode=variant.get("failure_mode", ""),
                     final_miss=_format_optional_number(
                         variant.get("ever_ceiling_final_miss_count")
                     ),
@@ -459,6 +464,13 @@ def _evaluate_variant(
         eligible_main=eligible_main,
         uses_teacher_bootstrap_replay=uses_bootstrap,
     )
+    trajectory = _variant_trajectory_outcome(
+        stats=stats,
+        criterion=criterion,
+        eligible_main=eligible_main,
+        status=status,
+        uses_teacher_bootstrap_replay=uses_bootstrap,
+    )
     return {
         "variant": variant.name,
         "group": variant.group,
@@ -466,6 +478,7 @@ def _evaluate_variant(
         "uses_teacher_bootstrap_replay": uses_bootstrap,
         "status": status,
         "reasons": reasons,
+        **trajectory,
         **stats,
     }
 
@@ -656,6 +669,68 @@ def _variant_status_and_reasons(
             )
         ]
     return "pass", []
+
+
+def _variant_trajectory_outcome(
+    *,
+    stats: Mapping[str, Any],
+    criterion: EvidenceGateCaseCriterion,
+    eligible_main: bool,
+    status: str,
+    uses_teacher_bootstrap_replay: bool,
+) -> dict[str, str]:
+    if not eligible_main:
+        return {
+            "trajectory_status": "diagnostic",
+            "failure_mode": (
+                "teacher_bootstrap_replay"
+                if uses_teacher_bootstrap_replay
+                else "not_main_group"
+            ),
+        }
+    if status == "inconclusive":
+        return {
+            "trajectory_status": "inconclusive",
+            "failure_mode": "missing_or_malformed_rows",
+        }
+    if status == "pass":
+        return {"trajectory_status": "success", "failure_mode": ""}
+
+    required = criterion.final_ceiling_min_hits
+    final_hits = int(stats["final_ceiling_hits"])
+    ever_hits = int(stats.get("ever_ceiling_hits", 0))
+    mean_time = _optional_float(stats.get("mean_time_to_ceiling"))
+    late_flip_rate = _optional_float(
+        stats.get("late_flip_rate_after_first_ceiling_mean")
+    )
+    terminal_rate = _optional_float(stats.get("terminal_window_ceiling_rate_mean"))
+    ever_final_misses = int(stats.get("ever_ceiling_final_miss_count", 0))
+
+    if final_hits >= required and (
+        mean_time is None or not mean_time < criterion.mean_time_to_ceiling_lt
+    ):
+        return {
+            "trajectory_status": "trajectory_success_slow_ttc",
+            "failure_mode": "slow_time_to_ceiling",
+        }
+    if ever_hits >= required and (
+        ever_final_misses > 0
+        or _mean_or_zero(late_flip_rate) > 0.0
+        or _mean_or_zero(terminal_rate) >= 0.75
+    ):
+        return {
+            "trajectory_status": "stochastic_gate_brittleness",
+            "failure_mode": "final_epoch_hazard",
+        }
+    if ever_hits < required:
+        return {
+            "trajectory_status": "trajectory_ceiling_miss",
+            "failure_mode": "mechanism_failure_candidate",
+        }
+    return {
+        "trajectory_status": "final_ceiling_miss",
+        "failure_mode": "unclassified_final_miss",
+    }
 
 
 def _case_status(
@@ -857,6 +932,10 @@ def _std_or_none(values: Sequence[float]) -> float | None:
     assert mean is not None
     variance = math.fsum((value - mean) ** 2 for value in values) / (len(values) - 1)
     return math.sqrt(variance)
+
+
+def _mean_or_zero(value: float | None) -> float:
+    return 0.0 if value is None else value
 
 
 def _sort_time(value: Any) -> float:

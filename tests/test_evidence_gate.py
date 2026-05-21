@@ -145,6 +145,8 @@ def test_evidence_gate_passes_eligible_nabm_variant() -> None:
     assert case["best_main_variant"]["variant"] == "basin_credit"
     assert case["best_main_variant"]["final_ceiling_hits"] == 3
     assert case["best_main_variant"]["mean_time_to_ceiling"] == pytest.approx(4.0)
+    assert case["best_main_variant"]["trajectory_status"] == "success"
+    assert case["best_main_variant"]["failure_mode"] == ""
     assert case["baseline_improved_by_best_main"] is True
 
 
@@ -427,6 +429,8 @@ def test_evidence_gate_reports_late_instability_metrics() -> None:
     [case] = summary["cases"]
     [variant] = case["variants"]
     assert variant["ever_ceiling_final_miss_count"] == 1
+    assert variant["trajectory_status"] == "success"
+    assert variant["failure_mode"] == ""
     assert variant["late_flip_count_after_first_ceiling_mean"] == pytest.approx(1 / 3)
     assert variant["late_flip_rate_after_first_ceiling_mean"] == pytest.approx(0.01 / 3)
     assert variant["terminal_window_ceiling_rate_mean"] == pytest.approx(0.9333333333)
@@ -438,6 +442,99 @@ def test_evidence_gate_reports_late_instability_metrics() -> None:
 
     assert "Ever-Final Misses" in markdown
     assert "Late Flip Rate" in markdown
+    assert "Trajectory" in markdown
+    assert "Failure Mode" in markdown
+
+
+def test_evidence_gate_reports_stochastic_gate_brittleness_outcome() -> None:
+    manifest = make_manifest(
+        variants=(
+            MatrixVariant(
+                "basin_credit",
+                "nabm",
+                {"model.policy.domain.basin_credit.enabled": True},
+            ),
+        )
+    )
+    rows = [
+        run_row(
+            variant="basin_credit",
+            group="nabm",
+            seed=1,
+            final_hit=True,
+            time_to_ceiling=3,
+            ever_ceiling_final_miss=False,
+            late_flip_rate_after_first_ceiling=0.0,
+            terminal_window_ceiling_rate=1.0,
+        ),
+        run_row(
+            variant="basin_credit",
+            group="nabm",
+            seed=2,
+            final_hit=False,
+            time_to_ceiling=4,
+            metric_value=2.996,
+            ever_ceiling_final_miss=True,
+            late_flip_rate_after_first_ceiling=0.01,
+            terminal_window_ceiling_rate=0.8,
+        ),
+        run_row(
+            variant="basin_credit",
+            group="nabm",
+            seed=3,
+            final_hit=True,
+            time_to_ceiling=5,
+            ever_ceiling_final_miss=False,
+            late_flip_rate_after_first_ceiling=0.0,
+            terminal_window_ceiling_rate=1.0,
+        ),
+    ]
+
+    summary = evaluate_evidence_gate(
+        manifest=manifest,
+        criteria=gate_criteria(final_ceiling_min_hits=3),
+        run_rows=rows,
+    )
+
+    assert summary["status"] == "fail"
+    [case] = summary["cases"]
+    [variant] = case["variants"]
+    assert variant["trajectory_status"] == "stochastic_gate_brittleness"
+    assert variant["failure_mode"] == "final_epoch_hazard"
+
+
+def test_evidence_gate_reports_slow_ttc_outcome() -> None:
+    manifest = make_manifest(
+        variants=(
+            MatrixVariant(
+                "basin_credit",
+                "nabm",
+                {"model.policy.domain.basin_credit.enabled": True},
+            ),
+        )
+    )
+    rows = [
+        run_row(
+            variant="basin_credit",
+            group="nabm",
+            seed=seed,
+            final_hit=True,
+            time_to_ceiling=12,
+        )
+        for seed in (1, 2, 3)
+    ]
+
+    summary = evaluate_evidence_gate(
+        manifest=manifest,
+        criteria=gate_criteria(mean_time_to_ceiling_lt=10),
+        run_rows=rows,
+    )
+
+    assert summary["status"] == "fail"
+    [case] = summary["cases"]
+    [variant] = case["variants"]
+    assert variant["trajectory_status"] == "trajectory_success_slow_ttc"
+    assert variant["failure_mode"] == "slow_time_to_ceiling"
 
 
 def test_evidence_gate_marks_malformed_optional_instability_field() -> None:

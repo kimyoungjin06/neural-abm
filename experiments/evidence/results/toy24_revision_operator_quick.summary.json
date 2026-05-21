@@ -13,6 +13,7 @@
         "ever_ceiling_final_miss_count": 0,
         "ever_ceiling_hits": 3,
         "expected_seed_count": 3,
+        "failure_mode": "not_main_group",
         "final_ceiling_hits": 3,
         "group": "baseline",
         "late_flip_count_after_first_ceiling_mean": 0.0,
@@ -35,6 +36,7 @@
         "std_time_to_ceiling": 0.5773502691896258,
         "terminal_window_ceiling_rate_mean": 1.0,
         "terminal_window_mean_ceiling_metric_mean": 3.0,
+        "trajectory_status": "diagnostic",
         "uses_teacher_bootstrap_replay": false,
         "variant": "reputation_imitation"
       },
@@ -44,6 +46,7 @@
         "ever_ceiling_final_miss_count": 1,
         "ever_ceiling_hits": 3,
         "expected_seed_count": 3,
+        "failure_mode": "final_epoch_hazard",
         "final_ceiling_hits": 2,
         "group": "revision",
         "late_flip_count_after_first_ceiling_mean": 31.0,
@@ -66,6 +69,7 @@
         "std_time_to_ceiling": 3.5118845842842465,
         "terminal_window_ceiling_rate_mean": 0.8666666666666667,
         "terminal_window_mean_ceiling_metric_mean": 2.998666666666667,
+        "trajectory_status": "stochastic_gate_brittleness",
         "uses_teacher_bootstrap_replay": false,
         "variant": "revision_operator_mixed_objective_basin_w0p5_0p5_h1"
       },
@@ -84,6 +88,7 @@
           "ever_ceiling_final_miss_count": 0,
           "ever_ceiling_hits": 3,
           "expected_seed_count": 3,
+          "failure_mode": "not_main_group",
           "final_ceiling_hits": 3,
           "group": "baseline",
           "late_flip_count_after_first_ceiling_mean": 0.0,
@@ -106,6 +111,7 @@
           "std_time_to_ceiling": 0.5773502691896258,
           "terminal_window_ceiling_rate_mean": 1.0,
           "terminal_window_mean_ceiling_metric_mean": 3.0,
+          "trajectory_status": "diagnostic",
           "uses_teacher_bootstrap_replay": false,
           "variant": "reputation_imitation"
         },
@@ -115,6 +121,7 @@
           "ever_ceiling_final_miss_count": 0,
           "ever_ceiling_hits": 3,
           "expected_seed_count": 3,
+          "failure_mode": "not_main_group",
           "final_ceiling_hits": 3,
           "group": "baseline",
           "late_flip_count_after_first_ceiling_mean": 19.333333333333332,
@@ -137,6 +144,7 @@
           "std_time_to_ceiling": 2.081665999466133,
           "terminal_window_ceiling_rate_mean": 0.8666666666666667,
           "terminal_window_mean_ceiling_metric_mean": 2.998666666666667,
+          "trajectory_status": "diagnostic",
           "uses_teacher_bootstrap_replay": false,
           "variant": "linear_welfare_heavy"
         },
@@ -146,6 +154,7 @@
           "ever_ceiling_final_miss_count": 0,
           "ever_ceiling_hits": 3,
           "expected_seed_count": 3,
+          "failure_mode": "not_main_group",
           "final_ceiling_hits": 3,
           "group": "diagnostic",
           "late_flip_count_after_first_ceiling_mean": 21.333333333333332,
@@ -168,6 +177,7 @@
           "std_time_to_ceiling": 3.0550504633038935,
           "terminal_window_ceiling_rate_mean": 0.8666666666666667,
           "terminal_window_mean_ceiling_metric_mean": 2.998666666666667,
+          "trajectory_status": "diagnostic",
           "uses_teacher_bootstrap_replay": false,
           "variant": "mixed_objective_basin_w0p5_0p5_h1"
         },
@@ -177,6 +187,7 @@
           "ever_ceiling_final_miss_count": 1,
           "ever_ceiling_hits": 3,
           "expected_seed_count": 3,
+          "failure_mode": "not_main_group",
           "final_ceiling_hits": 2,
           "group": "diagnostic",
           "late_flip_count_after_first_ceiling_mean": 30.333333333333332,
@@ -199,6 +210,7 @@
           "std_time_to_ceiling": 1.5275252316519468,
           "terminal_window_ceiling_rate_mean": 0.9333333333333332,
           "terminal_window_mean_ceiling_metric_mean": 2.999333333333334,
+          "trajectory_status": "diagnostic",
           "uses_teacher_bootstrap_replay": false,
           "variant": "revision_operator_linear_welfare_heavy"
         },
@@ -208,6 +220,7 @@
           "ever_ceiling_final_miss_count": 1,
           "ever_ceiling_hits": 3,
           "expected_seed_count": 3,
+          "failure_mode": "final_epoch_hazard",
           "final_ceiling_hits": 2,
           "group": "revision",
           "late_flip_count_after_first_ceiling_mean": 31.0,
@@ -230,6 +243,7 @@
           "std_time_to_ceiling": 3.5118845842842465,
           "terminal_window_ceiling_rate_mean": 0.8666666666666667,
           "terminal_window_mean_ceiling_metric_mean": 2.998666666666667,
+          "trajectory_status": "stochastic_gate_brittleness",
           "uses_teacher_bootstrap_replay": false,
           "variant": "revision_operator_mixed_objective_basin_w0p5_0p5_h1"
         }
@@ -248,6 +262,7 @@
         "ever_ceiling_final_miss_count": 0,
         "ever_ceiling_hits": 3,
         "expected_seed_count": 3,
+        "failure_mode": "not_main_group",
         "final_ceiling_hits": 3,
         "group": "baseline",
         "late_flip_count_after_first_ceiling_mean": 0.0,
@@ -270,6 +285,7 @@
         "std_time_to_ceiling": 0.5773502691896258,
         "terminal_window_ceiling_rate_mean": 1.0,
         "terminal_window_mean_ceiling_metric_mean": 0.6,
+        "trajectory_status": "diagnostic",
         "uses_teacher_bootstrap_replay": false,
         "variant": "reputation_imitation"
       },
@@ -279,6 +295,7 @@
         "ever_ceiling_final_miss_count": 2,
         "ever_ceiling_hits": 3,
         "expected_seed_count": 3,
+        "failure_mode": "final_epoch_hazard",
         "final_ceiling_hits": 1,
         "group": "revision",
         "late_flip_count_after_first_ceiling_mean": 30.0,
@@ -301,6 +318,7 @@
         "std_time_to_ceiling": 3.0,
         "terminal_window_ceiling_rate_mean": 0.7999999999999999,
         "terminal_window_mean_ceiling_metric_mean": 0.5988,
+        "trajectory_status": "stochastic_gate_brittleness",
         "uses_teacher_bootstrap_replay": false,
         "variant": "revision_operator_mixed_objective_basin_w0p5_0p5_h1"
       },
@@ -319,6 +337,7 @@
           "ever_ceiling_final_miss_count": 0,
           "ever_ceiling_hits": 3,
           "expected_seed_count": 3,
+          "failure_mode": "not_main_group",
           "final_ceiling_hits": 3,
           "group": "baseline",
           "late_flip_count_after_first_ceiling_mean": 0.0,
@@ -341,6 +360,7 @@
           "std_time_to_ceiling": 0.5773502691896258,
           "terminal_window_ceiling_rate_mean": 1.0,
           "terminal_window_mean_ceiling_metric_mean": 0.6,
+          "trajectory_status": "diagnostic",
           "uses_teacher_bootstrap_replay": false,
           "variant": "reputation_imitation"
         },
@@ -350,6 +370,7 @@
           "ever_ceiling_final_miss_count": 2,
           "ever_ceiling_hits": 3,
           "expected_seed_count": 3,
+          "failure_mode": "not_main_group",
           "final_ceiling_hits": 1,
           "group": "baseline",
           "late_flip_count_after_first_ceiling_mean": 28.0,
@@ -372,6 +393,7 @@
           "std_time_to_ceiling": 2.0,
           "terminal_window_ceiling_rate_mean": 0.7333333333333334,
           "terminal_window_mean_ceiling_metric_mean": 0.598,
+          "trajectory_status": "diagnostic",
           "uses_teacher_bootstrap_replay": false,
           "variant": "linear_welfare_heavy"
         },
@@ -381,6 +403,7 @@
           "ever_ceiling_final_miss_count": 1,
           "ever_ceiling_hits": 3,
           "expected_seed_count": 3,
+          "failure_mode": "not_main_group",
           "final_ceiling_hits": 2,
           "group": "diagnostic",
           "late_flip_count_after_first_ceiling_mean": 35.0,
@@ -403,6 +426,7 @@
           "std_time_to_ceiling": 2.5166114784235836,
           "terminal_window_ceiling_rate_mean": 0.8666666666666667,
           "terminal_window_mean_ceiling_metric_mean": 0.5992000000000001,
+          "trajectory_status": "diagnostic",
           "uses_teacher_bootstrap_replay": false,
           "variant": "mixed_objective_basin_w0p5_0p5_h1"
         },
@@ -412,6 +436,7 @@
           "ever_ceiling_final_miss_count": 2,
           "ever_ceiling_hits": 3,
           "expected_seed_count": 3,
+          "failure_mode": "not_main_group",
           "final_ceiling_hits": 1,
           "group": "diagnostic",
           "late_flip_count_after_first_ceiling_mean": 30.0,
@@ -434,6 +459,7 @@
           "std_time_to_ceiling": 1.5275252316519468,
           "terminal_window_ceiling_rate_mean": 0.7333333333333334,
           "terminal_window_mean_ceiling_metric_mean": 0.5983999999999999,
+          "trajectory_status": "diagnostic",
           "uses_teacher_bootstrap_replay": false,
           "variant": "revision_operator_linear_welfare_heavy"
         },
@@ -443,6 +469,7 @@
           "ever_ceiling_final_miss_count": 2,
           "ever_ceiling_hits": 3,
           "expected_seed_count": 3,
+          "failure_mode": "final_epoch_hazard",
           "final_ceiling_hits": 1,
           "group": "revision",
           "late_flip_count_after_first_ceiling_mean": 30.0,
@@ -465,6 +492,7 @@
           "std_time_to_ceiling": 3.0,
           "terminal_window_ceiling_rate_mean": 0.7999999999999999,
           "terminal_window_mean_ceiling_metric_mean": 0.5988,
+          "trajectory_status": "stochastic_gate_brittleness",
           "uses_teacher_bootstrap_replay": false,
           "variant": "revision_operator_mixed_objective_basin_w0p5_0p5_h1"
         }

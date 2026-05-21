@@ -20,6 +20,13 @@ Generated triage index:
 - `experiments/results/nabm_effect_matrix/evidence_profile_index_gate3.csv`
 - `experiments/results/nabm_effect_matrix/evidence_profile_index_gate3.json`
 
+Updated gate summaries:
+
+- `experiments/evidence/results/toy24_revision_operator_quick.summary.md`
+- `experiments/evidence/results/toy24_basin_credit_objective_blend_quick.summary.md`
+- `experiments/evidence/results/toy24_revision_operator_precommitment_controls_quick.summary.md`
+- `experiments/evidence/results/toy24_precommitment_peer_evidence_open_boundary_sparse_seed_stress_quick.summary.md`
+
 ## Classification Rules
 
 The Toy2/Toy4 evidence profile adapter now marks these case-level categories:
@@ -36,6 +43,15 @@ The Toy2/Toy4 evidence profile adapter now marks these case-level categories:
   expected seeds, but the case fails because mean time-to-ceiling is too slow.
 - `toy24_triage_true_mechanism_failure_candidate`: best main does not even
   reach ceiling in all expected seeds.
+
+The evidence gate now also writes the same distinction into every variant row:
+
+- `trajectory_status`: `success`, `trajectory_success_slow_ttc`,
+  `stochastic_gate_brittleness`, `trajectory_ceiling_miss`,
+  `final_ceiling_miss`, `diagnostic`, or `inconclusive`.
+- `failure_mode`: concise machine-readable cause such as
+  `slow_time_to_ceiling`, `final_epoch_hazard`,
+  `mechanism_failure_candidate`, or `unclassified_final_miss`.
 
 ## Triage Summary
 
@@ -58,6 +74,10 @@ Supported:
   structural inability to reach the desired basin. Both Toy2 and Toy4 are
   classified as stochastic gate brittleness: ceiling is reached, but final
   epoch hits are lost by late hazard.
+- The gate summaries now expose that directly: both best-main
+  `toy24_revision_operator_quick` rows have
+  `trajectory_status=stochastic_gate_brittleness` and
+  `failure_mode=final_epoch_hazard`.
 - The objective+basin Toy2 failure is a speed/gate problem rather than a final
   adoption problem: the best main path reaches `3/3` final hits but misses the
   `mean_time_to_ceiling_lt: 10` threshold at `12.0`.

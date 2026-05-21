@@ -183,6 +183,8 @@ Artifacts:
 - `experiments/results/nabm_effect_matrix/toy24_revision_operator_precommitment_controls_quick_profile.md`
 - `experiments/results/nabm_effect_matrix/toy24_precommitment_peer_evidence_open_boundary_sparse_seed_stress_quick_profile.md`
 - `experiments/results/nabm_effect_matrix/toy24_gate3_evidence_triage_findings.md`
+- refreshed gate summaries with `trajectory_status` and `failure_mode` fields
+  for the same four Toy2/Toy4 manifests.
 
 Completed work:
 
@@ -201,6 +203,8 @@ Result:
 - Precommitment/peer-evidence variants recover stable final hits, but several
   cases remain baseline-favored because reputation imitation reaches the same
   ceiling faster.
+- Gate JSON/Markdown now reports trajectory outcome separately from pass/fail,
+  so final-epoch brittleness is visible without changing the gate threshold.
 
 Completion condition update:
 
