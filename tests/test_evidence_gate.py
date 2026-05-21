@@ -916,6 +916,82 @@ def test_toy24_precommitment_peer_evidence_open_boundary_sparse_seed_stress_cont
         )
 
 
+def test_toy24_precommitment_peer_evidence_reputation_fragility_stress_contract() -> None:
+    manifest, criteria = load_gate_manifest(
+        Path(
+            "experiments/evidence/"
+            "toy24_precommitment_peer_evidence_"
+            "reputation_fragility_stress_quick.yaml"
+        )
+    )
+
+    assert (
+        manifest.label
+        == "toy24_precommitment_peer_evidence_reputation_fragility_stress_quick"
+    )
+    assert manifest.seeds == (1, 2, 3, 4, 5)
+    assert criteria.main_group == "peer_evidence_reputation_fragility_stress"
+    assert criteria.require_without_teacher_bootstrap_replay is True
+    assert (
+        criteria.cases[
+            "toy2_precommitment_peer_evidence_reputation_fragility_stress"
+        ].final_ceiling_min_hits
+        == 5
+    )
+    assert criteria.cases[
+        "toy2_precommitment_peer_evidence_reputation_fragility_stress"
+    ].mean_time_to_ceiling_lt == pytest.approx(25.0)
+    assert (
+        criteria.cases[
+            "toy4_precommitment_peer_evidence_reputation_fragility_stress"
+        ].final_ceiling_min_hits
+        == 5
+    )
+    assert criteria.cases[
+        "toy4_precommitment_peer_evidence_reputation_fragility_stress"
+    ].mean_time_to_ceiling_lt == pytest.approx(25.0)
+
+    for case in manifest.cases:
+        variants = {variant.name: variant for variant in case.variants}
+        assert case.nabm_group == "peer_evidence_reputation_fragility_stress"
+        assert set(variants) == {
+            "reputation_imitation_open_sparse_noisy_p0p1_s1p0",
+            "objective_basin_open_sparse_noisy_p0p1_s1p0",
+            "revision_objective_basin_open_sparse_noisy_p0p1_s1p0",
+            "revision_precommitment_evidence_open_sparse_noisy_p0p1_s1p0",
+            "revision_precommitment_peer_evidence_open_sparse_noisy_p0p1_s1p0",
+        }
+        for variant in variants.values():
+            assert variant.updates[
+                "domain.environment.initial_action_probability"
+            ] == pytest.approx(0.1)
+            assert variant.updates["model.state.reputation.noise"] == pytest.approx(
+                1.0
+            )
+            if case.toy == "toy2":
+                assert variant.updates["domain.environment.periodic"] is False
+            else:
+                assert variant.updates["domain.graph.periodic"] is False
+        assert (
+            variants[
+                "revision_precommitment_peer_evidence_"
+                "open_sparse_noisy_p0p1_s1p0"
+            ].group
+            == "peer_evidence_reputation_fragility_stress"
+        )
+        assert variants[
+            "revision_objective_basin_open_sparse_noisy_p0p1_s1p0"
+        ].updates["model.coordination.revision_operator_enabled"] is True
+        assert variants[
+            "revision_precommitment_peer_evidence_open_sparse_noisy_p0p1_s1p0"
+        ].updates["model.coordination.precommitment_peer_evidence_enabled"] is True
+        assert variants[
+            "revision_precommitment_peer_evidence_open_sparse_noisy_p0p1_s1p0"
+        ].updates["model.coordination.precommitment_peer_evidence_weight"] == (
+            pytest.approx(1.0)
+        )
+
+
 def test_toy24_precommitment_peer_evidence_domain_uncertainty_calibration_contract() -> None:
     manifest, criteria = load_gate_manifest(
         Path(

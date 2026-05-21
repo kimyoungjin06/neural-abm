@@ -2,8 +2,8 @@
 
 ## Overview
 
-- Rows: 8
-- Status counts: fail=4, pass=4
+- Rows: 10
+- Status counts: fail=4, pass=6
 - Skipped rows: 0
 
 ## Cases
@@ -14,6 +14,8 @@
 | toy24_basin_credit_objective_blend_quick | fail | toy4_basin_credit | toy4 | mixed_objective_basin_confidence_precommitment_social_feedback_w0p5_0p5_h1 | 3/3 | 11 | toy24_final_epoch_hazard | toy24_basin_credit_evidence,toy24_objective_basin_blend,toy24_material_basin_collapse_diagnostic,toy24_final_vs_ever_gap,toy24_main_candidate_ceiling_miss,toy24_triage_success,toy24_triage_baseline_favored_environment | [profile](toy24_basin_credit_objective_blend_quick_profile.md) |
 | toy24_precommitment_peer_evidence_open_boundary_sparse_seed_stress_quick | pass | toy2_precommitment_peer_evidence_open_boundary_sparse_seed_stress | toy2 | revision_precommitment_peer_evidence_open_sparse_p0p1 | 5/5 | 9.4 |  | toy24_basin_credit_evidence,toy24_objective_basin_blend,toy24_revision_operator_path,toy24_triage_success | [profile](toy24_precommitment_peer_evidence_open_boundary_sparse_seed_stress_quick_profile.md) |
 | toy24_precommitment_peer_evidence_open_boundary_sparse_seed_stress_quick | pass | toy4_precommitment_peer_evidence_open_boundary_sparse_seed_stress | toy4 | revision_precommitment_peer_evidence_open_sparse_p0p1 | 5/5 | 9 |  | toy24_basin_credit_evidence,toy24_objective_basin_blend,toy24_revision_operator_path,toy24_late_flip_hazard,toy24_triage_success | [profile](toy24_precommitment_peer_evidence_open_boundary_sparse_seed_stress_quick_profile.md) |
+| toy24_precommitment_peer_evidence_reputation_fragility_stress_quick | pass | toy2_precommitment_peer_evidence_reputation_fragility_stress | toy2 | revision_precommitment_peer_evidence_open_sparse_noisy_p0p1_s1p0 | 5/5 | 9.4 |  | toy24_basin_credit_evidence,toy24_objective_basin_blend,toy24_revision_operator_path,toy24_triage_success | [profile](toy24_precommitment_peer_evidence_reputation_fragility_stress_quick_profile.md) |
+| toy24_precommitment_peer_evidence_reputation_fragility_stress_quick | pass | toy4_precommitment_peer_evidence_reputation_fragility_stress | toy4 | revision_precommitment_peer_evidence_open_sparse_noisy_p0p1_s1p0 | 5/5 | 9 |  | toy24_basin_credit_evidence,toy24_objective_basin_blend,toy24_revision_operator_path,toy24_late_flip_hazard,toy24_triage_success | [profile](toy24_precommitment_peer_evidence_reputation_fragility_stress_quick_profile.md) |
 | toy24_revision_operator_precommitment_controls_quick | pass | toy2_revision_operator_precommitment_controls | toy2 | revision_operator_precommitment_peer_evidence_w1p0 | 3/3 | 9.66667 |  | toy24_basin_credit_evidence,toy24_objective_basin_blend,toy24_revision_operator_path,toy24_late_flip_hazard,toy24_triage_success,toy24_triage_baseline_favored_environment | [profile](toy24_revision_operator_precommitment_controls_quick_profile.md) |
 | toy24_revision_operator_precommitment_controls_quick | pass | toy4_revision_operator_precommitment_controls | toy4 | revision_operator_precommitment_peer_evidence_w1p0 | 3/3 | 9.33333 |  | toy24_basin_credit_evidence,toy24_objective_basin_blend,toy24_revision_operator_path,toy24_late_flip_hazard,toy24_triage_success,toy24_triage_baseline_favored_environment | [profile](toy24_revision_operator_precommitment_controls_quick_profile.md) |
 | toy24_revision_operator_quick | fail | toy2_revision_operator | toy2 | revision_operator_mixed_objective_basin_w0p5_0p5_h1 | 2/3 | 19.3333 | gate_case_fail,toy24_final_epoch_hazard,toy24_best_main_ceiling_miss,toy24_stochastic_gate_brittleness | toy24_basin_credit_evidence,toy24_objective_basin_blend,toy24_revision_operator_path,toy24_final_vs_ever_gap,toy24_late_flip_hazard,toy24_main_candidate_ceiling_miss,toy24_triage_stochastic_gate_brittleness,toy24_triage_baseline_favored_environment | [profile](toy24_revision_operator_quick_profile.md) |

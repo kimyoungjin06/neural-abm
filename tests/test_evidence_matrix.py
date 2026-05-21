@@ -547,6 +547,59 @@ def test_toy24_revision_operator_precommitment_peer_evidence_stability_contract(
         )
 
 
+def test_toy24_precommitment_peer_evidence_reputation_fragility_contract() -> None:
+    manifest = load_manifest(
+        Path(
+            "experiments/evidence/"
+            "toy24_precommitment_peer_evidence_"
+            "reputation_fragility_stress_quick.yaml"
+        )
+    )
+
+    assert (
+        manifest.label
+        == "toy24_precommitment_peer_evidence_reputation_fragility_stress_quick"
+    )
+    assert manifest.seeds == (1, 2, 3, 4, 5)
+    assert manifest.epochs == 50
+    assert {case.toy for case in manifest.cases} == {"toy2", "toy4"}
+    for case in manifest.cases:
+        assert case.nabm_group == "peer_evidence_reputation_fragility_stress"
+        variants = {variant.name: variant for variant in case.variants}
+        assert set(variants) == {
+            "reputation_imitation_open_sparse_noisy_p0p1_s1p0",
+            "objective_basin_open_sparse_noisy_p0p1_s1p0",
+            "revision_objective_basin_open_sparse_noisy_p0p1_s1p0",
+            "revision_precommitment_evidence_open_sparse_noisy_p0p1_s1p0",
+            "revision_precommitment_peer_evidence_open_sparse_noisy_p0p1_s1p0",
+        }
+        for variant in variants.values():
+            assert variant.updates[
+                "domain.environment.initial_action_probability"
+            ] == pytest.approx(0.1)
+            assert variant.updates["model.state.reputation.noise"] == pytest.approx(
+                1.0
+            )
+            if case.toy == "toy2":
+                assert variant.updates["domain.environment.periodic"] is False
+            else:
+                assert variant.updates["domain.graph.periodic"] is False
+        candidate = variants[
+            "revision_precommitment_peer_evidence_open_sparse_noisy_p0p1_s1p0"
+        ]
+        assert candidate.group == "peer_evidence_reputation_fragility_stress"
+        assert (
+            candidate.updates[
+                "model.coordination.precommitment_peer_evidence_enabled"
+            ]
+            is True
+        )
+        assert (
+            candidate.updates["model.coordination.precommitment_peer_evidence_weight"]
+            == pytest.approx(1.0)
+        )
+
+
 def test_toy5_readiness_propagation_holdout_manifest_contract() -> None:
     manifest = load_manifest(
         Path("experiments/evidence/toy5_readiness_propagation_holdout_quick.yaml")
