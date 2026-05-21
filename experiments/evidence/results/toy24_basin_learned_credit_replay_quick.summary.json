@@ -1,0 +1,371 @@
+{
+  "cases": [
+    {
+      "baseline_comparison": {
+        "final_ceiling_hit_delta": 0,
+        "metric_mean_delta": 0.0,
+        "time_to_ceiling_delta": 14.333333333333334
+      },
+      "baseline_improved_by_best_main": true,
+      "best_baseline_variant": {
+        "complete": true,
+        "eligible_main": false,
+        "ever_ceiling_hits": 3,
+        "expected_seed_count": 3,
+        "final_ceiling_hits": 3,
+        "group": "baseline",
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 23.666666666666668,
+        "metric_mean": 3.0,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 3,
+        "observed_seeds": [
+          1,
+          2,
+          3
+        ],
+        "reasons": [
+          "not in main claim group"
+        ],
+        "status": "diagnostic_only",
+        "std_time_to_ceiling": 2.081665999466133,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "linear_welfare_heavy"
+      },
+      "best_main_variant": {
+        "complete": true,
+        "eligible_main": true,
+        "ever_ceiling_hits": 3,
+        "expected_seed_count": 3,
+        "final_ceiling_hits": 3,
+        "group": "nabm",
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 9.333333333333334,
+        "metric_mean": 3.0,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 3,
+        "observed_seeds": [
+          1,
+          2,
+          3
+        ],
+        "reasons": [],
+        "status": "pass",
+        "std_time_to_ceiling": 0.5773502691896257,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "mixed_objective_basin_escalate_credit_p3_min2_h1_learned_gated_prototype"
+      },
+      "case": "toy2_basin_learned_credit",
+      "criteria": {
+        "final_ceiling_min_hits": 3,
+        "mean_time_to_ceiling_lt": 10.0
+      },
+      "passed": true,
+      "status": "pass",
+      "toy": "toy2",
+      "variants": [
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "baseline",
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 23.666666666666668,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 2.081665999466133,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "linear_welfare_heavy"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "diagnostic",
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 9.333333333333334,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 0.5773502691896257,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_escalate_credit_p3_min2_h1_prototype"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 9.333333333333334,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [],
+          "status": "pass",
+          "std_time_to_ceiling": 0.5773502691896257,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_escalate_credit_p3_min2_h1_learned_gated_prototype"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "diagnostic",
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 9.333333333333334,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 0.5773502691896257,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_escalate_credit_p3_min2_h1_learned_gated_zero"
+        }
+      ]
+    },
+    {
+      "baseline_comparison": {
+        "final_ceiling_hit_delta": 2,
+        "metric_mean_delta": 0.0040000000000000036,
+        "time_to_ceiling_delta": 9.333333333333334
+      },
+      "baseline_improved_by_best_main": true,
+      "best_baseline_variant": {
+        "complete": true,
+        "eligible_main": false,
+        "ever_ceiling_hits": 3,
+        "expected_seed_count": 3,
+        "final_ceiling_hits": 1,
+        "group": "baseline",
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 21.0,
+        "metric_mean": 0.596,
+        "metric_std": 0.003464101615137758,
+        "missing_seeds": [],
+        "observed_seed_count": 3,
+        "observed_seeds": [
+          1,
+          2,
+          3
+        ],
+        "reasons": [
+          "not in main claim group"
+        ],
+        "status": "diagnostic_only",
+        "std_time_to_ceiling": 2.0,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "linear_welfare_heavy"
+      },
+      "best_main_variant": {
+        "complete": true,
+        "eligible_main": true,
+        "ever_ceiling_hits": 3,
+        "expected_seed_count": 3,
+        "final_ceiling_hits": 3,
+        "group": "nabm",
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 11.666666666666666,
+        "metric_mean": 0.6,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 3,
+        "observed_seeds": [
+          1,
+          2,
+          3
+        ],
+        "reasons": [],
+        "status": "pass",
+        "std_time_to_ceiling": 0.5773502691896257,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "mixed_objective_basin_escalate_credit_p3_min2_h1_learned_gated_prototype"
+      },
+      "case": "toy4_basin_learned_credit",
+      "criteria": {
+        "final_ceiling_min_hits": 2,
+        "mean_time_to_ceiling_lt": 12.0
+      },
+      "passed": true,
+      "status": "pass",
+      "toy": "toy4",
+      "variants": [
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 1,
+          "group": "baseline",
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 21.0,
+          "metric_mean": 0.596,
+          "metric_std": 0.003464101615137758,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 2.0,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "linear_welfare_heavy"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "diagnostic",
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 11.666666666666666,
+          "metric_mean": 0.6,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 0.5773502691896257,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_escalate_credit_p3_min2_h1_prototype"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 11.666666666666666,
+          "metric_mean": 0.6,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [],
+          "status": "pass",
+          "std_time_to_ceiling": 0.5773502691896257,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_escalate_credit_p3_min2_h1_learned_gated_prototype"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "diagnostic",
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 11.666666666666666,
+          "metric_mean": 0.6,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 0.5773502691896257,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_escalate_credit_p3_min2_h1_learned_gated_zero"
+        }
+      ]
+    }
+  ],
+  "input_validation": {
+    "duplicate_rows": [],
+    "malformed_rows": [],
+    "missing_required_columns": [],
+    "missing_runs": [],
+    "required_columns": [
+      "label",
+      "case",
+      "toy",
+      "variant",
+      "group",
+      "seed",
+      "primary_metric",
+      "metric_value",
+      "direction",
+      "final_within_ceiling",
+      "time_to_ceiling"
+    ],
+    "status": "valid",
+    "unknown_rows": []
+  },
+  "label": "toy24_basin_learned_credit_replay_quick",
+  "main_group": "nabm",
+  "passed": true,
+  "require_without_teacher_bootstrap_replay": true,
+  "runs_path": "experiments/results/nabm_effect_matrix/toy24_basin_learned_credit_replay_quick_runs.csv",
+  "status": "pass"
+}

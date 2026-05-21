@@ -1,0 +1,166 @@
+label: nabm_effect_matrix_quick
+seeds: [1, 2, 3]
+epochs: 5
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+cases:
+  - toy: toy1
+    name: toy1_social_accuracy
+    base_config: experiments/configs/toy1_neural_hk_baseline.yaml
+    primary_metric: domain_final_mean_global_accuracy
+    direction: maximize
+    variants:
+      - name: no_social
+        group: baseline
+        updates:
+          model.coordination.mixer: none
+          model.coordination.peer_rule: none
+          model.coordination.alpha: 0.0
+          model.coordination.threshold: 0.0
+      - name: output_average
+        group: nabm
+        updates:
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.8
+  - toy: toy2
+    name: toy2_reference_payoff
+    base_config: experiments/configs/toy2_spatial_pd_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    variants:
+      - name: rd_well_mixed
+        group: baseline
+        updates:
+          model.policy.rule: rd_well_mixed
+          model.coordination.mixer: none
+          model.coordination.peer_rule: none
+          model.coordination.alpha: 0.0
+          model.coordination.threshold: 0.0
+      - name: fermi_imitation
+        group: baseline
+        updates:
+          model.policy.rule: fermi_imitation
+          model.coordination.mixer: none
+          model.coordination.peer_rule: none
+          model.coordination.alpha: 0.0
+          model.coordination.threshold: 0.0
+      - name: reputation_imitation
+        group: baseline
+        updates:
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: neural_output_average
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+  - toy: toy3
+    name: toy3_opinion_polarization
+    base_config: experiments/configs/toy3_opinion_rewiring_baseline.yaml
+    primary_metric: domain_final_polarization_index
+    direction: minimize
+    variants:
+      - name: hk
+        group: baseline
+        updates:
+          model.policy.update_rule: hk
+          model.coordination.mixer: none
+          model.coordination.peer_rule: none
+          model.coordination.alpha: 0.0
+          domain.rewiring.enabled: false
+          domain.rewiring.rate: 0.0
+      - name: deffuant
+        group: baseline
+        updates:
+          model.policy.update_rule: deffuant
+          model.coordination.mixer: none
+          model.coordination.peer_rule: none
+          model.coordination.alpha: 0.0
+          domain.rewiring.enabled: false
+          domain.rewiring.rate: 0.0
+      - name: neural_output_average
+        group: nabm
+        updates:
+          model.policy.update_rule: neural_policy
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          domain.rewiring.enabled: false
+          domain.rewiring.rate: 0.0
+  - toy: toy4
+    name: toy4_public_goods_payoff
+    base_config: experiments/configs/toy4_public_goods_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    variants:
+      - name: imitation
+        group: baseline
+        updates:
+          model.policy.rule: imitation
+          model.coordination.mixer: none
+          model.coordination.peer_rule: none
+          model.coordination.alpha: 0.0
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: reputation_imitation
+        group: baseline
+        updates:
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: neural_output_average
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+  - toy: toy5
+    name: toy5_cascade_size
+    base_config: experiments/configs/toy5_contagion_adoption_baseline.yaml
+    primary_metric: domain_cascade_size
+    direction: maximize
+    variants:
+      - name: simple_contagion
+        group: baseline
+        updates:
+          model.policy.rule: simple_contagion
+          model.coordination.mixer: none
+          model.coordination.peer_rule: none
+          model.coordination.alpha: 0.0
+          model.coordination.threshold: 0.0
+          domain.environment.seed_selection: first_agent
+          domain.environment.initial_action_fraction: 0.01
+      - name: complex_threshold
+        group: baseline
+        updates:
+          model.policy.rule: complex_threshold
+          model.coordination.mixer: none
+          model.coordination.peer_rule: none
+          model.coordination.alpha: 0.0
+          model.coordination.threshold: 0.0
+          domain.environment.threshold_mode: homogeneous
+          domain.environment.homogeneous_threshold: 0.25
+          domain.environment.seed_selection: first_agent
+          domain.environment.initial_action_fraction: 0.01
+      - name: neural_output_average
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0

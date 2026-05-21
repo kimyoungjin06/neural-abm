@@ -1,0 +1,36 @@
+[project]
+name = "neural-abm"
+version = "0.1.0"
+description = "Neural agent-based modeling prototypes with explicit social mixing"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "matplotlib>=3.10.9",
+    "networkx>=3.6.1",
+    "numpy>=2.4.4",
+    "pandas>=3.0.2",
+    "pyarrow>=24.0.0",
+    "pydantic>=2.13.3",
+    "pyyaml>=6.0.3",
+    "scikit-learn>=1.8.0",
+    "scipy>=1.17.1",
+    "torch>=2.11.0",
+    "tqdm>=4.67.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "ruff>=0.15.12",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/neural_abm"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py314"

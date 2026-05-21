@@ -1,0 +1,43 @@
+run:
+  name: toy7_resource_sweep_seeds01_05_r0p1_c0p25_none_none_a0
+  seed: 5
+  output_dir: experiments/runs
+simulation:
+  epochs: 25
+  sync_mode: synchronous
+  device: cpu
+model:
+  policy:
+    rule: adaptive_intensity
+    learning_rate: 0.2
+    revision_rate: 1.0
+    exploration_std: 0.02
+    reward_ema_decay: 0.9
+  agents:
+    count: 100
+    init_mode: independent_init
+  coordination:
+    mixer: none
+    peer_rule: none
+    alpha: 0.0
+    threshold: 0.0
+domain:
+  toy: toy7
+  environment:
+    resource_initial: 80.0
+    resource_carrying_capacity: 100.0
+    resource_recovery_rate: 0.1
+    extraction_scale: 8.0
+    extraction_cost: 0.25
+    initial_intensity_mean: 0.35
+    initial_intensity_std: 0.05
+  graph:
+    type: watts_strogatz
+    k: 6
+    rewire_probability: 0.1
+logging:
+  micro_state: true
+  interval: 1
+  aggregate_metrics: true
+  probe_predictions: false
+  probe_prediction_interval: 1

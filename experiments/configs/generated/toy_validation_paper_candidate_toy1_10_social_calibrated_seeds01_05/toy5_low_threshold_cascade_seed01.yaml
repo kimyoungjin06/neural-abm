@@ -1,0 +1,71 @@
+run:
+  name: toy_validation_paper_candidate_toy1_10_social_calibrated_seeds01_05_toy5_low_threshold_cascade
+  seed: 1
+  output_dir: experiments/runs
+simulation:
+  epochs: 100
+  sync_mode: synchronous
+  device: cpu
+model:
+  policy:
+    rule: complex_threshold
+    learning_enabled: true
+    revision_rate: 1.0
+    temperature: 1.0
+    decision:
+      mode: sampled
+      action_temperature: 1.0
+      exploration_epsilon: 0.0
+    domain:
+      repeated_exposure_decay: 0.0
+      adoption_is_absorbing: true
+  agents:
+    count: 100
+    init_mode: independent_init
+    model:
+      input_dim: 6
+      hidden_dim: 16
+      output_dim: 2
+      activation: relu
+    optimizer:
+      name: adam
+      learning_rate: 0.01
+  coordination:
+    mixer: none
+    peer_rule: none
+    alpha: 0.0
+    threshold: 0.0
+  state:
+    reputation:
+      enabled: true
+      decay: 0.9
+      peer_rule: spatial
+      temperature: 1.0
+      noise: 0.0
+      observation_mode: none
+    mobility:
+      enabled: false
+      rate: 0.0
+      candidate_pool_size: 8
+      selection_rule: local_quality
+      move_cost: 0.0
+domain:
+  toy: toy5
+  environment:
+    initial_action_fraction: 0.01
+    seed_selection: first_agent
+    threshold_mode: homogeneous
+    homogeneous_threshold: 0.25
+    heterogeneous_threshold_low: 0.15
+    heterogeneous_threshold_high: 0.55
+    simple_contagion_probability: 0.08
+  graph:
+    type: watts_strogatz
+    k: 2
+    rewire_probability: 0.0
+logging:
+  micro_state: true
+  interval: 1
+  aggregate_metrics: true
+  probe_predictions: false
+  probe_prediction_interval: 1

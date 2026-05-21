@@ -1,0 +1,235 @@
+label: toy24_scaffolded_decision_replay_quick
+seeds: [1, 2, 3]
+epochs: 50
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+cases:
+  - toy: toy2
+    name: toy2_scaffolded_decision_replay
+    base_config: experiments/configs/toy2_spatial_pd_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    ceiling_metric: mean_payoff
+    ceiling_value: 3.0
+    ceiling_tolerance: 0.001
+    variants:
+      - name: reputation_imitation
+        group: baseline
+        updates:
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: linear_welfare_heavy
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: decision_bootstrap_w1p0_e5_linear_welfare
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.decision_enabled: true
+          model.policy.domain.bootstrap.decision_weight: 1.0
+          model.policy.domain.bootstrap.decision_epochs: 5
+          model.policy.domain.bootstrap.decision_decay: linear
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: decision_replay_bc_w1p0_e5_linear_welfare
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.decision_enabled: true
+          model.policy.domain.bootstrap.decision_weight: 1.0
+          model.policy.domain.bootstrap.decision_epochs: 5
+          model.policy.domain.bootstrap.decision_decay: linear
+          model.policy.domain.bootstrap.replay_enabled: true
+          model.policy.domain.bootstrap.replay_weight: 1.0
+          model.policy.domain.bootstrap.replay_epochs: 5
+          model.policy.domain.bootstrap.replay_decay: linear
+          model.policy.domain.bootstrap.replay_stable_teacher_only: false
+          model.policy.domain.bootstrap.replay_require_objective_agreement: false
+          model.policy.domain.bootstrap.replay_require_postsocial_alignment_improvement: false
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: decision_replay_success_w1p0_e5_linear_welfare
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.decision_enabled: true
+          model.policy.domain.bootstrap.decision_weight: 1.0
+          model.policy.domain.bootstrap.decision_epochs: 5
+          model.policy.domain.bootstrap.decision_decay: linear
+          model.policy.domain.bootstrap.replay_enabled: true
+          model.policy.domain.bootstrap.replay_weight: 1.0
+          model.policy.domain.bootstrap.replay_epochs: 5
+          model.policy.domain.bootstrap.replay_decay: linear
+          model.policy.domain.bootstrap.replay_stable_teacher_only: false
+          model.policy.domain.bootstrap.replay_require_objective_agreement: true
+          model.policy.domain.bootstrap.replay_require_postsocial_alignment_improvement: true
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: stable_decision_replay_success_w1p0_e5_linear_welfare
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.decision_enabled: true
+          model.policy.domain.bootstrap.decision_weight: 1.0
+          model.policy.domain.bootstrap.decision_epochs: 5
+          model.policy.domain.bootstrap.decision_decay: linear
+          model.policy.domain.bootstrap.replay_enabled: true
+          model.policy.domain.bootstrap.replay_weight: 1.0
+          model.policy.domain.bootstrap.replay_epochs: 5
+          model.policy.domain.bootstrap.replay_decay: linear
+          model.policy.domain.bootstrap.replay_stable_teacher_only: true
+          model.policy.domain.bootstrap.replay_require_objective_agreement: true
+          model.policy.domain.bootstrap.replay_require_postsocial_alignment_improvement: true
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+  - toy: toy4
+    name: toy4_scaffolded_decision_replay
+    base_config: experiments/configs/toy4_public_goods_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    ceiling_metric: mean_payoff
+    ceiling_value: 0.6
+    ceiling_tolerance: 0.005
+    variants:
+      - name: reputation_imitation
+        group: baseline
+        updates:
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: linear_welfare_heavy
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: decision_bootstrap_w1p0_e5_linear_welfare
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.decision_enabled: true
+          model.policy.domain.bootstrap.decision_weight: 1.0
+          model.policy.domain.bootstrap.decision_epochs: 5
+          model.policy.domain.bootstrap.decision_decay: linear
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: decision_replay_bc_w1p0_e5_linear_welfare
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.decision_enabled: true
+          model.policy.domain.bootstrap.decision_weight: 1.0
+          model.policy.domain.bootstrap.decision_epochs: 5
+          model.policy.domain.bootstrap.decision_decay: linear
+          model.policy.domain.bootstrap.replay_enabled: true
+          model.policy.domain.bootstrap.replay_weight: 1.0
+          model.policy.domain.bootstrap.replay_epochs: 5
+          model.policy.domain.bootstrap.replay_decay: linear
+          model.policy.domain.bootstrap.replay_stable_teacher_only: false
+          model.policy.domain.bootstrap.replay_require_objective_agreement: false
+          model.policy.domain.bootstrap.replay_require_postsocial_alignment_improvement: false
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: decision_replay_success_w1p0_e5_linear_welfare
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.decision_enabled: true
+          model.policy.domain.bootstrap.decision_weight: 1.0
+          model.policy.domain.bootstrap.decision_epochs: 5
+          model.policy.domain.bootstrap.decision_decay: linear
+          model.policy.domain.bootstrap.replay_enabled: true
+          model.policy.domain.bootstrap.replay_weight: 1.0
+          model.policy.domain.bootstrap.replay_epochs: 5
+          model.policy.domain.bootstrap.replay_decay: linear
+          model.policy.domain.bootstrap.replay_stable_teacher_only: false
+          model.policy.domain.bootstrap.replay_require_objective_agreement: true
+          model.policy.domain.bootstrap.replay_require_postsocial_alignment_improvement: true
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: stable_decision_replay_success_w1p0_e5_linear_welfare
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.decision_enabled: true
+          model.policy.domain.bootstrap.decision_weight: 1.0
+          model.policy.domain.bootstrap.decision_epochs: 5
+          model.policy.domain.bootstrap.decision_decay: linear
+          model.policy.domain.bootstrap.replay_enabled: true
+          model.policy.domain.bootstrap.replay_weight: 1.0
+          model.policy.domain.bootstrap.replay_epochs: 5
+          model.policy.domain.bootstrap.replay_decay: linear
+          model.policy.domain.bootstrap.replay_stable_teacher_only: true
+          model.policy.domain.bootstrap.replay_require_objective_agreement: true
+          model.policy.domain.bootstrap.replay_require_postsocial_alignment_improvement: true
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false

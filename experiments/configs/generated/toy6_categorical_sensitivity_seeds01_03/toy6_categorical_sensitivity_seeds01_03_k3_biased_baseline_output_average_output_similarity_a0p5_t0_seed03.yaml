@@ -1,0 +1,48 @@
+run:
+  name: toy6_categorical_sensitivity_seeds01_03_k3_biased_baseline_output_average_output_similarity_a0p5_t0
+  seed: 3
+  output_dir: experiments/runs
+simulation:
+  epochs: 25
+  sync_mode: synchronous
+  device: cpu
+model:
+  policy:
+    rule: categorical_learning
+    learning_rate: 0.15
+    revision_rate: 1.0
+    temperature: 1.0
+    decision_mode: sampled
+  agents:
+    init_mode: independent_init
+    logit_noise: 0.1
+  coordination:
+    mixer: output_average
+    peer_rule: output_similarity
+    alpha: 0.5
+    threshold: 0.0
+domain:
+  toy: toy6
+  environment:
+    grid_width: 10
+    grid_height: 10
+    initial_strategy_probabilities:
+    - 0.6
+    - 0.2
+    - 0.2
+    reward_ema_decay: 0.9
+  game:
+    strategy_count: 3
+    win_payoff: 1.0
+    loss_payoff: -1.0
+    draw_payoff: 0.0
+  graph:
+    type: grid
+    neighborhood: von_neumann
+    periodic: true
+logging:
+  micro_state: true
+  interval: 1
+  aggregate_metrics: true
+  probe_predictions: false
+  probe_prediction_interval: 1

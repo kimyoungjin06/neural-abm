@@ -1,0 +1,187 @@
+label: toy24_basin_credit_quick
+seeds: [1, 2, 3]
+epochs: 50
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+success_criteria:
+  main_group: nabm
+  require_without_teacher_bootstrap_replay: true
+  cases:
+    toy2_basin_credit:
+      final_ceiling_min_hits: 3
+      mean_time_to_ceiling_lt: 10
+    toy4_basin_credit:
+      final_ceiling_min_hits: 2
+      mean_time_to_ceiling_lt: 12
+cases:
+  - toy: toy2
+    name: toy2_basin_credit
+    base_config: experiments/configs/toy2_spatial_pd_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    ceiling_metric: mean_payoff
+    ceiling_value: 3.0
+    ceiling_tolerance: 0.001
+    variants:
+      - name: reputation_imitation
+        group: baseline
+        updates:
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: linear_welfare_heavy
+        group: baseline
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: decision_bootstrap_w1p0_e5_linear_welfare
+        group: diagnostic
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.decision_enabled: true
+          model.policy.domain.bootstrap.decision_weight: 1.0
+          model.policy.domain.bootstrap.decision_epochs: 5
+          model.policy.domain.bootstrap.decision_decay: linear
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: basin_credit_w1p0_h1_prototype
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.basin_credit.enabled: true
+          model.policy.domain.basin_credit.critic: prototype_phase
+          model.policy.domain.basin_credit.credit_method: one_step_ablation
+          model.policy.domain.basin_credit.individual_weight: 0.0
+          model.policy.domain.basin_credit.local_social_weight: 0.0
+          model.policy.domain.basin_credit.basin_weight: 1.0
+          model.policy.domain.basin_credit.horizon: 1
+          model.policy.domain.basin_credit.target_basin: ceiling
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: mixed_individual_basin_w0p5_0p5_h1
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.basin_credit.enabled: true
+          model.policy.domain.basin_credit.critic: prototype_phase
+          model.policy.domain.basin_credit.credit_method: one_step_ablation
+          model.policy.domain.basin_credit.individual_weight: 0.5
+          model.policy.domain.basin_credit.local_social_weight: 0.0
+          model.policy.domain.basin_credit.basin_weight: 0.5
+          model.policy.domain.basin_credit.horizon: 1
+          model.policy.domain.basin_credit.target_basin: ceiling
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+  - toy: toy4
+    name: toy4_basin_credit
+    base_config: experiments/configs/toy4_public_goods_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    ceiling_metric: mean_payoff
+    ceiling_value: 0.6
+    ceiling_tolerance: 0.005
+    variants:
+      - name: reputation_imitation
+        group: baseline
+        updates:
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: linear_welfare_heavy
+        group: baseline
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: decision_bootstrap_w1p0_e5_linear_welfare
+        group: diagnostic
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.decision_enabled: true
+          model.policy.domain.bootstrap.decision_weight: 1.0
+          model.policy.domain.bootstrap.decision_epochs: 5
+          model.policy.domain.bootstrap.decision_decay: linear
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: basin_credit_w1p0_h1_prototype
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.basin_credit.enabled: true
+          model.policy.domain.basin_credit.critic: prototype_phase
+          model.policy.domain.basin_credit.credit_method: one_step_ablation
+          model.policy.domain.basin_credit.individual_weight: 0.0
+          model.policy.domain.basin_credit.local_social_weight: 0.0
+          model.policy.domain.basin_credit.basin_weight: 1.0
+          model.policy.domain.basin_credit.horizon: 1
+          model.policy.domain.basin_credit.target_basin: ceiling
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: mixed_individual_basin_w0p5_0p5_h1
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.basin_credit.enabled: true
+          model.policy.domain.basin_credit.critic: prototype_phase
+          model.policy.domain.basin_credit.credit_method: one_step_ablation
+          model.policy.domain.basin_credit.individual_weight: 0.5
+          model.policy.domain.basin_credit.local_social_weight: 0.0
+          model.policy.domain.basin_credit.basin_weight: 0.5
+          model.policy.domain.basin_credit.horizon: 1
+          model.policy.domain.basin_credit.target_basin: ceiling
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false

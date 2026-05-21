@@ -1,0 +1,501 @@
+{
+  "cases": [
+    {
+      "baseline_comparison": {
+        "final_ceiling_hit_delta": 0,
+        "metric_mean_delta": 0.0,
+        "time_to_ceiling_delta": -12.333333333333334
+      },
+      "baseline_improved_by_best_main": false,
+      "best_baseline_variant": {
+        "complete": true,
+        "eligible_main": false,
+        "ever_ceiling_final_miss_count": 0,
+        "ever_ceiling_hits": 3,
+        "expected_seed_count": 3,
+        "final_ceiling_hits": 3,
+        "group": "baseline",
+        "late_flip_count_after_first_ceiling_mean": 0.0,
+        "late_flip_rate_after_first_ceiling_mean": 0.0,
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 2.6666666666666665,
+        "metric_mean": 3.0,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 3,
+        "observed_seeds": [
+          1,
+          2,
+          3
+        ],
+        "reasons": [
+          "not in main claim group"
+        ],
+        "status": "diagnostic_only",
+        "std_time_to_ceiling": 0.5773502691896258,
+        "terminal_window_ceiling_rate_mean": 1.0,
+        "terminal_window_mean_ceiling_metric_mean": 3.0,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "reputation_imitation"
+      },
+      "best_main_variant": {
+        "complete": true,
+        "eligible_main": true,
+        "ever_ceiling_final_miss_count": 0,
+        "ever_ceiling_hits": 3,
+        "expected_seed_count": 3,
+        "final_ceiling_hits": 3,
+        "group": "control",
+        "late_flip_count_after_first_ceiling_mean": 2.0,
+        "late_flip_rate_after_first_ceiling_mean": 0.0005555555555555556,
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 15.0,
+        "metric_mean": 3.0,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 3,
+        "observed_seeds": [
+          1,
+          2,
+          3
+        ],
+        "reasons": [
+          "mean time-to-ceiling 15 >= 10"
+        ],
+        "status": "fail",
+        "std_time_to_ceiling": 1.7320508075688772,
+        "terminal_window_ceiling_rate_mean": 1.0,
+        "terminal_window_mean_ceiling_metric_mean": 3.0,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "revision_operator_commitment_hysteresis"
+      },
+      "case": "toy2_revision_operator_controls",
+      "criteria": {
+        "final_ceiling_min_hits": 3,
+        "mean_time_to_ceiling_lt": 10.0
+      },
+      "passed": false,
+      "status": "fail",
+      "toy": "toy2",
+      "variants": [
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "baseline",
+          "late_flip_count_after_first_ceiling_mean": 0.0,
+          "late_flip_rate_after_first_ceiling_mean": 0.0,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 2.6666666666666665,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 0.5773502691896258,
+          "terminal_window_ceiling_rate_mean": 1.0,
+          "terminal_window_mean_ceiling_metric_mean": 3.0,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "reputation_imitation"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 1,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 2,
+          "group": "diagnostic",
+          "late_flip_count_after_first_ceiling_mean": 31.0,
+          "late_flip_rate_after_first_ceiling_mean": 0.009780495232740648,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 19.333333333333332,
+          "metric_mean": 2.9966666666666666,
+          "metric_std": 0.005773502691896135,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 3.5118845842842465,
+          "terminal_window_ceiling_rate_mean": 0.8666666666666667,
+          "terminal_window_mean_ceiling_metric_mean": 2.998666666666667,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "revision_operator_mixed_objective_basin_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "control",
+          "late_flip_count_after_first_ceiling_mean": 2.0,
+          "late_flip_rate_after_first_ceiling_mean": 0.0005555555555555556,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 15.0,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 15 >= 10"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 1.7320508075688772,
+          "terminal_window_ceiling_rate_mean": 1.0,
+          "terminal_window_mean_ceiling_metric_mean": 3.0,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "revision_operator_commitment_hysteresis"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "control",
+          "late_flip_count_after_first_ceiling_mean": 30.666666666666668,
+          "late_flip_rate_after_first_ceiling_mean": 0.009672968351020217,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 19.333333333333332,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 19.3333 >= 10"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 3.5118845842842465,
+          "terminal_window_ceiling_rate_mean": 0.9333333333333332,
+          "terminal_window_mean_ceiling_metric_mean": 2.999333333333334,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "revision_operator_terminal_argmax_k1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "control",
+          "late_flip_count_after_first_ceiling_mean": 30.0,
+          "late_flip_rate_after_first_ceiling_mean": 0.009476889919647668,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 19.333333333333332,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 19.3333 >= 10"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 3.5118845842842465,
+          "terminal_window_ceiling_rate_mean": 1.0,
+          "terminal_window_mean_ceiling_metric_mean": 3.0,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "revision_operator_terminal_argmax_k5"
+        }
+      ]
+    },
+    {
+      "baseline_comparison": {
+        "final_ceiling_hit_delta": 0,
+        "metric_mean_delta": 0.0,
+        "time_to_ceiling_delta": -11.0
+      },
+      "baseline_improved_by_best_main": false,
+      "best_baseline_variant": {
+        "complete": true,
+        "eligible_main": false,
+        "ever_ceiling_final_miss_count": 0,
+        "ever_ceiling_hits": 3,
+        "expected_seed_count": 3,
+        "final_ceiling_hits": 3,
+        "group": "baseline",
+        "late_flip_count_after_first_ceiling_mean": 0.0,
+        "late_flip_rate_after_first_ceiling_mean": 0.0,
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 2.6666666666666665,
+        "metric_mean": 0.6,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 3,
+        "observed_seeds": [
+          1,
+          2,
+          3
+        ],
+        "reasons": [
+          "not in main claim group"
+        ],
+        "status": "diagnostic_only",
+        "std_time_to_ceiling": 0.5773502691896258,
+        "terminal_window_ceiling_rate_mean": 1.0,
+        "terminal_window_mean_ceiling_metric_mean": 0.6,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "reputation_imitation"
+      },
+      "best_main_variant": {
+        "complete": true,
+        "eligible_main": true,
+        "ever_ceiling_final_miss_count": 0,
+        "ever_ceiling_hits": 3,
+        "expected_seed_count": 3,
+        "final_ceiling_hits": 3,
+        "group": "control",
+        "late_flip_count_after_first_ceiling_mean": 5.333333333333333,
+        "late_flip_rate_after_first_ceiling_mean": 0.0014764764764764766,
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 13.666666666666666,
+        "metric_mean": 0.6,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 3,
+        "observed_seeds": [
+          1,
+          2,
+          3
+        ],
+        "reasons": [
+          "mean time-to-ceiling 13.6667 >= 12"
+        ],
+        "status": "fail",
+        "std_time_to_ceiling": 0.5773502691896257,
+        "terminal_window_ceiling_rate_mean": 0.9333333333333332,
+        "terminal_window_mean_ceiling_metric_mean": 0.5996,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "revision_operator_commitment_hysteresis"
+      },
+      "case": "toy4_revision_operator_controls",
+      "criteria": {
+        "final_ceiling_min_hits": 2,
+        "mean_time_to_ceiling_lt": 12.0
+      },
+      "passed": false,
+      "status": "fail",
+      "toy": "toy4",
+      "variants": [
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "baseline",
+          "late_flip_count_after_first_ceiling_mean": 0.0,
+          "late_flip_rate_after_first_ceiling_mean": 0.0,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 2.6666666666666665,
+          "metric_mean": 0.6,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 0.5773502691896258,
+          "terminal_window_ceiling_rate_mean": 1.0,
+          "terminal_window_mean_ceiling_metric_mean": 0.6,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "reputation_imitation"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 2,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 1,
+          "group": "diagnostic",
+          "late_flip_count_after_first_ceiling_mean": 30.0,
+          "late_flip_rate_after_first_ceiling_mean": 0.009758064516129032,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 19.0,
+          "metric_mean": 0.596,
+          "metric_std": 0.003464101615137758,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 3.0,
+          "terminal_window_ceiling_rate_mean": 0.7999999999999999,
+          "terminal_window_mean_ceiling_metric_mean": 0.5988,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "revision_operator_mixed_objective_basin_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "control",
+          "late_flip_count_after_first_ceiling_mean": 5.333333333333333,
+          "late_flip_rate_after_first_ceiling_mean": 0.0014764764764764766,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 13.666666666666666,
+          "metric_mean": 0.6,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 13.6667 >= 12"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 0.5773502691896257,
+          "terminal_window_ceiling_rate_mean": 0.9333333333333332,
+          "terminal_window_mean_ceiling_metric_mean": 0.5996,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "revision_operator_commitment_hysteresis"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "control",
+          "late_flip_count_after_first_ceiling_mean": 29.333333333333332,
+          "late_flip_rate_after_first_ceiling_mean": 0.009531490015360983,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 19.0,
+          "metric_mean": 0.6,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 19 >= 12"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 3.0,
+          "terminal_window_ceiling_rate_mean": 0.9333333333333332,
+          "terminal_window_mean_ceiling_metric_mean": 0.5996,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "revision_operator_terminal_argmax_k1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "control",
+          "late_flip_count_after_first_ceiling_mean": 28.666666666666668,
+          "late_flip_rate_after_first_ceiling_mean": 0.009293394777265745,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 19.0,
+          "metric_mean": 0.6,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 19 >= 12"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 3.0,
+          "terminal_window_ceiling_rate_mean": 1.0,
+          "terminal_window_mean_ceiling_metric_mean": 0.6,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "revision_operator_terminal_argmax_k5"
+        }
+      ]
+    }
+  ],
+  "input_validation": {
+    "duplicate_rows": [],
+    "malformed_rows": [],
+    "missing_required_columns": [],
+    "missing_runs": [],
+    "required_columns": [
+      "label",
+      "case",
+      "toy",
+      "variant",
+      "group",
+      "seed",
+      "primary_metric",
+      "metric_value",
+      "direction",
+      "final_within_ceiling",
+      "time_to_ceiling"
+    ],
+    "status": "valid",
+    "unknown_rows": []
+  },
+  "label": "toy24_revision_operator_controls_quick",
+  "main_group": "control",
+  "passed": false,
+  "require_without_teacher_bootstrap_replay": true,
+  "runs_path": "experiments/results/nabm_effect_matrix/toy24_revision_operator_controls_quick_runs.csv",
+  "status": "fail"
+}

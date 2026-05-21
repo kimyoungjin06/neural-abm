@@ -1,0 +1,39 @@
+run:
+  name: toy1_8_generalization_quick_smoke_toy8_async_output_average
+  seed: 1
+  output_dir: experiments/runs
+simulation:
+  epochs: 3
+  sync_mode: synchronous
+  device: cpu
+model:
+  policy:
+    rule: event_hazard
+  agents:
+    count: 100
+  coordination:
+    mixer: output_average
+    peer_rule: output_similarity
+    alpha: 0.25
+    threshold: 0.0
+domain:
+  toy: toy8
+  environment:
+    initial_active_fraction: 0.1
+    initial_failed_fraction: 0.0
+    base_activation_rate: 0.02
+    peer_activation_rate: 0.3
+    failure_rate: 0.03
+    overload_failure_rate: 0.08
+    recovery_rate: 0.01
+    max_time: 50.0
+  graph:
+    type: watts_strogatz
+    k: 4
+    rewire_probability: 0.1
+logging:
+  micro_state: true
+  interval: 1
+  aggregate_metrics: true
+  probe_predictions: false
+  probe_prediction_interval: 1

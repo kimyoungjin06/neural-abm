@@ -1,0 +1,159 @@
+label: toy24_objective_family_v2_quick
+seeds: [1, 2, 3]
+epochs: 50
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+cases:
+  - toy: toy2
+    name: toy2_objective_family_v2
+    base_config: experiments/configs/toy2_spatial_pd_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    ceiling_metric: mean_payoff
+    ceiling_value: 3.0
+    ceiling_tolerance: 0.001
+    variants:
+      - name: reputation_imitation
+        group: baseline
+        updates:
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: material
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: material
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: linear_balanced
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_balanced
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: linear_welfare_heavy
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: nonlinear_mild
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: nonlinear_mild
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: nonlinear_interaction
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: nonlinear_interaction
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+  - toy: toy4
+    name: toy4_objective_family_v2
+    base_config: experiments/configs/toy4_public_goods_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    ceiling_metric: mean_payoff
+    ceiling_value: 0.6
+    ceiling_tolerance: 0.005
+    variants:
+      - name: reputation_imitation
+        group: baseline
+        updates:
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: material
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: material
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: linear_balanced
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_balanced
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: linear_welfare_heavy
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: nonlinear_mild
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: nonlinear_mild
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: nonlinear_interaction
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: nonlinear_interaction
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false

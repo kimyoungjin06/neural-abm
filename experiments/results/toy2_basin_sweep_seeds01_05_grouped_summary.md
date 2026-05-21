@@ -1,0 +1,83 @@
+# Toy 2 Game-Regime Sweep: toy2_basin_sweep_seeds01_05
+
+| Regime | Update Rule | Mixer | Init Coop | Alpha | Seeds | Coop Mean | Payoff Mean | Policy Coop Mean | Cluster Fraction Mean | Fragmentation Mean |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `snowdrift` | `fermi_imitation` | `none` | 0.1 | 0 | 5 | 0.094000 | 0.474500 | 0.083942 | 0.046000 | 100.00 |
+| `snowdrift` | `fermi_imitation` | `none` | 0.3 | 0 | 5 | 0.158000 | 0.778500 | 0.139153 | 0.074000 | 100.00 |
+| `snowdrift` | `fermi_imitation` | `none` | 0.5 | 0 | 5 | 0.162000 | 0.808000 | 0.147240 | 0.074000 | 100.00 |
+| `snowdrift` | `fermi_imitation` | `none` | 0.7 | 0 | 5 | 0.300000 | 1.421500 | 0.281561 | 0.174000 | 100.00 |
+| `snowdrift` | `fermi_imitation` | `none` | 0.9 | 0 | 5 | 0.486000 | 1.951500 | 0.464412 | 0.442000 | 100.00 |
+| `snowdrift` | `fermi_imitation` | `output_average` | 0.1 | 0.25 | 5 | 0.042000 | 0.220500 | 0.048512 | 0.022000 | 1.00 |
+| `snowdrift` | `fermi_imitation` | `output_average` | 0.3 | 0.25 | 5 | 0.068000 | 0.393000 | 0.073276 | 0.018000 | 1.00 |
+| `snowdrift` | `fermi_imitation` | `output_average` | 0.5 | 0.25 | 5 | 0.136000 | 0.649500 | 0.129342 | 0.112000 | 1.00 |
+| `snowdrift` | `fermi_imitation` | `output_average` | 0.7 | 0.25 | 5 | 0.168000 | 0.819000 | 0.160244 | 0.132000 | 1.00 |
+| `snowdrift` | `fermi_imitation` | `output_average` | 0.9 | 0.25 | 5 | 0.284000 | 1.321000 | 0.258485 | 0.204000 | 1.00 |
+| `snowdrift` | `neural_policy` | `none` | 0.1 | 0 | 5 | 0.430000 | 2.259500 | 0.446373 | 0.178000 | 100.00 |
+| `snowdrift` | `neural_policy` | `none` | 0.3 | 0 | 5 | 0.438000 | 2.283500 | 0.447411 | 0.190000 | 100.00 |
+| `snowdrift` | `neural_policy` | `none` | 0.5 | 0 | 5 | 0.436000 | 2.267000 | 0.448073 | 0.188000 | 100.00 |
+| `snowdrift` | `neural_policy` | `none` | 0.7 | 0 | 5 | 0.444000 | 2.301500 | 0.445811 | 0.188000 | 100.00 |
+| `snowdrift` | `neural_policy` | `none` | 0.9 | 0 | 5 | 0.448000 | 2.303000 | 0.445539 | 0.190000 | 100.00 |
+| `snowdrift` | `neural_policy` | `output_average` | 0.1 | 0.25 | 5 | 0.454000 | 2.212500 | 0.450069 | 0.254000 | 1.00 |
+| `snowdrift` | `neural_policy` | `output_average` | 0.3 | 0.25 | 5 | 0.450000 | 2.193500 | 0.450999 | 0.248000 | 1.00 |
+| `snowdrift` | `neural_policy` | `output_average` | 0.5 | 0.25 | 5 | 0.454000 | 2.219500 | 0.449868 | 0.250000 | 1.00 |
+| `snowdrift` | `neural_policy` | `output_average` | 0.7 | 0.25 | 5 | 0.464000 | 2.239000 | 0.452187 | 0.262000 | 1.00 |
+| `snowdrift` | `neural_policy` | `output_average` | 0.9 | 0.25 | 5 | 0.452000 | 2.206500 | 0.451227 | 0.248000 | 1.00 |
+| `snowdrift` | `rd_well_mixed` | `none` | 0.1 | 0 | 1 | 0.428511 | 2.142602 | 0.428511 | 0.000000 | 0.00 |
+| `snowdrift` | `rd_well_mixed` | `none` | 0.3 | 0 | 1 | 0.428559 | 2.142805 | 0.428559 | 0.000000 | 0.00 |
+| `snowdrift` | `rd_well_mixed` | `none` | 0.5 | 0 | 1 | 0.428577 | 2.142881 | 0.428577 | 0.000000 | 0.00 |
+| `snowdrift` | `rd_well_mixed` | `none` | 0.7 | 0 | 1 | 0.428594 | 2.142953 | 0.428594 | 0.000000 | 0.00 |
+| `snowdrift` | `rd_well_mixed` | `none` | 0.9 | 0 | 1 | 0.428633 | 2.143116 | 0.428633 | 0.000000 | 0.00 |
+| `soft_pd` | `fermi_imitation` | `none` | 0.1 | 0 | 5 | 0.000000 | 1.000000 | 0.000000 | 0.000000 | 100.00 |
+| `soft_pd` | `fermi_imitation` | `none` | 0.3 | 0 | 5 | 0.000000 | 1.000000 | 0.000000 | 0.000000 | 100.00 |
+| `soft_pd` | `fermi_imitation` | `none` | 0.5 | 0 | 5 | 0.000000 | 1.000000 | 0.000000 | 0.000000 | 100.00 |
+| `soft_pd` | `fermi_imitation` | `none` | 0.7 | 0 | 5 | 0.068000 | 1.119600 | 0.057698 | 0.036000 | 100.00 |
+| `soft_pd` | `fermi_imitation` | `none` | 0.9 | 0 | 5 | 0.518000 | 1.978800 | 0.493116 | 0.482000 | 100.00 |
+| `soft_pd` | `fermi_imitation` | `output_average` | 0.1 | 0.25 | 5 | 0.000000 | 1.000000 | 0.000000 | 0.000000 | 1.00 |
+| `soft_pd` | `fermi_imitation` | `output_average` | 0.3 | 0.25 | 5 | 0.000000 | 1.000000 | 0.000000 | 0.000000 | 1.00 |
+| `soft_pd` | `fermi_imitation` | `output_average` | 0.5 | 0.25 | 5 | 0.000000 | 1.000000 | 0.000000 | 0.000000 | 1.00 |
+| `soft_pd` | `fermi_imitation` | `output_average` | 0.7 | 0.25 | 5 | 0.054000 | 1.097200 | 0.046725 | 0.046000 | 1.00 |
+| `soft_pd` | `fermi_imitation` | `output_average` | 0.9 | 0.25 | 5 | 0.484000 | 1.922800 | 0.475524 | 0.430000 | 1.00 |
+| `soft_pd` | `neural_policy` | `none` | 0.1 | 0 | 5 | 0.328000 | 1.571200 | 0.321561 | 0.112000 | 100.00 |
+| `soft_pd` | `neural_policy` | `none` | 0.3 | 0 | 5 | 0.324000 | 1.563600 | 0.323488 | 0.114000 | 100.00 |
+| `soft_pd` | `neural_policy` | `none` | 0.5 | 0 | 5 | 0.318000 | 1.553200 | 0.322290 | 0.110000 | 100.00 |
+| `soft_pd` | `neural_policy` | `none` | 0.7 | 0 | 5 | 0.328000 | 1.571600 | 0.324176 | 0.130000 | 100.00 |
+| `soft_pd` | `neural_policy` | `none` | 0.9 | 0 | 5 | 0.322000 | 1.562000 | 0.325465 | 0.108000 | 100.00 |
+| `soft_pd` | `neural_policy` | `output_average` | 0.1 | 0.25 | 5 | 0.284000 | 1.487600 | 0.267441 | 0.084000 | 1.00 |
+| `soft_pd` | `neural_policy` | `output_average` | 0.3 | 0.25 | 5 | 0.280000 | 1.480000 | 0.271570 | 0.078000 | 1.00 |
+| `soft_pd` | `neural_policy` | `output_average` | 0.5 | 0.25 | 5 | 0.280000 | 1.480800 | 0.266623 | 0.078000 | 1.00 |
+| `soft_pd` | `neural_policy` | `output_average` | 0.7 | 0.25 | 5 | 0.284000 | 1.487200 | 0.268260 | 0.084000 | 1.00 |
+| `soft_pd` | `neural_policy` | `output_average` | 0.9 | 0.25 | 5 | 0.278000 | 1.478000 | 0.268049 | 0.078000 | 1.00 |
+| `soft_pd` | `rd_well_mixed` | `none` | 0.1 | 0 | 1 | 0.000019 | 1.000036 | 0.000019 | 0.000000 | 0.00 |
+| `soft_pd` | `rd_well_mixed` | `none` | 0.3 | 0 | 1 | 0.000102 | 1.000195 | 0.000102 | 0.000000 | 0.00 |
+| `soft_pd` | `rd_well_mixed` | `none` | 0.5 | 0 | 1 | 0.000400 | 1.000763 | 0.000400 | 0.000000 | 0.00 |
+| `soft_pd` | `rd_well_mixed` | `none` | 0.7 | 0 | 1 | 0.002513 | 1.004793 | 0.002513 | 0.000000 | 0.00 |
+| `soft_pd` | `rd_well_mixed` | `none` | 0.9 | 0 | 1 | 0.146255 | 1.275909 | 0.146255 | 0.000000 | 0.00 |
+| `stag_hunt` | `fermi_imitation` | `none` | 0.1 | 0 | 5 | 0.000000 | 2.000000 | 0.000000 | 0.000000 | 100.00 |
+| `stag_hunt` | `fermi_imitation` | `none` | 0.3 | 0 | 5 | 0.000000 | 2.000000 | 0.000000 | 0.000000 | 100.00 |
+| `stag_hunt` | `fermi_imitation` | `none` | 0.5 | 0 | 5 | 0.000000 | 2.000000 | 0.000000 | 0.000000 | 100.00 |
+| `stag_hunt` | `fermi_imitation` | `none` | 0.7 | 0 | 5 | 0.038000 | 1.986000 | 0.037984 | 0.020000 | 100.00 |
+| `stag_hunt` | `fermi_imitation` | `none` | 0.9 | 0 | 5 | 0.546000 | 2.828000 | 0.540841 | 0.534000 | 100.00 |
+| `stag_hunt` | `fermi_imitation` | `output_average` | 0.1 | 0.25 | 5 | 0.000000 | 2.000000 | 0.000000 | 0.000000 | 1.00 |
+| `stag_hunt` | `fermi_imitation` | `output_average` | 0.3 | 0.25 | 5 | 0.000000 | 2.000000 | 0.000000 | 0.000000 | 1.00 |
+| `stag_hunt` | `fermi_imitation` | `output_average` | 0.5 | 0.25 | 5 | 0.000000 | 2.000000 | 0.000000 | 0.000000 | 1.00 |
+| `stag_hunt` | `fermi_imitation` | `output_average` | 0.7 | 0.25 | 5 | 0.002000 | 1.998000 | 0.001690 | 0.002000 | 1.00 |
+| `stag_hunt` | `fermi_imitation` | `output_average` | 0.9 | 0.25 | 5 | 0.642000 | 3.035000 | 0.631249 | 0.618000 | 1.00 |
+| `stag_hunt` | `neural_policy` | `none` | 0.1 | 0 | 5 | 0.196000 | 1.981000 | 0.195531 | 0.082000 | 100.00 |
+| `stag_hunt` | `neural_policy` | `none` | 0.3 | 0 | 5 | 0.198000 | 1.976000 | 0.197020 | 0.078000 | 100.00 |
+| `stag_hunt` | `neural_policy` | `none` | 0.5 | 0 | 5 | 0.196000 | 1.972000 | 0.198364 | 0.074000 | 100.00 |
+| `stag_hunt` | `neural_policy` | `none` | 0.7 | 0 | 5 | 0.206000 | 1.980000 | 0.199607 | 0.076000 | 100.00 |
+| `stag_hunt` | `neural_policy` | `none` | 0.9 | 0 | 5 | 0.212000 | 1.983000 | 0.205563 | 0.086000 | 100.00 |
+| `stag_hunt` | `neural_policy` | `output_average` | 0.1 | 0.25 | 5 | 0.108000 | 1.949000 | 0.078828 | 0.038000 | 1.00 |
+| `stag_hunt` | `neural_policy` | `output_average` | 0.3 | 0.25 | 5 | 0.104000 | 1.953000 | 0.078491 | 0.038000 | 1.00 |
+| `stag_hunt` | `neural_policy` | `output_average` | 0.5 | 0.25 | 5 | 0.104000 | 1.956000 | 0.079335 | 0.040000 | 1.00 |
+| `stag_hunt` | `neural_policy` | `output_average` | 0.7 | 0.25 | 5 | 0.110000 | 1.953000 | 0.081014 | 0.038000 | 1.00 |
+| `stag_hunt` | `neural_policy` | `output_average` | 0.9 | 0.25 | 5 | 0.106000 | 1.951000 | 0.079458 | 0.038000 | 1.00 |
+| `stag_hunt` | `rd_well_mixed` | `none` | 0.1 | 0 | 1 | 0.000000 | 2.000000 | 0.000000 | 0.000000 | 0.00 |
+| `stag_hunt` | `rd_well_mixed` | `none` | 0.3 | 0 | 1 | 0.000000 | 2.000000 | 0.000000 | 0.000000 | 0.00 |
+| `stag_hunt` | `rd_well_mixed` | `none` | 0.5 | 0 | 1 | 0.000000 | 2.000000 | 0.000000 | 0.000000 | 0.00 |
+| `stag_hunt` | `rd_well_mixed` | `none` | 0.7 | 0 | 1 | 0.999989 | 3.999926 | 0.999989 | 0.000000 | 0.00 |
+| `stag_hunt` | `rd_well_mixed` | `none` | 0.9 | 0 | 1 | 1.000000 | 3.999999 | 1.000000 | 0.000000 | 0.00 |
+
+## Readout
+
+This table is the Toy 2 validation gate summary across payoff regimes, neural policy dynamics, Fermi spatial imitation, and one RD well-mixed reference per regime.

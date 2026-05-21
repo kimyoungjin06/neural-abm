@@ -1,0 +1,93 @@
+run:
+  name: toy24_revision_operator_precommitment_peer_evidence_stability_quick_toy4_revision_operator_precommitment_peer_evidence_stability_revision_operator_mixed_objective_basin_w0p5_0p5_h1
+  seed: 10
+  output_dir: experiments/runs
+simulation:
+  epochs: 50
+  sync_mode: synchronous
+  device: cpu
+model:
+  policy:
+    rule: neural_policy
+    learning_enabled: true
+    revision_rate: 1.0
+    selection_strength: 1.0
+    temperature: 1.0
+    decision:
+      mode: sampled
+      action_temperature: 1.0
+      exploration_epsilon: 0.0
+    domain:
+      objective:
+        profile: linear_welfare_heavy
+        clip_abs: null
+      basin_credit:
+        enabled: true
+        critic: prototype_phase
+        credit_method: one_step_ablation
+        objective_weight: 0.5
+        individual_weight: 0.0
+        local_social_weight: 0.0
+        basin_weight: 0.5
+        horizon: 1
+        target_basin: ceiling
+    neural_update_backend: loop
+  agents:
+    init_mode: independent_init
+    model:
+      input_dim: 6
+      hidden_dim: 16
+      output_dim: 2
+      activation: relu
+    optimizer:
+      name: adam
+      learning_rate: 0.01
+  coordination:
+    mixer: output_average
+    peer_rule: output_similarity
+    alpha: 0.25
+    threshold: 0.0
+    revision_operator_enabled: true
+    revision_operator_source: policy_probability
+  state:
+    reputation:
+      enabled: true
+      decay: 0.9
+      peer_rule: spatial
+      temperature: 1.0
+      noise: 0.0
+      observation_mode: none
+    mobility:
+      enabled: false
+      rate: 0.0
+      candidate_pool_size: 8
+      selection_rule: local_quality
+      move_cost: 0.0
+domain:
+  toy: toy4
+  environment:
+    grid_width: 10
+    grid_height: 10
+    initial_action_probability: 0.5
+    reward_ema_decay: 0.9
+    entropy_beta: 0.01
+    resource_enabled: false
+    resource_initial: 100.0
+    resource_carrying_capacity: 100.0
+    resource_recovery_rate: 0.05
+    resource_extraction_per_defector: 1.0
+    resource_collapse_threshold: 0.0
+  game:
+    multiplier: 1.6
+    contribution_cost: 1.0
+    group_mode: local_neighborhood
+  graph:
+    type: grid
+    neighborhood: von_neumann
+    periodic: true
+logging:
+  micro_state: true
+  interval: 1
+  aggregate_metrics: true
+  probe_predictions: false
+  probe_prediction_interval: 1

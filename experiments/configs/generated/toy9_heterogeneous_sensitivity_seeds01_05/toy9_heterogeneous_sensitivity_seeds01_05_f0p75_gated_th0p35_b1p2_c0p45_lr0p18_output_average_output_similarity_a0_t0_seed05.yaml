@@ -1,0 +1,57 @@
+run:
+  name: toy9_heterogeneous_sensitivity_seeds01_05_f0p75_gated_th0p35_b1p2_c0p45_lr0p18_output_average_output_similarity_a0_t0
+  seed: 5
+  output_dir: experiments/runs
+simulation:
+  epochs: 25
+  sync_mode: synchronous
+  device: cpu
+model:
+  policy:
+    rule: heterogeneous_rules
+    decision_mode: sampled
+    temperature: 1.0
+    exploration_epsilon: 0.0
+  agents:
+    count: 100
+    init_mode: independent_init
+    groups:
+    - name: threshold_social
+      fraction: 0.75
+      local_rule: threshold
+      initial_action_probability: 0.35
+      threshold: 0.35
+      revision_rate: 1.0
+      learning_rate: 0.2
+      coordination_enabled: true
+    - name: payoff_individual
+      fraction: 0.25
+      local_rule: payoff_learning
+      initial_action_probability: 0.35
+      threshold: null
+      revision_rate: 1.0
+      learning_rate: 0.18
+      coordination_enabled: false
+  coordination:
+    mixer: output_average
+    peer_rule: output_similarity
+    alpha: 0.0
+    threshold: 0.0
+domain:
+  toy: toy9
+  environment:
+    initial_action_probability: 0.35
+    threshold: 0.35
+    benefit: 1.2
+    action_cost: 0.45
+    payoff_ema_decay: 0.9
+  graph:
+    type: watts_strogatz
+    k: 6
+    rewire_probability: 0.1
+logging:
+  micro_state: true
+  interval: 1
+  aggregate_metrics: true
+  probe_predictions: false
+  probe_prediction_interval: 1

@@ -1,0 +1,34 @@
+label: toy24_basin_phase_critic_future_outcome_direction_quick
+runs_csv: experiments/results/nabm_effect_matrix/toy24_basin_transition_dataset_quick_runs.csv
+output_dir: experiments/results/basin_critic
+train_seeds: [1, 2]
+eval_seeds: [3]
+max_epochs: 300
+learning_rate: 0.05
+pairwise_weight: 0.25
+ensemble_size: 5
+abstention_margin_threshold: 0.005
+uncertainty_threshold: 0.05
+feature_columns:
+  - candidate_action
+  - policy_action_probability
+  - candidate_action_delta
+  - candidate_policy_delta
+  - phase_payoff_alignment
+  - candidate_phase_action_rate
+  - candidate_phase_policy_rate
+  - candidate_phase_consensus
+  - phase_payoff_stability
+cases:
+  - name: toy2_basin_phase_critic_future_outcome_direction
+    toy: toy2
+    group: nabm
+    ceiling_tolerance: 0.001
+    label_mode: future_outcome_direction
+    label_horizon: 5
+  - name: toy4_basin_phase_critic_future_outcome_direction
+    toy: toy4
+    group: nabm
+    ceiling_tolerance: 0.005
+    label_mode: future_outcome_direction
+    label_horizon: 5

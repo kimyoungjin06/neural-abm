@@ -1,0 +1,52 @@
+run:
+  name: toy10_market_social_calibration_seeds01_03_r0p02_c0p3_rw0p05_p0p5_n0p35_sg1_cw0p75_output_average_output_similarity_a0p25_t0
+  seed: 2
+  output_dir: experiments/runs
+simulation:
+  epochs: 25
+  sync_mode: synchronous
+  device: cpu
+model:
+  policy:
+    rule: market_ecology
+    learning_rate: 0.18
+    revision_rate: 1.0
+    exploration_std: 0.02
+    conservation_harvest_weight: 0.75
+    social_harvest_gain: 1.0
+    reward_ema_decay: 0.9
+  agents:
+    count: 100
+    init_mode: independent_init
+  coordination:
+    mixer: output_average
+    peer_rule: output_similarity
+    alpha: 0.25
+    threshold: 0.0
+domain:
+  toy: toy10
+  environment:
+    resource_initial: 85.0
+    resource_carrying_capacity: 100.0
+    resource_recovery_rate: 0.02
+    extraction_scale: 7.0
+    extraction_cost: 0.3
+    base_price: 0.45
+    demand_sensitivity: 0.5
+    supply_sensitivity: 0.25
+    initial_price_expectation_mean: 0.5
+    initial_price_expectation_std: 0.08
+    initial_conservation_norm_mean: 0.35
+    initial_conservation_norm_std: 0.08
+  network:
+    type: watts_strogatz
+    k: 6
+    rewire_probability: 0.1
+    dynamic_rewire_rate: 0.05
+    candidate_pool_size: 8
+logging:
+  micro_state: true
+  interval: 1
+  aggregate_metrics: true
+  probe_predictions: false
+  probe_prediction_interval: 1

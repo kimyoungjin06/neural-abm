@@ -1,0 +1,2 @@
+label,case,toy,status,best_main_variant,best_baseline_variant,final_ceiling_hits,expected_seed_count,mean_time_to_ceiling,metric_mean,terminal_ceiling_rate_mean,issue_codes,notes
+toy5_readiness_propagation_holdout_quick,toy5_readiness_propagation_holdout,toy5,pass,neural_readiness_propagation_w1p0,neural_output_average,3,3,1.3333333333333333,100.0,1.0,,

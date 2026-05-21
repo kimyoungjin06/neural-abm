@@ -1,0 +1,7 @@
+toy,variant,seed,epoch,mean_payoff,action_rate,mean_policy_action_probability,mean_reputation,run_dir
+toy2,neural_reputation_observation_output_average,1,5,1.85,0.32,0.31585708260536194,0.44019410000000003,/tmp/nabm_toy24_diag/runs/20260512_235109_649456_toy2_neural_repobs_diag_seed01
+toy2,neural_reputation_observation_output_average,2,5,2.13,0.46,0.3074897825717926,0.48103030000000013,/tmp/nabm_toy24_diag/runs/20260512_235111_145402_toy2_neural_repobs_diag_seed02
+toy2,neural_reputation_observation_output_average,3,5,2.065,0.4,0.3039722740650177,0.4517194,/tmp/nabm_toy24_diag/runs/20260512_235111_695344_toy2_neural_repobs_diag_seed03
+toy4,neural_reputation_observation_output_average,1,5,0.22200000000000006,0.37,0.35831084847450256,0.46301679999999995,/tmp/nabm_toy24_diag/runs/20260512_235112_256478_toy4_neural_repobs_diag_seed01
+toy4,neural_reputation_observation_output_average,2,5,0.2280000000000001,0.38,0.3252631425857544,0.47099720000000006,/tmp/nabm_toy24_diag/runs/20260512_235113_154408_toy4_neural_repobs_diag_seed02
+toy4,neural_reputation_observation_output_average,3,5,0.2340000000000001,0.39,0.3200352191925049,0.453306,/tmp/nabm_toy24_diag/runs/20260512_235114_085708_toy4_neural_repobs_diag_seed03

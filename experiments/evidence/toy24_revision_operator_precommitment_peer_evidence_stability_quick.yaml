@@ -1,0 +1,133 @@
+label: toy24_revision_operator_precommitment_peer_evidence_stability_quick
+seeds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+epochs: 50
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+success_criteria:
+  main_group: precommitment_candidate
+  require_without_teacher_bootstrap_replay: true
+  cases:
+    toy2_revision_operator_precommitment_peer_evidence_stability:
+      final_ceiling_min_hits: 9
+      mean_time_to_ceiling_lt: 10
+    toy4_revision_operator_precommitment_peer_evidence_stability:
+      final_ceiling_min_hits: 9
+      mean_time_to_ceiling_lt: 10
+
+_shared_updates:
+  toy2_revision: &toy2_revision
+    model.policy.rule: neural_policy
+    model.policy.neural_update_backend: loop
+    model.policy.domain.local_update_rule: counterfactual_advantage
+    model.policy.domain.objective.profile: linear_welfare_heavy
+    model.policy.domain.objective.clip_abs: null
+    model.policy.domain.basin_credit.enabled: true
+    model.policy.domain.basin_credit.critic: prototype_phase
+    model.policy.domain.basin_credit.credit_method: one_step_ablation
+    model.policy.domain.basin_credit.objective_weight: 0.5
+    model.policy.domain.basin_credit.individual_weight: 0.0
+    model.policy.domain.basin_credit.local_social_weight: 0.0
+    model.policy.domain.basin_credit.basin_weight: 0.5
+    model.policy.domain.basin_credit.horizon: 1
+    model.policy.domain.basin_credit.target_basin: ceiling
+    model.coordination.revision_operator_enabled: true
+    model.coordination.revision_operator_source: policy_probability
+    model.coordination.mixer: output_average
+    model.coordination.peer_rule: output_similarity
+    model.coordination.alpha: 0.25
+    model.coordination.threshold: 0.0
+  toy4_revision: &toy4_revision
+    model.policy.rule: neural_policy
+    model.policy.neural_update_backend: loop
+    model.policy.domain.objective.profile: linear_welfare_heavy
+    model.policy.domain.objective.clip_abs: null
+    model.policy.domain.basin_credit.enabled: true
+    model.policy.domain.basin_credit.critic: prototype_phase
+    model.policy.domain.basin_credit.credit_method: one_step_ablation
+    model.policy.domain.basin_credit.objective_weight: 0.5
+    model.policy.domain.basin_credit.individual_weight: 0.0
+    model.policy.domain.basin_credit.local_social_weight: 0.0
+    model.policy.domain.basin_credit.basin_weight: 0.5
+    model.policy.domain.basin_credit.horizon: 1
+    model.policy.domain.basin_credit.target_basin: ceiling
+    model.coordination.revision_operator_enabled: true
+    model.coordination.revision_operator_source: policy_probability
+    model.coordination.mixer: output_average
+    model.coordination.peer_rule: output_similarity
+    model.coordination.alpha: 0.25
+    model.coordination.threshold: 0.0
+    domain.environment.resource_enabled: false
+  precommitment_evidence: &precommitment_evidence
+    model.coordination.precommitment_enabled: true
+    model.coordination.precommitment_min_policy_probability: 0.75
+    model.coordination.precommitment_min_evidence: 1.5
+    model.coordination.precommitment_evidence_increment: 1.0
+    model.coordination.precommitment_evidence_decay: 0.8
+    model.coordination.precommitment_requires_direction: true
+    model.coordination.precommitment_min_direction: 0.0
+  precommitment_peer_evidence_w1p0: &precommitment_peer_evidence_w1p0
+    model.coordination.precommitment_peer_evidence_enabled: true
+    model.coordination.precommitment_peer_evidence_weight: 1.0
+
+cases:
+  - toy: toy2
+    name: toy2_revision_operator_precommitment_peer_evidence_stability
+    base_config: experiments/configs/toy2_spatial_pd_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    nabm_group: precommitment_candidate
+    ceiling_metric: mean_payoff
+    ceiling_value: 3.0
+    ceiling_tolerance: 0.001
+    variants:
+      - name: reputation_imitation
+        group: baseline
+        updates:
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: revision_operator_mixed_objective_basin_w0p5_0p5_h1
+        group: diagnostic
+        updates:
+          <<: *toy2_revision
+      - name: revision_operator_precommitment_evidence
+        group: diagnostic
+        updates:
+          <<: [*toy2_revision, *precommitment_evidence]
+      - name: revision_operator_precommitment_peer_evidence_w1p0
+        group: precommitment_candidate
+        updates:
+          <<: [*toy2_revision, *precommitment_evidence, *precommitment_peer_evidence_w1p0]
+  - toy: toy4
+    name: toy4_revision_operator_precommitment_peer_evidence_stability
+    base_config: experiments/configs/toy4_public_goods_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    nabm_group: precommitment_candidate
+    ceiling_metric: mean_payoff
+    ceiling_value: 0.6
+    ceiling_tolerance: 0.005
+    variants:
+      - name: reputation_imitation
+        group: baseline
+        updates:
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: revision_operator_mixed_objective_basin_w0p5_0p5_h1
+        group: diagnostic
+        updates:
+          <<: *toy4_revision
+      - name: revision_operator_precommitment_evidence
+        group: diagnostic
+        updates:
+          <<: [*toy4_revision, *precommitment_evidence]
+      - name: revision_operator_precommitment_peer_evidence_w1p0
+        group: precommitment_candidate
+        updates:
+          <<: [*toy4_revision, *precommitment_evidence, *precommitment_peer_evidence_w1p0]

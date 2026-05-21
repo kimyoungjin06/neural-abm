@@ -1,0 +1,56 @@
+run:
+  name: toy_validation_paper_candidate_toy1_10_social_calibrated_seeds01_05_toy3_hk_no_rewire
+  seed: 3
+  output_dir: experiments/runs
+simulation:
+  epochs: 100
+  sync_mode: synchronous
+  device: cpu
+model:
+  policy:
+    update_rule: hk
+    confidence_threshold: 0.35
+    influence_rate: 1.0
+    deffuant_mu: 0.5
+    neural_delta_scale: 0.25
+    neural_learning_rate: 0.01
+  agents:
+    count: 100
+    init_mode: independent_init
+    model:
+      input_dim: 6
+      hidden_dim: 16
+      output_dim: 1
+      activation: relu
+    optimizer:
+      name: adam
+      learning_rate: 0.01
+  coordination:
+    mixer: none
+    peer_rule: none
+    alpha: 0.0
+domain:
+  toy: toy3
+  environment:
+    opinion_min: -1.0
+    opinion_max: 1.0
+    initial_opinion_mode: two_clusters
+    cluster_centers:
+    - -0.4
+    - 0.4
+    cluster_std: 0.08
+  graph:
+    type: watts_strogatz
+    k: 6
+    rewire_probability: 0.1
+  rewiring:
+    enabled: false
+    threshold: 0.8
+    rate: 0.0
+    candidate_pool_size: 10
+logging:
+  micro_state: true
+  interval: 1
+  aggregate_metrics: true
+  probe_predictions: false
+  probe_prediction_interval: 1

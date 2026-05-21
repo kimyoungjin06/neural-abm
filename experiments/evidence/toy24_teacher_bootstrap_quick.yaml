@@ -1,0 +1,217 @@
+label: toy24_teacher_bootstrap_quick
+seeds: [1, 2, 3]
+epochs: 50
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+cases:
+  - toy: toy2
+    name: toy2_teacher_bootstrap
+    base_config: experiments/configs/toy2_spatial_pd_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    ceiling_metric: mean_payoff
+    ceiling_value: 3.0
+    ceiling_tolerance: 0.001
+    variants:
+      - name: reputation_imitation
+        group: baseline
+        updates:
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: linear_welfare_heavy
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: nonlinear_interaction
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: nonlinear_interaction
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: teacher_bootstrap_w0p5_e5_linear_welfare
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.enabled: true
+          model.policy.domain.bootstrap.weight: 0.5
+          model.policy.domain.bootstrap.epochs: 5
+          model.policy.domain.bootstrap.decay: linear
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: teacher_bootstrap_w1p0_e3_linear_welfare
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.enabled: true
+          model.policy.domain.bootstrap.weight: 1.0
+          model.policy.domain.bootstrap.epochs: 3
+          model.policy.domain.bootstrap.decay: linear
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: teacher_bootstrap_w0p5_e5_nonlinear_interaction
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: nonlinear_interaction
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.enabled: true
+          model.policy.domain.bootstrap.weight: 0.5
+          model.policy.domain.bootstrap.epochs: 5
+          model.policy.domain.bootstrap.decay: linear
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: teacher_bootstrap_w1p0_e3_nonlinear_interaction
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.local_update_rule: counterfactual_advantage
+          model.policy.domain.objective.profile: nonlinear_interaction
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.enabled: true
+          model.policy.domain.bootstrap.weight: 1.0
+          model.policy.domain.bootstrap.epochs: 3
+          model.policy.domain.bootstrap.decay: linear
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+  - toy: toy4
+    name: toy4_teacher_bootstrap
+    base_config: experiments/configs/toy4_public_goods_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    ceiling_metric: mean_payoff
+    ceiling_value: 0.6
+    ceiling_tolerance: 0.005
+    variants:
+      - name: reputation_imitation
+        group: baseline
+        updates:
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: linear_welfare_heavy
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: nonlinear_interaction
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: nonlinear_interaction
+          model.policy.domain.objective.clip_abs: null
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: teacher_bootstrap_w0p5_e5_linear_welfare
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.enabled: true
+          model.policy.domain.bootstrap.weight: 0.5
+          model.policy.domain.bootstrap.epochs: 5
+          model.policy.domain.bootstrap.decay: linear
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: teacher_bootstrap_w1p0_e3_linear_welfare
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: linear_welfare_heavy
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.enabled: true
+          model.policy.domain.bootstrap.weight: 1.0
+          model.policy.domain.bootstrap.epochs: 3
+          model.policy.domain.bootstrap.decay: linear
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: teacher_bootstrap_w0p5_e5_nonlinear_interaction
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: nonlinear_interaction
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.enabled: true
+          model.policy.domain.bootstrap.weight: 0.5
+          model.policy.domain.bootstrap.epochs: 5
+          model.policy.domain.bootstrap.decay: linear
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: teacher_bootstrap_w1p0_e3_nonlinear_interaction
+        group: nabm
+        updates:
+          model.policy.rule: neural_policy
+          model.policy.neural_update_backend: loop
+          model.policy.domain.objective.profile: nonlinear_interaction
+          model.policy.domain.objective.clip_abs: null
+          model.policy.domain.bootstrap.enabled: true
+          model.policy.domain.bootstrap.weight: 1.0
+          model.policy.domain.bootstrap.epochs: 3
+          model.policy.domain.bootstrap.decay: linear
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false

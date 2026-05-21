@@ -1,0 +1,148 @@
+label: toy24_precommitment_peer_evidence_open_boundary_sparse_seed_stress_quick
+seeds: [1, 2, 3, 4, 5]
+epochs: 50
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+success_criteria:
+  main_group: peer_evidence_open_boundary_sparse_seed_stress
+  require_without_teacher_bootstrap_replay: true
+  cases:
+    toy2_precommitment_peer_evidence_open_boundary_sparse_seed_stress:
+      final_ceiling_min_hits: 5
+      mean_time_to_ceiling_lt: 25
+    toy4_precommitment_peer_evidence_open_boundary_sparse_seed_stress:
+      final_ceiling_min_hits: 5
+      mean_time_to_ceiling_lt: 25
+
+_shared_updates:
+  toy2_open_sparse_seed: &toy2_open_sparse_seed
+    domain.environment.initial_action_probability: 0.1
+    domain.environment.periodic: false
+  toy4_open_sparse_seed: &toy4_open_sparse_seed
+    domain.environment.initial_action_probability: 0.1
+    domain.graph.periodic: false
+  toy2_objective_basin: &toy2_objective_basin
+    model.policy.rule: neural_policy
+    model.policy.neural_update_backend: loop
+    model.policy.domain.local_update_rule: counterfactual_advantage
+    model.policy.domain.objective.profile: linear_welfare_heavy
+    model.policy.domain.objective.clip_abs: null
+    model.policy.domain.basin_credit.enabled: true
+    model.policy.domain.basin_credit.critic: prototype_phase
+    model.policy.domain.basin_credit.credit_method: one_step_ablation
+    model.policy.domain.basin_credit.objective_weight: 0.5
+    model.policy.domain.basin_credit.individual_weight: 0.0
+    model.policy.domain.basin_credit.local_social_weight: 0.0
+    model.policy.domain.basin_credit.basin_weight: 0.5
+    model.policy.domain.basin_credit.horizon: 1
+    model.policy.domain.basin_credit.target_basin: ceiling
+    model.coordination.mixer: output_average
+    model.coordination.peer_rule: output_similarity
+    model.coordination.alpha: 0.25
+    model.coordination.threshold: 0.0
+  toy4_objective_basin: &toy4_objective_basin
+    model.policy.rule: neural_policy
+    model.policy.neural_update_backend: loop
+    model.policy.domain.objective.profile: linear_welfare_heavy
+    model.policy.domain.objective.clip_abs: null
+    model.policy.domain.basin_credit.enabled: true
+    model.policy.domain.basin_credit.critic: prototype_phase
+    model.policy.domain.basin_credit.credit_method: one_step_ablation
+    model.policy.domain.basin_credit.objective_weight: 0.5
+    model.policy.domain.basin_credit.individual_weight: 0.0
+    model.policy.domain.basin_credit.local_social_weight: 0.0
+    model.policy.domain.basin_credit.basin_weight: 0.5
+    model.policy.domain.basin_credit.horizon: 1
+    model.policy.domain.basin_credit.target_basin: ceiling
+    model.coordination.mixer: output_average
+    model.coordination.peer_rule: output_similarity
+    model.coordination.alpha: 0.25
+    model.coordination.threshold: 0.0
+    domain.environment.resource_enabled: false
+  revision_operator: &revision_operator
+    model.coordination.revision_operator_enabled: true
+    model.coordination.revision_operator_source: policy_probability
+  precommitment_evidence: &precommitment_evidence
+    model.coordination.precommitment_enabled: true
+    model.coordination.precommitment_min_policy_probability: 0.75
+    model.coordination.precommitment_min_evidence: 1.5
+    model.coordination.precommitment_evidence_increment: 1.0
+    model.coordination.precommitment_evidence_decay: 0.8
+    model.coordination.precommitment_requires_direction: true
+    model.coordination.precommitment_min_direction: 0.0
+  precommitment_peer_evidence_w1p0: &precommitment_peer_evidence_w1p0
+    model.coordination.precommitment_peer_evidence_enabled: true
+    model.coordination.precommitment_peer_evidence_weight: 1.0
+
+cases:
+  - toy: toy2
+    name: toy2_precommitment_peer_evidence_open_boundary_sparse_seed_stress
+    base_config: experiments/configs/toy2_spatial_pd_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    nabm_group: peer_evidence_open_boundary_sparse_seed_stress
+    ceiling_metric: mean_payoff
+    ceiling_value: 3.0
+    ceiling_tolerance: 0.001
+    variants:
+      - name: reputation_imitation_open_sparse_p0p1
+        group: baseline
+        updates:
+          <<: *toy2_open_sparse_seed
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: objective_basin_open_sparse_p0p1
+        group: diagnostic
+        updates:
+          <<: [*toy2_objective_basin, *toy2_open_sparse_seed]
+      - name: revision_objective_basin_open_sparse_p0p1
+        group: diagnostic
+        updates:
+          <<: [*toy2_objective_basin, *revision_operator, *toy2_open_sparse_seed]
+      - name: revision_precommitment_evidence_open_sparse_p0p1
+        group: diagnostic
+        updates:
+          <<: [*toy2_objective_basin, *revision_operator, *precommitment_evidence, *toy2_open_sparse_seed]
+      - name: revision_precommitment_peer_evidence_open_sparse_p0p1
+        group: peer_evidence_open_boundary_sparse_seed_stress
+        updates:
+          <<: [*toy2_objective_basin, *revision_operator, *precommitment_evidence, *precommitment_peer_evidence_w1p0, *toy2_open_sparse_seed]
+  - toy: toy4
+    name: toy4_precommitment_peer_evidence_open_boundary_sparse_seed_stress
+    base_config: experiments/configs/toy4_public_goods_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    nabm_group: peer_evidence_open_boundary_sparse_seed_stress
+    ceiling_metric: mean_payoff
+    ceiling_value: 0.6
+    ceiling_tolerance: 0.005
+    variants:
+      - name: reputation_imitation_open_sparse_p0p1
+        group: baseline
+        updates:
+          <<: *toy4_open_sparse_seed
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+          domain.environment.resource_enabled: false
+      - name: objective_basin_open_sparse_p0p1
+        group: diagnostic
+        updates:
+          <<: [*toy4_objective_basin, *toy4_open_sparse_seed]
+      - name: revision_objective_basin_open_sparse_p0p1
+        group: diagnostic
+        updates:
+          <<: [*toy4_objective_basin, *revision_operator, *toy4_open_sparse_seed]
+      - name: revision_precommitment_evidence_open_sparse_p0p1
+        group: diagnostic
+        updates:
+          <<: [*toy4_objective_basin, *revision_operator, *precommitment_evidence, *toy4_open_sparse_seed]
+      - name: revision_precommitment_peer_evidence_open_sparse_p0p1
+        group: peer_evidence_open_boundary_sparse_seed_stress
+        updates:
+          <<: [*toy4_objective_basin, *revision_operator, *precommitment_evidence, *precommitment_peer_evidence_w1p0, *toy4_open_sparse_seed]

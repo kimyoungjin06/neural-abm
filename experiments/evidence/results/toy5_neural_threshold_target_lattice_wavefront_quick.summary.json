@@ -1,0 +1,389 @@
+{
+  "cases": [
+    {
+      "baseline_comparison": {
+        "final_ceiling_hit_delta": 0,
+        "metric_mean_delta": 0.0,
+        "time_to_ceiling_delta": 0.0
+      },
+      "baseline_improved_by_best_main": false,
+      "best_baseline_variant": {
+        "complete": true,
+        "eligible_main": false,
+        "ever_ceiling_final_miss_count": 0,
+        "ever_ceiling_hits": 5,
+        "expected_seed_count": 5,
+        "final_ceiling_hits": 5,
+        "group": "baseline",
+        "late_flip_count_after_first_ceiling_mean": 0.0,
+        "late_flip_rate_after_first_ceiling_mean": 0.0,
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 0.0,
+        "metric_mean": 1.0,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 5,
+        "observed_seeds": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "reasons": [
+          "not in main claim group"
+        ],
+        "status": "diagnostic_only",
+        "std_time_to_ceiling": 0.0,
+        "terminal_window_ceiling_rate_mean": 1.0,
+        "terminal_window_mean_ceiling_metric_mean": 1.0,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "neural_threshold_target_wavefront_no_seed_output_average"
+      },
+      "best_main_variant": {
+        "complete": true,
+        "eligible_main": true,
+        "ever_ceiling_final_miss_count": 0,
+        "ever_ceiling_hits": 5,
+        "expected_seed_count": 5,
+        "final_ceiling_hits": 5,
+        "group": "directional_threshold_target_wavefront",
+        "late_flip_count_after_first_ceiling_mean": 0.0,
+        "late_flip_rate_after_first_ceiling_mean": 0.0,
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 0.0,
+        "metric_mean": 1.0,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 5,
+        "observed_seeds": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "reasons": [],
+        "status": "pass",
+        "std_time_to_ceiling": 0.0,
+        "terminal_window_ceiling_rate_mean": 1.0,
+        "terminal_window_mean_ceiling_metric_mean": 1.0,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "neural_threshold_target_wavefront_no_seed_exposure_anchor"
+      },
+      "case": "toy5_threshold_target_wavefront_no_seed_safety",
+      "criteria": {
+        "final_ceiling_min_hits": 5,
+        "mean_time_to_ceiling_lt": 1.0
+      },
+      "passed": true,
+      "status": "pass",
+      "toy": "toy5",
+      "variants": [
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 5,
+          "expected_seed_count": 5,
+          "final_ceiling_hits": 5,
+          "group": "baseline",
+          "late_flip_count_after_first_ceiling_mean": 0.0,
+          "late_flip_rate_after_first_ceiling_mean": 0.0,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 0.0,
+          "metric_mean": 1.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 5,
+          "observed_seeds": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 0.0,
+          "terminal_window_ceiling_rate_mean": 1.0,
+          "terminal_window_mean_ceiling_metric_mean": 1.0,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "neural_threshold_target_wavefront_no_seed_output_average"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 5,
+          "ever_ceiling_hits": 5,
+          "expected_seed_count": 5,
+          "final_ceiling_hits": 0,
+          "group": "diagnostic",
+          "late_flip_count_after_first_ceiling_mean": 100.0,
+          "late_flip_rate_after_first_ceiling_mean": 0.05,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 0.0,
+          "metric_mean": 0.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 5,
+          "observed_seeds": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 0.0,
+          "terminal_window_ceiling_rate_mean": 0.0,
+          "terminal_window_mean_ceiling_metric_mean": 0.0,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "neural_threshold_target_wavefront_no_seed_non_directional"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 5,
+          "expected_seed_count": 5,
+          "final_ceiling_hits": 5,
+          "group": "directional_threshold_target_wavefront",
+          "late_flip_count_after_first_ceiling_mean": 0.0,
+          "late_flip_rate_after_first_ceiling_mean": 0.0,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 0.0,
+          "metric_mean": 1.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 5,
+          "observed_seeds": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "reasons": [],
+          "status": "pass",
+          "std_time_to_ceiling": 0.0,
+          "terminal_window_ceiling_rate_mean": 1.0,
+          "terminal_window_mean_ceiling_metric_mean": 1.0,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "neural_threshold_target_wavefront_no_seed_exposure_anchor"
+        }
+      ]
+    },
+    {
+      "baseline_comparison": {
+        "final_ceiling_hit_delta": 5,
+        "metric_mean_delta": 99.0,
+        "time_to_ceiling_delta": null
+      },
+      "baseline_improved_by_best_main": true,
+      "best_baseline_variant": {
+        "complete": true,
+        "eligible_main": false,
+        "ever_ceiling_final_miss_count": 0,
+        "ever_ceiling_hits": 0,
+        "expected_seed_count": 5,
+        "final_ceiling_hits": 0,
+        "group": "baseline",
+        "late_flip_count_after_first_ceiling_mean": null,
+        "late_flip_rate_after_first_ceiling_mean": null,
+        "malformed_rows": [],
+        "mean_time_to_ceiling": null,
+        "metric_mean": 1.0,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 5,
+        "observed_seeds": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "reasons": [
+          "not in main claim group"
+        ],
+        "status": "diagnostic_only",
+        "std_time_to_ceiling": null,
+        "terminal_window_ceiling_rate_mean": 0.0,
+        "terminal_window_mean_ceiling_metric_mean": 0.01,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "neural_threshold_target_lattice_output_average"
+      },
+      "best_main_variant": {
+        "complete": true,
+        "eligible_main": true,
+        "ever_ceiling_final_miss_count": 0,
+        "ever_ceiling_hits": 5,
+        "expected_seed_count": 5,
+        "final_ceiling_hits": 5,
+        "group": "directional_threshold_target_wavefront",
+        "late_flip_count_after_first_ceiling_mean": 3.0,
+        "late_flip_rate_after_first_ceiling_mean": 0.0011111111111111111,
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 23.0,
+        "metric_mean": 100.0,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 5,
+        "observed_seeds": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "reasons": [],
+        "status": "pass",
+        "std_time_to_ceiling": 0.0,
+        "terminal_window_ceiling_rate_mean": 1.0,
+        "terminal_window_mean_ceiling_metric_mean": 1.0,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "neural_threshold_target_lattice_max_wavefront_anchor"
+      },
+      "case": "toy5_threshold_target_lattice_wavefront_spread",
+      "criteria": {
+        "final_ceiling_min_hits": 5,
+        "mean_time_to_ceiling_lt": 30.0
+      },
+      "passed": true,
+      "status": "pass",
+      "toy": "toy5",
+      "variants": [
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 0,
+          "expected_seed_count": 5,
+          "final_ceiling_hits": 0,
+          "group": "baseline",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": null,
+          "metric_mean": 1.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 5,
+          "observed_seeds": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": null,
+          "terminal_window_ceiling_rate_mean": 0.0,
+          "terminal_window_mean_ceiling_metric_mean": 0.01,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "neural_threshold_target_lattice_output_average"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 0,
+          "expected_seed_count": 5,
+          "final_ceiling_hits": 0,
+          "group": "diagnostic",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": null,
+          "metric_mean": 65.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 5,
+          "observed_seeds": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": null,
+          "terminal_window_ceiling_rate_mean": 0.0,
+          "terminal_window_mean_ceiling_metric_mean": 0.626,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "neural_threshold_target_lattice_mean_exposure_anchor"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 5,
+          "expected_seed_count": 5,
+          "final_ceiling_hits": 5,
+          "group": "directional_threshold_target_wavefront",
+          "late_flip_count_after_first_ceiling_mean": 3.0,
+          "late_flip_rate_after_first_ceiling_mean": 0.0011111111111111111,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 23.0,
+          "metric_mean": 100.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 5,
+          "observed_seeds": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "reasons": [],
+          "status": "pass",
+          "std_time_to_ceiling": 0.0,
+          "terminal_window_ceiling_rate_mean": 1.0,
+          "terminal_window_mean_ceiling_metric_mean": 1.0,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "neural_threshold_target_lattice_max_wavefront_anchor"
+        }
+      ]
+    }
+  ],
+  "input_validation": {
+    "duplicate_rows": [],
+    "malformed_rows": [],
+    "missing_required_columns": [],
+    "missing_runs": [],
+    "required_columns": [
+      "label",
+      "case",
+      "toy",
+      "variant",
+      "group",
+      "seed",
+      "primary_metric",
+      "metric_value",
+      "direction",
+      "final_within_ceiling",
+      "time_to_ceiling"
+    ],
+    "status": "valid",
+    "unknown_rows": []
+  },
+  "label": "toy5_neural_threshold_target_lattice_wavefront_quick",
+  "main_group": "directional_threshold_target_wavefront",
+  "passed": true,
+  "require_without_teacher_bootstrap_replay": true,
+  "runs_path": "experiments/results/nabm_effect_matrix/toy5_neural_threshold_target_lattice_wavefront_quick_runs.csv",
+  "status": "pass"
+}

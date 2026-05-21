@@ -1,0 +1,4 @@
+# Generated experiment artifacts preserve tool-emitted line endings and spacing.
+experiments/results/** -whitespace linguist-generated=true
+experiments/configs/generated/** -whitespace linguist-generated=true
+experiments/evidence/results/** -whitespace linguist-generated=true

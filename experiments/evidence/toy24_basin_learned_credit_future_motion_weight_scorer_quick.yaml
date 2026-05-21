@@ -1,0 +1,175 @@
+label: toy24_basin_learned_credit_future_motion_weight_scorer_quick
+seeds: [1, 2, 3]
+epochs: 50
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+success_criteria:
+  main_group: nabm
+  require_without_teacher_bootstrap_replay: true
+  cases:
+    toy2_basin_learned_credit_future_motion_weight_scorer:
+      final_ceiling_min_hits: 3
+      mean_time_to_ceiling_lt: 10
+    toy4_basin_learned_credit_future_motion_weight_scorer:
+      final_ceiling_min_hits: 2
+      mean_time_to_ceiling_lt: 12
+
+toy2_neural_objective: &toy2_neural_objective
+  model.policy.rule: neural_policy
+  model.policy.neural_update_backend: loop
+  model.policy.domain.local_update_rule: counterfactual_advantage
+  model.policy.domain.objective.profile: linear_welfare_heavy
+  model.policy.domain.objective.clip_abs: null
+  model.coordination.mixer: output_average
+  model.coordination.peer_rule: output_similarity
+  model.coordination.alpha: 0.25
+  model.coordination.threshold: 0.0
+toy2_objective_basin_escalation: &toy2_objective_basin_escalation
+  <<: *toy2_neural_objective
+  model.policy.domain.basin_credit.enabled: true
+  model.policy.domain.basin_credit.critic: prototype_phase
+  model.policy.domain.basin_credit.credit_method: one_step_ablation
+  model.policy.domain.basin_credit.objective_weight: 0.5
+  model.policy.domain.basin_credit.individual_weight: 0.0
+  model.policy.domain.basin_credit.local_social_weight: 0.0
+  model.policy.domain.basin_credit.basin_weight: 0.5
+  model.policy.domain.basin_credit.horizon: 1
+  model.policy.domain.basin_credit.target_basin: ceiling
+  model.policy.domain.basin_credit.training_scope: all
+  model.policy.domain.basin_credit.training_passes: 3
+  model.policy.domain.basin_credit.training_pass_schedule: credit_signal_escalation
+  model.policy.domain.basin_credit.min_training_passes: 2
+  model.policy.domain.basin_credit.training_pass_credit_positive_threshold: 0.6
+  model.policy.domain.basin_credit.training_pass_credit_delta_threshold: 0.0
+toy2_learned_candidate_context: &toy2_learned_candidate_context
+  <<: *toy2_objective_basin_escalation
+  model.policy.domain.basin_credit.learned_credit_enabled: true
+  model.policy.domain.basin_credit.learned_credit_model_path: experiments/results/basin_critic/toy24_basin_phase_critic_candidate_context_quick/toy24_basin_phase_critic_candidate_context_quick_toy2_basin_phase_critic_candidate_context_model.npz
+  model.policy.domain.basin_credit.learned_credit_abstention_margin_threshold: 0.005
+  model.policy.domain.basin_credit.learned_credit_uncertainty_threshold: 0.05
+  model.policy.domain.basin_credit.learned_credit_fallback: prototype
+toy2_learned_weight_scorer: &toy2_learned_weight_scorer
+  <<: *toy2_learned_candidate_context
+  model.policy.domain.basin_credit.learned_credit_replay_mode: learned_weight
+  model.policy.domain.basin_credit.learned_credit_replay_weight_model_path: experiments/results/basin_critic/toy24_basin_replay_weight_scorer_q99_quick/toy24_basin_replay_weight_scorer_q99_quick_toy2_basin_replay_weight_scorer_model.npz
+toy2_future_motion_weight_scorer: &toy2_future_motion_weight_scorer
+  <<: *toy2_learned_candidate_context
+  model.policy.domain.basin_credit.learned_credit_replay_mode: learned_weight
+  model.policy.domain.basin_credit.learned_credit_replay_weight_model_path: experiments/results/basin_critic/toy24_basin_replay_weight_scorer_future_motion_h5_q90_quick/toy24_basin_replay_weight_scorer_future_motion_h5_q90_quick_toy2_basin_replay_weight_scorer_model.npz
+
+toy4_neural_objective: &toy4_neural_objective
+  model.policy.rule: neural_policy
+  model.policy.neural_update_backend: loop
+  model.policy.domain.objective.profile: linear_welfare_heavy
+  model.policy.domain.objective.clip_abs: null
+  model.coordination.mixer: output_average
+  model.coordination.peer_rule: output_similarity
+  model.coordination.alpha: 0.25
+  model.coordination.threshold: 0.0
+  domain.environment.resource_enabled: false
+toy4_objective_basin_escalation: &toy4_objective_basin_escalation
+  <<: *toy4_neural_objective
+  model.policy.domain.basin_credit.enabled: true
+  model.policy.domain.basin_credit.critic: prototype_phase
+  model.policy.domain.basin_credit.credit_method: one_step_ablation
+  model.policy.domain.basin_credit.objective_weight: 0.5
+  model.policy.domain.basin_credit.individual_weight: 0.0
+  model.policy.domain.basin_credit.local_social_weight: 0.0
+  model.policy.domain.basin_credit.basin_weight: 0.5
+  model.policy.domain.basin_credit.horizon: 1
+  model.policy.domain.basin_credit.target_basin: ceiling
+  model.policy.domain.basin_credit.training_scope: all
+  model.policy.domain.basin_credit.training_passes: 3
+  model.policy.domain.basin_credit.training_pass_schedule: credit_signal_escalation
+  model.policy.domain.basin_credit.min_training_passes: 2
+  model.policy.domain.basin_credit.training_pass_credit_positive_threshold: 0.6
+  model.policy.domain.basin_credit.training_pass_credit_delta_threshold: 0.0
+toy4_learned_candidate_context: &toy4_learned_candidate_context
+  <<: *toy4_objective_basin_escalation
+  model.policy.domain.basin_credit.learned_credit_enabled: true
+  model.policy.domain.basin_credit.learned_credit_model_path: experiments/results/basin_critic/toy24_basin_phase_critic_candidate_context_quick/toy24_basin_phase_critic_candidate_context_quick_toy4_basin_phase_critic_candidate_context_model.npz
+  model.policy.domain.basin_credit.learned_credit_abstention_margin_threshold: 0.005
+  model.policy.domain.basin_credit.learned_credit_uncertainty_threshold: 0.05
+  model.policy.domain.basin_credit.learned_credit_fallback: prototype
+toy4_learned_weight_scorer: &toy4_learned_weight_scorer
+  <<: *toy4_learned_candidate_context
+  model.policy.domain.basin_credit.learned_credit_replay_mode: learned_weight
+  model.policy.domain.basin_credit.learned_credit_replay_weight_model_path: experiments/results/basin_critic/toy24_basin_replay_weight_scorer_q99_quick/toy24_basin_replay_weight_scorer_q99_quick_toy4_basin_replay_weight_scorer_model.npz
+toy4_future_motion_weight_scorer: &toy4_future_motion_weight_scorer
+  <<: *toy4_learned_candidate_context
+  model.policy.domain.basin_credit.learned_credit_replay_mode: learned_weight
+  model.policy.domain.basin_credit.learned_credit_replay_weight_model_path: experiments/results/basin_critic/toy24_basin_replay_weight_scorer_future_motion_h5_q90_quick/toy24_basin_replay_weight_scorer_future_motion_h5_q90_quick_toy4_basin_replay_weight_scorer_model.npz
+
+soft_attention_min50: &soft_attention_min50
+  model.policy.domain.basin_credit.learned_credit_replay_selection: confident_agreement
+  model.policy.domain.basin_credit.learned_credit_replay_mode: soft_attention
+  model.policy.domain.basin_credit.learned_credit_replay_soft_min_weight: 0.50
+  model.policy.domain.basin_credit.learned_credit_replay_soft_disagreement_weight: 0.25
+
+cases:
+  - toy: toy2
+    name: toy2_basin_learned_credit_future_motion_weight_scorer
+    base_config: experiments/configs/toy2_spatial_pd_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    ceiling_metric: mean_payoff
+    ceiling_value: 3.0
+    ceiling_tolerance: 0.001
+    variants:
+      - name: linear_welfare_heavy
+        group: baseline
+        updates:
+          <<: *toy2_neural_objective
+      - name: mixed_objective_basin_escalate_credit_p3_min2_h1_prototype
+        group: diagnostic
+        updates:
+          <<: *toy2_objective_basin_escalation
+      - name: learned_candidate_context_all_replay
+        group: diagnostic
+        updates:
+          <<: *toy2_learned_candidate_context
+      - name: learned_candidate_context_confident_agreement_soft_min50_replay
+        group: diagnostic
+        updates:
+          <<: [*toy2_learned_candidate_context, *soft_attention_min50]
+      - name: learned_candidate_context_weight_scorer_replay
+        group: diagnostic
+        updates:
+          <<: *toy2_learned_weight_scorer
+      - name: learned_candidate_context_future_motion_weight_scorer_replay
+        group: nabm
+        updates:
+          <<: *toy2_future_motion_weight_scorer
+  - toy: toy4
+    name: toy4_basin_learned_credit_future_motion_weight_scorer
+    base_config: experiments/configs/toy4_public_goods_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    ceiling_metric: mean_payoff
+    ceiling_value: 0.6
+    ceiling_tolerance: 0.005
+    variants:
+      - name: linear_welfare_heavy
+        group: baseline
+        updates:
+          <<: *toy4_neural_objective
+      - name: mixed_objective_basin_escalate_credit_p3_min2_h1_prototype
+        group: diagnostic
+        updates:
+          <<: *toy4_objective_basin_escalation
+      - name: learned_candidate_context_all_replay
+        group: diagnostic
+        updates:
+          <<: *toy4_learned_candidate_context
+      - name: learned_candidate_context_confident_agreement_soft_min50_replay
+        group: diagnostic
+        updates:
+          <<: [*toy4_learned_candidate_context, *soft_attention_min50]
+      - name: learned_candidate_context_weight_scorer_replay
+        group: diagnostic
+        updates:
+          <<: *toy4_learned_weight_scorer
+      - name: learned_candidate_context_future_motion_weight_scorer_replay
+        group: nabm
+        updates:
+          <<: *toy4_future_motion_weight_scorer

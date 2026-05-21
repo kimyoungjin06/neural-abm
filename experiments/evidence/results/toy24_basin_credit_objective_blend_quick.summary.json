@@ -1,0 +1,1051 @@
+{
+  "cases": [
+    {
+      "baseline_comparison": {
+        "final_ceiling_hit_delta": 0,
+        "metric_mean_delta": 0.0,
+        "time_to_ceiling_delta": -9.333333333333334
+      },
+      "baseline_improved_by_best_main": false,
+      "best_baseline_variant": {
+        "complete": true,
+        "eligible_main": false,
+        "ever_ceiling_final_miss_count": 0,
+        "ever_ceiling_hits": 3,
+        "expected_seed_count": 3,
+        "final_ceiling_hits": 3,
+        "group": "baseline",
+        "late_flip_count_after_first_ceiling_mean": null,
+        "late_flip_rate_after_first_ceiling_mean": null,
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 2.6666666666666665,
+        "metric_mean": 3.0,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 3,
+        "observed_seeds": [
+          1,
+          2,
+          3
+        ],
+        "reasons": [
+          "not in main claim group"
+        ],
+        "status": "diagnostic_only",
+        "std_time_to_ceiling": 0.5773502691896258,
+        "terminal_window_ceiling_rate_mean": null,
+        "terminal_window_mean_ceiling_metric_mean": null,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "reputation_imitation"
+      },
+      "best_main_variant": {
+        "complete": true,
+        "eligible_main": true,
+        "ever_ceiling_final_miss_count": 0,
+        "ever_ceiling_hits": 3,
+        "expected_seed_count": 3,
+        "final_ceiling_hits": 3,
+        "group": "nabm",
+        "late_flip_count_after_first_ceiling_mean": null,
+        "late_flip_rate_after_first_ceiling_mean": null,
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 12.0,
+        "metric_mean": 3.0,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 3,
+        "observed_seeds": [
+          1,
+          2,
+          3
+        ],
+        "reasons": [
+          "mean time-to-ceiling 12 >= 10"
+        ],
+        "status": "fail",
+        "std_time_to_ceiling": 1.7320508075688772,
+        "terminal_window_ceiling_rate_mean": null,
+        "terminal_window_mean_ceiling_metric_mean": null,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "mixed_objective_basin_confidence_precommitment_social_w0p5_0p5_h1"
+      },
+      "case": "toy2_basin_credit",
+      "criteria": {
+        "final_ceiling_min_hits": 3,
+        "mean_time_to_ceiling_lt": 10.0
+      },
+      "passed": false,
+      "status": "fail",
+      "toy": "toy2",
+      "variants": [
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "baseline",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 2.6666666666666665,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 0.5773502691896258,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "reputation_imitation"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "baseline",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 23.666666666666668,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 2.081665999466133,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "linear_welfare_heavy"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "diagnostic",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 22.666666666666668,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "uses teacher/bootstrap/replay path"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 3.0550504633038935,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": true,
+          "variant": "decision_bootstrap_w1p0_e5_linear_welfare"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 0,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 0,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": null,
+          "metric_mean": 2.5566666666666666,
+          "metric_std": 0.04645786621588777,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "final ceiling hits 0 < 3"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": null,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "basin_credit_w1p0_h1_prototype"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 0,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 0,
+          "group": "diagnostic",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": null,
+          "metric_mean": 1.0599999999999998,
+          "metric_std": 0.07937253933193766,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": null,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_individual_basin_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 22.666666666666668,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 22.6667 >= 10"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 3.0550504633038935,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 18.333333333333332,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 18.3333 >= 10"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 1.5275252316519468,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_social_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 21.333333333333332,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 21.3333 >= 10"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 4.163331998932265,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_floor0p5_social_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 18.333333333333332,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 18.3333 >= 10"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 1.5275252316519468,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_tail_floor0p5_social_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 16.0,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 16 >= 10"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 1.0,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_commitment_social_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 12.0,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 12 >= 10"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 1.7320508075688772,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_precommitment_social_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 12.0,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 12 >= 10"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 1.7320508075688772,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_precommitment_feedback_social_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 12.0,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 12 >= 10"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 1.7320508075688772,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_precommitment_social_feedback_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 18.333333333333332,
+          "metric_mean": 3.0,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 18.3333 >= 10"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 1.5275252316519468,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_directional_social_w0p5_0p5_h1"
+        }
+      ]
+    },
+    {
+      "baseline_comparison": {
+        "final_ceiling_hit_delta": 0,
+        "metric_mean_delta": 0.0,
+        "time_to_ceiling_delta": -8.333333333333334
+      },
+      "baseline_improved_by_best_main": false,
+      "best_baseline_variant": {
+        "complete": true,
+        "eligible_main": false,
+        "ever_ceiling_final_miss_count": 0,
+        "ever_ceiling_hits": 3,
+        "expected_seed_count": 3,
+        "final_ceiling_hits": 3,
+        "group": "baseline",
+        "late_flip_count_after_first_ceiling_mean": null,
+        "late_flip_rate_after_first_ceiling_mean": null,
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 2.6666666666666665,
+        "metric_mean": 0.6,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 3,
+        "observed_seeds": [
+          1,
+          2,
+          3
+        ],
+        "reasons": [
+          "not in main claim group"
+        ],
+        "status": "diagnostic_only",
+        "std_time_to_ceiling": 0.5773502691896258,
+        "terminal_window_ceiling_rate_mean": null,
+        "terminal_window_mean_ceiling_metric_mean": null,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "reputation_imitation"
+      },
+      "best_main_variant": {
+        "complete": true,
+        "eligible_main": true,
+        "ever_ceiling_final_miss_count": 0,
+        "ever_ceiling_hits": 3,
+        "expected_seed_count": 3,
+        "final_ceiling_hits": 3,
+        "group": "nabm",
+        "late_flip_count_after_first_ceiling_mean": null,
+        "late_flip_rate_after_first_ceiling_mean": null,
+        "malformed_rows": [],
+        "mean_time_to_ceiling": 11.0,
+        "metric_mean": 0.6,
+        "metric_std": 0.0,
+        "missing_seeds": [],
+        "observed_seed_count": 3,
+        "observed_seeds": [
+          1,
+          2,
+          3
+        ],
+        "reasons": [],
+        "status": "pass",
+        "std_time_to_ceiling": 1.0,
+        "terminal_window_ceiling_rate_mean": null,
+        "terminal_window_mean_ceiling_metric_mean": null,
+        "uses_teacher_bootstrap_replay": false,
+        "variant": "mixed_objective_basin_confidence_precommitment_social_feedback_w0p5_0p5_h1"
+      },
+      "case": "toy4_basin_credit",
+      "criteria": {
+        "final_ceiling_min_hits": 2,
+        "mean_time_to_ceiling_lt": 12.0
+      },
+      "passed": true,
+      "status": "pass",
+      "toy": "toy4",
+      "variants": [
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "baseline",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 2.6666666666666665,
+          "metric_mean": 0.6,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 0.5773502691896258,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "reputation_imitation"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 1,
+          "group": "baseline",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 21.0,
+          "metric_mean": 0.596,
+          "metric_std": 0.003464101615137758,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 2.0,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "linear_welfare_heavy"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 1,
+          "group": "diagnostic",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 19.666666666666668,
+          "metric_mean": 0.596,
+          "metric_std": 0.003464101615137758,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "uses teacher/bootstrap/replay path"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": 1.1547005383792515,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": true,
+          "variant": "decision_bootstrap_w1p0_e5_linear_welfare"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 0,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 0,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": null,
+          "metric_mean": 0.3140000000000001,
+          "metric_std": 0.07453858061433695,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "final ceiling hits 0 < 2"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": null,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "basin_credit_w1p0_h1_prototype"
+        },
+        {
+          "complete": true,
+          "eligible_main": false,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 0,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 0,
+          "group": "diagnostic",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": null,
+          "metric_mean": 0.004000000000000001,
+          "metric_std": 0.0069282032302755096,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "not in main claim group"
+          ],
+          "status": "diagnostic_only",
+          "std_time_to_ceiling": null,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_individual_basin_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 2,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 16.333333333333332,
+          "metric_mean": 0.598,
+          "metric_std": 0.003464101615137758,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 16.3333 >= 12"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 2.5166114784235836,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 1,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 18.0,
+          "metric_mean": 0.596,
+          "metric_std": 0.003464101615137758,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "final ceiling hits 1 < 2"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 1.7320508075688772,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_social_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 2,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 18.0,
+          "metric_mean": 0.598,
+          "metric_std": 0.003464101615137758,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 18 >= 12"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 1.7320508075688772,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_floor0p5_social_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 1,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 18.0,
+          "metric_mean": 0.596,
+          "metric_std": 0.003464101615137758,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "final ceiling hits 1 < 2"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 1.7320508075688772,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_tail_floor0p5_social_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 13.666666666666666,
+          "metric_mean": 0.6,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "mean time-to-ceiling 13.6667 >= 12"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 0.5773502691896257,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_commitment_social_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 11.333333333333334,
+          "metric_mean": 0.6,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [],
+          "status": "pass",
+          "std_time_to_ceiling": 1.1547005383792517,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_precommitment_social_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 11.333333333333334,
+          "metric_mean": 0.6,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [],
+          "status": "pass",
+          "std_time_to_ceiling": 1.1547005383792517,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_precommitment_feedback_social_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 3,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 11.0,
+          "metric_mean": 0.6,
+          "metric_std": 0.0,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [],
+          "status": "pass",
+          "std_time_to_ceiling": 1.0,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_confidence_precommitment_social_feedback_w0p5_0p5_h1"
+        },
+        {
+          "complete": true,
+          "eligible_main": true,
+          "ever_ceiling_final_miss_count": 0,
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "final_ceiling_hits": 1,
+          "group": "nabm",
+          "late_flip_count_after_first_ceiling_mean": null,
+          "late_flip_rate_after_first_ceiling_mean": null,
+          "malformed_rows": [],
+          "mean_time_to_ceiling": 18.0,
+          "metric_mean": 0.596,
+          "metric_std": 0.003464101615137758,
+          "missing_seeds": [],
+          "observed_seed_count": 3,
+          "observed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "reasons": [
+            "final ceiling hits 1 < 2"
+          ],
+          "status": "fail",
+          "std_time_to_ceiling": 1.7320508075688772,
+          "terminal_window_ceiling_rate_mean": null,
+          "terminal_window_mean_ceiling_metric_mean": null,
+          "uses_teacher_bootstrap_replay": false,
+          "variant": "mixed_objective_basin_directional_social_w0p5_0p5_h1"
+        }
+      ]
+    }
+  ],
+  "input_validation": {
+    "duplicate_rows": [],
+    "malformed_rows": [],
+    "missing_required_columns": [],
+    "missing_runs": [],
+    "required_columns": [
+      "label",
+      "case",
+      "toy",
+      "variant",
+      "group",
+      "seed",
+      "primary_metric",
+      "metric_value",
+      "direction",
+      "final_within_ceiling",
+      "time_to_ceiling"
+    ],
+    "status": "valid",
+    "unknown_rows": []
+  },
+  "label": "toy24_basin_credit_objective_blend_quick",
+  "main_group": "nabm",
+  "passed": false,
+  "require_without_teacher_bootstrap_replay": true,
+  "runs_path": "experiments/results/nabm_effect_matrix/toy24_basin_credit_objective_blend_quick_runs.csv",
+  "status": "fail"
+}

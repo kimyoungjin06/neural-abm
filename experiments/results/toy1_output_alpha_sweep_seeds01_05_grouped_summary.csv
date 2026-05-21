@@ -1,0 +1,5 @@
+case,mixer,peer_rule,init_mode,alpha,threshold,seeds,accuracy_mean,accuracy_std,consensus_mean,consensus_std,fragmentation_mean,fragmentation_std
+output_average_output_similarity_same_init,output_average,output_similarity,same_init,0.0,0.8,5,0.8886048004627227,0.004505283634793256,0.946703762755102,0.009518145742002318,1.0,0.0
+output_average_output_similarity_same_init,output_average,output_similarity,same_init,0.1,0.8,5,0.8903320016860962,0.0040727035336831,0.9554792729591837,0.004426095733154163,1.0,0.0
+output_average_output_similarity_same_init,output_average,output_similarity,same_init,0.25,0.8,5,0.891126399755478,0.004015648471419336,0.9593698979591837,0.0044864192289364975,1.0,0.0
+output_average_output_similarity_same_init,output_average,output_similarity,same_init,0.5,0.8,5,0.8916247999668121,0.0039587407399616645,0.9634339923469387,0.0043227775197602625,1.0,0.0

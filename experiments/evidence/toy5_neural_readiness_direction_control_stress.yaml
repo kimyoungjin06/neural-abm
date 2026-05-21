@@ -1,0 +1,90 @@
+label: toy5_neural_readiness_direction_control_stress
+seeds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+epochs: 20
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+success_criteria:
+  main_group: direction_control
+  require_without_teacher_bootstrap_replay: true
+  cases:
+    toy5_neural_readiness_direction_control_stress:
+      final_ceiling_min_hits: 10
+      mean_time_to_ceiling_lt: 1
+
+_shared_updates:
+  toy5_neural_no_seed_prior_control: &toy5_neural_no_seed_prior_control
+    model.policy.rule: neural_policy
+    model.policy.learning_enabled: false
+    model.policy.neural_update_backend: tensor_batched
+    model.policy.decision.mode: argmax
+    model.agents.init_mode: same_init
+    model.agents.policy_prior_action_probability: 0.0
+    model.coordination.mixer: output_average
+    model.coordination.peer_rule: output_similarity
+    model.coordination.alpha: 0.25
+    model.coordination.threshold: -1.0
+    domain.environment.seed_selection: first_agent
+    domain.environment.initial_action_fraction: 0.0
+    domain.environment.threshold_mode: homogeneous
+    domain.environment.homogeneous_threshold: 0.25
+  toy5_no_seed_precommitment_stress: &toy5_no_seed_precommitment_stress
+    model.coordination.precommitment_enabled: true
+    model.coordination.precommitment_min_policy_probability: 0.0
+    model.coordination.precommitment_min_evidence: 1.5
+    model.coordination.precommitment_evidence_increment: 1.0
+    model.coordination.precommitment_evidence_decay: 0.5
+    model.coordination.precommitment_requires_direction: false
+    model.coordination.precommitment_peer_evidence_enabled: true
+    model.coordination.precommitment_peer_evidence_weight: 1.0
+  toy5_local_threshold_direction: &toy5_local_threshold_direction
+    model.coordination.precommitment_requires_direction: true
+    model.coordination.precommitment_min_direction: 0.0
+    model.coordination.precommitment_direction_source: local_threshold
+  toy5_readiness_augmented_direction_w1p0: &toy5_readiness_augmented_direction_w1p0
+    model.coordination.precommitment_requires_direction: true
+    model.coordination.precommitment_min_direction: 0.0
+    model.coordination.precommitment_direction_source: readiness_augmented_threshold
+    model.coordination.precommitment_readiness_direction_weight: 1.0
+
+cases:
+  - toy: toy5
+    name: toy5_neural_readiness_direction_control_stress
+    base_config: experiments/configs/toy5_contagion_adoption_baseline.yaml
+    primary_metric: domain_non_adoption_rate
+    direction: maximize
+    baseline_group: baseline
+    nabm_group: direction_control
+    ceiling_metric: domain_non_adoption_rate
+    ceiling_value: 0.95
+    ceiling_tolerance: 0.0
+    variants:
+      - name: neural_prior_no_seed_control
+        group: baseline
+        updates:
+          <<: *toy5_neural_no_seed_prior_control
+      - name: neural_non_directional_readiness_self_excitation
+        group: diagnostic
+        updates:
+          <<:
+            [
+              *toy5_neural_no_seed_prior_control,
+              *toy5_no_seed_precommitment_stress,
+            ]
+      - name: neural_local_threshold_direction_control
+        group: diagnostic
+        updates:
+          <<:
+            [
+              *toy5_neural_no_seed_prior_control,
+              *toy5_local_threshold_direction,
+              *toy5_no_seed_precommitment_stress,
+            ]
+      - name: neural_readiness_augmented_direction_control_w1p0
+        group: direction_control
+        updates:
+          <<:
+            [
+              *toy5_neural_no_seed_prior_control,
+              *toy5_readiness_augmented_direction_w1p0,
+              *toy5_no_seed_precommitment_stress,
+            ]

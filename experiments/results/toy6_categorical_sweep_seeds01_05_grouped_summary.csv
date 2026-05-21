@@ -1,0 +1,9 @@
+label,strategy_count,initial_distribution,coordination_mixer,coordination_peer_rule,alpha,seeds,final_mean_payoff_mean,final_mean_payoff_std,final_strategy_entropy_mean,final_strategy_entropy_std,final_dominant_strategy_fraction_mean,final_fragmentation_components_mean
+toy6_categorical_sweep_seeds01_05,3,balanced,none,none,0.0,5,0.0,0.0,0.995721189638342,0.0028919387538604855,0.37,100.0
+toy6_categorical_sweep_seeds01_05,3,balanced,output_average,output_similarity,0.0,5,0.0,0.0,0.995721189638342,0.0028919387538604855,0.37,1.0
+toy6_categorical_sweep_seeds01_05,3,balanced,output_average,output_similarity,0.25,5,0.0,0.0,0.9929253903507644,0.00587378665017082,0.382,1.0
+toy6_categorical_sweep_seeds01_05,3,balanced,output_average,output_similarity,0.5,5,0.0,0.0,0.9939098072771699,0.006031292611978415,0.376,1.0
+toy6_categorical_sweep_seeds01_05,3,biased,none,none,0.0,5,0.0,0.0,0.895852786502323,0.04442815690754395,0.542,100.0
+toy6_categorical_sweep_seeds01_05,3,biased,output_average,output_similarity,0.0,5,0.0,0.0,0.895852786502323,0.04442815690754395,0.542,1.0
+toy6_categorical_sweep_seeds01_05,3,biased,output_average,output_similarity,0.25,5,0.0,0.0,0.8963913173119489,0.04715646839630238,0.534,1.0
+toy6_categorical_sweep_seeds01_05,3,biased,output_average,output_similarity,0.5,5,0.0,0.0,0.8960820190494584,0.044331154565686065,0.538,1.0

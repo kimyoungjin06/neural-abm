@@ -1,0 +1,43 @@
+run:
+  name: toy1_10_generalization_quick_smoke_toy7_resource_output_average
+  seed: 1
+  output_dir: experiments/runs
+simulation:
+  epochs: 3
+  sync_mode: synchronous
+  device: cpu
+model:
+  policy:
+    rule: adaptive_intensity
+    learning_rate: 0.2
+    revision_rate: 1.0
+    exploration_std: 0.02
+    reward_ema_decay: 0.9
+  agents:
+    count: 100
+    init_mode: independent_init
+  coordination:
+    mixer: output_average
+    peer_rule: output_similarity
+    alpha: 0.25
+    threshold: 0.0
+domain:
+  toy: toy7
+  environment:
+    resource_initial: 80.0
+    resource_carrying_capacity: 100.0
+    resource_recovery_rate: 0.05
+    extraction_scale: 8.0
+    extraction_cost: 0.35
+    initial_intensity_mean: 0.35
+    initial_intensity_std: 0.05
+  graph:
+    type: watts_strogatz
+    k: 6
+    rewire_probability: 0.1
+logging:
+  micro_state: true
+  interval: 1
+  aggregate_metrics: true
+  probe_predictions: false
+  probe_prediction_interval: 1

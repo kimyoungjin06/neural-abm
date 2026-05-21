@@ -1,0 +1,95 @@
+label: toy5_readiness_augmented_direction_frontier_quick
+seeds: [1, 2, 3]
+epochs: 30
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+success_criteria:
+  main_group: readiness_frontier
+  require_without_teacher_bootstrap_replay: true
+  cases:
+    toy5_readiness_augmented_direction_frontier:
+      final_ceiling_min_hits: 3
+      mean_time_to_ceiling_lt: 15
+
+_shared_updates:
+  toy5_neural_argmax_output_average: &toy5_neural_argmax_output_average
+    model.policy.rule: neural_policy
+    model.policy.neural_update_backend: tensor_batched
+    model.policy.decision.mode: argmax
+    model.coordination.mixer: output_average
+    model.coordination.peer_rule: output_similarity
+    model.coordination.alpha: 0.25
+    model.coordination.threshold: -1.0
+    domain.environment.seed_selection: first_agent
+    domain.environment.initial_action_fraction: 0.01
+    domain.environment.threshold_mode: homogeneous
+    domain.environment.homogeneous_threshold: 0.75
+  toy5_frontier_precommitment: &toy5_frontier_precommitment
+    model.coordination.precommitment_enabled: true
+    model.coordination.precommitment_min_policy_probability: 0.5
+    model.coordination.precommitment_min_evidence: 1.5
+    model.coordination.precommitment_evidence_increment: 1.0
+    model.coordination.precommitment_evidence_decay: 0.5
+    model.coordination.precommitment_requires_direction: false
+  toy5_readiness_propagation_w1p0: &toy5_readiness_propagation_w1p0
+    model.coordination.precommitment_peer_evidence_enabled: true
+    model.coordination.precommitment_peer_evidence_weight: 1.0
+  toy5_local_threshold_direction: &toy5_local_threshold_direction
+    model.coordination.precommitment_requires_direction: true
+    model.coordination.precommitment_min_direction: 0.0
+    model.coordination.precommitment_direction_source: local_threshold
+  toy5_readiness_augmented_direction_w1p0: &toy5_readiness_augmented_direction_w1p0
+    model.coordination.precommitment_requires_direction: true
+    model.coordination.precommitment_min_direction: 0.0
+    model.coordination.precommitment_direction_source: readiness_augmented_threshold
+    model.coordination.precommitment_readiness_direction_weight: 1.0
+
+cases:
+  - toy: toy5
+    name: toy5_readiness_augmented_direction_frontier
+    base_config: experiments/configs/toy5_contagion_adoption_baseline.yaml
+    primary_metric: domain_cascade_size
+    direction: maximize
+    baseline_group: baseline
+    nabm_group: readiness_frontier
+    ceiling_metric: action_rate
+    ceiling_value: 0.95
+    ceiling_tolerance: 0.0
+    variants:
+      - name: neural_argmax_output_average
+        group: baseline
+        updates:
+          <<: *toy5_neural_argmax_output_average
+      - name: neural_argmax_precommitment_evidence
+        group: diagnostic
+        updates:
+          <<: [*toy5_neural_argmax_output_average, *toy5_frontier_precommitment]
+      - name: neural_argmax_readiness_propagation_w1p0
+        group: diagnostic
+        updates:
+          <<:
+            [
+              *toy5_neural_argmax_output_average,
+              *toy5_frontier_precommitment,
+              *toy5_readiness_propagation_w1p0,
+            ]
+      - name: neural_argmax_local_threshold_direction_w1p0
+        group: diagnostic
+        updates:
+          <<:
+            [
+              *toy5_neural_argmax_output_average,
+              *toy5_local_threshold_direction,
+              *toy5_frontier_precommitment,
+              *toy5_readiness_propagation_w1p0,
+            ]
+      - name: neural_argmax_readiness_augmented_direction_w1p0
+        group: readiness_frontier
+        updates:
+          <<:
+            [
+              *toy5_neural_argmax_output_average,
+              *toy5_readiness_augmented_direction_w1p0,
+              *toy5_frontier_precommitment,
+              *toy5_readiness_propagation_w1p0,
+            ]

@@ -1,0 +1,4 @@
+case,mixer,peer_rule,init_mode,alpha,threshold,seeds,accuracy_mean,accuracy_std,consensus_mean,consensus_std,fragmentation_mean,fragmentation_std
+parameter_average_state_similarity_independent_init,parameter_average,state_similarity,independent_init,0.25,0.0,1,0.8979560017585755,,0.9792394770408164,,1.0,
+parameter_average_state_similarity_independent_init,parameter_average,state_similarity,independent_init,0.25,0.2,1,0.8941480028629303,,0.9596922831632653,,29.0,
+parameter_average_state_similarity_independent_init,parameter_average,state_similarity,independent_init,0.25,0.6,1,0.891972005367279,,0.9494339923469388,,50.0,

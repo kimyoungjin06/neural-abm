@@ -1,0 +1,259 @@
+label: toy5_neural_threshold_target_wavefront_stress_quick
+seeds: [1, 2, 3, 4, 5]
+epochs: 50
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+success_criteria:
+  main_group: directional_threshold_target_wavefront_stress
+  require_without_teacher_bootstrap_replay: true
+  cases:
+    toy5_threshold_target_wavefront_stress_no_seed_heterogeneous_safety:
+      final_ceiling_min_hits: 5
+      mean_time_to_ceiling_lt: 1
+    toy5_threshold_target_lattice_k4_heterogeneous_h0p85_wavefront_spread:
+      final_ceiling_min_hits: 5
+      mean_time_to_ceiling_lt: 45
+    toy5_threshold_target_lattice_k6_heterogeneous_h0p95_wavefront_spread:
+      final_ceiling_min_hits: 5
+      mean_time_to_ceiling_lt: 45
+    toy5_threshold_target_rewired_p0p10_heterogeneous_h0p95_wavefront_spread:
+      final_ceiling_min_hits: 5
+      mean_time_to_ceiling_lt: 45
+
+_shared_updates:
+  toy5_neural_threshold_target_common: &toy5_neural_threshold_target_common
+    model.policy.rule: neural_policy
+    model.policy.learning_enabled: true
+    model.policy.neural_update_backend: tensor_batched
+    model.policy.decision.mode: argmax
+    model.policy.domain.local_update_rule: threshold_target
+    model.agents.init_mode: same_init
+    model.agents.policy_prior_action_probability: 0.49
+    model.coordination.mixer: output_average
+    model.coordination.peer_rule: output_similarity
+    model.coordination.alpha: 0.25
+    model.coordination.threshold: -1.0
+    domain.environment.seed_selection: first_agent
+  toy5_no_seed_heterogeneous_safety_environment: &toy5_no_seed_heterogeneous_safety_environment
+    domain.environment.initial_action_fraction: 0.0
+    domain.environment.threshold_mode: heterogeneous
+    domain.environment.heterogeneous_threshold_low: 0.15
+    domain.environment.heterogeneous_threshold_high: 0.55
+  toy5_heterogeneous_h0p85_environment: &toy5_heterogeneous_h0p85_environment
+    domain.environment.initial_action_fraction: 0.01
+    domain.environment.threshold_mode: heterogeneous
+    domain.environment.heterogeneous_threshold_low: 0.35
+    domain.environment.heterogeneous_threshold_high: 0.85
+  toy5_heterogeneous_h0p95_environment: &toy5_heterogeneous_h0p95_environment
+    domain.environment.initial_action_fraction: 0.01
+    domain.environment.threshold_mode: heterogeneous
+    domain.environment.heterogeneous_threshold_low: 0.45
+    domain.environment.heterogeneous_threshold_high: 0.95
+  toy5_no_seed_precommitment_stress: &toy5_no_seed_precommitment_stress
+    model.coordination.precommitment_enabled: true
+    model.coordination.precommitment_min_policy_probability: 0.0
+    model.coordination.precommitment_min_evidence: 1.5
+    model.coordination.precommitment_evidence_increment: 1.0
+    model.coordination.precommitment_evidence_decay: 0.5
+    model.coordination.precommitment_requires_direction: false
+    model.coordination.precommitment_peer_evidence_enabled: true
+    model.coordination.precommitment_peer_evidence_weight: 1.0
+  toy5_wavefront_precommitment: &toy5_wavefront_precommitment
+    model.coordination.precommitment_enabled: true
+    model.coordination.precommitment_min_policy_probability: 0.5
+    model.coordination.precommitment_min_evidence: 1.5
+    model.coordination.precommitment_evidence_increment: 1.0
+    model.coordination.precommitment_evidence_decay: 0.5
+    model.coordination.precommitment_requires_direction: true
+    model.coordination.precommitment_min_direction: 0.0
+    model.coordination.precommitment_direction_source: readiness_exposure_with_action_anchor
+    model.coordination.precommitment_readiness_direction_weight: 2.0
+    model.coordination.precommitment_peer_evidence_enabled: true
+    model.coordination.precommitment_peer_evidence_weight: 1.0
+  toy5_exposure_direction_w2p0: &toy5_exposure_direction_w2p0
+    model.coordination.precommitment_requires_direction: true
+    model.coordination.precommitment_min_direction: 0.0
+    model.coordination.precommitment_direction_source: readiness_exposure_with_action_anchor
+    model.coordination.precommitment_readiness_direction_weight: 2.0
+  toy5_mean_readiness_aggregation: &toy5_mean_readiness_aggregation
+    model.coordination.precommitment_peer_readiness_aggregation: mean
+  toy5_max_readiness_aggregation: &toy5_max_readiness_aggregation
+    model.coordination.precommitment_peer_readiness_aggregation: max
+
+cases:
+  - toy: toy5
+    name: toy5_threshold_target_wavefront_stress_no_seed_heterogeneous_safety
+    base_config: experiments/configs/toy5_contagion_adoption_baseline.yaml
+    primary_metric: domain_non_adoption_rate
+    direction: maximize
+    baseline_group: baseline
+    nabm_group: directional_threshold_target_wavefront_stress
+    epochs: 20
+    ceiling_metric: domain_non_adoption_rate
+    ceiling_value: 0.95
+    ceiling_tolerance: 0.0
+    variants:
+      - name: neural_threshold_target_stress_no_seed_heterogeneous_output_average
+        group: baseline
+        updates:
+          <<:
+            [
+              *toy5_neural_threshold_target_common,
+              *toy5_no_seed_heterogeneous_safety_environment,
+            ]
+      - name: neural_threshold_target_stress_no_seed_heterogeneous_non_directional
+        group: diagnostic
+        updates:
+          <<:
+            [
+              *toy5_neural_threshold_target_common,
+              *toy5_no_seed_heterogeneous_safety_environment,
+              *toy5_no_seed_precommitment_stress,
+              *toy5_max_readiness_aggregation,
+            ]
+      - name: neural_threshold_target_stress_no_seed_heterogeneous_exposure_anchor
+        group: directional_threshold_target_wavefront_stress
+        updates:
+          <<:
+            [
+              *toy5_neural_threshold_target_common,
+              *toy5_no_seed_heterogeneous_safety_environment,
+              *toy5_exposure_direction_w2p0,
+              *toy5_no_seed_precommitment_stress,
+              *toy5_max_readiness_aggregation,
+            ]
+  - toy: toy5
+    name: toy5_threshold_target_lattice_k4_heterogeneous_h0p85_wavefront_spread
+    base_config: experiments/configs/toy5_contagion_adoption_baseline.yaml
+    primary_metric: domain_cascade_size
+    direction: maximize
+    baseline_group: baseline
+    nabm_group: directional_threshold_target_wavefront_stress
+    ceiling_metric: action_rate
+    ceiling_value: 0.95
+    ceiling_tolerance: 0.0
+    variants:
+      - name: neural_threshold_target_lattice_k4_heterogeneous_h0p85_output_average
+        group: baseline
+        updates:
+          <<:
+            [
+              *toy5_neural_threshold_target_common,
+              *toy5_heterogeneous_h0p85_environment,
+            ]
+          domain.graph.k: 4
+          domain.graph.rewire_probability: 0.0
+      - name: neural_threshold_target_lattice_k4_heterogeneous_h0p85_mean_exposure_anchor
+        group: diagnostic
+        updates:
+          <<:
+            [
+              *toy5_neural_threshold_target_common,
+              *toy5_heterogeneous_h0p85_environment,
+              *toy5_wavefront_precommitment,
+              *toy5_mean_readiness_aggregation,
+            ]
+          domain.graph.k: 4
+          domain.graph.rewire_probability: 0.0
+      - name: neural_threshold_target_lattice_k4_heterogeneous_h0p85_max_wavefront_anchor
+        group: directional_threshold_target_wavefront_stress
+        updates:
+          <<:
+            [
+              *toy5_neural_threshold_target_common,
+              *toy5_heterogeneous_h0p85_environment,
+              *toy5_wavefront_precommitment,
+              *toy5_max_readiness_aggregation,
+            ]
+          domain.graph.k: 4
+          domain.graph.rewire_probability: 0.0
+  - toy: toy5
+    name: toy5_threshold_target_lattice_k6_heterogeneous_h0p95_wavefront_spread
+    base_config: experiments/configs/toy5_contagion_adoption_baseline.yaml
+    primary_metric: domain_cascade_size
+    direction: maximize
+    baseline_group: baseline
+    nabm_group: directional_threshold_target_wavefront_stress
+    ceiling_metric: action_rate
+    ceiling_value: 0.95
+    ceiling_tolerance: 0.0
+    variants:
+      - name: neural_threshold_target_lattice_k6_heterogeneous_h0p95_output_average
+        group: baseline
+        updates:
+          <<:
+            [
+              *toy5_neural_threshold_target_common,
+              *toy5_heterogeneous_h0p95_environment,
+            ]
+          domain.graph.k: 6
+          domain.graph.rewire_probability: 0.0
+      - name: neural_threshold_target_lattice_k6_heterogeneous_h0p95_mean_exposure_anchor
+        group: diagnostic
+        updates:
+          <<:
+            [
+              *toy5_neural_threshold_target_common,
+              *toy5_heterogeneous_h0p95_environment,
+              *toy5_wavefront_precommitment,
+              *toy5_mean_readiness_aggregation,
+            ]
+          domain.graph.k: 6
+          domain.graph.rewire_probability: 0.0
+      - name: neural_threshold_target_lattice_k6_heterogeneous_h0p95_max_wavefront_anchor
+        group: directional_threshold_target_wavefront_stress
+        updates:
+          <<:
+            [
+              *toy5_neural_threshold_target_common,
+              *toy5_heterogeneous_h0p95_environment,
+              *toy5_wavefront_precommitment,
+              *toy5_max_readiness_aggregation,
+            ]
+          domain.graph.k: 6
+          domain.graph.rewire_probability: 0.0
+  - toy: toy5
+    name: toy5_threshold_target_rewired_p0p10_heterogeneous_h0p95_wavefront_spread
+    base_config: experiments/configs/toy5_contagion_adoption_baseline.yaml
+    primary_metric: domain_cascade_size
+    direction: maximize
+    baseline_group: baseline
+    nabm_group: directional_threshold_target_wavefront_stress
+    ceiling_metric: action_rate
+    ceiling_value: 0.95
+    ceiling_tolerance: 0.0
+    variants:
+      - name: neural_threshold_target_rewired_p0p10_heterogeneous_h0p95_output_average
+        group: baseline
+        updates:
+          <<:
+            [
+              *toy5_neural_threshold_target_common,
+              *toy5_heterogeneous_h0p95_environment,
+            ]
+          domain.graph.k: 6
+          domain.graph.rewire_probability: 0.1
+      - name: neural_threshold_target_rewired_p0p10_heterogeneous_h0p95_mean_exposure_anchor
+        group: diagnostic
+        updates:
+          <<:
+            [
+              *toy5_neural_threshold_target_common,
+              *toy5_heterogeneous_h0p95_environment,
+              *toy5_wavefront_precommitment,
+              *toy5_mean_readiness_aggregation,
+            ]
+          domain.graph.k: 6
+          domain.graph.rewire_probability: 0.1
+      - name: neural_threshold_target_rewired_p0p10_heterogeneous_h0p95_max_wavefront_anchor
+        group: directional_threshold_target_wavefront_stress
+        updates:
+          <<:
+            [
+              *toy5_neural_threshold_target_common,
+              *toy5_heterogeneous_h0p95_environment,
+              *toy5_wavefront_precommitment,
+              *toy5_max_readiness_aggregation,
+            ]
+          domain.graph.k: 6
+          domain.graph.rewire_probability: 0.1

@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Raw experiment outputs are reproducible from configs and can become large.
+experiments/runs/*
+!experiments/runs/README.md
+
+# Keep curated results and configs trackable.
+!experiments/results/
+!experiments/configs/

@@ -1,0 +1,446 @@
+{
+  "cases": [
+    {
+      "baseline_group": "baseline",
+      "best_baseline_variant": "reputation_imitation_resource_p0p35",
+      "best_main_variant": "revision_precommitment_peer_evidence_resource_threshold_local_envw2p0",
+      "case": "toy4_resource_threshold_probe",
+      "issue_codes": [],
+      "main_group": "resource_threshold_probe",
+      "nabm_group": "resource_threshold_probe",
+      "notes": [
+        "toy24_basin_credit_evidence",
+        "toy24_objective_basin_blend",
+        "toy24_revision_operator_path",
+        "toy24_main_candidate_ceiling_miss"
+      ],
+      "primary_metric": "final_mean_payoff",
+      "status": "pass",
+      "toy": "toy4",
+      "variants": [
+        {
+          "details": {
+            "ceiling_gap_mean": 0.0,
+            "ever_ceiling_final_miss_rate": 0.0,
+            "late_flip_count_after_first_ceiling_mean": 0.0,
+            "policy_rule": "reputation_imitation",
+            "terminal_window_mean_ceiling_metric_mean": 0.6
+          },
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "failed_seeds": [],
+          "final_ceiling_hits": 3,
+          "group": "baseline",
+          "issue_codes": [],
+          "late_flip_rate": {
+            "maximum": 0.0,
+            "mean": 0.0,
+            "minimum": 0.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "metric": {
+            "maximum": 0.6,
+            "mean": 0.6,
+            "minimum": 0.6,
+            "n": 3,
+            "std": 0.0
+          },
+          "missing_seeds": [],
+          "notes": [],
+          "observed_seed_count": 3,
+          "role": "baseline",
+          "status": "diagnostic_only",
+          "terminal_ceiling_rate": {
+            "maximum": 1.0,
+            "mean": 1.0,
+            "minimum": 1.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "time_to_ceiling": {
+            "maximum": 15.0,
+            "mean": 15.0,
+            "minimum": 15.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "variant": "reputation_imitation_resource_p0p35"
+        },
+        {
+          "details": {
+            "basin_credit_enabled": true,
+            "basin_credit_method": "one_step_ablation",
+            "basin_critic": "prototype_phase",
+            "basin_horizon": 1,
+            "basin_individual_weight": 0.0,
+            "basin_local_social_weight": 0.0,
+            "basin_objective_weight": 0.5,
+            "basin_target": "ceiling",
+            "basin_weight": 0.5,
+            "ceiling_gap_mean": 0.9199477333333336,
+            "ever_ceiling_final_miss_rate": 0.0,
+            "objective_profile": "custom",
+            "policy_rule": "neural_policy",
+            "precommitment_enabled": true,
+            "precommitment_peer_evidence_enabled": true,
+            "precommitment_peer_evidence_weight": 1.0,
+            "revision_operator_enabled": true,
+            "revision_operator_source": "policy_probability",
+            "terminal_window_mean_ceiling_metric_mean": -0.33018965333333344
+          },
+          "ever_ceiling_hits": 0,
+          "expected_seed_count": 3,
+          "failed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "final_ceiling_hits": 0,
+          "group": "diagnostic",
+          "issue_codes": [
+            "seed_level_final_miss"
+          ],
+          "late_flip_rate": {
+            "maximum": null,
+            "mean": null,
+            "minimum": null,
+            "n": 0,
+            "std": null
+          },
+          "metric": {
+            "maximum": -0.3091199999999999,
+            "mean": -0.31994773333333343,
+            "minimum": -0.33827200000000024,
+            "n": 3,
+            "std": 0.0159564496368502
+          },
+          "missing_seeds": [],
+          "notes": [],
+          "observed_seed_count": 3,
+          "role": "diagnostic",
+          "status": "diagnostic_only",
+          "terminal_ceiling_rate": {
+            "maximum": 0.0,
+            "mean": 0.0,
+            "minimum": 0.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "time_to_ceiling": {
+            "maximum": null,
+            "mean": null,
+            "minimum": null,
+            "n": 0,
+            "std": null
+          },
+          "variant": "revision_precommitment_peer_evidence_resource_pressure_envw2p0"
+        },
+        {
+          "details": {
+            "basin_credit_enabled": true,
+            "basin_credit_method": "one_step_ablation",
+            "basin_critic": "prototype_phase",
+            "basin_horizon": 1,
+            "basin_individual_weight": 0.0,
+            "basin_local_social_weight": 0.0,
+            "basin_objective_weight": 0.5,
+            "basin_target": "ceiling",
+            "basin_weight": 0.5,
+            "ceiling_gap_mean": 0.6033333333333334,
+            "ever_ceiling_final_miss_rate": 0.0,
+            "objective_profile": "custom",
+            "policy_rule": "neural_policy",
+            "precommitment_enabled": true,
+            "precommitment_peer_evidence_enabled": true,
+            "precommitment_peer_evidence_weight": 1.0,
+            "revision_operator_enabled": true,
+            "revision_operator_source": "policy_probability",
+            "terminal_window_mean_ceiling_metric_mean": -0.002
+          },
+          "ever_ceiling_hits": 0,
+          "expected_seed_count": 3,
+          "failed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "final_ceiling_hits": 0,
+          "group": "diagnostic",
+          "issue_codes": [
+            "seed_level_final_miss"
+          ],
+          "late_flip_rate": {
+            "maximum": null,
+            "mean": null,
+            "minimum": null,
+            "n": 0,
+            "std": null
+          },
+          "metric": {
+            "maximum": 0.0,
+            "mean": -0.0033333333333333335,
+            "minimum": -0.01,
+            "n": 3,
+            "std": 0.005773502691896258
+          },
+          "missing_seeds": [],
+          "notes": [],
+          "observed_seed_count": 3,
+          "role": "diagnostic",
+          "status": "diagnostic_only",
+          "terminal_ceiling_rate": {
+            "maximum": 0.0,
+            "mean": 0.0,
+            "minimum": 0.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "time_to_ceiling": {
+            "maximum": null,
+            "mean": null,
+            "minimum": null,
+            "n": 0,
+            "std": null
+          },
+          "variant": "revision_precommitment_peer_evidence_resource_lookahead_envw10p0"
+        },
+        {
+          "details": {
+            "basin_credit_enabled": true,
+            "basin_credit_method": "one_step_ablation",
+            "basin_critic": "prototype_phase",
+            "basin_horizon": 1,
+            "basin_individual_weight": 0.0,
+            "basin_local_social_weight": 0.0,
+            "basin_objective_weight": 0.5,
+            "basin_target": "ceiling",
+            "basin_weight": 0.5,
+            "ceiling_gap_mean": 0.6033333333333334,
+            "ever_ceiling_final_miss_rate": 0.0,
+            "objective_profile": "custom",
+            "policy_rule": "neural_policy",
+            "precommitment_enabled": true,
+            "precommitment_peer_evidence_enabled": true,
+            "precommitment_peer_evidence_weight": 1.0,
+            "revision_operator_enabled": true,
+            "revision_operator_source": "policy_probability",
+            "terminal_window_mean_ceiling_metric_mean": -0.0033333333333333335
+          },
+          "ever_ceiling_hits": 0,
+          "expected_seed_count": 3,
+          "failed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "final_ceiling_hits": 0,
+          "group": "resource_threshold_probe",
+          "issue_codes": [
+            "main_final_ceiling_miss",
+            "seed_level_final_miss"
+          ],
+          "late_flip_rate": {
+            "maximum": null,
+            "mean": null,
+            "minimum": null,
+            "n": 0,
+            "std": null
+          },
+          "metric": {
+            "maximum": 0.0,
+            "mean": -0.0033333333333333335,
+            "minimum": -0.01,
+            "n": 3,
+            "std": 0.005773502691896258
+          },
+          "missing_seeds": [],
+          "notes": [],
+          "observed_seed_count": 3,
+          "role": "main",
+          "status": "fail",
+          "terminal_ceiling_rate": {
+            "maximum": 0.0,
+            "mean": 0.0,
+            "minimum": 0.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "time_to_ceiling": {
+            "maximum": null,
+            "mean": null,
+            "minimum": null,
+            "n": 0,
+            "std": null
+          },
+          "variant": "revision_precommitment_peer_evidence_resource_threshold_local_envw0p5"
+        },
+        {
+          "details": {
+            "basin_credit_enabled": true,
+            "basin_credit_method": "one_step_ablation",
+            "basin_critic": "prototype_phase",
+            "basin_horizon": 1,
+            "basin_individual_weight": 0.0,
+            "basin_local_social_weight": 0.0,
+            "basin_objective_weight": 0.5,
+            "basin_target": "ceiling",
+            "basin_weight": 0.5,
+            "ceiling_gap_mean": 0.6166666666666667,
+            "ever_ceiling_final_miss_rate": 0.0,
+            "objective_profile": "custom",
+            "policy_rule": "neural_policy",
+            "precommitment_enabled": true,
+            "precommitment_peer_evidence_enabled": true,
+            "precommitment_peer_evidence_weight": 1.0,
+            "revision_operator_enabled": true,
+            "revision_operator_source": "policy_probability",
+            "terminal_window_mean_ceiling_metric_mean": -0.016
+          },
+          "ever_ceiling_hits": 0,
+          "expected_seed_count": 3,
+          "failed_seeds": [
+            1,
+            2,
+            3
+          ],
+          "final_ceiling_hits": 0,
+          "group": "resource_threshold_probe",
+          "issue_codes": [
+            "main_final_ceiling_miss",
+            "seed_level_final_miss"
+          ],
+          "late_flip_rate": {
+            "maximum": null,
+            "mean": null,
+            "minimum": null,
+            "n": 0,
+            "std": null
+          },
+          "metric": {
+            "maximum": 0.0,
+            "mean": -0.016666666666666666,
+            "minimum": -0.03,
+            "n": 3,
+            "std": 0.015275252316519466
+          },
+          "missing_seeds": [],
+          "notes": [],
+          "observed_seed_count": 3,
+          "role": "main",
+          "status": "fail",
+          "terminal_ceiling_rate": {
+            "maximum": 0.0,
+            "mean": 0.0,
+            "minimum": 0.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "time_to_ceiling": {
+            "maximum": null,
+            "mean": null,
+            "minimum": null,
+            "n": 0,
+            "std": null
+          },
+          "variant": "revision_precommitment_peer_evidence_resource_threshold_local_envw1p0"
+        },
+        {
+          "details": {
+            "basin_credit_enabled": true,
+            "basin_credit_method": "one_step_ablation",
+            "basin_critic": "prototype_phase",
+            "basin_horizon": 1,
+            "basin_individual_weight": 0.0,
+            "basin_local_social_weight": 0.0,
+            "basin_objective_weight": 0.5,
+            "basin_target": "ceiling",
+            "basin_weight": 0.5,
+            "ceiling_gap_mean": 0.0,
+            "ever_ceiling_final_miss_rate": 0.0,
+            "late_flip_count_after_first_ceiling_mean": 0.0,
+            "objective_profile": "custom",
+            "policy_rule": "neural_policy",
+            "precommitment_enabled": true,
+            "precommitment_peer_evidence_enabled": true,
+            "precommitment_peer_evidence_weight": 1.0,
+            "revision_operator_enabled": true,
+            "revision_operator_source": "policy_probability",
+            "terminal_window_mean_ceiling_metric_mean": 0.6
+          },
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "failed_seeds": [],
+          "final_ceiling_hits": 3,
+          "group": "resource_threshold_probe",
+          "issue_codes": [],
+          "late_flip_rate": {
+            "maximum": 0.0,
+            "mean": 0.0,
+            "minimum": 0.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "metric": {
+            "maximum": 0.6,
+            "mean": 0.6,
+            "minimum": 0.6,
+            "n": 3,
+            "std": 0.0
+          },
+          "missing_seeds": [],
+          "notes": [],
+          "observed_seed_count": 3,
+          "role": "main",
+          "status": "pass",
+          "terminal_ceiling_rate": {
+            "maximum": 1.0,
+            "mean": 1.0,
+            "minimum": 1.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "time_to_ceiling": {
+            "maximum": 31.0,
+            "mean": 30.666666666666668,
+            "minimum": 30.0,
+            "n": 3,
+            "std": 0.5773502691896257
+          },
+          "variant": "revision_precommitment_peer_evidence_resource_threshold_local_envw2p0"
+        }
+      ]
+    }
+  ],
+  "gate_summary_path": "experiments/evidence/results/toy4_resource_threshold_probe_quick.summary.json",
+  "input_validation": {
+    "duplicate_rows": [],
+    "malformed_rows": [],
+    "missing_required_columns": [],
+    "missing_runs": [],
+    "required_columns": [
+      "label",
+      "case",
+      "toy",
+      "variant",
+      "group",
+      "seed",
+      "primary_metric",
+      "metric_value",
+      "direction",
+      "final_within_ceiling",
+      "time_to_ceiling"
+    ],
+    "status": "valid",
+    "unknown_rows": []
+  },
+  "label": "toy4_resource_threshold_probe_quick",
+  "manifest_path": "experiments/evidence/toy4_resource_threshold_probe_quick.yaml",
+  "notes": [
+    "toy24_objective_basin_evidence",
+    "toy24_revision_operator_evidence"
+  ],
+  "passed": true,
+  "runs_path": "experiments/results/nabm_effect_matrix/toy4_resource_threshold_probe_quick_runs.csv",
+  "status": "pass"
+}

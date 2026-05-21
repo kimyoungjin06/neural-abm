@@ -1,0 +1,88 @@
+run:
+  name: toy2_no_learning_control_seed01_snowdrift_neural_policy_output_average_p0p1_a0p25
+  seed: 1
+  output_dir: experiments/runs
+simulation:
+  epochs: 50
+  sync_mode: synchronous
+  device: cpu
+model:
+  policy:
+    rule: neural_policy
+    learning_enabled: false
+    revision_rate: 1.0
+    selection_strength: 1.0
+    temperature: 1.0
+    decision:
+      mode: sampled
+      action_temperature: 1.0
+      exploration_epsilon: 0.0
+      calibration:
+        mode: none
+        strength: 4.0
+    domain:
+      local_update_rule: sampled_policy_gradient
+      neural_peer_mode: spatial
+      interaction_mode: spatial
+      payoff_transform: linear
+  agents:
+    init_mode: independent_init
+    model:
+      input_dim: 6
+      hidden_dim: 16
+      output_dim: 2
+      activation: relu
+    optimizer:
+      name: adam
+      learning_rate: 0.01
+    policy_prior_action_probability: null
+  coordination:
+    mixer: output_average
+    peer_rule: none
+    alpha: 0.25
+    threshold: 0.0
+    communication_budget:
+      probe_predictions: 1
+      latent_dim: 16
+      scalar_summary: 8
+  state:
+    reputation:
+      enabled: true
+      decay: 0.9
+      peer_rule: spatial
+      temperature: 1.0
+      noise: 0.0
+      observation_mode: none
+    mobility:
+      enabled: false
+      rate: 0.0
+      candidate_pool_size: 8
+      selection_rule: local_quality
+      move_cost: 0.0
+domain:
+  toy: toy2
+  environment:
+    grid_width: 10
+    grid_height: 10
+    neighborhood: von_neumann
+    periodic: true
+    initial_action_probability: 0.1
+    reward_ema_decay: 0.9
+    entropy_beta: 0.01
+    payoff_R: 3.0
+    payoff_S: 1.5
+    payoff_T: 5.0
+    payoff_P: 0.0
+  game:
+    family: snowdrift
+    payoff:
+      T: 5.0
+      R: 3.0
+      P: 0.0
+      S: 1.5
+logging:
+  micro_state: true
+  interval: 1
+  aggregate_metrics: true
+  probe_predictions: false
+  probe_prediction_interval: 1

@@ -1,0 +1,6 @@
+case,mixer,peer_rule,init_mode,seeds,accuracy_mean,accuracy_std,consensus_mean,consensus_std,fragmentation_mean,fragmentation_std
+latent_average_state_similarity_same_init,latent_average,state_similarity,same_init,5,0.889103999376297,0.005146572422075568,0.9502592474489795,0.011021994801642834,1.0,0.0
+none_none_same_init,none,none,same_init,5,0.8870496008396149,0.0059776431591314705,0.9457780612244898,0.013116210153759663,50.0,0.0
+output_average_output_similarity_same_init,output_average,output_similarity,same_init,5,0.891126399755478,0.004015648471419336,0.9593698979591837,0.0044864192289363935,1.0,0.0
+parameter_average_state_similarity_independent_init,parameter_average,state_similarity,independent_init,5,0.8877944021224975,0.003293517173589868,0.9475966198979592,0.0053565063217027,50.0,0.0
+parameter_average_state_similarity_same_init,parameter_average,state_similarity,same_init,5,0.8931335990428926,0.005661025147123644,0.9766007653061225,0.006067773107463107,1.0,0.0

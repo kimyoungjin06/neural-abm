@@ -1,0 +1,256 @@
+{
+  "cases": [
+    {
+      "baseline_group": "baseline",
+      "best_baseline_variant": "neural_output_average",
+      "best_main_variant": "neural_readiness_propagation_w1p0",
+      "case": "toy5_readiness_propagation_holdout",
+      "issue_codes": [],
+      "main_group": "readiness_holdout",
+      "nabm_group": "readiness_holdout",
+      "notes": [],
+      "primary_metric": "domain_cascade_size",
+      "status": "pass",
+      "toy": "toy5",
+      "variants": [
+        {
+          "details": {
+            "direction_ok_rate": 0.0,
+            "direction_score_mean": 0.0,
+            "peer_readiness_mean": 0.0,
+            "readiness_aggregation": "mean",
+            "threshold_mode": "homogeneous"
+          },
+          "ever_ceiling_hits": 1,
+          "expected_seed_count": 3,
+          "failed_seeds": [
+            1,
+            3
+          ],
+          "final_ceiling_hits": 1,
+          "group": "diagnostic",
+          "issue_codes": [
+            "seed_level_final_miss"
+          ],
+          "late_flip_rate": {
+            "maximum": 0.013428571428571429,
+            "mean": 0.013428571428571429,
+            "minimum": 0.013428571428571429,
+            "n": 1,
+            "std": 0.0
+          },
+          "metric": {
+            "maximum": 100.0,
+            "mean": 34.0,
+            "minimum": 1.0,
+            "n": 3,
+            "std": 57.15767664977295
+          },
+          "missing_seeds": [],
+          "notes": [
+            "late_flip_observed"
+          ],
+          "observed_seed_count": 3,
+          "role": "diagnostic",
+          "status": "diagnostic_only",
+          "terminal_ceiling_rate": {
+            "maximum": 1.0,
+            "mean": 0.3333333333333333,
+            "minimum": 0.0,
+            "n": 3,
+            "std": 0.5773502691896257
+          },
+          "time_to_ceiling": {
+            "maximum": 15.0,
+            "mean": 15.0,
+            "minimum": 15.0,
+            "n": 1,
+            "std": 0.0
+          },
+          "variant": "complex_threshold"
+        },
+        {
+          "details": {
+            "direction_ok_rate": 0.0,
+            "direction_score_mean": 0.0,
+            "peer_readiness_mean": 0.0,
+            "readiness_aggregation": "mean",
+            "threshold_mode": "homogeneous"
+          },
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "failed_seeds": [],
+          "final_ceiling_hits": 3,
+          "group": "baseline",
+          "issue_codes": [],
+          "late_flip_rate": {
+            "maximum": 0.01,
+            "mean": 0.007918083900226757,
+            "minimum": 0.003958333333333334,
+            "n": 3,
+            "std": 0.003430762414129865
+          },
+          "metric": {
+            "maximum": 100.0,
+            "mean": 100.0,
+            "minimum": 100.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "missing_seeds": [],
+          "notes": [
+            "late_flip_observed"
+          ],
+          "observed_seed_count": 3,
+          "role": "baseline",
+          "status": "diagnostic_only",
+          "terminal_ceiling_rate": {
+            "maximum": 1.0,
+            "mean": 1.0,
+            "minimum": 1.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "time_to_ceiling": {
+            "maximum": 2.0,
+            "mean": 1.3333333333333333,
+            "minimum": 1.0,
+            "n": 3,
+            "std": 0.5773502691896257
+          },
+          "variant": "neural_output_average"
+        },
+        {
+          "details": {
+            "direction_ok_rate": 1.0,
+            "direction_score_mean": 0.0,
+            "peer_readiness_mean": 0.0,
+            "readiness_aggregation": "mean",
+            "threshold_mode": "homogeneous"
+          },
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "failed_seeds": [],
+          "final_ceiling_hits": 3,
+          "group": "diagnostic",
+          "issue_codes": [],
+          "late_flip_rate": {
+            "maximum": 0.01,
+            "mean": 0.007431972789115646,
+            "minimum": 0.0025,
+            "n": 3,
+            "std": 0.004272432447989021
+          },
+          "metric": {
+            "maximum": 100.0,
+            "mean": 100.0,
+            "minimum": 100.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "missing_seeds": [],
+          "notes": [
+            "late_flip_observed"
+          ],
+          "observed_seed_count": 3,
+          "role": "diagnostic",
+          "status": "diagnostic_only",
+          "terminal_ceiling_rate": {
+            "maximum": 1.0,
+            "mean": 1.0,
+            "minimum": 1.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "time_to_ceiling": {
+            "maximum": 2.0,
+            "mean": 1.3333333333333333,
+            "minimum": 1.0,
+            "n": 3,
+            "std": 0.5773502691896257
+          },
+          "variant": "neural_precommitment_evidence"
+        },
+        {
+          "details": {
+            "direction_ok_rate": 1.0,
+            "direction_score_mean": 0.0,
+            "peer_readiness_mean": 1.0,
+            "readiness_aggregation": "mean",
+            "threshold_mode": "homogeneous"
+          },
+          "ever_ceiling_hits": 3,
+          "expected_seed_count": 3,
+          "failed_seeds": [],
+          "final_ceiling_hits": 3,
+          "group": "readiness_holdout",
+          "issue_codes": [],
+          "late_flip_rate": {
+            "maximum": 0.01,
+            "mean": 0.007431972789115646,
+            "minimum": 0.0025,
+            "n": 3,
+            "std": 0.004272432447989021
+          },
+          "metric": {
+            "maximum": 100.0,
+            "mean": 100.0,
+            "minimum": 100.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "missing_seeds": [],
+          "notes": [
+            "late_flip_observed"
+          ],
+          "observed_seed_count": 3,
+          "role": "main",
+          "status": "pass",
+          "terminal_ceiling_rate": {
+            "maximum": 1.0,
+            "mean": 1.0,
+            "minimum": 1.0,
+            "n": 3,
+            "std": 0.0
+          },
+          "time_to_ceiling": {
+            "maximum": 2.0,
+            "mean": 1.3333333333333333,
+            "minimum": 1.0,
+            "n": 3,
+            "std": 0.5773502691896257
+          },
+          "variant": "neural_readiness_propagation_w1p0"
+        }
+      ]
+    }
+  ],
+  "gate_summary_path": "experiments/evidence/results/toy5_readiness_propagation_holdout_quick.summary.json",
+  "input_validation": {
+    "duplicate_rows": [],
+    "malformed_rows": [],
+    "missing_required_columns": [],
+    "missing_runs": [],
+    "required_columns": [
+      "label",
+      "case",
+      "toy",
+      "variant",
+      "group",
+      "seed",
+      "primary_metric",
+      "metric_value",
+      "direction",
+      "final_within_ceiling",
+      "time_to_ceiling"
+    ],
+    "status": "valid",
+    "unknown_rows": []
+  },
+  "label": "toy5_readiness_propagation_holdout_quick",
+  "manifest_path": "experiments/evidence/toy5_readiness_propagation_holdout_quick.yaml",
+  "notes": [],
+  "passed": true,
+  "runs_path": "experiments/results/nabm_effect_matrix/toy5_readiness_propagation_holdout_quick_runs.csv",
+  "status": "pass"
+}

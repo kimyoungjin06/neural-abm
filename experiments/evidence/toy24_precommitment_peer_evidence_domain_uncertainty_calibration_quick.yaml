@@ -1,0 +1,159 @@
+label: toy24_precommitment_peer_evidence_domain_uncertainty_calibration_quick
+seeds: [1, 2, 3]
+epochs: 60
+config_dir: experiments/configs/generated/evidence_matrix
+runs_dir: experiments/runs
+success_criteria:
+  main_group: peer_evidence_domain_uncertainty_calibration
+  require_without_teacher_bootstrap_replay: true
+  cases:
+    toy2_precommitment_peer_evidence_stag_hunt_calibration:
+      final_ceiling_min_hits: 1
+      mean_time_to_ceiling_lt: 60
+    toy4_precommitment_peer_evidence_resource_coupled_calibration:
+      final_ceiling_min_hits: 1
+      mean_time_to_ceiling_lt: 60
+
+_shared_updates:
+  toy2_stag_hunt: &toy2_stag_hunt
+    domain.environment.initial_action_probability: 0.35
+    domain.environment.payoff_R: 4.0
+    domain.environment.payoff_S: 0.0
+    domain.environment.payoff_T: 3.0
+    domain.environment.payoff_P: 2.0
+    domain.game.family: stag_hunt
+    domain.game.payoff.R: 4.0
+    domain.game.payoff.S: 0.0
+    domain.game.payoff.T: 3.0
+    domain.game.payoff.P: 2.0
+  toy4_resource_coupled: &toy4_resource_coupled
+    domain.environment.initial_action_probability: 0.35
+    domain.environment.resource_enabled: true
+    domain.environment.resource_initial: 60.0
+    domain.environment.resource_carrying_capacity: 100.0
+    domain.environment.resource_recovery_rate: 0.03
+    domain.environment.resource_extraction_per_defector: 0.05
+    domain.environment.resource_collapse_threshold: 0.0
+  toy2_objective_basin: &toy2_objective_basin
+    model.policy.rule: neural_policy
+    model.policy.neural_update_backend: loop
+    model.policy.domain.local_update_rule: counterfactual_advantage
+    model.policy.domain.objective.profile: linear_welfare_heavy
+    model.policy.domain.objective.clip_abs: null
+    model.policy.domain.basin_credit.enabled: true
+    model.policy.domain.basin_credit.critic: prototype_phase
+    model.policy.domain.basin_credit.credit_method: one_step_ablation
+    model.policy.domain.basin_credit.objective_weight: 0.5
+    model.policy.domain.basin_credit.individual_weight: 0.0
+    model.policy.domain.basin_credit.local_social_weight: 0.0
+    model.policy.domain.basin_credit.basin_weight: 0.5
+    model.policy.domain.basin_credit.horizon: 1
+    model.policy.domain.basin_credit.target_basin: ceiling
+    model.coordination.mixer: output_average
+    model.coordination.peer_rule: output_similarity
+    model.coordination.alpha: 0.25
+    model.coordination.threshold: 0.0
+  toy4_objective_basin: &toy4_objective_basin
+    model.policy.rule: neural_policy
+    model.policy.neural_update_backend: loop
+    model.policy.domain.objective.profile: linear_welfare_heavy
+    model.policy.domain.objective.clip_abs: null
+    model.policy.domain.basin_credit.enabled: true
+    model.policy.domain.basin_credit.critic: prototype_phase
+    model.policy.domain.basin_credit.credit_method: one_step_ablation
+    model.policy.domain.basin_credit.objective_weight: 0.5
+    model.policy.domain.basin_credit.individual_weight: 0.0
+    model.policy.domain.basin_credit.local_social_weight: 0.0
+    model.policy.domain.basin_credit.basin_weight: 0.5
+    model.policy.domain.basin_credit.horizon: 1
+    model.policy.domain.basin_credit.target_basin: ceiling
+    model.coordination.mixer: output_average
+    model.coordination.peer_rule: output_similarity
+    model.coordination.alpha: 0.25
+    model.coordination.threshold: 0.0
+  revision_operator: &revision_operator
+    model.coordination.revision_operator_enabled: true
+    model.coordination.revision_operator_source: policy_probability
+  precommitment_evidence: &precommitment_evidence
+    model.coordination.precommitment_enabled: true
+    model.coordination.precommitment_min_policy_probability: 0.75
+    model.coordination.precommitment_min_evidence: 1.5
+    model.coordination.precommitment_evidence_increment: 1.0
+    model.coordination.precommitment_evidence_decay: 0.8
+    model.coordination.precommitment_requires_direction: true
+    model.coordination.precommitment_min_direction: 0.0
+  precommitment_peer_evidence_w1p0: &precommitment_peer_evidence_w1p0
+    model.coordination.precommitment_peer_evidence_enabled: true
+    model.coordination.precommitment_peer_evidence_weight: 1.0
+
+cases:
+  - toy: toy2
+    name: toy2_precommitment_peer_evidence_stag_hunt_calibration
+    base_config: experiments/configs/toy2_spatial_pd_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    nabm_group: peer_evidence_domain_uncertainty_calibration
+    ceiling_metric: mean_payoff
+    ceiling_value: 4.0
+    ceiling_tolerance: 0.001
+    variants:
+      - name: reputation_imitation_stag_hunt_p0p35
+        group: baseline
+        updates:
+          <<: *toy2_stag_hunt
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: objective_basin_stag_hunt_p0p35
+        group: diagnostic
+        updates:
+          <<: [*toy2_objective_basin, *toy2_stag_hunt]
+      - name: revision_objective_basin_stag_hunt_p0p35
+        group: diagnostic
+        updates:
+          <<: [*toy2_objective_basin, *revision_operator, *toy2_stag_hunt]
+      - name: revision_precommitment_evidence_stag_hunt_p0p35
+        group: diagnostic
+        updates:
+          <<: [*toy2_objective_basin, *revision_operator, *precommitment_evidence, *toy2_stag_hunt]
+      - name: revision_precommitment_peer_evidence_stag_hunt_p0p35
+        group: peer_evidence_domain_uncertainty_calibration
+        updates:
+          <<: [*toy2_objective_basin, *revision_operator, *precommitment_evidence, *precommitment_peer_evidence_w1p0, *toy2_stag_hunt]
+  - toy: toy4
+    name: toy4_precommitment_peer_evidence_resource_coupled_calibration
+    base_config: experiments/configs/toy4_public_goods_baseline.yaml
+    primary_metric: final_mean_payoff
+    direction: maximize
+    nabm_group: peer_evidence_domain_uncertainty_calibration
+    ceiling_metric: mean_payoff
+    ceiling_value: 0.6
+    ceiling_tolerance: 0.005
+    variants:
+      - name: reputation_imitation_resource_p0p35
+        group: baseline
+        updates:
+          <<: *toy4_resource_coupled
+          model.policy.rule: reputation_imitation
+          model.coordination.mixer: output_average
+          model.coordination.peer_rule: output_similarity
+          model.coordination.alpha: 0.25
+          model.coordination.threshold: 0.0
+      - name: objective_basin_resource_p0p35
+        group: diagnostic
+        updates:
+          <<: [*toy4_objective_basin, *toy4_resource_coupled]
+      - name: revision_objective_basin_resource_p0p35
+        group: diagnostic
+        updates:
+          <<: [*toy4_objective_basin, *revision_operator, *toy4_resource_coupled]
+      - name: revision_precommitment_evidence_resource_p0p35
+        group: diagnostic
+        updates:
+          <<: [*toy4_objective_basin, *revision_operator, *precommitment_evidence, *toy4_resource_coupled]
+      - name: revision_precommitment_peer_evidence_resource_p0p35
+        group: peer_evidence_domain_uncertainty_calibration
+        updates:
+          <<: [*toy4_objective_basin, *revision_operator, *precommitment_evidence, *precommitment_peer_evidence_w1p0, *toy4_resource_coupled]
