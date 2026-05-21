@@ -2245,3 +2245,37 @@ def test_toy5_neural_threshold_target_threshold_aware_wavefront_contract() -> No
         assert criteria.cases[
             case_name
         ].mean_time_to_ceiling_lt == pytest.approx(45.0)
+
+
+def test_toy5_neural_threshold_target_threshold_aware_grid_contract() -> None:
+    manifest, criteria = load_gate_manifest(
+        Path(
+            "experiments/evidence/"
+            "toy5_neural_threshold_target_threshold_aware_grid_quick.yaml"
+        )
+    )
+
+    assert manifest.label == "toy5_neural_threshold_target_threshold_aware_grid_quick"
+    assert criteria.main_group == "directional_threshold_target_threshold_aware_grid"
+    assert criteria.require_without_teacher_bootstrap_replay is True
+    assert (
+        criteria.cases[
+            "toy5_threshold_aware_grid_no_seed_heterogeneous_safety"
+        ].final_ceiling_min_hits
+        == 5
+    )
+    assert criteria.cases[
+        "toy5_threshold_aware_grid_no_seed_heterogeneous_safety"
+    ].mean_time_to_ceiling_lt == pytest.approx(1.0)
+    for case_name in (
+        "toy5_threshold_aware_grid_lattice_k4_h0p85_spread",
+        "toy5_threshold_aware_grid_lattice_k4_h0p95_spread",
+        "toy5_threshold_aware_grid_lattice_k6_h0p85_spread",
+        "toy5_threshold_aware_grid_lattice_k6_h0p95_spread",
+        "toy5_threshold_aware_grid_rewired_k6_p0p10_h0p85_spread",
+        "toy5_threshold_aware_grid_rewired_k6_p0p10_h0p95_spread",
+    ):
+        assert criteria.cases[case_name].final_ceiling_min_hits == 5
+        assert criteria.cases[
+            case_name
+        ].mean_time_to_ceiling_lt == pytest.approx(45.0)

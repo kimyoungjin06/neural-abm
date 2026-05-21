@@ -1653,6 +1653,88 @@ def test_toy5_neural_threshold_target_threshold_aware_wavefront_contract() -> No
     )
 
 
+def test_toy5_neural_threshold_target_threshold_aware_grid_contract() -> None:
+    manifest = load_manifest(
+        Path(
+            "experiments/evidence/"
+            "toy5_neural_threshold_target_threshold_aware_grid_quick.yaml"
+        )
+    )
+
+    assert manifest.label == "toy5_neural_threshold_target_threshold_aware_grid_quick"
+    assert manifest.seeds == tuple(range(1, 6))
+    assert manifest.epochs == 50
+    assert len(manifest.cases) == 7
+    cases = {case.name: case for case in manifest.cases}
+    assert set(cases) == {
+        "toy5_threshold_aware_grid_no_seed_heterogeneous_safety",
+        "toy5_threshold_aware_grid_lattice_k4_h0p85_spread",
+        "toy5_threshold_aware_grid_lattice_k4_h0p95_spread",
+        "toy5_threshold_aware_grid_lattice_k6_h0p85_spread",
+        "toy5_threshold_aware_grid_lattice_k6_h0p95_spread",
+        "toy5_threshold_aware_grid_rewired_k6_p0p10_h0p85_spread",
+        "toy5_threshold_aware_grid_rewired_k6_p0p10_h0p95_spread",
+    }
+
+    for case in cases.values():
+        groups = {variant.group for variant in case.variants}
+        assert groups == {
+            "baseline",
+            "negative_control",
+            "directional_threshold_target_threshold_aware_grid",
+        }
+        assert case.nabm_group == "directional_threshold_target_threshold_aware_grid"
+
+    safety = cases["toy5_threshold_aware_grid_no_seed_heterogeneous_safety"]
+    assert safety.epochs == 20
+    assert safety.primary_metric == "domain_non_adoption_rate"
+    safety_variants = {variant.name: variant for variant in safety.variants}
+    safety_candidate = safety_variants[
+        "neural_threshold_aware_grid_no_seed_threshold_anchor"
+    ]
+    assert (
+        safety_candidate.updates[
+            "model.coordination.precommitment_direction_source"
+        ]
+        == "readiness_augmented_threshold_with_action_anchor"
+    )
+
+    k4_h95 = cases["toy5_threshold_aware_grid_lattice_k4_h0p95_spread"]
+    k4_h95_variants = {variant.name: variant for variant in k4_h95.variants}
+    k4_h95_candidate = k4_h95_variants[
+        "neural_threshold_aware_grid_lattice_k4_h0p95_threshold_anchor"
+    ]
+    assert k4_h95_candidate.updates["domain.graph.k"] == pytest.approx(4)
+    assert k4_h95_candidate.updates[
+        "domain.graph.rewire_probability"
+    ] == pytest.approx(0.0)
+    assert (
+        k4_h95_candidate.updates[
+            "domain.environment.heterogeneous_threshold_high"
+        ]
+        == pytest.approx(0.95)
+    )
+
+    rewired_h85 = cases[
+        "toy5_threshold_aware_grid_rewired_k6_p0p10_h0p85_spread"
+    ]
+    rewired_h85_variants = {variant.name: variant for variant in rewired_h85.variants}
+    rewired_h85_negative = rewired_h85_variants[
+        "neural_threshold_aware_grid_rewired_k6_p0p10_h0p85_exposure_anchor"
+    ]
+    assert rewired_h85_negative.group == "negative_control"
+    assert rewired_h85_negative.updates["domain.graph.k"] == pytest.approx(6)
+    assert rewired_h85_negative.updates[
+        "domain.graph.rewire_probability"
+    ] == pytest.approx(0.1)
+    assert (
+        rewired_h85_negative.updates[
+            "model.coordination.precommitment_direction_source"
+        ]
+        == "readiness_exposure_with_action_anchor"
+    )
+
+
 def fake_runner(config: FakeConfig, config_path: Path) -> SimpleNamespace:
     del config_path
     run_dir = (

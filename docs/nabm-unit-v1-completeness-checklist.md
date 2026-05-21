@@ -29,7 +29,7 @@ Status terms:
 | Social distillation | yes | yes | partial | partial | Output-distribution mix and commit diagnostics are unit-backed across loop, batched, and tensor paths. |
 | Backend local commits | yes | yes | partial | no | `NABMLocalStep` wraps batched/tensor policy-gradient commits, but backend claims are engineering claims, not NABM novelty claims. |
 | Domain diagnostics plumbing | yes | yes | partial | partial | Toy2/Toy4 shared diagnostic field plumbing reduces schema drift without moving semantics into the unit. |
-| Holdout migration | yes | yes | yes | partial | Toy5 is a real holdout, but broader robustness needs a larger topology/threshold grid. |
+| Holdout migration | yes | yes | yes | partial | Toy5 now has a small threshold-aware topology/threshold grid, but negative-control separation is strongest on safety rather than spread. |
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
 | Manuscript narrative | partial | no | partial | no | The claim boundary exists in docs, but paper outline and figures do not yet absorb the current evidence. |
 
@@ -66,8 +66,9 @@ The remaining gaps are:
   superiority over hand-coded baselines.
 - Revision-operator evidence is structurally useful but not final enough to
   serve as a primary mechanism claim.
-- Toy5 hard holdout supports the unit lifecycle under meaningful stress, but
-  only on a bounded grid of topology and threshold settings.
+- Toy5 hard holdout now supports the unit lifecycle under a small
+  topology/threshold grid, but exposure-anchor controls also spread in seeded
+  cases, so threshold-aware uniqueness is not established.
 - Paper artifacts do not yet express the current boundary: unit lifecycle
   reuse, domain-owned semantics, and bounded robustness evidence.
 
@@ -111,16 +112,37 @@ Completion condition:
 
 Goal: turn Toy5 from a single hard holdout into bounded robustness evidence.
 
-Required work:
+Status: first pass complete.
+
+Artifacts:
+
+- `experiments/evidence/toy5_neural_threshold_target_threshold_aware_grid_quick.yaml`
+- `experiments/evidence/results/toy5_neural_threshold_target_threshold_aware_grid_quick.summary.md`
+- `experiments/results/nabm_effect_matrix/toy5_neural_threshold_target_threshold_aware_grid_quick_profile.md`
+- `experiments/results/nabm_effect_matrix/toy5_neural_threshold_target_threshold_aware_grid_quick_findings.md`
+
+Completed work:
 
 - Add a small topology/threshold grid for the threshold-aware Toy5 path.
 - Preserve no-seed safety cases.
 - Report baseline, main, and negative-control results separately.
 
-Completion condition:
+Result:
 
-- The holdout claim can state exactly which topology and threshold regimes are
-  robust and which remain open.
+- Gate status: `pass`.
+- Main threshold-aware path: `5/5` final ceiling hits on no-seed safety and all
+  six spread cases.
+- Baseline output-average path: safe in no-seed, `0/5` final ceiling hits in
+  all six spread cases.
+- Negative controls: non-directional no-seed control fails safety, but
+  exposure-anchor controls also achieve `5/5` final hits in all seeded spread
+  cases.
+
+Completion condition update:
+
+- The bounded robustness claim is now supported for lattice `k=4`, lattice
+  `k=6`, and rewired `k=6, p=0.10` at high thresholds `0.85` and `0.95`.
+- A stronger uniqueness claim for threshold-aware direction remains open.
 
 ### Gate 3: Toy2/Toy4 Evidence Triage
 
