@@ -67,6 +67,7 @@ from neural_abm.spatial_binary import (
     mix_binary_output_confidence_weighted,
     mix_binary_policy_distribution_confidence_weighted,
     peer_ids_for_binary_mixer,
+    run_binary_policy_learning_step,
     select_binary_output_similarity_peers,
 )
 from neural_abm.unit import NABMLocalStep, NABMStep
@@ -1180,6 +1181,65 @@ def test_binary_policy_learning_unit_runs_readout_update_and_refresh() -> None:
         result.post_local_probs,
         torch.tensor([[0.1, 0.9], [0.7, 0.3]], dtype=torch.float32),
     )
+
+
+def test_run_binary_policy_learning_step_wires_callbacks_through_unit() -> None:
+    agents = ["a0", "a1"]
+    observations = torch.eye(2, dtype=torch.float32)
+    calls: list[str] = []
+
+    def collect_policy_probs(
+        agents_arg: list[str],
+        observations_arg: torch.Tensor,
+        *,
+        temperature: float,
+    ) -> torch.Tensor:
+        assert agents_arg == agents
+        torch.testing.assert_close(observations_arg, observations)
+        assert temperature == pytest.approx(0.5)
+        calls.append("readout")
+        return torch.tensor([[0.4, 0.6], [0.7, 0.3]], dtype=torch.float32)
+
+    def build_decision_probs(policy_probs: torch.Tensor) -> torch.Tensor:
+        calls.append("decision")
+        return policy_probs
+
+    def sample_actions(policy_probs: torch.Tensor) -> np.ndarray:
+        calls.append("sample")
+        return (policy_probs[:, 1].detach().cpu().numpy() >= 0.5).astype(np.int64)
+
+    def local_update(actions: np.ndarray) -> list[float]:
+        calls.append("local")
+        np.testing.assert_array_equal(actions, [1, 0])
+        return [0.2, 0.3]
+
+    def refresh_policy_cache(agents_arg: list[str]) -> None:
+        assert agents_arg == agents
+        calls.append("refresh")
+
+    result = run_binary_policy_learning_step(
+        agents=agents,
+        observations=observations,
+        temperature=0.5,
+        collect_policy_probs=collect_policy_probs,
+        decision_action_probs=build_decision_probs,
+        sample_actions=sample_actions,
+        local_update=local_update,
+        refresh_policy_cache=refresh_policy_cache,
+        extras={"source": "helper-contract"},
+    )
+
+    assert calls == [
+        "readout",
+        "decision",
+        "sample",
+        "local",
+        "refresh",
+        "readout",
+    ]
+    np.testing.assert_array_equal(result.actions_after_revision, [1, 0])
+    assert result.local_losses == [0.2, 0.3]
+    assert result.extras == {"source": "helper-contract"}
 
 
 def test_binary_policy_learning_unit_contract_preserves_context_and_extras() -> None:

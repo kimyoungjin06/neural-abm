@@ -82,7 +82,6 @@ from neural_abm.spatial_binary import (
     BinaryLocalStepResult,
     BatchedDistributionDistillationAdapter,
     BinaryOutputDistillationReport,
-    BinaryPolicyLearningCallbacks,
     BinaryPolicyLearningUnit,
     BinaryPolicyStepResult,
     BinarySocialStepResult,
@@ -99,6 +98,7 @@ from neural_abm.spatial_binary import (
     StateArray,
     mix_binary_output_average,
     run_batched_policy_gradient_local_update,
+    run_binary_policy_learning_step,
     run_binary_output_distribution_distillation,
     run_tensor_runtime_policy_gradient_local_update,
     timed_context_stage,
@@ -3807,20 +3807,19 @@ class Toy2SpatialDomain(BinaryToyDomainBase):
                 for row in revision_result.micro_rows()
             ]
         else:
-            learning_result = BinaryPolicyLearningUnit(
+            learning_result = run_binary_policy_learning_step(
                 agents=agents,
                 observations=observations,
                 temperature=config.policy.temperature,
-                callbacks=BinaryPolicyLearningCallbacks(
-                    collect_policy_probs=collect_pre_policy_probs,
-                    decision_action_probs=build_decision_action_probs,
-                    sample_actions=sample_policy_actions,
-                    local_update=commit_local_update,
-                    refresh_policy_cache=self.refresh_policy_cache,
-                    post_collect_policy_probs=collect_post_policy_probs,
-                ),
+                collect_policy_probs=collect_pre_policy_probs,
+                decision_action_probs=build_decision_action_probs,
+                sample_actions=sample_policy_actions,
+                local_update=commit_local_update,
+                refresh_policy_cache=self.refresh_policy_cache,
+                post_collect_policy_probs=collect_post_policy_probs,
                 context=context,
-            ).run()
+                unit_type=BinaryPolicyLearningUnit,
+            )
             pre_revision_probs = learning_result.pre_revision_probs
             decision_action_probs = learning_result.decision_action_probs
             actions = learning_result.actions_after_revision

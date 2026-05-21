@@ -51,7 +51,6 @@ from neural_abm.spatial_binary import (
     BatchedDistributionDistillationAdapter,
     BinaryLocalStepResult,
     BinaryOutputDistillationReport,
-    BinaryPolicyLearningCallbacks,
     BinaryPolicyLearningUnit,
     BinaryPolicyStepResult,
     BinarySocialStepResult,
@@ -66,6 +65,7 @@ from neural_abm.spatial_binary import (
     mix_binary_output_average,
     peer_ids_for_binary_mixer,
     run_batched_policy_gradient_local_update,
+    run_binary_policy_learning_step,
     run_binary_output_distribution_distillation,
     run_tensor_runtime_policy_gradient_local_update,
     select_binary_output_similarity_peers,
@@ -1585,22 +1585,21 @@ class Toy5SpatialDomain(BinaryToyDomainBase):
                             )
                 return local_losses
 
-            learning_result = BinaryPolicyLearningUnit(
+            learning_result = run_binary_policy_learning_step(
                 agents=agents,
                 observations=observations,
                 temperature=config.policy.temperature,
-                callbacks=BinaryPolicyLearningCallbacks(
-                    collect_policy_probs=self.collect_policy_probs,
-                    decision_action_probs=lambda probs: decision_action_probs(
-                        probs,
-                        config,
-                    ),
-                    sample_actions=sample_policy_actions,
-                    local_update=commit_local_update,
-                    refresh_policy_cache=self.refresh_policy_cache,
+                collect_policy_probs=self.collect_policy_probs,
+                decision_action_probs=lambda probs: decision_action_probs(
+                    probs,
+                    config,
                 ),
+                sample_actions=sample_policy_actions,
+                local_update=commit_local_update,
+                refresh_policy_cache=self.refresh_policy_cache,
                 context=context,
-            ).run()
+                unit_type=BinaryPolicyLearningUnit,
+            )
             action_probs = learning_result.decision_action_probs
             return BinaryLocalStepResult(
                 pre_revision_probs=learning_result.pre_revision_probs,

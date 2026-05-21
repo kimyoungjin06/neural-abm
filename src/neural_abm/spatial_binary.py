@@ -307,6 +307,40 @@ class BinaryPolicyLearningUnit:
         )
 
 
+def run_binary_policy_learning_step(
+    *,
+    agents: Sequence[Any],
+    observations: torch.Tensor,
+    temperature: float,
+    collect_policy_probs: BinaryPolicyReadout,
+    decision_action_probs: BinaryDecisionActionBuilder,
+    sample_actions: BinaryActionSampler,
+    local_update: BinaryLocalUpdateCommit,
+    refresh_policy_cache: BinaryPolicyCacheRefresh | None = None,
+    post_collect_policy_probs: BinaryPolicyReadout | None = None,
+    context: BinaryStepContext | None = None,
+    extras: MutableMapping[str, Any] | None = None,
+    unit_type: type[BinaryPolicyLearningUnit] = BinaryPolicyLearningUnit,
+) -> BinaryPolicyLearningResult:
+    """Wire domain callbacks into the reusable binary policy-learning unit."""
+
+    return unit_type(
+        agents=agents,
+        observations=observations,
+        temperature=temperature,
+        callbacks=BinaryPolicyLearningCallbacks(
+            collect_policy_probs=collect_policy_probs,
+            decision_action_probs=decision_action_probs,
+            sample_actions=sample_actions,
+            local_update=local_update,
+            refresh_policy_cache=refresh_policy_cache,
+            post_collect_policy_probs=post_collect_policy_probs,
+        ),
+        context=context,
+        extras=dict(extras or {}),
+    ).run()
+
+
 @dataclass(frozen=True)
 class BinaryOutputDistillationReport:
     """NABMUnit-backed report for binary policy-distribution distillation."""

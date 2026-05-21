@@ -205,6 +205,36 @@ Verification:
   tests/test_spatial_binary_runner.py -q`.
 - Result: `388 passed`.
 
+## 2026-05-21 Policy Callback Plumbing Slice
+
+Extracted the first semantic-free policy callback helper:
+`src/neural_abm/spatial_binary.py::run_binary_policy_learning_step`.
+
+Implementation:
+
+- The helper accepts domain-supplied callbacks for policy readout, decision
+  probability construction, action sampling, local update, cache refresh, and
+  optional post-local readout.
+- It wires those callbacks into `BinaryPolicyLearningCallbacks` and runs
+  `BinaryPolicyLearningUnit`.
+- Toy2, Toy4, and Toy5 now use this helper for their non-revision neural local
+  policy path.
+
+Boundary:
+
+- The helper does not build observations, actions, rewards, advantages,
+  thresholds, payoffs, resource terms, teacher probabilities, basin credit, or
+  evidence criteria.
+- The helper only standardizes lifecycle plumbing. Domain code still owns the
+  callback implementations and passes the toy-local `BinaryPolicyLearningUnit`
+  symbol into the helper, so existing unit-adoption guard tests can still spy on
+  the unit handoff.
+
+Verification:
+
+- Added `test_run_binary_policy_learning_step_wires_callbacks_through_unit`.
+- Ran the helper test plus Toy2/Toy4/Toy5 policy-unit guard tests: `4 passed`.
+
 ## 2026-05-21 Contract Fixture Slice
 
 Added a toy-independent `BinaryPolicyLearningUnit` contract fixture in
