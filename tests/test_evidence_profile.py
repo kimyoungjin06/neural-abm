@@ -459,12 +459,17 @@ def test_evidence_profile_toy24_adapter_marks_basin_revision_hazards(
     assert "toy24_material_basin_collapse_contrast" in output.profile.notes
     assert "toy24_revision_operator_evidence" in output.profile.notes
     assert "toy24_final_epoch_hazard_evidence" in output.profile.notes
+    assert "toy24_stochastic_gate_brittleness_evidence" in output.profile.notes
+    assert "toy24_baseline_favored_environment_evidence" in output.profile.notes
     case = output.profile.cases[0]
     assert "toy24_objective_basin_blend" in case.notes
     assert "toy24_material_basin_collapse_diagnostic" in case.notes
     assert "toy24_final_epoch_hazard" in case.issue_codes
     assert "toy24_main_candidate_ceiling_miss" in case.notes
     assert "toy24_best_main_ceiling_miss" in case.issue_codes
+    assert "toy24_triage_stochastic_gate_brittleness" in case.notes
+    assert "toy24_stochastic_gate_brittleness" in case.issue_codes
+    assert "toy24_triage_baseline_favored_environment" in case.notes
     main_variant = next(
         variant
         for variant in case.variants
@@ -474,3 +479,50 @@ def test_evidence_profile_toy24_adapter_marks_basin_revision_hazards(
     assert main_variant.details["basin_weight"] == 0.5
     assert main_variant.details["revision_operator_enabled"] is True
     assert main_variant.details["ever_ceiling_final_miss_rate"] == 1 / 3
+
+
+def test_evidence_profile_toy24_adapter_marks_slow_ttc_gate_lag(
+    tmp_path: Path,
+) -> None:
+    label = "toy24_slow_ttc_profile_test"
+    manifest = toy24_basin_manifest(label)
+    manifest["success_criteria"]["cases"]["toy4_basin_credit"][
+        "final_ceiling_min_hits"
+    ] = 3
+    manifest["success_criteria"]["cases"]["toy4_basin_credit"][
+        "mean_time_to_ceiling_lt"
+    ] = 10
+    rows = toy24_basin_rows(label)
+    for row in rows:
+        if row["variant"] != "mixed_objective_basin_w0p5_0p5_h1":
+            continue
+        row["metric_value"] = 0.6
+        row["ceiling_metric_value"] = 0.6
+        row["ceiling_gap"] = 0.0
+        row["final_within_ceiling"] = True
+        row["ever_reached_ceiling"] = True
+        row["time_to_ceiling"] = 12
+        row["ever_ceiling_final_miss"] = False
+        row["late_flip_count_after_first_ceiling"] = 0.0
+        row["late_flip_rate_after_first_ceiling"] = 0.0
+        row["terminal_window_ceiling_rate"] = 1.0
+        row["terminal_window_mean_ceiling_metric"] = 0.6
+
+    manifest_path = tmp_path / "manifest.yaml"
+    runs_path = tmp_path / "runs.csv"
+    write_manifest(manifest_path, manifest)
+    write_rows(runs_path, rows)
+
+    output = profile_evidence_artifacts(
+        manifest_path,
+        runs_path=runs_path,
+        output_dir=tmp_path,
+    )
+
+    assert output.profile.status == "fail"
+    assert "toy24_slow_ttc_gate_lag_evidence" in output.profile.notes
+    assert "toy24_baseline_favored_environment_evidence" in output.profile.notes
+    case = output.profile.cases[0]
+    assert "toy24_trajectory_success_slow_ttc" in case.notes
+    assert "toy24_ttc_gate_lag" in case.issue_codes
+    assert "toy24_triage_baseline_favored_environment" in case.notes

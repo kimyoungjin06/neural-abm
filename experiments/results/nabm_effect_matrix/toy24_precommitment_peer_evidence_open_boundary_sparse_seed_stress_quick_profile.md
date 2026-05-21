@@ -10,14 +10,14 @@
 
 - Gate status: `pass`
 - Passed: `True`
-- Notes: toy24_objective_basin_evidence, toy24_revision_operator_evidence
+- Notes: toy24_objective_basin_evidence, toy24_revision_operator_evidence, toy24_triage_success_evidence
 
 ## Case Summary
 
 | Case | Toy | Status | Best Main | Final Hits | Mean TtC | Metric Mean | Issues | Notes |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- | --- |
-| toy2_precommitment_peer_evidence_open_boundary_sparse_seed_stress | toy2 | pass | revision_precommitment_peer_evidence_open_sparse_p0p1 | 5/5 | 9.4 | 3 |  | toy24_basin_credit_evidence, toy24_objective_basin_blend, toy24_revision_operator_path |
-| toy4_precommitment_peer_evidence_open_boundary_sparse_seed_stress | toy4 | pass | revision_precommitment_peer_evidence_open_sparse_p0p1 | 5/5 | 9 | 0.6 |  | toy24_basin_credit_evidence, toy24_objective_basin_blend, toy24_revision_operator_path, toy24_late_flip_hazard |
+| toy2_precommitment_peer_evidence_open_boundary_sparse_seed_stress | toy2 | pass | revision_precommitment_peer_evidence_open_sparse_p0p1 | 5/5 | 9.4 | 3 |  | toy24_basin_credit_evidence, toy24_objective_basin_blend, toy24_revision_operator_path, toy24_triage_success |
+| toy4_precommitment_peer_evidence_open_boundary_sparse_seed_stress | toy4 | pass | revision_precommitment_peer_evidence_open_sparse_p0p1 | 5/5 | 9 | 0.6 |  | toy24_basin_credit_evidence, toy24_objective_basin_blend, toy24_revision_operator_path, toy24_late_flip_hazard, toy24_triage_success |
 
 ## Variant Details
 

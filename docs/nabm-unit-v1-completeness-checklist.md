@@ -173,16 +173,40 @@ Completion condition update:
 Goal: separate algorithmic failure from gate brittleness and baseline-fit
 effects.
 
-Required work:
+Status: first pass complete.
+
+Artifacts:
+
+- `experiments/results/nabm_effect_matrix/evidence_profile_index_gate3.md`
+- `experiments/results/nabm_effect_matrix/toy24_revision_operator_quick_profile.md`
+- `experiments/results/nabm_effect_matrix/toy24_basin_credit_objective_blend_quick_profile.md`
+- `experiments/results/nabm_effect_matrix/toy24_revision_operator_precommitment_controls_quick_profile.md`
+- `experiments/results/nabm_effect_matrix/toy24_precommitment_peer_evidence_open_boundary_sparse_seed_stress_quick_profile.md`
+- `experiments/results/nabm_effect_matrix/toy24_gate3_evidence_triage_findings.md`
+
+Completed work:
 
 - Keep final-epoch ceiling failures distinct from trajectory-level convergence.
 - Report pure stochastic final flips separately from mechanism failures.
 - Avoid adding more policy losses until the failure mode requires one.
 
-Completion condition:
+Result:
 
 - Toy2/Toy4 results can be classified as success, stochastic gate brittleness,
   baseline-favored environment, or true mechanism failure.
+- `toy24_revision_operator_quick` is classified as stochastic gate brittleness
+  plus baseline-favored environment for both Toy2 and Toy4.
+- `toy24_basin_credit_objective_blend_quick` separates Toy2 slow TtC gate lag
+  from Toy4 success.
+- Precommitment/peer-evidence variants recover stable final hits, but several
+  cases remain baseline-favored because reputation imitation reaches the same
+  ceiling faster.
+
+Completion condition update:
+
+- Gate 3 is complete enough for first-pass evidence triage.
+- The next Toy2/Toy4 evidence step should target a baseline-fragile stress case
+  or gate-reporting refinement, not another loss added to chase baseline speed.
 
 ### Gate 4: Manuscript Claim Matrix
 

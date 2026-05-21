@@ -500,6 +500,23 @@ def _profile_notes(cases: Sequence[CaseProfile]) -> list[str]:
         notes.append("toy24_revision_operator_evidence")
     if any("toy24_final_vs_ever_gap" in case.notes for case in cases):
         notes.append("toy24_final_epoch_hazard_evidence")
+    if any("toy24_triage_success" in case.notes for case in cases):
+        notes.append("toy24_triage_success_evidence")
+    if any(
+        "toy24_triage_stochastic_gate_brittleness" in case.notes for case in cases
+    ):
+        notes.append("toy24_stochastic_gate_brittleness_evidence")
+    if any(
+        "toy24_triage_baseline_favored_environment" in case.notes for case in cases
+    ):
+        notes.append("toy24_baseline_favored_environment_evidence")
+    if any(
+        "toy24_triage_true_mechanism_failure_candidate" in case.notes
+        for case in cases
+    ):
+        notes.append("toy24_true_mechanism_failure_candidate_evidence")
+    if any("toy24_trajectory_success_slow_ttc" in case.notes for case in cases):
+        notes.append("toy24_slow_ttc_gate_lag_evidence")
     return notes
 
 

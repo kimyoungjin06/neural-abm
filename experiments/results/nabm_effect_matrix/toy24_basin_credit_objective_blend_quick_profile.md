@@ -10,14 +10,14 @@
 
 - Gate status: `fail`
 - Passed: `False`
-- Notes: profile_has_case_issues, toy24_objective_basin_evidence, toy24_material_basin_collapse_contrast, toy24_final_epoch_hazard_evidence
+- Notes: profile_has_case_issues, toy24_objective_basin_evidence, toy24_material_basin_collapse_contrast, toy24_final_epoch_hazard_evidence, toy24_triage_success_evidence, toy24_baseline_favored_environment_evidence, toy24_slow_ttc_gate_lag_evidence
 
 ## Case Summary
 
 | Case | Toy | Status | Best Main | Final Hits | Mean TtC | Metric Mean | Issues | Notes |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- | --- |
-| toy2_basin_credit | toy2 | fail | mixed_objective_basin_confidence_precommitment_social_w0p5_0p5_h1 | 3/3 | 12 | 3 | gate_case_fail | toy24_basin_credit_evidence, toy24_objective_basin_blend, toy24_material_basin_collapse_diagnostic, toy24_main_candidate_ceiling_miss |
-| toy4_basin_credit | toy4 | pass | mixed_objective_basin_confidence_precommitment_social_feedback_w0p5_0p5_h1 | 3/3 | 11 | 0.6 | toy24_final_epoch_hazard | toy24_basin_credit_evidence, toy24_objective_basin_blend, toy24_material_basin_collapse_diagnostic, toy24_final_vs_ever_gap, toy24_main_candidate_ceiling_miss |
+| toy2_basin_credit | toy2 | fail | mixed_objective_basin_confidence_precommitment_social_w0p5_0p5_h1 | 3/3 | 12 | 3 | gate_case_fail, toy24_ttc_gate_lag | toy24_basin_credit_evidence, toy24_objective_basin_blend, toy24_material_basin_collapse_diagnostic, toy24_main_candidate_ceiling_miss, toy24_trajectory_success_slow_ttc, toy24_triage_baseline_favored_environment |
+| toy4_basin_credit | toy4 | pass | mixed_objective_basin_confidence_precommitment_social_feedback_w0p5_0p5_h1 | 3/3 | 11 | 0.6 | toy24_final_epoch_hazard | toy24_basin_credit_evidence, toy24_objective_basin_blend, toy24_material_basin_collapse_diagnostic, toy24_final_vs_ever_gap, toy24_main_candidate_ceiling_miss, toy24_triage_success, toy24_triage_baseline_favored_environment |
 
 ## Variant Details
 

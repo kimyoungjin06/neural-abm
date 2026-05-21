@@ -8,7 +8,8 @@
       "issue_codes": [
         "gate_case_fail",
         "toy24_final_epoch_hazard",
-        "toy24_best_main_ceiling_miss"
+        "toy24_best_main_ceiling_miss",
+        "toy24_stochastic_gate_brittleness"
       ],
       "main_group": "revision",
       "nabm_group": "revision",
@@ -18,7 +19,9 @@
         "toy24_revision_operator_path",
         "toy24_final_vs_ever_gap",
         "toy24_late_flip_hazard",
-        "toy24_main_candidate_ceiling_miss"
+        "toy24_main_candidate_ceiling_miss",
+        "toy24_triage_stochastic_gate_brittleness",
+        "toy24_triage_baseline_favored_environment"
       ],
       "primary_metric": "final_mean_payoff",
       "status": "fail",
@@ -326,7 +329,8 @@
       "issue_codes": [
         "gate_case_fail",
         "toy24_final_epoch_hazard",
-        "toy24_best_main_ceiling_miss"
+        "toy24_best_main_ceiling_miss",
+        "toy24_stochastic_gate_brittleness"
       ],
       "main_group": "revision",
       "nabm_group": "revision",
@@ -336,7 +340,9 @@
         "toy24_revision_operator_path",
         "toy24_final_vs_ever_gap",
         "toy24_late_flip_hazard",
-        "toy24_main_candidate_ceiling_miss"
+        "toy24_main_candidate_ceiling_miss",
+        "toy24_triage_stochastic_gate_brittleness",
+        "toy24_triage_baseline_favored_environment"
       ],
       "primary_metric": "final_mean_payoff",
       "status": "fail",
@@ -672,7 +678,9 @@
     "profile_has_case_issues",
     "toy24_objective_basin_evidence",
     "toy24_revision_operator_evidence",
-    "toy24_final_epoch_hazard_evidence"
+    "toy24_final_epoch_hazard_evidence",
+    "toy24_stochastic_gate_brittleness_evidence",
+    "toy24_baseline_favored_environment_evidence"
   ],
   "passed": false,
   "runs_path": "experiments/results/nabm_effect_matrix/toy24_revision_operator_quick_runs.csv",

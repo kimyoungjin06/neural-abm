@@ -12,7 +12,9 @@
         "toy24_basin_credit_evidence",
         "toy24_objective_basin_blend",
         "toy24_revision_operator_path",
-        "toy24_late_flip_hazard"
+        "toy24_late_flip_hazard",
+        "toy24_triage_success",
+        "toy24_triage_baseline_favored_environment"
       ],
       "primary_metric": "final_mean_payoff",
       "status": "pass",
@@ -542,7 +544,9 @@
         "toy24_basin_credit_evidence",
         "toy24_objective_basin_blend",
         "toy24_revision_operator_path",
-        "toy24_late_flip_hazard"
+        "toy24_late_flip_hazard",
+        "toy24_triage_success",
+        "toy24_triage_baseline_favored_environment"
       ],
       "primary_metric": "final_mean_payoff",
       "status": "pass",
@@ -1081,7 +1085,9 @@
   "manifest_path": "experiments/evidence/toy24_revision_operator_precommitment_controls_quick.yaml",
   "notes": [
     "toy24_objective_basin_evidence",
-    "toy24_revision_operator_evidence"
+    "toy24_revision_operator_evidence",
+    "toy24_triage_success_evidence",
+    "toy24_baseline_favored_environment_evidence"
   ],
   "passed": true,
   "runs_path": "experiments/results/nabm_effect_matrix/toy24_revision_operator_precommitment_controls_quick_runs.csv",

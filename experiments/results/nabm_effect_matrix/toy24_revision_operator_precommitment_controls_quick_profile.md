@@ -10,14 +10,14 @@
 
 - Gate status: `pass`
 - Passed: `True`
-- Notes: toy24_objective_basin_evidence, toy24_revision_operator_evidence
+- Notes: toy24_objective_basin_evidence, toy24_revision_operator_evidence, toy24_triage_success_evidence, toy24_baseline_favored_environment_evidence
 
 ## Case Summary
 
 | Case | Toy | Status | Best Main | Final Hits | Mean TtC | Metric Mean | Issues | Notes |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- | --- |
-| toy2_revision_operator_precommitment_controls | toy2 | pass | revision_operator_precommitment_peer_evidence_w1p0 | 3/3 | 9.66667 | 3 |  | toy24_basin_credit_evidence, toy24_objective_basin_blend, toy24_revision_operator_path, toy24_late_flip_hazard |
-| toy4_revision_operator_precommitment_controls | toy4 | pass | revision_operator_precommitment_peer_evidence_w1p0 | 3/3 | 9.33333 | 0.6 |  | toy24_basin_credit_evidence, toy24_objective_basin_blend, toy24_revision_operator_path, toy24_late_flip_hazard |
+| toy2_revision_operator_precommitment_controls | toy2 | pass | revision_operator_precommitment_peer_evidence_w1p0 | 3/3 | 9.66667 | 3 |  | toy24_basin_credit_evidence, toy24_objective_basin_blend, toy24_revision_operator_path, toy24_late_flip_hazard, toy24_triage_success, toy24_triage_baseline_favored_environment |
+| toy4_revision_operator_precommitment_controls | toy4 | pass | revision_operator_precommitment_peer_evidence_w1p0 | 3/3 | 9.33333 | 0.6 |  | toy24_basin_credit_evidence, toy24_objective_basin_blend, toy24_revision_operator_path, toy24_late_flip_hazard, toy24_triage_success, toy24_triage_baseline_favored_environment |
 
 ## Variant Details
 

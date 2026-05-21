@@ -272,10 +272,14 @@ class Toy24BasinRevisionAdapter(EvidenceProfileAdapter):
         del case
         variants = profile.variants
         main_variants = [variant for variant in variants if variant.role == "main"]
+        baseline_variants = [
+            variant for variant in variants if variant.role == "baseline"
+        ]
         diagnostic_variants = [
             variant for variant in variants if variant.role == "diagnostic"
         ]
         best_main = _best_by_hits_then_time(main_variants)
+        best_baseline = _best_by_hits_then_time(baseline_variants)
         if any(_detail_enabled(variant, "basin_credit_enabled") for variant in variants):
             profile.notes.append("toy24_basin_credit_evidence")
         if any(
@@ -312,6 +316,11 @@ class Toy24BasinRevisionAdapter(EvidenceProfileAdapter):
             and best_main.final_ceiling_hits < best_main.expected_seed_count
         ):
             profile.issue_codes.append("toy24_best_main_ceiling_miss")
+        _annotate_toy24_gate3_triage(
+            profile=profile,
+            best_main=best_main,
+            best_baseline=best_baseline,
+        )
 
 
 def adapter_for_case(case: MatrixCase) -> EvidenceProfileAdapter:
@@ -375,6 +384,48 @@ def _positive_detail(variant: VariantProfile, key: str) -> bool:
 
 def _mean_or_zero(value: float | None) -> float:
     return 0.0 if value is None else value
+
+
+def _annotate_toy24_gate3_triage(
+    *,
+    profile: CaseProfile,
+    best_main: VariantProfile | None,
+    best_baseline: VariantProfile | None,
+) -> None:
+    if best_main is None:
+        return
+
+    expected = best_main.expected_seed_count
+    if best_main.final_ceiling_hits >= expected:
+        if profile.status == "pass":
+            profile.notes.append("toy24_triage_success")
+        else:
+            profile.notes.append("toy24_trajectory_success_slow_ttc")
+            profile.issue_codes.append("toy24_ttc_gate_lag")
+    elif (
+        best_main.ever_ceiling_hits >= expected
+        and (
+            _mean_or_zero(best_main.late_flip_rate.mean) > 0.0
+            or _mean_or_zero(best_main.terminal_ceiling_rate.mean) >= 0.75
+        )
+    ):
+        profile.notes.append("toy24_triage_stochastic_gate_brittleness")
+        profile.issue_codes.append("toy24_stochastic_gate_brittleness")
+    elif best_main.ever_ceiling_hits < expected:
+        profile.notes.append("toy24_triage_true_mechanism_failure_candidate")
+        profile.issue_codes.append("toy24_true_mechanism_failure_candidate")
+
+    if best_baseline is None:
+        return
+    main_ttc = best_main.time_to_ceiling.mean
+    baseline_ttc = best_baseline.time_to_ceiling.mean
+    if (
+        best_baseline.final_ceiling_hits >= expected
+        and main_ttc is not None
+        and baseline_ttc is not None
+        and baseline_ttc + 1.0 < main_ttc
+    ):
+        profile.notes.append("toy24_triage_baseline_favored_environment")
 
 
 def _optional_bool(value: Any) -> bool | None:
