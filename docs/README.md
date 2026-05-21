@@ -13,6 +13,9 @@ Use this directory for internal project knowledge.
   archive design.
 - [nabm-unit-v1-boundary-audit.md](nabm-unit-v1-boundary-audit.md): concrete
   Toy2/Toy4 ownership audit for the reusable NABM Unit v1 contract.
+- [nabm-unit-v1-completeness-checklist.md](nabm-unit-v1-completeness-checklist.md):
+  operational completion map for the NABM Unit v1 engineering, evidence, and
+  paper-readiness gates.
 
 ## Guidelines
 

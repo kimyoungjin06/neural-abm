@@ -146,3 +146,15 @@ should flow through `NABMStep` when they need both mix and commit diagnostics,
 reusable local learning commits should flow through `NABMLocalStep`, and binary
 neural policy lifecycle wiring should flow through `BinaryPolicyLearningUnit`
 once the domain has supplied observations and objective callbacks.
+
+Unit contract changes should update the docs that define the boundary:
+
+- `docs/decisions/0010-nabm-unit-v1-contract.md`
+- `docs/nabm-unit-v1-boundary-audit.md`
+- `docs/nabm-unit-v1-completeness-checklist.md`
+
+In particular, new shared helpers such as
+`spatial_binary.run_binary_policy_learning_step` should remain lifecycle
+plumbing only. They may wire domain-supplied callbacks into the reusable unit,
+but they must not construct rewards, payoffs, thresholds, teacher signals,
+basin credit, or evidence criteria.
