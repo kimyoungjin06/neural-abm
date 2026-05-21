@@ -23,6 +23,8 @@ Working title:
 
 - Fast, medium, and slow state.
 - Common node interface.
+- NABM Unit v1 contract: what the reusable unit owns, and which domain
+  semantics stay outside it.
 - Social mixing taxonomy.
 - Communication budget and synchronization modes.
 - Logging requirements.
@@ -42,6 +44,13 @@ Working title:
 
 ## 6. Calibration and Analysis
 
+- Manuscript claim matrix: every claim must map to code path, manifest, result
+  artifact, figure/table candidate, and limitation.
+- Toy5 threshold-aware readiness grid: no-seed safety and sparse-seed spread.
+- Toy2/Toy4 failure-mode taxonomy: stochastic final-epoch hazard, slow TtC,
+  baseline-favored environment, and mechanism failure candidate.
+- Targeted Toy2/Toy4 robustness: sparse seeds, open boundaries, noisy ranking,
+  and Toy4 heterogeneous resource extraction.
 - Micro-state logs.
 - Sensitivity analysis.
 - Time-to-ceiling as a secondary diagnostic: distinguish collapse recovery,

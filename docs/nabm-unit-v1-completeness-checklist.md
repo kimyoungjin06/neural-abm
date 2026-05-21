@@ -31,7 +31,7 @@ Status terms:
 | Domain diagnostics plumbing | yes | yes | partial | partial | Toy2/Toy4 shared diagnostic field plumbing reduces schema drift without moving semantics into the unit. |
 | Holdout migration | yes | yes | yes | partial | Toy5 now has a small threshold-aware topology/threshold grid, but negative-control separation is strongest on safety rather than spread. |
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
-| Manuscript narrative | partial | no | partial | no | The claim boundary exists in docs, but paper outline and figures do not yet absorb the current evidence. |
+| Manuscript narrative | partial | yes | partial | partial | The paper claim matrix now links bounded claims to artifacts and limitations, but figures and draft prose still need to absorb it. |
 
 ## What Is Complete Enough
 
@@ -234,7 +234,14 @@ Completion condition update:
 
 Goal: turn the codebase into a paper-ready evidence package.
 
-Required work:
+Status: first pass complete.
+
+Artifacts:
+
+- `paper/claim-matrix.md`
+- `paper/outline.md`
+
+Completed work:
 
 - Create a claim-to-artifact table linking each claim to code path, manifest,
   result, figure, and limitation.
@@ -242,18 +249,30 @@ Required work:
 - Keep prototype mechanisms out of the primary claim path unless their evidence
   is upgraded.
 
+Result:
+
+- The primary paper path is now limited to unit-contract reuse, Toy5
+  threshold-aware readiness robustness, Toy2/Toy4 failure-mode triage, targeted
+  Toy2/Toy4 reputation-fragility stress, and Toy4 local resource-threshold
+  robustness.
+- Deferred claims are explicit: solved revision operators, finalized basin
+  critics, general superiority over classical baselines, and Toy6-Toy10 as full
+  NABM evidence cases.
+
 Completion condition:
 
-- A reviewer can trace each paper claim to a reproducible artifact and a stated
-  limitation.
+- First pass complete. A reviewer can trace each listed paper claim to a
+  reproducible artifact and a stated limitation. The remaining Gate 4 work is
+  to turn the matrix into actual manuscript prose, tables, and figures.
 
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Gate 3: triage Toy2/Toy4 evidence so stochastic gate brittleness,
-  baseline-favored environments, and true mechanism failures are separated.
+- Manuscript table build-out: turn `paper/claim-matrix.md` into compact
+  unit-boundary, Toy5 safety/spread, Gate 3 failure-mode, and targeted
+  Toy2/Toy4 stress tables.
 - Toy5 control sharpening: add a small case where exposure-only anchoring is
   expected to over-spread or self-excite, while the threshold-aware adapter
   should preserve safety.

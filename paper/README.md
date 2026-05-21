@@ -3,6 +3,7 @@
 Use this directory for manuscript material only:
 
 - Paper outline.
+- Claim matrix linking manuscript claims to artifacts and limitations.
 - Draft sections.
 - Publication figures.
 - Related work notes promoted from `docs/`.
@@ -10,6 +11,10 @@ Use this directory for manuscript material only:
 
 Raw experiment runs should remain in `experiments/runs/`. Curated figures and
 tables can be copied or exported here when they are paper-ready.
+
+Current planning artifacts:
+
+- [claim-matrix.md](claim-matrix.md)
 
 Current figure candidates:
 
