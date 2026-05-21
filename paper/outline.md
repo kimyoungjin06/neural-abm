@@ -46,6 +46,8 @@ Working title:
 
 - Manuscript claim matrix: every claim must map to code path, manifest, result
   artifact, figure/table candidate, and limitation.
+- Manuscript table candidates: unit-boundary, Toy5 safety/spread, Gate 3
+  failure modes, Toy2/Toy4 reputation fragility, and Toy4 local resource stress.
 - Toy5 threshold-aware readiness grid: no-seed safety and sparse-seed spread.
 - Toy2/Toy4 failure-mode taxonomy: stochastic final-epoch hazard, slow TtC,
   baseline-favored environment, and mechanism failure candidate.

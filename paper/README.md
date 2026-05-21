@@ -15,6 +15,7 @@ tables can be copied or exported here when they are paper-ready.
 Current planning artifacts:
 
 - [claim-matrix.md](claim-matrix.md)
+- [tables/nabm-unit-v1-manuscript-tables.md](tables/nabm-unit-v1-manuscript-tables.md)
 
 Current figure candidates:
 
