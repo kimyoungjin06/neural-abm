@@ -157,6 +157,7 @@ sequence.
 Contract changes must update the boundary docs in the same patch:
 
 - `docs/decisions/0010-nabm-unit-v1-contract.md`
+- `docs/decisions/0011-continuous-scalar-unit-contract.md`
 - `docs/nabm-unit-v1-boundary-audit.md`
 - `docs/nabm-unit-v1-completeness-checklist.md`
 - `docs/nabm-unit-v1-migration-candidate-audit.md` when selecting the next
@@ -175,6 +176,9 @@ The active guard tests for the current binary unit migration are:
   where Toy8 social-hazard mixing routes through a unit-backed scalar path;
 - `tests/test_toy9_runner.py` for the second existing-toy migration parity
   slice where Toy9 heterogeneous probability mixing uses the same scalar path;
+- `tests/test_toy7_runner.py` for Toy7 compatibility guardrails while Toy7
+  continuous extraction intensity remains deferred until a bounded-scalar
+  contract exists;
 - `tests/test_readiness.py` for readiness propagation boundaries;
 - `tests/test_nabm_unit_docs.py` for this documentation boundary.
 
@@ -183,10 +187,14 @@ should flow through `NABMStep` when they need both mix and commit diagnostics,
 reusable local learning commits should flow through `NABMLocalStep`, and binary
 neural policy lifecycle wiring should flow through `BinaryPolicyLearningUnit`
 once the domain has supplied observations and objective callbacks.
+Toy7's continuous extraction intensity must not be routed through
+`SCALAR_PROBABILITY_CHANNEL`; it requires a bounded continuous scalar contract
+such as `BOUNDED_SCALAR_CHANNEL`/`mix_bounded_scalars(...)` before migration.
 
 Unit contract changes should update the docs that define the boundary:
 
 - `docs/decisions/0010-nabm-unit-v1-contract.md`
+- `docs/decisions/0011-continuous-scalar-unit-contract.md`
 - `docs/nabm-unit-v1-boundary-audit.md`
 - `docs/nabm-unit-v1-completeness-checklist.md`
 - `docs/nabm-unit-v1-migration-candidate-audit.md` for Gate 7 existing-toy

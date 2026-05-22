@@ -32,6 +32,7 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
         assert forbidden_domain_semantic in readme
     for boundary_doc in (
         "docs/decisions/0010-nabm-unit-v1-contract.md",
+        "docs/decisions/0011-continuous-scalar-unit-contract.md",
         "docs/nabm-unit-v1-boundary-audit.md",
         "docs/nabm-unit-v1-completeness-checklist.md",
         "docs/nabm-unit-v1-migration-candidate-audit.md",
@@ -39,7 +40,11 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
         assert boundary_doc in readme
     assert "tests/test_toy8_runner.py" in readme
     assert "tests/test_toy9_runner.py" in readme
+    assert "tests/test_toy7_runner.py" in readme
     assert "unit-backed scalar path" in readme
+    assert "SCALAR_PROBABILITY_CHANNEL" in readme
+    assert "BOUNDED_SCALAR_CHANNEL" in readme
+    assert "mix_bounded_scalars" in readme
 
 
 def test_nabm_unit_checklist_records_gate1_completion_and_guards() -> None:
@@ -239,7 +244,7 @@ def test_nabm_unit_checklist_records_toy9_probability_parity() -> None:
     gate7c = _between(
         checklist,
         "### Gate 7C: Toy9 Heterogeneous Probability Parity",
-        "## Recommended Next Slice",
+        "### Gate 7D: Continuous-Scalar Contract Decision",
     )
 
     for required in (
@@ -254,3 +259,43 @@ def test_nabm_unit_checklist_records_toy9_probability_parity() -> None:
     assert "## Gate 7C Result" in audit
     assert "two existing-toy parity users" in audit
     assert "Toy7 remains a contract-gap decision" in audit
+
+
+def test_continuous_scalar_contract_records_toy7_gap() -> None:
+    decision = (
+        ROOT / "docs/decisions/0011-continuous-scalar-unit-contract.md"
+    ).read_text()
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    audit = (ROOT / "docs/nabm-unit-v1-migration-candidate-audit.md").read_text()
+    gate7d = _between(
+        checklist,
+        "### Gate 7D: Continuous-Scalar Contract Decision",
+        "## Recommended Next Slice",
+    )
+
+    for required in (
+        "Toy7",
+        "continuous extraction intensity",
+        "not a probability",
+        "SCALAR_PROBABILITY_CHANNEL",
+        "BOUNDED_SCALAR_CHANNEL",
+        "mix_bounded_scalars",
+        "Gate 7E",
+        "not promote Toy7",
+    ):
+        assert required in decision
+
+    for required in (
+        "Status: contract decision complete.",
+        "bounded continuous scalar",
+        "SCALAR_PROBABILITY_CHANNEL",
+        "BOUNDED_SCALAR_CHANNEL",
+        "mix_bounded_scalars",
+        "parity-only",
+    ):
+        assert required in gate7d
+
+    assert "## Gate 7D Result" in audit
+    assert "Toy7 should not be routed through `SCALAR_PROBABILITY_CHANNEL`" in audit
+    assert "Toy7 remains deferred until that contract has toy-independent tests" in audit
+    assert "Bounded-scalar unit contract prototype" in checklist

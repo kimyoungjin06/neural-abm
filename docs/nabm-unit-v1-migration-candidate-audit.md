@@ -224,3 +224,30 @@ Interpretation:
 - Additional scalar migrations should be justified by real duplication
   reduction; Toy7 remains a contract-gap decision because its central action is
   continuous extraction intensity.
+
+## Gate 7D Result
+
+Status: contract decision complete.
+
+Decision artifact:
+
+- `docs/decisions/0011-continuous-scalar-unit-contract.md`
+
+Interpretation:
+
+- Toy7 continuous extraction intensity is a bounded scalar, but it is not a
+  probability.
+- Toy7 should not be routed through `SCALAR_PROBABILITY_CHANNEL` as a normal
+  parity migration.
+- The next implementation needs a semantic-free bounded continuous scalar
+  contract first, preferably `BOUNDED_SCALAR_CHANNEL` plus
+  `mix_bounded_scalars(...)` or equivalent.
+- Toy7 remains deferred until that contract has toy-independent tests.
+
+Future Toy7 path:
+
+1. Add bounded-scalar helper/channel tests independent of Toy7.
+2. Route only Toy7 social intensity mixing through the new bounded-scalar path.
+3. Preserve Toy7 resource dynamics, payoff semantics, noisy intensity sampling,
+   and runner artifact fields.
+4. Interpret the result as migration parity, not as full Toy7 NABM evidence.

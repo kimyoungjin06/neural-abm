@@ -33,7 +33,7 @@ Status terms:
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
 | Manuscript narrative | partial | yes | partial | partial | The paper claim matrix, table candidates, and draft prose now link bounded claims to artifacts and limitations; publication figures remain open. |
 | Adapter-only extensibility | yes | yes | quick | partial | Source-free threshold, congestion, and stochastic commons holdout manifests now run binary domains with baseline, negative-control, and main variants through public unit APIs. |
-| Existing-toy migration | partial | yes | parity | partial | Gate 7B/7C route Toy8 async hazard and Toy9 heterogeneous probability mixing through the unit-backed scalar path while preserving domain semantics. |
+| Existing-toy migration | partial | yes | parity | partial | Gate 7B/7C route Toy8 async hazard and Toy9 heterogeneous probability mixing through the unit-backed scalar path while preserving domain semantics; Gate 7D records Toy7 continuous extraction intensity as a bounded-scalar contract gap. |
 
 ## What Is Complete Enough
 
@@ -508,12 +508,56 @@ Completion condition:
   pressure point is either Toy7 continuous-scalar contract-gap documentation or
   manuscript consolidation of the current migration evidence.
 
+### Gate 7D: Continuous-Scalar Contract Decision
+
+Goal: decide whether Toy7 continuous extraction intensity can reuse the current
+scalar probability path before implementation.
+
+Status: contract decision complete.
+
+Artifacts:
+
+- `docs/decisions/0011-continuous-scalar-unit-contract.md`
+- `docs/nabm-unit-v1-migration-candidate-audit.md`
+- `src/neural_abm/toy_resource.py`
+- `tests/test_toy7_runner.py`
+- `tests/test_nabm_unit_docs.py`
+
+Completed work:
+
+- Recorded Toy7 extraction intensity as a bounded continuous scalar, not a
+  probability.
+- Rejected `SCALAR_PROBABILITY_CHANNEL` as the Toy7 migration path because it
+  would blur channel semantics.
+- Defined the next preferred API shape as `BOUNDED_SCALAR_CHANNEL` plus a
+  semantic-free `mix_bounded_scalars(...)` helper or equivalent.
+- Kept resource stock dynamics, payoff construction, noisy intensity sampling,
+  and evidence interpretation in Toy7.
+
+Result:
+
+- Toy7 remains deferred until a bounded continuous scalar contract exists and
+  is tested outside Toy7.
+- The next Toy7 implementation should be parity-only: first add the bounded
+  scalar helper and guard tests, then route only Toy7 social intensity mixing
+  through it.
+- This gate does not promote Toy7 to a full NABM evidence case and does not
+  claim continuous-action policy learning is solved.
+
+Completion condition:
+
+- Decision complete. The next implementation slice is Gate 7E: bounded-scalar
+  unit contract prototype plus Toy7 social-intensity parity, if the project
+  chooses to keep migrating existing compatible toys before manuscript
+  consolidation.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Continuous-scalar contract decision: document whether Toy7 requires a new
-  continuous scalar unit contract before implementation.
+- Bounded-scalar unit contract prototype: add a semantic-free bounded scalar
+  channel/helper and guard tests, then migrate Toy7 social intensity mixing as
+  a parity-only slice.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.
