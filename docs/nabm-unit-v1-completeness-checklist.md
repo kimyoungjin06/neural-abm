@@ -33,7 +33,7 @@ Status terms:
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
 | Manuscript narrative | partial | yes | partial | partial | The paper claim matrix, table candidates, and draft prose now link bounded claims to artifacts and limitations; publication figures remain open. |
 | Adapter-only extensibility | yes | yes | quick | partial | Source-free threshold, congestion, and stochastic commons holdout manifests now run binary domains with baseline, negative-control, and main variants through public unit APIs. |
-| Existing-toy migration | partial | yes | parity | partial | Gate 7B/7C route Toy8 async hazard and Toy9 heterogeneous probability mixing through the unit-backed scalar path; Gate 7E routes Toy7 continuous extraction-intensity mixing through the bounded-scalar path while preserving domain semantics. |
+| Existing-toy migration | partial | yes | parity | partial | Gate 7B/7C route Toy8 async hazard and Toy9 heterogeneous probability mixing through the unit-backed scalar path; Gate 7E/7F route Toy7 intensity and Toy10 market/ecology channels through bounded-scalar paths while preserving domain semantics. |
 
 ## What Is Complete Enough
 
@@ -597,12 +597,59 @@ Completion condition:
   require a new decision if it moves from bounded scalar social mixing into
   continuous local policy learning or resource-control evidence.
 
+### Gate 7F: Toy10 Market/Ecology Channel Parity
+
+Goal: decide whether Toy10 needs a new multi-channel vector contract before
+migration, then route the smallest safe slice through the existing bounded
+scalar unit path.
+
+Status: parity slice complete.
+
+Artifacts:
+
+- `src/neural_abm/toy_market.py::select_peer_ids`
+- `src/neural_abm/toy_market.py::mix_channel`
+- `src/neural_abm/mixers.py::apply_bounded_scalar_output_average`
+- `tests/test_toy10_runner.py::test_toy10_output_similarity_selects_bounded_scalar_composite`
+- `tests/test_toy10_runner.py::test_toy10_mix_channel_matches_unit_bounded_scalar_parity`
+- `tests/test_toy10_runner.py::test_toy10_mix_channel_routes_through_unit_bounded_scalar_helper`
+
+Completed work:
+
+- Audited Toy10 as two bounded scalar social channels, `price_expectation` and
+  `conservation_norm`, plus a Toy-owned composite similarity selector.
+- Reused `select_bounded_scalar_output_peers(...)` for the composite
+  market/ecology similarity score instead of treating it as a probability.
+- Routed each Toy10 social channel through
+  `apply_bounded_scalar_output_average(...)` with bounds `[0, 1]` and commit
+  mode `multi_channel_market_commit`.
+- Kept multi-channel aggregation, harvest construction, market price,
+  resource dynamics, payoff updates, dynamic rewiring, and evidence
+  interpretation in Toy10.
+
+Result:
+
+- Toy10 no longer uses scalar probability mixing for price/conservation social
+  channels.
+- A new vector-valued multi-channel message contract is not needed for this
+  parity slice because Toy10 can apply the bounded scalar unit path once per
+  channel.
+- This is not a general multi-channel NABM claim. A future vector/mapping
+  channel would require a new decision if multiple domains need atomic
+  multi-field message mixing.
+
+Completion condition:
+
+- Gate 7F is complete for Toy10 price/conservation social mixing. Further
+  Toy10 work should not move market, resource, payoff, or dynamic rewiring
+  semantics into the unit.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Toy10 multi-channel contract audit: decide whether the dynamic market/ecology
-  runner exposes a typed message contract gap before any migration.
+- Toy6 categorical contract audit: decide whether categorical social mixing can
+  reuse distribution channels or needs a separate categorical-policy boundary.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.

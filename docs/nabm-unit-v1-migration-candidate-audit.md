@@ -282,3 +282,41 @@ Interpretation:
   sampling, propensity learning, runner artifacts, and evidence interpretation.
 - This does not promote Toy7 to full NABM evidence. It closes the bounded
   scalar contract gap for one parity slice.
+
+## Gate 7F Result
+
+Status: parity slice complete.
+
+Audit finding:
+
+- Toy10 does not require a vector-valued multi-channel contract for the first
+  migration slice.
+- Its social price expectation and conservation norm channels are separate
+  bounded scalar values in `[0, 1]`.
+- The composite peer-selection score is Toy10-owned market/ecology similarity,
+  not a probability and not a new generic social-message schema.
+
+Implemented slice:
+
+- `src/neural_abm/toy_market.py::select_peer_ids` uses
+  `select_bounded_scalar_output_peers(...)` for the Toy-owned composite
+  similarity score.
+- `src/neural_abm/toy_market.py::mix_channel` routes both
+  `price_expectation` and `conservation_norm` through
+  `apply_bounded_scalar_output_average(...)`.
+- Toy10 still owns harvest construction, market price, resource transition,
+  payoff updates, dynamic graph rewiring, channel-loss aggregation, and
+  evidence interpretation.
+
+Parity checks:
+
+- `tests/test_toy10_runner.py::test_toy10_output_similarity_selects_bounded_scalar_composite`
+- `tests/test_toy10_runner.py::test_toy10_mix_channel_matches_unit_bounded_scalar_parity`
+- `tests/test_toy10_runner.py::test_toy10_mix_channel_routes_through_unit_bounded_scalar_helper`
+
+Interpretation:
+
+- Toy10 now reuses the bounded scalar unit surface for per-channel social
+  mixing without introducing a generic multi-channel vector mixer.
+- This is existing-toy migration parity only. It does not promote Toy10 to full
+  NABM evidence and does not claim a general multi-channel message contract.

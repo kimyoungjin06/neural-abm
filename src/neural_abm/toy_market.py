@@ -21,10 +21,10 @@ from neural_abm.results import (
     DomainToyResult,
     write_run_metadata_artifacts,
 )
+from neural_abm.mixers import apply_bounded_scalar_output_average
 from neural_abm.social import (
     empty_peers,
-    mix_scalar_probabilities,
-    select_scalar_output_peers,
+    select_bounded_scalar_output_peers,
 )
 
 
@@ -141,11 +141,13 @@ def select_peer_ids(
     if config.coordination.mixer == "none":
         return empty_peers(len(price_expectations))
     composite = np.clip(0.5 * (price_expectations + conservation_norms), 0.0, 1.0)
-    return select_scalar_output_peers(
+    return select_bounded_scalar_output_peers(
         neighbors=neighbors,
         values=composite,
         peer_rule=config.coordination.peer_rule,
         threshold=config.coordination.threshold,
+        lower_bound=0.0,
+        upper_bound=1.0,
     ).peer_ids
 
 
@@ -162,17 +164,19 @@ def mix_channel(
             [0.0 for _ in range(len(values))],
             [0.0 for _ in range(len(values))],
         )
-    result = mix_scalar_probabilities(
+    result = apply_bounded_scalar_output_average(
         values=values,
         peer_ids=peer_ids,
         alpha=config.coordination.alpha,
+        lower_bound=0.0,
+        upper_bound=1.0,
         channel=channel,
         commit_mode="multi_channel_market_commit",
     )
     return (
-        np.asarray(result.mixed_values, dtype=np.float64),
-        result.losses,
-        result.update_norms,
+        np.asarray(result.mix.mixed_values, dtype=np.float64),
+        result.commit.losses,
+        result.mix.update_norms,
     )
 
 

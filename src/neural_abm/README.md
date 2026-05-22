@@ -180,6 +180,10 @@ The active guard tests for the current binary unit migration are:
 - `tests/test_toy7_runner.py` for Toy7 compatibility guardrails while Toy7
   continuous extraction-intensity social mixing routes through the bounded
   scalar path without using probability semantics;
+- `tests/test_toy10_runner.py` for Toy10 market/ecology channel parity where
+  price expectation and conservation norm social mixing reuse the bounded
+  scalar path while composite peer selection and dynamic rewiring stay
+  Toy-owned;
 - `tests/test_readiness.py` for readiness propagation boundaries;
 - `tests/test_nabm_unit_docs.py` for this documentation boundary.
 
@@ -193,6 +197,9 @@ Toy7's continuous extraction intensity must not be routed through
 continuous scalar contract, `BOUNDED_SCALAR_CHANNEL` plus
 `mix_bounded_scalars(...)`, while resource and payoff semantics remain in
 Toy7.
+Toy10's price expectation and conservation norm channels use the same bounded
+scalar path one channel at a time; multi-channel aggregation, market price,
+resource dynamics, and dynamic rewiring remain Toy10-owned.
 
 Unit contract changes should update the docs that define the boundary:
 

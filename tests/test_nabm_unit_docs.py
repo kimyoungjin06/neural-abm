@@ -41,11 +41,13 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
     assert "tests/test_toy8_runner.py" in readme
     assert "tests/test_toy9_runner.py" in readme
     assert "tests/test_toy7_runner.py" in readme
+    assert "tests/test_toy10_runner.py" in readme
     assert "unit-backed scalar path" in readme
     assert "SCALAR_PROBABILITY_CHANNEL" in readme
     assert "BOUNDED_SCALAR_CHANNEL" in readme
     assert "mix_bounded_scalars" in readme
     assert "without using probability semantics" in readme
+    assert "dynamic rewiring stay" in readme
 
 
 def test_nabm_unit_checklist_records_gate1_completion_and_guards() -> None:
@@ -310,7 +312,7 @@ def test_bounded_scalar_contract_records_toy7_parity_slice() -> None:
     gate7e = _between(
         checklist,
         "### Gate 7E: Toy7 Bounded-Scalar Intensity Parity",
-        "## Recommended Next Slice",
+        "### Gate 7F: Toy10 Market/Ecology Channel Parity",
     )
 
     for required in (
@@ -345,5 +347,41 @@ def test_bounded_scalar_contract_records_toy7_parity_slice() -> None:
     ):
         assert required in audit
 
-    assert "Toy10 multi-channel contract audit" in checklist
     assert "Bounded-scalar unit contract prototype" not in checklist
+
+
+def test_toy10_market_ecology_channels_record_bounded_scalar_parity() -> None:
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    audit = (ROOT / "docs/nabm-unit-v1-migration-candidate-audit.md").read_text()
+    gate7f = _between(
+        checklist,
+        "### Gate 7F: Toy10 Market/Ecology Channel Parity",
+        "## Recommended Next Slice",
+    )
+
+    for required in (
+        "Status: parity slice complete.",
+        "src/neural_abm/toy_market.py::select_peer_ids",
+        "src/neural_abm/toy_market.py::mix_channel",
+        "apply_bounded_scalar_output_average",
+        "price_expectation",
+        "conservation_norm",
+        "multi_channel_market_commit",
+        "not a general multi-channel NABM claim",
+    ):
+        assert required in gate7f
+
+    for required in (
+        "## Gate 7F Result",
+        "does not require a vector-valued multi-channel contract",
+        "select_bounded_scalar_output_peers",
+        "price_expectation",
+        "conservation_norm",
+        "dynamic graph rewiring",
+        "does not promote Toy10 to full",
+        "does not claim a general multi-channel message contract",
+    ):
+        assert required in audit
+
+    assert "Toy6 categorical contract audit" in checklist
+    assert "Toy10 multi-channel contract audit" not in checklist
