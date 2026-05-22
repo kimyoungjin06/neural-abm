@@ -687,13 +687,50 @@ Completion condition:
   learning, payoff construction, or categorical evidence criteria into the
   generic unit.
 
+### Gate 7H: Existing-Toy Migration Consolidation
+
+Goal: summarize Gates 7B-7G as one engineering boundary before starting new
+parity-only migration work.
+
+Status: documentation consolidation complete.
+
+Artifacts:
+
+- `docs/decisions/0012-existing-toy-migration-parity-consolidation.md`
+- `docs/toy-models/capability-matrix.md`
+- `docs/nabm-unit-v1-migration-candidate-audit.md`
+- `src/neural_abm/README.md`
+- `tests/test_nabm_unit_docs.py`
+
+Completed work:
+
+- Consolidated Toy6-10 social-exchange parity into one decision record.
+- Kept the Toy6-10 status as `compatible`, not `full`.
+- Recorded the unit-owned surfaces separately from toy-owned domain semantics.
+- Updated the capability matrix so future readers can see which typed channel
+  each compatible toy now exercises.
+
+Result:
+
+- The engineering claim is now bounded: existing compatible toys can reuse
+  typed NABM Unit social exchange surfaces without moving domain equations into
+  the generic layer.
+- The research claim is still conservative: these parity slices are not
+  performance evidence and do not make Toy6-10 evidence-default.
+
+Completion condition:
+
+- Gate 7H is complete. Further engineering work should either consolidate
+  manuscript architecture claims or target runner lifecycle duplication rather
+  than adding more parity-only social mixing slices.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Existing-toy migration consolidation: summarize Gates 7B-7G as compatible
-  migration parity across event, heterogeneous, continuous scalar,
-  multi-channel, and categorical runners.
+- Runner lifecycle consolidation audit: identify whether `DomainToyRunner`,
+  adapter `step(...)`, and logging paths still duplicate reusable lifecycle
+  behavior without hiding domain semantics.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.

@@ -159,6 +159,7 @@ Contract changes must update the boundary docs in the same patch:
 
 - `docs/decisions/0010-nabm-unit-v1-contract.md`
 - `docs/decisions/0011-continuous-scalar-unit-contract.md`
+- `docs/decisions/0012-existing-toy-migration-parity-consolidation.md`
 - `docs/nabm-unit-v1-boundary-audit.md`
 - `docs/nabm-unit-v1-completeness-checklist.md`
 - `docs/nabm-unit-v1-migration-candidate-audit.md` when selecting the next
@@ -206,11 +207,16 @@ resource dynamics, and dynamic rewiring remain Toy10-owned.
 Toy6's categorical strategy distribution uses the probability-distribution
 path; strategy identity, cyclic payoff semantics, action sampling, and
 categorical evidence interpretation remain Toy6-owned.
+Together, the Toy6-10 parity slices cover probability-distribution, scalar, and
+bounded-scalar social exchange in existing compatible toys. They are migration
+parity evidence for typed social exchange reuse, not performance evidence and
+not an upgrade of Toy6-10 to full NABM status.
 
 Unit contract changes should update the docs that define the boundary:
 
 - `docs/decisions/0010-nabm-unit-v1-contract.md`
 - `docs/decisions/0011-continuous-scalar-unit-contract.md`
+- `docs/decisions/0012-existing-toy-migration-parity-consolidation.md`
 - `docs/nabm-unit-v1-boundary-audit.md`
 - `docs/nabm-unit-v1-completeness-checklist.md`
 - `docs/nabm-unit-v1-migration-candidate-audit.md` for Gate 7 existing-toy

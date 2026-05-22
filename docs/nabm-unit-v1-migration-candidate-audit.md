@@ -356,3 +356,30 @@ Interpretation:
   output averaging without adding category-specific semantics to the unit.
 - This is existing-toy migration parity only. It does not promote Toy6 to full
   NABM evidence and does not claim a general categorical ABM mechanism.
+
+## Gate 7H Consolidation
+
+Status: documentation consolidation complete.
+
+Decision artifact:
+
+- `docs/decisions/0012-existing-toy-migration-parity-consolidation.md`
+
+Consolidated result:
+
+| Toy | Unit-owned migrated surface | Toy-owned boundary |
+| --- | --- | --- |
+| Toy6 | `strategy_distribution` through `PROBABILITY_DISTRIBUTION_CHANNEL`. | Strategy identity, cyclic payoff construction, local logit updates, action sampling, payoff EMA, strategy entropy, and evidence interpretation. |
+| Toy7 | `extraction_intensity` through `BOUNDED_SCALAR_CHANNEL`. | Resource dynamics, payoff calculation, noisy intensity sampling, propensity updates, and continuous-action evidence interpretation. |
+| Toy8 | `activation_propensity` through the scalar social path. | Event queue, stale-event invalidation, event scheduling, event application, hazard semantics, counters, and event-time RNG. |
+| Toy9 | `heterogeneous_action_probability` through the scalar social path. | Group assignment, group-specific local rules, coordination gates, action sampling, payoff computation, propensity learning, and payoff EMA. |
+| Toy10 | `price_expectation` and `conservation_norm` through `BOUNDED_SCALAR_CHANNEL`. | Composite market/ecology similarity, harvest construction, market price, resource transition, payoff updates, dynamic rewiring, channel aggregation, and evidence interpretation. |
+
+Interpretation:
+
+- The existing compatible-toy migration pass is complete enough for the current
+  engineering claim.
+- The shared unit covers scalar probability, bounded scalar, and probability
+  distribution social exchange surfaces across Toy6-10.
+- The result is still parity-only. It should be cited as typed social-exchange
+  reuse, not as evidence that Toy6-10 are full NABM models.

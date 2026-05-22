@@ -33,6 +33,7 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
     for boundary_doc in (
         "docs/decisions/0010-nabm-unit-v1-contract.md",
         "docs/decisions/0011-continuous-scalar-unit-contract.md",
+        "docs/decisions/0012-existing-toy-migration-parity-consolidation.md",
         "docs/nabm-unit-v1-boundary-audit.md",
         "docs/nabm-unit-v1-completeness-checklist.md",
         "docs/nabm-unit-v1-migration-candidate-audit.md",
@@ -50,6 +51,8 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
     assert "without using probability semantics" in readme
     assert "dynamic rewiring stay" in readme
     assert "probability-distribution path" in readme
+    assert "typed social exchange reuse" in readme
+    assert "not an upgrade of Toy6-10 to full NABM status" in readme
 
 
 def test_nabm_unit_checklist_records_gate1_completion_and_guards() -> None:
@@ -418,5 +421,75 @@ def test_toy6_categorical_distribution_records_unit_parity() -> None:
     ):
         assert required in audit
 
-    assert "Existing-toy migration consolidation" in checklist
+    assert "Existing-Toy Migration Consolidation" in checklist
     assert "Toy6 categorical contract audit" not in checklist
+
+
+def test_existing_toy_migration_consolidation_records_engineering_boundary() -> None:
+    decision = (
+        ROOT
+        / "docs/decisions/0012-existing-toy-migration-parity-consolidation.md"
+    ).read_text()
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    audit = (ROOT / "docs/nabm-unit-v1-migration-candidate-audit.md").read_text()
+    capability_matrix = (ROOT / "docs/toy-models/capability-matrix.md").read_text()
+    contract_decision = (
+        ROOT / "docs/decisions/0010-nabm-unit-v1-contract.md"
+    ).read_text()
+    gate7h = _between(
+        checklist,
+        "### Gate 7H: Existing-Toy Migration Consolidation",
+        "## Recommended Next Slice",
+    )
+
+    for required in (
+        "Toy6-10 can route their primary social exchange slices",
+        "Toy6-10 are full NABM evidence cases",
+        "scalar probability",
+        "bounded scalar",
+        "probability distribution",
+        "typed social-exchange reuse",
+        "not as evidence",
+        "Toy6-10 are full NABM models",
+    ):
+        assert required in decision
+
+    for required in (
+        "Status: documentation consolidation complete.",
+        "docs/decisions/0012-existing-toy-migration-parity-consolidation.md",
+        "capability matrix",
+        "Toy6-10 status as `compatible`, not `full`",
+        "performance evidence",
+    ):
+        assert required in gate7h
+    assert "Runner lifecycle consolidation audit" in checklist
+
+    for required in (
+        "## Gate 7H Consolidation",
+        "Toy6",
+        "Toy7",
+        "Toy8",
+        "Toy9",
+        "Toy10",
+        "typed social-exchange",
+        "reuse",
+        "parity-only",
+    ):
+        assert required in audit
+
+    for required in (
+        "## Unit-Backed Migration Parity",
+        "PROBABILITY_DISTRIBUTION_CHANNEL",
+        "BOUNDED_SCALAR_CHANNEL",
+        "activation_propensity",
+        "heterogeneous_action_probability",
+        "price_expectation",
+        "conservation_norm",
+        "These migrations keep Toy6-10 in the `compatible` category",
+        "Parity slice complete; compatible but not evidence-default",
+    ):
+        assert required in capability_matrix
+
+    assert "bounded scalar, state dict" in contract_decision
+    assert "0012 then consolidated" in contract_decision
+    assert "Toy6-10 migration parity slices" in contract_decision

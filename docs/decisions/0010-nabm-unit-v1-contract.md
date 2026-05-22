@@ -39,7 +39,7 @@ commit dispatch, and stable diagnostics.
 | --- | --- |
 | Local lifecycle | Run policy readout, action or revision selection, local-update commit, backend cache/runtime refresh, and post-update readout in a fixed order. |
 | Social lifecycle | Validate bounded social messages, select or consume peers, build typed social values, mix through a declared channel, commit through an adapter, and emit aggregate/micro rows. |
-| Typed channels | Preserve channel names and output kinds such as probability distribution, scalar probability, state dict, tensor, action, or revision choice. |
+| Typed channels | Preserve channel names and output kinds such as probability distribution, scalar probability, bounded scalar, state dict, tensor, action, or revision choice. |
 | Backend boundary | Hide loop, batched, and tensor-runtime commit differences behind adapters without making the unit own accelerator caches or runtime internals. |
 | Binary policy lifecycle | Provide `BinaryPolicyLearningUnit` for pre-policy readout, decision probability construction, action sampling, local commit, refresh, and post-readout. |
 | Binary revision lifecycle | Provide `BinaryRevisionLearningUnit` for signal collection, stay/switch probability readout, revision choice sampling, local commit, refresh, and post-readout. |
@@ -141,3 +141,12 @@ without moving domain semantics into the generic layer.
 4. Run a small manifest with baseline, migrated unit path, and negative
    control.
 5. Update this decision only if the holdout requires changing the v1 contract.
+
+## Later Consolidation Notes
+
+Decision 0011 added bounded scalar exchange after Toy7 showed that continuous
+extraction intensity should not be represented as scalar probability. Decision
+0012 then consolidated the Toy6-10 migration parity slices. Those decisions
+extend the typed exchange surface while preserving this decision's main
+boundary: domain equations and evidence criteria remain outside the generic
+unit.
