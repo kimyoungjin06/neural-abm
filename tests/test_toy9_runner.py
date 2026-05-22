@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 import pytest
@@ -10,11 +11,13 @@ import yaml
 from binary_config_helpers import toy9_config
 from neural_abm.config import load_toy9_config
 from neural_abm.toy_heterogeneous import (
+    apply_output_average as apply_toy9_output_average,
     assign_agent_groups,
     group_counts,
     run_toy9,
     select_peer_ids,
 )
+from neural_abm.social import mix_scalar_probabilities
 
 
 def tiny_config_dict(
@@ -135,6 +138,69 @@ def test_toy9_coordination_gate_disables_individual_group_peers(
     assert peer_ids[1] == []
     assert peer_ids[2] == [3]
     assert peer_ids[3] == []
+
+
+def test_toy9_output_average_matches_unit_scalar_parity(tmp_path: Path) -> None:
+    config = load_toy9_config(write_config(tmp_path, tiny_config_dict(tmp_path)))
+    probabilities = np.asarray([0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85])
+    peer_ids = [[1], [], [3, 4], [], [2], [], [7], []]
+
+    expected = mix_scalar_probabilities(
+        probabilities,
+        peer_ids,
+        alpha=config.coordination.alpha,
+        channel="heterogeneous_action_probability",
+        commit_mode="group_gated_probability_commit",
+    )
+    mixed, losses, update_norms = apply_toy9_output_average(
+        probabilities,
+        peer_ids,
+        config,
+    )
+
+    assert mixed.tolist() == pytest.approx(expected.mixed_values.tolist())
+    assert losses == pytest.approx(expected.losses)
+    assert update_norms == pytest.approx(expected.update_norms)
+
+
+def test_toy9_output_average_routes_through_unit_scalar_helper(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    config = load_toy9_config(write_config(tmp_path, tiny_config_dict(tmp_path)))
+    probabilities = np.asarray([0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85])
+    peer_ids = [[1], [], [3, 4], [], [2], [], [7], []]
+    calls: list[dict[str, object]] = []
+
+    def fake_apply_scalar_output_average(**kwargs: object) -> SimpleNamespace:
+        calls.append(dict(kwargs))
+        return SimpleNamespace(
+            mix=SimpleNamespace(
+                mixed_values=probabilities + 0.01,
+                update_norms=[0.01 for _ in probabilities],
+            ),
+            commit=SimpleNamespace(losses=[0.02 for _ in probabilities]),
+        )
+
+    monkeypatch.setattr(
+        "neural_abm.toy_heterogeneous.apply_scalar_output_average",
+        fake_apply_scalar_output_average,
+    )
+
+    mixed, losses, update_norms = apply_toy9_output_average(
+        probabilities,
+        peer_ids,
+        config,
+    )
+
+    assert len(calls) == 1
+    assert calls[0]["channel"] == "heterogeneous_action_probability"
+    assert calls[0]["commit_mode"] == "group_gated_probability_commit"
+    assert calls[0]["alpha"] == config.coordination.alpha
+    assert calls[0]["peer_ids"] == peer_ids
+    assert mixed.tolist() == pytest.approx((probabilities + 0.01).tolist())
+    assert losses == pytest.approx([0.02 for _ in probabilities])
+    assert update_norms == pytest.approx([0.01 for _ in probabilities])
 
 
 @pytest.mark.parametrize(

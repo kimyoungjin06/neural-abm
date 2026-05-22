@@ -173,6 +173,8 @@ The active guard tests for the current binary unit migration are:
   new `src/neural_abm` toy;
 - `tests/test_toy8_runner.py` for the first existing-toy migration parity slice
   where Toy8 social-hazard mixing routes through a unit-backed scalar path;
+- `tests/test_toy9_runner.py` for the second existing-toy migration parity
+  slice where Toy9 heterogeneous probability mixing uses the same scalar path;
 - `tests/test_readiness.py` for readiness propagation boundaries;
 - `tests/test_nabm_unit_docs.py` for this documentation boundary.
 

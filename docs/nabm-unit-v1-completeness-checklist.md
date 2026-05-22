@@ -33,7 +33,7 @@ Status terms:
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
 | Manuscript narrative | partial | yes | partial | partial | The paper claim matrix, table candidates, and draft prose now link bounded claims to artifacts and limitations; publication figures remain open. |
 | Adapter-only extensibility | yes | yes | quick | partial | Source-free threshold, congestion, and stochastic commons holdout manifests now run binary domains with baseline, negative-control, and main variants through public unit APIs. |
-| Existing-toy migration | partial | yes | parity | partial | Gate 7B routes Toy8 async social-hazard mixing through a unit-backed scalar path while preserving event semantics. |
+| Existing-toy migration | partial | yes | parity | partial | Gate 7B/7C route Toy8 async hazard and Toy9 heterogeneous probability mixing through the unit-backed scalar path while preserving domain semantics. |
 
 ## What Is Complete Enough
 
@@ -466,12 +466,54 @@ Completion condition:
   pressure point is Toy9 fallback migration or a recorded Toy7 continuous-scalar
   contract gap.
 
+### Gate 7C: Toy9 Heterogeneous Probability Parity
+
+Goal: reuse the same unit-backed scalar social path in a second existing toy
+without moving Toy9 group assignment, local rules, payoff computation,
+propensity learning, payoff EMA, or coordination gating into the unit.
+
+Status: parity slice complete.
+
+Artifacts:
+
+- `src/neural_abm/mixers.py::apply_scalar_output_average`
+- `src/neural_abm/toy_heterogeneous.py::apply_output_average`
+- `tests/test_toy9_runner.py::test_toy9_output_average_matches_unit_scalar_parity`
+- `tests/test_toy9_runner.py::test_toy9_output_average_routes_through_unit_scalar_helper`
+
+Completed work:
+
+- Routed Toy9 heterogeneous action-probability output averaging through the
+  `NABMStep`-backed scalar helper.
+- Preserved group assignment, group-specific local-rule semantics, payoff
+  computation, propensity updates, payoff EMA, action sampling, and CSV/result
+  field names.
+- Added parity coverage for mixed action probabilities, social losses, and
+  update norms.
+
+Result:
+
+- The scalar unit path is now reused by Toy8 and Toy9 existing-toy migration
+  slices.
+- The Toy9 slice confirms the helper is called with the
+  `heterogeneous_action_probability` channel and
+  `group_gated_probability_commit` commit mode.
+- This is existing-toy migration parity, not evidence that Toy9 is a full NABM
+  claim path.
+
+Completion condition:
+
+- Second existing-toy migration parity slice complete. Further scalar migration
+  work should be justified by reducing real duplication. The next structural
+  pressure point is either Toy7 continuous-scalar contract-gap documentation or
+  manuscript consolidation of the current migration evidence.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Existing-toy migration parity: decide whether to add Toy8 runner-level
-  artifact parity evidence or move to Toy9 heterogeneous probability mixing.
+- Continuous-scalar contract decision: document whether Toy7 requires a new
+  continuous scalar unit contract before implementation.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.

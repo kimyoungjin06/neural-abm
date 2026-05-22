@@ -38,6 +38,7 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
     ):
         assert boundary_doc in readme
     assert "tests/test_toy8_runner.py" in readme
+    assert "tests/test_toy9_runner.py" in readme
     assert "unit-backed scalar path" in readme
 
 
@@ -215,7 +216,7 @@ def test_nabm_unit_checklist_records_toy8_social_hazard_parity() -> None:
     gate7b = _between(
         checklist,
         "### Gate 7B: Toy8 Async Social-Hazard Parity",
-        "## Recommended Next Slice",
+        "### Gate 7C: Toy9 Heterogeneous Probability Parity",
     )
 
     for required in (
@@ -230,3 +231,26 @@ def test_nabm_unit_checklist_records_toy8_social_hazard_parity() -> None:
     assert "## Gate 7B Result" in audit
     assert "not Toy8 performance evidence" in audit
     assert "does not promote Toy8 from" in audit
+
+
+def test_nabm_unit_checklist_records_toy9_probability_parity() -> None:
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    audit = (ROOT / "docs/nabm-unit-v1-migration-candidate-audit.md").read_text()
+    gate7c = _between(
+        checklist,
+        "### Gate 7C: Toy9 Heterogeneous Probability Parity",
+        "## Recommended Next Slice",
+    )
+
+    for required in (
+        "Status: parity slice complete.",
+        "src/neural_abm/toy_heterogeneous.py::apply_output_average",
+        "heterogeneous_action_probability",
+        "group_gated_probability_commit",
+        "not evidence that Toy9 is a full NABM",
+    ):
+        assert required in gate7c
+
+    assert "## Gate 7C Result" in audit
+    assert "two existing-toy parity users" in audit
+    assert "Toy7 remains a contract-gap decision" in audit

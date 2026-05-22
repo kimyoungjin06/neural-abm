@@ -196,3 +196,31 @@ Interpretation:
   without turning `NABMUnit` into an event scheduler.
 - It is not Toy8 performance evidence and does not promote Toy8 from
   `compatible` to `full`.
+
+## Gate 7C Result
+
+Status: complete.
+
+Implemented slice:
+
+- `src/neural_abm/toy_heterogeneous.py::apply_output_average` now routes Toy9
+  heterogeneous action-probability social mixing through
+  `src/neural_abm/mixers.py::apply_scalar_output_average`.
+- Toy9 still owns group assignment, group-specific local-rule semantics,
+  coordination gating, action sampling, payoff computation, propensity
+  learning, payoff EMA, and evidence interpretation.
+
+Parity checks:
+
+- `tests/test_toy9_runner.py::test_toy9_output_average_matches_unit_scalar_parity`
+- `tests/test_toy9_runner.py::test_toy9_output_average_routes_through_unit_scalar_helper`
+
+Interpretation:
+
+- The scalar social unit surface now has two existing-toy parity users: Toy8
+  event-hazard mixing and Toy9 heterogeneous action-probability mixing.
+- This supports reuse of lifecycle plumbing across existing compatible toys. It
+  is not evidence that Toy9 is now a full NABM claim path.
+- Additional scalar migrations should be justified by real duplication
+  reduction; Toy7 remains a contract-gap decision because its central action is
+  continuous extraction intensity.
