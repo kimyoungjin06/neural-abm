@@ -14,8 +14,11 @@ from binary_config_helpers import toy6_config
 from neural_abm.config import load_toy6_config
 from neural_abm.social import mix_probability_distributions
 from neural_abm.toy_categorical import (
+    Toy6StepResult,
     apply_output_average as apply_toy6_output_average,
+    aggregate_row as aggregate_toy6_row,
     compute_cyclic_payoffs,
+    micro_rows as toy6_micro_rows,
     run_toy6,
     select_peer_ids,
 )
@@ -235,6 +238,78 @@ def test_toy6_output_average_routes_through_unit_distribution_helper(
     assert mixed[0].tolist() == pytest.approx([0.81, 0.10, 0.09])
     assert losses == pytest.approx([0.02 for _ in range(len(probabilities))])
     assert update_norms == pytest.approx([0.01 for _ in range(len(probabilities))])
+
+
+def test_toy6_rows_route_social_diagnostics_through_mapper(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    config = load_toy6_config(write_config(tmp_path, tiny_config_dict(tmp_path)))
+    agent_count = config.agent_count
+    step = Toy6StepResult(
+        actions=np_array([0, 1, 2] * 3).astype(int),
+        payoffs=np_array([0.1 * index for index in range(agent_count)]),
+        probabilities=np_array([[0.6, 0.3, 0.1] for _ in range(agent_count)]),
+        peer_ids=[[] for _ in range(agent_count)],
+        social_losses=[0.1 for _ in range(agent_count)],
+        social_update_norms=[0.2 for _ in range(agent_count)],
+    )
+    aggregate_calls: list[dict[str, object]] = []
+    micro_calls: list[dict[str, object]] = []
+
+    def fake_aggregate_mapper(**kwargs: object) -> dict[str, float]:
+        aggregate_calls.append(dict(kwargs))
+        return {
+            "mean_peer_count": 7.0,
+            "mean_social_loss": 0.7,
+            "mean_social_update_norm": 0.07,
+        }
+
+    def fake_micro_mapper(**kwargs: object) -> dict[str, object]:
+        micro_calls.append(dict(kwargs))
+        return {
+            "peer_ids": [99],
+            "peer_count": 1,
+            "component_id": 5,
+            "social_loss": 0.9,
+            "social_update_norm": 0.09,
+        }
+
+    monkeypatch.setattr(
+        "neural_abm.toy_categorical.aggregate_social_diagnostic_fields",
+        fake_aggregate_mapper,
+    )
+    monkeypatch.setattr(
+        "neural_abm.toy_categorical.micro_social_diagnostic_fields",
+        fake_micro_mapper,
+    )
+
+    aggregate = aggregate_toy6_row(config, 3, step)
+    rows = toy6_micro_rows(
+        config,
+        3,
+        step,
+        payoff_ema=np_array([0.0 for _ in range(agent_count)]),
+    )
+
+    assert aggregate["mean_peer_count"] == pytest.approx(7.0)
+    assert aggregate["mean_social_loss"] == pytest.approx(0.7)
+    assert aggregate["mean_social_update_norm"] == pytest.approx(0.07)
+    assert aggregate_calls == [
+        {
+            "peer_ids": step.peer_ids,
+            "social_losses": step.social_losses,
+            "social_update_norms": step.social_update_norms,
+        }
+    ]
+    assert rows[0]["peer_ids"] == [99]
+    assert rows[0]["peer_count"] == 1
+    assert rows[0]["component_id"] == 5
+    assert rows[0]["social_loss"] == pytest.approx(0.9)
+    assert rows[0]["social_update_norm"] == pytest.approx(0.09)
+    assert micro_calls[0]["agent_id"] == 0
+    assert micro_calls[0]["peer_ids"] == step.peer_ids
+    assert micro_calls[0]["component_id"] == 0
 
 
 @pytest.mark.parametrize(

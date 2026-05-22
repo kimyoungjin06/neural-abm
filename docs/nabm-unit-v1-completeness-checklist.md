@@ -772,15 +772,57 @@ Completion condition:
 - Gate 8A is complete. The next implementation slice should be Gate 8B: Social
   Diagnostics Mapper Prototype, not a full runner rewrite.
 
+### Gate 8B: Social Diagnostics Mapper Prototype
+
+Goal: extract only the repeated peer/social row-mapping fields from compatible
+toy adapters, without changing runner ownership or moving domain semantics into
+the shared layer.
+
+Status: prototype complete for Toy6 and Toy7.
+
+Artifacts:
+
+- `src/neural_abm/domain_social_diagnostics.py`
+- `src/neural_abm/toy_categorical.py`
+- `src/neural_abm/toy_resource.py`
+- `tests/test_domain_social_diagnostics.py`
+- `tests/test_toy6_runner.py::test_toy6_rows_route_social_diagnostics_through_mapper`
+- `tests/test_toy7_runner.py::test_toy7_rows_route_social_diagnostics_through_mapper`
+- `docs/nabm-unit-v1-runner-lifecycle-audit.md`
+- `src/neural_abm/README.md`
+
+Completed work:
+
+- Added `aggregate_social_diagnostic_fields(...)` for `mean_peer_count`,
+  `mean_social_loss`, and `mean_social_update_norm`.
+- Added `micro_social_diagnostic_fields(...)` for `peer_ids`, `peer_count`,
+  optional toy-supplied `component_id`, `social_loss`, and
+  `social_update_norm`.
+- Migrated Toy6 categorical and Toy7 resource adapters to the mapper.
+- Added toy-independent mapper tests plus Toy6/Toy7 routing tests.
+
+Result:
+
+- The first repeated diagnostics surface is now shared without changing
+  `DomainToyRunner`, `DomainToyAdapter`, or Toy6/Toy7 `step(...)` phase order.
+- Payoff, resource, categorical strategy, action sampling, graph construction,
+  and evidence semantics remain toy-owned.
+- This is an engineering consolidation slice, not performance evidence and not
+  a claim that Toy6 or Toy7 are full NABM evidence cases.
+
+Completion condition:
+
+- Gate 8B is complete for the prototype. A future slice may migrate Toy8,
+  Toy9, and Toy10 to the same mapper if artifact fields remain identical, but
+  that should stay a mechanical diagnostics cleanup.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Social diagnostics mapper prototype: extract only peer/social metric row
-  helpers where Toy6-10 adapters repeat semantic-free fields such as
-  `peer_count`, `mean_peer_count`, `mean_social_loss`, and
-  `mean_social_update_norm`, then prove artifact-field parity in one or two
-  toys.
+- Social diagnostics mapper extension: migrate Toy8, Toy9, and Toy10 to
+  `domain_social_diagnostics` only if the output fields remain identical and
+  event, group, market, resource, and dynamic-graph semantics stay toy-owned.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.

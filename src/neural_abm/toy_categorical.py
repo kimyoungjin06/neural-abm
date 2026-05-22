@@ -16,6 +16,10 @@ from neural_abm.domain_runner import (
     DomainToyRunner,
     make_timestamped_run_dir,
 )
+from neural_abm.domain_social_diagnostics import (
+    aggregate_social_diagnostic_fields,
+    micro_social_diagnostic_fields,
+)
 from neural_abm.graphs import component_map, graph_from_peer_ids
 from neural_abm.mixers import apply_distribution_output_average
 from neural_abm.results import (
@@ -282,9 +286,11 @@ def aggregate_row(
             counts[dominant_strategy] / len(step.actions)
         ),
         "fragmentation_components": nx.number_connected_components(peer_graph),
-        "mean_peer_count": float(np.mean([len(peers) for peers in step.peer_ids])),
-        "mean_social_loss": float(np.mean(step.social_losses)),
-        "mean_social_update_norm": float(np.mean(step.social_update_norms)),
+        **aggregate_social_diagnostic_fields(
+            peer_ids=step.peer_ids,
+            social_losses=step.social_losses,
+            social_update_norms=step.social_update_norms,
+        ),
     }
 
 
@@ -359,11 +365,13 @@ def micro_rows(
             "domain_payoff_ema": float(payoff_ema[agent_id]),
             "domain_strategy_probability": step.probabilities[agent_id].tolist(),
             "domain_dominant_strategy": int(dominant[agent_id]),
-            "peer_ids": step.peer_ids[agent_id],
-            "peer_count": len(step.peer_ids[agent_id]),
-            "component_id": components.get(agent_id, -1),
-            "social_loss": step.social_losses[agent_id],
-            "social_update_norm": step.social_update_norms[agent_id],
+            **micro_social_diagnostic_fields(
+                agent_id=agent_id,
+                peer_ids=step.peer_ids,
+                social_losses=step.social_losses,
+                social_update_norms=step.social_update_norms,
+                component_id=components.get(agent_id, -1),
+            ),
         }
         for agent_id in range(config.agent_count)
     ]

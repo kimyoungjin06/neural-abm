@@ -56,7 +56,9 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
     assert "not an upgrade of Toy6-10 to full NABM status" in readme
     assert "DomainToyRunner" in readme
     assert "step(...) phase ordering remains" in readme
-    assert "diagnostics mapping around peer/social fields" in readme
+    assert "domain_social_diagnostics" in readme
+    assert "aggregate_social_diagnostic_fields" in readme
+    assert "micro_social_diagnostic_fields" in readme
 
 
 def test_nabm_unit_checklist_records_gate1_completion_and_guards() -> None:
@@ -506,7 +508,7 @@ def test_runner_lifecycle_audit_records_gate8a_boundary() -> None:
     gate8a = _between(
         checklist,
         "### Gate 8A: Runner Lifecycle Consolidation Audit",
-        "## Recommended Next Slice",
+        "### Gate 8B: Social Diagnostics Mapper Prototype",
     )
 
     for required in (
@@ -552,7 +554,59 @@ def test_runner_lifecycle_audit_records_gate8a_boundary() -> None:
     for required in (
         "docs/nabm-unit-v1-runner-lifecycle-audit.md",
         "DomainToyRunner",
-        "diagnostics mapping around peer/social fields",
+        "The first diagnostics mapping slice",
         "not a full runner rewrite",
+    ):
+        assert required in readme
+
+
+def test_social_diagnostics_mapper_records_gate8b_boundary() -> None:
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    readme = (ROOT / "src/neural_abm/README.md").read_text()
+    audit = (ROOT / "docs/nabm-unit-v1-runner-lifecycle-audit.md").read_text()
+    gate8b = _between(
+        checklist,
+        "### Gate 8B: Social Diagnostics Mapper Prototype",
+        "## Recommended Next Slice",
+    )
+
+    for required in (
+        "src/neural_abm/domain_social_diagnostics.py",
+        "aggregate_social_diagnostic_fields",
+        "micro_social_diagnostic_fields",
+        "tests/test_domain_social_diagnostics.py",
+        "Toy6",
+        "Toy7",
+        "Toy8",
+        "Toy9",
+        "Toy10",
+        "peer_count",
+        "mean_peer_count",
+        "mean_social_loss",
+        "mean_social_update_norm",
+        "not a full runner rewrite",
+    ):
+        assert required in audit
+
+    for required in (
+        "Status: prototype complete for Toy6 and Toy7.",
+        "src/neural_abm/domain_social_diagnostics.py",
+        "tests/test_domain_social_diagnostics.py",
+        "test_toy6_rows_route_social_diagnostics_through_mapper",
+        "test_toy7_rows_route_social_diagnostics_through_mapper",
+        "optional toy-supplied `component_id`",
+        "DomainToyRunner",
+        "DomainToyAdapter",
+        "`step(...)` phase order",
+        "performance evidence",
+    ):
+        assert required in gate8b
+
+    for required in (
+        "domain_social_diagnostics",
+        "aggregate_social_diagnostic_fields",
+        "micro_social_diagnostic_fields",
+        "Toy6 and Toy7",
+        "mean_social_update_norm",
     ):
         assert required in readme

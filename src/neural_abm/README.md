@@ -11,6 +11,11 @@ Current modules:
   runtimes.
 - `config`: Pydantic config schemas and YAML loader.
 - `core`: common neural classification agent contract and MLP utilities.
+- `domain_runner`: compatible-toy outer lifecycle runner for Toy6-10-style
+  domain adapters, including run directories, metadata, CSV writers, fallback,
+  final summary, and result envelopes.
+- `domain_social_diagnostics`: semantic-free peer/social row mapping helpers
+  for compatible domain toy adapters.
 - `graphs`: static graph and peer graph helpers.
 - `logging`: micro-state and aggregate CSV logging helpers.
 - `metrics`: task and social-dynamics metrics.
@@ -219,7 +224,11 @@ writing, and the result envelope. Toy6-10 step(...) phase ordering remains
 toy-owned because payoff, resource, event, market, group, and categorical
 semantics live in that order. The next generic extraction target is diagnostics
 mapping around peer/social fields, not a full runner rewrite.
-The diagnostics mapping around peer/social fields is the next target.
+The first diagnostics mapping slice lives in
+`domain_social_diagnostics.aggregate_social_diagnostic_fields` and
+`domain_social_diagnostics.micro_social_diagnostic_fields`; Toy6 and Toy7 use
+it for `peer_count`, `mean_peer_count`, `mean_social_loss`, and
+`mean_social_update_norm` row fields while their domain rows remain toy-owned.
 
 Unit contract changes should update the docs that define the boundary:
 
