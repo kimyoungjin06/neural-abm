@@ -15,6 +15,10 @@ from neural_abm.domain_runner import (
     DomainToyRunner,
     make_timestamped_run_dir,
 )
+from neural_abm.domain_social_diagnostics import (
+    aggregate_social_diagnostic_fields,
+    micro_social_diagnostic_fields,
+)
 from neural_abm.graphs import build_graph, component_map, graph_from_peer_ids
 from neural_abm.logging import CsvLogWriter
 from neural_abm.mixers import apply_scalar_output_average
@@ -323,9 +327,11 @@ def aggregate_row(config: Toy9Config, epoch: int, step: Toy9StepResult) -> dict[
         "domain_coordination_disabled_action_rate": disabled_rate,
         "domain_group_action_rate_gap": abs(enabled_rate - disabled_rate),
         "fragmentation_components": nx.number_connected_components(peer_graph),
-        "mean_peer_count": float(np.mean([len(peers) for peers in step.peer_ids])),
-        "mean_social_loss": float(np.mean(step.social_losses)),
-        "mean_social_update_norm": float(np.mean(step.social_update_norms)),
+        **aggregate_social_diagnostic_fields(
+            peer_ids=step.peer_ids,
+            social_losses=step.social_losses,
+            social_update_norms=step.social_update_norms,
+        ),
     }
 
 
@@ -413,11 +419,13 @@ def micro_rows(
                 "domain_neighbor_action_rate": float(
                     step.neighbor_action_rates[agent_id]
                 ),
-                "peer_ids": step.peer_ids[agent_id],
-                "peer_count": len(step.peer_ids[agent_id]),
-                "component_id": components.get(agent_id, -1),
-                "social_loss": step.social_losses[agent_id],
-                "social_update_norm": step.social_update_norms[agent_id],
+                **micro_social_diagnostic_fields(
+                    agent_id=agent_id,
+                    peer_ids=step.peer_ids,
+                    social_losses=step.social_losses,
+                    social_update_norms=step.social_update_norms,
+                    component_id=components.get(agent_id, -1),
+                ),
             }
         )
     return rows

@@ -14,10 +14,14 @@ from neural_abm.toy_async import (
     STATE_ACTIVE,
     STATE_FAILED,
     STATE_INACTIVE,
+    Toy8RateSnapshot,
+    Toy8StepResult,
     apply_output_average as apply_toy8_output_average,
+    aggregate_row as aggregate_toy8_row,
     compute_rate_snapshot,
     graph_neighbors,
     initialize_states,
+    micro_rows as toy8_micro_rows,
     run_toy8,
     select_peer_ids,
 )
@@ -182,6 +186,85 @@ def test_toy8_output_average_routes_through_unit_scalar_helper(
     assert mixed.tolist() == pytest.approx((values + 0.01).tolist())
     assert losses == pytest.approx([0.02 for _ in values])
     assert update_norms == pytest.approx([0.01 for _ in values])
+
+
+def test_toy8_rows_route_social_diagnostics_through_mapper(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    config = load_toy8_config(write_config(tmp_path, tiny_config_dict(tmp_path)))
+    agent_count = config.agents.count
+    snapshot = Toy8RateSnapshot(
+        activation_rates=np_array([0.1 for _ in range(agent_count)]),
+        failure_rates=np_array([0.2 for _ in range(agent_count)]),
+        recovery_rates=np_array([0.3 for _ in range(agent_count)]),
+        neighbor_active_fraction=np_array([0.4 for _ in range(agent_count)]),
+        activation_propensities=np_array([0.5 for _ in range(agent_count)]),
+        peer_ids=[[] for _ in range(agent_count)],
+        social_losses=[0.1 for _ in range(agent_count)],
+        social_update_norms=[0.2 for _ in range(agent_count)],
+    )
+    step = Toy8StepResult(
+        states=np_array([0, 1, 2, 0, 1, 2, 0, 1], dtype=int),
+        event_time=1.5,
+        event_type="activation",
+        event_agent_id=1,
+        activation_events=2,
+        failure_events=1,
+        recovery_events=0,
+        snapshot=snapshot,
+    )
+    aggregate_calls: list[dict[str, object]] = []
+    micro_calls: list[dict[str, object]] = []
+
+    def fake_aggregate_mapper(**kwargs: object) -> dict[str, float]:
+        aggregate_calls.append(dict(kwargs))
+        return {
+            "mean_peer_count": 5.0,
+            "mean_social_loss": 0.5,
+            "mean_social_update_norm": 0.05,
+        }
+
+    def fake_micro_mapper(**kwargs: object) -> dict[str, object]:
+        micro_calls.append(dict(kwargs))
+        return {
+            "peer_ids": [55],
+            "peer_count": 1,
+            "component_id": 3,
+            "social_loss": 0.4,
+            "social_update_norm": 0.04,
+        }
+
+    monkeypatch.setattr(
+        "neural_abm.toy_async.aggregate_social_diagnostic_fields",
+        fake_aggregate_mapper,
+    )
+    monkeypatch.setattr(
+        "neural_abm.toy_async.micro_social_diagnostic_fields",
+        fake_micro_mapper,
+    )
+
+    aggregate = aggregate_toy8_row(config, 3, step)
+    rows = toy8_micro_rows(config, 3, step)
+
+    assert aggregate["mean_peer_count"] == pytest.approx(5.0)
+    assert aggregate["mean_social_loss"] == pytest.approx(0.5)
+    assert aggregate["mean_social_update_norm"] == pytest.approx(0.05)
+    assert aggregate_calls == [
+        {
+            "peer_ids": snapshot.peer_ids,
+            "social_losses": snapshot.social_losses,
+            "social_update_norms": snapshot.social_update_norms,
+        }
+    ]
+    assert rows[0]["peer_ids"] == [55]
+    assert rows[0]["peer_count"] == 1
+    assert rows[0]["component_id"] == 3
+    assert rows[0]["social_loss"] == pytest.approx(0.4)
+    assert rows[0]["social_update_norm"] == pytest.approx(0.04)
+    assert micro_calls[0]["agent_id"] == 0
+    assert micro_calls[0]["peer_ids"] == snapshot.peer_ids
+    assert "component_id" in micro_calls[0]
 
 
 @pytest.mark.parametrize(

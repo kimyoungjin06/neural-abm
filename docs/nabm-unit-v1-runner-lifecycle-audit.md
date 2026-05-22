@@ -130,8 +130,7 @@ Acceptance criteria for Gate 8B:
 
 - Add a semantic-free helper for common peer/social metric row mapping.
 - Cover the helper with toy-independent tests.
-- Migrate one or two Toy6-10 adapters only where the output fields stay
-  identical.
+- Migrate Toy6-10 adapters only where the output fields stay identical.
 - Keep `peer_count`, `mean_peer_count`, `mean_social_loss`, and
   `mean_social_update_norm` as diagnostics, not domain objectives.
 - Do not make this a full runner rewrite.
@@ -145,11 +144,11 @@ Gate 8B implemented the small helper path recommended by this audit:
   `micro_social_diagnostic_fields(...)`.
 - `tests/test_domain_social_diagnostics.py` covers the mapper outside any one
   toy.
-- Toy6 and Toy7 now use the mapper for `peer_count`, `mean_peer_count`,
+- Toy6-Toy10 now use the mapper for `peer_count`, `mean_peer_count`,
   `mean_social_loss`, and `mean_social_update_norm` row fields.
-- Toy6 and Toy7 routing tests guard that their row builders call the shared
+- Toy6-Toy10 routing tests guard that their row builders call the shared
   mapper while keeping domain fields toy-owned.
 
-This is not a full runner rewrite. Toy8, Toy9, and Toy10 can be migrated later
-only if the helper keeps artifact fields identical and does not absorb event,
-group, market, resource, or dynamic-graph semantics.
+This is not a full runner rewrite. The mapper keeps artifact fields identical
+and does not absorb event, group, market, resource, categorical, or
+dynamic-graph semantics.

@@ -226,8 +226,8 @@ semantics live in that order. The next generic extraction target is diagnostics
 mapping around peer/social fields, not a full runner rewrite.
 The first diagnostics mapping slice lives in
 `domain_social_diagnostics.aggregate_social_diagnostic_fields` and
-`domain_social_diagnostics.micro_social_diagnostic_fields`; Toy6 and Toy7 use
-it for `peer_count`, `mean_peer_count`, `mean_social_loss`, and
+`domain_social_diagnostics.micro_social_diagnostic_fields`; Toy6-Toy10 use it
+for `peer_count`, `mean_peer_count`, `mean_social_loss`, and
 `mean_social_update_norm` row fields while their domain rows remain toy-owned.
 
 Unit contract changes should update the docs that define the boundary:

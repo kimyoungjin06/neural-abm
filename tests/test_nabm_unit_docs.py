@@ -589,15 +589,18 @@ def test_social_diagnostics_mapper_records_gate8b_boundary() -> None:
         assert required in audit
 
     for required in (
-        "Status: prototype complete for Toy6 and Toy7.",
+        "Status: complete for Toy6-10 diagnostics rows.",
         "src/neural_abm/domain_social_diagnostics.py",
         "tests/test_domain_social_diagnostics.py",
         "test_toy6_rows_route_social_diagnostics_through_mapper",
         "test_toy7_rows_route_social_diagnostics_through_mapper",
+        "test_toy8_rows_route_social_diagnostics_through_mapper",
+        "test_toy9_rows_route_social_diagnostics_through_mapper",
+        "test_toy10_rows_route_social_diagnostics_through_mapper",
         "optional toy-supplied `component_id`",
         "DomainToyRunner",
         "DomainToyAdapter",
-        "`step(...)` phase order",
+        "toy `step(...)`",
         "performance evidence",
     ):
         assert required in gate8b
@@ -606,7 +609,7 @@ def test_social_diagnostics_mapper_records_gate8b_boundary() -> None:
         "domain_social_diagnostics",
         "aggregate_social_diagnostic_fields",
         "micro_social_diagnostic_fields",
-        "Toy6 and Toy7",
+        "Toy6-Toy10",
         "mean_social_update_norm",
     ):
         assert required in readme

@@ -16,6 +16,10 @@ from neural_abm.domain_runner import (
     DomainToyRunner,
     make_timestamped_run_dir,
 )
+from neural_abm.domain_social_diagnostics import (
+    aggregate_social_diagnostic_fields,
+    micro_social_diagnostic_fields,
+)
 from neural_abm.graphs import build_graph, component_map, graph_from_peer_ids
 from neural_abm.logging import CsvLogWriter
 from neural_abm.mixers import apply_scalar_output_average
@@ -348,14 +352,14 @@ def aggregate_row(
         "domain_cumulative_failure_events": step.failure_events,
         "domain_cumulative_recovery_events": step.recovery_events,
         "fragmentation_components": nx.number_connected_components(peer_graph),
-        "mean_peer_count": float(
-            np.mean([len(peers) for peers in step.snapshot.peer_ids])
+        **aggregate_social_diagnostic_fields(
+            peer_ids=step.snapshot.peer_ids,
+            social_losses=step.snapshot.social_losses,
+            social_update_norms=step.snapshot.social_update_norms,
         ),
         "mean_activation_rate": float(np.mean(step.snapshot.activation_rates)),
         "mean_failure_rate": float(np.mean(step.snapshot.failure_rates)),
         "mean_recovery_rate": float(np.mean(step.snapshot.recovery_rates)),
-        "mean_social_loss": float(np.mean(step.snapshot.social_losses)),
-        "mean_social_update_norm": float(np.mean(step.snapshot.social_update_norms)),
     }
 
 
@@ -440,11 +444,13 @@ def micro_rows(
             ),
             "event_type": step.event_type,
             "event_agent_id": step.event_agent_id,
-            "peer_ids": step.snapshot.peer_ids[agent_id],
-            "peer_count": len(step.snapshot.peer_ids[agent_id]),
-            "component_id": components.get(agent_id, -1),
-            "social_loss": step.snapshot.social_losses[agent_id],
-            "social_update_norm": step.snapshot.social_update_norms[agent_id],
+            **micro_social_diagnostic_fields(
+                agent_id=agent_id,
+                peer_ids=step.snapshot.peer_ids,
+                social_losses=step.snapshot.social_losses,
+                social_update_norms=step.snapshot.social_update_norms,
+                component_id=components.get(agent_id, -1),
+            ),
         }
         for agent_id in range(config.agents.count)
     ]

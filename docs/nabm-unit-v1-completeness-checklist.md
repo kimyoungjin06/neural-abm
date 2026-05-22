@@ -778,16 +778,22 @@ Goal: extract only the repeated peer/social row-mapping fields from compatible
 toy adapters, without changing runner ownership or moving domain semantics into
 the shared layer.
 
-Status: prototype complete for Toy6 and Toy7.
+Status: complete for Toy6-10 diagnostics rows.
 
 Artifacts:
 
 - `src/neural_abm/domain_social_diagnostics.py`
 - `src/neural_abm/toy_categorical.py`
 - `src/neural_abm/toy_resource.py`
+- `src/neural_abm/toy_async.py`
+- `src/neural_abm/toy_heterogeneous.py`
+- `src/neural_abm/toy_market.py`
 - `tests/test_domain_social_diagnostics.py`
 - `tests/test_toy6_runner.py::test_toy6_rows_route_social_diagnostics_through_mapper`
 - `tests/test_toy7_runner.py::test_toy7_rows_route_social_diagnostics_through_mapper`
+- `tests/test_toy8_runner.py::test_toy8_rows_route_social_diagnostics_through_mapper`
+- `tests/test_toy9_runner.py::test_toy9_rows_route_social_diagnostics_through_mapper`
+- `tests/test_toy10_runner.py::test_toy10_rows_route_social_diagnostics_through_mapper`
 - `docs/nabm-unit-v1-runner-lifecycle-audit.md`
 - `src/neural_abm/README.md`
 
@@ -798,31 +804,33 @@ Completed work:
 - Added `micro_social_diagnostic_fields(...)` for `peer_ids`, `peer_count`,
   optional toy-supplied `component_id`, `social_loss`, and
   `social_update_norm`.
-- Migrated Toy6 categorical and Toy7 resource adapters to the mapper.
-- Added toy-independent mapper tests plus Toy6/Toy7 routing tests.
+- Migrated Toy6 categorical, Toy7 resource, Toy8 async, Toy9 heterogeneous,
+  and Toy10 market/ecology adapters to the mapper.
+- Added toy-independent mapper tests plus Toy6-Toy10 routing tests.
 
 Result:
 
-- The first repeated diagnostics surface is now shared without changing
-  `DomainToyRunner`, `DomainToyAdapter`, or Toy6/Toy7 `step(...)` phase order.
-- Payoff, resource, categorical strategy, action sampling, graph construction,
-  and evidence semantics remain toy-owned.
+- The repeated peer/social diagnostics surface is now shared across Toy6-10
+  without changing `DomainToyRunner`, `DomainToyAdapter`, or toy `step(...)`
+  phase order.
+- Payoff, resource, event, group, market, categorical strategy, action
+  sampling, graph construction, and evidence semantics remain toy-owned.
 - This is an engineering consolidation slice, not performance evidence and not
-  a claim that Toy6 or Toy7 are full NABM evidence cases.
+  a claim that Toy6-10 are full NABM evidence cases.
 
 Completion condition:
 
-- Gate 8B is complete for the prototype. A future slice may migrate Toy8,
-  Toy9, and Toy10 to the same mapper if artifact fields remain identical, but
-  that should stay a mechanical diagnostics cleanup.
+- Gate 8B is complete for Toy6-10 compatible-toy diagnostics rows.
 
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Social diagnostics mapper extension: migrate Toy8, Toy9, and Toy10 to
-  `domain_social_diagnostics` only if the output fields remain identical and
-  event, group, market, resource, and dynamic-graph semantics stay toy-owned.
-- Manuscript figure build-out: decide which table candidates need plotted
-  figures and which should stay as compact manuscript tables.
+- Compatible-toy adapter thinness audit: inspect whether any remaining
+  Toy6-10 adapter boilerplate can be safely reduced without changing
+  `step(...)` phase order, domain row schemas, event queues, group logic,
+  market/resource updates, or dynamic-graph semantics.
+- Shared artifact-contract tests: compare representative Toy6-10 aggregate and
+  micro rows against stable expected field sets so future cleanup does not
+  silently change CSV contracts.
