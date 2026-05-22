@@ -136,13 +136,13 @@ def test_nabm_unit_checklist_records_adapter_only_holdout_smoke() -> None:
     readme = (ROOT / "src/neural_abm/README.md").read_text()
     gate5 = _between(
         checklist,
-        "### Gate 5: Adapter-Only Holdout Smoke",
+        "### Gate 5: Adapter-Only Holdout Evidence",
         "## Recommended Next Slice",
     )
 
-    assert "Status: first pass complete." in gate5
+    assert "Status: quick evidence complete." in gate5
     assert "tests/test_nabm_unit_adapter_holdout.py" in gate5
     assert "without changing `src/neural_abm`" in gate5
-    assert "smoke-test level" in gate5
-    assert "requires a real holdout domain with its own manifest" in gate5
+    assert "adapter-threshold-readiness main reaches full adoption" in gate5
+    assert "tiny binary holdout" in gate5
     assert "tests/test_nabm_unit_adapter_holdout.py" in readme

@@ -1,0 +1,59 @@
+label: adapter_only_threshold_holdout_quick
+description: >
+  Adapter-only binary threshold adoption holdout. The domain lives in the
+  evidence runner, not src/neural_abm, and uses public NABM Unit v1 callbacks.
+results_dir: experiments/results/nabm_effect_matrix
+summary_dir: experiments/evidence/results
+findings_path: experiments/results/nabm_effect_matrix/adapter_only_threshold_holdout_quick_findings.md
+claim_boundary: >
+  This is a real adapter-only holdout with baseline, negative control, main
+  variant, and result artifacts. It strengthens the v1 extensibility claim but
+  is still a tiny binary holdout, not a general-purpose ABM framework proof.
+variants:
+  - name: exposure_baseline
+    group: baseline
+    mode: exposure_baseline
+  - name: thresholdless_global_pressure
+    group: negative_control
+    mode: thresholdless_global_pressure
+  - name: adapter_threshold_readiness
+    group: main
+    mode: adapter_threshold_readiness
+cases:
+  - name: no_seed_safety
+    seeds: [1, 2, 3]
+    agent_count: 20
+    epochs: 8
+    initial_seed_count: 0
+    threshold: 0.75
+    intrinsic_value: 0.55
+    exposure_weight: 0.25
+    readiness_weight: 0.35
+    neighbor_radius: 2
+    temperature: 1.0
+  - name: sparse_seed_spread
+    seeds: [1, 2, 3]
+    agent_count: 20
+    epochs: 8
+    initial_seed_count: 1
+    threshold: 0.75
+    intrinsic_value: 0.55
+    exposure_weight: 0.25
+    readiness_weight: 0.35
+    neighbor_radius: 2
+    temperature: 1.0
+success_criteria:
+  no_seed_safety:
+    baseline:
+      max_final_adoption_count: 0
+    main:
+      max_final_adoption_count: 0
+    negative_control:
+      min_final_adoption_count: 20
+  sparse_seed_spread:
+    baseline:
+      max_final_adoption_count: 1
+    main:
+      min_final_adoption_count: 20
+    negative_control:
+      min_final_adoption_count: 20

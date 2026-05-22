@@ -166,7 +166,7 @@ The active guard tests for the current binary unit migration are:
   helper contracts;
 - `tests/test_toy2_runner.py`, `tests/test_toy4_runner.py`, and
   `tests/test_toy5_runner.py` for Toy2/Toy4/Toy5 policy-unit adoption;
-- `tests/test_nabm_unit_adapter_holdout.py` for adapter-only holdout smoke
+- `tests/test_nabm_unit_adapter_holdout.py` for adapter-only holdout
   coverage that uses the binary policy and readiness units without adding a
   new `src/neural_abm` toy;
 - `tests/test_readiness.py` for readiness propagation boundaries;

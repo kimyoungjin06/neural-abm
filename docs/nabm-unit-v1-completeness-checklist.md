@@ -31,8 +31,8 @@ Status terms:
 | Domain diagnostics plumbing | yes | yes | partial | partial | Toy2/Toy4 shared diagnostic field plumbing reduces schema drift without moving semantics into the unit. |
 | Holdout migration | yes | yes | yes | partial | Toy5 now has a small threshold-aware topology/threshold grid, but negative-control separation is strongest on safety rather than spread. |
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
-| Manuscript narrative | partial | yes | partial | partial | The paper claim matrix now links bounded claims to artifacts and limitations, but figures and draft prose still need to absorb it. |
-| Adapter-only extensibility | yes | yes | smoke | no | A test-only holdout domain now uses binary policy and readiness units without adding a new `src/neural_abm` toy. |
+| Manuscript narrative | partial | yes | partial | partial | The paper claim matrix, table candidates, and draft prose now link bounded claims to artifacts and limitations; publication figures remain open. |
+| Adapter-only extensibility | yes | yes | quick | partial | A source-free holdout manifest now runs a tiny binary domain with baseline, negative-control, and main variants through public unit APIs. |
 
 ## What Is Complete Enough
 
@@ -278,16 +278,21 @@ Completion condition:
   draft prose. The remaining Gate 4 work is to convert the draft prose into the
   final paper style and add publication figures.
 
-### Gate 5: Adapter-Only Holdout Smoke
+### Gate 5: Adapter-Only Holdout Evidence
 
 Goal: test the next generality claim before adding another full toy: can a new
 domain adapter use the shared binary lifecycle without changing `src/neural_abm`?
 
-Status: first pass complete.
+Status: quick evidence complete.
 
 Artifacts:
 
 - `tests/test_nabm_unit_adapter_holdout.py`
+- `experiments/evidence/adapter_only_threshold_holdout_quick.yaml`
+- `scripts/run_adapter_holdout_evidence.py`
+- `experiments/results/nabm_effect_matrix/adapter_only_threshold_holdout_quick_runs.csv`
+- `experiments/evidence/results/adapter_only_threshold_holdout_quick.summary.md`
+- `experiments/results/nabm_effect_matrix/adapter_only_threshold_holdout_quick_findings.md`
 - `src/neural_abm/README.md`
 
 Completed work:
@@ -299,29 +304,34 @@ Completed work:
   sampling, local update, and cache refresh.
 - Routed the same holdout through `BinaryReadinessPropagationUnit` with
   domain-supplied readiness, active, direction, and peer-neighborhood arrays.
+- Added a quick manifest with baseline, negative-control, and main variants.
+- Ran the manifest and preserved run CSV, summary, and findings artifacts.
 
 Result:
 
 - The binary policy lifecycle and readiness propagation can support a new
   adapter-only domain smoke test without changing generic unit code or adding
   hidden domain semantics to `src/neural_abm`.
-- This strengthens the v1 extensibility claim, but only at smoke-test level.
-  It is not evidence that a full new ABM domain has been migrated or that the
-  framework is general-purpose.
+- The quick manifest passes: no-seed baseline/main preserve zero adoption,
+  thresholdless negative control self-excites, sparse-seed baseline stalls at
+  the seed, and the adapter-threshold-readiness main reaches full adoption.
+- This strengthens the v1 extensibility claim beyond smoke level, but remains a
+  tiny binary holdout. It is not evidence that the framework is
+  general-purpose.
 
 Completion condition:
 
-- First pass complete for adapter-only extensibility smoke. A stronger
-  generality claim still requires a real holdout domain with its own manifest,
-  baseline, negative control, and result artifacts.
+- Quick evidence complete for a tiny adapter-only binary holdout. A stronger
+  generality claim still requires a richer holdout domain and manuscript-ready
+  analysis.
 
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Real adapter-only holdout: pick one small binary domain and migrate it through
-  the v1 unit contract with a manifest, baseline, negative control, and result
-  artifact.
+- Richer adapter-only holdout: pick a less threshold-isomorphic binary domain
+  and migrate it through the v1 unit contract with a manuscript-ready evidence
+  table.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.

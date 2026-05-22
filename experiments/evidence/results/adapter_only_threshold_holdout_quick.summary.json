@@ -1,0 +1,67 @@
+{
+  "label": "adapter_only_threshold_holdout_quick",
+  "status": "pass",
+  "runs_path": "experiments/results/nabm_effect_matrix/adapter_only_threshold_holdout_quick_runs.csv",
+  "cases": [
+    {
+      "case": "no_seed_safety",
+      "variants": {
+        "exposure_baseline": {
+          "group": "baseline",
+          "mode": "exposure_baseline",
+          "mean_final_adoption_count": 0.0,
+          "final_full_hits": 0,
+          "safety_hits": 3,
+          "mean_time_to_full_adoption": null
+        },
+        "thresholdless_global_pressure": {
+          "group": "negative_control",
+          "mode": "thresholdless_global_pressure",
+          "mean_final_adoption_count": 20.0,
+          "final_full_hits": 3,
+          "safety_hits": 0,
+          "mean_time_to_full_adoption": 1.0
+        },
+        "adapter_threshold_readiness": {
+          "group": "main",
+          "mode": "adapter_threshold_readiness",
+          "mean_final_adoption_count": 0.0,
+          "final_full_hits": 0,
+          "safety_hits": 3,
+          "mean_time_to_full_adoption": null
+        }
+      }
+    },
+    {
+      "case": "sparse_seed_spread",
+      "variants": {
+        "exposure_baseline": {
+          "group": "baseline",
+          "mode": "exposure_baseline",
+          "mean_final_adoption_count": 1.0,
+          "final_full_hits": 0,
+          "safety_hits": 0,
+          "mean_time_to_full_adoption": null
+        },
+        "thresholdless_global_pressure": {
+          "group": "negative_control",
+          "mode": "thresholdless_global_pressure",
+          "mean_final_adoption_count": 20.0,
+          "final_full_hits": 3,
+          "safety_hits": 0,
+          "mean_time_to_full_adoption": 1.0
+        },
+        "adapter_threshold_readiness": {
+          "group": "main",
+          "mode": "adapter_threshold_readiness",
+          "mean_final_adoption_count": 20.0,
+          "final_full_hits": 3,
+          "safety_hits": 0,
+          "mean_time_to_full_adoption": 5.0
+        }
+      }
+    }
+  ],
+  "failures": [],
+  "claim_boundary": "This is a real adapter-only holdout with baseline, negative control, main variant, and result artifacts. It strengthens the v1 extensibility claim but is still a tiny binary holdout, not a general-purpose ABM framework proof.\n"
+}
