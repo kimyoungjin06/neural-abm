@@ -45,6 +45,7 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
     assert "SCALAR_PROBABILITY_CHANNEL" in readme
     assert "BOUNDED_SCALAR_CHANNEL" in readme
     assert "mix_bounded_scalars" in readme
+    assert "without using probability semantics" in readme
 
 
 def test_nabm_unit_checklist_records_gate1_completion_and_guards() -> None:
@@ -270,7 +271,7 @@ def test_continuous_scalar_contract_records_toy7_gap() -> None:
     gate7d = _between(
         checklist,
         "### Gate 7D: Continuous-Scalar Contract Decision",
-        "## Recommended Next Slice",
+        "### Gate 7E: Toy7 Bounded-Scalar Intensity Parity",
     )
 
     for required in (
@@ -298,4 +299,51 @@ def test_continuous_scalar_contract_records_toy7_gap() -> None:
     assert "## Gate 7D Result" in audit
     assert "Toy7 should not be routed through `SCALAR_PROBABILITY_CHANNEL`" in audit
     assert "Toy7 remains deferred until that contract has toy-independent tests" in audit
-    assert "Bounded-scalar unit contract prototype" in checklist
+
+
+def test_bounded_scalar_contract_records_toy7_parity_slice() -> None:
+    decision = (
+        ROOT / "docs/decisions/0011-continuous-scalar-unit-contract.md"
+    ).read_text()
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    audit = (ROOT / "docs/nabm-unit-v1-migration-candidate-audit.md").read_text()
+    gate7e = _between(
+        checklist,
+        "### Gate 7E: Toy7 Bounded-Scalar Intensity Parity",
+        "## Recommended Next Slice",
+    )
+
+    for required in (
+        "Status: parity slice complete.",
+        "src/neural_abm/social.py::BOUNDED_SCALAR_CHANNEL",
+        "src/neural_abm/social.py::mix_bounded_scalars",
+        "src/neural_abm/social.py::select_bounded_scalar_output_peers",
+        "src/neural_abm/mixers.py::apply_bounded_scalar_output_average",
+        "src/neural_abm/toy_resource.py::apply_output_average",
+        "test_toy7_output_average_matches_unit_bounded_scalar_parity",
+        "test_toy7_output_average_routes_through_unit_bounded_scalar_helper",
+        "not evidence that Toy7 is a",
+        "full NABM claim path",
+    ):
+        assert required in gate7e
+
+    for required in (
+        "Gate 7E implemented the contract surface",
+        "BOUNDED_SCALAR_CHANNEL",
+        "select_bounded_scalar_output_peers",
+        "apply_bounded_scalar_output_average",
+        "Toy7 now routes only social extraction-intensity selection and mixing",
+    ):
+        assert required in decision
+
+    for required in (
+        "## Gate 7E Result",
+        "SCALAR_PROBABILITY_CHANNEL",
+        "apply_bounded_scalar_output_average",
+        "Toy7 now uses a bounded scalar unit surface",
+        "does not promote Toy7 to full NABM evidence",
+    ):
+        assert required in audit
+
+    assert "Toy10 multi-channel contract audit" in checklist
+    assert "Bounded-scalar unit contract prototype" not in checklist

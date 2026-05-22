@@ -65,6 +65,23 @@ surface and tests, then migrate only the Toy7 social intensity mixing slice as a
 parity check. It should not promote Toy7 to a full NABM evidence case and should
 not claim performance improvement.
 
+## Gate 7E Implementation Note
+
+Gate 7E implemented the contract surface described above:
+
+- `src/neural_abm/social.py::BOUNDED_SCALAR_CHANNEL`
+- `src/neural_abm/social.py::mix_bounded_scalars`
+- `src/neural_abm/social.py::select_bounded_scalar_output_peers`
+- `src/neural_abm/mixers.py::apply_bounded_scalar_output_average`
+- `tests/test_social_block.py` bounded-scalar validation, dispatch, and
+  `NABMStep` helper parity tests
+- `tests/test_toy7_runner.py` Toy7 social-intensity parity and routing tests
+
+Toy7 now routes only social extraction-intensity selection and mixing through
+the bounded-scalar unit path. Toy7 still owns resource dynamics, payoff
+semantics, noisy intensity sampling, propensity updates, and evidence
+interpretation.
+
 ## Non-Goals
 
 This decision does not:

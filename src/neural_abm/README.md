@@ -21,8 +21,9 @@ Current modules:
   commitment.
 - `reputation`: action-history EMA and reputation-driven imitation helpers.
 - `social`: reusable `SocialBlock`/`SocialChannel` contract, invariants,
-  scalar and distribution-valued output peer selection, plus probability,
-  tensor, and parameter-state channel mixing.
+  scalar probability, bounded scalar, and distribution-valued output peer
+  selection, plus probability, bounded scalar, tensor, and parameter-state
+  channel mixing.
 - `spatial_binary`: shared hook runner for Toy 2, Toy 4, and Toy 5; binary
   action/probability validation; social-mode helpers for probability mixing and
   policy distillation; NumPy/torch state helpers; and common aggregate/micro
@@ -177,8 +178,8 @@ The active guard tests for the current binary unit migration are:
 - `tests/test_toy9_runner.py` for the second existing-toy migration parity
   slice where Toy9 heterogeneous probability mixing uses the same scalar path;
 - `tests/test_toy7_runner.py` for Toy7 compatibility guardrails while Toy7
-  continuous extraction intensity remains deferred until a bounded-scalar
-  contract exists;
+  continuous extraction-intensity social mixing routes through the bounded
+  scalar path without using probability semantics;
 - `tests/test_readiness.py` for readiness propagation boundaries;
 - `tests/test_nabm_unit_docs.py` for this documentation boundary.
 
@@ -188,8 +189,10 @@ reusable local learning commits should flow through `NABMLocalStep`, and binary
 neural policy lifecycle wiring should flow through `BinaryPolicyLearningUnit`
 once the domain has supplied observations and objective callbacks.
 Toy7's continuous extraction intensity must not be routed through
-`SCALAR_PROBABILITY_CHANNEL`; it requires a bounded continuous scalar contract
-such as `BOUNDED_SCALAR_CHANNEL`/`mix_bounded_scalars(...)` before migration.
+`SCALAR_PROBABILITY_CHANNEL`; its social mixing slice uses the bounded
+continuous scalar contract, `BOUNDED_SCALAR_CHANNEL` plus
+`mix_bounded_scalars(...)`, while resource and payoff semantics remain in
+Toy7.
 
 Unit contract changes should update the docs that define the boundary:
 

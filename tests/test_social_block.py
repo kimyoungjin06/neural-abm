@@ -7,6 +7,7 @@ import torch
 from neural_abm.core import ClassificationMLP, NeuralClassificationAgent, clone_state_dict
 from neural_abm.mixers import (
     align_hidden_layer_state,
+    apply_bounded_scalar_output_average,
     apply_parameter_aligned_average,
     apply_parameter_average,
     apply_scalar_output_average,
@@ -15,6 +16,7 @@ from neural_abm.mixers import (
 )
 from neural_abm.mobility import MobilityStepResult
 from neural_abm.social import (
+    BOUNDED_SCALAR_CHANNEL,
     PeerIndexCache,
     PROBABILITY_DISTRIBUTION_CHANNEL,
     SCALAR_PROBABILITY_CHANNEL,
@@ -22,17 +24,21 @@ from neural_abm.social import (
     TENSOR_CHANNEL,
     SocialBlock,
     SocialChannel,
+    bounded_scalar_similarity_matrix,
     distribution_output_similarity_matrix,
     empty_peers,
+    mix_bounded_scalars,
     mix_probability_distributions,
     mix_scalar_probabilities,
     mix_state_dict_channel,
     mix_tensor_channel,
     peer_ids_for_mixer,
     scalar_output_similarity_matrix,
+    select_bounded_scalar_output_peers,
     select_distribution_output_peers,
     select_scalar_output_peers,
     uniform_peer_count,
+    validate_bounded_scalar_vector,
     validate_peer_ids,
     validate_probability_distributions,
     validate_probability_matrix,
@@ -629,6 +635,111 @@ def test_scalar_probability_mix_rejects_invalid_alpha() -> None:
         mix_scalar_probabilities(np.asarray([0.1, 0.9]), [[1], [0]], alpha=1.5)
 
 
+def test_bounded_scalar_vector_validation_uses_declared_bounds() -> None:
+    validate_bounded_scalar_vector(
+        np.asarray([2.0, 5.0, 8.0]),
+        lower_bound=0.0,
+        upper_bound=10.0,
+    )
+
+    with pytest.raises(ValueError, match="bounded scalar vector"):
+        validate_bounded_scalar_vector(np.asarray([[0.1, 0.2]]))
+    with pytest.raises(ValueError, match="finite"):
+        validate_bounded_scalar_vector(np.asarray([0.1, np.nan]))
+    with pytest.raises(ValueError, match=r"\[0, 10\]"):
+        validate_bounded_scalar_vector(
+            np.asarray([11.0]),
+            lower_bound=0.0,
+            upper_bound=10.0,
+        )
+    with pytest.raises(ValueError, match="lower_bound"):
+        validate_bounded_scalar_vector(
+            np.asarray([1.0]),
+            lower_bound=2.0,
+            upper_bound=1.0,
+        )
+
+
+def test_bounded_scalar_mix_uses_bounds_without_probability_semantics() -> None:
+    values = np.asarray([2.0, 8.0, 4.0])
+    peers = [[1, 2], [0], []]
+
+    result = mix_bounded_scalars(
+        values,
+        peers,
+        alpha=0.5,
+        lower_bound=0.0,
+        upper_bound=10.0,
+        channel="extraction_intensity",
+        commit_mode="continuous_intensity_commit",
+    )
+
+    assert result.mixed_values.tolist() == pytest.approx([4.0, 5.0, 4.0])
+    assert result.losses == pytest.approx([2.0, 3.0, 0.0])
+    assert result.update_norms == pytest.approx([2.0, 3.0, 0.0])
+    assert result.channel == "extraction_intensity"
+    assert result.commit_mode == "continuous_intensity_commit"
+
+
+def test_bounded_scalar_output_similarity_respects_custom_span() -> None:
+    values = np.asarray([0.0, 5.0, 10.0])
+
+    matrix = bounded_scalar_similarity_matrix(
+        values,
+        lower_bound=0.0,
+        upper_bound=10.0,
+    )
+    result = select_bounded_scalar_output_peers(
+        neighbors=[[1, 2], [0, 2], [0, 1]],
+        values=values,
+        peer_rule="output_similarity",
+        threshold=0.6,
+        lower_bound=0.0,
+        upper_bound=10.0,
+    )
+
+    np.testing.assert_allclose(
+        matrix,
+        np.asarray(
+            [
+                [1.0, 0.5, 0.0],
+                [0.5, 1.0, 0.5],
+                [0.0, 0.5, 1.0],
+            ]
+        ),
+    )
+    assert result.peer_ids == [[], [], []]
+
+
+def test_social_block_bounded_scalar_dispatch_matches_helper() -> None:
+    values = np.asarray([2.0, 8.0, 4.0])
+    peers = [[1, 2], [0], []]
+    channel = SocialChannel(
+        name="extraction_intensity",
+        kind=BOUNDED_SCALAR_CHANNEL,
+        commit_mode="continuous_intensity_commit",
+        lower_bound=0.0,
+        upper_bound=10.0,
+    )
+
+    expected = mix_bounded_scalars(
+        values,
+        peers,
+        alpha=0.5,
+        lower_bound=0.0,
+        upper_bound=10.0,
+        channel=channel.name,
+        commit_mode=channel.commit_mode,
+    )
+    result = SocialBlock(alpha=0.5).mix(channel, values, peers)
+
+    assert result.mixed_values.tolist() == pytest.approx(
+        expected.mixed_values.tolist()
+    )
+    assert result.losses == pytest.approx(expected.losses)
+    assert result.peer_ids == peers
+
+
 def test_social_block_scalar_dispatch_matches_helper() -> None:
     values = np.asarray([0.1, 0.9, 0.4])
     peers = [[1, 2], [0, 2], []]
@@ -652,6 +763,39 @@ def test_social_block_scalar_dispatch_matches_helper() -> None:
     )
     assert result.losses == pytest.approx(expected.losses)
     assert result.peer_ids == peers
+
+
+def test_bounded_scalar_output_average_unit_helper_matches_common_block() -> None:
+    values = np.asarray([2.0, 8.0, 4.0])
+    peers = [[1, 2], [0], []]
+
+    expected = mix_bounded_scalars(
+        values,
+        peers,
+        alpha=0.5,
+        lower_bound=0.0,
+        upper_bound=10.0,
+        channel="extraction_intensity",
+        commit_mode="continuous_intensity_commit",
+    )
+    result = apply_bounded_scalar_output_average(
+        values,
+        peers,
+        alpha=0.5,
+        lower_bound=0.0,
+        upper_bound=10.0,
+        channel="extraction_intensity",
+        commit_mode="continuous_intensity_commit",
+    )
+
+    assert result.mix.mixed_values.tolist() == pytest.approx(
+        expected.mixed_values.tolist()
+    )
+    assert result.commit.losses == pytest.approx(expected.losses)
+    assert result.mix.update_norms == pytest.approx(expected.update_norms)
+    assert result.diagnostics.aggregate_row()["social_channel"] == (
+        "extraction_intensity"
+    )
 
 
 def test_scalar_output_average_unit_helper_matches_common_block() -> None:

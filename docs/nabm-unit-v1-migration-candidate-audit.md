@@ -251,3 +251,34 @@ Future Toy7 path:
 3. Preserve Toy7 resource dynamics, payoff semantics, noisy intensity sampling,
    and runner artifact fields.
 4. Interpret the result as migration parity, not as full Toy7 NABM evidence.
+
+## Gate 7E Result
+
+Status: parity slice complete.
+
+Implemented slice:
+
+- `src/neural_abm/social.py::BOUNDED_SCALAR_CHANNEL` records bounded scalar as
+  a separate social channel kind from `SCALAR_PROBABILITY_CHANNEL`.
+- `src/neural_abm/social.py::mix_bounded_scalars` and
+  `src/neural_abm/social.py::select_bounded_scalar_output_peers` validate
+  finite values inside declared bounds before mixing or selecting peers.
+- `src/neural_abm/mixers.py::apply_bounded_scalar_output_average` exposes the
+  bounded scalar path through `NABMStep`.
+- `src/neural_abm/toy_resource.py::apply_output_average` uses the bounded
+  scalar helper for Toy7 extraction-intensity social mixing.
+
+Parity checks:
+
+- `tests/test_social_block.py::test_bounded_scalar_output_average_unit_helper_matches_common_block`
+- `tests/test_toy7_runner.py::test_toy7_output_average_matches_unit_bounded_scalar_parity`
+- `tests/test_toy7_runner.py::test_toy7_output_average_routes_through_unit_bounded_scalar_helper`
+
+Interpretation:
+
+- Toy7 now uses a bounded scalar unit surface for social extraction-intensity
+  mixing without calling that value a probability.
+- Toy7 still owns resource dynamics, payoff semantics, noisy intensity
+  sampling, propensity learning, runner artifacts, and evidence interpretation.
+- This does not promote Toy7 to full NABM evidence. It closes the bounded
+  scalar contract gap for one parity slice.

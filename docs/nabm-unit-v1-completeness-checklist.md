@@ -33,7 +33,7 @@ Status terms:
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
 | Manuscript narrative | partial | yes | partial | partial | The paper claim matrix, table candidates, and draft prose now link bounded claims to artifacts and limitations; publication figures remain open. |
 | Adapter-only extensibility | yes | yes | quick | partial | Source-free threshold, congestion, and stochastic commons holdout manifests now run binary domains with baseline, negative-control, and main variants through public unit APIs. |
-| Existing-toy migration | partial | yes | parity | partial | Gate 7B/7C route Toy8 async hazard and Toy9 heterogeneous probability mixing through the unit-backed scalar path while preserving domain semantics; Gate 7D records Toy7 continuous extraction intensity as a bounded-scalar contract gap. |
+| Existing-toy migration | partial | yes | parity | partial | Gate 7B/7C route Toy8 async hazard and Toy9 heterogeneous probability mixing through the unit-backed scalar path; Gate 7E routes Toy7 continuous extraction-intensity mixing through the bounded-scalar path while preserving domain semantics. |
 
 ## What Is Complete Enough
 
@@ -551,13 +551,58 @@ Completion condition:
   chooses to keep migrating existing compatible toys before manuscript
   consolidation.
 
+### Gate 7E: Toy7 Bounded-Scalar Intensity Parity
+
+Goal: implement the bounded continuous scalar contract and route only Toy7
+social extraction-intensity mixing through it.
+
+Status: parity slice complete.
+
+Artifacts:
+
+- `src/neural_abm/social.py::BOUNDED_SCALAR_CHANNEL`
+- `src/neural_abm/social.py::mix_bounded_scalars`
+- `src/neural_abm/social.py::select_bounded_scalar_output_peers`
+- `src/neural_abm/mixers.py::apply_bounded_scalar_output_average`
+- `src/neural_abm/toy_resource.py::apply_output_average`
+- `tests/test_social_block.py::test_bounded_scalar_output_average_unit_helper_matches_common_block`
+- `tests/test_toy7_runner.py::test_toy7_output_average_matches_unit_bounded_scalar_parity`
+- `tests/test_toy7_runner.py::test_toy7_output_average_routes_through_unit_bounded_scalar_helper`
+
+Completed work:
+
+- Added a semantic-free bounded scalar channel and validation path that rejects
+  non-finite values and values outside declared bounds.
+- Added bounded scalar output-similarity peer selection without naming the
+  values probabilities.
+- Added a `NABMStep`-backed bounded scalar output-average helper.
+- Routed Toy7 extraction-intensity social averaging through that helper with
+  bounds `[0, 1]`, channel `extraction_intensity`, and commit mode
+  `continuous_intensity_commit`.
+- Preserved Toy7 resource dynamics, payoff construction, noisy intensity
+  sampling, propensity updates, and CSV/result field names.
+
+Result:
+
+- Toy7 is no longer using `SCALAR_PROBABILITY_CHANNEL` for extraction
+  intensity.
+- The bounded scalar path is tested independently of Toy7 and then covered by a
+  Toy7 parity/routing test.
+- This is existing-toy migration parity only. It is not evidence that Toy7 is a
+  full NABM claim path and not evidence that continuous-action NABMs are solved.
+
+Completion condition:
+
+- Gate 7E is complete for the social-intensity slice. Further Toy7 work should
+  require a new decision if it moves from bounded scalar social mixing into
+  continuous local policy learning or resource-control evidence.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Bounded-scalar unit contract prototype: add a semantic-free bounded scalar
-  channel/helper and guard tests, then migrate Toy7 social intensity mixing as
-  a parity-only slice.
+- Toy10 multi-channel contract audit: decide whether the dynamic market/ecology
+  runner exposes a typed message contract gap before any migration.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.

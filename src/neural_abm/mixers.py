@@ -9,6 +9,7 @@ from torch import nn
 
 from neural_abm.core import NeuralClassificationAgent
 from neural_abm.social import (
+    BOUNDED_SCALAR_CHANNEL,
     PROBABILITY_DISTRIBUTION_CHANNEL,
     SCALAR_PROBABILITY_CHANNEL,
     STATE_DICT_CHANNEL,
@@ -187,6 +188,34 @@ def apply_scalar_output_average(
             name=channel,
             kind=SCALAR_PROBABILITY_CHANNEL,
             commit_mode=commit_mode,
+        ),
+    )
+    return step.run(
+        values=np.asarray(values, dtype=np.float64),
+        peer_ids=peer_ids,
+    )
+
+
+def apply_bounded_scalar_output_average(
+    values: np.ndarray,
+    peer_ids: list[list[int]],
+    alpha: float,
+    *,
+    lower_bound: float = 0.0,
+    upper_bound: float = 1.0,
+    channel: str = "bounded_scalar",
+    commit_mode: str = "bounded_scalar_commit",
+) -> NABMStepResult:
+    """Apply a NABMStep-backed bounded scalar social mix."""
+
+    step = NABMStep(
+        social_block=SocialBlock(alpha=alpha),
+        channel=SocialChannel(
+            name=channel,
+            kind=BOUNDED_SCALAR_CHANNEL,
+            commit_mode=commit_mode,
+            lower_bound=lower_bound,
+            upper_bound=upper_bound,
         ),
     )
     return step.run(

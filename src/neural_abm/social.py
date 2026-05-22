@@ -14,11 +14,13 @@ from neural_abm.metrics import js_divergence_np
 TensorState = dict[str, torch.Tensor]
 StateAlignment = Callable[[TensorState, TensorState], TensorState]
 SCALAR_PROBABILITY_CHANNEL = "scalar_probability"
+BOUNDED_SCALAR_CHANNEL = "bounded_scalar"
 PROBABILITY_DISTRIBUTION_CHANNEL = "probability_distribution"
 TENSOR_CHANNEL = "tensor"
 STATE_DICT_CHANNEL = "state_dict"
 SUPPORTED_SOCIAL_CHANNEL_KINDS = (
     SCALAR_PROBABILITY_CHANNEL,
+    BOUNDED_SCALAR_CHANNEL,
     PROBABILITY_DISTRIBUTION_CHANNEL,
     TENSOR_CHANNEL,
     STATE_DICT_CHANNEL,
@@ -33,6 +35,8 @@ class SocialChannel:
     kind: str
     commit_mode: str
     align_state: StateAlignment | None = None
+    lower_bound: float = 0.0
+    upper_bound: float = 1.0
 
     def __post_init__(self) -> None:
         if not self.name:
@@ -43,6 +47,11 @@ class SocialChannel:
             raise ValueError("SocialChannel commit_mode must be non-empty")
         if self.align_state is not None and self.kind != STATE_DICT_CHANNEL:
             raise ValueError("align_state is only supported for state_dict channels")
+        if self.kind == BOUNDED_SCALAR_CHANNEL:
+            if not np.isfinite(self.lower_bound) or not np.isfinite(self.upper_bound):
+                raise ValueError("bounded scalar channel bounds must be finite")
+            if self.lower_bound > self.upper_bound:
+                raise ValueError("bounded scalar lower_bound must be <= upper_bound")
 
 
 @dataclass(frozen=True)
@@ -256,6 +265,31 @@ def validate_probability_vector(values: np.ndarray, *, name: str = "values") -> 
         raise ValueError(f"{name} values must lie in [0, 1]")
 
 
+def validate_bounded_scalar_vector(
+    values: np.ndarray,
+    *,
+    lower_bound: float = 0.0,
+    upper_bound: float = 1.0,
+    name: str = "values",
+) -> None:
+    """Require a one-dimensional finite scalar vector inside declared bounds."""
+
+    if not np.isfinite(lower_bound) or not np.isfinite(upper_bound):
+        raise ValueError(f"{name} bounds must be finite")
+    if lower_bound > upper_bound:
+        raise ValueError(f"{name} lower_bound must be <= upper_bound")
+
+    array = np.asarray(values, dtype=np.float64)
+    if array.ndim != 1:
+        raise ValueError(f"{name} must be a 1D bounded scalar vector")
+    if not np.all(np.isfinite(array)):
+        raise ValueError(f"{name} must contain only finite values")
+    if np.any((array < lower_bound) | (array > upper_bound)):
+        raise ValueError(
+            f"{name} values must lie in [{lower_bound:g}, {upper_bound:g}]"
+        )
+
+
 def validate_probability_matrix(
     values: np.ndarray,
     *,
@@ -360,6 +394,26 @@ def scalar_output_similarity_matrix(values: np.ndarray) -> np.ndarray:
     return 1.0 - np.abs(array[:, None] - array[None, :])
 
 
+def bounded_scalar_similarity_matrix(
+    values: np.ndarray,
+    *,
+    lower_bound: float = 0.0,
+    upper_bound: float = 1.0,
+) -> np.ndarray:
+    """Compatibility matrix for finite bounded scalar channels."""
+
+    validate_bounded_scalar_vector(
+        values,
+        lower_bound=lower_bound,
+        upper_bound=upper_bound,
+    )
+    array = np.asarray(values, dtype=np.float64)
+    span = upper_bound - lower_bound
+    if span == 0.0:
+        return np.ones((len(array), len(array)), dtype=np.float64)
+    return 1.0 - np.abs(array[:, None] - array[None, :]) / span
+
+
 def distribution_output_similarity_matrix(probe_probs: np.ndarray) -> np.ndarray:
     """Compatibility matrix for distribution-valued output channels."""
 
@@ -402,6 +456,55 @@ def select_scalar_output_peers(
         raise ValueError(f"Unsupported peer rule: {peer_rule}")
 
     similarity = scalar_output_similarity_matrix(values)
+    selected = [
+        [
+            int(peer_id)
+            for peer_id in peers
+            if similarity[agent_id, int(peer_id)] >= threshold
+        ]
+        for agent_id, peers in enumerate(neighbors)
+    ]
+    return PeerSelectionResult(peer_ids=selected, similarity=similarity)
+
+
+def select_bounded_scalar_output_peers(
+    neighbors: list[list[int]],
+    values: np.ndarray,
+    peer_rule: str,
+    threshold: float,
+    *,
+    lower_bound: float = 0.0,
+    upper_bound: float = 1.0,
+    copy_peers: bool = True,
+    validate_peers: bool = True,
+) -> PeerSelectionResult:
+    """Select graph-neighbor peers for bounded scalar outputs."""
+
+    agent_count = len(neighbors)
+    validate_bounded_scalar_vector(
+        values,
+        lower_bound=lower_bound,
+        upper_bound=upper_bound,
+    )
+    if validate_peers:
+        validate_peer_ids(neighbors, agent_count)
+    if len(values) != agent_count:
+        raise ValueError(
+            f"values length ({len(values)}) must equal agent_count ({agent_count})"
+        )
+    if peer_rule == "none":
+        return PeerSelectionResult(
+            peer_ids=copy_peer_ids(neighbors) if copy_peers else neighbors,
+            similarity=None,
+        )
+    if peer_rule != "output_similarity":
+        raise ValueError(f"Unsupported peer rule: {peer_rule}")
+
+    similarity = bounded_scalar_similarity_matrix(
+        values,
+        lower_bound=lower_bound,
+        upper_bound=upper_bound,
+    )
     selected = [
         [
             int(peer_id)
@@ -473,6 +576,53 @@ def mix_scalar_probabilities(
         peer_mean = float(np.mean(original[peers]))
         mixed_value = (1.0 - alpha) * float(original[agent_id]) + alpha * peer_mean
         mixed[agent_id] = float(np.clip(mixed_value, 0.0, 1.0))
+        update_norm = abs(float(mixed[agent_id] - original[agent_id]))
+        losses.append(update_norm)
+        update_norms.append(update_norm)
+
+    return SocialMixResult(
+        mixed_values=mixed,
+        losses=losses,
+        update_norms=update_norms,
+        peer_ids=copy_peer_ids(peer_ids),
+        channel=channel,
+        commit_mode=commit_mode,
+    )
+
+
+def mix_bounded_scalars(
+    values: np.ndarray,
+    peer_ids: list[list[int]],
+    alpha: float,
+    *,
+    lower_bound: float = 0.0,
+    upper_bound: float = 1.0,
+    channel: str = "bounded_scalar",
+    commit_mode: str = "bounded_scalar_commit",
+) -> SocialMixResult:
+    """Mix bounded scalar values toward selected peer means."""
+
+    if not 0.0 <= alpha <= 1.0:
+        raise ValueError("alpha must lie in [0, 1]")
+    validate_bounded_scalar_vector(
+        values,
+        lower_bound=lower_bound,
+        upper_bound=upper_bound,
+    )
+    original = np.asarray(values, dtype=np.float64)
+    validate_peer_ids(peer_ids, len(original))
+
+    mixed = original.copy()
+    losses: list[float] = []
+    update_norms: list[float] = []
+    for agent_id, peers in enumerate(peer_ids):
+        if not peers or alpha == 0.0:
+            losses.append(0.0)
+            update_norms.append(0.0)
+            continue
+        peer_mean = float(np.mean(original[peers]))
+        mixed_value = (1.0 - alpha) * float(original[agent_id]) + alpha * peer_mean
+        mixed[agent_id] = float(np.clip(mixed_value, lower_bound, upper_bound))
         update_norm = abs(float(mixed[agent_id] - original[agent_id]))
         losses.append(update_norm)
         update_norms.append(update_norm)
@@ -838,6 +988,16 @@ class SocialBlock:
                 values=values,
                 peer_ids=peer_ids,
                 alpha=self.alpha,
+                channel=channel.name,
+                commit_mode=channel.commit_mode,
+            )
+        if channel.kind == BOUNDED_SCALAR_CHANNEL:
+            return mix_bounded_scalars(
+                values=values,
+                peer_ids=peer_ids,
+                alpha=self.alpha,
+                lower_bound=channel.lower_bound,
+                upper_bound=channel.upper_bound,
                 channel=channel.name,
                 commit_mode=channel.commit_mode,
             )

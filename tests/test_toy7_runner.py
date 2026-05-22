@@ -3,14 +3,17 @@ from __future__ import annotations
 import csv
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 import yaml
 
 from binary_config_helpers import toy7_config
 from neural_abm.config import load_toy7_config
+from neural_abm.social import mix_bounded_scalars
 from neural_abm.toy_resource import (
     adaptive_target,
+    apply_output_average as apply_toy7_output_average,
     compute_payoffs,
     run_toy7,
     select_peer_ids,
@@ -116,6 +119,79 @@ def test_toy7_output_similarity_selects_scalar_peers(tmp_path: Path) -> None:
     )
 
     assert peer_ids == [[1], [0], []]
+
+
+def test_toy7_output_average_matches_unit_bounded_scalar_parity(
+    tmp_path: Path,
+) -> None:
+    config = load_toy7_config(
+        write_config(tmp_path, tiny_config_dict(tmp_path, mixer="output_average"))
+    )
+    propensities = np_array([0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85])
+    peer_ids = [[1], [], [3, 4], [], [2], [], [7], []]
+
+    expected = mix_bounded_scalars(
+        propensities,
+        peer_ids,
+        alpha=config.coordination.alpha,
+        lower_bound=0.0,
+        upper_bound=1.0,
+        channel="extraction_intensity",
+        commit_mode="continuous_intensity_commit",
+    )
+    mixed, losses, update_norms = apply_toy7_output_average(
+        propensities,
+        peer_ids,
+        config,
+    )
+
+    assert mixed.tolist() == pytest.approx(expected.mixed_values.tolist())
+    assert losses == pytest.approx(expected.losses)
+    assert update_norms == pytest.approx(expected.update_norms)
+
+
+def test_toy7_output_average_routes_through_unit_bounded_scalar_helper(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    config = load_toy7_config(
+        write_config(tmp_path, tiny_config_dict(tmp_path, mixer="output_average"))
+    )
+    propensities = np_array([0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85])
+    peer_ids = [[1], [], [3, 4], [], [2], [], [7], []]
+    calls: list[dict[str, object]] = []
+
+    def fake_apply_bounded_scalar_output_average(**kwargs: object) -> SimpleNamespace:
+        calls.append(dict(kwargs))
+        return SimpleNamespace(
+            mix=SimpleNamespace(
+                mixed_values=propensities + 0.01,
+                update_norms=[0.01 for _ in propensities],
+            ),
+            commit=SimpleNamespace(losses=[0.02 for _ in propensities]),
+        )
+
+    monkeypatch.setattr(
+        "neural_abm.toy_resource.apply_bounded_scalar_output_average",
+        fake_apply_bounded_scalar_output_average,
+    )
+
+    mixed, losses, update_norms = apply_toy7_output_average(
+        propensities,
+        peer_ids,
+        config,
+    )
+
+    assert len(calls) == 1
+    assert calls[0]["channel"] == "extraction_intensity"
+    assert calls[0]["commit_mode"] == "continuous_intensity_commit"
+    assert calls[0]["lower_bound"] == 0.0
+    assert calls[0]["upper_bound"] == 1.0
+    assert calls[0]["alpha"] == config.coordination.alpha
+    assert calls[0]["peer_ids"] == peer_ids
+    assert mixed.tolist() == pytest.approx((propensities + 0.01).tolist())
+    assert losses == pytest.approx([0.02 for _ in propensities])
+    assert update_norms == pytest.approx([0.01 for _ in propensities])
 
 
 @pytest.mark.parametrize(
