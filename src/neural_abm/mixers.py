@@ -224,6 +224,27 @@ def apply_bounded_scalar_output_average(
     )
 
 
+def apply_distribution_output_average(
+    values: torch.Tensor,
+    peer_ids: list[list[int]],
+    alpha: float,
+    *,
+    channel: str = "output_distribution",
+    commit_mode: str = "distribution_commit",
+) -> NABMStepResult:
+    """Apply a NABMStep-backed distribution-valued social mix."""
+
+    step = NABMStep(
+        social_block=SocialBlock(alpha=alpha),
+        channel=SocialChannel(
+            name=channel,
+            kind=PROBABILITY_DISTRIBUTION_CHANNEL,
+            commit_mode=commit_mode,
+        ),
+    )
+    return step.run(values=values, peer_ids=peer_ids)
+
+
 def apply_parameter_average(
     agents: list[NeuralClassificationAgent],
     peer_ids: list[list[int]],

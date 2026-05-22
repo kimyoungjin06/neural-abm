@@ -33,7 +33,7 @@ Status terms:
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
 | Manuscript narrative | partial | yes | partial | partial | The paper claim matrix, table candidates, and draft prose now link bounded claims to artifacts and limitations; publication figures remain open. |
 | Adapter-only extensibility | yes | yes | quick | partial | Source-free threshold, congestion, and stochastic commons holdout manifests now run binary domains with baseline, negative-control, and main variants through public unit APIs. |
-| Existing-toy migration | partial | yes | parity | partial | Gate 7B/7C route Toy8 async hazard and Toy9 heterogeneous probability mixing through the unit-backed scalar path; Gate 7E/7F route Toy7 intensity and Toy10 market/ecology channels through bounded-scalar paths while preserving domain semantics. |
+| Existing-toy migration | partial | yes | parity | partial | Gate 7B/7C route Toy8 async hazard and Toy9 heterogeneous probability mixing through the unit-backed scalar path; Gate 7E/7F route Toy7 intensity and Toy10 market/ecology channels through bounded-scalar paths; Gate 7G routes Toy6 categorical distributions through the distribution path while preserving domain semantics. |
 
 ## What Is Complete Enough
 
@@ -644,12 +644,56 @@ Completion condition:
   Toy10 work should not move market, resource, payoff, or dynamic rewiring
   semantics into the unit.
 
+### Gate 7G: Toy6 Categorical Distribution Parity
+
+Goal: decide whether Toy6 categorical social mixing needs a new categorical
+policy channel or can reuse the existing probability-distribution channel.
+
+Status: parity slice complete.
+
+Artifacts:
+
+- `src/neural_abm/mixers.py::apply_distribution_output_average`
+- `src/neural_abm/toy_categorical.py::apply_output_average`
+- `tests/test_social_block.py::test_distribution_output_average_unit_helper_matches_common_block`
+- `tests/test_toy6_runner.py::test_toy6_output_average_matches_unit_distribution_parity`
+- `tests/test_toy6_runner.py::test_toy6_output_average_routes_through_unit_distribution_helper`
+
+Completed work:
+
+- Audited Toy6 categorical policy output as a row-stochastic probability
+  distribution, not a separate generic categorical-policy semantic.
+- Added a `NABMStep`-backed distribution output-average helper over
+  `PROBABILITY_DISTRIBUTION_CHANNEL`.
+- Routed Toy6 `strategy_distribution` social averaging through that helper
+  with commit mode `categorical_probability_commit`.
+- Preserved cyclic payoff construction, local logit updates, action sampling,
+  payoff EMA, strategy entropy metrics, and artifact fields in Toy6.
+
+Result:
+
+- Toy6 does not need a new categorical-specific unit contract for this parity
+  slice.
+- The existing distribution channel is sufficient because the unit sees only
+  finite row-stochastic distributions; Toy6 owns strategy meaning and payoff
+  semantics.
+- This is existing-toy migration parity only. It does not promote Toy6 to full
+  NABM evidence and does not claim categorical ABMs are solved.
+
+Completion condition:
+
+- Gate 7G is complete for Toy6 categorical output averaging. Future Toy6 work
+  should require a separate decision if it moves local categorical policy
+  learning, payoff construction, or categorical evidence criteria into the
+  generic unit.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Toy6 categorical contract audit: decide whether categorical social mixing can
-  reuse distribution channels or needs a separate categorical-policy boundary.
+- Existing-toy migration consolidation: summarize Gates 7B-7G as compatible
+  migration parity across event, heterogeneous, continuous scalar,
+  multi-channel, and categorical runners.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.

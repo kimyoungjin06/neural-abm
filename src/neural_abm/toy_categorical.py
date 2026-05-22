@@ -17,13 +17,13 @@ from neural_abm.domain_runner import (
     make_timestamped_run_dir,
 )
 from neural_abm.graphs import component_map, graph_from_peer_ids
+from neural_abm.mixers import apply_distribution_output_average
 from neural_abm.results import (
     DomainToyResult,
     write_run_metadata_artifacts,
 )
 from neural_abm.social import (
     empty_peers,
-    mix_probability_distributions,
     select_distribution_output_peers,
 )
 
@@ -234,18 +234,18 @@ def apply_output_average(
             [0.0 for _ in range(len(probabilities))],
             [0.0 for _ in range(len(probabilities))],
         )
-    result = mix_probability_distributions(
+    result = apply_distribution_output_average(
         values=torch.as_tensor(probabilities, dtype=torch.float32, device=device),
         peer_ids=peer_ids,
         alpha=config.coordination.alpha,
         channel="strategy_distribution",
         commit_mode="categorical_probability_commit",
     )
-    mixed = normalize_probabilities(result.mixed_values.detach().cpu().numpy())
+    mixed = normalize_probabilities(result.mix.mixed_values.detach().cpu().numpy())
     return (
         mixed,
-        result.losses,
-        result.update_norms,
+        result.commit.losses,
+        result.mix.update_norms,
     )
 
 

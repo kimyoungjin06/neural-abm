@@ -8,6 +8,7 @@ from neural_abm.core import ClassificationMLP, NeuralClassificationAgent, clone_
 from neural_abm.mixers import (
     align_hidden_layer_state,
     apply_bounded_scalar_output_average,
+    apply_distribution_output_average,
     apply_parameter_aligned_average,
     apply_parameter_average,
     apply_scalar_output_average,
@@ -505,6 +506,40 @@ def test_social_block_probability_distribution_dispatch_matches_helper() -> None
     assert result.losses == pytest.approx(expected.losses)
     assert result.channel == "probe_output_distribution"
     assert result.active_agent_ids == expected.active_agent_ids
+
+
+def test_distribution_output_average_unit_helper_matches_common_block() -> None:
+    values = torch.as_tensor(
+        [
+            [[0.9, 0.1], [0.8, 0.2]],
+            [[0.1, 0.9], [0.2, 0.8]],
+            [[0.5, 0.5], [0.4, 0.6]],
+        ],
+        dtype=torch.float32,
+    )
+    peers = [[1, 2], [0], []]
+
+    expected = mix_probability_distributions(
+        values,
+        peers,
+        alpha=0.25,
+        channel="strategy_distribution",
+        commit_mode="categorical_probability_commit",
+    )
+    result = apply_distribution_output_average(
+        values,
+        peers,
+        alpha=0.25,
+        channel="strategy_distribution",
+        commit_mode="categorical_probability_commit",
+    )
+
+    assert torch.allclose(result.mix.mixed_values, expected.mixed_values)
+    assert result.commit.losses == pytest.approx(expected.losses)
+    assert result.mix.update_norms == pytest.approx(expected.update_norms)
+    assert result.diagnostics.aggregate_row()["social_channel"] == (
+        "strategy_distribution"
+    )
 
 
 def test_probability_distribution_mix_can_skip_update_norm_collection() -> None:

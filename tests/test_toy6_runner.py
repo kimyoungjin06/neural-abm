@@ -3,13 +3,18 @@ from __future__ import annotations
 import csv
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
+import numpy as np
 import pytest
+import torch
 import yaml
 
 from binary_config_helpers import toy6_config
 from neural_abm.config import load_toy6_config
+from neural_abm.social import mix_probability_distributions
 from neural_abm.toy_categorical import (
+    apply_output_average as apply_toy6_output_average,
     compute_cyclic_payoffs,
     run_toy6,
     select_peer_ids,
@@ -127,6 +132,109 @@ def test_toy6_output_similarity_selects_distribution_peers(tmp_path: Path) -> No
 
     assert peer_ids[0] == [1]
     assert peer_ids[1] == [0]
+
+
+def test_toy6_output_average_matches_unit_distribution_parity(
+    tmp_path: Path,
+) -> None:
+    config = load_toy6_config(
+        write_config(tmp_path, tiny_config_dict(tmp_path, mixer="output_average"))
+    )
+    probabilities = np_array(
+        [
+            [0.80, 0.10, 0.10],
+            [0.60, 0.30, 0.10],
+            [0.20, 0.30, 0.50],
+            [0.20, 0.70, 0.10],
+            [0.10, 0.20, 0.70],
+            [0.50, 0.25, 0.25],
+            [0.33, 0.34, 0.33],
+            [0.10, 0.80, 0.10],
+            [0.70, 0.10, 0.20],
+        ]
+    )
+    peer_ids = [[1, 2], [], [3, 4], [], [2], [], [7], [], [0]]
+    values = torch.as_tensor(probabilities, dtype=torch.float32)
+
+    expected = mix_probability_distributions(
+        values,
+        peer_ids,
+        alpha=config.coordination.alpha,
+        channel="strategy_distribution",
+        commit_mode="categorical_probability_commit",
+    )
+    mixed, losses, update_norms = apply_toy6_output_average(
+        probabilities,
+        peer_ids,
+        config,
+        torch.device("cpu"),
+    )
+
+    np.testing.assert_allclose(
+        mixed,
+        expected.mixed_values.detach().cpu().numpy(),
+        atol=1e-6,
+    )
+    assert losses == pytest.approx(expected.losses)
+    assert update_norms == pytest.approx(expected.update_norms)
+
+
+def test_toy6_output_average_routes_through_unit_distribution_helper(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    config = load_toy6_config(
+        write_config(tmp_path, tiny_config_dict(tmp_path, mixer="output_average"))
+    )
+    probabilities = np_array(
+        [
+            [0.80, 0.10, 0.10],
+            [0.60, 0.30, 0.10],
+            [0.20, 0.30, 0.50],
+            [0.20, 0.70, 0.10],
+            [0.10, 0.20, 0.70],
+            [0.50, 0.25, 0.25],
+            [0.33, 0.34, 0.33],
+            [0.10, 0.80, 0.10],
+            [0.70, 0.10, 0.20],
+        ]
+    )
+    peer_ids = [[1, 2], [], [3, 4], [], [2], [], [7], [], [0]]
+    calls: list[dict[str, object]] = []
+
+    def fake_apply_distribution_output_average(**kwargs: object) -> SimpleNamespace:
+        calls.append(dict(kwargs))
+        values = kwargs["values"]
+        assert torch.is_tensor(values)
+        mixed_values = values + torch.as_tensor([0.01, 0.0, -0.01])
+        return SimpleNamespace(
+            mix=SimpleNamespace(
+                mixed_values=mixed_values,
+                update_norms=[0.01 for _ in range(len(probabilities))],
+            ),
+            commit=SimpleNamespace(losses=[0.02 for _ in range(len(probabilities))]),
+        )
+
+    monkeypatch.setattr(
+        "neural_abm.toy_categorical.apply_distribution_output_average",
+        fake_apply_distribution_output_average,
+    )
+
+    mixed, losses, update_norms = apply_toy6_output_average(
+        probabilities,
+        peer_ids,
+        config,
+        torch.device("cpu"),
+    )
+
+    assert len(calls) == 1
+    assert calls[0]["channel"] == "strategy_distribution"
+    assert calls[0]["commit_mode"] == "categorical_probability_commit"
+    assert calls[0]["alpha"] == config.coordination.alpha
+    assert calls[0]["peer_ids"] == peer_ids
+    assert mixed[0].tolist() == pytest.approx([0.81, 0.10, 0.09])
+    assert losses == pytest.approx([0.02 for _ in range(len(probabilities))])
+    assert update_norms == pytest.approx([0.01 for _ in range(len(probabilities))])
 
 
 @pytest.mark.parametrize(

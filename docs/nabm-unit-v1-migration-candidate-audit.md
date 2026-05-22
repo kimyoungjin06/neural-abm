@@ -320,3 +320,39 @@ Interpretation:
   mixing without introducing a generic multi-channel vector mixer.
 - This is existing-toy migration parity only. It does not promote Toy10 to full
   NABM evidence and does not claim a general multi-channel message contract.
+
+## Gate 7G Result
+
+Status: parity slice complete.
+
+Audit finding:
+
+- Toy6 categorical social output is already a probability distribution over
+  strategies.
+- A new categorical-policy channel is not needed for the first migration slice.
+- The generic unit should treat Toy6 values as row-stochastic distributions and
+  leave strategy identity, cyclic payoff meaning, and evidence interpretation
+  in Toy6.
+
+Implemented slice:
+
+- `src/neural_abm/mixers.py::apply_distribution_output_average` exposes a
+  `NABMStep`-backed distribution social mix helper.
+- `src/neural_abm/toy_categorical.py::apply_output_average` routes
+  `strategy_distribution` through that helper with commit mode
+  `categorical_probability_commit`.
+- Toy6 still owns cyclic payoff construction, local logit updates, action
+  sampling, payoff EMA, strategy entropy metrics, and runner artifacts.
+
+Parity checks:
+
+- `tests/test_social_block.py::test_distribution_output_average_unit_helper_matches_common_block`
+- `tests/test_toy6_runner.py::test_toy6_output_average_matches_unit_distribution_parity`
+- `tests/test_toy6_runner.py::test_toy6_output_average_routes_through_unit_distribution_helper`
+
+Interpretation:
+
+- Toy6 now reuses the probability-distribution unit surface for categorical
+  output averaging without adding category-specific semantics to the unit.
+- This is existing-toy migration parity only. It does not promote Toy6 to full
+  NABM evidence and does not claim a general categorical ABM mechanism.

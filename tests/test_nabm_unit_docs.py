@@ -42,12 +42,14 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
     assert "tests/test_toy9_runner.py" in readme
     assert "tests/test_toy7_runner.py" in readme
     assert "tests/test_toy10_runner.py" in readme
+    assert "tests/test_toy6_runner.py" in readme
     assert "unit-backed scalar path" in readme
     assert "SCALAR_PROBABILITY_CHANNEL" in readme
     assert "BOUNDED_SCALAR_CHANNEL" in readme
     assert "mix_bounded_scalars" in readme
     assert "without using probability semantics" in readme
     assert "dynamic rewiring stay" in readme
+    assert "probability-distribution path" in readme
 
 
 def test_nabm_unit_checklist_records_gate1_completion_and_guards() -> None:
@@ -356,7 +358,7 @@ def test_toy10_market_ecology_channels_record_bounded_scalar_parity() -> None:
     gate7f = _between(
         checklist,
         "### Gate 7F: Toy10 Market/Ecology Channel Parity",
-        "## Recommended Next Slice",
+        "### Gate 7G: Toy6 Categorical Distribution Parity",
     )
 
     for required in (
@@ -383,5 +385,38 @@ def test_toy10_market_ecology_channels_record_bounded_scalar_parity() -> None:
     ):
         assert required in audit
 
-    assert "Toy6 categorical contract audit" in checklist
     assert "Toy10 multi-channel contract audit" not in checklist
+
+
+def test_toy6_categorical_distribution_records_unit_parity() -> None:
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    audit = (ROOT / "docs/nabm-unit-v1-migration-candidate-audit.md").read_text()
+    gate7g = _between(
+        checklist,
+        "### Gate 7G: Toy6 Categorical Distribution Parity",
+        "## Recommended Next Slice",
+    )
+
+    for required in (
+        "Status: parity slice complete.",
+        "src/neural_abm/mixers.py::apply_distribution_output_average",
+        "src/neural_abm/toy_categorical.py::apply_output_average",
+        "PROBABILITY_DISTRIBUTION_CHANNEL",
+        "strategy_distribution",
+        "categorical_probability_commit",
+        "does not promote Toy6 to full",
+    ):
+        assert required in gate7g
+
+    for required in (
+        "## Gate 7G Result",
+        "A new categorical-policy channel is not needed",
+        "apply_distribution_output_average",
+        "strategy_distribution",
+        "cyclic payoff construction",
+        "does not claim a general categorical ABM mechanism",
+    ):
+        assert required in audit
+
+    assert "Existing-toy migration consolidation" in checklist
+    assert "Toy6 categorical contract audit" not in checklist
