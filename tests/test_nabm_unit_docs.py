@@ -95,6 +95,7 @@ def test_paper_claim_matrix_records_gate4_boundaries() -> None:
         "Table 4",
         "Table 5",
         "Table 6",
+        "Table 7",
     ):
         assert f"nabm-unit-v1-manuscript-tables.md` {table_anchor}" in claim_matrix
         assert f"## {table_anchor}:" in table_candidates
@@ -106,6 +107,7 @@ def test_paper_claim_matrix_records_gate4_boundaries() -> None:
         "rev_local_sustain_obs_noisy_s2p0_hetero",
         "targeted baseline-fragility evidence",
         "adapter_only_congestion_holdout_quick",
+        "adapter_only_stochastic_commons_quick",
     ):
         assert table_value in table_candidates
 
@@ -124,6 +126,7 @@ def test_paper_claim_matrix_records_gate4_boundaries() -> None:
         "targeted baseline-fragility evidence, not a general demonstration",
         "does not yet support general neural dominance",
         "zero capacity error",
+        "local-resource main avoids collapse",
     ):
         assert evidence_boundary in section_6
 
@@ -146,7 +149,7 @@ def test_nabm_unit_checklist_records_adapter_only_holdout_smoke() -> None:
     gate5 = _between(
         checklist,
         "### Gate 5: Adapter-Only Holdout Evidence",
-        "## Recommended Next Slice",
+        "### Gate 6: Stochastic Endogenous Holdout Evidence",
     )
 
     assert "Status: quick evidence complete." in gate5
@@ -155,3 +158,19 @@ def test_nabm_unit_checklist_records_adapter_only_holdout_smoke() -> None:
     assert "adapter-threshold-readiness main reaches full adoption" in gate5
     assert "tiny scripted binary" in gate5
     assert "tests/test_nabm_unit_adapter_holdout.py" in readme
+
+
+def test_nabm_unit_checklist_records_stochastic_endogenous_holdout() -> None:
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    gate6 = _between(
+        checklist,
+        "### Gate 6: Stochastic Endogenous Holdout Evidence",
+        "## Recommended Next Slice",
+    )
+
+    assert "Status: quick evidence complete." in gate6
+    assert "adapter_only_stochastic_commons_quick.yaml" in gate6
+    assert "run_adapter_stochastic_commons_holdout_evidence.py" in gate6
+    assert "actions deplete local resources" in gate6
+    assert "local-resource main avoids collapse" in gate6
+    assert "compact scripted binary commons" in gate6

@@ -32,7 +32,7 @@ Status terms:
 | Holdout migration | yes | yes | yes | partial | Toy5 now has a small threshold-aware topology/threshold grid, but negative-control separation is strongest on safety rather than spread. |
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
 | Manuscript narrative | partial | yes | partial | partial | The paper claim matrix, table candidates, and draft prose now link bounded claims to artifacts and limitations; publication figures remain open. |
-| Adapter-only extensibility | yes | yes | quick | partial | Source-free threshold and congestion holdout manifests now run tiny binary domains with baseline, negative-control, and main variants through public unit APIs. |
+| Adapter-only extensibility | yes | yes | quick | partial | Source-free threshold, congestion, and stochastic commons holdout manifests now run binary domains with baseline, negative-control, and main variants through public unit APIs. |
 
 ## What Is Complete Enough
 
@@ -335,13 +335,57 @@ Completion condition:
   generality claim still requires a richer holdout domain and manuscript-ready
   analysis.
 
+### Gate 6: Stochastic Endogenous Holdout Evidence
+
+Goal: test whether a source-free adapter can use the shared binary lifecycle in
+a closed-loop ABM where actions change future environment state.
+
+Status: quick evidence complete.
+
+Artifacts:
+
+- `experiments/evidence/adapter_only_stochastic_commons_quick.yaml`
+- `scripts/run_adapter_stochastic_commons_holdout_evidence.py`
+- `experiments/results/nabm_effect_matrix/adapter_only_stochastic_commons_quick_runs.csv`
+- `experiments/evidence/results/adapter_only_stochastic_commons_quick.summary.md`
+- `experiments/results/nabm_effect_matrix/adapter_only_stochastic_commons_quick_findings.md`
+
+Completed work:
+
+- Added a source-free stochastic commons runner outside `src/neural_abm`.
+- Routed binary harvest/conserve decisions through
+  `run_binary_policy_learning_step(...)` using domain-owned callbacks.
+- Let actions deplete local resources, conservation regenerate resources, and
+  stochastic shocks perturb local stocks.
+- Compared greedy harvest, global-pressure, and local-resource adapter variants.
+- Preserved CSV, JSON, Markdown summary, and findings artifacts.
+
+Result:
+
+- The manifest passes in steady-regeneration, localized-shock, and
+  heterogeneous-need cases.
+- Greedy harvest collapses in every case, and the global-pressure negative
+  control also dips below the resource floor.
+- The local-resource main avoids collapse in every seed, keeps mean harvest
+  active rather than degenerating to always-conserve, and recovers after shock
+  cases.
+- This is stronger than the fixed threshold and capacity holdouts because the
+  state is endogenous. It remains a compact scripted binary commons, not a
+  general-purpose ABM framework proof.
+
+Completion condition:
+
+- Quick evidence complete for a closed-loop adapter-only binary ABM. A stronger
+  claim still requires a less scripted holdout or migration of a larger
+  existing toy through the same unit contract.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Richer adapter-only holdout: move beyond scripted binary domains toward a
-  small stochastic ABM with endogenous state transitions and a manuscript-ready
-  evidence table.
+- Less-scripted holdout: move beyond compact scripted domains toward a richer
+  existing toy or a stochastic ABM with learned/estimated adapter signals and a
+  manuscript-ready evidence table.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.

@@ -1,0 +1,123 @@
+label: adapter_only_stochastic_commons_quick
+description: >
+  Adapter-only stochastic commons holdout with endogenous state transitions.
+  Harvest actions deplete future local resources, conservation regenerates
+  resources, and random shocks perturb the system. The domain lives outside
+  src/neural_abm.
+results_dir: experiments/results/nabm_effect_matrix
+summary_dir: experiments/evidence/results
+findings_path: experiments/results/nabm_effect_matrix/adapter_only_stochastic_commons_quick_findings.md
+claim_boundary: >
+  This is a closed-loop adapter-only holdout with baseline, negative control,
+  main variant, and result artifacts. It strengthens extensibility beyond
+  threshold and capacity scripts but remains a compact scripted binary commons,
+  not a general-purpose ABM framework proof.
+variants:
+  - name: greedy_harvest_baseline
+    group: baseline
+    mode: greedy_harvest_baseline
+  - name: global_pressure_negative_control
+    group: negative_control
+    mode: global_pressure_negative_control
+  - name: adapter_local_resource_main
+    group: main
+    mode: adapter_local_resource_main
+cases:
+  - name: steady_regen_commons
+    seeds: [1, 2, 3]
+    agent_count: 24
+    epochs: 18
+    initial_resource_mean: 0.82
+    initial_resource_spread: 0.04
+    base_need: 0.55
+    need_spread: 0.08
+    regen_rate: 0.18
+    passive_regen_rate: 0.04
+    harvest_demand: 0.22
+    neighbor_depletion: 0.05
+    collapse_floor: 0.40
+    local_harvest_threshold: 0.64
+    global_harvest_threshold: 0.56
+    neighbor_radius: 2
+    shock_epochs: []
+    shock_fraction: 0.0
+    shock_scale: 0.0
+    recovery_threshold: 0.58
+    temperature: 1.0
+  - name: localized_resource_shock
+    seeds: [1, 2, 3]
+    agent_count: 24
+    epochs: 20
+    initial_resource_mean: 0.82
+    initial_resource_spread: 0.05
+    base_need: 0.55
+    need_spread: 0.08
+    regen_rate: 0.20
+    passive_regen_rate: 0.04
+    harvest_demand: 0.22
+    neighbor_depletion: 0.05
+    collapse_floor: 0.40
+    local_harvest_threshold: 0.64
+    global_harvest_threshold: 0.56
+    neighbor_radius: 2
+    shock_epochs: [7]
+    shock_fraction: 0.35
+    shock_scale: 0.28
+    recovery_threshold: 0.58
+    temperature: 1.0
+  - name: heterogeneous_need_commons
+    seeds: [1, 2, 3]
+    agent_count: 24
+    epochs: 20
+    initial_resource_mean: 0.84
+    initial_resource_spread: 0.06
+    base_need: 0.62
+    need_spread: 0.16
+    regen_rate: 0.19
+    passive_regen_rate: 0.04
+    harvest_demand: 0.22
+    neighbor_depletion: 0.05
+    collapse_floor: 0.40
+    local_harvest_threshold: 0.65
+    global_harvest_threshold: 0.57
+    neighbor_radius: 2
+    shock_epochs: [8]
+    shock_fraction: 0.30
+    shock_scale: 0.24
+    recovery_threshold: 0.58
+    temperature: 1.0
+success_criteria:
+  steady_regen_commons:
+    baseline:
+      min_collapse_epochs: 1
+    negative_control:
+      min_collapse_epochs: 1
+    main:
+      max_collapse_epochs: 0
+      min_min_resource_mean: 0.45
+      min_mean_welfare: 0.05
+      min_mean_harvest_rate: 0.10
+  localized_resource_shock:
+    baseline:
+      min_collapse_epochs: 1
+    negative_control:
+      min_collapse_epochs: 1
+    main:
+      max_collapse_epochs: 0
+      min_min_resource_mean: 0.43
+      min_mean_welfare: 0.05
+      min_mean_harvest_rate: 0.08
+      min_recovery_hits: 3
+      max_recovery_epochs_after_shock: 8
+  heterogeneous_need_commons:
+    baseline:
+      min_collapse_epochs: 1
+    negative_control:
+      min_collapse_epochs: 1
+    main:
+      max_collapse_epochs: 0
+      min_min_resource_mean: 0.45
+      min_mean_welfare: 0.05
+      min_mean_harvest_rate: 0.08
+      min_recovery_hits: 3
+      max_recovery_epochs_after_shock: 8

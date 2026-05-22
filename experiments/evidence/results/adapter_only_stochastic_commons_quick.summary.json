@@ -1,0 +1,135 @@
+{
+  "label": "adapter_only_stochastic_commons_quick",
+  "status": "pass",
+  "runs_path": "experiments/results/nabm_effect_matrix/adapter_only_stochastic_commons_quick_runs.csv",
+  "cases": [
+    {
+      "case": "steady_regen_commons",
+      "collapse_floor": 0.4,
+      "variants": {
+        "greedy_harvest_baseline": {
+          "group": "baseline",
+          "mode": "greedy_harvest_baseline",
+          "mean_final_resource": 0.04,
+          "min_resource_mean": 0.04,
+          "max_collapse_epochs": 17,
+          "min_collapse_epochs": 17,
+          "mean_welfare": -0.1361237684899204,
+          "mean_harvest_rate": 1.0,
+          "recovery_hits": 0,
+          "max_recovery_epochs_after_shock": null
+        },
+        "global_pressure_negative_control": {
+          "group": "negative_control",
+          "mode": "global_pressure_negative_control",
+          "mean_final_resource": 0.5036576432696402,
+          "min_resource_mean": 0.3161888669514608,
+          "max_collapse_epochs": 6,
+          "min_collapse_epochs": 6,
+          "mean_welfare": 0.07594484334014895,
+          "mean_harvest_rate": 0.38503086419753085,
+          "recovery_hits": 0,
+          "max_recovery_epochs_after_shock": null
+        },
+        "adapter_local_resource_main": {
+          "group": "main",
+          "mode": "adapter_local_resource_main",
+          "mean_final_resource": 0.6206926435302184,
+          "min_resource_mean": 0.45825682290843267,
+          "max_collapse_epochs": 0,
+          "min_collapse_epochs": 0,
+          "mean_welfare": 0.06742548683846748,
+          "mean_harvest_rate": 0.30015432098765427,
+          "recovery_hits": 0,
+          "max_recovery_epochs_after_shock": null
+        }
+      }
+    },
+    {
+      "case": "localized_resource_shock",
+      "collapse_floor": 0.4,
+      "variants": {
+        "greedy_harvest_baseline": {
+          "group": "baseline",
+          "mode": "greedy_harvest_baseline",
+          "mean_final_resource": 0.04,
+          "min_resource_mean": 0.02666666666666667,
+          "max_collapse_epochs": 19,
+          "min_collapse_epochs": 19,
+          "mean_welfare": -0.14288879873218405,
+          "mean_harvest_rate": 1.0,
+          "recovery_hits": 0,
+          "max_recovery_epochs_after_shock": null
+        },
+        "global_pressure_negative_control": {
+          "group": "negative_control",
+          "mode": "global_pressure_negative_control",
+          "mean_final_resource": 0.6197819205408047,
+          "min_resource_mean": 0.316487024102851,
+          "max_collapse_epochs": 5,
+          "min_collapse_epochs": 2,
+          "mean_welfare": 0.07072248800995923,
+          "mean_harvest_rate": 0.35347222222222224,
+          "recovery_hits": 3,
+          "max_recovery_epochs_after_shock": 2
+        },
+        "adapter_local_resource_main": {
+          "group": "main",
+          "mode": "adapter_local_resource_main",
+          "mean_final_resource": 0.6364798400802066,
+          "min_resource_mean": 0.4386693220861358,
+          "max_collapse_epochs": 0,
+          "min_collapse_epochs": 0,
+          "mean_welfare": 0.06856278394629346,
+          "mean_harvest_rate": 0.31180555555555556,
+          "recovery_hits": 3,
+          "max_recovery_epochs_after_shock": 2
+        }
+      }
+    },
+    {
+      "case": "heterogeneous_need_commons",
+      "collapse_floor": 0.4,
+      "variants": {
+        "greedy_harvest_baseline": {
+          "group": "baseline",
+          "mode": "greedy_harvest_baseline",
+          "mean_final_resource": 0.04,
+          "min_resource_mean": 0.028333333333333332,
+          "max_collapse_epochs": 19,
+          "min_collapse_epochs": 19,
+          "mean_welfare": -0.14135371262865096,
+          "mean_harvest_rate": 1.0,
+          "recovery_hits": 0,
+          "max_recovery_epochs_after_shock": null
+        },
+        "global_pressure_negative_control": {
+          "group": "negative_control",
+          "mode": "global_pressure_negative_control",
+          "mean_final_resource": 0.3646418204700535,
+          "min_resource_mean": 0.28190411502054813,
+          "max_collapse_epochs": 7,
+          "min_collapse_epochs": 7,
+          "mean_welfare": 0.075727909188897,
+          "mean_harvest_rate": 0.39513888888888893,
+          "recovery_hits": 3,
+          "max_recovery_epochs_after_shock": 5
+        },
+        "adapter_local_resource_main": {
+          "group": "main",
+          "mode": "adapter_local_resource_main",
+          "mean_final_resource": 0.6625266265710824,
+          "min_resource_mean": 0.485335321828858,
+          "max_collapse_epochs": 0,
+          "min_collapse_epochs": 0,
+          "mean_welfare": 0.06627218585124106,
+          "mean_harvest_rate": 0.28750000000000003,
+          "recovery_hits": 3,
+          "max_recovery_epochs_after_shock": 1
+        }
+      }
+    }
+  ],
+  "failures": [],
+  "claim_boundary": "This is a closed-loop adapter-only holdout with baseline, negative control, main variant, and result artifacts. It strengthens extensibility beyond threshold and capacity scripts but remains a compact scripted binary commons, not a general-purpose ABM framework proof.\n"
+}

@@ -172,3 +172,36 @@ Source artifacts:
 
 - `experiments/evidence/adapter_only_congestion_holdout_quick.yaml`
 - `experiments/results/nabm_effect_matrix/adapter_only_congestion_holdout_quick_findings.md`
+
+## Table 7: Adapter-Only Stochastic Commons Holdout
+
+| Case | Variant | Group | Min resource | Max collapse epochs | Mean welfare | Mean harvest | Recovery hits | Max recovery |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `steady_regen_commons` | `greedy_harvest_baseline` | Baseline | 0.040 | 17 | -0.136 | 1.000 | 0 | n/a |
+| `steady_regen_commons` | `global_pressure_negative_control` | Negative control | 0.316 | 6 | 0.076 | 0.385 | 0 | n/a |
+| `steady_regen_commons` | `adapter_local_resource_main` | Main | 0.458 | 0 | 0.067 | 0.300 | 0 | n/a |
+| `localized_resource_shock` | `greedy_harvest_baseline` | Baseline | 0.027 | 19 | -0.143 | 1.000 | 0 | n/a |
+| `localized_resource_shock` | `global_pressure_negative_control` | Negative control | 0.316 | 5 | 0.071 | 0.353 | 3 | 2 |
+| `localized_resource_shock` | `adapter_local_resource_main` | Main | 0.439 | 0 | 0.069 | 0.312 | 3 | 2 |
+| `heterogeneous_need_commons` | `greedy_harvest_baseline` | Baseline | 0.028 | 19 | -0.141 | 1.000 | 0 | n/a |
+| `heterogeneous_need_commons` | `global_pressure_negative_control` | Negative control | 0.282 | 7 | 0.076 | 0.395 | 3 | 5 |
+| `heterogeneous_need_commons` | `adapter_local_resource_main` | Main | 0.485 | 0 | 0.066 | 0.288 | 3 | 1 |
+
+Caption candidate:
+
+> A source-free adapter-only stochastic commons holdout uses the NABM Unit v1
+> binary policy lifecycle in a closed-loop setting: harvest decisions deplete
+> future resources, conservation regenerates resources, and shocks perturb local
+> stocks. The local-resource adapter avoids collapse across all seeds while
+> greedy harvest and global-pressure controls dip below the resource floor.
+
+Limitation:
+
+> This is stronger closed-loop extensibility evidence than the fixed threshold
+> and capacity holdouts, but it is still a compact scripted binary commons. It
+> should not be presented as a full general-purpose ABM framework proof.
+
+Source artifacts:
+
+- `experiments/evidence/adapter_only_stochastic_commons_quick.yaml`
+- `experiments/results/nabm_effect_matrix/adapter_only_stochastic_commons_quick_findings.md`

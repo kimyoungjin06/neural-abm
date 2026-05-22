@@ -84,6 +84,12 @@ Expected future scripts:
   holdout from `experiments/evidence/adapter_only_congestion_holdout_quick.yaml`.
   This non-cascade holdout measures capacity error, overcrowding, and welfare
   while using only public binary policy unit callbacks.
+- `run_adapter_stochastic_commons_holdout_evidence.py`: run the adapter-only
+  stochastic commons holdout from
+  `experiments/evidence/adapter_only_stochastic_commons_quick.yaml`. This
+  closed-loop holdout lets binary harvest/conserve actions change future local
+  resources and measures collapse avoidance, welfare, harvest rate, and shock
+  recovery through public binary policy unit callbacks.
 - `run_basin_credit_evidence_workflow.py`: run the basin-credit evidence matrix
   and immediately evaluate the hardened gate. Use `--skip-matrix --runs-path`
   to audit an existing `<label>_runs.csv`, or `--require-pass` in automation to

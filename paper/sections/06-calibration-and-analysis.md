@@ -9,6 +9,7 @@ Source tables:
 - `paper/tables/nabm-unit-v1-manuscript-tables.md` Table 4
 - `paper/tables/nabm-unit-v1-manuscript-tables.md` Table 5
 - `paper/tables/nabm-unit-v1-manuscript-tables.md` Table 6
+- `paper/tables/nabm-unit-v1-manuscript-tables.md` Table 7
 
 ## 6.1 Calibration Principle
 
@@ -119,12 +120,32 @@ The limitation remains important. This is still a tiny scripted binary domain.
 It supports source-free adapter extensibility, not a full general-purpose ABM
 framework claim.
 
-## 6.7 Manuscript Insertion Notes
+## 6.7 Adapter-Only Stochastic Commons
+
+The stochastic commons holdout is a stronger adapter-only check because the
+state is endogenous. Agents choose binary harvest/conserve actions; harvest
+changes future local resource stock, conservation regenerates resources, and
+stochastic shocks perturb local stocks. The holdout still lives outside
+`src/neural_abm`, and its policy step uses the same public binary lifecycle
+callbacks as the simpler adapter-only tests.
+
+Across steady-regeneration, localized-shock, and heterogeneous-need cases, the
+greedy harvest baseline collapses and the global-pressure control dips below
+the resource floor. The local-resource main avoids collapse in every seed while
+keeping nonzero harvest activity and recovering in the shock cases.
+
+This supports a closed-loop extensibility claim. It does not yet prove that the
+framework is general-purpose: the commons remains compact and scripted, and it
+does not replace the need for a larger migrated toy or a less hand-specified
+adapter.
+
+## 6.8 Manuscript Insertion Notes
 
 Use Table 2 for the Toy5 holdout claim, Table 3 for the failure-mode taxonomy,
 Table 4 for the targeted Toy2/Toy4 reputation-fragility contrast, and Table 5
 for Toy4 local resource robustness. Use Table 6 only as adapter-extensibility
-evidence, not as a new superiority claim.
+evidence, and Table 7 only as closed-loop adapter evidence, not as new
+superiority claims.
 
 The safest high-level wording is:
 
