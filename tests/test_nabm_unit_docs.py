@@ -34,6 +34,7 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
         "docs/decisions/0010-nabm-unit-v1-contract.md",
         "docs/nabm-unit-v1-boundary-audit.md",
         "docs/nabm-unit-v1-completeness-checklist.md",
+        "docs/nabm-unit-v1-migration-candidate-audit.md",
     ):
         assert boundary_doc in readme
 
@@ -165,7 +166,7 @@ def test_nabm_unit_checklist_records_stochastic_endogenous_holdout() -> None:
     gate6 = _between(
         checklist,
         "### Gate 6: Stochastic Endogenous Holdout Evidence",
-        "## Recommended Next Slice",
+        "### Gate 7A: Existing-Toy Migration Candidate Audit",
     )
 
     assert "Status: quick evidence complete." in gate6
@@ -174,3 +175,33 @@ def test_nabm_unit_checklist_records_stochastic_endogenous_holdout() -> None:
     assert "actions deplete local resources" in gate6
     assert "local-resource main avoids collapse" in gate6
     assert "compact scripted binary commons" in gate6
+
+
+def test_nabm_unit_migration_candidate_audit_selects_toy8() -> None:
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    audit = (ROOT / "docs/nabm-unit-v1-migration-candidate-audit.md").read_text()
+    gate7 = _between(
+        checklist,
+        "### Gate 7A: Existing-Toy Migration Candidate Audit",
+        "## Recommended Next Slice",
+    )
+
+    for required in (
+        "Toy8 async social-hazard parity",
+        "Toy9 heterogeneous binary probability mixing",
+        "Toy7 continuous resource intensity",
+        "migration parity plus diagnostics boundary",
+    ):
+        assert required in gate7
+
+    for audited_path in (
+        "src/neural_abm/toy_async.py",
+        "src/neural_abm/toy_resource.py",
+        "src/neural_abm/toy_heterogeneous.py",
+    ):
+        assert audited_path in audit
+
+    assert "Proceed with **Toy8 async social-hazard parity**" in audit
+    assert "Do not move `ScheduledEvent`" in audit
+    assert "Fallback rule:" in audit
+    assert "continuous scalar policy lifecycle" in audit

@@ -33,6 +33,7 @@ Status terms:
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
 | Manuscript narrative | partial | yes | partial | partial | The paper claim matrix, table candidates, and draft prose now link bounded claims to artifacts and limitations; publication figures remain open. |
 | Adapter-only extensibility | yes | yes | quick | partial | Source-free threshold, congestion, and stochastic commons holdout manifests now run binary domains with baseline, negative-control, and main variants through public unit APIs. |
+| Existing-toy migration | planned | yes | audit | no | Gate 7A selects Toy8 async social-hazard parity as the next existing-toy migration slice, with Toy9 fallback and Toy7 deferred. |
 
 ## What Is Complete Enough
 
@@ -379,13 +380,57 @@ Completion condition:
   claim still requires a less scripted holdout or migration of a larger
   existing toy through the same unit contract.
 
+### Gate 7A: Existing-Toy Migration Candidate Audit
+
+Goal: choose the next migration target from existing Toy6-10 runners before
+adding another scripted holdout or starting a risky full rewrite.
+
+Status: audit complete.
+
+Artifacts:
+
+- `docs/nabm-unit-v1-migration-candidate-audit.md`
+- `src/neural_abm/toy_async.py`
+- `src/neural_abm/toy_resource.py`
+- `src/neural_abm/toy_heterogeneous.py`
+- `tests/test_toy8_runner.py`
+- `tests/test_toy7_runner.py`
+- `tests/test_toy9_runner.py`
+
+Completed work:
+
+- Audited Toy8, Toy9, and Toy7 as candidate existing-toy migration targets.
+- Ranked candidates by existing-toy pressure, scriptedness reduction, domain
+  boundary clarity, unit-surface fit, parity-test feasibility, and claim safety.
+- Selected Toy8 async social-hazard parity as the next Gate 7B target.
+- Recorded Toy9 heterogeneous binary probability mixing as the fallback target.
+- Deferred Toy7 continuous resource intensity until a continuous scalar unit
+  contract gap is explicitly recorded.
+
+Result:
+
+- Toy8 is the best next target because event scheduling and stale-event
+  invalidation are structurally different from the adapter-only binary
+  holdouts, while the scalar activation-propensity social-mixing slice remains
+  separable from event semantics.
+- The next implementation should preserve Toy8 event-time RNG, event queue,
+  event validity, event application, counters, and CSV/result contracts.
+- The first Toy8 claim should be migration parity plus diagnostics boundary, not
+  performance improvement.
+
+Completion condition:
+
+- Audit complete. The next implementation slice is Gate 7B: Toy8 async
+  social-hazard parity through a unit-backed scalar social mixing path, with
+  Toy9 as the fallback if Toy8 requires a generic contract expansion.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Less-scripted holdout: move beyond compact scripted domains toward a richer
-  existing toy or a stochastic ABM with learned/estimated adapter signals and a
-  manuscript-ready evidence table.
+- Existing-toy migration parity: implement Toy8 async social-hazard parity
+  through a unit-backed scalar social mixing path, preserving event scheduling
+  and RNG semantics.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.

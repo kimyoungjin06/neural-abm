@@ -159,6 +159,8 @@ Contract changes must update the boundary docs in the same patch:
 - `docs/decisions/0010-nabm-unit-v1-contract.md`
 - `docs/nabm-unit-v1-boundary-audit.md`
 - `docs/nabm-unit-v1-completeness-checklist.md`
+- `docs/nabm-unit-v1-migration-candidate-audit.md` when selecting the next
+  existing-toy migration target.
 
 The active guard tests for the current binary unit migration are:
 
@@ -183,6 +185,8 @@ Unit contract changes should update the docs that define the boundary:
 - `docs/decisions/0010-nabm-unit-v1-contract.md`
 - `docs/nabm-unit-v1-boundary-audit.md`
 - `docs/nabm-unit-v1-completeness-checklist.md`
+- `docs/nabm-unit-v1-migration-candidate-audit.md` for Gate 7 existing-toy
+  migration target selection.
 
 In particular, new shared helpers such as
 `spatial_binary.run_binary_policy_learning_step` should remain lifecycle
