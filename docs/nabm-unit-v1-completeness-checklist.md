@@ -32,6 +32,7 @@ Status terms:
 | Holdout migration | yes | yes | yes | partial | Toy5 now has a small threshold-aware topology/threshold grid, but negative-control separation is strongest on safety rather than spread. |
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
 | Manuscript narrative | partial | yes | partial | partial | The paper claim matrix now links bounded claims to artifacts and limitations, but figures and draft prose still need to absorb it. |
+| Adapter-only extensibility | yes | yes | smoke | no | A test-only holdout domain now uses binary policy and readiness units without adding a new `src/neural_abm` toy. |
 
 ## What Is Complete Enough
 
@@ -104,6 +105,7 @@ Artifacts:
 - `docs/decisions/0010-nabm-unit-v1-contract.md`
 - `docs/nabm-unit-v1-boundary-audit.md`
 - `docs/nabm-unit-v1-completeness-checklist.md`
+- `tests/test_nabm_unit_adapter_holdout.py`
 - `tests/test_nabm_unit_docs.py`
 
 Completed work:
@@ -123,8 +125,10 @@ Result:
 - The active guard surface is explicit: `tests/test_spatial_binary_runner.py`
   for unit-level binary lifecycle tests, `tests/test_toy2_runner.py`,
   `tests/test_toy4_runner.py`, and `tests/test_toy5_runner.py` for
-  policy-unit adoption, `tests/test_readiness.py` for readiness propagation,
-  and `tests/test_nabm_unit_docs.py` for documentation boundaries.
+  policy-unit adoption, `tests/test_nabm_unit_adapter_holdout.py` for
+  adapter-only extensibility smoke, `tests/test_readiness.py` for readiness
+  propagation, and `tests/test_nabm_unit_docs.py` for documentation
+  boundaries.
 
 Completion condition update:
 
@@ -274,13 +278,50 @@ Completion condition:
   draft prose. The remaining Gate 4 work is to convert the draft prose into the
   final paper style and add publication figures.
 
+### Gate 5: Adapter-Only Holdout Smoke
+
+Goal: test the next generality claim before adding another full toy: can a new
+domain adapter use the shared binary lifecycle without changing `src/neural_abm`?
+
+Status: first pass complete.
+
+Artifacts:
+
+- `tests/test_nabm_unit_adapter_holdout.py`
+- `src/neural_abm/README.md`
+
+Completed work:
+
+- Added an in-memory threshold-like holdout domain in tests rather than a new
+  source-level toy.
+- Routed that domain through `run_binary_policy_learning_step(...)` using only
+  domain-supplied callbacks for observations, decision probabilities, action
+  sampling, local update, and cache refresh.
+- Routed the same holdout through `BinaryReadinessPropagationUnit` with
+  domain-supplied readiness, active, direction, and peer-neighborhood arrays.
+
+Result:
+
+- The binary policy lifecycle and readiness propagation can support a new
+  adapter-only domain smoke test without changing generic unit code or adding
+  hidden domain semantics to `src/neural_abm`.
+- This strengthens the v1 extensibility claim, but only at smoke-test level.
+  It is not evidence that a full new ABM domain has been migrated or that the
+  framework is general-purpose.
+
+Completion condition:
+
+- First pass complete for adapter-only extensibility smoke. A stronger
+  generality claim still requires a real holdout domain with its own manifest,
+  baseline, negative control, and result artifacts.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
+- Real adapter-only holdout: pick one small binary domain and migrate it through
+  the v1 unit contract with a manifest, baseline, negative control, and result
+  artifact.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.
-- Toy5 control sharpening: add a small case where exposure-only anchoring is
-  expected to over-spread or self-excite, while the threshold-aware adapter
-  should preserve safety.

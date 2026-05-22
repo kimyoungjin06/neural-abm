@@ -53,6 +53,7 @@ def test_nabm_unit_checklist_records_gate1_completion_and_guards() -> None:
         "tests/test_toy2_runner.py",
         "tests/test_toy4_runner.py",
         "tests/test_toy5_runner.py",
+        "tests/test_nabm_unit_adapter_holdout.py",
         "tests/test_readiness.py",
     ):
         assert guard_test in gate1
@@ -128,3 +129,20 @@ def test_paper_claim_matrix_records_gate4_boundaries() -> None:
     assert "paper/sections/03-neural-abm-node.md" in gate4
     assert "paper/sections/06-calibration-and-analysis.md" in gate4
     assert "Deferred claims are explicit" in gate4
+
+
+def test_nabm_unit_checklist_records_adapter_only_holdout_smoke() -> None:
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    readme = (ROOT / "src/neural_abm/README.md").read_text()
+    gate5 = _between(
+        checklist,
+        "### Gate 5: Adapter-Only Holdout Smoke",
+        "## Recommended Next Slice",
+    )
+
+    assert "Status: first pass complete." in gate5
+    assert "tests/test_nabm_unit_adapter_holdout.py" in gate5
+    assert "without changing `src/neural_abm`" in gate5
+    assert "smoke-test level" in gate5
+    assert "requires a real holdout domain with its own manifest" in gate5
+    assert "tests/test_nabm_unit_adapter_holdout.py" in readme
