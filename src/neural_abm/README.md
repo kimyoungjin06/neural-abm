@@ -164,6 +164,8 @@ Contract changes must update the boundary docs in the same patch:
 - `docs/nabm-unit-v1-completeness-checklist.md`
 - `docs/nabm-unit-v1-migration-candidate-audit.md` when selecting the next
   existing-toy migration target.
+- `docs/nabm-unit-v1-runner-lifecycle-audit.md` when changing
+  compatible-toy runner ownership or adapter lifecycle boundaries.
 
 The active guard tests for the current binary unit migration are:
 
@@ -211,6 +213,13 @@ Together, the Toy6-10 parity slices cover probability-distribution, scalar, and
 bounded-scalar social exchange in existing compatible toys. They are migration
 parity evidence for typed social exchange reuse, not performance evidence and
 not an upgrade of Toy6-10 to full NABM status.
+`DomainToyRunner` already owns compatible-toy run directories, metadata,
+`aggregate_metrics.csv`, `micro_state.csv`, fallback handling, final summary
+writing, and the result envelope. Toy6-10 step(...) phase ordering remains
+toy-owned because payoff, resource, event, market, group, and categorical
+semantics live in that order. The next generic extraction target is diagnostics
+mapping around peer/social fields, not a full runner rewrite.
+The diagnostics mapping around peer/social fields is the next target.
 
 Unit contract changes should update the docs that define the boundary:
 
@@ -221,6 +230,8 @@ Unit contract changes should update the docs that define the boundary:
 - `docs/nabm-unit-v1-completeness-checklist.md`
 - `docs/nabm-unit-v1-migration-candidate-audit.md` for Gate 7 existing-toy
   migration target selection.
+- `docs/nabm-unit-v1-runner-lifecycle-audit.md` for compatible-toy runner and
+  diagnostics mapping boundaries.
 
 In particular, new shared helpers such as
 `spatial_binary.run_binary_policy_learning_step` should remain lifecycle

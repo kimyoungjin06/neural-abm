@@ -22,7 +22,7 @@ Status terms:
 
 | Surface | Implemented | Guarded | Evidenced | Paper-ready | Current judgment |
 | --- | --- | --- | --- | --- | --- |
-| Generic unit lifecycle | yes | yes | partial | no | `NABMUnit`, `NABMStep`, and `NABMLocalStep` exist, but full runner ownership is still partial. |
+| Generic unit lifecycle | yes | yes | partial | no | `NABMUnit`, `NABMStep`, and `NABMLocalStep` exist; Gate 8A records that `DomainToyRunner` already owns the compatible-toy outer lifecycle while inner `step(...)` order remains toy-owned. |
 | Binary policy lifecycle | yes | yes | yes | partial | Toy2, Toy4, and Toy5 route non-revision neural local policy steps through shared policy plumbing. |
 | Binary revision lifecycle | yes | partial | partial | no | Optional stay/switch unit exists for Toy2/Toy4, but evidence remains prototype-level and gate-sensitive. |
 | Readiness propagation | yes | yes | yes | partial | Toy5 hard holdout supports threshold-aware readiness under named stress cases. |
@@ -61,9 +61,10 @@ ordinary toy implementation details.
 The project should not yet claim that the full NABM architecture is finished.
 The remaining gaps are:
 
-- Runner ownership is still split. `BinarySpatialRunner` and domain classes
-  still hold substantial orchestration, environment transition, and logging
-  logic.
+- Runner ownership is still split for binary spatial runners. Gate 8A records
+  that `DomainToyRunner` already owns the Toy6-10-compatible outer lifecycle,
+  but toy adapters still own substantial environment transition, phase order,
+  and row-mapping logic.
 - Toy2/Toy4 evidence is not clean enough to claim general algorithmic
   superiority over hand-coded baselines.
 - Revision-operator evidence is structurally useful but not final enough to
@@ -723,14 +724,63 @@ Completion condition:
 - Gate 7H is complete. Further engineering work should either consolidate
   manuscript architecture claims or target runner lifecycle duplication rather
   than adding more parity-only social mixing slices.
+- Runner lifecycle consolidation audit is the next recorded Gate 8A slice.
+
+### Gate 8A: Runner Lifecycle Consolidation Audit
+
+Goal: decide whether the next structural step should be a full runner rewrite,
+more unit migration, or a smaller extraction around repeated adapter lifecycle
+work.
+
+Status: audit complete.
+
+Artifacts:
+
+- `docs/nabm-unit-v1-runner-lifecycle-audit.md`
+- `src/neural_abm/domain_runner.py`
+- `src/neural_abm/toy_categorical.py`
+- `src/neural_abm/toy_resource.py`
+- `src/neural_abm/toy_async.py`
+- `src/neural_abm/toy_heterogeneous.py`
+- `src/neural_abm/toy_market.py`
+- `tests/test_nabm_unit_docs.py`
+
+Completed work:
+
+- Audited `DomainRunSettings`, `DomainToyAdapter`, and `DomainToyRunner`.
+- Recorded that `DomainToyRunner` already owns run directory creation,
+  metadata artifacts, `aggregate_metrics.csv`, `micro_state.csv`, adapter
+  initialization, epoch loop, fallback, final summary writing, and result
+  envelope creation.
+- Compared Toy6, Toy7, Toy8, Toy9, and Toy10 inner `step(...)` lifecycles
+  after typed social-exchange parity.
+- Identified the repeated row-mapping surface around `peer_count`,
+  `mean_peer_count`, `mean_social_loss`, and `mean_social_update_norm`.
+
+Result:
+
+- A full runner rewrite is not the right next step. The common outer lifecycle
+  is already consolidated enough for compatible Toy6-10 runners.
+- The remaining duplication is mostly in toy adapters, especially social
+  diagnostics row mapping, while payoff, resource, event, market, group, and
+  categorical semantics must remain toy-owned.
+- Do not unify Toy6-10 step order; the phase order is part of each domain's
+  semantics.
+
+Completion condition:
+
+- Gate 8A is complete. The next implementation slice should be Gate 8B: Social
+  Diagnostics Mapper Prototype, not a full runner rewrite.
 
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Runner lifecycle consolidation audit: identify whether `DomainToyRunner`,
-  adapter `step(...)`, and logging paths still duplicate reusable lifecycle
-  behavior without hiding domain semantics.
+- Social diagnostics mapper prototype: extract only peer/social metric row
+  helpers where Toy6-10 adapters repeat semantic-free fields such as
+  `peer_count`, `mean_peer_count`, `mean_social_loss`, and
+  `mean_social_update_norm`, then prove artifact-field parity in one or two
+  toys.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.

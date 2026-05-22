@@ -37,6 +37,7 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
         "docs/nabm-unit-v1-boundary-audit.md",
         "docs/nabm-unit-v1-completeness-checklist.md",
         "docs/nabm-unit-v1-migration-candidate-audit.md",
+        "docs/nabm-unit-v1-runner-lifecycle-audit.md",
     ):
         assert boundary_doc in readme
     assert "tests/test_toy8_runner.py" in readme
@@ -53,6 +54,9 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
     assert "probability-distribution path" in readme
     assert "typed social exchange reuse" in readme
     assert "not an upgrade of Toy6-10 to full NABM status" in readme
+    assert "DomainToyRunner" in readme
+    assert "step(...) phase ordering remains" in readme
+    assert "diagnostics mapping around peer/social fields" in readme
 
 
 def test_nabm_unit_checklist_records_gate1_completion_and_guards() -> None:
@@ -439,7 +443,7 @@ def test_existing_toy_migration_consolidation_records_engineering_boundary() -> 
     gate7h = _between(
         checklist,
         "### Gate 7H: Existing-Toy Migration Consolidation",
-        "## Recommended Next Slice",
+        "### Gate 8A: Runner Lifecycle Consolidation Audit",
     )
 
     for required in (
@@ -493,3 +497,62 @@ def test_existing_toy_migration_consolidation_records_engineering_boundary() -> 
     assert "bounded scalar, state dict" in contract_decision
     assert "0012 then consolidated" in contract_decision
     assert "Toy6-10 migration parity slices" in contract_decision
+
+
+def test_runner_lifecycle_audit_records_gate8a_boundary() -> None:
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    readme = (ROOT / "src/neural_abm/README.md").read_text()
+    audit = (ROOT / "docs/nabm-unit-v1-runner-lifecycle-audit.md").read_text()
+    gate8a = _between(
+        checklist,
+        "### Gate 8A: Runner Lifecycle Consolidation Audit",
+        "## Recommended Next Slice",
+    )
+
+    for required in (
+        "DomainToyRunner",
+        "DomainToyAdapter",
+        "DomainRunSettings",
+        "run directory",
+        "metadata",
+        "aggregate_metrics.csv",
+        "micro_state.csv",
+        "fallback",
+        "DomainToyResult",
+        "Toy6",
+        "Toy7",
+        "Toy8",
+        "Toy9",
+        "Toy10",
+        "Do not unify Toy6-10 step order",
+        "Gate 8B: Social Diagnostics Mapper Prototype",
+        "peer_count",
+        "mean_peer_count",
+        "mean_social_loss",
+        "mean_social_update_norm",
+        "not a full runner rewrite",
+    ):
+        assert required in audit
+
+    for required in (
+        "Status: audit complete.",
+        "docs/nabm-unit-v1-runner-lifecycle-audit.md",
+        "DomainRunSettings",
+        "DomainToyAdapter",
+        "DomainToyRunner",
+        "Gate 8B: Social",
+        "not a full runner rewrite",
+        "peer_count",
+        "mean_peer_count",
+        "mean_social_loss",
+        "mean_social_update_norm",
+    ):
+        assert required in gate8a
+
+    for required in (
+        "docs/nabm-unit-v1-runner-lifecycle-audit.md",
+        "DomainToyRunner",
+        "diagnostics mapping around peer/social fields",
+        "not a full runner rewrite",
+    ):
+        assert required in readme
