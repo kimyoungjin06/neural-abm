@@ -171,6 +171,8 @@ The active guard tests for the current binary unit migration are:
 - `tests/test_nabm_unit_adapter_holdout.py` for adapter-only holdout
   coverage that uses the binary policy and readiness units without adding a
   new `src/neural_abm` toy;
+- `tests/test_toy8_runner.py` for the first existing-toy migration parity slice
+  where Toy8 social-hazard mixing routes through a unit-backed scalar path;
 - `tests/test_readiness.py` for readiness propagation boundaries;
 - `tests/test_nabm_unit_docs.py` for this documentation boundary.
 

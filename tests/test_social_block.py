@@ -9,6 +9,7 @@ from neural_abm.mixers import (
     align_hidden_layer_state,
     apply_parameter_aligned_average,
     apply_parameter_average,
+    apply_scalar_output_average,
     output_similarity_matrix,
     select_peers,
 )
@@ -651,6 +652,35 @@ def test_social_block_scalar_dispatch_matches_helper() -> None:
     )
     assert result.losses == pytest.approx(expected.losses)
     assert result.peer_ids == peers
+
+
+def test_scalar_output_average_unit_helper_matches_common_block() -> None:
+    values = np.asarray([0.1, 0.9, 0.4])
+    peers = [[1, 2], [0, 2], []]
+
+    expected = mix_scalar_probabilities(
+        values,
+        peers,
+        alpha=0.25,
+        channel="activation_propensity",
+        commit_mode="event_hazard_commit",
+    )
+    result = apply_scalar_output_average(
+        values,
+        peers,
+        alpha=0.25,
+        channel="activation_propensity",
+        commit_mode="event_hazard_commit",
+    )
+
+    assert result.mix.mixed_values.tolist() == pytest.approx(
+        expected.mixed_values.tolist()
+    )
+    assert result.commit.losses == pytest.approx(expected.losses)
+    assert result.mix.update_norms == pytest.approx(expected.update_norms)
+    assert result.diagnostics.aggregate_row()["social_channel"] == (
+        "activation_propensity"
+    )
 
 
 def test_toy2_scalar_probability_wrapper_matches_common_block() -> None:

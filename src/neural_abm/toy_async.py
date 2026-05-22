@@ -18,13 +18,13 @@ from neural_abm.domain_runner import (
 )
 from neural_abm.graphs import build_graph, component_map, graph_from_peer_ids
 from neural_abm.logging import CsvLogWriter
+from neural_abm.mixers import apply_scalar_output_average
 from neural_abm.results import (
     DomainToyResult,
     write_run_metadata_artifacts,
 )
 from neural_abm.social import (
     empty_peers,
-    mix_scalar_probabilities,
     select_scalar_output_peers,
 )
 
@@ -198,7 +198,7 @@ def apply_output_average(
             [0.0 for _ in range(len(activation_propensities))],
             [0.0 for _ in range(len(activation_propensities))],
         )
-    result = mix_scalar_probabilities(
+    result = apply_scalar_output_average(
         values=activation_propensities,
         peer_ids=peer_ids,
         alpha=config.coordination.alpha,
@@ -206,9 +206,9 @@ def apply_output_average(
         commit_mode="event_hazard_commit",
     )
     return (
-        np.asarray(result.mixed_values, dtype=np.float64),
-        result.losses,
-        result.update_norms,
+        np.asarray(result.mix.mixed_values, dtype=np.float64),
+        result.commit.losses,
+        result.mix.update_norms,
     )
 
 

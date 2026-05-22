@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 import yaml
@@ -13,12 +14,15 @@ from neural_abm.toy_async import (
     STATE_ACTIVE,
     STATE_FAILED,
     STATE_INACTIVE,
+    apply_output_average as apply_toy8_output_average,
     compute_rate_snapshot,
     graph_neighbors,
     initialize_states,
     run_toy8,
+    select_peer_ids,
 )
 from neural_abm.graphs import build_graph
+from neural_abm.social import mix_scalar_probabilities
 
 
 def tiny_config_dict(
@@ -111,6 +115,73 @@ def test_toy8_rate_snapshot_uses_neighbor_activation(tmp_path: Path) -> None:
     assert snapshot.activation_rates[1] > config.environment.base_activation_rate
     assert snapshot.failure_rates[0] >= config.environment.failure_rate
     assert snapshot.recovery_rates.sum() == pytest.approx(0.0)
+
+
+def test_toy8_output_average_matches_unit_scalar_parity(tmp_path: Path) -> None:
+    config = load_toy8_config(
+        write_config(tmp_path, tiny_config_dict(tmp_path, mixer="output_average"))
+    )
+    graph = build_graph(config.graph, config.agents.count, config.run.seed)
+    neighbors = graph_neighbors(graph, config.agents.count)
+    activation_propensities = np_array(
+        [0.05, 0.3, 0.35, 0.55, 0.6, 0.65, 0.8, 0.95],
+    )
+    peer_ids = select_peer_ids(activation_propensities, neighbors, config)
+
+    expected = mix_scalar_probabilities(
+        activation_propensities,
+        peer_ids,
+        alpha=config.coordination.alpha,
+        channel="activation_propensity",
+        commit_mode="event_hazard_commit",
+    )
+    mixed, losses, update_norms = apply_toy8_output_average(
+        activation_propensities,
+        peer_ids,
+        config,
+    )
+
+    assert mixed.tolist() == pytest.approx(expected.mixed_values.tolist())
+    assert losses == pytest.approx(expected.losses)
+    assert update_norms == pytest.approx(expected.update_norms)
+
+
+def test_toy8_output_average_routes_through_unit_scalar_helper(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    config = load_toy8_config(
+        write_config(tmp_path, tiny_config_dict(tmp_path, mixer="output_average"))
+    )
+    values = np_array([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8])
+    peer_ids = [[1], [0, 2], [], [4], [3], [6], [5, 7], [6]]
+    calls: list[dict[str, object]] = []
+
+    def fake_apply_scalar_output_average(**kwargs: object) -> SimpleNamespace:
+        calls.append(dict(kwargs))
+        return SimpleNamespace(
+            mix=SimpleNamespace(
+                mixed_values=values + 0.01,
+                update_norms=[0.01 for _ in values],
+            ),
+            commit=SimpleNamespace(losses=[0.02 for _ in values]),
+        )
+
+    monkeypatch.setattr(
+        "neural_abm.toy_async.apply_scalar_output_average",
+        fake_apply_scalar_output_average,
+    )
+
+    mixed, losses, update_norms = apply_toy8_output_average(values, peer_ids, config)
+
+    assert len(calls) == 1
+    assert calls[0]["channel"] == "activation_propensity"
+    assert calls[0]["commit_mode"] == "event_hazard_commit"
+    assert calls[0]["alpha"] == config.coordination.alpha
+    assert calls[0]["peer_ids"] == peer_ids
+    assert mixed.tolist() == pytest.approx((values + 0.01).tolist())
+    assert losses == pytest.approx([0.02 for _ in values])
+    assert update_norms == pytest.approx([0.01 for _ in values])
 
 
 @pytest.mark.parametrize(

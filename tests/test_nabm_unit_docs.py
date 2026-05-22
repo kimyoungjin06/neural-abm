@@ -37,6 +37,8 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
         "docs/nabm-unit-v1-migration-candidate-audit.md",
     ):
         assert boundary_doc in readme
+    assert "tests/test_toy8_runner.py" in readme
+    assert "unit-backed scalar path" in readme
 
 
 def test_nabm_unit_checklist_records_gate1_completion_and_guards() -> None:
@@ -183,7 +185,7 @@ def test_nabm_unit_migration_candidate_audit_selects_toy8() -> None:
     gate7 = _between(
         checklist,
         "### Gate 7A: Existing-Toy Migration Candidate Audit",
-        "## Recommended Next Slice",
+        "### Gate 7B: Toy8 Async Social-Hazard Parity",
     )
 
     for required in (
@@ -205,3 +207,26 @@ def test_nabm_unit_migration_candidate_audit_selects_toy8() -> None:
     assert "Do not move `ScheduledEvent`" in audit
     assert "Fallback rule:" in audit
     assert "continuous scalar policy lifecycle" in audit
+
+
+def test_nabm_unit_checklist_records_toy8_social_hazard_parity() -> None:
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    audit = (ROOT / "docs/nabm-unit-v1-migration-candidate-audit.md").read_text()
+    gate7b = _between(
+        checklist,
+        "### Gate 7B: Toy8 Async Social-Hazard Parity",
+        "## Recommended Next Slice",
+    )
+
+    for required in (
+        "Status: parity slice complete.",
+        "src/neural_abm/mixers.py::apply_scalar_output_average",
+        "activation_propensity",
+        "event_hazard_commit",
+        "not new Toy8 performance evidence",
+    ):
+        assert required in gate7b
+
+    assert "## Gate 7B Result" in audit
+    assert "not Toy8 performance evidence" in audit
+    assert "does not promote Toy8 from" in audit

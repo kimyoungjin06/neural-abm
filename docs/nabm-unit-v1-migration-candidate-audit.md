@@ -168,3 +168,31 @@ Fallback rule:
 - If Toy8 parity requires generic unit changes beyond scalar social mix
   plumbing, pause and record the contract gap. Then use Toy9 binary
   heterogeneous probability mixing as the lower-risk Gate 7B migration target.
+
+## Gate 7B Result
+
+Status: complete.
+
+Implemented slice:
+
+- `src/neural_abm/mixers.py::apply_scalar_output_average` now exposes a
+  semantic-free scalar social helper backed by `NABMStep`.
+- `src/neural_abm/toy_async.py::apply_output_average` routes Toy8
+  activation-propensity social mixing through that helper.
+- Toy8 still owns `ScheduledEvent`, `valid_event(...)`, `apply_event(...)`,
+  `schedule_all_events(...)`, event counters, event-time RNG, and evidence
+  interpretation.
+
+Parity checks:
+
+- `tests/test_social_block.py::test_scalar_output_average_unit_helper_matches_common_block`
+- `tests/test_toy8_runner.py::test_toy8_output_average_matches_unit_scalar_parity`
+- `tests/test_toy8_runner.py::test_toy8_output_average_routes_through_unit_scalar_helper`
+
+Interpretation:
+
+- The first existing-toy migration slice is parity-only. It shows that Toy8
+  social-hazard mixing can pass through the unit-backed scalar social surface
+  without turning `NABMUnit` into an event scheduler.
+- It is not Toy8 performance evidence and does not promote Toy8 from
+  `compatible` to `full`.

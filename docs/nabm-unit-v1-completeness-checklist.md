@@ -33,7 +33,7 @@ Status terms:
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
 | Manuscript narrative | partial | yes | partial | partial | The paper claim matrix, table candidates, and draft prose now link bounded claims to artifacts and limitations; publication figures remain open. |
 | Adapter-only extensibility | yes | yes | quick | partial | Source-free threshold, congestion, and stochastic commons holdout manifests now run binary domains with baseline, negative-control, and main variants through public unit APIs. |
-| Existing-toy migration | planned | yes | audit | no | Gate 7A selects Toy8 async social-hazard parity as the next existing-toy migration slice, with Toy9 fallback and Toy7 deferred. |
+| Existing-toy migration | partial | yes | parity | partial | Gate 7B routes Toy8 async social-hazard mixing through a unit-backed scalar path while preserving event semantics. |
 
 ## What Is Complete Enough
 
@@ -424,13 +424,54 @@ Completion condition:
   social-hazard parity through a unit-backed scalar social mixing path, with
   Toy9 as the fallback if Toy8 requires a generic contract expansion.
 
+### Gate 7B: Toy8 Async Social-Hazard Parity
+
+Goal: migrate one existing Toy8 social-hazard slice through a unit-backed path
+without changing Toy8 event scheduling, event validity, event application, RNG
+order, counters, or CSV/result contracts.
+
+Status: parity slice complete.
+
+Artifacts:
+
+- `src/neural_abm/mixers.py::apply_scalar_output_average`
+- `src/neural_abm/toy_async.py::apply_output_average`
+- `tests/test_social_block.py::test_scalar_output_average_unit_helper_matches_common_block`
+- `tests/test_toy8_runner.py::test_toy8_output_average_matches_unit_scalar_parity`
+- `tests/test_toy8_runner.py::test_toy8_output_average_routes_through_unit_scalar_helper`
+
+Completed work:
+
+- Added a semantic-free scalar social helper backed by `NABMStep`.
+- Routed Toy8 activation-propensity output averaging through that helper.
+- Preserved Toy8 hazard construction, event queue scheduling, stale-event
+  invalidation, event application, event counters, and aggregate/micro field
+  names.
+- Added parity coverage for mixed activation propensities, social losses, and
+  update norms.
+
+Result:
+
+- The Toy8 social-hazard mixing slice now enters the reusable unit surface
+  without moving event-time semantics into the unit.
+- The test suite confirms parity against the old scalar social block behavior
+  and confirms Toy8 calls the unit-backed helper with the `activation_propensity`
+  channel and `event_hazard_commit` commit mode.
+- This is existing-toy migration parity, not new Toy8 performance evidence.
+
+Completion condition:
+
+- First existing-toy migration parity slice complete. The next Toy8 step should
+  add runner-level artifact parity only if needed; otherwise the next structural
+  pressure point is Toy9 fallback migration or a recorded Toy7 continuous-scalar
+  contract gap.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Existing-toy migration parity: implement Toy8 async social-hazard parity
-  through a unit-backed scalar social mixing path, preserving event scheduling
-  and RNG semantics.
+- Existing-toy migration parity: decide whether to add Toy8 runner-level
+  artifact parity evidence or move to Toy9 heterogeneous probability mixing.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.

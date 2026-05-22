@@ -10,6 +10,7 @@ from torch import nn
 from neural_abm.core import NeuralClassificationAgent
 from neural_abm.social import (
     PROBABILITY_DISTRIBUTION_CHANNEL,
+    SCALAR_PROBABILITY_CHANNEL,
     STATE_DICT_CHANNEL,
     TENSOR_CHANNEL,
     SocialBlock,
@@ -168,6 +169,30 @@ def select_peers(
         peers = [j for j in neighbors if sim[i, j] >= threshold]
         peer_ids.append(peers)
     return peer_ids, sim
+
+
+def apply_scalar_output_average(
+    values: np.ndarray,
+    peer_ids: list[list[int]],
+    alpha: float,
+    *,
+    channel: str = "scalar_probability",
+    commit_mode: str = "scalar_probability_sample",
+) -> NABMStepResult:
+    """Apply a NABMStep-backed scalar probability social mix."""
+
+    step = NABMStep(
+        social_block=SocialBlock(alpha=alpha),
+        channel=SocialChannel(
+            name=channel,
+            kind=SCALAR_PROBABILITY_CHANNEL,
+            commit_mode=commit_mode,
+        ),
+    )
+    return step.run(
+        values=np.asarray(values, dtype=np.float64),
+        peer_ids=peer_ids,
+    )
 
 
 def apply_parameter_average(
