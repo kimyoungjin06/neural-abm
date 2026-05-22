@@ -32,7 +32,7 @@ Status terms:
 | Holdout migration | yes | yes | yes | partial | Toy5 now has a small threshold-aware topology/threshold grid, but negative-control separation is strongest on safety rather than spread. |
 | Evidence gate integration | yes | partial | yes | partial | Manifests and profile index exist, but some gate criteria remain brittle for stochastic final-epoch failures. |
 | Manuscript narrative | partial | yes | partial | partial | The paper claim matrix, table candidates, and draft prose now link bounded claims to artifacts and limitations; publication figures remain open. |
-| Adapter-only extensibility | yes | yes | quick | partial | A source-free holdout manifest now runs a tiny binary domain with baseline, negative-control, and main variants through public unit APIs. |
+| Adapter-only extensibility | yes | yes | quick | partial | Source-free threshold and congestion holdout manifests now run tiny binary domains with baseline, negative-control, and main variants through public unit APIs. |
 
 ## What Is Complete Enough
 
@@ -293,6 +293,11 @@ Artifacts:
 - `experiments/results/nabm_effect_matrix/adapter_only_threshold_holdout_quick_runs.csv`
 - `experiments/evidence/results/adapter_only_threshold_holdout_quick.summary.md`
 - `experiments/results/nabm_effect_matrix/adapter_only_threshold_holdout_quick_findings.md`
+- `experiments/evidence/adapter_only_congestion_holdout_quick.yaml`
+- `scripts/run_adapter_congestion_holdout_evidence.py`
+- `experiments/results/nabm_effect_matrix/adapter_only_congestion_holdout_quick_runs.csv`
+- `experiments/evidence/results/adapter_only_congestion_holdout_quick.summary.md`
+- `experiments/results/nabm_effect_matrix/adapter_only_congestion_holdout_quick_findings.md`
 - `src/neural_abm/README.md`
 
 Completed work:
@@ -306,6 +311,8 @@ Completed work:
   domain-supplied readiness, active, direction, and peer-neighborhood arrays.
 - Added a quick manifest with baseline, negative-control, and main variants.
 - Ran the manifest and preserved run CSV, summary, and findings artifacts.
+- Added a second adapter-only congestion/capacity manifest where the target is
+  balanced allocation rather than threshold cascade.
 
 Result:
 
@@ -315,13 +322,16 @@ Result:
 - The quick manifest passes: no-seed baseline/main preserve zero adoption,
   thresholdless negative control self-excites, sparse-seed baseline stalls at
   the seed, and the adapter-threshold-readiness main reaches full adoption.
-- This strengthens the v1 extensibility claim beyond smoke level, but remains a
-  tiny binary holdout. It is not evidence that the framework is
-  general-purpose.
+- The congestion manifest also passes: imitation and global pressure overcrowd,
+  while the adapter capacity policy reaches zero capacity error in symmetric,
+  asymmetric, and noisy-preference cases.
+- This strengthens the v1 extensibility claim beyond smoke level and beyond a
+  threshold-isomorphic holdout, but both cases remain tiny scripted binary
+  domains. They are not evidence that the framework is general-purpose.
 
 Completion condition:
 
-- Quick evidence complete for a tiny adapter-only binary holdout. A stronger
+- Quick evidence complete for two tiny adapter-only binary holdouts. A stronger
   generality claim still requires a richer holdout domain and manuscript-ready
   analysis.
 
@@ -330,8 +340,8 @@ Completion condition:
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Richer adapter-only holdout: pick a less threshold-isomorphic binary domain
-  and migrate it through the v1 unit contract with a manuscript-ready evidence
-  table.
+- Richer adapter-only holdout: move beyond scripted binary domains toward a
+  small stochastic ABM with endogenous state transitions and a manuscript-ready
+  evidence table.
 - Manuscript figure build-out: decide which table candidates need plotted
   figures and which should stay as compact manuscript tables.

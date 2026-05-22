@@ -140,3 +140,35 @@ Source artifacts:
 
 - `experiments/evidence/toy4_resource_threshold_heterogeneous_local_observation_stress_quick.yaml`
 - `experiments/results/nabm_effect_matrix/toy4_hetero_local_obs_stress_quick_findings.md`
+
+## Table 6: Adapter-Only Congestion Holdout
+
+| Case | Variant | Group | Capacity hits | Max error | Max overcrowding | Mean welfare | Mean TtC |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
+| `symmetric_capacity` | `imitation_baseline` | Baseline | 0/3 | 10 | 10 | 0.500 | n/a |
+| `symmetric_capacity` | `global_pressure_negative_control` | Negative control | 0/3 | 10 | 10 | 0.500 | n/a |
+| `symmetric_capacity` | `adapter_capacity_policy_main` | Main | 3/3 | 0 | 0 | 1.000 | 1.000 |
+| `asymmetric_capacity` | `imitation_baseline` | Baseline | 0/3 | 14 | 14 | 0.300 | n/a |
+| `asymmetric_capacity` | `global_pressure_negative_control` | Negative control | 0/3 | 14 | 14 | 0.300 | n/a |
+| `asymmetric_capacity` | `adapter_capacity_policy_main` | Main | 3/3 | 0 | 0 | 1.000 | 1.000 |
+| `noisy_preference_capacity` | `imitation_baseline` | Baseline | 0/3 | 12 | 12 | 0.400 | n/a |
+| `noisy_preference_capacity` | `global_pressure_negative_control` | Negative control | 0/3 | 12 | 12 | 0.400 | n/a |
+| `noisy_preference_capacity` | `adapter_capacity_policy_main` | Main | 3/3 | 0 | 0 | 1.000 | 1.000 |
+
+Caption candidate:
+
+> A source-free adapter-only congestion holdout uses the NABM Unit v1 binary
+> policy lifecycle for capacity-matched allocation rather than full adoption.
+> The adapter capacity policy reaches zero capacity error while imitation and
+> global-pressure controls overcrowd.
+
+Limitation:
+
+> This is non-cascade extensibility evidence, but it is still a tiny scripted
+> binary domain. It should not be presented as a full general-purpose ABM
+> framework demonstration.
+
+Source artifacts:
+
+- `experiments/evidence/adapter_only_congestion_holdout_quick.yaml`
+- `experiments/results/nabm_effect_matrix/adapter_only_congestion_holdout_quick_findings.md`

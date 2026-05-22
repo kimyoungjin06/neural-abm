@@ -88,7 +88,14 @@ def test_paper_claim_matrix_records_gate4_boundaries() -> None:
     ):
         assert limitation in claim_matrix
 
-    for table_anchor in ("Table 1", "Table 2", "Table 3", "Table 4", "Table 5"):
+    for table_anchor in (
+        "Table 1",
+        "Table 2",
+        "Table 3",
+        "Table 4",
+        "Table 5",
+        "Table 6",
+    ):
         assert f"nabm-unit-v1-manuscript-tables.md` {table_anchor}" in claim_matrix
         assert f"## {table_anchor}:" in table_candidates
 
@@ -98,6 +105,7 @@ def test_paper_claim_matrix_records_gate4_boundaries() -> None:
         "reputation_imitation_open_sparse_noisy_p0p1_s1p0",
         "rev_local_sustain_obs_noisy_s2p0_hetero",
         "targeted baseline-fragility evidence",
+        "adapter_only_congestion_holdout_quick",
     ):
         assert table_value in table_candidates
 
@@ -115,6 +123,7 @@ def test_paper_claim_matrix_records_gate4_boundaries() -> None:
         "mean time-to-ceiling",
         "targeted baseline-fragility evidence, not a general demonstration",
         "does not yet support general neural dominance",
+        "zero capacity error",
     ):
         assert evidence_boundary in section_6
 
@@ -144,5 +153,5 @@ def test_nabm_unit_checklist_records_adapter_only_holdout_smoke() -> None:
     assert "tests/test_nabm_unit_adapter_holdout.py" in gate5
     assert "without changing `src/neural_abm`" in gate5
     assert "adapter-threshold-readiness main reaches full adoption" in gate5
-    assert "tiny binary holdout" in gate5
+    assert "tiny scripted binary" in gate5
     assert "tests/test_nabm_unit_adapter_holdout.py" in readme

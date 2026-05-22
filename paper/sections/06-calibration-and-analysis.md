@@ -8,6 +8,7 @@ Source tables:
 - `paper/tables/nabm-unit-v1-manuscript-tables.md` Table 3
 - `paper/tables/nabm-unit-v1-manuscript-tables.md` Table 4
 - `paper/tables/nabm-unit-v1-manuscript-tables.md` Table 5
+- `paper/tables/nabm-unit-v1-manuscript-tables.md` Table 6
 
 ## 6.1 Calibration Principle
 
@@ -98,11 +99,32 @@ variants are close at mean time-to-ceiling `32.2` and `33.0`, and clean
 reputation imitation remains faster in clean ranking conditions with `5/5`
 final hits and mean time-to-ceiling `15.0`.
 
-## 6.6 Manuscript Insertion Notes
+## 6.6 Adapter-Only Capacity Allocation
+
+The adapter-only congestion holdout tests a different kind of binary ABM
+problem. The target is not full adoption or threshold cascade. Agents choose
+between binary alternatives under a capacity constraint, and success is measured
+by final capacity error, overcrowding, and welfare. The holdout domain lives in
+the evidence runner rather than `src/neural_abm`, so it tests whether a new
+domain can use the public binary policy lifecycle without changing the reusable
+unit.
+
+Across symmetric, asymmetric, and noisy-preference capacity cases, imitation and
+global-pressure controls overcrowd the capacity target. The adapter capacity
+main reaches zero capacity error in every seed, with mean time-to-capacity
+`1.0`. This strengthens the extensibility claim beyond threshold-cascade
+problems.
+
+The limitation remains important. This is still a tiny scripted binary domain.
+It supports source-free adapter extensibility, not a full general-purpose ABM
+framework claim.
+
+## 6.7 Manuscript Insertion Notes
 
 Use Table 2 for the Toy5 holdout claim, Table 3 for the failure-mode taxonomy,
 Table 4 for the targeted Toy2/Toy4 reputation-fragility contrast, and Table 5
-for Toy4 local resource robustness.
+for Toy4 local resource robustness. Use Table 6 only as adapter-extensibility
+evidence, not as a new superiority claim.
 
 The safest high-level wording is:
 

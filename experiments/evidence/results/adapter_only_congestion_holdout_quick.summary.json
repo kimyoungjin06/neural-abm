@@ -1,0 +1,117 @@
+{
+  "label": "adapter_only_congestion_holdout_quick",
+  "status": "pass",
+  "runs_path": "experiments/results/nabm_effect_matrix/adapter_only_congestion_holdout_quick_runs.csv",
+  "cases": [
+    {
+      "case": "symmetric_capacity",
+      "target_count": 10,
+      "variants": {
+        "imitation_baseline": {
+          "group": "baseline",
+          "mode": "imitation_baseline",
+          "max_capacity_error_abs": 10,
+          "mean_capacity_error_abs": 10.0,
+          "max_overcrowding_count": 10,
+          "mean_welfare": 0.5,
+          "capacity_hits": 0,
+          "mean_time_to_capacity": null
+        },
+        "global_pressure_negative_control": {
+          "group": "negative_control",
+          "mode": "global_pressure_negative_control",
+          "max_capacity_error_abs": 10,
+          "mean_capacity_error_abs": 10.0,
+          "max_overcrowding_count": 10,
+          "mean_welfare": 0.5,
+          "capacity_hits": 0,
+          "mean_time_to_capacity": null
+        },
+        "adapter_capacity_policy_main": {
+          "group": "main",
+          "mode": "adapter_capacity_policy_main",
+          "max_capacity_error_abs": 0,
+          "mean_capacity_error_abs": 0.0,
+          "max_overcrowding_count": 0,
+          "mean_welfare": 1.0,
+          "capacity_hits": 3,
+          "mean_time_to_capacity": 1.0
+        }
+      }
+    },
+    {
+      "case": "asymmetric_capacity",
+      "target_count": 6,
+      "variants": {
+        "imitation_baseline": {
+          "group": "baseline",
+          "mode": "imitation_baseline",
+          "max_capacity_error_abs": 14,
+          "mean_capacity_error_abs": 14.0,
+          "max_overcrowding_count": 14,
+          "mean_welfare": 0.30000000000000004,
+          "capacity_hits": 0,
+          "mean_time_to_capacity": null
+        },
+        "global_pressure_negative_control": {
+          "group": "negative_control",
+          "mode": "global_pressure_negative_control",
+          "max_capacity_error_abs": 14,
+          "mean_capacity_error_abs": 14.0,
+          "max_overcrowding_count": 14,
+          "mean_welfare": 0.30000000000000004,
+          "capacity_hits": 0,
+          "mean_time_to_capacity": null
+        },
+        "adapter_capacity_policy_main": {
+          "group": "main",
+          "mode": "adapter_capacity_policy_main",
+          "max_capacity_error_abs": 0,
+          "mean_capacity_error_abs": 0.0,
+          "max_overcrowding_count": 0,
+          "mean_welfare": 1.0,
+          "capacity_hits": 3,
+          "mean_time_to_capacity": 1.0
+        }
+      }
+    },
+    {
+      "case": "noisy_preference_capacity",
+      "target_count": 8,
+      "variants": {
+        "imitation_baseline": {
+          "group": "baseline",
+          "mode": "imitation_baseline",
+          "max_capacity_error_abs": 12,
+          "mean_capacity_error_abs": 12.0,
+          "max_overcrowding_count": 12,
+          "mean_welfare": 0.4000000000000001,
+          "capacity_hits": 0,
+          "mean_time_to_capacity": null
+        },
+        "global_pressure_negative_control": {
+          "group": "negative_control",
+          "mode": "global_pressure_negative_control",
+          "max_capacity_error_abs": 12,
+          "mean_capacity_error_abs": 12.0,
+          "max_overcrowding_count": 12,
+          "mean_welfare": 0.4000000000000001,
+          "capacity_hits": 0,
+          "mean_time_to_capacity": null
+        },
+        "adapter_capacity_policy_main": {
+          "group": "main",
+          "mode": "adapter_capacity_policy_main",
+          "max_capacity_error_abs": 0,
+          "mean_capacity_error_abs": 0.0,
+          "max_overcrowding_count": 0,
+          "mean_welfare": 1.0,
+          "capacity_hits": 3,
+          "mean_time_to_capacity": 1.0
+        }
+      }
+    }
+  ],
+  "failures": [],
+  "claim_boundary": "This is a non-cascade adapter-only holdout with baseline, negative control, main variant, and result artifacts. It strengthens extensibility beyond the threshold holdout but remains a tiny scripted binary domain.\n"
+}

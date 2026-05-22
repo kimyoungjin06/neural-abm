@@ -80,6 +80,10 @@ Expected future scripts:
   The domain lives in the runner rather than `src/neural_abm` and uses public
   binary policy/readiness unit APIs with baseline, negative-control, and main
   variants.
+- `run_adapter_congestion_holdout_evidence.py`: run the adapter-only congestion
+  holdout from `experiments/evidence/adapter_only_congestion_holdout_quick.yaml`.
+  This non-cascade holdout measures capacity error, overcrowding, and welfare
+  while using only public binary policy unit callbacks.
 - `run_basin_credit_evidence_workflow.py`: run the basin-credit evidence matrix
   and immediately evaluate the hardened gate. Use `--skip-matrix --runs-path`
   to audit an existing `<label>_runs.csv`, or `--require-pass` in automation to

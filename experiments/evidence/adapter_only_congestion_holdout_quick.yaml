@@ -1,0 +1,72 @@
+label: adapter_only_congestion_holdout_quick
+description: >
+  Adapter-only binary congestion/capacity holdout. The target is balanced
+  allocation rather than threshold cascade, and the domain lives outside
+  src/neural_abm.
+results_dir: experiments/results/nabm_effect_matrix
+summary_dir: experiments/evidence/results
+findings_path: experiments/results/nabm_effect_matrix/adapter_only_congestion_holdout_quick_findings.md
+claim_boundary: >
+  This is a non-cascade adapter-only holdout with baseline, negative control,
+  main variant, and result artifacts. It strengthens extensibility beyond the
+  threshold holdout but remains a tiny scripted binary domain.
+variants:
+  - name: imitation_baseline
+    group: baseline
+    mode: imitation_baseline
+  - name: global_pressure_negative_control
+    group: negative_control
+    mode: global_pressure_negative_control
+  - name: adapter_capacity_policy_main
+    group: main
+    mode: adapter_capacity_policy_main
+cases:
+  - name: symmetric_capacity
+    seeds: [1, 2, 3]
+    agent_count: 20
+    epochs: 4
+    initial_one_count: 14
+    target_count: 10
+    preference_noise: 0.0
+    temperature: 1.0
+  - name: asymmetric_capacity
+    seeds: [1, 2, 3]
+    agent_count: 20
+    epochs: 4
+    initial_one_count: 14
+    target_count: 6
+    preference_noise: 0.0
+    temperature: 1.0
+  - name: noisy_preference_capacity
+    seeds: [1, 2, 3]
+    agent_count: 20
+    epochs: 4
+    initial_one_count: 14
+    target_count: 8
+    preference_noise: 0.06
+    temperature: 1.0
+success_criteria:
+  symmetric_capacity:
+    baseline:
+      min_final_capacity_error_abs: 10
+    negative_control:
+      min_overcrowding_count: 10
+    main:
+      max_final_capacity_error_abs: 0
+      min_mean_welfare: 1.0
+  asymmetric_capacity:
+    baseline:
+      min_final_capacity_error_abs: 14
+    negative_control:
+      min_overcrowding_count: 14
+    main:
+      max_final_capacity_error_abs: 0
+      min_mean_welfare: 1.0
+  noisy_preference_capacity:
+    baseline:
+      min_final_capacity_error_abs: 12
+    negative_control:
+      min_overcrowding_count: 12
+    main:
+      max_final_capacity_error_abs: 0
+      min_mean_welfare: 1.0
