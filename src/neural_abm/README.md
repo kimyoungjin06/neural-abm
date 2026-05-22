@@ -13,7 +13,8 @@ Current modules:
 - `core`: common neural classification agent contract and MLP utilities.
 - `domain_runner`: compatible-toy outer lifecycle runner for Toy6-10-style
   domain adapters, including run directories, metadata, CSV writers, fallback,
-  final summary, and result envelopes.
+  final summary, result envelopes, and settings-based
+  `make_domain_run_dir` / `write_domain_run_metadata` artifact helpers.
 - `domain_social_diagnostics`: semantic-free peer/social row mapping helpers
   for compatible domain toy adapters.
 - `graphs`: static graph and peer graph helpers.

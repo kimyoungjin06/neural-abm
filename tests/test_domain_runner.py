@@ -8,7 +8,12 @@ from pathlib import Path
 import pytest
 import yaml
 
-from neural_abm.domain_runner import DomainRunSettings, DomainToyRunner
+from neural_abm.domain_runner import (
+    DomainRunSettings,
+    DomainToyRunner,
+    make_domain_run_dir,
+    write_domain_run_metadata,
+)
 
 
 @dataclass(frozen=True)
@@ -154,6 +159,27 @@ def test_domain_runner_writes_artifacts_and_respects_micro_interval(
     assert summary["domain_metrics"] == {
         "domain_final_value": 30,
         "domain_steps": 3,
+    }
+
+
+def test_domain_run_artifact_helpers_use_settings(tmp_path: Path) -> None:
+    settings = fake_settings(tmp_path)
+
+    run_dir = make_domain_run_dir(settings)
+    write_domain_run_metadata(settings, run_dir)
+
+    assert run_dir.exists()
+    assert run_dir.name.endswith("_fake_run_seed05")
+    assert json.loads((run_dir / "metadata.json").read_text()) == {
+        "run_name": "fake_run",
+        "seed": 5,
+        "toy": "fake",
+    }
+    assert (run_dir / "config.yaml").read_text(encoding="utf-8") == (
+        "run:\n  name: fake_run\n"
+    )
+    assert yaml.safe_load((run_dir / "resolved_config.yaml").read_text()) == {
+        "run": {"name": "fake_run"}
     }
 
 

@@ -822,15 +822,56 @@ Completion condition:
 
 - Gate 8B is complete for Toy6-10 compatible-toy diagnostics rows.
 
+### Gate 8C: Compatible-Toy Adapter Thinness
+
+Goal: reduce the remaining safe Toy6-10 adapter boilerplate without touching
+domain phase order, row schemas, final-time semantics, or domain metrics.
+
+Status: run-artifact helper extraction complete.
+
+Artifacts:
+
+- `src/neural_abm/domain_runner.py::make_domain_run_dir`
+- `src/neural_abm/domain_runner.py::write_domain_run_metadata`
+- `src/neural_abm/toy_categorical.py`
+- `src/neural_abm/toy_resource.py`
+- `src/neural_abm/toy_async.py`
+- `src/neural_abm/toy_heterogeneous.py`
+- `src/neural_abm/toy_market.py`
+- `tests/test_domain_runner.py::test_domain_run_artifact_helpers_use_settings`
+- `docs/nabm-unit-v1-runner-lifecycle-audit.md`
+- `src/neural_abm/README.md`
+
+Completed work:
+
+- Added settings-based helpers for compatible-toy run directory creation and
+  metadata artifact writing.
+- Routed `DomainToyRunner.run()` through the same helpers.
+- Routed Toy6, Toy7, Toy8, Toy9, and Toy10 public compatibility wrappers
+  through the helpers while preserving wrapper names.
+- Left adapter `step(...)`, `aggregate_row(...)`, `micro_rows(...)`,
+  `final_epoch(...)`, and `domain_metrics(...)` toy-owned.
+
+Result:
+
+- The duplicated run-artifact wrapper body is gone from Toy6-10.
+- The public helper surface remains backward-compatible for callers that use
+  each toy's `make_run_dir(...)` and `write_run_metadata(...)`.
+- This is still engineering consolidation only. It does not change simulation
+  behavior, CSV schemas, evidence criteria, or Toy6-10 claim status.
+
+Completion condition:
+
+- Gate 8C is complete for safe adapter thinness. Further adapter cleanup should
+  start from artifact-contract tests rather than another generic extraction.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Compatible-toy adapter thinness audit: inspect whether any remaining
-  Toy6-10 adapter boilerplate can be safely reduced without changing
-  `step(...)` phase order, domain row schemas, event queues, group logic,
-  market/resource updates, or dynamic-graph semantics.
 - Shared artifact-contract tests: compare representative Toy6-10 aggregate and
   micro rows against stable expected field sets so future cleanup does not
   silently change CSV contracts.
+- Adapter no-extract boundary note: record the remaining adapter methods that
+  should stay toy-owned unless two future domains expose the same semantics.

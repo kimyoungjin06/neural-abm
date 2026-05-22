@@ -152,3 +152,23 @@ Gate 8B implemented the small helper path recommended by this audit:
 This is not a full runner rewrite. The mapper keeps artifact fields identical
 and does not absorb event, group, market, resource, categorical, or
 dynamic-graph semantics.
+
+## Gate 8C Result
+
+Gate 8C reduced the remaining safe run-artifact boilerplate:
+
+- `src/neural_abm/domain_runner.py` now exposes `make_domain_run_dir(...)` and
+  `write_domain_run_metadata(...)` over `DomainRunSettings`.
+- `DomainToyRunner.run()` uses the same helpers as the thin Toy6-Toy10
+  compatibility wrappers.
+- Toy6, Toy7, Toy8, Toy9, and Toy10 keep their public `make_run_dir(...)` and
+  `write_run_metadata(...)` wrapper functions, but those wrappers now delegate
+  to the shared settings-based helpers.
+- `tests/test_domain_runner.py::test_domain_run_artifact_helpers_use_settings`
+  guards the shared run-directory and metadata artifact behavior.
+
+This is the safe extraction boundary for adapter thinness. The audit still
+rejects moving adapter `step(...)`, `aggregate_row(...)`, `micro_rows(...)`,
+`final_epoch(...)`, or `domain_metrics(...)` into a generic helper because
+those methods carry toy-specific phase order, row schemas, final-time meaning,
+and domain metrics.

@@ -92,6 +92,29 @@ def make_timestamped_run_dir(*, output_dir: Path, run_name: str, seed: int) -> P
     return run_dir
 
 
+def make_domain_run_dir(settings: DomainRunSettings) -> Path:
+    """Create a run directory from shared domain runner settings."""
+
+    return make_timestamped_run_dir(
+        output_dir=settings.output_dir,
+        run_name=settings.run_name,
+        seed=settings.seed,
+    )
+
+
+def write_domain_run_metadata(settings: DomainRunSettings, run_dir: Path) -> None:
+    """Write the standard metadata artifacts for a domain toy run."""
+
+    write_run_metadata_artifacts(
+        config_path=settings.config_path,
+        config=settings.config,
+        run_dir=run_dir,
+        toy=settings.toy,
+        metadata=settings.metadata,
+        strict_capability=settings.strict_capability,
+    )
+
+
 @dataclass
 class DomainToyRunner(Generic[StateT, StepT]):
     """Generic lifecycle runner for Toy6-10-style domain simulations."""
@@ -100,19 +123,8 @@ class DomainToyRunner(Generic[StateT, StepT]):
     settings: DomainRunSettings
 
     def run(self) -> DomainToyResult:
-        run_dir = make_timestamped_run_dir(
-            output_dir=self.settings.output_dir,
-            run_name=self.settings.run_name,
-            seed=self.settings.seed,
-        )
-        write_run_metadata_artifacts(
-            config_path=self.settings.config_path,
-            config=self.settings.config,
-            run_dir=run_dir,
-            toy=self.settings.toy,
-            metadata=self.settings.metadata,
-            strict_capability=self.settings.strict_capability,
-        )
+        run_dir = make_domain_run_dir(self.settings)
+        write_domain_run_metadata(self.settings, run_dir)
         state = self.adapter.initialize()
         final_step: StepT | None = None
 

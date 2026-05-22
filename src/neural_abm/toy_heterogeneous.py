@@ -13,7 +13,8 @@ from neural_abm.config import Toy9Config
 from neural_abm.domain_runner import (
     DomainRunSettings,
     DomainToyRunner,
-    make_timestamped_run_dir,
+    make_domain_run_dir,
+    write_domain_run_metadata,
 )
 from neural_abm.domain_social_diagnostics import (
     aggregate_social_diagnostic_fields,
@@ -22,10 +23,7 @@ from neural_abm.domain_social_diagnostics import (
 from neural_abm.graphs import build_graph, component_map, graph_from_peer_ids
 from neural_abm.logging import CsvLogWriter
 from neural_abm.mixers import apply_scalar_output_average
-from neural_abm.results import (
-    DomainToyResult,
-    write_run_metadata_artifacts,
-)
+from neural_abm.results import DomainToyResult
 from neural_abm.social import (
     empty_peers,
     select_scalar_output_peers,
@@ -366,24 +364,11 @@ def domain_run_settings(config: Toy9Config, config_path: Path) -> DomainRunSetti
 
 
 def make_run_dir(config: Toy9Config) -> Path:
-    settings = domain_run_settings(config, Path("<unknown-config>"))
-    return make_timestamped_run_dir(
-        output_dir=settings.output_dir,
-        run_name=settings.run_name,
-        seed=settings.seed,
-    )
+    return make_domain_run_dir(domain_run_settings(config, Path("<unknown-config>")))
 
 
 def write_run_metadata(config_path: Path, config: Toy9Config, run_dir: Path) -> None:
-    settings = domain_run_settings(config, config_path)
-    write_run_metadata_artifacts(
-        config_path=settings.config_path,
-        config=settings.config,
-        run_dir=run_dir,
-        toy=settings.toy,
-        metadata=settings.metadata,
-        strict_capability=settings.strict_capability,
-    )
+    write_domain_run_metadata(domain_run_settings(config, config_path), run_dir)
 
 
 def micro_rows(

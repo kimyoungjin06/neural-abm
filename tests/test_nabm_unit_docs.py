@@ -59,6 +59,8 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
     assert "domain_social_diagnostics" in readme
     assert "aggregate_social_diagnostic_fields" in readme
     assert "micro_social_diagnostic_fields" in readme
+    assert "make_domain_run_dir" in readme
+    assert "write_domain_run_metadata" in readme
 
 
 def test_nabm_unit_checklist_records_gate1_completion_and_guards() -> None:
@@ -567,7 +569,7 @@ def test_social_diagnostics_mapper_records_gate8b_boundary() -> None:
     gate8b = _between(
         checklist,
         "### Gate 8B: Social Diagnostics Mapper Prototype",
-        "## Recommended Next Slice",
+        "### Gate 8C: Compatible-Toy Adapter Thinness",
     )
 
     for required in (
@@ -611,5 +613,54 @@ def test_social_diagnostics_mapper_records_gate8b_boundary() -> None:
         "micro_social_diagnostic_fields",
         "Toy6-Toy10",
         "mean_social_update_norm",
+    ):
+        assert required in readme
+
+
+def test_adapter_thinness_records_gate8c_boundary() -> None:
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    readme = (ROOT / "src/neural_abm/README.md").read_text()
+    audit = (ROOT / "docs/nabm-unit-v1-runner-lifecycle-audit.md").read_text()
+    gate8c = _between(
+        checklist,
+        "### Gate 8C: Compatible-Toy Adapter Thinness",
+        "## Recommended Next Slice",
+    )
+
+    for required in (
+        "Gate 8C Result",
+        "make_domain_run_dir",
+        "write_domain_run_metadata",
+        "DomainRunSettings",
+        "Toy6",
+        "Toy7",
+        "Toy8",
+        "Toy9",
+        "Toy10",
+        "test_domain_run_artifact_helpers_use_settings",
+        "rejects moving adapter `step(...)`",
+        "domain_metrics(...)",
+    ):
+        assert required in audit
+
+    for required in (
+        "Status: run-artifact helper extraction complete.",
+        "src/neural_abm/domain_runner.py::make_domain_run_dir",
+        "src/neural_abm/domain_runner.py::write_domain_run_metadata",
+        "test_domain_run_artifact_helpers_use_settings",
+        "DomainToyRunner.run()",
+        "step(...)",
+        "aggregate_row(...)",
+        "micro_rows(...)",
+        "final_epoch(...)",
+        "domain_metrics(...)",
+        "artifact-contract tests",
+    ):
+        assert required in gate8c
+
+    for required in (
+        "domain_runner",
+        "make_domain_run_dir",
+        "write_domain_run_metadata",
     ):
         assert required in readme
