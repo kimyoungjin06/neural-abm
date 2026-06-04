@@ -865,13 +865,60 @@ Completion condition:
 - Gate 8C is complete for safe adapter thinness. Further adapter cleanup should
   start from artifact-contract tests rather than another generic extraction.
 
+### Gate 8D: Compatible-Toy Artifact Contracts
+
+Goal: lock Toy6-10 aggregate and micro CSV schemas before doing any more
+adapter cleanup.
+
+Status: artifact-contract tests complete.
+
+Artifacts:
+
+- `tests/test_domain_toy_artifact_contracts.py`
+- `src/neural_abm/toy_categorical.py::TOY6_AGGREGATE_FIELDS`
+- `src/neural_abm/toy_categorical.py::TOY6_MICRO_STATE_FIELDS`
+- `src/neural_abm/toy_resource.py::TOY7_AGGREGATE_FIELDS`
+- `src/neural_abm/toy_resource.py::TOY7_MICRO_STATE_FIELDS`
+- `src/neural_abm/toy_async.py::TOY8_AGGREGATE_FIELDS`
+- `src/neural_abm/toy_async.py::TOY8_MICRO_STATE_FIELDS`
+- `src/neural_abm/toy_heterogeneous.py::TOY9_AGGREGATE_FIELDS`
+- `src/neural_abm/toy_heterogeneous.py::TOY9_MICRO_STATE_FIELDS`
+- `src/neural_abm/toy_market.py::TOY10_AGGREGATE_FIELDS`
+- `src/neural_abm/toy_market.py::TOY10_MICRO_STATE_FIELDS`
+- `src/neural_abm/README.md`
+
+Completed work:
+
+- Added exact expected field-order tests for all Toy6-Toy10 aggregate and
+  micro field lists.
+- Added tiny-run CSV header checks that execute Toy6-Toy10 and compare
+  `aggregate_metrics.csv` and `micro_state.csv` headers against the stable
+  expected lists.
+- Kept the test scope to artifact contracts. It does not assert performance,
+  convergence, or model evidence.
+
+Result:
+
+- Future adapter cleanup now has a schema guardrail: changing, removing, or
+  reordering Toy6-Toy10 CSV fields requires an explicit test update.
+- The tests cover actual runner output, not only constants.
+- This supports engineering consolidation without changing Toy6-Toy10 claim
+  status.
+
+Completion condition:
+
+- Gate 8D is complete. Further adapter cleanup should first record why the
+  remaining adapter method is safe to touch.
+- Optional import cleanup is allowed only behind these artifact-contract tests
+  and Toy6-Toy10 runner tests.
+
 ## Recommended Next Slice
 
 The next implementation slice should avoid another broad parameter sweep. Two
 paths are now useful:
 
-- Shared artifact-contract tests: compare representative Toy6-10 aggregate and
-  micro rows against stable expected field sets so future cleanup does not
-  silently change CSV contracts.
 - Adapter no-extract boundary note: record the remaining adapter methods that
   should stay toy-owned unless two future domains expose the same semantics.
+- Optional import cleanup: if needed, reduce local compatibility wrappers only
+  where `tests/test_domain_toy_artifact_contracts.py` and Toy6-Toy10 runner
+  tests prove the CSV contracts stay identical.

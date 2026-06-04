@@ -45,6 +45,7 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
     assert "tests/test_toy7_runner.py" in readme
     assert "tests/test_toy10_runner.py" in readme
     assert "tests/test_toy6_runner.py" in readme
+    assert "tests/test_domain_toy_artifact_contracts.py" in readme
     assert "unit-backed scalar path" in readme
     assert "SCALAR_PROBABILITY_CHANNEL" in readme
     assert "BOUNDED_SCALAR_CHANNEL" in readme
@@ -624,7 +625,7 @@ def test_adapter_thinness_records_gate8c_boundary() -> None:
     gate8c = _between(
         checklist,
         "### Gate 8C: Compatible-Toy Adapter Thinness",
-        "## Recommended Next Slice",
+        "### Gate 8D: Compatible-Toy Artifact Contracts",
     )
 
     for required in (
@@ -664,3 +665,40 @@ def test_adapter_thinness_records_gate8c_boundary() -> None:
         "write_domain_run_metadata",
     ):
         assert required in readme
+
+
+def test_artifact_contracts_record_gate8d_boundary() -> None:
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    readme = (ROOT / "src/neural_abm/README.md").read_text()
+    audit = (ROOT / "docs/nabm-unit-v1-runner-lifecycle-audit.md").read_text()
+    gate8d = _between(
+        checklist,
+        "### Gate 8D: Compatible-Toy Artifact Contracts",
+        "## Recommended Next Slice",
+    )
+
+    for required in (
+        "Gate 8D Result",
+        "tests/test_domain_toy_artifact_contracts.py",
+        "aggregate_metrics.csv",
+        "micro_state.csv",
+        "Toy6-Toy10",
+        "actual CSV headers",
+        "no-extract boundary",
+    ):
+        assert required in audit
+
+    for required in (
+        "Status: artifact-contract tests complete.",
+        "tests/test_domain_toy_artifact_contracts.py",
+        "TOY6_AGGREGATE_FIELDS",
+        "TOY10_MICRO_STATE_FIELDS",
+        "exact expected field-order tests",
+        "tiny-run CSV header checks",
+        "does not assert performance",
+        "schema guardrail",
+        "Optional import cleanup",
+    ):
+        assert required in gate8d
+
+    assert "tests/test_domain_toy_artifact_contracts.py" in readme

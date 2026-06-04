@@ -172,3 +172,19 @@ rejects moving adapter `step(...)`, `aggregate_row(...)`, `micro_rows(...)`,
 `final_epoch(...)`, or `domain_metrics(...)` into a generic helper because
 those methods carry toy-specific phase order, row schemas, final-time meaning,
 and domain metrics.
+
+## Gate 8D Result
+
+Gate 8D added compatible-toy artifact contract tests before any further
+adapter cleanup:
+
+- `tests/test_domain_toy_artifact_contracts.py` records exact expected
+  `aggregate_metrics.csv` and `micro_state.csv` field order for Toy6-Toy10.
+- The tests compare declared field constants against explicit expected lists.
+- The tests also run tiny Toy6-Toy10 configurations and compare actual CSV
+  headers from the produced artifacts against the same expected lists.
+- These are actual CSV headers, not only in-memory field constants.
+
+This protects future cleanup from silently changing artifact schemas. It does
+not make Toy6-Toy10 performance evidence, and it does not weaken the
+no-extract boundary around toy-owned adapter methods.

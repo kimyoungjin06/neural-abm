@@ -196,6 +196,8 @@ The active guard tests for the current binary unit migration are:
 - `tests/test_toy6_runner.py` for Toy6 categorical distribution parity where
   strategy-distribution social mixing reuses the probability-distribution path
   while cyclic payoff and strategy semantics stay Toy-owned;
+- `tests/test_domain_toy_artifact_contracts.py` for exact Toy6-Toy10
+  `aggregate_metrics.csv` and `micro_state.csv` header contracts;
 - `tests/test_readiness.py` for readiness propagation boundaries;
 - `tests/test_nabm_unit_docs.py` for this documentation boundary.
 
