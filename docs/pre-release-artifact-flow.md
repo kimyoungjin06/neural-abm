@@ -123,6 +123,8 @@ Release-owner decisions:
 
 - Re-check the Python 3.11 floor before final `0.1.0` if dependency wheels or
   syntax requirements change.
+- Use [release-readiness.md](release-readiness.md) as the final `0.1.0`
+  reservation checklist.
 
 ## Non-Goals
 

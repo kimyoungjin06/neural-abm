@@ -26,6 +26,8 @@ Use this directory for internal project knowledge.
 - [pre-release-artifact-flow.md](pre-release-artifact-flow.md): package
   metadata, version, Python floor, wheel/sdist contents, and install-command
   pre-release artifact flow.
+- [release-readiness.md](release-readiness.md): CI, TestPyPI/PyPI, release
+  note, and final `0.1.0` readiness gates.
 
 ## Guidelines
 

@@ -1,8 +1,15 @@
 # Neural ABM
 
+[![CI](https://github.com/kimyoungjin06/neural-abm/actions/workflows/ci.yml/badge.svg)](https://github.com/kimyoungjin06/neural-abm/actions/workflows/ci.yml)
+
 Neural ABM is a pre-release Python package for Neural Agent-Based Models
 (NABM): simulations where neural local updates, explicit social exchange, and
 ABM-style state logging are kept separate and inspectable.
+
+The current alpha is distributed from Git tags before PyPI publication. The
+default install is intentionally lightweight: it installs only `numpy` and
+`pyyaml`, supports Python 3.11 or newer, and exposes the torch-free
+`neural_abm.api_lite` surface.
 
 In this repository, a model is inside the NABM claim when it has:
 
@@ -22,6 +29,8 @@ The current framing is conservative:
 
 ## Project Map
 
+- [docs/release-readiness.md](docs/release-readiness.md): remaining release
+  gates before reserving final `0.1.0`.
 - [docs/toy-models/README.md](docs/toy-models/README.md): capability-first
   model-family roadmap.
 - [docs/toy-models/capability-matrix.md](docs/toy-models/capability-matrix.md):
@@ -35,6 +44,33 @@ The current framing is conservative:
 - [docs/api-surface-audit.md](docs/api-surface-audit.md): stable,
   experimental, internal, and paper-only API boundary.
 - [examples/README.md](examples/README.md): lightweight package-facing examples.
+
+## Quick Start
+
+Install the current Git alpha:
+
+```bash
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
+```
+
+Query the torch-free toy catalog:
+
+```python
+from neural_abm.api_lite import toy_catalog, toys_by_taxonomy
+
+catalog = toy_catalog()
+binary_probability_toys = toys_by_taxonomy("output_family", "binary_probability")
+```
+
+Install the torch-backed lifecycle API only when needed:
+
+```bash
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
+```
+
+```python
+from neural_abm.api import NABMUnit, SocialBlock, SocialChannel
+```
 
 ## Package Outputs
 

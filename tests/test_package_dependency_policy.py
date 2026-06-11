@@ -199,6 +199,7 @@ def test_package_profile_smoke_script_covers_release_profiles() -> None:
         "from neural_abm.config import Toy6Config",
         "from neural_abm.toy_market import run_toy10",
         "args.wheel.resolve()",
+        "UV_CACHE_DIR",
         "uv",
         "--isolated",
     ):

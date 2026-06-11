@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import tempfile
 from pathlib import Path
@@ -196,7 +197,11 @@ def main() -> None:
     with tempfile.TemporaryDirectory(prefix="neural-abm-profile-smoke.") as temp:
         temp_path = Path(temp)
         wheel = (args.wheel.resolve() if args.wheel else _build_wheel(temp_path))
-        results = [_run_profile(wheel, profile) for profile in args.profiles]
+        cache_dir = temp_path / "uv-cache"
+        results = [
+            _run_profile(wheel=wheel, profile=profile, cache_dir=cache_dir)
+            for profile in args.profiles
+        ]
     print(json.dumps({"wheel": str(wheel), "profiles": results}, indent=2))
 
 
@@ -212,7 +217,7 @@ def _build_wheel(output_dir: Path) -> Path:
     return wheels[0]
 
 
-def _run_profile(wheel: Path, profile: str) -> dict[str, object]:
+def _run_profile(wheel: Path, profile: str, cache_dir: Path) -> dict[str, object]:
     requirement = str(wheel) if profile == "default" else f"{wheel}[{profile}]"
     completed = subprocess.run(
         [
@@ -226,6 +231,7 @@ def _run_profile(wheel: Path, profile: str) -> dict[str, object]:
             SMOKE_CODE[profile],
         ],
         cwd=wheel.parent,
+        env={**os.environ, "UV_CACHE_DIR": str(cache_dir)},
         check=True,
         capture_output=True,
         text=True,
