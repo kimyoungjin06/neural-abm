@@ -26,7 +26,7 @@ Decision:
 
 Current status:
 
-- The project version is `0.1.0a1`.
+- The project version is `0.1.0a2`.
 
 Decision:
 
@@ -37,13 +37,15 @@ Decision:
 
 Current status:
 
-- `requires-python = ">=3.14"`.
+- `requires-python = ">=3.11"`.
 
 Decision:
 
-- Keep Python 3.14 as the current research-runtime floor.
-- Treat it as an adoption constraint, not a packaging defect.
-- Do not lower the Python requirement without a separate compatibility test
+- Use Python 3.11 as the package support floor because the source syntax,
+  `tomllib` usage, default dependencies, and package smoke checks are
+  compatible with Python 3.11+.
+- Treat newer local research runtimes as allowed, not required.
+- Do not change the Python requirement without a separate compatibility test
   pass.
 
 ### 4. Wheel and Sdist Contents
@@ -75,13 +77,13 @@ Local artifact check:
 
 ```bash
 uv build --out-dir dist
-uv run --isolated --with dist/neural_abm-0.1.0a1-py3-none-any.whl python -c "import neural_abm.api_lite"
+uv run --isolated --with dist/neural_abm-0.1.0a2-py3-none-any.whl python -c "import neural_abm.api_lite"
 ```
 
 Git ref install after a remote/tag exists:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a1"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
 ```
 
 After PyPI publication, package docs may use:
@@ -119,8 +121,8 @@ Pass criteria:
 
 Release-owner decisions:
 
-- Decide whether the Python 3.14 floor is acceptable for the first public
-  release.
+- Re-check the Python 3.11 floor before final `0.1.0` if dependency wheels or
+  syntax requirements change.
 
 ## Non-Goals
 

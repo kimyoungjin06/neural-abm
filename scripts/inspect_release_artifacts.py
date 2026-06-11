@@ -18,6 +18,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 PYPROJECT = ROOT / "pyproject.toml"
 DEFAULT_DEPENDENCIES = {"numpy", "pyyaml"}
+REQUIRED_PYTHON = ">=3.11"
 REQUIRED_EXTRAS = {"torch", "research", "full"}
 REQUIRED_WHEEL_MODULES = {
     "neural_abm/__init__.py",
@@ -159,15 +160,12 @@ def _inspect_pyproject(pyproject: dict[str, Any]) -> dict[str, Any]:
         )
     if missing_extras:
         blocking_issues.append(f"missing required extras: {', '.join(missing_extras)}")
+    if project.get("requires-python") != REQUIRED_PYTHON:
+        blocking_issues.append(f"requires-python must stay at {REQUIRED_PYTHON}")
     if "license" not in project:
         warnings.append("project.license is not set; choose a license before publish")
     if "urls" not in project:
         warnings.append("project.urls is not set; add project links before publish")
-    if project.get("requires-python") == ">=3.14":
-        warnings.append(
-            "requires-python is >=3.14; keep only if the release intentionally "
-            "targets the current research runtime"
-        )
     version = project.get("version", "")
     if not _is_pre_release_version(version):
         warnings.append(

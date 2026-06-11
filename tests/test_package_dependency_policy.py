@@ -51,9 +51,14 @@ def test_package_dependency_policy_classifies_all_direct_dependencies() -> None:
     }
     assert "agent-based modeling" in pyproject["project"]["keywords"]
     assert "Development Status :: 3 - Alpha" in pyproject["project"]["classifiers"]
-    assert "Programming Language :: Python :: 3.14" in pyproject["project"][
-        "classifiers"
-    ]
+    assert pyproject["project"]["requires-python"] == ">=3.11"
+    for classifier in (
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+    ):
+        assert classifier in pyproject["project"]["classifiers"]
     assert dependencies == {"numpy", "pyyaml"}
     assert optional_dependencies["torch"] == {"torch"}
     assert optional_dependencies["config"] == {"pydantic"}
@@ -211,7 +216,8 @@ def test_release_artifact_inspection_script_covers_dry_run_boundaries() -> None:
         "DEFAULT_DEPENDENCIES",
         "project.license is not set",
         "project.urls is not set",
-        "requires-python is >=3.14",
+        "REQUIRED_PYTHON",
+        "requires-python must stay at",
         "FORBIDDEN_SDIST_PREFIXES",
         "docs/pre-release-artifact-flow.md",
         "version is not marked as an alpha",

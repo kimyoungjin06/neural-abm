@@ -112,7 +112,7 @@ Before PyPI, install from a committed Git ref or tag:
 
 ```bash
 uv pip install "neural-abm @ git+file:///home/kimyoungjin06/Desktop/Workspace/1.4.6.Neural_ABM@<commit-or-tag>"
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a1"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
 ```
 
-The project currently targets Python 3.14 or newer.
+The package currently supports Python 3.11 or newer.

@@ -42,29 +42,29 @@ uv run ruff check src tests scripts
 uv run pytest -q
 git diff --check
 uv run python scripts/inspect_release_artifacts.py --build
-uv run python scripts/smoke_package_profiles.py --wheel dist/neural_abm-0.1.0a1-py3-none-any.whl
+uv run python scripts/smoke_package_profiles.py --wheel dist/neural_abm-0.1.0a2-py3-none-any.whl
 uv run python examples/toy_catalog.py
 ```
 
 Then create and push an annotated tag:
 
 ```bash
-git tag -a v0.1.0a1 -m "neural-abm 0.1.0a1"
-git push origin v0.1.0a1
+git tag -a v0.1.0a2 -m "neural-abm 0.1.0a2"
+git push origin v0.1.0a2
 ```
 
 Users can install the default package profile from the tag:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a1"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
 ```
 
 Extras use the same direct URL shape:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a1"
-uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a1"
-uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a1"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
+uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
+uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
 ```
 
 ## Metadata
@@ -76,6 +76,6 @@ uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-a
 
 Git distribution does not remove these release-owner decisions:
 
-- decide whether `requires-python = ">=3.14"` is acceptable for the first
-  public release;
+- keep the package Python support floor at `requires-python = ">=3.11"` unless
+  a compatibility pass justifies changing it;
 - decide when to reserve final `0.1.0` instead of alpha tags.

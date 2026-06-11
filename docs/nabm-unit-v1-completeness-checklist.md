@@ -1396,10 +1396,10 @@ Completed work:
 - Added safe `pyproject.toml` metadata: authors, keywords, and classifiers.
 - Resolved package licensing as Apache-2.0 and kept project URLs as explicit
   release-owner decisions rather than inventing values.
-- Moved the package version to `0.1.0a1` so public-facing artifacts no longer
+- Moved the package version to `0.1.0a2` so public-facing artifacts no longer
   look like a final `0.1.0` release.
-- Kept `requires-python = ">=3.14"` as the current research-runtime floor and
-  documented it as a public adoption risk.
+- Lowered `requires-python = ">=3.11"` for package distribution and documented
+  Python 3.11+ as the public support floor.
 - Added `scripts/inspect_release_artifacts.py --build`, which builds and
   inspects wheel/sdist metadata, default dependencies, required extras, key
   wheel modules, README metadata, required source-distribution files, and
