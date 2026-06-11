@@ -8,6 +8,8 @@ import networkx as nx
 import numpy as np
 import torch
 
+from neural_abm.metrics_core import js_divergence_np
+
 
 def accuracy_from_probs(probs: torch.Tensor, labels: torch.Tensor) -> float:
     pred = torch.argmax(probs, dim=-1)
@@ -24,21 +26,6 @@ def entropy_mean(probs: torch.Tensor) -> float:
     eps = 1e-8
     entropy = -(probs * torch.log(probs + eps)).sum(dim=-1)
     return float(entropy.mean().cpu())
-
-
-def js_divergence_np(p: np.ndarray, q: np.ndarray) -> float:
-    """Mean normalized Jensen-Shannon divergence across probe rows."""
-
-    eps = 1e-8
-    p = np.clip(p, eps, 1.0)
-    q = np.clip(q, eps, 1.0)
-    p = p / p.sum(axis=-1, keepdims=True)
-    q = q / q.sum(axis=-1, keepdims=True)
-    m = 0.5 * (p + q)
-    kl_pm = np.sum(p * (np.log(p) - np.log(m)), axis=-1)
-    kl_qm = np.sum(q * (np.log(q) - np.log(m)), axis=-1)
-    js = 0.5 * (kl_pm + kl_qm)
-    return float(np.mean(js) / math.log(2.0))
 
 
 def pairwise_output_js(probe_probs: np.ndarray) -> np.ndarray:

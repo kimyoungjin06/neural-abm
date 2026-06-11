@@ -43,6 +43,10 @@ def test_write_run_metadata_artifacts_records_capability_contract(
         "model": {"policy": {"rule": "dummy"}},
     }
     assert json.loads((run_dir / "metadata.json").read_text()) == payload
+    assert payload["toy_display_name"] == "Spatial Prisoner's Dilemma"
+    assert payload["output_family"] == "binary_probability"
+    assert payload["unit_surface"] == "binary_policy_tensor_backed"
+    assert payload["evidence_role"] == "default_evidence"
     assert payload["nabm_status"] == "full"
     assert payload["reference_policies"] == [
         "rd_well_mixed",
@@ -62,6 +66,10 @@ def test_write_domain_summary_artifact_records_capability_contract(
     )
 
     assert json.loads((tmp_path / "summary.json").read_text()) == payload
+    assert payload["toy_display_name"] == "Categorical Spatial Game"
+    assert payload["output_family"] == "categorical_distribution"
+    assert payload["unit_surface"] == "probability_distribution"
+    assert payload["evidence_role"] == "parity_coverage"
     assert payload["nabm_status"] == "compatible"
     assert payload["reference_policies"] == []
     assert payload["domain_metrics"] == {"domain_metric": 1.5}
@@ -84,4 +92,5 @@ def test_write_binary_summary_artifact_can_skip_unknown_test_toy_capability(
     )
 
     assert "nabm_status" not in payload
+    assert "toy_display_name" not in payload
     assert json.loads((tmp_path / "summary.json").read_text()) == payload

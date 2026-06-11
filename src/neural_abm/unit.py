@@ -11,6 +11,43 @@ import torch
 from torch import nn
 
 from neural_abm.social import SocialBlock, SocialChannel, SocialMixResult
+from neural_abm.unit_core import (
+    CommitAdapter,
+    CommitReport,
+    LocalUpdateAdapter,
+    LocalUpdateReport,
+    NABMLocalStep,
+    NABMStepResult,
+    PeerSelector,
+    SocialDiagnostics,
+    SocialValueBuilder,
+    social_diagnostics,
+)
+
+__all__ = [
+    "CommitAdapter",
+    "CommitReport",
+    "DistributionDistillationAdapter",
+    "LocalUpdateAdapter",
+    "LocalUpdateReport",
+    "NABMAgent",
+    "NABMLocalStep",
+    "NABMStep",
+    "NABMStepResult",
+    "NABMUnit",
+    "NABMUnitReport",
+    "ObservationSpec",
+    "PeerSelector",
+    "SocialDiagnostics",
+    "SocialMessageSpec",
+    "SocialValueBuilder",
+    "StateDictLoadAdapter",
+    "TensorDistillationAdapter",
+    "scalar_message_values",
+    "social_diagnostics",
+    "state_dict_values",
+    "tensor_message_values",
+]
 
 
 @dataclass(frozen=True)
@@ -127,122 +164,6 @@ class NABMAgent(Protocol):
         """Emit flat diagnostics for logging."""
 
 
-@dataclass(frozen=True)
-class CommitReport:
-    """Result of committing a social mix into concrete agent state."""
-
-    channel: str
-    commit_mode: str
-    committed_agent_ids: list[int]
-    losses: list[float]
-    update_norms: list[float]
-
-    @classmethod
-    def from_mix_result(
-        cls,
-        mix_result: SocialMixResult,
-        committed_agent_ids: list[int] | None = None,
-        losses: list[float] | None = None,
-    ) -> "CommitReport":
-        return cls(
-            channel=mix_result.channel,
-            commit_mode=mix_result.commit_mode,
-            committed_agent_ids=committed_agent_ids or [],
-            losses=losses if losses is not None else list(mix_result.losses),
-            update_norms=list(mix_result.update_norms),
-        )
-
-
-@dataclass(frozen=True)
-class SocialDiagnostics:
-    """Flat diagnostics derived from one social mix result."""
-
-    channel: str
-    commit_mode: str
-    peer_counts: list[int]
-    losses: list[float]
-    update_norms: list[float]
-    active_agent_count: int
-    mean_peer_count: float
-    mean_loss: float
-    mean_update_norm: float
-    max_update_norm: float
-
-    def micro_row(self, agent_id: int) -> dict[str, Any]:
-        return {
-            "social_channel": self.channel,
-            "commit_mode": self.commit_mode,
-            "social_loss": self.losses[agent_id],
-            "social_update_norm": self.update_norms[agent_id],
-        }
-
-    def aggregate_row(self) -> dict[str, Any]:
-        return {
-            "social_channel": self.channel,
-            "commit_mode": self.commit_mode,
-            "mean_social_loss": self.mean_loss,
-            "mean_social_update_norm": self.mean_update_norm,
-            "max_social_update_norm": self.max_update_norm,
-            "active_social_agent_count": self.active_agent_count,
-        }
-
-
-def social_diagnostics(mix_result: SocialMixResult) -> SocialDiagnostics:
-    """Build reusable diagnostics from a social mix result."""
-
-    peer_counts = [len(peers) for peers in mix_result.peer_ids]
-    losses = list(mix_result.losses)
-    update_norms = list(mix_result.update_norms)
-    return SocialDiagnostics(
-        channel=mix_result.channel,
-        commit_mode=mix_result.commit_mode,
-        peer_counts=peer_counts,
-        losses=losses,
-        update_norms=update_norms,
-        active_agent_count=sum(1 for count in peer_counts if count > 0),
-        mean_peer_count=float(sum(peer_counts) / len(peer_counts)) if peer_counts else 0.0,
-        mean_loss=float(sum(losses) / len(losses)) if losses else 0.0,
-        mean_update_norm=(
-            float(sum(update_norms) / len(update_norms)) if update_norms else 0.0
-        ),
-        max_update_norm=max(update_norms, default=0.0),
-    )
-
-
-class CommitAdapter(Protocol):
-    """Adapter that commits mixed social values back into agents."""
-
-    def commit(self, mix_result: SocialMixResult) -> CommitReport:
-        """Apply a social mix result and return commit diagnostics."""
-
-
-@dataclass(frozen=True)
-class LocalUpdateReport:
-    """Result of committing one local learning step."""
-
-    losses: Any
-    active_agent_ids: list[int] | None = None
-    update_result: Any | None = None
-    diagnostics: Mapping[str, Any] | None = None
-
-
-class LocalUpdateAdapter(Protocol):
-    """Adapter that commits domain-local learning into agent/backend state."""
-
-    def update(self, *args: Any, **kwargs: Any) -> LocalUpdateReport:
-        """Apply local learning and return update diagnostics."""
-
-
-@dataclass
-class NABMLocalStep:
-    """Reusable lifecycle unit for local learning updates."""
-
-    update_adapter: LocalUpdateAdapter
-
-    def run(self, *args: Any, **kwargs: Any) -> LocalUpdateReport:
-        return self.update_adapter.update(*args, **kwargs)
-
-
 @dataclass
 class StateDictLoadAdapter:
     """Commit state-dict channels by loading mixed states into agent models."""
@@ -335,15 +256,6 @@ class TensorDistillationAdapter:
         )
 
 
-@dataclass(frozen=True)
-class NABMStepResult:
-    """Full result of one reusable NABM social step."""
-
-    mix: SocialMixResult
-    commit: CommitReport
-    diagnostics: SocialDiagnostics
-
-
 @dataclass
 class NABMStep:
     """Reusable lifecycle unit for social mix and optional commit."""
@@ -380,13 +292,6 @@ class NABMStep:
             commit=commit_report,
             diagnostics=diagnostics,
         )
-
-
-PeerSelector = Callable[[Sequence[Mapping[str, Any]]], list[list[int]]]
-SocialValueBuilder = Callable[
-    [Sequence[NABMAgent], Sequence[Mapping[str, Any]]],
-    Any,
-]
 
 
 @dataclass(frozen=True)

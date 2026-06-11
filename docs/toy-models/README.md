@@ -1,27 +1,28 @@
-# Toy Model Roadmap
+# Model Family Roadmap
 
-The toy models are research-validation axes, not just examples. Each model
+The model families are research-validation axes, not just examples. Each family
 keeps a classical baseline next to the neural/social variant so the outcome is
 interpretable.
 
-Current scope:
+Current scope uses feature names for conceptual organization and stable IDs for
+reproducibility:
 
-1. Supervised learning with a known answer.
-2. Pairwise game dynamics without a fixed global label.
-3. Opinion polarization with endogenous graph rewiring.
-4. Public goods and commons group externalities.
-5. Contagion and threshold adoption cascades.
-6. Categorical multi-action spatial games.
-7. Continuous scalar resource extraction.
-8. Asynchronous event-driven adoption, failure, and recovery.
-9. Heterogeneous local-rule agent groups.
-10. Multi-channel market/ecology feedback.
+- Neural HK Classification (`toy1`).
+- Spatial Prisoner's Dilemma (`toy2`).
+- Opinion Rewiring (`toy3`).
+- Public Goods Commons (`toy4`).
+- Contagion Adoption (`toy5`).
+- Categorical Spatial Game (`toy6`).
+- Resource Intensity (`toy7`).
+- Async Event ABM (`toy8`).
+- Heterogeneous Agent Rules (`toy9`).
+- Market Ecology Network (`toy10`).
 
 Capability matrix: [capability-matrix.md](capability-matrix.md)
 
 ## Public API Contract
 
-All Toy 1-10 YAML configs use the same top-level shape:
+All checked-in model-family YAML configs use the same top-level shape:
 
 ```text
 run
@@ -32,8 +33,8 @@ logging
 ```
 
 `model` contains policy/agent/coordination state for the toy, while `domain`
-contains toy-specific environment, game, graph, data, or rewiring settings and
-always includes `toy: toy1` through `toy10`.
+contains domain-specific environment, game, graph, data, or rewiring settings
+and always includes a stable model ID such as `toy1`.
 
 Runner outputs also share a public shape. Summary JSON files include `run_dir`,
 `toy`, common `final_*` fields, and `domain_metrics`. Toy-specific CSV and

@@ -6,6 +6,13 @@ Current modules:
 
 - `accelerator`: torch device resolution plus batched per-agent MLP policy
   inference kernels for GPU-friendly neural/social toy execution.
+- `api`: stable v0 facade for reusable lifecycle, typed social exchange,
+  compatible runner, diagnostics, result, readiness, and toy feature-taxonomy
+  surfaces.
+- `api_lite`: torch-free facade seed for compatible runner, diagnostics,
+  result, readiness, toy feature-taxonomy, NumPy-only social surfaces, and
+  lightweight lifecycle report/local-step surfaces that do not load `torch` at
+  import time.
 - `binary_neural`: shared binary-policy neural accelerator helpers, including
   the `TensorPolicyRuntime` contract used by capability-gated `tensor_batched`
   runtimes.
@@ -20,6 +27,8 @@ Current modules:
 - `graphs`: static graph and peer graph helpers.
 - `logging`: micro-state and aggregate CSV logging helpers.
 - `metrics`: task and social-dynamics metrics.
+- `metrics_core`: torch-free numerical metrics shared by lightweight package
+  surfaces.
 - `mixers`: peer selection plus output, latent, and parameter averaging.
 - `mobility`: fixed-cell local-quality mobility and state-channel swaps.
 - `readiness`: binary readiness-propagation coordination unit that converts
@@ -30,6 +39,10 @@ Current modules:
   scalar probability, bounded scalar, and distribution-valued output peer
   selection, plus probability, bounded scalar, tensor, and parameter-state
   channel mixing.
+- `social_core`: torch-free `SocialChannel`, peer/result dataclasses, peer-id
+  utilities, NumPy validators, similarity helpers, peer selection helpers, and
+  scalar/bounded scalar mix helpers used by `api_lite` and re-exported by
+  `social`.
 - `spatial_binary`: shared hook runner for Toy 2, Toy 4, and Toy 5; binary
   action/probability validation; social-mode helpers for probability mixing and
   policy distillation; NumPy/torch state helpers; and common aggregate/micro
@@ -61,6 +74,9 @@ Current modules:
   price and conservation messages plus topology churn.
 - `unit`: public NABM lifecycle protocol, `NABMUnit`, `NABMStep`, commit
   adapters, message-to-channel value builders, and social diagnostics.
+- `unit_core`: torch-free commit reports, social diagnostics, local-update
+  reports, local-step adapter wrapper, and callback type aliases used by
+  `api_lite` and re-exported by `unit`.
 
 Torch device selection:
 
@@ -166,7 +182,10 @@ Contract changes must update the boundary docs in the same patch:
 - `docs/decisions/0010-nabm-unit-v1-contract.md`
 - `docs/decisions/0011-continuous-scalar-unit-contract.md`
 - `docs/decisions/0012-existing-toy-migration-parity-consolidation.md`
+- `docs/decisions/0013-public-api-v0-contract.md`
+- `docs/decisions/0014-package-dependency-policy.md`
 - `docs/nabm-unit-v1-boundary-audit.md`
+- `docs/api-surface-audit.md`
 - `docs/nabm-unit-v1-completeness-checklist.md`
 - `docs/nabm-unit-v1-migration-candidate-audit.md` when selecting the next
   existing-toy migration target.
@@ -238,6 +257,8 @@ Unit contract changes should update the docs that define the boundary:
 - `docs/decisions/0010-nabm-unit-v1-contract.md`
 - `docs/decisions/0011-continuous-scalar-unit-contract.md`
 - `docs/decisions/0012-existing-toy-migration-parity-consolidation.md`
+- `docs/decisions/0013-public-api-v0-contract.md`
+- `docs/decisions/0014-package-dependency-policy.md`
 - `docs/nabm-unit-v1-boundary-audit.md`
 - `docs/nabm-unit-v1-completeness-checklist.md`
 - `docs/nabm-unit-v1-migration-candidate-audit.md` for Gate 7 existing-toy
@@ -250,3 +271,52 @@ In particular, new shared helpers such as
 plumbing only. They may wire domain-supplied callbacks into the reusable unit,
 but they must not construct rewards, payoffs, thresholds, teacher signals,
 basin credit, or evidence criteria.
+
+## Public API v0 Boundary
+
+The current `neural_abm.__init__` export list is broader than the intended v0
+public API. It remains a lazy compatibility surface for existing module-path
+imports, not the final public contract.
+
+The next API implementation should prefer a narrow `neural_abm.api` facade that
+exports stable lifecycle, typed social exchange, compatible-toy runner,
+semantic-free diagnostics, result-envelope, and readiness-aggregation surfaces.
+Binary policy/revision lifecycles, accelerator/runtime helpers, mobility,
+reputation, evidence manifests, and paper diagnostics should stay experimental,
+paper-only, or module-path imports until their contracts are explicitly
+accepted.
+
+The first facade slice is now `src/neural_abm/api.py`; it intentionally excludes
+toy runners, evidence gates, binary revision/policy internals, and accelerator
+runtime helpers from the stable v0 namespace.
+The first torch-free profile seed is `src/neural_abm/api_lite.py`; it excludes
+`NABMUnit`, `SocialBlock`, tensor/state-dict social messages, and all other
+torch-backed lifecycle surfaces while retaining compatible runner, diagnostics,
+result, readiness utilities, and NumPy-only social primitives from
+`src/neural_abm/social_core.py`, plus lightweight lifecycle report/local-step
+primitives from `src/neural_abm/unit_core.py`. Its `SocialChannel` metadata is
+limited to scalar/bounded scalar mix channels; distribution helpers remain
+standalone, and tensor/state mixing requires the torch-backed API.
+
+## Package Dependency Boundary
+
+The default package profile is the lightweight no-torch `api_lite` boundary.
+The full stable `neural_abm.api` module still imports `unit` and `social`, and
+those modules load `torch` at import time. Torch-free social primitives now live
+in `src/neural_abm/social_core.py` and are re-exported through `api_lite`;
+`api_lite.SocialChannel` accepts only scalar/bounded scalar mix channel kinds.
+Distribution helpers remain standalone in the lite facade, while `social`
+continues to own torch-backed tensor/state-dict mixing and `SocialBlock`.
+Torch-free lifecycle reports, social diagnostics, and `NABMLocalStep` live in
+`src/neural_abm/unit_core.py`; `unit` continues to own `ObservationSpec`,
+`SocialMessageSpec`, tensor value builders, torch-backed adapters, `NABMStep`,
+and `NABMUnit`.
+
+Decision 0014 records the dependency policy. Torch-backed lifecycle work and
+research workflows now require explicit extras such as `torch`, `research`,
+`plot`, `cli`, or `full`. Future package-readiness work must decide whether v0
+remains explicitly torch-backed for lifecycle or whether more lifecycle surfaces
+should be split into torch-free modules.
+`tests/test_public_api_lite.py` is the first import-time guard for the split: it
+blocks `torch` in a subprocess and imports both the package root and
+`neural_abm.api_lite`.

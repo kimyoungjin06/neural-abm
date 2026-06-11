@@ -245,7 +245,7 @@ def test_supported_coordination_guard() -> None:
 
     with pytest.raises(
         ValueError,
-        match="Unsupported Toy 8 coordination: output_average/bounded_confidence",
+        match="Unsupported Async Event ABM coordination: output_average/bounded_confidence",
     ):
         ensure_supported_coordination(
             "toy8",
@@ -253,7 +253,7 @@ def test_supported_coordination_guard() -> None:
             "bounded_confidence",
         )
 
-    assert toy_display_name("toy10") == "Toy 10"
+    assert toy_display_name("toy10") == "Market Ecology Network"
     assert toy_display_name("custom") == "custom"
 
 

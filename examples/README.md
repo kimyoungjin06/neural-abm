@@ -1,8 +1,14 @@
 # NABM Unit Mini Examples
 
 These examples are lightweight reuse demos for the `NABMAgent` lifecycle and
-the reusable social update unit. They are not part of the Toy1-Toy5 validation
-suite.
+the reusable social update unit. They are product-facing smoke examples, not
+claim-bearing research validation runs.
+
+`minimal_api_nabm.py` is the stable API release-smoke example. It imports only
+from `neural_abm.api` and should stay small enough to catch public facade drift.
+`toy_catalog.py` is the torch-free package-profile example. It imports only
+from `neural_abm.api_lite` and prints the capability taxonomy used to map stable
+model identifiers to user-facing families.
 
 Each script follows the same shape:
 
@@ -17,6 +23,10 @@ Each script follows the same shape:
 The three included domains show different rule surfaces around the same NABM
 unit boundary:
 
+- `minimal_api_nabm.py`: compact belief-probability social mixing through the
+  stable `neural_abm.api` facade. This is an API smoke, not a domain claim.
+- `toy_catalog.py`: no-torch toy catalog lookup through the lightweight
+  `neural_abm.api_lite` facade. This is a package-profile smoke.
 - `schelling_nabm.py`: residential relocation uses a social move-probability
   channel. Metrics include satisfaction, segregation, and move rate.
 - `epidemic_compliance_nabm.py`: infection dynamics use a social compliance

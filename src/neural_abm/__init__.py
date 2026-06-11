@@ -1,93 +1,88 @@
-"""Reusable components for Neural Agent-Based Modeling."""
+"""Reusable components for Neural Agent-Based Modeling.
 
-from neural_abm.accelerator import (
-    BatchedAdamStateCache,
-    BatchedMLPParameters,
-    BatchedMLPPolicyCache,
-    NeuralUpdateBackend,
-    NeuralUpdateBackendRequest,
-    TensorBatchedMLPRuntime,
-    apply_batched_mlp_loss_gradients,
-    batched_binary_policy_gradient_losses,
-    batched_distribution_cross_entropy_losses,
-    batched_mlp_policy_probs,
-    is_accelerator_device,
-    resolve_neural_update_backend,
-    resolve_torch_device,
-    trainable_batched_mlp_parameters,
-)
-from neural_abm.mobility import (
-    MobilityParams,
-    MobilityStepResult,
-    apply_local_quality_mobility,
-)
-from neural_abm.reputation import (
-    ReputationParams,
-    reputation_imitation_cooperation_probs,
-    reputation_observation_extra_dim,
-    reputation_observation_features,
-    update_action_reputation,
-)
-from neural_abm.readiness import (
-    BinaryReadinessPropagationReport,
-    BinaryReadinessPropagationUnit,
-    binary_peer_mean_values,
-)
-from neural_abm.results import DomainToyResult
-from neural_abm.social import (
-    PROBABILITY_DISTRIBUTION_CHANNEL,
-    SCALAR_PROBABILITY_CHANNEL,
-    STATE_DICT_CHANNEL,
-    TENSOR_CHANNEL,
-    PeerSelectionResult,
-    SocialBlock,
-    SocialChannel,
-    SocialMixResult,
-)
-from neural_abm.unit import (
-    CommitReport,
-    DistributionDistillationAdapter,
-    LocalUpdateAdapter,
-    LocalUpdateReport,
-    NABMAgent,
-    NABMLocalStep,
-    NABMStep,
-    NABMStepResult,
-    NABMUnit,
-    NABMUnitReport,
-    ObservationSpec,
-    PeerSelector,
-    SocialDiagnostics,
-    SocialMessageSpec,
-    SocialValueBuilder,
-    StateDictLoadAdapter,
-    TensorDistillationAdapter,
-    scalar_message_values,
-    social_diagnostics,
-    state_dict_values,
-    tensor_message_values,
-)
-from neural_abm.binary_neural import (
-    TensorPolicyRuntime,
-    apply_tensor_binary_policy_gradient_update,
-    apply_tensor_output_average_distillation_update,
-)
-from neural_abm.binary_revision import (
-    BINARY_REVISION_CHOICE_NAMES,
-    REVISION_STAY,
-    REVISION_SWITCH_TO_ONE,
-    REVISION_SWITCH_TO_ZERO,
-    BinaryRevisionLearningCallbacks,
-    BinaryRevisionLearningResult,
-    BinaryRevisionLearningUnit,
-    apply_binary_revision_choices,
-    binary_revision_effective_stay_probabilities,
-    binary_revision_probabilities_from_action_probs,
-    binary_revision_switch_probabilities,
-    normalize_binary_revision_probabilities,
-)
+The package root is a lazy compatibility surface. Prefer ``neural_abm.api`` for
+the stable v0 API and ``neural_abm.api_lite`` for the torch-free facade seed.
+"""
 
-__version__ = "0.1.0"
+from __future__ import annotations
+
+from importlib import import_module
+from typing import Any
+
+__version__ = "0.1.0a1"
+
+_EXPORT_MODULES = {
+    "BINARY_REVISION_CHOICE_NAMES": "neural_abm.binary_revision",
+    "BatchedAdamStateCache": "neural_abm.accelerator",
+    "BatchedMLPParameters": "neural_abm.accelerator",
+    "BatchedMLPPolicyCache": "neural_abm.accelerator",
+    "BinaryReadinessPropagationReport": "neural_abm.readiness",
+    "BinaryReadinessPropagationUnit": "neural_abm.readiness",
+    "BinaryRevisionLearningCallbacks": "neural_abm.binary_revision",
+    "BinaryRevisionLearningResult": "neural_abm.binary_revision",
+    "BinaryRevisionLearningUnit": "neural_abm.binary_revision",
+    "CommitReport": "neural_abm.unit_core",
+    "DistributionDistillationAdapter": "neural_abm.unit",
+    "DomainToyResult": "neural_abm.results",
+    "LocalUpdateAdapter": "neural_abm.unit_core",
+    "LocalUpdateReport": "neural_abm.unit_core",
+    "MobilityParams": "neural_abm.mobility",
+    "MobilityStepResult": "neural_abm.mobility",
+    "NABMAgent": "neural_abm.unit",
+    "NABMLocalStep": "neural_abm.unit_core",
+    "NABMStep": "neural_abm.unit",
+    "NABMStepResult": "neural_abm.unit_core",
+    "NABMUnit": "neural_abm.unit",
+    "NABMUnitReport": "neural_abm.unit",
+    "NeuralUpdateBackend": "neural_abm.accelerator",
+    "NeuralUpdateBackendRequest": "neural_abm.accelerator",
+    "ObservationSpec": "neural_abm.unit",
+    "PROBABILITY_DISTRIBUTION_CHANNEL": "neural_abm.social_core",
+    "PeerSelectionResult": "neural_abm.social_core",
+    "PeerSelector": "neural_abm.unit_core",
+    "REVISION_STAY": "neural_abm.binary_revision",
+    "REVISION_SWITCH_TO_ONE": "neural_abm.binary_revision",
+    "REVISION_SWITCH_TO_ZERO": "neural_abm.binary_revision",
+    "ReputationParams": "neural_abm.reputation",
+    "SCALAR_PROBABILITY_CHANNEL": "neural_abm.social_core",
+    "STATE_DICT_CHANNEL": "neural_abm.social_core",
+    "SocialBlock": "neural_abm.social",
+    "SocialChannel": "neural_abm.social_core",
+    "SocialDiagnostics": "neural_abm.unit_core",
+    "SocialMessageSpec": "neural_abm.unit",
+    "SocialMixResult": "neural_abm.social_core",
+    "SocialValueBuilder": "neural_abm.unit_core",
+    "StateDictLoadAdapter": "neural_abm.unit",
+    "TENSOR_CHANNEL": "neural_abm.social_core",
+    "TensorBatchedMLPRuntime": "neural_abm.accelerator",
+    "TensorDistillationAdapter": "neural_abm.unit",
+    "TensorPolicyRuntime": "neural_abm.binary_neural",
+    "apply_batched_mlp_loss_gradients": "neural_abm.accelerator",
+    "apply_binary_revision_choices": "neural_abm.binary_revision",
+    "apply_local_quality_mobility": "neural_abm.mobility",
+    "apply_tensor_binary_policy_gradient_update": "neural_abm.binary_neural",
+    "apply_tensor_output_average_distillation_update": "neural_abm.binary_neural",
+    "batched_binary_policy_gradient_losses": "neural_abm.accelerator",
+    "batched_distribution_cross_entropy_losses": "neural_abm.accelerator",
+    "batched_mlp_policy_probs": "neural_abm.accelerator",
+    "binary_peer_mean_values": "neural_abm.readiness",
+    "binary_revision_effective_stay_probabilities": "neural_abm.binary_revision",
+    "binary_revision_probabilities_from_action_probs": "neural_abm.binary_revision",
+    "binary_revision_switch_probabilities": "neural_abm.binary_revision",
+    "is_accelerator_device": "neural_abm.accelerator",
+    "normalize_binary_revision_probabilities": "neural_abm.binary_revision",
+    "reputation_imitation_cooperation_probs": "neural_abm.reputation",
+    "reputation_observation_extra_dim": "neural_abm.reputation",
+    "reputation_observation_features": "neural_abm.reputation",
+    "resolve_neural_update_backend": "neural_abm.accelerator",
+    "resolve_torch_device": "neural_abm.accelerator",
+    "scalar_message_values": "neural_abm.unit",
+    "social_diagnostics": "neural_abm.unit_core",
+    "state_dict_values": "neural_abm.unit",
+    "tensor_message_values": "neural_abm.unit",
+    "trainable_batched_mlp_parameters": "neural_abm.accelerator",
+    "update_action_reputation": "neural_abm.reputation",
+}
 
 __all__ = [
     "BINARY_REVISION_CHOICE_NAMES",
@@ -162,3 +157,18 @@ __all__ = [
     "trainable_batched_mlp_parameters",
     "update_action_reputation",
 ]
+
+
+def __getattr__(name: str) -> Any:
+    if name == "__version__":
+        return __version__
+    module_name = _EXPORT_MODULES.get(name)
+    if module_name is None:
+        raise AttributeError(f"module 'neural_abm' has no attribute {name!r}")
+    value = getattr(import_module(module_name), name)
+    globals()[name] = value
+    return value
+
+
+def __dir__() -> list[str]:
+    return sorted({*globals(), *__all__})

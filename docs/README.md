@@ -16,6 +16,16 @@ Use this directory for internal project knowledge.
 - [nabm-unit-v1-completeness-checklist.md](nabm-unit-v1-completeness-checklist.md):
   operational completion map for the NABM Unit v1 engineering, evidence, and
   paper-readiness gates.
+- [api-surface-audit.md](api-surface-audit.md): classification of stable,
+  experimental, internal, and paper-only surfaces before a v0 public facade.
+- [package-release-boundary.md](package-release-boundary.md): product-facing
+  package entry points, install profiles, toy catalog boundary, and release
+  checklist.
+- [git-distribution-flow.md](git-distribution-flow.md): pre-PyPI Git
+  commit/tag installation and metadata flow.
+- [pre-release-artifact-flow.md](pre-release-artifact-flow.md): package
+  metadata, version, Python floor, wheel/sdist contents, and install-command
+  pre-release artifact flow.
 
 ## Guidelines
 
@@ -26,7 +36,8 @@ Use this directory for internal project knowledge.
 
 ## Toy Models
 
-- [toy-models/README.md](toy-models/README.md): Toy 1 and Toy 2 roadmap.
+- [toy-models/README.md](toy-models/README.md): capability-first model-family
+  roadmap.
 - [toy-models/neural-hk-classification.md](toy-models/neural-hk-classification.md):
   detailed Toy 1 specification.
 - [toy-models/neural-spatial-pd.md](toy-models/neural-spatial-pd.md):
@@ -57,3 +68,16 @@ Use this directory for internal project knowledge.
 - [decisions/0010-nabm-unit-v1-contract.md](decisions/0010-nabm-unit-v1-contract.md):
   accepted v1 contract, domain boundary, and holdout migration gate for the
   reusable NABM unit.
+- [decisions/0011-continuous-scalar-unit-contract.md](decisions/0011-continuous-scalar-unit-contract.md):
+  accepted bounded continuous scalar exchange contract for non-probability
+  social values.
+- [decisions/0012-existing-toy-migration-parity-consolidation.md](decisions/0012-existing-toy-migration-parity-consolidation.md):
+  accepted consolidation of Toy6-Toy10 typed social-exchange parity as an
+  engineering boundary, not performance evidence.
+- [decisions/0013-public-api-v0-contract.md](decisions/0013-public-api-v0-contract.md):
+  accepted public API v0 boundary separating stable core, experimental internals,
+  and paper evidence tooling.
+- [decisions/0014-package-dependency-policy.md](decisions/0014-package-dependency-policy.md):
+  accepted package dependency policy for lightweight API readiness, including
+  the torch-free social-core and unit-core splits, torch-backed full lifecycle
+  boundary, and optional-extra transition rules.

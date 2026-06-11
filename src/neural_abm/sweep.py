@@ -25,6 +25,7 @@ from neural_abm.capabilities import (
     NABM_ARTIFACT_FIELDS,
     supports_coordination,
     sweep_capability_metadata,
+    toy_display_name as capability_toy_display_name,
 )
 
 
@@ -243,6 +244,10 @@ def iter_parameter_grid(
 
 
 def toy_display_name(toy: str) -> str:
+    try:
+        return capability_toy_display_name(toy)
+    except KeyError:
+        pass
     if toy.startswith("toy") and toy[3:].isdigit():
         return f"Toy {int(toy[3:])}"
     return toy

@@ -1,7 +1,8 @@
 # Neural ABM
 
-This project studies Neural Agent-Based Models (NABM) as a research toolkit and
-prototype suite for agent-based modeling.
+Neural ABM is a pre-release Python package for Neural Agent-Based Models
+(NABM): simulations where neural local updates, explicit social exchange, and
+ABM-style state logging are kept separate and inspectable.
 
 In this repository, a model is inside the NABM claim when it has:
 
@@ -19,45 +20,64 @@ The current framing is conservative:
 - Position the system as a temporal heterogeneous GNN-style simulator with
   neural agents, explicit social update rules, and ABM logging.
 
-The starting reference is [ref/deep-research-report.md](ref/deep-research-report.md).
-
 ## Project Map
 
-- [docs/project-structure.md](docs/project-structure.md): long-term repository
-  structure and artifact policy.
-- [docs/process-design.md](docs/process-design.md): research process, claims,
-  decision gates, and experiment flow.
-- [docs/implementation-plan.md](docs/implementation-plan.md): uv-based
-  environment policy, module shape, and immediate pre-implementation plan.
-- [docs/guidelines/neural-abm-node-guidelines.md](docs/guidelines/neural-abm-node-guidelines.md):
-  design guidelines for the reusable Neural ABM Node.
-- [docs/guidelines/agent-internal-design.md](docs/guidelines/agent-internal-design.md):
-  internal agent contract and testing ladder.
-- [docs/toy-models/README.md](docs/toy-models/README.md): initial toy model
-  designs.
-- [docs/decisions/0001-project-positioning.md](docs/decisions/0001-project-positioning.md):
-  first architecture/research decision record.
-- [docs/decisions/0003-social-update-pipeline.md](docs/decisions/0003-social-update-pipeline.md):
-  social update decomposition into compatibility, peer selection, alignment,
-  and typed mixing.
-- [docs/decisions/0004-binary-spatial-runner-hooks.md](docs/decisions/0004-binary-spatial-runner-hooks.md):
-  binary spatial runner hook lifecycle and Toy 2/4/5 responsibility split.
-- [docs/decisions/0005-nabm-definition.md](docs/decisions/0005-nabm-definition.md):
-  conservative NABM definition, claim boundary, and toy-suite classification.
-- [docs/decisions/0006-domain-runner-and-evidence-matrix.md](docs/decisions/0006-domain-runner-and-evidence-matrix.md):
-  common runner boundary and evidence-matrix contract.
-- [docs/decisions/0007-basin-centric-relational-nabm-roadmap.md](docs/decisions/0007-basin-centric-relational-nabm-roadmap.md):
-  basin-centric relational NABM target, current gap review, and improvement
-  roadmap.
+- [docs/toy-models/README.md](docs/toy-models/README.md): capability-first
+  model-family roadmap.
+- [docs/toy-models/capability-matrix.md](docs/toy-models/capability-matrix.md):
+  current capability taxonomy and package catalog fields.
+- [docs/package-release-boundary.md](docs/package-release-boundary.md):
+  product-facing entry points, install profiles, and package checklist.
+- [docs/git-distribution-flow.md](docs/git-distribution-flow.md): pre-PyPI
+  Git commit/tag installation flow.
+- [docs/pre-release-artifact-flow.md](docs/pre-release-artifact-flow.md):
+  alpha artifact, wheel/sdist, and install-command validation flow.
+- [docs/api-surface-audit.md](docs/api-surface-audit.md): stable,
+  experimental, internal, and paper-only API boundary.
+- [examples/README.md](examples/README.md): lightweight package-facing examples.
 
-## Expected Outputs
+## Package Outputs
 
-- Paper drafts and figures in `paper/`.
-- Internal research notes and design documents in `docs/`.
 - Reusable simulation modules in `src/neural_abm/`.
-- CLI or batch scripts in `scripts/`.
-- Experiment configs, runs, and derived results in `experiments/`.
-- Periodic snapshots and quick-search indexes in `archive/`.
+- Package-facing examples in `examples/`.
+- Release and profile-smoke scripts in `scripts/`.
+- Public package docs in `docs/`.
+
+## Public API and Package Status
+
+Reusable code should start from the narrow stable facade:
+
+```python
+from neural_abm.api import NABMUnit, SocialBlock, SocialChannel
+```
+
+The package root is a lazy compatibility surface for existing module-path
+imports. New code should use `neural_abm.api` for the stable torch-backed v0
+contract. The first torch-free profile seed is `neural_abm.api_lite`; it exposes
+runner, result, diagnostics, readiness utilities, NumPy-only social primitives,
+and lightweight lifecycle reports/local-step primitives that can be imported
+without loading torch. Its `SocialChannel` metadata is limited to
+scalar/bounded scalar mix channels; distribution helpers remain standalone, and
+tensor/state mixing requires the torch-backed API. Both `neural_abm.api` and
+`neural_abm.api_lite` also expose feature-taxonomy helpers for mapping stable
+model IDs to user-facing families.
+
+The default package profile is now a lightweight torch-free install for the
+`api_lite` surface. Full `NABMUnit` lifecycle work, `SocialBlock` tensor/state
+mixing, and research workflows require explicit extras such as
+`neural-abm[torch]`, `neural-abm[research]`, or `neural-abm[full]`.
+Decision 0014 records the dependency policy and transition rules.
+[Package release boundary](docs/package-release-boundary.md) records the
+product-facing entry points and release checklist.
+
+Torch-free catalog lookup:
+
+```python
+from neural_abm.api_lite import toy_catalog, toys_by_taxonomy
+
+catalog = toy_catalog()
+binary_probability_toys = toys_by_taxonomy("output_family", "binary_probability")
+```
 
 ## Development
 
@@ -68,6 +88,31 @@ uv sync
 uv run pytest
 ```
 
-The project targets Python 3.14 or newer. Python 3.14.4 is the latest official
-3.14 maintenance release as of 2026-04-29, while `uv` may resolve a managed
-3.14.x interpreter depending on what its Python distribution index provides.
+`uv sync` installs the dev dependency group used by the full research test
+suite. For package-profile checks, use `uv build` plus isolated installs of the
+wheel or explicit extras. The release-smoke helper is:
+
+```bash
+uv run python scripts/smoke_package_profiles.py
+```
+
+The pre-release artifact inspection command is:
+
+```bash
+uv run python scripts/inspect_release_artifacts.py --build
+```
+
+The no-torch catalog example is:
+
+```bash
+uv run python examples/toy_catalog.py
+```
+
+Before PyPI, install from a committed Git ref or tag:
+
+```bash
+uv pip install "neural-abm @ git+file:///home/kimyoungjin06/Desktop/Workspace/1.4.6.Neural_ABM@<commit-or-tag>"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a1"
+```
+
+The project currently targets Python 3.14 or newer.

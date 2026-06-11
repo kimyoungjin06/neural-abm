@@ -12,6 +12,10 @@ def _between(text: str, start_marker: str, end_marker: str) -> str:
     return text[start:end]
 
 
+def _plain(text: str) -> str:
+    return " ".join(text.split())
+
+
 def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
     readme = (ROOT / "src/neural_abm/README.md").read_text()
 
@@ -34,7 +38,10 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
         "docs/decisions/0010-nabm-unit-v1-contract.md",
         "docs/decisions/0011-continuous-scalar-unit-contract.md",
         "docs/decisions/0012-existing-toy-migration-parity-consolidation.md",
+        "docs/decisions/0013-public-api-v0-contract.md",
+        "docs/decisions/0014-package-dependency-policy.md",
         "docs/nabm-unit-v1-boundary-audit.md",
+        "docs/api-surface-audit.md",
         "docs/nabm-unit-v1-completeness-checklist.md",
         "docs/nabm-unit-v1-migration-candidate-audit.md",
         "docs/nabm-unit-v1-runner-lifecycle-audit.md",
@@ -62,6 +69,7 @@ def test_nabm_unit_readme_records_v1_contract_freeze() -> None:
     assert "micro_social_diagnostic_fields" in readme
     assert "make_domain_run_dir" in readme
     assert "write_domain_run_metadata" in readme
+    assert "api_lite" in readme
 
 
 def test_nabm_unit_checklist_records_gate1_completion_and_guards() -> None:
@@ -661,6 +669,7 @@ def test_adapter_thinness_records_gate8c_boundary() -> None:
 
     for required in (
         "domain_runner",
+        "api",
         "make_domain_run_dir",
         "write_domain_run_metadata",
     ):
@@ -674,7 +683,7 @@ def test_artifact_contracts_record_gate8d_boundary() -> None:
     gate8d = _between(
         checklist,
         "### Gate 8D: Compatible-Toy Artifact Contracts",
-        "## Recommended Next Slice",
+        "### Gate 8E: API Surface Audit and v0 Contract",
     )
 
     for required in (
@@ -702,3 +711,349 @@ def test_artifact_contracts_record_gate8d_boundary() -> None:
         assert required in gate8d
 
     assert "tests/test_domain_toy_artifact_contracts.py" in readme
+
+
+def test_public_api_v0_contract_records_surface_boundary() -> None:
+    docs_index = (ROOT / "docs/README.md").read_text()
+    readme = (ROOT / "src/neural_abm/README.md").read_text()
+    root_readme = (ROOT / "README.md").read_text()
+    checklist = (ROOT / "docs/nabm-unit-v1-completeness-checklist.md").read_text()
+    audit = (ROOT / "docs/api-surface-audit.md").read_text()
+    decision = (
+        ROOT / "docs/decisions/0013-public-api-v0-contract.md"
+    ).read_text()
+    dependency_decision = (
+        ROOT / "docs/decisions/0014-package-dependency-policy.md"
+    ).read_text()
+    plain_dependency_decision = _plain(dependency_decision)
+    gate8e = _between(
+        checklist,
+        "### Gate 8E: API Surface Audit and v0 Contract",
+        "### Gate 8F: Stable v0 API Facade",
+    )
+    gate8f = _between(
+        checklist,
+        "### Gate 8F: Stable v0 API Facade",
+        "### Gate 8G: API Release Smoke",
+    )
+    gate8g = _between(
+        checklist,
+        "### Gate 8G: API Release Smoke",
+        "### Gate 8H: Package Dependency Policy",
+    )
+    gate8h = _between(
+        checklist,
+        "### Gate 8H: Package Dependency Policy",
+        "### Gate 8I: Torch-Free Facade Seed",
+    )
+    gate8i = _between(
+        checklist,
+        "### Gate 8I: Torch-Free Facade Seed",
+        "### Gate 8J: Optional Dependency Profiles",
+    )
+    gate8j = _between(
+        checklist,
+        "### Gate 8J: Optional Dependency Profiles",
+        "### Gate 8K: Built-Wheel Dependency Profile Smokes",
+    )
+    gate8k = _between(
+        checklist,
+        "### Gate 8K: Built-Wheel Dependency Profile Smokes",
+        "### Gate 8L: Torch-Free Social Core",
+    )
+    gate8l = _between(
+        checklist,
+        "### Gate 8L: Torch-Free Social Core",
+        "### Gate 8M: Torch-Free Lifecycle Reports",
+    )
+    gate8m = _between(
+        checklist,
+        "### Gate 8M: Torch-Free Lifecycle Reports",
+        "### Gate 8N: Product Package Release Boundary",
+    )
+    gate8n = _between(
+        checklist,
+        "### Gate 8N: Product Package Release Boundary",
+        "### Gate 8O: Pre-Release Artifact Flow",
+    )
+    gate8o = _between(
+        checklist,
+        "### Gate 8O: Pre-Release Artifact Flow",
+        "## Recommended Next Slice",
+    )
+    plain_gate8h = _plain(gate8h)
+    plain_gate8i = _plain(gate8i)
+    plain_gate8j = _plain(gate8j)
+    plain_gate8k = _plain(gate8k)
+    plain_gate8l = _plain(gate8l)
+    plain_gate8m = _plain(gate8m)
+    plain_gate8n = _plain(gate8n)
+    plain_gate8o = _plain(gate8o)
+
+    for required in (
+        "api-surface-audit.md",
+        "package-release-boundary.md",
+        "pre-release-artifact-flow.md",
+        "decisions/0013-public-api-v0-contract.md",
+        "decisions/0014-package-dependency-policy.md",
+        "stable",
+        "experimental",
+        "paper evidence tooling",
+        "torch-free social-core and unit-core splits",
+    ):
+        assert required in docs_index
+
+    for required in (
+        "## Public API v0 Boundary",
+        "neural_abm.__init__",
+        "lazy compatibility surface",
+        "neural_abm.api",
+        "stable lifecycle",
+        "typed social exchange",
+        "compatible-toy runner",
+        "paper-only",
+        "src/neural_abm/api.py",
+        "intentionally excludes",
+        "## Package Dependency Boundary",
+        "default package profile is the lightweight no-torch `api_lite` boundary",
+        "src/neural_abm/social_core.py",
+        "src/neural_abm/unit_core.py",
+        "Decision 0014",
+    ):
+        assert required in readme
+
+    for required in (
+        "## Public API and Package Status",
+        "from neural_abm.api import NABMUnit, SocialBlock, SocialChannel",
+        "lazy compatibility surface",
+        "neural_abm.api_lite",
+        "NumPy-only social primitives",
+        "lightweight lifecycle reports/local-step primitives",
+        "scalar/bounded scalar",
+        "lightweight torch-free install",
+        "neural-abm[torch]",
+        "neural-abm[research]",
+        "neural-abm[full]",
+        "Package release boundary",
+        "toy_catalog",
+        "uv run python scripts/smoke_package_profiles.py",
+        "uv run python scripts/inspect_release_artifacts.py --build",
+        "uv run python examples/toy_catalog.py",
+        "Decision 0014",
+    ):
+        assert required in root_readme
+
+    for required in (
+        "Stable Core Candidates",
+        "Experimental Core Candidates",
+        "Internal or Paper-Only Surfaces",
+        "Do Not Export as Stable",
+        "Current Export Gap",
+        "Recommended v0 Facade Shape",
+        "neural_abm.api",
+        "neural_abm.api_lite",
+        "neural_abm.__init__",
+        "lazy compatibility surface",
+        "not a replacement for the full stable v0 facade",
+        "scalar/bounded scalar `SocialChannel` metadata",
+        "neural_abm.social_core",
+        "neural_abm.unit_core",
+        "toy feature-taxonomy helpers",
+    ):
+        assert required in audit
+
+    for required in (
+        "Public API v0 Contract Boundary",
+        "The preferred stable import path is `neural_abm.api`",
+        "lazy compatibility",
+        "Stable v0 Responsibilities",
+        "Experimental Responsibilities",
+        "Non-API Responsibilities",
+        "Toy Runner Policy",
+        "Evidence Package Boundary",
+        "add a small `neural_abm.api` facade",
+    ):
+        assert required in decision
+
+    for required in (
+        "Package Dependency Policy for Lightweight API Readiness",
+        "The default install is the `api_lite` floor",
+        "`torch`",
+        "`research`",
+        "`full`",
+        "The dev dependency group also includes the full research stack",
+        "built-wheel profile smokes prove",
+        "default profile imports the package root",
+        "`research` extra imports representative research dependencies",
+        "scripts/smoke_package_profiles.py",
+        "must be lazy",
+        "neural_abm.api_lite",
+        "not a replacement for `neural_abm.api`",
+        "project.optional-dependencies",
+        "torch-free social primitives",
+        "`api_lite.SocialChannel` accepts only scalar/bounded",
+        "lightweight lifecycle reports/local-step primitives",
+        "Amendment: Torch-Free Social Core",
+        "Amendment: Torch-Free Lifecycle Reports",
+        "`neural_abm.unit` remains a compatibility module",
+        "The full stable v0 facade should not be marketed as a no-torch API",
+    ):
+        assert required in plain_dependency_decision
+
+    for required in (
+        "Status: audit and contract complete.",
+        "docs/api-surface-audit.md",
+        "docs/decisions/0013-public-api-v0-contract.md",
+        "current broad `neural_abm.__init__` export list",
+        "neural_abm.api",
+        "paper evidence package",
+        "public Python package",
+    ):
+        assert required in gate8e
+
+    for required in (
+        "Status: first facade slice complete.",
+        "src/neural_abm/api.py",
+        "tests/test_public_api_v0.py",
+        "neural_abm.__init__",
+        "lazy compatibility surface",
+        "Toy runners",
+        "evidence gates",
+        "accelerator",
+        "excluded from the stable",
+    ):
+        assert required in gate8f
+
+    for required in (
+        "Status: release smoke complete.",
+        "examples/minimal_api_nabm.py",
+        "tests/test_public_api_examples.py",
+        "imports only from",
+        "neural_abm.api",
+        "wheel-style build",
+        "installed-wheel import smoke",
+        "separate from toy runners",
+    ):
+        assert required in gate8g
+
+    for required in (
+        "Status: dependency policy recorded.",
+        "docs/decisions/0014-package-dependency-policy.md",
+        "tests/test_package_dependency_policy.py",
+        "default-runtime candidate",
+        "torch-backed runtime candidate extra",
+        "not yet a lightweight no-torch import boundary",
+        "isolated import smokes",
+        "`torch` optionalization is explicitly deferred",
+        "import-time coupling",
+    ):
+        assert required in plain_gate8h
+
+    for required in (
+        "Status: torch-free facade seed and no-deps wheel smoke complete.",
+        "src/neural_abm/api_lite.py",
+        "tests/test_public_api_lite.py",
+        "no-deps wheel import smoke command output",
+        "blocks `torch`",
+        "neural_abm.api_lite",
+        "only `numpy` and `pyyaml`",
+        "NABMUnit",
+        "SocialBlock",
+        "profile seed, not a replacement",
+        "No default dependency has been removed yet",
+        "default-runtime floor",
+    ):
+        assert required in plain_gate8i
+
+    for required in (
+        "Status: optional dependency profiles recorded.",
+        "pyproject.toml",
+        "uv.lock",
+        "`numpy` and `pyyaml`",
+        "`config`, `torch`, `research`, `plot`, `cli`, and `full`",
+        "uv `dev` dependency group",
+        "default package install no longer declares `torch`",
+        "explicit extras",
+        "built-wheel install/import smokes",
+    ):
+        assert required in plain_gate8j
+
+    for required in (
+        "Status: built-wheel profile smokes complete.",
+        "scripts/smoke_package_profiles.py",
+        "profile smoke command output",
+        "`default`, `torch`, `research`, and `full` profiles",
+        "without a default `torch` requirement and without loading `torch`",
+        "`NABMUnit`, `SocialBlock`, and `SocialChannel`",
+        "Toy6 runner symbols",
+        "Toy10 runner symbols",
+        "validated against built wheels",
+        "uv run python scripts/smoke_package_profiles.py",
+        "social/lifecycle modules into torch-free code",
+    ):
+        assert required in plain_gate8k
+
+    for required in (
+        "Status: torch-free social core split complete.",
+        "src/neural_abm/social_core.py",
+        "src/neural_abm/metrics_core.py",
+        "api_lite.SocialChannel",
+        "api_lite.mix_scalar_probabilities",
+        "scalar/bounded scalar mix channel kinds",
+        "rejects tensor channel metadata",
+        "without installing or loading torch",
+        "NABMUnit",
+        "SocialBlock",
+        "mix_probability_distributions",
+        "lifecycle import boundaries",
+    ):
+        assert required in plain_gate8l
+
+    for required in (
+        "Status: torch-free lifecycle report split complete.",
+        "src/neural_abm/unit_core.py",
+        "src/neural_abm/unit.py",
+        "CommitReport",
+        "LocalUpdateAdapter",
+        "SocialDiagnostics",
+        "NABMLocalStep",
+        "api_lite",
+        "ObservationSpec",
+        "SocialMessageSpec",
+        "NABMStep",
+        "NABMUnit",
+        "no-torch full lifecycle claim",
+    ):
+        assert required in plain_gate8m
+
+    for required in (
+        "Status: release boundary and catalog smoke complete.",
+        "docs/package-release-boundary.md",
+        "examples/toy_catalog.py",
+        "toy_catalog()",
+        "neural_abm.api_lite",
+        "imports only from",
+        "api_lite.toy_catalog()",
+        "Product-facing docs now point users to `api_lite`",
+        "release checklist",
+        "alpha artifact validation, distribution metadata",
+    ):
+        assert required in plain_gate8n
+
+    for required in (
+        "Status: pre-release artifact flow and inspector complete.",
+        "docs/pre-release-artifact-flow.md",
+        "scripts/inspect_release_artifacts.py",
+        "tests/test_release_artifact_inspection.py",
+        "authors, keywords, and classifiers",
+        "Apache-2.0",
+        "0.1.0a1",
+        "requires-python = \">=3.14\"",
+        "inspects wheel/sdist metadata",
+        "forbidden internal-history paths",
+        "local wheel-install matrix",
+    ):
+        assert required in plain_gate8o
+
+    assert "persistent artifact validation" in checklist
+    assert "Do not expose toy-owned semantics" in checklist

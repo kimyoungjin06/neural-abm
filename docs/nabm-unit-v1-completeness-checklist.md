@@ -912,13 +912,528 @@ Completion condition:
 - Optional import cleanup is allowed only behind these artifact-contract tests
   and Toy6-Toy10 runner tests.
 
+### Gate 8E: API Surface Audit and v0 Contract
+
+Goal: decide which surfaces can become a stable API before adding a facade.
+
+Status: audit and contract complete.
+
+Artifacts:
+
+- `docs/api-surface-audit.md`
+- `docs/decisions/0013-public-api-v0-contract.md`
+- `src/neural_abm/README.md`
+- `tests/test_nabm_unit_docs.py`
+
+Completed work:
+
+- Classified the existing module surface into stable core candidates,
+  experimental candidates, internal surfaces, paper-only surfaces, and
+  do-not-export responsibilities.
+- Recorded that the current broad `neural_abm.__init__` export list is a legacy
+  convenience surface, not the public v0 contract.
+- Selected `neural_abm.api` as the preferred narrow stable facade path for the
+  next implementation slice.
+- Kept evidence manifests and paper claim judgment outside the stable API.
+
+Result:
+
+- The internal reusable module, paper evidence package, and public Python package
+  now have separate API boundaries.
+- Stable v0 should expose lifecycle, typed social exchange, compatible-toy
+  runner, semantic-free diagnostics, result-envelope, and readiness-aggregation
+  surfaces.
+- Binary policy/revision lifecycles, accelerator/runtime helpers, mobility,
+  reputation, and evidence tooling remain experimental or module-path imports
+  until a separate decision accepts them.
+
+Completion condition:
+
+- Gate 8E is complete. The next implementation slice should add a small
+  `neural_abm.api` facade plus import-smoke and public-surface tests.
+
+### Gate 8F: Stable v0 API Facade
+
+Goal: add the narrow stable facade selected by Gate 8E without changing the
+legacy top-level export surface.
+
+Status: first facade slice complete.
+
+Artifacts:
+
+- `src/neural_abm/api.py`
+- `tests/test_public_api_v0.py`
+- `src/neural_abm/README.md`
+
+Completed work:
+
+- Added `neural_abm.api` as the stable v0 facade.
+- Exported only lifecycle, typed social exchange, compatible-toy runner,
+  semantic-free diagnostics, result-envelope, and readiness-aggregation
+  surfaces.
+- Added exact public-surface tests and import-smoke behavior checks.
+- Left `neural_abm.__init__` unchanged as a lazy compatibility surface.
+
+Result:
+
+- Internal users can now import the stable core from `neural_abm.api`.
+- Toy runners, evidence gates, binary revision/policy internals, accelerator
+  runtime helpers, and generated evidence machinery are excluded from the stable
+  v0 namespace.
+- This is an API boundary slice, not a new feature or evidence claim.
+
+Completion condition:
+
+- Gate 8F is complete for the first stable facade. Any expansion of
+  `neural_abm.api.__all__` should update `tests/test_public_api_v0.py` and
+  Decision 0013 if it adds experimental or domain-semantic surfaces.
+
+### Gate 8G: API Release Smoke
+
+Goal: prove the stable facade is usable from a small example and build/import
+smoke before moving toward public packaging.
+
+Status: release smoke complete.
+
+Artifacts:
+
+- `examples/minimal_api_nabm.py`
+- `tests/test_public_api_examples.py`
+- `examples/README.md`
+- build/import smoke command output
+
+Completed work:
+
+- Added a minimal belief-probability NABM example that imports only from
+  `neural_abm.api`.
+- Added tests that enforce the example's stable-facade-only import boundary.
+- Added script and `run_demo(...)` smoke tests for the example.
+- Verified wheel-style build and installed-wheel import smoke outside the repo
+  working tree.
+
+Result:
+
+- The stable v0 facade is now exercised by a user-facing example.
+- The example remains separate from toy runners, evidence gates, and paper
+  claims.
+- Packaging smoke is a release-readiness check only; it does not make the public
+  package complete.
+
+Completion condition:
+
+- Gate 8G is complete for first API release smoke. Future public-package work
+  should add package metadata, README import guidance, and compatibility policy
+  before broadening the facade.
+
+### Gate 8H: Package Dependency Policy
+
+Goal: define what "lightweight package" means before changing dependency
+profiles.
+
+Status: dependency policy recorded.
+
+Artifacts:
+
+- `docs/decisions/0014-package-dependency-policy.md`
+- `README.md`
+- `src/neural_abm/README.md`
+- `tests/test_package_dependency_policy.py`
+- `tests/test_nabm_unit_docs.py`
+
+Completed work:
+
+- Classified the current direct dependencies into default-runtime candidate,
+  torch-backed runtime candidate extra, research/analysis candidate extra,
+  visualization candidate extra, and progress/CLI candidate extra buckets.
+- Recorded that `neural_abm.api` is a stable API boundary but not yet a
+  lightweight no-torch import boundary because `unit` and `social` import
+  `torch` at module load time.
+- Added transition rules for optional extras, including isolated import smokes
+  before removing default dependencies.
+- Updated package README guidance to start from `neural_abm.api` while avoiding
+  a claim that the current wheel is lightweight.
+
+Result:
+
+- Package-readiness work now has a concrete dependency policy instead of a vague
+  goal to be lighter.
+- `torch` optionalization is explicitly deferred until the import-time boundary
+  is split or v0 is declared torch-backed.
+- Research, analysis, visualization, CLI, toy-runner, and evidence workflows
+  remain supported by the current default environment until their install
+  profiles are tested.
+
+Completion condition:
+
+- Gate 8H is complete for dependency policy. The next implementation slice
+  should audit import-time coupling and then decide whether to keep v0
+  torch-backed or split the facade into torch-free and torch-backed profiles.
+
+### Gate 8I: Torch-Free Facade Seed
+
+Goal: create the first import-time split before moving dependencies into
+optional extras.
+
+Status: torch-free facade seed and no-deps wheel smoke complete.
+
+Artifacts:
+
+- `src/neural_abm/api_lite.py`
+- `tests/test_public_api_lite.py`
+- `docs/api-surface-audit.md`
+- `docs/decisions/0014-package-dependency-policy.md`
+- `README.md`
+- `src/neural_abm/README.md`
+- `tests/test_nabm_unit_docs.py`
+- no-deps wheel import smoke command output
+
+Completed work:
+
+- Added `neural_abm.api_lite` as a narrower facade that imports compatible
+  runner, diagnostics, result, and readiness utilities without loading `torch`.
+- Added a subprocess import smoke that blocks `torch` and imports
+  `neural_abm.api_lite`.
+- Converted the broad package root into a lazy compatibility layer so
+  `import neural_abm` does not load `torch`.
+- Built the wheel, installed it with `--no-deps` into a temporary uv venv with
+  only `numpy` and `pyyaml`, and confirmed the package root plus
+  `neural_abm.api_lite` import without requiring or loading `torch`.
+- Kept `NABMUnit`, `SocialBlock`, tensor/state-dict social messages, lifecycle
+  protocols, and torch tensor mixing helpers in the torch-backed
+  `neural_abm.api` facade.
+- Documented that `api_lite` is a profile seed, not a replacement for the
+  stable v0 facade.
+
+Result:
+
+- The project now has a real torch-free import target to build default-package
+  smokes around.
+- The package root no longer blocks torch-free submodule imports through eager
+  legacy exports.
+- The first no-deps wheel smoke establishes `numpy` plus `pyyaml` as the current
+  default-runtime floor for `api_lite`.
+- Full lifecycle and `SocialBlock` dispatch remain torch-backed until `unit.py`
+  and `social.py` are split further or v0 is declared torch-backed.
+- No default dependency has been removed yet.
+
+Completion condition:
+
+- Gate 8I is complete for the first import-time split. The next implementation
+  slice should move direct dependencies into tested optional dependency
+  profiles while preserving the `api_lite` default-runtime floor.
+
+### Gate 8J: Optional Dependency Profiles
+
+Goal: move product-heavy dependencies out of the default package profile while
+preserving the full research/dev environment under uv.
+
+Status: optional dependency profiles recorded.
+
+Artifacts:
+
+- `pyproject.toml`
+- `uv.lock`
+- `README.md`
+- `docs/decisions/0014-package-dependency-policy.md`
+- `tests/test_package_dependency_policy.py`
+- `tests/test_nabm_unit_docs.py`
+
+Completed work:
+
+- Reduced default project dependencies to the `api_lite` floor: `numpy` and
+  `pyyaml`.
+- Added `config`, `torch`, `research`, `plot`, `cli`, and `full` optional
+  extras.
+- Kept the full research dependency stack in the uv `dev` dependency group so
+  `uv sync` still prepares the repository for the full test suite.
+- Updated package README guidance to distinguish default torch-free installs
+  from torch-backed and research extras.
+
+Result:
+
+- A default package install no longer declares `torch`, CUDA transitive
+  dependencies, plotting, pandas/pyarrow, sklearn/scipy, networkx, pydantic, or
+  tqdm as mandatory runtime dependencies.
+- Full NABM lifecycle and toy/evidence workflows remain available through
+  explicit extras or the dev dependency group.
+- No public API expansion was needed to justify dependency changes.
+
+Completion condition:
+
+- Gate 8J is complete for dependency-profile declaration. The next slice should
+  run built-wheel install/import smokes for default, `torch`, `research`, and
+  `full` profiles.
+
+### Gate 8K: Built-Wheel Dependency Profile Smokes
+
+Goal: verify that the optional dependency profiles work from an installed wheel,
+not only from the editable development tree.
+
+Status: built-wheel profile smokes complete.
+
+Artifacts:
+
+- `scripts/smoke_package_profiles.py`
+- `README.md`
+- `docs/decisions/0014-package-dependency-policy.md`
+- `tests/test_package_dependency_policy.py`
+- profile smoke command output
+
+Completed work:
+
+- Added a release-smoke script that builds the wheel and runs isolated uv
+  installs for `default`, `torch`, `research`, and `full` profiles.
+- Verified the default profile imports the package root and
+  `neural_abm.api_lite` without a default `torch` requirement and without
+  loading `torch`.
+- Verified the `torch` profile imports `NABMUnit`, `SocialBlock`, and
+  `SocialChannel` from the torch-backed `neural_abm.api` facade.
+- Verified the `research` profile imports representative research dependencies,
+  config schema types, evidence-manifest types, and Toy6 runner symbols.
+- Verified the `full` profile imports plotting, research, torch-backed API,
+  config, and Toy10 runner symbols.
+
+Result:
+
+- The package dependency split is now validated against built wheels.
+- Default install behavior is product-lightweight for `api_lite`; torch-backed
+  and research paths remain explicit opt-in profiles.
+- The release-smoke command is `uv run python scripts/smoke_package_profiles.py`.
+
+Completion condition:
+
+- Gate 8K is complete for dependency profile smoke coverage. The next slice
+  should decide whether to split more social/lifecycle modules into torch-free
+  code or keep v0 explicitly torch-backed beyond `api_lite`.
+
+### Gate 8L: Torch-Free Social Core
+
+Goal: move the NumPy-only social primitives behind `api_lite` without pulling in
+torch-backed lifecycle or tensor/state-dict mixing.
+
+Status: torch-free social core split complete.
+
+Artifacts:
+
+- `src/neural_abm/social_core.py`
+- `src/neural_abm/metrics_core.py`
+- `src/neural_abm/social.py`
+- `src/neural_abm/api_lite.py`
+- `tests/test_public_api_lite.py`
+- `scripts/smoke_package_profiles.py`
+- `docs/api-surface-audit.md`
+- `docs/decisions/0014-package-dependency-policy.md`
+- `README.md`
+- `src/neural_abm/README.md`
+
+Completed work:
+
+- Added `neural_abm.social_core` for torch-free `SocialChannel`,
+  `PeerSelectionResult`, `SocialMixResult`, scalar/bounded/distribution channel
+  constants, peer-id utilities, NumPy validators, similarity helpers, peer
+  selection helpers, and scalar/bounded scalar mix helpers.
+- Added `neural_abm.metrics_core` so distribution-similarity helpers can use
+  `js_divergence_np(...)` without importing torch-backed `metrics.py`.
+- Re-exported those social primitives through `neural_abm.social` for backward
+  compatibility while keeping `PeerIndexCache`, tensor mix, state-dict mix, and
+  `SocialBlock` in the torch-backed module.
+- Expanded `neural_abm.api_lite` to include the torch-free social primitives
+  while still excluding `NABMUnit`, `SocialBlock`,
+  `mix_probability_distributions`, tensor messages, state-dict messages, and
+  lifecycle protocols.
+- Narrowed `api_lite.SocialChannel` to scalar/bounded scalar mix channel kinds;
+  distribution validators and selectors remain standalone helpers in the lite
+  facade, while tensor/state-dict channel lifecycles stay torch-backed.
+- Strengthened the default built-wheel smoke so it constructs
+  `api_lite.SocialChannel` and runs `api_lite.mix_scalar_probabilities(...)`
+  while torch is blocked, and rejects tensor channel metadata in `api_lite`.
+
+Result:
+
+- Default-package users can now use scalar/bounded scalar social-channel
+  metadata, peer validation/selection, and NumPy scalar social mixing without
+  installing or loading torch.
+- The full stable `neural_abm.api` facade remains torch-backed because
+  `NABMUnit`, `SocialBlock`, tensor distribution mixing, tensor-channel mixing,
+  and state-dict mixing still require torch.
+- This is a packaging/API boundary improvement, not a simulation-behavior
+  change and not evidence for any toy claim.
+
+Completion condition:
+
+- Gate 8L is complete for torch-free social primitives. The next slice should
+  focus on lifecycle import boundaries only if product scope needs a no-torch
+  lifecycle API; otherwise keep full v0 explicitly torch-backed.
+
+### Gate 8M: Torch-Free Lifecycle Reports
+
+Goal: split torch-free lifecycle report and diagnostics primitives without
+claiming that the full `NABMUnit` lifecycle is no-torch.
+
+Status: torch-free lifecycle report split complete.
+
+Artifacts:
+
+- `src/neural_abm/unit_core.py`
+- `src/neural_abm/unit.py`
+- `src/neural_abm/api_lite.py`
+- `src/neural_abm/__init__.py`
+- `tests/test_public_api_lite.py`
+- `scripts/smoke_package_profiles.py`
+- `docs/api-surface-audit.md`
+- `docs/decisions/0014-package-dependency-policy.md`
+- `README.md`
+- `src/neural_abm/README.md`
+
+Completed work:
+
+- Added `neural_abm.unit_core` for torch-free `CommitReport`,
+  `SocialDiagnostics`, `social_diagnostics(...)`, `CommitAdapter`,
+  `LocalUpdateReport`, `LocalUpdateAdapter`, `NABMLocalStep`,
+  `NABMStepResult`, `PeerSelector`, and `SocialValueBuilder`.
+- Re-exported those names from `neural_abm.unit` so existing imports keep
+  working.
+- Routed lazy package-root access for `CommitReport`, `LocalUpdateReport`,
+  `LocalUpdateAdapter`, `NABMLocalStep`, `NABMStepResult`, `PeerSelector`,
+  `SocialDiagnostics`, `SocialValueBuilder`, and `social_diagnostics` to
+  `unit_core`, so those names can be accessed without importing `torch`.
+- Expanded `neural_abm.api_lite` to include the torch-free lifecycle report and
+  local-step primitives while still excluding `ObservationSpec`,
+  `SocialMessageSpec`, `NABMStep`, `NABMUnit`, tensor value builders, and
+  torch-backed commit adapters.
+- Strengthened default built-wheel smoke so it constructs `CommitReport` and
+  runs `NABMLocalStep` while torch is blocked.
+
+Result:
+
+- Default-package users can now build commit reports, social diagnostics, and
+  simple local-update adapter wrappers without installing or loading torch.
+- The full stable `neural_abm.api` facade remains torch-backed because
+  observation/message specs, tensor value builders, distillation adapters,
+  `NABMStep`, and `NABMUnit` still require torch.
+- This is a packaging/API boundary improvement, not a no-torch full lifecycle
+  claim.
+
+Completion condition:
+
+- Gate 8M is complete for lifecycle report/local-step primitives. Further
+  no-torch lifecycle work should require a separate contract for a scalar-only
+  or array-only unit rather than weakening the current tensor-backed
+  `NABMUnit` contract.
+
+### Gate 8N: Product Package Release Boundary
+
+Goal: freeze the product-facing package entry points, no-torch catalog surface,
+and release checklist without changing toy semantics or evidence claims.
+
+Status: release boundary and catalog smoke complete.
+
+Artifacts:
+
+- `docs/package-release-boundary.md`
+- `examples/toy_catalog.py`
+- `src/neural_abm/capabilities.py`
+- `src/neural_abm/api.py`
+- `src/neural_abm/api_lite.py`
+- `scripts/smoke_package_profiles.py`
+- `tests/test_public_api_examples.py`
+- `tests/test_package_dependency_policy.py`
+
+Completed work:
+
+- Added `toy_catalog()` as a JSON-friendly feature catalog for stable
+  `toy1`-`toy10` IDs, display names, taxonomy fields, NABM status, social
+  channels, reference policies, backends, runner kind, and result kind.
+- Exposed `toy_catalog()` through both `neural_abm.api` and
+  `neural_abm.api_lite`, keeping catalog lookup available in the default
+  no-torch package profile.
+- Added `examples/toy_catalog.py`, which imports only from
+  `neural_abm.api_lite` and prints the toy feature taxonomy without loading
+  `torch`.
+- Added `docs/package-release-boundary.md` for install profiles, public entry
+  points, toy catalog boundaries, release checklist commands, and non-goals.
+- Strengthened the built-wheel default profile smoke so it calls
+  `api_lite.toy_catalog()` and validates taxonomy lookup while `torch` is
+  blocked.
+
+Result:
+
+- Product-facing docs now point users to `api_lite` for no-torch metadata and
+  catalog lookup, and to `api` for torch-backed `NABMUnit` lifecycle work.
+- The release checklist is explicit: full tests, ruff, diff check, and package
+  profile smokes.
+- Stable toy IDs remain artifact/config/test IDs; feature names remain the
+  display and selection layer.
+
+Completion condition:
+
+- Gate 8N is complete for v0 package entrypoint and catalog readiness. Further
+  release work should focus on alpha artifact validation, distribution
+  metadata, and public-facing package cleanliness rather than more API surface
+  expansion.
+
+### Gate 8O: Pre-Release Artifact Flow
+
+Goal: convert the package boundary into a clean pre-public alpha artifact flow
+without changing simulation behavior or toy evidence claims.
+
+Status: pre-release artifact flow and inspector complete.
+
+Artifacts:
+
+- `docs/pre-release-artifact-flow.md`
+- `scripts/inspect_release_artifacts.py`
+- `tests/test_release_artifact_inspection.py`
+- `tests/test_package_dependency_policy.py`
+- `pyproject.toml`
+- `README.md`
+- `docs/package-release-boundary.md`
+
+Completed work:
+
+- Reviewed distribution metadata, alpha version policy, Python requirement,
+  wheel/sdist contents, and install commands separately.
+- Added safe `pyproject.toml` metadata: authors, keywords, and classifiers.
+- Resolved package licensing as Apache-2.0 and kept project URLs as explicit
+  release-owner decisions rather than inventing values.
+- Moved the package version to `0.1.0a1` so public-facing artifacts no longer
+  look like a final `0.1.0` release.
+- Kept `requires-python = ">=3.14"` as the current research-runtime floor and
+  documented it as a public adoption risk.
+- Added `scripts/inspect_release_artifacts.py --build`, which builds and
+  inspects wheel/sdist metadata, default dependencies, required extras, key
+  wheel modules, README metadata, required source-distribution files, and
+  forbidden internal-history paths.
+- Added an explicit sdist include list so public-facing source artifacts do not
+  carry gate/checklist, paper, experiment, archive, or generated-result
+  surfaces.
+
+Result:
+
+- Pre-release artifact checks now distinguish blocking packaging failures from
+  release-owner decisions before public publishing.
+- The release checklist includes ruff, full pytest, diff check, artifact
+  inspection, package-profile smokes, and the no-torch catalog example.
+- The package has a clean alpha artifact flow and resolved repository URLs, not
+  a public publish sign-off, until remaining release-owner policy is resolved.
+
+Completion condition:
+
+- Gate 8O is complete for pre-release artifact flow. Further release work
+  should resolve owner-controlled publish metadata and then perform a local
+  wheel-install matrix from the persistent `dist/` artifacts.
+
 ## Recommended Next Slice
 
-The next implementation slice should avoid another broad parameter sweep. Two
-paths are now useful:
+The next implementation slice should move from alpha artifact hardening to
+release-owner decisions and persistent artifact validation:
 
-- Adapter no-extract boundary note: record the remaining adapter methods that
-  should stay toy-owned unless two future domains expose the same semantics.
-- Optional import cleanup: if needed, reduce local compatibility wrappers only
-  where `tests/test_domain_toy_artifact_contracts.py` and Toy6-Toy10 runner
-  tests prove the CSV contracts stay identical.
+- Keep `project.urls` aligned with the GitHub remote.
+- Keep the package on alpha/rc versions until the first intentional public
+  `0.1.0` release.
+- Run local wheel install checks from the exact persistent artifacts in `dist/`.
+- Keep tensor messages, state-dict messages, `SocialBlock`, `NABMStep`,
+  `NABMUnit`, and agent lifecycle protocols torch-backed unless a separate
+  refactor proves otherwise.
+- Do not expose toy-owned semantics, evidence criteria, generated manifests, or
+  paper claim judgment as stable API.

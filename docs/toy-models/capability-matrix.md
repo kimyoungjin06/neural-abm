@@ -1,14 +1,60 @@
-# Toy 1-10 Capability Matrix
+# Toy Feature Taxonomy and Capability Matrix
 
-This matrix records the current ABM coverage after the Toy1-10 paper-candidate
-validation and the Toy6-10 sensitivity additions. It is meant to answer two
-questions:
+This document records the current ABM coverage by capability family. Stable IDs
+remain available for configs, artifacts, tests, and paper traceability, but
+user-facing organization starts from feature taxonomy rather than numeric order.
+
+It is meant to answer three questions:
 
 - Which ABM shapes are already represented by the toy suite?
+- Which feature family should a new model be compared against first?
 - What parts are common framework surface versus toy-specific domain logic?
 
 Source of truth for machine-readable support is
 `src/neural_abm/capabilities.py`.
+
+## Stable IDs vs Feature Names
+
+Stable IDs are compatibility identifiers, not the main conceptual taxonomy.
+Product copy, selection UIs, and planning documents should prefer the feature
+names below, while preserving `toy1`-style IDs in artifact paths, config names,
+test names, and reproducibility references.
+
+| Stable ID | Feature Name | Domain Family | State Family | Output Family | Topology Family | Unit Surface | Evidence Role |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `toy1` | Neural HK Classification | supervised social learning | supervised probe | categorical distribution | static population | torch-backed distribution/latent/parameter | default evidence |
+| `toy2` | Spatial Prisoner's Dilemma | binary spatial game | binary spatial | binary probability | spatial grid with mobility | binary policy tensor-backed | default evidence |
+| `toy3` | Opinion Rewiring | continuous opinion dynamics | continuous graph | continuous scalar | dynamic rewiring | continuous output, toy-specific | default evidence |
+| `toy4` | Public Goods Commons | binary public-goods commons | binary resource | binary probability | spatial group/resource | binary policy tensor-backed | default evidence |
+| `toy5` | Contagion Adoption | binary contagion cascade | binary threshold | binary probability | spatial exposure | binary policy tensor-backed | default evidence |
+| `toy6` | Categorical Spatial Game | categorical spatial game | categorical grid | categorical distribution | spatial grid | probability distribution | parity coverage |
+| `toy7` | Resource Intensity | continuous resource extraction | continuous resource | bounded scalar | spatial resource | bounded scalar | parity coverage |
+| `toy8` | Async Event ABM | asynchronous event dynamics | event queue | event hazard | event-time snapshot | scalar probability | parity coverage |
+| `toy9` | Heterogeneous Agent Rules | heterogeneous rule dynamics | heterogeneous group state | binary probability | static group network | scalar probability | parity coverage |
+| `toy10` | Market Ecology Network | market/ecology feedback | multi-channel continuous | multi-channel bounded scalar | dynamic network churn | bounded scalar per channel | parity coverage |
+
+## Feature Groups
+
+Output representation:
+
+- Binary probability: `toy2`, `toy4`, `toy5`, `toy9`.
+- Categorical distribution: `toy1`, `toy6`.
+- Continuous scalar: `toy3`.
+- Bounded scalar: `toy7`.
+- Event hazard: `toy8`.
+- Multi-channel bounded scalar: `toy10`.
+
+Topology behavior:
+
+- Static population or grid: `toy1`, `toy6`, `toy7`, `toy9`.
+- Spatial grid with binary interaction or exposure: `toy2`, `toy4`, `toy5`.
+- Dynamic rewiring or churn: `toy3`, `toy10`.
+- Event-time snapshot scheduling: `toy8`.
+
+Claim/evidence role:
+
+- Default evidence families: `toy1`, `toy2`, `toy3`, `toy4`, `toy5`.
+- Parity coverage families: `toy6`, `toy7`, `toy8`, `toy9`, `toy10`.
 
 ## Matrix
 
@@ -74,8 +120,21 @@ runner, config shape, or artifact contract does not upgrade the NABM status.
 | Toy9 | `compatible`; heterogeneous local-rule coverage with unit-backed action-probability social-mixing parity. | `DomainToyRunner` through `DomainRunSettings`. | Common domain result, metadata, summary, aggregate, and micro artifacts. | Parity slice complete; compatible but not evidence-default. |
 | Toy10 | `compatible`; market/ecology network coverage with unit-backed per-channel bounded-scalar social-mixing parity. | `DomainToyRunner` through `DomainRunSettings`. | Common domain result, metadata, summary, aggregate, and micro artifacts. | Parity slice complete; compatible but not evidence-default. |
 
-Run artifacts record the same classification fields in `metadata.json`,
-`summary.json`, and sweep summary outputs:
+Run artifacts record the same classification fields in `metadata.json` and
+`summary.json`:
+
+```text
+toy_display_name
+domain_family
+state_family
+output_family
+topology_family
+coordination_family
+unit_surface
+evidence_role
+```
+
+Run artifacts and sweep summary outputs also keep the existing NABM fields:
 
 ```text
 nabm_status
@@ -86,7 +145,7 @@ reference_policies
 
 ## Common Surface
 
-All Toy1-10 configs use the same public top-level shape:
+All checked-in model-family configs use the same public top-level shape:
 
 ```text
 run
@@ -108,7 +167,7 @@ domain_metrics
 CSV outputs preserve toy-specific fields under `domain_*` names. This keeps the
 public contract stable while allowing each toy to own its domain equations.
 
-Toy1-10 sweep scripts share common output specs, result-row field mapping,
+Model-family sweep scripts share common output specs, result-row field mapping,
 summary writers, grouped-summary construction, optional grouped Markdown hooks,
 spec-bound compatibility helpers for script-local summary functions, and
 selected row/config/result extraction helpers in `src/neural_abm/sweep.py`,
@@ -119,8 +178,8 @@ output writing while keeping its case matrix and Markdown readout local. Toy3-10
 share common coordination/case iteration, prepared-case config writing with
 nested updates and optional Toy-specific mutation hooks, run execution, row
 assembly, and main orchestration helpers.
-Toy2 and Toy3-10 also share the common CLI argument block, with toy-specific
-legacy defaults preserved through helper options. Toy2 still owns its
+Toy2 and Toy3-10 also share the common CLI argument block, with domain-specific
+default choices preserved through helper options. Toy2 still owns its
 payoff/regime matrix semantics, conditional grid pruning, and RD reference
 insertion, but its point-row orchestration, non-overwriting output path
 resolution, and summary/grouped/Markdown output writing run through the shared
@@ -130,9 +189,9 @@ config-update builders are isolated as small toy-specific functions.
 
 ## Unit-Backed Migration Parity
 
-Gates 7B-7G migrated one social-exchange slice from each compatible Toy6-10
-runner through the NABM Unit typed-channel surface. This is an engineering
-reuse claim, not a performance or status-upgrade claim.
+The migration-parity pass moved one social-exchange slice from each compatible
+Toy6-10 runner through the NABM Unit typed-channel surface. This is an
+engineering reuse claim, not a performance or status-upgrade claim.
 
 | Toy | Typed unit surface | Migrated social slice | Domain semantics that stay toy-owned |
 | --- | --- | --- | --- |

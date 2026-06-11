@@ -9,7 +9,7 @@ from typing import Any
 import pytest
 import yaml
 
-from neural_abm.capabilities import toy_capability
+from neural_abm.capabilities import TOY_TAXONOMY_ARTIFACT_FIELDS, toy_capability
 from neural_abm.results import DomainToyResult
 from neural_abm.spatial_binary import BinaryToyResult
 from neural_abm.toy_classification import run_toy1
@@ -59,6 +59,7 @@ TOP_LEVEL_FIELDS = {"run", "simulation", "model", "domain", "logging"}
 BINARY_SUMMARY_FIELDS = {
     "run_dir",
     "toy",
+    *TOY_TAXONOMY_ARTIFACT_FIELDS,
     "nabm_status",
     "neural_role",
     "social_channels",
@@ -74,6 +75,7 @@ BINARY_SUMMARY_FIELDS = {
 DOMAIN_SUMMARY_FIELDS = {
     "run_dir",
     "toy",
+    *TOY_TAXONOMY_ARTIFACT_FIELDS,
     "nabm_status",
     "neural_role",
     "social_channels",
@@ -325,6 +327,14 @@ def test_toy_public_api_contract(
     assert set(summary) == summary_fields
     assert summary["toy"] == toy
     capability = toy_capability(toy)
+    assert summary["toy_display_name"] == capability.display_name
+    assert summary["domain_family"] == capability.domain_family
+    assert summary["state_family"] == capability.state_family
+    assert summary["output_family"] == capability.output_family
+    assert summary["topology_family"] == capability.topology_family
+    assert summary["coordination_family"] == capability.coordination_family
+    assert summary["unit_surface"] == capability.unit_surface
+    assert summary["evidence_role"] == capability.evidence_role
     assert summary["nabm_status"] == capability.nabm_status
     assert summary["neural_role"] == capability.neural_role
     assert summary["social_channels"] == list(capability.social_channels)
@@ -337,6 +347,14 @@ def test_toy_public_api_contract(
     assert all(key.startswith("domain_") for key in summary["domain_metrics"])
 
     metadata = json.loads((result.run_dir / "metadata.json").read_text("utf-8"))
+    assert metadata["toy_display_name"] == capability.display_name
+    assert metadata["domain_family"] == capability.domain_family
+    assert metadata["state_family"] == capability.state_family
+    assert metadata["output_family"] == capability.output_family
+    assert metadata["topology_family"] == capability.topology_family
+    assert metadata["coordination_family"] == capability.coordination_family
+    assert metadata["unit_surface"] == capability.unit_surface
+    assert metadata["evidence_role"] == capability.evidence_role
     assert metadata["nabm_status"] == capability.nabm_status
     assert metadata["neural_role"] == capability.neural_role
     assert metadata["social_channels"] == list(capability.social_channels)
