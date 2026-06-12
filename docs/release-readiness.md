@@ -38,6 +38,12 @@ Use alpha tags while any of these are true:
 - The release notes still describe the package as pre-public.
 - Remaining release-owner decisions are unresolved.
 
+## Next Operational Gate
+
+Follow [pypi-publishing.md](pypi-publishing.md) to configure pending Trusted
+Publishers for TestPyPI and PyPI, then run the manual TestPyPI workflow before
+changing README install commands or reserving final `0.1.0`.
+
 ## Final Release Rule
 
 Reserve `0.1.0` only when a user can install from PyPI, run the no-torch catalog

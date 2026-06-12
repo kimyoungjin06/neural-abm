@@ -28,6 +28,8 @@ Use this directory for internal project knowledge.
   pre-release artifact flow.
 - [release-readiness.md](release-readiness.md): CI, TestPyPI/PyPI, release
   note, and final `0.1.0` readiness gates.
+- [pypi-publishing.md](pypi-publishing.md): Trusted Publishing setup and
+  manual TestPyPI/PyPI workflow.
 
 ## Guidelines
 

@@ -31,6 +31,8 @@ The current framing is conservative:
 
 - [docs/release-readiness.md](docs/release-readiness.md): remaining release
   gates before reserving final `0.1.0`.
+- [docs/pypi-publishing.md](docs/pypi-publishing.md): Trusted Publishing and
+  TestPyPI/PyPI workflow setup.
 - [docs/toy-models/README.md](docs/toy-models/README.md): capability-first
   model-family roadmap.
 - [docs/toy-models/capability-matrix.md](docs/toy-models/capability-matrix.md):
