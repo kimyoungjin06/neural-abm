@@ -51,14 +51,15 @@ registrations.
 
 ## GitHub Environments
 
-Create two GitHub environments:
+The GitHub repository uses two environments:
 
 - `testpypi`
 - `pypi`
 
-Require manual approval for the `pypi` environment before any final publish.
-This matches PyPA guidance for production PyPI publishing and keeps TestPyPI
-iteration separate from final release operations.
+Keep `testpypi` unprotected for alpha iteration. Require manual approval for
+the `pypi` environment before any final publish. This matches PyPA guidance for
+production PyPI publishing and keeps TestPyPI iteration separate from final
+release operations.
 
 ## TestPyPI Run
 
@@ -67,8 +68,9 @@ Use the GitHub Actions UI:
 1. Open **Actions**.
 2. Select **Publish Python package**.
 3. Click **Run workflow**.
-4. Select `target=testpypi`.
-5. Set `version` to the current alpha version, for example `0.1.0a2`.
+4. For a tagged alpha, run from the matching tag, for example `v0.1.0a2`.
+5. Select `target=testpypi`.
+6. Set `version` to the current alpha version, for example `0.1.0a2`.
 
 The workflow builds wheel/sdist, validates package metadata, uploads to
 TestPyPI, and then runs a default install smoke from TestPyPI.
