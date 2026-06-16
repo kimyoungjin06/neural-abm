@@ -94,7 +94,7 @@ For a narrower default-profile check during iteration:
 
 ```bash
 uv run python scripts/smoke_package_profiles.py --profiles default
-uv run python examples/toy_catalog.py
+uv run --no-dev python examples/toy_catalog.py
 ```
 
 The artifact inspector should show that default wheel metadata does not require

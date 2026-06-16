@@ -6,10 +6,10 @@ Neural ABM is a pre-release Python package for Neural Agent-Based Models
 (NABM): simulations where neural local updates, explicit social exchange, and
 ABM-style state logging are kept separate and inspectable.
 
-The current alpha is distributed from Git tags before PyPI publication. The
-default install is intentionally lightweight: it installs only `numpy` and
-`pyyaml`, supports Python 3.11 or newer, and exposes the torch-free
-`neural_abm.api_lite` surface.
+The current alpha is intended to be tried from a Git clone or Git tag before
+PyPI publication. The default path is intentionally lightweight: it installs
+only `numpy` and `pyyaml`, supports Python 3.11 or newer, and exposes the
+torch-free `neural_abm.api_lite` surface.
 
 In this repository, a model is inside the NABM claim when it has:
 
@@ -49,13 +49,34 @@ The current framing is conservative:
 
 ## Quick Start
 
-Install the current Git alpha:
+Clone the repository and run the torch-free catalog smoke:
+
+```bash
+git clone https://github.com/kimyoungjin06/neural-abm.git
+cd neural-abm
+uv run --no-dev python examples/toy_catalog.py
+```
+
+Query the lightweight API from the clone:
+
+```bash
+uv run --no-dev python - <<'PY'
+from neural_abm.api_lite import toy_catalog, toys_by_taxonomy
+
+catalog = toy_catalog()
+binary_probability_toys = toys_by_taxonomy("output_family", "binary_probability")
+print(len(catalog), binary_probability_toys)
+PY
+```
+
+Install from the current Git alpha tag only when you want to consume it as a
+dependency:
 
 ```bash
 uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
 ```
 
-Query the torch-free toy catalog:
+Then query the torch-free toy catalog from another project:
 
 ```python
 from neural_abm.api_lite import toy_catalog, toys_by_taxonomy
@@ -143,10 +164,11 @@ uv run python scripts/inspect_release_artifacts.py --build
 The no-torch catalog example is:
 
 ```bash
-uv run python examples/toy_catalog.py
+uv run --no-dev python examples/toy_catalog.py
 ```
 
-Before PyPI, install from a committed Git ref or tag:
+Before PyPI, the primary user path is a Git clone. Direct Git URL installs are
+also supported from committed refs or tags:
 
 ```bash
 uv pip install "neural-abm @ git+file:///home/kimyoungjin06/Desktop/Workspace/1.4.6.Neural_ABM@<commit-or-tag>"

@@ -105,7 +105,7 @@ uv run pytest -q
 git diff --check
 uv run python scripts/inspect_release_artifacts.py --build
 uv run python scripts/smoke_package_profiles.py
-uv run python examples/toy_catalog.py
+uv run --no-dev python examples/toy_catalog.py
 ```
 
 Pass criteria:

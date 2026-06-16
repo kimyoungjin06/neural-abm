@@ -838,7 +838,7 @@ def test_public_api_v0_contract_records_surface_boundary() -> None:
         "toy_catalog",
         "uv run python scripts/smoke_package_profiles.py",
         "uv run python scripts/inspect_release_artifacts.py --build",
-        "uv run python examples/toy_catalog.py",
+        "uv run --no-dev python examples/toy_catalog.py",
         "Decision 0014",
     ):
         assert required in root_readme

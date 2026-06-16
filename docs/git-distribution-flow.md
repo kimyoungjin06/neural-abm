@@ -5,11 +5,28 @@ or annotated tag, not a package-index upload.
 
 ## Current Mode
 
-The repository can be used locally before pushing a release tag:
+The primary pre-PyPI user path is a fresh clone. It should exercise the default
+package profile without installing the dev dependency group or loading torch:
+
+```bash
+git clone https://github.com/kimyoungjin06/neural-abm.git
+cd neural-abm
+uv run --no-dev python examples/toy_catalog.py
+uv run --no-dev python - <<'PY'
+import sys
+
+from neural_abm.api_lite import toy_catalog
+
+assert len(toy_catalog()) == 10
+assert "torch" not in sys.modules
+PY
+```
+
+The repository can also be used locally before pushing a release tag:
 
 ```bash
 uv pip install -e .
-uv run python examples/toy_catalog.py
+uv run --no-dev python examples/toy_catalog.py
 ```
 
 For a Git-style install from the local repository, use a committed ref. Git URL
@@ -43,7 +60,7 @@ uv run pytest -q
 git diff --check
 uv run python scripts/inspect_release_artifacts.py --build
 uv run python scripts/smoke_package_profiles.py --wheel dist/neural_abm-0.1.0a2-py3-none-any.whl
-uv run python examples/toy_catalog.py
+uv run --no-dev python examples/toy_catalog.py
 ```
 
 Then create and push an annotated tag:
