@@ -1,6 +1,6 @@
 [project]
 name = "neural-abm"
-version = "0.1.0a2"
+version = "0.1.0a3"
 description = "Neural agent-based modeling prototypes with explicit social mixing"
 readme = "README.md"
 license = "Apache-2.0"

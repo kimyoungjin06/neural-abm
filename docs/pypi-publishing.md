@@ -68,9 +68,9 @@ Use the GitHub Actions UI:
 1. Open **Actions**.
 2. Select **Publish Python package**.
 3. Click **Run workflow**.
-4. For a tagged alpha, run from the matching tag, for example `v0.1.0a2`.
+4. For a tagged alpha, run from the matching tag, for example `v0.1.0a3`.
 5. Select `target=testpypi`.
-6. Set `version` to the current alpha version, for example `0.1.0a2`.
+6. Set `version` to the current alpha version, for example `0.1.0a3`.
 
 The workflow builds wheel/sdist, validates package metadata, uploads to
 TestPyPI, and then runs a default install smoke from TestPyPI.
@@ -106,7 +106,7 @@ publish neural-abm 0.1.0 to pypi
 
 ## Current Status
 
-As of `v0.1.0a2`, the project is ready for TestPyPI setup but has not been
+As of `v0.1.0a3`, the project is ready for TestPyPI setup but has not been
 published to TestPyPI or PyPI.
 
 Do not switch README install commands from Git tags to PyPI until the TestPyPI

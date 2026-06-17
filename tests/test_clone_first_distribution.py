@@ -17,7 +17,7 @@ def test_readme_quick_start_prefers_clone_first_flow() -> None:
     clone_command = "git clone https://github.com/kimyoungjin06/neural-abm.git"
     tag_install_command = (
         'uv pip install "neural-abm @ '
-        "git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2\""
+        "git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3\""
     )
 
     assert readme.index(clone_command, quick_start) < readme.index(
@@ -65,29 +65,28 @@ def test_release_readiness_defers_pypi_until_clone_first_alpha() -> None:
         "git clone https://github.com/kimyoungjin06/neural-abm.git",
         "Smoke clone-first default environment",
         "Keep PyPI deferred",
-        "current `main` state should be promoted to a new Git alpha tag",
-        "`pyproject.toml` is intentionally bumped",
+        "`v0.1.0a3` Git alpha tag",
+        "`pyproject.toml` and `neural_abm.__version__` both report `0.1.0a3`",
         "Do not change README install commands to PyPI",
     ):
         assert required in compact_doc
 
 
-def test_v010a3_candidate_note_records_clone_first_gate() -> None:
+def test_v010a3_release_note_records_clone_first_gate() -> None:
     note = (
-        ROOT / "docs" / "releases" / "v0.1.0a3-candidate.md"
+        ROOT / "docs" / "releases" / "v0.1.0a3.md"
     ).read_text(encoding="utf-8")
     compact_note = _compact(note)
     docs_index = (ROOT / "docs" / "README.md").read_text(encoding="utf-8")
 
     for required in (
-        "`v0.1.0a3` is the next proposed Git alpha tag",
-        "It has not been tagged yet",
+        "`v0.1.0a3` is a pre-public Git alpha release",
         "git clone https://github.com/kimyoungjin06/neural-abm.git",
         "uv run --no-dev python examples/toy_catalog.py",
         "Smoke clone-first default environment",
         "TestPyPI/PyPI publishing remains deferred",
-        "Do not tag `v0.1.0a3` while package metadata still says `0.1.0a2`",
+        "`pyproject.toml` and package metadata report `0.1.0a3`",
     ):
         assert required in compact_note
 
-    assert "releases/v0.1.0a3-candidate.md" in docs_index
+    assert "releases/v0.1.0a3.md" in docs_index

@@ -5,10 +5,9 @@ final `0.1.0` release.
 
 ## Current Verdict
 
-Do not reserve final `0.1.0` yet. The repository has a validated Git alpha
-(`v0.1.0a2`) and the current `main` branch has a validated clone-first alpha
-path with a lightweight default package profile. Final public release still
-needs index-publishing and release-operations checks.
+Do not reserve final `0.1.0` yet. The repository has a validated clone-first
+alpha path (`v0.1.0a3`) with a lightweight default package profile. Final public
+release still needs index-publishing and release-operations checks.
 
 The current product-facing path before PyPI is:
 
@@ -53,8 +52,8 @@ Use alpha tags while any of these are true:
 ## Next Operational Gate
 
 Keep PyPI deferred until the Git-based alpha path is the stable onboarding
-surface. The next operational gate is to decide whether the current `main`
-state should be promoted to a new Git alpha tag, expected to be `v0.1.0a3`.
+surface. The next operational gate is to verify the `v0.1.0a3` Git alpha tag
+from a fresh remote clone and a direct Git tag install.
 
 Before tagging that alpha, confirm:
 
@@ -62,10 +61,10 @@ Before tagging that alpha, confirm:
 2. `docs/git-distribution-flow.md` documents the fresh clone smoke.
 3. CI is green on the candidate commit.
 4. A fresh remote clone runs the no-dev catalog smoke without loading torch.
-5. `pyproject.toml` is intentionally bumped before any new alpha tag is cut.
-6. Git tag install commands point at the new alpha tag after it exists.
+5. `pyproject.toml` and `neural_abm.__version__` both report `0.1.0a3`.
+6. Git tag install commands point at `v0.1.0a3`.
 
-After the clone-first alpha tag is cut and verified, follow
+After the clone-first alpha tag is verified, follow
 [pypi-publishing.md](pypi-publishing.md) to configure pending Trusted
 Publishers for TestPyPI and PyPI. Do not change README install commands to PyPI
 or reserve final `0.1.0` before the TestPyPI workflow has passed.

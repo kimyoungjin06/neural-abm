@@ -26,7 +26,7 @@ Decision:
 
 Current status:
 
-- The project version is `0.1.0a2`.
+- The project version is `0.1.0a3`.
 
 Decision:
 
@@ -77,13 +77,13 @@ Local artifact check:
 
 ```bash
 uv build --out-dir dist
-uv run --isolated --with dist/neural_abm-0.1.0a2-py3-none-any.whl python -c "import neural_abm.api_lite"
+uv run --isolated --with dist/neural_abm-0.1.0a3-py3-none-any.whl python -c "import neural_abm.api_lite"
 ```
 
 Git ref install after a remote/tag exists:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
 ```
 
 After PyPI publication, package docs may use:

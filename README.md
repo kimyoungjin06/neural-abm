@@ -73,7 +73,7 @@ Install from the current Git alpha tag only when you want to consume it as a
 dependency:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
 ```
 
 Then query the torch-free toy catalog from another project:
@@ -88,7 +88,7 @@ binary_probability_toys = toys_by_taxonomy("output_family", "binary_probability"
 Install the torch-backed lifecycle API only when needed:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
 ```
 
 ```python
@@ -172,7 +172,7 @@ also supported from committed refs or tags:
 
 ```bash
 uv pip install "neural-abm @ git+file:///home/kimyoungjin06/Desktop/Workspace/1.4.6.Neural_ABM@<commit-or-tag>"
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
 ```
 
 The package currently supports Python 3.11 or newer.

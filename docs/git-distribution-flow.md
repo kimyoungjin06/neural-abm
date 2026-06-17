@@ -59,29 +59,29 @@ uv run ruff check src tests scripts
 uv run pytest -q
 git diff --check
 uv run python scripts/inspect_release_artifacts.py --build
-uv run python scripts/smoke_package_profiles.py --wheel dist/neural_abm-0.1.0a2-py3-none-any.whl
+uv run python scripts/smoke_package_profiles.py --wheel dist/neural_abm-0.1.0a3-py3-none-any.whl
 uv run --no-dev python examples/toy_catalog.py
 ```
 
 Then create and push an annotated tag:
 
 ```bash
-git tag -a v0.1.0a2 -m "neural-abm 0.1.0a2"
-git push origin v0.1.0a2
+git tag -a v0.1.0a3 -m "neural-abm 0.1.0a3"
+git push origin v0.1.0a3
 ```
 
 Users can install the default package profile from the tag:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
 ```
 
 Extras use the same direct URL shape:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
-uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
-uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a2"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
+uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
+uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
 ```
 
 ## Metadata

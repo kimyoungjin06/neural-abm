@@ -35,8 +35,8 @@ Use this directory for internal project knowledge.
 
 - [releases/v0.1.0a2.md](releases/v0.1.0a2.md): validated Git alpha release
   note for the current tagged alpha.
-- [releases/v0.1.0a3-candidate.md](releases/v0.1.0a3-candidate.md):
-  candidate note for the clone-first Git alpha path.
+- [releases/v0.1.0a3.md](releases/v0.1.0a3.md): clone-first Git alpha
+  release note.
 
 ## Guidelines
 
