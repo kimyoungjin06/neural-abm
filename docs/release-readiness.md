@@ -67,15 +67,28 @@ The `v0.1.0a3` Git alpha gate is complete:
 
 ## Next Operational Gate
 
-The next operational gate is TestPyPI setup and smoke, not final PyPI
-publishing.
+The next operational gate is clone-first productization, not TestPyPI or PyPI.
+Treat the Git clone path as the primary user experience until it is stable
+enough for external users to follow without project context.
 
-Follow [pypi-publishing.md](pypi-publishing.md) to configure pending Trusted
-Publishers for TestPyPI and PyPI. Then run the manual publish workflow against
-the `v0.1.0a3` tag with `target=testpypi` and `version=0.1.0a3`.
+Focus the next pass on:
 
-Do not change README install commands to PyPI or reserve final `0.1.0` before
-the TestPyPI workflow has passed from the package index.
+1. README and docs wording that starts from a fresh clone and explains the
+   no-torch default surface.
+2. A compact first-run example that exercises `neural_abm.api_lite` and the toy
+   catalog without requiring research dependencies.
+3. CI and release checks that keep the fresh clone, direct Git tag install, and
+   wheel default profile aligned.
+4. GitHub Actions maintenance that removes runner deprecation warnings before
+   they become release noise.
+5. A short issue/discussion handoff for early Git users, including what is
+   stable, experimental, and intentionally torch-backed.
+
+TestPyPI remains a deferred package-index validation path. Follow
+[pypi-publishing.md](pypi-publishing.md) only after the clone-first user path is
+stable enough to justify testing index publication. Do not change README install
+commands to PyPI or reserve final `0.1.0` before that later package-index smoke
+has passed.
 
 ## Final Release Rule
 

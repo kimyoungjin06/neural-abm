@@ -106,8 +106,10 @@ publish neural-abm 0.1.0 to pypi
 
 ## Current Status
 
-As of `v0.1.0a3`, the project is ready for TestPyPI setup but has not been
-published to TestPyPI or PyPI.
+As of `v0.1.0a3`, the publish workflow is prepared but the active release focus
+remains clone-first Git distribution. The project has not been published to
+TestPyPI or PyPI.
 
-Do not switch README install commands from Git tags to PyPI until the TestPyPI
-smoke and the final PyPI publish path are both proven.
+Do not switch README install commands from Git tags to PyPI until package-index
+publication becomes the active release track and the TestPyPI smoke plus final
+PyPI publish path are both proven.
