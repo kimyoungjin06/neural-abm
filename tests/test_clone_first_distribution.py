@@ -6,6 +6,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def _compact(text: str) -> str:
+    return " ".join(text.split())
+
+
 def test_readme_quick_start_prefers_clone_first_flow() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     quick_start = readme.index("## Quick Start")
@@ -50,3 +54,40 @@ def test_ci_keeps_clone_first_default_profile_smoke() -> None:
         'assert payload["toy_count"] == 10',
     ):
         assert required in workflow
+
+
+def test_release_readiness_defers_pypi_until_clone_first_alpha() -> None:
+    doc = (ROOT / "docs" / "release-readiness.md").read_text(encoding="utf-8")
+    compact_doc = _compact(doc)
+
+    for required in (
+        "validated clone-first alpha path",
+        "git clone https://github.com/kimyoungjin06/neural-abm.git",
+        "Smoke clone-first default environment",
+        "Keep PyPI deferred",
+        "current `main` state should be promoted to a new Git alpha tag",
+        "`pyproject.toml` is intentionally bumped",
+        "Do not change README install commands to PyPI",
+    ):
+        assert required in compact_doc
+
+
+def test_v010a3_candidate_note_records_clone_first_gate() -> None:
+    note = (
+        ROOT / "docs" / "releases" / "v0.1.0a3-candidate.md"
+    ).read_text(encoding="utf-8")
+    compact_note = _compact(note)
+    docs_index = (ROOT / "docs" / "README.md").read_text(encoding="utf-8")
+
+    for required in (
+        "`v0.1.0a3` is the next proposed Git alpha tag",
+        "It has not been tagged yet",
+        "git clone https://github.com/kimyoungjin06/neural-abm.git",
+        "uv run --no-dev python examples/toy_catalog.py",
+        "Smoke clone-first default environment",
+        "TestPyPI/PyPI publishing remains deferred",
+        "Do not tag `v0.1.0a3` while package metadata still says `0.1.0a2`",
+    ):
+        assert required in compact_note
+
+    assert "releases/v0.1.0a3-candidate.md" in docs_index

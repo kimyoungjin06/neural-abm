@@ -31,6 +31,13 @@ Use this directory for internal project knowledge.
 - [pypi-publishing.md](pypi-publishing.md): Trusted Publishing setup and
   manual TestPyPI/PyPI workflow.
 
+## Release Notes
+
+- [releases/v0.1.0a2.md](releases/v0.1.0a2.md): validated Git alpha release
+  note for the current tagged alpha.
+- [releases/v0.1.0a3-candidate.md](releases/v0.1.0a3-candidate.md):
+  candidate note for the clone-first Git alpha path.
+
 ## Guidelines
 
 - [guidelines/neural-abm-node-guidelines.md](guidelines/neural-abm-node-guidelines.md):
