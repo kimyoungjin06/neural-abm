@@ -6,10 +6,10 @@ newer.
 
 ## Current Use Path
 
-Start with a fresh clone:
+Start with the current verified alpha tag:
 
 ```bash
-git clone https://github.com/kimyoungjin06/neural-abm.git
+git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
@@ -17,6 +17,10 @@ uv run --no-dev python examples/toy_catalog.py
 
 The first-run output should report `status=ok`, `toy_count=10`, and
 `torch_loaded=false`.
+
+Use `main` only when intentionally checking unreleased changes. If a user
+reports a failure from `main`, ask them to reproduce the same commands against
+`v0.1.0a4` before treating it as a release-path regression.
 
 Use a Git tag install only when consuming the package from another project:
 

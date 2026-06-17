@@ -10,6 +10,17 @@ body:
         Use this form for the current repository-first alpha path. The default
         profile should run `examples/first_run.py` and `examples/toy_catalog.py`
         without installing or loading torch.
+
+        Reproduce the current verified alpha tag first:
+
+        ```bash
+        git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git neural-abm
+        cd neural-abm
+        uv run --no-dev python examples/first_run.py
+        uv run --no-dev python examples/toy_catalog.py
+        ```
+
+        Handoff: docs/early-git-user-handoff.md
   - type: dropdown
     id: path
     attributes:

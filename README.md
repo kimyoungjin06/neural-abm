@@ -13,10 +13,10 @@ and Git tags.
 
 ## Quick Start
 
-Clone the repository and run the torch-free first-run check:
+Clone the current verified alpha tag and run the torch-free first-run check:
 
 ```bash
-git clone https://github.com/kimyoungjin06/neural-abm.git
+git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 ```
@@ -39,6 +39,9 @@ binary_probability_toys = toys_by_taxonomy("output_family", "binary_probability"
 print(len(catalog), binary_probability_toys)
 PY
 ```
+
+Use the default branch only when you intentionally want unreleased changes from
+`main`. For early-user reports, reproduce against `v0.1.0a4` first.
 
 Install from the current Git alpha tag only when you want to consume it as a
 dependency:
@@ -78,7 +81,8 @@ from neural_abm.api import NABMUnit, SocialBlock, SocialChannel
 ## Troubleshooting
 
 If the clone-first path fails, capture the command output before changing the
-environment:
+environment or installing optional extras. Use the same command order as the
+Quick Start:
 
 ```bash
 uv --version
@@ -89,8 +93,8 @@ uv run --no-dev python examples/toy_catalog.py
 ```
 
 Open an issue with the failed command, full output, operating system, Python
-version, `uv --version`, and whether you expected torch-backed behavior. The
-early-user checklist is in
+version, `uv --version`, the attempted Git ref, and whether you expected
+torch-backed behavior. The early-user checklist is in
 [docs/early-git-user-handoff.md](docs/early-git-user-handoff.md).
 
 ## Project Map

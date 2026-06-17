@@ -40,7 +40,7 @@ The feedback loop starts from these surfaces:
 Primary path:
 
 ```bash
-git clone https://github.com/kimyoungjin06/neural-abm.git
+git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py

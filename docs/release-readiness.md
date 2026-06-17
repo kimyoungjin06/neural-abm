@@ -5,12 +5,12 @@ This document tracks the clone-first release path.
 ## Current Verdict
 
 Do not reserve final `0.1.0` yet. The repository has a validated clone-first
-alpha path and the next release target is `v0.1.0a4`.
+alpha path, and the current verified alpha is `v0.1.0a4`.
 
 The product-facing path is:
 
 ```bash
-git clone https://github.com/kimyoungjin06/neural-abm.git
+git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
