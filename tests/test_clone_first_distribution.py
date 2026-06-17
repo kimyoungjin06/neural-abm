@@ -56,7 +56,7 @@ def test_ci_keeps_clone_first_default_profile_smoke() -> None:
         assert required in workflow
 
 
-def test_release_readiness_defers_pypi_until_clone_first_alpha() -> None:
+def test_release_readiness_records_verified_alpha_and_testpypi_gate() -> None:
     doc = (ROOT / "docs" / "release-readiness.md").read_text(encoding="utf-8")
     compact_doc = _compact(doc)
 
@@ -64,9 +64,12 @@ def test_release_readiness_defers_pypi_until_clone_first_alpha() -> None:
         "validated clone-first alpha path",
         "git clone https://github.com/kimyoungjin06/neural-abm.git",
         "Smoke clone-first default environment",
-        "Keep PyPI deferred",
-        "`v0.1.0a3` Git alpha tag",
+        "direct Git tag install smoke have passed",
+        "The `v0.1.0a3` Git alpha gate is complete",
+        "CI is green on the release tag",
         "`pyproject.toml` and `neural_abm.__version__` both report `0.1.0a3`",
+        "The next operational gate is TestPyPI setup and smoke",
+        "manual publish workflow against the `v0.1.0a3` tag",
         "Do not change README install commands to PyPI",
     ):
         assert required in compact_doc
