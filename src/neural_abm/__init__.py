@@ -9,7 +9,7 @@ from __future__ import annotations
 from importlib import import_module
 from typing import Any
 
-__version__ = "0.1.0a3"
+__version__ = "0.1.0a4"
 
 _EXPORT_MODULES = {
     "BINARY_REVISION_CHOICE_NAMES": "neural_abm.binary_revision",

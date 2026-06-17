@@ -1,12 +1,12 @@
 # Git Distribution Flow
 
-This flow covers pre-PyPI alpha distribution. The release unit is a Git commit
-or annotated tag, not a package-index upload.
+This flow covers Git alpha distribution. The release unit is a Git commit or
+annotated tag.
 
 ## Current Mode
 
-The primary pre-PyPI user path is a fresh clone. It should exercise the default
-package profile without installing the dev dependency group or loading torch:
+The primary user path is a fresh clone. It should exercise the default package
+profile without installing the dev dependency group or loading torch:
 
 ```bash
 git clone https://github.com/kimyoungjin06/neural-abm.git
@@ -60,7 +60,7 @@ uv run ruff check src tests scripts
 uv run pytest -q
 git diff --check
 uv run python scripts/inspect_release_artifacts.py --build
-uv run python scripts/smoke_package_profiles.py --wheel dist/neural_abm-0.1.0a3-py3-none-any.whl
+uv run python scripts/smoke_package_profiles.py --wheel dist/neural_abm-0.1.0a4-py3-none-any.whl
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
 ```
@@ -68,22 +68,22 @@ uv run --no-dev python examples/toy_catalog.py
 Then create and push an annotated tag:
 
 ```bash
-git tag -a v0.1.0a3 -m "neural-abm 0.1.0a3"
-git push origin v0.1.0a3
+git tag -a v0.1.0a4 -m "neural-abm 0.1.0a4"
+git push origin v0.1.0a4
 ```
 
 Users can install the default package profile from the tag:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
 ```
 
 Extras use the same direct URL shape:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
-uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
-uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
 ```
 
 ## Metadata
@@ -91,7 +91,7 @@ uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-a
 `project.urls` points at this repository and its issue tracker. Use a
 `Documentation` URL only after documentation has a stable public location.
 
-## Remaining Non-Git Decisions
+## Remaining Release Decisions
 
 Git distribution does not remove these release-owner decisions:
 

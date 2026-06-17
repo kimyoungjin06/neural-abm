@@ -5,10 +5,10 @@ package shape. It is a packaging contract, not a new simulation claim.
 
 ## Install Profiles
 
-Default install:
+Default Git tag install:
 
 ```bash
-uv pip install neural-abm
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
 ```
 
 The default profile is the lightweight `api_lite` floor. It supports package
@@ -20,7 +20,7 @@ torch-free lifecycle reports/local-step helpers. It must not import or require
 Torch-backed API:
 
 ```bash
-uv pip install 'neural-abm[torch]'
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
 ```
 
 Use this profile for `neural_abm.api`, `NABMUnit`, `NABMStep`, `SocialBlock`,
@@ -29,8 +29,8 @@ tensor/state-dict social messages, and the full tensor-backed lifecycle.
 Research workflows:
 
 ```bash
-uv pip install 'neural-abm[research]'
-uv pip install 'neural-abm[full]'
+uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
 ```
 
 Use these profiles for toy runners, evidence matrices, paper workflows,
@@ -80,7 +80,7 @@ and sweep field contracts keep established NABM fields for compatibility.
 
 ## Release Checklist
 
-Run this checklist before packaging or publishing a release candidate:
+Run this checklist before tagging a release candidate:
 
 ```bash
 uv run ruff check src tests scripts
@@ -104,9 +104,8 @@ blocking torch imports.
 See [pre-release-artifact-flow.md](pre-release-artifact-flow.md) for the
 metadata, version, Python-floor, wheel/sdist, and install-command review.
 
-Before PyPI, use [git-distribution-flow.md](git-distribution-flow.md) for
-commit/tag based installation from
-`https://github.com/kimyoungjin06/neural-abm`.
+Use [git-distribution-flow.md](git-distribution-flow.md) for commit/tag based
+installation from `https://github.com/kimyoungjin06/neural-abm`.
 
 ## Non-Goals
 

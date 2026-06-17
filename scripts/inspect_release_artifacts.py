@@ -32,9 +32,11 @@ REQUIRED_SDIST_FILES = {
     "LICENSE",
     "README.md",
     "pyproject.toml",
+    "docs/early-git-user-handoff.md",
     "docs/git-distribution-flow.md",
     "docs/package-release-boundary.md",
     "docs/pre-release-artifact-flow.md",
+    "examples/first_run.py",
     "examples/toy_catalog.py",
     "scripts/smoke_package_profiles.py",
 }
@@ -163,9 +165,9 @@ def _inspect_pyproject(pyproject: dict[str, Any]) -> dict[str, Any]:
     if project.get("requires-python") != REQUIRED_PYTHON:
         blocking_issues.append(f"requires-python must stay at {REQUIRED_PYTHON}")
     if "license" not in project:
-        warnings.append("project.license is not set; choose a license before publish")
+        warnings.append("project.license is not set; choose a license before release")
     if "urls" not in project:
-        warnings.append("project.urls is not set; add project links before publish")
+        warnings.append("project.urls is not set; add project links before release")
     version = project.get("version", "")
     if not _is_pre_release_version(version):
         warnings.append(

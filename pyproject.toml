@@ -1,6 +1,6 @@
 [project]
 name = "neural-abm"
-version = "0.1.0a3"
+version = "0.1.0a4"
 description = "Neural agent-based modeling prototypes with explicit social mixing"
 readme = "README.md"
 license = "Apache-2.0"
@@ -99,6 +99,7 @@ include = [
     "/pyproject.toml",
     "/docs/api-surface-audit.md",
     "/docs/git-distribution-flow.md",
+    "/docs/early-git-user-handoff.md",
     "/docs/package-release-boundary.md",
     "/docs/pre-release-artifact-flow.md",
     "/docs/toy-models/README.md",
@@ -106,6 +107,7 @@ include = [
     "/docs/decisions/0013-public-api-v0-contract.md",
     "/docs/decisions/0014-package-dependency-policy.md",
     "/examples/README.md",
+    "/examples/first_run.py",
     "/examples/minimal_api_nabm.py",
     "/examples/toy_catalog.py",
     "/scripts/inspect_release_artifacts.py",

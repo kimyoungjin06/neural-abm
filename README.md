@@ -8,7 +8,8 @@ ABM-style state logging are kept separate and inspectable.
 
 The current alpha is clone-first. Start from a Git clone, use `uv`, and stay on
 the default torch-free `neural_abm.api_lite` surface unless you explicitly need
-the torch-backed lifecycle API. Package-index publication is deferred.
+the torch-backed lifecycle API. The current distribution path is the repository
+and Git tags.
 
 ## Quick Start
 
@@ -43,7 +44,7 @@ Install from the current Git alpha tag only when you want to consume it as a
 dependency:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
 ```
 
 Then query the torch-free toy catalog from another project:
@@ -58,7 +59,7 @@ binary_probability_toys = toys_by_taxonomy("output_family", "binary_probability"
 Install the torch-backed lifecycle API only when needed:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
 ```
 
 ```python
@@ -78,8 +79,10 @@ from neural_abm.api import NABMUnit, SocialBlock, SocialChannel
 
 - [docs/release-readiness.md](docs/release-readiness.md): clone-first readiness
   and remaining gates before final `0.1.0`.
-- [docs/git-distribution-flow.md](docs/git-distribution-flow.md): pre-PyPI
-  Git clone and commit/tag distribution flow.
+- [docs/git-distribution-flow.md](docs/git-distribution-flow.md): Git clone
+  and commit/tag distribution flow.
+- [docs/early-git-user-handoff.md](docs/early-git-user-handoff.md): stable,
+  torch-backed, and experimental surfaces for early Git users.
 - [docs/package-release-boundary.md](docs/package-release-boundary.md):
   product-facing entry points, install profiles, and package checklist.
 - [examples/README.md](examples/README.md): lightweight package-facing examples.
@@ -91,8 +94,6 @@ from neural_abm.api import NABMUnit, SocialBlock, SocialChannel
   experimental, internal, and paper-only API boundary.
 - [docs/pre-release-artifact-flow.md](docs/pre-release-artifact-flow.md):
   alpha artifact, wheel/sdist, and install-command validation flow.
-- [docs/pypi-publishing.md](docs/pypi-publishing.md): deferred
-  TestPyPI/PyPI workflow setup.
 
 ## Package Outputs
 
@@ -185,11 +186,11 @@ uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
 ```
 
-Before PyPI, the primary user path is a Git clone. Direct Git URL installs are
-also supported from committed refs or tags:
+The primary user path is a Git clone. Direct Git URL installs are also
+supported from committed refs or tags:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
 ```
 
 The package currently supports Python 3.11 or newer.

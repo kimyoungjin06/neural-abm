@@ -1,8 +1,8 @@
 # Pre-Release Artifact Flow
 
-This flow treats the package as a pre-public alpha artifact. The goal is to
+This flow treats the package as a Git-distributed alpha artifact. The goal is to
 produce a clean installable package without carrying internal gate history into
-the public-facing distribution.
+the user-facing distribution.
 
 ## Reviewed Items
 
@@ -26,12 +26,12 @@ Decision:
 
 Current status:
 
-- The project version is `0.1.0a3`.
+- The project version is `0.1.0a4`.
 
 Decision:
 
-- Use alpha versions while the package is pre-public and still changing shape.
-- Reserve final `0.1.0` for the first intentional public release.
+- Use alpha versions while the package is still changing shape.
+- Reserve final `0.1.0` for the first release that should be treated as stable.
 
 ### 3. Python Requirement
 
@@ -71,28 +71,19 @@ files, and rejects internal-history paths in the sdist.
 
 ### 5. Install Commands
 
-Before PyPI publication, use local built artifacts or Git refs.
+Use local built artifacts or Git refs.
 
 Local artifact check:
 
 ```bash
 uv build --out-dir dist
-uv run --isolated --with dist/neural_abm-0.1.0a3-py3-none-any.whl python -c "import neural_abm.api_lite"
+uv run --isolated --with dist/neural_abm-0.1.0a4-py3-none-any.whl python -c "import neural_abm.api_lite"
 ```
 
 Git ref install after a remote/tag exists:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
-```
-
-After PyPI publication, package docs may use:
-
-```bash
-uv pip install neural-abm
-uv pip install 'neural-abm[torch]'
-uv pip install 'neural-abm[research]'
-uv pip install 'neural-abm[full]'
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
 ```
 
 ## Pre-Release Checklist
@@ -130,5 +121,5 @@ Release-owner decisions:
 
 - Do not broaden the API surface during pre-release artifact hardening.
 - Do not change toy semantics, artifact IDs, or evidence claims.
-- Do not mark the package public-ready until the remaining release-owner policy
-  is explicitly resolved.
+- Do not mark the package stable until the remaining release-owner policy is
+  explicitly resolved.

@@ -21,20 +21,22 @@ Use this directory for internal project knowledge.
 - [package-release-boundary.md](package-release-boundary.md): product-facing
   package entry points, install profiles, toy catalog boundary, and release
   checklist.
-- [git-distribution-flow.md](git-distribution-flow.md): pre-PyPI Git
-  commit/tag installation and metadata flow.
+- [git-distribution-flow.md](git-distribution-flow.md): Git commit/tag
+  installation and metadata flow.
+- [early-git-user-handoff.md](early-git-user-handoff.md): stable,
+  torch-backed, and experimental surfaces for early Git users.
 - [pre-release-artifact-flow.md](pre-release-artifact-flow.md): package
   metadata, version, Python floor, wheel/sdist contents, and install-command
   pre-release artifact flow.
 - [release-readiness.md](release-readiness.md): clone-first productization,
-  CI, deferred package-index publishing, and final `0.1.0` readiness gates.
-- [pypi-publishing.md](pypi-publishing.md): Trusted Publishing setup and
-  manual TestPyPI/PyPI workflow.
+  CI, Git tag validation, and final `0.1.0` readiness gates.
 
 ## Release Notes
 
-- [releases/v0.1.0a3.md](releases/v0.1.0a3.md): clone-first Git alpha
+- [releases/v0.1.0a4.md](releases/v0.1.0a4.md): clone-first Git alpha
   release note for the current tagged alpha.
+- [releases/v0.1.0a3.md](releases/v0.1.0a3.md): historical clone-first Git
+  alpha release note.
 - [releases/v0.1.0a2.md](releases/v0.1.0a2.md): historical Git alpha release
   note.
 

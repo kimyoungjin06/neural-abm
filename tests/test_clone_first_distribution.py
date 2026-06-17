@@ -19,12 +19,13 @@ def test_readme_quick_start_prefers_clone_first_flow() -> None:
     clone_command = "git clone https://github.com/kimyoungjin06/neural-abm.git"
     tag_install_command = (
         'uv pip install "neural-abm @ '
-        "git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3\""
+        "git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4\""
     )
 
     assert quick_start < project_map
     assert quick_start < scope
-    assert quick_start < readme.index("PyPI")
+    assert "PyPI" not in readme
+    assert "TestPyPI" not in readme
     assert "The current alpha is clone-first" in readme[:quick_start]
     assert "/home/kimyoungjin06" not in readme
     assert "Desktop/Workspace" not in readme
@@ -46,11 +47,12 @@ def test_git_distribution_flow_documents_fresh_clone_smoke() -> None:
     doc = (ROOT / "docs" / "git-distribution-flow.md").read_text(encoding="utf-8")
 
     for required in (
-        "primary pre-PyPI user path is a fresh clone",
+        "primary user path is a fresh clone",
         "git clone https://github.com/kimyoungjin06/neural-abm.git",
         "uv run --no-dev python examples/first_run.py",
         "uv run --no-dev python examples/toy_catalog.py",
         'assert "torch" not in sys.modules',
+        "v0.1.0a4",
     ):
         assert required in doc
 
@@ -81,34 +83,54 @@ def test_release_readiness_records_verified_alpha_and_clone_first_next_gate() ->
         "git clone https://github.com/kimyoungjin06/neural-abm.git",
         "uv run --no-dev python examples/first_run.py",
         "Smoke clone-first default environment",
-        "direct Git tag install smoke have passed",
+        "A direct Git tag install reports matching",
         "The `v0.1.0a3` Git alpha gate is complete",
         "CI is green on the release tag",
         "`pyproject.toml` and `neural_abm.__version__` both report `0.1.0a3`",
-        "The next operational gate is clone-first productization",
-        "not TestPyPI or PyPI",
-        "GitHub Actions maintenance that removes runner deprecation warnings",
-        "TestPyPI remains a deferred package-index validation path",
-        "Do not change README install commands to PyPI",
+        "The current operational gate is `v0.1.0a4`",
+        "GitHub Actions on Node 24 compatible action versions",
+        "Early Git user handoff guidance",
+        "Fresh remote clone and direct Git tag install smoke for the `v0.1.0a4` tag",
     ):
         assert required in compact_doc
 
 
-def test_v010a3_release_note_records_clone_first_gate() -> None:
+def test_early_git_user_handoff_documents_surface_boundaries() -> None:
+    handoff = (
+        ROOT / "docs" / "early-git-user-handoff.md"
+    ).read_text(encoding="utf-8")
+    compact_handoff = _compact(handoff)
+
+    for required in (
+        "Early Git User Handoff",
+        "uv run --no-dev python examples/first_run.py",
+        "uv run --no-dev python examples/toy_catalog.py",
+        "`neural_abm.api_lite`: torch-free",
+        "Intentionally Torch-Backed Surfaces",
+        "`neural_abm.api`: stable v0 lifecycle facade",
+        "Experimental or Internal Surfaces",
+        "What To Report",
+        "v0.1.0a4",
+    ):
+        assert required in compact_handoff
+
+
+def test_v010a4_release_note_records_clone_first_gate() -> None:
     note = (
-        ROOT / "docs" / "releases" / "v0.1.0a3.md"
+        ROOT / "docs" / "releases" / "v0.1.0a4.md"
     ).read_text(encoding="utf-8")
     compact_note = _compact(note)
     docs_index = (ROOT / "docs" / "README.md").read_text(encoding="utf-8")
 
     for required in (
-        "`v0.1.0a3` is a pre-public Git alpha release",
-        "git clone https://github.com/kimyoungjin06/neural-abm.git",
+        "`v0.1.0a4` is a clone-first Git alpha release",
+        "git clone --depth 1 --branch v0.1.0a4",
         "uv run --no-dev python examples/toy_catalog.py",
         "Smoke clone-first default environment",
-        "TestPyPI/PyPI publishing remains deferred",
-        "`pyproject.toml` and package metadata report `0.1.0a3`",
+        "Removed package upload automation and planning",
+        "Package metadata and `neural_abm.__version__` both report `0.1.0a4`",
     ):
         assert required in compact_note
 
+    assert "releases/v0.1.0a4.md" in docs_index
     assert "releases/v0.1.0a3.md" in docs_index
