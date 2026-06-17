@@ -75,6 +75,24 @@ from neural_abm.api import NABMUnit, SocialBlock, SocialChannel
   models; the full taxonomy is printed by `examples/toy_catalog.py`.
 - Python 3.11 or newer is supported.
 
+## Troubleshooting
+
+If the clone-first path fails, capture the command output before changing the
+environment:
+
+```bash
+uv --version
+python --version
+git rev-parse --short HEAD
+uv run --no-dev python examples/first_run.py
+uv run --no-dev python examples/toy_catalog.py
+```
+
+Open an issue with the failed command, full output, operating system, Python
+version, `uv --version`, and whether you expected torch-backed behavior. The
+early-user checklist is in
+[docs/early-git-user-handoff.md](docs/early-git-user-handoff.md).
+
 ## Project Map
 
 - [docs/release-readiness.md](docs/release-readiness.md): clone-first readiness

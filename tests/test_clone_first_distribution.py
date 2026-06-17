@@ -41,6 +41,9 @@ def test_readme_quick_start_prefers_clone_first_flow() -> None:
     )
     assert "The first-run output should report" in readme
     assert "Query the lightweight API from the clone" in readme
+    assert "## Troubleshooting" in readme
+    assert "git rev-parse --short HEAD" in readme
+    assert "Open an issue with the failed command" in readme
 
 
 def test_git_distribution_flow_documents_fresh_clone_smoke() -> None:
@@ -110,9 +113,37 @@ def test_early_git_user_handoff_documents_surface_boundaries() -> None:
         "`neural_abm.api`: stable v0 lifecycle facade",
         "Experimental or Internal Surfaces",
         "What To Report",
+        "Minimal Diagnostic Bundle",
+        "git rev-parse --short HEAD",
+        "direct Git tag install failure",
+        "torch_installed=false",
         "v0.1.0a4",
     ):
         assert required in compact_handoff
+
+
+def test_early_git_issue_template_collects_reproducible_failure_context() -> None:
+    template = (
+        ROOT / ".github" / "ISSUE_TEMPLATE" / "early-git-user-report.yml"
+    ).read_text(encoding="utf-8")
+    config = (
+        ROOT / ".github" / "ISSUE_TEMPLATE" / "config.yml"
+    ).read_text(encoding="utf-8")
+
+    for required in (
+        "Early Git user report",
+        "clone-first",
+        "Direct Git tag install",
+        "uv run --no-dev python examples/first_run.py",
+        "uv run --no-dev python examples/toy_catalog.py",
+        "git rev-parse --short HEAD",
+        "Did you expect torch-backed behavior?",
+        "Default clone-first usage should not install or load torch",
+        "v0.1.0a4",
+    ):
+        assert required in template
+
+    assert "docs/early-git-user-handoff.md" in config
 
 
 def test_v010a4_release_note_records_clone_first_gate() -> None:

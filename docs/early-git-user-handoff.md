@@ -69,3 +69,45 @@ When opening an issue, include:
 - The Git tag or `git rev-parse HEAD`.
 - The full output from `examples/first_run.py` or `examples/toy_catalog.py`.
 - Whether torch was expected for the attempted command.
+
+## Minimal Diagnostic Bundle
+
+For a fresh clone failure, run these commands from the repository root and paste
+the full output into the issue:
+
+```bash
+uv --version
+python --version
+git rev-parse --short HEAD
+uv run --no-dev python examples/first_run.py
+uv run --no-dev python examples/toy_catalog.py
+```
+
+For a direct Git tag install failure, include the exact install command and a
+short import smoke:
+
+```bash
+uv run --isolated --no-project --python 3.11 \
+  --with "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4" \
+  python - <<'PY'
+import importlib.metadata
+import importlib.util
+import json
+import sys
+
+import neural_abm
+from neural_abm.api_lite import toy_catalog
+
+print(json.dumps({
+    "version": neural_abm.__version__,
+    "metadata_version": importlib.metadata.version("neural-abm"),
+    "toy_count": len(toy_catalog()),
+    "torch_installed": importlib.util.find_spec("torch") is not None,
+    "torch_loaded": "torch" in sys.modules,
+}, sort_keys=True))
+PY
+```
+
+Expected default-profile values are `version=0.1.0a4`,
+`metadata_version=0.1.0a4`, `toy_count=10`, `torch_installed=false`, and
+`torch_loaded=false`.

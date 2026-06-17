@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Early Git user handoff
+    url: https://github.com/kimyoungjin06/neural-abm/blob/main/docs/early-git-user-handoff.md
+    about: Read the clone-first support checklist before filing an issue.
