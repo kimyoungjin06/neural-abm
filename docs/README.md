@@ -28,6 +28,8 @@ Use this directory for internal project knowledge.
 - [early-git-feedback-loop-design.md](early-git-feedback-loop-design.md):
   triage taxonomy, reproduction commands, and release decision rules for early
   Git user reports.
+- [early-git-maintainer-triage-checklist.md](early-git-maintainer-triage-checklist.md):
+  maintainer checklist for labeling, reproducing, and closing early Git reports.
 - [pre-release-artifact-flow.md](pre-release-artifact-flow.md): package
   metadata, version, Python floor, wheel/sdist contents, and install-command
   pre-release artifact flow.

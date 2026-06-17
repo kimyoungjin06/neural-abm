@@ -1,0 +1,27 @@
+# Repository labels used by the early Git feedback loop.
+# Keep these names aligned with docs/early-git-feedback-loop-design.md.
+
+- name: early-git
+  color: "5319e7"
+  description: Reports from clone-first or direct Git tag alpha users.
+- name: docs
+  color: "0075ca"
+  description: README, handoff, examples, or release docs need clarification.
+- name: clone-smoke
+  color: "d73a4a"
+  description: Fresh clone commands fail in a clean environment.
+- name: git-install
+  color: "fbca04"
+  description: Direct Git tag install fails or reports mismatched metadata.
+- name: dependency-profile
+  color: "c5def5"
+  description: Default or extra dependency profile behaves unexpectedly.
+- name: api-boundary
+  color: "1d76db"
+  description: Stable api_lite or api surface import or behavior issue.
+- name: environment
+  color: "bfd4f2"
+  description: OS, Python, shell, uv, network, or cache dependent failure.
+- name: unsupported-surface
+  color: "eeeeee"
+  description: Report targets internals outside the current stable user contract.

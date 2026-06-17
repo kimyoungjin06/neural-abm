@@ -22,8 +22,12 @@ The feedback loop starts from these surfaces:
 - README `Troubleshooting`, which tells users what to capture first.
 - `.github/ISSUE_TEMPLATE/early-git-user-report.yml`, which collects the
   failed path, command, diagnostics, environment, and torch expectation.
+- `.github/labels.yml`, which records the repository labels that mirror the
+  triage taxonomy.
 - `docs/early-git-user-handoff.md`, which defines stable, intentionally
   torch-backed, and experimental surfaces.
+- `docs/early-git-maintainer-triage-checklist.md`, which gives maintainers the
+  first-pass checklist, label rules, and fix decision criteria.
 - CI `Smoke clone-first default environment`, which is the baseline pass
   signal for clone-first usage.
 
@@ -174,11 +178,16 @@ Use a normal main commit without a new tag for:
 - Do not broaden supported Python versions without a separate compatibility
   pass.
 
+## Implemented Support Steps
+
+- Repository labels matching the triage taxonomy are recorded in
+  `.github/labels.yml` and mirrored in GitHub.
+- Maintainer triage guidance is recorded in
+  `docs/early-git-maintainer-triage-checklist.md`.
+
 ## Next Implementation Steps
 
-1. Create repository labels matching the triage taxonomy.
-2. Add a maintainer triage checklist to pull requests or issue comments.
-3. Add a small script that runs the fresh-clone and direct-Git reproduction
+1. Add a small script that runs the fresh-clone and direct-Git reproduction
    commands for the latest alpha tag.
-4. Decide whether the next alpha should include that script as a package-facing
+2. Decide whether the next alpha should include that script as a package-facing
    support tool or keep it maintainer-only.

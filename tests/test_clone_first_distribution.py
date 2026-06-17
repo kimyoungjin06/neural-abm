@@ -168,11 +168,51 @@ def test_early_git_feedback_loop_design_records_triage_contract() -> None:
         "Regression Rules",
         "Release Decision",
         "Do not make package upload part of this loop",
+        ".github/labels.yml",
+        "early-git-maintainer-triage-checklist.md",
+        "Implemented Support Steps",
         "Next Implementation Steps",
     ):
         assert required in compact_design
 
     assert "early-git-feedback-loop-design.md" in docs_index
+
+
+def test_early_git_labels_and_maintainer_checklist_match_taxonomy() -> None:
+    labels = (ROOT / ".github" / "labels.yml").read_text(encoding="utf-8")
+    checklist = (
+        ROOT / "docs" / "early-git-maintainer-triage-checklist.md"
+    ).read_text(encoding="utf-8")
+    compact_checklist = _compact(checklist)
+    docs_index = (ROOT / "docs" / "README.md").read_text(encoding="utf-8")
+
+    for label in (
+        "early-git",
+        "docs",
+        "clone-smoke",
+        "git-install",
+        "dependency-profile",
+        "api-boundary",
+        "environment",
+        "unsupported-surface",
+    ):
+        assert f"name: {label}" in labels
+        assert f"`{label}`" in compact_checklist
+
+    for required in (
+        "Early Git Maintainer Triage Checklist",
+        "Add exactly one primary taxonomy label",
+        "Fresh clone",
+        "Direct Git tag install",
+        "Fix Decision",
+        "Regression Requirement",
+        "Use a new alpha tag only when the fix changes",
+        "Close as unsupported",
+        "tests/test_clone_first_distribution.py",
+    ):
+        assert required in compact_checklist
+
+    assert "early-git-maintainer-triage-checklist.md" in docs_index
 
 
 def test_v010a4_release_note_records_clone_first_gate() -> None:
