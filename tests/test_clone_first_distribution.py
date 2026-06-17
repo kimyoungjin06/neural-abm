@@ -13,6 +13,8 @@ def _compact(text: str) -> str:
 def test_readme_quick_start_prefers_clone_first_flow() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     quick_start = readme.index("## Quick Start")
+    project_map = readme.index("## Project Map")
+    scope = readme.index("## Scope")
 
     clone_command = "git clone https://github.com/kimyoungjin06/neural-abm.git"
     tag_install_command = (
@@ -20,6 +22,12 @@ def test_readme_quick_start_prefers_clone_first_flow() -> None:
         "git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3\""
     )
 
+    assert quick_start < project_map
+    assert quick_start < scope
+    assert quick_start < readme.index("PyPI")
+    assert "The current alpha is clone-first" in readme[:quick_start]
+    assert "/home/kimyoungjin06" not in readme
+    assert "Desktop/Workspace" not in readme
     assert readme.index(clone_command, quick_start) < readme.index(
         tag_install_command,
         quick_start,

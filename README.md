@@ -6,46 +6,9 @@ Neural ABM is a pre-release Python package for Neural Agent-Based Models
 (NABM): simulations where neural local updates, explicit social exchange, and
 ABM-style state logging are kept separate and inspectable.
 
-The current alpha is intended to be tried from a Git clone or Git tag before
-PyPI publication. The default path is intentionally lightweight: it installs
-only `numpy` and `pyyaml`, supports Python 3.11 or newer, and exposes the
-torch-free `neural_abm.api_lite` surface.
-
-In this repository, a model is inside the NABM claim when it has:
-
-- neural agents or policies whose local update changes the simulated behavior;
-- an ABM time loop with explicit scheduling, state transition, and logging;
-- a separated local update and social update path;
-- social message, peer selection, typed mixing, and commit stages;
-- ABM-style aggregate and micro-state outputs for inspection.
-
-The current framing is conservative:
-
-- Do not claim a general Transformer replacement.
-- Do not claim a universal simulator or general-purpose ABM framework.
-- Treat the core unit as a Neural ABM Node with learnable social mixing.
-- Position the system as a temporal heterogeneous GNN-style simulator with
-  neural agents, explicit social update rules, and ABM logging.
-
-## Project Map
-
-- [docs/release-readiness.md](docs/release-readiness.md): remaining release
-  gates before reserving final `0.1.0`.
-- [docs/pypi-publishing.md](docs/pypi-publishing.md): Trusted Publishing and
-  TestPyPI/PyPI workflow setup.
-- [docs/toy-models/README.md](docs/toy-models/README.md): capability-first
-  model-family roadmap.
-- [docs/toy-models/capability-matrix.md](docs/toy-models/capability-matrix.md):
-  current capability taxonomy and package catalog fields.
-- [docs/package-release-boundary.md](docs/package-release-boundary.md):
-  product-facing entry points, install profiles, and package checklist.
-- [docs/git-distribution-flow.md](docs/git-distribution-flow.md): pre-PyPI
-  Git commit/tag installation flow.
-- [docs/pre-release-artifact-flow.md](docs/pre-release-artifact-flow.md):
-  alpha artifact, wheel/sdist, and install-command validation flow.
-- [docs/api-surface-audit.md](docs/api-surface-audit.md): stable,
-  experimental, internal, and paper-only API boundary.
-- [examples/README.md](examples/README.md): lightweight package-facing examples.
+The current alpha is clone-first. Start from a Git clone, use `uv`, and stay on
+the default torch-free `neural_abm.api_lite` surface unless you explicitly need
+the torch-backed lifecycle API. Package-index publication is deferred.
 
 ## Quick Start
 
@@ -102,6 +65,35 @@ uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-
 from neural_abm.api import NABMUnit, SocialBlock, SocialChannel
 ```
 
+## What You Just Ran
+
+- `examples/first_run.py` imports only from `neural_abm.api_lite`.
+- The default clone-first path should report `torch_loaded=false`.
+- The package currently exposes 10 toy capability entries.
+- The first toy families to inspect are binary-probability social-learning
+  models; the full taxonomy is printed by `examples/toy_catalog.py`.
+- Python 3.11 or newer is supported.
+
+## Project Map
+
+- [docs/release-readiness.md](docs/release-readiness.md): clone-first readiness
+  and remaining gates before final `0.1.0`.
+- [docs/git-distribution-flow.md](docs/git-distribution-flow.md): pre-PyPI
+  Git clone and commit/tag distribution flow.
+- [docs/package-release-boundary.md](docs/package-release-boundary.md):
+  product-facing entry points, install profiles, and package checklist.
+- [examples/README.md](examples/README.md): lightweight package-facing examples.
+- [docs/toy-models/README.md](docs/toy-models/README.md): capability-first
+  model-family roadmap.
+- [docs/toy-models/capability-matrix.md](docs/toy-models/capability-matrix.md):
+  current capability taxonomy and package catalog fields.
+- [docs/api-surface-audit.md](docs/api-surface-audit.md): stable,
+  experimental, internal, and paper-only API boundary.
+- [docs/pre-release-artifact-flow.md](docs/pre-release-artifact-flow.md):
+  alpha artifact, wheel/sdist, and install-command validation flow.
+- [docs/pypi-publishing.md](docs/pypi-publishing.md): deferred
+  TestPyPI/PyPI workflow setup.
+
 ## Package Outputs
 
 - Reusable simulation modules in `src/neural_abm/`.
@@ -145,6 +137,24 @@ catalog = toy_catalog()
 binary_probability_toys = toys_by_taxonomy("output_family", "binary_probability")
 ```
 
+## Scope
+
+In this repository, a model is inside the NABM claim when it has:
+
+- neural agents or policies whose local update changes the simulated behavior;
+- an ABM time loop with explicit scheduling, state transition, and logging;
+- a separated local update and social update path;
+- social message, peer selection, typed mixing, and commit stages;
+- ABM-style aggregate and micro-state outputs for inspection.
+
+The current framing is conservative:
+
+- Do not claim a general Transformer replacement.
+- Do not claim a universal simulator or general-purpose ABM framework.
+- Treat the core unit as a Neural ABM Node with learnable social mixing.
+- Position the system as a temporal heterogeneous GNN-style simulator with
+  neural agents, explicit social update rules, and ABM logging.
+
 ## Development
 
 Use `uv` for all Python work:
@@ -179,7 +189,6 @@ Before PyPI, the primary user path is a Git clone. Direct Git URL installs are
 also supported from committed refs or tags:
 
 ```bash
-uv pip install "neural-abm @ git+file:///home/kimyoungjin06/Desktop/Workspace/1.4.6.Neural_ABM@<commit-or-tag>"
 uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a3"
 ```
 

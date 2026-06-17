@@ -35,7 +35,7 @@ installs read committed content, so uncommitted working-tree changes are not
 part of the install:
 
 ```bash
-uv pip install "neural-abm @ git+file:///home/kimyoungjin06/Desktop/Workspace/1.4.6.Neural_ABM@<commit-or-tag>"
+uv pip install "neural-abm @ git+file:///path/to/neural-abm@<commit-or-tag>"
 ```
 
 ## Remote Git Mode
