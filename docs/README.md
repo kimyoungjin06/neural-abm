@@ -25,6 +25,9 @@ Use this directory for internal project knowledge.
   installation and metadata flow.
 - [early-git-user-handoff.md](early-git-user-handoff.md): stable,
   torch-backed, and experimental surfaces for early Git users.
+- [early-git-feedback-loop-design.md](early-git-feedback-loop-design.md):
+  triage taxonomy, reproduction commands, and release decision rules for early
+  Git user reports.
 - [pre-release-artifact-flow.md](pre-release-artifact-flow.md): package
   metadata, version, Python floor, wheel/sdist contents, and install-command
   pre-release artifact flow.

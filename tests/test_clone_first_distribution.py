@@ -146,6 +146,35 @@ def test_early_git_issue_template_collects_reproducible_failure_context() -> Non
     assert "docs/early-git-user-handoff.md" in config
 
 
+def test_early_git_feedback_loop_design_records_triage_contract() -> None:
+    design = (
+        ROOT / "docs" / "early-git-feedback-loop-design.md"
+    ).read_text(encoding="utf-8")
+    compact_design = _compact(design)
+    docs_index = (ROOT / "docs" / "README.md").read_text(encoding="utf-8")
+
+    for required in (
+        "Early Git Feedback Loop Design",
+        "Triage Taxonomy",
+        "`docs`",
+        "`clone-smoke`",
+        "`git-install`",
+        "`dependency-profile`",
+        "`api-boundary`",
+        "`environment`",
+        "`unsupported-surface`",
+        "tmpdir=$(mktemp -d)",
+        "uv run --isolated --no-project --python 3.11",
+        "Regression Rules",
+        "Release Decision",
+        "Do not make package upload part of this loop",
+        "Next Implementation Steps",
+    ):
+        assert required in compact_design
+
+    assert "early-git-feedback-loop-design.md" in docs_index
+
+
 def test_v010a4_release_note_records_clone_first_gate() -> None:
     note = (
         ROOT / "docs" / "releases" / "v0.1.0a4.md"
