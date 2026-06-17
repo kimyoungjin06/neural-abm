@@ -17,6 +17,7 @@ The current product-facing path before PyPI is:
 ```bash
 git clone https://github.com/kimyoungjin06/neural-abm.git
 cd neural-abm
+uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
 ```
 
@@ -75,8 +76,9 @@ Focus the next pass on:
 
 1. README and docs wording that starts from a fresh clone and explains the
    no-torch default surface.
-2. A compact first-run example that exercises `neural_abm.api_lite` and the toy
-   catalog without requiring research dependencies.
+2. `examples/first_run.py`, a compact first-run example that exercises
+   `neural_abm.api_lite` and the toy catalog without requiring research
+   dependencies.
 3. CI and release checks that keep the fresh clone, direct Git tag install, and
    wheel default profile aligned.
 4. GitHub Actions maintenance that removes runner deprecation warnings before

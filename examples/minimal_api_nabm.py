@@ -17,7 +17,6 @@ import torch
 from neural_abm.api import (
     SCALAR_PROBABILITY_CHANNEL,
     CommitReport,
-    NABMAgent,
     NABMStep,
     NABMUnit,
     ObservationSpec,
@@ -196,4 +195,3 @@ def run_demo(*, seed: int = 1, steps: int = 5, agent_count: int = 8) -> dict[str
 
 if __name__ == "__main__":
     print(json.dumps(run_demo(), indent=2, sort_keys=True))
-

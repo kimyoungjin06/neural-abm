@@ -4,11 +4,15 @@ These examples are lightweight reuse demos for the `NABMAgent` lifecycle and
 the reusable social update unit. They are product-facing smoke examples, not
 claim-bearing research validation runs.
 
+`first_run.py` is the clone-first entry check. It imports only from
+`neural_abm.api_lite` and prints a compact torch-free summary for users who
+just cloned the repository.
+
 `minimal_api_nabm.py` is the stable API release-smoke example. It imports only
 from `neural_abm.api` and should stay small enough to catch public facade drift.
-`toy_catalog.py` is the torch-free package-profile example. It imports only
-from `neural_abm.api_lite` and prints the capability taxonomy used to map stable
-model identifiers to user-facing families.
+`toy_catalog.py` is the torch-free package-profile catalog example. It imports
+only from `neural_abm.api_lite` and prints the full capability taxonomy used to
+map stable model identifiers to user-facing families.
 
 Each script follows the same shape:
 
@@ -20,9 +24,12 @@ Each script follows the same shape:
 6. Commit the mixed scalar back into the domain policy attribute.
 7. Return a compact summary with domain metrics and social diagnostics.
 
-The three included domains show different rule surfaces around the same NABM
-unit boundary:
+The examples cover different entry points and domain rule surfaces around the
+same NABM unit boundary:
 
+- `first_run.py`: compact clone-first check for `api_lite`, the default
+  torch-free profile, recommended first toy families, and the next catalog
+  example.
 - `minimal_api_nabm.py`: compact belief-probability social mixing through the
   stable `neural_abm.api` facade. This is an API smoke, not a domain claim.
 - `toy_catalog.py`: no-torch toy catalog lookup through the lightweight

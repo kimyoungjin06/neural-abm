@@ -49,11 +49,18 @@ The current framing is conservative:
 
 ## Quick Start
 
-Clone the repository and run the torch-free catalog smoke:
+Clone the repository and run the torch-free first-run check:
 
 ```bash
 git clone https://github.com/kimyoungjin06/neural-abm.git
 cd neural-abm
+uv run --no-dev python examples/first_run.py
+```
+
+The first-run output should report `status=ok`, `toy_count=10`, and
+`torch_loaded=false`. Then inspect the full toy capability catalog:
+
+```bash
 uv run --no-dev python examples/toy_catalog.py
 ```
 
@@ -164,6 +171,7 @@ uv run python scripts/inspect_release_artifacts.py --build
 The no-torch catalog example is:
 
 ```bash
+uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
 ```
 

@@ -24,7 +24,13 @@ def test_readme_quick_start_prefers_clone_first_flow() -> None:
         tag_install_command,
         quick_start,
     )
+    assert "uv run --no-dev python examples/first_run.py" in readme
     assert "uv run --no-dev python examples/toy_catalog.py" in readme
+    assert readme.index("examples/first_run.py", quick_start) < readme.index(
+        "examples/toy_catalog.py",
+        quick_start,
+    )
+    assert "The first-run output should report" in readme
     assert "Query the lightweight API from the clone" in readme
 
 
@@ -34,6 +40,7 @@ def test_git_distribution_flow_documents_fresh_clone_smoke() -> None:
     for required in (
         "primary pre-PyPI user path is a fresh clone",
         "git clone https://github.com/kimyoungjin06/neural-abm.git",
+        "uv run --no-dev python examples/first_run.py",
         "uv run --no-dev python examples/toy_catalog.py",
         'assert "torch" not in sys.modules',
     ):
@@ -48,6 +55,7 @@ def test_ci_keeps_clone_first_default_profile_smoke() -> None:
     for required in (
         "Smoke clone-first default environment",
         "UV_PROJECT_ENVIRONMENT=.venv-clone-smoke",
+        "uv run --no-dev python examples/first_run.py",
         "uv run --no-dev python examples/toy_catalog.py",
         'assert payload["requires_python"] == ">=3.11"',
         'assert payload["torch_loaded"] is False',
@@ -63,6 +71,7 @@ def test_release_readiness_records_verified_alpha_and_clone_first_next_gate() ->
     for required in (
         "validated clone-first alpha path",
         "git clone https://github.com/kimyoungjin06/neural-abm.git",
+        "uv run --no-dev python examples/first_run.py",
         "Smoke clone-first default environment",
         "direct Git tag install smoke have passed",
         "The `v0.1.0a3` Git alpha gate is complete",

@@ -11,6 +11,7 @@ package profile without installing the dev dependency group or loading torch:
 ```bash
 git clone https://github.com/kimyoungjin06/neural-abm.git
 cd neural-abm
+uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
 uv run --no-dev python - <<'PY'
 import sys
@@ -60,6 +61,7 @@ uv run pytest -q
 git diff --check
 uv run python scripts/inspect_release_artifacts.py --build
 uv run python scripts/smoke_package_profiles.py --wheel dist/neural_abm-0.1.0a3-py3-none-any.whl
+uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
 ```
 
