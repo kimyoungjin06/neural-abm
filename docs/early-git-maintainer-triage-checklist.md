@@ -32,7 +32,17 @@ The goal is to reproduce once, classify once, and apply the smallest correction.
 
 ## Reproduction
 
-Fresh clone:
+Preferred helper:
+
+```bash
+uv run python scripts/reproduce_early_git.py --ref v0.1.0a4
+```
+
+This runs the fresh clone path and the direct Git tag install path in temporary
+directories, then verifies version, package metadata, `toy_count=10`, and
+torch-free default behavior.
+
+Manual fresh clone fallback:
 
 ```bash
 tmpdir=$(mktemp -d)
@@ -42,7 +52,7 @@ uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
 ```
 
-Direct Git tag install:
+Manual direct Git tag install fallback:
 
 ```bash
 tmpdir=$(mktemp -d)

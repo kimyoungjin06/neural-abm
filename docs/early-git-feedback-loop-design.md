@@ -28,6 +28,8 @@ The feedback loop starts from these surfaces:
   torch-backed, and experimental surfaces.
 - `docs/early-git-maintainer-triage-checklist.md`, which gives maintainers the
   first-pass checklist, label rules, and fix decision criteria.
+- `scripts/reproduce_early_git.py`, which runs the fresh-clone and direct Git
+  install reproduction paths for a tagged alpha.
 - CI `Smoke clone-first default environment`, which is the baseline pass
   signal for clone-first usage.
 
@@ -105,7 +107,13 @@ Use one primary category per issue:
 
 ## Reproduction Commands
 
-Fresh clone:
+Preferred maintainer helper:
+
+```bash
+uv run python scripts/reproduce_early_git.py --ref v0.1.0a4
+```
+
+Manual fresh clone fallback:
 
 ```bash
 tmpdir=$(mktemp -d)
@@ -115,7 +123,7 @@ uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
 ```
 
-Direct Git tag install:
+Manual direct Git tag install fallback:
 
 ```bash
 tmpdir=$(mktemp -d)
@@ -184,10 +192,11 @@ Use a normal main commit without a new tag for:
   `.github/labels.yml` and mirrored in GitHub.
 - Maintainer triage guidance is recorded in
   `docs/early-git-maintainer-triage-checklist.md`.
+- Maintainer reproduction is automated by `scripts/reproduce_early_git.py`.
 
 ## Next Implementation Steps
 
-1. Add a small script that runs the fresh-clone and direct-Git reproduction
-   commands for the latest alpha tag.
-2. Decide whether the next alpha should include that script as a package-facing
-   support tool or keep it maintainer-only.
+1. Keep `scripts/reproduce_early_git.py` maintainer-only unless repeated
+   external reports show users need to run it themselves.
+2. Use the first real early Git report to validate the taxonomy and update the
+   checklist only where the current labels or reproduction commands are weak.

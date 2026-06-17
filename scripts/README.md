@@ -2,6 +2,14 @@
 
 Use this directory for thin command-line entry points.
 
+Maintainer support scripts:
+
+- `reproduce_early_git.py`: reproduce the current early Git alpha support paths
+  from a tag. It runs the fresh-clone first-run/catalog checks and the direct
+  Git install smoke in temporary directories, then verifies matching version
+  metadata, `toy_count=10`, and torch-free default behavior. This is a
+  maintainer-only triage helper, not a package-facing example.
+
 Expected future scripts:
 
 - `run_toy1.py`: run Neural HK Classification from a YAML config.

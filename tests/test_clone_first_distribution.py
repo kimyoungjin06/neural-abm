@@ -165,13 +165,15 @@ def test_early_git_feedback_loop_design_records_triage_contract() -> None:
         "`unsupported-surface`",
         "tmpdir=$(mktemp -d)",
         "uv run --isolated --no-project --python 3.11",
+        "scripts/reproduce_early_git.py",
+        "Preferred maintainer helper",
         "Regression Rules",
         "Release Decision",
         "Do not make package upload part of this loop",
         ".github/labels.yml",
         "early-git-maintainer-triage-checklist.md",
         "Implemented Support Steps",
-        "Next Implementation Steps",
+        "Keep `scripts/reproduce_early_git.py` maintainer-only",
     ):
         assert required in compact_design
 
@@ -204,6 +206,8 @@ def test_early_git_labels_and_maintainer_checklist_match_taxonomy() -> None:
         "Add exactly one primary taxonomy label",
         "Fresh clone",
         "Direct Git tag install",
+        "Preferred helper",
+        "uv run python scripts/reproduce_early_git.py --ref v0.1.0a4",
         "Fix Decision",
         "Regression Requirement",
         "Use a new alpha tag only when the fix changes",
@@ -213,6 +217,44 @@ def test_early_git_labels_and_maintainer_checklist_match_taxonomy() -> None:
         assert required in compact_checklist
 
     assert "early-git-maintainer-triage-checklist.md" in docs_index
+
+
+def test_early_git_reproduction_script_records_maintainer_contract() -> None:
+    script = (ROOT / "scripts" / "reproduce_early_git.py").read_text(
+        encoding="utf-8"
+    )
+    scripts_index = (ROOT / "scripts" / "README.md").read_text(encoding="utf-8")
+
+    for required in (
+        "Reproduce the early Git user paths",
+        "DEFAULT_REPO_URL",
+        "--ref",
+        "--expected-version",
+        "--repo-url",
+        "--python",
+        "--skip-fresh-clone",
+        "--skip-git-install",
+        "--keep-temp",
+        '"git"',
+        '"clone"',
+        "--depth",
+        "--branch",
+        "uv",
+        "--no-dev",
+        "examples/first_run.py",
+        "examples/toy_catalog.py",
+        "--isolated",
+        "--no-project",
+        "neural-abm @ git+",
+        "metadata_version",
+        "toy_count",
+        "torch_installed",
+        "torch_loaded",
+    ):
+        assert required in script
+
+    assert "reproduce_early_git.py" in scripts_index
+    assert "maintainer-only triage helper" in scripts_index
 
 
 def test_v010a4_release_note_records_clone_first_gate() -> None:
