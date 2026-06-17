@@ -42,6 +42,7 @@ REQUIRED_SDIST_FILES = {
 }
 FORBIDDEN_SDIST_PATHS = {
     "docs/release-candidate-dry-run.md",
+    "scripts/reproduce_early_git.py",
 }
 FORBIDDEN_SDIST_PREFIXES = (
     "archive/",

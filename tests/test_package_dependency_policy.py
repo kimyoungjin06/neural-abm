@@ -222,6 +222,7 @@ def test_release_artifact_inspection_script_covers_dry_run_boundaries() -> None:
         "REQUIRED_PYTHON",
         "requires-python must stay at",
         "FORBIDDEN_SDIST_PREFIXES",
+        "scripts/reproduce_early_git.py",
         "docs/pre-release-artifact-flow.md",
         "version is not marked as an alpha",
         "Description-Content-Type",
