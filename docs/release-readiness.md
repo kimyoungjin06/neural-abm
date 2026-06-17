@@ -9,6 +9,9 @@ Do not reserve final `0.1.0` yet. The repository has a validated clone-first
 alpha path (`v0.1.0a3`) with a lightweight default package profile. Final public
 release still needs index-publishing and release-operations checks.
 
+The `v0.1.0a3` tag, prerelease GitHub Release, tag CI, fresh remote clone smoke,
+and direct Git tag install smoke have passed.
+
 The current product-facing path before PyPI is:
 
 ```bash
@@ -49,25 +52,30 @@ Use alpha tags while any of these are true:
 - The release notes still describe the package as pre-public.
 - Remaining release-owner decisions are unresolved.
 
-## Next Operational Gate
+## Completed Git Alpha Gate
 
-Keep PyPI deferred until the Git-based alpha path is the stable onboarding
-surface. The next operational gate is to verify the `v0.1.0a3` Git alpha tag
-from a fresh remote clone and a direct Git tag install.
-
-Before tagging that alpha, confirm:
+The `v0.1.0a3` Git alpha gate is complete:
 
 1. README Quick Start begins with clone-first usage.
 2. `docs/git-distribution-flow.md` documents the fresh clone smoke.
-3. CI is green on the candidate commit.
-4. A fresh remote clone runs the no-dev catalog smoke without loading torch.
+3. CI is green on the release tag.
+4. A fresh remote clone runs the no-dev catalog smoke without installing or
+   loading torch.
 5. `pyproject.toml` and `neural_abm.__version__` both report `0.1.0a3`.
 6. Git tag install commands point at `v0.1.0a3`.
+7. The GitHub Release is marked as a prerelease.
 
-After the clone-first alpha tag is verified, follow
-[pypi-publishing.md](pypi-publishing.md) to configure pending Trusted
-Publishers for TestPyPI and PyPI. Do not change README install commands to PyPI
-or reserve final `0.1.0` before the TestPyPI workflow has passed.
+## Next Operational Gate
+
+The next operational gate is TestPyPI setup and smoke, not final PyPI
+publishing.
+
+Follow [pypi-publishing.md](pypi-publishing.md) to configure pending Trusted
+Publishers for TestPyPI and PyPI. Then run the manual publish workflow against
+the `v0.1.0a3` tag with `target=testpypi` and `version=0.1.0a3`.
+
+Do not change README install commands to PyPI or reserve final `0.1.0` before
+the TestPyPI workflow has passed from the package index.
 
 ## Final Release Rule
 
