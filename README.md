@@ -16,7 +16,7 @@ and Git tags.
 Clone the current verified alpha tag and run the torch-free first-run check:
 
 ```bash
-git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git neural-abm
+git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 ```
@@ -41,13 +41,13 @@ PY
 ```
 
 Use the default branch only when you intentionally want unreleased changes from
-`main`. For early-user reports, reproduce against `v0.1.0a4` first.
+`main`. For early-user reports, reproduce against `v0.1.0a5` first.
 
 Install from the current Git alpha tag only when you want to consume it as a
 dependency:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
 ```
 
 Then query the torch-free toy catalog from another project:
@@ -62,7 +62,7 @@ binary_probability_toys = toys_by_taxonomy("output_family", "binary_probability"
 Install the torch-backed lifecycle API only when needed:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
 ```
 
 ```python
@@ -212,7 +212,7 @@ The primary user path is a Git clone. Direct Git URL installs are also
 supported from committed refs or tags:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
 ```
 
 The package currently supports Python 3.11 or newer.

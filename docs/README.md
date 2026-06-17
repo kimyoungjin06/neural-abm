@@ -38,8 +38,10 @@ Use this directory for internal project knowledge.
 
 ## Release Notes
 
-- [releases/v0.1.0a4.md](releases/v0.1.0a4.md): clone-first Git alpha
+- [releases/v0.1.0a5.md](releases/v0.1.0a5.md): clone-first Git alpha
   release note for the current tagged alpha.
+- [releases/v0.1.0a4.md](releases/v0.1.0a4.md): historical clone-first Git
+  alpha release note.
 - [releases/v0.1.0a3.md](releases/v0.1.0a3.md): historical clone-first Git
   alpha release note.
 - [releases/v0.1.0a2.md](releases/v0.1.0a2.md): historical Git alpha release

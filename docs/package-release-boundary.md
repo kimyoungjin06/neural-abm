@@ -8,7 +8,7 @@ package shape. It is a packaging contract, not a new simulation claim.
 Default Git tag install:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
 ```
 
 The default profile is the lightweight `api_lite` floor. It supports package
@@ -20,7 +20,7 @@ torch-free lifecycle reports/local-step helpers. It must not import or require
 Torch-backed API:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
 ```
 
 Use this profile for `neural_abm.api`, `NABMUnit`, `NABMStep`, `SocialBlock`,
@@ -29,8 +29,8 @@ tensor/state-dict social messages, and the full tensor-backed lifecycle.
 Research workflows:
 
 ```bash
-uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
-uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
 ```
 
 Use these profiles for toy runners, evidence matrices, paper workflows,

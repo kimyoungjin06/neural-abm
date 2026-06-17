@@ -6,7 +6,7 @@ path.
 
 ## Goal
 
-Make `v0.1.0a4` and later Git alpha reports actionable within one triage pass:
+Make `v0.1.0a5` and later Git alpha reports actionable within one triage pass:
 
 1. identify which entry path failed;
 2. reproduce the failure with a bounded command;
@@ -40,7 +40,7 @@ The feedback loop starts from these surfaces:
 Primary path:
 
 ```bash
-git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git neural-abm
+git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
@@ -58,7 +58,7 @@ Dependency-style path:
 
 ```bash
 uv run --isolated --no-project --python 3.11 \
-  --with "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4" \
+  --with "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5" \
   python -c "from neural_abm.api_lite import toy_catalog; print(len(toy_catalog()))"
 ```
 
@@ -110,14 +110,14 @@ Use one primary category per issue:
 Preferred maintainer helper:
 
 ```bash
-uv run python scripts/reproduce_early_git.py --ref v0.1.0a4
+uv run python scripts/reproduce_early_git.py --ref v0.1.0a5
 ```
 
 Manual fresh clone fallback:
 
 ```bash
 tmpdir=$(mktemp -d)
-git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git "$tmpdir/neural-abm"
+git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git "$tmpdir/neural-abm"
 cd "$tmpdir/neural-abm"
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
@@ -128,7 +128,7 @@ Manual direct Git tag install fallback:
 ```bash
 tmpdir=$(mktemp -d)
 UV_CACHE_DIR="$tmpdir/cache" uv run --isolated --no-project --python 3.11 \
-  --with "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4" \
+  --with "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5" \
   python - <<'PY'
 import importlib.metadata
 import importlib.util

@@ -35,7 +35,7 @@ The goal is to reproduce once, classify once, and apply the smallest correction.
 Preferred helper:
 
 ```bash
-uv run python scripts/reproduce_early_git.py --ref v0.1.0a4
+uv run python scripts/reproduce_early_git.py --ref v0.1.0a5
 ```
 
 This runs the fresh clone path and the direct Git tag install path in temporary
@@ -46,7 +46,7 @@ Manual fresh clone fallback:
 
 ```bash
 tmpdir=$(mktemp -d)
-git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git "$tmpdir/neural-abm"
+git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git "$tmpdir/neural-abm"
 cd "$tmpdir/neural-abm"
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
@@ -57,7 +57,7 @@ Manual direct Git tag install fallback:
 ```bash
 tmpdir=$(mktemp -d)
 UV_CACHE_DIR="$tmpdir/cache" uv run --isolated --no-project --python 3.11 \
-  --with "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4" \
+  --with "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5" \
   python - <<'PY'
 import importlib.metadata
 import importlib.util

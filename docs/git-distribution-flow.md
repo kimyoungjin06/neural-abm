@@ -10,7 +10,7 @@ should exercise the default package profile without installing the dev
 dependency group or loading torch:
 
 ```bash
-git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git neural-abm
+git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
@@ -64,7 +64,7 @@ uv run ruff check src tests scripts
 uv run pytest -q
 git diff --check
 uv run python scripts/inspect_release_artifacts.py --build
-uv run python scripts/smoke_package_profiles.py --wheel dist/neural_abm-0.1.0a4-py3-none-any.whl
+uv run python scripts/smoke_package_profiles.py --wheel dist/neural_abm-0.1.0a5-py3-none-any.whl
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
 ```
@@ -72,22 +72,22 @@ uv run --no-dev python examples/toy_catalog.py
 Then create and push an annotated tag:
 
 ```bash
-git tag -a v0.1.0a4 -m "neural-abm 0.1.0a4"
-git push origin v0.1.0a4
+git tag -a v0.1.0a5 -m "neural-abm 0.1.0a5"
+git push origin v0.1.0a5
 ```
 
 Users can install the default package profile from the tag:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
 ```
 
 Extras use the same direct URL shape:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
-uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
-uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
 ```
 
 ## Metadata

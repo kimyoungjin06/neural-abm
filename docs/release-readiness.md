@@ -5,12 +5,12 @@ This document tracks the clone-first release path.
 ## Current Verdict
 
 Do not reserve final `0.1.0` yet. The repository has a validated clone-first
-alpha path, and the current verified alpha is `v0.1.0a4`.
+alpha path, and the current verified alpha is `v0.1.0a5`.
 
 The product-facing path is:
 
 ```bash
-git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git neural-abm
+git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
@@ -58,15 +58,28 @@ The `v0.1.0a3` Git alpha gate is complete:
 6. Git tag install commands point at `v0.1.0a3`.
 7. The GitHub Release is marked as a prerelease.
 
+The `v0.1.0a4` Git alpha gate is complete:
+
+1. `examples/first_run.py` is the first user command after clone.
+2. README Quick Start appears before project-map and internal scope material.
+3. GitHub Actions use Node 24 compatible action versions.
+4. Early Git user handoff guidance identifies stable, experimental, and
+   intentionally torch-backed surfaces.
+5. Fresh remote clone and direct Git tag install smoke passed for the
+   `v0.1.0a4` tag.
+
 ## Current Operational Gate
 
-The current operational gate is `v0.1.0a4`, a clone-first alpha that captures:
+The current operational gate is `v0.1.0a5`, a clone-first alpha that captures:
 
-1. `examples/first_run.py` as the first user command after clone.
-2. README Quick Start before project-map and internal scope material.
-3. GitHub Actions on Node 24 compatible action versions.
-4. Early Git user handoff guidance.
-5. Fresh remote clone and direct Git tag install smoke for the `v0.1.0a4` tag.
+1. The verified tag clone command as the first README and handoff path.
+2. Early Git issue intake that asks users to reproduce the verified tag before
+   treating `main` failures as release-path regressions.
+3. Maintainer reproduction tooling for fresh clone and direct Git tag install
+   reports.
+4. Package-boundary checks that keep maintainer-only reproduction tooling out
+   of the source distribution.
+5. Fresh remote clone and direct Git tag install smoke for the `v0.1.0a5` tag.
 
 ## Final Release Rule
 

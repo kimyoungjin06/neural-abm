@@ -14,7 +14,7 @@ body:
         Reproduce the current verified alpha tag first:
 
         ```bash
-        git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git neural-abm
+        git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm
         cd neural-abm
         uv run --no-dev python examples/first_run.py
         uv run --no-dev python examples/toy_catalog.py
@@ -39,7 +39,7 @@ body:
     attributes:
       label: Git ref or package version
       description: Use the tag, commit, or package version you attempted.
-      placeholder: v0.1.0a4 or aca71d8
+      placeholder: v0.1.0a5 or aca71d8
     validations:
       required: true
   - type: textarea

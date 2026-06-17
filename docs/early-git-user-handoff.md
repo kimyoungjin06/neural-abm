@@ -9,7 +9,7 @@ newer.
 Start with the current verified alpha tag:
 
 ```bash
-git clone --depth 1 --branch v0.1.0a4 https://github.com/kimyoungjin06/neural-abm.git neural-abm
+git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
@@ -20,12 +20,12 @@ The first-run output should report `status=ok`, `toy_count=10`, and
 
 Use `main` only when intentionally checking unreleased changes. If a user
 reports a failure from `main`, ask them to reproduce the same commands against
-`v0.1.0a4` before treating it as a release-path regression.
+`v0.1.0a5` before treating it as a release-path regression.
 
 Use a Git tag install only when consuming the package from another project:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
 ```
 
 ## Stable Surfaces
@@ -49,7 +49,7 @@ uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git
 Install these only when the torch-backed lifecycle or research stack is needed:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
 ```
 
 ## Experimental or Internal Surfaces
@@ -92,7 +92,7 @@ short import smoke:
 
 ```bash
 uv run --isolated --no-project --python 3.11 \
-  --with "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a4" \
+  --with "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5" \
   python - <<'PY'
 import importlib.metadata
 import importlib.util
@@ -112,6 +112,6 @@ print(json.dumps({
 PY
 ```
 
-Expected default-profile values are `version=0.1.0a4`,
-`metadata_version=0.1.0a4`, `toy_count=10`, `torch_installed=false`, and
+Expected default-profile values are `version=0.1.0a5`,
+`metadata_version=0.1.0a5`, `toy_count=10`, `torch_installed=false`, and
 `torch_loaded=false`.
