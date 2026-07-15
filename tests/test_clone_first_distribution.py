@@ -24,6 +24,12 @@ def test_readme_quick_start_prefers_clone_first_flow() -> None:
         'uv pip install "neural-abm @ '
         "git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5\""
     )
+    candidate_heading = "## Main / Next-Alpha Candidate"
+    scenario_command = "uv run --no-dev python examples/research_pivot_scenario_lite.py"
+    tag_path = readme[quick_start : readme.index(candidate_heading)]
+    candidate_path = readme[
+        readme.index(candidate_heading) : readme.index("## What You Just Ran")
+    ]
 
     assert quick_start < project_map
     assert quick_start < scope
@@ -46,6 +52,10 @@ def test_readme_quick_start_prefers_clone_first_flow() -> None:
     assert "Query the lightweight API from the clone" in readme
     assert "Use the default branch only when you intentionally want" in readme
     assert "reproduce against `v0.1.0a5` first" in readme
+    assert scenario_command not in tag_path
+    assert "is not present in `v0.1.0a5`" in candidate_path
+    assert "--branch main" in candidate_path
+    assert scenario_command in candidate_path
     assert "## Troubleshooting" in readme
     assert "git rev-parse --short HEAD" in readme
     assert "Open an issue with the failed command" in readme
@@ -53,6 +63,13 @@ def test_readme_quick_start_prefers_clone_first_flow() -> None:
 
 def test_git_distribution_flow_documents_fresh_clone_smoke() -> None:
     doc = (ROOT / "docs" / "git-distribution-flow.md").read_text(encoding="utf-8")
+    tag_path = doc[doc.index("## Current Mode") : doc.index("Use the default branch")]
+    candidate_path = doc[
+        doc.index("`examples/research_pivot_scenario_lite.py` is not part") : doc.index(
+            "The repository can also be used locally"
+        )
+    ]
+    scenario_command = "uv run --no-dev python examples/research_pivot_scenario_lite.py"
 
     for required in (
         "primary user path is a fresh clone",
@@ -63,6 +80,11 @@ def test_git_distribution_flow_documents_fresh_clone_smoke() -> None:
         "v0.1.0a5",
     ):
         assert required in doc
+
+    assert scenario_command not in tag_path
+    assert "`main` / next-alpha candidate" in candidate_path
+    assert "--branch main" in candidate_path
+    assert scenario_command in candidate_path
 
 
 def test_ci_keeps_clone_first_default_profile_smoke() -> None:
@@ -75,6 +97,7 @@ def test_ci_keeps_clone_first_default_profile_smoke() -> None:
         "UV_PROJECT_ENVIRONMENT=.venv-clone-smoke",
         "uv run --no-dev python examples/first_run.py",
         "uv run --no-dev python examples/toy_catalog.py",
+        "uv run --no-dev python examples/research_pivot_scenario_lite.py",
         'assert payload["requires_python"] == ">=3.11"',
         'assert payload["torch_loaded"] is False',
         'assert payload["toy_count"] == 10',
@@ -110,6 +133,17 @@ def test_early_git_user_handoff_documents_surface_boundaries() -> None:
         ROOT / "docs" / "early-git-user-handoff.md"
     ).read_text(encoding="utf-8")
     compact_handoff = _compact(handoff)
+    tag_path = handoff[
+        handoff.index("## Current Use Path") : handoff.index(
+            "## Main / Next-Alpha Candidate"
+        )
+    ]
+    candidate_path = handoff[
+        handoff.index("## Main / Next-Alpha Candidate") : handoff.index(
+            "## Stable Surfaces"
+        )
+    ]
+    scenario_command = "uv run --no-dev python examples/research_pivot_scenario_lite.py"
 
     for required in (
         "Early Git User Handoff",
@@ -128,6 +162,11 @@ def test_early_git_user_handoff_documents_surface_boundaries() -> None:
         "v0.1.0a5",
     ):
         assert required in compact_handoff
+
+    assert scenario_command not in tag_path
+    assert "is not present in `v0.1.0a5`" in candidate_path
+    assert "--branch main" in candidate_path
+    assert scenario_command in candidate_path
 
 
 def test_early_git_issue_template_collects_reproducible_failure_context() -> None:

@@ -27,6 +27,15 @@ PY
 Use the default branch only when intentionally checking unreleased changes from
 `main`; support reports should reproduce the verified tag path first.
 
+`examples/research_pivot_scenario_lite.py` is not part of `v0.1.0a5`. It is a
+`main` / next-alpha candidate and should be exercised in a separate checkout:
+
+```bash
+git clone --depth 1 --branch main https://github.com/kimyoungjin06/neural-abm.git neural-abm-next-alpha
+cd neural-abm-next-alpha
+uv run --no-dev python examples/research_pivot_scenario_lite.py
+```
+
 The repository can also be used locally before pushing a release tag:
 
 ```bash

@@ -69,6 +69,23 @@ uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-
 from neural_abm.api import NABMUnit, SocialBlock, SocialChannel
 ```
 
+## Main / Next-Alpha Candidate
+
+`examples/research_pivot_scenario_lite.py` is not present in `v0.1.0a5`.
+It is currently available on `main` as a candidate for the next alpha. Test it
+in a separate checkout so that its results are not confused with the verified
+tag path:
+
+```bash
+git clone --depth 1 --branch main https://github.com/kimyoungjin06/neural-abm.git neural-abm-next-alpha
+cd neural-abm-next-alpha
+uv run --no-dev python examples/research_pivot_scenario_lite.py
+```
+
+The example compares a science-of-science PIVOT question across baseline and
+counterfactual environments through local adaptation, typed peer exchange,
+domain-owned transition, and audit evidence.
+
 ## What You Just Ran
 
 - `examples/first_run.py` imports only from `neural_abm.api_lite`.
@@ -76,6 +93,11 @@ from neural_abm.api import NABMUnit, SocialBlock, SocialChannel
 - The package currently exposes 10 toy capability entries.
 - The first toy families to inspect are binary-probability social-learning
   models; the full taxonomy is printed by `examples/toy_catalog.py`.
+- On the optional `main` / next-alpha candidate path,
+  `examples/research_pivot_scenario_lite.py` shows a no-torch
+  science-of-science PIVOT scenario: baseline vs interdisciplinary seed grants
+  vs hot-field hype, with productive-pivot outcomes and aggregate/micro audit
+  rows.
 - Python 3.11 or newer is supported.
 
 ## Troubleshooting
@@ -108,6 +130,13 @@ torch-backed behavior. The early-user checklist is in
 - [docs/package-release-boundary.md](docs/package-release-boundary.md):
   product-facing entry points, install profiles, and package checklist.
 - [examples/README.md](examples/README.md): lightweight package-facing examples.
+- [docs/case-studies/researcher-pivot/README.md](docs/case-studies/researcher-pivot/README.md):
+  end-to-end replicated research example (question, hypotheses, seed-paired
+  replication, sensitivity sweeps, figures, limitations) on the torch-free
+  surface.
+- [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
+  and Granovetter special cases, plus explicitly labeled FJ-like anchored and
+  self-excluding HK variants, as settings of the same lifecycle.
 - [docs/toy-models/README.md](docs/toy-models/README.md): capability-first
   model-family roadmap.
 - [docs/toy-models/capability-matrix.md](docs/toy-models/capability-matrix.md):
