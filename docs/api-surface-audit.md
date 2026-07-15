@@ -34,6 +34,7 @@ own lifecycle or typed exchange mechanics rather than domain semantics.
 | `neural_abm.domain_social_diagnostics` | `aggregate_social_diagnostic_fields`, `micro_social_diagnostic_fields` | Semantic-free row mapping for peer/social diagnostics. |
 | `neural_abm.results` | `DomainToyResult` and stable artifact summary helpers | Result envelope and artifact output contract. |
 | `neural_abm.readiness` | `BinaryReadinessPropagationUnit` and report types | Generic peer-readiness aggregation after domains define readiness. |
+| `neural_abm.scenario_lite` | Scenario definitions/specs, deterministic and replicated result envelopes, replicate context, and bounded-scalar scenario runners | Torch-free baseline/counterfactual orchestration whose domain callbacks, outcome meaning, and comparison threshold remain caller-owned. |
 
 ## Experimental Core Candidates
 
@@ -90,7 +91,7 @@ When implementation starts, prefer a small facade rather than widening
 | Namespace | Contents |
 | --- | --- |
 | `neural_abm.api` | Stable lifecycle, typed social exchange, domain runner, diagnostics, result envelope, and toy feature-taxonomy helpers. |
-| `neural_abm.api_lite` | Torch-free seed surface for compatible runner, diagnostics, result envelope, toy feature-taxonomy helpers, readiness utilities, NumPy-only social primitives, and lifecycle reports/local-step primitives. |
+| `neural_abm.api_lite` | Torch-free seed surface for compatible runner, diagnostics, result envelope, toy feature-taxonomy helpers, readiness utilities, NumPy-only social primitives, lifecycle reports/local-step primitives, and the `main` / next-alpha bounded-scalar scenario candidate. |
 | `neural_abm.experimental` | Binary policy lifecycle, binary revision lifecycle, accelerator/tensor runtime helpers if needed. |
 | `neural_abm.paper` or evidence docs | Manifest loading, gate summaries, and reproducibility commands if a library namespace is justified. |
 
@@ -109,3 +110,25 @@ distribution mix channels, tensor channels, and state-dict channels stay on the
 torch-backed API path.
 Toy feature-taxonomy helpers are shared by the full and lite facades because
 they are metadata-only and do not require torch.
+
+## Main / Next-Alpha Scenario Candidate
+
+The unreleased `main` / next-alpha candidate extends `neural_abm.api_lite`
+with `ScenarioDefinition`, `BoundedScalarScenarioSpec`, deterministic and
+replicated comparison/result records, `ReplicationSpec`,
+`ScenarioReplicateContext`, and the two bounded-scalar scenario runners. The
+underlying `workflow_lite` module remains an implementation layer rather than a
+separately promoted facade.
+
+This surface standardizes torch-free execution and report shape, not research
+semantics. Agent construction, topology, local updates, domain transitions,
+outcome meaning, and scientific interpretation remain caller-owned.
+`success_direction` and `success_min_delta` are user-provided comparison
+metadata. A returned `success` value only records mechanical satisfaction of
+that threshold; it is not framework judgment that a scientific claim is
+supported. Seed pairing and percentile intervals likewise do not supply causal
+identification, hypothesis testing, calibration, or external-validity claims.
+
+See
+[Decision 0015](decisions/0015-researcher-scenario-lite-contract.md) for the
+complete contract. The released `v0.1.0a5` tag predates this scenario surface.
