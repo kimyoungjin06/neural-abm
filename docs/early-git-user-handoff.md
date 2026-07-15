@@ -28,6 +28,22 @@ Use a Git tag install only when consuming the package from another project:
 uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
 ```
 
+## Main / Next-Alpha Candidate
+
+`examples/research_pivot_scenario_lite.py` is not present in `v0.1.0a5`.
+It is a candidate for the next alpha and currently must be tested from `main`,
+separately from the verified-tag support path:
+
+```bash
+git clone --depth 1 --branch main https://github.com/kimyoungjin06/neural-abm.git neural-abm-next-alpha
+cd neural-abm-next-alpha
+uv run --no-dev python examples/research_pivot_scenario_lite.py
+```
+
+The researcher scenario should report `surface=neural_abm.scenario_lite`,
+`base_surface=neural_abm.api_lite`, `default_profile=torch-free`, and
+`torch_loaded=false`.
+
 ## Stable Surfaces
 
 - `neural_abm.api_lite`: torch-free package metadata, toy taxonomy, runner and
@@ -86,6 +102,11 @@ git rev-parse --short HEAD
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
 ```
+
+The researcher-scenario command is intentionally excluded from this verified
+tag diagnostic bundle. For a report about the `main` / next-alpha candidate,
+record `git branch --show-current` and run
+`uv run --no-dev python examples/research_pivot_scenario_lite.py` separately.
 
 For a direct Git tag install failure, include the exact install command and a
 short import smoke:

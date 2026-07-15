@@ -25,8 +25,10 @@ REQUIRED_WHEEL_MODULES = {
     "neural_abm/api.py",
     "neural_abm/api_lite.py",
     "neural_abm/capabilities.py",
+    "neural_abm/scenario_lite.py",
     "neural_abm/social_core.py",
     "neural_abm/unit_core.py",
+    "neural_abm/workflow_lite.py",
 }
 REQUIRED_SDIST_FILES = {
     "LICENSE",
@@ -37,6 +39,7 @@ REQUIRED_SDIST_FILES = {
     "docs/package-release-boundary.md",
     "docs/pre-release-artifact-flow.md",
     "examples/first_run.py",
+    "examples/research_pivot_scenario_lite.py",
     "examples/toy_catalog.py",
     "scripts/smoke_package_profiles.py",
 }
@@ -242,6 +245,7 @@ def _inspect_wheel(wheel: Path) -> dict[str, Any]:
             "requires_python": metadata.get("Requires-Python"),
             "default_requires": default_requires,
             "extras": extras,
+            "required_modules": sorted(REQUIRED_WHEEL_MODULES),
             "required_modules_present": not missing_modules,
             "description_content_type": metadata.get("Description-Content-Type"),
         },
@@ -277,6 +281,7 @@ def _inspect_sdist(sdist: Path) -> dict[str, Any]:
         "warnings": [],
         "summary": {
             "path": str(sdist),
+            "required_files": sorted(REQUIRED_SDIST_FILES),
             "required_files_present": not missing_files,
             "missing_required_files": missing_files,
             "forbidden_files_present": bool(forbidden_files),

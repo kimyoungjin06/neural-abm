@@ -7,17 +7,37 @@ Working title:
 ## 1. Introduction
 
 - Motivation: rule-based ABM agents are interpretable but limited in adaptive
-  learning behavior.
+  learning behavior; fully neural and LLM-agent simulations adapt but resist
+  attribution, audit, and seeded replication.
+- Positioning: the auditable middle — the maximum agent adaptivity that
+  still supports paired counterfactual control, named-parameter audit, and
+  deterministic replication. Not a cheaper substitute for LLM-agent
+  simulation and not a replacement for classical ABM; a different point with
+  different guarantees.
 - Goal: define a reusable Neural ABM Node with explicit social mixing.
 - Claim: the right positioning is a temporal heterogeneous graph simulation
   framework, not a direct Transformer replacement.
+- Contribution preview: unit contract (Sec. 3), toy evidence (Secs. 4-5),
+  calibration discipline (Sec. 6), and an end-to-end research application
+  with a fixed-rule-versus-learning controlled comparison (Sec. 7).
 
 ## 2. Background
 
 - Agent-based models and bounded confidence.
+- Verified classical instances and labeled near variants: exact DeGroot and
+  Granovetter special cases, FJ-like pre-mix anchoring, and self-excluding HK
+  bounded confidence as settings of the unit lifecycle:
+  `docs/classical-reductions.md`, `examples/classical_reductions.py`.
 - Neural agent-based models.
-- Social learning via state-based and output-based updates.
+- LLM-agent social simulation and its audit/reproducibility critiques, as
+  the opposite pole motivating the auditable-middle positioning.
+- Social learning via state-based and output-based updates; imitative
+  versus negativity-biased outcome learning (information cascades,
+  loss-weighted social learning) as the Sec. 7 learning-rule axis.
 - Dynamic graph learning, federated learning, and distillation lineages.
+- Model capacity as a modeling assumption: cue-weighting/improper-linear
+  views of judgment and the interaction-first ABM tradition (grounds for
+  Sec. 7.5).
 
 ## 3. Neural ABM Node
 
@@ -65,14 +85,31 @@ Draft:
   polarization, and policy-action lag before treating speed as an objective.
 - Possible simulation-based inference or temporal-GNN posterior estimation.
 
-## 7. Discussion
+## 7. Research Application: Replicated Scenario Studies
+
+Draft:
+[sections/07-research-application.md](sections/07-research-application.md)
+
+- A researcher-authored science-of-science question (field-pivot
+  productivity) carried end to end on the reusable surfaces.
+- Study 1: baseline/counterfactual environments, seed-paired replication,
+  placebo control, sensitivity sweeps (torch-free surface).
+- Study 2: fixed rule versus imitative and cautionary learning agents on the
+  NABM lifecycle; information cascades and targeted hype immunity as
+  endogenous rule-change results.
+- Expressiveness and discipline claim only; the fixed rule is a control, not
+  a defeated baseline.
+
+## 8. Discussion
 
 - What the toy models show.
+- What the research application shows: the contract carries a full study,
+  and learning direction is a first-class experimental axis.
 - Limits of the Transformer analogy.
 - Limits of parameter averaging.
 - Path to richer ABM environments.
 
-## 8. Conclusion
+## 9. Conclusion
 
 - Neural Social Nodes are a practical unit for NABM prototyping.
 - The primitive claim should be earned through ablations, not assumed.

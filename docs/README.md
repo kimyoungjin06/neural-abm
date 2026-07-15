@@ -16,6 +16,9 @@ Use this directory for internal project knowledge.
 - [nabm-unit-v1-completeness-checklist.md](nabm-unit-v1-completeness-checklist.md):
   operational completion map for the NABM Unit v1 engineering, evidence, and
   paper-readiness gates.
+- [classical-reductions.md](classical-reductions.md): switchboard, recurrent
+  unit schematic, and verified claim boundaries for classical instances and
+  labeled near variants.
 - [api-surface-audit.md](api-surface-audit.md): classification of stable,
   experimental, internal, and paper-only surfaces before a v0 public facade.
 - [package-release-boundary.md](package-release-boundary.md): product-facing
@@ -101,3 +104,6 @@ Use this directory for internal project knowledge.
   accepted package dependency policy for lightweight API readiness, including
   the torch-free social-core and unit-core splits, torch-backed full lifecycle
   boundary, and optional-extra transition rules.
+- [decisions/0015-researcher-scenario-lite-contract.md](decisions/0015-researcher-scenario-lite-contract.md):
+  accepted main/next-alpha boundary for torch-free scenario comparison and
+  caller-owned scientific interpretation.

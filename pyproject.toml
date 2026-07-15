@@ -109,6 +109,7 @@ include = [
     "/examples/README.md",
     "/examples/first_run.py",
     "/examples/minimal_api_nabm.py",
+    "/examples/research_pivot_scenario_lite.py",
     "/examples/toy_catalog.py",
     "/scripts/inspect_release_artifacts.py",
     "/scripts/smoke_package_profiles.py",

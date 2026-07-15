@@ -20,6 +20,19 @@ thresholds, environmental transitions, teacher signals, basin signals, and
 evidence gates. In other words, the node is a disciplined execution contract
 rather than a universal behavioral model.
 
+![NABM Unit recurrent block with explicit ownership boundaries](../../docs/figures/nabm_unit_recurrent_block.svg)
+
+**Figure 1. The NABM Unit as an auditable recurrent block.** Panel A shows how
+one synchronous call orders optional local adaptation, validated typed-message
+construction, peer selection, social mixing, optional adapter commit, and
+diagnostics across agents. Domain adapters retain state meaning and
+environmental transitions, after which the caller repeats the block over time;
+`×N` marks protocol repetition and does not imply shared parameters. Panel B
+maps the deterministic classical examples to their actual torch-free
+bounded-scalar path rather than implying direct execution of the full class
+path. The four exposed controls are the local rule, peer rule, exchange channel
+and mixing strength, and commit rule.
+
 ## 3.2 Unit Contract
 
 The current NABM Unit v1 contract has five reusable surfaces. First, the
