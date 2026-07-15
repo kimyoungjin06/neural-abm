@@ -8,7 +8,7 @@ seed-paired replicates:
 - ``interdisciplinary_seed_grants``: funding, bridge ties, and reduced
   reputation risk raise both pivot pressure and structural fit.
 - ``hot_field_hype``: attention and peer-success signals raise pivot pressure
-  without raising structural fit.
+  while its smaller structural signals do not provide broad support.
 - ``hype_with_support``: both signal families at once.
 
 Hypotheses:
@@ -19,23 +19,29 @@ Hypotheses:
 
 Hype susceptibility is heterogeneous: attention and peer-success signals are
 scaled per researcher by ``0.6 * (1 - resource_security) + 0.4 * openness``,
-so hype recruits pivoters from the resource-insecure end of the population
-while structural fit stays unchanged. Seed-grant support is program-level and
-applies uniformly. This is the mechanism behind H2: hype changes *who* pivots,
-not just how many.
+so the specified hype signal is designed to weigh resource-insecure and open
+researchers more heavily. Seed-grant support is program-level and applies
+uniformly. These are postulated stylized mechanisms behind H2, not a measured
+subgroup result or an empirically identified causal decomposition.
 
 Each replicate samples a fresh researcher population and stage-assortative
-network from the replicate rng, so outcomes are distributions, not single
-deterministic values. Run ``--quick`` for a fast smoke, ``--sweeps`` to add
-the sensitivity sweeps used by the case-study figures.
+base network. Scenario-independent keyed streams align the population, base
+network, and agent-step shocks across paired scenarios; topology interventions
+are added through a separate stream. Run ``--quick`` for a fast smoke and
+``--sweeps`` to add the sensitivity sweeps used by the case-study figures.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import platform
+import subprocess
 import sys
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
+from importlib.metadata import PackageNotFoundError, version
+from numbers import Integral, Real
 from pathlib import Path
 from typing import Any
 
@@ -51,6 +57,15 @@ from neural_abm.api_lite import (
 
 STAGES: tuple[str, ...] = ("early", "mid", "senior", "bridge")
 STAGE_WEIGHTS: tuple[float, ...] = (0.35, 0.30, 0.20, 0.15)
+
+# Stable numeric component identifiers keep exogenous draws aligned across
+# scenarios without relying on Python's process-randomized string hash.
+RNG_COMPONENTS: dict[str, int] = {
+    "population": 1,
+    "base_network": 2,
+    "bridge_intervention": 3,
+    "local_noise": 4,
+}
 
 # Beta(a, b) parameters per stage for the structural attributes.
 STAGE_ATTRIBUTES: dict[str, dict[str, tuple[float, float]]] = {
@@ -149,6 +164,57 @@ class StudyConfig:
     productive_threshold: float = 0.40
     success_min_delta: float = 0.05
 
+    def __post_init__(self) -> None:
+        for name in (
+            "agent_count",
+            "steps",
+            "replicates",
+            "base_seed",
+            "neighbor_count",
+        ):
+            value = getattr(self, name)
+            if isinstance(value, bool) or not isinstance(value, Integral):
+                raise TypeError(f"{name} must be an integer")
+        if self.agent_count < 2:
+            raise ValueError("agent_count must be >= 2")
+        if self.steps < 1:
+            raise ValueError("steps must be >= 1")
+        if self.replicates < 1:
+            raise ValueError("replicates must be >= 1")
+        if self.base_seed < 0:
+            raise ValueError("base_seed must be >= 0")
+        if not 0 <= self.neighbor_count < self.agent_count:
+            raise ValueError(
+                "neighbor_count must satisfy 0 <= neighbor_count < agent_count"
+            )
+        for name in (
+            "within_stage_probability",
+            "local_alpha",
+            "social_alpha",
+            "peer_similarity_threshold",
+            "pivot_threshold",
+            "productive_threshold",
+        ):
+            value = getattr(self, name)
+            if (
+                isinstance(value, bool)
+                or not isinstance(value, Real)
+                or not np.isfinite(value)
+            ):
+                raise TypeError(f"{name} must be a finite real number")
+            if not 0.0 <= float(value) <= 1.0:
+                raise ValueError(f"{name} must be in [0, 1]")
+        for name in ("local_noise_scale", "success_min_delta"):
+            value = getattr(self, name)
+            if (
+                isinstance(value, bool)
+                or not isinstance(value, Real)
+                or not np.isfinite(value)
+            ):
+                raise TypeError(f"{name} must be a finite real number")
+            if value < 0.0:
+                raise ValueError(f"{name} must be >= 0")
+
 
 SEED_GRANT_PARAMETERS: dict[str, float] = {
     "field_signal": 0.04,
@@ -161,8 +227,9 @@ SEED_GRANT_PARAMETERS: dict[str, float] = {
 }
 
 # Hype is modeled as attention exceeding real opportunity: strong attention
-# and peer-success signals, a small real field signal, and no bridge ties or
-# resources. Only the small field signal reaches structural fit.
+# and peer-success signals, a small real field signal, no bridge ties, and a
+# modest resource/reputation penalty. Several terms therefore affect fit; the
+# model does not identify attention susceptibility as a unique cause.
 HOT_FIELD_HYPE_PARAMETERS: dict[str, float] = {
     "field_signal": 0.06,
     "resource_signal": -0.05,
@@ -173,10 +240,16 @@ HOT_FIELD_HYPE_PARAMETERS: dict[str, float] = {
 
 
 def study_scenarios(grant_scale: float = 1.0) -> tuple[ScenarioDefinition, ...]:
-    grants = {
-        key: value * grant_scale if key != "extra_bridge_tie_probability" else value
-        for key, value in SEED_GRANT_PARAMETERS.items()
-    }
+    if (
+        isinstance(grant_scale, bool)
+        or not isinstance(grant_scale, Real)
+        or not np.isfinite(grant_scale)
+        or grant_scale < 0.0
+    ):
+        raise ValueError("grant_scale must be finite and >= 0")
+    # The topology intervention is part of the dose. At scale zero every
+    # grant mechanism, including the extra-bridge probability, is absent.
+    grants = {key: value * grant_scale for key, value in SEED_GRANT_PARAMETERS.items()}
     combined = dict(HOT_FIELD_HYPE_PARAMETERS)
     for key, value in grants.items():
         combined[key] = combined.get(key, 0.0) + value
@@ -215,6 +288,23 @@ def _parameter(context: ScenarioReplicateContext, key: str) -> float:
     return float(context.scenario.parameters.get(key, 0.0))
 
 
+def component_rng(
+    base_seed: int,
+    replicate: int,
+    component: str,
+    *indices: int,
+) -> np.random.Generator:
+    """Return one deterministic, scenario-independent exogenous RNG stream."""
+
+    try:
+        component_id = RNG_COMPONENTS[component]
+    except KeyError as exc:
+        raise ValueError(f"unknown RNG component: {component}") from exc
+    return np.random.default_rng(
+        np.random.SeedSequence((base_seed, replicate, component_id, *indices))
+    )
+
+
 def _sample_bounded(
     rng: np.random.Generator,
     beta_params: tuple[float, float],
@@ -227,7 +317,8 @@ def make_researchers(
     context: ScenarioReplicateContext,
     config: StudyConfig,
 ) -> list[Researcher]:
-    rng = context.rng
+    # Scenario parameters transform the same underlying population draws.
+    rng = component_rng(config.base_seed, context.replicate, "population")
     stages = rng.choice(STAGES, size=config.agent_count, p=STAGE_WEIGHTS)
     researchers: list[Researcher] = []
     for agent_id, stage in enumerate(stages):
@@ -283,7 +374,14 @@ def build_stage_assortative_network(
     context: ScenarioReplicateContext,
     config: StudyConfig,
 ) -> list[list[int]]:
-    rng = context.rng
+    # The base graph and the optional bridge intervention have separate
+    # streams. This makes the base graph identical across paired scenarios.
+    rng = component_rng(config.base_seed, context.replicate, "base_network")
+    bridge_rng = component_rng(
+        config.base_seed,
+        context.replicate,
+        "bridge_intervention",
+    )
     count = len(researchers)
     by_stage: dict[str, list[int]] = {stage: [] for stage in STAGES}
     for researcher in researchers:
@@ -305,12 +403,13 @@ def build_stage_assortative_network(
                 candidate = int(rng.integers(count))
             if candidate != researcher.agent_id:
                 chosen.add(candidate)
-        if bridge_ids and rng.random() < _parameter(
-            context,
-            "extra_bridge_tie_probability",
-        ):
-            candidate = int(rng.choice(bridge_ids))
-            if candidate != researcher.agent_id:
+        eligible_bridges = [
+            candidate for candidate in bridge_ids if candidate != researcher.agent_id
+        ]
+        if eligible_bridges:
+            bridge_draw = float(bridge_rng.random())
+            candidate = int(bridge_rng.choice(eligible_bridges))
+            if bridge_draw < _parameter(context, "extra_bridge_tie_probability"):
                 chosen.add(candidate)
         neighbors.append(sorted(chosen))
     return neighbors
@@ -342,6 +441,7 @@ def run_study(
         replicates=config.replicates if replicates is None else replicates,
         base_seed=config.base_seed,
     )
+    local_step_by_agent: dict[tuple[str, int, int], int] = {}
 
     def make_agents(context: ScenarioReplicateContext) -> list[Researcher]:
         return make_researchers(context, config)
@@ -357,7 +457,17 @@ def run_study(
         context: ScenarioReplicateContext,
     ) -> float:
         before = float(agent.pivot_readiness)
-        noise = float(context.rng.normal(0.0, config.local_noise_scale))
+        key = (context.scenario.name, context.replicate, agent.agent_id)
+        step = local_step_by_agent.get(key, 0)
+        local_step_by_agent[key] = step + 1
+        noise_rng = component_rng(
+            config.base_seed,
+            context.replicate,
+            "local_noise",
+            step,
+            agent.agent_id,
+        )
+        noise = float(noise_rng.normal(0.0, config.local_noise_scale))
         agent.pivot_readiness = float(
             np.clip(
                 (1.0 - config.local_alpha) * before
@@ -480,14 +590,141 @@ def run_sensitivity_sweeps(config: StudyConfig, replicates: int) -> dict[str, An
 
 
 def _compact_scenarios(scenarios: dict[str, Any], micro_sample: int) -> dict[str, Any]:
+    if isinstance(micro_sample, bool) or not isinstance(micro_sample, Integral):
+        raise ValueError("micro_sample must be an integer")
+    if micro_sample < 0:
+        raise ValueError("micro_sample must be >= 0")
     compact: dict[str, Any] = {}
     for name, summary in scenarios.items():
         entry = dict(summary)
         final = entry.pop("first_replicate_final")
         entry["first_replicate_aggregate"] = final["aggregate_audit"]
         entry["first_replicate_micro_sample"] = final["micro_audit"][:micro_sample]
+        entry["first_replicate_micro_sample_size"] = min(
+            micro_sample,
+            len(final["micro_audit"]),
+        )
         compact[name] = entry
     return compact
+
+
+def paired_outcome_contrast(
+    scenarios: dict[str, Any],
+    *,
+    reference: str,
+    comparison: str,
+) -> dict[str, Any]:
+    """Summarize one direct paired contrast from raw replicate outcomes."""
+
+    reference_values = np.asarray(scenarios[reference]["outcome_values"], dtype=float)
+    comparison_values = np.asarray(
+        scenarios[comparison]["outcome_values"],
+        dtype=float,
+    )
+    deltas = comparison_values - reference_values
+    mean_delta = float(deltas.mean())
+    std = float(deltas.std(ddof=1)) if deltas.size > 1 else 0.0
+    if deltas.size > 1:
+        half_width = 1.959963984540054 * std / np.sqrt(deltas.size)
+        mean_ci95 = [mean_delta - half_width, mean_delta + half_width]
+        mean_ci_method = "normal_approximation_for_paired_mean"
+    else:
+        mean_ci95 = None
+        mean_ci_method = "unavailable_requires_at_least_2_replicates"
+    empirical = [float(value) for value in np.percentile(deltas, [2.5, 97.5])]
+    return {
+        "contrast": f"{comparison} - {reference}",
+        "outcome_field": scenarios[reference]["outcome_field"],
+        "replicates": int(deltas.size),
+        "mean_delta": round(mean_delta, 6),
+        "delta_std": round(std, 6),
+        "mean_effect_ci95": (
+            None if mean_ci95 is None else [round(value, 6) for value in mean_ci95]
+        ),
+        "delta_ci95_method": mean_ci_method,
+        "delta_empirical_percentile_interval95": [
+            round(value, 6) for value in empirical
+        ],
+        "paired_deltas": [round(float(value), 8) for value in deltas],
+    }
+
+
+def _source_snapshot(
+    root: Path,
+    additional_source_paths: tuple[Path, ...] = (),
+) -> dict[str, Any]:
+    """Hash the source state that can affect the tracked study payload."""
+
+    candidates = set((root / "src" / "neural_abm").rglob("*.py"))
+    candidates.update(
+        {
+            root / "examples" / "research_pivot_study.py",
+            root / "pyproject.toml",
+            root / "uv.lock",
+            *additional_source_paths,
+        }
+    )
+    paths = sorted(
+        (path for path in candidates if path.is_file()),
+        key=lambda path: path.relative_to(root).as_posix(),
+    )
+    digest = hashlib.sha256()
+    relative_paths: list[str] = []
+    for path in paths:
+        relative = path.relative_to(root).as_posix()
+        relative_paths.append(relative)
+        digest.update(relative.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return {
+        "algorithm": "sha256(sorted repository-relative path NUL bytes NUL)",
+        "sha256": digest.hexdigest(),
+        "file_count": len(relative_paths),
+        "paths": relative_paths,
+    }
+
+
+def reproducibility_metadata(
+    *,
+    additional_source_paths: tuple[Path, ...] = (),
+) -> dict[str, Any]:
+    """Capture enough runtime provenance to interpret a written artifact."""
+
+    try:
+        package_version: str | None = version("neural-abm")
+    except PackageNotFoundError:
+        package_version = None
+    root = Path(__file__).resolve().parents[1]
+    completed = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=root,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    git_revision = completed.stdout.strip() if completed.returncode == 0 else None
+    status = subprocess.run(
+        ["git", "status", "--porcelain"],
+        cwd=root,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    return {
+        "git_revision": git_revision,
+        "git_worktree_dirty": (
+            bool(status.stdout.strip()) if status.returncode == 0 else None
+        ),
+        "package_version": package_version,
+        "python": platform.python_version(),
+        "numpy": np.__version__,
+        "source_snapshot": _source_snapshot(root, additional_source_paths),
+        "rng_contract": (
+            "keyed SeedSequence streams by base_seed, replicate, component, "
+            "step, and agent where applicable"
+        ),
+    }
 
 
 def main() -> None:
@@ -523,19 +760,18 @@ def main() -> None:
         "base_surface": study["base_surface"],
         "default_profile": study["default_profile"],
         "torch_loaded": "torch" in sys.modules,
-        "config": {
-            "agent_count": config.agent_count,
-            "steps": config.steps,
-            "replicates": config.replicates,
-            "base_seed": config.base_seed,
-            "social_alpha": config.social_alpha,
-            "pivot_threshold": config.pivot_threshold,
-            "productive_threshold": config.productive_threshold,
-            "success_min_delta": config.success_min_delta,
-        },
+        "config": asdict(config),
+        "provenance": reproducibility_metadata(),
         "research_question": study["research_question"],
         "outcome_field": study["outcome_field"],
         "comparisons": study["comparisons"],
+        "direct_contrasts": [
+            paired_outcome_contrast(
+                study["scenarios"],
+                reference="interdisciplinary_seed_grants",
+                comparison="hot_field_hype",
+            )
+        ],
         "scenarios": _compact_scenarios(study["scenarios"], args.micro_sample),
     }
     if args.sweeps:

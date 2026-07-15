@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -421,16 +422,20 @@ def plot_learning_attention_weights(
     payload: dict[str, Any],
     target: Path,
 ) -> None:
-    fig, ax = plt.subplots(figsize=(7.2, 3.4), layout="constrained")
+    fig, (trajectory_ax, audit_ax) = plt.subplots(
+        1,
+        2,
+        figsize=(11.2, 3.8),
+        layout="constrained",
+        gridspec_kw={"width_ratios": (0.9, 1.5)},
+    )
     steps = None
     end_values: list[float] = []
     for scenario in LEARNING_SCENARIOS:
         summary = payload["scenarios"][scenario]["cautionary"]
         weights = np.asarray(summary["mean_attention_weight"])
         steps = np.arange(1, weights.size + 1)
-        # Baseline is dashed: under baseline and seed grants the weight never
-        # moves, so their curves coincide exactly at the prior value.
-        ax.plot(
+        trajectory_ax.plot(
             steps,
             weights,
             color=SCENARIO_COLORS[scenario],
@@ -441,12 +446,12 @@ def plot_learning_attention_weights(
         end_values.append(float(weights[-1]))
     assert steps is not None
     label_positions = _spread_label_positions(end_values, min_gap=0.016)
-    ax.set_ylim(
+    trajectory_ax.set_ylim(
         min(end_values) - 0.02,
         max(max(label_positions), max(end_values)) + 0.012,
     )
     for scenario, label_y in zip(LEARNING_SCENARIOS, label_positions, strict=True):
-        ax.annotate(
+        trajectory_ax.annotate(
             SCENARIO_LABELS[scenario],
             xy=(steps[-1], label_y),
             xytext=(6, 0),
@@ -456,12 +461,130 @@ def plot_learning_attention_weights(
             fontweight="bold",
             color=SCENARIO_COLORS[scenario],
         )
-    ax.set_xlim(steps[0], steps[-1] + 3.4)
-    ax.set_xlabel("Step")
-    ax.set_ylabel("Mean learned attention weight")
-    ax.set_title("Cautionary learners discount attention only where it fails")
+    trajectory_ax.set_xlim(steps[0], steps[-1] + 3.4)
+    trajectory_ax.set_xlabel("Step")
+    trajectory_ax.set_ylabel("Mean attention coefficient")
+    trajectory_ax.set_title("Attention coefficient trajectory")
+
+    features = list(payload["features"])
+    labels = [feature.replace("_", "\n") for feature in features] + ["bias"]
+    initial = payload["policy_initialization"]
+    scale = float(initial["logit_scale"])
+    initial_values = np.asarray(initial["study1_linear_weights"], dtype=float) * scale
+    initial_bias = scale * (float(initial["study1_linear_intercept"]) - 0.5)
+    changes: list[list[float]] = []
+    for scenario in LEARNING_SCENARIOS:
+        summary = payload["scenarios"][scenario]["cautionary"]
+        final_weights = np.asarray(
+            [summary["mean_weight_trajectories"][feature][-1] for feature in features]
+        )
+        final_bias = float(summary["mean_bias_trajectory"][-1])
+        changes.append([*(final_weights - initial_values), final_bias - initial_bias])
+    change_array = np.asarray(changes)
+    bound = max(0.01, float(np.max(np.abs(change_array))))
+    image = audit_ax.imshow(
+        change_array,
+        cmap="RdBu_r",
+        vmin=-bound,
+        vmax=bound,
+        aspect="auto",
+    )
+    audit_ax.set_xticks(np.arange(len(labels)))
+    audit_ax.set_xticklabels(labels, fontsize=7.2)
+    audit_ax.set_yticks(np.arange(len(LEARNING_SCENARIOS)))
+    audit_ax.set_yticklabels(
+        [SCENARIO_LABELS[scenario] for scenario in LEARNING_SCENARIOS]
+    )
+    audit_ax.grid(False)
+    audit_ax.set_title("Final mean coefficient change from the prior")
+    for row in range(change_array.shape[0]):
+        for column in range(change_array.shape[1]):
+            value = float(change_array[row, column])
+            audit_ax.text(
+                column,
+                row,
+                f"{value:+.2f}",
+                ha="center",
+                va="center",
+                fontsize=6.7,
+                color=SURFACE if abs(value) > 0.55 * bound else INK,
+            )
+    colorbar = fig.colorbar(image, ax=audit_ax, shrink=0.82, pad=0.02)
+    colorbar.set_label("Change from initialization", fontsize=8)
+    fig.suptitle(
+        "Failure-only learning updates a parameter vector, not attention alone",
+        fontsize=11,
+        fontweight="bold",
+    )
     fig.savefig(target, dpi=200)
     plt.close(fig)
+
+
+def render_case_study_figures(
+    *,
+    input_path: Path,
+    learning_input: Path,
+    figures: Path,
+    paper_figures: Path,
+) -> tuple[list[str], list[str]]:
+    payload = json.loads(input_path.read_text(encoding="utf-8"))
+    figures.mkdir(parents=True, exist_ok=True)
+    _style()
+
+    plot_outcome_distributions(
+        payload,
+        figures / "fig1_productive_pivot_distributions.png",
+    )
+    generated = ["fig1_productive_pivot_distributions.png"]
+    composition = figures / "fig2_pivot_composition.png"
+    plot_pivot_composition(payload, composition)
+    generated.append(composition.name)
+    manuscript_copies = [(composition, "pivot_composition.png")]
+    if "sensitivity" in payload:
+        sensitivity = figures / "fig3_sensitivity.png"
+        plot_sensitivity(payload, sensitivity)
+        generated.append(sensitivity.name)
+    readiness = figures / "fig4_readiness_trajectories.png"
+    plot_readiness_trajectories(
+        payload,
+        readiness,
+    )
+    generated.append(readiness.name)
+    if learning_input.exists():
+        learning_payload = json.loads(learning_input.read_text(encoding="utf-8"))
+        failed_trajectories = figures / "fig5_learning_failed_trajectories.png"
+        attention_weights = figures / "fig6_learning_attention_weights.png"
+        plot_learning_failed_trajectories(
+            learning_payload,
+            failed_trajectories,
+        )
+        plot_learning_attention_weights(
+            learning_payload,
+            attention_weights,
+        )
+        generated.extend((failed_trajectories.name, attention_weights.name))
+        manuscript_copies.extend(
+            (
+                (failed_trajectories, "pivot_learning_failed_trajectories.png"),
+                (attention_weights, "pivot_learning_attention_weights.png"),
+            )
+        )
+
+    paper_figures.mkdir(parents=True, exist_ok=True)
+    for source, filename in manuscript_copies:
+        shutil.copy2(source, paper_figures / filename)
+    return generated, [filename for _source, filename in manuscript_copies]
+
+
+def _assert_current(generated: Path, tracked: Path, names: list[str]) -> None:
+    stale = [
+        name
+        for name in names
+        if not (tracked / name).exists()
+        or (generated / name).read_bytes() != (tracked / name).read_bytes()
+    ]
+    if stale:
+        raise SystemExit(f"stale generated assets: {', '.join(stale)}")
 
 
 def main() -> None:
@@ -489,47 +612,35 @@ def main() -> None:
         default=Path("paper/figures"),
         help="Directory receiving the manuscript copies of selected figures.",
     )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Fail if tracked figures differ from a fresh render.",
+    )
     args = parser.parse_args()
 
-    payload = json.loads(args.input.read_text(encoding="utf-8"))
-    args.figures.mkdir(parents=True, exist_ok=True)
-    _style()
-
-    plot_outcome_distributions(
-        payload,
-        args.figures / "fig1_productive_pivot_distributions.png",
-    )
-    composition = args.figures / "fig2_pivot_composition.png"
-    plot_pivot_composition(payload, composition)
-    manuscript_copies = [(composition, "pivot_composition.png")]
-    if "sensitivity" in payload:
-        plot_sensitivity(payload, args.figures / "fig3_sensitivity.png")
-    plot_readiness_trajectories(
-        payload,
-        args.figures / "fig4_readiness_trajectories.png",
-    )
-    if args.learning_input.exists():
-        learning_payload = json.loads(args.learning_input.read_text(encoding="utf-8"))
-        failed_trajectories = args.figures / "fig5_learning_failed_trajectories.png"
-        attention_weights = args.figures / "fig6_learning_attention_weights.png"
-        plot_learning_failed_trajectories(
-            learning_payload,
-            failed_trajectories,
-        )
-        plot_learning_attention_weights(
-            learning_payload,
-            attention_weights,
-        )
-        manuscript_copies.extend(
-            (
-                (failed_trajectories, "pivot_learning_failed_trajectories.png"),
-                (attention_weights, "pivot_learning_attention_weights.png"),
+    if args.check:
+        with tempfile.TemporaryDirectory(prefix="research-pivot-figures.") as raw:
+            root = Path(raw)
+            figures = root / "figures"
+            paper_figures = root / "paper"
+            generated, paper_generated = render_case_study_figures(
+                input_path=args.input,
+                learning_input=args.learning_input,
+                figures=figures,
+                paper_figures=paper_figures,
             )
-        )
+            _assert_current(figures, args.figures, generated)
+            _assert_current(paper_figures, args.paper_figures, paper_generated)
+        print("research-pivot figures are current")
+        return
 
-    args.paper_figures.mkdir(parents=True, exist_ok=True)
-    for source, filename in manuscript_copies:
-        shutil.copy2(source, args.paper_figures / filename)
+    render_case_study_figures(
+        input_path=args.input,
+        learning_input=args.learning_input,
+        figures=args.figures,
+        paper_figures=args.paper_figures,
+    )
     print(f"figures written to {args.figures}")
     print(f"manuscript copies written to {args.paper_figures}")
 

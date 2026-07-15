@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass
+from numbers import Integral
 from typing import Any
 
 import numpy as np
@@ -30,6 +31,24 @@ LocalUpdate = Callable[[Any], float]
 DomainTransition = Callable[[Any, float], Mapping[str, Any]]
 MicroFields = Callable[[Any], Mapping[str, Any]]
 AggregateFields = Callable[[Sequence[Any]], Mapping[str, Any]]
+
+MICRO_AUDIT_RESERVED_FIELDS: frozenset[str] = frozenset(
+    {
+        "agent_id",
+        "peer_count",
+        "local_shift",
+        "social_shift",
+    }
+)
+AGGREGATE_AUDIT_RESERVED_FIELDS: frozenset[str] = frozenset(
+    {
+        "agent_count",
+        "mean_local_shift",
+        "mean_peer_count",
+        "mean_social_shift",
+        "max_social_shift",
+    }
+)
 
 
 @dataclass(frozen=True)
@@ -63,6 +82,11 @@ class BoundedScalarWorkflowSpec:
             raise ValueError("transition_label must be non-empty")
         if not self.commit_mode:
             raise ValueError("commit_mode must be non-empty")
+        if self.state_field in MICRO_AUDIT_RESERVED_FIELDS:
+            raise ValueError(
+                f"state_field is reserved by the workflow audit contract: "
+                f"{self.state_field}"
+            )
         if not 0.0 <= self.peer_similarity_threshold <= 1.0:
             raise ValueError("peer_similarity_threshold must lie in [0, 1]")
         if not 0.0 <= self.social_alpha <= 1.0:
@@ -71,6 +95,11 @@ class BoundedScalarWorkflowSpec:
             raise ValueError("bounds must be finite")
         if self.lower_bound > self.upper_bound:
             raise ValueError("lower_bound must be <= upper_bound")
+        if self.round_digits is not None and (
+            isinstance(self.round_digits, bool)
+            or not isinstance(self.round_digits, Integral)
+        ):
+            raise ValueError("round_digits must be an integer or None")
 
 
 @dataclass(frozen=True)
@@ -85,8 +114,8 @@ class BoundedScalarWorkflowResult:
     aggregate_audit: dict[str, Any]
     micro_audit: list[dict[str, Any]]
 
-    def to_dict(self) -> dict[str, Any]:
-        return {
+    def to_dict(self, *, round_values: bool = True) -> dict[str, Any]:
+        payload = {
             "status": "ok",
             "surface": "neural_abm.workflow_lite",
             "base_surface": "neural_abm.api_lite",
@@ -107,6 +136,18 @@ class BoundedScalarWorkflowResult:
             "aggregate_audit": self.aggregate_audit,
             "micro_audit": self.micro_audit,
         }
+        if not round_values:
+            return payload
+        serialized = dict(payload)
+        serialized["aggregate_audit"] = _serialize_value(
+            self.aggregate_audit,
+            self.spec.round_digits,
+        )
+        serialized["micro_audit"] = _serialize_value(
+            self.micro_audit,
+            self.spec.round_digits,
+        )
+        return serialized
 
 
 def run_bounded_scalar_workflow(
@@ -214,6 +255,28 @@ def _round_value(value: Any, digits: int | None) -> Any:
     return value
 
 
+def _serialize_value(value: Any, digits: int | None) -> Any:
+    if isinstance(value, Mapping):
+        return {key: _serialize_value(item, digits) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_serialize_value(item, digits) for item in value]
+    if isinstance(value, tuple):
+        return tuple(_serialize_value(item, digits) for item in value)
+    return _round_value(value, digits)
+
+
+def _reject_reserved_fields(
+    fields: Mapping[str, Any],
+    reserved: set[str] | frozenset[str],
+    *,
+    source: str,
+) -> None:
+    collisions = sorted(set(fields).intersection(reserved))
+    if collisions:
+        joined = ", ".join(collisions)
+        raise ValueError(f"{source} cannot overwrite reserved audit fields: {joined}")
+
+
 def _micro_audit_rows(
     *,
     agents: Sequence[Any],
@@ -224,32 +287,34 @@ def _micro_audit_rows(
     micro_fields: MicroFields | None,
 ) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
+    reserved = set(MICRO_AUDIT_RESERVED_FIELDS)
+    reserved.add(spec.state_field)
     for index, agent in enumerate(agents):
         row = {
             "agent_id": _agent_id(agent, index),
-            spec.state_field: _round_value(
-                _bounded_state_value(agent, spec.state_field),
-                spec.round_digits,
-            ),
+            spec.state_field: _bounded_state_value(agent, spec.state_field),
             "peer_count": diagnostics.peer_counts[index],
-            "local_shift": _round_value(local_losses[index], spec.round_digits),
-            "social_shift": _round_value(
-                diagnostics.update_norms[index],
-                spec.round_digits,
-            ),
+            "local_shift": float(local_losses[index]),
+            "social_shift": float(diagnostics.update_norms[index]),
         }
         if micro_fields is not None:
-            row.update(
-                {
-                    key: _round_value(value, spec.round_digits)
-                    for key, value in micro_fields(agent).items()
-                }
+            domain_fields = dict(micro_fields(agent))
+            _reject_reserved_fields(
+                domain_fields,
+                reserved,
+                source="micro_fields",
             )
+            row.update(
+                {key: _round_value(value, None) for key, value in domain_fields.items()}
+            )
+        transition_fields = dict(transition_rows[index])
+        _reject_reserved_fields(
+            transition_fields,
+            reserved,
+            source="domain_transition",
+        )
         row.update(
-            {
-                key: _round_value(value, spec.round_digits)
-                for key, value in transition_rows[index].items()
-            }
+            {key: _round_value(value, None) for key, value in transition_fields.items()}
         )
         rows.append(row)
     return rows
@@ -266,33 +331,25 @@ def _aggregate_audit_row(
     state_values = [_bounded_state_value(agent, spec.state_field) for agent in agents]
     row: dict[str, Any] = {
         "agent_count": len(agents),
-        f"mean_{spec.state_field}": _round_value(
-            float(np.mean(state_values)) if state_values else 0.0,
-            spec.round_digits,
+        f"mean_{spec.state_field}": (
+            float(np.mean(state_values)) if state_values else 0.0
         ),
-        "mean_local_shift": _round_value(
-            float(np.mean(local_losses)) if local_losses else 0.0,
-            spec.round_digits,
-        ),
-        "mean_peer_count": _round_value(
-            diagnostics.mean_peer_count,
-            spec.round_digits,
-        ),
-        "mean_social_shift": _round_value(
-            diagnostics.mean_update_norm,
-            spec.round_digits,
-        ),
-        "max_social_shift": _round_value(
-            diagnostics.max_update_norm,
-            spec.round_digits,
-        ),
+        "mean_local_shift": (float(np.mean(local_losses)) if local_losses else 0.0),
+        "mean_peer_count": float(diagnostics.mean_peer_count),
+        "mean_social_shift": float(diagnostics.mean_update_norm),
+        "max_social_shift": float(diagnostics.max_update_norm),
     }
     if aggregate_fields is not None:
+        domain_fields = dict(aggregate_fields(agents))
+        reserved = set(AGGREGATE_AUDIT_RESERVED_FIELDS)
+        reserved.add(f"mean_{spec.state_field}")
+        _reject_reserved_fields(
+            domain_fields,
+            reserved,
+            source="aggregate_fields",
+        )
         row.update(
-            {
-                key: _round_value(value, spec.round_digits)
-                for key, value in aggregate_fields(agents).items()
-            }
+            {key: _round_value(value, None) for key, value in domain_fields.items()}
         )
     return row
 

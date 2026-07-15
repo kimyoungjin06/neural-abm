@@ -55,11 +55,26 @@ satisfies that caller-supplied threshold. They do not determine whether a
 scientific claim is supported, whether an intervention is effective in the
 world, or whether the scenario model is valid.
 
-Likewise, seed pairing through common random numbers is an execution and
-variance-control mechanism. The reported `delta_ci95` is the 2.5th-to-97.5th
-percentile interval of the simulated paired deltas. The framework does not
-interpret it as a hypothesis test, guarantee frequentist coverage, choose a
-causal estimand, or validate the caller's data-generating assumptions.
+Likewise, replicate pairing is an execution and variance-control mechanism.
+The framework reuses a seed by replicate, but strict common random numbers
+still require caller callbacks to align component-level draws rather than
+consume one mutable stream through scenario-dependent branches.
+
+The reported `delta_ci95` / `mean_effect_ci95` is a normal-approximation
+confidence interval for the paired mean delta. The separate
+`delta_empirical_percentile_interval95` describes the central spread of
+replicate-level deltas and is not a confidence interval for the mean. The
+framework does not interpret it as a hypothesis test. Neither interval
+guarantees finite-sample coverage, chooses a causal estimand, or validates the
+caller's data-generating assumptions.
+
+A mean confidence interval requires at least two replicates. For a one-
+replicate smoke run, the mean-interval fields are `null` and the method is
+`unavailable_requires_at_least_2_replicates`; the framework must not report the
+single value as a zero-width 95% interval. `round_digits` is an audit-row
+presentation control only. Effect estimates, replicate outcomes, and
+distribution summaries retain the unrounded values used for analysis, and the
+result payload labels both precision scopes explicitly.
 
 Docs and examples may explain what a particular caller chose as its threshold,
 but must not describe `success=true` as framework adjudication of a paper claim.
@@ -81,8 +96,9 @@ The implementation and package documentation must:
 1. re-export the listed scenario objects through `neural_abm.api_lite`;
 2. test that the facade remains torch-free and that its export set is explicit;
 3. keep domain callbacks and outcome meaning caller-owned;
-4. label comparison booleans and percentile intervals as mechanical report
-   fields rather than scientific verdicts;
+4. distinguish mean-effect confidence intervals from empirical replicate
+   intervals and label comparison booleans as mechanical report fields rather
+   than scientific verdicts;
 5. distinguish the released `v0.1.0a5` surface from the unreleased
    `main` / next-alpha candidate.
 

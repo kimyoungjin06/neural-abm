@@ -4,15 +4,18 @@ from __future__ import annotations
 
 import argparse
 import json
+import posixpath
 import re
 import subprocess
 import tarfile
 import tempfile
 import tomllib
 import zipfile
+from collections.abc import Mapping
 from email.parser import Parser
 from pathlib import Path
 from typing import Any
+from urllib.parse import unquote, urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -30,18 +33,57 @@ REQUIRED_WHEEL_MODULES = {
     "neural_abm/unit_core.py",
     "neural_abm/workflow_lite.py",
 }
-REQUIRED_SDIST_FILES = {
-    "LICENSE",
-    "README.md",
-    "pyproject.toml",
+RESEARCH_PIVOT_SDIST_FILES = {
+    "docs/case-studies/researcher-pivot/README.md",
+    "docs/case-studies/researcher-pivot/data/learning_study_results.json",
+    "docs/case-studies/researcher-pivot/data/study_results.json",
+    "docs/case-studies/researcher-pivot/figures/fig1_productive_pivot_distributions.png",
+    "docs/case-studies/researcher-pivot/figures/fig2_pivot_composition.png",
+    "docs/case-studies/researcher-pivot/figures/fig3_sensitivity.png",
+    "docs/case-studies/researcher-pivot/figures/fig4_readiness_trajectories.png",
+    "docs/case-studies/researcher-pivot/figures/fig5_learning_failed_trajectories.png",
+    "docs/case-studies/researcher-pivot/figures/fig6_learning_attention_weights.png",
+    "examples/research_pivot_learning_study.py",
+    "examples/research_pivot_study.py",
+    "scripts/plot_research_pivot_study.py",
+}
+CLASSICAL_REDUCTION_SDIST_FILES = {
+    "docs/classical-reductions.md",
+    "docs/figures/nabm_unit_recurrent_block.png",
+    "docs/figures/nabm_unit_recurrent_block.svg",
+    "examples/classical_reductions.py",
+    "scripts/plot_nabm_unit_schematic.py",
+}
+README_LINKED_SDIST_FILES = {
+    "docs/api-surface-audit.md",
     "docs/early-git-user-handoff.md",
     "docs/git-distribution-flow.md",
     "docs/package-release-boundary.md",
     "docs/pre-release-artifact-flow.md",
+    "docs/release-readiness.md",
+    "docs/toy-models/README.md",
+    "docs/toy-models/capability-matrix.md",
+    "examples/README.md",
+    *CLASSICAL_REDUCTION_SDIST_FILES,
+    *RESEARCH_PIVOT_SDIST_FILES,
+}
+REQUIRED_SDIST_FILES = {
+    "LICENSE",
+    "README.md",
+    "pyproject.toml",
+    "docs/decisions/0015-researcher-scenario-lite-contract.md",
+    "docs/toy-models/neural-contagion-adoption.md",
+    "docs/toy-models/neural-hk-classification.md",
+    "docs/toy-models/neural-opinion-rewiring.md",
+    "docs/toy-models/neural-public-goods-commons.md",
+    "docs/toy-models/neural-spatial-pd.md",
     "examples/first_run.py",
+    "examples/minimal_api_nabm.py",
     "examples/research_pivot_scenario_lite.py",
     "examples/toy_catalog.py",
+    "scripts/inspect_release_artifacts.py",
     "scripts/smoke_package_profiles.py",
+    *README_LINKED_SDIST_FILES,
 }
 FORBIDDEN_SDIST_PATHS = {
     "docs/release-candidate-dry-run.md",
@@ -53,6 +95,9 @@ FORBIDDEN_SDIST_PREFIXES = (
     "paper/",
     "ref/",
     "docs/nabm-unit-v1",
+)
+MARKDOWN_LINK_PATTERN = re.compile(
+    r"!?\[[^\]]*\]\(\s*(?:<([^>]+)>|([^\s)]+))",
 )
 
 
@@ -107,10 +152,16 @@ def inspect_release_artifacts(dist_dir: Path) -> dict[str, Any]:
     wheel_report = _inspect_wheel(wheel)
     sdist_report = _inspect_sdist(sdist)
     pyproject_report = _inspect_pyproject(pyproject)
+    cross_artifact_issues = _cross_artifact_metadata_issues(
+        pyproject_report["summary"],
+        wheel_report["summary"],
+        sdist_report["summary"],
+    )
     blocking_issues = [
         *pyproject_report["blocking_issues"],
         *wheel_report["blocking_issues"],
         *sdist_report["blocking_issues"],
+        *cross_artifact_issues,
     ]
     warnings = [
         *pyproject_report["warnings"],
@@ -125,6 +176,49 @@ def inspect_release_artifacts(dist_dir: Path) -> dict[str, Any]:
         "wheel": wheel_report["summary"],
         "sdist": sdist_report["summary"],
     }
+
+
+def _cross_artifact_metadata_issues(
+    pyproject: Mapping[str, Any],
+    wheel: Mapping[str, Any],
+    sdist: Mapping[str, Any],
+) -> list[str]:
+    """Reject stale artifacts whose identity differs from the source project."""
+
+    issues: list[str] = []
+    expected = {
+        "name": pyproject["name"],
+        "version": pyproject["version"],
+        "requires_python": pyproject["requires_python"],
+    }
+    for artifact, summary, keys in (
+        (
+            "wheel",
+            wheel,
+            {
+                "name": "metadata_name",
+                "version": "metadata_version",
+                "requires_python": "requires_python",
+            },
+        ),
+        (
+            "sdist",
+            sdist,
+            {
+                "name": "metadata_name",
+                "version": "metadata_version",
+                "requires_python": "requires_python",
+            },
+        ),
+    ):
+        for field, summary_key in keys.items():
+            actual = summary.get(summary_key)
+            if actual != expected[field]:
+                issues.append(
+                    f"{artifact} {field} differs from pyproject: "
+                    f"{actual!r} != {expected[field]!r}"
+                )
+    return issues
 
 
 def _build_dist(output_dir: Path) -> None:
@@ -153,8 +247,7 @@ def _inspect_pyproject(pyproject: dict[str, Any]) -> dict[str, Any]:
     project = pyproject["project"]
     optional_dependencies = project["optional-dependencies"]
     default_dependency_names = {
-        _dependency_name(requirement)
-        for requirement in project["dependencies"]
+        _dependency_name(requirement) for requirement in project["dependencies"]
     }
     missing_extras = sorted(REQUIRED_EXTRAS - set(optional_dependencies))
     blocking_issues: list[str] = []
@@ -208,6 +301,9 @@ def _inspect_wheel(wheel: Path) -> dict[str, Any]:
         metadata = Parser().parsestr(
             archive.read(metadata_name).decode("utf-8", errors="replace")
         )
+        runtime_version = _read_runtime_version(
+            archive.read("neural_abm/__init__.py").decode("utf-8", errors="replace")
+        )
 
     missing_modules = sorted(REQUIRED_WHEEL_MODULES - names)
     if missing_modules:
@@ -234,6 +330,14 @@ def _inspect_wheel(wheel: Path) -> dict[str, Any]:
         )
     if metadata.get("Description-Content-Type") != "text/markdown":
         warnings.append("wheel README metadata is not marked as text/markdown")
+    metadata_version = metadata.get("Version")
+    if runtime_version is None:
+        blocking_issues.append("wheel package does not declare neural_abm.__version__")
+    elif runtime_version != metadata_version:
+        blocking_issues.append(
+            "wheel metadata version and neural_abm.__version__ differ: "
+            f"{metadata_version!r} != {runtime_version!r}"
+        )
 
     return {
         "blocking_issues": blocking_issues,
@@ -241,7 +345,8 @@ def _inspect_wheel(wheel: Path) -> dict[str, Any]:
         "summary": {
             "path": str(wheel),
             "metadata_name": metadata.get("Name"),
-            "metadata_version": metadata.get("Version"),
+            "metadata_version": metadata_version,
+            "runtime_version": runtime_version,
             "requires_python": metadata.get("Requires-Python"),
             "default_requires": default_requires,
             "extras": extras,
@@ -254,16 +359,44 @@ def _inspect_wheel(wheel: Path) -> dict[str, Any]:
 
 def _inspect_sdist(sdist: Path) -> dict[str, Any]:
     blocking_issues: list[str] = []
+    metadata = None
     with tarfile.open(sdist, "r:gz") as archive:
-        names = {
-            _strip_sdist_root(member.name)
-            for member in archive.getmembers()
-            if member.isfile()
-        }
+        names: set[str] = set()
+        markdown_sources: dict[str, str] = {}
+        for member in archive.getmembers():
+            if not member.isfile():
+                continue
+            name = _strip_sdist_root(member.name)
+            names.add(name)
+            if name == "PKG-INFO":
+                extracted = archive.extractfile(member)
+                if extracted is not None:
+                    metadata = Parser().parsestr(
+                        extracted.read().decode("utf-8", errors="replace")
+                    )
+                continue
+            if not name.endswith(".md"):
+                continue
+            extracted = archive.extractfile(member)
+            if extracted is not None:
+                markdown_sources[name] = extracted.read().decode(
+                    "utf-8", errors="replace"
+                )
+    if metadata is None:
+        blocking_issues.append("sdist is missing PKG-INFO metadata")
     missing_files = sorted(REQUIRED_SDIST_FILES - names)
     if missing_files:
         blocking_issues.append(
             f"sdist missing required files: {', '.join(missing_files)}"
+        )
+    broken_internal_links, checked_link_count = _inspect_internal_markdown_links(
+        names,
+        markdown_sources,
+    )
+    if broken_internal_links:
+        blocking_issues.append(
+            "sdist contains broken internal Markdown links: "
+            f"{'; '.join(broken_internal_links[:10])}"
         )
     forbidden_files = sorted(
         name
@@ -273,21 +406,100 @@ def _inspect_sdist(sdist: Path) -> dict[str, Any]:
     )
     if forbidden_files:
         blocking_issues.append(
-            "sdist includes internal-history files: "
-            f"{', '.join(forbidden_files[:10])}"
+            f"sdist includes internal-history files: {', '.join(forbidden_files[:10])}"
         )
     return {
         "blocking_issues": blocking_issues,
         "warnings": [],
         "summary": {
             "path": str(sdist),
+            "metadata_name": None if metadata is None else metadata.get("Name"),
+            "metadata_version": None if metadata is None else metadata.get("Version"),
+            "requires_python": (
+                None if metadata is None else metadata.get("Requires-Python")
+            ),
             "required_files": sorted(REQUIRED_SDIST_FILES),
             "required_files_present": not missing_files,
             "missing_required_files": missing_files,
+            "internal_links_checked": checked_link_count,
+            "internal_links_ok": not broken_internal_links,
+            "broken_internal_links": broken_internal_links,
             "forbidden_files_present": bool(forbidden_files),
             "forbidden_files": forbidden_files,
         },
     }
+
+
+def _inspect_internal_markdown_links(
+    names: set[str],
+    markdown_sources: Mapping[str, str],
+) -> tuple[list[str], int]:
+    """Return broken local Markdown links from the files inside an sdist."""
+
+    issues: list[str] = []
+    checked_count = 0
+    anchors_by_path = {
+        path: _markdown_anchors(source) for path, source in markdown_sources.items()
+    }
+    for source_path, source in sorted(markdown_sources.items()):
+        for match in MARKDOWN_LINK_PATTERN.finditer(source):
+            target = (match.group(1) or match.group(2)).strip()
+            try:
+                parsed = urlsplit(target)
+            except ValueError:
+                issues.append(f"{source_path}: invalid link target {target!r}")
+                checked_count += 1
+                continue
+            if parsed.scheme or parsed.netloc or target.startswith("//"):
+                continue
+            checked_count += 1
+            link_path = unquote(parsed.path)
+            if link_path:
+                if link_path.startswith("/"):
+                    resolved = posixpath.normpath(link_path.lstrip("/"))
+                else:
+                    resolved = posixpath.normpath(
+                        posixpath.join(posixpath.dirname(source_path), link_path)
+                    )
+            else:
+                resolved = source_path
+            if resolved == ".." or resolved.startswith("../"):
+                issues.append(
+                    f"{source_path}: {target!r} escapes the source distribution"
+                )
+                continue
+            if resolved not in names:
+                issues.append(
+                    f"{source_path}: {target!r} targets missing file {resolved!r}"
+                )
+                continue
+            fragment = unquote(parsed.fragment)
+            if fragment and resolved.endswith(".md"):
+                anchors = anchors_by_path.get(resolved, set())
+                if fragment not in anchors:
+                    issues.append(
+                        f"{source_path}: {target!r} targets missing anchor "
+                        f"{fragment!r} in {resolved!r}"
+                    )
+    return issues, checked_count
+
+
+def _markdown_anchors(source: str) -> set[str]:
+    """Build the GitHub-style heading anchors needed by local doc links."""
+
+    anchors: set[str] = set()
+    counts: dict[str, int] = {}
+    for line in source.splitlines():
+        match = re.match(r"^#{1,6}\s+(.+?)\s*#*\s*$", line)
+        if match is None:
+            continue
+        heading = re.sub(r"<[^>]+>", "", match.group(1)).strip().lower()
+        slug = re.sub(r"[^\w\- ]", "", heading)
+        slug = re.sub(r"\s+", "-", slug)
+        duplicate_index = counts.get(slug, 0)
+        counts[slug] = duplicate_index + 1
+        anchors.add(slug if duplicate_index == 0 else f"{slug}-{duplicate_index}")
+    return anchors
 
 
 def _dependency_name(requirement: str) -> str:
@@ -295,6 +507,11 @@ def _dependency_name(requirement: str) -> str:
     if match is None:
         raise ValueError(f"could not parse dependency name from {requirement!r}")
     return match.group(1).lower()
+
+
+def _read_runtime_version(source: str) -> str | None:
+    match = re.search(r'^__version__\s*=\s*["\']([^"\']+)["\']', source, re.MULTILINE)
+    return match.group(1) if match is not None else None
 
 
 def _is_pre_release_version(version: str) -> bool:

@@ -1,8 +1,8 @@
 """Learning-agent PIVOT study through the torch-backed ``neural_abm.api``.
 
 Study 2 of the researcher-pivot case study. Study 1 showed that hot-field
-hype produces frequent but unproductive pivots. This study asks the question
-a fixed-rule ABM cannot ask:
+hype produces frequent but often unproductive pivots. This study asks a
+question that a static-rule configuration of the same model cannot represent:
 
     Can researchers who learn from observed pivot outcomes self-correct the
     hype paradox, or does hype outpace learning?
@@ -11,21 +11,20 @@ All arms use the same sigmoid decision policy over the same nine observable
 features; the only difference between arms is the learning rule, so any
 divergence is attributable to it:
 
-- ``frozen``: weights never update (the Study 1 push-pull rule in policy
-  form). The classical-ABM control arm.
+- ``frozen``: weights never update (a monotone sigmoid reparameterization
+  initialized from the Study 1 push-pull coefficients). The control arm.
 - ``imitative``: vicarious gradient learning from every observed neighbor
   pivot outcome (success and failure), via binary cross-entropy toward
   predicting productive pivots.
-- ``cautionary``: negativity-biased social learning — the same update, but
-  only failed pivots are treated as evidence. Asymmetric weighting of
-  losses over gains is a documented regularity of human social learning.
+- ``cautionary``: failure-only social learning — the same update, but
+  only failed pivots are treated as evidence. This asymmetry is a stylized
+  modeling assumption, not an empirical result established by this study.
 
-Observed outcomes are survivorship-biased: only researchers who pivot reveal
+Observed outcomes are selectively observed: only researchers who pivot reveal
 an outcome. Under supportive environments early pivoters mostly succeed, so
-imitative learners receive one-sided positive evidence — the conditions for
-an information cascade. Whether that cascade materializes, and whether
-cautionary learning instead yields targeted hype immunity, is what the
-simulation measures. A weak L2 anchor toward the prior rule models
+imitative learners receive one-sided positive evidence. Whether this creates
+a self-reinforcing outcome-learning loop, and how failure-only updates respond,
+is what the simulation measures. A weak L2 anchor toward the prior rule models
 conservative belief updating.
 
 Pivots are absorbing events: a researcher pivots once, the outcome
@@ -47,7 +46,8 @@ import argparse
 import json
 import sys
 from collections.abc import Mapping, Sequence
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
+from numbers import Integral, Real
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
@@ -111,6 +111,8 @@ class LearningStudyConfig:
     burn_in_steps: int = 2
     replicates: int = 30
     base_seed: int = 20260715
+    neighbor_count: int = 4
+    within_stage_probability: float = 0.6
     learning_rate: float = 1.5
     prior_anchor: float = 0.25
     arms: tuple[str, ...] = ("frozen", "imitative", "cautionary")
@@ -120,6 +122,50 @@ class LearningStudyConfig:
     peer_similarity_threshold: float = 0.68
     pivot_threshold: float = 0.34
     productive_threshold: float = 0.40
+
+    def __post_init__(self) -> None:
+        # Reuse Study 1's population/network validation for shared settings.
+        study1.StudyConfig(
+            agent_count=self.agent_count,
+            steps=self.steps,
+            replicates=self.replicates,
+            base_seed=self.base_seed,
+            neighbor_count=self.neighbor_count,
+            within_stage_probability=self.within_stage_probability,
+            local_alpha=self.local_alpha,
+            local_noise_scale=self.local_noise_scale,
+            social_alpha=self.social_alpha,
+            peer_similarity_threshold=self.peer_similarity_threshold,
+            pivot_threshold=self.pivot_threshold,
+            productive_threshold=self.productive_threshold,
+        )
+        if isinstance(self.burn_in_steps, bool) or not isinstance(
+            self.burn_in_steps, Integral
+        ):
+            raise ValueError("burn_in_steps must be an integer")
+        if not 0 <= self.burn_in_steps < self.steps:
+            raise ValueError("burn_in_steps must satisfy 0 <= burn_in_steps < steps")
+        if (
+            isinstance(self.learning_rate, bool)
+            or not isinstance(self.learning_rate, Real)
+            or not np.isfinite(self.learning_rate)
+            or self.learning_rate < 0.0
+        ):
+            raise ValueError("learning_rate must be finite and >= 0")
+        if (
+            isinstance(self.prior_anchor, bool)
+            or not isinstance(self.prior_anchor, Real)
+            or not np.isfinite(self.prior_anchor)
+            or self.prior_anchor < 0.0
+        ):
+            raise ValueError("prior_anchor must be finite and >= 0")
+        allowed = {"frozen", "imitative", "cautionary"}
+        if not self.arms or len(set(self.arms)) != len(self.arms):
+            raise ValueError("arms must be non-empty and unique")
+        if set(self.arms) - allowed:
+            raise ValueError(f"arms must be drawn from {sorted(allowed)}")
+        if "frozen" not in self.arms:
+            raise ValueError("arms must include the frozen control")
 
 
 @dataclass
@@ -137,8 +183,8 @@ class PivotEnvironment:
     """Shared state the lifecycle callbacks read and write."""
 
     neighbors: list[list[int]]
-    rng: np.random.Generator
     config: LearningStudyConfig
+    replicate: int
     step: int = 0
     last_events: list[PivotEvent] = field(default_factory=list)
     new_events: list[PivotEvent] = field(default_factory=list)
@@ -147,6 +193,16 @@ class PivotEnvironment:
         self.step += 1
         self.last_events = self.new_events
         self.new_events = []
+
+    def local_noise(self, agent_id: int) -> float:
+        rng = study1.component_rng(
+            self.config.base_seed,
+            self.replicate,
+            "local_noise",
+            self.step - 1,
+            agent_id,
+        )
+        return float(rng.normal(0.0, self.config.local_noise_scale))
 
 
 def _feature_vector(researcher: study1.Researcher) -> np.ndarray:
@@ -204,12 +260,25 @@ class PivotPolicyAgent:
         with torch.no_grad():
             return float(self.weight[FEATURES.index("attention_signal")])
 
+    def weight_values(self) -> list[float]:
+        with torch.no_grad():
+            return [float(value) for value in self.weight]
+
+    def bias_value(self) -> float:
+        with torch.no_grad():
+            return float(self.bias)
+
     def _learn_from_events(self, events: Sequence[PivotEvent]) -> None:
         if self.learning_rate <= 0.0:
             return
+        # This arm is explicitly vicarious: an agent does not train on its own
+        # outcome, only on outcomes broadcast by graph neighbors.
         neighbor_ids = set(self.environment.neighbors[self.agent_id])
-        neighbor_ids.add(self.agent_id)
-        samples = [event for event in events if event.agent_id in neighbor_ids]
+        samples = [
+            event
+            for event in events
+            if event.agent_id != self.agent_id and event.agent_id in neighbor_ids
+        ]
         if self.learning_mode == "cautionary":
             samples = [event for event in samples if not event.productive]
         if not samples:
@@ -282,7 +351,7 @@ class PivotPolicyAgent:
             return 0.0
         config = self.environment.config
         before = float(self.base.pivot_readiness)
-        noise = float(self.environment.rng.normal(0.0, config.local_noise_scale))
+        noise = self.environment.local_noise(self.agent_id)
         self.base.pivot_readiness = float(
             np.clip(
                 (1.0 - config.local_alpha) * before
@@ -395,9 +464,14 @@ def run_arm(
 ) -> dict[str, Any]:
     """Run one scenario x policy arm for one replicate."""
 
-    rng = np.random.default_rng(np.random.SeedSequence((config.base_seed, replicate)))
+    rng = study1.component_rng(config.base_seed, replicate, "population")
     study_config = study1.StudyConfig(
         agent_count=config.agent_count,
+        steps=config.steps,
+        replicates=config.replicates,
+        base_seed=config.base_seed,
+        neighbor_count=config.neighbor_count,
+        within_stage_probability=config.within_stage_probability,
         local_alpha=config.local_alpha,
         local_noise_scale=config.local_noise_scale,
         social_alpha=config.social_alpha,
@@ -412,7 +486,11 @@ def run_arm(
         context,
         study_config,
     )
-    environment = PivotEnvironment(neighbors=neighbors, rng=rng, config=config)
+    environment = PivotEnvironment(
+        neighbors=neighbors,
+        config=config,
+        replicate=replicate,
+    )
     agents = [
         PivotPolicyAgent(
             agent_id=researcher.agent_id,
@@ -447,6 +525,10 @@ def run_arm(
     new_pivots_per_step: list[int] = []
     new_failures_per_step: list[int] = []
     mean_attention_weight: list[float] = []
+    mean_weight_trajectory: list[list[float]] = []
+    std_weight_trajectory: list[list[float]] = []
+    mean_bias_trajectory: list[float] = []
+    std_bias_trajectory: list[float] = []
     for _step in range(config.steps):
         environment.advance()
         unit.run(collect_logs=False)
@@ -465,6 +547,12 @@ def run_arm(
         mean_attention_weight.append(
             float(np.mean([agent.attention_weight() for agent in agents]))
         )
+        weights = np.asarray([agent.weight_values() for agent in agents])
+        biases = np.asarray([agent.bias_value() for agent in agents])
+        mean_weight_trajectory.append([float(value) for value in weights.mean(axis=0)])
+        std_weight_trajectory.append([float(value) for value in weights.std(axis=0)])
+        mean_bias_trajectory.append(float(biases.mean()))
+        std_bias_trajectory.append(float(biases.std()))
 
     pivots = sum(1 for agent in agents if agent.base.pivoted)
     productive = sum(1 for agent in agents if agent.base.productive_pivot)
@@ -478,19 +566,57 @@ def run_arm(
         "new_pivots_per_step": new_pivots_per_step,
         "new_failures_per_step": new_failures_per_step,
         "mean_attention_weight": mean_attention_weight,
+        "mean_weight_trajectory": mean_weight_trajectory,
+        "std_weight_trajectory": std_weight_trajectory,
+        "mean_bias_trajectory": mean_bias_trajectory,
+        "std_bias_trajectory": std_bias_trajectory,
     }
 
 
-def _distribution(values: Sequence[float]) -> dict[str, float]:
+def _distribution(values: Sequence[float]) -> dict[str, Any]:
     array = np.asarray(values, dtype=np.float64)
     std = float(array.std(ddof=1)) if array.size > 1 else 0.0
-    low, high = (float(v) for v in np.percentile(array, [2.5, 97.5]))
+    empirical_low, empirical_high = (
+        float(v) for v in np.percentile(array, [2.5, 97.5])
+    )
+    if array.size > 1:
+        rng = np.random.default_rng(np.random.SeedSequence((20260716, array.size)))
+        indices = rng.integers(0, array.size, size=(10_000, array.size))
+        bootstrap_means = array[indices].mean(axis=1)
+        mean_low, mean_high = (
+            float(v) for v in np.percentile(bootstrap_means, [2.5, 97.5])
+        )
+        mean_ci95 = [round(mean_low, 4), round(mean_high, 4)]
+        mean_ci_method = "percentile bootstrap of the mean, 10000 resamples"
+    else:
+        mean_ci95 = None
+        mean_ci_method = "unavailable_requires_at_least_2_replicates"
     return {
         "mean": round(float(array.mean()), 4),
         "std": round(std, 4),
-        "ci95_low": round(low, 4),
-        "ci95_high": round(high, 4),
+        "empirical_interval_95": [
+            round(empirical_low, 4),
+            round(empirical_high, 4),
+        ],
+        "mean_ci95": mean_ci95,
+        "mean_ci_method": mean_ci_method,
     }
+
+
+def _replicate_evidence_row(replicate: int, run: Mapping[str, Any]) -> dict[str, Any]:
+    """Keep raw outcome evidence without duplicating parameter tensors."""
+
+    keys = (
+        "pivot_rate",
+        "productive_pivot_rate",
+        "failed_pivot_rate",
+        "productive_share_of_pivots",
+        "cumulative_failed_rate",
+        "cumulative_productive_rate",
+        "new_pivots_per_step",
+        "new_failures_per_step",
+    )
+    return {"replicate": replicate, **{key: run[key] for key in keys}}
 
 
 def run_learning_study(config: LearningStudyConfig) -> dict[str, Any]:
@@ -525,6 +651,10 @@ def run_learning_study(config: LearningStudyConfig) -> dict[str, Any]:
                 [run["cumulative_productive_rate"] for run in runs]
             )
             attention = np.asarray([run["mean_attention_weight"] for run in runs])
+            weights = np.asarray([run["mean_weight_trajectory"] for run in runs])
+            weight_stds = np.asarray([run["std_weight_trajectory"] for run in runs])
+            biases = np.asarray([run["mean_bias_trajectory"] for run in runs])
+            bias_stds = np.asarray([run["std_bias_trajectory"] for run in runs])
             scenario_payload[name][arm_name] = {
                 "pivot_rate": _distribution([run["pivot_rate"] for run in runs]),
                 "productive_pivot_rate": _distribution(
@@ -548,6 +678,40 @@ def run_learning_study(config: LearningStudyConfig) -> dict[str, Any]:
                 "mean_attention_weight": [
                     round(float(v), 4) for v in attention.mean(axis=0)
                 ],
+                "mean_weight_trajectories": {
+                    feature: [
+                        round(float(value), 6)
+                        for value in weights[:, :, index].mean(axis=0)
+                    ]
+                    for index, feature in enumerate(FEATURES)
+                },
+                "between_replicate_weight_std_trajectories": {
+                    feature: [
+                        round(float(value), 6)
+                        for value in weights[:, :, index].std(axis=0)
+                    ]
+                    for index, feature in enumerate(FEATURES)
+                },
+                "mean_within_population_weight_std_trajectories": {
+                    feature: [
+                        round(float(value), 6)
+                        for value in weight_stds[:, :, index].mean(axis=0)
+                    ]
+                    for index, feature in enumerate(FEATURES)
+                },
+                "mean_bias_trajectory": [
+                    round(float(value), 6) for value in biases.mean(axis=0)
+                ],
+                "between_replicate_bias_std_trajectory": [
+                    round(float(value), 6) for value in biases.std(axis=0)
+                ],
+                "mean_within_population_bias_std_trajectory": [
+                    round(float(value), 6) for value in bias_stds.mean(axis=0)
+                ],
+                "replicate_runs": [
+                    _replicate_evidence_row(replicate, run)
+                    for replicate, run in enumerate(runs)
+                ],
             }
         for arm_name in config.arms:
             if arm_name == "frozen":
@@ -567,6 +731,7 @@ def run_learning_study(config: LearningStudyConfig) -> dict[str, Any]:
                         "outcome_field": outcome,
                         "arm": f"{arm_name} - frozen",
                         "replicates": config.replicates,
+                        "paired_deltas": [round(float(delta), 8) for delta in deltas],
                         **_distribution(deltas),
                     }
                 )
@@ -577,16 +742,32 @@ def run_learning_study(config: LearningStudyConfig) -> dict[str, Any]:
         "default_profile": "torch-backed",
         "torch_loaded": "torch" in sys.modules,
         "research_question": ("can_outcome_learning_self_correct_the_hype_paradox"),
-        "config": {
-            "agent_count": config.agent_count,
-            "steps": config.steps,
-            "replicates": config.replicates,
-            "base_seed": config.base_seed,
-            "learning_rate": config.learning_rate,
-            "pivot_threshold": config.pivot_threshold,
-            "productive_threshold": config.productive_threshold,
+        "config": asdict(config),
+        "provenance": {
+            **study1.reproducibility_metadata(
+                additional_source_paths=(Path(__file__).resolve(),)
+            ),
+            "torch": torch.__version__,
+            "learning_evidence": (
+                "raw replicate outcomes plus aggregate mean and dispersion "
+                "trajectories for all named weights and bias"
+            ),
         },
         "features": list(FEATURES),
+        "scenario_definitions": {
+            scenario.name: {
+                "description": scenario.description,
+                "parameters": dict(scenario.parameters),
+            }
+            for scenario in scenarios
+        },
+        "policy_initialization": {
+            "kind": "monotone sigmoid reparameterization",
+            "study1_linear_weights": list(FIXED_RULE_WEIGHTS),
+            "study1_linear_intercept": FIXED_RULE_INTERCEPT,
+            "logit_scale": POLICY_LOGIT_SCALE,
+            "self_outcomes_in_learning_samples": False,
+        },
         "scenarios": scenario_payload,
         "comparisons": comparisons,
     }

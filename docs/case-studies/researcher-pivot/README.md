@@ -3,13 +3,13 @@
 A two-study replicated case study of field-pivot decisions under different
 scientific environments. Study 1 (torch-free `neural_abm.api_lite`) compares
 environments under a fixed decision rule. Study 2 (torch-backed
-`neural_abm.api`) replaces the fixed rule with learning agents and asks a
-question a fixed-rule ABM cannot ask. This note is the reference end-to-end
+`neural_abm.api`) replaces a static-rule configuration with learning agents
+and examines endogenous coefficient updates. This note is the reference end-to-end
 research example for the package: research question, stylized mechanism,
-seed-paired replication, sensitivity sweeps, figures, and limitations.
+component-keyed paired replication, sensitivity sweeps, figures, and limitations.
 
-**Status**: stylized-mechanism study. Parameters are theory-motivated, not
-calibrated to empirical data. Read the [Limitations](#limitations) before
+**Status**: stylized-mechanism study. Parameters are hand-set rather than
+calibrated to empirical data. Read the [Limitations](#7-limitations) before
 citing any number outside this repository.
 
 ## TL;DR
@@ -17,34 +17,38 @@ citing any number outside this repository.
 **Study 1** (fixed decision rule, 100 seed-paired replicates of a
 120-researcher population):
 
-1. **Seed grants and hype deliver the same productive gain at very different
-   cost.** Interdisciplinary seed grants raise the productive pivot rate by
-   +0.190 [95% CI 0.112, 0.263] over baseline; hot-field hype delivers a
-   statistically indistinguishable +0.193 [0.125, 0.263] — but does it by
-   converting 2.4x more researchers (56% vs 23%) and failing ten times as
-   many of them (36% vs 4% of the population).
-2. **Hype changes who pivots, not just how many.** Hype recruits pivoters
-   from the resource-insecure end of the population, so only 36% of
-   hype-driven pivots are productive versus 84% under seed grants.
+1. **Seed grants and hype produce similar mean productive gains in this run,
+   at very different disruption cost.** Interdisciplinary seed grants raise
+   the productive pivot rate by +0.191 [95% mean CI 0.181, 0.202] over
+   baseline; hot-field hype raises it by +0.187 [0.180, 0.194]. The direct
+   paired hype-minus-grant contrast is −0.004 [−0.012, 0.004], without a
+   pre-specified equivalence margin. Hype does this by producing 2.3x as many
+   pivots (56% vs 24%) and 8.6x as many failures (36% vs 4% of the population).
+2. **Hype changes aggregate pivot composition, not just how many pivot.** Only
+   35% of hype-driven pivots are productive versus 83% under seed grants. By
+   construction, hype signals are weighted toward resource-insecure and open
+   researchers, but the shipped artifact does not retain subgroup composition
+   across all replicates; it therefore does not establish which subgroup drove
+   this aggregate result.
 3. **Peer influence is a double-edged amplifier.** Stronger social mixing
-   suppresses both spontaneous pivots and the seed-grant effect (productive
-   rate 0.27 → 0.12 as social alpha goes 0 → 0.8) while consolidating
-   hype-driven mass pivoting. This pattern was not designed in; it emerges
-   from readiness homogenization around each scenario's population mean.
+   suppresses both spontaneous pivots and the seed-grant outcome (productive
+   rate 0.26 → 0.12 as social alpha goes 0 → 0.8) while consolidating
+   hype-driven mass pivoting. This is a sensitivity result of the specified
+   network dynamics, not a general conformity theorem.
 
 **Study 2** (learning agents, 30 seed-paired replicates, three arms):
 
-4. **The direction of social learning matters more than learning itself.**
-   Agents that imitate observed pivot success trigger an information
-   cascade: because only pivoters reveal outcomes and early pivoters mostly
-   succeed, one-sided positive evidence floods every environment with failed
-   pivots (failed rate +0.30 over the fixed rule even at baseline).
-5. **Negativity-biased learners acquire targeted hype immunity.** Agents
-   that update only on observed failures cut the failed pivot rate under
-   hype by −0.137 [−0.200, −0.087] while leaving the baseline world exactly
-   unchanged — and the mechanism is directly auditable: their learned
-   attention weight falls from 1.00 to 0.81 under hype and moves nowhere
-   else.
+4. **Imitative outcome learning creates a self-reinforcing loop in baseline
+   and grant environments, but not in the already-high-pivot hype arm.** Relative to
+   the frozen arm, failed pivots rise by +0.281 [95% mean CI 0.235, 0.322] at
+   baseline and +0.289 [0.268, 0.308] under grants; the hype difference is
+   −0.009 [−0.024, 0.007]. This is not a canonical informational-cascade test.
+5. **Failure-only learning reduces hype failures, with broader trade-offs.**
+   Failed pivots fall by −0.144 [−0.159, −0.129] under hype, while productive
+   pivots also fall by −0.050 [−0.056, −0.044]. The attention coefficient
+   moves from 1.00 to 0.81, but the full parameter audit shows simultaneous
+   movement in other weights and the bias; attention is therefore an audited
+   correlate, not an identified single mechanism.
 
 ![Productive pivot rate distributions per scenario](figures/fig1_productive_pivot_distributions.png)
 
@@ -62,7 +66,7 @@ Hypotheses:
   baseline by more than 5 percentage points.
 - **H2 (hype paradox)**: hype raises the pivot rate, but the productive
   share of pivots drops, because attention reaches the desire to pivot
-  without reaching the capacity to pivot well.
+  more strongly than it changes the modeled capacity to pivot well.
 - **H3 (interaction)**: support layered on hype recovers part of the
   productive share lost to hype.
 
@@ -86,19 +90,20 @@ distributions (see `STAGE_ATTRIBUTES` in the study script).
 
 The desire to pivot and the capacity to pivot well are deliberately
 separated, following the push-pull framing from migration theory applied to
-topic mobility:
+topic mobility as a conceptual analogy, not a validated measurement model:
 
 - **Pivot pressure** (push): field opportunity, openness, resource
   *insecurity*, funding and attention signals, minus skill distance and
   reputation risk.
 - **Productive fit** (pull/capacity): field opportunity, network support,
   resource security, minus skill distance and reputation risk. Attention
-  never enters fit.
+  itself does not enter fit, while other hype-scenario inputs do.
 
 Hype susceptibility is heterogeneous: attention and peer-success signals are
 scaled per researcher by `0.6 * (1 - resource_security) + 0.4 * openness`.
-This single mechanism produces H2: hype recruits exactly the researchers
-whose structural fit is weakest.
+The hype scenario also changes field opportunity, resource security, and
+reputation risk. Without a component ablation, the resulting composition
+cannot be attributed to susceptibility alone.
 
 ### Scenarios
 
@@ -106,7 +111,7 @@ whose structural fit is weakest.
 |---|---|---|
 | `baseline` | No intervention | — |
 | `interdisciplinary_seed_grants` | Program-level support raises pressure *and* fit | funding 0.25, resources +0.10, bridge ties +0.10 and extra network links, reputation −0.05 |
-| `hot_field_hype` | Attention raises pressure only, hardest on the insecure | attention 0.55, peer-success 0.35, small real field signal 0.06, reputation +0.10 |
+| `hot_field_hype` | Attention and peer-success pressure dominate smaller structural changes | attention 0.55, peer-success 0.35, field +0.06, resources −0.05, reputation risk +0.10 |
 | `hype_with_support` | Both signal families at once | sum of the two rows above |
 
 ### Transition
@@ -119,9 +124,12 @@ at the final step.
 
 - **Replication**: 100 replicates per scenario via
   `run_replicated_bounded_scalar_scenarios` with `base_seed=20260715`.
-  Replicate *r* uses the same seed in every scenario (common random
-  numbers), so scenario deltas are paired and the 95% CI is the percentile
-  interval of the 100 paired deltas.
+  Replicate *r* uses scenario-independent keyed streams for the sampled
+  population, base network, topology intervention, and agent-step noise.
+  Scenario deltas are therefore paired without treatment-dependent RNG drift.
+- **Intervals**: bracketed intervals in the prose are 95% normal-approximation
+  CIs for the paired mean delta. The JSON separately records the central 95%
+  empirical interval of replicate-level deltas.
 - **Primary outcome**: `productive_pivot_rate`; success criterion: mean
   paired delta > 0.05.
 - **Dynamics**: 8 steps, local alpha 0.45 with N(0, 0.02) decision noise,
@@ -131,32 +139,32 @@ at the final step.
 
 ## 4. Results
 
-### R1 — Support works, and a placebo dose does nothing (H1 supported)
+### R1 — Support raises the modeled outcome; the true-null arm is invariant
 
-Seed grants raise the productive pivot rate by +0.190 [0.112, 0.263]; every
-one of the 100 paired replicates clears the +0.05 criterion. The
-dose-response is monotone, and at zero grant intensity the effect collapses
-to +0.004 [−0.017, 0.017] — the placebo behaves like a placebo, which is a
-basic validity check on the comparison machinery.
+Seed grants raise the productive pivot rate by +0.191 [0.181, 0.202]; every
+one of the 100 paired replicates clears the caller-supplied +0.05 threshold.
+The dose-response is monotone. At zero grant intensity every intervention
+component, including extra bridge ties, is exactly zero; the paired effect is
+0.000 [0.000, 0.000]. This is a deterministic null-path check on the scenario
+machinery, not external validation of the domain model.
 
 ![Sensitivity sweeps](figures/fig3_sensitivity.png)
 
-### R2 — Hype buys pivots, support buys productive pivots (H2 supported)
+### R2 — Hype buys pivots, support buys a more productive composition
 
-Hype matches the seed-grant productive delta (+0.193 vs +0.190) but through
-an entirely different composition: 56% of the population pivots (vs 23%
-under grants) and 36% of the population ends in a failed pivot (vs 4%). The
-productive share of pivots is 36% under hype against 84% under grants. If an
-institution measures success by pivot counts, hype looks strictly better; if
-it measures productive transitions per researcher disrupted, hype is an
-order of magnitude more wasteful.
+Hype and grants have similar mean productive deltas in this run (+0.187 versus
++0.191), but the direct paired contrast is reported rather than treated as an
+equivalence result: −0.004 [−0.012, 0.004]. Hype produces pivots in 56% of the
+population (versus 24% under grants) and failures in 36% (versus 4%). The
+productive share of pivots is 35% under hype and 83% under grants. These are
+model-internal composition differences under the specified scenarios.
 
 ![Pivot composition per scenario](figures/fig2_pivot_composition.png)
 
-### R3 — Support partially rescues hype (H3 partially supported)
+### R3 — Support changes the saturated hype composition
 
-Combining both signal families yields the largest productive rate (+0.476
-[0.392, 0.559]) and lifts the productive share from 36% to 51% — but the
+Combining both signal families yields the largest productive rate (+0.469
+[0.461, 0.478]) and lifts the productive share from 35% to 51% — but the
 failed pivot rate stays at 47% of the population, because in this regime
 pivoting becomes near-universal (95%). Support scales productivity; it does
 not cancel hype's waste. We flag this cell as the model's saturation regime
@@ -164,13 +172,12 @@ and interpret it qualitatively only.
 
 ### R4 — Peer influence suppresses interventions and consolidates hype
 
-The social alpha sweep was run as a robustness check and produced the most
-interesting emergent pattern. Stronger peer mixing homogenizes readiness
-toward each scenario's population mean, which (a) eliminates spontaneous
-baseline pivots (0.082 → 0.000), (b) erodes the seed-grant effect (0.273 →
-0.123), and (c) mildly consolidates mass pivoting under hype+support. In
-this model, strong conformity pressure makes targeted interventions weaker
-and bandwagons stronger.
+The social alpha sweep is a robustness check. Stronger peer mixing over the
+selected local peers (a) reduces baseline productive pivots (0.074 → 0.000),
+(b) reduces the seed-grant productive rate (0.262 → 0.118), and (c) raises
+the overall hype+support pivot rate toward saturation. These directions are
+properties of this graph, peer filter, and threshold combination; they are
+not a general result about conformity or population-mean preservation.
 
 ![Readiness trajectories](figures/fig4_readiness_trajectories.png)
 
@@ -185,9 +192,9 @@ Within the model's assumptions, the policy-relevant readings are:
 
 - Counting pivots overstates hype and understates support. Composition
   metrics (productive share, failed-pivot rate) invert the ranking.
-- The hype paradox needs no irrationality: it follows from heterogeneous
-  susceptibility (insecure researchers respond most to attention) plus the
-  fact that attention does not build capacity.
+- The modeled hype composition is compatible with heterogeneous
+  susceptibility plus weak structural support, but the bundled scenario does
+  not identify either component as the unique cause.
 - Environments with strong conformity dynamics may need stronger targeted
   support to achieve the same productive mobility.
 
@@ -203,89 +210,92 @@ paradox self-correct — or does hype outpace learning?**
 ### Design
 
 Three arms share one sigmoid decision policy over the same nine observable
-features; the only difference between arms is the learning rule, so every
-divergence is attributable to learning:
+features; within Study 2, the only arm-level difference is the update rule:
 
 | Arm | Update rule |
 |---|---|
-| `frozen` | Never updates (Study 1's push-pull rule in policy form) — the classical-ABM control. |
-| `imitative` | Vicarious gradient learning from every observed neighbor pivot outcome (BCE toward predicting productive pivots). |
-| `cautionary` | The same update, applied only to observed *failures* — negativity-biased social learning. |
+| `frozen` | Never updates; a monotone sigmoid reparameterization initialized from the Study 1 coefficients. |
+| `imitative` | Vicarious gradient learning from every observed neighbor pivot outcome, excluding the agent's own outcome. |
+| `cautionary` | The same neighbor-only update, restricted to observed failures; this is a postulated failure-only rule. |
 
 Pivots are absorbing events with publicly visible outcomes; pivoted
 researchers keep broadcasting readiness, so hype contagion and outcome
 learning compete on the same stage-assortative network. A weak L2 anchor to
 the prior rule models conservative belief updating; a 2-step burn-in keeps
 initial-condition transients from being absorbed as pivots. 30 seed-paired
-replicates, 14 steps, three scenarios (baseline, seed grants, hype).
+replicates, 14 steps, three scenarios (baseline, seed grants, hype). Population,
+base-network, intervention-topology, and agent-step noise streams are keyed by
+component so treatment-dependent control flow cannot reassign later shocks.
+Study 2's bracketed intervals are deterministic 10,000-resample percentile-
+bootstrap CIs for the paired mean delta; its JSON also stores the empirical
+replicate interval separately.
 
 The policy class is deliberately minimal (ten named parameters per agent):
 each agent's training signal is single-digit observed outcomes, so larger
-models would fit noise; named weights are what make the learned-parameter
-trajectory usable as audit evidence; and minimal capacity keeps the
+models would fit noise; named weights make the learned-parameter trajectory
+inspectable; and minimal capacity keeps the
 fixed-versus-learning comparison free of a capacity confound. The
-system-level nonlinearity (thresholds, absorbing events, contagion) is where
-both headline results come from. The lifecycle accepts arbitrary torch
-modules, so this is an escalation ladder, not a cap.
+system-level nonlinearity sits in thresholds, absorbing events, and contagion.
+The lifecycle accepts arbitrary torch modules, so this is an escalation ladder,
+not a cap. Inspectability does not by itself identify a coefficient as causal.
 
 Because pivots are absorbing (anyone who ever crosses the threshold stays
 pivoted), the frozen arm's cumulative rates sit above Study 1's final-step
 state rates; comparisons are within-design, against the frozen control.
 
-### R5 — Imitating success triggers an information cascade
+### R5 — Imitative learning amplifies baseline and grant pivoting
 
-Observed outcomes are survivorship-biased: only pivoters reveal outcomes,
+Observed outcomes are selectively observed: only pivoters reveal outcomes,
 and early pivoters are the best-positioned, so they mostly succeed. For an
-imitative learner this one-sided positive evidence raises the propensity to
-pivot across the board, which produces more pivots, more success stories,
-and a self-reinforcing cascade — the textbook information-cascade mechanism
-emerging from local gradient updates. Failed pivot rates rise by +0.30
-[0.07, 0.44] at baseline and +0.29 [0.17, 0.38] under seed grants; the
-productive share of pivots collapses (0.84 → 0.42 at baseline, 0.71 → 0.54
-under grants). Supportive environments are hit hardest, because support
-manufactures exactly the early success stories that feed the cascade.
+imitative learner this one-sided evidence can raise future pivot propensity.
+Failed pivot rates rise by +0.281 [0.235, 0.322] at baseline and +0.289
+[0.268, 0.308] under seed grants. Under already-high-pivot hype, the failed-rate
+difference is −0.009 [−0.024, 0.007], while productive pivots rise by +0.025
+[0.015, 0.034]. We therefore call the first two patterns self-reinforcing
+outcome-learning loops, not a textbook informational cascade and not an effect
+that appears in every environment.
 
 ![Learning direction decides the failure curve](figures/fig5_learning_failed_trajectories.png)
 
-### R6 — Cautionary learning yields targeted hype immunity
+### R6 — Failure-only learning reduces hype failures, with broad updates
 
-Negativity-biased learners cut the failed pivot rate under hype by −0.137
-[−0.200, −0.087] relative to the frozen rule, while the baseline world is
-left exactly unchanged (delta −0.000 — there are no failures to learn from).
-The mechanism is directly auditable in the learned parameters: the mean
-attention weight drops from 1.00 to 0.81 under hype within three steps of
-the first failures and moves nowhere else. Hype immunity is acquired
-exactly where, and only where, hype fails people.
+Failure-only learners cut the failed pivot rate under hype by −0.144
+[−0.159, −0.129] relative to the frozen rule. Productive pivots also fall by
+−0.050 [−0.056, −0.044]. The mean attention coefficient falls from 1.00 to
+0.81, but the stored trajectories show concurrent changes in field, resource,
+network, skill, reputation, openness, peer-success, and bias parameters. The
+attention trace is therefore one visible correlate of a multivariate update,
+not an identified single route to "hype immunity."
 
-![Cautionary learners discount attention only where it fails](figures/fig6_learning_attention_weights.png)
+![Full parameter audit for failure-only learning](figures/fig6_learning_attention_weights.png)
 
 ### R7 — The price of caution
 
-Under seed grants, cautionary learners also pivot less (productive rate
-−0.073 [−0.127, −0.031]): the early failures they observe make them discount
-signals that, in a supportive environment, are genuinely load-bearing.
-Negativity bias buys hype protection at the cost of under-reacting to real
-support — a trade-off invisible to any fixed-rule model.
+Under seed grants, failure-only learners reduce failures by −0.061
+[−0.073, −0.052] but also reduce productive pivots by −0.069
+[−0.081, −0.059]. Baseline is not exactly invariant: the productive-pivot
+delta is −0.004 [−0.007, −0.001]. The modeled rule trades activity and failures
+together; it is not a uniformly beneficial correction.
 
 ### Why this needed learning agents
 
-Study 1 could have been built in any ABM framework; Study 2 could not have
-been *asked* in one. Every Study 2 finding is a statement about how decision
-rules change endogenously — cascades from imitation, immunity from
-cautionary updates, the attention-weight trajectory as audit evidence. In a
-fixed-rule ABM the modeler would have to hand-code the correction they are
-trying to discover. Here the classical control and the learning variants run
-in the same lifecycle, on the same seeds, with the same audit logging, and
-differ in nothing but the learning rule.
+A static-rule configuration of this model cannot represent endogenous
+coefficient updates. Study 2 demonstrates that the NABM lifecycle can run
+frozen and adaptive variants through the same typed exchange and domain
+transition path while preserving paired exogenous shocks and parameter audit
+traces. This is a repository expressiveness claim, not a claim that adaptive
+agents are unavailable in other ABM frameworks or that learning improves the
+policy outcome.
 
 ## 7. Limitations
 
-- **Stylized, not calibrated.** All parameters are theory-motivated
-  constants; no empirical bibliometric data was fit. Effect sizes are
+- **Stylized, not calibrated.** All parameters are hand-set constants; no
+  empirical bibliometric data was fit. Effect sizes are
   model-internal quantities, not field estimates.
 - **Thresholds are modeling choices.** The pivot (0.34) and productivity
-  (0.40) thresholds were chosen so the baseline pivot rate is realistically
-  low (~1%); qualitative orderings were checked under the sweeps, but a
+  (0.40) thresholds were chosen to make the baseline pivot rate low (~1%);
+  that target is not empirically validated. Orderings were checked under the
+  reported sweeps, but a
   fuller threshold sensitivity analysis is future work.
 - **The hype+support cell saturates** (95% pivot rate), so its magnitudes
   are less meaningful than its ordering.
@@ -294,10 +304,15 @@ differ in nothing but the learning rule.
 - Baseline pivots are near zero, so ratio-style comparisons against baseline
   are unstable; all claims use absolute rate deltas.
 - **Study 2's learning modes are assumptions, not discoveries.** Imitative
-  and negativity-biased social learning are both empirically documented, but
-  the study compares postulated update rules; it does not learn which rule
-  people use. The learning rate and prior-anchor strength were fixed, not
-  swept, and the policy is linear in the observed features.
+  and failure-only learning are postulated update rules; the study does not
+  estimate which rule people use. The learning rate and prior-anchor strength
+  were fixed, not swept, and the policy is linear in the observed features.
+- **The frozen arm is not Study 1 verbatim.** It is a monotone sigmoid
+  reparameterization initialized from Study 1 coefficients, and Study 2 also
+  uses absorbing pivots and a burn-in. Comparisons are within Study 2.
+- **Mechanisms are bundled.** Hype changes several inputs, and learning moves
+  several parameters. Component ablations are required before attributing an
+  outcome to susceptibility or the attention coefficient alone.
 - **Study 2 outcomes are immediately and perfectly observable.** Real pivot
   outcomes reveal slowly and noisily; delayed or noisy outcome disclosure
   would weaken learning and is the most interesting extension.
@@ -307,11 +322,11 @@ differ in nothing but the learning rule.
 From a repository clone:
 
 ```bash
-# Study 1: full study + sweeps (roughly 5-10 minutes, torch-free)
+# Study 1: full study + sweeps (roughly 1-3 minutes, torch-free)
 uv run --no-dev python examples/research_pivot_study.py --sweeps \
   --output docs/case-studies/researcher-pivot/data/study_results.json
 
-# Study 2: learning agents (roughly 2-4 minutes, requires torch)
+# Study 2: learning agents (roughly 1-2 minutes, requires torch)
 uv run python examples/research_pivot_learning_study.py \
   --output docs/case-studies/researcher-pivot/data/learning_study_results.json
 
@@ -323,9 +338,13 @@ uv run --no-dev python examples/research_pivot_study.py --quick
 uv run python examples/research_pivot_learning_study.py --quick
 ```
 
-Determinism: rerunning with the same `--base-seed` (default 20260715)
-reproduces every number in this note exactly; the JSON artifact in `data/`
-is the run the figures were rendered from.
+Determinism: with the recorded source snapshot, configuration, runtime versions,
+and `--base-seed` (default 20260715), rerunning deterministically regenerates the
+tracked numeric payload. The JSON artifact in `data/` is the run the figures
+were rendered from. Each artifact records the full configuration,
+package/runtime versions, Git revision and worktree state, a source-snapshot
+SHA-256, and the keyed-RNG contract. When the worktree flag is true, the source
+snapshot—not the Git revision alone—identifies the generating code.
 
 ## 9. Framework Surface Used
 
@@ -337,9 +356,9 @@ Study 1 exercises the researcher-facing torch-free path end to end:
   `run_replicated_bounded_scalar_scenarios` — seed-paired replication with
   outcome distributions and paired comparisons.
 - The bounded-scalar workflow underneath contributes typed peer exchange,
-  commit reports, and aggregate/micro audit rows; the first-replicate micro
-  audit in the JSON artifact records per-researcher evidence
-  (stage, fit, pressure, peer counts) for every scenario.
+  commit reports, and aggregate/micro audit rows. The artifact retains every
+  primary replicate outcome plus a labeled three-agent micro sample from the
+  first replicate of each scenario; it does not claim to ship every agent row.
 
 Study 2 exercises the stable torch-backed lifecycle:
 
@@ -349,7 +368,23 @@ Study 2 exercises the stable torch-backed lifecycle:
 - A domain-owned commit adapter absorbs pivot events and publishes outcomes,
   and `select_bounded_scalar_output_peers` applies the same peer rule as
   Study 1.
+- The learning artifact retains raw per-replicate arm outcomes and trajectories,
+  the complete config, and mean/dispersion trajectories for all nine weights
+  plus the bias. These traces make multivariate updates inspectable without
+  turning them into causal identification.
 - Known gap surfaced by this study: the seed-paired replication helpers
   currently live in `scenario_lite` only; Study 2 reimplements the replicate
   loop by hand. Generalizing replication over the torch lifecycle is queued
   framework work.
+
+## 10. Conceptual References
+
+- The push-pull language is a conceptual borrowing from Everett S. Lee,
+  ["A Theory of Migration" (1966)](https://doi.org/10.2307/2060063); it does
+  not calibrate the researcher-pivot variables.
+- The canonical definition of an informational cascade comes from
+  Bikhchandani, Hirshleifer, and Welch,
+  ["A Theory of Fads, Fashion, Custom, and Cultural Change as Informational
+  Cascades" (1992)](https://doi.org/10.1086/261849). The gradient-feedback
+  loop here does not implement that canonical decision model, so the results
+  use the narrower term "self-reinforcing outcome-learning loop."

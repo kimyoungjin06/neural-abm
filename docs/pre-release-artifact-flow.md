@@ -26,7 +26,8 @@ Decision:
 
 Current status:
 
-- The project version is `0.1.0a5`.
+- The verified Git alpha remains `v0.1.0a5`; unreleased `main` uses the
+  distinct next-alpha development identity `0.1.0a6.dev0`.
 
 Decision:
 
@@ -55,9 +56,10 @@ Current status:
 - The wheel contains the importable `neural_abm` package and the v0/lite API
   boundary modules.
 - The sdist is intentionally public-facing: README, pyproject, selected docs,
-  examples, release-smoke scripts, and source package.
-- Internal audit/checklist, paper, experiment, archive, and generated-result
-  surfaces are excluded from the sdist flow.
+  examples, release-smoke scripts, source package, and the claim-bearing
+  researcher-pivot data and rendered figures advertised by README.
+- Internal audit/checklist, paper, experiment, archive, and unrelated generated
+  result surfaces are excluded from the sdist flow.
 
 Artifact command:
 
@@ -66,8 +68,9 @@ uv run python scripts/inspect_release_artifacts.py --build
 ```
 
 This script builds a wheel and sdist, inspects package metadata, checks default
-dependencies and extras, verifies key wheel modules, verifies required source
-files, and rejects internal-history paths in the sdist.
+dependencies and extras, verifies the runtime and metadata versions agree,
+verifies key wheel modules and required source files, checks internal Markdown
+link targets, and rejects internal-history paths in the sdist.
 
 ### 5. Install Commands
 
@@ -77,7 +80,7 @@ Local artifact check:
 
 ```bash
 uv build --out-dir dist
-uv run --isolated --with dist/neural_abm-0.1.0a5-py3-none-any.whl python -c "import neural_abm.api_lite"
+uv run --isolated --with dist/neural_abm-0.1.0a6.dev0-py3-none-any.whl python -c "import neural_abm.api_lite"
 ```
 
 Git ref install after a remote/tag exists:
@@ -107,8 +110,9 @@ Pass criteria:
 - Artifact metadata reports no default `torch` requirement, and default wheel
   smoke reports `torch_loaded=false` while blocking torch imports.
 - `examples/toy_catalog.py` runs without loading `torch`.
-- The sdist contains public-facing docs/examples/scripts and excludes internal
-  gate, paper, experiment, archive, and generated-result paths.
+- The sdist contains the advertised public docs/examples/scripts and their
+  claim-bearing case-study artifacts, while excluding internal gate, paper,
+  experiment, archive, and unrelated generated-result paths.
 
 Release-owner decisions:
 

@@ -126,8 +126,9 @@ outcome meaning, and scientific interpretation remain caller-owned.
 `success_direction` and `success_min_delta` are user-provided comparison
 metadata. A returned `success` value only records mechanical satisfaction of
 that threshold; it is not framework judgment that a scientific claim is
-supported. Seed pairing and percentile intervals likewise do not supply causal
-identification, hypothesis testing, calibration, or external-validity claims.
+supported. Seed pairing, paired-mean confidence intervals, and separate
+empirical replicate intervals likewise do not supply causal identification,
+hypothesis testing, calibration, or external-validity claims.
 
 See
 [Decision 0015](decisions/0015-researcher-scenario-lite-contract.md) for the

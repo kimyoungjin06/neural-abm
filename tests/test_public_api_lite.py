@@ -328,7 +328,7 @@ print(json.dumps({
     )
     payload = json.loads(completed.stdout)
 
-    assert payload["version"] == "0.1.0a5"
+    assert payload["version"] == "0.1.0a6.dev0"
     assert payload["has_nabm_unit_export"] is True
     assert payload["local_losses"] == [0.5]
     assert set(payload["resolved_root_names"]) == {

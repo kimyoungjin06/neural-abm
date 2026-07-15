@@ -10,13 +10,23 @@ actually verify.
 
 ![NABM Unit recurrent block with explicit lifecycle controls](figures/nabm_unit_recurrent_block.svg)
 
-**Figure 1. NABM Unit as an auditable recurrent block.** One synchronous step
-separates optional local adaptation, validated message construction, peer
-selection, typed social mixing, an optional injected commit adapter, and audit
-output across `N` agents; the domain then advances the environment and repeats
-the block for `T` timesteps. `×N` denotes protocol repetition, not shared
-parameters. The right-hand panel shows the torch-free bounded-scalar
-instantiation used below. A
+**Figure 1. NABM Unit as an auditable recurrent block.** Panel A traces the
+generic full-unit execution order: an optional domain-supplied
+`agent.local_update(...)` method, validated messages, `PeerSelector`,
+`SocialValueBuilder`, typed mixing in `NABMStep`, and audit/report output. Peer
+selection and value construction see the same post-local, pre-commit population
+snapshot. State advance remains domain-owned and can execute either through an
+injected `CommitAdapter` inside the step or through an external caller after
+the report; the caller then repeats the block at `t + 1`. `×N` denotes
+per-agent protocol calls, not shared parameters.
+
+Panel B is a separate trace of the torch-free bounded-scalar path used below.
+At every timestep, `scenario_lite` builds candidate neighbors *before* it calls
+the workflow; the workflow then performs local adaptation, reads the resulting
+bounded values, applies the peer filter to those post-local values, mixes,
+executes the domain transition, and writes aggregate and micro audit rows. The
+recurrence returns to candidate-neighbor construction rather than scenario
+initialization. A
 [PNG rendering](figures/nabm_unit_recurrent_block.png) is provided for clients
 that do not display SVG.
 
@@ -64,7 +74,7 @@ covered as maintained baselines rather than reductions.
 
 | Mechanism or configuration | Classical or fixed-rule branch | Extension opened by the lifecycle |
 | --- | --- | --- |
-| Learning disabled (`learning_rate = 0` where a learner is present) | The fixed-rule examples above; the frozen arm of Study 2 uses this setting | Endogenous rule change: imitation cascades, acquired hype immunity ([case study](case-studies/researcher-pivot/README.md) Study 2) |
+| Learning disabled (`learning_rate = 0` where a learner is present) | The fixed-rule examples above; the frozen arm of Study 2 uses this setting | Endogenous multivariate rule change: imitative outcome feedback and failure-only updating ([case study](case-studies/researcher-pivot/README.md) Study 2) |
 | Social mixing (`social_alpha = 0`) | Independent decision-makers (no social channel) | The double-edged conformity result (Study 1: interventions suppressed, bandwagons consolidated) |
 | Peer similarity threshold `= 0` | A DeGroot instance when combined with a fixed stochastic network, fixed alpha, and overwrite transition | — |
 | Peer similarity threshold `> 0`, excluding self | Self-excluding HK variant | Bounded confidence interacting with learning (unexplored: how homophily biases the learning signal) |

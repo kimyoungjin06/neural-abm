@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass, field
+from numbers import Integral, Real
 from typing import Any
 
 import numpy as np
@@ -43,6 +44,7 @@ ReplicatedAggregateFields = Callable[
 ]
 
 SUCCESS_DIRECTIONS: tuple[str, ...] = ("increase", "decrease")
+NORMAL_95_Z = 1.959963984540054
 
 
 @dataclass(frozen=True)
@@ -67,6 +69,8 @@ class BoundedScalarScenarioSpec:
     The caller supplies the research question, outcome meaning, and comparison
     threshold. The scenario layer only orchestrates execution and reports
     whether the simulated delta mechanically satisfies that supplied threshold.
+    ``round_digits`` applies to serialized audit rows only; scenario effects and
+    distribution summaries retain the unrounded values used for analysis.
     """
 
     research_question: str
@@ -96,8 +100,16 @@ class BoundedScalarScenarioSpec:
         if self.success_direction not in SUCCESS_DIRECTIONS:
             allowed = ", ".join(SUCCESS_DIRECTIONS)
             raise ValueError(f"success_direction must be one of {allowed}")
+        if (
+            isinstance(self.success_min_delta, bool)
+            or not isinstance(self.success_min_delta, Real)
+            or not np.isfinite(self.success_min_delta)
+        ):
+            raise ValueError("success_min_delta must be a finite real number")
         if self.success_min_delta < 0.0:
             raise ValueError("success_min_delta must be >= 0")
+        if isinstance(self.steps, bool) or not isinstance(self.steps, Integral):
+            raise ValueError("steps must be an integer")
         if self.steps < 1:
             raise ValueError("steps must be >= 1")
         BoundedScalarWorkflowSpec(
@@ -160,8 +172,13 @@ class BoundedScalarScenarioResult:
             "outcome_field": self.spec.outcome_field,
             "baseline": self.spec.baseline_name,
             "steps": self.spec.steps,
+            "analysis_precision": "unrounded",
+            "audit_round_digits": self.spec.round_digits,
             "scenario_count": len(self.scenarios),
-            "scenarios": self.scenarios,
+            "scenarios": {
+                name: _serialize_single_scenario(result, self.spec.round_digits)
+                for name, result in self.scenarios.items()
+            },
             "comparisons": [comparison.to_dict() for comparison in self.comparisons],
         }
 
@@ -179,11 +196,10 @@ def run_bounded_scalar_scenarios(
 ) -> BoundedScalarScenarioResult:
     """Run baseline and counterfactual bounded-scalar scenarios."""
 
-    scenario_results: dict[str, dict[str, Any]] = {}
-    for scenario in scenarios:
-        if scenario.name in scenario_results:
-            raise ValueError(f"duplicate scenario name: {scenario.name}")
-        scenario_results[scenario.name] = _run_single_scenario(
+    scenario_list = _validated_scenarios(scenarios, spec.baseline_name)
+    executed_results: dict[str, dict[str, Any]] = {}
+    for scenario in _baseline_first(scenario_list, spec.baseline_name):
+        result = _run_single_scenario(
             scenario=scenario,
             spec=spec,
             make_agents=make_agents,
@@ -193,9 +209,12 @@ def run_bounded_scalar_scenarios(
             micro_fields=micro_fields,
             aggregate_fields=aggregate_fields,
         )
+        _outcome_value(result, spec.outcome_field)
+        executed_results[scenario.name] = result
 
-    if spec.baseline_name not in scenario_results:
-        raise ValueError(f"baseline scenario not found: {spec.baseline_name}")
+    scenario_results = {
+        scenario.name: executed_results[scenario.name] for scenario in scenario_list
+    }
 
     comparisons = _compare_to_baseline(
         scenario_results=scenario_results,
@@ -260,7 +279,7 @@ def _run_single_scenario(
                     scenario,
                 )
             ),
-        ).to_dict()
+        ).to_dict(round_values=False)
         workflow_result["step"] = step + 1
         history.append(workflow_result)
 
@@ -310,7 +329,13 @@ def _outcome_value(result: Mapping[str, Any], outcome_field: str) -> float:
     value = aggregate[outcome_field]
     if isinstance(value, bool):
         raise ValueError(f"outcome field must be numeric, got bool: {outcome_field}")
-    return float(value)
+    try:
+        numeric = float(value)
+    except (TypeError, ValueError) as error:
+        raise ValueError(f"outcome field must be numeric: {outcome_field}") from error
+    if not np.isfinite(numeric):
+        raise ValueError(f"outcome field must be finite: {outcome_field}")
+    return numeric
 
 
 def _success_criterion(spec: BoundedScalarScenarioSpec) -> str:
@@ -333,16 +358,24 @@ def _is_success(delta: float, spec: BoundedScalarScenarioSpec) -> bool:
 class ReplicationSpec:
     """Settings for seed-based replicated scenario runs.
 
-    Replicate ``r`` uses the same seed in every scenario, so scenario
-    comparisons are paired through common random numbers.
+    Replicate ``r`` uses the same initial seed in every scenario, so outcomes
+    are paired by replicate. Strict common-random-number alignment additionally
+    requires caller callbacks to use scenario-independent component streams or
+    otherwise consume identical draws.
     """
 
     replicates: int
     base_seed: int = 0
 
     def __post_init__(self) -> None:
+        if isinstance(self.replicates, bool) or not isinstance(
+            self.replicates, Integral
+        ):
+            raise ValueError("replicates must be an integer")
         if self.replicates < 1:
             raise ValueError("replicates must be >= 1")
+        if isinstance(self.base_seed, bool) or not isinstance(self.base_seed, Integral):
+            raise ValueError("base_seed must be an integer")
         if self.base_seed < 0:
             raise ValueError("base_seed must be >= 0")
 
@@ -360,9 +393,14 @@ class ScenarioReplicateContext:
 class ReplicatedScenarioComparison:
     """Paired outcome comparison between the baseline and one counterfactual.
 
-    Deltas are paired per replicate through common random numbers. ``success``
-    applies the criterion to the mean delta; ``success_fraction`` reports the
-    fraction of paired replicates that satisfy the criterion individually.
+    Deltas are paired by replicate. ``delta_ci95`` is a normal-approximation
+    confidence interval for the paired mean effect. The separate empirical
+    percentile interval describes the central spread of replicate deltas and
+    is not a confidence interval for their mean. With one replicate the mean
+    interval is unavailable rather than represented as a zero-width interval.
+    ``success`` applies the criterion to the mean delta; ``success_fraction``
+    reports the fraction of paired replicates that satisfy the criterion
+    individually.
     """
 
     baseline: str
@@ -373,13 +411,16 @@ class ReplicatedScenarioComparison:
     scenario_mean: float
     mean_delta: float
     delta_std: float
-    delta_ci95: tuple[float, float]
+    delta_ci95: tuple[float, float] | None
     success_criterion: str
     success: bool
     success_fraction: float
+    delta_empirical_percentile_interval95: tuple[float, float] | None = None
+    paired_deltas: tuple[float, ...] | None = None
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        mean_interval = None if self.delta_ci95 is None else list(self.delta_ci95)
+        payload = {
             "baseline": self.baseline,
             "scenario": self.scenario,
             "outcome_field": self.outcome_field,
@@ -388,11 +429,24 @@ class ReplicatedScenarioComparison:
             "scenario_mean": self.scenario_mean,
             "mean_delta": self.mean_delta,
             "delta_std": self.delta_std,
-            "delta_ci95": list(self.delta_ci95),
+            "delta_ci95": mean_interval,
+            "mean_effect_ci95": mean_interval,
+            "delta_ci95_method": (
+                "normal_approximation_for_paired_mean"
+                if self.delta_ci95 is not None
+                else "unavailable_requires_at_least_2_replicates"
+            ),
             "success_criterion": self.success_criterion,
             "success": self.success,
             "success_fraction": self.success_fraction,
         }
+        if self.delta_empirical_percentile_interval95 is not None:
+            payload["delta_empirical_percentile_interval95"] = list(
+                self.delta_empirical_percentile_interval95
+            )
+        if self.paired_deltas is not None:
+            payload["paired_deltas"] = list(self.paired_deltas)
+        return payload
 
 
 @dataclass(frozen=True)
@@ -417,8 +471,13 @@ class ReplicatedScenarioResult:
             "steps": self.spec.steps,
             "replicates": self.replication.replicates,
             "base_seed": self.replication.base_seed,
+            "analysis_precision": "unrounded",
+            "audit_round_digits": self.spec.round_digits,
             "scenario_count": len(self.scenarios),
-            "scenarios": self.scenarios,
+            "scenarios": {
+                name: _serialize_replicated_scenario(result, self.spec.round_digits)
+                for name, result in self.scenarios.items()
+            },
             "comparisons": [comparison.to_dict() for comparison in self.comparisons],
         }
 
@@ -443,11 +502,10 @@ def run_replicated_bounded_scalar_scenarios(
     comparisons instead of a single deterministic delta.
     """
 
-    scenario_results: dict[str, dict[str, Any]] = {}
-    outcome_samples: dict[str, list[float]] = {}
-    for scenario in scenarios:
-        if scenario.name in scenario_results:
-            raise ValueError(f"duplicate scenario name: {scenario.name}")
+    scenario_list = _validated_scenarios(scenarios, spec.baseline_name)
+    executed_results: dict[str, dict[str, Any]] = {}
+    executed_outcomes: dict[str, list[float]] = {}
+    for scenario in _baseline_first(scenario_list, spec.baseline_name):
         summary, outcomes = _run_replicated_scenario(
             scenario=scenario,
             spec=spec,
@@ -459,11 +517,15 @@ def run_replicated_bounded_scalar_scenarios(
             micro_fields=micro_fields,
             aggregate_fields=aggregate_fields,
         )
-        scenario_results[scenario.name] = summary
-        outcome_samples[scenario.name] = outcomes
+        executed_results[scenario.name] = summary
+        executed_outcomes[scenario.name] = outcomes
 
-    if spec.baseline_name not in scenario_results:
-        raise ValueError(f"baseline scenario not found: {spec.baseline_name}")
+    scenario_results = {
+        scenario.name: executed_results[scenario.name] for scenario in scenario_list
+    }
+    outcome_samples = {
+        scenario.name: executed_outcomes[scenario.name] for scenario in scenario_list
+    }
 
     comparisons = _compare_replicated_to_baseline(
         outcome_samples=outcome_samples,
@@ -552,21 +614,17 @@ def _run_replicated_scenario(
         "parameters": dict(scenario.parameters),
         "replicates": replication.replicates,
         "outcome_field": spec.outcome_field,
-        "outcome_values": [
-            _round_float(value, spec.round_digits) for value in outcomes
-        ],
-        "outcome_summary": _distribution_summary(outcomes, spec.round_digits),
+        "outcome_values": list(outcomes),
+        "outcome_summary": _distribution_summary(outcomes),
         "aggregate_summaries": {
-            key: _distribution_summary(values, spec.round_digits)
+            key: _distribution_summary(values)
             for key, values in aggregate_samples.items()
         },
         "mean_state_trajectory": [
-            _round_float(value, spec.round_digits)
-            for value in trajectory_array.mean(axis=0)
+            float(value) for value in trajectory_array.mean(axis=0)
         ],
         "std_state_trajectory": [
-            _round_float(value, spec.round_digits)
-            for value in trajectory_array.std(axis=0)
+            float(value) for value in trajectory_array.std(axis=0)
         ],
         "first_replicate_final": first_replicate_final,
     }
@@ -588,54 +646,172 @@ def _compare_replicated_to_baseline(
         deltas = scenario_values - baseline_values
         mean_delta = float(deltas.mean())
         delta_std = float(deltas.std(ddof=1)) if deltas.size > 1 else 0.0
-        ci_low, ci_high = (float(value) for value in np.percentile(deltas, [2.5, 97.5]))
+        percentile_low, percentile_high = (
+            float(value) for value in np.percentile(deltas, [2.5, 97.5])
+        )
+        mean_ci95 = _normal_mean_ci95(deltas)
         successes = [_is_success(float(delta), spec) for delta in deltas]
-        digits = spec.round_digits
         comparisons.append(
             ReplicatedScenarioComparison(
                 baseline=spec.baseline_name,
                 scenario=name,
                 outcome_field=spec.outcome_field,
                 replicates=replication.replicates,
-                baseline_mean=_round_float(float(baseline_values.mean()), digits),
-                scenario_mean=_round_float(float(scenario_values.mean()), digits),
-                mean_delta=_round_float(mean_delta, digits),
-                delta_std=_round_float(delta_std, digits),
-                delta_ci95=(
-                    _round_float(ci_low, digits),
-                    _round_float(ci_high, digits),
-                ),
+                baseline_mean=float(baseline_values.mean()),
+                scenario_mean=float(scenario_values.mean()),
+                mean_delta=mean_delta,
+                delta_std=delta_std,
+                delta_ci95=mean_ci95,
                 success_criterion=f"mean {_success_criterion(spec)}",
                 success=_is_success(mean_delta, spec),
-                success_fraction=_round_float(
-                    float(np.mean(successes)) if successes else 0.0,
-                    digits,
+                success_fraction=(float(np.mean(successes)) if successes else 0.0),
+                delta_empirical_percentile_interval95=(
+                    percentile_low,
+                    percentile_high,
                 ),
+                paired_deltas=tuple(float(delta) for delta in deltas),
             )
         )
     return comparisons
 
 
-def _round_float(value: float, digits: int | None) -> float:
-    numeric = float(value)
-    return numeric if digits is None else round(numeric, digits)
-
-
 def _distribution_summary(
     values: Sequence[float],
-    digits: int | None,
-) -> dict[str, float]:
+) -> dict[str, Any]:
     array = np.asarray(values, dtype=np.float64)
     std = float(array.std(ddof=1)) if array.size > 1 else 0.0
-    ci_low, ci_high = (float(value) for value in np.percentile(array, [2.5, 97.5]))
+    percentile_low, percentile_high = (
+        float(value) for value in np.percentile(array, [2.5, 97.5])
+    )
+    mean_ci95 = _normal_mean_ci95(array)
+    ci_low = None if mean_ci95 is None else mean_ci95[0]
+    ci_high = None if mean_ci95 is None else mean_ci95[1]
     return {
-        "mean": _round_float(float(array.mean()), digits),
-        "std": _round_float(std, digits),
-        "min": _round_float(float(array.min()), digits),
-        "max": _round_float(float(array.max()), digits),
-        "ci95_low": _round_float(ci_low, digits),
-        "ci95_high": _round_float(ci_high, digits),
+        "mean": float(array.mean()),
+        "std": std,
+        "min": float(array.min()),
+        "max": float(array.max()),
+        "ci95_low": ci_low,
+        "ci95_high": ci_high,
+        "mean_ci95": None if mean_ci95 is None else [ci_low, ci_high],
+        "ci95_method": (
+            "normal_approximation_for_mean"
+            if mean_ci95 is not None
+            else "unavailable_requires_at_least_2_replicates"
+        ),
+        "empirical_percentile_interval95": [percentile_low, percentile_high],
     }
+
+
+def _normal_mean_ci95(
+    values: Sequence[float] | np.ndarray,
+) -> tuple[float, float] | None:
+    """Return an analytic 95% CI for a replicated mean, or ``None`` for n < 2.
+
+    The interval uses the sample standard error and the asymptotic normal
+    critical value. For paired effects, callers pass the paired deltas rather
+    than the two marginal outcome samples.
+    """
+
+    array = np.asarray(values, dtype=np.float64)
+    mean = float(array.mean())
+    if array.size <= 1:
+        return None
+    standard_error = float(array.std(ddof=1) / np.sqrt(array.size))
+    half_width = NORMAL_95_Z * standard_error
+    return mean - half_width, mean + half_width
+
+
+def _validated_scenarios(
+    scenarios: Sequence[ScenarioDefinition],
+    baseline_name: str,
+) -> tuple[ScenarioDefinition, ...]:
+    scenario_list = tuple(scenarios)
+    seen: set[str] = set()
+    for scenario in scenario_list:
+        if scenario.name in seen:
+            raise ValueError(f"duplicate scenario name: {scenario.name}")
+        seen.add(scenario.name)
+    if baseline_name not in seen:
+        raise ValueError(f"baseline scenario not found: {baseline_name}")
+    return scenario_list
+
+
+def _baseline_first(
+    scenarios: Sequence[ScenarioDefinition],
+    baseline_name: str,
+) -> tuple[ScenarioDefinition, ...]:
+    """Order execution for early baseline validation without changing output order."""
+
+    baseline = next(
+        scenario for scenario in scenarios if scenario.name == baseline_name
+    )
+    return (baseline, *(scenario for scenario in scenarios if scenario is not baseline))
+
+
+def _round_presentation_value(value: Any, digits: int | None) -> Any:
+    if isinstance(value, bool) or value is None:
+        return value
+    if isinstance(value, (int, np.integer)):
+        return int(value)
+    if isinstance(value, (float, np.floating)):
+        numeric = float(value)
+        return numeric if digits is None else round(numeric, digits)
+    if isinstance(value, Mapping):
+        return {
+            key: _round_presentation_value(item, digits) for key, item in value.items()
+        }
+    if isinstance(value, list):
+        return [_round_presentation_value(item, digits) for item in value]
+    if isinstance(value, tuple):
+        return tuple(_round_presentation_value(item, digits) for item in value)
+    return value
+
+
+def _serialize_workflow_payload(
+    payload: Mapping[str, Any],
+    digits: int | None,
+) -> dict[str, Any]:
+    serialized = dict(payload)
+    serialized["aggregate_audit"] = _round_presentation_value(
+        payload["aggregate_audit"], digits
+    )
+    serialized["micro_audit"] = _round_presentation_value(
+        payload["micro_audit"], digits
+    )
+    return serialized
+
+
+def _serialize_single_scenario(
+    result: Mapping[str, Any],
+    digits: int | None,
+) -> dict[str, Any]:
+    history = [
+        _serialize_workflow_payload(step_result, digits)
+        for step_result in result["history"]
+    ]
+    return {
+        "scenario": result["scenario"],
+        "description": result["description"],
+        "parameters": dict(result["parameters"]),
+        "final": history[-1],
+        "history": history,
+    }
+
+
+def _serialize_replicated_scenario(
+    result: Mapping[str, Any],
+    digits: int | None,
+) -> dict[str, Any]:
+    serialized = dict(result)
+    serialized["parameters"] = dict(result["parameters"])
+    first_final = result.get("first_replicate_final")
+    if first_final is not None:
+        serialized["first_replicate_final"] = _serialize_workflow_payload(
+            first_final,
+            digits,
+        )
+    return serialized
 
 
 __all__ = [

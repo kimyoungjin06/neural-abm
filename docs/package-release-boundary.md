@@ -41,6 +41,8 @@ plotting, and the full development/research stack.
 The unreleased `main` / next-alpha candidate extends the default torch-free
 `api_lite` floor with `scenario_lite` bounded-scalar scenario comparison
 helpers, including seed-paired replicated runs with outcome distributions.
+Its package metadata uses `0.1.0a6.dev0` so artifacts from `main` cannot be
+mistaken for the verified `v0.1.0a5` release.
 The `v0.1.0a5` tag predates `scenario_lite`; do not use that tag when testing
 these researcher-facing exports or examples.
 Install that candidate explicitly when evaluating this surface:
@@ -76,10 +78,11 @@ from neural_abm.api_lite import (
 ```
 
 The scenario spec's `success_direction` and `success_min_delta` are
-user-provided comparison metadata. Returned `success`, `success_fraction`, and
-percentile-interval fields are mechanical simulation reports, not framework
-judgment that a scientific claim is supported. Domain semantics, calibration,
-identification assumptions, and claim interpretation remain caller-owned; see
+user-provided comparison metadata. Returned `success`, `success_fraction`,
+paired-mean confidence intervals, and separate empirical replicate intervals
+are mechanical simulation reports, not framework judgment that a scientific
+claim is supported. Domain semantics, calibration, identification assumptions,
+and claim interpretation remain caller-owned; see
 [Decision 0015](decisions/0015-researcher-scenario-lite-contract.md).
 
 Use `neural_abm.api` for the stable torch-backed v0 lifecycle:

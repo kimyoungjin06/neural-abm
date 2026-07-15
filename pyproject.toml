@@ -1,6 +1,6 @@
 [project]
 name = "neural-abm"
-version = "0.1.0a5"
+version = "0.1.0a6.dev0"
 description = "Neural agent-based modeling prototypes with explicit social mixing"
 readme = "README.md"
 license = "Apache-2.0"
@@ -98,20 +98,36 @@ include = [
     "/README.md",
     "/pyproject.toml",
     "/docs/api-surface-audit.md",
+    "/docs/classical-reductions.md",
+    "/docs/case-studies/researcher-pivot",
+    "/docs/figures/nabm_unit_recurrent_block.png",
+    "/docs/figures/nabm_unit_recurrent_block.svg",
     "/docs/git-distribution-flow.md",
     "/docs/early-git-user-handoff.md",
     "/docs/package-release-boundary.md",
     "/docs/pre-release-artifact-flow.md",
+    "/docs/release-readiness.md",
     "/docs/toy-models/README.md",
     "/docs/toy-models/capability-matrix.md",
+    "/docs/toy-models/neural-contagion-adoption.md",
+    "/docs/toy-models/neural-hk-classification.md",
+    "/docs/toy-models/neural-opinion-rewiring.md",
+    "/docs/toy-models/neural-public-goods-commons.md",
+    "/docs/toy-models/neural-spatial-pd.md",
     "/docs/decisions/0013-public-api-v0-contract.md",
     "/docs/decisions/0014-package-dependency-policy.md",
+    "/docs/decisions/0015-researcher-scenario-lite-contract.md",
     "/examples/README.md",
+    "/examples/classical_reductions.py",
     "/examples/first_run.py",
     "/examples/minimal_api_nabm.py",
+    "/examples/research_pivot_learning_study.py",
     "/examples/research_pivot_scenario_lite.py",
+    "/examples/research_pivot_study.py",
     "/examples/toy_catalog.py",
     "/scripts/inspect_release_artifacts.py",
+    "/scripts/plot_nabm_unit_schematic.py",
+    "/scripts/plot_research_pivot_study.py",
     "/scripts/smoke_package_profiles.py",
     "/src/neural_abm",
 ]

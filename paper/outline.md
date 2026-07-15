@@ -31,9 +31,9 @@ Working title:
 - Neural agent-based models.
 - LLM-agent social simulation and its audit/reproducibility critiques, as
   the opposite pole motivating the auditable-middle positioning.
-- Social learning via state-based and output-based updates; imitative
-  versus negativity-biased outcome learning (information cascades,
-  loss-weighted social learning) as the Sec. 7 learning-rule axis.
+- Social learning via state-based and output-based updates; imitative versus
+  postulated failure-only outcome updates as the Sec. 7 learning-rule axis,
+  with the canonical informational-cascade definition kept separate.
 - Dynamic graph learning, federated learning, and distillation lineages.
 - Model capacity as a modeling assumption: cue-weighting/improper-linear
   views of judgment and the interaction-first ABM tradition (grounds for
@@ -94,9 +94,9 @@ Draft:
   productivity) carried end to end on the reusable surfaces.
 - Study 1: baseline/counterfactual environments, seed-paired replication,
   placebo control, sensitivity sweeps (torch-free surface).
-- Study 2: fixed rule versus imitative and cautionary learning agents on the
-  NABM lifecycle; information cascades and targeted hype immunity as
-  endogenous rule-change results.
+- Study 2: frozen versus imitative and failure-only learning agents on the
+  NABM lifecycle; environment-dependent feedback loops, trade-offs, and full
+  named-parameter traces as bounded endogenous rule-change results.
 - Expressiveness and discipline claim only; the fixed rule is a control, not
   a defeated baseline.
 
