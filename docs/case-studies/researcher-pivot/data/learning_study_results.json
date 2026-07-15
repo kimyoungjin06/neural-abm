@@ -641,8 +641,8 @@
     ]
   },
   "provenance": {
-    "git_revision": "b7e111d9cfdd1834969e94b06a47745cd6809d94",
-    "git_worktree_dirty": true,
+    "git_revision": "41350a5fbab0b7c63d526d6b7b1187c6b4500385",
+    "git_worktree_dirty": false,
     "learning_evidence": "raw replicate outcomes plus aggregate mean and dispersion trajectories for all named weights and bias",
     "numpy": "2.4.4",
     "package_version": "0.1.0a6.dev0",
