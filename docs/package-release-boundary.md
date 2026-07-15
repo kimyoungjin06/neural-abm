@@ -3,7 +3,7 @@
 This release boundary fixes the product-facing entry points for the current v0
 package shape. It is a packaging contract, not a new simulation claim.
 
-## Install Profiles
+## Released Tag: `v0.1.0a5`
 
 Default Git tag install:
 
@@ -36,10 +36,26 @@ uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-a
 Use these profiles for toy runners, evidence matrices, paper workflows,
 plotting, and the full development/research stack.
 
+## Main / Next-Alpha Candidate
+
+The unreleased `main` / next-alpha candidate extends the default torch-free
+`api_lite` floor with `scenario_lite` bounded-scalar scenario comparison
+helpers, including seed-paired replicated runs with outcome distributions.
+The `v0.1.0a5` tag predates `scenario_lite`; do not use that tag when testing
+these researcher-facing exports or examples.
+Install that candidate explicitly when evaluating this surface:
+
+```bash
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@main"
+```
+
+This candidate does not change the dependency boundary: `api_lite` and the
+scenario helpers must not import or require `torch`.
+
 ## Public Entry Points
 
 Use `neural_abm.api_lite` for no-torch metadata and lightweight package
-operations:
+operations available from the released tag:
 
 ```python
 from neural_abm.api_lite import toy_catalog, toys_by_taxonomy
@@ -47,6 +63,24 @@ from neural_abm.api_lite import toy_catalog, toys_by_taxonomy
 binary_toys = toys_by_taxonomy("output_family", "binary_probability")
 catalog = toy_catalog()
 ```
+
+On `main` / the next-alpha candidate, bounded-scalar researcher scenarios use
+the same no-torch facade:
+
+```python
+from neural_abm.api_lite import (
+    BoundedScalarScenarioSpec,
+    ScenarioDefinition,
+    run_bounded_scalar_scenarios,
+)
+```
+
+The scenario spec's `success_direction` and `success_min_delta` are
+user-provided comparison metadata. Returned `success`, `success_fraction`, and
+percentile-interval fields are mechanical simulation reports, not framework
+judgment that a scientific claim is supported. Domain semantics, calibration,
+identification assumptions, and claim interpretation remain caller-owned; see
+[Decision 0015](decisions/0015-researcher-scenario-lite-contract.md).
 
 Use `neural_abm.api` for the stable torch-backed v0 lifecycle:
 
@@ -97,6 +131,12 @@ uv run python scripts/smoke_package_profiles.py --profiles default
 uv run --no-dev python examples/toy_catalog.py
 ```
 
+For the `main` / next-alpha candidate, also run:
+
+```bash
+uv run --no-dev python examples/research_pivot_scenario_lite.py
+```
+
 The artifact inspector should show that default wheel metadata does not require
 `torch`, and the default-profile smoke should show `torch_loaded=false` while
 blocking torch imports.
@@ -115,3 +155,7 @@ installation from `https://github.com/kimyoungjin06/neural-abm`.
   into stable API metadata.
 - Do not rename stable model IDs in artifacts or configs; feature names are the
   display layer.
+- Do not treat a scenario comparison's `success=true` as scientific claim
+  adjudication.
+- Do not document the `v0.1.0a5` tag as containing the unreleased
+  `scenario_lite` surface.

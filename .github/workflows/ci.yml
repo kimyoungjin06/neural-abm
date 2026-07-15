@@ -63,6 +63,7 @@ jobs:
           export UV_PROJECT_ENVIRONMENT=.venv-clone-smoke
           uv run --no-dev python examples/first_run.py
           uv run --no-dev python examples/toy_catalog.py
+          uv run --no-dev python examples/research_pivot_scenario_lite.py
           uv run --no-dev python - <<'PY'
           import importlib.metadata
           import json

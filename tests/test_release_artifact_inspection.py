@@ -35,7 +35,12 @@ def test_release_artifact_inspection_builds_and_reports_package_boundary() -> No
     assert payload["wheel"]["metadata_name"] == "neural-abm"
     assert payload["wheel"]["metadata_version"] == "0.1.0a5"
     assert payload["wheel"]["default_requires"] == ["numpy", "pyyaml"]
+    assert "neural_abm/scenario_lite.py" in payload["wheel"]["required_modules"]
+    assert "neural_abm/workflow_lite.py" in payload["wheel"]["required_modules"]
     assert payload["wheel"]["required_modules_present"] is True
+    assert (
+        "examples/research_pivot_scenario_lite.py" in payload["sdist"]["required_files"]
+    )
     assert payload["sdist"]["required_files_present"] is True
     assert payload["sdist"]["forbidden_files_present"] is False
     assert payload["sdist"]["forbidden_files"] == []

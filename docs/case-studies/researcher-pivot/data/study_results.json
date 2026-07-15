@@ -1,0 +1,1994 @@
+{
+  "base_surface": "neural_abm.api_lite",
+  "comparisons": [
+    {
+      "baseline": "baseline",
+      "baseline_mean": 0.0077,
+      "delta_ci95": [
+        0.1119,
+        0.2627
+      ],
+      "delta_std": 0.0416,
+      "mean_delta": 0.1899,
+      "outcome_field": "productive_pivot_rate",
+      "replicates": 100,
+      "scenario": "interdisciplinary_seed_grants",
+      "scenario_mean": 0.1977,
+      "success": true,
+      "success_criterion": "mean delta > 0.05",
+      "success_fraction": 1.0
+    },
+    {
+      "baseline": "baseline",
+      "baseline_mean": 0.0077,
+      "delta_ci95": [
+        0.125,
+        0.2628
+      ],
+      "delta_std": 0.0372,
+      "mean_delta": 0.1932,
+      "outcome_field": "productive_pivot_rate",
+      "replicates": 100,
+      "scenario": "hot_field_hype",
+      "scenario_mean": 0.2009,
+      "success": true,
+      "success_criterion": "mean delta > 0.05",
+      "success_fraction": 1.0
+    },
+    {
+      "baseline": "baseline",
+      "baseline_mean": 0.0077,
+      "delta_ci95": [
+        0.3917,
+        0.5588
+      ],
+      "delta_std": 0.0459,
+      "mean_delta": 0.4763,
+      "outcome_field": "productive_pivot_rate",
+      "replicates": 100,
+      "scenario": "hype_with_support",
+      "scenario_mean": 0.4841,
+      "success": true,
+      "success_criterion": "mean delta > 0.05",
+      "success_fraction": 1.0
+    }
+  ],
+  "config": {
+    "agent_count": 120,
+    "base_seed": 20260715,
+    "pivot_threshold": 0.34,
+    "productive_threshold": 0.4,
+    "replicates": 100,
+    "social_alpha": 0.4,
+    "steps": 8,
+    "success_min_delta": 0.05
+  },
+  "default_profile": "torch-free",
+  "outcome_field": "productive_pivot_rate",
+  "research_question": "under_which_environments_do_researcher_pivots_become_productive",
+  "scenarios": {
+    "baseline": {
+      "aggregate_summaries": {
+        "agent_count": {
+          "ci95_high": 120.0,
+          "ci95_low": 120.0,
+          "max": 120.0,
+          "mean": 120.0,
+          "min": 120.0,
+          "std": 0.0
+        },
+        "failed_pivot_rate": {
+          "ci95_high": 0.0,
+          "ci95_low": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "std": 0.0
+        },
+        "max_social_shift": {
+          "ci95_high": 0.0871,
+          "ci95_low": 0.0537,
+          "max": 0.102,
+          "mean": 0.0686,
+          "min": 0.0487,
+          "std": 0.0098
+        },
+        "mean_local_shift": {
+          "ci95_high": 0.0269,
+          "ci95_low": 0.021,
+          "max": 0.029,
+          "mean": 0.0239,
+          "min": 0.0192,
+          "std": 0.0017
+        },
+        "mean_peer_count": {
+          "ci95_high": 4.0,
+          "ci95_low": 3.9917,
+          "max": 4.0,
+          "mean": 3.9996,
+          "min": 3.9833,
+          "std": 0.0022
+        },
+        "mean_pivot_readiness": {
+          "ci95_high": 0.2425,
+          "ci95_low": 0.2146,
+          "max": 0.2447,
+          "mean": 0.2293,
+          "min": 0.2132,
+          "std": 0.0068
+        },
+        "mean_social_shift": {
+          "ci95_high": 0.0233,
+          "ci95_low": 0.0176,
+          "max": 0.0247,
+          "mean": 0.0204,
+          "min": 0.0165,
+          "std": 0.0015
+        },
+        "pivot_rate": {
+          "ci95_high": 0.0377,
+          "ci95_low": 0.0,
+          "max": 0.0417,
+          "mean": 0.0077,
+          "min": 0.0,
+          "std": 0.0106
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.0377,
+          "ci95_low": 0.0,
+          "max": 0.0417,
+          "mean": 0.0077,
+          "min": 0.0,
+          "std": 0.0106
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 1.0,
+          "ci95_low": 0.0,
+          "max": 1.0,
+          "mean": 0.48,
+          "min": 0.0,
+          "std": 0.5021
+        }
+      },
+      "description": "No explicit interdisciplinary pivot support.",
+      "first_replicate_aggregate": {
+        "agent_count": 120,
+        "failed_pivot_rate": 0.0,
+        "max_social_shift": 0.072,
+        "mean_local_shift": 0.0271,
+        "mean_peer_count": 4.0,
+        "mean_pivot_readiness": 0.2195,
+        "mean_social_shift": 0.021,
+        "pivot_rate": 0.0,
+        "productive_pivot_rate": 0.0,
+        "productive_share_of_pivots": 0.0
+      },
+      "first_replicate_micro_sample": [
+        {
+          "agent_id": 0,
+          "career_stage": "early",
+          "field_opportunity": 0.9377,
+          "local_shift": 0.0231,
+          "network_support": 0.338,
+          "peer_count": 4,
+          "pivot_pressure": 0.3149,
+          "pivot_readiness": 0.2407,
+          "pivoted": false,
+          "productive_fit": 0.4661,
+          "productive_pivot": false,
+          "replicate": 0,
+          "reputation_risk": 0.3593,
+          "resource_security": 0.6278,
+          "scenario": "baseline",
+          "skill_distance": 0.5271,
+          "social_shift": 0.0381
+        },
+        {
+          "agent_id": 1,
+          "career_stage": "early",
+          "field_opportunity": 0.4131,
+          "local_shift": 0.0068,
+          "network_support": 0.6581,
+          "peer_count": 4,
+          "pivot_pressure": 0.2902,
+          "pivot_readiness": 0.2524,
+          "pivoted": false,
+          "productive_fit": 0.3459,
+          "productive_pivot": false,
+          "replicate": 0,
+          "reputation_risk": 0.6327,
+          "resource_security": 0.2674,
+          "scenario": "baseline",
+          "skill_distance": 0.1525,
+          "social_shift": 0.0073
+        },
+        {
+          "agent_id": 2,
+          "career_stage": "mid",
+          "field_opportunity": 0.7195,
+          "local_shift": 0.0063,
+          "network_support": 0.5462,
+          "peer_count": 4,
+          "pivot_pressure": 0.3437,
+          "pivot_readiness": 0.2553,
+          "pivoted": false,
+          "productive_fit": 0.5029,
+          "productive_pivot": false,
+          "replicate": 0,
+          "reputation_risk": 0.4696,
+          "resource_security": 0.5741,
+          "scenario": "baseline",
+          "skill_distance": 0.251,
+          "social_shift": 0.0164
+        }
+      ],
+      "mean_state_trajectory": [
+        0.2848,
+        0.2592,
+        0.2451,
+        0.2376,
+        0.2332,
+        0.231,
+        0.2299,
+        0.2293
+      ],
+      "outcome_field": "productive_pivot_rate",
+      "outcome_summary": {
+        "ci95_high": 0.0377,
+        "ci95_low": 0.0,
+        "max": 0.0417,
+        "mean": 0.0077,
+        "min": 0.0,
+        "std": 0.0106
+      },
+      "outcome_values": [
+        0.0,
+        0.0,
+        0.0167,
+        0.0,
+        0.0083,
+        0.0,
+        0.0167,
+        0.0083,
+        0.0,
+        0.0,
+        0.025,
+        0.0,
+        0.0083,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0333,
+        0.0,
+        0.0,
+        0.0333,
+        0.0417,
+        0.0083,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0167,
+        0.0083,
+        0.0,
+        0.0083,
+        0.025,
+        0.0083,
+        0.0,
+        0.0083,
+        0.0083,
+        0.0,
+        0.0,
+        0.0083,
+        0.0167,
+        0.0,
+        0.0083,
+        0.0167,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0167,
+        0.0,
+        0.0417,
+        0.0083,
+        0.0083,
+        0.0167,
+        0.0,
+        0.0,
+        0.0,
+        0.0083,
+        0.0,
+        0.0,
+        0.0083,
+        0.0083,
+        0.0083,
+        0.0083,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0167,
+        0.0083,
+        0.0,
+        0.0,
+        0.0,
+        0.0083,
+        0.0,
+        0.0167,
+        0.0333,
+        0.0,
+        0.0,
+        0.0,
+        0.0083,
+        0.025,
+        0.025,
+        0.0,
+        0.0,
+        0.0,
+        0.0167,
+        0.025,
+        0.0083,
+        0.0167,
+        0.0167,
+        0.0167,
+        0.0167,
+        0.0417,
+        0.0,
+        0.0083,
+        0.0
+      ],
+      "parameters": {},
+      "replicates": 100,
+      "scenario": "baseline",
+      "std_state_trajectory": [
+        0.0104,
+        0.0074,
+        0.0067,
+        0.0067,
+        0.0069,
+        0.0069,
+        0.0072,
+        0.0068
+      ]
+    },
+    "hot_field_hype": {
+      "aggregate_summaries": {
+        "agent_count": {
+          "ci95_high": 120.0,
+          "ci95_low": 120.0,
+          "max": 120.0,
+          "mean": 120.0,
+          "min": 120.0,
+          "std": 0.0
+        },
+        "failed_pivot_rate": {
+          "ci95_high": 0.4583,
+          "ci95_low": 0.2667,
+          "max": 0.475,
+          "mean": 0.3605,
+          "min": 0.2333,
+          "std": 0.0547
+        },
+        "max_social_shift": {
+          "ci95_high": 0.0989,
+          "ci95_low": 0.0581,
+          "max": 0.1036,
+          "mean": 0.0785,
+          "min": 0.0553,
+          "std": 0.0101
+        },
+        "mean_local_shift": {
+          "ci95_high": 0.0289,
+          "ci95_low": 0.0225,
+          "max": 0.0315,
+          "mean": 0.026,
+          "min": 0.0214,
+          "std": 0.0018
+        },
+        "mean_peer_count": {
+          "ci95_high": 4.0,
+          "ci95_low": 3.9789,
+          "max": 4.0,
+          "mean": 3.9967,
+          "min": 3.975,
+          "std": 0.0062
+        },
+        "mean_pivot_readiness": {
+          "ci95_high": 0.3654,
+          "ci95_low": 0.3355,
+          "max": 0.3676,
+          "mean": 0.3501,
+          "min": 0.3299,
+          "std": 0.0078
+        },
+        "mean_social_shift": {
+          "ci95_high": 0.0268,
+          "ci95_low": 0.0199,
+          "max": 0.0287,
+          "mean": 0.0232,
+          "min": 0.0185,
+          "std": 0.0017
+        },
+        "pivot_rate": {
+          "ci95_high": 0.6833,
+          "ci95_low": 0.4286,
+          "max": 0.7083,
+          "mean": 0.5614,
+          "min": 0.4083,
+          "std": 0.0707
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.2667,
+          "ci95_low": 0.1373,
+          "max": 0.2917,
+          "mean": 0.2009,
+          "min": 0.1083,
+          "std": 0.0384
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 0.4458,
+          "ci95_low": 0.2661,
+          "max": 0.4667,
+          "mean": 0.3581,
+          "min": 0.2364,
+          "std": 0.0529
+        }
+      },
+      "description": "A visible hot-field signal raises attention and peer-success pressure without adding bridge ties or resources.",
+      "first_replicate_aggregate": {
+        "agent_count": 120,
+        "failed_pivot_rate": 0.3917,
+        "max_social_shift": 0.0884,
+        "mean_local_shift": 0.0298,
+        "mean_peer_count": 4.0,
+        "mean_pivot_readiness": 0.3434,
+        "mean_social_shift": 0.0247,
+        "pivot_rate": 0.5333,
+        "productive_pivot_rate": 0.1417,
+        "productive_share_of_pivots": 0.2656
+      },
+      "first_replicate_micro_sample": [
+        {
+          "agent_id": 0,
+          "career_stage": "early",
+          "field_opportunity": 0.9977,
+          "local_shift": 0.0127,
+          "network_support": 0.338,
+          "peer_count": 4,
+          "pivot_pressure": 0.4228,
+          "pivot_readiness": 0.3688,
+          "pivoted": true,
+          "productive_fit": 0.4596,
+          "productive_pivot": true,
+          "replicate": 0,
+          "reputation_risk": 0.4593,
+          "resource_security": 0.5778,
+          "scenario": "hot_field_hype",
+          "skill_distance": 0.5271,
+          "social_shift": 0.0306
+        },
+        {
+          "agent_id": 1,
+          "career_stage": "early",
+          "field_opportunity": 0.4731,
+          "local_shift": 0.0085,
+          "network_support": 0.6581,
+          "peer_count": 4,
+          "pivot_pressure": 0.4453,
+          "pivot_readiness": 0.4102,
+          "pivoted": true,
+          "productive_fit": 0.3394,
+          "productive_pivot": false,
+          "replicate": 0,
+          "reputation_risk": 0.7327,
+          "resource_security": 0.2174,
+          "scenario": "hot_field_hype",
+          "skill_distance": 0.1525,
+          "social_shift": 0.012
+        },
+        {
+          "agent_id": 2,
+          "career_stage": "mid",
+          "field_opportunity": 0.7795,
+          "local_shift": 0.0085,
+          "network_support": 0.5462,
+          "peer_count": 4,
+          "pivot_pressure": 0.4673,
+          "pivot_readiness": 0.3744,
+          "pivoted": true,
+          "productive_fit": 0.4964,
+          "productive_pivot": true,
+          "replicate": 0,
+          "reputation_risk": 0.5696,
+          "resource_security": 0.5241,
+          "scenario": "hot_field_hype",
+          "skill_distance": 0.251,
+          "social_shift": 0.0182
+        }
+      ],
+      "mean_state_trajectory": [
+        0.3396,
+        0.3442,
+        0.3467,
+        0.3483,
+        0.3489,
+        0.3495,
+        0.3498,
+        0.3501
+      ],
+      "outcome_field": "productive_pivot_rate",
+      "outcome_summary": {
+        "ci95_high": 0.2667,
+        "ci95_low": 0.1373,
+        "max": 0.2917,
+        "mean": 0.2009,
+        "min": 0.1083,
+        "std": 0.0384
+      },
+      "outcome_values": [
+        0.1417,
+        0.2417,
+        0.2917,
+        0.1417,
+        0.2083,
+        0.175,
+        0.2167,
+        0.1833,
+        0.1667,
+        0.2667,
+        0.2917,
+        0.1417,
+        0.2667,
+        0.1583,
+        0.1667,
+        0.225,
+        0.2,
+        0.1583,
+        0.1917,
+        0.1917,
+        0.175,
+        0.2583,
+        0.225,
+        0.2583,
+        0.1833,
+        0.25,
+        0.1583,
+        0.1083,
+        0.1583,
+        0.1833,
+        0.2167,
+        0.2333,
+        0.1833,
+        0.1917,
+        0.1917,
+        0.2417,
+        0.15,
+        0.2167,
+        0.225,
+        0.2083,
+        0.225,
+        0.2083,
+        0.2,
+        0.1917,
+        0.175,
+        0.225,
+        0.1417,
+        0.2333,
+        0.1333,
+        0.2083,
+        0.175,
+        0.1917,
+        0.25,
+        0.1667,
+        0.25,
+        0.1833,
+        0.2,
+        0.225,
+        0.1583,
+        0.1917,
+        0.2,
+        0.1833,
+        0.1583,
+        0.2083,
+        0.2583,
+        0.175,
+        0.2333,
+        0.225,
+        0.2,
+        0.225,
+        0.2583,
+        0.1833,
+        0.25,
+        0.1833,
+        0.2083,
+        0.2083,
+        0.1667,
+        0.15,
+        0.2333,
+        0.1667,
+        0.2083,
+        0.1417,
+        0.125,
+        0.2,
+        0.2167,
+        0.25,
+        0.1667,
+        0.1833,
+        0.2333,
+        0.2583,
+        0.1917,
+        0.175,
+        0.1833,
+        0.2667,
+        0.1917,
+        0.225,
+        0.2167,
+        0.2583,
+        0.1917,
+        0.1583
+      ],
+      "parameters": {
+        "attention_signal": 0.55,
+        "field_signal": 0.06,
+        "peer_success_signal": 0.35,
+        "reputation_penalty": 0.1,
+        "resource_signal": -0.05
+      },
+      "replicates": 100,
+      "scenario": "hot_field_hype",
+      "std_state_trajectory": [
+        0.0106,
+        0.008,
+        0.0075,
+        0.0077,
+        0.0078,
+        0.0078,
+        0.0081,
+        0.0078
+      ]
+    },
+    "hype_with_support": {
+      "aggregate_summaries": {
+        "agent_count": {
+          "ci95_high": 120.0,
+          "ci95_low": 120.0,
+          "max": 120.0,
+          "mean": 120.0,
+          "min": 120.0,
+          "std": 0.0
+        },
+        "failed_pivot_rate": {
+          "ci95_high": 0.5461,
+          "ci95_low": 0.3829,
+          "max": 0.5833,
+          "mean": 0.4683,
+          "min": 0.3417,
+          "std": 0.0454
+        },
+        "max_social_shift": {
+          "ci95_high": 0.0976,
+          "ci95_low": 0.0642,
+          "max": 0.1047,
+          "mean": 0.0785,
+          "min": 0.0619,
+          "std": 0.0083
+        },
+        "mean_local_shift": {
+          "ci95_high": 0.0293,
+          "ci95_low": 0.0233,
+          "max": 0.0307,
+          "mean": 0.026,
+          "min": 0.0199,
+          "std": 0.0017
+        },
+        "mean_peer_count": {
+          "ci95_high": 4.5544,
+          "ci95_low": 4.3917,
+          "max": 4.5833,
+          "mean": 4.4787,
+          "min": 4.3833,
+          "std": 0.0466
+        },
+        "mean_pivot_readiness": {
+          "ci95_high": 0.4372,
+          "ci95_low": 0.4069,
+          "max": 0.4409,
+          "mean": 0.421,
+          "min": 0.4029,
+          "std": 0.0079
+        },
+        "mean_social_shift": {
+          "ci95_high": 0.0261,
+          "ci95_low": 0.0203,
+          "max": 0.0266,
+          "mean": 0.0234,
+          "min": 0.0195,
+          "std": 0.0017
+        },
+        "pivot_rate": {
+          "ci95_high": 0.9917,
+          "ci95_low": 0.9083,
+          "max": 1.0,
+          "mean": 0.9524,
+          "min": 0.8833,
+          "std": 0.0232
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.5667,
+          "ci95_low": 0.3917,
+          "max": 0.6417,
+          "mean": 0.4841,
+          "min": 0.375,
+          "std": 0.0466
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 0.5894,
+          "ci95_low": 0.413,
+          "max": 0.6525,
+          "mean": 0.5082,
+          "min": 0.3966,
+          "std": 0.0468
+        }
+      },
+      "description": "Hot-field attention combined with seed-grant support signals.",
+      "first_replicate_aggregate": {
+        "agent_count": 120,
+        "failed_pivot_rate": 0.4917,
+        "max_social_shift": 0.0789,
+        "mean_local_shift": 0.0266,
+        "mean_peer_count": 4.4333,
+        "mean_pivot_readiness": 0.4146,
+        "mean_social_shift": 0.0222,
+        "pivot_rate": 0.9583,
+        "productive_pivot_rate": 0.4667,
+        "productive_share_of_pivots": 0.487
+      },
+      "first_replicate_micro_sample": [
+        {
+          "agent_id": 0,
+          "career_stage": "early",
+          "field_opportunity": 1.0,
+          "local_shift": 0.022,
+          "network_support": 0.438,
+          "peer_count": 5,
+          "pivot_pressure": 0.477,
+          "pivot_readiness": 0.4388,
+          "pivoted": true,
+          "productive_fit": 0.5229,
+          "productive_pivot": true,
+          "replicate": 0,
+          "reputation_risk": 0.4093,
+          "resource_security": 0.6778,
+          "scenario": "hype_with_support",
+          "skill_distance": 0.5271,
+          "social_shift": 0.0243
+        },
+        {
+          "agent_id": 1,
+          "career_stage": "early",
+          "field_opportunity": 0.5131,
+          "local_shift": 0.0316,
+          "network_support": 0.7581,
+          "peer_count": 5,
+          "pivot_pressure": 0.5134,
+          "pivot_readiness": 0.4845,
+          "pivoted": true,
+          "productive_fit": 0.4159,
+          "productive_pivot": true,
+          "replicate": 0,
+          "reputation_risk": 0.6827,
+          "resource_security": 0.3174,
+          "scenario": "hype_with_support",
+          "skill_distance": 0.1525,
+          "social_shift": 0.0192
+        },
+        {
+          "agent_id": 2,
+          "career_stage": "mid",
+          "field_opportunity": 0.8195,
+          "local_shift": 0.0338,
+          "network_support": 0.6462,
+          "peer_count": 4,
+          "pivot_pressure": 0.5332,
+          "pivot_readiness": 0.4644,
+          "pivoted": true,
+          "productive_fit": 0.5729,
+          "productive_pivot": true,
+          "replicate": 0,
+          "reputation_risk": 0.5196,
+          "resource_security": 0.6241,
+          "scenario": "hype_with_support",
+          "skill_distance": 0.251,
+          "social_shift": 0.0151
+        }
+      ],
+      "mean_state_trajectory": [
+        0.3708,
+        0.3931,
+        0.406,
+        0.4131,
+        0.4174,
+        0.4198,
+        0.4204,
+        0.421
+      ],
+      "outcome_field": "productive_pivot_rate",
+      "outcome_summary": {
+        "ci95_high": 0.5667,
+        "ci95_low": 0.3917,
+        "max": 0.6417,
+        "mean": 0.4841,
+        "min": 0.375,
+        "std": 0.0466
+      },
+      "outcome_values": [
+        0.4667,
+        0.4417,
+        0.5583,
+        0.4083,
+        0.525,
+        0.5,
+        0.55,
+        0.475,
+        0.5083,
+        0.4583,
+        0.5417,
+        0.4833,
+        0.525,
+        0.4667,
+        0.4333,
+        0.5167,
+        0.4667,
+        0.4833,
+        0.4833,
+        0.45,
+        0.3917,
+        0.525,
+        0.5167,
+        0.4667,
+        0.5083,
+        0.5,
+        0.5,
+        0.375,
+        0.5,
+        0.4667,
+        0.6417,
+        0.5417,
+        0.5,
+        0.5167,
+        0.4333,
+        0.5,
+        0.425,
+        0.4417,
+        0.4667,
+        0.5083,
+        0.4917,
+        0.5167,
+        0.5083,
+        0.4917,
+        0.5,
+        0.5583,
+        0.4583,
+        0.4333,
+        0.4,
+        0.525,
+        0.4,
+        0.4667,
+        0.5083,
+        0.4583,
+        0.525,
+        0.4583,
+        0.4917,
+        0.4667,
+        0.4083,
+        0.4833,
+        0.4833,
+        0.4917,
+        0.4333,
+        0.4917,
+        0.5167,
+        0.4583,
+        0.5833,
+        0.5,
+        0.475,
+        0.5333,
+        0.5083,
+        0.5167,
+        0.5333,
+        0.3917,
+        0.5333,
+        0.5,
+        0.475,
+        0.4417,
+        0.5083,
+        0.4417,
+        0.5667,
+        0.475,
+        0.3833,
+        0.475,
+        0.4833,
+        0.5667,
+        0.4333,
+        0.5,
+        0.475,
+        0.5333,
+        0.525,
+        0.45,
+        0.425,
+        0.5333,
+        0.4167,
+        0.4583,
+        0.475,
+        0.4917,
+        0.425,
+        0.4833
+      ],
+      "parameters": {
+        "attention_signal": 0.55,
+        "bridge_signal": 0.1,
+        "extra_bridge_tie_probability": 0.5,
+        "field_signal": 0.1,
+        "funding_signal": 0.25,
+        "peer_success_signal": 0.43,
+        "reputation_penalty": 0.05,
+        "resource_signal": 0.05
+      },
+      "replicates": 100,
+      "scenario": "hype_with_support",
+      "std_state_trajectory": [
+        0.0104,
+        0.0076,
+        0.0071,
+        0.0073,
+        0.0077,
+        0.0075,
+        0.0073,
+        0.0078
+      ]
+    },
+    "interdisciplinary_seed_grants": {
+      "aggregate_summaries": {
+        "agent_count": {
+          "ci95_high": 120.0,
+          "ci95_low": 120.0,
+          "max": 120.0,
+          "mean": 120.0,
+          "min": 120.0,
+          "std": 0.0
+        },
+        "failed_pivot_rate": {
+          "ci95_high": 0.075,
+          "ci95_low": 0.0083,
+          "max": 0.0833,
+          "mean": 0.0365,
+          "min": 0.0,
+          "std": 0.0191
+        },
+        "max_social_shift": {
+          "ci95_high": 0.0871,
+          "ci95_low": 0.0553,
+          "max": 0.0961,
+          "mean": 0.0693,
+          "min": 0.0537,
+          "std": 0.0082
+        },
+        "mean_local_shift": {
+          "ci95_high": 0.027,
+          "ci95_low": 0.0208,
+          "max": 0.0275,
+          "mean": 0.024,
+          "min": 0.0189,
+          "std": 0.0016
+        },
+        "mean_peer_count": {
+          "ci95_high": 4.5544,
+          "ci95_low": 4.3917,
+          "max": 4.5917,
+          "mean": 4.4823,
+          "min": 4.3833,
+          "std": 0.0465
+        },
+        "mean_pivot_readiness": {
+          "ci95_high": 0.3247,
+          "ci95_low": 0.2996,
+          "max": 0.3265,
+          "mean": 0.311,
+          "min": 0.2942,
+          "std": 0.0067
+        },
+        "mean_social_shift": {
+          "ci95_high": 0.0232,
+          "ci95_low": 0.0175,
+          "max": 0.0238,
+          "mean": 0.0204,
+          "min": 0.0166,
+          "std": 0.0015
+        },
+        "pivot_rate": {
+          "ci95_high": 0.3464,
+          "ci95_low": 0.1408,
+          "max": 0.3833,
+          "mean": 0.2342,
+          "min": 0.0917,
+          "std": 0.0547
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.2877,
+          "ci95_low": 0.1119,
+          "max": 0.3333,
+          "mean": 0.1977,
+          "min": 0.0833,
+          "std": 0.0457
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 0.9683,
+          "ci95_low": 0.7301,
+          "max": 1.0,
+          "mean": 0.8466,
+          "min": 0.7083,
+          "std": 0.0664
+        }
+      },
+      "description": "Small grants, bridge ties, and reduced reputation risk raise pivot pressure and structural fit together.",
+      "first_replicate_aggregate": {
+        "agent_count": 120,
+        "failed_pivot_rate": 0.0333,
+        "max_social_shift": 0.0666,
+        "mean_local_shift": 0.0234,
+        "mean_peer_count": 4.4333,
+        "mean_pivot_readiness": 0.303,
+        "mean_social_shift": 0.0191,
+        "pivot_rate": 0.1667,
+        "productive_pivot_rate": 0.1333,
+        "productive_share_of_pivots": 0.8
+      },
+      "first_replicate_micro_sample": [
+        {
+          "agent_id": 0,
+          "career_stage": "early",
+          "field_opportunity": 0.9777,
+          "local_shift": 0.0302,
+          "network_support": 0.438,
+          "peer_count": 5,
+          "pivot_pressure": 0.3912,
+          "pivot_readiness": 0.338,
+          "pivoted": false,
+          "productive_fit": 0.5426,
+          "productive_pivot": false,
+          "replicate": 0,
+          "reputation_risk": 0.3093,
+          "resource_security": 0.7278,
+          "scenario": "interdisciplinary_seed_grants",
+          "skill_distance": 0.5271,
+          "social_shift": 0.0294
+        },
+        {
+          "agent_id": 1,
+          "career_stage": "early",
+          "field_opportunity": 0.4531,
+          "local_shift": 0.0276,
+          "network_support": 0.7581,
+          "peer_count": 5,
+          "pivot_pressure": 0.3699,
+          "pivot_readiness": 0.3461,
+          "pivoted": true,
+          "productive_fit": 0.4224,
+          "productive_pivot": true,
+          "replicate": 0,
+          "reputation_risk": 0.5827,
+          "resource_security": 0.3674,
+          "scenario": "interdisciplinary_seed_grants",
+          "skill_distance": 0.1525,
+          "social_shift": 0.0189
+        },
+        {
+          "agent_id": 2,
+          "career_stage": "mid",
+          "field_opportunity": 0.7595,
+          "local_shift": 0.0322,
+          "network_support": 0.6462,
+          "peer_count": 4,
+          "pivot_pressure": 0.4211,
+          "pivot_readiness": 0.3522,
+          "pivoted": true,
+          "productive_fit": 0.5794,
+          "productive_pivot": true,
+          "replicate": 0,
+          "reputation_risk": 0.4196,
+          "resource_security": 0.6741,
+          "scenario": "interdisciplinary_seed_grants",
+          "skill_distance": 0.251,
+          "social_shift": 0.0173
+        }
+      ],
+      "mean_state_trajectory": [
+        0.3211,
+        0.3159,
+        0.3137,
+        0.3124,
+        0.3121,
+        0.3119,
+        0.3113,
+        0.311
+      ],
+      "outcome_field": "productive_pivot_rate",
+      "outcome_summary": {
+        "ci95_high": 0.2877,
+        "ci95_low": 0.1119,
+        "max": 0.3333,
+        "mean": 0.1977,
+        "min": 0.0833,
+        "std": 0.0457
+      },
+      "outcome_values": [
+        0.1333,
+        0.1917,
+        0.3333,
+        0.1917,
+        0.2583,
+        0.1417,
+        0.2167,
+        0.15,
+        0.15,
+        0.1667,
+        0.275,
+        0.1,
+        0.2583,
+        0.175,
+        0.1417,
+        0.225,
+        0.125,
+        0.175,
+        0.2583,
+        0.1833,
+        0.1833,
+        0.2583,
+        0.2917,
+        0.1833,
+        0.1583,
+        0.2917,
+        0.175,
+        0.0833,
+        0.1417,
+        0.2083,
+        0.2583,
+        0.25,
+        0.2333,
+        0.2083,
+        0.2083,
+        0.25,
+        0.15,
+        0.1917,
+        0.1833,
+        0.225,
+        0.225,
+        0.1917,
+        0.2083,
+        0.2,
+        0.175,
+        0.25,
+        0.15,
+        0.2,
+        0.1417,
+        0.2167,
+        0.1833,
+        0.1917,
+        0.1583,
+        0.2333,
+        0.2333,
+        0.1583,
+        0.1667,
+        0.15,
+        0.1333,
+        0.1583,
+        0.225,
+        0.15,
+        0.2083,
+        0.2083,
+        0.25,
+        0.2083,
+        0.2667,
+        0.2083,
+        0.1667,
+        0.2333,
+        0.225,
+        0.175,
+        0.25,
+        0.1917,
+        0.1833,
+        0.1667,
+        0.1917,
+        0.1833,
+        0.2333,
+        0.2167,
+        0.175,
+        0.1333,
+        0.1417,
+        0.2167,
+        0.25,
+        0.2083,
+        0.1667,
+        0.2083,
+        0.1833,
+        0.2333,
+        0.25,
+        0.1333,
+        0.2,
+        0.2833,
+        0.1833,
+        0.225,
+        0.2,
+        0.2333,
+        0.1917,
+        0.1
+      ],
+      "parameters": {
+        "bridge_signal": 0.1,
+        "extra_bridge_tie_probability": 0.5,
+        "field_signal": 0.04,
+        "funding_signal": 0.25,
+        "peer_success_signal": 0.08,
+        "reputation_penalty": -0.05,
+        "resource_signal": 0.1
+      },
+      "replicates": 100,
+      "scenario": "interdisciplinary_seed_grants",
+      "std_state_trajectory": [
+        0.0101,
+        0.007,
+        0.0062,
+        0.0062,
+        0.0064,
+        0.0064,
+        0.0062,
+        0.0067
+      ]
+    }
+  },
+  "sensitivity": {
+    "grant_scale_sweep": [
+      {
+        "grant_scale": 0.0,
+        "hype_with_support": {
+          "baseline": "baseline",
+          "baseline_mean": 0.0071,
+          "delta_ci95": [
+            0.1413,
+            0.2835
+          ],
+          "delta_std": 0.04,
+          "mean_delta": 0.209,
+          "outcome_field": "productive_pivot_rate",
+          "replicates": 40,
+          "scenario": "hype_with_support",
+          "scenario_mean": 0.216,
+          "success": true,
+          "success_criterion": "mean delta > 0.05",
+          "success_fraction": 1.0
+        },
+        "seed_grants": {
+          "baseline": "baseline",
+          "baseline_mean": 0.0071,
+          "delta_ci95": [
+            -0.0166,
+            0.0167
+          ],
+          "delta_std": 0.008,
+          "mean_delta": 0.0038,
+          "outcome_field": "productive_pivot_rate",
+          "replicates": 40,
+          "scenario": "interdisciplinary_seed_grants",
+          "scenario_mean": 0.0108,
+          "success": false,
+          "success_criterion": "mean delta > 0.05",
+          "success_fraction": 0.0
+        }
+      },
+      {
+        "grant_scale": 0.5,
+        "hype_with_support": {
+          "baseline": "baseline",
+          "baseline_mean": 0.0071,
+          "delta_ci95": [
+            0.2665,
+            0.4169
+          ],
+          "delta_std": 0.0432,
+          "mean_delta": 0.3463,
+          "outcome_field": "productive_pivot_rate",
+          "replicates": 40,
+          "scenario": "hype_with_support",
+          "scenario_mean": 0.3533,
+          "success": true,
+          "success_criterion": "mean delta > 0.05",
+          "success_fraction": 1.0
+        },
+        "seed_grants": {
+          "baseline": "baseline",
+          "baseline_mean": 0.0071,
+          "delta_ci95": [
+            0.0165,
+            0.1002
+          ],
+          "delta_std": 0.0253,
+          "mean_delta": 0.0525,
+          "outcome_field": "productive_pivot_rate",
+          "replicates": 40,
+          "scenario": "interdisciplinary_seed_grants",
+          "scenario_mean": 0.0596,
+          "success": true,
+          "success_criterion": "mean delta > 0.05",
+          "success_fraction": 0.35
+        }
+      },
+      {
+        "grant_scale": 1.0,
+        "hype_with_support": {
+          "baseline": "baseline",
+          "baseline_mean": 0.0071,
+          "delta_ci95": [
+            0.3913,
+            0.5441
+          ],
+          "delta_std": 0.0469,
+          "mean_delta": 0.4796,
+          "outcome_field": "productive_pivot_rate",
+          "replicates": 40,
+          "scenario": "hype_with_support",
+          "scenario_mean": 0.4867,
+          "success": true,
+          "success_criterion": "mean delta > 0.05",
+          "success_fraction": 1.0
+        },
+        "seed_grants": {
+          "baseline": "baseline",
+          "baseline_mean": 0.0071,
+          "delta_ci95": [
+            0.0996,
+            0.2923
+          ],
+          "delta_std": 0.0501,
+          "mean_delta": 0.1925,
+          "outcome_field": "productive_pivot_rate",
+          "replicates": 40,
+          "scenario": "interdisciplinary_seed_grants",
+          "scenario_mean": 0.1996,
+          "success": true,
+          "success_criterion": "mean delta > 0.05",
+          "success_fraction": 1.0
+        }
+      },
+      {
+        "grant_scale": 1.5,
+        "hype_with_support": {
+          "baseline": "baseline",
+          "baseline_mean": 0.0071,
+          "delta_ci95": [
+            0.4913,
+            0.6841
+          ],
+          "delta_std": 0.0477,
+          "mean_delta": 0.5919,
+          "outcome_field": "productive_pivot_rate",
+          "replicates": 40,
+          "scenario": "hype_with_support",
+          "scenario_mean": 0.599,
+          "success": true,
+          "success_criterion": "mean delta > 0.05",
+          "success_fraction": 1.0
+        },
+        "seed_grants": {
+          "baseline": "baseline",
+          "baseline_mean": 0.0071,
+          "delta_ci95": [
+            0.3328,
+            0.5589
+          ],
+          "delta_std": 0.0572,
+          "mean_delta": 0.4348,
+          "outcome_field": "productive_pivot_rate",
+          "replicates": 40,
+          "scenario": "interdisciplinary_seed_grants",
+          "scenario_mean": 0.4419,
+          "success": true,
+          "success_criterion": "mean delta > 0.05",
+          "success_fraction": 1.0
+        }
+      },
+      {
+        "grant_scale": 2.0,
+        "hype_with_support": {
+          "baseline": "baseline",
+          "baseline_mean": 0.0071,
+          "delta_ci95": [
+            0.6167,
+            0.7833
+          ],
+          "delta_std": 0.0438,
+          "mean_delta": 0.6915,
+          "outcome_field": "productive_pivot_rate",
+          "replicates": 40,
+          "scenario": "hype_with_support",
+          "scenario_mean": 0.6985,
+          "success": true,
+          "success_criterion": "mean delta > 0.05",
+          "success_fraction": 1.0
+        },
+        "seed_grants": {
+          "baseline": "baseline",
+          "baseline_mean": 0.0071,
+          "delta_ci95": [
+            0.5821,
+            0.7585
+          ],
+          "delta_std": 0.0465,
+          "mean_delta": 0.6583,
+          "outcome_field": "productive_pivot_rate",
+          "replicates": 40,
+          "scenario": "interdisciplinary_seed_grants",
+          "scenario_mean": 0.6654,
+          "success": true,
+          "success_criterion": "mean delta > 0.05",
+          "success_fraction": 1.0
+        }
+      }
+    ],
+    "replicates_per_point": 40,
+    "social_alpha_sweep": [
+      {
+        "scenarios": {
+          "baseline": {
+            "pivot_rate": {
+              "ci95_high": 0.1419,
+              "ci95_low": 0.0583,
+              "max": 0.15,
+              "mean": 0.1033,
+              "min": 0.0583,
+              "std": 0.0255
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.1254,
+              "ci95_low": 0.0333,
+              "max": 0.1417,
+              "mean": 0.0819,
+              "min": 0.0333,
+              "std": 0.0255
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.9336,
+              "ci95_low": 0.5682,
+              "max": 0.9444,
+              "mean": 0.7832,
+              "min": 0.4444,
+              "std": 0.0986
+            }
+          },
+          "hot_field_hype": {
+            "pivot_rate": {
+              "ci95_high": 0.5917,
+              "ci95_low": 0.4831,
+              "max": 0.5917,
+              "mean": 0.5431,
+              "min": 0.475,
+              "std": 0.0345
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.2669,
+              "ci95_low": 0.1498,
+              "max": 0.275,
+              "mean": 0.2098,
+              "min": 0.1417,
+              "std": 0.0334
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.4617,
+              "ci95_low": 0.2766,
+              "max": 0.4714,
+              "mean": 0.386,
+              "min": 0.2656,
+              "std": 0.0548
+            }
+          },
+          "hype_with_support": {
+            "pivot_rate": {
+              "ci95_high": 0.8417,
+              "ci95_low": 0.7083,
+              "max": 0.8417,
+              "mean": 0.7721,
+              "min": 0.7083,
+              "std": 0.0385
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.485,
+              "ci95_low": 0.3492,
+              "max": 0.55,
+              "mean": 0.4167,
+              "min": 0.3167,
+              "std": 0.0427
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.6476,
+              "ci95_low": 0.4454,
+              "max": 0.6667,
+              "mean": 0.5399,
+              "min": 0.4419,
+              "std": 0.0503
+            }
+          },
+          "interdisciplinary_seed_grants": {
+            "pivot_rate": {
+              "ci95_high": 0.4177,
+              "ci95_low": 0.2663,
+              "max": 0.4583,
+              "mean": 0.3483,
+              "min": 0.25,
+              "std": 0.0425
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.3587,
+              "ci95_low": 0.1913,
+              "max": 0.375,
+              "mean": 0.2727,
+              "min": 0.175,
+              "std": 0.0432
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.9063,
+              "ci95_low": 0.6763,
+              "max": 0.9111,
+              "mean": 0.7818,
+              "min": 0.6667,
+              "std": 0.0665
+            }
+          }
+        },
+        "social_alpha": 0.0
+      },
+      {
+        "scenarios": {
+          "baseline": {
+            "pivot_rate": {
+              "ci95_high": 0.0752,
+              "ci95_low": 0.0083,
+              "max": 0.0833,
+              "mean": 0.039,
+              "min": 0.0083,
+              "std": 0.0208
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.0752,
+              "ci95_low": 0.0083,
+              "max": 0.0833,
+              "mean": 0.0367,
+              "min": 0.0083,
+              "std": 0.0212
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 1.0,
+              "ci95_low": 0.6625,
+              "max": 1.0,
+              "mean": 0.9398,
+              "min": 0.5,
+              "std": 0.1233
+            }
+          },
+          "hot_field_hype": {
+            "pivot_rate": {
+              "ci95_high": 0.65,
+              "ci95_low": 0.4667,
+              "max": 0.65,
+              "mean": 0.5569,
+              "min": 0.4667,
+              "std": 0.0469
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.2752,
+              "ci95_low": 0.1409,
+              "max": 0.2833,
+              "mean": 0.2087,
+              "min": 0.1083,
+              "std": 0.0383
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.4546,
+              "ci95_low": 0.2687,
+              "max": 0.4595,
+              "mean": 0.3739,
+              "min": 0.2241,
+              "std": 0.056
+            }
+          },
+          "hype_with_support": {
+            "pivot_rate": {
+              "ci95_high": 0.9333,
+              "ci95_low": 0.8167,
+              "max": 0.9333,
+              "mean": 0.8717,
+              "min": 0.8167,
+              "std": 0.0348
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.5343,
+              "ci95_low": 0.3827,
+              "max": 0.575,
+              "mean": 0.4552,
+              "min": 0.3583,
+              "std": 0.0447
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.6072,
+              "ci95_low": 0.4372,
+              "max": 0.6635,
+              "mean": 0.5223,
+              "min": 0.4257,
+              "std": 0.0475
+            }
+          },
+          "interdisciplinary_seed_grants": {
+            "pivot_rate": {
+              "ci95_high": 0.3919,
+              "ci95_low": 0.2152,
+              "max": 0.4,
+              "mean": 0.2931,
+              "min": 0.1583,
+              "std": 0.0515
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.3333,
+              "ci95_low": 0.174,
+              "max": 0.3333,
+              "mean": 0.2404,
+              "min": 0.1333,
+              "std": 0.046
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.9259,
+              "ci95_low": 0.7272,
+              "max": 0.9615,
+              "mean": 0.8203,
+              "min": 0.7241,
+              "std": 0.06
+            }
+          }
+        },
+        "social_alpha": 0.2
+      },
+      {
+        "scenarios": {
+          "baseline": {
+            "pivot_rate": {
+              "ci95_high": 0.0335,
+              "ci95_low": 0.0,
+              "max": 0.0417,
+              "mean": 0.0071,
+              "min": 0.0,
+              "std": 0.0109
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.0335,
+              "ci95_low": 0.0,
+              "max": 0.0417,
+              "mean": 0.0071,
+              "min": 0.0,
+              "std": 0.0109
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "max": 1.0,
+              "mean": 0.425,
+              "min": 0.0,
+              "std": 0.5006
+            }
+          },
+          "hot_field_hype": {
+            "pivot_rate": {
+              "ci95_high": 0.6675,
+              "ci95_low": 0.4573,
+              "max": 0.7,
+              "mean": 0.5696,
+              "min": 0.4167,
+              "std": 0.0681
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.2917,
+              "ci95_low": 0.1409,
+              "max": 0.2917,
+              "mean": 0.201,
+              "min": 0.1083,
+              "std": 0.0439
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.4487,
+              "ci95_low": 0.2571,
+              "max": 0.4493,
+              "mean": 0.3516,
+              "min": 0.2364,
+              "std": 0.056
+            }
+          },
+          "hype_with_support": {
+            "pivot_rate": {
+              "ci95_high": 0.9919,
+              "ci95_low": 0.9167,
+              "max": 1.0,
+              "mean": 0.9558,
+              "min": 0.9167,
+              "std": 0.024
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.5604,
+              "ci95_low": 0.3913,
+              "max": 0.6417,
+              "mean": 0.4867,
+              "min": 0.375,
+              "std": 0.0493
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.5747,
+              "ci95_low": 0.423,
+              "max": 0.6525,
+              "mean": 0.5088,
+              "min": 0.4091,
+              "std": 0.0465
+            }
+          },
+          "interdisciplinary_seed_grants": {
+            "pivot_rate": {
+              "ci95_high": 0.3752,
+              "ci95_low": 0.1242,
+              "max": 0.3833,
+              "mean": 0.2367,
+              "min": 0.0917,
+              "std": 0.0655
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.2927,
+              "ci95_low": 0.0996,
+              "max": 0.3333,
+              "mean": 0.1996,
+              "min": 0.0833,
+              "std": 0.056
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.9696,
+              "ci95_low": 0.7142,
+              "max": 1.0,
+              "mean": 0.8451,
+              "min": 0.7083,
+              "std": 0.0708
+            }
+          }
+        },
+        "social_alpha": 0.4
+      },
+      {
+        "scenarios": {
+          "baseline": {
+            "pivot_rate": {
+              "ci95_high": 0.0085,
+              "ci95_low": 0.0,
+              "max": 0.0167,
+              "mean": 0.0017,
+              "min": 0.0,
+              "std": 0.0039
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.0085,
+              "ci95_low": 0.0,
+              "max": 0.0167,
+              "mean": 0.0017,
+              "min": 0.0,
+              "std": 0.0039
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "max": 1.0,
+              "mean": 0.175,
+              "min": 0.0,
+              "std": 0.3848
+            }
+          },
+          "hot_field_hype": {
+            "pivot_rate": {
+              "ci95_high": 0.7262,
+              "ci95_low": 0.4165,
+              "max": 0.775,
+              "mean": 0.5892,
+              "min": 0.4083,
+              "std": 0.0871
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.276,
+              "ci95_low": 0.1323,
+              "max": 0.3167,
+              "mean": 0.196,
+              "min": 0.0917,
+              "std": 0.0481
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.4291,
+              "ci95_low": 0.2316,
+              "max": 0.4493,
+              "mean": 0.3319,
+              "min": 0.22,
+              "std": 0.0595
+            }
+          },
+          "hype_with_support": {
+            "pivot_rate": {
+              "ci95_high": 1.0,
+              "ci95_low": 0.9748,
+              "max": 1.0,
+              "mean": 0.9942,
+              "min": 0.9667,
+              "std": 0.0087
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.585,
+              "ci95_low": 0.4159,
+              "max": 0.65,
+              "mean": 0.5006,
+              "min": 0.3833,
+              "std": 0.0476
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.585,
+              "ci95_low": 0.423,
+              "max": 0.65,
+              "mean": 0.5034,
+              "min": 0.3966,
+              "std": 0.0463
+            }
+          },
+          "interdisciplinary_seed_grants": {
+            "pivot_rate": {
+              "ci95_high": 0.3425,
+              "ci95_low": 0.0667,
+              "max": 0.375,
+              "mean": 0.1831,
+              "min": 0.0667,
+              "std": 0.0743
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.276,
+              "ci95_low": 0.0583,
+              "max": 0.3167,
+              "mean": 0.1565,
+              "min": 0.0583,
+              "std": 0.0612
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 1.0,
+              "ci95_low": 0.6995,
+              "max": 1.0,
+              "mean": 0.8628,
+              "min": 0.68,
+              "std": 0.0834
+            }
+          }
+        },
+        "social_alpha": 0.6
+      },
+      {
+        "scenarios": {
+          "baseline": {
+            "pivot_rate": {
+              "ci95_high": 0.0083,
+              "ci95_low": 0.0,
+              "max": 0.0083,
+              "mean": 0.0004,
+              "min": 0.0,
+              "std": 0.0018
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.0083,
+              "ci95_low": 0.0,
+              "max": 0.0083,
+              "mean": 0.0004,
+              "min": 0.0,
+              "std": 0.0018
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "max": 1.0,
+              "mean": 0.05,
+              "min": 0.0,
+              "std": 0.2207
+            }
+          },
+          "hot_field_hype": {
+            "pivot_rate": {
+              "ci95_high": 0.7845,
+              "ci95_low": 0.4248,
+              "max": 0.8333,
+              "mean": 0.6154,
+              "min": 0.4167,
+              "std": 0.1016
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.2921,
+              "ci95_low": 0.1235,
+              "max": 0.3083,
+              "mean": 0.1915,
+              "min": 0.0667,
+              "std": 0.051
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.3917,
+              "ci95_low": 0.2044,
+              "max": 0.407,
+              "mean": 0.3093,
+              "min": 0.16,
+              "std": 0.0562
+            }
+          },
+          "hype_with_support": {
+            "pivot_rate": {
+              "ci95_high": 1.0,
+              "ci95_low": 0.9917,
+              "max": 1.0,
+              "mean": 0.9994,
+              "min": 0.9917,
+              "std": 0.0022
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.585,
+              "ci95_low": 0.4327,
+              "max": 0.65,
+              "mean": 0.5027,
+              "min": 0.4083,
+              "std": 0.0458
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 0.585,
+              "ci95_low": 0.4327,
+              "max": 0.65,
+              "mean": 0.503,
+              "min": 0.4083,
+              "std": 0.0457
+            }
+          },
+          "interdisciplinary_seed_grants": {
+            "pivot_rate": {
+              "ci95_high": 0.3095,
+              "ci95_low": 0.025,
+              "max": 0.3583,
+              "mean": 0.1558,
+              "min": 0.025,
+              "std": 0.0814
+            },
+            "productive_pivot_rate": {
+              "ci95_high": 0.2425,
+              "ci95_low": 0.0248,
+              "max": 0.275,
+              "mean": 0.1235,
+              "min": 0.0167,
+              "std": 0.0638
+            },
+            "productive_share_of_pivots": {
+              "ci95_high": 1.0,
+              "ci95_low": 0.6105,
+              "max": 1.0,
+              "mean": 0.8022,
+              "min": 0.5862,
+              "std": 0.1028
+            }
+          }
+        },
+        "social_alpha": 0.8
+      }
+    ]
+  },
+  "status": "ok",
+  "surface": "neural_abm.scenario_lite",
+  "torch_loaded": false
+}

@@ -7,6 +7,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DECISION_0014 = ROOT / "docs" / "decisions" / "0014-package-dependency-policy.md"
+DECISION_0015 = (
+    ROOT / "docs" / "decisions" / "0015-researcher-scenario-lite-contract.md"
+)
+API_SURFACE_AUDIT = ROOT / "docs" / "api-surface-audit.md"
 RELEASE_BOUNDARY = ROOT / "docs" / "package-release-boundary.md"
 PYPROJECT = ROOT / "pyproject.toml"
 RELEASE_INSPECT_SCRIPT = ROOT / "scripts" / "inspect_release_artifacts.py"
@@ -168,6 +172,57 @@ def test_package_dependency_policy_defers_torch_optionalization() -> None:
         "`plot`, `cli`, or `full`",
     ):
         assert required in module_readme
+
+
+def test_researcher_scenario_lite_contract_keeps_claim_judgment_user_owned() -> None:
+    decision = _plain(DECISION_0015.read_text(encoding="utf-8"))
+    audit = _plain(API_SURFACE_AUDIT.read_text(encoding="utf-8"))
+    release_boundary_source = RELEASE_BOUNDARY.read_text(encoding="utf-8")
+    release_boundary = _plain(release_boundary_source)
+
+    for required in (
+        "Accepted for the `main` / next-alpha candidate",
+        "The `main` / next-alpha candidate adds the bounded-scalar scenario surface",
+        "`neural_abm.api_lite`",
+        "`neural_abm.workflow_lite` is its torch-free bounded-scalar implementation layer",
+        "`success_direction` and `success_min_delta` are user-provided comparison metadata",
+        "do not determine whether a scientific claim is supported",
+        "common random numbers",
+        "The framework does not interpret it as a hypothesis test",
+        "must not import or require `torch`",
+        "The existing `v0.1.0a5` tag predates `scenario_lite`",
+    ):
+        assert required in decision
+
+    for required in (
+        "Main / Next-Alpha Scenario Candidate",
+        "The unreleased `main` / next-alpha candidate extends `neural_abm.api_lite`",
+        "The underlying `workflow_lite` module remains an implementation layer",
+        "A returned `success` value only records mechanical satisfaction",
+        "it is not framework judgment that a scientific claim is supported",
+        "The released `v0.1.0a5` tag predates this scenario surface",
+        "Decision 0015",
+    ):
+        assert required in audit
+
+    released_tag_section, candidate_and_later = release_boundary_source.split(
+        "## Main / Next-Alpha Candidate",
+        maxsplit=1,
+    )
+    assert "scenario_lite" not in released_tag_section
+    assert "`v0.1.0a5` tag predates `scenario_lite`" in candidate_and_later
+
+    for required in (
+        "Released Tag: `v0.1.0a5`",
+        "Main / Next-Alpha Candidate",
+        "The unreleased `main` / next-alpha candidate extends",
+        "user-provided comparison metadata",
+        "not framework judgment that a scientific claim is supported",
+        "Domain semantics, calibration, identification assumptions",
+        "Do not document the `v0.1.0a5` tag as containing",
+        "Decision 0015",
+    ):
+        assert required in release_boundary
 
 
 def test_package_profile_smoke_script_covers_release_profiles() -> None:

@@ -1,0 +1,967 @@
+{
+  "comparisons": [
+    {
+      "arm": "imitative - frozen",
+      "ci95_high": 0.4365,
+      "ci95_low": 0.0665,
+      "mean": 0.3042,
+      "outcome_field": "failed_pivot_rate",
+      "replicates": 30,
+      "scenario": "baseline",
+      "std": 0.1084
+    },
+    {
+      "arm": "imitative - frozen",
+      "ci95_high": 0.3167,
+      "ci95_low": 0.0242,
+      "mean": 0.1981,
+      "outcome_field": "productive_pivot_rate",
+      "replicates": 30,
+      "scenario": "baseline",
+      "std": 0.0859
+    },
+    {
+      "arm": "cautionary - frozen",
+      "ci95_high": 0.0,
+      "ci95_low": -0.0023,
+      "mean": -0.0003,
+      "outcome_field": "failed_pivot_rate",
+      "replicates": 30,
+      "scenario": "baseline",
+      "std": 0.0015
+    },
+    {
+      "arm": "cautionary - frozen",
+      "ci95_high": 0.0,
+      "ci95_low": -0.0281,
+      "mean": -0.0044,
+      "outcome_field": "productive_pivot_rate",
+      "replicates": 30,
+      "scenario": "baseline",
+      "std": 0.0117
+    },
+    {
+      "arm": "imitative - frozen",
+      "ci95_high": 0.3796,
+      "ci95_low": 0.171,
+      "mean": 0.2878,
+      "outcome_field": "failed_pivot_rate",
+      "replicates": 30,
+      "scenario": "interdisciplinary_seed_grants",
+      "std": 0.0563
+    },
+    {
+      "arm": "imitative - frozen",
+      "ci95_high": 0.2213,
+      "ci95_low": 0.056,
+      "mean": 0.1533,
+      "outcome_field": "productive_pivot_rate",
+      "replicates": 30,
+      "scenario": "interdisciplinary_seed_grants",
+      "std": 0.0446
+    },
+    {
+      "arm": "cautionary - frozen",
+      "ci95_high": -0.0144,
+      "ci95_low": -0.1046,
+      "mean": -0.0622,
+      "outcome_field": "failed_pivot_rate",
+      "replicates": 30,
+      "scenario": "interdisciplinary_seed_grants",
+      "std": 0.0266
+    },
+    {
+      "arm": "cautionary - frozen",
+      "ci95_high": -0.031,
+      "ci95_low": -0.1273,
+      "mean": -0.0733,
+      "outcome_field": "productive_pivot_rate",
+      "replicates": 30,
+      "scenario": "interdisciplinary_seed_grants",
+      "std": 0.0273
+    },
+    {
+      "arm": "imitative - frozen",
+      "ci95_high": 0.0721,
+      "ci95_low": -0.0606,
+      "mean": -0.0006,
+      "outcome_field": "failed_pivot_rate",
+      "replicates": 30,
+      "scenario": "hot_field_hype",
+      "std": 0.0359
+    },
+    {
+      "arm": "imitative - frozen",
+      "ci95_high": 0.0819,
+      "ci95_low": -0.0106,
+      "mean": 0.0269,
+      "outcome_field": "productive_pivot_rate",
+      "replicates": 30,
+      "scenario": "hot_field_hype",
+      "std": 0.0272
+    },
+    {
+      "arm": "cautionary - frozen",
+      "ci95_high": -0.0871,
+      "ci95_low": -0.2,
+      "mean": -0.1372,
+      "outcome_field": "failed_pivot_rate",
+      "replicates": 30,
+      "scenario": "hot_field_hype",
+      "std": 0.0289
+    },
+    {
+      "arm": "cautionary - frozen",
+      "ci95_high": -0.0144,
+      "ci95_low": -0.094,
+      "mean": -0.0503,
+      "outcome_field": "productive_pivot_rate",
+      "replicates": 30,
+      "scenario": "hot_field_hype",
+      "std": 0.023
+    }
+  ],
+  "config": {
+    "agent_count": 120,
+    "base_seed": 20260715,
+    "learning_rate": 1.5,
+    "pivot_threshold": 0.34,
+    "productive_threshold": 0.4,
+    "replicates": 30,
+    "steps": 14
+  },
+  "default_profile": "torch-backed",
+  "features": [
+    "field_opportunity",
+    "resource_security",
+    "network_support",
+    "skill_distance",
+    "reputation_risk",
+    "openness",
+    "funding_signal",
+    "attention_signal",
+    "peer_success_signal"
+  ],
+  "research_question": "can_outcome_learning_self_correct_the_hype_paradox",
+  "scenarios": {
+    "baseline": {
+      "cautionary": {
+        "cumulative_failed_rate_mean": [
+          0.0,
+          0.0,
+          0.0039,
+          0.0042,
+          0.005,
+          0.0053,
+          0.0061,
+          0.0061,
+          0.0064,
+          0.0067,
+          0.0067,
+          0.0067,
+          0.0069,
+          0.0069
+        ],
+        "cumulative_failed_rate_std": [
+          0.0,
+          0.0,
+          0.0067,
+          0.0067,
+          0.007,
+          0.007,
+          0.0071,
+          0.0071,
+          0.007,
+          0.0073,
+          0.0073,
+          0.0073,
+          0.0072,
+          0.0072
+        ],
+        "cumulative_productive_rate_mean": [
+          0.0,
+          0.0,
+          0.03,
+          0.0342,
+          0.0356,
+          0.0372,
+          0.0389,
+          0.0392,
+          0.04,
+          0.0403,
+          0.0406,
+          0.0411,
+          0.0414,
+          0.0417
+        ],
+        "failed_pivot_rate": {
+          "ci95_high": 0.019,
+          "ci95_low": 0.0,
+          "mean": 0.0069,
+          "std": 0.0073
+        },
+        "mean_attention_weight": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "pivot_rate": {
+          "ci95_high": 0.1273,
+          "ci95_low": 0.006,
+          "mean": 0.0486,
+          "std": 0.0304
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.1106,
+          "ci95_low": 0.006,
+          "mean": 0.0417,
+          "std": 0.0266
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 1.0,
+          "ci95_low": 0.3625,
+          "mean": 0.8302,
+          "std": 0.2119
+        }
+      },
+      "frozen": {
+        "cumulative_failed_rate_mean": [
+          0.0,
+          0.0,
+          0.0039,
+          0.0044,
+          0.0053,
+          0.0056,
+          0.0064,
+          0.0064,
+          0.0067,
+          0.0069,
+          0.0069,
+          0.0069,
+          0.0072,
+          0.0072
+        ],
+        "cumulative_failed_rate_std": [
+          0.0,
+          0.0,
+          0.0067,
+          0.007,
+          0.0073,
+          0.0072,
+          0.0074,
+          0.0074,
+          0.0073,
+          0.0075,
+          0.0075,
+          0.0075,
+          0.0074,
+          0.0074
+        ],
+        "cumulative_productive_rate_mean": [
+          0.0,
+          0.0,
+          0.03,
+          0.0347,
+          0.0367,
+          0.0389,
+          0.0408,
+          0.0417,
+          0.0428,
+          0.0433,
+          0.0442,
+          0.045,
+          0.0453,
+          0.0461
+        ],
+        "failed_pivot_rate": {
+          "ci95_high": 0.019,
+          "ci95_low": 0.0,
+          "mean": 0.0072,
+          "std": 0.0075
+        },
+        "mean_attention_weight": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "pivot_rate": {
+          "ci95_high": 0.1273,
+          "ci95_low": 0.006,
+          "mean": 0.0533,
+          "std": 0.0337
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.1106,
+          "ci95_low": 0.006,
+          "mean": 0.0461,
+          "std": 0.0292
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 1.0,
+          "ci95_low": 0.3625,
+          "mean": 0.84,
+          "std": 0.2091
+        }
+      },
+      "imitative": {
+        "cumulative_failed_rate_mean": [
+          0.0,
+          0.0,
+          0.0039,
+          0.0611,
+          0.1264,
+          0.1797,
+          0.2286,
+          0.2606,
+          0.2839,
+          0.2981,
+          0.3058,
+          0.3081,
+          0.3106,
+          0.3114
+        ],
+        "cumulative_failed_rate_std": [
+          0.0,
+          0.0,
+          0.0067,
+          0.0508,
+          0.0847,
+          0.0931,
+          0.1046,
+          0.1043,
+          0.1064,
+          0.1062,
+          0.1067,
+          0.1071,
+          0.1077,
+          0.1082
+        ],
+        "cumulative_productive_rate_mean": [
+          0.0,
+          0.0,
+          0.03,
+          0.0789,
+          0.1214,
+          0.1619,
+          0.1947,
+          0.2164,
+          0.2303,
+          0.2358,
+          0.2394,
+          0.2417,
+          0.2431,
+          0.2442
+        ],
+        "failed_pivot_rate": {
+          "ci95_high": 0.4365,
+          "ci95_low": 0.0725,
+          "mean": 0.3114,
+          "std": 0.11
+        },
+        "mean_attention_weight": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "pivot_rate": {
+          "ci95_high": 0.7796,
+          "ci95_low": 0.1088,
+          "mean": 0.5556,
+          "std": 0.2016
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.3583,
+          "ci95_low": 0.0363,
+          "mean": 0.2442,
+          "std": 0.0977
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 0.5239,
+          "ci95_low": 0.2351,
+          "mean": 0.4163,
+          "std": 0.095
+        }
+      }
+    },
+    "hot_field_hype": {
+      "cautionary": {
+        "cumulative_failed_rate_mean": [
+          0.0,
+          0.0,
+          0.3886,
+          0.3908,
+          0.3917,
+          0.3919,
+          0.3919,
+          0.3922,
+          0.3922,
+          0.3925,
+          0.3925,
+          0.3925,
+          0.3925,
+          0.3925
+        ],
+        "cumulative_failed_rate_std": [
+          0.0,
+          0.0,
+          0.0534,
+          0.0522,
+          0.052,
+          0.0521,
+          0.0521,
+          0.0515,
+          0.0515,
+          0.0517,
+          0.0517,
+          0.0517,
+          0.0517,
+          0.0517
+        ],
+        "cumulative_productive_rate_mean": [
+          0.0,
+          0.0,
+          0.2075,
+          0.2089,
+          0.2092,
+          0.2103,
+          0.2103,
+          0.2103,
+          0.2103,
+          0.2106,
+          0.2106,
+          0.2108,
+          0.2108,
+          0.2114
+        ],
+        "failed_pivot_rate": {
+          "ci95_high": 0.4865,
+          "ci95_low": 0.3121,
+          "mean": 0.3925,
+          "std": 0.0525
+        },
+        "mean_attention_weight": [
+          1.0,
+          1.0,
+          1.0,
+          0.8069,
+          0.806,
+          0.8056,
+          0.8055,
+          0.8055,
+          0.8055,
+          0.8055,
+          0.8055,
+          0.8055,
+          0.8055,
+          0.8055
+        ],
+        "pivot_rate": {
+          "ci95_high": 0.7296,
+          "ci95_low": 0.5135,
+          "mean": 0.6039,
+          "std": 0.0609
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.2842,
+          "ci95_low": 0.156,
+          "mean": 0.2114,
+          "std": 0.0405
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 0.4575,
+          "ci95_low": 0.262,
+          "mean": 0.3501,
+          "std": 0.0568
+        }
+      },
+      "frozen": {
+        "cumulative_failed_rate_mean": [
+          0.0,
+          0.0,
+          0.3886,
+          0.4317,
+          0.4589,
+          0.475,
+          0.4883,
+          0.4972,
+          0.5053,
+          0.5133,
+          0.5181,
+          0.5233,
+          0.5261,
+          0.5297
+        ],
+        "cumulative_failed_rate_std": [
+          0.0,
+          0.0,
+          0.0534,
+          0.0487,
+          0.0508,
+          0.0519,
+          0.0523,
+          0.0483,
+          0.051,
+          0.0482,
+          0.0469,
+          0.0476,
+          0.0481,
+          0.0473
+        ],
+        "cumulative_productive_rate_mean": [
+          0.0,
+          0.0,
+          0.2075,
+          0.225,
+          0.2367,
+          0.2431,
+          0.2469,
+          0.2486,
+          0.2522,
+          0.255,
+          0.2558,
+          0.2586,
+          0.2606,
+          0.2617
+        ],
+        "failed_pivot_rate": {
+          "ci95_high": 0.6092,
+          "ci95_low": 0.4477,
+          "mean": 0.5297,
+          "std": 0.0481
+        },
+        "mean_attention_weight": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "pivot_rate": {
+          "ci95_high": 0.9106,
+          "ci95_low": 0.725,
+          "mean": 0.7914,
+          "std": 0.0534
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.3463,
+          "ci95_low": 0.1833,
+          "mean": 0.2617,
+          "std": 0.0464
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 0.4148,
+          "ci95_low": 0.2456,
+          "mean": 0.33,
+          "std": 0.0507
+        }
+      },
+      "imitative": {
+        "cumulative_failed_rate_mean": [
+          0.0,
+          0.0,
+          0.3886,
+          0.4708,
+          0.5092,
+          0.5228,
+          0.5247,
+          0.5275,
+          0.5278,
+          0.5281,
+          0.5283,
+          0.5283,
+          0.5289,
+          0.5292
+        ],
+        "cumulative_failed_rate_std": [
+          0.0,
+          0.0,
+          0.0534,
+          0.0455,
+          0.0321,
+          0.0343,
+          0.0353,
+          0.0334,
+          0.0328,
+          0.0327,
+          0.033,
+          0.033,
+          0.0325,
+          0.0327
+        ],
+        "cumulative_productive_rate_mean": [
+          0.0,
+          0.0,
+          0.2075,
+          0.2603,
+          0.2778,
+          0.2853,
+          0.2875,
+          0.2878,
+          0.2886,
+          0.2886,
+          0.2886,
+          0.2886,
+          0.2886,
+          0.2886
+        ],
+        "failed_pivot_rate": {
+          "ci95_high": 0.5796,
+          "ci95_low": 0.4704,
+          "mean": 0.5292,
+          "std": 0.0332
+        },
+        "mean_attention_weight": [
+          1.0,
+          1.0,
+          1.0,
+          0.9379,
+          0.9214,
+          0.9103,
+          0.9074,
+          0.9072,
+          0.9062,
+          0.9068,
+          0.9067,
+          0.9066,
+          0.9066,
+          0.9062
+        ],
+        "pivot_rate": {
+          "ci95_high": 0.8819,
+          "ci95_low": 0.7371,
+          "mean": 0.8178,
+          "std": 0.0448
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.3721,
+          "ci95_low": 0.206,
+          "mean": 0.2886,
+          "std": 0.0492
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 0.4293,
+          "ci95_low": 0.2707,
+          "mean": 0.3515,
+          "std": 0.0471
+        }
+      }
+    },
+    "interdisciplinary_seed_grants": {
+      "cautionary": {
+        "cumulative_failed_rate_mean": [
+          0.0,
+          0.0,
+          0.0639,
+          0.0706,
+          0.0742,
+          0.0758,
+          0.0775,
+          0.0789,
+          0.08,
+          0.0811,
+          0.0833,
+          0.0847,
+          0.085,
+          0.085
+        ],
+        "cumulative_failed_rate_std": [
+          0.0,
+          0.0,
+          0.0256,
+          0.023,
+          0.0217,
+          0.0206,
+          0.0197,
+          0.0204,
+          0.021,
+          0.0209,
+          0.0218,
+          0.0212,
+          0.021,
+          0.021
+        ],
+        "cumulative_productive_rate_mean": [
+          0.0,
+          0.0,
+          0.2367,
+          0.2525,
+          0.265,
+          0.2689,
+          0.2728,
+          0.2758,
+          0.2778,
+          0.2797,
+          0.2825,
+          0.2833,
+          0.2847,
+          0.2858
+        ],
+        "failed_pivot_rate": {
+          "ci95_high": 0.1333,
+          "ci95_low": 0.0477,
+          "mean": 0.085,
+          "std": 0.0214
+        },
+        "mean_attention_weight": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "pivot_rate": {
+          "ci95_high": 0.4758,
+          "ci95_low": 0.259,
+          "mean": 0.3708,
+          "std": 0.0644
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.3879,
+          "ci95_low": 0.184,
+          "mean": 0.2858,
+          "std": 0.0577
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 0.8472,
+          "ci95_low": 0.6631,
+          "mean": 0.7681,
+          "std": 0.0555
+        }
+      },
+      "frozen": {
+        "cumulative_failed_rate_mean": [
+          0.0,
+          0.0,
+          0.0639,
+          0.0836,
+          0.0956,
+          0.1064,
+          0.1158,
+          0.1211,
+          0.1261,
+          0.1294,
+          0.1336,
+          0.1392,
+          0.1428,
+          0.1472
+        ],
+        "cumulative_failed_rate_std": [
+          0.0,
+          0.0,
+          0.0256,
+          0.0264,
+          0.0302,
+          0.0319,
+          0.0323,
+          0.031,
+          0.0331,
+          0.0341,
+          0.0345,
+          0.0363,
+          0.0375,
+          0.0377
+        ],
+        "cumulative_productive_rate_mean": [
+          0.0,
+          0.0,
+          0.2367,
+          0.2656,
+          0.2906,
+          0.305,
+          0.3147,
+          0.3236,
+          0.3306,
+          0.3369,
+          0.3411,
+          0.3489,
+          0.3544,
+          0.3592
+        ],
+        "failed_pivot_rate": {
+          "ci95_high": 0.2069,
+          "ci95_low": 0.0621,
+          "mean": 0.1472,
+          "std": 0.0383
+        },
+        "mean_attention_weight": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "pivot_rate": {
+          "ci95_high": 0.6485,
+          "ci95_low": 0.3446,
+          "mean": 0.5064,
+          "std": 0.0848
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.466,
+          "ci95_low": 0.2627,
+          "mean": 0.3592,
+          "std": 0.0606
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 0.8355,
+          "ci95_low": 0.615,
+          "mean": 0.7113,
+          "std": 0.0537
+        }
+      },
+      "imitative": {
+        "cumulative_failed_rate_mean": [
+          0.0,
+          0.0,
+          0.0639,
+          0.3706,
+          0.4247,
+          0.4314,
+          0.4339,
+          0.4342,
+          0.4342,
+          0.4344,
+          0.4347,
+          0.4347,
+          0.435,
+          0.435
+        ],
+        "cumulative_failed_rate_std": [
+          0.0,
+          0.0,
+          0.0256,
+          0.0365,
+          0.0362,
+          0.0371,
+          0.0376,
+          0.0374,
+          0.0374,
+          0.0374,
+          0.0372,
+          0.0372,
+          0.0365,
+          0.0365
+        ],
+        "cumulative_productive_rate_mean": [
+          0.0,
+          0.0,
+          0.2367,
+          0.4806,
+          0.5097,
+          0.5119,
+          0.5119,
+          0.5122,
+          0.5125,
+          0.5125,
+          0.5125,
+          0.5125,
+          0.5125,
+          0.5125
+        ],
+        "failed_pivot_rate": {
+          "ci95_high": 0.4856,
+          "ci95_low": 0.3477,
+          "mean": 0.435,
+          "std": 0.0372
+        },
+        "mean_attention_weight": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "pivot_rate": {
+          "ci95_high": 0.9917,
+          "ci95_low": 0.884,
+          "mean": 0.9475,
+          "std": 0.0328
+        },
+        "productive_pivot_rate": {
+          "ci95_high": 0.5985,
+          "ci95_low": 0.4135,
+          "mean": 0.5125,
+          "std": 0.0496
+        },
+        "productive_share_of_pivots": {
+          "ci95_high": 0.6311,
+          "ci95_low": 0.4676,
+          "mean": 0.5403,
+          "std": 0.0429
+        }
+      }
+    }
+  },
+  "status": "ok",
+  "surface": "neural_abm.api",
+  "torch_loaded": true
+}
