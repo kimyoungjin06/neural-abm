@@ -1,0 +1,252 @@
+schema_version: pivot_feedback_f_field_episode_assignment.v1
+label: pivot_feedback_f_field_episode_assignment_v1
+mode: F_PHASE_OUTCOME_BLIND_FIELD_AND_EPISODE_ASSIGNMENT_COMPONENT_NOT_A_GATE
+status: FROZEN_FIELD_EPISODE_ASSIGNMENT_PENDING_PRODUCTION_EXECUTION_NO_F_PASS
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_current_state_v1.yaml
+  sha256: 52c262455b87a1e89fd28b370408fc9c697b26c7ca9e2cb15de59fd27d3ac0bd
+  required_schema_version: pivot_feedback_current_state.v1
+  required_status: ACTIVE_F_PHASE_PRE_G1_REGISTRY_BOUND_THIRTEEN_SECTIONS_PANEL_AND_SEAL_PENDING
+  mutation_allowed: false
+
+bound_design_sources:
+  scientific_sections:
+    relative_path: experiments/configs/pivot_feedback_f_pre_g1_scientific_sections_v1.yaml
+    sha256: cc58a651667b7cecb4cc61d96b6700aa665f1121c7c0b0a254368fb0299041dd
+    required_schema_version: pivot_feedback_f_pre_g1_scientific_sections.v1
+    mutation_allowed: false
+  scientific_sections_receipt:
+    relative_path: experiments/evidence/results/pivot_feedback_f_pre_g1_scientific_sections_v1_20260803.summary.json
+    sha256: c0c7da0d7eb26a510b02a20fd4c85b371cc05aad0603d893dc9d7e45c1a8b2ee
+    required_schema_version: pivot_feedback_f_pre_g1_scientific_sections_summary.v1
+    required_status: PASS_THIRTEEN_PRE_G1_SCIENTIFIC_SECTIONS_FROZEN_NO_F_PASS
+    mutation_allowed: false
+  cross_field_matrix:
+    relative_path: experiments/configs/pivot_feedback_cross_field_matrix_v0.yaml
+    sha256: 6fd3e2c7aae7a7aac085ed73ba4bf3d64a91c02d60dce8a9a6a262591a0c934a
+    required_schema_version: pivot_feedback_cross_field_matrix.v1
+    mutation_allowed: false
+  measurement_abi:
+    relative_path: experiments/configs/pivot_feedback_d0_measurement_abi_v1.yaml
+    sha256: eb51a85c206da328609b2fa05f9bbb6900160dc837dc345715d1bd709134c36e
+    required_schema_version: pivot_feedback_d0_measurement_abi.v1
+    mutation_allowed: false
+  s0_core_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_s0_threshold_free_core_full_20260723.summary.json
+    sha256: a579c147391d2e720048701a465120e4b1885e4a15ccc79c4a2f2c02565be206
+    required_schema_version: pivot_feedback_s0_threshold_free_core_full_summary.v1
+    mutation_allowed: false
+  s0_graph_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_s0_coauthor_graph_profile_full_20260724.summary.json
+    sha256: 8865c4f1ecd360839bd07b83d58100f0ffe6521ba6dd099ad25c59b6fddf6b36
+    required_schema_version: pivot_feedback_s0_coauthor_graph_profile_full_summary.v1
+    mutation_allowed: false
+  s0_orcid_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_s0_authorship_orcid_affiliation_full_20260724.summary.json
+    sha256: 53547820a617fbd3e222e46214d2a5eb14570ff5370e03ea12015298b6afd78a
+    required_schema_version: pivot_feedback_s0_authorship_orcid_affiliation_full_summary.v1
+    mutation_allowed: false
+
+normalized_inputs:
+  cutoff_work_metadata:
+    expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    rows: 492293206
+  author_history_events:
+    expected_root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    artifact_bytes: 5006392019
+    rows: 779630258
+  topic_taxonomy_projection:
+    expected_basename: b000000.parquet
+    sha256: 566facdbc02bf4a37783fe64db4c1d104d00b73e250999bd824d560083827ba5
+    rows: 4516
+    required_columns:
+      - id
+      - display_name
+      - field__id
+      - field__display_name
+      - subfield__id
+      - subfield__display_name
+    current_snapshot_projection: true
+  s0_core:
+    expected_root_basename: pivot-feedback-s0-threshold-free-core-v1-full-20260723
+    receipt_basename: s0_core_inventory.outputs.json
+    receipt_sha256: 3dd563eafce498a2e975680064d7589b63710c2f92b75f16f2bea7a9da5a4405
+    receipt_schema_version: pivot_feedback_s0_threshold_free_core_inventory_outputs.v1
+    required_status: PASS_S0_THRESHOLD_FREE_CORE_FIELD_YEAR_INVENTORY_WITH_ORCID_AFFILIATION_AND_GRAPH_TOPOLOGY_PENDING
+    artifact_relative_path: field_year_core.parquet
+    artifact_sha256: 1b8c26720f51ce824c623a46dec324a89e71fb0da32f09ef07a87cea630364d0
+    artifact_rows: 18544
+    artifact_schema_version: pivot_feedback_s0_field_year_core.v1
+  s0_graph:
+    expected_root_basename: pivot-feedback-s0-coauthor-graph-profile-v1-full-20260724
+    receipt_basename: coauthor_graph_profile_report.outputs.json
+    receipt_sha256: a189f2d891937922b0d15b587477cd8c0fa154f5663b34c0ae94d6ccf7351753
+    receipt_schema_version: pivot_feedback_s0_coauthor_graph_profile_outputs.v1
+    required_status: PASS_S0_EXACT_NONRANKED_COAUTHOR_GRAPH_PROFILES_WITH_CURRENT_SNAPSHOT_AUTHOR_TOKEN_LIMITATIONS
+    artifact_relative_path: field_year_coauthor_graph.parquet
+    artifact_sha256: 2a5ce7276f70f666be1bd86a1361c14c615d12f4d5c044dfec860041030a6a7c
+    artifact_rows: 55632
+    artifact_schema_version: pivot_feedback_s0_coauthor_graph_field_year.v1
+  s0_orcid:
+    expected_root_basename: pivot-feedback-s0-authorship-orcid-affiliation-v1-full-20260724
+    receipt_basename: authorship_orcid_affiliation_report.outputs.json
+    receipt_sha256: 5aa234882dd2a310c68fb5b6d8dea9bba4282d901298cdafaa8dc3259807fba9
+    receipt_schema_version: pivot_feedback_s0_authorship_orcid_affiliation_outputs.v1
+    required_status: PASS_S0_FULL_AUTHORSHIP_ORCID_AND_AFFILIATION_PROJECTION_WITH_TOKEN_AND_CURRENT_SNAPSHOT_LIMITATIONS
+    artifact_relative_path: field_year_orcid_affiliation.parquet
+    artifact_sha256: f503b041b716024bff27a26a462da4bb4896e00c11d0c2ef4fd71042017a8429
+    artifact_rows: 16758
+    artifact_schema_version: pivot_feedback_s0_authorship_orcid_affiliation_field_year.v1
+
+operator_projection:
+  field_ids: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]
+  work_type_codes: [1, 2, 3, 4, 7, 16, 18, 21]
+  allowed_temporal_dispositions: [2, 3]
+  earliest_required_predecision_year: 2007
+  latest_required_predecision_year: 2021
+  maximum_decision_year: 2022
+  decision_year_information_used_as_feature: false
+  entry_or_persistence_label_computed: false
+  realized_citation_count_read: false
+  model_score_read: false
+  g4_outcome_read: false
+
+temporal_partitions:
+  discovery_calibration: {entry_start_year: null, entry_end_year: 2012, role: PRE_CUTOFF_SUPPORT}
+  g1_empirical_replication: {entry_start_year: 2013, entry_end_year: 2016, role: OPEN_AFTER_F}
+  model_selection: {entry_start_year: 2017, entry_end_year: 2019, role: OPEN_AFTER_E}
+  g4_temporal_holdout: {entry_start_year: 2020, entry_end_year: 2022, followup_through_year: 2025, role: OPERATOR_ONLY_SEALED}
+
+structural_metric_definitions:
+  eligible_author_count:
+    unit: DISTINCT_CURRENT_SNAPSHOT_AUTHOR_TOKEN_X_PRIMARY_FIELD
+    eligible_if: AT_LEAST_ONE_ELIGIBLE_FOCAL_FIELD_WORK_IN_ANY_TRAILING_THREE_YEAR_WINDOW_OF_PARTITION
+    field_value: MINIMUM_ACROSS_G1_MODEL_AND_G4_PARTITIONS
+  matured_entry_opportunity_count:
+    unit: AUTHOR_TOKEN_X_PRIMARY_FIELD_X_DECISION_YEAR
+    eligible_if: AT_LEAST_ONE_ELIGIBLE_FOCAL_FIELD_WORK_IN_T_MINUS_3_THROUGH_T_MINUS_1
+    maturity: DECISION_YEAR_PLUS_3_LESS_THAN_OR_EQUAL_TO_2025
+    field_value: MINIMUM_PARTITION_SUM_ACROSS_G1_MODEL_AND_G4
+  pre_cutoff_work_count:
+    unit: DISTINCT_ELIGIBLE_AUTHOR_LINKED_WORK
+    maximum_year: 2012
+  publication_date_completeness:
+    numerator: S0_USABLE_DATE_WORKS
+    denominator: S0_TOTAL_CANONICAL_WORKS
+    field_value: FULL_SNAPSHOT_EXACT_RATIO
+  fixed_horizon_outcome_coverage:
+    numerator: MATURED_ELIGIBLE_AUTHOR_FIELD_YEAR_OPPORTUNITIES
+    denominator: ALL_ELIGIBLE_AUTHOR_FIELD_YEAR_OPPORTUNITIES_IN_REGISTERED_2013_2022_PARTITIONS
+    field_value: MINIMUM_EXACT_PARTITION_RATIO
+    expected_value_under_registered_calendar: 1.0
+  pre_entry_t_minus_1_edge_coverage:
+    numerator: S0_CAP_100_GRAPH_NODE_TOKENS_IN_T_MINUS_1_FIELD_YEARS
+    denominator: S0_DISTINCT_AUTHOR_TOKENS_IN_MATCHED_FIELD_YEARS
+    field_value: MINIMUM_EXACT_PARTITION_RATIO
+    role: OUTCOME_BLIND_LOWER_BOUND_DIAGNOSTIC_NOT_PRIMARY_NETWORK_TEAM_CAP
+  orcid_linked_author_rate:
+    numerator: S0_STABLE_ORCID_AUTHOR_TOKENS_IN_T_MINUS_1_FIELD_YEARS
+    denominator: S0_DISTINCT_AUTHOR_TOKENS_IN_MATCHED_FIELD_YEARS
+    field_value: MINIMUM_EXACT_PARTITION_RATIO
+    role: CURRENT_SNAPSHOT_IDENTITY_SENSITIVITY_NOT_NATURAL_PERSON_RATE
+  independent_attention_shock_count:
+    candidate_unit: PRIMARY_TOPIC_X_DECISION_YEAR
+    attention_unit: DISTINCT_ELIGIBLE_AUTHOR_LINKED_WORK
+    reference_offsets: [-6, -5, -4]
+    recent_offsets: [-3, -2, -1]
+    acceleration: LOG1P_RECENT_ANNUAL_MEAN_MINUS_LOG1P_REFERENCE_ANNUAL_MEAN
+    normalization: PRIMARY_FIELD_X_DECISION_YEAR_MEDIAN_AND_MAD
+    modified_z_multiplier: 0.6744897501960817
+    modified_z_threshold_inclusive: 3.0
+    candidate_requires_positive_reference: true
+    candidate_requires_recent_greater_than_reference: true
+    mad_zero_action: NO_CANDIDATE
+    independent_family: CURRENT_SNAPSHOT_SUBFIELD_WITH_AT_LEAST_ONE_CANDIDATE
+    field_value: MINIMUM_DISTINCT_FAMILY_COUNT_ACROSS_G1_MODEL_AND_G4_PARTITIONS
+    screening_boundary: AGGREGATE_PRESELECTION_ONLY_FINAL_PANEL_MUST_REPLAY_FOCAL_AUTHOR_AND_PREEXISTING_PEER_LEAVEOUT
+
+selection_algorithm:
+  primary_rule: LEXICOGRAPHIC_MAXIMIN_STRUCTURAL_COVERAGE
+  metric_order:
+    - eligible_author_count
+    - matured_entry_opportunity_count
+    - pre_cutoff_work_count
+    - publication_date_completeness
+    - fixed_horizon_outcome_coverage
+    - pre_entry_t_minus_1_edge_coverage
+    - orcid_linked_author_rate
+    - independent_attention_shock_count
+  metric_percentile: COUNT_OF_26_FIELDS_WITH_VALUE_LESS_THAN_OR_EQUAL_TO_CURRENT_DIVIDED_BY_26
+  minimum_structural_coverage: MINIMUM_OF_EIGHT_EXACT_METRIC_PERCENTILES
+  field_tie_breakers:
+    - minimum_structural_coverage_desc
+    - eligible_author_count_desc
+    - fixed_horizon_outcome_coverage_desc
+    - numeric_field_id_asc
+  reserves_per_domain: 2
+  reserve_rule: NEXT_RANKED_BY_IDENTICAL_FROZEN_RULE
+  reserve_set: DOMAIN_RANKS_TWO_AND_THREE_IN_FIXED_ORDER
+  domain_score: PRIMARY_FIELD_FULL_FROZEN_FIELD_RANKING_KEY
+  domain_tie_break: CROSS_FIELD_MATRIX_RNG_CODE_ASC
+  assignment: TOP_THREE_DOMAINS_TO_G1_REMAINDER_TO_G4
+  one_slot_per_domain_without_replacement: true
+  g4_domain_disjoint_from_g1: true
+  g4_author_cold: true
+  outcome_metrics_allowed: false
+
+episode_assignment:
+  selected_field_period: SLOT_REGISTERED_TEMPORAL_PARTITION_ONLY
+  retain_all_primary_threshold_attention_Candidates: true
+  atomic_family: CURRENT_SNAPSHOT_SUBFIELD
+  minimum_independent_families_per_selected_field: 3
+  outcome_based_candidate_or_field_substitution: false
+  reserve_activation_before_panel_completion: ONLY_IF_PRIMARY_FIELD_FAILS_REGISTERED_STRUCTURAL_CONFORMANCE
+  reserve_activation_order: NOMINAL_PRIMARY_THEN_DOMAIN_RANK_TWO_THEN_DOMAIN_RANK_THREE
+  reserve_activation_criterion: AT_LEAST_THREE_INDEPENDENT_SUBFIELD_FAMILIES_IN_ASSIGNED_SLOT_PERIOD
+  reserve_activation_after_outcome_read: false
+
+output_contract:
+  root_basename: pivot-feedback-f-field-episode-assignment-v1-20260803
+  report_schema_version: pivot_feedback_f_field_episode_assignment_report.v1
+  receipt_schema_version: pivot_feedback_f_field_episode_assignment_outputs.v1
+  field_table_schema_version: pivot_feedback_f_field_structural_coverage.v1
+  candidate_table_schema_version: pivot_feedback_f_attention_shock_candidate.v1
+  slot_table_schema_version: pivot_feedback_f_slot_assignment.v1
+  passing_status: PASS_OUTCOME_BLIND_FIELD_AND_EPISODE_ASSIGNMENT_COMPONENT_FINAL_PANEL_AND_SEAL_PENDING
+  output_directory_must_be_new: true
+  receipt_written_last: true
+  raw_author_or_work_ids_in_output: false
+  nominal_primary_and_two_reserves_must_be_recorded: true
+
+completion_accounting:
+  this_component_is_new_gate: false
+  this_component_alone_may_pass_f: false
+  final_panel_conformance_after_assignment: PENDING
+  atomic_partition_and_holdout_byte_seal: PENDING
+  confirmatory_entry_or_persistence_labels_read: 0
+  model_fitted: false
+  g4_open: false
+
+claim_boundary: >-
+  This F-phase component freezes and executes an outcome-blind structural field,
+  domain, slot, and attention-shock-family assignment. It may read only bound
+  bibliographic and author-token metadata needed to construct predecision
+  coverage; it may not compute entry or persistence labels, inspect an effect,
+  fit a model, or open G4. Aggregate shock candidates are a structural screen
+  and do not replace the registered focal-author and preexisting-peer leave-out
+  replay required in the final panel. Passing this component does not pass F or
+  G0, complete final-panel conformance, create the private holdout seal,
+  establish transport or causality, or establish a scientific effect.

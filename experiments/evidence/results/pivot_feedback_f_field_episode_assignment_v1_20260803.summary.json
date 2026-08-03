@@ -1,0 +1,124 @@
+{
+  "schema_version": "pivot_feedback_f_field_episode_assignment_summary.v1",
+  "status": "PASS_OUTCOME_BLIND_FIELD_AND_EPISODE_ASSIGNMENT_COMPONENT_FINAL_PANEL_AND_SEAL_PENDING",
+  "production_artifact": {
+    "root_basename": "pivot-feedback-f-field-episode-assignment-v1-20260803",
+    "output_receipt_basename": "field_episode_assignment.outputs.json",
+    "output_receipt_sha256": "19550868b92a97c178917f6b0629e73a354cdce7508df880c94eacb782edfdc4",
+    "artifact_tree_sha256": "3ee465260bccbf32b15daa25891c315e3abf912f460b715c3456d290af8249a6",
+    "artifact_count_excluding_receipt": 5,
+    "receipt_written_last_by_mtime_ns": true
+  },
+  "bound_implementation": {
+    "config_relative_path": "experiments/configs/pivot_feedback_f_field_episode_assignment_v1.yaml",
+    "config_sha256": "4a48c46483d3711bffe1d8c13805b4aec6f8aa25d4198dc30372a5da22d0f68b",
+    "builder_relative_path": "scripts/build_pivot_feedback_f_field_episode_assignment_v1.py",
+    "builder_sha256": "9afac1528131bb072b7d91b5f5638344d36f050ebc79ea3e34464f8d765161bd",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_f_field_episode_assignment_v1.py",
+    "verifier_sha256": "7c49af8e0a14b5999744f2fd02f0df1816fb84140807daea3d8124a6c590d915"
+  },
+  "source_accounting": {
+    "cutoff_work_rows_scanned": 492293206,
+    "author_event_rows_scanned": 779630258,
+    "duplicate_author_work_event_rows": 0,
+    "eligible_author_work_event_rows": 497911200,
+    "linked_eligible_work_rows": 176124383,
+    "topic_year_cells": 67729,
+    "attention_shock_candidate_rows": 1744
+  },
+  "assignment": {
+    "candidate_field_count": 26,
+    "candidate_domain_count": 4,
+    "g1_selected_field_count": 3,
+    "g4_selected_field_count": 1,
+    "reserve_activation_count": 2,
+    "slots": [
+      {
+        "slot_id": "g1_domain_slot_01",
+        "domain_id": "physical_sciences",
+        "nominal_primary_field_id": 25,
+        "selected_field_id": 17,
+        "reserve_field_ids": [17, 16],
+        "reserve_activated": true,
+        "retained_attention_candidate_count": 37,
+        "independent_subfield_family_count": 5,
+        "sealed": false,
+        "author_cold": false
+      },
+      {
+        "slot_id": "g1_domain_slot_02",
+        "domain_id": "social_sciences",
+        "nominal_primary_field_id": 32,
+        "selected_field_id": 32,
+        "reserve_field_ids": [18, 20],
+        "reserve_activated": false,
+        "retained_attention_candidate_count": 18,
+        "independent_subfield_family_count": 3,
+        "sealed": false,
+        "author_cold": false
+      },
+      {
+        "slot_id": "g1_domain_slot_03",
+        "domain_id": "life_sciences",
+        "nominal_primary_field_id": 28,
+        "selected_field_id": 11,
+        "reserve_field_ids": [11, 24],
+        "reserve_activated": true,
+        "retained_attention_candidate_count": 40,
+        "independent_subfield_family_count": 7,
+        "sealed": false,
+        "author_cold": false
+      },
+      {
+        "slot_id": "g4_domain_author_cold_slot",
+        "domain_id": "health_sciences",
+        "nominal_primary_field_id": 36,
+        "selected_field_id": 36,
+        "reserve_field_ids": [29, 27],
+        "reserve_activated": false,
+        "retained_attention_candidate_count": 12,
+        "independent_subfield_family_count": 3,
+        "sealed": true,
+        "author_cold": true
+      }
+    ]
+  },
+  "registered_reserve_reconciliation": {
+    "first_attempt_status": "BLOCKED_NO_OUTPUT_WRITTEN",
+    "first_attempt_observation": "NOMINAL_PRIMARY_FIELD_25_FEWER_THAN_THREE_INDEPENDENT_SUBFIELD_FAMILIES",
+    "implementation_gap": "REGISTERED_TWO_RESERVES_WERE_RECORDED_AS_ONE_AND_NOT_ACTIVATED",
+    "remediation": "APPLY_NOMINAL_THEN_DOMAIN_RANK_TWO_THEN_DOMAIN_RANK_THREE_UNDER_THE_FROZEN_STRUCTURAL_CONFORMANCE_RULE",
+    "scientific_threshold_changed": false,
+    "field_ranking_rule_changed": false,
+    "outcome_read_before_reconciliation": false
+  },
+  "independent_verification": {
+    "status": "PASS_INDEPENDENT_OUTCOME_BLIND_FIELD_AND_EPISODE_ASSIGNMENT_FINAL_PANEL_AND_SEAL_PENDING",
+    "verification_path": "/ssd/pivot-feedback-f-field-episode-assignment-v1-20260803.verification.json",
+    "verification_sha256": "163842e1c090e4331ebd2770d5ff1898269088c92a7f1b044f322839a773a478",
+    "artifacts_rehashed_including_receipt": 6,
+    "field_rows_verified": 26,
+    "candidate_rows_verified": 1744,
+    "slot_order_and_reserve_activation_replayed": true
+  },
+  "fail_closed_state": {
+    "entry_or_persistence_labels_computed": false,
+    "realized_citation_counts_read": false,
+    "effect_metrics_read": false,
+    "model_fitted": false,
+    "final_panel_conformance_complete": false,
+    "holdout_byte_seal_complete": false,
+    "pass_f": false,
+    "pass_g0": false,
+    "g4_open": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "authorization": {
+    "next": "FINAL_PANEL_LEAVEOUT_AND_SUPPORT_REPLAY",
+    "operator_only_holdout_materialization": "NOT_AUTHORIZED_BEFORE_FINAL_PANEL_CONFORMANCE",
+    "confirmatory_analytic_read": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED"
+  },
+  "claim_boundary": "This outcome-blind component assigns four domain-disjoint field slots and retained structural attention-shock candidates under the frozen lexicographic and reserve rules. It does not complete the focal-author and preexisting-peer leaveout replay, materialize or seal the private holdout, compute entry or persistence labels, inspect an effect, fit a model, open G4, pass F or G0, establish transport or causality, or establish a scientific effect."
+}
