@@ -1,0 +1,79 @@
+{
+  "schema_version": "pivot_feedback_g0_g1_replication_tolerance_precommitment_summary.v1",
+  "status": "PASS_ONE_OUTCOME_BLIND_G1_REPLICATION_TOLERANCE_AND_CLOSED_FIXTURE",
+  "source_replay": {
+    "authorization_gate": "v61",
+    "predecessor_unresolved_choice_count": 7,
+    "predecessor_choice_is_null": true,
+    "predecessor_pass_g0": false
+  },
+  "policy_replay": {
+    "choice_id": "g1_replication_tolerance",
+    "value_cohort_years": 1.0,
+    "contrast": "FIELD_VALUE_MINUS_OTHER_FIELDS_REFERENCE",
+    "lower_margin_cohort_years": -1.0,
+    "interval": "ONE_SIDED_95_PERCENT_LOWER_CONFIDENCE_BOUND",
+    "strict_boundary": true,
+    "future_interval_estimator_still_unresolved": true
+  },
+  "fixture_replay": {
+    "case_count": 7,
+    "pass_count": 1,
+    "fail_count": 6,
+    "case_ids": [
+      "FULL_PASS",
+      "NONINFERIORITY_BOUNDARY_FAIL",
+      "FIELD_DIRECTION_ZERO_FAIL",
+      "LEAVE_ONE_FIELD_OUT_DIRECTION_FAIL",
+      "ALTERNATIVE_PIVOT_DIRECTION_FAIL",
+      "PRIMARY_BRANCH_FAIL_NOT_RESCUED",
+      "INSUFFICIENT_EPISODE_SUPPORT_FAIL"
+    ],
+    "strict_minus_one_boundary_failure_verified": true,
+    "zero_direction_failures_verified": true,
+    "primary_failure_not_rescued_verified": true,
+    "insufficient_episode_support_failure_verified": true
+  },
+  "access_accounting": {
+    "repository_yaml_documents_read": 4,
+    "repository_text_documents_read": 1,
+    "synthetic_fixture_cases_read": 7,
+    "discovery_rows_read": 0,
+    "g1_confirmatory_or_holdout_rows_read": 0,
+    "production_rows_read": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "repository_artifacts": {
+    "contract": {
+      "relative_path": "experiments/configs/pivot_feedback_g0_g1_replication_tolerance_precommitment_v1.yaml",
+      "sha256": "1bcf91d197a9b927286d43f3505528f3f3f7fb022ffd4fe89d95cb24c041184d"
+    },
+    "application_tool": {
+      "relative_path": "scripts/apply_pivot_feedback_g0_g1_replication_tolerance_precommitment_v1.py",
+      "sha256": "30d9fe0c6f443bf11eccf9d5eb3b19dd279478538f37624dd58f0b8d5126357a"
+    },
+    "fixture_input": {
+      "relative_path": "tests/fixtures/pivot_feedback_g0_g1_replication_tolerance_v1.input.json",
+      "sha256": "731f268d840f058cd1fc9524eeeb85cdbdd86f9f943b599a0461eb2338ed6045"
+    },
+    "fixture_expected": {
+      "relative_path": "tests/fixtures/pivot_feedback_g0_g1_replication_tolerance_v1.expected.json",
+      "sha256": "bc7782f972646094556298e1668e64703c60da598ff6373422694a35113f00bb"
+    }
+  },
+  "authorization": {
+    "single_choice_precommitment": "COMPLETE_INDEPENDENTLY_VERIFIED",
+    "fixture_application": "COMPLETE_SYNTHETIC_ONLY",
+    "g0_successor_binding": "NOT_AUTHORIZED",
+    "g1_or_production_application": "NOT_AUTHORIZED",
+    "g2_or_g3_choice_resolution": "NOT_AUTHORIZED",
+    "required_section_completion": "NOT_AUTHORIZED",
+    "confirmatory_or_holdout_access": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "The independently replayed package freezes one outcome-blind one-cohort-year G1 field-replication noninferiority tolerance and validates only its closed synthetic decision logic. The value is a policy, not an empirical truth, replication probability, power or precision guarantee, interval-estimator freeze, G1 result, G0 pass, transport result, causality, or scientific effect. G0 v4 remains unchanged, no G0 successor is authorized, no discovery, G1, production, confirmatory, or holdout row was read, no model was fitted, and G4 remains unopened."
+}

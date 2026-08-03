@@ -1,0 +1,289 @@
+{
+  "schema_version": "pivot_feedback_g0_g1_replication_tolerance_fixture_output.v1",
+  "status": "PASS_CLOSED_SYNTHETIC_G1_REPLICATION_TOLERANCE_RULE_APPLICATION",
+  "contract": {
+    "relative_path": "experiments/configs/pivot_feedback_g0_g1_replication_tolerance_precommitment_v1.yaml",
+    "sha256": "1bcf91d197a9b927286d43f3505528f3f3f7fb022ffd4fe89d95cb24c041184d"
+  },
+  "policy": {
+    "choice_id": "g1_replication_tolerance",
+    "tolerance_cohort_years": 1.0,
+    "lower_noninferiority_margin_cohort_years": -1.0,
+    "interval": "ONE_SIDED_95_PERCENT_LOWER_CONFIDENCE_BOUND",
+    "boundary_counts_as_pass": false,
+    "policy_not_empirical_truth": true
+  },
+  "case_results": [
+    {
+      "case_id": "FULL_PASS",
+      "primary_point_estimate_cohort_years": 1.1,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.2,
+      "primary_point_pass": true,
+      "primary_interval_pass": true,
+      "field_results": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        }
+      ],
+      "replication_pass": true,
+      "failure_reasons": []
+    },
+    {
+      "case_id": "NONINFERIORITY_BOUNDARY_FAIL",
+      "primary_point_estimate_cohort_years": 1.2,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.1,
+      "primary_point_pass": true,
+      "primary_interval_pass": true,
+      "field_results": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": false,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        }
+      ],
+      "replication_pass": false,
+      "failure_reasons": [
+        "SYNTHETIC_A:NONINFERIORITY_LOWER_BOUND_NOT_ABOVE_MARGIN"
+      ]
+    },
+    {
+      "case_id": "FIELD_DIRECTION_ZERO_FAIL",
+      "primary_point_estimate_cohort_years": 1.0,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.1,
+      "primary_point_pass": true,
+      "primary_interval_pass": true,
+      "field_results": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "episode_support_pass": true,
+          "field_direction_pass": false,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        }
+      ],
+      "replication_pass": false,
+      "failure_reasons": [
+        "SYNTHETIC_A:FIELD_DIRECTION_NOT_STRICTLY_POSITIVE"
+      ]
+    },
+    {
+      "case_id": "LEAVE_ONE_FIELD_OUT_DIRECTION_FAIL",
+      "primary_point_estimate_cohort_years": 1.2,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.2,
+      "primary_point_pass": true,
+      "primary_interval_pass": true,
+      "field_results": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": false,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        }
+      ],
+      "replication_pass": false,
+      "failure_reasons": [
+        "SYNTHETIC_A:LEAVE_ONE_FIELD_OUT_NOT_STRICTLY_POSITIVE"
+      ]
+    },
+    {
+      "case_id": "ALTERNATIVE_PIVOT_DIRECTION_FAIL",
+      "primary_point_estimate_cohort_years": 1.2,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.2,
+      "primary_point_pass": true,
+      "primary_interval_pass": true,
+      "field_results": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": false
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        }
+      ],
+      "replication_pass": false,
+      "failure_reasons": [
+        "SYNTHETIC_A:ALTERNATIVE_PIVOT_NOT_STRICTLY_POSITIVE"
+      ]
+    },
+    {
+      "case_id": "PRIMARY_BRANCH_FAIL_NOT_RESCUED",
+      "primary_point_estimate_cohort_years": 0.99,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.1,
+      "primary_point_pass": false,
+      "primary_interval_pass": true,
+      "field_results": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        }
+      ],
+      "replication_pass": false,
+      "failure_reasons": [
+        "PRIMARY_POINT_BELOW_ONE_COHORT_YEAR"
+      ]
+    },
+    {
+      "case_id": "INSUFFICIENT_EPISODE_SUPPORT_FAIL",
+      "primary_point_estimate_cohort_years": 1.1,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.2,
+      "primary_point_pass": true,
+      "primary_interval_pass": true,
+      "field_results": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "episode_support_pass": false,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "episode_support_pass": true,
+          "field_direction_pass": true,
+          "noninferiority_interval_pass": true,
+          "leave_one_field_out_direction_pass": true,
+          "alternative_pivot_direction_pass": true
+        }
+      ],
+      "replication_pass": false,
+      "failure_reasons": [
+        "SYNTHETIC_A:INSUFFICIENT_INDEPENDENT_EPISODES"
+      ]
+    }
+  ],
+  "summary": {
+    "case_count": 7,
+    "pass_count": 1,
+    "fail_count": 6
+  },
+  "access_accounting": {
+    "synthetic_cases_read": 7,
+    "discovery_rows_read": 0,
+    "g1_confirmatory_or_holdout_rows_read": 0,
+    "production_rows_read": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "claim_boundary": "This is a closed synthetic decision-rule application. It validates a one-cohort-year field noninferiority policy and strict direction guards, not an interval estimator, G1 result, replication probability, G0 pass, transport result, causality, or effect."
+}

@@ -1,0 +1,227 @@
+{
+  "schema_version": "pivot_feedback_g0_g1_replication_tolerance_fixture_input.v1",
+  "status": "SYNTHETIC_CLOSED_FIXTURE",
+  "contains_discovery_rows": false,
+  "contains_g1_confirmatory_or_holdout_rows": false,
+  "contains_field_or_episode_identities": false,
+  "contains_model_scores_or_g4_labels": false,
+  "cases": [
+    {
+      "case_id": "FULL_PASS",
+      "primary_point_estimate_cohort_years": 1.1,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.2,
+      "fields": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.0,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.8,
+          "leave_one_field_out_point_estimate_cohort_years": 1.15,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.7
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "independent_episode_count": 4,
+          "field_point_estimate_cohort_years": 1.2,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.4,
+          "leave_one_field_out_point_estimate_cohort_years": 1.05,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.6
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.1,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.6,
+          "leave_one_field_out_point_estimate_cohort_years": 1.1,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.5
+        }
+      ]
+    },
+    {
+      "case_id": "NONINFERIORITY_BOUNDARY_FAIL",
+      "primary_point_estimate_cohort_years": 1.2,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.1,
+      "fields": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 0.8,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -1.0,
+          "leave_one_field_out_point_estimate_cohort_years": 1.4,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.4
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.4,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.2,
+          "leave_one_field_out_point_estimate_cohort_years": 1.0,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.8
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.4,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.3,
+          "leave_one_field_out_point_estimate_cohort_years": 1.1,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.9
+        }
+      ]
+    },
+    {
+      "case_id": "FIELD_DIRECTION_ZERO_FAIL",
+      "primary_point_estimate_cohort_years": 1.0,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.1,
+      "fields": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 0.0,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.9,
+          "leave_one_field_out_point_estimate_cohort_years": 1.5,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.2
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.5,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.2,
+          "leave_one_field_out_point_estimate_cohort_years": 0.75,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.8
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.5,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.2,
+          "leave_one_field_out_point_estimate_cohort_years": 0.75,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.8
+        }
+      ]
+    },
+    {
+      "case_id": "LEAVE_ONE_FIELD_OUT_DIRECTION_FAIL",
+      "primary_point_estimate_cohort_years": 1.2,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.2,
+      "fields": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.2,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.4,
+          "leave_one_field_out_point_estimate_cohort_years": 0.0,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.7
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.2,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.4,
+          "leave_one_field_out_point_estimate_cohort_years": 1.2,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.7
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.2,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.4,
+          "leave_one_field_out_point_estimate_cohort_years": 1.2,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.7
+        }
+      ]
+    },
+    {
+      "case_id": "ALTERNATIVE_PIVOT_DIRECTION_FAIL",
+      "primary_point_estimate_cohort_years": 1.2,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.2,
+      "fields": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.2,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.4,
+          "leave_one_field_out_point_estimate_cohort_years": 1.2,
+          "alternative_pivot_field_point_estimate_cohort_years": -0.1
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.2,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.4,
+          "leave_one_field_out_point_estimate_cohort_years": 1.2,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.7
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.2,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.4,
+          "leave_one_field_out_point_estimate_cohort_years": 1.2,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.7
+        }
+      ]
+    },
+    {
+      "case_id": "PRIMARY_BRANCH_FAIL_NOT_RESCUED",
+      "primary_point_estimate_cohort_years": 0.99,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.1,
+      "fields": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.0,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.2,
+          "leave_one_field_out_point_estimate_cohort_years": 1.0,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.8
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.0,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.2,
+          "leave_one_field_out_point_estimate_cohort_years": 1.0,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.8
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.0,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.2,
+          "leave_one_field_out_point_estimate_cohort_years": 1.0,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.8
+        }
+      ]
+    },
+    {
+      "case_id": "INSUFFICIENT_EPISODE_SUPPORT_FAIL",
+      "primary_point_estimate_cohort_years": 1.1,
+      "primary_one_sided_95_lower_bound_cohort_years": 0.2,
+      "fields": [
+        {
+          "synthetic_field_id": "SYNTHETIC_A",
+          "independent_episode_count": 2,
+          "field_point_estimate_cohort_years": 1.0,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.5,
+          "leave_one_field_out_point_estimate_cohort_years": 1.1,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.7
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_B",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.1,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.5,
+          "leave_one_field_out_point_estimate_cohort_years": 1.05,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.7
+        },
+        {
+          "synthetic_field_id": "SYNTHETIC_C",
+          "independent_episode_count": 3,
+          "field_point_estimate_cohort_years": 1.1,
+          "field_minus_other_fields_one_sided_95_lower_bound_cohort_years": -0.5,
+          "leave_one_field_out_point_estimate_cohort_years": 1.05,
+          "alternative_pivot_field_point_estimate_cohort_years": 0.7
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+extend = "pyproject.toml"
+
+# These repository-only scripts are byte-bound by immutable pivot-feedback
+# gate ledgers. Preserve their historical bytes and suppress only the recorded
+# unused-symbol findings rather than invalidating the evidence lineage or the
+# claim-ledger source snapshot that includes pyproject.toml.
+[lint.per-file-ignores]
+"scripts/build_pivot_feedback_d0_certified_author_opportunity_rebuild_v1.py" = ["F401"]
+"scripts/build_pivot_feedback_d0_certified_leaveout_prior_peer_v1.py" = ["F841"]
+"scripts/build_pivot_feedback_d0_t10151_rank5_abstract_cross_provider_result_v1.py" = ["F401"]
+"scripts/verify_pivot_feedback_d0_certified_leaveout_prior_peer_v1.py" = ["F401"]
+"scripts/verify_pivot_feedback_d0_t10151_rank5_abstract_cross_provider_result_v1.py" = ["F401"]
+"scripts/verify_pivot_feedback_d0_t10151_rank5_cross_provider_v1.py" = ["F401"]

@@ -1,0 +1,187 @@
+schema_version: pivot_feedback_g0_g1_replication_tolerance_precommitment.v1
+label: pivot_feedback_g0_g1_replication_tolerance_precommitment_v1
+mode: OUTCOME_BLIND_G1_REPLICATION_TOLERANCE_FREEZE_CLOSED_FIXTURE_ONLY
+status: FROZEN_SINGLE_G1_REPLICATION_TOLERANCE_PENDING_INDEPENDENT_VALIDATION_NO_G0_PROMOTION
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v61.yaml
+  sha256: 253c661fd529feb0d70733174197be449dfd27403b5881c6510bd7c8257c2715
+  required_schema_version: pivot_feedback_gate_state.v61
+  required_status: VALID_G0_V4_TWELVE_RESOLVED_SEVEN_PENDING_G1_TOLERANCE_PRECOMMITMENT_AUTHORIZED
+  mutation_allowed: false
+
+immutable_g0_v4:
+  relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v4.yaml
+  sha256: cd49a31ab67e7a66d038b3198493df8b3a309aa14ee9de80410557a194581ce4
+  required_schema_version: pivot_feedback_g0_measurement_freeze.v5
+  required_status: PENDING_G0_V4_TWELVE_RESOLVED_SEVEN_CHOICES_AND_FIFTEEN_SECTIONS_NO_SEAL
+  mutation_allowed: false
+
+bound_design_sources:
+  prerequisite_closure_plan:
+    relative_path: experiments/configs/pivot_feedback_g0_prerequisite_closure_plan_v1.yaml
+    sha256: 45db08ea9e51d861270c1be4b8ac675e56e30df7b57268f515fd665708b2c4fc
+    required_schema_version: pivot_feedback_g0_prerequisite_closure_plan.v1
+    required_status: PENDING_INDEPENDENT_VALIDATION_FOUR_WORKSTREAM_PLAN_NO_EXECUTION
+    mutation_allowed: false
+  empirical_protocol:
+    relative_path: docs/case-studies/researcher-pivot/pivot-feedback-empirical-nabm-protocol.md
+    sha256: 731e39dec4c7be5c29a0f0404b48992ad0caef152062d1d1d7876acc07064746
+    mutation_allowed: false
+
+scope:
+  choice_ids: [g1_replication_tolerance]
+  choice_count: 1
+  selection_uses_discovery_outcomes: false
+  selection_uses_g1_confirmatory_outcomes: false
+  selection_uses_holdout_outcomes: false
+  selection_uses_g4_field_identity: false
+  selection_uses_model_performance: false
+  rule_freeze_is_not_interval_estimator_freeze: true
+  rule_freeze_is_not_production_application: true
+  rule_freeze_is_not_g0_promotion: true
+
+precommitment_choices:
+  g1_replication_tolerance:
+    resolution_status: FROZEN_OUTCOME_BLIND_POLICY_RULE
+    rule_id: G1_FIELD_VERSUS_OTHER_FIELDS_ONE_COHORT_YEAR_NONINFERIORITY_V1
+    value: 1.0
+    unit: COHORT_YEAR
+    value_interpretation: MAXIMUM_TOLERATED_DOWNWARD_FIELD_VERSUS_OTHER_FIELDS_DEGRADATION
+    value_basis: ONE_ANNUAL_COHORT_STEP_ON_THE_FROZEN_H3_TIMING_GRID
+    estimand:
+      episode_value: ENTRY_HAZARD_EARLIEST_PEAK_K_MINUS_THREE_YEAR_PERSISTENCE_EARLIEST_PEAK_K
+      episode_value_symbol: delta_j
+      episode_value_grid_cohort_years: [-2, -1, 0, 1, 2]
+      field_value: EQUAL_WEIGHTED_MEAN_DELTA_J_WITHIN_G1_FIELD
+      other_fields_reference: EQUAL_WEIGHTED_MEAN_OF_FIELD_VALUES_ACROSS_THE_OTHER_TWO_G1_FIELDS
+      replication_contrast: FIELD_VALUE_MINUS_OTHER_FIELDS_REFERENCE
+      replication_contrast_symbol: rho_f
+      scale: ADDITIVE_COHORT_YEARS
+      favorable_direction: LARGER_IS_MORE_POSITIVE_TIMING_GAP
+      target_field_count: 3
+      minimum_independent_episodes_per_field: 3
+    interval_rule:
+      interval: ONE_SIDED_95_PERCENT_LOWER_CONFIDENCE_BOUND
+      one_sided_alpha: 0.05
+      uncertainty_label: FIELD_BALANCED_EPISODE_CLUSTERED_REGISTERED_G0_PROCEDURE
+      lower_noninferiority_margin_cohort_years: -1.0
+      pass_rule: EVERY_FIELD_RHO_F_LOWER_BOUND_STRICTLY_GREATER_THAN_MINUS_ONE
+      interval_boundary_counts_as_pass: false
+      interval_construction_owned_by_future_g0_section: estimators_and_uncertainty
+      this_contract_selects_interval_estimator: false
+    direction_rule:
+      every_field_point_estimate_strictly_positive: true
+      every_leave_one_field_out_point_estimate_strictly_positive: true
+      every_alternative_pivot_field_point_estimate_strictly_positive: true
+      zero_counts_as_positive: false
+    primary_branch_guard:
+      field_balanced_point_estimate_minimum_cohort_years: 1.0
+      point_boundary_counts_as_pass: true
+      primary_one_sided_95_percent_lower_bound_strictly_greater_than_zero: true
+      replication_rule_may_rescue_failed_primary: false
+      primary_rule_may_rescue_failed_replication: false
+    failure_rule:
+      any_field_missing: FAIL_G1_REPLICATION
+      fewer_than_three_independent_episodes_in_any_field: FAIL_G1_REPLICATION
+      nonpositive_field_direction: FAIL_G1_REPLICATION
+      nonpositive_leave_one_field_out_direction: FAIL_G1_REPLICATION
+      nonpositive_alternative_pivot_direction: FAIL_G1_REPLICATION
+      lower_bound_at_or_below_minus_one: FAIL_G1_REPLICATION
+      missing_or_nonfinite_value: FAIL_G1_REPLICATION
+      primary_branch_failure: FAIL_G1_PRIMARY_AND_REPLICATION_PACKAGE
+      post_access_margin_relaxation_allowed: false
+    claim_role: FIELD_TRANSPORT_NONINFERIORITY_POLICY_NOT_REPLICATION_PROBABILITY_OR_EFFECT_TRUTH
+
+policy_value_boundary:
+  one_cohort_year_is_literature_mandated: false
+  one_cohort_year_is_power_or_precision_guarantee: false
+  passing_establishes_exact_effect_equality: false
+  passing_establishes_cross_domain_transport: false
+  passing_establishes_causality: false
+  value_is_precommitted_design_policy_not_empirical_truth: true
+
+application_contract:
+  intended_tool_relative_path: scripts/apply_pivot_feedback_g0_g1_replication_tolerance_precommitment_v1.py
+  input_schema_version: pivot_feedback_g0_g1_replication_tolerance_fixture_input.v1
+  output_schema_version: pivot_feedback_g0_g1_replication_tolerance_fixture_output.v1
+  permitted_input_statuses: [SYNTHETIC_CLOSED_FIXTURE]
+  input_may_contain_discovery_rows: false
+  input_may_contain_g1_confirmatory_or_holdout_rows: false
+  input_may_contain_field_or_episode_identities: false
+  input_may_contain_model_scores_or_g4_labels: false
+  exact_case_fields:
+    - case_id
+    - primary_point_estimate_cohort_years
+    - primary_one_sided_95_lower_bound_cohort_years
+    - fields
+  exact_field_fields:
+    - synthetic_field_id
+    - independent_episode_count
+    - field_point_estimate_cohort_years
+    - field_minus_other_fields_one_sided_95_lower_bound_cohort_years
+    - leave_one_field_out_point_estimate_cohort_years
+    - alternative_pivot_field_point_estimate_cohort_years
+  output_float_round_decimal_places: 12
+  output_must_report_every_failure_reason: true
+  production_application_requires_successor_gate: true
+
+fixture_contract:
+  input_relative_path: tests/fixtures/pivot_feedback_g0_g1_replication_tolerance_v1.input.json
+  expected_output_relative_path: tests/fixtures/pivot_feedback_g0_g1_replication_tolerance_v1.expected.json
+  synthetic_only: true
+  may_promote_to_production_evidence: false
+  must_cover:
+    - FULL_PASS
+    - NONINFERIORITY_BOUNDARY_FAIL
+    - FIELD_DIRECTION_ZERO_FAIL
+    - LEAVE_ONE_FIELD_OUT_DIRECTION_FAIL
+    - ALTERNATIVE_PIVOT_DIRECTION_FAIL
+    - PRIMARY_BRANCH_FAIL_NOT_RESCUED
+    - INSUFFICIENT_EPISODE_SUPPORT_FAIL
+
+lifecycle:
+  contract_frozen: true
+  independently_validated: false
+  fixture_application_run: false
+  discovery_production_application_run: false
+  g1_confirmatory_application_run: false
+  g0_v4_changed: false
+  unresolved_g0_choice_count_before: 7
+  resolved_choice_count_in_this_contract: 1
+  unresolved_g0_choice_count_after_future_binding: 6
+  required_sections_completed: false
+  g4_artifact_set_materialized: false
+  holdout_preflight_written: false
+  holdout_seal_created: false
+  confirmatory_or_holdout_rows_read: 0
+  model_fitted: false
+  g4_open: false
+
+authorization:
+  contract_authoring: AUTHORIZED_OUTCOME_BLIND
+  fixture_application_and_validation: AUTHORIZED_SYNTHETIC_ONLY
+  discovery_production_application: NOT_AUTHORIZED
+  g1_confirmatory_application: NOT_AUTHORIZED
+  g0_successor_binding: NOT_AUTHORIZED
+  g2_or_g3_choice_precommitment: NOT_AUTHORIZED
+  required_section_completion: NOT_AUTHORIZED
+  threshold_relaxation_after_outcome_inspection: NOT_AUTHORIZED
+  confirmatory_or_holdout_access: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This outcome-blind contract precommits only a one-cohort-year, field-versus-
+  other-G1-fields noninferiority tolerance for the H3 timing-gap estimand and a
+  closed synthetic decision fixture. The value is a conservative annual-grid
+  policy, not a literature-mandated constant, replication probability, power
+  or precision guarantee, exact-effect equality result, cross-domain transport
+  result, causal claim, or empirical effect. The contract consumes a future
+  registered one-sided interval but does not select its estimator or complete
+  the estimators-and-uncertainty section. G0 v4 remains byte-identical and
+  unresolved, no discovery, G1, production, confirmatory, or holdout row is
+  read, no G0 successor is created, no model is fitted, and G4 remains unopened.
