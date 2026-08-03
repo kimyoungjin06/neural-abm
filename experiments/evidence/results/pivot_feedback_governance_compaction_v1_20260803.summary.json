@@ -1,0 +1,127 @@
+{
+  "schema_version": "pivot_feedback_governance_compaction_summary.v1",
+  "status": "PASS_SHADOW_SIX_PHASE_SEMANTIC_EQUIVALENCE_NO_AUTHORITY_CHANGE",
+  "authority_replay": {
+    "effective_authority": "pivot_feedback_gate_state.v61",
+    "shadow_replaces_authority": false,
+    "shadow_authorizes_scientific_execution": false
+  },
+  "legacy_inventory_replay": {
+    "logical_gate_count": 10,
+    "gate_state_file_count": 60,
+    "gate_state_parent_reference_count": 59,
+    "gate_state_test_file_count": 59,
+    "gate_state_validator_file_count": 37
+  },
+  "current_state_replay": {
+    "d0_complete_discovery_only": true,
+    "g0_resolved_choice_count": 12,
+    "g0_unresolved_choice_count": 7,
+    "g0_pending_section_count": 15,
+    "g1_tolerance_receipt_exists_but_is_unbound": true,
+    "confirmatory_or_holdout_rows_read": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "phase_mapping_replay": {
+    "legacy_logical_gate_count": 10,
+    "live_phase_count": 6,
+    "optional_lane_count": 1,
+    "mapping": {
+      "D": [
+        "G_MINUS_1A",
+        "S0"
+      ],
+      "C": [
+        "D0"
+      ],
+      "F": [
+        "G0",
+        "G0_5"
+      ],
+      "E": [
+        "G1"
+      ],
+      "M": [
+        "G2",
+        "G3"
+      ],
+      "H": [
+        "G4"
+      ],
+      "CAUSAL": [
+        "G5"
+      ]
+    },
+    "every_legacy_gate_mapped_exactly_once": true,
+    "dependencies_acyclic": true
+  },
+  "semantic_equivalence_replay": {
+    "preserved_denial_count": 16,
+    "preserved_claim_boundary_count": 8,
+    "shadow_allowed_action_count": 2,
+    "implicit_deny": true,
+    "authority_relaxation_detected": false,
+    "claim_ceiling_raise_detected": false
+  },
+  "decision_staging_replay": {
+    "legacy_choice_count": 19,
+    "pre_g1_choice_count": 13,
+    "pre_g2_choice_count": 3,
+    "pre_g3_choice_count": 3,
+    "all_choices_mapped_exactly_once": true,
+    "six_later_stage_choices_removed_from_pre_g1_blocker": true,
+    "g1_tolerance_is_precommitted_but_not_bound": true
+  },
+  "section_staging_replay": {
+    "legacy_section_count": 15,
+    "pre_g1_section_count": 13,
+    "pre_g2_section_count": 1,
+    "pre_g3_section_count": 1,
+    "all_sections_mapped_exactly_once": true,
+    "later_stage_sections_removed_from_pre_g1_blocker": 2
+  },
+  "boundary_and_migration_replay": {
+    "irreversible_boundary_count": 4,
+    "all_irreversible_boundaries_fail_closed": true,
+    "migration_step_count": 5,
+    "current_migration_stage": "SHADOW_DESIGN_ONLY",
+    "authority_successor_authorized": false,
+    "legacy_deletion_authorized": false
+  },
+  "hash_scope_replay": {
+    "scientific_lineage_root_class_count": 6,
+    "default_nonroot_class_count": 4,
+    "conditional_code_hash_rule_count": 3
+  },
+  "access_accounting": {
+    "repository_yaml_documents_read": 5,
+    "repository_json_documents_read": 1,
+    "repository_text_documents_read": 1,
+    "gate_state_metadata_files_counted": 60,
+    "operator_or_row_level_files_read": 0,
+    "discovery_rows_read": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "repository_artifacts": {
+    "shadow_contract": {
+      "relative_path": "experiments/configs/pivot_feedback_governance_compaction_v1.yaml",
+      "sha256": "4c2562be842ec30b3fafee5320e88f5949b28fcd89e6091b34e5e43dcdd4c4ee"
+    }
+  },
+  "authorization": {
+    "shadow_design": "COMPLETE_INDEPENDENTLY_VALIDATED",
+    "parallel_read": "NOT_AUTHORIZED",
+    "authority_successor": "NOT_AUTHORIZED",
+    "legacy_archive_routing_change": "NOT_AUTHORIZED",
+    "g0_successor_binding": "NOT_AUTHORIZED",
+    "scientific_execution": "NOT_AUTHORIZED",
+    "confirmatory_or_holdout_access": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This independent repository-only replay validates that the proposed six-phase shadow governance maps every legacy logical gate exactly once, preserves current denials and claim ceilings, covers all nineteen quantitative choices and fifteen required sections, and keeps four irreversible boundaries fail-closed. It does not replace gate v61, bind the G1 tolerance into G0, authorize a successor, change active routing, read scientific rows, fit a model, open G4, or establish an effect."
+}

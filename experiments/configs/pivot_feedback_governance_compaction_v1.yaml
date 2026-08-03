@@ -1,0 +1,389 @@
+schema_version: pivot_feedback_governance_compaction.v1
+label: pivot_feedback_governance_compaction_v1
+mode: SHADOW_ONLY_ADMINISTRATIVE_COMPACTION_NO_SCIENTIFIC_AUTHORITY
+status: PROPOSED_SIX_PHASE_COMPACTION_PENDING_INDEPENDENT_SEMANTIC_EQUIVALENCE_VALIDATION
+
+authority_boundary:
+  effective_machine_authority:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v61.yaml
+    sha256: 253c661fd529feb0d70733174197be449dfd27403b5881c6510bd7c8257c2715
+    required_schema_version: pivot_feedback_gate_state.v61
+    required_status: VALID_G0_V4_TWELVE_RESOLVED_SEVEN_PENDING_G1_TOLERANCE_PRECOMMITMENT_AUTHORIZED
+    mutation_allowed: false
+  shadow_contract_can_replace_effective_authority: false
+  shadow_contract_can_authorize_scientific_execution: false
+  shadow_contract_can_relax_existing_denial: false
+  shadow_contract_can_mark_any_legacy_gate_passed: false
+  shadow_contract_can_bind_a_g0_successor: false
+
+bound_current_sources:
+  legacy_gate_sequence:
+    relative_path: experiments/configs/pivot_feedback_gate_sequence_v1.yaml
+    sha256: 3a3a655234c4efb74a4900e65624c903176615cee19da760cd06b1416e3fd365
+    required_schema_version: pivot_feedback_gate_sequence.v1
+    required_status: VALID_PENDING_SUCCESSOR_IMPLEMENTATION
+    mutation_allowed: false
+  g0_v4:
+    relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v4.yaml
+    sha256: cd49a31ab67e7a66d038b3198493df8b3a309aa14ee9de80410557a194581ce4
+    required_schema_version: pivot_feedback_g0_measurement_freeze.v5
+    required_status: PENDING_G0_V4_TWELVE_RESOLVED_SEVEN_CHOICES_AND_FIFTEEN_SECTIONS_NO_SEAL
+    mutation_allowed: false
+  current_human_ledger:
+    relative_path: docs/research/pivot-feedback-current-status-evidence-ledger-v1.md
+    sha256: 0df9793ad1b2fe9aaf26d8fcf115ea40179a34a46133b9adf3ceb75129f956c2
+    mutation_allowed: false
+  g1_tolerance_contract:
+    relative_path: experiments/configs/pivot_feedback_g0_g1_replication_tolerance_precommitment_v1.yaml
+    sha256: 1bcf91d197a9b927286d43f3505528f3f3f7fb022ffd4fe89d95cb24c041184d
+    required_schema_version: pivot_feedback_g0_g1_replication_tolerance_precommitment.v1
+    required_status: FROZEN_SINGLE_G1_REPLICATION_TOLERANCE_PENDING_INDEPENDENT_VALIDATION_NO_G0_PROMOTION
+    mutation_allowed: false
+  g1_tolerance_validation_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_g1_replication_tolerance_precommitment_20260803.summary.json
+    sha256: 72b653528d9cf5c8f1dd823f304934b48ac21a0dd4a50011ac3d02ef9079edb3
+    required_schema_version: pivot_feedback_g0_g1_replication_tolerance_precommitment_summary.v1
+    required_status: PASS_ONE_OUTCOME_BLIND_G1_REPLICATION_TOLERANCE_AND_CLOSED_FIXTURE
+    mutation_allowed: false
+
+legacy_inventory_snapshot:
+  logical_gate_ids: [G_MINUS_1A, S0, D0, G0, G0_5, G1, G2, G3, G4, G5]
+  logical_gate_count: 10
+  gate_state_version_first: 2
+  gate_state_version_last: 61
+  gate_state_file_count: 60
+  gate_state_parent_reference_count: 59
+  gate_state_test_file_count: 59
+  gate_state_validator_file_count: 37
+  snapshot_is_diagnostic_not_scientific_evidence: true
+
+current_effective_state:
+  authority_version: v61
+  d0_complete_discovery_only: true
+  g0_v4_resolved_choice_count: 12
+  g0_v4_unresolved_choice_count: 7
+  g0_v4_unresolved_required_section_count: 15
+  g0_v4_freeze_ready_required_section_count: 0
+  g1_tolerance_precommitted_and_independently_validated: true
+  g1_tolerance_bound_into_g0: false
+  g0_passed: false
+  holdout_receipt_bound: false
+  confirmatory_or_holdout_rows_read: 0
+  empirical_g1_status: NOT_RUN
+  model_fitted: false
+  g4_open: false
+  scientific_effect: NOT_ESTABLISHED
+  authority_lag_note: G1_TOLERANCE_RECEIPT_EXISTS_BUT_V61_REMAINS_EFFECTIVE_AND_G0_V4_REMAINS_UNCHANGED
+
+proposed_live_phases:
+  - phase_id: D
+    order: 10
+    label: DATA_AND_THRESHOLD_FREE_STRUCTURE_READINESS
+    requires: []
+    legacy_gate_ids: [G_MINUS_1A, S0]
+    current_shadow_state: COMPLETE_BOUNDED_SOURCE_AND_STRUCTURE_ONLY
+    may_read_discovery_outcomes: false
+    may_read_confirmatory_or_holdout_rows: false
+    may_fit_model: false
+    transition_receipts_required:
+      - BOUNDED_SOURCE_PRIMITIVE_FIDELITY
+      - THRESHOLD_FREE_FIELD_AUTHOR_GRAPH_AFFILIATION_INVENTORY
+    claim_ceiling: SOURCE_AND_STRUCTURE_READINESS_NOT_NATURAL_PERSON_IDENTITY_OR_EFFECT
+
+  - phase_id: C
+    order: 20
+    label: DISCOVERY_MEASUREMENT_AND_CALIBRATION
+    requires: [D]
+    legacy_gate_ids: [D0]
+    current_shadow_state: COMPLETE_DISCOVERY_ONLY_ENTRY_AND_PERSISTENCE_MEASUREMENT
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_or_holdout_rows: false
+    may_fit_model: false
+    transition_receipts_required:
+      - DISCOVERY_EPISODE_SELECTION
+      - PREDECISION_MEASUREMENT_REPLAY
+      - ENTRY_CLASSIFICATION_REPLAY
+      - DESCRIPTIVE_PERSISTENCE_REPLAY
+    claim_ceiling: DISCOVERY_MEASUREMENT_AND_DESCRIPTION_NOT_ASSOCIATION_CAUSALITY_OR_TRANSPORT
+
+  - phase_id: F
+    order: 30
+    label: MEASUREMENT_FREEZE_PANEL_CONFORMANCE_AND_HOLDOUT_SEAL
+    requires: [C]
+    legacy_gate_ids: [G0, G0_5]
+    current_shadow_state: PENDING_G0_UNSEALED_PANEL_CONFORMANCE_NOT_RUN
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_or_holdout_rows: false
+    may_fit_model: false
+    transition_receipts_required:
+      - PRE_G1_DECISION_REGISTRY_COMPLETE
+      - THIRTEEN_PRE_G1_REQUIRED_SECTIONS_COMPLETE
+      - OUTCOME_BLIND_FINAL_PANEL_CONFORMANCE
+      - ATOMIC_PARTITION_AND_HOLDOUT_BYTE_SEAL
+    claim_ceiling: FREEZE_AND_SEAL_ONLY_NOT_EMPIRICAL_SIGNATURE_OR_EFFECT
+
+  - phase_id: E
+    order: 40
+    label: EMPIRICAL_SIGNATURE_AND_REPLICATION
+    requires: [F]
+    legacy_gate_ids: [G1]
+    current_shadow_state: NOT_RUN
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_or_holdout_rows: true
+    may_fit_model: false
+    transition_receipts_required:
+      - H3_PRIMARY_AND_REPLICATION_DECISION
+      - REGISTERED_NEGATIVE_CONTROL_DECISIONS
+      - FIELD_AND_ALTERNATIVE_PIVOT_STABILITY
+    claim_ceiling: BOUNDED_OBSERVATIONAL_SIGNATURE_NOT_CAUSALITY_NABM_NECESSITY_OR_HOLDOUT_TRANSPORT
+
+  - phase_id: M
+    order: 50
+    label: MODEL_ADDED_VALUE_AND_CONDITIONAL_SIMULATION
+    requires: [E]
+    legacy_gate_ids: [G2, G3]
+    current_shadow_state: NOT_RUN
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_or_holdout_rows: true
+    may_fit_model: true
+    transition_receipts_required:
+      - PRE_G2_PREDICTIVE_DECISION_REGISTRY_COMPLETE
+      - BASELINE_LADDER_MODEL_SELECTION_COMPLETE
+      - PRE_G3_SIMULATION_BUDGET_REGISTRY_COMPLETE_IF_NABM_REQUIRED
+      - CONDITIONAL_SIMULATION_GATE_RESOLVED
+    allowed_resolution_states:
+      - SIMPLER_MODEL_SELECTED_G3_NOT_REQUIRED
+      - NABM_REQUIRED_AND_G3_PASSED
+    claim_ceiling: PREDICTIVE_OR_GENERATIVE_ADEQUACY_NOT_UNIQUE_MECHANISM_CAUSALITY_OR_HOLDOUT_TRANSPORT
+
+  - phase_id: H
+    order: 60
+    label: SEALED_DOMAIN_AUTHOR_COLD_HOLDOUT
+    requires: [M]
+    legacy_gate_ids: [G4]
+    current_shadow_state: LOGICALLY_RESERVED_NOT_BYTE_SEALED_NOT_OPENED
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_or_holdout_rows: false
+    opens_holdout_only_after_entry_receipt: true
+    may_fit_model: false
+    transition_receipts_required:
+      - MODEL_AND_SCORING_CONTRACT_BYTE_LOCK
+      - SEALED_ARTIFACT_MANIFEST_VERIFICATION
+      - HOLDOUT_OPEN_RECEIPT_WRITTEN_LAST
+      - DOMAIN_AUTHOR_COLD_RESULT_REPLAY
+    claim_ceiling: BOUNDED_NONCAUSAL_TRANSPORT_IF_PASSED_NOT_POLICY_EFFECT
+
+optional_lanes:
+  - lane_id: CAUSAL
+    label: OPTIONAL_EXTERNAL_CAUSAL_VALIDATION
+    legacy_gate_ids: [G5]
+    requires: [H]
+    mandatory_for_bounded_noncausal_paper: false
+    current_shadow_state: NOT_RUN
+    claim_ceiling: DESIGN_SPECIFIC_CAUSAL_CLAIM_ONLY_IF_EXTERNAL_IDENTIFICATION_PASSES
+
+semantic_equivalence_contract:
+  every_legacy_logical_gate_mapped_exactly_once: true
+  live_phase_order_strictly_increasing: true
+  live_phase_dependencies_acyclic: true
+  compaction_may_not_upgrade_current_state: true
+  compaction_may_not_reduce_transition_receipts: true
+  compaction_may_not_open_a_data_class_earlier: true
+  compaction_may_not_raise_a_claim_ceiling: true
+  implicit_deny_for_actions_not_explicitly_allowed: true
+  shadow_allowed_actions:
+    - GOVERNANCE_DESIGN_REVIEW
+    - REPOSITORY_ONLY_SEMANTIC_EQUIVALENCE_VALIDATION
+  preserved_current_denials:
+    - G0_SUCCESSOR_BINDING
+    - G1_OR_PRODUCTION_APPLICATION
+    - G2_OR_G3_CHOICE_RESOLUTION
+    - REQUIRED_SECTION_COMPLETION
+    - CONFIRMATORY_ROW_ACCESS
+    - HOLDOUT_ROW_ACCESS
+    - G4_FIELD_OR_EPISODE_SELECTION
+    - G4_ARTIFACT_MATERIALIZATION
+    - HOLDOUT_PREFLIGHT
+    - HOLDOUT_SEAL_CREATION
+    - G0_PASSAGE
+    - MODEL_FITTING
+    - G4_OPEN
+    - OUTCOME_BASED_SELECTION
+    - CAUSAL_CLAIM
+    - SCIENTIFIC_EFFECT
+  preserved_current_claim_boundaries:
+    - D0_IS_DISCOVERY_MEASUREMENT_AND_DESCRIPTION_ONLY
+    - AUTHOR_IDS_ARE_CURRENT_SNAPSHOT_TOKENS_NOT_VERIFIED_PERSONS
+    - HISTORICAL_OPENALEX_VISIBILITY_IS_NOT_IDENTIFIED
+    - G1_EMPIRICAL_SIGNATURE_NOT_ESTABLISHED
+    - NABM_ADDED_VALUE_NOT_ESTABLISHED
+    - HOLDOUT_TRANSPORT_NOT_ESTABLISHED
+    - CAUSALITY_NOT_ESTABLISHED
+    - SCIENTIFIC_EFFECT_NOT_ESTABLISHED
+
+decision_staging_proposal:
+  legacy_total_quantitative_choice_count: 19
+  stages:
+    - entry_boundary: BEFORE_E_CONFIRMATORY_ACCESS
+      owner_phase: F
+      choices:
+        - author_minimum_history_works
+        - primary_pivot_thresholds
+        - attention_surge_threshold
+        - public_success_threshold
+        - citation_maturation_lag_years
+        - negative_control_equivalence_margins
+        - negative_sampling_ratio
+        - inverse_probability_weight_truncation
+        - minimum_cohort_size
+        - small_cell_suppression_threshold
+        - capacity_cell_support_threshold
+        - collinearity_threshold
+        - g1_replication_tolerance
+      choice_count: 13
+      bound_in_g0_v4_count: 12
+      independently_precommitted_not_bound_count: 1
+      may_use_g1_or_holdout_outcomes: false
+
+    - entry_boundary: BEFORE_M_G2_MODEL_SCORE_ACCESS
+      owner_phase: M
+      choices:
+        - g2_score_margin
+        - g2_maximum_calibration_degradation
+        - g2_macro_trajectory_tolerance
+      choice_count: 3
+      current_state: UNRESOLVED_NOT_AUTHORIZED
+      may_use_g2_model_scores_or_holdout_outcomes: false
+      may_depend_on_g1_effect_magnitude: false
+
+    - entry_boundary: BEFORE_M_G3_SIMULATION_EXECUTION
+      owner_phase: M
+      choices:
+        - simulation_draws_or_mcse_stopping_rule
+        - parameter_budget
+        - tuning_budget
+      choice_count: 3
+      current_state: UNRESOLVED_NOT_AUTHORIZED
+      may_use_g3_simulation_results_or_holdout_outcomes: false
+
+section_staging_proposal:
+  legacy_total_required_section_count: 15
+  stages:
+    - entry_boundary: BEFORE_E_CONFIRMATORY_ACCESS
+      owner_phase: F
+      section_ids:
+        - population_and_author_eligibility
+        - pivot_and_robustness_definitions
+        - topic_attention_and_surge
+        - temporal_availability_and_maturation
+        - peer_exposure_and_source_assignment
+        - capacity_bridge_and_entry_mode
+        - risk_set_sampling_and_weights
+        - outcome_horizons_and_h3_timing
+        - negative_control_decision_gates
+        - minimum_support_and_suppression
+        - partition_and_atomic_fold_resolution
+        - estimators_and_uncertainty
+        - hierarchical_multiplicity
+      section_count: 13
+
+    - entry_boundary: BEFORE_M_G2_MODEL_SCORE_ACCESS
+      owner_phase: M
+      section_ids: [g2_predictive_gate]
+      section_count: 1
+
+    - entry_boundary: BEFORE_M_G3_SIMULATION_EXECUTION
+      owner_phase: M
+      section_ids: [g3_simulation_gate]
+      section_count: 1
+
+irreversible_boundaries:
+  - boundary_id: FIRST_CONFIRMATORY_READ
+    required_phase_state: F_PASSED_WITH_PANEL_CONFORMANCE_AND_HOLDOUT_SEAL
+    fail_closed: true
+  - boundary_id: FIRST_MODEL_SELECTION_SCORE_READ
+    required_phase_state: E_PASSED_AND_PRE_G2_REGISTRY_LOCKED
+    fail_closed: true
+  - boundary_id: FIRST_HOLDOUT_OPEN
+    required_phase_state: M_RESOLVED_AND_MODEL_SCORING_CONTRACT_LOCKED
+    fail_closed: true
+  - boundary_id: CLAIM_PROMOTION
+    required_phase_state: CLAIM_SPECIFIC_RECEIPTS_AND_CEILING_CHECKED
+    fail_closed: true
+
+hash_scope_policy:
+  hash_as_scientific_lineage_roots:
+    - DATA_IDENTITY_AND_SOURCE_RECEIPTS
+    - MEASUREMENT_AND_ESTIMAND_CONTRACTS
+    - TEMPORAL_FIELD_AUTHOR_PARTITIONS
+    - PRECOMMITTED_DECISION_REGISTRIES
+    - HOLDOUT_MANIFEST_SEAL_AND_OPEN_RECEIPTS
+    - RESULT_SUMMARIES_USED_FOR_CLAIMS
+  do_not_hash_as_scientific_roots_by_default:
+    - HUMAN_NAVIGATION_DOCS
+    - LINT_CONFIGURATION
+    - GENERAL_TEST_RUNNER_CONFIGURATION
+    - NONSEMANTIC_FORMATTING
+  executable_code_hash_required_when:
+    - CODE_DEFINES_A_CLAIM_BEARING_TRANSFORMATION
+    - CODE_OPENS_OR_SCORES_A_SEALED_PARTITION
+    - CODE_GENERATES_A_CLAIM_BEARING_RESULT
+  human_docs_may_summarize_but_may_not_override_machine_state: true
+
+migration_contract:
+  current_stage: SHADOW_DESIGN_ONLY
+  steps:
+    - step_id: S1_SHADOW_SCHEMA
+      action: CREATE_NONAUTHORIZING_COMPACTION_CONTRACT
+      state: THIS_ARTIFACT
+    - step_id: S2_SEMANTIC_EQUIVALENCE
+      action: VERIFY_MAPPING_DENIALS_CLAIM_CEILINGS_DECISION_AND_SECTION_COVERAGE
+      state: PENDING_INDEPENDENT_VALIDATION
+    - step_id: S3_PARALLEL_READ
+      action: COMPARE_LEGACY_V61_AND_SHADOW_STATE_WITHOUT_ROUTING_EXECUTION_TO_SHADOW
+      state: NOT_AUTHORIZED
+    - step_id: S4_AUTHORITY_SUCCESSOR
+      action: CREATE_SEPARATELY_AUTHORIZED_MILESTONE_SUCCESSOR_IF_USER_APPROVES
+      state: NOT_AUTHORIZED
+    - step_id: S5_ARCHIVE_ROUTING
+      action: RETAIN_V2_V61_AS_IMMUTABLE_PROVENANCE_REMOVE_ONLY_FROM_ACTIVE_ROUTING
+      state: NOT_AUTHORIZED
+  delete_or_rewrite_legacy_gate_files: false
+  mutate_v61_or_g0_v4: false
+  skip_required_scientific_receipt: false
+
+validation_contract:
+  intended_verifier_relative_path: scripts/verify_pivot_feedback_governance_compaction_v1.py
+  summary_json_relative_path: experiments/evidence/results/pivot_feedback_governance_compaction_v1_20260803.summary.json
+  summary_markdown_relative_path: experiments/evidence/results/pivot_feedback_governance_compaction_v1_20260803.summary.md
+  repository_metadata_only: true
+  operator_or_row_level_files_may_be_read: false
+  confirmatory_or_holdout_rows_may_be_read: false
+  model_may_be_fitted: false
+  g4_may_be_opened: false
+
+authorization:
+  shadow_contract_authoring: AUTHORIZED_ADMINISTRATIVE_ONLY
+  repository_only_semantic_equivalence_validation: AUTHORIZED
+  authority_replacement: NOT_AUTHORIZED
+  legacy_archive_routing_change: NOT_AUTHORIZED
+  g0_successor_binding: NOT_AUTHORIZED
+  g1_or_production_application: NOT_AUTHORIZED
+  g2_or_g3_choice_resolution: NOT_AUTHORIZED
+  required_section_completion: NOT_AUTHORIZED
+  confirmatory_or_holdout_access: NOT_AUTHORIZED
+  holdout_preflight_or_seal: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This shadow-only administrative contract proposes a six-phase live routing
+  model and an optional causal lane while preserving all ten legacy logical
+  gates, current denials, irreversible boundaries, claim ceilings, decision
+  choices, required sections, and immutable scientific artifacts. It does not
+  replace gate v61, change G0 v4, bind the validated G1 tolerance into G0,
+  authorize a new successor, complete a section, select or seal G4, read any
+  discovery, production, confirmatory, or holdout row, fit a model, open G4,
+  establish causality, or establish a scientific effect.
