@@ -1,0 +1,101 @@
+schema_version: pivot_feedback_gate_state.v29
+label: pivot_feedback_gate_state_v29
+mode: ADDITIVE_RANK5_CORRECT_HCV_API_RESULT_PRODUCTION_CLOSEOUT_AUTHORIZATION
+status: VALID_RANK5_HCV_API_AUGMENTED_UNRESOLVED_PRODUCTION_CLOSEOUT_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v28.yaml
+  sha256: dec65d1a8e9dc6cadeaae6f5b85f0c91b25596c9b853c8ae51293f7b8e139b2e
+  required_schema_version: pivot_feedback_gate_state.v28
+  required_status: VALID_RANK5_HCV_TARGET_CORRECTION_TWO_CALL_SUCCESSOR_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  mutation_allowed: false
+
+corrected_result_evidence:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_t10151_rank5_cross_provider_result_v2.yaml
+    sha256: 3290754e96bf16425f1c2d6028c542a413810cd712c5349006def1a43b27678c
+    required_schema_version: pivot_feedback_d0_t10151_rank5_cross_provider_result_config.v2
+    required_status: FROZEN_CORRECT_HCV_INPUT_BINDINGS_RESULT_REDUCTION_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_t10151_rank5_cross_provider_result_v1.py
+    sha256: 8c59f97e20ae7c35398d502457581d72c8c1b2d1769e4f71e17b0f9b24ae6966
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_t10151_rank5_cross_provider_result_v1.py
+    sha256: fba1f54593df4a85449203ade662561740c10992fadd17f708522cd34251fc5a
+    mutation_allowed: false
+  operator_local:
+    root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v3-results-20260730
+    decisions_basename: rank5_cross_provider_decisions.csv
+    decisions_sha256: 0c136465cb5602a34d2367c988683967c68eb4726b92973b898f56f9a48b82b9
+    candidate_basename: rank5_augmented_candidate.json
+    candidate_sha256: 569c1d26792b759e6462ab758a18bf1510bb1ae5732171ccd4ee74708e43d87b
+    receipt_basename: cross_provider_result.outputs.json
+    receipt_sha256: a00f958a924eb16b41ba048f985d0c7a01e8b1292119fe56af7766496242f95b
+    receipt_status: PASS_RANK5_HCV_CROSS_PROVIDER_RESULT_REDUCED_DISPOSITION_PENDING
+    verification_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v3-results-20260730.verification-v2.json
+    verification_sha256: 3e5460028f5613144698731d67e417fd8dcb70dda1b86c17c69ffe2c1e1a771d
+    verification_status: PASS_INDEPENDENT_RANK5_CROSS_PROVIDER_RESULT_VERIFICATION
+
+verified_corrected_result:
+  field_id: 27
+  field_candidate_rank: 5
+  topic_id: 10151
+  topic_name: Hepatitis C virus research
+  entry_year: 1993
+  recent_denominator_rows: 64
+  local_accept_rows: 27
+  local_reject_rows: 12
+  local_unresolved_rows: 25
+  api_dual_high_accept_rows: 0
+  api_dual_high_reject_rows: 9
+  api_remains_unresolved_rows: 16
+  augmented_accept_rows: 27
+  augmented_reject_rows: 21
+  augmented_unresolved_rows: 16
+  augmented_content_state: CONTENT_UNRESOLVED
+  augmented_reason: AUGMENTED_CONSERVATIVE_EVIDENCE_NOT_DECISIVE
+  human_review: NOT_RUN_BY_DESIGN
+  api_labels_are_ground_truth: false
+
+authorized_successor:
+  cumulative_production_dispositions: 8
+  rank5_content_state: CONTENT_UNRESOLVED
+  rank5_provenance: LOCAL_RULE_PLUS_CORRECT_HCV_DUAL_HIGH_API_AUGMENTATION
+  adaptive_frontier_version: v7
+  terminal_certificate_state: BLOCKED_REQUIRED_RANK5_AUGMENTED_CONTENT_UNRESOLVED
+  computer_science_field_certificate_issued: true
+  medicine_field_certificate_issued: false
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  human_review_used: false
+  api_used_as_ground_truth: false
+
+authorization:
+  d0_rank5_corrected_result: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_rank5_augmented_production_disposition: AUTHORIZED_CONTENT_UNRESOLVED_ONLY
+  d0_cumulative_eight_production_dispositions_v6: AUTHORIZED
+  d0_adaptive_frontier_v7_materialization: AUTHORIZED
+  d0_terminal_certificate_status_v2_materialization: AUTHORIZED_BLOCKED_ONLY
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_submission: NOT_AUTHORIZED
+  d0_new_candidate_evaluation: NOT_AUTHORIZED
+  d0_selection_certificate: NOT_AUTHORIZED_REQUIRED_CONTENT_UNRESOLVED
+  d0_deterministic_reselection: NOT_AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This successor authorizes only an updated provenance-bearing rank-5
+  CONTENT_UNRESOLVED production disposition, cumulative disposition v6,
+  frontier v7, and an explicit certificate-blocked status. The correct HCV API
+  evidence raises reject lower-bound support from 12 to 21 of 64 but does not
+  reach the frozen 32-row fail threshold; accept remains 27 of 64. The invalid
+  HBV result remains excluded. Human review was not run. No new API request,
+  candidate, certificate, reselection, outcome, fit, G4, semantic truth, or
+  scientific effect is authorized.

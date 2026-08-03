@@ -132,9 +132,30 @@ include = [
     "/src/neural_abm",
 ]
 exclude = [
+    "/docs/case-studies/researcher-pivot/compute-execution-contract.md",
+    "/docs/case-studies/researcher-pivot/openalex-canonical-work-time-spine-audit-design.md",
+    "/docs/case-studies/researcher-pivot/openalex-canonical-work-time-spine-v1-audit-design.md",
+    "/docs/case-studies/researcher-pivot/openalex-citation-available-at-audit-design.md",
+    "/docs/case-studies/researcher-pivot/openalex-citation-available-at-v1-audit-design.md",
+    "/docs/case-studies/researcher-pivot/openalex-main-id-quarantine-amendment.md",
+    "/docs/case-studies/researcher-pivot/openalex-main-temporal-validity-audit.md",
+    "/docs/case-studies/researcher-pivot/openalex-temporal-author-gate-inventory.md",
+    "/docs/case-studies/researcher-pivot/openalex-work-side-author-history-audit-design.md",
+    "/docs/case-studies/researcher-pivot/pivot-feedback-empirical-nabm-protocol.md",
     "/src/neural_abm/README.md",
 ]
 
 [tool.ruff]
 line-length = 88
 target-version = "py311"
+
+# These repository-only scripts are byte-bound by immutable pivot-feedback
+# gate ledgers. Preserve their historical bytes and suppress only the recorded
+# unused-symbol findings rather than invalidating the evidence lineage.
+[tool.ruff.lint.per-file-ignores]
+"scripts/build_pivot_feedback_d0_certified_author_opportunity_rebuild_v1.py" = ["F401"]
+"scripts/build_pivot_feedback_d0_certified_leaveout_prior_peer_v1.py" = ["F841"]
+"scripts/build_pivot_feedback_d0_t10151_rank5_abstract_cross_provider_result_v1.py" = ["F401"]
+"scripts/verify_pivot_feedback_d0_certified_leaveout_prior_peer_v1.py" = ["F401"]
+"scripts/verify_pivot_feedback_d0_t10151_rank5_abstract_cross_provider_result_v1.py" = ["F401"]
+"scripts/verify_pivot_feedback_d0_t10151_rank5_cross_provider_v1.py" = ["F401"]

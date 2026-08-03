@@ -1,0 +1,352 @@
+schema_version: pivot_feedback_g0_readiness_inventory.v1
+label: pivot_feedback_g0_readiness_inventory_v1
+mode: METADATA_ONLY_FAIL_CLOSED_G0_GAP_INVENTORY
+status: G0_NOT_READY_VERSIONED_SUCCESSOR_CONTRACT_REQUIRED
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v48.yaml
+  sha256: 1acd2346c2055bc40b2d337fe48a64ce4cf51f20630710c9c2aaaaea4c98b86a
+  required_schema_version: pivot_feedback_gate_state.v48
+  required_status: VALID_D0_CORE_ENTRY_PERSISTENCE_CALIBRATION_COMPLETE_G0_READINESS_INVENTORY_AUTHORIZED
+  required_fields:
+    d0_core_calibration_decision.status: COMPLETE_INDEPENDENTLY_VERIFIED
+    gate_state.D0.complete: true
+    gate_state.G0.complete: false
+    authorization.g0_readiness_and_gap_inventory: AUTHORIZED_METADATA_AND_CONTRACT_ONLY_NO_ROW_READ
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+pending_g0_overlay:
+  relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v0.yaml
+  sha256: 2c2912506b96e1c7a09ba008bd15fb824a5b8e3545cf9c387cd3e0cb81044606
+  required_schema_version: pivot_feedback_g0_measurement_freeze.v1
+  required_status_key: lifecycle.freeze_status
+  required_status: PENDING_G0_MEASUREMENT_FREEZE
+  required_fields:
+    lifecycle.confirmatory_outcomes_inspected: false
+    lifecycle.g4_holdout_opened: false
+    lifecycle.pass_g0: false
+    lifecycle.execution_authorized: false
+    g_minus_1_binding.state: PENDING
+    holdout_access_binding.state: PENDING
+    resolution.state: PENDING
+    resolution.successor_required: true
+    completion_contract.pending_contract_sealable: false
+  mutation_allowed: false
+
+supporting_repository_bindings:
+  gate_sequence:
+    relative_path: experiments/configs/pivot_feedback_gate_sequence_v1.yaml
+    sha256: 3a3a655234c4efb74a4900e65624c903176615cee19da760cd06b1416e3fd365
+    required_schema_version: pivot_feedback_gate_sequence.v1
+    required_status: VALID_PENDING_SUCCESSOR_IMPLEMENTATION
+  g_minus_1_registry:
+    relative_path: experiments/configs/pivot_feedback_g_minus_1_readiness_v0.yaml
+    sha256: e5048af2d3cca3b1ff04bbecc1a6cbf5dcc6756bf29db995d3cefbe3a017f2be
+    required_schema_version: pivot_feedback_g_minus_1_readiness.v1
+    required_status: G_MINUS_1_PENDING
+  measurement_abi:
+    relative_path: experiments/configs/pivot_feedback_d0_measurement_abi_v1.yaml
+    sha256: eb51a85c206da328609b2fa05f9bbb6900160dc837dc345715d1bd709134c36e
+    required_schema_version: pivot_feedback_d0_measurement_abi.v1
+    required_status: FROZEN_OUTCOME_BLIND_MEASUREMENT_ABI_EPISODE_RESELECTION_AUTHORIZED
+  pivot_definition:
+    relative_path: experiments/configs/pivot_feedback_researcher_pivot_definition_v2.yaml
+    sha256: 625145e60fa38b787b25842b8b2d6877880b2f6102169588dfd1efb919e224de
+    required_schema_version: pivot_feedback_researcher_pivot_definition.v2
+    required_status: FROZEN_THRESHOLD_FREE_OBSERVABLE_HISTORY_PIVOT_DEFINITION_V2_FIXTURES_ONLY
+  persistence_contract:
+    relative_path: experiments/configs/pivot_feedback_d0_persistence_outcome_contract_v1.yaml
+    sha256: 177fd11366c36143f601743a27afb952b1482c2f90bc536b95787e114c482b6c
+    required_schema_version: pivot_feedback_d0_persistence_outcome_contract.v1
+    required_status: FROZEN_D0_PERSISTENCE_OUTCOME_SOURCE_CONTRACT_FIXTURES_ONLY
+  peer_mechanism_registry:
+    relative_path: experiments/configs/pivot_feedback_peer_mechanism_registry_v0.yaml
+    sha256: 99eeb68b632f9f9a250f50320cfc7a293e3595de81984419d1528e2ee12aa6f8
+    required_schema_version: pivot_feedback_peer_mechanism_registry.v1
+    required_status: PENDING_G0_MEASUREMENT_FREEZE
+  cross_field_matrix:
+    relative_path: experiments/configs/pivot_feedback_cross_field_matrix_v0.yaml
+    sha256: 6fd3e2c7aae7a7aac085ed73ba4bf3d64a91c02d60dce8a9a6a262591a0c934a
+    required_schema_version: pivot_feedback_cross_field_matrix.v1
+
+operator_metadata_bindings:
+  entry_source:
+    root_basename: pivot-feedback-d0-entry-source-v1-full-20260731
+    receipt_basename: pivot_entry_source_build.outputs.json
+    receipt_sha256: e56329675a51b1c1a2be1003df2e60fa3fdad1a93fce42a2102adc957284e060
+    receipt_schema_version: pivot_feedback_d0_entry_source_build_outputs.v1
+    receipt_status: PASS_EXACT_FOUR_THREE_COUNT_PRODUCTION_FEATURE_SOURCE_NO_STATE_LABELS
+    verification_basename: pivot-feedback-d0-entry-source-v1-full-20260731.verification-v1.json
+    verification_sha256: 20d2d668f24ce6c16cfb4adccb5758c8092c3d1feb91aa7f4ef3a73a634c2784
+    verification_schema_version: pivot_feedback_d0_entry_source_verification.v1
+    verification_status: PASS_INDEPENDENT_EXACT_FOUR_THREE_COUNT_SOURCE_REPLAY_NO_STATE_LABELS
+    verification_receipt_hash_field: output_receipt_sha256
+  production_classification:
+    root_basename: pivot-feedback-d0-production-pivot-classification-v1-20260731
+    receipt_basename: production_pivot_classification.outputs.json
+    receipt_sha256: b9b064842ee2b71db8974ff9bef74f7c4bb9aa06f7cf588aec34eacaa3a812de
+    receipt_schema_version: pivot_feedback_d0_production_pivot_classification_outputs.v1
+    receipt_status: PASS_EXACT_FOUR_THRESHOLD_FREE_OBSERVABLE_HISTORY_FOUR_STATE_CLASSIFICATION
+    verification_basename: pivot-feedback-d0-production-pivot-classification-v1-20260731.verification-v1.json
+    verification_sha256: 86568ad1a3123e2daca911045dd988aecd9707009db31ce8a58cd28dcc67c845
+    verification_schema_version: pivot_feedback_d0_production_pivot_classification_verification.v1
+    verification_status: PASS_INDEPENDENT_EXACT_FOUR_ALL_ROW_OBSERVABLE_HISTORY_STATE_REPLAY
+    verification_receipt_hash_field: output_receipt_sha256
+  persistence_source:
+    root_basename: pivot-feedback-d0-persistence-source-v1-full-20260731
+    receipt_basename: persistence_outcome_source.outputs.json
+    receipt_sha256: 3aa45f93e4cbf40c0e9543482ec3c6a908b6026b7f9d23b719c615c68180295a
+    receipt_schema_version: pivot_feedback_d0_persistence_outcome_source_outputs.v1
+    receipt_status: PASS_EXACT_4301_NEW_TOPIC_ENTRY_THREE_YEAR_PERSISTENCE_SOURCE
+    verification_basename: pivot-feedback-d0-persistence-source-v1-full-20260731.verification-v1.json
+    verification_sha256: 071ca98ae1ff5b6599756ca89397c430333810ef6ee368b6173f76a6d6bfd74a
+    verification_schema_version: pivot_feedback_d0_persistence_outcome_source_verification.v1
+    verification_status: PASS_INDEPENDENT_EXACT_4301_THREE_YEAR_PERSISTENCE_SOURCE_ALL_ROW_REPLAY
+    verification_receipt_hash_field: output_receipt_sha256
+  persistence_calibration:
+    root_basename: pivot-feedback-d0-persistence-calibration-readout-v1-20260731
+    receipt_basename: persistence_calibration_readout.outputs.json
+    receipt_sha256: 36c7b64a041070cef494cf731f18d53e42484e53fbdbd5aa2aa4ef7aeb53d722
+    receipt_schema_version: pivot_feedback_d0_persistence_calibration_readout_outputs.v1
+    receipt_status: PASS_EXACT_4301_DESCRIPTIVE_PERSISTENCE_CALIBRATION_READOUT
+    verification_basename: pivot-feedback-d0-persistence-calibration-readout-v1-20260731.verification-v1.json
+    verification_sha256: 45a4ab3199ebd8aa2eaafe3c1255cb5bd0c699af39e9227cd3995b77a1ca53e4
+    verification_schema_version: pivot_feedback_d0_persistence_calibration_readout_verification.v1
+    verification_status: PASS_INDEPENDENT_EXACT_4301_DESCRIPTIVE_PERSISTENCE_CALIBRATION_ALL_VALUE_REPLAY
+    verification_receipt_hash_field: output_hashes.receipt_sha256
+
+access_accounting_contract:
+  repository_documents_read: 9
+  operator_json_metadata_files_read: 8
+  operator_parquet_files_opened: 0
+  production_row_level_files_opened: 0
+  confirmatory_or_holdout_rows_read: 0
+  api_requests_created_or_submitted: 0
+  model_fitted: false
+  g4_open: false
+
+inherited_pending_state:
+  g_minus_1_receipt_state: PENDING_NULL_BINDING
+  holdout_access_seal_state: PENDING_NULL_BINDING
+  original_unresolved_quantitative_choice_count: 19
+  original_unresolved_required_section_count: 15
+  pending_overlay_must_remain_byte_identical: true
+
+quantitative_choice_inventory:
+  - choice_id: author_minimum_history_works
+    disposition: RESOLVED_BY_D0_REQUIRES_G0_SUCCESSOR_SERIALIZATION
+    proposed_successor_value: NONE
+    evidence_binding: pivot_definition
+    outcome_based_choice: false
+    remaining_action: COPY_THRESHOLD_FREE_NONE_VALUE_WITH_OBSERVABLE_HISTORY_CAVEAT
+  - choice_id: primary_pivot_thresholds
+    disposition: RESOLVED_BY_D0_REQUIRES_G0_SUCCESSOR_SERIALIZATION
+    proposed_successor_value: FOCAL_GE_1_AND_PRE_ENTRY_EQ_0_WITH_FOUR_STATE_PRECEDENCE
+    evidence_binding: pivot_definition
+    outcome_based_choice: false
+    remaining_action: COPY_EXACT_THRESHOLD_FREE_CLASSIFIER_RULES
+  - choice_id: attention_surge_threshold
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_FULL_PANEL_RULE_WITHOUT_PERSISTENCE_RATE_SELECTION
+  - choice_id: public_success_threshold
+    disposition: DEFERRED_OPTIONAL_REQUIRES_EXPLICIT_G0_INCLUDE_OR_EXCLUDE_DECISION
+    proposed_successor_value: null
+    remaining_action: EITHER_FREEZE_TIME_ELIGIBLE_PROXY_OR_EXCLUDE_OPTIONAL_COMPONENT
+  - choice_id: citation_maturation_lag_years
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: FREEZE_BIBLIOGRAPHIC_PROXY_MATURATION_WITH_CURRENT_SNAPSHOT_CAVEAT
+  - choice_id: negative_control_equivalence_margins
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: SPECIFY_PRACTICAL_NULL_REGIONS_BEFORE_CONFIRMATORY_ACCESS
+  - choice_id: negative_sampling_ratio
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_RISK_SET_SAMPLING_RATIO
+  - choice_id: inverse_probability_weight_truncation
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_ANALYSIS_WEIGHT_RULE_OR_EXPLICIT_NONE
+  - choice_id: minimum_cohort_size
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_SUPPORT_FLOOR_WITHOUT_OUTCOME_RATE_TUNING
+  - choice_id: small_cell_suppression_threshold
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_PRIVACY_AND_STABILITY_SUPPRESSION_FLOOR
+  - choice_id: capacity_cell_support_threshold
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_G0_5_CONFORMANCE_SUPPORT_FLOOR
+  - choice_id: collinearity_threshold
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_CHANNEL_COLLAPSE_RULE
+  - choice_id: g1_replication_tolerance
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_REPLICATION_DECISION_TOLERANCE
+  - choice_id: g2_score_margin
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_PREDICTIVE_GATE_MARGIN
+  - choice_id: g2_maximum_calibration_degradation
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_CALIBRATION_DEGRADATION_LIMIT
+  - choice_id: g2_macro_trajectory_tolerance
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_MACRO_TRAJECTORY_TOLERANCE
+  - choice_id: simulation_draws_or_mcse_stopping_rule
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_MONTE_CARLO_PRECISION_STOPPING_RULE
+  - choice_id: parameter_budget
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_MODEL_PARAMETER_BUDGET
+  - choice_id: tuning_budget
+    disposition: UNRESOLVED_REQUIRES_NON_OUTCOME_PRECOMMITMENT
+    proposed_successor_value: null
+    remaining_action: DEFINE_MODEL_SELECTION_TUNING_BUDGET
+
+required_section_inventory:
+  - section_id: population_and_author_eligibility
+    disposition: PARTIAL_NOT_FREEZE_READY
+    available_evidence: EXACT_REGISTERED_AUTHOR_TOKEN_DENOMINATOR_AND_THRESHOLD_FREE_PRIMARY_EVENT
+    remaining_gap: FINAL_AUTHOR_ENTITY_ELIGIBILITY_AND_OPEN_WORLD_OBSERVABILITY_POLICY
+    next_owner: G0_SUCCESSOR
+  - section_id: pivot_and_robustness_definitions
+    disposition: PARTIAL_NOT_FREEZE_READY
+    available_evidence: PRIMARY_OBSERVABLE_HISTORY_FOUR_STATE_DEFINITION_COMPLETE
+    remaining_gap: SUBSTANTIVELY_DIFFERENT_ALTERNATIVE_PIVOT_AND_ROBUSTNESS_RULE
+    next_owner: G0_SUCCESSOR
+  - section_id: topic_attention_and_surge
+    disposition: PARTIAL_NOT_FREEZE_READY
+    available_evidence: OUTCOME_BLIND_MEASUREMENT_ABI_AND_EXACT_FOUR_D0_EPISODES
+    remaining_gap: FULL_PANEL_ATTENTION_SURGE_THRESHOLD_AND_APPLICATION_RULE
+    next_owner: G0_SUCCESSOR_THEN_G0_5_CONFORMANCE
+  - section_id: temporal_availability_and_maturation
+    disposition: PARTIAL_NOT_FREEZE_READY
+    available_evidence: ANNUAL_CLOCKS_AND_THREE_YEAR_PERSISTENCE_MATURATION_COMPLETE
+    remaining_gap: CITATION_PROXY_MATURATION_AND_HOLDOUT_ACCESS_SEAL
+    next_owner: G0_SUCCESSOR_AND_HOLDOUT_CONTROL
+  - section_id: peer_exposure_and_source_assignment
+    disposition: PARTIAL_NOT_FREEZE_READY
+    available_evidence: PROSPECTIVE_PEER_CONSTRUCTS_AND_CLAIM_DOWNGRADE_RULES
+    remaining_gap: FINAL_TIME_ELIGIBLE_SUCCESS_PROXY_AND_SOURCE_ASSIGNMENT
+    next_owner: G0_SUCCESSOR
+  - section_id: capacity_bridge_and_entry_mode
+    disposition: PARTIAL_NOT_FREEZE_READY
+    available_evidence: PROSPECTIVE_CELLS_ENTRY_MODE_STRATA_AND_CONTRASTS
+    remaining_gap: SUPPORT_COLLINEARITY_AND_COLLAPSE_THRESHOLDS
+    next_owner: G0_SUCCESSOR_THEN_G0_5_CONFORMANCE
+  - section_id: risk_set_sampling_and_weights
+    disposition: UNRESOLVED_NOT_FREEZE_READY
+    available_evidence: NONE_FREEZE_READY
+    remaining_gap: SAMPLING_RATIO_WEIGHT_RULE_AND_TRUNCATION
+    next_owner: G0_SUCCESSOR
+  - section_id: outcome_horizons_and_h3_timing
+    disposition: PARTIAL_NOT_FREEZE_READY
+    available_evidence: THREE_YEAR_PERSISTENCE_SOURCE_AND_PROSPECTIVE_H3_ENDPOINT
+    remaining_gap: FULL_H3_COHORT_TIMING_AND_ESTIMATION_CONTRACT
+    next_owner: G0_SUCCESSOR
+  - section_id: negative_control_decision_gates
+    disposition: PARTIAL_NOT_FREEZE_READY
+    available_evidence: SEVEN_PROSPECTIVE_NEGATIVE_CONTROLS_DECLARED
+    remaining_gap: EQUIVALENCE_MARGINS_AND_PASS_FAIL_IMPLEMENTATION
+    next_owner: G0_SUCCESSOR
+  - section_id: minimum_support_and_suppression
+    disposition: UNRESOLVED_NOT_FREEZE_READY
+    available_evidence: NONE_FREEZE_READY
+    remaining_gap: COHORT_CELL_AND_SUPPRESSION_THRESHOLDS
+    next_owner: G0_SUCCESSOR_THEN_G0_5_CONFORMANCE
+  - section_id: partition_and_atomic_fold_resolution
+    disposition: PARTIAL_NOT_FREEZE_READY
+    available_evidence: TEMPORAL_PERIODS_PROSPECTIVELY_DECLARED
+    remaining_gap: G_MINUS_1_RECEIPT_HOLDOUT_SEAL_AND_ATOMIC_FOLD_BINDINGS
+    next_owner: G0_SUCCESSOR_AND_HOLDOUT_CONTROL
+  - section_id: estimators_and_uncertainty
+    disposition: UNRESOLVED_NOT_FREEZE_READY
+    available_evidence: NONE_FREEZE_READY
+    remaining_gap: ESTIMATOR_CLUSTERING_INTERVAL_AND_FAILURE_RULES
+    next_owner: G0_SUCCESSOR
+  - section_id: hierarchical_multiplicity
+    disposition: PARTIAL_NOT_FREEZE_READY
+    available_evidence: PROSPECTIVE_H3_FIRST_HOLM_CONDITIONAL_FAMILY_DECLARED
+    remaining_gap: VERSIONED_SUCCESSOR_SERIALIZATION_AND_INDEPENDENT_VALIDATION
+    next_owner: G0_SUCCESSOR
+  - section_id: g2_predictive_gate
+    disposition: UNRESOLVED_NOT_FREEZE_READY
+    available_evidence: NONE_FREEZE_READY
+    remaining_gap: SCORE_CALIBRATION_AND_MACRO_TRAJECTORY_DECISION_RULES
+    next_owner: G0_SUCCESSOR
+  - section_id: g3_simulation_gate
+    disposition: UNRESOLVED_NOT_FREEZE_READY
+    available_evidence: NONE_FREEZE_READY
+    remaining_gap: MCSE_STOPPING_PARAMETER_AND_TUNING_BUDGETS
+    next_owner: G0_SUCCESSOR
+
+inventory_totals:
+  quantitative_choices_total: 19
+  quantitative_choices_resolved_by_d0: 2
+  quantitative_choices_still_unresolved: 17
+  required_sections_total: 15
+  required_sections_freeze_ready: 0
+  required_sections_partial: 10
+  required_sections_unresolved: 5
+
+readiness_decision:
+  status: NOT_READY_FOR_G0_FREEZE
+  d0_core_complete: true
+  g0_freeze_ready: false
+  pending_overlay_sealable: false
+  hard_blockers:
+    - G_MINUS_1_RECEIPT_ABSENT
+    - HOLDOUT_ACCESS_SEAL_RECEIPT_ABSENT
+    - SEVENTEEN_QUANTITATIVE_CHOICES_UNRESOLVED
+    - FIFTEEN_REQUIRED_SECTIONS_NOT_FREEZE_READY
+  final_cutoff_panel_is_g0_prerequisite: false
+  final_cutoff_panel_owner: G0_5
+  strongest_current_claim: D0_ENTRY_AND_PERSISTENCE_MEASUREMENT_CALIBRATION_COMPLETE_ONLY
+
+authorized_successor_scope:
+  mode: VERSIONED_G0_SUCCESSOR_SKELETON_METADATA_ONLY_NO_SEAL
+  may_copy_pending_overlay_fixed_design_choices: true
+  may_serialize_two_d0_resolved_quantitative_choices: true
+  must_keep_seventeen_choices_explicitly_pending: true
+  must_keep_all_fifteen_sections_not_freeze_ready: true
+  may_read_repository_configs_summaries_and_receipt_metadata: true
+  may_open_operator_parquet_or_row_level_data: false
+  may_read_confirmatory_or_holdout_rows: false
+  may_create_or_submit_api_requests: false
+  may_choose_values_from_observed_outcomes: false
+  may_change_confirmatory_periods: false
+  may_rank_or_select_fields_episodes_or_thresholds_by_outcome: false
+  may_establish_final_candidate_eligibility: false
+  may_seal_or_pass_g0: false
+  may_fit_or_score_a_model: false
+  may_open_g4: false
+  independent_validation_required: true
+  successor_gate_required_before_any_additional_scope: true
+
+claim_boundary: >-
+  This inventory reads only nine repository documents and eight receipt or
+  independent-verification JSON metadata files. It opens zero Parquet files
+  and reads zero production, confirmatory, or holdout rows. The D0 core
+  entry-and-persistence calibration is complete, but only two of nineteen
+  quantitative choices have D0-resolved successor values, none of fifteen
+  required G0 sections is freeze-ready, and both the G-1 receipt and holdout
+  access-seal bindings remain pending. The inventory therefore fails closed:
+  G0 is not ready. It authorizes only a versioned metadata-only successor
+  skeleton that serializes the two D0-resolved choices while preserving every
+  other gap. It does not authorize a G0 seal, confirmatory access, outcome-
+  based selection, final eligibility, model fitting, G4, causality, or a
+  scientific effect.

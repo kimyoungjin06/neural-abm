@@ -1,0 +1,164 @@
+schema_version: pivot_feedback_gate_state.v61
+label: pivot_feedback_gate_state_v61
+mode: ADDITIVE_G0_V4_EXACT_SIX_CHOICE_BINDING_VALIDATED
+status: VALID_G0_V4_TWELVE_RESOLVED_SEVEN_PENDING_G1_TOLERANCE_PRECOMMITMENT_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v60.yaml
+  sha256: 592459943ef48da8e6f88af54b18dfcc06aa76db254deee60731b7a1bee35f99
+  required_schema_version: pivot_feedback_gate_state.v60
+  required_status: VALID_SIX_RISK_SET_WEIGHT_SUPPORT_CHOICES_FIXTURE_ONLY_G0_V4_BINDING_AUTHORIZED
+  mutation_allowed: false
+
+verified_g0_v4_binding:
+  contract:
+    relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v4.yaml
+    sha256: cd49a31ab67e7a66d038b3198493df8b3a309aa14ee9de80410557a194581ce4
+    required_schema_version: pivot_feedback_g0_measurement_freeze.v5
+    required_status: PENDING_G0_V4_TWELVE_RESOLVED_SEVEN_CHOICES_AND_FIFTEEN_SECTIONS_NO_SEAL
+  independent_validator:
+    relative_path: scripts/verify_pivot_feedback_g0_measurement_freeze_v4.py
+    sha256: 4c47fe920d90775d3d1ef357a154bd1d9985a24a72812155be09239c1c1d6670
+  research_note:
+    relative_path: docs/research/pivot-feedback-g0-measurement-freeze-v4-binding.md
+    sha256: c3ca14a1203dd6cffa06a34ed27e23aeaac6daf61b2621d7f6f22b6ca107e9f2
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_measurement_freeze_v4_binding_20260731.summary.json
+    sha256: f50d668aca02e284943d71108d1e7cbf71ff84af5947a179edb29c02f145ba05
+    required_schema_version: pivot_feedback_g0_measurement_freeze_v4_binding_summary.v1
+    required_status: PASS_G0_V4_EXACT_SIX_CHOICE_BINDING_SEVEN_CHOICES_REMAIN
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_measurement_freeze_v4_binding_20260731.summary.md
+    sha256: 4fc72ba57be45b05ab704897d4e89fae69ff6fd7e3fa333e33dd872eae4ae090
+  result:
+    predecessor_preserved_top_level_subtree_count: 10
+    inherited_resolved_choice_count: 6
+    newly_bound_choice_count: 6
+    total_resolved_choice_count: 12
+    remaining_quantitative_choice_count: 7
+    pending_required_section_count: 15
+    freeze_ready_required_section_count: 0
+    holdout_receipt_bound: false
+    discovery_production_application_run: false
+    confirmatory_or_holdout_rows_read: 0
+    model_fitted: false
+    g4_open: false
+
+binding_decision:
+  status: COMPLETE_INDEPENDENTLY_VERIFIED_EXACT_SCOPE
+  values_are_outcome_blind_policy_not_empirical_truth: true
+  values_are_power_or_precision_guarantees: false
+  production_measurement_or_model_established: false
+  scientific_effect_established: false
+  g0_passed: false
+  next_workstream: G0_G1_REPLICATION_TOLERANCE_PRECOMMITMENT_CLOSED_FIXTURE
+
+remaining_choice_packages:
+  - package_id: G1_REPLICATION
+    choice_ids: [g1_replication_tolerance]
+    choice_count: 1
+    state: NEXT_EXACT_SCOPE_AUTHORIZED_PRECOMMITMENT_ONLY
+  - package_id: G2_PREDICTIVE_GATE
+    choice_ids:
+      - g2_score_margin
+      - g2_maximum_calibration_degradation
+      - g2_macro_trajectory_tolerance
+    choice_count: 3
+    state: NOT_AUTHORIZED
+  - package_id: G3_SIMULATION_GATE
+    choice_ids:
+      - simulation_draws_or_mcse_stopping_rule
+      - parameter_budget
+      - tuning_budget
+    choice_count: 3
+    state: NOT_AUTHORIZED
+
+authorized_next_precommitment_scope:
+  artifact_kind: VERSIONED_OUTCOME_BLIND_G1_TOLERANCE_PRECOMMITMENT_AND_CLOSED_SYNTHETIC_FIXTURE
+  exact_choice_ids: [g1_replication_tolerance]
+  must_bind_this_gate_byte_for_byte: true
+  must_bind_g0_v4_byte_for_byte: true
+  must_keep_value_outcome_blind: true
+  must_define_estimand_scale_direction_interval_and_failure_rule: true
+  must_label_judgment_based_value_as_policy_not_empirical_truth: true
+  must_include_independent_closed_fixture_validation: true
+  may_write_or_modify_g0_v4: false
+  may_bind_value_into_g0_successor: false
+  may_resolve_g2_or_g3_choices: false
+  may_complete_required_sections: false
+  may_apply_rule_to_g1_or_production_data: false
+  may_read_g1_confirmatory_or_holdout_rows: false
+  may_change_temporal_partitions: false
+  may_select_g4_field_or_episode: false
+  may_materialize_g4_artifacts: false
+  may_create_holdout_preflight_or_seal: false
+  may_pass_g0: false
+  may_fit_model: false
+  may_open_g4: false
+
+gate_state:
+  D0:
+    state: COMPLETE_CORE_ENTRY_AND_PERSISTENCE_MEASUREMENT_CALIBRATION_OPTIONAL_PEER_SUCCESS_DEFERRED
+    complete: true
+  G0:
+    state: NOT_READY_TWELVE_CHOICES_RESOLVED_SEVEN_CHOICES_AND_FIFTEEN_SECTIONS_PENDING
+    complete: false
+    completed_components:
+      - G0_G_MINUS_1A_BINDING_RECONCILIATION
+      - G0_V2_BINDING_ONLY_SUCCESSOR
+      - HOLDOUT_ACCESS_SEAL_CONTRACT
+      - HOLDOUT_ACCESS_SEAL_CONTRACT_INDEPENDENT_VALIDATION
+      - HOLDOUT_ACCESS_SEAL_TOOLING_CLOSED_FIXTURE_VALIDATION
+      - HOLDOUT_ACCESS_SEAL_PREFLIGHT_TOOLING_CLOSED_FIXTURE_VALIDATION
+      - HOLDOUT_PRODUCTION_INPUT_METADATA_RESOLUTION
+      - G0_MEASUREMENT_PROXY_PRECOMMITMENT_CLOSED_FIXTURE_VALIDATION
+      - G0_V3_EXACT_FOUR_CHOICE_BINDING_SUCCESSOR
+      - G0_RISK_SET_WEIGHT_SUPPORT_PRECOMMITMENT_CLOSED_FIXTURE_VALIDATION
+      - G0_V4_EXACT_SIX_CHOICE_BINDING_SUCCESSOR
+    next_components:
+      - G0_G1_REPLICATION_TOLERANCE_PRECOMMITMENT_CLOSED_FIXTURE
+      - G0_G2_PREDICTIVE_GATE_THREE_CHOICE_PRECOMMITMENT
+      - G0_G3_SIMULATION_GATE_THREE_CHOICE_PRECOMMITMENT
+      - FIFTEEN_REQUIRED_SECTION_COMPLETION
+      - G4_FIELD_EPISODE_AND_ATOMIC_PARTITION_ASSIGNMENT
+      - G4_PRIVATE_ARTIFACT_MATERIALIZATION
+      - HOLDOUT_ACCESS_SEAL_OPERATOR_PREFLIGHT_AND_CREATION
+    blocked_components:
+      - G0_MEASUREMENT_FREEZE_SEAL
+      - CONFIRMATORY_OR_HOLDOUT_ACCESS
+      - MODEL_FITTING
+      - G4
+  G4:
+    state: LOGICALLY_RESERVED_NOT_BYTE_SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  g0_v4_six_choice_binding_successor: COMPLETE_INDEPENDENTLY_VERIFIED
+  g1_replication_tolerance_precommitment_closed_fixture: AUTHORIZED_EXACT_SCOPE
+  g0_successor_binding_for_g1_tolerance: NOT_AUTHORIZED
+  g2_or_g3_choice_precommitment: NOT_AUTHORIZED
+  production_rule_application: NOT_AUTHORIZED
+  other_quantitative_choice_resolution: NOT_AUTHORIZED
+  required_section_completion: NOT_AUTHORIZED
+  g4_field_or_episode_selection: NOT_AUTHORIZED
+  holdout_artifact_materialization: NOT_AUTHORIZED
+  holdout_preflight_or_seal: NOT_AUTHORIZED
+  confirmatory_or_holdout_access: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  G0 v4 independently preserves its immutable G0 v3 predecessor and binds only
+  the six choices authorized by gate v60. Twelve choices are serialized in
+  total, seven quantitative choices remain unresolved, and all fifteen required
+  sections remain not freeze-ready. The values are outcome-blind conservative
+  policies, have not been applied to production data, and do not establish
+  efficiency, power, precision, causality, or empirical effects. This gate
+  authorizes only a separate outcome-blind precommitment and closed synthetic
+  fixture for the single G1 replication-tolerance choice. It does not authorize
+  binding that value into G0, G1 access, G2 or G3 choices, production
+  application, holdout access or sealing, model fitting, G0 passage, G4
+  opening, causality, or a scientific effect.

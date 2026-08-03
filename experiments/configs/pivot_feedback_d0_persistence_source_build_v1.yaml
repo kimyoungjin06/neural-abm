@@ -1,0 +1,204 @@
+schema_version: pivot_feedback_d0_persistence_source_build_config.v1
+label: pivot_feedback_d0_persistence_source_build_v1
+mode: EXACT_4301_NEW_TOPIC_ENTRY_T_PLUS_1_THROUGH_T_PLUS_3_PRODUCTION_SOURCE
+status_before_execution: AUTHORIZED_BY_GATE_STATE_V46
+
+repository_bindings:
+  gate_state:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v46.yaml
+    sha256: fa6646dac68eb89f3027ee6e43d031ad47a90c48b21458f03984b8a8ec35cbec
+    required_schema_version: pivot_feedback_gate_state.v46
+    required_status: VALID_D0_PERSISTENCE_OUTCOME_CONTRACT_INDEPENDENTLY_VALIDATED_PRODUCTION_SOURCE_BUILD_AUTHORIZED
+    required_fields:
+      persistence_contract_decision.status: COMPLETE_INDEPENDENTLY_VALIDATED
+      persistence_contract_decision.exact_denominator_rows: 4301
+      authorization.d0_production_post_entry_persistence_source_build: AUTHORIZED_EXACT_4301_NEW_TOPIC_ENTRY_T_PLUS_1_THROUGH_T_PLUS_3_ONLY
+      authorization.d0_discovery_outcome_opening: AUTHORIZED_SOURCE_BUILD_ONLY_NO_ANALYSIS_OR_INTERPRETATION
+      authorization.d0_discovery_outcome_analysis_or_interpretation: NOT_AUTHORIZED
+      authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+      authorization.g0_measurement_freeze: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+  persistence_contract:
+    relative_path: experiments/configs/pivot_feedback_d0_persistence_outcome_contract_v1.yaml
+    sha256: 177fd11366c36143f601743a27afb952b1482c2f90bc536b95787e114c482b6c
+    required_schema_version: pivot_feedback_d0_persistence_outcome_contract.v1
+    required_status: FROZEN_D0_PERSISTENCE_OUTCOME_SOURCE_CONTRACT_FIXTURES_ONLY
+  production_classification_config:
+    relative_path: experiments/configs/pivot_feedback_d0_production_pivot_classification_v1.yaml
+    sha256: ec22f8b84e9794c35283cbb7c0e4faca287ae0bd9da37222f3b775b56f48abb8
+    required_schema_version: pivot_feedback_d0_production_pivot_classification_config.v1
+
+operator_inputs:
+  production_classification:
+    root_basename: pivot-feedback-d0-production-pivot-classification-v1-20260731
+    receipt_basename: production_pivot_classification.outputs.json
+    receipt_sha256: b9b064842ee2b71db8974ff9bef74f7c4bb9aa06f7cf588aec34eacaa3a812de
+    receipt_schema_version: pivot_feedback_d0_production_pivot_classification_outputs.v1
+    required_status: PASS_EXACT_FOUR_THRESHOLD_FREE_OBSERVABLE_HISTORY_FOUR_STATE_CLASSIFICATION
+    artifact_tree_sha256: 4b9d6b9376264d36ebcb3a879f5592342e9917174d3804df1bdfa82c5abf8d25
+    artifact_basename: production_pivot_classification.parquet
+    artifact_sha256: 32930717841455afabf79c093356ecfced94047be7a429afa4194e3606ab5f66
+    artifact_schema_version: pivot_feedback_d0_production_pivot_classification.v1
+    rows: 3256271
+    columns: 10
+    primary_state: NEW_TOPIC_ENTRY
+    primary_rows: 4301
+    exact_schema:
+      - [certified_episode_index, uint8, false]
+      - [field_id, uint8, false]
+      - [topic_id, uint32, false]
+      - [entry_year, uint16, false]
+      - [author_numeric_id, uint64, false]
+      - [pre_entry_target_topic_work_count, uint32, false]
+      - [trailing_3y_target_topic_work_count, uint32, false]
+      - [focal_confirmed_eligible_target_topic_work_count, uint32, false]
+      - [observable_history_pivot_state, string, false]
+      - [observable_history_new_topic_entry, bool, false]
+  cutoff_work_metadata:
+    root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    artifact_bytes: 4120921809
+    rows: 492293206
+    partition_formula: work_id_numeric_mod_4096
+    exact_schema:
+      - [work_id_numeric, uint64, false]
+      - [publication_day, int32, true]
+      - [publication_year, uint16, true]
+      - [temporal_disposition, uint8, false]
+      - [work_type_code, uint8, false]
+      - [is_paratext, bool, false]
+      - [is_retracted, bool, true]
+      - [declared_authors_count, uint16, false]
+      - [primary_topic_id, uint32, true]
+      - [primary_field_id, uint8, true]
+      - [primary_domain_id, uint8, true]
+  author_work_events:
+    root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    artifact_bytes: 5006392019
+    rows: 779630258
+    partition_formula: author_numeric_id_mod_4096
+    exact_schema:
+      - [author_numeric_id, uint64, false]
+      - [work_numeric_id, uint64, false]
+      - [publication_year, uint16, false]
+      - [temporal_disposition, uint8, false]
+      - [declared_authors_count, uint32, false]
+      - [primary_field_id, uint8, false]
+
+exact_episode_scope:
+  rows:
+    - [1, 17, 14430, 2003, 2006]
+    - [2, 17, 10579, 2012, 2015]
+    - [3, 27, 10151, 1993, 1996]
+    - [4, 27, 12421, 1953, 1956]
+  last_complete_calendar_year: 2025
+  all_matured: true
+  confirmatory_entry_years_allowed: false
+  episode_substitution_allowed: false
+
+source_contract:
+  primary_pivot_state: NEW_TOPIC_ENTRY
+  source_classification_rows: 3256271
+  exact_output_rows: 4301
+  permitted_post_entry_offsets: [1, 2, 3]
+  inherited_work_type_codes: [1, 2, 3, 4, 7, 16, 18, 21]
+  exact_temporal_disposition: 2
+  exact_primary_topic_and_field_match_required: true
+  team_cap: NONE
+  aggregation: COUNT_DISTINCT_AUTHOR_WORK_PAIR
+  null_publication_year_rule: EXCLUDE_AND_REPORT
+  missing_or_nonmatching_primary_topic_or_field_rule: EXCLUDE_AND_REPORT
+  paratext_rule: EXCLUDE_AND_REPORT
+  retraction_rule: EXCLUDE_AND_REPORT
+  null_is_retracted_rule: RETAIN_AND_REPORT
+  duplicate_author_work_event_rule: DEDUPLICATE_AND_REPORT
+  zero_valid_author_token_work_rule: EXCLUDE_AND_REPORT
+  nonprimary_or_unregistered_author_event_rule: EXCLUDE_AND_REPORT
+  source_denominator_filtering: FORBIDDEN
+  source_denominator_mutation: FORBIDDEN
+  complete_window_zero_state: MATURED_NO_PERSISTENCE
+  positive_state: MATURED_PERSISTENCE
+  right_censored_state: RIGHT_CENSORED
+  exact_four_right_censored_rows_expected: 0
+  independent_all_row_replay_required: true
+
+output_contract:
+  root_basename: pivot-feedback-d0-persistence-source-v1-full-20260731
+  artifact_basename: persistence_outcome_source.parquet
+  report_basename: persistence_outcome_source.json
+  markdown_basename: PERSISTENCE_OUTCOME_SOURCE.md
+  receipt_basename: persistence_outcome_source.outputs.json
+  artifact_schema_version: pivot_feedback_d0_persistence_outcome_source.v1
+  report_schema_version: pivot_feedback_d0_persistence_outcome_source_report.v1
+  receipt_schema_version: pivot_feedback_d0_persistence_outcome_source_outputs.v1
+  passing_status: PASS_EXACT_4301_NEW_TOPIC_ENTRY_THREE_YEAR_PERSISTENCE_SOURCE
+  required_rows: 4301
+  required_columns:
+    - certified_episode_index
+    - field_id
+    - topic_id
+    - entry_year
+    - author_numeric_id
+    - observable_history_pivot_state
+    - persistence_followup_complete
+    - target_topic_work_count_t_plus_1
+    - target_topic_work_count_t_plus_2
+    - target_topic_work_count_t_plus_3
+    - target_topic_work_count_t_plus_1_through_t_plus_3
+    - three_year_target_topic_persistence_state
+    - three_year_target_topic_persistent
+  root_mode: "0700"
+  file_mode: "0600"
+  private_numeric_ids_only: true
+  receipt_written_last: true
+
+verification_contract:
+  verifier_must_not_import_producer: true
+  verifier_must_not_use_duckdb: true
+  every_source_partition_must_be_rehashed: true
+  exact_new_topic_entry_denominator_must_be_replayed: true
+  eligible_work_and_author_event_pairs_must_be_replayed: true
+  every_output_row_and_value_must_be_replayed: true
+  exact_output_key_and_schema_required: true
+
+forbidden_inputs_and_outputs:
+  confirmatory_entry_year_read: false
+  episode_field_topic_or_entry_year_substituted: false
+  denominator_row_filtered: false
+  denominator_row_mutated: false
+  history_or_team_threshold_applied: false
+  post_entry_offset_outside_t_plus_1_through_t_plus_3_read: false
+  impact_outcome_read: false
+  citation_outcome_read: false
+  peer_exposure_joined: false
+  association_or_effect_computed: false
+  api_request_created: false
+  paid_api_submitted: false
+  final_candidate_eligibility_established: false
+  g0_measurement_frozen: false
+  model_fitted: false
+  g4_opened: false
+
+claim_boundary: >-
+  This build may materialize only the current-snapshot-annotated t+1 through
+  t+3 persistence counts, state, and boolean for every one of the 4,301
+  independently verified observable-history NEW_TOPIC_ENTRY rows. It must
+  rehash every bound work and author-event partition and preserve the exact
+  denominator. It may not read confirmatory entry years or post-entry offsets
+  outside 1 through 3, filter the denominator, apply a history or team
+  threshold, join citation or peer outcomes, analyze an association, create an
+  API request, establish final eligibility, freeze G0, fit a model, open G4,
+  or establish true researcher-topic persistence, causality, or a scientific
+  effect.

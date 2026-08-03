@@ -1,0 +1,102 @@
+{
+  "schema_version": "pivot_feedback_d0_persistence_outcome_contract_summary.v1",
+  "status": "PASS_INDEPENDENT_D0_PERSISTENCE_OUTCOME_CONTRACT_AND_FIXTURE_REPLAY_NO_PRODUCTION_ROW_READ",
+  "outcome_definition": {
+    "primary_pivot_state": "NEW_TOPIC_ENTRY",
+    "primary_pivot_rows": 4301,
+    "source_classification_rows": 3256271,
+    "outcome_window_offsets": [
+      1,
+      2,
+      3
+    ],
+    "qualifying_count_threshold": 1,
+    "aggregation": "COUNT_DISTINCT_AUTHOR_WORK_PAIR",
+    "team_cap": "NONE",
+    "current_snapshot_annotated_persistence_only": true,
+    "true_researcher_topic_persistence_claim_allowed": false,
+    "nonprimary_rows_materialized": false,
+    "all_primary_pivot_rows_must_be_retained": true
+  },
+  "maturation_and_censoring": {
+    "source_snapshot_date": "2026-03-30",
+    "last_complete_calendar_year": 2025,
+    "matured_rule": "entry_year + 3 <= 2025",
+    "exact_four_all_matured": true,
+    "exact_four_latest_required_outcome_year": 2015,
+    "outcome_states": [
+      "MATURED_NO_PERSISTENCE",
+      "MATURED_PERSISTENCE",
+      "RIGHT_CENSORED"
+    ],
+    "partial_positive_work_may_override_right_censoring": false,
+    "right_censored_counts": null,
+    "right_censored_boolean": null,
+    "g0_final_freeze_status": "PENDING"
+  },
+  "independent_validation": {
+    "repository_bindings_validated": 11,
+    "operator_receipts_read": 3,
+    "operator_parquet_files_opened": 0,
+    "production_classification_rows_read": 0,
+    "production_post_entry_rows_read": 0,
+    "fixture_count": 2,
+    "fixture_row_mismatches": 0,
+    "fixture_accounting_mismatches": 0,
+    "fixture_outcome_states": [
+      "MATURED_NO_PERSISTENCE",
+      "MATURED_PERSISTENCE",
+      "RIGHT_CENSORED"
+    ],
+    "partial_positive_right_censored_fixture_passed": true,
+    "complete_fixture": {
+      "input_classification_rows": 6,
+      "primary_pivot_rows": 5,
+      "nonprimary_rows_excluded": 1,
+      "registered_primary_distinct_author_work_rows": 3,
+      "persistent_primary_rows": 1,
+      "nonpersistent_primary_rows": 4,
+      "duplicate_author_work_event_excess_rows": 1,
+      "excluded_missing_publication_year_rows": 1,
+      "excluded_wrong_topic_or_field_rows": 2,
+      "excluded_paratext_or_work_type_rows": 1,
+      "excluded_retracted_rows": 1,
+      "excluded_temporal_disposition_rows": 1,
+      "excluded_zero_valid_author_token_rows": 1
+    },
+    "censor_fixture": {
+      "primary_pivot_rows": 1,
+      "right_censored_primary_rows": 1,
+      "partial_positive_work_present": true,
+      "persistence_boolean": null
+    }
+  },
+  "repository_artifacts": {
+    "contract": {
+      "relative_path": "experiments/configs/pivot_feedback_d0_persistence_outcome_contract_v1.yaml",
+      "sha256": "177fd11366c36143f601743a27afb952b1482c2f90bc536b95787e114c482b6c"
+    },
+    "validator": {
+      "relative_path": "scripts/verify_pivot_feedback_d0_persistence_outcome_contract_v1.py",
+      "sha256": "48b60622f8c806e5556fa2456e40d0950f5f77260d0a07a36f1002b8d9f41e4a"
+    }
+  },
+  "operator_bindings": {
+    "cutoff_work_metadata_receipt_sha256": "91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e",
+    "author_work_events_receipt_sha256": "7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8",
+    "production_classification_receipt_sha256": "b9b064842ee2b71db8974ff9bef74f7c4bb9aa06f7cf588aec34eacaa3a812de",
+    "production_classification_artifact_sha256": "32930717841455afabf79c093356ecfced94047be7a429afa4194e3606ab5f66"
+  },
+  "authorization": {
+    "contract_fixture_validation": "COMPLETE_INDEPENDENTLY_VALIDATED",
+    "production_post_entry_source_build": "NOT_AUTHORIZED_BY_CONTRACT_ALONE",
+    "discovery_outcome_analysis_or_interpretation": "NOT_AUTHORIZED",
+    "new_api_request_creation": "NOT_AUTHORIZED",
+    "final_candidate_eligibility": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "The exact 4,301-row observable-history NEW_TOPIC_ENTRY denominator, t+1 through t+3 current-snapshot-annotated work outcome, frozen ABI, missingness accounting, maturation, right-censoring, private output, and independent replay contract pass metadata and synthetic-fixture validation. No production Parquet or post-entry row was opened, no API request was created, and no persistence result, association, causal mechanism, scientific effect, final eligibility, G0, model, or G4 claim is established."
+}

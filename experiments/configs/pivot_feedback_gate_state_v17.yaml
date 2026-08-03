@@ -1,0 +1,143 @@
+schema_version: pivot_feedback_gate_state.v17
+label: pivot_feedback_gate_state_v17
+mode: ADDITIVE_T10543_LOCAL_ROUTING_CLOSEOUT_AND_RULE_V2_REPLAY_AUTHORIZATION
+status: VALID_T10543_LOCAL_ROUTING_UNRESOLVED_PERSISTENT_OPAQUE_RULE_GAP_IDENTIFIED_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v16.yaml
+  sha256: a1329781dc5e88f66535d04a6d265b4e42a45fd507e48dee5fbd4535ec34caf0
+  required_schema_version: pivot_feedback_gate_state.v16
+  required_status: VALID_PRODUCTION_CANDIDATE_RULE_FROZEN_EXACT_T10543_LOCAL_SAMPLE_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  mutation_allowed: false
+
+t10543_local_routing_evidence:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_t10543_local_routing_v1.yaml
+    sha256: 14b46f0f56e6f5ba37d61bfc21b8ecaf2d5ce122ea833dcb88d00c72b122fdde
+    required_schema_version: pivot_feedback_d0_t10543_local_routing_config.v1
+    required_status: FROZEN_T10543_LOCAL_ROUTING_DRY_RUN_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_t10543_local_routing_v1.py
+    sha256: 9ac07fb34ad057133ad0a57e6bd52ed6aa094b2187a7e1fc63892fc806f072d3
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_t10543_local_routing_v1.py
+    sha256: 93b4f3cd9191596055b40ac9f9ebbe6064bda50eb07f5e1464aa960282e29f84
+    mutation_allowed: false
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_t10543_local_routing_20260729.summary.json
+    sha256: 903729c9e254fb8c91a8649705df75f60370fde843247c9cc9ba134751b28227
+    required_schema_version: pivot_feedback_d0_t10543_local_routing_summary.v1
+    required_status: PASS_INDEPENDENT_T10543_LOCAL_ROUTING_AND_CANDIDATE_V1_DRY_RUN
+    mutation_allowed: false
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_t10543_local_routing_20260729.summary.md
+    sha256: 60fe3998330ac179c7b90c24be1ba1ad9326548878956d99f08ecb1f1011005d
+    mutation_allowed: false
+  operator_local:
+    root_basename: pivot-feedback-d0-t10543-local-routing-v1-20260729
+    receipt_basename: t10543_local_routing.outputs.json
+    receipt_sha256: f75531cb7d46510885ec63dff7d7b634ce94240452ed57ce5bf06eb931d81370
+    receipt_status: PASS_ZERO_COST_T10543_LOCAL_ROUTING_AND_CANDIDATE_DRY_RUN
+    verification_basename: pivot-feedback-d0-t10543-local-routing-v1-20260729.verification-v1.json
+    verification_sha256: d898de1da97fb214271788384dd5a252017429c6cd087c873b3bdc4ac1c3240c
+    verification_status: PASS_INDEPENDENT_T10543_LOCAL_ROUTING_AND_CANDIDATE_V1_DRY_RUN
+
+observed_result:
+  field_id: 27
+  field_candidate_rank: 2
+  topic_id: 10543
+  entry_year: 1993
+  recent_title_rows: 64
+  recent_rule_accept_rows: 8
+  recent_rule_reject_rows: 1
+  recent_informative_ambiguous_rows: 3
+  recent_opaque_quarantine_rows: 52
+  recent_opaque_quarantine_fraction: 0.8125
+  recent_opaque_dominant_source_share: 1.0
+  recent_opaque_median_primary_topic_score: 0.03645
+  candidate_rule_v1_state: WOULD_CONTENT_UNRESOLVED
+  production_content_state: CONTENT_UNRESOLVED
+  production_disposition_created: false
+
+rule_gap:
+  label: PERSISTENT_OPAQUE_INDEXING_CONTAMINATION_ALREADY_PRESENT_AT_BASELINE
+  candidate_rule_v1_joint_indexing_anomaly_flag: false
+  explanation: >-
+    Candidate rule v1 requires both a baseline-to-signal topic-score drop and a
+    dominant-source-share increase. The baseline is already dominated by
+    low-score opaque archival identifiers, so the score-drop branch cannot
+    identify the unusable recent sample.
+  simplest_candidate_rule_v2_proposal:
+    new_precedence_first_branch: RECENT_OPAQUE_QUARANTINE_FRACTION_AT_OR_ABOVE_HALF
+    threshold: 0.50
+    resulting_state: WOULD_CONTENT_FAIL_INDEXING_ANOMALY
+    reason: RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS
+    source_name_required_for_decision: false
+    primary_topic_score_required_for_decision: false
+    semantic_api_label_required_for_decision: false
+    amendment_is_post_diagnostic: true
+    retrospective_replay_required_before_production_use: true
+
+api_decision:
+  opaque_rows_sent_to_api: 0
+  new_api_request_creation: NOT_AUTHORIZED
+  reason: OPAQUE_IDENTIFIERS_CONTAIN_NO_TITLE_SEMANTICS
+  informative_ambiguous_rows: 3
+  informative_ambiguous_rows_do_not_resolve_majority_opaque_sample: true
+
+gate_state:
+  D0:
+    state: PARTIAL_T10543_V1_UNRESOLVED_RULE_V2_RETROSPECTIVE_REPLAY_AUTHORIZED
+    complete: false
+    completed_components:
+      - D0_EXACT_T10543_96_TITLE_SAMPLE
+      - D0_T10543_LOCAL_TOPIC_CARD_ROUTING
+      - D0_T10543_CANDIDATE_RULE_V1_AGGREGATION
+      - D0_T10543_LOCAL_ROUTING_INDEPENDENT_VERIFICATION
+    blocked_components:
+      - T10543_PRODUCTION_CONTENT_DISPOSITION
+      - MEDICINE_FIELD_CERTIFICATE
+      - GLOBAL_SELECTION_CERTIFICATE
+      - DETERMINISTIC_EPISODE_RESELECTION_SUCCESSOR
+      - REBUILT_AUTHOR_OPPORTUNITY_PANEL
+      - PRODUCTION_RESEARCHER_PIVOT_CLASSIFICATION
+    authorizes:
+      - D0_CANDIDATE_RULE_V2_POST_DIAGNOSTIC_AMENDMENT_DESIGN
+      - D0_CANDIDATE_RULE_V2_ZERO_COST_FIVE_CANDIDATE_RETROSPECTIVE_REPLAY
+  G0:
+    state: PENDING
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  d0_t10543_local_routing: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_candidate_rule_v2_post_diagnostic_amendment_design: AUTHORIZED
+  d0_candidate_rule_v2_five_candidate_retrospective_replay: AUTHORIZED_ZERO_COST_ONLY
+  d0_new_title_extraction: NOT_AUTHORIZED
+  d0_raw_openalex_title_scan: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_exception_submission: NOT_AUTHORIZED
+  d0_candidate_rule_v2_production_freeze: NOT_AUTHORIZED_UNTIL_RETROSPECTIVE_REPLAY_VERIFIED
+  d0_t10543_production_content_disposition: NOT_AUTHORIZED_UNTIL_RULE_V2_REPLAY_VERIFIED
+  d0_global_selection_certificate: NOT_AUTHORIZED
+  d0_episode_reselection_successor: NOT_AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This additive successor closes the exact T10543 local-routing dry-run and
+  records that candidate rule v1 remains unresolved because most recent titles
+  are opaque indexing artifacts already present at baseline. It authorizes
+  only a post-diagnostic rule-v2 design and zero-cost retrospective replay
+  across the five already sampled candidates. It does not authorize new title
+  extraction, an API request, a production rule or disposition, a selection
+  certificate, reselection, outcomes, fitting, G4, semantic truth, or a
+  scientific effect.

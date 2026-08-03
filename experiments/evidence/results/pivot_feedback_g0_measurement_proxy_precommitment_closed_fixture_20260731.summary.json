@@ -1,0 +1,108 @@
+{
+  "schema_version": "pivot_feedback_g0_measurement_proxy_precommitment_summary.v1",
+  "status": "PASS_FOUR_OUTCOME_BLIND_MEASUREMENT_PROXY_CHOICES_AND_CLOSED_FIXTURE",
+  "source_replay": {
+    "predecessor_choices_null": [
+      "attention_surge_threshold",
+      "public_success_threshold",
+      "citation_maturation_lag_years",
+      "negative_control_equivalence_margins"
+    ],
+    "negative_control_ids": [
+      "lead_attention",
+      "same_peer_unrelated_topic_success",
+      "post_decision_future_citation_success",
+      "future_tie",
+      "degree_preserving_shuffled_network",
+      "matched_non_neighbor",
+      "matched_non_surge_topic"
+    ],
+    "persistence_horizon_years": 3,
+    "citation_current_snapshot_proxy_only": true
+  },
+  "choice_replay": {
+    "choice_count": 4,
+    "attention_modified_z_threshold": 3.0,
+    "public_success_target_fraction": 0.1,
+    "citation_maturation_lag_years": 3,
+    "negative_control_practical_null": [
+      -0.01,
+      0.01
+    ],
+    "tost_one_sided_alpha": 0.05
+  },
+  "fixture_replay": {
+    "attention_group_count": 2,
+    "attention_primary_surge_count": 1,
+    "attention_mad_zero_group_count": 1,
+    "citation_group_count": 3,
+    "citation_unresolved_group_count": 1,
+    "citation_inclusive_tie_inflation_total": 1,
+    "citation_maturation_lag_years": 3,
+    "negative_control_practical_null": [
+      -0.01,
+      0.01
+    ]
+  },
+  "application_tool": {
+    "relative_path": "scripts/apply_pivot_feedback_g0_measurement_proxy_precommitment_v1.py",
+    "sha256": "d2a6abe9915c1598d29e1c6c8dab3e8e9cbf331328dc47cea9c4b8c71ca24cc7",
+    "row_data_library_imports": []
+  },
+  "lifecycle_replay": {
+    "discovery_production_application_run": false,
+    "g0_v2_changed": false,
+    "resolved_choice_count_in_contract": 4,
+    "remaining_choice_count_after_future_binding": 13,
+    "confirmatory_or_holdout_rows_read": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "access_accounting": {
+    "repository_yaml_documents_read": 5,
+    "repository_json_documents_read": 2,
+    "repository_text_documents_read": 1,
+    "synthetic_fixture_files_read": 2,
+    "operator_directories_listed_or_scanned": 0,
+    "operator_json_metadata_files_read": 0,
+    "parquet_files_opened": 0,
+    "production_row_level_files_opened": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "repository_artifacts": {
+    "contract": {
+      "relative_path": "experiments/configs/pivot_feedback_g0_measurement_proxy_precommitment_v1.yaml",
+      "sha256": "2e4d90a9541cd9973b8a69bf5fb34f6f35c3d1570a12a4c46b37cac77cca6b5f"
+    },
+    "application_tool": {
+      "relative_path": "scripts/apply_pivot_feedback_g0_measurement_proxy_precommitment_v1.py",
+      "sha256": "d2a6abe9915c1598d29e1c6c8dab3e8e9cbf331328dc47cea9c4b8c71ca24cc7",
+      "row_data_library_imports": []
+    },
+    "validator": {
+      "relative_path": "scripts/verify_pivot_feedback_g0_measurement_proxy_precommitment_v1.py",
+      "sha256": "2a16fae8096130e081c28f1e754f079bbc1b5f6ca0a40f12b2edca61482e4c00"
+    },
+    "fixture_input": {
+      "relative_path": "tests/fixtures/pivot_feedback_g0_measurement_proxy_discovery_v1.input.json",
+      "sha256": "cb743ada474346e7abdc730d26b44e9955e1207189d6537dc6f33827867e18be"
+    },
+    "fixture_expected": {
+      "relative_path": "tests/fixtures/pivot_feedback_g0_measurement_proxy_discovery_v1.expected.json",
+      "sha256": "fe0f83842bc8c2d3685ed02260169ff93a1d562845af407b9691983dd7773a82"
+    }
+  },
+  "authorization": {
+    "four_choice_contract": "COMPLETE_INDEPENDENTLY_VALIDATED_FIXTURE_ONLY",
+    "discovery_production_application": "REQUIRES_SUCCESSOR_GATE",
+    "g0_successor_binding": "REQUIRES_SUCCESSOR_GATE",
+    "confirmatory_or_holdout_access": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This outcome-blind contract precommits four measurement/proxy choices and a synthetic fixture interface. The robust-surge threshold, top-decile proxy, three-year horizon, and one-percentage-point equivalence margin are explicit design policies, not literature-mandated truths or empirical effects. The citation proxy uses citing-work publication time from a current snapshot and does not establish platform observation, researcher visibility, or information receipt. No discovery production input is opened, G0 v2 is not changed, the remaining thirteen quantitative choices and all required sections remain unresolved, and no holdout artifact, seal, model, G4 result, causality, or scientific effect is established."
+}

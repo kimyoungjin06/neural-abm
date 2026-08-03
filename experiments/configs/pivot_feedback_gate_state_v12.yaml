@@ -1,0 +1,207 @@
+schema_version: pivot_feedback_gate_state.v12
+label: pivot_feedback_gate_state_v12
+mode: ADDITIVE_API_ONLY_ZERO_COST_TOPIC_ROUTING_FREEZE
+status: VALID_API_ONLY_TOPIC_ROUTING_DRY_RUN_COMPLETE_MANIFEST_NOT_RUN_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v11.yaml
+  sha256: 5b3f888d839dbba95fb8b790938c1235a7d7bc451462245faec4428d34c28feb
+  required_schema_version: pivot_feedback_gate_state.v11
+  required_status: VALID_API_ONLY_DEFINITION_FROZEN_FULL_SCREEN_NOT_RUN_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    api_only_branch.human_review: NOT_RUN_BY_DESIGN
+    gate_state.D0.complete: false
+    authorization.d0_api_only_topic_card_and_request_successor_preparation: AUTHORIZED
+    authorization.d0_api_only_paid_candidate_universe_submission: NOT_AUTHORIZED
+    authorization.d0_production_pivot_classification: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+topic_routing_freeze:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_api_only_topic_routing_v1.yaml
+    sha256: 1c98b50d9e5c9c0cbc1555f41e86ae87a276571195a7125fec9daf85e39c1406
+    required_schema_version: pivot_feedback_d0_api_only_topic_routing_config.v1
+    required_status: FROZEN_ZERO_COST_TOPIC_CARD_ROUTING_DRY_RUN_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_api_only_topic_routing_v1.py
+    sha256: c51d3e6e9035a8d0c7d267a11fe770fe5ebd46a078e6c804e7cb09a72d73619c
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_api_only_topic_routing_v1.py
+    sha256: 6c8dd99e8a20e4af2638c51d5c1897f31f407720c6109b478e29f4948485ed76
+    mutation_allowed: false
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_api_only_topic_routing_dry_run_20260729.summary.json
+    sha256: daca2c6a9a43bb6c1c9e04f4681a16675edee249fe1bea54ec10fba2d1c98833
+    required_schema_version: pivot_feedback_d0_api_only_topic_routing_summary.v1
+    required_status: PASS_INDEPENDENTLY_VERIFIED_ZERO_COST_API_ONLY_TOPIC_ROUTING_DRY_RUN
+    mutation_allowed: false
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_api_only_topic_routing_dry_run_20260729.summary.md
+    sha256: f931c072f609475827266fe31cd652ce167534dfbea4fffb6d70f018b0fb9ce4
+    mutation_allowed: false
+  operator_local_evidence:
+    root_basename: pivot-feedback-d0-api-only-topic-routing-v1-dry-run-20260729
+    receipt_basename: topic_routing_dry_run.outputs.json
+    receipt_sha256: 15a1519d5a32882826847bb3aeded0b21f5e3257c9fb29a38da15adb9c93b7d5
+    artifact_tree_sha256: 907408d4917dc99d00f89ba65ffc69376668de39a9556d567eb4885bcfe7786b
+    verification_report_basename: pivot-feedback-d0-api-only-topic-routing-v1-dry-run-20260729.verification-v1.json
+    verification_report_sha256: bb99f403a18a4d5fcf9f5377da082ba3e980882f7514eaa1e139c9a801098a82
+    verification_status: PASS_INDEPENDENT_ZERO_COST_API_ONLY_TOPIC_ROUTING_DRY_RUN
+
+routing_result:
+  scope: FROZEN_384_TITLE_DIAGNOSTIC_SAMPLE_ONLY
+  sample_rows: 384
+  topic_card_count: 4
+  no_api_rule_accept_rows: 229
+  no_api_rule_reject_rows: 24
+  api_required_ambiguous_rows: 94
+  quarantine_unresolved_rows: 37
+  avoided_api_request_rows: 290
+  counterfactual_api_request_rows: 94
+  api_request_avoidance_fraction: "0.755208"
+  network_accessed: false
+  credentials_accessed: false
+  api_requests_submitted: 0
+  api_cost_usd: "0.000000"
+  rules_are_ground_truth: false
+  prior_api_labels_are_ground_truth: false
+  accuracy_established: false
+  error_rate_established: false
+  candidate_universe_screen_complete: false
+  complete_candidate_work_manifest_materialized: false
+  production_dispositions_authorized: false
+
+gate_state:
+  G_MINUS_1A:
+    state: PASS_BOUNDED
+    complete: true
+    authorizes: [S0]
+  S0:
+    state: PASS_THRESHOLD_FREE_INVENTORY
+    complete: true
+    authorizes: [D0]
+  D0:
+    state: PARTIAL_API_ONLY_TOPIC_ROUTING_DRY_RUN_COMPLETE_MANIFEST_NOT_RUN
+    complete: false
+    requires: [S0]
+    entry_year_end: 2012
+    completed_components:
+      - D0_OUTCOME_BLIND_MEASUREMENT_ABI_FREEZE
+      - D0_OUTCOME_BLIND_TWO_FIELD_FOUR_EPISODE_RESELECTION
+      - D0_AUTOMATED_CONTENT_AND_INDEXING_EXTRACTION
+      - D0_DUAL_PINNED_MODEL_BATCH_EXECUTION
+      - D0_VALID_384_BY_2_STRUCTURED_API_RESPONSE_INGESTION
+      - D0_CROSS_PROVIDER_DIAGNOSTIC_COMPARISON
+      - D0_STRICT_197_AND_QUARANTINED_187_API_ONLY_REDUCTION
+      - D0_SIMPLE_PAST_ONLY_RESEARCHER_PIVOT_DEFINITION_FREEZE
+      - D0_FOUR_TOPIC_INCLUSION_EXCLUSION_CARD_FREEZE
+      - D0_ZERO_COST_384_TITLE_LOCAL_ROUTING_DRY_RUN
+      - D0_INDEPENDENT_LOCAL_ROUTING_REPLAY
+    not_run_by_design:
+      - TWO_INDEPENDENT_HUMAN_CALIBRATION_AND_ESCALATION_REVIEWS
+      - THIRD_PARTY_HUMAN_DISAGREEMENT_ADJUDICATION
+      - HUMAN_CALIBRATED_API_ERROR_RATE_ESTIMATION
+    blocked_components:
+      - COMPLETE_TITLE_BEARING_CANDIDATE_WORK_MANIFEST
+      - COMPLETE_CANDIDATE_UNIVERSE_LOCAL_ROUTING
+      - COMPLETE_CANDIDATE_UNIVERSE_API_EXCEPTION_QUEUE
+      - PAID_CROSS_PROVIDER_API_EXCEPTION_SCREEN
+      - API_UNRESOLVED_CANDIDATE_QUARANTINE_RECEIPT
+      - COMPLETE_CANDIDATE_UNIVERSE_RESELECTION_SUCCESSOR
+      - REBUILT_AUTHOR_OPPORTUNITY_PANEL
+      - PRODUCTION_RESEARCHER_PIVOT_CLASSIFICATION
+      - INCUMBENT_AND_NETWORK_MEASUREMENTS
+    authorizes:
+      - D0_COMPLETE_CANDIDATE_WORK_MANIFEST_DESIGN
+      - D0_ZERO_COST_CANDIDATE_WORK_MANIFEST_MATERIALIZATION
+      - D0_ZERO_COST_COMPLETE_MANIFEST_LOCAL_ROUTING
+  G0:
+    state: PENDING
+    complete: false
+  G0_5:
+    state: NOT_RUN
+    complete: false
+  G1:
+    state: NOT_RUN
+    complete: false
+  G2:
+    state: NOT_RUN
+    complete: false
+  G3:
+    state: NOT_RUN
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+  G5:
+    state: NOT_RUN_OPTIONAL
+    complete: false
+
+authorization:
+  d0_zero_cost_384_topic_routing_dry_run: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_human_review: NOT_RUN_BY_DESIGN
+  d0_complete_candidate_work_manifest_design: AUTHORIZED
+  d0_zero_cost_candidate_work_manifest_materialization: AUTHORIZED
+  d0_zero_cost_complete_manifest_local_routing: AUTHORIZED
+  d0_paid_api_exception_submission: NOT_AUTHORIZED
+  d0_api_exception_response_ingestion: NOT_AUTHORIZED
+  d0_episode_reselection_successor: NOT_AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  final_panel_materialization: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+next_required_implementation:
+  gate: D0_COMPLETE_TITLE_BEARING_CANDIDATE_WORK_MANIFEST
+  required_order:
+    - freeze_complete_candidate_work_universe_definition
+    - materialize_title_bearing_candidate_works_for_all_candidate_topic_year_windows
+    - independently_verify_ids_windows_deduplication_provenance_and_counts
+    - apply_frozen_local_router_to_complete_manifest_without_api_submission
+    - freeze_actual_api_exception_count_and_provider_cost_estimate
+    - obtain_explicit_paid_submission_authorization
+    - prepare_and_execute_pinned_cross_provider_exception_screen
+    - quarantine_every_unresolved_candidate
+    - independently_verify_full_screen_receipt
+    - deterministically_reselect_attention_episodes
+    - rebuild_author_opportunity_panel
+    - classify_observable_history_new_topic_pivots
+  existing_70277_rows_are_topic_year_candidates_not_candidate_works: true
+  api_required_for_every_candidate: false
+  human_review_may_be_claimed_complete: false
+  human_accuracy_may_be_reported: false
+  api_or_rule_accuracy_may_be_reported: false
+  unresolved_candidates_may_be_forced_to_decisive_label: false
+  paid_submission_may_run_from_this_ledger: false
+  current_384_sample_may_be_treated_as_candidate_universe: false
+  current_episode_set_may_be_reused_as_final: false
+  current_author_panel_may_be_reused_as_final: false
+  pivot_distance_may_gate_primary_event: false
+  persistence_may_enter_primary_event: false
+  entry_or_persistence_outcomes_may_be_opened: false
+  model_fitting_may_begin: false
+  g4_may_open: false
+  gpu_required: false
+
+claim_boundary: >-
+  This additive API-only successor freezes four conservative topic cards and
+  an independently verified zero-cost routing dry-run on the frozen 384-title
+  diagnostic sample. The dry-run routes 229 rows to local accept, 24 to local
+  reject, 94 to an API exception queue, and 37 to unresolved quarantine,
+  avoiding 290 counterfactual API requests. Neither rules nor prior API labels
+  are ground truth, and these counts do not establish accuracy. The 70,277
+  existing rows are topic-year candidates, not title-bearing candidate works.
+  A complete work manifest and complete-manifest local routing may now be built
+  without API submission. Paid API screening, response ingestion, production
+  dispositions, deterministic episode reselection, author-panel rebuilding,
+  production pivot classification, outcomes, D0 completion, G0, fitting, G4,
+  and scientific effects remain not run, unauthorized, incomplete, sealed, or
+  not established. Human review remains not run by design.

@@ -1,0 +1,106 @@
+schema_version: pivot_feedback_d0_t10151_rank5_cross_provider_result_config.v1
+label: pivot_feedback_d0_t10151_rank5_cross_provider_result_v1
+mode: PRECOMMITTED_DUAL_HIGH_RESULT_REDUCTION
+status: FROZEN_VERIFIED_INPUT_BINDINGS_RESULT_REDUCTION_AUTHORIZED
+
+contract_parent:
+  relative_path: experiments/configs/pivot_feedback_d0_t10151_rank5_cross_provider_v2.yaml
+  sha256: 14fcbdf79f218d0a1169a6369856aa6e75afaf3d4d0076fac4871857302c1565
+  required_schema_version: pivot_feedback_d0_t10151_rank5_cross_provider_config.v2
+  required_status: FROZEN_RANK5_TRANSPORT_ONLY_SUCCESSOR_NOT_SUBMITTED
+  required_inherited_fields:
+    review_contract.consensus_accept: BOTH_LABEL_ON_TOPIC_AND_CONFIDENCE_HIGH
+    review_contract.consensus_reject: BOTH_LABEL_OFF_TOPIC_AND_CONFIDENCE_HIGH
+    review_contract.all_other_results: REMAIN_UNRESOLVED
+    review_contract.local_recent_accept_rows: 27
+    review_contract.local_recent_reject_rows: 12
+    review_contract.local_recent_unresolved_rows: 25
+    review_contract.recent_denominator_rows: 64
+    review_contract.pass_lower_bound_rows: 32
+    review_contract.fail_lower_bound_rows: 32
+    review_contract.human_review: NOT_RUN_BY_DESIGN
+    review_contract.api_labels_are_ground_truth: false
+
+frozen_inputs:
+  prepared:
+    root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v2-prepared-20260730
+    request_key_basename: request_key.csv
+    request_key_sha256: 2f80a6cc49c2d0ec79e5cd2a946b328b307eddfe39156618dc221439d67c876a
+    receipt_basename: cross_provider_preparation.outputs.json
+    receipt_sha256: c1184a929a4e7b0f54b688dac3c63a5798922757b8eb1399e9eb4f8be89260ed
+    verification_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v2-prepared-20260730.verification-v2.json
+    verification_sha256: 2df7cb6e0375f63a6e877eb3e6818d32ed61b1e9a93dd5b131e820c9fff89a60
+    rows: 25
+  execution:
+    root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v2-execution-20260730
+    openai_response_basename: openai_response.json
+    openai_response_sha256: 17e0da76994c0e196d96d29a05a55fdd952f14b80bdb87dcac9390baccf5b305
+    claude_response_basename: claude_response.json
+    claude_response_sha256: 3ec16ca70b2a58bfdd89e15ef3d4f7059026571bd08ed31ce3845d53cb4fcb20
+    receipt_basename: cross_provider_execution.outputs.json
+    receipt_sha256: 1d300314de46d67c0226236fae21a8821035e0de8a17abc3efa9515ba8376527
+    receipt_status: PASS_RANK5_CROSS_PROVIDER_TRANSPORT_SUCCESSOR_EXECUTION_COMPLETE
+    provider_calls: 2
+    rows_per_provider: 25
+
+reduction_contract:
+  required_item_id_set: EXACT_REQUEST_KEY_SET
+  duplicate_item_action: FAIL_CLOSED
+  missing_item_action: FAIL_CLOSED
+  invalid_label_or_confidence_action: FAIL_CLOSED
+  accept_route:
+    openai_label: ON_TOPIC
+    openai_confidence: HIGH
+    claude_label: ON_TOPIC
+    claude_confidence: HIGH
+  reject_route:
+    openai_label: OFF_TOPIC
+    openai_confidence: HIGH
+    claude_label: OFF_TOPIC
+    claude_confidence: HIGH
+  fallback_route: API_REMAINS_UNRESOLVED
+  disposition_precedence:
+    - INDEXING_ANOMALY_IF_PREEXISTING_BRANCH_FIRES
+    - CONTENT_FAIL_IF_AUGMENTED_REJECT_ROWS_AT_LEAST_32
+    - CONTENT_PASS_IF_AUGMENTED_ACCEPT_ROWS_AT_LEAST_32
+    - CONTENT_UNRESOLVED_OTHERWISE
+  indexing_anomaly_preexisting_flag: false
+  local_accept_rows: 27
+  local_reject_rows: 12
+  local_unresolved_rows: 25
+  denominator_rows: 64
+  accept_threshold_rows: 32
+  reject_threshold_rows: 32
+  result_can_create_production_disposition: false
+  result_can_issue_certificate: false
+  human_review: NOT_RUN_BY_DESIGN
+
+output_contract:
+  root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v2-results-20260730
+  decisions_basename: rank5_cross_provider_decisions.csv
+  candidate_basename: rank5_augmented_candidate.json
+  summary_basename: rank5_cross_provider_result_summary.json
+  report_basename: API_RESULT_SUMMARY.md
+  manifest_basename: result_manifest.json
+  receipt_basename: cross_provider_result.outputs.json
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+authorization:
+  exact_result_reduction: AUTHORIZED
+  independent_result_verification: REQUIRED
+  production_disposition: NOT_AUTHORIZED_UNTIL_RESULT_VERIFIED_AND_SUCCESSOR_GATE
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  human_review: NOT_RUN_BY_DESIGN
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  The reducer may only replay the frozen dual-HIGH rule over the two bound raw
+  responses. It may report an augmented candidate state but cannot create a
+  production disposition or certificate. API labels are bounded title-only
+  evidence, not expert ground truth. Human review remains not run by design.

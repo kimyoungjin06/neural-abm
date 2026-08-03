@@ -1,0 +1,60 @@
+schema_version: openalex_g1_canonical_work_time_spine_capacity_review_input.v1
+status: ANALYTIC_ESTIMATE_ONLY_EMPIRICAL_BENCHMARK_NOT_RUN
+gate_status: NOT_PASSED
+production_execution_status: PRODUCTION_NOT_RUN
+
+frozen_contract_binding:
+  config_path: experiments/configs/openalex_g1_canonical_work_time_spine_v2.yaml
+  config_sha256: 6e8b74ddd12cbef46c8d15d3560f0d54f470b5017685fc1bce2389250cde0484
+  runner_path: scripts/audit_openalex_canonical_work_time_spine_v3.py
+  runner_sha256: bf9ed534b2e9f9c2d6c9851be7fde298eb372d8a3cf5e17363ea6afe51cf1280
+  runner_import_or_execution_allowed: false
+
+hardware_observation:
+  observed_at: "2026-07-20T17:11:18+09:00"
+  observation_scope: CONTROL_PLANE_ONLY_NO_SOURCE_PAYLOAD_OPENED
+  output_mount_class: LOCAL_NVME_EXT4
+  output_device_model: Samsung_SSD_990_PRO_4TB
+  output_device_st_dev: 66309
+  output_filesystem_total_bytes: 3936818806784
+  output_filesystem_available_bytes: 3657099960320
+  source_mount_class: LOCAL_ROTATIONAL_SATA_NTFS
+  source_device_model: ST8000DM004_2U9188
+  source_device_st_dev: 2050
+  source_and_output_device_ids_distinct: true
+  mem_total_bytes: 1068911706112
+  mem_available_bytes: 1037850583040
+  nofile_soft_limit: 1048576
+  nofile_hard_limit: 1048576
+  atomic_rename_fsync_probe_at_observation: NOT_RUN
+  source_drive_health_review_at_observation: NOT_RUN
+  source_quiet_window_review_at_observation: NOT_RUN
+  sequential_throughput_benchmark_at_observation: NOT_RUN
+  downstream_pipeline_benchmark_at_observation: NOT_RUN
+  snapshot_is_not_execution_preflight: true
+
+hypothetical_rate_floor_scenario:
+  scenario_id: conservative_unvalidated_planning_v0
+  status: UNVALIDATED_ASSUMPTIONS_NOT_MEASURED_FLOORS
+  sequential_read_bytes_per_second: 67108864
+  sequential_write_bytes_per_second: 67108864
+  sha256_bytes_per_second: 67108864
+  demultiplex_records_per_second: 250000
+  stable_sort_records_per_second: 250000
+  worst_case_heap_merge_records_per_second: 100000
+  parquet_encode_records_per_second: 250000
+  parquet_decode_records_per_second: 250000
+  data_file_fsync_operations_per_second: 50
+  artifact_contracts_per_second: 100
+  additive_time_safety_multiplier_milli: 2000
+  rates_are_hypothetical_not_benchmarked: true
+  conditional_estimates_are_not_unconditional_time_bounds: true
+
+review_state:
+  empirical_benchmark_status: NOT_RUN
+  operator_acceptance_status: NOT_RECORDED
+  independent_review_status: PENDING
+  downstream_capacity_gate_status: NOT_PASSED
+  full_authorization_status: NOT_GRANTED
+  analytic_output_must_not_mutate_any_gate: true
+  analytic_output_must_not_be_used_as_production_receipt_parent: true

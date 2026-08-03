@@ -1,0 +1,100 @@
+{
+  "schema_version": "pivot_feedback_d0_certified_predecision_author_measurement_summary.v1",
+  "status": "PASS_INDEPENDENT_EXACT_FOUR_AUTHOR_MEMBERSHIP_CONSOLIDATED_TEMPORAL_LEAKAGE_AUDIT",
+  "scope": {
+    "exact_certified_episode_rows": 4,
+    "author_episode_rows": 3256271,
+    "measurement_columns": 74,
+    "registered_measurement_members": 3256271,
+    "membership_rule": "EXACT_VERIFIED_AUTHOR_OPPORTUNITY_BASE_V1",
+    "single_minimum_history_threshold_selected": false,
+    "threshold_specific_membership_flags_materialized": false,
+    "graph_team_cap_profiles_retained_nonranked": [
+      10,
+      50,
+      100
+    ],
+    "graph_team_cap_selected": false
+  },
+  "availability_registry": {
+    "IDENTIFIER_OPERATOR_LOCAL": 5,
+    "PREDECISION_T_MINUS_1": 51,
+    "REGISTERED_MEMBERSHIP": 1,
+    "CURRENT_SNAPSHOT_SENSITIVITY": 5,
+    "CURRENT_SNAPSHOT_WORK_TIME_PROXY": 12,
+    "unclassified_columns": 0,
+    "current_snapshot_sensitivity_mislabeled_predecision": 0
+  },
+  "independent_replay": {
+    "producer_engine": "DUCKDB_HASH_JOIN",
+    "verifier_engine": "PYARROW_SORT_INDICES_AND_EXACT_ARRAY_COMPARISON",
+    "verifier_imports_producer_module": false,
+    "author_opportunity_value_column_mismatches": 0,
+    "leaveout_prior_peer_value_column_mismatches": 0,
+    "identity_affiliation_value_column_mismatches": 0,
+    "identity_peer_count_cross_component_mismatches": 0,
+    "component_bidirectional_key_differences": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "output_keys_globally_strict_sorted_unique": true
+  },
+  "temporal_leakage_audit": {
+    "forbidden_measurement_columns": [],
+    "structural_membership_predicate_failures": 0,
+    "first_target_topic_year_after_t_minus_1_violations": 0,
+    "nonranked_cap_monotonicity_violation_families": 0,
+    "entry_or_persistence_rows_read": false,
+    "realized_citation_outcome_rows_read": false,
+    "peer_visible_success_computed": false,
+    "current_snapshot_orcid_role": "SENSITIVITY_ONLY",
+    "affiliation_role": "SECONDARY_CURRENT_SNAPSHOT_WORK_TIME_PROXY",
+    "raw_numeric_ids_role": "PRIVATE_OPERATOR_LOCAL_ONLY",
+    "api_requests_created": 0
+  },
+  "current_snapshot_sensitivity_counts": {
+    "orcid_stable_single_valid_token_author_episode_rows": 840608,
+    "raw_authorship_observed_author_episode_rows": 3256271,
+    "institution_comparable_prior_peer_cap_100_author_episode_rows": 144967,
+    "same_affiliation_bridge_cap_100_author_episode_rows": 113234
+  },
+  "repository_artifacts": {
+    "config": {
+      "relative_path": "experiments/configs/pivot_feedback_d0_certified_predecision_author_measurement_v1.yaml",
+      "sha256": "410dbf7b2c23aa178e552148bfba3619b888f9d0213a97ae825d2606bced29e9"
+    },
+    "producer": {
+      "relative_path": "scripts/build_pivot_feedback_d0_certified_predecision_author_measurement_v1.py",
+      "sha256": "fa9046c5c1b7549554d3086fc828352b8fe24440a0f07291f4ec4914558f9226"
+    },
+    "verifier": {
+      "relative_path": "scripts/verify_pivot_feedback_d0_certified_predecision_author_measurement_v1.py",
+      "sha256": "6bcb8e82974fb90ebfd52b0d8b73e42fade999e61236404cd1c518ffdc4995ea"
+    }
+  },
+  "operator_local": {
+    "root_basename": "pivot-feedback-d0-certified-predecision-author-measurement-v1-20260731",
+    "receipt_basename": "certified_predecision_author_measurement.outputs.json",
+    "receipt_sha256": "45c594da3ff0531856f50518226f92545851d26d81753bc66d030aac31032f3c",
+    "measurement_basename": "predecision_author_measurement.parquet",
+    "measurement_sha256": "9797fed53311742eaee0adf19e46d88094c9eb17a2b8aae71b9362ab5456b081",
+    "column_registry_basename": "column_availability_registry.json",
+    "column_registry_sha256": "f5472642b9c5e54729f1790fd4b2811d6702788b40cb6d3e3b6fff4a98573bc2",
+    "verification_basename": "pivot-feedback-d0-certified-predecision-author-measurement-v1-20260731.verification-v1.json",
+    "verification_sha256": "7b8e975f45111ee61a36dfafe7c0199023ea3fe0168ca2e3d2d8a7a9710c9a7b"
+  },
+  "authorization": {
+    "membership_rule_independently_verified": true,
+    "consolidated_predecision_join_independently_verified": true,
+    "temporal_leakage_audit_complete": true,
+    "successor_gate_may_decide_measurement_completeness": true,
+    "measurement_completeness_established_by_verifier_alone": false,
+    "production_pivot_classification_authorized": false,
+    "discovery_outcome_opening_authorized": false,
+    "model_fitting_authorized": false,
+    "g4_open": false
+  },
+  "claim_boundary": "This independent pass establishes exact preservation of the three verified author components, the threshold-free registered measurement population, and explicit temporal classification of every consolidated column. It does not select a history threshold or graph cap, establish final candidate eligibility, open outcomes, classify pivots, fit a model, open G4, or establish a scientific effect."
+}

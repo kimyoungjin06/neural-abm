@@ -1,0 +1,86 @@
+schema_version: pivot_feedback_gate_state.v37
+label: pivot_feedback_gate_state_v37
+mode: ADDITIVE_CERTIFIED_EPISODE_RESELECTION_COMPLETE_OUTCOME_BLIND_PANEL_REBUILD
+status: VALID_CERTIFIED_EPISODE_RESELECTION_COMPLETE_EXACT_OUTCOME_BLIND_PANEL_REBUILD_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v36.yaml
+  sha256: 9f87534d9eebef8ae8079bb752e9cd8da29266f14721247b3f11f13b846ec14d
+  required_schema_version: pivot_feedback_gate_state.v36
+  required_status: VALID_GLOBAL_SELECTION_CERTIFICATE_EXACT_DETERMINISTIC_RESELECTION_SUCCESSOR_AUTHORIZED
+  mutation_allowed: false
+
+verified_reselection:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_certified_episode_reselection_v1.yaml
+    sha256: 8b0677a84b94db5ffca4def3249a71c10833479a72f985e8f3219ce5bea4483b
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_certified_episode_reselection_v1.py
+    sha256: 94d8e5ba87d7500a1fe7e87c1dc28dbdc9f99f764c96c25f796f99b7fa47a0de
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_certified_episode_reselection_v1.py
+    sha256: ecf4eed2e59ffcec8b3b113771a2b03718533ce6b934e3598c7df23d0e1796e8
+  operator_local:
+    root_basename: pivot-feedback-d0-certified-episode-reselection-v1-20260730
+    selection_basename: certified_episode_selection.parquet
+    selection_sha256: 2a24ddc9d6519e653718e53e8751758d2033391e250e0f2ada175747c169ffed
+    decision_basename: certified_episode_reselection.json
+    decision_sha256: 1acb536a049950f69fda4c08101b0267603384869890ca941a940e8f145c981b
+    receipt_basename: certified_episode_reselection.outputs.json
+    receipt_sha256: cc4e7729f4e1c0865fe059ed7a5df5c1f053a5dbe4a2e09e68fe0389e74ec96a
+    receipt_status: PASS_EXACT_FOUR_GLOBAL_CERTIFICATE_BOUND_EPISODE_RESELECTION
+    verification_basename: pivot-feedback-d0-certified-episode-reselection-v1-20260730.verification-v1.json
+    verification_sha256: d1259442e3d2f4e59d42d0e23bf75f1a0a0da046e253fa378cb8d379f7349bc9
+    verification_status: PASS_INDEPENDENT_EXACT_FOUR_CERTIFIED_EPISODE_RESELECTION
+  result:
+    selected_episode_rows: 4
+    retained_episode_rows: 3
+    newly_selected_episode_rows: 1
+    deselected_prior_episode_rows: 1
+    computer_science_selected_candidate_ranks: [1, 45]
+    medicine_selected_candidate_ranks: [5, 6]
+    deterministic_reselection_executed: true
+    source_work_rescan_executed: false
+    author_opportunity_panel_rebuild_executed: false
+    outcomes_read: false
+
+authorized_rebuild_scope:
+  selected_episode_source: CERTIFIED_EPISODE_SELECTION_PARQUET
+  selected_episode_rows: 4
+  exact_field_candidate_ranks:
+    computer_science: [1, 45]
+    medicine: [5, 6]
+  measurement_abi: FROZEN_D0_MEASUREMENT_ABI_V1
+  temporal_scope: PREDECISION_THROUGH_ENTRY_YEAR_MINUS_ONE
+  work_manifest: EXACT_ELIGIBLE_AUTHOR_LINKED_TARGET_TOPIC_WORKS
+  author_opportunity_rows: FOCAL_FIELD_ACTIVE_AUTHORS_JOINED_TO_EXACT_SELECTED_WORKS
+  outcome_blind: true
+  candidate_substitution: FORBIDDEN
+  field_substitution: FORBIDDEN
+  measurement_abi_amendment: FORBIDDEN
+  entry_or_persistence_outcome_read: FORBIDDEN
+  current_old_panel_role: SUPERSEDED_PROVISIONAL_DO_NOT_REUSE
+
+authorization:
+  d0_certified_episode_reselection: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_exact_selected_work_manifest_rebuild: AUTHORIZED_OUTCOME_BLIND_EXACT_FOUR_ONLY
+  d0_author_opportunity_panel_rebuild: AUTHORIZED_OUTCOME_BLIND_EXACT_FOUR_ONLY
+  d0_rebuild_independent_verification: REQUIRED
+  d0_leaveout_network_bridge_build: PAUSED_UNTIL_REBUILT_PANEL_INDEPENDENTLY_VERIFIED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_submission: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The independently verified exact four-episode reselection is complete.
+  This successor authorizes only an outcome-blind rebuild of the exact
+  predecision selected-work manifest and author-opportunity panel for Computer
+  Science ranks 1/45 and Medicine ranks 5/6 under the unchanged measurement
+  ABI. The old panel is superseded provisional evidence and cannot be reused.
+  Leave-out/network/bridge construction remains paused until the rebuilt panel
+  is independently verified. Pivot classification, entry or persistence
+  outcomes, API calls, model fitting, G4, and scientific effects remain closed.

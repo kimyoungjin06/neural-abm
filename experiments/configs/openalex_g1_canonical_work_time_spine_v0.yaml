@@ -1,0 +1,766 @@
+schema_version: openalex_g1_canonical_work_time_spine_design.v1
+label: openalex_g1_canonical_work_time_spine_v0
+
+lifecycle:
+  design_status: IMPLEMENTED_SYNTHETICALLY_PRODUCTION_NOT_RUN
+  production_status: PRODUCTION_NOT_RUN
+  production_executable: false
+  synthetic_executable: true
+  execution_script: scripts/audit_openalex_canonical_work_time_spine.py
+  production_result_exists: false
+  synthetic_contract_result_repository_exists: false
+  pass_result_allowed_in_design_artifact: false
+  production_implementation_requires_new_review: true
+
+synthetic_implementation:
+  scope: SYNTHETIC_FIXTURE_ONLY
+  status: PASS_SYNTHETIC_CANONICAL_WORK_TIME_SPINE_CONTRACT_ONLY
+  production_status: PRODUCTION_NOT_RUN
+  production_authorized: false
+  repository_production_config_refused_by_runner: true
+  production_root_id_refused_by_runner: true
+  explicit_synthetic_fixture_flag_required: true
+  cli_source_argument: --synthetic-source-root
+  generic_source_root_argument_rejected: true
+  source_root_id_prefix_required: synthetic-
+  resolved_source_path_must_not_contain_production_root_id: true
+  hard_max_input_tasks: 8
+  hard_max_footer_rows: 10000
+  hard_max_source_bytes: 67108864
+  hard_max_retained_rows: 10000
+  hard_caps_validated_before_any_source_payload_open: true
+  exact_partition_surface_exercised: 4096
+  partition_count_override_allowed: false
+  receipt_artifact_count_formula: 6 + 2*N + 2*4096
+  production_artifact_invariant:
+    input_tasks: 493
+    artifacts: 9184
+  synthetic_schema_and_status_must_not_equal_production: true
+
+source:
+  root_env: OPENALEX_DERIVED_ROOT
+  root_id: openalex_works_20260330_repairreplay_20260410_190630
+  snapshot_date: "2026-03-30"
+  lineage_id: openalex_20260225_base_plus_20260330_update_repairreplay
+  historical_content_identity: UNVERIFIED
+
+component_decision:
+  architecture: STANDALONE_COMPONENT_AFTER_TEMPORAL_V0_PASS
+  modify_temporal_v0: false
+  temporal_v1_scan_fusion_deferred: true
+  reason: preserve_narrow_temporal_audit_provenance_and_separate_large_local_data_product
+
+required_parent_execution_order:
+  - current_content_baseline
+  - main_temporal_validity
+  - canonical_work_time_spine
+
+parents:
+  current_content_baseline:
+    schema_version: openalex_g1_content_freeze_outputs.v1
+    required_status: PASS_CURRENT_CONTENT_BASELINE_COMPONENT
+    required_run_state: COMPLETE
+    required_full_scope: true
+    required_receipt_basename: content_freeze_audit.outputs.json
+    required_plan_sha256: 97294fe1c1fa026f664ca239ebfa9fc6dce593c847a20eb62157e38312b6725e
+    required_task_fingerprint_sha256: f915cade4ce6581832c46957a2ad0a37ceabe2296099f0faeaac56ffa035693e
+    required_file_count: 21019
+    required_source_bytes: 988404537807
+    require_content_tree_sha256: true
+    require_result_fingerprint_sha256: true
+    require_checkpoint_tree_sha256: true
+    current_state: RUN_OR_RESULT_MUST_BE_VERIFIED_AT_IMPLEMENTATION_TIME
+  main_temporal_validity:
+    schema_version: openalex_g1_main_temporal_validity_outputs.v1
+    required_plan_schema_version: openalex_g1_main_temporal_validity_plan.v1
+    required_checkpoint_schema_version: openalex_g1_main_temporal_validity_checkpoint.v1
+    required_report_schema_version: openalex_g1_main_temporal_validity_report.v1
+    required_state_schema_version: openalex_g1_main_temporal_validity_state.v1
+    required_status: PASS_CURRENT_SNAPSHOT_MAIN_TEMPORAL_VALIDITY_COMPONENT_WITH_FROZEN_EXCLUSIONS
+    required_full_scope: true
+    required_receipt_basename: main_temporal_validity_audit.outputs.json
+    required_config_path: experiments/configs/openalex_g1_main_temporal_validity_v0.yaml
+    required_config_sha256: d208b45cc87de577726a8310a899eb66882a519bae29df5f7dbbf7833562b172
+    required_tool_path: scripts/audit_openalex_main_temporal_validity.py
+    required_tool_sha256: b4b39c016ba4c6867a3e08366f70f6125230c2a0a18c1e8c45d40826f373f563
+    inherited_policy: FROZEN_MAIN_TEMPORAL_POLICY_V1
+    required_state_status: COMPLETE_PENDING_RECEIPT
+    required_completion_receipt_exists: true
+    required_completion_contract: RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+    required_full_task_count: 493
+    required_raw_rows: 492293207
+    required_source_bytes: 150062449219
+    require_plan_artifact: true
+    require_report_artifact: true
+    require_markdown_artifact: true
+    require_state_artifact: true
+    require_complete_checkpoint_tree: true
+    require_result_fingerprint_sha256: true
+    require_task_fingerprint_sha256: true
+    require_same_content_baseline_parent: true
+    exact_receipt_keyset:
+      - schema_version
+      - status
+      - result_fingerprint_sha256
+      - task_fingerprint_sha256
+      - artifacts
+      - completion_contract
+      - operator_paths_redacted
+    exact_fixed_receipt_artifact_paths:
+      - audit_plan.json
+      - run_state.json
+      - main_temporal_validity_audit.json
+      - main_temporal_validity_audit.md
+    checkpoint_artifact_directory: checkpoints/main
+    checkpoint_artifact_filename_derivation: sha256_utf8_relative_source_path
+    checkpoint_artifact_filename_pattern: '^[0-9a-f]{64}[.]json$'
+    exact_checkpoint_artifact_count: 493
+    exact_total_receipt_artifact_count: 497
+    require_exact_receipt_artifact_set: true
+    require_every_receipt_artifact_relative_path_key_equality: true
+    require_every_receipt_artifact_bytes_and_sha256: true
+    require_plan_task_fingerprint_recomputed_from_canonical_plan_without_fingerprint: true
+    require_report_result_fingerprint_recomputed_from_frozen_report_payload: true
+    report_result_fingerprint_payload_keyset:
+      - status
+      - gate_status
+      - scope
+      - metrics
+      - publication_year_extrema
+      - aggregate_regression
+      - violations
+      - accounting_contract
+      - exception_accounting
+      - checkpoint_evidence
+      - source_identity_evidence
+      - content_baseline_parent
+      - task_fingerprint_sha256
+      - claim_boundary
+    require_checkpoint_self_hash_metrics_hash_task_and_source_binding: true
+    require_checkpoint_tree_recomputed_from_exact_checkpoint_set: true
+    require_source_tree_recomputed_from_temporal_plan: true
+    current_state: IMPLEMENTED_SYNTHETICALLY_PRODUCTION_NOT_RUN
+
+parent_cross_binding:
+  require_content_commitment_in_temporal_report_equals_direct_content_receipt: true
+  require_same_content_result_fingerprint: true
+  require_same_content_tree_sha256: true
+  require_same_main_task_set: true
+  content_source_stat_keyset:
+    - device
+    - inode
+    - mode
+    - bytes
+    - mtime_ns
+    - ctime_ns
+  temporal_source_rich_identity_keyset:
+    - device
+    - inode
+    - mode
+    - uid
+    - gid
+    - links
+    - bytes
+    - mtime_ns
+    - ctime_ns
+  content_mode_representation: permission_bits
+  temporal_mode_representation: full_stat_mode
+  mode_normalization_equation: 'content_mode == stat_imode(temporal_mode) == (temporal_mode & 0o7777)'
+  temporal_mode_permission_mask_octal: "07777"
+  require_content_task_paths_unique: true
+  require_temporal_task_paths_unique: true
+  require_content_and_temporal_relative_path_sets_exactly_equal: true
+  require_content_six_fields_equal_normalized_temporal_projection: true
+  require_current_nine_field_stat_equal_temporal_identity_pre_and_post_scan: true
+  require_all_493_tasks_bound_to_both_parents: true
+  verify_source_identity_before_and_after_each_file: true
+  verify_all_parents_again_at_finalization: true
+  current_baseline_only_not_historical_identity: true
+
+table:
+  key: main
+  name: openalex_works_20260330
+  expected_files: 493
+  expected_raw_rows: 492293207
+  expected_source_bytes: 150062449219
+  source_projection:
+    - id
+    - publication_date
+    - publication_year
+  source_types:
+    id: string
+    publication_date: string
+    publication_year: double
+
+spine_schema:
+  field_order:
+    - work_id_numeric
+    - publication_day
+    - publication_year
+    - temporal_disposition
+  fields:
+    work_id_numeric:
+      physical_type: uint64
+      nullable: false
+      semantics: canonical_numeric_suffix_of_grammar_valid_openalex_work_id
+    publication_day:
+      physical_type: int32
+      nullable: true
+      semantics: days_since_1970_01_01
+      null_only_for_disposition: BOTH_NULL_EXCLUDED
+    publication_year:
+      physical_type: uint16
+      nullable: true
+      null_only_for_disposition: BOTH_NULL_EXCLUDED
+    temporal_disposition:
+      physical_type: uint8
+      nullable: false
+      enum_resolution: FROZEN_WORK_TIME_SPINE_DISPOSITION_V1
+  disposition_enum:
+    0: BOTH_NULL_EXCLUDED
+    1: VALID_PRE_1900_EXCLUDED
+    2: USABLE_1900_BEFORE_SNAPSHOT_YEAR
+    3: USABLE_SNAPSHOT_YEAR_ON_OR_BEFORE_SNAPSHOT
+    4: VALID_SNAPSHOT_YEAR_AFTER_SNAPSHOT_EXCLUDED
+    5: VALID_POST_SNAPSHOT_YEAR_EXCLUDED
+  consumer_must_use_disposition_not_non_null_date_as_eligibility: true
+  raw_work_id_string_materialized: false
+  created_date_materialized: false
+  updated_date_materialized: false
+
+disposition_classifier:
+  resolution: FROZEN_WORK_TIME_SPINE_DISPOSITION_CLASSIFIER_V1
+  snapshot_date: "2026-03-30"
+  pre_1900_boundary_date_inclusive: "1900-01-01"
+  classification_basis: strict_parsed_publication_day_and_derived_year_after_pairwise_concordance
+  evaluation_order:
+    - exclude_frozen_w_minus_1_before_validation_and_classification
+    - reject_invalid_retained_rows_before_staging
+    - BOTH_NULL_EXCLUDED
+    - VALID_PRE_1900_EXCLUDED
+    - USABLE_1900_BEFORE_SNAPSHOT_YEAR
+    - USABLE_SNAPSHOT_YEAR_ON_OR_BEFORE_SNAPSHOT
+    - VALID_SNAPSHOT_YEAR_AFTER_SNAPSHOT_EXCLUDED
+    - VALID_POST_SNAPSHOT_YEAR_EXCLUDED
+  predicates:
+    BOTH_NULL_EXCLUDED: publication_date_is_null_and_publication_year_is_null
+    VALID_PRE_1900_EXCLUDED: publication_pair_valid_and_publication_day_before_1900_01_01
+    USABLE_1900_BEFORE_SNAPSHOT_YEAR: publication_pair_valid_and_day_on_or_after_1900_01_01_and_derived_year_before_2026
+    USABLE_SNAPSHOT_YEAR_ON_OR_BEFORE_SNAPSHOT: publication_pair_valid_and_derived_year_equals_2026_and_day_on_or_before_2026_03_30
+    VALID_SNAPSHOT_YEAR_AFTER_SNAPSHOT_EXCLUDED: publication_pair_valid_and_derived_year_equals_2026_and_day_after_2026_03_30
+    VALID_POST_SNAPSHOT_YEAR_EXCLUDED: publication_pair_valid_and_derived_year_after_2026
+  reject_before_staging_metrics:
+    - publication_exactly_one_null_rows
+    - publication_date_parse_error_rows
+    - publication_year_invalid_rows
+    - publication_date_year_mismatch_rows
+  retained_identifier_reject_before_staging_metrics:
+    - null_id_rows
+    - unexpected_malformed_id_rows
+  invalid_rows_receive_no_disposition_code: true
+  require_exactly_one_disposition_for_every_retained_valid_row: true
+  require_no_staging_or_partition_publication_after_any_rejected_row: true
+  temporal_parent_per_file_metric_keyset:
+    - raw_rows
+    - quarantined_w_minus_1_rows
+    - retained_rows
+    - null_id_rows
+    - grammar_valid_id_rows
+    - unexpected_malformed_id_rows
+    - w_zero_rows
+    - publication_both_null_rows
+    - publication_exactly_one_null_rows
+    - publication_both_nonnull_rows
+    - publication_date_parse_error_rows
+    - publication_year_invalid_rows
+    - publication_concordance_checked_rows
+    - publication_date_year_match_rows
+    - publication_date_year_mismatch_rows
+    - publication_pre_1900_rows
+    - publication_1900_before_snapshot_year_rows
+    - publication_snapshot_year_on_or_before_snapshot_rows
+    - publication_snapshot_year_after_snapshot_rows
+    - publication_post_snapshot_year_rows
+    - publication_year_null_rows
+    - publication_year_pre_1900_rows
+    - publication_year_snapshot_year_rows
+    - publication_year_post_snapshot_year_rows
+  require_per_file_publication_year_extrema_equality: true
+  disposition_metrics_hash_payload: canonical_json_utf8_sorted_keys_compact_no_nan
+
+identifier_accounting:
+  work_pattern: '^https://openalex[.]org/W(0|[1-9][0-9]*)$'
+  raw_rows: 492293207
+  frozen_w_minus_1_quarantine_rows: 1
+  retained_rows: 492293206
+  null_id_rows: 0
+  unexpected_malformed_id_rows: 0
+  retained_distinct_numeric_ids: 492293206
+  duplicate_numeric_id_groups: 0
+  duplicate_numeric_row_excess: 0
+  minimum_numeric_id: 0
+  maximum_numeric_id: 7143276261
+  w_zero_rows_retained: 1
+  output_w_minus_1_rows: 0
+  exact_invariants:
+    - raw_rows = frozen_w_minus_1_quarantine_rows + retained_rows
+    - retained_rows = spine_rows
+    - retained_rows = retained_distinct_numeric_ids
+    - w_zero_rows_retained = count_spine_rows_with_work_id_numeric_zero
+    - output_w_minus_1_rows = 0
+  w_zero_entity_validity: UNRESOLVED
+
+publication_accounting:
+  required_zero_failure_metrics:
+    - publication_exactly_one_null_rows
+    - publication_date_parse_error_rows
+    - publication_year_invalid_rows
+    - publication_date_year_mismatch_rows
+  fixed_disposition_anchors:
+    BOTH_NULL_EXCLUDED: 27565532
+    VALID_PRE_1900_EXCLUDED: 6692869
+    USABLE_1900_BEFORE_SNAPSHOT_YEAR: 446514060
+    VALID_POST_SNAPSHOT_YEAR_EXCLUDED: 4010
+  snapshot_year_total_rows: 11516735
+  snapshot_year_split:
+    USABLE_SNAPSHOT_YEAR_ON_OR_BEFORE_SNAPSHOT: INHERIT_EXACT_COUNT_FROM_FUTURE_TEMPORAL_FULL_REPORT
+    VALID_SNAPSHOT_YEAR_AFTER_SNAPSHOT_EXCLUDED: INHERIT_EXACT_COUNT_FROM_FUTURE_TEMPORAL_FULL_REPORT
+    required_sum: 11516735
+    may_not_be_frozen_from_pilot_or_inferred_aggregate_only: true
+  required_publication_year_minimum: 1000
+  required_publication_year_maximum: 2050
+  exact_invariants:
+    - all_six_disposition_rows = retained_rows
+    - snapshot_year_on_or_before_rows + snapshot_year_after_rows = 11516735
+    - non_null_publication_day_rows = retained_rows - both_null_rows
+    - publication_year_equals_year_derived_from_publication_day_for_every_non_null_row
+  w_zero_disposition:
+    expected_category_precommitted: false
+    require_exactly_one_cross_tab_row: true
+    may_change_entity_validity: false
+
+row_level_parent_artifact_limitation:
+  temporal_v0_materializes_row_level_dispositions: false
+  temporal_v0_materializes_row_level_disposition_digest: false
+  direct_row_by_row_digest_equality_to_temporal_parent_possible: false
+  spine_creates_first_row_level_disposition_commitment: true
+  required_compensating_checks:
+    - same_content_tree_and_current_source_identity
+    - frozen_temporal_config_policy_and_parent_result
+    - exact_per_file_publication_metric_equality
+    - exact_global_publication_metric_equality
+    - own_three_column_projected_payload_sha256
+    - own_row_level_disposition_payload_sha256
+  allowed_claim: deterministic_recomputation_bound_to_temporal_parent_policy_and_current_bytes
+  forbidden_claim: row_level_artifact_identity_to_temporal_v0_output
+
+staging_record_abi:
+  resolution: OPENALEX_WORK_TIME_STAGING_RECORD_LE16_V1
+  record_bytes: 16
+  endianness: little
+  field_layout:
+    - {name: work_id_numeric, offset: 0, bytes: 8, encoding: uint64_le}
+    - {name: publication_day, offset: 8, bytes: 4, encoding: int32_le}
+    - {name: publication_year, offset: 12, bytes: 2, encoding: uint16_le}
+    - {name: temporal_disposition, offset: 14, bytes: 1, encoding: uint8}
+    - {name: reserved_padding, offset: 15, bytes: 1, encoding: zero_uint8}
+  both_null_publication_day_sentinel: -2147483648
+  both_null_publication_year_sentinel: 0
+  both_null_requires_disposition_code: 0
+  nonnull_rows_forbid_null_sentinels: true
+  reserved_padding_required_value: 0
+  shard_directory: staging/main
+  shard_filename_derivation: sha256_utf8_relative_source_path
+  shard_filename_pattern: '^[0-9a-f]{64}[.]bin$'
+  exact_shard_count_full: 493
+  canonical_record_hash:
+    resolution: LENGTH_FRAMED_SHA256_V1
+    domain_utf8: openalex-work-time-records-v1
+    framing: 'u64le(domain_bytes) || domain_utf8 || u64le(record_count) || repeat(u64le(16) || record16)'
+    chunking_independent: true
+  source_projection_hash:
+    resolution: TEMPORAL_ARROW_BATCH_LENGTH_FRAMED_SHA256_V1
+    framing: 'repeat(u64le(serialized_batch_byte_length) || serialized_arrow_record_batch)'
+    projected_columns_exactly:
+      - id
+      - publication_date
+      - publication_year
+    batch_size_bound_in_plan_and_task_fingerprint: true
+    pyarrow_runtime_fingerprint_bound_in_plan: true
+
+partition_contract:
+  algorithm: exact_numeric_modulo
+  partition_count: 4096
+  formula: work_id_numeric_mod_4096
+  assignment_total_and_single_valued: true
+  different_ids_may_share_partition: true
+  hash_collision_semantics_applicable: false
+  output_directory: spine
+  filename_pattern: '^part-[0-9]{4}[.]parquet$'
+  exact_file_count: 4096
+  empty_partition_file_allowed: true
+  every_partition_file_required: true
+  within_partition_sort_key:
+    - work_id_numeric
+  require_strictly_increasing_work_id_within_partition: true
+  require_global_exactly_once_membership: true
+  empty_partition_checkpoint_minimum_and_maximum: null
+  empty_partition_strict_sortedness_vacuously_true: true
+  canonical_sorted_record_bridge:
+    record_abi: OPENALEX_WORK_TIME_STAGING_RECORD_LE16_V1
+    ordering: strictly_increasing_work_id_numeric
+    pre_parquet_digest_source: verified_staging_records_assigned_by_exact_numeric_modulo
+    post_parquet_digest_source: decoded_parquet_rows_reencoded_to_staging_record_abi
+    digest_abi: LENGTH_FRAMED_SHA256_V1
+    require_pre_post_digest_equality: true
+    require_pre_post_row_count_equality: true
+  writer_abi:
+    parquet_format_version: "2.6"
+    compression: NONE
+    dictionary_encoding: false
+    write_statistics: false
+    row_group_rows: 262144
+    write_batch_size: 262144
+    data_page_version: "1.0"
+    write_page_index: false
+    write_page_checksum: false
+    use_byte_stream_split: false
+    store_arrow_schema: false
+    sorting_columns: []
+    combine_chunks_before_write: true
+    input_arrow_schema_metadata: null
+    bind_pyarrow_and_parquet_runtime_versions: true
+    runtime_fingerprint_fields:
+      - pyarrow_version
+      - parquet_cpp_version
+      - python_implementation
+      - python_version
+      - platform_machine
+    bind_runtime_fingerprint_to_plan_task_and_receipt: true
+    resume_requires_exact_runtime_fingerprint: true
+  arrow_schema:
+    - {name: work_id_numeric, arrow_type: uint64, nullable: false}
+    - {name: publication_day, arrow_type: int32, nullable: true}
+    - {name: publication_year, arrow_type: uint16, nullable: true}
+    - {name: temporal_disposition, arrow_type: uint8, nullable: false}
+  parquet_schema:
+    - {name: work_id_numeric, physical_type: INT64, logical_type: UINT_64, repetition: REQUIRED}
+    - {name: publication_day, physical_type: INT32, logical_type: NONE, repetition: OPTIONAL}
+    - {name: publication_year, physical_type: INT32, logical_type: UINT_16, repetition: OPTIONAL}
+    - {name: temporal_disposition, physical_type: INT32, logical_type: UINT_8, repetition: REQUIRED}
+  atomic_partition_publication_required: true
+
+cross_stage_conservation:
+  required_equal_row_totals:
+    raw_rows: 492293207
+    quarantined_w_minus_1_rows: 1
+    scan_retained_rows: 492293206
+    staging_manifest_rows: 492293206
+    partition_input_rows: 492293206
+    parquet_manifest_rows: 492293206
+    decoded_final_rows: 492293206
+  require_sum_scan_checkpoint_rows_equals_staging_manifest_rows: true
+  require_sum_staging_shard_rows_equals_partition_input_rows: true
+  require_each_verified_staging_record_assigned_to_exactly_one_partition: true
+  require_partition_assignment_matches_work_id_numeric_mod_4096: true
+  require_sum_all_4096_partition_rows_equals_decoded_final_rows: true
+  require_partition_record_digest_pre_post_parquet_equality: true
+  require_global_partition_digest_tree_bound_to_result_fingerprint: true
+  require_decoded_disposition_counts_equal_scan_and_temporal_parent: true
+  require_decoded_nullability_and_year_day_invariants: true
+  require_decoded_w0_cross_tab_and_id_extrema: true
+  require_no_duplicate_numeric_id_within_or_across_partitions: true
+
+execution_plan:
+  workload_class: local_cpu_io_external_sort
+  gpu_used: false
+  deterministic_input_order: lexical_relative_path
+  scan_stage:
+    checkpoint_unit: input_file
+    output_unit: one_staging_shard_per_input_file
+    projected_columns:
+      - id
+      - publication_date
+      - publication_year
+    checkpoint_binds:
+      - spine_task_fingerprint_sha256
+      - temporal_parent_task_sha256
+      - temporal_parent_checkpoint_sha256
+      - relative_path
+      - source_rich_identity
+      - footer_rows
+      - projected_schema_sha256
+      - projected_payload_sha256
+      - disposition_metrics_sha256
+      - row_level_disposition_payload_sha256
+      - staging_shard_relative_path
+      - staging_shard_rows
+      - staging_shard_bytes
+      - staging_shard_sha256
+      - checkpoint_sha256
+  partition_stage:
+    checkpoint_unit: output_partition
+    checkpoint_binds:
+      - scan_checkpoint_tree_sha256
+      - staging_shard_tree_sha256
+      - partition_id
+      - partition_formula
+      - output_relative_path
+      - output_rows
+      - minimum_work_id_numeric
+      - maximum_work_id_numeric
+      - output_schema_sha256
+      - pre_parquet_sorted_record_sha256
+      - decoded_parquet_record_sha256
+      - disposition_counts
+      - nullability_counts
+      - output_bytes
+      - output_sha256
+      - strictly_increasing_ids
+      - checkpoint_sha256
+  resume_policy:
+    require_exact_existing_plan: true
+    verify_config_tool_and_all_parent_receipts: true
+    rehash_current_three_column_projection_before_reusing_scan_checkpoint: true
+    verify_current_source_rich_identity: true
+    verify_staging_shard_before_reuse: true
+    verify_partition_output_before_reuse: true
+    partition_count_or_mode_change_allowed: false
+    valid_completed_receipt_is_terminal: true
+    terminal_validation_occurs_before_any_source_payload_open: true
+    terminal_validation_requires_exact_artifact_set_and_all_bytes_sha256: true
+  source_and_output_safety:
+    refuse_symlink_source_or_output_components: true
+    require_output_outside_source_and_repository: true
+    require_exclusive_output_lock: true
+    require_private_output_directory_mode: "0700"
+    require_output_file_mode: "0600"
+    reject_undeclared_output_entries: true
+
+completion_contract:
+  exact_top_level_entries:
+    - audit.lock
+    - audit_plan.json
+    - run_state.json
+    - checkpoints
+    - staging
+    - spine
+    - staging_manifest.json
+    - work_time_spine_manifest.json
+    - work_time_spine_audit.json
+    - work_time_spine_audit.md
+    - work_time_spine_audit.outputs.json
+  checkpoint_directories:
+    scan: checkpoints/scan/main
+    partition: checkpoints/partition
+  scan_checkpoint_filename_pattern: '^[0-9a-f]{64}[.]json$'
+  partition_checkpoint_filename_pattern: '^part-[0-9]{4}[.]json$'
+  exact_scan_checkpoint_count_full: 493
+  exact_partition_checkpoint_count_full: 4096
+  staging_data_directory: staging/main
+  exact_staging_shard_count_full: 493
+  data_output_directory: spine
+  exact_spine_partition_count_full: 4096
+  receipt_excludes:
+    - audit.lock
+    - work_time_spine_audit.outputs.json
+  receipt_exact_artifact_count_full: 9184
+  receipt_exact_keyset:
+    - schema_version
+    - status
+    - task_fingerprint_sha256
+    - result_fingerprint_sha256
+    - scan_checkpoint_tree_sha256
+    - staging_shard_tree_sha256
+    - partition_checkpoint_tree_sha256
+    - spine_data_tree_sha256
+    - artifacts
+    - completion_contract
+    - operator_paths_redacted
+  require_exact_published_file_set_equals_receipt_artifact_set_plus_exclusions: true
+  require_every_receipt_artifact_path_bytes_sha256: true
+  result_fingerprint_binds:
+    - parents
+    - task_fingerprint_sha256
+    - source_tree_sha256
+    - scan_checkpoint_tree_sha256
+    - staging_shard_tree_sha256
+    - partition_checkpoint_tree_sha256
+    - spine_data_tree_sha256
+    - identifier_accounting
+    - publication_accounting
+    - gate_status
+    - claim_boundary
+  pre_receipt_state: COMPLETE_PENDING_RECEIPT
+  receipt_basename: work_time_spine_audit.outputs.json
+  receipt_written_last: true
+  receipt_completion_contract: RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+  final_validation_rehashes_all_control_and_data_artifacts: true
+  failure_invalidation_order:
+    - remove_authoritative_completion_receipt_first
+    - write_finalization_failed_state
+    - remove_final_report_and_markdown
+  failure_state_status: FINALIZATION_FAILED_NO_VALID_RECEIPT
+  failure_state_omits_result_fingerprint_sha256: true
+  cleanup_errors_aggregated_and_raised_not_swallowed: true
+  failure_must_not_leave_promotable_terminal_surface: true
+  failure_removes_receipt_and_final_report_surfaces: true
+  resumable_checkpoints_preserved_on_failure: true
+  production_outputs_created_by_this_design: false
+
+resource_envelope:
+  declared_input_files: 493
+  declared_input_rows: 492293207
+  declared_source_bytes: 150062449219
+  fixed_staging_record_bytes: 16
+  staging_payload_bytes_upper_anchor: 7876691296
+  staging_payload_gib_rounded_3dp: 7.336
+  ram_gib_minimum_planning: 16
+  ram_gib_preferred_planning: 32
+  durable_output_gib_minimum_planning: 12
+  durable_output_gib_upper_planning: 20
+  temporary_ssd_gib_minimum: 64
+  temporary_ssd_gib_preferred: 96
+  require_live_preflight_before_full: true
+  disk_safety_multiplier_milli_minimum: 1500
+  parquet_bytes_per_row_upper_bound: 32
+  parquet_fixed_bytes_per_partition_upper_bound: 131072
+  partition_spool_bytes_upper_bound: 7876691296
+  control_artifacts_bytes_upper_bound: 2147483648
+  disk_reserve_bytes: 8589934592
+  atomic_publish_headroom: largest_next_artifact_upper_bound
+  full_required_free_disk_formula: 'ceil(1500 * (remaining_staging_bytes + remaining_partition_spool_bytes + remaining_parquet_bytes_upper_bound + remaining_control_bytes + atomic_publish_headroom_bytes) / 1000) + disk_reserve_bytes'
+  resume_may_subtract_only_rehashed_valid_completed_artifacts: true
+  ram_preflight_formula: 'max(projected_batch_bytes_upper_bound, partition_sort_chunk_bytes_upper_bound) + ram_reserve_bytes'
+  require_partition_sort_chunk_bound_in_plan: true
+  require_projected_batch_bound_in_plan: true
+  forbid_source_disk_competition_with_content_freeze_or_other_heavy_scan: true
+  gpu_used: false
+
+pilot_and_full_rules:
+  max_files:
+    status: PARSER_AND_STAGING_SMOKE_ONLY
+    promotion_allowed: false
+    global_row_or_partition_claim_allowed: false
+  deterministic_id_bucket:
+    status: COMPLETE_SELECTED_BUCKET_DIAGNOSTIC_ONLY
+    require_all_493_input_files: true
+    promotion_allowed: false
+    global_coverage_claim_allowed: false
+  full:
+    explicit_authorization_required: true
+    require_all_493_input_files: true
+    require_all_492293207_raw_rows_accounted: true
+    require_all_492293206_retained_rows_materialized: true
+    require_all_4096_partitions: true
+    require_all_parent_full_receipts: true
+    require_exact_accounting_closure: true
+    require_complete_state_and_outputs_receipt: true
+    may_promote_only_component_scope: true
+
+consumer_contract:
+  citation_chronology_spine_reuse:
+    full_spine_receipt_required: true
+    required_spine_rows: 492293206
+    main_source_files_opened_by_citation_component: 0
+    main_source_bytes_scanned_by_citation_component: 0
+    main_source_task_set_bound_transitively_through_spine_receipt: true
+    synthetic_consumer_test_must_fail_on_any_main_source_open: true
+  fixed_horizon_citation_outcomes:
+    repeated_main_time_scan_eliminated: true
+    separate_g0_maturation_policy_still_required: true
+  work_side_author_history:
+    publication_date_reparse_can_be_eliminated: true
+    complete_main_source_scan_eliminated: false
+    reason: authors_count_and_primary_field_are_not_in_time_spine
+  work_topic_relation:
+    main_scan_eliminated: false
+  main_temporal_validity:
+    parent_scan_eliminated: false
+  content_freeze:
+    parent_scan_eliminated: false
+  universal_work_metadata_spine_expansion_allowed_in_v0: false
+
+release_privacy:
+  public_summary_allows_aggregates_and_checksums_only: true
+  individual_work_ids_repository_allowed: false
+  individual_work_ids_release_allowed: false
+  spine_partitions_repository_allowed: false
+  spine_partitions_release_allowed: false
+  operator_local_detailed_outputs_mode: "0600"
+  operator_local_directory_mode: "0700"
+  require_data_tree_sha256: true
+  release_inspector_must_reject_spine_data_outputs: true
+  release_forbidden_operator_local_directory_basenames:
+    - staging
+    - spine
+  release_forbidden_operator_local_path_fragments:
+    - checkpoints/scan/main
+    - checkpoints/partition
+  release_forbidden_operator_local_basenames:
+    - staging_manifest.json
+    - work_time_spine_manifest.json
+
+future_success_contract:
+  full_component_status: PASS_CURRENT_SNAPSHOT_CANONICAL_WORK_TIME_SPINE_COMPONENT_WITH_INHERITED_TEMPORAL_EXCLUSIONS
+  pilot_status: PILOT_CANONICAL_WORK_TIME_SPINE_ONLY
+  blocked_status: BLOCKED_CANONICAL_WORK_TIME_SPINE_COMPONENT
+  required_full_gate_states:
+    canonical_work_time_spine_component: PASS
+    current_content_baseline_component: PASS
+    main_temporal_validity_component: PASS
+    row_level_spine_commitment: CREATED_CURRENT_SNAPSHOT
+    row_level_temporal_parent_artifact_identity: NOT_AVAILABLE_TEMPORAL_V0
+    historical_content_identity: UNVERIFIED
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    citation_edge_chronology: PENDING_NOT_IN_THIS_COMPONENT
+    openalex_edge_observation_time: PENDING_UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+    fixed_horizon_outcome_maturation: PENDING_SEPARATE_G0_POLICY
+    author_entity_validity: PENDING
+    candidate_eligibility: PENDING
+    cutoff_aware_t_minus_1_researcher_graph: PENDING
+    g_minus_1_data_readiness: PENDING
+    g0_measurement_freeze: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+    scientific_effect: NOT_ESTABLISHED
+
+residual_risks:
+  - second_150062449219_byte_main_source_scope_scan
+  - no_temporal_v0_row_level_disposition_artifact_for_direct_digest_comparison
+  - parquet_byte_identity_depends_on_frozen_writer_runtime
+  - current_snapshot_retrospective_time_reconstruction_only
+  - historical_content_identity_unverified
+  - w_zero_entity_validity_unresolved
+  - author_relation_candidate_and_maturation_gates_remain
+
+out_of_scope:
+  - temporal_v0_result_replacement
+  - created_or_updated_date_row_product
+  - work_topic_or_field_metadata
+  - authors_count_or_author_history
+  - citation_edge_chronology
+  - citation_observation_time
+  - fixed_horizon_outcome_selection
+  - candidate_researcher_materialization
+  - field_selection
+  - empirical_effect_estimation
+  - nabm_fitting
+
+claim_boundary: >-
+  This IMPLEMENTED_SYNTHETICALLY_PRODUCTION_NOT_RUN contract specifies a future
+  standalone current-snapshot canonical work-time spine built only after a
+  completed current-content baseline and a full main-temporal component pass.
+  The synthetic executable validates the staging, 4096-partition, checkpoint,
+  resume, and receipt-last ABIs only against explicit synthetic fixtures; it
+  cannot receive the production component status. A future full production
+  component pass may establish exact retained work-ID accounting,
+  deterministic numeric partitions, inherited publication-time dispositions,
+  and a checksummed local row-level spine commitment. Temporal v0 does not
+  publish a row-level disposition artifact or digest, so this component cannot
+  claim direct row-by-row artifact identity to the temporal parent. It does not
+  establish historical content identity, W0 entity validity, citation edge
+  observation time or chronology, author or candidate validity, G-1, G0,
+  empirical G1, an NABM effect, or any scientific effect. No production run or
+  result exists under this contract.

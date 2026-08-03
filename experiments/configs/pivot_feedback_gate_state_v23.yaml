@@ -1,0 +1,119 @@
+schema_version: pivot_feedback_gate_state.v23
+label: pivot_feedback_gate_state_v23
+mode: ADDITIVE_FRONTIER_V5_RANK5_TOPIC_CARD_AND_EXACT_SAMPLE_AUTHORIZATION
+status: VALID_FRONTIER_V5_RANK5_REQUIRED_TOPIC_CARD_FROZEN_EXACT_SAMPLE_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v22.yaml
+  sha256: 93eb099d5536c0951c3e02cc9acd64d80420ddc052b2d59be97a6511446335c3
+  required_schema_version: pivot_feedback_gate_state.v22
+  required_status: VALID_MEDICINE_RANK4_INDEXING_FAIL_VERIFIED_PRODUCTION_DISPOSITION_AND_FRONTIER_V5_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  mutation_allowed: false
+
+rank4_production_evidence:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_rank4_production_disposition_v1.yaml
+    sha256: da682ce5bd42f028d51d6a5d72000bec8a26f215f86c2fc0d2519e47f03b578b
+    required_schema_version: pivot_feedback_d0_rank4_production_disposition_config.v1
+    required_status: FROZEN_RANK4_PRODUCTION_CONTENT_FAIL_AND_FRONTIER_V5_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_rank4_production_disposition_v1.py
+    sha256: 147c340d536690497da9dcb3f129706838e4699da1548b73c906032af4e6bfe6
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_rank4_production_disposition_v1.py
+    sha256: 945c50ecaf0da54ea276d203e2cc5eab99742e214c9c567b58b82dd52b00c941
+    mutation_allowed: false
+  operator_local:
+    root_basename: pivot-feedback-d0-rank4-production-disposition-v1-20260729
+    dispositions_basename: cumulative_production_candidate_dispositions_v4.parquet
+    dispositions_sha256: 4e3e23c1d8f28096a3a56375ac20e089b26b7592f6846a650b41208240107d4a
+    frontier_basename: adaptive_candidate_frontier_v5.parquet
+    frontier_sha256: 8a567471f7995a85bb2ab75114b8abf2bc4ddd13a5d2b52ab5f0f066b800d3cb
+    receipt_basename: rank4_production_disposition.outputs.json
+    receipt_sha256: 1af06a789217a5486eaaadc74993f4725356cb0b25848966eaf6505caee425c4
+    receipt_status: PASS_RANK4_CONTENT_FAIL_FROZEN_FRONTIER_V5_RANK5_REQUIRED
+
+rank5_target:
+  field_id: 27
+  field_candidate_rank: 5
+  topic_id: 10151
+  topic_name: Hepatitis C virus research
+  reference_id: https://openalex.org/T10151
+  entry_year: 1993
+  subfield_id: 2721
+  rows_per_window: 32
+  total_rows: 96
+  windows:
+    0: {label: EARLIER_PRE_BASELINE, minimum_year: null, maximum_year: 1986}
+    1: {label: BASELINE, minimum_year: 1987, maximum_year: 1989}
+    2: {label: SIGNAL, minimum_year: 1990, maximum_year: 1992}
+
+frozen_topic_card:
+  freeze_timing: BEFORE_T10151_TITLE_SAMPLE_READ
+  semantic_role: CONSERVATIVE_CURRENT_SNAPSHOT_ROUTING_HEURISTIC_NOT_GROUND_TRUTH
+  title_normalization:
+    strip_html: true
+    unicode_nfkd_ascii_fold: true
+    lowercase: true
+    alphanumeric_tokens_only: true
+    collapse_whitespace: true
+  minimum_informative_token_count: 2
+  global_opaque_title_patterns:
+    - '^(?:pvn|psb) (?:lot|rdo) [a-z0-9 ]+$'
+  positive_patterns:
+    - '\bhepatitis c\b'
+    - '\bhcv\b'
+    - '\bhepacivirus\b'
+    - '\bnon a non b hepatitis\b'
+  negative_patterns:
+    - '\bhepatitis a\b'
+    - '\bhepatitis b\b'
+    - '\bhepatitis d\b'
+    - '\bhepatitis e\b'
+    - '\bhepatitis delta\b'
+    - '\bhav\b'
+    - '\bhbv\b'
+    - '\bhdv\b'
+    - '\bhev\b'
+  precedence:
+    - QUARANTINE_IF_OPAQUE_OR_UNINFORMATIVE
+    - ACCEPT_IF_POSITIVE_AND_NOT_NEGATIVE
+    - REJECT_IF_NEGATIVE_AND_NOT_POSITIVE
+    - API_REQUIRED_OTHERWISE
+  boundary_note: >-
+    Accept only an explicit hepatitis-C, HCV, hepacivirus, or historically
+    specific non-A/non-B-hepatitis anchor. Explicit other-hepatitis anchors
+    reject only when no positive anchor is present; mixed or generic hepatitis
+    titles remain ambiguous. The card is frozen before reading the target
+    sample and is not semantic ground truth.
+
+authorization:
+  d0_rank4_production_disposition: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_frontier_v5: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_rank5_topic_card_design: COMPLETE_FROZEN_BEFORE_SAMPLE_READ
+  d0_exact_rank5_normalized_candidate_scan: AUTHORIZED_READ_ONLY
+  d0_exact_rank5_96_id_sample: AUTHORIZED_CREATE_ONLY
+  d0_exact_rank5_selected_id_title_lookup: AUTHORIZED_READ_ONLY
+  d0_rank5_local_routing: NOT_AUTHORIZED_UNTIL_SAMPLE_INDEPENDENTLY_VERIFIED
+  d0_rank5_production_content_disposition: NOT_AUTHORIZED_UNTIL_LOCAL_ROUTING_VERIFIED
+  d0_general_raw_openalex_title_scan: NOT_AUTHORIZED
+  d0_full_candidate_title_copy: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_exception_submission: NOT_AUTHORIZED
+  d0_selection_certificate: NOT_AUTHORIZED
+  d0_deterministic_reselection: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This additive successor binds the independently verified frontier-v5 state,
+  freezes a conservative T10151 title-routing card before target-title access,
+  and authorizes only the exact normalized scan, deterministic 96-ID sample,
+  and selected-ID title lookup needed for Medicine rank 5. It does not
+  authorize a general title scan, full candidate copy, API request, local
+  production disposition, certificate, reselection, outcomes, fitting, G4,
+  semantic truth, historical topic validation, or scientific effects.

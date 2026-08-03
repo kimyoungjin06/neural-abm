@@ -1,0 +1,245 @@
+schema_version: pivot_feedback_g0_g_minus_1a_binding_reconciliation.v1
+label: pivot_feedback_g0_g_minus_1a_binding_reconciliation_v1
+mode: VERSIONED_METADATA_ONLY_FUTURE_G0_V2_BINDING_CONTRACT_NO_RELABELED_LEGACY_PASS
+status: PENDING_INDEPENDENT_VALIDATION_FUTURE_G0_V2_BINDING_ONLY
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v51.yaml
+  sha256: b14b1ed090b2a5fc4f0d77101c03905f1242bb8ba8a36552e47f2587b18eb599
+  required_schema_version: pivot_feedback_gate_state.v51
+  required_status: VALID_G0_CLOSURE_PLAN_COMPLETE_G0_NOT_READY_G_MINUS_1A_BINDING_CONTRACT_AUTHORIZED
+  required_fields:
+    gate_state.D0.complete: true
+    gate_state.G0.complete: false
+    authorization.g_minus_1a_binding_reconciliation_contract: AUTHORIZED_METADATA_ONLY_NO_G0_V2_CHANGE
+    authorization.actual_g0_v2_binding_change: NOT_AUTHORIZED
+    authorization.legacy_g_minus_1_promotion: NOT_AUTHORIZED
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+immutable_g0_v1_skeleton:
+  relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v1.yaml
+  sha256: dc947df2f87220379401c43ea1914b48c71ed04ae474e5695003723d2c591590
+  required_schema_version: pivot_feedback_g0_measurement_freeze.v2
+  required_status: PENDING_G0_SUCCESSOR_SKELETON_TWO_D0_VALUES_SERIALIZED_NO_SEAL
+  required_fields:
+    g_minus_1_binding.state: PENDING
+    g_minus_1_binding.receipt_relative_path: null
+    g_minus_1_binding.receipt_sha256: null
+    g_minus_1_binding.required_schema_version: pivot_feedback_g_minus_1_data_readiness_outputs.v1
+    g_minus_1_binding.required_status: PASS_G_MINUS_1_DATA_READINESS
+    holdout_access_binding.state: PENDING
+    resolution.unresolved_quantitative_choice_count: 17
+    resolution.unresolved_required_section_count: 15
+    lifecycle.pass_g0: false
+  mutation_allowed: false
+
+validated_closure_plan:
+  relative_path: experiments/configs/pivot_feedback_g0_prerequisite_closure_plan_v1.yaml
+  sha256: 45db08ea9e51d861270c1be4b8ac675e56e30df7b57268f515fd665708b2c4fc
+  required_schema_version: pivot_feedback_g0_prerequisite_closure_plan.v1
+  required_status: PENDING_INDEPENDENT_VALIDATION_FOUR_WORKSTREAM_PLAN_NO_EXECUTION
+  required_fields:
+    workstreams.G_MINUS_1_RECEIPT_CLOSURE.diagnostic.mismatch_class: CONTRACT_GENERATION_MISMATCH_NOT_EVIDENCE_ABSENCE
+    workstreams.G_MINUS_1_RECEIPT_CLOSURE.diagnostic.legacy_registry_can_pass: false
+    next_atomic_step.actual_g0_v2_binding_change_authorized: false
+    authorization.actual_g0_v2_binding_change: NOT_AUTHORIZED
+  mutation_allowed: false
+
+gate_sequence:
+  relative_path: experiments/configs/pivot_feedback_gate_sequence_v1.yaml
+  sha256: 3a3a655234c4efb74a4900e65624c903176615cee19da760cd06b1416e3fd365
+  required_schema_version: pivot_feedback_gate_sequence.v1
+  required_status: VALID_PENDING_SUCCESSOR_IMPLEMENTATION
+  required_fields:
+    separation_rules.final_cutoff_panel_owner: G0_5
+    separation_rules.final_cutoff_panel_is_g_minus_1a_prerequisite: false
+    separation_rules.final_cutoff_panel_is_g0_prerequisite: false
+    completion_contract.config_alone_can_pass_g_minus_1a: false
+    completion_contract.config_alone_can_pass_g0: false
+  mutation_allowed: false
+
+legacy_g_minus_1_registry:
+  relative_path: experiments/configs/pivot_feedback_g_minus_1_readiness_v0.yaml
+  sha256: e5048af2d3cca3b1ff04bbecc1a6cbf5dcc6756bf29db995d3cefbe3a017f2be
+  required_schema_version: pivot_feedback_g_minus_1_readiness.v1
+  required_status: G_MINUS_1_PENDING
+  required_fields:
+    gate_state.pass_g_minus_1: false
+    gate_state.g0_measurement_freeze: PENDING
+    gate_state.execution_authorized: false
+  mutation_allowed: false
+  future_promotion_allowed: false
+
+exact_g_minus_1a_receipt:
+  summary:
+    relative_path: experiments/evidence/results/pivot_feedback_g_minus_1a_receipt_20260723.summary.json
+    sha256: 8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802
+    required_schema_version: pivot_feedback_g_minus_1a_receipt.v1
+    required_status: PASS_G_MINUS_1A_BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+    required_fields:
+      gate_id: G_MINUS_1A
+      scope.full_repository_evidence_set: true
+      scope.source_payloads_opened: 0
+      scope.production_scans_started: 0
+      scope.production_outputs_mutated: false
+      authorization.legacy_g_minus_1: NOT_PASSED
+      authorization.g0_measurement_freeze: PENDING
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.scientific_effect: NOT_ESTABLISHED
+  config:
+    relative_path: experiments/configs/pivot_feedback_g_minus_1a_receipt_v1.yaml
+    sha256: be240ec0e06778973194fda772c398cb560b0ac7ff886ee583d34140d889e7bb
+    required_schema_version: pivot_feedback_g_minus_1a_receipt_config.v1
+    required_status_key: status_before_verification
+    required_status: READY_TO_VERIFY_BOUNDED_G_MINUS_1A
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_g_minus_1a_receipt_v1.py
+    sha256: b1971e35eb3a33dbb385073bd02536c87cb99f304114b33d619448dede9a0237
+
+source_binding_diagnosis:
+  immutable_field_name: g_minus_1_binding
+  immutable_state: PENDING
+  immutable_receipt_relative_path: null
+  immutable_receipt_sha256: null
+  immutable_required_schema_version: pivot_feedback_g_minus_1_data_readiness_outputs.v1
+  immutable_required_status: PASS_G_MINUS_1_DATA_READINESS
+  available_gate_id: G_MINUS_1A
+  available_schema_version: pivot_feedback_g_minus_1a_receipt.v1
+  available_status: PASS_G_MINUS_1A_BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+  available_receipt_sha256: 8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802
+  mismatch_class: CONTRACT_GENERATION_MISMATCH_NOT_EVIDENCE_ABSENCE
+  schema_aliasing_allowed: false
+  status_relabeling_allowed: false
+  legacy_pass_inference_allowed: false
+
+future_g0_v2_binding_contract:
+  future_field_name: g_minus_1a_binding
+  legacy_field_name_if_retained: legacy_g_minus_1_binding
+  legacy_field_state_if_retained: PENDING_NOT_PASSED_IMMUTABLE_LINEAGE
+  binding_state_if_exact: SATISFIED_G_MINUS_1A_BOUNDED_EVIDENCE_ONLY
+  receipt_relative_path: experiments/evidence/results/pivot_feedback_g_minus_1a_receipt_20260723.summary.json
+  receipt_sha256: 8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802
+  required_schema_version: pivot_feedback_g_minus_1a_receipt.v1
+  required_status: PASS_G_MINUS_1A_BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+  required_gate_id: G_MINUS_1A
+  config_relative_path: experiments/configs/pivot_feedback_g_minus_1a_receipt_v1.yaml
+  config_sha256: be240ec0e06778973194fda772c398cb560b0ac7ff886ee583d34140d889e7bb
+  verifier_relative_path: scripts/verify_pivot_feedback_g_minus_1a_receipt_v1.py
+  verifier_sha256: b1971e35eb3a33dbb385073bd02536c87cb99f304114b33d619448dede9a0237
+  semantic_role: BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_PREREQUISITE_ONLY
+  may_satisfy_future_g0_v2_g_minus_1a_prerequisite: true
+  may_pass_or_relabel_legacy_g_minus_1: false
+  may_by_itself_pass_g0: false
+  may_by_itself_authorize_model_fitting: false
+  may_by_itself_open_g4: false
+  may_by_itself_establish_scientific_effect: false
+
+preserved_receipt_boundaries:
+  unresolved_boundaries:
+    allowed_work_types: PENDING_G0
+    author_entity_validity: UNRESOLVED_CURRENT_SNAPSHOT_TOKEN_ONLY
+    candidate_eligibility: PENDING_G0
+    d0_discovery_pilot: NOT_RUN
+    empirical_g1_signature: NOT_RUN
+    final_cutoff_panel: PENDING_G0_5
+    fixed_outcome_horizon: PENDING_G0
+    historical_author_observability: UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+    historical_citation_observation_time: UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+    historical_topic_observability: UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+    raw_source_id_validity: BLOCKED_W_MINUS_1_QUARANTINED
+    s0_threshold_free_inventory: NOT_RUN
+    scientific_effect: NOT_ESTABLISHED
+    w_zero_entity_validity: UNRESOLVED
+  exact_claim_boundary: >-
+    A passing receipt establishes only that the current-snapshot canonical work
+    time, author-token history, work-topic relation, bibliographic citation
+    chronology proxy, normalized cutoff primitives, and independent source
+    projection replay are mutually bound at their declared full-production
+    surfaces. It authorizes threshold-free S0 structural inventory only. It
+    neither establishes natural-person identity nor historical OpenAlex
+    visibility, and it does not choose candidate eligibility, work types,
+    horizons, thresholds, fields, samples, or effects. It cannot pass the
+    legacy G-1 registry, G0, G0.5, or any empirical or causal claim.
+  natural_person_identity_established: false
+  historical_openalex_visibility_established: false
+  current_snapshot_proxy_only: true
+
+future_g0_v2_preservation_contract:
+  intended_relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v2.yaml
+  predecessor_relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v1.yaml
+  predecessor_sha256: dc947df2f87220379401c43ea1914b48c71ed04ae474e5695003723d2c591590
+  must_preserve_from_g0_v1:
+    - foundation_parents
+    - holdout_access_binding
+    - fixed_design_choices
+    - resolution
+    - inherited_subtree_digests
+    - completion_contract
+    - failure_policy
+    - authorization
+  only_permitted_semantic_delta:
+    - RETAIN_LEGACY_G_MINUS_1_AS_PENDING_IMMUTABLE_LINEAGE
+    - ADD_EXACT_G_MINUS_1A_BOUNDED_EVIDENCE_BINDING
+  must_keep_holdout_binding_pending_and_null: true
+  must_keep_unresolved_quantitative_choice_count: 17
+  must_keep_not_freeze_ready_section_count: 15
+  must_keep_pass_g0_false: true
+  must_keep_model_fitting_unauthorized: true
+  must_keep_g4_unopened: true
+  future_successor_not_authored_by_this_contract: true
+  future_successor_requires_separate_authorization_gate: true
+
+lifecycle:
+  contract_status: PENDING_INDEPENDENT_VALIDATION
+  g0_v1_mutated: false
+  g0_v2_authored_or_modified: false
+  g_minus_1a_receipt_reissued_or_modified: false
+  legacy_g_minus_1_promoted: false
+  holdout_binding_changed: false
+  unresolved_values_changed: false
+  required_sections_completed: false
+  confirmatory_or_holdout_rows_read: false
+  api_requests_created_or_submitted: false
+  pass_g0: false
+  model_fitted: false
+  g4_open: false
+
+access_accounting_contract:
+  repository_documents_read: 9
+  operator_json_metadata_files_read: 0
+  operator_parquet_files_opened: 0
+  production_row_level_files_opened: 0
+  confirmatory_or_holdout_rows_read: 0
+  api_requests_created_or_submitted: 0
+  model_fitted: false
+  g4_open: false
+
+authorization:
+  contract_validation: AUTHORIZED_METADATA_ONLY
+  future_g0_v2_binding_only_successor: REQUIRES_SUCCESSOR_GATE
+  g0_v1_mutation: NOT_AUTHORIZED
+  actual_g0_v2_authoring_or_modification: NOT_AUTHORIZED
+  g_minus_1a_receipt_reissue_or_modification: NOT_AUTHORIZED
+  legacy_g_minus_1_promotion: NOT_AUTHORIZED
+  holdout_binding_change: NOT_AUTHORIZED
+  quantitative_choice_resolution: NOT_AUTHORIZED
+  required_section_completion: NOT_AUTHORIZED
+  confirmatory_or_holdout_access: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This metadata-only reconciliation contract defines how a future versioned
+  G0 successor may bind the exact existing G-1A receipt without changing its
+  schema, status, or bounded meaning. It does not alias G-1A as legacy G-1 and
+  does not infer a legacy pass. The immutable G0 v1 skeleton, legacy registry,
+  G-1A receipt, holdout binding, seventeen unresolved values, and fifteen
+  not-freeze-ready sections remain unchanged. This contract does not author
+  G0 v2, open operator or holdout data, create an API request, seal G0, fit a
+  model, open G4, assert causality, or establish a scientific effect.

@@ -1,0 +1,439 @@
+{
+  "schema_version": "pivot_feedback_g0_risk_set_weight_support_discovery_output.v1",
+  "status": "PASS_FROZEN_RISK_SET_WEIGHT_SUPPORT_RULE_APPLICATION_DISCOVERY_ONLY",
+  "input_status": "SYNTHETIC_CLOSED_FIXTURE",
+  "input_sha256": "ff4aa3529385a79eae65986cf3a3322f065553ffb95dce59a15d360b35e6313f",
+  "contract_sha256": "8f38863eba1880ee375d982cbb2ac094d3ae64028ee651e92b59f13d0189f26e",
+  "sampling_application": {
+    "rule_id": "STRATIFIED_RISK_SET_TEN_CONTROLS_PER_CASE_V1",
+    "stratum_count": 2,
+    "case_count": 3,
+    "eligible_control_count": 30,
+    "selected_control_count": 25,
+    "strata": [
+      {
+        "stratum_id": "field17-episode1-2012",
+        "analysis_partition_id": "discovery_calibration",
+        "field_id": 17,
+        "episode_id": 1,
+        "decision_year": 2012,
+        "case_count": 2,
+        "eligible_control_count": 25,
+        "target_control_count": 20,
+        "selected_control_count": 20,
+        "all_controls_retained": false,
+        "control_inclusion_probability": 0.8,
+        "control_raw_sampling_weight": 1.25,
+        "selected_control_ids_priority_order": [
+          "control-09",
+          "control-10",
+          "control-22",
+          "control-08",
+          "control-07",
+          "control-20",
+          "control-17",
+          "control-01",
+          "control-19",
+          "control-03",
+          "control-25",
+          "control-16",
+          "control-24",
+          "control-05",
+          "control-06",
+          "control-23",
+          "control-11",
+          "control-18",
+          "control-21",
+          "control-04"
+        ]
+      },
+      {
+        "stratum_id": "field27-episode3-2011",
+        "analysis_partition_id": "discovery_calibration",
+        "field_id": 27,
+        "episode_id": 3,
+        "decision_year": 2011,
+        "case_count": 1,
+        "eligible_control_count": 5,
+        "target_control_count": 5,
+        "selected_control_count": 5,
+        "all_controls_retained": true,
+        "control_inclusion_probability": 1.0,
+        "control_raw_sampling_weight": 1.0,
+        "selected_control_ids_priority_order": [
+          "small-control-03",
+          "small-control-04",
+          "small-control-05",
+          "small-control-01",
+          "small-control-02"
+        ]
+      }
+    ]
+  },
+  "weight_application": {
+    "rule_id": "STABILIZED_IPW_NEAREST_RANK_P01_P99_WINSORIZATION_V1",
+    "group_count": 1,
+    "observation_count": 100,
+    "clipped_low_count": 0,
+    "clipped_high_count": 1,
+    "groups": [
+      {
+        "group_id": "discovery-field17",
+        "analysis_partition_id": "discovery_calibration",
+        "field_id": 17,
+        "observation_count": 100,
+        "lower_nearest_rank": 1,
+        "upper_nearest_rank": 99,
+        "lower_cutoff": 1.0,
+        "upper_cutoff": 1.0,
+        "clipped_low_count": 0,
+        "clipped_high_count": 1,
+        "raw_minimum": 1.0,
+        "raw_maximum": 1000.0,
+        "winsorized_mean_before_normalization": 1.0,
+        "normalized_weight_counts": [
+          {
+            "weight": 1.0,
+            "count": 100
+          }
+        ],
+        "raw_kish_effective_sample_size": 1.207681439537,
+        "winsorized_kish_effective_sample_size": 100.0
+      }
+    ]
+  },
+  "cohort_support_application": {
+    "rule_id": "FIELD_EPISODE_PARTITION_MINIMUM_500_WITH_100_PER_OUTCOME_CLASS_V1",
+    "group_count": 4,
+    "pass_count": 1,
+    "fail_count": 3,
+    "groups": [
+      {
+        "group_id": "cohort-pass",
+        "analysis_partition_id": "discovery_calibration",
+        "field_id": 17,
+        "episode_id": 1,
+        "total_opportunity_rows": 1000,
+        "entry_events": 150,
+        "non_entry_opportunities": 850,
+        "support_pass": true,
+        "failure_reasons": []
+      },
+      {
+        "group_id": "cohort-total-fail",
+        "analysis_partition_id": "discovery_calibration",
+        "field_id": 17,
+        "episode_id": 2,
+        "total_opportunity_rows": 499,
+        "entry_events": 100,
+        "non_entry_opportunities": 399,
+        "support_pass": false,
+        "failure_reasons": [
+          "TOTAL_BELOW_500"
+        ]
+      },
+      {
+        "group_id": "cohort-event-fail",
+        "analysis_partition_id": "discovery_calibration",
+        "field_id": 27,
+        "episode_id": 3,
+        "total_opportunity_rows": 1000,
+        "entry_events": 99,
+        "non_entry_opportunities": 901,
+        "support_pass": false,
+        "failure_reasons": [
+          "ENTRY_EVENTS_BELOW_100"
+        ]
+      },
+      {
+        "group_id": "cohort-non-event-fail",
+        "analysis_partition_id": "discovery_calibration",
+        "field_id": 27,
+        "episode_id": 4,
+        "total_opportunity_rows": 1000,
+        "entry_events": 901,
+        "non_entry_opportunities": 99,
+        "support_pass": false,
+        "failure_reasons": [
+          "NON_ENTRY_OPPORTUNITIES_BELOW_100"
+        ]
+      }
+    ]
+  },
+  "small_cell_application": {
+    "rule_id": "SUPPRESS_COUNTS_ONE_THROUGH_TEN_AND_DERIVABLE_COMPLEMENTS_V1",
+    "cell_count": 5,
+    "suppressed_count": 2,
+    "cells": [
+      {
+        "cell_id": "zero",
+        "input_count": 0,
+        "reported_count": 0,
+        "suppressed": false,
+        "status": "ZERO_REPORTABLE_IF_NOT_DERIVABLE"
+      },
+      {
+        "cell_id": "one",
+        "input_count": 1,
+        "reported_count": null,
+        "suppressed": true,
+        "status": "SUPPRESSED_ONE_THROUGH_TEN"
+      },
+      {
+        "cell_id": "ten",
+        "input_count": 10,
+        "reported_count": null,
+        "suppressed": true,
+        "status": "SUPPRESSED_ONE_THROUGH_TEN"
+      },
+      {
+        "cell_id": "eleven",
+        "input_count": 11,
+        "reported_count": 11,
+        "suppressed": false,
+        "status": "DIRECTLY_REPORTABLE"
+      },
+      {
+        "cell_id": "large",
+        "input_count": 100,
+        "reported_count": 100,
+        "suppressed": false,
+        "status": "DIRECTLY_REPORTABLE"
+      }
+    ]
+  },
+  "capacity_collinearity_application": {
+    "support_rule_id": "FOUR_SIGNAL_CAPACITY_CELLS_MIN_50_TOTAL_11_PER_OUTCOME_CLASS_V1",
+    "vif_rule_id": "CENTERED_WEIGHTED_EXPOSURE_BLOCK_VIF_STRICTLY_BELOW_FIVE_V1",
+    "table_count": 3,
+    "support_fail_count": 1,
+    "vif_fail_count": 1,
+    "separate_channel_pass_count": 1,
+    "tables": [
+      {
+        "table_id": "capacity-pass",
+        "analysis_partition_id": "discovery_calibration",
+        "field_id": 17,
+        "episode_id": 1,
+        "support_pass": true,
+        "support_failure_reasons": [],
+        "vif_full_rank": true,
+        "vif_values": [
+          {
+            "column": "peer_visible_success_proxy",
+            "vif": 2.0
+          },
+          {
+            "column": "capacity_bridge",
+            "vif": 2.0
+          },
+          {
+            "column": "peer_visible_success_proxy_x_capacity_bridge",
+            "vif": 3.0
+          }
+        ],
+        "maximum_vif": 3.0,
+        "vif_pass": true,
+        "separate_channel_pass": true,
+        "failure_action": null,
+        "cells": [
+          {
+            "cell_id": "NEITHER",
+            "signal": 0,
+            "capacity": 0,
+            "entry_events": 20,
+            "non_entry_opportunities": 80,
+            "total_opportunities": 100,
+            "analytic_weight_sum": 100.0,
+            "support_pass": true,
+            "failure_reasons": []
+          },
+          {
+            "cell_id": "CAPACITY_BRIDGE_ONLY",
+            "signal": 0,
+            "capacity": 1,
+            "entry_events": 20,
+            "non_entry_opportunities": 80,
+            "total_opportunities": 100,
+            "analytic_weight_sum": 100.0,
+            "support_pass": true,
+            "failure_reasons": []
+          },
+          {
+            "cell_id": "PUBLIC_SUCCESS_ONLY",
+            "signal": 1,
+            "capacity": 0,
+            "entry_events": 20,
+            "non_entry_opportunities": 80,
+            "total_opportunities": 100,
+            "analytic_weight_sum": 100.0,
+            "support_pass": true,
+            "failure_reasons": []
+          },
+          {
+            "cell_id": "BOTH",
+            "signal": 1,
+            "capacity": 1,
+            "entry_events": 20,
+            "non_entry_opportunities": 80,
+            "total_opportunities": 100,
+            "analytic_weight_sum": 100.0,
+            "support_pass": true,
+            "failure_reasons": []
+          }
+        ]
+      },
+      {
+        "table_id": "capacity-support-fail",
+        "analysis_partition_id": "discovery_calibration",
+        "field_id": 17,
+        "episode_id": 2,
+        "support_pass": false,
+        "support_failure_reasons": [
+          "PUBLIC_SUCCESS_ONLY:ENTRY_EVENTS_BELOW_11"
+        ],
+        "vif_full_rank": true,
+        "vif_values": [
+          {
+            "column": "peer_visible_success_proxy",
+            "vif": 2.0
+          },
+          {
+            "column": "capacity_bridge",
+            "vif": 2.0
+          },
+          {
+            "column": "peer_visible_success_proxy_x_capacity_bridge",
+            "vif": 3.0
+          }
+        ],
+        "maximum_vif": 3.0,
+        "vif_pass": true,
+        "separate_channel_pass": false,
+        "failure_action": "COLLAPSE_TO_ANY_PEER_SIGNAL_OR_CAPACITY_AND_FORFEIT_SEPARATE_CHANNEL_CLAIM",
+        "cells": [
+          {
+            "cell_id": "NEITHER",
+            "signal": 0,
+            "capacity": 0,
+            "entry_events": 20,
+            "non_entry_opportunities": 80,
+            "total_opportunities": 100,
+            "analytic_weight_sum": 100.0,
+            "support_pass": true,
+            "failure_reasons": []
+          },
+          {
+            "cell_id": "CAPACITY_BRIDGE_ONLY",
+            "signal": 0,
+            "capacity": 1,
+            "entry_events": 20,
+            "non_entry_opportunities": 80,
+            "total_opportunities": 100,
+            "analytic_weight_sum": 100.0,
+            "support_pass": true,
+            "failure_reasons": []
+          },
+          {
+            "cell_id": "PUBLIC_SUCCESS_ONLY",
+            "signal": 1,
+            "capacity": 0,
+            "entry_events": 10,
+            "non_entry_opportunities": 90,
+            "total_opportunities": 100,
+            "analytic_weight_sum": 100.0,
+            "support_pass": false,
+            "failure_reasons": [
+              "ENTRY_EVENTS_BELOW_11"
+            ]
+          },
+          {
+            "cell_id": "BOTH",
+            "signal": 1,
+            "capacity": 1,
+            "entry_events": 20,
+            "non_entry_opportunities": 80,
+            "total_opportunities": 100,
+            "analytic_weight_sum": 100.0,
+            "support_pass": true,
+            "failure_reasons": []
+          }
+        ]
+      },
+      {
+        "table_id": "capacity-vif-fail",
+        "analysis_partition_id": "discovery_calibration",
+        "field_id": 27,
+        "episode_id": 3,
+        "support_pass": true,
+        "support_failure_reasons": [],
+        "vif_full_rank": true,
+        "vif_values": [
+          {
+            "column": "peer_visible_success_proxy",
+            "vif": 3.652173913043
+          },
+          {
+            "column": "capacity_bridge",
+            "vif": 3.652173913043
+          },
+          {
+            "column": "peer_visible_success_proxy_x_capacity_bridge",
+            "vif": 7.95652173913
+          }
+        ],
+        "maximum_vif": 7.95652173913,
+        "vif_pass": false,
+        "separate_channel_pass": false,
+        "failure_action": "COLLAPSE_TO_ANY_PEER_SIGNAL_OR_CAPACITY_AND_FORFEIT_SEPARATE_CHANNEL_CLAIM",
+        "cells": [
+          {
+            "cell_id": "NEITHER",
+            "signal": 0,
+            "capacity": 0,
+            "entry_events": 11,
+            "non_entry_opportunities": 39,
+            "total_opportunities": 50,
+            "analytic_weight_sum": 50.0,
+            "support_pass": true,
+            "failure_reasons": []
+          },
+          {
+            "cell_id": "CAPACITY_BRIDGE_ONLY",
+            "signal": 0,
+            "capacity": 1,
+            "entry_events": 11,
+            "non_entry_opportunities": 39,
+            "total_opportunities": 50,
+            "analytic_weight_sum": 50.0,
+            "support_pass": true,
+            "failure_reasons": []
+          },
+          {
+            "cell_id": "PUBLIC_SUCCESS_ONLY",
+            "signal": 1,
+            "capacity": 0,
+            "entry_events": 11,
+            "non_entry_opportunities": 39,
+            "total_opportunities": 50,
+            "analytic_weight_sum": 50.0,
+            "support_pass": true,
+            "failure_reasons": []
+          },
+          {
+            "cell_id": "BOTH",
+            "signal": 1,
+            "capacity": 1,
+            "entry_events": 200,
+            "non_entry_opportunities": 800,
+            "total_opportunities": 1000,
+            "analytic_weight_sum": 1000.0,
+            "support_pass": true,
+            "failure_reasons": []
+          }
+        ]
+      }
+    ]
+  },
+  "claim_boundary": "This outcome-blind contract precommits six risk-set, weighting, support, suppression, and collinearity choices plus a synthetic fixture interface. Ten controls per case, P01-P99 winsorization, the cohort and cell floors, and VIF five are explicit conservative design policies, not literature-mandated truths, power guarantees, or empirical effects. The one-through-ten suppression rule is used by analogy and does not assert that CMS policy governs OpenAlex. No discovery production input is opened, G0 v3 is not changed, the remaining seven quantitative choices and all required sections remain unresolved, and no holdout artifact, seal, model, G4 result, causality, or scientific effect is established."
+}

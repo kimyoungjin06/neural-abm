@@ -1,0 +1,174 @@
+schema_version: pivot_feedback_gate_state.v5
+label: pivot_feedback_gate_state_v5
+mode: ADDITIVE_D0B_AUTHOR_OPPORTUNITY_FOUNDATION_GATE_LEDGER
+status: VALID_G_MINUS_1A_S0_D0A_AND_D0B_AUTHOR_FOUNDATION_REMAINING_D0B_MEASUREMENTS_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v4.yaml
+  sha256: e8cd3242d7c343b878cfa406662aa9f9dc829ca9c684be57976fb4a533a11407
+  required_schema_version: pivot_feedback_gate_state.v4
+  required_status: VALID_G_MINUS_1A_AND_S0_PASS_D0A_STRUCTURAL_FREEZE_D0B_AUTHORIZED
+  required_fields:
+    gate_state.D0.state: PARTIAL_D0A_STRUCTURAL_FREEZE_PASS
+    gate_state.D0.complete: false
+    authorization.d0b_outcome_blind_author_panel: AUTHORIZED_ENTRY_YEAR_AT_MOST_2012
+    authorization.d0_discovery_outcome_opening: NOT_YET_AUTHORIZED
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+    authorization.scientific_effect: NOT_ESTABLISHED
+  mutation_allowed: false
+
+execution_evidence:
+  d0b_author_opportunity_foundation:
+    relative_path: experiments/evidence/results/pivot_feedback_d0b_author_opportunity_foundation_full_20260724.summary.json
+    sha256: fcd9507840f52bcb49f47aabc3b5c8a40f208ced892504452dec6abd02dc0703
+    required_schema_version: pivot_feedback_d0b_author_opportunity_foundation_summary.v1
+    required_status: PASS_INDEPENDENT_D0B_AUTHOR_OPPORTUNITY_FOUNDATION_D0_AND_D0B_PARTIAL_REMAINING_MEASUREMENTS_ONLY_AUTHORIZED
+    required_fields:
+      scope.d0b_author_foundation_complete: true
+      scope.d0b_complete: false
+      scope.d0_complete: false
+      scope.entry_or_post_entry_target_works_read: false
+      scope.persistence_rows_read: false
+      scope.realized_citation_rows_read: false
+      scope.predictive_scores_computed: false
+      scope.threshold_tuning_performed: false
+      scope.final_candidate_eligibility_established: false
+      scope.model_fitting_performed: false
+      scope.g4_rows_read: false
+      scope.gpu_used: false
+      scope.scientific_effect: NOT_ESTABLISHED
+      selected_work_measurement.selected_predecision_work_rows: 83565
+      author_measurement.author_episode_rows: 5849627
+      author_measurement.final_candidate_eligibility_established: false
+      author_measurement.team_cap_selected: false
+      source_replay.cutoff_work_artifacts_rehashed: 4096
+      source_replay.author_event_artifacts_rehashed: 4096
+      source_replay.cutoff_work_rows_replayed: 492293206
+      source_replay.author_event_rows_replayed: 779630258
+      source_replay.author_output_row_groups_replayed: 16384
+      source_replay.source_rows_replayed_total: 1271923464
+      source_replay.exact_selected_work_output_match: true
+      source_replay.exact_author_output_match: true
+      source_replay.producer_module_imported: false
+      authorization.d0b_remaining_outcome_blind_measurements: AUTHORIZED
+      authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+      authorization.g0_measurement_freeze: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+      authorization.scientific_effect: NOT_ESTABLISHED
+
+gate_state:
+  G_MINUS_1A:
+    state: PASS_BOUNDED
+    complete: true
+    authorizes: [S0]
+  S0:
+    state: PASS_THRESHOLD_FREE_INVENTORY
+    complete: true
+    authorizes: [D0]
+  D0:
+    state: PARTIAL_D0A_AND_D0B_AUTHOR_FOUNDATION_PASS
+    complete: false
+    requires: [S0]
+    entry_year_end: 2012
+    completed_components:
+      - D0A_OUTCOME_BLIND_FIELD_AND_EPISODE_FREEZE
+      - D0B_PRE_ENTRY_AUTHOR_OPPORTUNITY_FOUNDATION
+    authorizes: [D0B_REMAINING_OUTCOME_BLIND_MEASUREMENTS]
+  G0:
+    state: PENDING
+    complete: false
+  G0_5:
+    state: NOT_RUN
+    complete: false
+  G1:
+    state: NOT_RUN
+    complete: false
+  G2:
+    state: NOT_RUN
+    complete: false
+  G3:
+    state: NOT_RUN
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+  G5:
+    state: NOT_RUN_OPTIONAL
+    complete: false
+
+authorization:
+  d0a_structural_freeze: COMPLETE
+  d0b_author_opportunity_foundation: COMPLETE
+  d0b_remaining_outcome_blind_measurements: AUTHORIZED_FOUR_FROZEN_EPISODES_ONLY
+  d0_discovery_outcome_opening: NOT_YET_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  final_panel_materialization: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+frozen_scope:
+  entry_year_end: 2012
+  field_ids: [17, 27]
+  episode_topic_years:
+    - [17, 14430, 2003]
+    - [17, 10579, 2012]
+    - [27, 11361, 2007]
+    - [27, 12505, 1991]
+  current_snapshot_topic_family_proxy: true
+  author_entity: CURRENT_SNAPSHOT_OPENALEX_AUTHOR_TOKEN
+  final_g0_selection: false
+
+d0b_author_foundation:
+  selected_predecision_work_rows: 83565
+  author_episode_rows: 5849627
+  candidate_base_rule: AT_LEAST_ONE_FOCAL_FIELD_WORK_IN_T_MINUS_3_THROUGH_T_MINUS_1
+  nonranked_team_cap_profiles: [10, 50, 100, ALL]
+  team_cap_selected: false
+  final_candidate_eligibility_established: false
+  pre_signal_incumbent_and_field_active_rows_by_episode: [182, 130, 3368, 5449]
+  sparse_intersection_is_a_measurement_warning_not_a_threshold_decision: true
+
+next_required_implementation:
+  gate: D0B_REMAINING
+  role: OUTCOME_BLIND_LEAVEOUT_NETWORK_BRIDGE_AND_CONTENT_MEASUREMENT
+  allowed_episode_topic_years:
+    - [17, 14430, 2003]
+    - [17, 10579, 2012]
+    - [27, 11361, 2007]
+    - [27, 12505, 1991]
+  required_components:
+    - current_snapshot_topic_family_content_coherence_audit
+    - pre_event_indexing_discontinuity_diagnostic
+    - incumbent_membership_frozen_before_signal_window
+    - incumbent_only_attention_available_by_t_minus_1
+    - focal_author_leaveout
+    - registered_local_network_leaveout
+    - prior_peer_activity_available_by_t_minus_1
+    - recent_collaboration_existing_by_t_minus_1
+    - orcid_stable_subset_flag
+    - same_affiliation_existing_by_t_minus_1
+    - independent_temporal_leakage_verification
+  same_affiliation_dependency: NEW_RECEIPT_BOUND_AUTHOR_WORK_INSTITUTION_SURFACE_REQUIRED
+  entry_or_persistence_outcomes_may_be_opened: false
+  threshold_or_team_cap_selection_allowed: false
+  final_candidate_eligibility_may_be_claimed: false
+  final_field_choice_by_effect_size_allowed: false
+  confirmatory_year_changes_allowed: false
+  workload_class: CPU_IO
+  gpu_required: false
+
+claim_boundary: >-
+  This additive ledger preserves the D0-A-partial v4 ledger and records an
+  independently replayed pre-entry author-opportunity foundation for only the
+  four frozen D0-A episodes. It authorizes only the remaining outcome-blind
+  D0-B content, incumbent, leave-out, prior-peer, collaboration, affiliation,
+  ORCID-subset, and leakage measurements. D0-B and D0 remain incomplete.
+  Entry and persistence outcomes, threshold or team-cap selection, final
+  candidate eligibility, G0 measurement freeze, final-panel materialization,
+  model fitting, G4 opening, empirical signatures, causal effects, and
+  scientific effects remain not authorized, pending, sealed, not run, or not
+  established.

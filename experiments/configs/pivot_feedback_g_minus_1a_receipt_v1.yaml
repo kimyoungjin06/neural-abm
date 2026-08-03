@@ -1,0 +1,197 @@
+schema_version: pivot_feedback_g_minus_1a_receipt_config.v1
+label: pivot_feedback_g_minus_1a_receipt_v1
+mode: READ_ONLY_REPOSITORY_EVIDENCE_BINDING
+status_before_verification: READY_TO_VERIFY_BOUNDED_G_MINUS_1A
+
+gate_definition:
+  gate_id: G_MINUS_1A
+  role: BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_READINESS
+  passing_status: PASS_G_MINUS_1A_BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+  author_unit: CURRENT_SNAPSHOT_OPENALEX_AUTHOR_ID_TOKEN_NOT_PERSON
+  source_snapshot_date: "2026-03-30"
+  source_root_id: openalex_works_20260330_repairreplay_20260410_190630
+  may_authorize_s0: true
+  may_authorize_d0: false
+  may_authorize_model_fitting: false
+  may_pass_legacy_g_minus_1: false
+  may_pass_g0: false
+  may_establish_scientific_effect: false
+
+acyclic_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_sequence_v1.yaml
+  sha256: 3a3a655234c4efb74a4900e65624c903176615cee19da760cd06b1416e3fd365
+  required_schema_version: pivot_feedback_gate_sequence.v1
+  required_status: VALID_PENDING_SUCCESSOR_IMPLEMENTATION
+  required_fields:
+    lifecycle.g_minus_1a_receipt_issued: false
+    lifecycle.execution_authorized: false
+    lifecycle.scientific_effect: NOT_ESTABLISHED
+    completion_contract.config_alone_can_pass_g_minus_1a: false
+    completion_contract.next_required_implementation: G_MINUS_1A_RECEIPT_AND_S0_THRESHOLD_FREE_INVENTORY
+
+repository_evidence:
+  - component_id: canonical_work_time_spine
+    relative_path: experiments/evidence/results/openalex_g1_canonical_full_work_time_spine_20260722.summary.json
+    sha256: b02fc7f38632f698a41689312e0eba9a4a70b71cdfb03ed69e1ba0a6586db565
+    required_schema_version: openalex_g1_canonical_work_time_spine_full_summary.v1
+    required_status: PASS_CURRENT_SNAPSHOT_CANONICAL_WORK_TIME_SPINE_COMPONENT_WITH_TEMPORAL_V3_PARENT
+    required_fields:
+      scope.full_scope: true
+      scope.production_component_pass: true
+      scope.gpu_used: false
+      identifier_accounting.raw_rows: 492293207
+      identifier_accounting.quarantined_w_minus_1_rows: 1
+      identifier_accounting.retained_rows: 492293206
+      identifier_accounting.distinct_numeric_ids: 492293206
+      identifier_accounting.duplicate_numeric_id_groups: 0
+      identifier_accounting.global_uniqueness_verified: true
+      canonical_spine.partition_count: 4096
+      independent_verification.status: PASS_READ_ONLY_INDEPENDENT_OUTPUT_VERIFICATION
+      independent_verification.parquet_validation: full
+      independent_verification.output_tree_unchanged: true
+      provenance.output_receipt_sha256: 2760b3aa5c5960d9356cc30339338418ff9000ab22e9c4b94caf82f6216f9aa1
+
+  - component_id: author_token_history
+    relative_path: experiments/evidence/results/openalex_g1_author_history_production_full_20260722.summary.json
+    sha256: 125fa24dfc8c59c76867e60e7431f72f325bc6341fc84c28fad111a66dbfbb86
+    required_schema_version: openalex_g1_author_history_production_full_summary.v1
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    required_fields:
+      scope.full_scope: true
+      scope.production_component_pass: true
+      scope.gpu_used: false
+      source_accounting.authorship.raw_rows: 1361551038
+      source_accounting.authorship.quarantined_w_minus_1_rows: 1
+      source_accounting.authorship.retained_rows: 1361551037
+      source_accounting.authorship.grammar_valid_non_null_author_id_rows: 781434618
+      work_event_accounting.distinct_author_work_pairs: 779630258
+      work_event_accounting.history_usable_distinct_author_work_pairs: 776803175
+      work_event_accounting.unmatched_authorship_slots: 0
+      author_history_accounting.all_distinct_author_token_rows: 113748578
+      independent_verification.status: PASS_READ_ONLY_INDEPENDENT_AUTHOR_HISTORY_OUTPUT_REDUCTION_VERIFICATION
+      independent_verification.output_tree_unchanged: true
+      gate_status.author_entity_validity: UNRESOLVED_WORK_SIDE_TOKEN_ONLY
+      production_surface.output_receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+
+  - component_id: work_topic_relation
+    relative_path: experiments/evidence/results/openalex_g1_work_topic_relation_primary_adjudication_full_20260722.summary.json
+    sha256: 76de9e32c627eafb491b0be25c342445adc9e6fcdbca040bc48d25cbb19652bc
+    required_schema_version: openalex_g1_work_topic_relation_primary_adjudication_full_summary.v1
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_TOPIC_RELATION_COMPONENT_WITH_PRIMARY_EXACT_SCORE_ADJUDICATION
+    required_fields:
+      scope.full_scope: true
+      scope.component_pass: true
+      scope.gpu_used: false
+      canonical_relation.rows: 928561783
+      canonical_relation.score_conflict_edge_groups: 2
+      adjudication.adjudicated_group_count: 2
+      adjudication.unresolved_group_count: 0
+      independent_verification.canonical_relation_payload_all_exact: true
+      independent_verification.parent_sorted_event_all_groups_replayed: true
+      provenance.output_receipt_sha256: 124ee59348a4f3c73cac8e0d567f764a57cf8ba6700c02ffa05a276e05562b5d
+
+  - component_id: citation_chronology_proxy
+    relative_path: experiments/evidence/results/openalex_g1_citation_chronology_production_full_20260722.summary.json
+    sha256: 79cfca7ce217a25e682ef617c26d42d234fe84f5f4a0fafdae19d7d16c99893a
+    required_schema_version: openalex_g1_citation_chronology_production_full_summary.v1
+    required_status: PASS_CURRENT_SNAPSHOT_CITATION_EDGE_CHRONOLOGY_ACCOUNTING_WITH_CANONICAL_TEMPORAL_V3_PARENT_AND_BIBLIOGRAPHIC_EVENT_TIME_CONVENTION_LIMITATION
+    required_fields:
+      scope.full_scope: true
+      scope.production_component_pass: true
+      scope.gpu_used: false
+      pair_accounting.raw_pair_rows: 3042536160
+      pair_accounting.unique_pair_rows: 3042536160
+      pair_accounting.chronology_safe_primary_pairs: 2858679472
+      availability_accounting.openalex_observation_time_established: false
+      independent_verification.status: PASS_INDEPENDENT_FULL_ARTIFACT_AND_ROW_LEVEL_CITATION_CHRONOLOGY_VERIFICATION
+      independent_verification.output_tree_unchanged: true
+      production_surface.output_receipt_sha256: fbe753c84ceb3858a06c627f318eb756e997f73577498b06a5e88f72cacabe76
+
+  - component_id: cutoff_primitives
+    relative_path: experiments/evidence/results/pivot_feedback_cutoff_primitives_production_full_20260723.summary.json
+    sha256: 874698fa70edf98d62e73a7f5cb7e3d0b15ecd653535781916af4832e7ded12e
+    required_schema_version: pivot_feedback_cutoff_primitives_production_full_summary.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    required_fields:
+      scope.full_scope: true
+      scope.production_component_pass: true
+      scope.gpu_used: false
+      source_accounting.retained_rows: 492293206
+      source_accounting.forbidden_current_outcome_columns_projected: 0
+      work_metadata.rows: 492293206
+      work_metadata.full_source_canonical_closure: true
+      normalized_parent_surfaces.all_parent_receipt_artifacts_rehashed_before_production: true
+      cutoff_contract.fixed_outcome_horizon: UNRESOLVED_REQUIRES_G0_SUCCESSOR
+      cutoff_contract.candidate_author_eligibility: UNRESOLVED_REQUIRES_G0_SUCCESSOR
+      independent_verification.status: PASS_READ_ONLY_INDEPENDENT_NORMALIZED_CUTOFF_PRIMITIVES_VERIFICATION
+      independent_verification.output_tree_unchanged: true
+      provenance.result_fingerprint_sha256: 094b44774418dab35e2374d3b5c49caca854bdcb577462786b2820b75592cef7
+
+  - component_id: cutoff_source_projection_replay
+    relative_path: experiments/evidence/results/pivot_feedback_cutoff_primitives_source_replay_full_20260723.summary.json
+    sha256: 6c61f89b289b8575dfcda226cbc9a739a445e611280378708a223434aade1a67
+    required_schema_version: pivot_feedback_cutoff_primitives_source_replay_full_summary.v1
+    required_status: PASS_INDEPENDENT_FULL_SOURCE_PROJECTION_REPLAY_AND_CANONICAL_TIME_VERIFICATION_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+    required_fields:
+      scope.full_scope: true
+      scope.production_source_replay_pass: true
+      scope.gpu_used: false
+      scope.source_files: 493
+      scope.source_bytes: 150062449219
+      scope.source_content_rehashed_in_this_run: false
+      source_accounting.retained_rows: 492293206
+      row_level_verification.rows: 492293206
+      row_level_verification.projected_field_count_including_work_id: 8
+      row_level_verification.all_projected_values_and_null_masks_exact: true
+      row_level_verification.canonical_time_join_replayed: true
+      row_level_verification.canonical_spine_artifacts_rehashed: 4096
+      output_verification.output_tree_unchanged: true
+      provenance.result_fingerprint_sha256: 27234aeba68fa9baaf32c6789e0388ec09753b3f2614f63d00942caea98164ae
+
+cross_component_closures:
+  retained_work_rows: 492293206
+  canonical_receipt_sha256: 2760b3aa5c5960d9356cc30339338418ff9000ab22e9c4b94caf82f6216f9aa1
+  author_history_receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+  work_topic_receipt_sha256: 124ee59348a4f3c73cac8e0d567f764a57cf8ba6700c02ffa05a276e05562b5d
+  citation_chronology_receipt_sha256: fbe753c84ceb3858a06c627f318eb756e997f73577498b06a5e88f72cacabe76
+  current_content_receipt_sha256: 082161a29bcd8fd79fd85e0bf6814a5c7950b97b847ea08056e17eebcd369a12
+  work_metadata_tree_sha256: a37448b4df39c00e97b540b3ac7d06de6f2e9ce12186838120d59c820aa89d77
+  source_projection_record_sha256: 9a8f9b13250ab8b11aecd19b0d67b2a1dba9d4395e1d6e63da79f50f8989abf3
+  source_binding_semantics: CONTENT_FREEZE_SHA256_PLUS_REPLAY_CURRENT_EXACT_STAT_WITHOUT_REHASHING_ALL_SOURCE_BYTES_IN_REPLAY
+
+unresolved_boundaries:
+  author_entity_validity: UNRESOLVED_CURRENT_SNAPSHOT_TOKEN_ONLY
+  historical_author_observability: UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+  historical_topic_observability: UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+  historical_citation_observation_time: UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+  raw_source_id_validity: BLOCKED_W_MINUS_1_QUARANTINED
+  w_zero_entity_validity: UNRESOLVED
+  candidate_eligibility: PENDING_G0
+  allowed_work_types: PENDING_G0
+  fixed_outcome_horizon: PENDING_G0
+  final_cutoff_panel: PENDING_G0_5
+  s0_threshold_free_inventory: NOT_RUN
+  d0_discovery_pilot: NOT_RUN
+  empirical_g1_signature: NOT_RUN
+  scientific_effect: NOT_ESTABLISHED
+
+receipt_contract:
+  output_schema_version: pivot_feedback_g_minus_1a_receipt.v1
+  output_surface: STDOUT_JSON_OR_EXPLICIT_NEW_FILE
+  overwrite_allowed: false
+  source_payloads_may_be_opened: false
+  production_outputs_may_be_mutated: false
+  exact_repository_evidence_required: true
+  exact_cross_component_closure_required: true
+  g_minus_1a_pass_implies_s0_authorized_only: true
+
+claim_boundary: >-
+  A passing receipt establishes only that the current-snapshot canonical work
+  time, author-token history, work-topic relation, bibliographic citation
+  chronology proxy, normalized cutoff primitives, and independent source
+  projection replay are mutually bound at their declared full-production
+  surfaces. It authorizes threshold-free S0 structural inventory only. It
+  neither establishes natural-person identity nor historical OpenAlex
+  visibility, and it does not choose candidate eligibility, work types,
+  horizons, thresholds, fields, samples, or effects. It cannot pass the legacy
+  G-1 registry, G0, G0.5, or any empirical or causal claim.

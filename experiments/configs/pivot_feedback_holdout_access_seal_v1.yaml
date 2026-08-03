@@ -1,0 +1,254 @@
+schema_version: pivot_feedback_holdout_access_seal_contract.v1
+label: pivot_feedback_holdout_access_seal_v1
+mode: VERSIONED_METADATA_ONLY_FUTURE_HOLDOUT_SEAL_CONTRACT_NO_SEAL_ACTION
+status: PENDING_INDEPENDENT_VALIDATION_FUTURE_SEAL_CREATION_ONLY
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v53.yaml
+  sha256: e658bf3e8d92eb7cf8f901315d3584de7cb00202d14810fb3de847e056b6f7ae
+  required_schema_version: pivot_feedback_gate_state.v53
+  required_status: VALID_G0_V2_G_MINUS_1A_BOUND_THREE_BLOCKERS_HOLDOUT_SEAL_CONTRACT_AUTHORIZED
+  required_fields:
+    gate_state.D0.complete: true
+    gate_state.G0.complete: false
+    authorization.holdout_access_seal_contract: AUTHORIZED_METADATA_ONLY_NO_SEAL_ACTION
+    authorization.holdout_seal_creation_or_receipt_issuance: NOT_AUTHORIZED
+    authorization.holdout_seal_opening: NOT_AUTHORIZED
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+bound_g0_v2:
+  relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v2.yaml
+  sha256: a2cb0cbf444a7c128eecc40a815b80d5fe86f617a36849330612491b03934eb3
+  required_schema_version: pivot_feedback_g0_measurement_freeze.v3
+  required_status: PENDING_G0_V2_G_MINUS_1A_BOUND_THREE_BLOCKERS_NO_SEAL
+  required_fields:
+    g_minus_1a_binding.state: SATISFIED_G_MINUS_1A_BOUNDED_EVIDENCE_ONLY
+    holdout_access_binding.state: PENDING
+    holdout_access_binding.receipt_relative_path: null
+    holdout_access_binding.receipt_sha256: null
+    fixed_design_choices.full_panel.g4_domain_and_author_cold: true
+    readiness.remaining_blocker_count: 3
+    readiness.g0_freeze_ready: false
+    lifecycle.pass_g0: false
+  mutation_allowed: false
+
+validated_prerequisite_closure_plan:
+  relative_path: experiments/configs/pivot_feedback_g0_prerequisite_closure_plan_v1.yaml
+  sha256: 45db08ea9e51d861270c1be4b8ac675e56e30df7b57268f515fd665708b2c4fc
+  required_schema_version: pivot_feedback_g0_prerequisite_closure_plan.v1
+  required_status: PENDING_INDEPENDENT_VALIDATION_FOUR_WORKSTREAM_PLAN_NO_EXECUTION
+  required_fields:
+    workstreams.HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE.current_state: NULL_BINDING_NO_VERSIONED_CONTRACT_OR_RECEIPT_BOUND
+    workstreams.HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE.next_deliverable.kind: VERSIONED_METADATA_ONLY_HOLDOUT_SEAL_CONTRACT
+    workstreams.HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE.next_deliverable.may_issue_or_open_seal: false
+    workstreams.HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE.next_deliverable.may_enumerate_or_hash_holdout_artifacts: false
+    workstreams.HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE.next_deliverable.may_read_confirmatory_or_holdout_rows: false
+    authorization.holdout_seal_receipt_issuance_or_opening: NOT_AUTHORIZED
+  mutation_allowed: false
+
+partition_contract:
+  partition_id: g4_temporal_holdout
+  entry_start_year: 2020
+  entry_end_year: 2022
+  entry_years: [2020, 2021, 2022]
+  outcome_followup_through_year: 2025
+  temporal_holdout: true
+  domain_cold: true
+  author_cold: true
+  outcome_blind_definition: true
+  partition_membership_immutable_after_contract_validation: true
+  future_seal_must_bind_this_partition_exactly: true
+
+phase_separation_contract:
+  ordered_phases:
+    - CONTRACT_VALIDATION
+    - SEAL_CREATION
+    - SEAL_INDEPENDENT_VERIFICATION
+    - SEAL_OPENING
+  contract_validation:
+    state: AUTHORIZED_METADATA_ONLY
+    may_define_future_manifest_and_receipt_schemas: true
+    may_enumerate_or_hash_holdout_artifacts: false
+    may_create_or_issue_seal: false
+    may_open_seal: false
+  future_seal_creation:
+    state: REQUIRES_SEPARATE_SUCCESSOR_GATE
+    must_bind_this_contract_byte_for_byte: true
+    must_bind_g0_v2_byte_for_byte: true
+    must_bind_prerequisite_closure_plan_byte_for_byte: true
+    may_enumerate_and_hash_only_explicitly_authorized_holdout_artifacts: true
+    may_parse_or_analyze_holdout_rows: false
+    may_issue_receipt_only_after_atomic_finalization: true
+    may_open_seal: false
+  future_seal_independent_verification:
+    state: REQUIRED_AFTER_RECEIPT
+    must_rehash_final_artifacts_and_manifest: true
+    must_verify_receipt_was_written_last: true
+    must_verify_zero_prior_open_events: true
+    may_parse_or_analyze_holdout_rows: false
+    may_open_seal: false
+  future_seal_opening:
+    state: REQUIRES_DISTINCT_G4_OPENING_GATE
+    creation_receipt_alone_authorizes_opening: false
+    independent_verification_alone_authorizes_opening: false
+    may_be_combined_with_creation_phase: false
+
+future_manifest_contract:
+  intended_operator_relative_path: pivot-feedback/holdout-seal-v1/manifest.json
+  required_schema_version: pivot_feedback_holdout_access_seal_manifest.v1
+  required_status: SEALED_ARTIFACT_MANIFEST_FINALIZED_UNOPENED
+  canonical_serialization: JSON_SORTED_KEYS_COMPACT_UTF8_ALLOW_NAN_FALSE
+  digest_algorithm: SHA256
+  required_top_level_fields:
+    - schema_version
+    - status
+    - contract_relative_path
+    - contract_sha256
+    - g0_v2_relative_path
+    - g0_v2_sha256
+    - prerequisite_closure_plan_relative_path
+    - prerequisite_closure_plan_sha256
+    - partition_contract
+    - artifact_count
+    - artifact_entries
+    - manifest_fingerprint_sha256
+    - created_at_utc
+  artifact_entry_required_fields:
+    - canonical_relative_path
+    - byte_size
+    - sha256
+    - regular_file
+    - symlink
+  canonical_paths_unique: true
+  regular_files_only: true
+  symlinks_forbidden: true
+  duplicate_paths_forbidden: true
+  artifact_set_must_be_explicit_before_finalization: true
+  staging_manifest_must_not_be_treated_as_final: true
+
+future_receipt_contract:
+  intended_repository_relative_path: experiments/evidence/results/pivot_feedback_holdout_access_seal_receipt_v1.summary.json
+  required_schema_version: pivot_feedback_holdout_access_seal_outputs.v1
+  required_status: PASS_CONFIRMATORY_PARTITIONS_SEALED_AND_UNOPENED
+  canonical_serialization: JSON_SORTED_KEYS_COMPACT_UTF8_ALLOW_NAN_FALSE
+  receipt_written_last: true
+  required_top_level_fields:
+    - schema_version
+    - status
+    - contract_relative_path
+    - contract_sha256
+    - manifest_operator_relative_path
+    - manifest_sha256
+    - partition_contract
+    - artifact_count
+    - artifact_bytes_total
+    - manifest_fingerprint_sha256
+    - seal_created_at_utc
+    - receipt_written_at_utc
+    - receipt_written_last
+    - seal_opened
+    - prior_open_event_count
+    - confirmatory_or_holdout_rows_read
+    - independent_verification_required
+  required_assertions:
+    receipt_written_last: true
+    seal_opened: false
+    prior_open_event_count: 0
+    confirmatory_or_holdout_rows_read: 0
+    independent_verification_required: true
+  receipt_does_not_authorize_model_fitting: true
+  receipt_does_not_authorize_g4_open: true
+  receipt_does_not_establish_scientific_effect: true
+
+atomic_creation_protocol:
+  ordered_steps:
+    - VERIFY_SEPARATE_SUCCESSOR_GATE_AUTHORIZES_SEAL_CREATION
+    - VERIFY_EXACT_CONTRACT_G0_V2_AND_CLOSURE_PLAN_HASHES
+    - RESOLVE_EXPLICIT_AUTHORIZED_ARTIFACT_SET_WITHOUT_ROW_PARSING
+    - REJECT_MISSING_NONREGULAR_SYMLINKED_DUPLICATE_OR_PREVIOUSLY_OPENED_ARTIFACT
+    - HASH_AUTHORIZED_ARTIFACT_BYTES_IN_PRIVATE_STAGING_AREA
+    - WRITE_AND_FSYNC_STAGING_MANIFEST
+    - REHASH_FINAL_STAGED_ARTIFACTS_AND_MANIFEST
+    - ATOMICALLY_RENAME_STAGING_DIRECTORY_TO_FINAL_SEALED_DIRECTORY
+    - REVALIDATE_FINAL_DIRECTORY_AND_ZERO_PRIOR_OPEN_EVENTS
+    - WRITE_COMPLETION_RECEIPT_LAST
+    - RUN_INDEPENDENT_READ_ONLY_SEAL_VERIFIER
+  receipt_must_not_exist_before_final_directory_revalidation: true
+  final_manifest_and_artifact_hash_closure_required_before_receipt: true
+  receipt_write_must_be_atomic: true
+  receipt_overwrite_forbidden: true
+  seal_creation_failure_writes_pass_receipt: false
+
+fail_closed_policy:
+  missing_artifact_action: FAIL_NO_RECEIPT
+  changed_artifact_action: FAIL_NO_RECEIPT
+  nonregular_or_symlink_artifact_action: FAIL_NO_RECEIPT
+  duplicate_or_noncanonical_path_action: FAIL_NO_RECEIPT
+  previously_opened_artifact_action: FAIL_NO_RECEIPT
+  prior_receipt_or_manifest_mismatch_action: FAIL_NO_RECEIPT
+  partial_staging_action: QUARANTINE_NO_RECEIPT
+  failed_independent_verification_action: INVALIDATE_SEAL_NO_OPENING
+  any_confirmatory_read_before_verified_receipt_action: BLOCK_AND_INVALIDATE
+  missing_artifact_may_be_ignored: false
+  changed_artifact_may_be_rebased_silently: false
+  previously_opened_artifact_may_be_resealed: false
+
+lifecycle:
+  contract_status: PENDING_INDEPENDENT_VALIDATION
+  holdout_artifact_paths_enumerated: false
+  holdout_artifact_bytes_hashed: false
+  staging_manifest_written: false
+  final_manifest_written: false
+  seal_created_or_issued: false
+  seal_receipt_written: false
+  seal_independently_verified: false
+  seal_opened: false
+  operator_parquet_or_row_level_data_read: false
+  confirmatory_or_holdout_rows_read: false
+  api_requests_created_or_submitted: false
+  g0_v2_changed: false
+  quantitative_choices_resolved: false
+  required_sections_completed: false
+  pass_g0: false
+  model_fitted: false
+  g4_open: false
+
+access_accounting_contract:
+  repository_documents_read: 4
+  operator_json_metadata_files_read: 0
+  operator_parquet_files_opened: 0
+  production_row_level_files_opened: 0
+  holdout_artifact_paths_enumerated: 0
+  holdout_artifact_bytes_hashed: 0
+  confirmatory_or_holdout_rows_read: 0
+  api_requests_created_or_submitted: 0
+  model_fitted: false
+  g4_open: false
+
+authorization:
+  contract_validation: AUTHORIZED_METADATA_ONLY
+  future_seal_creation_or_receipt_issuance: REQUIRES_SEPARATE_SUCCESSOR_GATE
+  seal_opening: NOT_AUTHORIZED
+  holdout_artifact_enumeration_or_hashing: NOT_AUTHORIZED
+  operator_parquet_or_row_level_read: NOT_AUTHORIZED
+  confirmatory_or_holdout_access: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_quantitative_choice_resolution: NOT_AUTHORIZED
+  g0_required_section_completion: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This metadata-only contract fixes the future holdout partition and the
+  manifest, receipt, atomic-finalization, independent-verification, and
+  fail-closed rules for a later seal-creation phase. It does not enumerate or
+  hash holdout artifacts, create or issue a seal, write a receipt, open
+  confirmatory or holdout data, change G0 v2, resolve quantitative choices or
+  required sections, pass G0, fit a model, open G4, assert causality, or
+  establish a scientific effect. Seal creation and seal opening require
+  distinct future authorization gates.

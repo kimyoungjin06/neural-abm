@@ -1,0 +1,53 @@
+{
+  "schema_version": "pivot_feedback_d0_rank4_production_disposition_summary.v1",
+  "status": "PASS_INDEPENDENT_RANK4_CONTENT_FAIL_AND_FRONTIER_V5",
+  "rank4_production_disposition": {
+    "field_id": 27,
+    "field_candidate_rank": 4,
+    "topic_id": 12505,
+    "entry_year": 1993,
+    "content_state": "CONTENT_FAIL",
+    "reason": "RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS",
+    "production_rule_version": "candidate_rule_v2",
+    "human_review_used": false,
+    "api_labels_used_as_ground_truth": false
+  },
+  "cumulative_production_dispositions": {
+    "rows": 7,
+    "content_pass_rows": 3,
+    "content_fail_rows": 4
+  },
+  "frontier_v5": {
+    "rows": 51,
+    "content_pass_rows": 3,
+    "content_fail_rows": 4,
+    "content_unresolved_rows": 1,
+    "not_evaluated_rows": 43,
+    "field_certificates_issued": 1,
+    "medicine_field_certificate_issued": false,
+    "global_selection_certificate_issued": false,
+    "medicine_required_candidate_rank": 5,
+    "medicine_required_topic_id": 10151,
+    "medicine_required_entry_year": 1993,
+    "rank5_pass_branch_closes_with_rank": 6
+  },
+  "execution_boundary": {
+    "new_titles_read": false,
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000",
+    "deterministic_reselection_executed": false,
+    "outcomes_read": false
+  },
+  "artifacts": {
+    "config_sha256": "da682ce5bd42f028d51d6a5d72000bec8a26f215f86c2fc0d2519e47f03b578b",
+    "producer_sha256": "147c340d536690497da9dcb3f129706838e4699da1548b73c906032af4e6bfe6",
+    "verifier_sha256": "945c50ecaf0da54ea276d203e2cc5eab99742e214c9c567b58b82dd52b00c941",
+    "operator_receipt_sha256": "1af06a789217a5486eaaadc74993f4725356cb0b25848966eaf6505caee425c4",
+    "verification_report_sha256": "d92ba3b43bb9719fa3088f4aea9cab04f13a4887a6f79ea64af1ed7b24aec83c",
+    "dispositions_sha256": "4e3e23c1d8f28096a3a56375ac20e089b26b7592f6846a650b41208240107d4a",
+    "frontier_v5_sha256": "8a567471f7995a85bb2ab75114b8abf2bc4ddd13a5d2b52ab5f0f066b800d3cb",
+    "artifact_tree_sha256": "a02d5ffcfa9f58daa64ddde01da41305c5b7c5a2219ea6ab2d61b8c51cfc4a6c"
+  },
+  "claim_boundary": "This freezes the rank-4 indexing-failure disposition and frontier v5. It is not semantic truth, an out-of-sample validation of candidate rule v2, a Medicine or global selection certificate, a pivot classification, an outcome result, a model fit, or a scientific effect."
+}

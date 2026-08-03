@@ -1,0 +1,67 @@
+{
+  "schema_version": "pivot_feedback_d0_t10151_rank5_local_routing_summary.v1",
+  "status": "PASS_INDEPENDENT_T10151_RANK5_LOCAL_ROUTING_AND_RULE_V2_DRY_RUN",
+  "target": {
+    "field_id": 27,
+    "field_candidate_rank": 5,
+    "topic_id": 10151,
+    "entry_year": 1993,
+    "sample_rows": 96,
+    "recent_rows": 64
+  },
+  "normalized_sample_replay": {
+    "normalized_work_rows_scanned": 492293206,
+    "normalized_event_rows_scanned": 779630258,
+    "eligible_prelink_rows": 4549,
+    "author_linked_pool_rows": 3797,
+    "recent_six_year_author_linked_rows": 2593,
+    "window_pool_rows": {
+      "0": 1204,
+      "1": 383,
+      "2": 2210
+    },
+    "missing_title_rows": 0
+  },
+  "recent_local_routes": {
+    "accept_rows": 27,
+    "reject_rows": 12,
+    "ambiguous_rows": 25,
+    "opaque_quarantine_rows": 0,
+    "opaque_quarantine_fraction": 0.0
+  },
+  "indexing_diagnostics": {
+    "baseline_median_primary_topic_score": 0.9952,
+    "signal_median_primary_topic_score": 0.99905,
+    "baseline_to_signal_score_drop": -0.00385000000000002,
+    "baseline_dominant_source_share": 0.15625,
+    "signal_dominant_source_share": 0.1875,
+    "baseline_to_signal_source_share_increase": 0.03125
+  },
+  "candidate_rule_v2_dry_run": {
+    "branch": "CONTENT_UNRESOLVED",
+    "state": "WOULD_CONTENT_UNRESOLVED",
+    "reason": "CONSERVATIVE_RECENT_EVIDENCE_NOT_DECISIVE",
+    "production_content_disposition_created": false
+  },
+  "execution_boundary": {
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000",
+    "human_review_used": false,
+    "selection_certificate_issued": false,
+    "outcomes_read": false
+  },
+  "artifacts": {
+    "sample_sha256": "23c06acbf465ac85d3cfba431fd994a02cd73054f38d5baad25dce0fc568d0f2",
+    "sample_receipt_sha256": "77d596bcca255be299b76fb238a6b10fbbf699d926d3e955d60182ca485fa333",
+    "sample_verification_sha256": "424c655c69c9fa604763d161c090eb3c5025963d37d50f26c24a5bbd8075ed25",
+    "routing_config_sha256": "1dfa01edbd56391b6aafd2eff25f890358a846108e8f017611c97745f4ce47ec",
+    "routing_producer_sha256": "e1d1963d6dcfbb81e26b84b343620df43bd4045e539d5cafbd14f711a74eaf84",
+    "routing_verifier_sha256": "b228a639d4b4253a295d700873691a11e350452f1a4583aab662a528099299e8",
+    "routing_receipt_sha256": "d5aacf69a8a045601b756442f59256e2eb420770b1ce1adb74fe67c304825952",
+    "routing_verification_sha256": "9d86c649ddee93be978dccb5401d07ccb8cfccd5830dd856f5490c61e8e97e15",
+    "candidate_sha256": "b1ef2f91f073ebff3ed941f2d37b4265f65991707417e6ab04fee0ab695eb877",
+    "routes_sha256": "3f6fdd3578f4fe6022c3e160ce4759d231ce05c41420b659258bb161ce47b126"
+  },
+  "claim_boundary": "This is an outcome-blind conservative local-routing dry run. CONTENT_UNRESOLVED is neither pass nor fail. It is not semantic truth, a production disposition, selection certificate, pivot classification, outcome result, model fit, or scientific effect."
+}

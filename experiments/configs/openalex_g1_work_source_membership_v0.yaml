@@ -1,0 +1,453 @@
+schema_version: openalex_g1_work_source_membership_config.v1
+label: openalex_g1_work_source_membership_v0
+
+source:
+  root_env: OPENALEX_DERIVED_ROOT
+  root_id: openalex_works_20260330_repairreplay_20260410_190630
+  snapshot_date: "2026-03-30"
+  lineage_id: openalex_20260225_base_plus_20260330_update_repairreplay
+
+parent_inventory:
+  manifest_relative_path: experiments/runs/20260716_openalex_g1_source_inventory/source_manifest.json
+  manifest_sha256: 6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46
+  summary_relative_path: experiments/evidence/results/openalex_g1_source_inventory_20260716.summary.json
+  summary_sha256: 6d6a70c9d45264c1e36efd30976ab06fa765f1375de295fa49ed385c649dcc7c
+  config_relative_path: experiments/configs/openalex_g1_source_inventory_v0.yaml
+  config_sha256: b4c4a9d3770dbfd979962a1372eb995f8458c0498acc1a7eae911fa84e495a63
+  inventory_fingerprint_sha256: 1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473
+  stability_fingerprint_sha256: a3bfb7f639d4131749c1522f00e5e977bae7abc1a62202790fd41279f8f0a0e5
+  expected_table_count: 23
+  expected_parquet_file_count: 21019
+  expected_footer_rows: 20996232817
+  content_sha256_complete: false
+
+parent_grammar_valid_main_id_recount:
+  summary_relative_path: experiments/evidence/results/openalex_g1_grammar_valid_main_id_recount_20260716.summary.json
+  summary_sha256: b25e16abea4a496d1d9160486fe4e322114f309cee1ec78b3955d7489137d585
+  raw_report_sha256: 97ac953eb54c931f0f08a4c74029311315d33a28aad738adc3ca8858b4ce75c9
+  config_relative_path: experiments/configs/openalex_g1_recount_canonical_quarantine_v1.yaml
+  config_sha256: 844a59223b8104b5c2d067c12e3c6e1215a186b72e89d2ef01594fdcf367a840
+  tool_sha256: 2a527987042671deddb816ac2886c510ccad7eafcb7905033f67075d1cd12a6b
+  required_status: PASS_GRAMMAR_VALID_MAIN_ID_RECOUNT_WITH_FROZEN_QUARANTINE
+  raw_source_id_validity: BLOCKED
+
+parent_sentinel_incidence:
+  summary_relative_path: experiments/evidence/results/openalex_g1_sentinel_incidence_20260716.summary.json
+  summary_sha256: 3cc8cfa96a408b70f08ef58dd59c25f9b238abb1486c11150e85c51bb1db7b49
+  raw_evidence_sha256: 6e8c125c17145f680ffa1dc4d699ec817f37c6e6c1656e55cb3c0995146d018d
+  config_relative_path: experiments/configs/openalex_g1_sentinel_incidence_v0.yaml
+  config_sha256: 0d7fc98d604258be7243725f60518fea478870d9b8c29d2cd58c5745fd6deb52
+  tool_sha256: 6f7cb43e435da997dca13bc256cee9e0ff2855227d3e5466f2090c207fcc9a30
+  result_fingerprint_sha256: 9a5447ac8ec6cbc2b679da104a7ecf67ff9835c4a71e73923602eda5b288a673
+  result_reproduced_by_independent_full_rerun: true
+
+master_work_id_set:
+  path_env: OPENALEX_G1_SORTED_MASTER_IDS
+  expected_basename: main_ids.grammar_valid.sorted.u64
+  encoding: little_endian_uint64
+  sorted_ascending: true
+  exact_count: 492293206
+  exact_bytes: 3938345648
+  sha256: 889d4a54ffb41fbed3b8a657ca76a7887610275dd4b407b68a9233aaf2a08e55
+  minimum_numeric_id: 0
+  maximum_numeric_id: 7143276261
+  exact_distinct_ids: 492293206
+  duplicate_row_excess: 0
+  contains_w_zero: true
+  grammar: '^https://openalex[.]org/W(0|[1-9][0-9]*)$'
+  grammar_name: decimal_normal_form_unsigned_work_id_with_w_zero
+  membership_algorithm_requirement: exact
+  probabilistic_filter_may_be_prefilter_only: true
+
+main_accounting:
+  table: openalex_works_20260330
+  source_id_column: id
+  expected_files: 493
+  expected_raw_rows: 492293207
+  expected_retained_rows: 492293206
+  expected_frozen_quarantine_rows: 1
+  expected_null_source_id_rows: 0
+  expected_unexpected_malformed_source_id_rows: 0
+  expected_source_orphan_rows: 0
+  profile_columns:
+    publication_year:
+      expected_physical_type: double
+      temporal_validity_established_by_this_audit: false
+    primary_topic__field__id:
+      expected_physical_type: string
+      field_entity_validity_established_by_this_audit: false
+    authors_count:
+      expected_physical_type: int64
+      eligibility_established_by_this_audit: false
+
+child_source_membership:
+  source_id_column: id
+  compare_against: master_work_id_set
+  require_data_page_scan: true
+  require_exact_membership: true
+  require_per_file_row_conservation: true
+  expected_child_table_count: 22
+  expected_child_files: 20526
+  expected_raw_child_rows: 20503939610
+  expected_frozen_quarantine_child_rows: 20
+  expected_retained_child_rows_on_pass: 20503939590
+  tables:
+    openalex_works_20260330__authorships: {expected_files: 1363, expected_raw_rows: 1361551038}
+    openalex_works_20260330__awards: {expected_files: 32, expected_raw_rows: 31479167}
+    openalex_works_20260330__best_oa_location__source__host_organization_lineage: {expected_files: 110, expected_raw_rows: 108758987}
+    openalex_works_20260330__best_oa_location__source__host_organization_lineage_names: {expected_files: 47, expected_raw_rows: 46538137}
+    openalex_works_20260330__best_oa_location__source__issn: {expected_files: 98, expected_raw_rows: 96653276}
+    openalex_works_20260330__concepts: {expected_files: 4877, expected_raw_rows: 4876249560}
+    openalex_works_20260330__corresponding_author_ids: {expected_files: 274, expected_raw_rows: 272766845}
+    openalex_works_20260330__corresponding_institution_ids: {expected_files: 206, expected_raw_rows: 204773216}
+    openalex_works_20260330__counts_by_year: {expected_files: 449, expected_raw_rows: 448043794}
+    openalex_works_20260330__excepted__abstract_inverted_index: {expected_files: 493, expected_raw_rows: 492293207}
+    openalex_works_20260330__funders: {expected_files: 48, expected_raw_rows: 47243930}
+    openalex_works_20260330__indexed_in: {expected_files: 355, expected_raw_rows: 354383191}
+    openalex_works_20260330__keywords: {expected_files: 2963, expected_raw_rows: 2961336807}
+    openalex_works_20260330__locations: {expected_files: 628, expected_raw_rows: 626963890}
+    openalex_works_20260330__mesh: {expected_files: 1213, expected_raw_rows: 1212666618}
+    openalex_works_20260330__primary_location__source__host_organization_lineage: {expected_files: 271, expected_raw_rows: 270287049}
+    openalex_works_20260330__primary_location__source__host_organization_lineage_names: {expected_files: 166, expected_raw_rows: 164582947}
+    openalex_works_20260330__primary_location__source__issn: {expected_files: 284, expected_raw_rows: 282832818}
+    openalex_works_20260330__referenced_works: {expected_files: 3044, expected_raw_rows: 3042536160}
+    openalex_works_20260330__related_works: {expected_files: 2494, expected_raw_rows: 2493161419}
+    openalex_works_20260330__sustainable_development_goals: {expected_files: 181, expected_raw_rows: 180275008}
+    openalex_works_20260330__topics: {expected_files: 930, expected_raw_rows: 928562546}
+
+source_row_partition:
+  mutually_exclusive_categories:
+    - retained_master_member
+    - frozen_w_minus_1_quarantine
+    - null_source_id
+    - unexpected_malformed_source_id
+    - grammar_valid_source_orphan
+  pass_requires_zero:
+    - null_source_id
+    - unexpected_malformed_source_id
+    - grammar_valid_source_orphan
+  per_table_identity: >-
+    raw_rows = retained_master_member + frozen_w_minus_1_quarantine +
+    null_source_id + unexpected_malformed_source_id +
+    grammar_valid_source_orphan
+  per_file_identity_required: true
+  data_page_rows_must_equal_footer_rows: true
+  global_identity_on_pass:
+    raw_rows: 20996232817
+    retained_rows: 20996232796
+    frozen_w_minus_1_quarantine_rows: 21
+    all_other_partition_rows: 0
+
+sentinel_propagation:
+  w_minus_1:
+    raw_value: "https://openalex.org/W-1"
+    disposition: frozen_source_row_quarantine
+    require_exact_table_file_counts: true
+    require_no_unlisted_rows: true
+    expected_total_source_rows: 21
+    expected_total_source_files: 6
+    expected_total_declared_work_target_rows: 0
+  w_zero:
+    raw_value: "https://openalex.org/W0"
+    disposition: retain_with_warn_zero_id_unresolved
+    warning_code: WARN_ZERO_ID_UNRESOLVED
+    entity_validity: UNRESOLVED
+    require_exact_table_file_counts: true
+    expected_total_source_rows: 6
+    expected_total_source_files: 6
+    expected_total_declared_work_target_rows: 0
+  source_incidence_by_table:
+    openalex_works_20260330:
+      w_minus_1: {expected_rows: 1, expected_files: [openalex_works_20260330/part-384.parquet]}
+      w_zero: {expected_rows: 1, expected_files: [openalex_works_20260330/part-322.parquet]}
+    openalex_works_20260330__authorships:
+      w_minus_1: {expected_rows: 1, expected_files: [openalex_works_20260330__authorships/base-100.parquet]}
+      w_zero: {expected_rows: 1, expected_files: [openalex_works_20260330__authorships/base-1008.parquet]}
+    openalex_works_20260330__awards:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__best_oa_location__source__host_organization_lineage:
+      w_minus_1: {expected_rows: 1, expected_files: [openalex_works_20260330__best_oa_location__source__host_organization_lineage/base-3.parquet]}
+      w_zero: {expected_rows: 1, expected_files: [openalex_works_20260330__best_oa_location__source__host_organization_lineage/base-76.parquet]}
+    openalex_works_20260330__best_oa_location__source__host_organization_lineage_names:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__best_oa_location__source__issn:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__concepts:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__corresponding_author_ids:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__corresponding_institution_ids:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__counts_by_year:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__excepted__abstract_inverted_index:
+      w_minus_1: {expected_rows: 1, expected_files: [openalex_works_20260330__excepted__abstract_inverted_index/base-47.parquet]}
+      w_zero: {expected_rows: 1, expected_files: [openalex_works_20260330__excepted__abstract_inverted_index/base-389.parquet]}
+    openalex_works_20260330__funders:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__indexed_in:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__keywords:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__locations:
+      w_minus_1: {expected_rows: 16, expected_files: [openalex_works_20260330__locations/base-54.parquet]}
+      w_zero: {expected_rows: 1, expected_files: [openalex_works_20260330__locations/base-496.parquet]}
+    openalex_works_20260330__mesh:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__primary_location__source__host_organization_lineage:
+      w_minus_1: {expected_rows: 1, expected_files: [openalex_works_20260330__primary_location__source__host_organization_lineage/base-16.parquet]}
+      w_zero: {expected_rows: 1, expected_files: [openalex_works_20260330__primary_location__source__host_organization_lineage/base-213.parquet]}
+    openalex_works_20260330__primary_location__source__host_organization_lineage_names:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__primary_location__source__issn:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__referenced_works:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__related_works:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__sustainable_development_goals:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+    openalex_works_20260330__topics:
+      w_minus_1: {expected_rows: 0, expected_files: []}
+      w_zero: {expected_rows: 0, expected_files: []}
+  main_row_locators:
+    w_minus_1:
+      relative_path: openalex_works_20260330/part-384.parquet
+      row_group: 13
+      file_row: 428949
+    w_zero:
+      relative_path: openalex_works_20260330/part-322.parquet
+      row_group: 10
+      file_row: 340597
+  child_locator_ledger_required_fields:
+    - table
+    - relative_path
+    - row_group
+    - file_row
+    - raw_source_id
+    - selected_values_sha256
+    - row_digest_sha256
+    - disposition
+
+work_target_coverage:
+  target_space_is_closed_world: false
+  source_rows_must_first_pass_child_membership: true
+  grammar: '^https://openalex[.]org/W(0|[1-9][0-9]*)$'
+  tables:
+    openalex_works_20260330__referenced_works:
+      source_column: id
+      target_column: referenced_works
+      expected_files: 3044
+      expected_raw_rows: 3042536160
+      expected_w_minus_1_source_rows: 0
+      expected_w_zero_source_rows: 0
+      expected_w_minus_1_target_rows: 0
+      expected_w_zero_target_rows: 0
+    openalex_works_20260330__related_works:
+      source_column: id
+      target_column: related_works
+      expected_files: 2494
+      expected_raw_rows: 2493161419
+      expected_w_minus_1_source_rows: 0
+      expected_w_zero_source_rows: 0
+      expected_w_minus_1_target_rows: 0
+      expected_w_zero_target_rows: 0
+  mutually_exclusive_target_categories:
+    - target_null
+    - target_unexpected_malformed
+    - target_w_minus_1
+    - target_w_zero
+    - target_in_main_snapshot
+    - target_not_in_main_snapshot
+  pass_requires_zero:
+    - target_null
+    - target_unexpected_malformed
+    - target_w_minus_1
+    - target_w_zero
+  target_not_in_main_snapshot_disposition: coverage_observation_not_source_orphan
+  report_each_relation_separately: true
+  required_coverage_metrics:
+    - row_weighted_target_in_snapshot_fraction
+    - unique_target_in_snapshot_fraction
+    - target_not_in_snapshot_rows
+    - target_not_in_snapshot_unique_ids
+    - self_loop_rows
+  extension_metrics_not_required_for_component_pass:
+    - duplicate_source_target_rows
+  deduplicate_edges: false
+
+authorship_author_id_work_profile:
+  table: openalex_works_20260330__authorships
+  source_work_id_column: id
+  author_id_column: authorships__author__id
+  author_orcid_column: authorships__author__orcid
+  expected_raw_rows: 1361551038
+  expected_raw_author_id_null_rows_from_footer: 580116420
+  expected_raw_author_id_null_fraction_from_footer: 0.4260702711902306
+  expected_w_minus_1_source_rows: 1
+  expected_retained_rows_on_membership_pass: 1361551037
+  retain_w_zero: true
+  w_zero_expected_source_rows: 1
+  w_zero_expected_author_id_null: true
+  do_not_deduplicate_authorship_rows: true
+  required_work_classes:
+    no_authorship_rows: retained main work has zero retained authorship rows
+    no_author_id: retained work has authorship rows and every author ID is null
+    partial_author_id: retained work has both null and non-null author-ID rows
+    complete_author_id: retained work has authorship rows and every author ID is non-null
+  work_class_identity: >-
+    retained_main_works = no_authorship_rows + no_author_id +
+    partial_author_id + complete_author_id
+  required_row_metrics:
+    - retained_authorship_rows
+    - null_author_id_rows
+    - non_null_author_id_rows
+    - distinct_non_null_author_ids
+    - null_author_orcid_rows
+    - non_null_author_orcid_rows
+  compare_main_authors_count_to_retained_authorship_rows: true
+  authors_count_comparison_categories:
+    - main_authors_count_null
+    - exact_match
+    - mismatch
+  author_entity_validity_established_by_this_profile: false
+  candidate_author_eligibility_established_by_this_profile: false
+
+work_profile_strata:
+  main_table: openalex_works_20260330
+  join_key: id
+  retain_null_strata_as_explicit_buckets: true
+  dimensions:
+    publication_year:
+      column: publication_year
+      physical_type: double
+      representation: exact_integral_value_plus_null_and_non_integral_diagnostics
+      temporal_or_censoring_validity_established: false
+    primary_field:
+      column: primary_topic__field__id
+      physical_type: string
+      representation: exact_prefix_checked_numeric_id_plus_null_bucket
+      field_entity_validity_established: false
+    authors_count:
+      column: authors_count
+      physical_type: int64
+      exact_value_required: true
+      negative_value_disposition: blocking_invalid_count
+      diagnostic_bands:
+        - {label: "NULL", lower_inclusive: null, upper_inclusive: null}
+        - {label: "0", lower_inclusive: 0, upper_inclusive: 0}
+        - {label: "1", lower_inclusive: 1, upper_inclusive: 1}
+        - {label: "2", lower_inclusive: 2, upper_inclusive: 2}
+        - {label: "3-5", lower_inclusive: 3, upper_inclusive: 5}
+        - {label: "6-10", lower_inclusive: 6, upper_inclusive: 10}
+        - {label: "11-50", lower_inclusive: 11, upper_inclusive: 50}
+        - {label: "51-100", lower_inclusive: 51, upper_inclusive: 100}
+        - {label: "101+", lower_inclusive: 101, upper_inclusive: null}
+  required_outputs:
+    - one_way_margins_by_work_class_and_each_dimension
+    - joint_sparse_cube_work_class_by_year_by_primary_field_by_authors_count_band
+    - authors_count_exact_value_mismatch_profile
+    - w_zero_rows_reported_separately
+  no_candidate_eligibility_filtering: true
+
+entity_columns_outside_work_id_membership_scope:
+  columns:
+    - authorships__author__id
+    - authorships__author__orcid
+    - awards__id
+    - awards__funder_id
+    - concepts__id
+    - corresponding_author_ids
+    - corresponding_institution_ids
+    - funders__id
+    - locations__id
+    - locations__source__id
+    - mesh__descriptor_ui
+    - sustainable_development_goals__id
+    - topics__id
+    - topics__field__id
+  note: >-
+    These identifiers are not work IDs and must not be compared with the
+    master work-ID set. Their entity validity requires separate contracts.
+
+execution:
+  workload_class: local_cpu_io
+  batch_size: 262144
+  scan_all_source_id_data_pages: true
+  predicate_pushdown_only_is_insufficient: true
+  checkpoint_unit: input_file
+  verify_parent_before_resume: true
+  verify_parent_stability_after_run: true
+  refuse_symlink_inputs: true
+  require_exact_scanned_file_and_row_counts: true
+  require_per_file_disposition_counts: true
+  require_complete_blocking_identifier_ledger: true
+  require_output_sha256: true
+  resource_safety:
+    maximum_author_numeric_id_inclusive: 20000000000
+    maximum_estimated_dense_bytes: 160000000000
+    minimum_available_to_estimated_ratio: 1.25
+  materialized_filtered_child_view_required: false
+  audit_only_must_report_analysis_view_materialized_false: true
+
+success_contract:
+  success_status: PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE
+  status_does_not_mean_pass_g_minus_1: true
+  status_does_not_mean_pass_empirical_g1: true
+  required_component_states:
+    main_accounting: PASS_PARENT_RECOUNT_REVALIDATED
+    child_source_membership: PASS
+    source_row_conservation: PASS
+    declared_work_target_scan: COMPLETE_COVERAGE_MEASURED
+    authorship_author_id_work_profile: COMPLETE_PROFILE_MEASURED
+    work_profile_strata: COMPLETE_PROFILE_MEASURED
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    parent_content_identity: UNVERIFIED
+    g_minus_1_data_readiness: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+  pending_after_success:
+    - full_root_content_sha256_for_inventory_era_byte_identity
+    - w_zero_entity_validity_and_positive_id_exclusion_sensitivity
+    - author_entity_validity_and_split_merge_sensitivity
+    - duplicate_source_target_edge_audit
+    - publication_date_and_citation_date_consistency
+    - outcome_maturation_and_right_censoring
+    - cutoff_aware_available_at_validation
+    - t_minus_1_graph_validation
+    - leakage_tests
+    - candidate_researcher_eligibility
+    - deterministic_representative_pilot
+    - measurement_registry_and_holdout_partition_freeze
+
+claim_boundary: >-
+  A successful run establishes exact row accounting for the frozen 23-table
+  source-ID scope, exact membership of every retained child source work ID in
+  the 492,293,206-ID grammar-valid main-work set, measured open-world coverage
+  for the declared referenced-work and related-work target columns, and a
+  descriptive authorship author-ID/work profile with year, primary-field, and
+  authors-count strata. The untouched raw source remains blocked on ID validity
+  because it contains W-1. W0 remains retained with unresolved entity validity.
+  A target absent from the main snapshot is a coverage observation, not a
+  source orphan. This contract does not validate non-work entity identifiers,
+  materialize a filtered child dataset, establish inventory-era byte identity,
+  establish author or field entity validity, establish temporal or leakage
+  safety, select candidate researchers, establish G-1 data readiness, run
+  empirical G1, or establish any scientific effect.

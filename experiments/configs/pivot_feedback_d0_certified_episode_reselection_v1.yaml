@@ -1,0 +1,129 @@
+schema_version: pivot_feedback_d0_certified_episode_reselection_config.v1
+label: pivot_feedback_d0_certified_episode_reselection_v1
+mode: EXACT_GLOBAL_CERTIFICATE_BOUND_EPISODE_RESELECTION
+status: FROZEN_EXACT_FOUR_CERTIFIED_EPISODE_RESELECTION_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v36.yaml
+  sha256: 9f87534d9eebef8ae8079bb752e9cd8da29266f14721247b3f11f13b846ec14d
+  required_schema_version: pivot_feedback_gate_state.v36
+  required_status: VALID_GLOBAL_SELECTION_CERTIFICATE_EXACT_DETERMINISTIC_RESELECTION_SUCCESSOR_AUTHORIZED
+  required_authorization:
+    d0_global_selection_certificate: COMPLETE_INDEPENDENTLY_VERIFIED
+    d0_exact_four_episode_deterministic_reselection_successor: AUTHORIZED
+    d0_reselection_independent_verification: AUTHORIZED
+  mutation_allowed: false
+
+frozen_inputs:
+  measurement_abi_candidates:
+    config_relative_path: experiments/configs/pivot_feedback_d0_measurement_abi_v1.yaml
+    config_sha256: eb51a85c206da328609b2fa05f9bbb6900160dc837dc345715d1bd709134c36e
+    root_basename: pivot-feedback-d0-measurement-abi-reselection-v1-full-20260724
+    candidate_basename: episode_candidates.parquet
+    candidate_sha256: c5588aef34381179b93785fd5dd3953f2ee7a982bf3d38cb71341eb49fe4e029
+    candidate_schema_version: pivot_feedback_d0_measurement_abi_episode_candidates.v1
+    candidate_rows: 70277
+    receipt_basename: measurement_abi_reselection.outputs.json
+    receipt_sha256: 4b77700fc4693496ae1c1fbf338c60b8f3c03bf5fabb6f70635fc8ebc57140e9
+    receipt_status: PASS_D0_OUTCOME_BLIND_MEASUREMENT_ABI_TWO_FIELD_FOUR_EPISODE_RESELECTION
+  selection_certificate:
+    root_basename: pivot-feedback-d0-rank5-post-diagnostic-certificate-closeout-v1-20260730
+    frontier_basename: adaptive_candidate_frontier_v10.parquet
+    frontier_sha256: 2b3ed62142e509be3e3be743e20043fae8de068e24d88873af29b3f2e4a9c28d
+    frontier_schema_version: pivot_feedback_d0_adaptive_candidate_frontier.v10
+    frontier_rows: 51
+    certificate_basename: terminal_selection_certificate_status_v5.json
+    certificate_sha256: 4c19810ceaff4dba756541688ebbd52ae2cdb933404d9ff38ff5d247c1060073
+    certificate_schema_version: pivot_feedback_d0_terminal_selection_certificate_status.v5
+    certificate_status: PASS_GLOBAL_SELECTION_CERTIFICATE_ISSUED
+    receipt_basename: rank5_post_diagnostic_certificate_closeout.outputs.json
+    receipt_sha256: 7a37c840f37ac29040a1a40414c0e20402b68061b02bdffa9a54de6bdca1f4ba
+    receipt_status: PASS_RANK5_POST_DIAGNOSTIC_CONTENT_PASS_GLOBAL_CERTIFICATES_FROZEN
+    verification_basename: pivot-feedback-d0-rank5-post-diagnostic-certificate-closeout-v1-20260730.verification-v1.json
+    verification_sha256: 394e808c7a5e902a3ef23127b67af3793fb2c9e9f8bfaff2a6a94905616ea5e0
+    verification_status: PASS_INDEPENDENT_RANK5_POST_DIAGNOSTIC_CONTENT_PASS_GLOBAL_CERTIFICATES
+
+selection_contract:
+  source: TERMINAL_SELECTION_CERTIFICATE_V5_AND_FRONTIER_V10
+  exact_rows:
+    - certified_episode_index: 1
+      field_episode_order: 1
+      field_id: 17
+      field_candidate_rank: 1
+      topic_id: 14430
+      entry_year: 2003
+      subfield_id: 1710
+      prior_measurement_abi_selected: true
+      selection_change: RETAINED
+    - certified_episode_index: 2
+      field_episode_order: 2
+      field_id: 17
+      field_candidate_rank: 45
+      topic_id: 10579
+      entry_year: 2012
+      subfield_id: 1705
+      prior_measurement_abi_selected: true
+      selection_change: RETAINED
+    - certified_episode_index: 3
+      field_episode_order: 1
+      field_id: 27
+      field_candidate_rank: 5
+      topic_id: 10151
+      entry_year: 1993
+      subfield_id: 2721
+      prior_measurement_abi_selected: false
+      selection_change: REPLACED_PRIOR_FIELD_FIRST
+    - certified_episode_index: 4
+      field_episode_order: 2
+      field_id: 27
+      field_candidate_rank: 6
+      topic_id: 12421
+      entry_year: 1953
+      subfield_id: 2712
+      prior_measurement_abi_selected: true
+      selection_change: RETAINED
+  selected_episode_rows: 4
+  retained_episode_rows: 3
+  newly_selected_episode_rows: 1
+  deselected_prior_episode_rows: 1
+  deselected_prior_episode:
+    field_id: 27
+    field_candidate_rank: 1
+    topic_id: 12505
+    entry_year: 1991
+  exact_integer_candidate_metrics_preserved: true
+  float_metrics_preserved: true
+  candidate_substitution: FORBIDDEN
+  outcome_access: FORBIDDEN
+
+output_contract:
+  root_basename: pivot-feedback-d0-certified-episode-reselection-v1-20260730
+  selection_basename: certified_episode_selection.parquet
+  selection_schema_version: pivot_feedback_d0_certified_episode_selection.v1
+  decision_basename: certified_episode_reselection.json
+  report_basename: CERTIFIED_EPISODE_RESELECTION.md
+  receipt_basename: certified_episode_reselection.outputs.json
+  root_mode: "0700"
+  artifact_mode: "0600"
+  create_only: true
+  receipt_written_last: true
+
+authorization:
+  exact_four_episode_reselection: AUTHORIZED
+  independent_verification: AUTHORIZED
+  source_work_rescan: NOT_AUTHORIZED
+  author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  production_pivot_classification: NOT_AUTHORIZED
+  discovery_outcome_opening: NOT_AUTHORIZED
+  new_api_request: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract materializes only the exact four candidate rows named by the
+  independently verified global selection certificate. It preserves their
+  frozen measurement-ABI metrics and records that three prior episodes are
+  retained while Medicine rank 1 is replaced by rank 5. It does not rescan
+  source works, rebuild an author or opportunity panel, classify researcher
+  pivots, read entry or persistence outcomes, make an API call, fit a model,
+  open G4, or establish a scientific effect.

@@ -1,0 +1,318 @@
+{
+  "schema_version": "openalex_g1_work_source_membership_summary.v1",
+  "label": "openalex_g1_work_source_membership_20260717",
+  "generated_at_utc": "2026-07-17T06:57:38.396055+00:00",
+  "status": "PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE",
+  "gate_status": {
+    "main_accounting": "PASS_PARENT_RECOUNT_REVALIDATED",
+    "child_source_membership": "PASS",
+    "source_row_conservation": "PASS",
+    "declared_work_target_scan": "COMPLETE_COVERAGE_MEASURED",
+    "target_coverage": "MEASURED",
+    "author_missingness_profile": "MEASURED",
+    "authorship_author_id_work_profile": "COMPLETE_PROFILE_MEASURED",
+    "work_source_membership_component": "PASS",
+    "raw_source_id_validity": "BLOCKED",
+    "w_zero_entity_validity": "UNRESOLVED",
+    "author_entity_validity_established": false,
+    "parent_content_identity": "UNVERIFIED",
+    "analysis_view_materialized": false,
+    "g_minus_1_data_readiness": "PENDING",
+    "empirical_g1_signature": "NOT_RUN",
+    "pass_g1": false
+  },
+  "source": {
+    "source_root_id": "openalex_works_20260330_repairreplay_20260410_190630",
+    "source_snapshot_date": "2026-03-30",
+    "lineage_id": "openalex_20260225_base_plus_20260330_update_repairreplay",
+    "parent_manifest_sha256": "6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46",
+    "parent_inventory_fingerprint_sha256": "1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473",
+    "parent_stability_fingerprint_sha256": "a3bfb7f639d4131749c1522f00e5e977bae7abc1a62202790fd41279f8f0a0e5",
+    "parent_stable_after_audit": true,
+    "master_ids_stable_after_audit": true,
+    "parent_content_identity_verified": false,
+    "sorted_master_ids": {
+      "rows": 492293206,
+      "bytes": 3938345648,
+      "sha256": "889d4a54ffb41fbed3b8a657ca76a7887610275dd4b407b68a9233aaf2a08e55"
+    }
+  },
+  "provenance": {
+    "config_sha256": "91ea38ee8237ebea9240e7f8da3308f12465974528841f7b91750717765e2d92",
+    "tool_sha256": "a5f1a4175b575c16a8c45df68c15fa2dbae8554c2c7ae258cdaa61586915f3f0",
+    "test_sha256": "54238a4fd6ce5af901e89f2126810174d6da74e64867a91fbe3365cf02d1de3c",
+    "canonical_plan_sha256": "7afef25a788a938b9eeb12a1802d346eb02da1d3b369a116c784851e984891cb",
+    "raw_plan_file_sha256": "51abd0e42c407d61b7296f97d432e64d0e3958d61a976555150cd2911a98f950",
+    "task_fingerprint_sha256": "30bae6b5eff2c545cc64ca2384dcc63e4f28a9237122987efc68724c37ade6c7",
+    "result_fingerprint_sha256": "8b7d0273a04eb7a231a9d8b466151c562ac80eac6557ff7444508cb174862242",
+    "output_manifest_sha256": "8fb34f92e3525b58c09a31ae970d913ea6858211a7595b165884fa389863156d",
+    "verification_receipt_relative_path": "experiments/evidence/results/openalex_g1_work_source_membership_20260717.verification.json",
+    "verification_receipt_sha256": "591b8fbb32698bd0d9dd8e167527e2fd75996fe0d9bdcff048ac074ec0db6d66",
+    "inventory_summary_sha256": "6d6a70c9d45264c1e36efd30976ab06fa765f1375de295fa49ed385c649dcc7c",
+    "grammar_valid_recount_summary_sha256": "b25e16abea4a496d1d9160486fe4e322114f309cee1ec78b3955d7489137d585",
+    "sentinel_summary_sha256": "3cc8cfa96a408b70f08ef58dd59c25f9b238abb1486c11150e85c51bb1db7b49",
+    "sentinel_result_fingerprint_sha256": "9a5447ac8ec6cbc2b679da104a7ecf67ff9835c4a71e73923602eda5b288a673",
+    "audit_git_commit": "10dd3e8fd1c7cc1f30088fcdbef510439e172917",
+    "audit_git_dirty": true,
+    "path_redacted": true
+  },
+  "scope": {
+    "full_scope": true,
+    "source_tables": 23,
+    "child_source_tables": 22,
+    "files_scanned": 21019,
+    "data_page_rows_scanned": 20996232817,
+    "declared_work_target_columns": {
+      "openalex_works_20260330__referenced_works": "referenced_works",
+      "openalex_works_20260330__related_works": "related_works"
+    }
+  },
+  "row_accounting": {
+    "global": {
+      "raw_rows": 20996232817,
+      "retained_rows": 20996232796,
+      "frozen_w_minus_1_quarantine_rows": 21,
+      "w_zero_rows_retained": 6,
+      "grammar_valid_orphan_rows": 0,
+      "null_source_id_rows": 0,
+      "unexpected_malformed_source_id_rows": 0
+    },
+    "main": {
+      "raw_rows": 492293207,
+      "retained_rows": 492293206,
+      "frozen_w_minus_1_quarantine_rows": 1,
+      "w_zero_rows_retained": 1,
+      "grammar_valid_orphan_rows": 0,
+      "null_source_id_rows": 0,
+      "unexpected_malformed_source_id_rows": 0
+    },
+    "children": {
+      "tables": 22,
+      "raw_rows": 20503939610,
+      "retained_rows": 20503939590,
+      "frozen_w_minus_1_quarantine_rows": 20,
+      "w_zero_rows_retained": 5,
+      "grammar_valid_orphan_rows": 0,
+      "null_source_id_rows": 0,
+      "unexpected_malformed_source_id_rows": 0
+    },
+    "conservation_pass": true
+  },
+  "sentinel_accounting": {
+    "w_minus_1": {
+      "source_rows": 21,
+      "source_files": 6,
+      "disposition": "FROZEN_QUARANTINE"
+    },
+    "w_zero": {
+      "source_rows": 6,
+      "source_files": 6,
+      "disposition": "RETAIN_WARN_ENTITY_VALIDITY_UNRESOLVED"
+    },
+    "declared_work_target_rows_for_either_sentinel": 0,
+    "locator_ledgers_exact": true
+  },
+  "target_coverage": {
+    "interpretation": "OPEN_WORLD_COVERAGE_NOT_SOURCE_ORPHANHOOD",
+    "referenced_works": {
+      "scanned_rows": 3042536160,
+      "in_snapshot_rows": 2904520313,
+      "snapshot_external_rows": 138015847,
+      "row_coverage": 0.9546378942625287,
+      "unique_valid_targets": 135996024,
+      "unique_targets_in_snapshot": 112406279,
+      "unique_targets_external_to_snapshot": 23589745,
+      "unique_coverage": 0.8265409215198821,
+      "self_loop_rows": 1072993,
+      "null_rows": 0,
+      "malformed_rows": 0,
+      "w_minus_1_rows": 0,
+      "w_zero_rows": 0,
+      "duplicate_source_target_edges": "NOT_MEASURED_EXTENSION_PENDING"
+    },
+    "related_works": {
+      "scanned_rows": 2493161419,
+      "in_snapshot_rows": 2366002635,
+      "snapshot_external_rows": 127158784,
+      "row_coverage": 0.9489969710621452,
+      "unique_valid_targets": 100065189,
+      "unique_targets_in_snapshot": 90310458,
+      "unique_targets_external_to_snapshot": 9754731,
+      "unique_coverage": 0.902516238689161,
+      "self_loop_rows": 4663862,
+      "null_rows": 0,
+      "malformed_rows": 0,
+      "w_minus_1_rows": 0,
+      "w_zero_rows": 0,
+      "duplicate_source_target_edges": "NOT_MEASURED_EXTENSION_PENDING"
+    }
+  },
+  "author_profile": {
+    "retained_authorship_rows": 1361551037,
+    "author_id_rows": {
+      "grammar_valid_non_null": 781434618,
+      "null": 580116419,
+      "invalid_non_null": 0,
+      "grammar_valid_non_null_rate": 0.5739297292312958,
+      "null_rate": 0.4260702707687042
+    },
+    "distinct_grammar_valid_non_null_author_ids": 113748578,
+    "orcid_rows": {
+      "non_null": 458308219,
+      "null": 903242818,
+      "non_null_rate": 0.3366074473490339
+    },
+    "work_profile": {
+      "master_work_rows": 492293206,
+      "complete": 263750998,
+      "partial": 2109042,
+      "none_usable": 177217069,
+      "zero_authorship_row": 49216097
+    },
+    "declared_authors_count": {
+      "matches_observed_slots": 492293206,
+      "mismatches_observed_slots": 0
+    },
+    "strata_dimensions": {
+      "publication_year_buckets": 1050,
+      "primary_field_buckets": 27,
+      "declared_author_count_bands": 8,
+      "observed_team_size_bands": 7,
+      "authorship_source_lineage_masks": 5,
+      "joint_sparse_cube_cells": 122472
+    },
+    "author_entity_validity_established": false,
+    "candidate_eligibility_stratum": "NOT_EVALUABLE_G0_PENDING"
+  },
+  "contract_checks": {
+    "required_component_states_match": true,
+    "global_source_accounting_pass": true,
+    "target_coverage_contract_pass": true,
+    "author_profile_contract_pass": true,
+    "blocking_identifier_ledger_contract_pass": true,
+    "blocking_ledger_checked_files": {
+      "source": 21019,
+      "target": 5538,
+      "author": 1363,
+      "main_field": 493
+    }
+  },
+  "execution": {
+    "started_at_utc": "2026-07-17T04:32:29.435377+00:00",
+    "finished_at_utc": "2026-07-17T06:57:38.537858+00:00",
+    "elapsed_seconds": 8410.299972307985,
+    "workers": 1,
+    "batch_size": 262144,
+    "peak_rss_kib": 51093992,
+    "runtime": {
+      "python": "3.14.0",
+      "numpy": "2.4.4",
+      "pyarrow": "24.0.0",
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39"
+    }
+  },
+  "local_artifact_commitments": {
+    "audit_plan": {
+      "bytes": 914,
+      "sha256": "51abd0e42c407d61b7296f97d432e64d0e3958d61a976555150cd2911a98f950"
+    },
+    "report_json": {
+      "bytes": 22993263,
+      "sha256": "1c385d42595fc34794116189ce940526e1095ccd2a5da9eccd3da902e8f152ce"
+    },
+    "report_markdown": {
+      "bytes": 4514,
+      "sha256": "34b658b8fcfd601ec133f7af20d262d5c153abb36c5a33336da0b221dfc88275"
+    },
+    "outputs_manifest": {
+      "bytes": 1625,
+      "sha256": "8fb34f92e3525b58c09a31ae970d913ea6858211a7595b165884fa389863156d"
+    },
+    "checkpoint_tree": {
+      "files": 21019,
+      "bytes": 51417147,
+      "path_set_sha256": "57f15a75c1e7f32fb34785206b119c4db0313a642e70450cd7369b5eea3312b5",
+      "tree_sha256": "1c311833193a7073a5ca78e6cf86be702f38e69bb5ef2e9388f814eddab9f01c"
+    },
+    "data_artifact_tree": {
+      "files": 8757,
+      "bytes": 89957407904,
+      "path_set_sha256": "68c28fb31717b53ea48edd5f93689a4ccd2febd0531a8c37c4b11cafa0d7d376",
+      "tree_sha256": "bb0c711f8cd6b678d6ced92d10ff5530cf25d37c3f3126dc25b96ea986a61ba9"
+    }
+  },
+  "independent_verification": {
+    "p0_findings": 0,
+    "p1_findings": 0,
+    "production_output_validator_pass": true,
+    "independent_path_sets_and_tree_hashes_exact": true,
+    "missing_paths": 0,
+    "extra_paths": 0,
+    "symlinks": 0,
+    "non_regular_files": 0,
+    "empty_directories": 0,
+    "checkpoint_files_revalidated": 21019,
+    "checkpoint_self_hash_mismatches": 0,
+    "checkpoint_plan_binding_mismatches": 0,
+    "checkpoint_manifest_binding_mismatches": 0,
+    "checkpoint_live_file_binding_mismatches": 0,
+    "sentinel_locators_physically_reread": 27,
+    "sentinel_locator_source_files": 12,
+    "sentinel_locator_or_value_digest_mismatches": 0,
+    "quantitative_reconstruction_exact": true
+  },
+  "reproducibility": {
+    "clean_semantic_resume": {
+      "status": "PASS_CLEAN_SEMANTIC_RESUME",
+      "pass": true,
+      "verified_at_utc": "2026-07-17T20:25:48+00:00",
+      "exit_code": 0,
+      "projected_scans_replayed": 21019,
+      "existing_checkpoints_semantically_replayed_from_source": true,
+      "replay_status": "PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE",
+      "replay_result_fingerprint_sha256": "8b7d0273a04eb7a231a9d8b466151c562ac80eac6557ff7444508cb174862242",
+      "replay_output_manifest_sha256": "8fb34f92e3525b58c09a31ae970d913ea6858211a7595b165884fa389863156d",
+      "same_status": true,
+      "same_result_fingerprint": true,
+      "same_output_manifest_sha256": true
+    }
+  },
+  "warnings": [
+    "WARN_ZERO_ID_UNRESOLVED",
+    "WARN_PARENT_CONTENT_SHA256_PENDING",
+    "WARN_ANALYSIS_VIEW_NOT_MATERIALIZED",
+    "WARN_AUTHOR_ENTITY_VALIDITY_PENDING",
+    "WARN_CANDIDATE_ELIGIBILITY_G0_PENDING"
+  ],
+  "pending": [
+    "full_root_content_sha256_current_baseline",
+    "earlier_footer_inventory_byte_equality_remains_unverified",
+    "w_zero_entity_validity_and_positive_id_exclusion_sensitivity",
+    "author_entity_validity_and_split_merge_sensitivity",
+    "duplicate_source_target_edge_audit",
+    "publication_date_and_citation_date_consistency",
+    "outcome_maturation_and_right_censoring",
+    "cutoff_aware_available_at_validation",
+    "t_minus_1_graph_validation",
+    "leakage_tests",
+    "candidate_researcher_eligibility",
+    "deterministic_representative_pilot",
+    "measurement_registry_and_holdout_partition_freeze"
+  ],
+  "non_claims": [
+    "raw_source_id_validity",
+    "w_zero_entity_validity",
+    "author_or_field_entity_validity",
+    "filtered_analysis_view_materialization",
+    "closed_world_target_space",
+    "snapshot_external_targets_as_source_orphans",
+    "duplicate_source_target_edge_measurement",
+    "inventory_era_byte_identity",
+    "date_censoring_available_at_t_minus_1_or_leakage_safety",
+    "candidate_researcher_selection",
+    "g_minus_1_data_readiness",
+    "empirical_g1_execution",
+    "any_scientific_effect"
+  ],
+  "claim_boundary": "This component pass establishes exact row accounting for the frozen 23-table source-ID scope, exact membership of every retained child source work ID in the 492,293,206-ID grammar-valid main-work set, measured open-world coverage for the declared referenced-work and related-work target columns, and a descriptive author-ID/work profile. The untouched raw source remains blocked by W-1, W0 entity validity is unresolved, and no filtered analysis view was materialized. Parent content identity, author and field entity validity, duplicate source-target edges, temporal and leakage safety, candidate eligibility, the representative pilot, G-1 data readiness, empirical G1, and every scientific effect remain unestablished."
+}

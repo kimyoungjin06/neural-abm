@@ -1,0 +1,154 @@
+schema_version: pivot_feedback_gate_state.v49
+label: pivot_feedback_gate_state_v49
+mode: ADDITIVE_METADATA_ONLY_G0_READINESS_INVENTORY_VALIDATED_SUCCESSOR_SKELETON_AUTHORIZATION
+status: VALID_G0_NOT_READY_METADATA_ONLY_SUCCESSOR_SKELETON_AUTHORIZED_NO_SEAL
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v48.yaml
+  sha256: 1acd2346c2055bc40b2d337fe48a64ce4cf51f20630710c9c2aaaaea4c98b86a
+  required_schema_version: pivot_feedback_gate_state.v48
+  required_status: VALID_D0_CORE_ENTRY_PERSISTENCE_CALIBRATION_COMPLETE_G0_READINESS_INVENTORY_AUTHORIZED
+  required_fields:
+    d0_core_calibration_decision.status: COMPLETE_INDEPENDENTLY_VERIFIED
+    gate_state.D0.complete: true
+    gate_state.G0.complete: false
+    authorization.g0_readiness_and_gap_inventory: AUTHORIZED_METADATA_AND_CONTRACT_ONLY_NO_ROW_READ
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+verified_g0_readiness_inventory:
+  inventory:
+    relative_path: experiments/configs/pivot_feedback_g0_readiness_inventory_v1.yaml
+    sha256: 85e9f5c1ffa25a516261d5756074a3ab0ef7dd893c6a00adb081449d5b72419d
+    required_schema_version: pivot_feedback_g0_readiness_inventory.v1
+    required_status: G0_NOT_READY_VERSIONED_SUCCESSOR_CONTRACT_REQUIRED
+  validator:
+    relative_path: scripts/verify_pivot_feedback_g0_readiness_inventory_v1.py
+    sha256: dcd0d9c62a27c33979a199a09a1a635f8a2290e5bd5c317d5a0f44f55b0e811e
+  research_note:
+    relative_path: docs/research/pivot-feedback-g0-readiness-inventory-v1.md
+    sha256: 43ac4a84ef9c94907714ed2a977d9755f2ea4b17f52f32390ce87067f9c6c97d
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_readiness_inventory_20260731.summary.json
+    sha256: 525d976549fab90f92673e44a7aabb46c87b51517bae494ce6dea606e85a51e7
+    required_schema_version: pivot_feedback_g0_readiness_inventory_summary.v1
+    required_status: PASS_METADATA_ONLY_G0_READINESS_INVENTORY_G0_NOT_READY
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_readiness_inventory_20260731.summary.md
+    sha256: 3791ed9aefdbe14a7613a64bf2117c9a432cc49acfa18a5a49dc277ca4cf0673
+  result:
+    repository_documents_read: 9
+    operator_json_metadata_files_read: 8
+    operator_parquet_files_opened: 0
+    production_row_level_files_opened: 0
+    confirmatory_or_holdout_rows_read: 0
+    api_requests_created_or_submitted: 0
+    original_quantitative_choices: 19
+    d0_resolved_quantitative_choices: 2
+    unresolved_quantitative_choices: 17
+    required_sections: 15
+    freeze_ready_sections: 0
+    partial_sections: 10
+    unresolved_sections: 5
+    g_minus_1_receipt_state: PENDING_NULL_BINDING
+    holdout_access_seal_state: PENDING_NULL_BINDING
+    pending_overlay_sealable: false
+    g0_freeze_ready: false
+    model_fitted: false
+    g4_open: false
+
+g0_readiness_decision:
+  status: NOT_READY_FOR_G0_FREEZE
+  d0_core_calibration_status: COMPLETE_INDEPENDENTLY_VERIFIED
+  resolved_successor_values:
+    author_minimum_history_works: NONE
+    primary_pivot_thresholds: FOCAL_GE_1_AND_PRE_ENTRY_EQ_0_WITH_FOUR_STATE_PRECEDENCE
+  resolved_values_selected_from_outcomes: false
+  unresolved_choice_count: 17
+  not_freeze_ready_section_count: 15
+  hard_blockers:
+    - G_MINUS_1_RECEIPT_ABSENT
+    - HOLDOUT_ACCESS_SEAL_RECEIPT_ABSENT
+    - SEVENTEEN_QUANTITATIVE_CHOICES_UNRESOLVED
+    - FIFTEEN_REQUIRED_SECTIONS_NOT_FREEZE_READY
+  final_cutoff_panel_owner: G0_5
+  final_cutoff_panel_is_g0_prerequisite: false
+  old_pending_overlay_may_be_mutated: false
+  versioned_successor_required: true
+
+authorized_g0_successor_skeleton_scope:
+  mode: VERSIONED_METADATA_ONLY_G0_SUCCESSOR_SKELETON_TWO_RESOLVED_SEVENTEEN_PENDING
+  intended_relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v1.yaml
+  must_bind_old_overlay_byte_for_byte: true
+  may_copy_fixed_design_choices_from_old_overlay: true
+  may_serialize_author_minimum_history_works_as_none: true
+  may_serialize_threshold_free_primary_pivot_rules: true
+  may_mark_any_other_quantitative_choice_resolved: false
+  must_keep_unresolved_quantitative_choice_count: 17
+  must_keep_not_freeze_ready_section_count: 15
+  must_record_g_minus_1_receipt_as_pending: true
+  must_record_holdout_access_seal_as_pending: true
+  may_read_repository_configs_summaries_and_receipt_metadata: true
+  may_open_operator_parquet_or_row_level_data: false
+  may_read_confirmatory_or_holdout_rows: false
+  may_create_or_submit_api_requests: false
+  may_choose_values_from_observed_outcomes: false
+  may_change_confirmatory_periods: false
+  may_rank_or_select_fields_episodes_or_thresholds_by_outcome: false
+  may_establish_final_candidate_eligibility: false
+  may_seal_or_pass_g0: false
+  may_fit_or_score_a_model: false
+  may_open_g4: false
+  independent_validation_required: true
+  successor_gate_required_before_any_resolution_or_execution_scope: true
+
+gate_state:
+  D0:
+    state: COMPLETE_CORE_ENTRY_AND_PERSISTENCE_MEASUREMENT_CALIBRATION_OPTIONAL_PEER_SUCCESS_DEFERRED
+    complete: true
+  G0:
+    state: NOT_READY_SUCCESSOR_SKELETON_AUTHORIZED_NO_SEAL
+    complete: false
+    completed_components:
+      - G0_READINESS_AND_GAP_INVENTORY
+      - G0_READINESS_INVENTORY_INDEPENDENT_VALIDATION
+    next_components:
+      - G0_VERSIONED_MEASUREMENT_FREEZE_SUCCESSOR_SKELETON
+      - G0_SUCCESSOR_SKELETON_INDEPENDENT_VALIDATION
+    blocked_components:
+      - G0_QUANTITATIVE_CHOICE_COMPLETION
+      - G0_REQUIRED_SECTION_COMPLETION
+      - G0_MEASUREMENT_FREEZE_SEAL
+      - CONFIRMATORY_OR_HOLDOUT_ACCESS
+      - MODEL_FITTING
+      - G4
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  d0_core_entry_and_persistence_calibration: COMPLETE_INDEPENDENTLY_VERIFIED
+  g0_readiness_and_gap_inventory: COMPLETE_INDEPENDENTLY_VALIDATED
+  g0_versioned_freeze_successor_skeleton: AUTHORIZED_METADATA_ONLY_TWO_RESOLVED_SEVENTEEN_PENDING_NO_SEAL
+  g0_quantitative_choice_resolution_beyond_d0: NOT_AUTHORIZED
+  confirmatory_or_holdout_opening: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  final_candidate_eligibility: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The metadata-only G0 readiness inventory is independently valid and confirms
+  that G0 is not ready. It opens no Parquet or row-level data. Only the
+  threshold-free history and primary-pivot choices have D0-resolved successor
+  values; seventeen quantitative choices remain unresolved, none of fifteen
+  required sections is freeze-ready, and the G-1 and holdout-seal receipts are
+  absent. This successor authorizes only a new versioned G0 skeleton that
+  copies the fixed prospective design, serializes those two D0-resolved values,
+  and preserves every remaining gap. It does not authorize resolving another
+  value, opening confirmatory or holdout data, selecting by outcome, final
+  eligibility, a G0 seal, model fitting, G4, causality, or a scientific effect.

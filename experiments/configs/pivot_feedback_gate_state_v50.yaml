@@ -1,0 +1,170 @@
+schema_version: pivot_feedback_gate_state.v50
+label: pivot_feedback_gate_state_v50
+mode: ADDITIVE_METADATA_ONLY_G0_V1_SUCCESSOR_SKELETON_VALIDATED_PREREQUISITE_CLOSURE_PLAN_AUTHORIZATION
+status: VALID_G0_V1_SUCCESSOR_SKELETON_COMPLETE_G0_NOT_READY_CLOSURE_PLAN_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v49.yaml
+  sha256: 3d6c4f60634f2673f63597bb5f8a76a50e3329989551095416cbbb4ad3fdfdc0
+  required_schema_version: pivot_feedback_gate_state.v49
+  required_status: VALID_G0_NOT_READY_METADATA_ONLY_SUCCESSOR_SKELETON_AUTHORIZED_NO_SEAL
+  required_fields:
+    gate_state.D0.complete: true
+    gate_state.G0.complete: false
+    authorization.g0_versioned_freeze_successor_skeleton: AUTHORIZED_METADATA_ONLY_TWO_RESOLVED_SEVENTEEN_PENDING_NO_SEAL
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+verified_g0_v1_successor_skeleton:
+  skeleton:
+    relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v1.yaml
+    sha256: dc947df2f87220379401c43ea1914b48c71ed04ae474e5695003723d2c591590
+    required_schema_version: pivot_feedback_g0_measurement_freeze.v2
+    required_status: PENDING_G0_SUCCESSOR_SKELETON_TWO_D0_VALUES_SERIALIZED_NO_SEAL
+    required_fields:
+      lifecycle.freeze_status: PENDING_G0_MEASUREMENT_FREEZE
+      lifecycle.pass_g0: false
+      resolution.resolved_measurement_count: 2
+      resolution.unresolved_quantitative_choice_count: 17
+      resolution.unresolved_required_section_count: 15
+      resolution.freeze_ready_required_section_count: 0
+      completion_contract.pending_contract_sealable: false
+      authorization.g0_measurement_freeze_seal: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+  validator:
+    relative_path: scripts/verify_pivot_feedback_g0_measurement_freeze_v1.py
+    sha256: 6793bdb32b2d527d6b5f2008ef136d7f8346ed2b3222b01c117936c75d6edbf2
+  research_note:
+    relative_path: docs/research/pivot-feedback-g0-measurement-freeze-v1-skeleton.md
+    sha256: 186d9aeb31bc332d073aa9ae6cd672d8ff33bc37fb3a9b6f302af05d560d66ab
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_measurement_freeze_v1_skeleton_20260731.summary.json
+    sha256: 8850c33b417083cbb2f6c156227c60ba622b534dfd8a8ccd27ea90f4ac48e9c7
+    required_schema_version: pivot_feedback_g0_measurement_freeze_v1_skeleton_summary.v1
+    required_status: PASS_METADATA_ONLY_G0_V1_SUCCESSOR_SKELETON_TWO_RESOLVED_SEVENTEEN_PENDING_NO_SEAL
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_measurement_freeze_v1_skeleton_20260731.summary.md
+    sha256: c1dc2ce54d4ef16dcbba4ab70de5a68f4db9b7dd96fb022bc8bc90e4799153e1
+  result:
+    repository_documents_read: 4
+    operator_json_metadata_files_read: 0
+    operator_parquet_files_opened: 0
+    production_row_level_files_opened: 0
+    confirmatory_or_holdout_rows_read: 0
+    api_requests_created_or_submitted: 0
+    immutable_predecessor_bound_byte_for_byte: true
+    predecessor_copied_subtree_count: 6
+    resolved_measurement_count: 2
+    resolved_values_selected_from_observed_outcomes: false
+    unresolved_quantitative_choice_count: 17
+    unresolved_required_section_count: 15
+    freeze_ready_required_section_count: 0
+    g_minus_1_receipt_state: PENDING_NULL_BINDING
+    holdout_access_seal_state: PENDING_NULL_BINDING
+    pending_contract_sealable: false
+    pass_g0: false
+    model_fitted: false
+    g4_open: false
+
+g0_v1_successor_skeleton_decision:
+  status: COMPLETE_INDEPENDENTLY_VALIDATED
+  g0_freeze_ready: false
+  serialized_successor_values:
+    author_minimum_history_works: NONE
+    primary_pivot_thresholds: FOCAL_GE_1_AND_PRE_ENTRY_EQ_0_WITH_FOUR_STATE_PRECEDENCE
+  serialized_values_selected_from_outcomes: false
+  unresolved_choice_count: 17
+  not_freeze_ready_section_count: 15
+  hard_blockers:
+    - G_MINUS_1_RECEIPT_ABSENT
+    - HOLDOUT_ACCESS_SEAL_RECEIPT_ABSENT
+    - SEVENTEEN_QUANTITATIVE_CHOICES_UNRESOLVED
+    - FIFTEEN_REQUIRED_SECTIONS_NOT_FREEZE_READY
+  old_pending_overlay_mutated: false
+  g0_v1_skeleton_is_a_freeze_or_seal: false
+
+authorized_g0_prerequisite_closure_plan_scope:
+  mode: VERSIONED_METADATA_ONLY_G0_PREREQUISITE_CLOSURE_PLAN_NO_EXECUTION
+  intended_relative_path: experiments/configs/pivot_feedback_g0_prerequisite_closure_plan_v1.yaml
+  must_separate_workstreams:
+    - G_MINUS_1_RECEIPT_CLOSURE
+    - HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE
+    - SEVENTEEN_QUANTITATIVE_CHOICE_PRECOMMITMENTS
+    - FIFTEEN_REQUIRED_SECTION_COMPLETION_CONTRACTS
+  must_preserve_g0_v1_skeleton_byte_for_byte: true
+  must_keep_all_current_blockers_explicit: true
+  may_read_repository_configs_summaries_and_receipt_metadata: true
+  may_open_operator_parquet_or_row_level_data: false
+  may_read_confirmatory_or_holdout_rows: false
+  may_create_or_submit_api_requests: false
+  may_issue_g_minus_1_receipt: false
+  may_issue_or_open_holdout_access_seal: false
+  may_resolve_any_quantitative_choice: false
+  may_complete_any_required_section: false
+  may_choose_values_from_observed_outcomes: false
+  may_establish_final_candidate_eligibility: false
+  may_seal_or_pass_g0: false
+  may_fit_or_score_a_model: false
+  may_open_g4: false
+  independent_validation_required: true
+  successor_gate_required_before_any_closure_execution_or_resolution: true
+
+gate_state:
+  D0:
+    state: COMPLETE_CORE_ENTRY_AND_PERSISTENCE_MEASUREMENT_CALIBRATION_OPTIONAL_PEER_SUCCESS_DEFERRED
+    complete: true
+  G0:
+    state: NOT_READY_VERSIONED_SUCCESSOR_SKELETON_VALIDATED_CLOSURE_PLAN_AUTHORIZED
+    complete: false
+    completed_components:
+      - G0_READINESS_AND_GAP_INVENTORY
+      - G0_READINESS_INVENTORY_INDEPENDENT_VALIDATION
+      - G0_VERSIONED_MEASUREMENT_FREEZE_SUCCESSOR_SKELETON
+      - G0_SUCCESSOR_SKELETON_INDEPENDENT_VALIDATION
+    next_components:
+      - G0_PREREQUISITE_CLOSURE_PLAN_METADATA_ONLY
+      - G0_PREREQUISITE_CLOSURE_PLAN_INDEPENDENT_VALIDATION
+    blocked_components:
+      - G_MINUS_1_RECEIPT_CLOSURE_EXECUTION
+      - HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE_EXECUTION
+      - G0_QUANTITATIVE_CHOICE_COMPLETION
+      - G0_REQUIRED_SECTION_COMPLETION
+      - G0_MEASUREMENT_FREEZE_SEAL
+      - CONFIRMATORY_OR_HOLDOUT_ACCESS
+      - MODEL_FITTING
+      - G4
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  d0_core_entry_and_persistence_calibration: COMPLETE_INDEPENDENTLY_VERIFIED
+  g0_readiness_and_gap_inventory: COMPLETE_INDEPENDENTLY_VALIDATED
+  g0_versioned_freeze_successor_skeleton: COMPLETE_INDEPENDENTLY_VALIDATED
+  g0_prerequisite_closure_plan: AUTHORIZED_METADATA_ONLY_NO_EXECUTION
+  g_minus_1_receipt_closure_execution: NOT_AUTHORIZED
+  holdout_access_seal_receipt_closure_execution: NOT_AUTHORIZED
+  g0_quantitative_choice_resolution_beyond_d0: NOT_AUTHORIZED
+  g0_required_section_completion: NOT_AUTHORIZED
+  confirmatory_or_holdout_opening: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  final_candidate_eligibility: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The versioned metadata-only G0 v1 successor skeleton is independently valid
+  and preserves the original prospective overlay while serializing only two
+  D0-resolved, outcome-independent values. It is not a G0 freeze or seal.
+  Seventeen quantitative choices, all fifteen required sections, the G-1
+  receipt, and the holdout-seal receipt remain unresolved blockers. This gate
+  authorizes only a metadata-only plan that separates those four closure
+  workstreams. It does not authorize executing a closure, resolving another
+  value, completing a section, opening confirmatory or holdout data, selecting
+  by outcome, establishing final eligibility, sealing G0, fitting a model,
+  opening G4, asserting causality, or establishing a scientific effect.

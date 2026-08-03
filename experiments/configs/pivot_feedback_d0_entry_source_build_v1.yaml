@@ -1,0 +1,193 @@
+schema_version: pivot_feedback_d0_entry_source_build_config.v1
+label: pivot_feedback_d0_entry_source_build_v1
+mode: EXACT_FOUR_THREE_COUNT_PRODUCTION_FEATURE_SOURCE_NO_STATE_LABELS
+status_before_execution: AUTHORIZED_BY_GATE_STATE_V43
+
+repository_bindings:
+  gate_state:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v43.yaml
+    sha256: bc395b288aebfa7730f03073beec5e297097ed1245e22ddfc16350df9392882c
+    required_schema_version: pivot_feedback_gate_state.v43
+    required_status: VALID_EXACT_FOUR_ENTRY_SOURCE_CLASSIFIER_CONTRACT_INDEPENDENTLY_VERIFIED_PRODUCTION_SOURCE_BUILD_AUTHORIZED
+    required_fields:
+      source_contract_decision.status: COMPLETE_INDEPENDENTLY_VERIFIED
+      authorization.d0_entry_outcome_source_build: AUTHORIZED_EXACT_FOUR_FEATURE_SOURCE_ONLY_NO_PRODUCTION_STATE_LABELS
+      authorization.d0_production_pivot_classification: NOT_AUTHORIZED
+      authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+      authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+  source_classifier_contract:
+    relative_path: experiments/configs/pivot_feedback_d0_entry_source_classifier_contract_v1.yaml
+    sha256: 4105e9671d28d42ed758406a772bbca437fbe3caf4c278908d597d154d1d364c
+    required_schema_version: pivot_feedback_d0_entry_source_classifier_contract.v1
+    required_status: FROZEN_EXACT_FOUR_ENTRY_SOURCE_CLASSIFIER_CONTRACT_FIXTURES_ONLY
+  measurement_abi:
+    relative_path: experiments/configs/pivot_feedback_d0_measurement_abi_v1.yaml
+    sha256: eb51a85c206da328609b2fa05f9bbb6900160dc837dc345715d1bd709134c36e
+    required_schema_version: pivot_feedback_d0_measurement_abi.v1
+
+operator_inputs:
+  cutoff_work_metadata:
+    root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    artifact_bytes: 4120921809
+    rows: 492293206
+    partition_formula: work_id_numeric_mod_4096
+    exact_schema:
+      - [work_id_numeric, uint64, false]
+      - [publication_day, int32, true]
+      - [publication_year, uint16, true]
+      - [temporal_disposition, uint8, false]
+      - [work_type_code, uint8, false]
+      - [is_paratext, bool, false]
+      - [is_retracted, bool, true]
+      - [declared_authors_count, uint16, false]
+      - [primary_topic_id, uint32, true]
+      - [primary_field_id, uint8, true]
+      - [primary_domain_id, uint8, true]
+  author_work_events:
+    root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    artifact_bytes: 5006392019
+    rows: 779630258
+    partition_formula: author_numeric_id_mod_4096
+    exact_schema:
+      - [author_numeric_id, uint64, false]
+      - [work_numeric_id, uint64, false]
+      - [publication_year, uint16, false]
+      - [temporal_disposition, uint8, false]
+      - [declared_authors_count, uint32, false]
+      - [primary_field_id, uint8, false]
+  certified_episode_selection:
+    root_basename: pivot-feedback-d0-certified-episode-reselection-v1-20260730
+    receipt_basename: certified_episode_reselection.outputs.json
+    receipt_sha256: cc4e7729f4e1c0865fe059ed7a5df5c1f053a5dbe4a2e09e68fe0389e74ec96a
+    receipt_schema_version: pivot_feedback_d0_certified_episode_reselection_outputs.v1
+    required_status: PASS_EXACT_FOUR_GLOBAL_CERTIFICATE_BOUND_EPISODE_RESELECTION
+    artifact_basename: certified_episode_selection.parquet
+    artifact_sha256: 2a24ddc9d6519e653718e53e8751758d2033391e250e0f2ada175747c169ffed
+    artifact_schema_version: pivot_feedback_d0_certified_episode_selection.v1
+    rows: 4
+    exact_rows:
+      - [1, 17, 14430, 2003]
+      - [2, 17, 10579, 2012]
+      - [3, 27, 10151, 1993]
+      - [4, 27, 12421, 1953]
+    required_content_state: CONTENT_PASS
+  content_selection_certificate:
+    root_basename: pivot-feedback-d0-rank5-post-diagnostic-certificate-closeout-v1-20260730
+    receipt_basename: rank5_post_diagnostic_certificate_closeout.outputs.json
+    receipt_sha256: 7a37c840f37ac29040a1a40414c0e20402b68061b02bdffa9a54de6bdca1f4ba
+    receipt_schema_version: pivot_feedback_d0_rank5_post_diagnostic_certificate_closeout_outputs.v1
+    required_status: PASS_RANK5_POST_DIAGNOSTIC_CONTENT_PASS_GLOBAL_CERTIFICATES_FROZEN
+    artifact_basename: terminal_selection_certificate_status_v5.json
+    artifact_sha256: 4c19810ceaff4dba756541688ebbd52ae2cdb933404d9ff38ff5d247c1060073
+    artifact_schema_version: pivot_feedback_d0_terminal_selection_certificate_status.v5
+    artifact_status: PASS_GLOBAL_SELECTION_CERTIFICATE_ISSUED
+    exact_topic_ids:
+      computer_science: [14430, 10579]
+      medicine: [10151, 12421]
+  predecision_author_measurement:
+    root_basename: pivot-feedback-d0-certified-predecision-author-measurement-v1-20260731
+    receipt_basename: certified_predecision_author_measurement.outputs.json
+    receipt_sha256: 45c594da3ff0531856f50518226f92545851d26d81753bc66d030aac31032f3c
+    receipt_schema_version: pivot_feedback_d0_certified_predecision_author_measurement_outputs.v1
+    required_status: PASS_EXACT_FOUR_OUTCOME_BLIND_AUTHOR_MEMBERSHIP_AND_CONSOLIDATED_PREDECISION_JOIN
+    artifact_basename: predecision_author_measurement.parquet
+    artifact_sha256: 9797fed53311742eaee0adf19e46d88094c9eb17a2b8aae71b9362ab5456b081
+    artifact_schema_version: pivot_feedback_d0_certified_predecision_author_measurement.v1
+    rows: 3256271
+
+feature_contract:
+  key_columns:
+    - certified_episode_index
+    - field_id
+    - topic_id
+    - entry_year
+    - author_numeric_id
+  output_columns:
+    - certified_episode_index
+    - field_id
+    - topic_id
+    - entry_year
+    - author_numeric_id
+    - pre_entry_target_topic_work_count
+    - trailing_3y_target_topic_work_count
+    - focal_confirmed_eligible_target_topic_work_count
+  eligible_work_type_codes: [1, 2, 3, 4, 7, 16, 18, 21]
+  allowed_general_temporal_dispositions: [2, 3]
+  exact_four_required_temporal_disposition: 2
+  trailing_window_offsets: [-3, -2, -1]
+  focal_window_offsets: [0]
+  post_entry_offsets_allowed: []
+  work_retraction_rule: EXCLUDE_TRUE_RETAIN_NULL_IF_OTHERWISE_ELIGIBLE
+  exact_primary_topic_and_field_match_required: true
+  duplicate_author_work_pair_rule: DEDUPLICATE_AND_REPORT
+  team_cap: NONE
+  registered_population_join: LEFT_JOIN_ALL_3256271_AUTHOR_EPISODE_ROWS
+  minimum_history_threshold: NONE
+  content_confirmation_unit: CERTIFIED_EPISODE_TOPIC_NOT_INDIVIDUAL_WORK
+
+accounting_contract:
+  exclusion_reason_precedence:
+    - MISSING_PRIMARY_TOPIC_OR_FIELD
+    - WRONG_PRIMARY_TOPIC_OR_FIELD
+    - INVALID_TEMPORAL_DISPOSITION
+    - EXCLUDED_WORK_TYPE_OR_PARATEXT
+    - RETRACTED
+    - ELIGIBLE_PRELINK
+  outside_window_rows_scanned: 0
+  forbidden_post_entry_offset_scan_count: 0
+  require_candidate_window_accounting_closure: true
+  require_exact_event_metadata_match: true
+  require_all_registered_author_episode_rows_retained: true
+  require_trailing_count_le_pre_entry_count: true
+  require_zero_pre_entry_implies_zero_trailing: true
+  require_unique_sorted_output_key: true
+
+output_contract:
+  root_basename: pivot-feedback-d0-entry-source-v1-full-20260731
+  feature_basename: pivot_entry_source_features.parquet
+  report_basename: pivot_entry_source_build.json
+  markdown_basename: PIVOT_ENTRY_SOURCE_BUILD.md
+  receipt_basename: pivot_entry_source_build.outputs.json
+  feature_schema_version: pivot_feedback_d0_entry_source_features.v1
+  report_schema_version: pivot_feedback_d0_entry_source_build_report.v1
+  receipt_schema_version: pivot_feedback_d0_entry_source_build_outputs.v1
+  passing_status: PASS_EXACT_FOUR_THREE_COUNT_PRODUCTION_FEATURE_SOURCE_NO_STATE_LABELS
+
+forbidden_inputs_and_outputs:
+  production_classifier_state_materialized: false
+  pivot_label_materialized: false
+  entry_or_persistence_outcome_read: false
+  post_entry_work_read: false
+  realized_citation_outcome_read: false
+  peer_visible_success_computed: false
+  api_request_created: false
+  paid_api_submitted: false
+  final_candidate_eligibility_established: false
+  g0_measurement_frozen: false
+  model_fitted: false
+  g4_opened: false
+
+claim_boundary: >-
+  This build may materialize only the three receipt-bound count features for
+  the exact four certified episodes and all 3,256,271 registered
+  author-episode rows. Content confirmation remains an episode-topic
+  certificate plus exact current-snapshot primary-topic membership, not an
+  individual-work API label, historical topic observation, or semantic ground
+  truth. The build may not materialize production classifier states, read
+  post-entry persistence or impact, create API requests, establish final
+  eligibility, freeze G0, fit a model, open G4, or establish an association,
+  causal mechanism, or scientific effect.

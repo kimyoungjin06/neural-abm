@@ -1,0 +1,137 @@
+schema_version: pivot_feedback_researcher_pivot_definition.v1
+label: pivot_feedback_researcher_pivot_definition_v1
+mode: SIMPLE_PAST_ONLY_OBSERVABLE_HISTORY_NEW_TOPIC_ENTRY
+status: FROZEN_SIMPLE_PAST_ONLY_PIVOT_DEFINITION_EXECUTION_NOT_AUTHORIZED
+
+repository_bindings:
+  empirical_protocol:
+    relative_path: docs/case-studies/researcher-pivot/pivot-feedback-empirical-nabm-protocol.md
+    sha256: 731e39dec4c7be5c29a0f0404b48992ad0caef152062d1d1d7876acc07064746
+    required_text:
+      - The primary definition must use past-only representations.
+      - entry into a primary topic previously absent or negligible in the trailing
+  gate_state_parent:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v10.yaml
+    sha256: 441fbfed9055434390ed97ac9fdeacc064dbab3684933d3f3188264c4f392044
+    required_schema_version: pivot_feedback_gate_state.v10
+    required_status: VALID_D0_API_REVIEW_COMPLETE_HUMAN_REVIEW_PENDING_OUTCOMES_FAIL_CLOSED
+    mutation_allowed: false
+
+primary_event:
+  unit: RESEARCHER_PRIMARY_TOPIC_ENTRY_YEAR
+  definition: >-
+    A pivot is the first content-confirmed eligible contribution by a researcher
+    to a primary topic with zero earlier content-confirmed eligible
+    contributions to that topic in the observable history.
+  claim_label: OBSERVABLE_HISTORY_NEW_TOPIC_PIVOT
+  true_lifetime_first_claim_allowed: false
+  information_cutoff_for_history: END_OF_T_MINUS_1
+  focal_year_information_allowed:
+    - focal_confirmed_on_topic_work_count
+  post_focal_information_allowed: false
+  same_researcher_topic_year_aggregation: ONE_EVENT
+  repeated_pivot_for_same_researcher_topic_allowed: false
+
+input_contract:
+  required_features:
+    - prior_observable_span_years
+    - prior_eligible_work_count
+    - prior_topic_work_count
+    - trailing_3y_topic_work_count
+    - focal_confirmed_on_topic_work_count
+  feature_types: NONNEGATIVE_INTEGER
+  focal_content_confirmation_required: true
+  focal_confirmed_on_topic_work_count_minimum: 1
+  trailing_topic_count_must_not_exceed_prior_topic_count: true
+  prior_topic_count_zero_requires_trailing_topic_count_zero: true
+  forbidden_feature_name_fragments:
+    - future
+    - persistence
+    - post_pivot
+    - realized_citation
+    - impact_outcome
+    - model_score
+
+history_eligibility:
+  minimum_prior_observable_span_years: 3
+  minimum_prior_eligible_work_count: 3
+  eligibility_is_not_part_of_pivot_novelty: true
+  insufficient_history_state: INSUFFICIENT_HISTORY
+
+classification:
+  precedence:
+    - INSUFFICIENT_HISTORY
+    - NEW_TOPIC_PIVOT
+    - RETURN
+    - CONTINUATION
+  rules:
+    INSUFFICIENT_HISTORY:
+      any:
+        - prior_observable_span_years_lt: 3
+        - prior_eligible_work_count_lt: 3
+    NEW_TOPIC_PIVOT:
+      all:
+        - history_eligible: true
+        - prior_topic_work_count_eq: 0
+    RETURN:
+      all:
+        - history_eligible: true
+        - prior_topic_work_count_gt: 0
+        - trailing_3y_topic_work_count_eq: 0
+    CONTINUATION:
+      all:
+        - history_eligible: true
+        - trailing_3y_topic_work_count_gt: 0
+  exhaustive_for_valid_input: true
+  mutually_exclusive_for_valid_input: true
+
+pivot_magnitude:
+  field_name: pivot_distance
+  role: SEPARATE_CONTINUOUS_ATTRIBUTE_NOT_EVENT_GATE
+  primary_measure: ONE_MINUS_COSINE_REFERENCE_SOURCE_DISTRIBUTION
+  researcher_baseline_window_years: 3
+  valid_range_inclusive: [0.0, 1.0]
+  missing_allowed: true
+  threshold_for_primary_event: NONE
+  text_embedding_distance_role: ROBUSTNESS_ONLY
+
+downstream_outcomes:
+  excluded_from_primary_event:
+    - persistence_t_plus_1_through_t_plus_3
+    - post_pivot_impact
+    - chaperoned_entry
+    - peer_signal_available
+  persistence_window_offsets: [1, 2, 3]
+  persistence_is_future_outcome: true
+  outcome_opening_authorized_by_definition_freeze: false
+
+api_only_content_boundary:
+  human_review: NOT_RUN_BY_DESIGN
+  human_accuracy: NOT_AVAILABLE
+  human_cohen_kappa: NOT_AVAILABLE
+  api_consensus_is_ground_truth: false
+  current_frozen_title_sample_rows: 384
+  current_strict_dual_high_on_topic_rows: 197
+  current_unresolved_quarantined_rows: 187
+  current_sample_is_candidate_universe: false
+  complete_candidate_universe_screen_run: false
+  unresolved_rows_must_be_quarantined: true
+  definition_freeze_authorizes_paid_api_execution: false
+
+authorization:
+  classification_fixture_execution: AUTHORIZED
+  production_pivot_classification: NOT_AUTHORIZED
+  complete_candidate_universe_api_screen: NOT_AUTHORIZED
+  episode_reselection: NOT_AUTHORIZED
+  author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  persistence_outcome_read: NOT_AUTHORIZED
+  realized_citation_outcome_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract freezes a simple past-only observable-history definition and an
+  executable four-state decision table. It does not claim lifetime-first topic
+  entry, human-calibrated API accuracy, complete candidate-universe screening,
+  production pivot classification, persistence, impact, peer influence, a
+  scientific effect, D0 completion, model fitting, or G4 opening.

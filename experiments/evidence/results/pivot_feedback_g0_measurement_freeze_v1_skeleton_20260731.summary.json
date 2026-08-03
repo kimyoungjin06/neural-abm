@@ -1,0 +1,77 @@
+{
+  "schema_version": "pivot_feedback_g0_measurement_freeze_v1_skeleton_summary.v1",
+  "status": "PASS_METADATA_ONLY_G0_V1_SUCCESSOR_SKELETON_TWO_RESOLVED_SEVENTEEN_PENDING_NO_SEAL",
+  "access_accounting": {
+    "repository_documents_read": 4,
+    "operator_json_metadata_files_read": 0,
+    "operator_parquet_files_opened": 0,
+    "production_row_level_files_opened": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "api_requests_created_or_submitted": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "immutable_predecessor_replay": {
+    "relative_path": "experiments/configs/pivot_feedback_g0_measurement_freeze_v0.yaml",
+    "sha256": "2c2912506b96e1c7a09ba008bd15fb824a5b8e3545cf9c387cd3e0cb81044606",
+    "predecessor_mutated": false,
+    "copied_subtree_count": 6,
+    "copied_subtrees": [
+      "foundation_parents",
+      "g_minus_1_binding",
+      "holdout_access_binding",
+      "fixed_design_choices",
+      "inherited_subtree_digests",
+      "failure_policy"
+    ]
+  },
+  "resolution_replay": {
+    "resolved_measurement_count": 2,
+    "resolved_measurement_values": {
+      "author_minimum_history_works": "NONE",
+      "primary_pivot_thresholds": "FOCAL_GE_1_AND_PRE_ENTRY_EQ_0_WITH_FOUR_STATE_PRECEDENCE"
+    },
+    "resolved_values_selected_from_observed_outcomes": false,
+    "unresolved_quantitative_choice_count": 17,
+    "unresolved_required_section_count": 15,
+    "freeze_ready_required_section_count": 0
+  },
+  "fail_closed_boundary": {
+    "g_minus_1_receipt_state": "PENDING_NULL_BINDING",
+    "holdout_access_seal_state": "PENDING_NULL_BINDING",
+    "pending_contract_sealable": false,
+    "pass_g0": false,
+    "confirmatory_or_holdout_opened": false,
+    "model_fitted": false,
+    "g4_open": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "readiness_blockers": [
+    "G_MINUS_1_RECEIPT_ABSENT",
+    "HOLDOUT_ACCESS_SEAL_RECEIPT_ABSENT",
+    "SEVENTEEN_QUANTITATIVE_CHOICES_UNRESOLVED",
+    "FIFTEEN_REQUIRED_SECTIONS_NOT_FREEZE_READY"
+  ],
+  "repository_artifacts": {
+    "skeleton": {
+      "relative_path": "experiments/configs/pivot_feedback_g0_measurement_freeze_v1.yaml",
+      "sha256": "dc947df2f87220379401c43ea1914b48c71ed04ae474e5695003723d2c591590"
+    },
+    "validator": {
+      "relative_path": "scripts/verify_pivot_feedback_g0_measurement_freeze_v1.py",
+      "sha256": "6793bdb32b2d527d6b5f2008ef136d7f8346ed2b3222b01c117936c75d6edbf2"
+    }
+  },
+  "authorization": {
+    "g0_successor_skeleton": "COMPLETE_INDEPENDENTLY_VALIDATED",
+    "g0_quantitative_choice_resolution_beyond_d0": "NOT_AUTHORIZED",
+    "g0_required_section_completion": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "confirmatory_or_holdout_opening": "NOT_AUTHORIZED",
+    "outcome_based_selection": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "The versioned metadata-only G0 v1 successor skeleton is independently valid. It binds the original pending overlay byte-for-byte and copies six prospective subtrees without change. Only two D0-resolved outcome-independent values are serialized; seventeen quantitative choices and all fifteen required sections remain not freeze-ready, while the G-1 and holdout-seal receipts remain pending and null. No operator row data, confirmatory or holdout data, API request, G0 seal, model, G4 result, causality, or scientific effect is established."
+}

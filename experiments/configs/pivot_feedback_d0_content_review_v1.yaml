@@ -1,0 +1,142 @@
+schema_version: pivot_feedback_d0_content_review_config.v1
+label: pivot_feedback_d0_content_review_v1
+mode: OUTCOME_BLIND_TWO_HUMAN_REVIEWER_TITLE_PACKET_CONTRACT
+status: FROZEN_PACKET_GENERATION_CONTRACT_HUMAN_REVIEW_NOT_RUN
+
+gate_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v7.yaml
+  sha256: 03b56aa479ce1b54415c9f811c036e6e62d9f7e7cd2dcff5b725fcd9194549cf
+  required_schema_version: pivot_feedback_gate_state.v7
+  required_status: VALID_D0_CONTENT_REVIEW_REQUIRED_EPISODE_3_QUARANTINED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    gate_state.D0.state: PARTIAL_ABI_RESELECTION_PASS_CONTENT_REVIEW_REQUIRED
+    gate_state.D0.complete: false
+    human_review_state.sample_rows: 384
+    human_review_state.reviewer_1_completed_rows: 0
+    human_review_state.reviewer_2_completed_rows: 0
+    human_review_state.adjudicated_rows: 0
+    human_review_state.review_freeze_complete: false
+    authorization.d0_human_double_content_review: AUTHORIZED_OUTCOME_BLIND
+    authorization.d0b_leaveout_network_bridge_build: PAUSED_PENDING_REVIEW_AND_RESELECTION_SUCCESSOR
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+
+source_audit:
+  output_root_basename: pivot-feedback-d0-content-indexing-audit-v1-full-20260724
+  receipt_basename: content_indexing_audit.outputs.json
+  receipt_sha256: 86be1808a3272ba7a892d8aa90f4d3687f0d253474d1b4470dad1940e4ff5280
+  required_receipt_schema_version: pivot_feedback_d0_content_indexing_audit_outputs.v1
+  required_receipt_status: PASS_D0_CONTENT_INDEXING_EXTRACTION_HUMAN_REVIEW_REQUIRED
+  template_basename: content_review_template.csv
+  template_sha256: 9fe7a70a7e7e839c3272a5d146b48674dd248932491595dc7bf8c124e9e2e6d9
+  expected_rows: 384
+  required_blank_columns:
+    - reviewer_1_label
+    - reviewer_2_label
+    - adjudicated_label
+    - review_notes
+
+review_contract:
+  unit: SAMPLED_WORK_TITLE
+  reviewer_count: 2
+  reviewers_must_be_distinct_humans: true
+  artificial_agent_may_substitute_for_human_reviewer: false
+  independent_completion_before_comparison: true
+  reviewer_discussion_before_freeze_allowed: false
+  complete_case_required: true
+  labels: [ON_TOPIC, AMBIGUOUS, OFF_TOPIC, UNREVIEWABLE]
+  label_definitions:
+    ON_TOPIC: TITLE_DIRECTLY_SUPPORTS_THE_TARGET_TOPIC_OR_A_CLEAR_SYNONYM
+    AMBIGUOUS: TITLE_IS_PLAUSIBLY_RELATED_BUT_INSUFFICIENT_FOR_A_CLEAR_DECISION
+    OFF_TOPIC: TITLE_IS_CLEARLY_UNRELATED_OR_IS_AN_ARCHIVAL_OR_INVENTORY_OBJECT
+    UNREVIEWABLE: TITLE_OR_LANGUAGE_DOES_NOT_SUPPORT_A_MEANINGFUL_ASSESSMENT
+  notes_required_for: [AMBIGUOUS, OFF_TOPIC, UNREVIEWABLE]
+  adjudicate_every_disagreement: true
+  adjudicator_may_be_one_original_reviewer: false
+  freeze_reviewer_files_before_adjudication: true
+  report_exact_agreement: true
+  report_cohen_kappa: true
+
+blinding:
+  item_id_algorithm: SHA256_HEX_OF_SEED_REVIEWER_AND_OPENALEX_ID
+  item_id_seed: pivot-feedback-d0-content-review-item-v1
+  reviewer_order_algorithm: SHA256_HEX_OF_SEED_REVIEWER_AND_OPENALEX_ID
+  reviewer_order_seed: pivot-feedback-d0-content-review-order-v1
+  separately_order_each_reviewer_packet: true
+  visible_source_columns:
+    - observed_primary_topic_name
+    - title
+    - language
+    - observed_work_type
+  reviewer_packet_columns:
+    - review_item_id
+    - target_topic_name
+    - title
+    - language
+    - work_type
+    - reviewer_label
+    - reviewer_notes
+  hidden_from_reviewers:
+    - episode_index
+    - field_id
+    - topic_id
+    - entry_year
+    - window_code
+    - work_numeric_id
+    - openalex_id
+    - expected_publication_year
+    - observed_publication_year
+    - expected_work_type_code
+    - primary_topic_score
+    - observed_primary_field_id
+    - observed_primary_subfield_id
+    - source_id
+    - source_name
+    - created_date
+    - updated_date
+    - source_file_index
+    - source_row_group
+
+forbidden_inputs_and_outputs:
+  entry_rows_read: false
+  persistence_rows_read: false
+  realized_citation_rows_read: false
+  effect_sizes_read: false
+  prediction_rows_read: false
+  g4_rows_read: false
+  model_fitting: false
+  automatic_title_classification: false
+  automatic_review_completion: false
+  episode_promotion: false
+  episode_reselection: false
+  d0_completion: false
+
+output_contract:
+  packet_status: PASS_D0_BLINDED_TWO_HUMAN_REVIEWER_PACKETS_PREPARED_REVIEW_NOT_RUN
+  receipt_schema_version: pivot_feedback_d0_content_review_packet_outputs.v1
+  manifest_schema_version: pivot_feedback_d0_content_review_packet_manifest.v1
+  output_directory_must_be_new: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  receipt_written_last: true
+  reviewer_packet_rows_each: 384
+  reviewer_packet_orders_must_differ: true
+  reviewer_packet_content_sets_must_match: true
+  source_template_immutable: true
+  human_review_complete_after_packet_generation: false
+  d0_complete_after_packet_generation: false
+  leaveout_network_bridge_authorized_after_packet_generation: false
+  discovery_outcome_opening_authorized: false
+  model_fitting_authorized: false
+  g4_open: false
+  gpu_used: false
+
+claim_boundary: >-
+  This contract creates two separately ordered, title-only packets for two
+  distinct human reviewers and a private adjudication key. Packet generation
+  does not perform, simulate, or complete human review; does not classify any
+  title; and does not promote or replace an episode. Entry, persistence,
+  realized citation, prediction, G4, model fitting, leave-outs, network
+  bridges, associations, causal mechanisms, and scientific effects remain
+  unopened, unauthorized, not run, or not established.

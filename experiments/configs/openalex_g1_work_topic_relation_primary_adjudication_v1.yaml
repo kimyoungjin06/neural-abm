@@ -1,0 +1,133 @@
+schema_version: openalex_g1_work_topic_relation_primary_adjudication_config.v1
+label: openalex_g1_work_topic_relation_primary_adjudication_v1
+
+source:
+  root_env: OPENALEX_DERIVED_ROOT
+  root_id: openalex_works_20260330_repairreplay_20260410_190630
+  snapshot_date: "2026-03-30"
+  lineage_id: openalex_20260225_base_plus_20260330_update_repairreplay
+
+blocked_parent:
+  output_dir_env: OPENALEX_G1_WORK_TOPIC_RELATION_BLOCKED_OUTPUT_DIR
+  receipt_basename: work_topic_relation_audit.outputs.json
+  receipt_sha256: 7cf91e50a3934f783d278ae47b3764ec650b7d36c3625bfc4564da405a551507
+  receipt_schema_version: openalex_g1_work_topic_relation_outputs.v1
+  required_status: BLOCKED_WORK_TOPIC_RELATION_COMPONENT
+  result_fingerprint_sha256: ce13bc8aa2e07578c84c1f540d2f21f7e46b18189ddda12c963a2ccc154db6d5
+  task_fingerprint_sha256: edf3261950461461fc6f2a339c8d63899443b620b71aeb1aa254ed85dd940e9d
+  config_sha256: 7e7d50f212e9738dfce5b437174cfecbfa76679e532a15e23d84ca88c5e0b7fc
+  tool_sha256: 5503ed01c80282fa118ae47f86901e6e5588f52e04c19a1c3646e86274622786
+  checkpoint_count: 1423
+  checkpoint_tree_sha256: 8cac1795cf72a3d659d2526cfb3178e79328cbb26bf359e8e69e8463f88a645f
+  receipt_artifact_count: 1430
+  verify_every_receipt_artifact: true
+  required_artifacts:
+    audit_plan.json:
+      bytes: 2180730
+      sha256: b19de52306663a64a07404084f6e5b34e9d1ae44a2abb3f8937e41a3be0f47ae
+    work_topic_relation.events.sorted.bin:
+      bytes: 34100538048
+      sha256: b714008803b49dca0e6c4d5f273aa458a20549b415185721b255492f99768623
+    work_topic_relation_audit.json:
+      bytes: 23122
+      sha256: 88aa8fa4d854e508c7e513b63f3240002a1ae19e25a1248ebf5e4fb2a08798f5
+  required_full_counts:
+    event_rows: 1420855752
+    topic_raw_rows: 928562546
+    unique_work_topic_edges: 928561783
+    duplicate_edge_groups: 714
+    duplicate_row_excess: 763
+    score_conflict_edge_groups: 2
+    main_primary_nonnull_rows: 354145248
+    primary_child_present_rows: 354145248
+    primary_child_missing_rows: 0
+  expected_conflict_keys:
+    - work_numeric_id: 5401631
+      topic_numeric_id: 13112
+    - work_numeric_id: 26888826
+      topic_numeric_id: 10455
+
+event_abi:
+  dtype:
+    - [key, "<u8"]
+    - [score_bits, "<u8"]
+    - [locator, "<u4"]
+    - [kind, u1]
+    - [padding, V3]
+  bytes_per_event: 24
+  sort_order: [key, kind, score_bits, locator]
+  main_kind: 0
+  topic_kind: 1
+  topic_bits: 14
+  locator_row_bits: 20
+
+primary_readback:
+  main_table_key: main
+  columns:
+    - id
+    - primary_topic__id
+    - primary_topic__score
+  expected_types:
+    id: string
+    primary_topic__id: string
+    primary_topic__score: double
+  work_prefix: https://openalex.org/W
+  topic_prefix: https://openalex.org/T
+  score_minimum_inclusive: 0.0
+  score_maximum_inclusive: 1.0
+  score_canonicalization: ieee754_float64_little_endian_normalize_negative_zero
+
+adjudication_policy:
+  duplicate_key: [work_id, topic_id]
+  canonical_rule: >-
+    For a conflicting duplicate edge, require exactly one main marker for the
+    same packed work-topic key, read the frozen main source row located by that
+    marker, and select its exact canonical primary_topic score only when that
+    score is present among the child topic rows. Otherwise remain blocked.
+  forbid_unconditional_first_max_mean_or_min: true
+  require_every_parent_conflict_observed: true
+  require_no_unexpected_conflict: true
+  preserve_every_conflict_row_in_sidecar: true
+  nonconflicting_duplicate_rule: collapse_same_key_same_exact_canonical_score
+  unresolved_conflict_policy: block_without_publishing_deduplicated_relation
+
+execution:
+  workload_class: local_cpu_io
+  aggregation_chunk_rows: 4194304
+  disk_reserve_bytes: 10737418240
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  refuse_symlink_inputs: true
+  refuse_output_inside_parent_or_source: true
+  full_scope_requires_explicit_authorization: true
+  gpu_used: false
+
+success_contract:
+  full_status: PASS_CURRENT_SNAPSHOT_WORK_TOPIC_RELATION_COMPONENT_WITH_PRIMARY_EXACT_SCORE_ADJUDICATION
+  blocked_status: BLOCKED_WORK_TOPIC_RELATION_PRIMARY_EXACT_SCORE_ADJUDICATION
+  required_gate_states:
+    raw_work_topic_edge_uniqueness: FAIL_DUPLICATES_PRESENT
+    duplicate_work_topic_audit: PASS
+    primary_topic_child_inclusion: PASS
+    primary_exact_score_adjudication: PASS
+    canonical_work_topic_relation: PASS
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    parent_content_identity: UNVERIFIED
+    g_minus_1_data_readiness: PENDING
+    g0_measurement_freeze: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+
+claim_boundary: >-
+  This successor does not rerun topic classification and does not alter raw
+  OpenAlex rows. It derives one deterministic set-semantics relation from the
+  exact blocked full-scope parent receipt. Same-score duplicates collapse
+  unchanged. A score-conflicting duplicate is resolved only when the frozen
+  main row's exact primary-topic ID and score identify a child score for the
+  same edge; all raw conflicting rows and locators remain in a receipt-bound
+  sidecar. The result establishes current-snapshot work-topic membership and
+  canonical score selection under this narrow policy only. It does not
+  establish raw source-ID validity, W0 entity validity, publication or
+  temporal validity, author or candidate validity, G-1 or G0, empirical G1,
+  a learned NABM parameter, or a scientific effect.

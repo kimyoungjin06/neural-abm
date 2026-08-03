@@ -1,0 +1,116 @@
+schema_version: pivot_feedback_d0_t10151_rank5_local_routing_config.v1
+label: pivot_feedback_d0_t10151_rank5_local_routing_v1
+mode: ZERO_COST_RANK5_LOCAL_ROUTING_AND_PRODUCTION_RULE_V2_DRY_RUN
+status: FROZEN_T10151_RANK5_LOCAL_ROUTING_DRY_RUN_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v24.yaml
+  sha256: dd8b812f16a2f5aeaa84a0bac1daeb15fdeed7214b7eeafec404addb89bfc467
+  required_schema_version: pivot_feedback_gate_state.v24
+  required_status: VALID_EXACT_T10151_RANK5_SAMPLE_VERIFIED_ZERO_COST_LOCAL_ROUTING_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_rank5_topic_card: COMPLETE_FROZEN_BEFORE_SAMPLE_READ
+    authorization.d0_rank5_local_routing: AUTHORIZED_ZERO_COST_ONLY
+    authorization.d0_rank5_candidate_rule_v2_dry_run: AUTHORIZED
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.d0_rank5_production_content_disposition: NOT_AUTHORIZED_UNTIL_LOCAL_ROUTING_VERIFIED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+frozen_input:
+  root_basename: pivot-feedback-d0-t10151-rank5-targeted-title-sample-v1-20260729
+  sample_basename: t10151_rank5_targeted_title_sample.parquet
+  sample_sha256: 23c06acbf465ac85d3cfba431fd994a02cd73054f38d5baad25dce0fc568d0f2
+  sample_schema_version: pivot_feedback_d0_t10151_rank5_targeted_title_sample.v1
+  sample_rows: 96
+  receipt_basename: t10151_rank5_targeted_title_sample.outputs.json
+  receipt_sha256: 77d596bcca255be299b76fb238a6b10fbbf699d926d3e955d60182ca485fa333
+  receipt_status: PASS_EXACT_T10151_RANK5_96_TITLE_LOCAL_SAMPLE
+  verification_basename: pivot-feedback-d0-t10151-rank5-targeted-title-sample-v1-20260729.verification-v1.json
+  verification_sha256: 424c655c69c9fa604763d161c090eb3c5025963d37d50f26c24a5bbd8075ed25
+  verification_status: PASS_INDEPENDENT_EXACT_T10151_RANK5_96_TITLE_LOCAL_SAMPLE
+
+topic_card:
+  source:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v23.yaml
+    sha256: da3af0a2f12ff8f36a35067f24b49b8bf525ab65ca2339bf618b42c7d89b81fc
+    config_key: frozen_topic_card
+    topic_id: 10151
+    reuse_without_change: true
+
+production_rule_v2:
+  source:
+    relative_path: experiments/configs/pivot_feedback_d0_production_candidate_rule_v2.yaml
+    sha256: 527ab2d43f878fdd5cceb228d5fb13cf5d7ee2342908ce7264d7bede4d39603d
+    reuse_without_change: true
+  majority_opaque_threshold: 0.50
+  joint_indexing_score_drop_threshold: 0.15
+  joint_indexing_source_share_increase_threshold: 0.25
+  semantic_reject_threshold: 0.50
+  semantic_accept_threshold: 0.50
+  dry_run_state_is_production_disposition: false
+
+expected_dry_run:
+  recent_title_rows: 64
+  recent_accept_rows: 27
+  recent_reject_rows: 12
+  recent_ambiguous_rows: 25
+  recent_opaque_quarantine_rows: 0
+  recent_opaque_quarantine_fraction: 0.0
+  baseline_median_primary_topic_score: 0.9952
+  signal_median_primary_topic_score: 0.99905
+  baseline_to_signal_score_drop: -0.00385000000000002
+  baseline_dominant_source_share: 0.15625
+  signal_dominant_source_share: 0.1875
+  baseline_to_signal_source_share_increase: 0.03125
+  candidate_rule_v2_branch: CONTENT_UNRESOLVED
+  candidate_rule_v2_state: WOULD_CONTENT_UNRESOLVED
+  candidate_rule_v2_reason: CONSERVATIVE_RECENT_EVIDENCE_NOT_DECISIVE
+  production_content_disposition_created: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-t10151-rank5-local-routing-v1-20260729
+  routes_basename: t10151_rank5_local_title_routes.csv
+  candidate_basename: t10151_rank5_candidate_rule_v2_dry_run.parquet
+  report_basename: T10151_RANK5_LOCAL_ROUTING_AND_RULE_V2_DRY_RUN.md
+  receipt_basename: t10151_rank5_local_routing.outputs.json
+  receipt_schema_version: pivot_feedback_d0_t10151_rank5_local_routing_outputs.v1
+  status: PASS_ZERO_COST_T10151_RANK5_LOCAL_ROUTING_AND_RULE_V2_DRY_RUN
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+execution_boundary:
+  sample_title_rows_read: 96
+  raw_openalex_main_table_read: false
+  new_titles_read: false
+  network_accessed: false
+  credentials_accessed: false
+  api_requests_created: false
+  api_requests_submitted: false
+  production_content_dispositions_created: false
+  selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  outcomes_read: false
+
+authorization:
+  zero_cost_local_routing: AUTHORIZED
+  candidate_rule_v2_dry_run_aggregation: AUTHORIZED
+  raw_title_scan: NOT_AUTHORIZED
+  new_api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+  production_content_disposition: NOT_AUTHORIZED
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract applies the pre-sample-frozen T10151 card and unchanged
+  production-rule-v2 thresholds to the independently verified rank-5
+  current-snapshot sample. The dry-run result is not a production disposition,
+  semantic truth, historical topic validation, selection certificate, pivot
+  classification, outcome result, model fit, G4 opening, or scientific effect.
+  No API request is authorized.

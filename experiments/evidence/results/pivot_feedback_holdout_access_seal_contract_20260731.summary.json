@@ -1,0 +1,84 @@
+{
+  "schema_version": "pivot_feedback_holdout_access_seal_contract_summary.v1",
+  "status": "PASS_METADATA_ONLY_HOLDOUT_SEAL_CONTRACT_PARTITION_FROZEN_CREATION_AND_OPENING_SEPARATE",
+  "access_accounting": {
+    "repository_documents_read": 4,
+    "operator_json_metadata_files_read": 0,
+    "operator_parquet_files_opened": 0,
+    "production_row_level_files_opened": 0,
+    "holdout_artifact_paths_enumerated": 0,
+    "holdout_artifact_bytes_hashed": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "api_requests_created_or_submitted": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "partition": {
+    "partition_id": "g4_temporal_holdout",
+    "entry_years": [
+      2020,
+      2021,
+      2022
+    ],
+    "outcome_followup_through_year": 2025,
+    "temporal_holdout": true,
+    "domain_cold": true,
+    "author_cold": true,
+    "outcome_blind_definition": true
+  },
+  "phase_separation": {
+    "ordered_phases": [
+      "CONTRACT_VALIDATION",
+      "SEAL_CREATION",
+      "SEAL_INDEPENDENT_VERIFICATION",
+      "SEAL_OPENING"
+    ],
+    "creation_requires_successor_gate": true,
+    "opening_requires_distinct_g4_gate": true,
+    "creation_and_opening_separate": true
+  },
+  "future_artifact_contract": {
+    "manifest_schema": "pivot_feedback_holdout_access_seal_manifest.v1",
+    "receipt_schema": "pivot_feedback_holdout_access_seal_outputs.v1",
+    "receipt_status": "PASS_CONFIRMATORY_PARTITIONS_SEALED_AND_UNOPENED",
+    "receipt_written_last": true,
+    "receipt_nonauthorizing_for_model_or_g4": true
+  },
+  "atomic_and_fail_closed": {
+    "ordered_step_count": 11,
+    "receipt_written_after_final_revalidation": true,
+    "missing_changed_or_previously_opened_fail_closed": true,
+    "failed_verification_blocks_opening": true
+  },
+  "current_state": {
+    "seal_created": false,
+    "receipt_written": false,
+    "holdout_opened": false,
+    "g0_passed": false,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "repository_artifacts": {
+    "contract": {
+      "relative_path": "experiments/configs/pivot_feedback_holdout_access_seal_v1.yaml",
+      "sha256": "16054264f703b03726edddc041255de10a541b9339d25f9e8ec8cab302d57568"
+    },
+    "validator": {
+      "relative_path": "scripts/verify_pivot_feedback_holdout_access_seal_v1.py",
+      "sha256": "61757332a39339af5fe98348925fc3f4eca757cf9a3be8907a22d33fd072d97d"
+    }
+  },
+  "authorization": {
+    "holdout_seal_contract": "COMPLETE_INDEPENDENTLY_VALIDATED",
+    "future_seal_creation_or_receipt_issuance": "REQUIRES_SUCCESSOR_GATE",
+    "holdout_artifact_enumeration_or_hashing": "NOT_AUTHORIZED",
+    "seal_opening": "NOT_AUTHORIZED",
+    "g0_quantitative_choice_resolution": "NOT_AUTHORIZED",
+    "g0_required_section_completion": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "The metadata-only holdout-seal contract is independently valid. It fixes the 2020-2022 entry partition, follow-up through 2025, domain- and author-cold rules, and future manifest, receipt, atomic-finalization, independent-verification, and fail-closed requirements. It keeps seal creation distinct from seal opening. No holdout artifact path or byte was enumerated or hashed, no seal or receipt was created, no confirmatory or holdout row was read, and no G0 pass, model, G4 result, causality, or scientific effect is established."
+}

@@ -1,0 +1,251 @@
+{
+  "claim_boundary": "A pass quantifies the predeclared positive-work-ID sensitivity for the single retained W0 record and propagates its one-row removal through the already frozen cross-field profile margins. It does not decide whether W0 denotes a real or invalid entity, establish historical or current full-root byte identity, validate publication dates or authors, select fields or candidate researchers, pass G-1 or G0, run empirical G1, or establish an effect.",
+  "current_main_topics_w0": {
+    "main_rows": 1,
+    "topic_rows": 0
+  },
+  "current_selected_file_scans": [
+    {
+      "bytes": 279684229,
+      "mtime_ns": 1775802869849753200,
+      "projected_payload_sha256": "25e8b6f6ab224438936bcecb01df2b7d57b65bee8a6004716dc06af05a7b489b",
+      "projected_rows": 1000000,
+      "relative_path": "openalex_works_20260330/part-322.parquet",
+      "role": "main_work",
+      "selected_schema_sha256": "31aa3806d43328a9d5b94be27ce6ec03b55c617757bc444dc01ac66aced1e7ec",
+      "source_identity_stable_during_scan": true,
+      "w0_selected_values_sha256": "74050a58071981164924d6b3dcf9542a577871e67698723c4efbe385ef5e7716"
+    },
+    {
+      "bytes": 48913767,
+      "mtime_ns": 1775736205958683500,
+      "projected_payload_sha256": "7333fffa951aa3a73efd5fb94e75bfc4b9d93c359d30b850a1db2ef8e7599ea2",
+      "projected_rows": 1000000,
+      "relative_path": "openalex_works_20260330__authorships/base-1008.parquet",
+      "role": "authorship",
+      "selected_schema_sha256": "ad8f06658bc84119dfb9e91feae05135807c111f78106ba630081236f1ca7e07",
+      "source_identity_stable_during_scan": true,
+      "w0_selected_values_sha256": "e7ad22acec3c7d25003d9853ce8c889c02675971eaf637a14115b31a68de60ec"
+    }
+  ],
+  "current_w0_projection": {
+    "authorship_projected_payload_sha256": "7333fffa951aa3a73efd5fb94e75bfc4b9d93c359d30b850a1db2ef8e7599ea2",
+    "authorship_selected_values_sha256": "e7ad22acec3c7d25003d9853ce8c889c02675971eaf637a14115b31a68de60ec",
+    "main_projected_payload_sha256": "25e8b6f6ab224438936bcecb01df2b7d57b65bee8a6004716dc06af05a7b489b",
+    "main_selected_values_sha256": "74050a58071981164924d6b3dcf9542a577871e67698723c4efbe385ef5e7716"
+  },
+  "execution": {
+    "finished_at_utc": "2026-07-18T12:49:55.409963+00:00",
+    "started_at_utc": "2026-07-18T12:49:44.033106+00:00"
+  },
+  "frozen_w0_incidence": {
+    "affected_source_tables": [
+      "openalex_works_20260330",
+      "openalex_works_20260330__authorships",
+      "openalex_works_20260330__best_oa_location__source__host_organization_lineage",
+      "openalex_works_20260330__excepted__abstract_inverted_index",
+      "openalex_works_20260330__locations",
+      "openalex_works_20260330__primary_location__source__host_organization_lineage"
+    ],
+    "source_files": 6,
+    "source_rows": 6,
+    "source_tables": 6,
+    "work_target_rows": 0
+  },
+  "gate_status": {
+    "author_entity_validity": "PENDING",
+    "candidate_eligibility": "PENDING",
+    "current_main_w0_projection": "PASS",
+    "current_topic_w0_incidence": "PASS_REVALIDATED",
+    "empirical_g1_signature": "NOT_RUN",
+    "frozen_source_propagation_ledger": "PASS_REVALIDATED",
+    "g0_measurement_freeze": "PENDING",
+    "g_minus_1_data_readiness": "PENDING",
+    "nonnull_field_margins": "UNCHANGED",
+    "parent_content_identity": "UNVERIFIED",
+    "pass_g1": false,
+    "positive_id_exclusion_sensitivity": "PASS",
+    "publication_date_validity": "PENDING",
+    "w_zero_entity_validity": "UNRESOLVED"
+  },
+  "generated_at_utc": "2026-07-18T12:49:55.409963+00:00",
+  "label": "openalex_g1_w0_positive_id_sensitivity_v0",
+  "provenance": {
+    "config_sha256": "bf370f7060ee5b40d4ac170e9c8f84519e00eb26d173f694e3ba4e3de25bb113",
+    "cross_field_profile_sha256": "562c3ced372755beb2248998fa541e695c0d74736a6dcf986dfce3b3f207bfd8",
+    "inventory_manifest_sha256": "6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46",
+    "path_redacted": true,
+    "result_fingerprint_sha256": "3056af90867d813ef70b9bcf11c67385c3b288d2f21d89de150c4f2ddbc30190",
+    "sentinel_summary_sha256": "3cc8cfa96a408b70f08ef58dd59c25f9b238abb1486c11150e85c51bb1db7b49",
+    "source_inventory_fingerprint_sha256": "1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473",
+    "source_root_id": "openalex_works_20260330_repairreplay_20260410_190630",
+    "source_stability_fingerprint_sha256": "a3bfb7f639d4131749c1522f00e5e977bae7abc1a62202790fd41279f8f0a0e5",
+    "taxonomy_reference_sha256": "f8a0d01ee5b04133c1472d4ed7c07f7a578343004c859645f174f1a0f6021f62",
+    "tool_sha256": "64f31c7a4e4539b550bb16053cab3a34df8eb3fe65b1ee573659d83be3e24a06",
+    "work_source_compact_sha256": "df626b897bcb53c1bbc3209dbfbec8f69b84361367e09e1a9ffdf39e293d7b83",
+    "work_source_full_sha256": "1c385d42595fc34794116189ce940526e1095ccd2a5da9eccd3da902e8f152ce"
+  },
+  "schema_version": "openalex_g1_w0_positive_id_sensitivity_report.v1",
+  "scope": {
+    "field_selection_performed": false,
+    "full_root_rescan_performed": false,
+    "gpu_used": false,
+    "positive_id_sensitivity_only": true,
+    "scientific_effect_estimation_performed": false,
+    "w0_entity_validity_decided": false,
+    "work_parquet_files_read": 2,
+    "work_parquet_rows_scanned": 2000000
+  },
+  "sensitivity": {
+    "baseline_grammar_valid_view": {
+      "classified_primary_field_rate": 0.71937870294314,
+      "classified_primary_field_works": 354145248,
+      "global_authorship_status_counts": {
+        "complete": 263750998,
+        "none_usable": 177217069,
+        "partial": 2109042,
+        "zero_authorship_row": 49216097
+      },
+      "global_temporal_window_counts": {
+        "discovery_through_2012": 200148775,
+        "followup_diagnostic_2023_2025": 96738862,
+        "g1_replication_2013_2016": 58763594,
+        "g4_temporal_2020_2022": 50823699,
+        "model_selection_2017_2019": 46731999
+      },
+      "master_work_rows": 492293206,
+      "null_field_authorship_status_counts": {
+        "complete": 45238864,
+        "none_usable": 74056719,
+        "partial": 197703,
+        "zero_authorship_row": 18654672
+      },
+      "null_field_temporal_window_counts": {
+        "discovery_through_2012": 42685514,
+        "followup_diagnostic_2023_2025": 42864972,
+        "g1_replication_2013_2016": 12453038,
+        "g4_temporal_2020_2022": 12471949,
+        "model_selection_2017_2019": 10279701
+      },
+      "null_primary_field_rate": 0.28062129705686006,
+      "null_primary_field_works": 138147958,
+      "w0_joint_stratum": {
+        "author_id_status": "none_usable",
+        "declared_authors_band": "1",
+        "primary_field_id": null,
+        "publication_year": 2024,
+        "works": 4155373
+      }
+    },
+    "checks": {
+      "all_26_nonnull_field_counts_unchanged": true,
+      "baseline_authorship_conservation": true,
+      "baseline_field_conservation": true,
+      "only_expected_authorship_status_changes": true,
+      "only_expected_temporal_window_changes": true,
+      "only_null_field_margin_changes": true,
+      "positive_id_authorship_conservation": true,
+      "positive_id_field_conservation": true
+    },
+    "delta": {
+      "classified_primary_field_works": 0,
+      "global_authorship_status_counts": {
+        "complete": 0,
+        "none_usable": -1,
+        "partial": 0,
+        "zero_authorship_row": 0
+      },
+      "global_temporal_window_counts": {
+        "discovery_through_2012": 0,
+        "followup_diagnostic_2023_2025": -1,
+        "g1_replication_2013_2016": 0,
+        "g4_temporal_2020_2022": 0,
+        "model_selection_2017_2019": 0
+      },
+      "master_work_rows": -1,
+      "nonnull_field_count_deltas": {
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0,
+        "21": 0,
+        "22": 0,
+        "23": 0,
+        "24": 0,
+        "25": 0,
+        "26": 0,
+        "27": 0,
+        "28": 0,
+        "29": 0,
+        "30": 0,
+        "31": 0,
+        "32": 0,
+        "33": 0,
+        "34": 0,
+        "35": 0,
+        "36": 0
+      },
+      "null_field_authorship_status_counts": {
+        "complete": 0,
+        "none_usable": -1,
+        "partial": 0,
+        "zero_authorship_row": 0
+      },
+      "null_field_temporal_window_counts": {
+        "discovery_through_2012": 0,
+        "followup_diagnostic_2023_2025": -1,
+        "g1_replication_2013_2016": 0,
+        "g4_temporal_2020_2022": 0,
+        "model_selection_2017_2019": 0
+      },
+      "null_primary_field_works": -1
+    },
+    "positive_id_view": {
+      "classified_primary_field_rate": 0.719378704404421,
+      "classified_primary_field_works": 354145248,
+      "global_authorship_status_counts": {
+        "complete": 263750998,
+        "none_usable": 177217068,
+        "partial": 2109042,
+        "zero_authorship_row": 49216097
+      },
+      "global_temporal_window_counts": {
+        "discovery_through_2012": 200148775,
+        "followup_diagnostic_2023_2025": 96738861,
+        "g1_replication_2013_2016": 58763594,
+        "g4_temporal_2020_2022": 50823699,
+        "model_selection_2017_2019": 46731999
+      },
+      "master_work_rows": 492293205,
+      "null_field_authorship_status_counts": {
+        "complete": 45238864,
+        "none_usable": 74056718,
+        "partial": 197703,
+        "zero_authorship_row": 18654672
+      },
+      "null_field_temporal_window_counts": {
+        "discovery_through_2012": 42685514,
+        "followup_diagnostic_2023_2025": 42864971,
+        "g1_replication_2013_2016": 12453038,
+        "g4_temporal_2020_2022": 12471949,
+        "model_selection_2017_2019": 10279701
+      },
+      "null_primary_field_rate": 0.2806212955955791,
+      "null_primary_field_works": 138147957,
+      "w0_joint_stratum": {
+        "author_id_status": "none_usable",
+        "declared_authors_band": "1",
+        "primary_field_id": null,
+        "publication_year": 2024,
+        "works": 4155372
+      }
+    }
+  },
+  "status": "PASS_W0_POSITIVE_ID_EXCLUSION_SENSITIVITY_COMPONENT"
+}

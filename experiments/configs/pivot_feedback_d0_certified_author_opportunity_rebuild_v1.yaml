@@ -1,0 +1,188 @@
+schema_version: pivot_feedback_d0_certified_author_opportunity_rebuild_config.v1
+label: pivot_feedback_d0_certified_author_opportunity_rebuild_v1
+mode: OUTCOME_BLIND_EXACT_FOUR_MEASUREMENT_ABI_AUTHOR_OPPORTUNITY_REBUILD
+status_before_execution: AUTHORIZED_BY_GATE_STATE_V37
+
+repository_bindings:
+  gate_state:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v37.yaml
+    sha256: 9b4453c57f7efff8095cc558d4caf938c6b213b273012d8ea8cf835d1285f7c4
+    required_schema_version: pivot_feedback_gate_state.v37
+    required_status: VALID_CERTIFIED_EPISODE_RESELECTION_COMPLETE_EXACT_OUTCOME_BLIND_PANEL_REBUILD_AUTHORIZED
+    required_fields:
+      authorized_rebuild_scope.measurement_abi: FROZEN_D0_MEASUREMENT_ABI_V1
+      authorized_rebuild_scope.work_manifest: EXACT_ELIGIBLE_AUTHOR_LINKED_TARGET_TOPIC_WORKS
+      authorized_rebuild_scope.author_opportunity_rows: FOCAL_FIELD_ACTIVE_AUTHORS_JOINED_TO_EXACT_SELECTED_WORKS
+      authorized_rebuild_scope.outcome_blind: true
+      authorization.d0_exact_selected_work_manifest_rebuild: AUTHORIZED_OUTCOME_BLIND_EXACT_FOUR_ONLY
+      authorization.d0_author_opportunity_panel_rebuild: AUTHORIZED_OUTCOME_BLIND_EXACT_FOUR_ONLY
+      authorization.d0_rebuild_independent_verification: REQUIRED
+      authorization.d0_leaveout_network_bridge_build: PAUSED_UNTIL_REBUILT_PANEL_INDEPENDENTLY_VERIFIED
+      authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+  measurement_abi:
+    relative_path: experiments/configs/pivot_feedback_d0_measurement_abi_v1.yaml
+    sha256: eb51a85c206da328609b2fa05f9bbb6900160dc837dc345715d1bd709134c36e
+    required_schema_version: pivot_feedback_d0_measurement_abi.v1
+    required_status: FROZEN_OUTCOME_BLIND_MEASUREMENT_ABI_EPISODE_RESELECTION_AUTHORIZED
+    required_fields:
+      measurement_abi.attention_unit: DISTINCT_ELIGIBLE_AUTHOR_LINKED_WORK_WITH_CURRENT_SNAPSHOT_PRIMARY_TOPIC
+      measurement_abi.allowed_temporal_dispositions: [2, 3]
+      measurement_abi.latest_attention_year: 2011
+      measurement_abi.paratext_rule: EXCLUDE_IF_WORK_TYPE_PARATEXT_OR_IS_PARATEXT_TRUE
+      measurement_abi.retraction_rule: EXCLUDE_IF_WORK_TYPE_RETRACTION_OR_IS_RETRACTED_TRUE
+      measurement_abi.is_retracted_null_rule: RETAIN_IF_OTHERWISE_ELIGIBLE_AND_REPORT_EXPLICITLY
+      measurement_abi.valid_author_linkage_rule: AT_LEAST_ONE_DISTINCT_CURRENT_SNAPSHOT_OPENALEX_AUTHOR_TOKEN_WORK_EVENT
+      measurement_abi.zero_valid_author_token_rule: EXCLUDE_FROM_PRIMARY_ATTENTION_RETAIN_IN_MISSINGNESS_ACCOUNTING
+
+certified_episode_selection:
+  expected_root_basename: pivot-feedback-d0-certified-episode-reselection-v1-20260730
+  receipt_basename: certified_episode_reselection.outputs.json
+  receipt_sha256: cc4e7729f4e1c0865fe059ed7a5df5c1f053a5dbe4a2e09e68fe0389e74ec96a
+  receipt_schema_version: pivot_feedback_d0_certified_episode_reselection_outputs.v1
+  required_status: PASS_EXACT_FOUR_GLOBAL_CERTIFICATE_BOUND_EPISODE_RESELECTION
+  selection_basename: certified_episode_selection.parquet
+  selection_sha256: 2a24ddc9d6519e653718e53e8751758d2033391e250e0f2ada175747c169ffed
+  selection_schema_version: pivot_feedback_d0_certified_episode_selection.v1
+  selection_rows: 4
+  exact_rows:
+    - certified_episode_index: 1
+      field_id: 17
+      topic_id: 14430
+      entry_year: 2003
+      field_candidate_rank: 1
+      subfield_id: 1710
+    - certified_episode_index: 2
+      field_id: 17
+      topic_id: 10579
+      entry_year: 2012
+      field_candidate_rank: 45
+      subfield_id: 1705
+    - certified_episode_index: 3
+      field_id: 27
+      topic_id: 10151
+      entry_year: 1993
+      field_candidate_rank: 5
+      subfield_id: 2721
+    - certified_episode_index: 4
+      field_id: 27
+      topic_id: 12421
+      entry_year: 1953
+      field_candidate_rank: 6
+      subfield_id: 2712
+
+normalized_inputs:
+  cutoff_work_metadata:
+    expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    rows: 492293206
+  author_history_events:
+    expected_root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    artifact_bytes: 5006392019
+    rows: 779630258
+
+measurement_projection:
+  inherited_work_type_names:
+    - article
+    - book
+    - book-chapter
+    - book-section
+    - dissertation
+    - preprint
+    - report
+    - review
+  inherited_work_type_codes: [1, 2, 3, 4, 7, 16, 18, 21]
+  allowed_temporal_dispositions: [2, 3]
+  latest_predecision_year: 2011
+  focal_field_ids: [17, 27]
+  all_field_metric_field_ids:
+    [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
+     27, 28, 29, 30, 31, 32, 33, 34, 35, 36]
+  all_field_projection_reason: >-
+    The earlier author contract defines all-field metrics. This projection
+    applies the frozen work eligibility, retraction, paratext, temporal, and
+    author-linkage rules to all 26 taxonomy fields while retaining fields
+    17 and 27 as the only focal episode fields. It makes no new work-type,
+    episode, outcome, or threshold choice.
+  target_work_rule:
+    exact_certified_field_topic: true
+    publication_year_at_most_entry_year_minus_one: true
+    work_must_be_measurement_abi_eligible: true
+    work_must_have_valid_author_token_event: true
+  observed_author_base_rule:
+    at_least_one_eligible_focal_field_work_in_t_minus_3_through_t_minus_1: true
+  author_metrics:
+    windows:
+      - pre_entry_all_field_work_count
+      - pre_entry_focal_field_work_count
+      - portfolio_window_all_field_work_count
+      - portfolio_window_focal_field_work_count
+    nonranked_team_cap_profiles: [10, 50, 100, ALL]
+    team_cap_selected: false
+    target_topic_history:
+      - pre_entry_target_topic_work_count
+      - pre_signal_target_topic_work_count
+      - first_target_topic_year
+      - observed_no_prior_target_topic
+      - incumbent_before_signal_window
+  author_event_work_year_field_disposition_and_team_must_match_cutoff: true
+  author_token_is_natural_person: false
+  current_snapshot_topic_is_historically_observed_classification: false
+
+forbidden_inputs_and_outputs:
+  entry_year_target_works_read: false
+  post_entry_target_works_read: false
+  persistence_rows_read: false
+  realized_citation_rows_read: false
+  entry_effect_size: false
+  persistence_effect_size: false
+  predictive_score: false
+  threshold_tuning: false
+  final_candidate_eligibility: false
+  leaveout_or_network_measurement: false
+  model_fitting: false
+  g4_rows_read: false
+  api_requests_created: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-certified-author-opportunity-rebuild-v1-20260730
+  report_schema_version: pivot_feedback_d0_certified_author_opportunity_rebuild_report.v1
+  receipt_schema_version: pivot_feedback_d0_certified_author_opportunity_rebuild_outputs.v1
+  selected_work_schema_version: pivot_feedback_d0_certified_selected_predecision_work.v1
+  author_base_schema_version: pivot_feedback_d0_certified_pre_entry_author_opportunity_base.v1
+  passing_status: PASS_EXACT_FOUR_OUTCOME_BLIND_MEASUREMENT_ABI_AUTHOR_OPPORTUNITY_REBUILD
+  output_directory_must_be_new: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  receipt_written_last: true
+  raw_numeric_author_and_work_ids_external_private_only: true
+  independent_verification_required: true
+  leaveout_network_bridge_authorized_after_build_alone: false
+  discovery_outcome_opening_authorized: false
+  model_fitting_authorized: false
+  g4_open: false
+  gpu_used: false
+
+claim_boundary: >-
+  A pass establishes only an outcome-blind, exact four-episode predecision
+  selected-work manifest and author-opportunity measurement base under the
+  frozen scholarly-work ABI. All-field author counts apply that same
+  work-level ABI across the complete 26-field taxonomy; fields 17 and 27
+  remain the only focal episode fields. It does not establish natural-person
+  identity, historical topic observability, final candidate eligibility,
+  leave-out or peer exposure, collaboration or affiliation bridges, entry or
+  persistence outcomes, an association, a causal mechanism, D0 completion,
+  model fitting, G4, or a scientific effect. Leave-out, network, and bridge
+  construction remain paused until independent verification passes.

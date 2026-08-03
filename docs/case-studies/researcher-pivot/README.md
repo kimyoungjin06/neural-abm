@@ -1,5 +1,207 @@
 # When Do Researcher Pivots Become Productive?
 
+## Document Map
+
+- This README records the tracked, hand-set Study 1 and Study 2 predecessor:
+  a reproducible stylized mechanism study and framework expressiveness example.
+- The prospective protocol and OpenAlex audit paths below are repository-only;
+  they are named explicitly but are not embedded in the package sdist.
+- `pivot-feedback-empirical-nabm-protocol.md`
+  is the prospective science-first follow-up. It asks whether delayed and
+  selectively visible outcomes produce a cohort-level entry overshoot in real
+  data, and it freezes the data, baseline, holdout, and stop gates before model
+  expansion.
+- `compute-execution-contract.md` assigns the
+  data scan, statistical baselines, NABM training, factorial runs, and sealed
+  holdout scoring to local CPU/I/O, remote CPU/RAM, or remote GPU resources.
+- `openalex-temporal-author-gate-inventory.md` records the bounded v3 temporal
+  component pass and the authoritative-author-source blocker. The inventory
+  does not establish author validity, G-1, field selection, or empirical G1.
+- `openalex-main-temporal-validity-audit.md`, the versioned
+  `openalex_g1_main_temporal_validity_v*.yaml` contracts, and the versioned
+  `audit_openalex_main_temporal_validity*.py` tools define the resumable
+  main-work date audit. v1 has a terminal blocked full run, v2 has a terminal
+  dirty one-file UTC-ms pilot, and v3 now has a content-bound full component
+  pass with a nonblocking created/updated order profile. This is a temporal
+  field-validity pass only, not G-1, G0, or empirical G1.
+- `openalex-canonical-work-time-spine-audit-design.md`,
+  `experiments/configs/openalex_g1_canonical_work_time_spine_v0.yaml`, and
+  `scripts/audit_openalex_canonical_work_time_spine.py` specify a standalone,
+  reusable four-column work-time product. The versioned v3-parent-only
+  successor lives at `openalex-canonical-work-time-spine-v1-audit-design.md`,
+  `openalex_g1_canonical_work_time_spine_v1.yaml`, and
+  `audit_openalex_canonical_work_time_spine_v2.py`. Both executable surfaces
+  are synthetic-fixture-only; the current status remains
+  `IMPLEMENTED_SYNTHETICALLY / PRODUCTION_NOT_RUN`, and no production spine
+  data product exists.
+- `openalex-work-side-author-history-audit-design.md` and
+  `experiments/configs/openalex_g1_work_side_author_history_v0.yaml` freeze a
+  work-side author-token history and sensitivity design. Its core parent path
+  is content baseline → temporal validity → canonical work-time spine; the
+  work-topic relation is a parallel sibling that joins only at downstream
+  field-conditioned or candidate gates. The contract now makes a separate
+  synthetic-only implementation tranche mechanically ready, but still provides
+  no executable, fixture, receipt, production output ABI, or result. It does
+  not equate an OpenAlex author token with a verified person or claim that
+  current token/field linkage was historically observable.
+- `openalex-citation-available-at-audit-design.md`,
+  `experiments/configs/openalex_g1_citation_available_at_v0.yaml`, and
+  `scripts/audit_openalex_citation_available_at.py` freeze the directed
+  citation chronology contract. Its synthetic-fixture-only implementation
+  does not change the interpretation boundary: citing-work publication date is
+  only a `BIBLIOGRAPHIC_EVENT_TIME_CONVENTION`, not an OpenAlex
+  first-observation timestamp, and no production result exists.
+- The temporal-v3-only successor lives at
+  `openalex-citation-available-at-v1-audit-design.md`,
+  `experiments/configs/openalex_g1_citation_available_at_v1.yaml`, and
+  `scripts/audit_openalex_citation_available_at_v2.py`. It executes only closed
+  synthetic direct reconstruction and keeps canonical reuse
+  `BLOCKED_CANONICAL_PRODUCTION_RECEIPT_NOT_AVAILABLE` until a separately
+  reviewed canonical production receipt exists. It remains
+  `IMPLEMENTED_SYNTHETICALLY / PRODUCTION_NOT_RUN`.
+- `experiments/configs/openalex_g1_cross_field_feasibility_v0.yaml` and the
+  compact repository-only summaries at
+  `experiments/evidence/results/openalex_g1_cross_field_feasibility_20260718.summary.json`
+  and
+  `experiments/evidence/results/openalex_g1_cross_field_feasibility_20260718.summary.md`
+  define and report the bounded cross-field profile-feasibility pass. They do
+  not establish work-to-topic reference validity, an eligible author panel,
+  final field selection, empirical G1, or a scientific effect.
+- `scripts/audit_openalex_field_taxonomy_reference.py`, its frozen contract at
+  `experiments/configs/openalex_g1_field_taxonomy_reference_v0.yaml`, and the
+  tracked repository-only full summaries at
+  `experiments/evidence/results/openalex_g1_field_taxonomy_reference_20260718.summary.json`
+  and
+  `experiments/evidence/results/openalex_g1_field_taxonomy_reference_20260718.summary.md`
+  report a later current-snapshot taxonomy-reference component pass. This is a
+  projected-column CPU/I/O audit, not field selection or effect estimation.
+- `scripts/audit_openalex_w0_positive_id_sensitivity.py`, its frozen contract
+  at `experiments/configs/openalex_g1_w0_positive_id_sensitivity_v0.yaml`, and
+  the tracked 2026-07-18 JSON/Markdown summaries establish only that excluding
+  the single retained `W0` row leaves all 26 non-null field margins unchanged.
+  They do not decide whether `W0` is a valid entity or pass any broader gate.
+- `scripts/audit_openalex_work_topic_relation.py` and
+  `experiments/configs/openalex_g1_work_topic_relation_v0.yaml` prepare the
+  resumable global duplicate, score-conflict, exact-score dedup, and
+  primary-child inclusion audit. A full run requires authorization and a
+  completed content-freeze receipt before any source or taxonomy access, then
+  binds the exact 493-main plus 930-topic source task set to the content plan's
+  six-field rich identities. Only synthetic tests have run; production relation
+  evidence and a component status remain unestablished.
+- `experiments/configs/pivot_feedback_cross_field_matrix_v0.yaml` and
+  `scripts/plan_research_pivot_field_matrix.py` freeze the prospective
+  four-slot engineering candidate universe, paired-factorial plan, and
+  fail-closed execution boundary. Scientific selection remains
+  `PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT`, every field slot is unresolved,
+  and `execution_authorized=false`. The planner produces no tracked scientific
+  result and cannot run or fit a model.
+- `openalex-main-id-quarantine-amendment.md`
+  freezes the exact `W-1` exclusion, retains `W0` as an unresolved warning, and
+  keeps raw-source validity, grammar-valid counting, work-source membership,
+  and G-1 as separate claims.
+- `scripts/audit_openalex_source_inventory.py`, its frozen source contract at
+  `experiments/configs/openalex_g1_source_inventory_v0.yaml`, and the dated
+  inventory summary at
+  `experiments/evidence/results/openalex_g1_source_inventory_20260716.summary.md`
+  preserve the completed footer-only `INVENTORY_ONLY` slice of G-1.
+- `scripts/recount_openalex_g1.py` applied the original zero-invalid contract
+  at `experiments/configs/openalex_g1_recount_v0.yaml`
+  and correctly returned `BLOCKED`, as recorded at
+  `experiments/evidence/results/openalex_g1_main_id_recount_20260716.blocked.summary.md`:
+  the 492,293,207 raw rows contain one malformed `W-1` work ID.
+- `scripts/recount_openalex_g1_canonical_quarantine.py` and its frozen amendment
+  at `experiments/configs/openalex_g1_recount_canonical_quarantine_v1.yaml`
+  passed the exact grammar-valid recount recorded at
+  `experiments/evidence/results/openalex_g1_grammar_valid_main_id_recount_20260716.summary.md`:
+  492,293,206 retained IDs are distinct with zero duplicate excess, while
+  `W0` remains retained as an unresolved warning.
+- `scripts/audit_openalex_sentinel_incidence.py` and its targeted contract at
+  `experiments/configs/openalex_g1_sentinel_incidence_v0.yaml`
+  found `W-1` in 21 source rows across six files and `W0` in six source rows
+  across six files, with zero declared work-target rows for either; see
+  `experiments/evidence/results/openalex_g1_sentinel_incidence_20260716.summary.md`.
+- `scripts/audit_openalex_work_source_membership.py` and its frozen full-scope
+  contract at `experiments/configs/openalex_g1_work_source_membership_v0.yaml`
+  passed the 23-table work-source membership and profile audit recorded at
+  `experiments/evidence/results/openalex_g1_work_source_membership_20260717.summary.md`:
+  all 20,996,232,817 source rows were accounted for as 20,996,232,796 retained
+  rows plus exactly 21 frozen `W-1` rows, with zero null, unexpected-malformed,
+  or grammar-valid orphan source IDs. Declared work-target coverage and a
+  descriptive author-ID/work profile were measured, but no filtered analysis
+  view was materialized.
+
+The full work-source audit status is a component pass, not `PASS_METADATA`,
+G-1, or empirical G1. Raw source ID validity remains `BLOCKED`, `W0` entity
+validity is `UNRESOLVED`, parent content identity is `UNVERIFIED`, G-1 data
+readiness is `PENDING`, and empirical G1 is `NOT_RUN` (`pass_g1=false`).
+The first full-root current-content SHA-256 baseline and the bounded v3 main
+temporal-field checks now pass. Historical byte identity, author-entity
+validity, edge chronology and leakage checks, candidate eligibility, and a
+downstream deterministic representative pilot remain pending. The separate
+bounded positive-ID sensitivity now passes: removing
+`W0` changes the 492,293,206-row grammar-valid view to 492,293,205 rows and
+reduces only the null-primary-field margin by one. It leaves every one of the
+26 non-null field counts unchanged. This does not resolve `W0` entity validity
+or change the G-1 status.
+
+The compact cross-field feasibility status is
+`PASS_CROSS_FIELD_PROFILE_FEASIBILITY_ONLY`. That label covers taxonomy-graph
+integrity and an exact projection of the already-frozen profile cube only. It
+does not change any G-1 gate: final field selection is `PENDING`, author and
+candidate validity remain unresolved, citation chronology is pending, and
+empirical G1 is `NOT_RUN`
+(`pass_g1=false`), and neither a statistical model nor an NABM has run. Field
+names in the engineering candidate universe are taxonomy entries, not selected
+empirical study fields. The compact JSON uses the exact labels
+`field_entity_validity=UNVERIFIED`,
+`candidate_eligibility=NOT_ESTABLISHED`, and
+`final_field_selection=PENDING_G0`.
+
+The subsequent full taxonomy-reference result has the narrower status
+`PASS_CURRENT_SNAPSHOT_TAXONOMY_REFERENCE_COMPONENT`. It scanned 1,423 files,
+1,420,855,753 projected rows, and 166,699,471,247 source bytes. Exact
+conservation is one frozen `W-1` row plus 138,147,958 allowed all-null retained
+main-work rows and 1,282,707,794 complete valid hierarchy rows; partial and
+invalid hierarchy counts are both zero. `W0` appears once and remains retained
+as an unresolved warning. All 26 non-null field margins and the null margin
+match the frozen compact profile exactly. The tracked JSON SHA-256 is
+`f8a0d01ee5b04133c1472d4ed7c07f7a578343004c859645f174f1a0f6021f62`,
+the Markdown SHA-256 is
+`1e9db873d97aa9035fde472d587d91a9c1f3eb7592816ee1df1f149ce9ac77e9`,
+and the result fingerprint is
+`36209d119cc32802d0e7391b92425dcef931e9513841afa19e8be7b0bc06b30b`.
+
+That later pass establishes only current-snapshot projected-column row
+conservation and taxonomy-reference integrity. It does not retroactively alter
+the compact artifact's historical `field_entity_validity=UNVERIFIED` label.
+Raw source validity remains `BLOCKED`; `W0` remains `UNRESOLVED`; parent content
+identity is `UNVERIFIED`; duplicate work-topic edges, primary-topic child
+inclusion, cutoff-aware `available_at`, author validity, candidate eligibility,
+G-1, and G0 remain `PENDING`. The later v3 temporal component separately passes
+bounded main-work date-field validity, but not edge observation time.
+Empirical G1 is `NOT_RUN` with `pass_g1=false`; final field selection and any
+scientific effect remain unestablished.
+
+The work-topic relation auditor is now implemented and synthetic-tested, but
+the production audit has not run. Consequently raw edge uniqueness,
+exact-score dedup validity, and primary-topic child inclusion remain
+`PENDING`; the existence of an executable audit path is not evidence for those
+relations. The full plan is a local CPU/I/O job, not a GPU training run. Its
+current-content prerequisite now passes, but production remains unexecuted and
+requires separate authorization plus exact revalidation of the relation source
+subset against that baseline. This does not establish historical byte
+identity.
+
+The tracked W0 sensitivity JSON SHA-256 is
+`999bf3eff8ebb5fbb506ecbb571d6d491e8876f297c7a12163ca24b2a1d30157`,
+the Markdown SHA-256 is
+`05d8e6e84b1e9f31fa446209ae4e242fd5b25a03f7254ebd940308d88eb62216`,
+and the result fingerprint is
+`3056af90867d813ef70b9bcf11c67385c3b288d2f21d89de150c4f2ddbc30190`.
+
+The current results are hypothesis-generating inputs to that protocol, not
+empirical estimates or passed evidence for the proposed feedback cascade.
+
 A two-study replicated case study of field-pivot decisions under different
 scientific environments. Study 1 (torch-free `neural_abm.api_lite`) compares
 environments under a fixed decision rule. Study 2 (torch-backed

@@ -1,0 +1,226 @@
+schema_version: openalex_g1_field_taxonomy_reference_config.v1
+label: openalex_g1_field_taxonomy_reference_v0
+
+source:
+  root_env: OPENALEX_DERIVED_ROOT
+  root_id: openalex_works_20260330_repairreplay_20260410_190630
+  snapshot_date: "2026-03-30"
+  lineage_id: openalex_20260225_base_plus_20260330_update_repairreplay
+
+parent_inventory:
+  manifest_relative_path: experiments/runs/20260716_openalex_g1_source_inventory/source_manifest.json
+  manifest_sha256: 6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46
+  required_inventory_fingerprint_sha256: 1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473
+  required_stability_fingerprint_sha256: a3bfb7f639d4131749c1522f00e5e977bae7abc1a62202790fd41279f8f0a0e5
+  content_sha256_complete: false
+
+parent_work_source_audit:
+  compact_summary:
+    relative_path: experiments/evidence/results/openalex_g1_work_source_membership_20260717.summary.json
+    sha256: df626b897bcb53c1bbc3209dbfbec8f69b84361367e09e1a9ffdf39e293d7b83
+  full_report:
+    path_env: OPENALEX_G1_WORK_SOURCE_FULL_REPORT
+    expected_basename: work_source_membership_audit.json
+    sha256: 1c385d42595fc34794116189ce940526e1095ccd2a5da9eccd3da902e8f152ce
+  full_outputs_manifest:
+    relative_to_full_report: work_source_membership_audit.outputs.json
+    sha256: 8fb34f92e3525b58c09a31ae970d913ea6858211a7595b165884fa389863156d
+  required_status: PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE
+  result_fingerprint_sha256: 8b7d0273a04eb7a231a9d8b466151c562ac80eac6557ff7444508cb174862242
+  required_gate_states:
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    parent_content_identity: UNVERIFIED
+    g_minus_1_data_readiness: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+
+compact_cross_field_profile:
+  relative_path: experiments/evidence/results/openalex_g1_cross_field_feasibility_20260718.summary.json
+  sha256: 562c3ced372755beb2248998fa541e695c0d74736a6dcf986dfce3b3f207bfd8
+  required_status: PASS_CROSS_FIELD_PROFILE_FEASIBILITY_ONLY
+  result_fingerprint_sha256: d7dd61e46f2556fe7d97f9ac3d5d5e595bbaa10360bd0bddcf039867b8aa84fe
+  required_master_work_rows: 492293206
+  required_primary_field_buckets_including_null: 27
+  required_author_id_statuses:
+    - complete
+    - partial
+    - none_usable
+    - zero_authorship_row
+
+taxonomy:
+  root_env: OPENALEX_TAXONOMY_ROOT
+  root_id: openalex_nonworks_20260330_delta_taxonomy_entities
+  snapshot_date: "2026-03-30"
+  canonicalization: sorted_key_compact_utf8_json_lines_in_declared_file_order
+  canonical_sha256: 8b9f4e2f492eb6939e1dbb6a8187f06d4ea8fdebb9c1bafce017cd39e54401b4
+  expected_entity_counts:
+    domains: 4
+    fields: 26
+    subfields: 252
+    topics: 4516
+  files:
+    - entity: domains
+      relative_path: domains/updated_date=2026-03-30/part_0000.gz
+      sha256: 6a1f3b5a582960fd1fee5e2c1f082a48dddaa3a06c9586c425fee8d375a19551
+      expected_rows: 4
+    - entity: fields
+      relative_path: fields/updated_date=2026-03-30/part_0000.gz
+      sha256: fe90f0841e208c212de267d9509e5ee22bb3619470d8cf99402091f25d93d551
+      expected_rows: 26
+    - entity: subfields
+      relative_path: subfields/updated_date=2026-03-30/part_0000.gz
+      sha256: 618cbefc555bf7fa2dba8ac9e1822023772c804b758246929841cddc05229e6d
+      expected_rows: 252
+    - entity: topics
+      relative_path: topics/updated_date=2026-03-27/part_0000.gz
+      sha256: c0db36d0efa3dc618bcccf8a8059c6fd5e9b30a8f24060e15ad1dfe0f2a3b905
+      expected_rows: 4
+    - entity: topics
+      relative_path: topics/updated_date=2026-03-28/part_0000.gz
+      sha256: 7357571fbf176e1547a8e7274c011fc139f23c4f4a319d35bd71e18f04b3eb3c
+      expected_rows: 9
+    - entity: topics
+      relative_path: topics/updated_date=2026-03-29/part_0000.gz
+      sha256: 3045dd99ed786db5795f42ca269f81391d36fa941371f00ee26e2a7c620bde0c
+      expected_rows: 91
+    - entity: topics
+      relative_path: topics/updated_date=2026-03-30/part_0000.gz
+      sha256: 2ec9e83d036556ad0c071ca48eebb70ca717c9b5cf0e572e21fcb2a6e973b3af
+      expected_rows: 4412
+  hierarchy_contract:
+    require_unique_entity_ids: true
+    require_parent_id_and_name_match: true
+    require_parent_chain_match: true
+    require_exact_declared_child_sets: true
+    identifier_is_join_key: true
+    display_name_is_not_join_key: true
+
+tables:
+  main:
+    name: openalex_works_20260330
+    expected_files: 493
+    expected_footer_rows: 492293207
+    expected_bytes: 150062449219
+    source_id_column: id
+    hierarchy_prefix: primary_topic__
+    expected_w_minus_1_source_rows: 1
+    expected_w_zero_source_rows: 1
+    w_minus_1_disposition: frozen_source_row_quarantine
+    w_zero_disposition: retain_with_warn_zero_id_unresolved
+  topics:
+    name: openalex_works_20260330__topics
+    expected_files: 930
+    expected_footer_rows: 928562546
+    expected_bytes: 16637022028
+    source_id_column: id
+    hierarchy_prefix: topics__
+    expected_w_minus_1_source_rows: 0
+    expected_w_zero_source_rows: 0
+    require_zero_source_sentinels: true
+  projected_suffixes:
+    - id
+    - display_name
+    - score
+    - domain__id
+    - domain__display_name
+    - field__id
+    - field__display_name
+    - subfield__id
+    - subfield__display_name
+  projected_types:
+    source_id: string
+    id: string
+    display_name: string
+    score: double
+    domain__id: string
+    domain__display_name: string
+    field__id: string
+    field__display_name: string
+    subfield__id: string
+    subfield__display_name: string
+  expected_total_files: 1423
+  expected_total_footer_rows: 1420855753
+  expected_total_bytes: 166699471247
+
+reference_rules:
+  id_grammar:
+    topic: '^https://openalex[.]org/T([1-9][0-9]*)$'
+    domain: '^https://openalex[.]org/domains/([1-9][0-9]*)$'
+    field: '^https://openalex[.]org/fields/([1-9][0-9]*)$'
+    subfield: '^https://openalex[.]org/subfields/([1-9][0-9]*)$'
+  zero_sentinels:
+    topic: https://openalex.org/T0
+    domain: https://openalex.org/domains/0
+    field: https://openalex.org/fields/0
+    subfield: https://openalex.org/subfields/0
+  score_range:
+    minimum_inclusive: 0.0
+    maximum_inclusive: 1.0
+  allow_all_null_hierarchy: true
+  allow_partial_hierarchy: false
+  require_zero_grammar_or_unknown_id_rows: true
+  require_zero_parent_chain_or_name_mismatch_rows: true
+  require_zero_nonfinite_or_out_of_range_score_rows: true
+
+execution:
+  workload_class: local_cpu_io
+  batch_size: 262144
+  checkpoint_unit: input_file
+  checkpoint_binds:
+    - relative_path
+    - bytes
+    - mtime_ns
+    - footer_rows
+    - projected_schema_sha256
+    - projected_payload_sha256
+    - payload_sha256
+  deterministic_file_order: lexical_relative_path
+  max_files_per_table_is_pilot_only: true
+  verify_parent_before_resume: true
+  resume_verification: rehash_current_projected_payload_before_reusing_metrics
+  verify_source_identity_before_and_after_file: true
+  refuse_symlink_inputs: true
+
+success_contract:
+  full_success_status: PASS_CURRENT_SNAPSHOT_TAXONOMY_REFERENCE_COMPONENT
+  pilot_status: PILOT_REFERENCE_ONLY
+  blocked_status: BLOCKED_TAXONOMY_REFERENCE_AUDIT
+  required_gate_status:
+    current_snapshot_taxonomy_reference_component: PASS
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    parent_content_identity: UNVERIFIED
+    duplicate_work_topic_edges: PENDING
+    primary_topic_child_inclusion: PENDING
+    publication_date_validity: PENDING
+    temporal_available_at: PENDING
+    author_entity_validity: PENDING
+    candidate_eligibility: PENDING
+    g_minus_1_data_readiness: PENDING
+    g0_measurement_freeze: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+  pending_after_success:
+    - duplicate_work_topic_edge_audit
+    - primary_topic_present_in_work_topic_rows
+    - publication_date_and_year_validity
+    - cutoff_aware_available_at_validation
+    - author_entity_and_split_merge_validity
+    - candidate_researcher_eligibility
+    - deterministic_representative_pilot
+    - g_minus_1_data_readiness
+    - g0_measurement_freeze
+    - empirical_g1_signature
+
+claim_boundary: >-
+  A full component pass establishes current-snapshot, projected-column row
+  conservation and validates non-null primary-topic and work-topic hierarchy
+  references against the seven-file canonical taxonomy graph, with the frozen
+  W-1 main-row quarantine and retained W0 warning unchanged. It does not prove
+  historical inventory-era byte identity, deduplicate work-topic edges, prove
+  that a primary topic occurs among each work's child topic rows, validate
+  publication dates or cutoff-aware available_at, validate author entities or
+  candidate eligibility, establish G-1 or G0, run empirical G1, or establish a
+  scientific effect. A max-files run is PILOT_REFERENCE_ONLY and cannot be
+  promoted to the full component status.

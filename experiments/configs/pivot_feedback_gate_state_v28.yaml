@@ -1,0 +1,96 @@
+schema_version: pivot_feedback_gate_state.v28
+label: pivot_feedback_gate_state_v28
+mode: ADDITIVE_RANK5_TARGET_IDENTITY_CORRECTION_AUTHORIZATION
+status: VALID_RANK5_HCV_TARGET_CORRECTION_TWO_CALL_SUCCESSOR_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v27.yaml
+  sha256: b7634b897a8d7fd375403f52255afd7720b78ff21230ff26cfa24852e167f16a
+  required_schema_version: pivot_feedback_gate_state.v27
+  required_status: VALID_RANK5_TRANSPORT_ONLY_SUCCESSOR_AUTHORIZED_CUMULATIVE_COST_FAIL_CLOSED
+  mutation_allowed: false
+
+authoritative_target:
+  source_relative_path: experiments/configs/pivot_feedback_gate_state_v23.yaml
+  source_sha256: da3af0a2f12ff8f36a35067f24b49b8bf525ab65ca2339bf618b42c7d89b81fc
+  source_schema_version: pivot_feedback_gate_state.v23
+  field_id: 27
+  field_candidate_rank: 5
+  topic_id: 10151
+  topic_name: Hepatitis C virus research
+  reference_id: https://openalex.org/T10151
+  entry_year: 1993
+  positive_anchors:
+    - hepatitis c
+    - hcv
+    - hepacivirus
+    - non a non b hepatitis
+  explicit_other_hepatitis_is_negative: true
+  generic_hepatitis_is_ambiguous: true
+  mixed_positive_and_negative_is_ambiguous: true
+
+invalidated_api_evidence:
+  wrong_target_contract_relative_path: experiments/configs/pivot_feedback_d0_t10151_rank5_cross_provider_v1.yaml
+  wrong_target_contract_sha256: 52bb266655ca4a408eee0ac13de0efcad2054ce34e2ff4c6c7c623afa518668d
+  wrong_target_name: Hepatitis B Virus Infection
+  transport_successor_relative_path: experiments/configs/pivot_feedback_d0_t10151_rank5_cross_provider_v2.yaml
+  transport_successor_sha256: 14fcbdf79f218d0a1169a6369856aa6e75afaf3d4d0076fac4871857302c1565
+  result_root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v2-results-20260730
+  result_receipt_basename: cross_provider_result.outputs.json
+  result_receipt_sha256: ef56ffd2e01ad521a084b5e0ee869aaee4b9fd40f483df00d0c5244c3f916ce0
+  result_verification_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v2-results-20260730.verification-v1.json
+  result_verification_sha256: 2f8e8ff49241634ca2fde1e347cdbb71b1c86fcadcdf30859028eb8f81192b00
+  invalidation_reason: TARGET_TOPIC_NAME_AND_DEFINITION_DO_NOT_MATCH_FROZEN_T10151_CARD
+  may_enter_rank5_consensus: false
+  may_change_production_disposition: false
+  may_issue_certificate: false
+  preserved_for_audit_only: true
+
+corrected_successor:
+  exact_request_rows: 25
+  source_row_set_change_allowed: false
+  target_topic_name: Hepatitis C virus research
+  target_definition_source: FROZEN_V23_TOPIC_CARD
+  prompt_classification_rules_change_allowed: false
+  models_change_allowed: false
+  labels_change_allowed: false
+  confidence_change_allowed: false
+  dual_high_consensus_change_allowed: false
+  visible_fields_change_allowed: false
+  claude_transport_cardinality_keywords_removed: true
+  exact_25_unique_response_rows_verified_after_call: true
+  additional_provider_calls_authorized: 2
+  retries_within_successor: 0
+
+cost_control:
+  first_attempt_openai_conservative_upper_bound_usd: 0.010582
+  wrong_target_v2_actual_cost_usd: 0.018644
+  incurred_conservative_upper_bound_usd: 0.029226
+  corrected_successor_request_upper_bound_usd: 0.040524
+  cumulative_upper_bound_usd: 0.069750
+  cumulative_authorized_cap_usd: 0.10
+  cumulative_upper_bound_within_cap: true
+
+authorization:
+  d0_rank5_corrected_contract: AUTHORIZED_EXACT_HCV_TARGET_ONLY
+  d0_rank5_corrected_preparation: AUTHORIZED
+  d0_rank5_corrected_submission: AUTHORIZED_TWO_CALLS_NO_RETRY
+  d0_rank5_corrected_result_reduction: AUTHORIZED_PRECOMMITTED_CONSENSUS_ONLY
+  d0_rank5_augmented_disposition: NOT_AUTHORIZED_UNTIL_CORRECTED_RESULT_VERIFIED
+  d0_selection_certificate: NOT_AUTHORIZED_UNTIL_CORRECTED_AUGMENTED_DISPOSITION
+  d0_deterministic_reselection: NOT_AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The prior API pair and its 29/13/22 reduction are invalid for rank-5 because
+  they classified titles against hepatitis B rather than the frozen T10151
+  hepatitis-C target. They remain audit-only and cannot enter consensus,
+  disposition, or certification. This successor corrects only target identity
+  and definition from the pre-sample v23 card; the 25-row set, models, labels,
+  dual-HIGH rule, visible fields, Claude transport fix, and fail-closed
+  behavior remain fixed. No production or outcome claim is authorized.

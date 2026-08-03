@@ -1,0 +1,141 @@
+schema_version: pivot_feedback_holdout_production_input_resolution.v1
+label: pivot_feedback_holdout_production_input_resolution_v1
+mode: METADATA_ONLY_DECLARED_INPUT_RESOLUTION_NO_OPERATOR_SCAN
+status: BLOCKED_NO_MATERIALIZED_G4_ARTIFACT_SET_NO_SEAL_ACTION
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v56.yaml
+  sha256: 138bd1b22830ab5ac9f5940fcbd802058cd41be0f5f79853708dd1e2f6ce6696
+  required_schema_version: pivot_feedback_gate_state.v56
+  required_status: VALID_EXPLICIT_PREFLIGHT_TO_SEAL_CHAIN_CLOSED_FIXTURE_PRODUCTION_INPUTS_REQUIRED
+  mutation_allowed: false
+
+bound_design_sources:
+  cross_field_matrix:
+    relative_path: experiments/configs/pivot_feedback_cross_field_matrix_v0.yaml
+    sha256: 6fd3e2c7aae7a7aac085ed73ba4bf3d64a91c02d60dce8a9a6a262591a0c934a
+    required_schema_version: pivot_feedback_cross_field_matrix.v1
+    mutation_allowed: false
+  g0_v2:
+    relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v2.yaml
+    sha256: a2cb0cbf444a7c128eecc40a815b80d5fe86f617a36849330612491b03934eb3
+    required_schema_version: pivot_feedback_g0_measurement_freeze.v3
+    required_status: PENDING_G0_V2_G_MINUS_1A_BOUND_THREE_BLOCKERS_NO_SEAL
+    mutation_allowed: false
+  entry_source_contract_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_entry_source_classifier_contract_20260731.summary.json
+    sha256: 9fee3d875205c154491bb5ba212d69eda81249413d498746670147a7cfb0ef99
+    required_schema_version: pivot_feedback_d0_entry_source_classifier_contract_summary.v1
+    required_status: PASS_EXACT_FOUR_ENTRY_SOURCE_CLASSIFIER_CONTRACT_RECEIPTS_AND_FIXTURES
+    mutation_allowed: false
+  entry_source_production_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_entry_source_production_20260731.summary.json
+    sha256: 29c27909ac2f9cf73a071e627fbb0b3e2d3e684339b254c66e409ad0e60fd0ca
+    required_schema_version: pivot_feedback_d0_entry_source_production_summary.v1
+    required_status: PASS_INDEPENDENT_EXACT_FOUR_THREE_COUNT_SOURCE_REPLAY_NO_STATE_LABELS
+    mutation_allowed: false
+
+declared_input_resolution:
+  private_source_root_absolute_path:
+    state: UNBOUND
+    value: null
+  complete_explicit_artifact_relative_path_list:
+    state: UNBOUND
+    value: null
+    artifact_count: 0
+  production_preflight:
+    state: NOT_RUN
+  production_seal:
+    state: NOT_RUN
+  production_receipt:
+    state: NOT_WRITTEN
+  independent_receipt_verification:
+    state: NOT_RUN
+
+materialization_replay:
+  logical_partition:
+    partition_id: g4_temporal_holdout
+    entry_years: [2020, 2021, 2022]
+    outcome_followup_through_year: 2025
+    domain_cold: true
+    author_cold: true
+    state: LOGICALLY_RESERVED
+  g4_domain_author_cold_slot:
+    scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+    selected_domain_id: null
+    selected_field_id: null
+    state: NOT_MATERIALIZED
+  quantitative_and_section_state:
+    unresolved_quantitative_choice_count: 17
+    unresolved_required_section_count: 15
+    freeze_ready_required_section_count: 0
+    g0_freeze_ready: false
+  available_d0_entry_source:
+    entry_year_minimum: 1953
+    entry_year_maximum: 2012
+    production_root_basename: pivot-feedback-d0-entry-source-v1-full-20260731
+    feature_basename: pivot_entry_source_features.parquet
+    may_be_relabelled_as_g4_holdout_artifact: false
+    reason: DISCOVERY_PERIOD_SOURCE_DOES_NOT_MATERIALIZE_2020_2022_DOMAIN_AUTHOR_COLD_MEMBERSHIP
+
+resolution_decision:
+  blocker_class: PREREQUISITE_ARTIFACT_NOT_MATERIALIZED_NOT_MISSING_USER_PATH
+  source_root_can_be_safely_inferred: false
+  complete_artifact_list_can_be_safely_inferred: false
+  existing_d0_artifact_can_be_substituted: false
+  production_preflight_may_run_now: false
+  production_seal_may_run_now: false
+  logical_partition_reservation_equals_byte_seal: false
+  production_status: NOT_RUN_NO_MATERIALIZED_G4_ARTIFACT_SET
+  next_workstream: G0_PRECOMMITMENT_SELECTION_AND_HOLDOUT_MATERIALIZATION_BEFORE_SEAL
+
+required_successor_order:
+  - COMPLETE_OUTCOME_BLIND_G0_PRECOMMITMENTS_AND_REQUIRED_SECTIONS
+  - FREEZE_OUTCOME_BLIND_FIELD_EPISODE_AND_ATOMIC_PARTITION_ASSIGNMENT
+  - MATERIALIZE_PRIVATE_G4_ARTIFACT_SET_WITHOUT_CONFIRMATORY_ANALYSIS
+  - BIND_PRIVATE_SOURCE_ROOT_AND_COMPLETE_EXPLICIT_ARTIFACT_LIST
+  - AUTHOR_OPERATOR_PREFLIGHT_FROM_EXPLICIT_LIST_ONLY
+  - CREATE_AND_INDEPENDENTLY_VERIFY_BYTE_SEAL
+  - BIND_VERIFIED_RECEIPT_IN_FINAL_G0_SUCCESSOR
+
+access_accounting_contract:
+  repository_yaml_documents_read: 4
+  repository_json_documents_read: 2
+  operator_directories_listed: 0
+  operator_paths_searched_or_scanned: 0
+  operator_json_metadata_files_read: 0
+  operator_parquet_files_opened: 0
+  production_row_level_files_opened: 0
+  holdout_artifact_paths_enumerated: 0
+  holdout_artifact_bytes_hashed: 0
+  confirmatory_or_holdout_rows_read: 0
+  production_preflight_written: false
+  production_seal_created: false
+  production_receipt_written: false
+  model_fitted: false
+  g4_open: false
+
+authorization:
+  repository_metadata_resolution: AUTHORIZED_AND_COMPLETE
+  operator_path_search_or_scan: NOT_AUTHORIZED
+  implicit_artifact_discovery: NOT_AUTHORIZED
+  production_preflight: NOT_AUTHORIZED_PREREQUISITE_ARTIFACT_NOT_MATERIALIZED
+  production_seal_creation_or_receipt_issuance: NOT_AUTHORIZED_NO_VALID_PREFLIGHT
+  holdout_seal_opening: NOT_AUTHORIZED
+  confirmatory_or_holdout_row_read: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  Repository metadata closes the requested input-resolution check without
+  scanning any operator directory. The 2020-2022 domain- and author-cold
+  partition is logically reserved, but the G4 field slot has no selected
+  domain or field and no materialized artifact set. The available D0 entry
+  source ends in 2012 and cannot be relabelled as the G4 package. Therefore no
+  source root or complete artifact list can be truthfully inferred and no
+  production preflight, byte seal, receipt, or independent receipt
+  verification was run. This result does not open a holdout, pass G0, fit a
+  model, open G4, assert causality, or establish a scientific effect.

@@ -1,0 +1,176 @@
+schema_version: pivot_feedback_d0b_author_opportunity_foundation_config.v1
+label: pivot_feedback_d0b_author_opportunity_foundation_v1
+mode: OUTCOME_BLIND_PRE_ENTRY_AUTHOR_MEASUREMENT_FOUNDATION
+status_before_execution: AUTHORIZED_BY_D0A_GATE_STATE_V4
+
+repository_bindings:
+  gate_state:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v4.yaml
+    sha256: e8cd3242d7c343b878cfa406662aa9f9dc829ca9c684be57976fb4a533a11407
+    required_schema_version: pivot_feedback_gate_state.v4
+    required_status: VALID_G_MINUS_1A_AND_S0_PASS_D0A_STRUCTURAL_FREEZE_D0B_AUTHORIZED
+    required_fields:
+      gate_state.D0.state: PARTIAL_D0A_STRUCTURAL_FREEZE_PASS
+      gate_state.D0.complete: false
+      authorization.d0b_outcome_blind_author_panel: AUTHORIZED_ENTRY_YEAR_AT_MOST_2012
+      authorization.d0_discovery_outcome_opening: NOT_YET_AUTHORIZED
+      authorization.g0_measurement_freeze: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+      authorization.scientific_effect: NOT_ESTABLISHED
+  d0a_freeze:
+    relative_path: experiments/evidence/results/pivot_feedback_d0a_structural_pilot_freeze_full_20260724.summary.json
+    sha256: 7943ecf2b227adee07e7d35efed183b90d2bfc5f4bd8edc4f4ec751f29996db9
+    required_schema_version: pivot_feedback_d0a_structural_pilot_freeze_summary.v1
+    required_status: PASS_INDEPENDENT_D0A_STRUCTURAL_FREEZE_D0_PARTIAL_D0B_ONLY_AUTHORIZED
+    required_fields:
+      scope.d0a_structural_freeze_complete: true
+      scope.d0_complete: false
+      scope.entry_year_end_inclusive: 2012
+      scope.outcomes_read: false
+      authorization.d0b_outcome_blind_author_panel: AUTHORIZED
+      authorization.d0_discovery_outcome_opening: NOT_YET_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+
+normalized_inputs:
+  cutoff_work_metadata:
+    expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    rows: 492293206
+  author_history_events:
+    expected_root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    artifact_bytes: 5006392019
+    rows: 779630258
+
+frozen_episodes:
+  - episode_index: 1
+    field_id: 17
+    field_name: Computer Science
+    topic_id: 14430
+    topic_name: Higher Education and Teaching Methods
+    entry_year: 2003
+    signal_window: [2000, 2002]
+    reference_window: [1997, 1999]
+    incumbent_entry_must_precede_year: 1997
+  - episode_index: 2
+    field_id: 17
+    field_name: Computer Science
+    topic_id: 10579
+    topic_name: Cognitive Radio Networks and Spectrum Sensing
+    entry_year: 2012
+    signal_window: [2009, 2011]
+    reference_window: [2006, 2008]
+    incumbent_entry_must_precede_year: 2006
+  - episode_index: 3
+    field_id: 27
+    field_name: Medicine
+    topic_id: 11361
+    topic_name: Digital Radiography and Breast Imaging
+    entry_year: 2007
+    signal_window: [2004, 2006]
+    reference_window: [2001, 2003]
+    incumbent_entry_must_precede_year: 2001
+  - episode_index: 4
+    field_id: 27
+    field_name: Medicine
+    topic_id: 12505
+    topic_name: Peptidase Inhibition and Analysis
+    entry_year: 1991
+    signal_window: [1988, 1990]
+    reference_window: [1985, 1987]
+    incumbent_entry_must_precede_year: 1985
+
+measurement_contract:
+  allowed_temporal_dispositions: [2, 3]
+  selected_work_rule:
+    primary_field_and_topic_equal_frozen_episode: true
+    publication_year_positive: true
+    publication_year_at_most_entry_year_minus_one: true
+    entry_year_or_future_work_forbidden: true
+  observed_author_base_rule:
+    at_least_one_focal_field_work_in_t_minus_3_through_t_minus_1: true
+    final_candidate_eligibility: false
+    final_minimum_history_works: UNRESOLVED_G0
+  author_metrics:
+    windows:
+      - pre_entry_all_field_work_count
+      - pre_entry_focal_field_work_count
+      - portfolio_window_all_field_work_count
+      - portfolio_window_focal_field_work_count
+    nonranked_team_cap_profiles: [10, 50, 100, ALL]
+    team_cap_selected: false
+    target_topic_history:
+      - pre_entry_target_topic_work_count
+      - pre_signal_target_topic_work_count
+      - first_target_topic_year
+      - observed_no_prior_target_topic
+      - incumbent_before_signal_window
+  author_token_is_natural_person: false
+  current_snapshot_topic_is_historically_observed_classification: false
+
+deferred_d0b_components:
+  - incumbent_only_work_count_after_author_membership_freeze
+  - focal_author_leaveout
+  - prior_collaborator_graph_t_minus_5_through_t_minus_1
+  - registered_local_network_leaveout
+  - prior_peer_target_activity
+  - same_affiliation_bridge
+  - orcid_stable_subset_flag
+  - topic_content_coherence_and_indexing_discontinuity_audit
+  - temporal_leakage_independent_verification
+
+forbidden_inputs_and_outputs:
+  entry_year_target_works_read: false
+  post_entry_target_works_read: false
+  persistence_rows_read: false
+  realized_citation_rows_read: false
+  entry_effect_size: false
+  persistence_effect_size: false
+  overshoot_timing_gap: false
+  predictive_score: false
+  threshold_tuning: false
+  final_candidate_eligibility: false
+  model_fitting: false
+  g4_rows_read: false
+
+output_contract:
+  report_schema_version: pivot_feedback_d0b_author_opportunity_foundation_report.v1
+  receipt_schema_version: pivot_feedback_d0b_author_opportunity_foundation_outputs.v1
+  selected_work_schema_version: pivot_feedback_d0b_selected_predecision_work.v1
+  author_base_schema_version: pivot_feedback_d0b_pre_entry_author_measurement_base.v1
+  output_directory_must_be_new: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  receipt_written_last: true
+  raw_numeric_author_and_work_ids_external_private_only: true
+  passing_status: PASS_D0B_OUTCOME_BLIND_PRE_ENTRY_AUTHOR_OPPORTUNITY_FOUNDATION
+  d0b_component_complete: false
+  d0_complete: false
+  discovery_outcome_opening_authorized: false
+  g0_authorized: false
+  model_fitting_authorized: false
+  g4_open: false
+  gpu_used: false
+
+claim_boundary: >-
+  A pass may establish the exact pre-decision works for the four frozen D0-A
+  topic episodes and a current-snapshot author-token measurement base for
+  authors observed in each focal field during t-3 through t-1, with
+  non-ranked team-cap profiles and past target-topic history. It does not
+  establish final candidate eligibility, natural persons, historically
+  observed topic classification, incumbent-only or leave-out attention,
+  collaboration or affiliation bridges, entry or persistence outcomes,
+  visible success, an association, D0 completion, G0, model fitting, G4, or a
+  scientific effect.

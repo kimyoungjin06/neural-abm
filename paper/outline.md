@@ -4,6 +4,52 @@ Working title:
 
 > Neural Social Nodes for Agent-Based Modeling
 
+Route status: this is the method-first outline. The prospective science-first
+pivot-feedback route is specified in the
+[empirical/NABM study protocol](../docs/case-studies/researcher-pivot/pivot-feedback-empirical-nabm-protocol.md).
+Do not enlarge Section 7 into a substantive science-of-science claim. If the
+protocol's empirical signature, baseline-model, and final-holdout gates pass,
+open a separate `paper/pivot-feedback/` companion track; keep Section 7 as
+stylized lifecycle evidence for this method-first manuscript.
+
+The repository-only prospective cross-field tranche is routed through
+`experiments/configs/openalex_g1_cross_field_feasibility_v0.yaml`,
+`experiments/evidence/results/openalex_g1_cross_field_feasibility_20260718.summary.json`,
+`experiments/evidence/results/openalex_g1_cross_field_feasibility_20260718.summary.md`,
+`experiments/configs/openalex_g1_field_taxonomy_reference_v0.yaml`,
+`experiments/evidence/results/openalex_g1_field_taxonomy_reference_20260718.summary.json`,
+`experiments/evidence/results/openalex_g1_field_taxonomy_reference_20260718.summary.md`,
+`experiments/configs/openalex_g1_w0_positive_id_sensitivity_v0.yaml`,
+`experiments/evidence/results/openalex_g1_w0_positive_id_sensitivity_20260718.summary.json`,
+`experiments/evidence/results/openalex_g1_w0_positive_id_sensitivity_20260718.summary.md`,
+`experiments/configs/openalex_g1_work_topic_relation_v0.yaml`,
+`scripts/audit_openalex_work_topic_relation.py`,
+`experiments/configs/pivot_feedback_cross_field_matrix_v0.yaml`, and
+`scripts/plan_research_pivot_field_matrix.py`. Its compact result is
+profile-feasibility only, and its planner is fail-closed engineering support.
+The compact feasibility artifact records `field_entity_validity=UNVERIFIED`,
+`candidate_eligibility=NOT_ESTABLISHED`, and
+`final_field_selection=PENDING_G0`. The later full CPU/I/O component has status
+`PASS_CURRENT_SNAPSHOT_TAXONOMY_REFERENCE_COMPONENT`. Across 1,423 files and
+1,420,855,753 projected rows, it validates 1,282,707,794 complete non-null
+hierarchy references, permits 138,147,958 all-null main-work rows, quarantines
+one frozen `W-1` row, and finds zero partial or invalid hierarchy rows. The pass
+covers non-null current-snapshot projected references and exact 26-field plus
+null margins only. Raw source validity remains `BLOCKED`, the retained `W0`
+remains `UNRESOLVED`, and parent content identity remains `UNVERIFIED`. A
+separate bounded sensitivity pass shows that excluding W0 changes only the
+null margin by one; all 26 non-null field margins are unchanged. The full
+work-topic relation audit finds 714 duplicate edge groups and zero missing
+primary-child edges, but two duplicate groups have different scores. It
+therefore blocks without materializing the exact-score dedup view. These
+components do not rewrite the compact labels or establish broader field or
+relation validity.
+Final empirical field selection remains `PENDING`, empirical G1 is `NOT_RUN`
+with `pass_g1=false`, and neither a statistical model nor an NABM has run.
+These artifacts do not expand the method-first primary claim path. The separate
+planner keeps scientific selection `PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT`
+and `execution_authorized=false`.
+
 ## 1. Introduction
 
 - Motivation: rule-based ABM agents are interpretable but limited in adaptive
@@ -99,6 +145,15 @@ Draft:
   named-parameter traces as bounded endogenous rule-change results.
 - Expressiveness and discipline claim only; the fixed rule is a control, not
   a defeated baseline.
+- Keep the prospective H3 field-balanced timing-gap primary, the episode-level
+  bibliographic outcome-availability-lag / prior-collaborator
+  exposure-opportunity-timescale transport secondary, equivalence placebos,
+  Holm hierarchy, and domain-and-author-cold G4 plan in the separate
+  pivot-feedback route. The current cross-field profile and matrix planner are
+  not Section 7 empirical results.
+- Treat prior-collaborator activity and outcome availability as proxies; test
+  them against field-wide attention, homophily, chaperoned entry or
+  recruitment, and capacity bridges before invoking social learning.
 
 ## 8. Discussion
 

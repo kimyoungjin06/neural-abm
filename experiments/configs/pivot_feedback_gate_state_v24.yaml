@@ -1,0 +1,93 @@
+schema_version: pivot_feedback_gate_state.v24
+label: pivot_feedback_gate_state_v24
+mode: ADDITIVE_EXACT_RANK5_SAMPLE_CLOSEOUT_ZERO_COST_LOCAL_ROUTING_AUTHORIZATION
+status: VALID_EXACT_T10151_RANK5_SAMPLE_VERIFIED_ZERO_COST_LOCAL_ROUTING_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v23.yaml
+  sha256: da3af0a2f12ff8f36a35067f24b49b8bf525ab65ca2339bf618b42c7d89b81fc
+  required_schema_version: pivot_feedback_gate_state.v23
+  required_status: VALID_FRONTIER_V5_RANK5_REQUIRED_TOPIC_CARD_FROZEN_EXACT_SAMPLE_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  mutation_allowed: false
+
+rank5_sample_evidence:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_t10151_rank5_targeted_title_sample_v1.yaml
+    sha256: 7044946fe55a118c3f59fdf6b733e4af60dbaca75501f31e2ecd35e861402023
+    required_schema_version: pivot_feedback_d0_t10151_rank5_targeted_title_sample_config.v1
+    required_status: FROZEN_EXACT_T10151_RANK5_96_TITLE_LOCAL_SAMPLE_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_t10151_rank5_targeted_title_sample_v1.py
+    sha256: 78ff24d6ee74d11e1a8ce40dc5a61a6aaac32a1ce34bbbcde332d75f860ff0a6
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_t10151_rank5_targeted_title_sample_v1.py
+    sha256: a74396a6d6c700bd7eb526aa9eb090dfc3a0c407d3f2b1316d251e2019c6021c
+    mutation_allowed: false
+  operator_local:
+    root_basename: pivot-feedback-d0-t10151-rank5-targeted-title-sample-v1-20260729
+    sample_basename: t10151_rank5_targeted_title_sample.parquet
+    sample_sha256: 23c06acbf465ac85d3cfba431fd994a02cd73054f38d5baad25dce0fc568d0f2
+    sample_rows: 96
+    receipt_basename: t10151_rank5_targeted_title_sample.outputs.json
+    receipt_sha256: 77d596bcca255be299b76fb238a6b10fbbf699d926d3e955d60182ca485fa333
+    receipt_status: PASS_EXACT_T10151_RANK5_96_TITLE_LOCAL_SAMPLE
+    verification_basename: pivot-feedback-d0-t10151-rank5-targeted-title-sample-v1-20260729.verification-v1.json
+    verification_sha256: 424c655c69c9fa604763d161c090eb3c5025963d37d50f26c24a5bbd8075ed25
+    verification_status: PASS_INDEPENDENT_EXACT_T10151_RANK5_96_TITLE_LOCAL_SAMPLE
+
+verified_sample:
+  field_id: 27
+  field_candidate_rank: 5
+  topic_id: 10151
+  entry_year: 1993
+  eligible_prelink_rows: 4549
+  author_linked_pool_rows: 3797
+  recent_six_year_author_linked_rows: 2593
+  window_pool_rows: {0: 1204, 1: 383, 2: 2210}
+  selected_rows: {0: 32, 1: 32, 2: 32}
+  missing_title_rows: 0
+  general_raw_title_scan: false
+  api_requests_created: 0
+
+routing_successor:
+  topic_card_source:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v23.yaml
+    sha256: da3af0a2f12ff8f36a35067f24b49b8bf525ab65ca2339bf618b42c7d89b81fc
+    config_key: frozen_topic_card
+    reuse_without_change: true
+  production_rule_v2_source:
+    relative_path: experiments/configs/pivot_feedback_d0_production_candidate_rule_v2.yaml
+    sha256: 527ab2d43f878fdd5cceb228d5fb13cf5d7ee2342908ce7264d7bede4d39603d
+    reuse_without_change: true
+  sample_rows_to_read: 96
+  raw_openalex_main_table_read: false
+  network_accessed: false
+  credentials_accessed: false
+  api_requests_created: 0
+
+authorization:
+  d0_exact_rank5_sample: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_rank5_topic_card: COMPLETE_FROZEN_BEFORE_SAMPLE_READ
+  d0_rank5_local_routing: AUTHORIZED_ZERO_COST_ONLY
+  d0_rank5_candidate_rule_v2_dry_run: AUTHORIZED
+  d0_rank5_production_content_disposition: NOT_AUTHORIZED_UNTIL_LOCAL_ROUTING_VERIFIED
+  d0_raw_openalex_title_scan: NOT_AUTHORIZED
+  d0_new_title_extraction: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_exception_submission: NOT_AUTHORIZED
+  d0_selection_certificate: NOT_AUTHORIZED
+  d0_deterministic_reselection: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This additive successor binds the independently replayed exact T10151
+  rank-5 sample and authorizes only zero-cost local routing with the
+  pre-sample-frozen topic card plus the unchanged production-rule-v2 dry run.
+  It does not authorize raw-title access, new title extraction, API requests,
+  a production disposition, certificate, reselection, outcomes, fitting, G4,
+  semantic truth, historical topic validation, or scientific effects.

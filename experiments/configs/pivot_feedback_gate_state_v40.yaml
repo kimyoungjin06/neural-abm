@@ -1,0 +1,186 @@
+schema_version: pivot_feedback_gate_state.v40
+label: pivot_feedback_gate_state_v40
+mode: ADDITIVE_RAW_AUTHORSHIP_IDENTITY_AFFILIATION_VERIFIED_MEMBERSHIP_REGISTRATION_TEMPORAL_AUDIT_AUTHORIZATION
+status: VALID_EXACT_FOUR_RAW_AUTHORSHIP_IDENTITY_AFFILIATION_INDEPENDENTLY_VERIFIED_MEMBERSHIP_REGISTRATION_TEMPORAL_AUDIT_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v39.yaml
+  sha256: 46e910664a446211fd3e40125ae37f2f0580b2cd1c8764b5188945ae47ff7083
+  required_schema_version: pivot_feedback_gate_state.v39
+  required_status: VALID_EXACT_FOUR_NORMALIZED_LEAVEOUT_PRIOR_PEER_INDEPENDENTLY_VERIFIED_RAW_AUTHORSHIP_IDENTITY_AFFILIATION_AUTHORIZED
+  required_fields:
+    authorization.d0_normalized_leaveout_prior_peer_build: COMPLETE_INDEPENDENTLY_VERIFIED
+    authorization.d0_raw_authorship_identity_affiliation_contract_and_build: AUTHORIZED_EXACT_FOUR_IDENTITY_AND_WORK_TIME_INSTITUTION_ONLY
+    authorization.d0_raw_authorship_identity_affiliation_independent_verification: REQUIRED
+    authorization.d0_peer_visible_success: NOT_AUTHORIZED
+    authorization.d0_production_pivot_classification: PAUSED_UNTIL_RAW_AUTHORSHIP_COMPONENT_INDEPENDENTLY_VERIFIED_AND_SUCCESSOR_GATE
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+verified_raw_authorship_identity_affiliation:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_certified_raw_authorship_identity_affiliation_v1.yaml
+    sha256: 663d1722ab3815df67beb2181faa2e7d3b43acb0fa8a2dc9979b1dc13e8c2d2d
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_certified_raw_authorship_identity_affiliation_v1.py
+    sha256: dd345c399c49b4a2392af6c296c8be368479144f23caa92e478b99b56a0bd786
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_certified_raw_authorship_identity_affiliation_v1.py
+    sha256: db0caf7333bde2eeec5bccf4ab7ec8cb7121e87612aaf5e284c8032967b7c74c
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_certified_raw_authorship_identity_affiliation_20260730.summary.json
+    sha256: 4e94b60d2da0d591e3a42e8f13bf20309bce9f34c284ddc6da4c72a840e9a433
+    required_schema_version: pivot_feedback_d0_certified_raw_authorship_identity_affiliation_summary.v1
+    required_status: PASS_INDEPENDENT_EXACT_FOUR_RAW_AUTHORSHIP_ORCID_SENSITIVITY_AND_WORK_TIME_INSTITUTION_PROXY
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_certified_raw_authorship_identity_affiliation_20260730.summary.md
+    sha256: 9d059f876dea7cd49690fa8f2d5f41d4877c85863ca37f33b524db7251ab748c
+  operator_local:
+    root_basename: pivot-feedback-d0-certified-raw-authorship-identity-affiliation-v1-20260730
+    receipt_basename: raw_authorship_identity_affiliation.outputs.json
+    receipt_sha256: 70ab9b18293377dcf72b2b9b2938e91f0285d6e6ebc4c41182d7e6750b1218d4
+    receipt_status: PASS_EXACT_FOUR_RAW_AUTHORSHIP_ORCID_SENSITIVITY_AND_WORK_TIME_INSTITUTION_PROXY
+    report_basename: raw_authorship_identity_affiliation.json
+    report_sha256: c96f9a1f7baec2ab345abb4ad300d41363effcb41d2272e6e0b787da031c0b6a
+    author_basename: candidate_identity_affiliation_base.parquet
+    author_sha256: 54ba2e910b0b7f8670bf0af72cd7bd784c560f2da6bdc797af4f07d3b546f923
+    affiliation_edge_basename: prior_peer_affiliation_edges.parquet
+    affiliation_edge_sha256: c9f06e458486f26252c612f633c2c7271bf1c49d8c969a774399e5471e9ad5f2
+    institution_relation_basename: relevant_author_work_institutions.parquet
+    institution_relation_sha256: 57f99eabc29b78d9d29b6e5dda5e3c7bd4ea5f6b58b5baf38062bfcc2f5adb77
+    verification_basename: pivot-feedback-d0-certified-raw-authorship-identity-affiliation-v1-20260730.verification-v1.json
+    verification_sha256: 97a27c1f4f2534a83db6056fd4b8e863d1e5b987df3b118c260d04cdb792c9ae
+    verification_status: PASS_INDEPENDENT_EXACT_FOUR_RAW_AUTHORSHIP_ORCID_SENSITIVITY_AND_WORK_TIME_INSTITUTION_PROXY
+  result:
+    exact_certified_episode_rows: 4
+    raw_source_files: 1363
+    raw_source_rows: 1361551038
+    candidate_author_episode_rows: 3256271
+    candidate_tokens_with_single_checksum_valid_orcid: 713195
+    candidate_tokens_with_multiple_checksum_valid_orcids: 0
+    relevant_author_work_institution_rows: 635155
+    edges_with_institution_comparable_shared_work: 309956
+    edges_with_same_affiliation_shared_work: 211192
+    cap_100_author_rows_with_same_affiliation_bridge: 113234
+    identity_bidirectional_row_difference: 0
+    institution_bidirectional_row_difference: 0
+    affiliation_edge_bidirectional_row_difference: 0
+    author_cap_bidirectional_row_differences: [0, 0, 0]
+    affiliation_monotonicity_violations: 0
+    outcomes_read: false
+    api_requests_created: 0
+
+current_measurement_surface:
+  exact_episode_rows:
+    - [17, 1, 14430, 2003]
+    - [17, 45, 10579, 2012]
+    - [27, 5, 10151, 1993]
+    - [27, 6, 12421, 1953]
+  author_opportunity_base: COMPLETE_INDEPENDENTLY_VERIFIED
+  incumbent_target_attention: COMPLETE_INDEPENDENTLY_VERIFIED
+  focal_leaveout: COMPLETE_INDEPENDENTLY_VERIFIED
+  prior_target_peer_edges: COMPLETE_INDEPENDENTLY_VERIFIED
+  network_leaveout: COMPLETE_INDEPENDENTLY_VERIFIED
+  orcid_stable_subset_flag: COMPLETE_INDEPENDENTLY_VERIFIED_CURRENT_SNAPSHOT_SENSITIVITY
+  same_affiliation_proxy: COMPLETE_INDEPENDENTLY_VERIFIED_SECONDARY_WORK_TIME_PROXY
+  graph_team_cap_profiles_retained: [10, 50, 100]
+  graph_team_cap_selected: false
+  all_team_graph_role: DIAGNOSTIC_ONLY_NOT_MATERIALIZED
+  minimum_history_threshold: UNRESOLVED_NOT_SELECTABLE_FROM_OUTCOMES
+  final_candidate_eligibility_established: false
+  natural_person_identity_established: false
+  historical_affiliation_truth_established: false
+
+gate_state:
+  D0:
+    state: PARTIAL_CORE_OPPORTUNITY_LEAVEOUT_PEER_IDENTITY_AFFILIATION_VERIFIED
+    complete: false
+    completed_components:
+      - D0_GLOBAL_SELECTION_CERTIFICATE
+      - D0_EXACT_FOUR_CERTIFIED_EPISODE_RESELECTION
+      - D0_FROZEN_SCHOLARLY_WORK_MEASUREMENT_ABI
+      - D0_EXACT_SELECTED_WORK_MANIFEST_REBUILD
+      - D0_EXACT_FOUR_AUTHOR_OPPORTUNITY_BASE_REBUILD
+      - D0_INDEPENDENT_WORK_FIRST_AUTHOR_OPPORTUNITY_REPLAY
+      - D0_INCUMBENT_ONLY_TARGET_ATTENTION
+      - D0_FOCAL_AUTHOR_LEAVEOUT
+      - D0_PRIOR_COLLABORATOR_GRAPH
+      - D0_REGISTERED_LOCAL_NETWORK_LEAVEOUT
+      - D0_PRIOR_PEER_TARGET_ACTIVITY
+      - D0_INDEPENDENT_NORMALIZED_LEAVEOUT_PRIOR_PEER_REPLAY
+      - D0_RECEIPT_BOUND_RAW_AUTHORSHIP_PROJECTION
+      - D0_ORCID_STABLE_SUBSET_FLAG
+      - D0_SAME_AFFILIATION_BRIDGE_PROXY
+      - D0_INDEPENDENT_RAW_AUTHORSHIP_IDENTITY_AFFILIATION_REPLAY
+    next_components:
+      - D0_AUTHOR_MEMBERSHIP_RULE_REGISTRATION_WITHOUT_OUTCOME_TUNING
+      - D0_CONSOLIDATED_PREDECISION_JOIN
+      - D0_CONSOLIDATED_TEMPORAL_LEAKAGE_AUDIT
+      - D0_MEASUREMENT_COMPLETENESS_DECISION
+    blocked_components:
+      - D0_MINIMUM_HISTORY_THRESHOLD_SELECTION_FROM_OUTCOMES
+      - D0_PEER_VISIBLE_SUCCESS
+      - D0_PRODUCTION_RESEARCHER_PIVOT_CLASSIFICATION
+      - D0_DISCOVERY_OUTCOME_OPENING
+      - D0_FINAL_CANDIDATE_ELIGIBILITY
+      - G0_MEASUREMENT_FREEZE
+      - MODEL_FITTING
+      - G4
+  G0:
+    state: PENDING
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorized_next_scope:
+  exact_certified_episode_rows: 4
+  outcome_blind: true
+  author_membership_rule_registration: AUTHORIZED_NO_OUTCOME_OR_EFFECT_SIZE_ACCESS
+  threshold_indexed_history_sensitivity_may_be_retained: true
+  single_minimum_history_threshold_selection: NOT_AUTHORIZED
+  graph_team_cap_selection: NOT_AUTHORIZED
+  consolidated_predecision_join: AUTHORIZED_VERIFIED_COMPONENTS_ONLY
+  consolidated_temporal_leakage_audit: AUTHORIZED_FULL_EXACT_FOUR
+  audit_must_verify:
+    - EVERY_MEASUREMENT_INPUT_IS_AVAILABLE_BY_T_MINUS_1_OR_EXPLICIT_CURRENT_SNAPSHOT_SENSITIVITY
+    - NO_ENTRY_OR_PERSISTENCE_ROW_IS_READ
+    - NO_REALIZED_CITATION_OUTCOME_IS_READ
+    - ORCID_REMAINS_CURRENT_SNAPSHOT_SENSITIVITY_ONLY
+    - AFFILIATION_REMAINS_SECONDARY_WORK_TIME_PROXY_WITH_MISSINGNESS_EXPLICIT
+    - THREE_GRAPH_CAPS_REMAIN_NONRANKED
+    - RAW_NUMERIC_IDS_REMAIN_OPERATOR_LOCAL
+  measurement_completeness_decision: AUTHORIZED_ONLY_AFTER_INDEPENDENT_AUDIT
+  raw_numeric_ids: PRIVATE_OPERATOR_LOCAL_ONLY
+
+authorization:
+  d0_exact_selected_work_manifest_rebuild: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_author_opportunity_panel_rebuild: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_normalized_leaveout_prior_peer_build: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_raw_authorship_identity_affiliation_build: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_author_membership_rule_registration: AUTHORIZED_OUTCOME_BLIND_NO_THRESHOLD_TUNING
+  d0_consolidated_predecision_join_and_temporal_audit: AUTHORIZED_EXACT_FOUR_VERIFIED_COMPONENTS_ONLY
+  d0_measurement_completeness_decision: PAUSED_UNTIL_CONSOLIDATED_TEMPORAL_AUDIT_INDEPENDENTLY_VERIFIED
+  d0_peer_visible_success: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_submission: NOT_AUTHORIZED
+  final_candidate_eligibility: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The exact-four raw-authorship ORCID sensitivity and work-time institution
+  proxy component has passed an independent full-source replay. This additive
+  successor authorizes only outcome-blind author-membership rule registration,
+  a join of already verified predecision components, and a consolidated
+  temporal leakage audit. It does not authorize selecting a minimum-history or
+  graph-cap profile from outcomes, constructing visible success, classifying
+  pivots, reading entry or persistence outcomes, establishing final
+  eligibility, creating API requests, freezing G0, fitting a model, opening G4,
+  or establishing an association, causal mechanism, or scientific effect.

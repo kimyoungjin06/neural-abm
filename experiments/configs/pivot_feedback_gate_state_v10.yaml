@@ -1,0 +1,213 @@
+schema_version: pivot_feedback_gate_state.v10
+label: pivot_feedback_gate_state_v10
+mode: ADDITIVE_D0_VALID_CROSS_PROVIDER_API_RESULTS_HUMAN_REVIEW_QUEUE_GATE_LEDGER
+status: VALID_D0_API_REVIEW_COMPLETE_HUMAN_REVIEW_PENDING_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v9.yaml
+  sha256: 3f054ec9bb16208fdc1bfa87c7478cdb02e16871e5467691b3b3e43d8a295241
+  required_schema_version: pivot_feedback_gate_state.v9
+  required_status: VALID_D0_API_REVIEW_INPUTS_PREPARED_NOT_SUBMITTED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    api_review_state.request_rows_per_judge: 384
+    api_review_state.api_submitted: false
+    api_review_state.api_responses_received: false
+    api_review_state.human_calibration_complete: false
+    api_review_state.artificial_agent_may_substitute_for_human_reviewer: false
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+execution_evidence:
+  cross_provider_api_review:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_cross_provider_api_review_20260729.summary.json
+    sha256: 7693fb363afc09aec1ebea3edf7593e398ab23f4ef1b2dd0a91fa43276bfdcce
+    required_schema_version: pivot_feedback_d0_cross_provider_api_review_summary.v6
+    required_status: PASS_INDEPENDENT_D0_CROSS_PROVIDER_RESULT_VERIFICATION_HUMAN_REVIEW_PENDING
+    required_fields:
+      execution.v3_execution_root_basename: pivot-feedback-d0-cross-provider-api-review-v3-execution-20260729
+      execution.v3_openai_final_status: cancelled
+      execution.v3_openai_final_status_snapshot_sha256: 07660ecbb6a78943a2cce0bb2a4004c7dfa12aeb07385f7814058f7a63bdce0b
+      execution.v3_openai_final_request_counts.total: 0
+      execution.v3_claude_batch_created: false
+      execution.v4_openai_valid_structured_rows: 144
+      execution.v4_openai_incomplete_rows: 241
+      execution.v4_claude_valid_structured_rows: 384
+      execution.v5_openai_valid_structured_rows: 384
+      execution.v5_openai_incomplete_rows: 0
+      execution.v5_claude_resubmitted: false
+      validated_results.openai_valid_structured_rows: 384
+      validated_results.claude_valid_structured_rows: 384
+      validated_results.shared_expected_custom_ids: 384
+      validated_results.provider_error_rows: 0
+      validated_results.incomplete_rows: 0
+      validated_results.label_agreement_rows: 306
+      validated_results.label_disagreement_rows: 78
+      validated_results.dual_high_confidence_on_topic_rows: 197
+      human_queue.api_escalation_rows: 187
+      human_queue.base_calibration_rows: 96
+      human_queue.calibration_escalation_overlap_rows: 50
+      human_queue.deduplicated_rows_per_reviewer: 233
+      human_queue.reviewer_count: 2
+      human_queue.packets_blinded_from_api_outputs: true
+      human_queue.reviewer_1_completed_rows: 0
+      human_queue.reviewer_2_completed_rows: 0
+      human_queue.human_calibration_complete: false
+      cost_control.cumulative_actual_cost_usd: "0.352772"
+      cost_control.cumulative_authorized_maximum_usd: "1.00"
+      scope.api_review_complete_for_frozen_384_title_set: true
+      scope.human_queue_materialized: true
+      scope.human_calibration_complete: false
+      scope.candidate_universe_screen_complete: false
+      scope.episode_3_quarantined: true
+      scope.d0_complete: false
+      scope.outcomes_read: false
+      scope.g0_authorized: false
+      scope.model_fitting_authorized: false
+      scope.g4_open: false
+      scope.scientific_effect: NOT_ESTABLISHED
+
+gate_state:
+  G_MINUS_1A:
+    state: PASS_BOUNDED
+    complete: true
+    authorizes: [S0]
+  S0:
+    state: PASS_THRESHOLD_FREE_INVENTORY
+    complete: true
+    authorizes: [D0]
+  D0:
+    state: PARTIAL_VALID_API_REVIEW_COMPLETE_HUMAN_REVIEW_PENDING
+    complete: false
+    requires: [S0]
+    entry_year_end: 2012
+    completed_components:
+      - D0_OUTCOME_BLIND_MEASUREMENT_ABI_FREEZE
+      - D0_OUTCOME_BLIND_TWO_FIELD_FOUR_EPISODE_RESELECTION
+      - D0_AUTOMATED_CONTENT_AND_INDEXING_EXTRACTION
+      - D0_DUAL_PINNED_MODEL_BATCH_EXECUTION
+      - D0_VALID_384_BY_2_STRUCTURED_API_RESPONSE_INGESTION
+      - D0_CROSS_PROVIDER_COMPARISON_AND_FAIL_CLOSED_ESCALATION
+      - D0_DEDUPLICATED_TWO_REVIEWER_BLINDED_QUEUE_MATERIALIZATION
+      - D0_INDEPENDENT_API_RESULT_AND_HUMAN_QUEUE_VERIFICATION
+    blocked_components:
+      - TWO_INDEPENDENT_HUMAN_CALIBRATION_AND_ESCALATION_REVIEWS
+      - THIRD_PARTY_HUMAN_DISAGREEMENT_ADJUDICATION
+      - FROZEN_CALIBRATED_REVIEW_RECEIPT_AND_AGREEMENT_STATISTICS
+      - CANDIDATE_LEVEL_INDEXING_CONTAMINATION_RULE_FREEZE
+      - COMPLETE_CANDIDATE_UNIVERSE_RESELECTION_SUCCESSOR
+      - REBUILT_AUTHOR_OPPORTUNITY_PANEL
+      - INCUMBENT_AND_NETWORK_MEASUREMENTS
+    authorizes:
+      - D0_TWO_DISTINCT_HUMAN_CALIBRATION_AND_ESCALATION_REVIEWS
+      - D0_THIRD_PARTY_ADJUDICATION_AFTER_REVIEWER_FREEZE
+  G0:
+    state: PENDING
+    complete: false
+  G0_5:
+    state: NOT_RUN
+    complete: false
+  G1:
+    state: NOT_RUN
+    complete: false
+  G2:
+    state: NOT_RUN
+    complete: false
+  G3:
+    state: NOT_RUN
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+  G5:
+    state: NOT_RUN_OPTIONAL
+    complete: false
+
+authorization:
+  d0_api_batch_request_preparation: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_api_batch_submission: COMPLETE_WITHIN_FROZEN_COST_CONTROL
+  d0_api_response_ingestion: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_api_triage_for_frozen_384_title_set: COMPLETE
+  d0_human_calibration_reviewer_1: AUTHORIZED_DISTINCT_HUMAN_OUTCOME_BLIND
+  d0_human_calibration_reviewer_2: AUTHORIZED_DISTINCT_HUMAN_OUTCOME_BLIND
+  d0_human_adjudication: AUTHORIZED_AFTER_BOTH_REVIEWER_FILES_FROZEN
+  d0_candidate_universe_api_screen: NOT_AUTHORIZED_PENDING_HUMAN_CALIBRATION
+  d0b_leaveout_network_bridge_build: PAUSED_PENDING_REVIEW_AND_RESELECTION_SUCCESSOR
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  final_panel_materialization: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+api_review_state:
+  result_root_basename: pivot-feedback-d0-cross-provider-api-review-v6-results-20260729
+  receipt_sha256: d10696cd88074d2cefe55cb0bd789c9b8dcecb6b1548488e9e9ae9a7ed22567b
+  artifact_tree_sha256: 275d96f638090d39d1832b8e7c005d168044d9c2d63e20ddf1578b1f38ac99af
+  verification_report_basename: pivot-feedback-d0-cross-provider-api-review-v6-results-20260729.verification-v6.json
+  verification_report_sha256: 1a43dcbf1b7bd046b94599f8f19c849d29d5dc13638a07cea898199f57eb0ed3
+  openai_batch_id: batch_6a698a4613dc819081bb2bbf766ba201
+  claude_batch_id: msgbatch_01DP8X2nv3AP6Locfmq1pnpU
+  valid_rows_per_provider: 384
+  shared_expected_custom_ids: 384
+  label_agreement_rows: 306
+  label_disagreement_rows: 78
+  dual_high_confidence_on_topic_rows: 197
+  api_escalation_rows: 187
+  calibration_rows: 96
+  human_queue_rows_per_reviewer: 233
+  human_packets_blinded_from_api_outputs: true
+  api_submitted: true
+  api_responses_received: true
+  api_review_complete_for_frozen_set: true
+  human_reviewer_1_completed_rows: 0
+  human_reviewer_2_completed_rows: 0
+  human_calibration_complete: false
+  candidate_universe_screen_complete: false
+  artificial_agent_may_substitute_for_human_reviewer: false
+
+provisional_scientific_scope:
+  episode_3_quarantined_pending_review: true
+  remaining_episodes_automatically_promoted: false
+  current_four_episode_set_valid_for_leaveout_or_author_panel: false
+  prior_author_episode_rows_are_current_panel: false
+  entry_or_persistence_outcomes_read: false
+  scientific_effect: NOT_ESTABLISHED
+
+next_required_implementation:
+  gate: D0_TWO_HUMAN_REVIEWS_AND_ADJUDICATION
+  required_order:
+    - assign_two_distinct_human_reviewers
+    - distribute_separately_ordered_233_row_blinded_packets
+    - complete_both_packets_without_cross_review_or_api_output_access
+    - freeze_and_hash_both_completed_reviewer_files
+    - compute_exact_human_agreement_and_cohen_kappa
+    - adjudicate_every_human_disagreement_with_a_third_human
+    - test_api_error_rates_against_frozen_human_calibration
+    - apply_fail_close_rules_or_freeze_calibrated_review_receipt
+    - freeze_candidate_universe_screen_successor_before_any_full_screen
+  reviewer_discussion_before_independent_freeze_allowed: false
+  api_outputs_visible_to_human_reviewers: false
+  artificial_reviewer_substitution_allowed: false
+  api_only_may_complete_d0: false
+  candidate_universe_screen_may_run_before_calibration: false
+  entry_or_persistence_outcomes_may_be_opened: false
+  leaveout_or_peer_measurement_may_be_built_before_successor_freeze: false
+  current_episode_set_may_be_reused_as_final: false
+  current_author_panel_may_be_reused_as_final: false
+  final_candidate_eligibility_may_be_claimed: false
+  workload_class: TWO_DISTINCT_HUMAN_REVIEWERS_THEN_ADJUDICATION
+  gpu_required: false
+
+claim_boundary: >-
+  This additive ledger records valid, complete, independently verified
+  title-only decisions from both pinned API judges for the frozen 384-title
+  set, plus a deduplicated 233-row blinded packet for each of two distinct
+  human reviewers. The APIs agree on 306 rows and identify 197 dual-HIGH
+  ON_TOPIC candidates, but API agreement cannot substitute for the frozen
+  human calibration. Neither human packet has been completed. Episode 3
+  remains quarantined, the other episodes are not promoted, and the prior
+  author panel remains superseded. D0, complete-candidate-universe screening,
+  downstream measurement, outcomes, G0, model fitting, G4, and scientific
+  effects remain incomplete, unauthorized, sealed, not run, or not established.

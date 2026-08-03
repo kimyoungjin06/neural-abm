@@ -1,0 +1,142 @@
+schema_version: pivot_feedback_s0_threshold_free_inventory_config.v1
+label: pivot_feedback_s0_threshold_free_inventory_v1
+mode: READ_ONLY_NORMALIZED_SURFACE_STRUCTURAL_AGGREGATION
+status_before_execution: AUTHORIZED_BY_G_MINUS_1A
+
+g_minus_1a_parent:
+  relative_path: experiments/evidence/results/pivot_feedback_g_minus_1a_receipt_20260723.summary.json
+  sha256: 8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802
+  required_schema_version: pivot_feedback_g_minus_1a_receipt.v1
+  required_status: PASS_G_MINUS_1A_BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+  required_fields:
+    authorization.s0_threshold_free_inventory: AUTHORIZED
+    authorization.d0_discovery_pilot: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.scientific_effect: NOT_ESTABLISHED
+
+normalized_inputs:
+  cutoff_primitives:
+    expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    expected_artifact_count: 4096
+    expected_rows: 492293206
+    expected_tree_sha256: a37448b4df39c00e97b540b3ac7d06de6f2e9ce12186838120d59c820aa89d77
+  author_history:
+    expected_root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    expected_artifact_count: 4096
+    expected_rows: 779630258
+    expected_history_usable_rows: 776803175
+
+structural_contract:
+  field_ids: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]
+  field_count: 26
+  source_snapshot_date: "2026-03-30"
+  last_complete_calendar_year: 2025
+  usable_temporal_dispositions: [2, 3]
+  null_field_bucket: 0
+  null_year_bucket: 0
+  descriptive_team_cap_profiles: [10, 50, 100, ALL]
+  team_cap_profiles_are_ranked_or_selected: false
+  citation_calendar_support_years: [1, 3, 5, 10]
+  citation_calendar_support_is_outcome_success: false
+  raw_attention_trailing_resolutions_years: [1, 3, 5]
+  attention_resolution_is_ranked_or_selected: false
+  all_topic_work_coverage_derivation: PRIMARY_TOPIC_CHILD_EXACT_CLOSURE_FROM_BOUND_WORK_TOPIC_AUDIT
+
+required_core_metrics:
+  work_field_year:
+    - total_canonical_works
+    - usable_date_works
+    - primary_topic_relation_works
+    - all_topic_relation_works
+    - declared_author_slots
+    - zero_declared_author_works
+    - single_declared_author_works
+    - multi_declared_author_works
+    - declared_pair_incidences_cap_10
+    - declared_pair_incidences_cap_50
+    - declared_pair_incidences_cap_100
+    - declared_pair_incidences_all
+    - citation_calendar_support_at_least_1y
+    - citation_calendar_support_at_least_3y
+    - citation_calendar_support_at_least_5y
+    - citation_calendar_support_at_least_10y
+  author_field_year:
+    - distinct_author_work_pairs
+    - history_usable_distinct_author_work_pairs
+    - distinct_author_tokens
+    - history_usable_distinct_author_tokens
+  attention_trajectory:
+    - annual_canonical_works
+    - trailing_3y_canonical_works
+    - trailing_5y_canonical_works
+
+deferred_required_metrics:
+  orcid_field_year:
+    state: NOT_RUN_REQUIRES_RECEIPT_BOUND_AUTHORSHIP_SOURCE_PROJECTION
+    required:
+      - orcid_linked_authorship_rows
+      - grammar_valid_orcid_rows
+      - candidate_orcid_stable_author_tokens
+      - token_orcid_split_merge_diagnostics
+  affiliation_field_year:
+    state: NOT_RUN_REQUIRES_RECEIPT_BOUND_AUTHORSHIP_SOURCE_PROJECTION
+    required:
+      - author_work_affiliation_rows
+      - author_work_institution_rows
+      - distinct_institutions
+  coauthor_graph_field_year:
+    state: NOT_RUN_REQUIRES_VERSIONED_NONRANKED_CAP_PROFILE_EDGE_MATERIALIZATION
+    required:
+      - distinct_undirected_edges
+      - degree_quantiles
+      - connected_components
+      - largest_component_share
+
+forbidden_metrics:
+  - eligible_author_count
+  - matured_entry_opportunity_count
+  - fixed_horizon_outcome_coverage
+  - independent_attention_shock_count
+  - entry_effect_size
+  - persistence_effect_size
+  - overshoot_timing_gap
+  - predictive_score
+  - selected_best_field
+  - selected_best_threshold
+  - g4_holdout_outcome
+
+output_contract:
+  report_schema_version: pivot_feedback_s0_threshold_free_core_inventory_report.v1
+  field_year_schema_version: pivot_feedback_s0_field_year_core.v1
+  attention_schema_version: pivot_feedback_s0_attention_trajectory_core.v1
+  output_directory_must_be_new: true
+  receipt_written_last: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  input_roots_read_only: true
+  exact_selected_artifact_rehash_required: true
+  passing_component_status: PASS_S0_THRESHOLD_FREE_CORE_FIELD_YEAR_INVENTORY_WITH_ORCID_AFFILIATION_AND_GRAPH_TOPOLOGY_PENDING
+  s0_gate_pass_after_core_component: false
+  d0_authorized_after_core_component: false
+  gpu_used: false
+
+claim_boundary: >-
+  A passing core inventory establishes exact field-year counts from the bound
+  work-metadata and distinct author-work-event surfaces, exact non-ranked
+  descriptive team-size and calendar-support profiles, and raw annual,
+  trailing-three-year, and trailing-five-year attention counts. It does not
+  establish ORCID-stable author identity, author-work affiliation, distinct
+  coauthor graph topology, candidate eligibility, a fixed outcome horizon,
+  shocks, effects, field selection, D0 authorization, G0, model fitting, or a
+  scientific effect. S0 remains incomplete until the three deferred source and
+  graph components pass.

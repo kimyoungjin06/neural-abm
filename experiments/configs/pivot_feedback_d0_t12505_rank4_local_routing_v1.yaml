@@ -1,0 +1,114 @@
+schema_version: pivot_feedback_d0_t12505_rank4_local_routing_config.v1
+label: pivot_feedback_d0_t12505_rank4_local_routing_v1
+mode: ZERO_COST_RANK4_LOCAL_ROUTING_AND_PRODUCTION_RULE_V2_DRY_RUN
+status: FROZEN_T12505_RANK4_LOCAL_ROUTING_DRY_RUN_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v21.yaml
+  sha256: 73489c0e8cba68f5a94707677953c7b0eb24c0aa69f7f9858570e3f1a1d0d0a7
+  required_schema_version: pivot_feedback_gate_state.v21
+  required_status: VALID_RANK3_CONTENT_FAIL_FRONTIER_V4_FROZEN_EXACT_MEDICINE_RANK4_SAMPLE_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_reuse_t12505_topic_card: AUTHORIZED
+    authorization.d0_rank4_local_routing: AUTHORIZED_ZERO_COST_ONLY
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.d0_rank4_production_content_disposition: NOT_AUTHORIZED_UNTIL_LOCAL_ROUTING_VERIFIED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+frozen_input:
+  root_basename: pivot-feedback-d0-t12505-rank4-targeted-title-sample-v1-20260729
+  sample_basename: t12505_rank4_targeted_title_sample.parquet
+  sample_sha256: 9ff55e4032cc33cdd86bcc190ad5b69836c6cd520fd5436da9bb091186900863
+  sample_schema_version: pivot_feedback_d0_t12505_rank4_targeted_title_sample.v1
+  sample_rows: 96
+  receipt_basename: t12505_rank4_targeted_title_sample.outputs.json
+  receipt_sha256: e7aec9d9c2d85f4dfc786beb9eac411aeda35a4c2e8b8b9e3a793da39dedb52f
+  receipt_status: PASS_EXACT_T12505_RANK4_96_TITLE_LOCAL_SAMPLE
+  verification_basename: pivot-feedback-d0-t12505-rank4-targeted-title-sample-v1-20260729.verification-v1.json
+  verification_sha256: 196b6983b7611730b5c5291774aed9ecac0c76ee2a9b8c35cf7ed34b0bd2d3c5
+  verification_status: PASS_INDEPENDENT_EXACT_T12505_RANK4_96_TITLE_LOCAL_SAMPLE
+
+topic_card:
+  source:
+    relative_path: experiments/configs/pivot_feedback_d0_api_only_topic_routing_v1.yaml
+    sha256: 1c98b50d9e5c9c0cbc1555f41e86ae87a276571195a7125fec9daf85e39c1406
+    topic_id: 12505
+    reuse_routing_contract_without_change: true
+    reuse_topic_card_without_change: true
+
+production_rule_v2:
+  source:
+    relative_path: experiments/configs/pivot_feedback_d0_production_candidate_rule_v2.yaml
+    sha256: 527ab2d43f878fdd5cceb228d5fb13cf5d7ee2342908ce7264d7bede4d39603d
+    reuse_without_change: true
+  majority_opaque_threshold: 0.50
+  joint_indexing_score_drop_threshold: 0.15
+  joint_indexing_source_share_increase_threshold: 0.25
+  semantic_reject_threshold: 0.50
+  semantic_accept_threshold: 0.50
+  dry_run_state_is_production_disposition: false
+
+expected_dry_run:
+  recent_title_rows: 64
+  recent_accept_rows: 12
+  recent_reject_rows: 3
+  recent_ambiguous_rows: 11
+  recent_opaque_quarantine_rows: 38
+  recent_opaque_quarantine_fraction: 0.59375
+  baseline_median_primary_topic_score: 0.9933000000000001
+  signal_median_primary_topic_score: 0.03955
+  baseline_to_signal_score_drop: 0.9537500000000001
+  baseline_dominant_source_share: 0.375
+  signal_dominant_source_share: 0.84375
+  baseline_to_signal_source_share_increase: 0.46875
+  candidate_rule_v2_branch: RECENT_MAJORITY_OPAQUE_INDEXING_ANOMALY
+  candidate_rule_v2_state: WOULD_CONTENT_FAIL_INDEXING_ANOMALY
+  candidate_rule_v2_reason: RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS
+  production_content_disposition_created: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-t12505-rank4-local-routing-v1-20260729
+  routes_basename: t12505_rank4_local_title_routes.csv
+  candidate_basename: t12505_rank4_candidate_rule_v2_dry_run.parquet
+  report_basename: T12505_RANK4_LOCAL_ROUTING_AND_RULE_V2_DRY_RUN.md
+  receipt_basename: t12505_rank4_local_routing.outputs.json
+  receipt_schema_version: pivot_feedback_d0_t12505_rank4_local_routing_outputs.v1
+  status: PASS_ZERO_COST_T12505_RANK4_LOCAL_ROUTING_AND_RULE_V2_DRY_RUN
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+execution_boundary:
+  sample_title_rows_read: 96
+  raw_openalex_main_table_read: false
+  new_titles_read: false
+  network_accessed: false
+  credentials_accessed: false
+  api_requests_created: false
+  api_requests_submitted: false
+  production_content_dispositions_created: false
+  selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  outcomes_read: false
+
+authorization:
+  zero_cost_local_routing: AUTHORIZED
+  candidate_rule_v2_dry_run_aggregation: AUTHORIZED
+  raw_title_scan: NOT_AUTHORIZED
+  new_api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+  production_content_disposition: NOT_AUTHORIZED
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract reuses the frozen T12505 card and production-rule-v2 thresholds
+  on the independently verified rank-4 current-snapshot sample. The dry-run
+  result is not a production disposition, semantic truth, historical topic
+  validation, selection certificate, pivot classification, outcome result,
+  model fit, G4 opening, or scientific effect. No API request is authorized.

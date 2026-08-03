@@ -1,0 +1,170 @@
+schema_version: pivot_feedback_gate_state.v42
+label: pivot_feedback_gate_state_v42
+mode: ADDITIVE_THRESHOLD_FREE_PIVOT_DEFINITION_V2_VALIDATED_ENTRY_SOURCE_CONTRACT_AUTHORIZATION
+status: VALID_THRESHOLD_FREE_PIVOT_DEFINITION_V2_INDEPENDENTLY_VALIDATED_ENTRY_SOURCE_CONTRACT_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v41.yaml
+  sha256: 03a131f1fc59ebd04bcc11d07a11b31a2bf63dc8c3a7b061e5caf2f02c2fa5da
+  required_schema_version: pivot_feedback_gate_state.v41
+  required_status: VALID_EXACT_FOUR_PREDECISION_MEASUREMENT_SURFACE_COMPLETE_THRESHOLD_FREE_PIVOT_DEFINITION_V2_AUTHORIZED
+  required_fields:
+    measurement_completeness_decision.status: COMPLETE_INDEPENDENTLY_VERIFIED
+    measurement_completeness_decision.primary_minimum_history_threshold: NONE
+    authorization.d0_threshold_free_researcher_pivot_definition_v2: AUTHORIZED_DEFINITION_AND_FIXTURE_ONLY_NO_OUTCOME_READ
+    authorization.d0_entry_outcome_source_and_classifier_contract: PAUSED_UNTIL_V2_DEFINITION_INDEPENDENTLY_VALIDATED_AND_SUCCESSOR_GATE
+    authorization.d0_production_pivot_classification: NOT_AUTHORIZED
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+verified_threshold_free_pivot_definition_v2:
+  contract:
+    relative_path: experiments/configs/pivot_feedback_researcher_pivot_definition_v2.yaml
+    sha256: 625145e60fa38b787b25842b8b2d6877880b2f6102169588dfd1efb919e224de
+    required_schema_version: pivot_feedback_researcher_pivot_definition.v2
+    required_status: FROZEN_THRESHOLD_FREE_OBSERVABLE_HISTORY_PIVOT_DEFINITION_V2_FIXTURES_ONLY
+  validator:
+    relative_path: scripts/verify_pivot_feedback_researcher_pivot_definition_v2.py
+    sha256: 1e5d4974b9e0b20feb10d316a3512639759c957021568e34c044e2cb21465699
+  research_note:
+    relative_path: docs/research/pivot-feedback-researcher-pivot-definition-v2.md
+    sha256: 5982c7f656df8b70eff6965004845d10e9e4be9604ceb9ab615ccf79c19b78c0
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_researcher_pivot_definition_v2_20260731.summary.json
+    sha256: a7b7c004f15389e49f21855eff332a5b3279f597035a5d5335797bff9feb0a68
+    required_schema_version: pivot_feedback_researcher_pivot_definition_v2_summary.v1
+    required_status: PASS_THRESHOLD_FREE_PAST_ONLY_OBSERVABLE_HISTORY_PIVOT_DEFINITION_V2
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_researcher_pivot_definition_v2_20260731.summary.md
+    sha256: 8f90d000557ad101a69fd67691091fda7769bdd3a6b4f36e1e8bb74fa9c391df
+  result:
+    states:
+      - NO_FOCAL_ENTRY
+      - NEW_TOPIC_ENTRY
+      - RETURN
+      - CONTINUATION
+    exact_required_features:
+      - pre_entry_target_topic_work_count
+      - trailing_3y_target_topic_work_count
+      - focal_confirmed_eligible_target_topic_work_count
+    primary_minimum_history_threshold: NONE
+    valid_fixture_rows: 7
+    invalid_fail_closed_fixture_rows: 6
+    bounded_exhaustive_valid_count_tuples: 45
+    bounded_exhaustive_mismatches: 0
+    sensitivity_profiles_compared: 3
+    sensitivity_state_changes: 0
+    production_sources_read: false
+    focal_year_rows_read: false
+    future_rows_read: false
+    outcomes_read: false
+    api_requests_created: 0
+
+definition_decision:
+  status: COMPLETE_INDEPENDENTLY_VALIDATED
+  primary_event: OBSERVABLE_HISTORY_NEW_TOPIC_ENTRY
+  pivot_state: NEW_TOPIC_ENTRY
+  threshold_free: true
+  observable_history_claim_only: true
+  primary_minimum_history_threshold: NONE
+  old_v1_three_year_three_work_gate: SUPERSEDED_NOT_REUSABLE
+  sensitivity_counts_do_not_gate_state: true
+  future_persistence_or_impact_in_event: FORBIDDEN
+  production_source_readiness: INCOMPLETE
+
+authorized_entry_source_contract_scope:
+  mode: CONTRACT_AND_FIXTURES_ONLY_NO_PRODUCTION_ROW_READ
+  exact_certified_episode_rows: 4
+  registered_author_episode_rows: 3256271
+  required_source_resolutions:
+    pre_entry_target_topic_work_count:
+      current_state: VERIFIED_COLUMN_AVAILABLE
+      required_source: VERIFIED_PREDECISION_AUTHOR_MEASUREMENT
+      information_cutoff: END_OF_T_MINUS_1
+    trailing_3y_target_topic_work_count:
+      current_state: NOT_YET_CONTRACTED
+      required_window: T_MINUS_3_THROUGH_T_MINUS_1
+      required_work_abi: FROZEN_SCHOLARLY_WORK_MEASUREMENT_ABI_V1
+      required_author_linkage: DISTINCT_CURRENT_SNAPSHOT_OPENALEX_AUTHOR_TOKEN_WORK_EVENT
+      future_or_focal_year_work_allowed: false
+    focal_confirmed_eligible_target_topic_work_count:
+      current_state: NOT_YET_CONTRACTED
+      required_year: ENTRY_YEAR_T
+      required_work_abi: FROZEN_SCHOLARLY_WORK_MEASUREMENT_ABI_V1
+      required_author_linkage: DISTINCT_CURRENT_SNAPSHOT_OPENALEX_AUTHOR_TOKEN_WORK_EVENT
+      content_confirmation_semantics_must_be_resolved_before_build: true
+      api_requirement_must_be_decided_before_request_creation: true
+      post_entry_work_allowed: false
+  contract_must_resolve:
+    - EXACT_NORMALIZED_SOURCE_ARTIFACTS_AND_HASH_BINDINGS
+    - ENTRY_YEAR_T_WORK_ELIGIBILITY_AND_TEMPORAL_DISPOSITION
+    - CONTENT_CONFIRMATION_UNIT_AND_MISSINGNESS
+    - WHETHER_ANY_API_CALL_IS_NECESSARY
+    - ONE_AUTHOR_TOPIC_YEAR_ROW_AND_REPEATED_ENTRY_INVARIANTS
+    - FULL_SOURCE_REPLAY_AND_INDEPENDENT_VERIFIER_PLAN
+    - PRIVATE_RAW_NUMERIC_ID_BOUNDARY
+  contract_may_inspect_repository_configs_and_operator_receipts: true
+  contract_may_read_production_parquet_rows: false
+  contract_may_create_api_requests: false
+  contract_may_submit_paid_api_calls: false
+  contract_may_build_pivot_labels: false
+  contract_may_read_persistence_or_impact: false
+
+gate_state:
+  D0:
+    state: PARTIAL_PREDECISION_MEASUREMENT_AND_PIVOT_DEFINITION_COMPLETE_ENTRY_SOURCE_CONTRACT_AUTHORIZED
+    complete: false
+    completed_components:
+      - D0_PREDECISION_MEASUREMENT_COMPLETENESS_DECISION
+      - D0_THRESHOLD_FREE_RESEARCHER_PIVOT_DEFINITION_V2_REGISTRATION
+      - D0_THRESHOLD_FREE_RESEARCHER_PIVOT_DEFINITION_V2_INDEPENDENT_VALIDATION
+    next_components:
+      - D0_ENTRY_OUTCOME_SOURCE_AND_CLASSIFIER_CONTRACT
+      - D0_ENTRY_OUTCOME_SOURCE_CONTRACT_INDEPENDENT_VALIDATION
+    deferred_optional_components:
+      - D0_PEER_VISIBLE_SUCCESS
+    blocked_components:
+      - D0_ENTRY_OUTCOME_SOURCE_BUILD
+      - D0_PRODUCTION_RESEARCHER_PIVOT_CLASSIFICATION
+      - D0_ENTRY_OR_PERSISTENCE_OUTCOME_OPENING
+      - D0_FINAL_CANDIDATE_ELIGIBILITY
+      - G0_MEASUREMENT_FREEZE
+      - MODEL_FITTING
+      - G4
+  G0:
+    state: PENDING
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  d0_predecision_measurement_completeness_decision: COMPLETE
+  d0_threshold_free_researcher_pivot_definition_v2: COMPLETE_INDEPENDENTLY_VALIDATED
+  d0_entry_outcome_source_and_classifier_contract: AUTHORIZED_DESIGN_AND_FIXTURES_ONLY_NO_PRODUCTION_ROW_READ
+  d0_entry_outcome_source_build: NOT_AUTHORIZED
+  d0_peer_visible_success: DEFERRED_OPTIONAL_NOT_REQUIRED_FOR_PIVOT_EVENT_DEFINITION
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_submission: NOT_AUTHORIZED
+  final_candidate_eligibility: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The threshold-free observable-history pivot-definition v2 decision table and
+  bounded fixtures pass independent validation with all four states covered,
+  zero exhaustive-replay mismatches, and zero sensitivity-induced state
+  changes. No production source, focal-year, future, or outcome rows were
+  read. This successor authorizes only an exact source-and-classifier contract
+  and synthetic fixtures. It does not authorize building source rows,
+  classifying production pivots, opening entry or persistence outcomes,
+  creating or submitting API requests, establishing final eligibility, G0,
+  model fitting, G4, an association, a causal mechanism, or a scientific
+  effect.

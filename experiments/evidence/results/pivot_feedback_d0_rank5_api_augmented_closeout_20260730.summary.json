@@ -1,0 +1,85 @@
+{
+  "schema_version": "pivot_feedback_d0_rank5_api_augmented_closeout_summary.v1",
+  "status": "PASS_INDEPENDENT_RANK5_API_AUGMENTED_UNRESOLVED_TERMINAL_CLOSEOUT",
+  "authoritative_target": {
+    "field_id": 27,
+    "field_candidate_rank": 5,
+    "topic_id": 10151,
+    "topic_name": "Hepatitis C virus research",
+    "entry_year": 1993
+  },
+  "invalidated_predecessor": {
+    "wrong_target_name": "Hepatitis B Virus Infection",
+    "disposition": "INVALID_WRONG_TARGET_AUDIT_ONLY",
+    "may_enter_consensus": false,
+    "may_change_production_disposition": false,
+    "may_issue_certificate": false
+  },
+  "corrected_cross_provider_result": {
+    "request_rows": 25,
+    "response_rows_per_provider": 25,
+    "exact_label_agreement_rows": 17,
+    "api_dual_high_accept_rows": 0,
+    "api_dual_high_reject_rows": 9,
+    "api_remains_unresolved_rows": 16,
+    "unresolved_reason_counts": {
+      "AGREED_NON_DECISIVE_LABEL": 8,
+      "LABEL_DISAGREEMENT": 8
+    },
+    "human_review": "NOT_RUN_BY_DESIGN",
+    "api_labels_are_ground_truth": false
+  },
+  "rank5_production_disposition": {
+    "local_accept_rows": 27,
+    "local_reject_rows": 12,
+    "local_unresolved_rows": 25,
+    "augmented_accept_rows": 27,
+    "augmented_reject_rows": 21,
+    "augmented_unresolved_rows": 16,
+    "recent_denominator_rows": 64,
+    "accept_threshold_rows": 32,
+    "reject_threshold_rows": 32,
+    "content_state": "CONTENT_UNRESOLVED",
+    "reason": "AUGMENTED_CONSERVATIVE_EVIDENCE_NOT_DECISIVE",
+    "production_rule_version": "candidate_rule_v2_plus_correct_hcv_dual_high_api_v1",
+    "human_review_used": false,
+    "api_labels_used_as_ground_truth": false
+  },
+  "frontier_v7": {
+    "rows": 51,
+    "content_pass_rows": 3,
+    "content_fail_rows": 4,
+    "content_unresolved_rows": 1,
+    "not_evaluated_rows": 43,
+    "computer_science_field_certificate_issued": true,
+    "computer_science_selected_candidate_ranks": [
+      1,
+      45
+    ],
+    "medicine_field_certificate_issued": false,
+    "global_selection_certificate_issued": false
+  },
+  "terminal_certificate_status": {
+    "status": "BLOCKED_REQUIRED_RANK5_AUGMENTED_CONTENT_UNRESOLVED",
+    "deterministic_reselection_executed": false,
+    "authorized_resolution_path": "NONE"
+  },
+  "api_cost": {
+    "first_attempt_openai_conservative_upper_bound_usd": "0.010582",
+    "wrong_target_successful_pair_estimated_actual_usd": "0.018644",
+    "correct_target_successful_pair_estimated_actual_usd": "0.019424",
+    "conservative_cumulative_upper_bound_usd": "0.048650",
+    "authorized_cap_usd": "0.10"
+  },
+  "artifacts": {
+    "config_sha256": "e89d5bbb04296f3dc588be8edcb38c2d7714b4a9269f6d70fbba457175453845",
+    "producer_sha256": "18ac43e85502ea14795e31a7bd31e90c85f89cb84e96bb5a7be17c2976f90069",
+    "verifier_sha256": "4548dd938dd1af16ca5896c438f67764b802de8ace3ef8811f1b3420ff0df9a6",
+    "operator_receipt_sha256": "9c3d07f8769a317f153f6c90e92d2c75edd13cc9d1bb6b09369f10d0fefd0ad9",
+    "verification_report_sha256": "31fc8758c60c6bdbb361fa53d0955629e401b901b9bc3702499d2ed261a3b70e",
+    "dispositions_v6_sha256": "0d3ddf2a3cc86bbea1fc5d8831b2aba33d9e2f14f0a5213ae8351049e88050a1",
+    "frontier_v7_sha256": "45067f71f813e9ecc0d0a77d1d5cc84bf3ab64faa2a124dbbf02195023aec9d5",
+    "certificate_status_v2_sha256": "3855edb72c3f617c8c58c9bd160f2d4d9ca4ef8eca4b21a041ed58da32c0a450"
+  },
+  "claim_boundary": "The correct-HCV title-only API pair augments conservative lower bounds but leaves rank 5 unresolved. It does not establish semantic ground truth, issue a Medicine or global certificate, execute reselection, classify pivots, read outcomes, fit a model, open G4, or establish a scientific effect."
+}

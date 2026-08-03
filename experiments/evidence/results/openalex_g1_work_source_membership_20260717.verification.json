@@ -1,0 +1,94 @@
+{
+  "schema_version": "openalex_g1_work_source_membership_verification.v1",
+  "label": "openalex_g1_work_source_membership_20260717_verification",
+  "recorded_at_utc": "2026-07-17T20:34:21+00:00",
+  "path_redacted": true,
+  "subject": {
+    "output_dir_label": "work-source-membership-full-v1",
+    "status": "PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE",
+    "g_minus_1_data_readiness": "PENDING",
+    "g1_empirical_signature": "NOT_RUN",
+    "result_fingerprint_sha256": "8b7d0273a04eb7a231a9d8b466151c562ac80eac6557ff7444508cb174862242",
+    "output_manifest_sha256": "8fb34f92e3525b58c09a31ae970d913ea6858211a7595b165884fa389863156d",
+    "report_json_sha256": "1c385d42595fc34794116189ce940526e1095ccd2a5da9eccd3da902e8f152ce",
+    "report_markdown_sha256": "34b658b8fcfd601ec133f7af20d262d5c153abb36c5a33336da0b221dfc88275",
+    "canonical_plan_sha256": "7afef25a788a938b9eeb12a1802d346eb02da1d3b369a116c784851e984891cb",
+    "raw_plan_file_sha256": "51abd0e42c407d61b7296f97d432e64d0e3958d61a976555150cd2911a98f950",
+    "task_fingerprint_sha256": "30bae6b5eff2c545cc64ca2384dcc63e4f28a9237122987efc68724c37ade6c7",
+    "tool_sha256": "a5f1a4175b575c16a8c45df68c15fa2dbae8554c2c7ae258cdaa61586915f3f0",
+    "config_sha256": "91ea38ee8237ebea9240e7f8da3308f12465974528841f7b91750717765e2d92",
+    "parent_manifest_sha256": "6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46",
+    "master_ids_sha256": "889d4a54ffb41fbed3b8a657ca76a7887610275dd4b407b68a9233aaf2a08e55"
+  },
+  "clean_semantic_resume": {
+    "verification_mode": "REPLAY_EVERY_EXISTING_CHECKPOINT_FROM_ORIGINAL_PARQUET",
+    "root_binding": "OPENALEX_DERIVED_ROOT_OPERATOR_LOCAL",
+    "entrypoint": "scripts/audit_openalex_work_source_membership.py",
+    "effective_plan": {
+      "workers": 1,
+      "batch_size": 262144,
+      "full_scope": true,
+      "task_count": 21019,
+      "task_footer_rows": 20996232817,
+      "require_pass": true
+    },
+    "exit_code": 0,
+    "projected_scans_replayed": 21019,
+    "final_stdout_payload": {
+      "g1_empirical_signature": "NOT_RUN",
+      "g_minus_1_data_readiness": "PENDING",
+      "output_artifact_count": 2,
+      "output_dir": "work-source-membership-full-v1",
+      "output_manifest_sha256": "8fb34f92e3525b58c09a31ae970d913ea6858211a7595b165884fa389863156d",
+      "result_fingerprint_sha256": "8b7d0273a04eb7a231a9d8b466151c562ac80eac6557ff7444508cb174862242",
+      "status": "PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE"
+    },
+    "final_stdout_payload_canonical_sha256": "3f3c13dafb190b1dc3d0196e93e44ca8a33ffda9dcacf4f4a32d961fbf720d81",
+    "same_status": true,
+    "same_result_fingerprint": true,
+    "same_output_manifest_sha256": true,
+    "full_terminal_transcript_preserved": false,
+    "transcript_limitation": "The receipt preserves the captured final stdout payload and its canonical SHA-256, not a byte-for-byte terminal progress transcript."
+  },
+  "independent_read_only_verification": {
+    "output_commit_audit": {
+      "production_output_validator_pass": true,
+      "top_level_schema_exact": true,
+      "missing_paths": 0,
+      "extra_paths": 0,
+      "symlinks": 0,
+      "non_regular_files": 0,
+      "empty_directories": 0,
+      "checkpoint_tree": {
+        "files": 21019,
+        "bytes": 51417147,
+        "path_set_sha256": "57f15a75c1e7f32fb34785206b119c4db0313a642e70450cd7369b5eea3312b5",
+        "tree_sha256": "1c311833193a7073a5ca78e6cf86be702f38e69bb5ef2e9388f814eddab9f01c"
+      },
+      "data_artifact_tree": {
+        "files": 8757,
+        "bytes": 89957407904,
+        "path_set_sha256": "68c28fb31717b53ea48edd5f93689a4ccd2febd0531a8c37c4b11cafa0d7d376",
+        "tree_sha256": "bb0c711f8cd6b678d6ced92d10ff5530cf25d37c3f3126dc25b96ea986a61ba9"
+      },
+      "p0_findings": 0,
+      "p1_findings": 0
+    },
+    "quantitative_audit": {
+      "source_tables_reconstructed": 23,
+      "checkpoint_files_revalidated": 21019,
+      "checkpoint_binding_mismatches": 0,
+      "sentinel_locators_physically_reread": 27,
+      "sentinel_source_files_reread": 12,
+      "sentinel_locator_or_value_digest_mismatches": 0,
+      "row_accounting_exact": true,
+      "target_coverage_exact": true,
+      "author_profile_and_all_margins_exact": true,
+      "artifact_files_rehashed": 8757,
+      "artifact_hash_mismatches": 0,
+      "p0_findings": 0,
+      "p1_findings": 0
+    }
+  },
+  "claim_boundary": "This receipt records the completed source-backed semantic resume and two read-only output audits. It does not establish raw source validity, earlier-inventory byte equality, entity validity, G-1 data readiness, empirical G1, or any scientific effect."
+}

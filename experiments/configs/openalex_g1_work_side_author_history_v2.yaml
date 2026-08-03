@@ -1,0 +1,538 @@
+schema_version: openalex_g1_work_side_author_history_synthetic_validator_contract.v2
+label: openalex_g1_work_side_author_history_v2_synthetic_fixture_validator
+contract_status: IMPLEMENTED_SYNTHETIC_FIXTURE_VALIDATOR_ONLY
+
+foundation_binding:
+  policy: EXACT_V1_TEMPORAL_V3_DESIGN_PLUS_BOUNDED_SYNTHETIC_VALIDATOR_OVERLAY
+  author_v1_config_path: experiments/configs/openalex_g1_work_side_author_history_v1.yaml
+  author_v1_config_sha256: 2904f47609fa8229897cbba8a14e00d6e2babd4f1696c1ca436c5dd17d1cdc66
+  author_v1_schema_version: openalex_g1_work_side_author_history_design.v2
+  author_v1_mutation_allowed: false
+  inherited_scientific_semantics:
+    - CURRENT_SNAPSHOT_OPENALEX_AUTHOR_ID_TOKEN_NOT_PERSON
+    - UNIQUE_AUTHOR_WORK_PAIR_COUNTS_ONCE
+    - HISTORY_USABLE_TEMPORAL_DISPOSITIONS_2_AND_3
+    - A0_BASE_VIEW_AND_POSITIVE_AUTHOR_ID_SENSITIVITY
+    - TEAM_CAPS_RECOMPUTED_WITHIN_EACH_VIEW
+    - HYPER_PROLIFIC_THRESHOLDS_ARE_STRICTLY_GREATER_THAN
+    - CURRENT_SNAPSHOT_RETROSPECTIVE_PROXY_NOT_PAST_OBSERVABILITY
+  superseded_scope:
+    - DESIGN_ONLY_NO_SYNTHETIC_EXECUTABLE
+  not_inherited_as_implemented:
+    - V0_PLAN_CHECKPOINT_STATE_REPORT_RECEIPT_LIFECYCLE
+    - PRODUCTION_EXECUTABLE
+    - PRODUCTION_OUTPUT_ABI
+
+legacy_v0_surfaces:
+  preservation_policy: BYTE_EXACT_DO_NOT_REBIND_IN_PLACE
+  paths_and_sha256:
+    experiments/configs/openalex_g1_work_side_author_history_v0.yaml: d909c597b04e45b92da664e7589c8abe4e29aae738401a4f961394c84f23111c
+    tests/test_openalex_work_side_author_history_design.py: cea9697e76825270e13253424dfcfb5c2f4fbeab7d08853e10564e1c16f33f73
+    docs/case-studies/researcher-pivot/openalex-work-side-author-history-audit-design.md: 8614244ecdc33f7060505c99d86604b0972eeb3218f7f034f65d81cf93624213
+
+canonical_production_surface_binding:
+  config_path: experiments/configs/openalex_g1_canonical_work_time_spine_v2.yaml
+  config_sha256: 6e8b74ddd12cbef46c8d15d3560f0d54f470b5017685fc1bce2389250cde0484
+  config_schema_version: openalex_g1_canonical_work_time_spine_design.v3
+  runner_path: scripts/audit_openalex_canonical_work_time_spine_v3.py
+  runner_sha256: bf9ed534b2e9f9c2d6c9851be7fde298eb372d8a3cf5e17363ea6afe51cf1280
+  design_status: IMPLEMENTED_PRODUCTION_CAPABLE_PRODUCTION_NOT_RUN
+  production_status: PRODUCTION_NOT_RUN
+  production_receipt_exists: false
+  author_production_parent_eligible: false
+  author_production_state: BLOCKED_CANONICAL_PRODUCTION_RECEIPT_NOT_AVAILABLE
+  synthetic_fixture_parent_is_production_parent: false
+
+foundation_runtime_verification:
+  verification_order: AFTER_EXACT_CONFIG_PARSE_BEFORE_FIXTURE_OPEN
+  fixture_lstat_or_payload_open_before_foundation_verification_allowed: false
+  every_surface_rehashed_from_same_bounded_regular_file_snapshot: true
+  regular_file_single_link_non_symlink_required: true
+  maximum_bytes_per_file: 4194304
+  report_records_sorted_by: repository_relative_path
+  report_record_exact_keyset:
+    - repository_relative_path
+    - bytes
+    - sha256
+    - verified_against_config
+  required_surfaces:
+    - repository_relative_path: docs/case-studies/researcher-pivot/openalex-work-side-author-history-audit-design.md
+      bytes: 33788
+      sha256: 8614244ecdc33f7060505c99d86604b0972eeb3218f7f034f65d81cf93624213
+    - repository_relative_path: experiments/configs/openalex_g1_canonical_work_time_spine_v2.yaml
+      bytes: 40496
+      sha256: 6e8b74ddd12cbef46c8d15d3560f0d54f470b5017685fc1bce2389250cde0484
+    - repository_relative_path: experiments/configs/openalex_g1_work_side_author_history_v0.yaml
+      bytes: 99203
+      sha256: d909c597b04e45b92da664e7589c8abe4e29aae738401a4f961394c84f23111c
+    - repository_relative_path: experiments/configs/openalex_g1_work_side_author_history_v1.yaml
+      bytes: 27115
+      sha256: 2904f47609fa8229897cbba8a14e00d6e2babd4f1696c1ca436c5dd17d1cdc66
+    - repository_relative_path: scripts/audit_openalex_canonical_work_time_spine_v3.py
+      bytes: 221407
+      sha256: bf9ed534b2e9f9c2d6c9851be7fde298eb372d8a3cf5e17363ea6afe51cf1280
+    - repository_relative_path: tests/test_openalex_work_side_author_history_design.py
+      bytes: 87025
+      sha256: cea9697e76825270e13253424dfcfb5c2f4fbeab7d08853e10564e1c16f33f73
+  mismatch_policy: FAIL_CLOSED_BEFORE_FIXTURE_OPEN
+
+source:
+  root_env: OPENALEX_DERIVED_ROOT
+  root_id: openalex_works_20260330_repairreplay_20260410_190630
+  snapshot_date: "2026-03-30"
+  lineage_id: openalex_20260225_base_plus_20260330_update_repairreplay
+  historical_content_identity: UNVERIFIED
+  production_input_access_allowed: false
+  design_opens_source_data: false
+
+lifecycle:
+  implementation_status: IMPLEMENTED_SYNTHETIC_FIXTURE_VALIDATOR_ONLY
+  production_status: PRODUCTION_NOT_RUN
+  execution_kind: STDOUT_ONLY_CLOSED_SYNTHETIC_VALIDATION
+  output_files_written: false
+  synthetic_result_promotable: false
+  production_execution_supported: false
+  production_source_access_supported: false
+  production_parity_established: false
+  g_minus_1_data_readiness: PENDING
+  g0_measurement_freeze: PENDING
+  empirical_g1_signature: NOT_RUN
+  pass_g1: false
+  scientific_effect: NOT_ESTABLISHED
+  evidence_classes:
+    pinned_checked_fixture: PINNED_CHECKED_FIXTURE
+    generic_fixture: UNATTESTED_GENERIC_FIXTURE
+  pinned_fixture_status: PASS_SYNTHETIC_WORK_SIDE_AUTHOR_TOKEN_HISTORY_V2_PINNED_FIXTURE_CONTRACT_ONLY
+  generic_fixture_status: VALID_UNATTESTED_GENERIC_WORK_SIDE_AUTHOR_TOKEN_HISTORY_V2_MECHANICS_ONLY
+
+synthetic_fixture_validator:
+  script: scripts/verify_openalex_work_side_author_history_fixture_v2.py
+  exact_cli:
+    - --config
+    - --synthetic-fixture
+  accepted_config_path: experiments/configs/openalex_g1_work_side_author_history_v2.yaml
+  hard_caps:
+    fixture_bytes: 1048576
+    main_rows: 10000
+    spine_rows: 10000
+    authorship_rows: 20000
+  fixture_schema_version: openalex_g1_work_side_author_history_synthetic_fixture.v2
+  pinned_success_status: PASS_SYNTHETIC_WORK_SIDE_AUTHOR_TOKEN_HISTORY_V2_PINNED_FIXTURE_CONTRACT_ONLY
+  generic_valid_status: VALID_UNATTESTED_GENERIC_WORK_SIDE_AUTHOR_TOKEN_HISTORY_V2_MECHANICS_ONLY
+  canonical_json_abi: openalex_g1_work_side_author_history_canonical_json.v2
+  foundation_file_max_bytes: 4194304
+  pinned_fixture_path: tests/fixtures/openalex_work_side_author_history_v2_minimal.json
+  max_nesting_depth: 64
+  max_identifier_decimal_digits: 20
+  max_json_integer_decimal_digits: 20
+  surface_kind: SYNTHETIC_FIXTURE_ONLY
+  production_input_access_allowed: false
+  snapshot_date: "2026-03-30"
+  team_caps: ["10", "50", "100", ALL]
+  hyper_prolific_thresholds: [50, 100, 250, 500, 1000]
+  history_usable_dispositions: [2, 3]
+  g_minus_1_status: PENDING
+  g0_status: PENDING
+
+fixture_contract:
+  strict_json:
+    duplicate_keys_rejected: true
+    nan_and_infinities_rejected: true
+    lone_unicode_surrogates_rejected: true
+    json_booleans_never_accepted_as_integers: true
+    max_nesting_depth: 64
+    max_integer_decimal_digits_before_int_conversion: 20
+    parser_recursion_error_translated_to_controlled_validation_failure: true
+  strict_yaml_config:
+    max_nesting_depth: 64
+    parser_recursion_error_translated_to_controlled_validation_failure: true
+    aliases_merge_keys_and_custom_tags_rejected: true
+  identifier_conversion_boundary:
+    maximum_decimal_suffix_digits_before_int_conversion: 20
+    applies_to: [work_id, author_id]
+    uint64_range_still_required_after_length_check: true
+  controlled_failure_contract:
+    malformed_or_over_limit_input_exit_code: 2
+    stdout_on_failure: empty
+    one_redacted_stderr_line: true
+    python_traceback_allowed: false
+  path_and_size_boundary:
+    regular_file_required: true
+    symlink_rejected: true
+    link_count_must_equal: 1
+    size_checked_before_payload_parse: true
+    production_root_path_components_rejected_before_payload_parse: true
+    best_effort_intermediate_component_race_boundary: LOCAL_TRUSTED_FILESYSTEM_ONLY_NOT_OPENAT_TRAVERSAL
+  exact_top_level_keyset:
+    - schema_version
+    - surface_kind
+    - production_input_access_allowed
+    - root_id
+    - snapshot_date
+    - synthetic_parents
+    - main_rows
+    - spine_rows
+    - authorship_rows
+  root_id_prefix: synthetic-
+  production_root_id_forbidden_substring: openalex_works_20260330_repairreplay_20260410_190630
+  main_row:
+    exact_keyset: [id, authors_count, primary_topic__field__id]
+    exact_types:
+      id: string
+      authors_count: non_boolean_integer_0_through_4294967295
+      primary_topic__field__id: null_or_string
+    work_id_grammar: '^https://openalex[.]org/W(?:-1|0|[1-9][0-9]*)$'
+    exact_w_minus_1_quarantined_before_numeric_parse: true
+    retained_work_numeric_id_range: uint64
+    field_id_grammar: '^https://openalex[.]org/fields/(?:[1-9]|1[0-9]|2[0-6])$'
+  spine_row:
+    exact_keyset: [work_id_numeric, publication_day, publication_year, temporal_disposition]
+    exact_types:
+      work_id_numeric: non_boolean_uint64
+      publication_day: null_or_non_boolean_int32
+      publication_year: null_or_non_boolean_integer_1_through_9999
+      temporal_disposition: non_boolean_integer_0_through_5
+    publication_day_epoch: "1970-01-01"
+    code_0_requires_day_and_year_null: true
+    codes_1_through_5_require_day_and_year_non_null: true
+    non_null_year_must_equal_year_derived_from_publication_day: true
+    ordered_predicates:
+      - code_1_if_day_before_1900_01_01
+      - code_2_if_day_on_or_after_1900_01_01_and_derived_year_before_2026
+      - code_3_if_derived_year_2026_and_day_on_or_before_2026_03_30
+      - code_4_if_derived_year_2026_and_day_after_2026_03_30
+      - code_5_if_derived_year_after_2026
+    numeric_id_set_must_equal_retained_main_numeric_id_set: true
+  authorship_row:
+    exact_keyset:
+      - id
+      - authorships__author__id
+      - authorships__author__orcid
+      - authorships__raw_author_name
+      - authorships__author__display_name
+      - authorships__author_position
+    exact_types:
+      id: string
+      authorships__author__id: null_or_string
+      authorships__author__orcid: null_or_string
+      authorships__raw_author_name: null_or_string
+      authorships__author__display_name: null_or_string
+      authorships__author_position: null_or_string
+    work_id_grammar: '^https://openalex[.]org/W(?:-1|0|[1-9][0-9]*)$'
+    author_id_grammar: '^https://openalex[.]org/A(?:0|[1-9][0-9]*)$'
+    null_author_id_is_raw_slot_not_history: true
+    malformed_non_null_author_id_rejected: true
+  closure:
+    every_retained_authorship_row_matches_one_retained_main_work: true
+    declared_authors_count_equals_observed_raw_authorship_slots_per_work: true
+    duplicate_author_work_key: [author_numeric_id, work_numeric_id]
+    duplicate_pair_counts_once: true
+    duplicate_pair_union_diagnostics_without_representative_row: true
+
+synthetic_parent_contract:
+  exact_parent_keyset:
+    - current_content_baseline
+    - main_temporal_validity
+    - canonical_work_time_spine
+  current_content_baseline:
+    exact_keyset:
+      - schema_version
+      - status
+      - synthetic_content_tree_sha256
+      - synthetic_content_result_fingerprint_sha256
+    schema_version: openalex_g1_work_side_author_history_synthetic_content_parent.v1
+    status: SYNTHETIC_CONTENT_BASELINE_PARENT_ONLY
+  main_temporal_validity:
+    exact_keyset:
+      - schema_version
+      - status
+      - synthetic_content_tree_sha256
+      - synthetic_content_result_fingerprint_sha256
+      - synthetic_temporal_result_fingerprint_sha256
+    schema_version: openalex_g1_work_side_author_history_synthetic_temporal_parent.v1
+    status: SYNTHETIC_MAIN_TEMPORAL_PARENT_ONLY
+  canonical_work_time_spine:
+    exact_keyset:
+      - schema_version
+      - status
+      - synthetic_content_tree_sha256
+      - synthetic_content_result_fingerprint_sha256
+      - synthetic_temporal_result_fingerprint_sha256
+      - synthetic_spine_result_fingerprint_sha256
+      - synthetic_spine_data_tree_sha256
+      - rows
+    schema_version: openalex_g1_work_side_author_history_synthetic_spine_parent.v1
+    status: SYNTHETIC_CANONICAL_SPINE_PARENT_ONLY
+  digest_pattern: '^[0-9a-f]{64}$'
+  all_three_content_commitments_equal: true
+  temporal_and_spine_temporal_result_commitments_equal: true
+  spine_rows_equal_fixture_spine_row_count: true
+  production_parent_status_literals_allowed: false
+  evidence_classes:
+    pinned_checked_fixture: CONFIG_PINNED_SYNTHETIC_PARENT_STUBS
+    unattested_generic_fixture: SELF_DECLARED_UNVERIFIED_SYNTHETIC_PARENT_STUBS
+  embedded_parent_payloads_are_production_receipts: false
+  generic_parent_commitments_are_independently_verified: false
+
+reduction_contract:
+  author_unit: CURRENT_SNAPSHOT_OPENALEX_AUTHOR_ID_TOKEN_NOT_PERSON
+  history_views: [base_including_A0, positive_author_id]
+  history_event_key: [author_numeric_id, work_numeric_id]
+  history_usable_dispositions: [2, 3]
+  excluded_dispositions: [0, 1, 4, 5]
+  team_size_source: validated_raw_authorship_slot_count
+  team_caps: ["10", "50", "100", ALL]
+  hyper_prolific_threshold_semantics: maximum_annual_unique_work_count_strictly_greater_than_threshold_within_same_cap_view
+  hyper_prolific_thresholds: [50, 100, 250, 500, 1000]
+  positive_view_is_exact_stable_filter: author_numeric_id_greater_than_zero
+  published_identifiers_names_or_orcids_allowed: false
+
+aggregate_digest_contract:
+  digest: sha256
+  framing: utf8_domain_then_single_nul_then_canonical_json_payload
+  canonical_json:
+    ensure_ascii: false
+    sort_keys: unicode_codepoint_ascending
+    separators: compact_comma_and_colon
+    allow_nan: false
+    trailing_newline: false
+  pair_diagnostic_record:
+    exact_keyset:
+      - author_numeric_id
+      - work_numeric_id
+      - raw_multiplicity
+      - temporal_disposition
+      - history_usable
+      - exact_raw_orcid_set
+      - canonical_valid_orcid_set
+      - exact_raw_author_name_set
+      - exact_display_name_set
+      - normalized_raw_author_name_set
+      - normalized_display_name_set
+      - author_position_category_set
+      - exact_raw_position_set
+      - conflict_flags
+    record_sort_key: [author_numeric_id, work_numeric_id]
+    conflict_flags_exact_keyset:
+      - raw_orcid_conflict
+      - canonical_orcid_conflict
+      - raw_author_name_conflict
+      - display_name_conflict
+      - normalized_raw_name_conflict
+      - normalized_display_name_conflict
+      - position_category_conflict
+      - raw_position_conflict
+      - position_conflict
+    conflict_flag_values_are_boolean: true
+    position_conflict_equals_category_or_raw_position_conflict: true
+    record_abi: V0_COMPATIBLE_FIELD_LAYOUT_WITH_NESTED_NINE_FLAG_CONFLICT_OBJECT
+    exact_v0_digest_byte_equivalence_claimed: false
+    cross_runtime_digest_equivalence_claimed: false
+    diagnostic_values_never_published_readably: true
+  domains:
+    primary_population_aggregate_sha256: openalex_g1_work_side_author_history.synthetic.primary_pair_diagnostics.v2
+    history_usable_population_aggregate_sha256: openalex_g1_work_side_author_history.synthetic.history_usable_pair_diagnostics.v2
+    base_view_per_year_aggregate_sha256: openalex_g1_work_side_author_history.synthetic.base_view_per_year.v2
+    positive_view_per_year_aggregate_sha256: openalex_g1_work_side_author_history.synthetic.positive_view_per_year.v2
+    base_view_per_token_aggregate_sha256: openalex_g1_work_side_author_history.synthetic.base_view_per_token.v2
+    positive_view_per_token_aggregate_sha256: openalex_g1_work_side_author_history.synthetic.positive_view_per_token.v2
+    base_view_grid_sha256: openalex_g1_work_side_author_history.synthetic.base_view_team_hyper_grid.v2
+    positive_author_id_view_grid_sha256: openalex_g1_work_side_author_history.synthetic.positive_view_team_hyper_grid.v2
+
+stdout_report_contract:
+  schema_version: openalex_g1_work_side_author_history_fixture_validation_report.v2
+  serialization: CANONICAL_JSON_SORTED_KEYS_COMPACT_UTF8_PLUS_LF
+  stderr_on_success: empty
+  files_written: false
+  exact_top_level_keyset:
+    - schema_version
+    - surface_kind
+    - status
+    - production_status
+    - evidence_class
+    - inputs
+    - scope
+    - parents
+    - source_accounting
+    - work_and_slot_accounting
+    - author_id_accounting
+    - pair_accounting
+    - temporal_accounting
+    - history_accounting
+    - team_and_hyper_sensitivity
+    - gate_status
+    - claim_boundary
+  inputs_exact_keyset:
+    - config_sha256
+    - fixture_sha256
+    - runtime_fingerprint
+    - foundation_verification
+  runtime_fingerprint_exact_keyset:
+    - python_implementation
+    - python_version
+    - unicodedata_unidata_version
+    - canonical_json_abi
+  canonical_json_abi: openalex_g1_work_side_author_history_canonical_json.v2
+  foundation_verification:
+    type: array_of_six_records_sorted_by_repository_relative_path
+    record_exact_keyset:
+      - repository_relative_path
+      - bytes
+      - sha256
+      - verified_against_config
+    every_verified_against_config: true
+  scope_exact_keyset:
+    - main_rows
+    - spine_rows
+    - authorship_rows
+    - gpu_used
+    - fixture_evidence_class
+    - parent_evidence_class
+    - production_source_interface_used
+    - production_input_accessed
+    - pinned_fixture_sha256_match
+    - files_written
+    - scientific_effect_estimation_performed
+  evidence_conditioned_scope_values:
+    pinned_checked_fixture:
+      fixture_evidence_class: PINNED_CHECKED_FIXTURE
+      parent_evidence_class: CONFIG_PINNED_SYNTHETIC_PARENT_STUBS
+      production_source_interface_used: false
+      production_input_accessed: false
+      pinned_fixture_sha256_match: true
+    unattested_generic_fixture:
+      fixture_evidence_class: UNATTESTED_GENERIC_FIXTURE
+      parent_evidence_class: SELF_DECLARED_UNVERIFIED_SYNTHETIC_PARENT_STUBS
+      production_source_interface_used: false
+      production_input_accessed: null
+      pinned_fixture_sha256_match: boolean_raw_sha_equality_only_not_evidence_class
+  gate_status_exact_keyset:
+    - production_execution_authorized
+    - production_parity_established
+    - g_minus_1_data_readiness
+    - g0_measurement_freeze
+    - empirical_g1_signature
+    - pass_g1
+    - scientific_effect
+  pair_accounting_exact_keyset:
+    - grammar_valid_author_slots
+    - distinct_author_work_pairs
+    - duplicate_pair_row_excess
+    - position_category_conflict_pairs
+    - raw_position_conflict_pairs
+    - combined_position_conflict_pairs
+    - primary_population_aggregate_sha256
+    - history_usable_population_aggregate_sha256
+  no_raw_author_ids_names_or_orcids_in_stdout: true
+
+fixture_evidence_policy:
+  pinned_checked_fixture:
+    required_repository_relative_path: tests/fixtures/openalex_work_side_author_history_v2_minimal.json
+    required_sha256: e77556ac457424193dd33cc9760b00b36aaba06fd207bd8cc1b0fb356cf101ff
+    require_both_exact_path_and_sha256: true
+    exact_path_with_sha256_mismatch_policy: FAIL_CLOSED_DO_NOT_DOWNGRADE_TO_GENERIC
+    evidence_class: PINNED_CHECKED_FIXTURE
+    status: PASS_SYNTHETIC_WORK_SIDE_AUTHOR_TOKEN_HISTORY_V2_PINNED_FIXTURE_CONTRACT_ONLY
+  generic_fixture:
+    definition: EVERY_OTHER_SCHEMA_VALID_SYNTHETIC_FIXTURE_PATH
+    copied_pinned_bytes_at_other_path_remain_generic: true
+    evidence_class: UNATTESTED_GENERIC_FIXTURE
+    status: VALID_UNATTESTED_GENERIC_WORK_SIDE_AUTHOR_TOKEN_HISTORY_V2_MECHANICS_ONLY
+    fixture_provenance_verified: false
+    parent_stub_provenance_verified: false
+
+minimal_fixture:
+  path: tests/fixtures/openalex_work_side_author_history_v2_minimal.json
+  sha256: e77556ac457424193dd33cc9760b00b36aaba06fd207bd8cc1b0fb356cf101ff
+  exact_row_counts:
+    main_rows: 8
+    spine_rows: 7
+    authorship_rows: 21
+  coverage:
+    - EXACT_W_MINUS_1_MAIN_AND_AUTHORSHIP_QUARANTINE
+    - ALL_SIX_TEMPORAL_DISPOSITIONS
+    - A0_HISTORY_USABLE_BASE_VS_POSITIVE_VIEW_DIFFERENCE
+    - NULL_AUTHOR_SLOT
+    - DUPLICATE_AUTHOR_WORK_PAIR_WITH_POSITION_CONFLICT
+    - TEAM_CAP_10_VS_50_BOUNDARY
+  expected_visible_counts:
+    source_accounting:
+      main_rows: 8
+      spine_rows: 7
+      authorship_rows: 21
+      matched_main_spine_rows: 7
+      duplicate_main_rows: 0
+      duplicate_spine_rows: 0
+      matched_authorship_rows: 20
+      unmatched_authorship_rows: 0
+    work_and_slot_accounting:
+      retained_work_rows: 7
+      main_w_minus_1_rows: 1
+      authorship_w_minus_1_rows: 1
+      total_w_minus_1_rows: 2
+      w_zero_rows: 1
+      declared_slots: 20
+      observed_slots: 20
+      authors_count_mismatches: 0
+      complete_works: 6
+      partial_works: 1
+      none_usable_works: 0
+      zero_authorship_row_works: 0
+    author_id_accounting:
+      null_author_slots: 1
+      malformed_author_slots: 0
+      grammar_valid_author_slots: 19
+      a_zero_slots: 1
+      positive_author_slots: 18
+      distinct_base_tokens: 14
+      distinct_positive_tokens: 13
+    pair_accounting:
+      grammar_valid_author_slots: 19
+      distinct_author_work_pairs: 18
+      duplicate_pair_row_excess: 1
+      position_category_conflict_pairs: 1
+      raw_position_conflict_pairs: 1
+      combined_position_conflict_pairs: 1
+    temporal_accounting:
+      disposition_0_pairs: 1
+      disposition_1_pairs: 1
+      disposition_2_pairs: 12
+      disposition_3_pairs: 2
+      disposition_4_pairs: 1
+      disposition_5_pairs: 1
+      history_usable_pairs: 14
+      excluded_pairs: 4
+    history_count_fields:
+      base_view_tokens: 13
+      positive_view_tokens: 12
+      base_view_unique_pairs: 14
+      positive_view_unique_pairs: 13
+    base_view_cap_pair_counts: {"10": 3, "50": 14, "100": 14, ALL: 14}
+    positive_author_id_view_cap_pair_counts: {"10": 2, "50": 13, "100": 13, ALL: 13}
+    every_base_and_positive_threshold_grid_cell: 0
+  expected_digest_values:
+    primary_population_aggregate_sha256: 580bfbbe89572338b4971cb89508f5af7c256011a799db99197095cac589ca97
+    history_usable_population_aggregate_sha256: 4f896b6f08f9b04b936430c843b4523b1878a52f43b57414a4855a8cd4c6be36
+    base_view_per_year_aggregate_sha256: 7cd8491b7d30a2a7c24cf40d55a16d140c3709e1d3e4532095a8a5fd83549834
+    positive_view_per_year_aggregate_sha256: 830c671dd50327d1e163a289fb1549ce3cbcf4258e9ad86d3cf9eb7b4e3c83ab
+    base_view_per_token_aggregate_sha256: 14fa7c82315f20ada64e3984f1d685e498b7bd5cc963c5d3bdd5ee628a64ea99
+    positive_view_per_token_aggregate_sha256: 3ff5096fa11e161e71a86bf0ea9e2a5ec7ff2f48e7676dff4d2ee9414085073e
+    base_view_grid_sha256: 3cd666d759763357023450014b5fd64b2b8675f321e26e0757cf57892b901c2d
+    positive_author_id_view_grid_sha256: c904a488ddbdbb17295993db125ac0071e4fc05e48d540d7fe1f1dfa556d80ff
+
+claim_boundaries:
+  pinned_checked_fixture: >-
+    This config-pinned repository synthetic fixture validates bounded current-snapshot author-token history accounting only; the validator used no production source interface and accessed no production input, runtime-dependent diagnostic semantics are bound to the reported runtime fingerprint and are not asserted byte-identical across runtimes, production parity is not established, G-1 and G0 remain pending, and no empirical or scientific effect is established.
+  unattested_generic_fixture: >-
+    This unattested generic fixture validates bounded author-token history mechanics only; fixture provenance and self-declared synthetic parent stubs are unverified, production-input origin is unknown, the validator exposed and used no production source interface, runtime-dependent diagnostic semantics are bound to the reported runtime fingerprint and are not asserted byte-identical across runtimes, production parity is not established, G-1 and G0 remain pending, and no empirical or scientific effect is established.
+
+forbidden_claims:
+  - PRODUCTION_COMPONENT_PASS
+  - PRODUCTION_PARITY
+  - AUTHOR_ENTITY_VALIDITY
+  - HISTORICAL_AUTHORSHIP_OBSERVABILITY
+  - CANDIDATE_ELIGIBILITY
+  - G_MINUS_1_PASS
+  - G0_PASS
+  - EMPIRICAL_G1_EFFECT
+  - SCIENTIFIC_EFFECT

@@ -1,0 +1,43 @@
+schema_version: openalex_g1_recount_config.v1
+label: openalex_g1_main_id_recount_v0
+
+parent_inventory:
+  schema_version: openalex_source_inventory.v1
+  manifest_id: openalex_g1_source_inventory_v0
+  source_root_env: OPENALEX_DERIVED_ROOT
+  source_root_id: openalex_works_20260330_repairreplay_20260410_190630
+  inventory_fingerprint_sha256: 1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473
+
+main_id_recount:
+  table: openalex_works_20260330
+  column: id
+  canonical_prefix: "https://openalex.org/W"
+  expected_files: 493
+  expected_rows: 492293207
+  expected_null_ids: 0
+  expected_invalid_ids: 0
+  expected_distinct_ids: 492293207
+  expected_duplicate_row_excess: 0
+  spool_dtype: uint64
+  batch_size: 262144
+  duplicate_scan_chunk_rows: 8388608
+  invalid_sample_limit: 20
+
+claim_boundary: >-
+  Passing this exact main-work ID recount reproduces only the main-table body
+  row, null, validity, distinct-ID, and duplicate counts. It does not establish
+  child-table join coverage, author validity, temporal leakage safety,
+  representative pilot status, PASS_G1, or any empirical effect.
+
+pending_after_main_id_recount:
+  - works_child_source_id_orphans
+  - referenced_target_work_coverage
+  - authorship_work_level_complete_partial_none_id_profiles
+  - authorship_missingness_by_lineage_year_field_team_size_and_eligibility
+  - publication_and_citation_date_consistency
+  - author_identity_split_merge_sensitivity
+  - field_coverage_and_right_censoring
+  - cutoff_aware_available_at_validation
+  - t_minus_1_graph_validation
+  - leakage_tests
+  - deterministic_pilot_representativeness

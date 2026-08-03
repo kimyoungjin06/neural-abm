@@ -1,0 +1,143 @@
+{
+  "schema_version": "openalex_g1_main_id_recount_blocked_summary.v1",
+  "label": "openalex_g1_main_id_recount_20260716_blocked",
+  "generated_at_utc": "2026-07-16T09:36:01.352552+00:00",
+  "status": "BLOCKED",
+  "gate_status": {
+    "pass_main_id_recount": false,
+    "g_minus_1_data_readiness": "BLOCKED_ON_MAIN_ID_REMEDIATION",
+    "g1_empirical_signature": "NOT_RUN",
+    "pass_g1": false
+  },
+  "source": {
+    "source_root_id": "openalex_works_20260330_repairreplay_20260410_190630",
+    "parent_manifest_sha256": "6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46",
+    "parent_inventory_fingerprint_sha256": "1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473",
+    "parent_stability_fingerprint_sha256": "a3bfb7f639d4131749c1522f00e5e977bae7abc1a62202790fd41279f8f0a0e5",
+    "parent_stable_after_recount": true
+  },
+  "provenance": {
+    "config_sha256": "aa9d783b43eb34ec653ecb5d5964ee564d1583dcf445520d490c332120abe7eb",
+    "tool_sha256": "fb22a03e89b672ae3790e7cad03f1f99ebc04a8c2df543bfda42434de2a427a9",
+    "plan_sha256": "2378b49ffe9523439aee7b26e36c769d9f31a0f6b41f65382ad0ad68baac7c91",
+    "raw_plan_file_sha256": "abfaccc091143e52f64d49c2f812ec595e0c7fb2a23653e38f8c5fdfea2d1fa4",
+    "raw_report_sha256": "ceb318b378ba23a5418754f4e5c906d71f4c22ceb6e05c1f1c11cfd6f26e9483",
+    "raw_markdown_sha256": "aab44012f6c0f57a0ce64f3951c3398a51afd61718f668b24cdae2f2d2b30931",
+    "git_commit": "10dd3e8fd1c7cc1f30088fcdbef510439e172917",
+    "dirty_worktree": true,
+    "path_redacted": true
+  },
+  "scope": {
+    "name": "full_main_id_recount",
+    "table": "openalex_works_20260330",
+    "column": "id",
+    "files": 493
+  },
+  "counts": {
+    "data_page_rows": 492293207,
+    "null_ids": 0,
+    "invalid_ids": 1,
+    "distinct_ids": null,
+    "duplicate_row_excess": null,
+    "duplicate_id_groups": null,
+    "max_multiplicity": null
+  },
+  "blocking_observation": {
+    "value": "https://openalex.org/W-1",
+    "occurrences_in_main_scan": 1,
+    "relative_path": "openalex_works_20260330/part-384.parquet",
+    "file_index": 317,
+    "file_start_row": 317000000,
+    "file_rows": 1000000,
+    "file_checkpoint_id": "d5a4759828168ecbf42bf3eff52f6aefddf6179d25d1d07a7a869b7f6090a80c",
+    "decoded_file_id_sha256": "36b988fa2397151b9baf60a809c8a9ae50a1a82f954593a5cb2a7602d541f143"
+  },
+  "unresolved_zero_id_diagnostic": {
+    "value": "https://openalex.org/W0",
+    "occurrences_in_main_scan": 1,
+    "relative_path": "openalex_works_20260330/part-322.parquet",
+    "row_group": 10,
+    "row_group_row": 12917,
+    "file_row": 340597,
+    "retained_by_frozen_grammar": true,
+    "source_authorship_rows_in_targeted_probe": 1,
+    "source_authorship_rows_with_null_author_id": 1,
+    "source_topic_rows_in_targeted_probe": 0,
+    "source_reference_rows_in_targeted_probe": 0,
+    "reference_target_rows_in_targeted_probe": 0,
+    "status": "WARN_ZERO_ID_UNRESOLVED"
+  },
+  "corroborating_prior_audit": {
+    "generated_at_utc": "2026-04-27T08:06:08.115097+00:00",
+    "report_sha256": "e75c5aa9b426bdc066647c621cee5c93a5f1ae1ff9f17187005077f842bfab4f",
+    "reported_rows": 492293207,
+    "reported_malformed_rows": 1,
+    "reported_bad_key": "https://openalex.org/W-1",
+    "reported_bad_key_count": 1,
+    "dataset_profile_sha256": "ff32c904885e3062daf5d946db47bb9236570dd9a74ec157dd1da301d09791ba"
+  },
+  "checks": [
+    {
+      "name": "data_page_rows",
+      "status": "PASS",
+      "observed": 492293207,
+      "expected": 492293207
+    },
+    {
+      "name": "null_main_work_ids",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "invalid_main_work_ids",
+      "status": "BLOCK",
+      "observed": 1,
+      "expected": 0
+    },
+    {
+      "name": "exact_distinct_main_work_ids",
+      "status": "BLOCK",
+      "observed": null,
+      "expected": 492293207
+    },
+    {
+      "name": "duplicate_main_work_row_excess",
+      "status": "BLOCK",
+      "observed": null,
+      "expected": 0
+    },
+    {
+      "name": "parent_inventory_stable_after_recount",
+      "status": "PASS",
+      "observed": true,
+      "expected": true
+    }
+  ],
+  "execution": {
+    "started_at_utc": "2026-07-16T09:31:02.220463+00:00",
+    "finished_at_utc": "2026-07-16T09:36:01.352552+00:00",
+    "elapsed_seconds": 300.7789853030117,
+    "materialize_file_seconds": 288.93608196324203,
+    "sort_count_and_checksum_seconds": 0.0,
+    "id_column_compressed_bytes": 5137957807,
+    "peak_rss_kib": 4181056,
+    "artifact_bytes_total": 3938345656,
+    "runtime": {
+      "python": "3.14.0",
+      "numpy": "2.4.4",
+      "pyarrow": "24.0.0",
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "byteorder": "little"
+    }
+  },
+  "local_artifact_commitments": {
+    "raw_ids": {
+      "bytes": 3938345656,
+      "sha256": "e1620784a27fdcfd33683112b94d8ebdeb913d54b914225986e9788709591db9"
+    },
+    "sorted_ids": null
+  },
+  "remediation_boundary": "The frozen zero-invalid contract failed and remains failed. The malformed W-1 row must not be silently canonicalized or dropped. Any follow-up analysis view must freeze an explicit quarantine before empirical analysis, reproduce the exact quarantined value and count, sort and count only IDs satisfying the published frozen grammar, and propagate the same exclusion through every child relation. W0 remains inside that grammar-valid view as an explicit unresolved diagnostic; it must not be called entity-valid or removed solely from a current API response.",
+  "claim_boundary": "This result reproduces one malformed main-work identifier and therefore does not establish PASS_MAIN_ID_RECOUNT, G-1 data readiness, PASS_METADATA, empirical PASS_G1, or any scientific effect. pass_g1=false means NOT_RUN, not a failed scientific hypothesis."
+}

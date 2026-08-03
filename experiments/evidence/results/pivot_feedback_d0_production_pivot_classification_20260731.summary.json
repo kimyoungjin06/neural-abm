@@ -1,0 +1,134 @@
+{
+  "schema_version": "pivot_feedback_d0_production_pivot_classification_summary.v1",
+  "status": "PASS_INDEPENDENT_EXACT_FOUR_ALL_ROW_OBSERVABLE_HISTORY_STATE_REPLAY",
+  "scope": {
+    "exact_certified_episode_rows": 4,
+    "registered_author_episode_rows": 3256271,
+    "source_columns_preserved": 8,
+    "classification_columns": 10,
+    "minimum_history_threshold": "NONE",
+    "graph_team_cap": "NONE",
+    "observable_history_claim_only": true,
+    "true_lifetime_first_claim_allowed": false,
+    "post_entry_offsets_read": [],
+    "persistence_or_impact_rows_read": false,
+    "raw_work_partition_rows_read": 0,
+    "raw_author_event_partition_rows_read": 0,
+    "api_requests_created": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "state_replay": {
+    "exact_states": [
+      "NO_FOCAL_ENTRY",
+      "NEW_TOPIC_ENTRY",
+      "RETURN",
+      "CONTINUATION"
+    ],
+    "primary_pivot_state": "NEW_TOPIC_ENTRY",
+    "totals": {
+      "author_rows": 3256271,
+      "no_focal_entry_rows": 3246984,
+      "new_topic_entry_rows": 4301,
+      "return_rows": 125,
+      "continuation_rows": 4861
+    },
+    "by_episode": [
+      {
+        "certified_episode_index": 1,
+        "field_id": 17,
+        "topic_id": 14430,
+        "entry_year": 2003,
+        "author_rows": 549629,
+        "no_focal_entry_rows": 547540,
+        "new_topic_entry_rows": 950,
+        "return_rows": 15,
+        "continuation_rows": 1124
+      },
+      {
+        "certified_episode_index": 2,
+        "field_id": 17,
+        "topic_id": 10579,
+        "entry_year": 2012,
+        "author_rows": 1215043,
+        "no_focal_entry_rows": 1211416,
+        "new_topic_entry_rows": 1441,
+        "return_rows": 36,
+        "continuation_rows": 2150
+      },
+      {
+        "certified_episode_index": 3,
+        "field_id": 27,
+        "topic_id": 10151,
+        "entry_year": 1993,
+        "author_rows": 1330658,
+        "no_focal_entry_rows": 1327869,
+        "new_topic_entry_rows": 1442,
+        "return_rows": 51,
+        "continuation_rows": 1296
+      },
+      {
+        "certified_episode_index": 4,
+        "field_id": 27,
+        "topic_id": 12421,
+        "entry_year": 1953,
+        "author_rows": 160941,
+        "no_focal_entry_rows": 160159,
+        "new_topic_entry_rows": 468,
+        "return_rows": 23,
+        "continuation_rows": 291
+      }
+    ],
+    "source_column_mismatches": [],
+    "source_rows_filtered": 0,
+    "source_feature_value_mutations": 0,
+    "state_value_mismatches": 0,
+    "primary_boolean_mismatches": 0
+  },
+  "independent_verification": {
+    "producer_engine": "DUCKDB",
+    "verification_engine": "PYARROW_NUMPY",
+    "verifier_imports_producer_module": false,
+    "verifier_uses_producer_engine": false,
+    "strategy": "PYARROW_NUMPY_EXACT_SOURCE_AND_ALL_ROW_STATE_REPLAY"
+  },
+  "repository_artifacts": {
+    "config": {
+      "relative_path": "experiments/configs/pivot_feedback_d0_production_pivot_classification_v1.yaml",
+      "sha256": "ec22f8b84e9794c35283cbb7c0e4faca287ae0bd9da37222f3b775b56f48abb8"
+    },
+    "producer": {
+      "relative_path": "scripts/build_pivot_feedback_d0_production_pivot_classification_v1.py",
+      "sha256": "0016a342c4347803cc789905b6e40c6bd270beb75cd13a1c491af38d0729e6ca"
+    },
+    "verifier": {
+      "relative_path": "scripts/verify_pivot_feedback_d0_production_pivot_classification_v1.py",
+      "sha256": "81398fb49aa91684712ead60087bed104d24c1c8f865c200c5de76367288baaa"
+    }
+  },
+  "operator_artifacts": {
+    "root_basename": "pivot-feedback-d0-production-pivot-classification-v1-20260731",
+    "receipt_basename": "production_pivot_classification.outputs.json",
+    "receipt_sha256": "b9b064842ee2b71db8974ff9bef74f7c4bb9aa06f7cf588aec34eacaa3a812de",
+    "artifact_tree_sha256": "4b9d6b9376264d36ebcb3a879f5592342e9917174d3804df1bdfa82c5abf8d25",
+    "report_basename": "production_pivot_classification.json",
+    "report_sha256": "95563ca98e158ecb7cbf08d4ec3f694b719f1764dec886cdfb9d5d4a3ac7244f",
+    "classification_basename": "production_pivot_classification.parquet",
+    "classification_sha256": "32930717841455afabf79c093356ecfced94047be7a429afa4194e3606ab5f66",
+    "classification_rows": 3256271,
+    "classification_columns": 10,
+    "verification_basename": "pivot-feedback-d0-production-pivot-classification-v1-20260731.verification-v1.json",
+    "verification_sha256": "86568ad1a3123e2daca911045dd988aecd9707009db31ce8a58cd28dcc67c845"
+  },
+  "authorization": {
+    "production_pivot_classification": "COMPLETE_INDEPENDENTLY_VERIFIED",
+    "persistence_outcome_contract": "REQUIRES_SUCCESSOR_GATE",
+    "discovery_outcome_opening": "NOT_AUTHORIZED",
+    "final_candidate_eligibility": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "All 3,256,271 rows are deterministically classified into the frozen observable-history four-state partition and independently replayed with zero source, state, or boolean mismatch. NEW_TOPIC_ENTRY means zero prior observed target-topic work plus positive focal-year work under the current-snapshot ABI, not true lifetime-first entry. No post-entry outcome, API result, model, G4 result, association, causal mechanism, or scientific effect is established."
+}

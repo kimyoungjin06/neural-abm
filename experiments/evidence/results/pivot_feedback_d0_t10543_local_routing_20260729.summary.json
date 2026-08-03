@@ -1,0 +1,52 @@
+{
+  "schema_version": "pivot_feedback_d0_t10543_local_routing_summary.v1",
+  "status": "PASS_INDEPENDENT_T10543_LOCAL_ROUTING_AND_CANDIDATE_V1_DRY_RUN",
+  "scope": {
+    "field_id": 27,
+    "field_candidate_rank": 2,
+    "topic_id": 10543,
+    "entry_year": 1993,
+    "sample_rows": 96,
+    "recent_rows": 64
+  },
+  "recent_routing": {
+    "no_api_rule_accept_rows": 8,
+    "no_api_rule_reject_rows": 1,
+    "api_required_ambiguous_rows": 3,
+    "quarantine_unresolved_rows": 52,
+    "opaque_archival_identifier_fraction": 0.8125
+  },
+  "indexing_diagnostic": {
+    "opaque_dominant_source": "Digital Kenyon (Kenyon College)",
+    "opaque_dominant_source_share": 1.0,
+    "opaque_median_current_snapshot_primary_topic_score": 0.03645,
+    "baseline_dominant_source_share": 0.65625,
+    "signal_dominant_source_share": 0.96875,
+    "baseline_to_signal_score_drop": 0.009500000000000001,
+    "candidate_rule_v1_joint_indexing_anomaly": false
+  },
+  "candidate_rule_v1": {
+    "dry_run_state": "WOULD_CONTENT_UNRESOLVED",
+    "production_content_state": "CONTENT_UNRESOLVED",
+    "production_disposition_created": false,
+    "reason": "CONSERVATIVE_RECENT_EVIDENCE_NOT_DECISIVE"
+  },
+  "api_boundary": {
+    "opaque_identifiers_sent_to_api": 0,
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000",
+    "api_is_not_a_remedy_for_opaque_identifier_titles": true
+  },
+  "artifacts": {
+    "config_sha256": "14b46f0f56e6f5ba37d61bfc21b8ecaf2d5ce122ea833dcb88d00c72b122fdde",
+    "producer_sha256": "9ac07fb34ad057133ad0a57e6bd52ed6aa094b2187a7e1fc63892fc806f072d3",
+    "verifier_sha256": "93b4f3cd9191596055b40ac9f9ebbe6064bda50eb07f5e1464aa960282e29f84",
+    "operator_receipt_sha256": "f75531cb7d46510885ec63dff7d7b634ce94240452ed57ce5bf06eb931d81370",
+    "verification_report_sha256": "d898de1da97fb214271788384dd5a252017429c6cd087c873b3bdc4ac1c3240c",
+    "route_csv_sha256": "5d1a3a82bed1402e44ee1c8a97bbfbf2bf481a0132708fa74f69e0bf3f998ff1",
+    "candidate_parquet_sha256": "81b5fe133c0301aab5d626f60f83cbd379cb3c258cb7f9625beaf1cce481ff04",
+    "sensitivity_parquet_sha256": "5490c571e99942e4db7484db22d10ac377ffea454297e2651f1534db7a2116ab"
+  },
+  "claim_boundary": "This is a current-snapshot local-routing and indexing-quality diagnostic. It is not semantic ground truth, a production T10543 disposition, a selection certificate, a historical topic claim, a pivot classification, an outcome result, a model fit, or a scientific effect."
+}

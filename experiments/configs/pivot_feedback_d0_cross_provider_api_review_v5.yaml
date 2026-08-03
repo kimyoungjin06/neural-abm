@@ -1,0 +1,119 @@
+schema_version: pivot_feedback_d0_cross_provider_api_review_config.v5
+label: pivot_feedback_d0_cross_provider_api_review_v5
+mode: FAIL_CLOSED_OPENAI_INCOMPLETE_RESPONSE_RETRY_SUCCESSOR
+status: FROZEN_OPENAI_ONLY_RETRY_CONTRACT_NOT_SUBMITTED
+
+contract_parent:
+  relative_path: experiments/configs/pivot_feedback_d0_cross_provider_api_review_v4.yaml
+  sha256: 3634d663ab0efd970d0f20e0f2037fc1c9e04b074c7ee5ced737080b1582e483
+  required_schema_version: pivot_feedback_d0_cross_provider_api_review_config.v4
+  required_status: FROZEN_CROSS_PROVIDER_RETRY_CONTRACT_BATCH_REQUESTS_NOT_SUBMITTED
+  mutation_allowed: false
+
+v4_preparation:
+  root_basename: pivot-feedback-d0-cross-provider-api-review-v4-prepared-20260729
+  receipt_sha256: c16008c5527109b69a5a7079e38fce225841b4a97f201a7a8f03a5da94ee187f
+  verification_report_sha256: 33fa634f6a53bacf052f293f87d470e3d5852196ae8d962103e86a235186f25d
+  artifact_tree_sha256: 19c9d0f70fd1eae0d999e6cb6ec42475c214dc42163a95f54dbd46b6d7930623
+
+v4_execution:
+  root_basename: pivot-feedback-d0-cross-provider-api-review-v4-execution-20260729
+  submission_receipt_sha256: df2c8976e24c04cf44f13305dee64fda836f84d204ec7e7cd4465ef9464784d0
+  openai_batch_id: batch_6a6987103cf08190a47dedaeb85d00f9
+  openai_output_sha256: 913e9a5f2aee086f4a97d8b41f16e29ca1451f7485d53051a183dff4665680bd
+  openai_http_200_rows: 384
+  openai_provider_failed_rows: 0
+  openai_response_completed_rows: 143
+  openai_response_incomplete_rows: 241
+  openai_incomplete_max_output_token_rows: 241
+  openai_valid_structured_rows: 144
+  openai_missing_output_text_rows: 124
+  openai_invalid_json_rows: 116
+  openai_input_tokens: 120891
+  openai_output_tokens: 91417
+  openai_actual_batch_cost_usd: 0.106528
+  claude_batch_id: msgbatch_01DP8X2nv3AP6Locfmq1pnpU
+  claude_results_sha256: 7d2d763db63616ed1e4d65b4242f65197b03432034495ffafa7afea1f85eeafd
+  claude_succeeded_rows: 384
+  claude_valid_structured_rows: 384
+  claude_invalid_rows: 0
+  claude_input_tokens: 203579
+  claude_output_tokens: 36714
+  claude_actual_batch_cost_usd: 0.193575
+  v4_actual_total_cost_usd: 0.300103
+  disposition: CLAUDE_ACCEPTED_OPENAI_INVALID_REQUIRES_FULL_OPENAI_RETRY
+
+openai_retry:
+  provider: OpenAI
+  model: gpt-5-mini-2025-08-07
+  source_request_basename: openai_requests.jsonl
+  source_request_sha256: ca64f0c337bf7fbff303335019696234060b46d17b2990bf21c9f0060fd7e221
+  request_rows: 384
+  custom_ids_unchanged: true
+  request_visible_content_unchanged: true
+  prompt_unchanged: true
+  response_schema_unchanged: true
+  model_unchanged: true
+  only_body_changes:
+    reasoning.effort:
+      from: PROVIDER_DEFAULT_MEDIUM
+      to: minimal
+    max_output_tokens:
+      from: 256
+      to: 1024
+  batch_endpoint: /v1/batches
+  request_endpoint: /v1/responses
+  completion_window: 24h
+  store: false
+  tools_enabled: false
+  web_search_enabled: false
+  success_requires:
+    - HTTP_200_ROWS_384
+    - RESPONSE_COMPLETED_ROWS_384
+    - VALID_STRUCTURED_ROWS_384
+    - UNIQUE_EXPECTED_CUSTOM_IDS_384
+    - ZERO_PROVIDER_ERRORS
+    - ZERO_INCOMPLETE_RESPONSES
+
+cost_control:
+  currency: USD
+  cumulative_authorized_maximum_usd: 1.00
+  v4_actual_total_cost_usd: 0.300103
+  retry_input_token_upper_bound_method: REQUEST_ARTIFACT_BYTES_PLUS_64_TOKENS_PER_REQUEST
+  retry_input_token_safety_overhead_per_request: 64
+  retry_max_output_tokens_per_request: 1024
+  openai_batch_price_per_million:
+    input: 0.125
+    output: 1.00
+  reject_when_v4_actual_plus_retry_maximum_exceeds_authorized_maximum: true
+
+output_contract:
+  prepared_root_basename: pivot-feedback-d0-cross-provider-api-review-v5-openai-retry-prepared-20260729
+  execution_root_basename: pivot-feedback-d0-cross-provider-api-review-v5-openai-retry-execution-20260729
+  preparation_receipt_schema: pivot_feedback_d0_openai_retry_outputs.v5
+  verification_report_schema: pivot_feedback_d0_openai_retry_verification.v5
+  submission_receipt_schema: pivot_feedback_d0_openai_retry_submission_outputs.v5
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+
+authorization:
+  submit_openai_retry_batch: AUTHORIZED_WITH_CUMULATIVE_MAXIMUM_1_USD_COST_CONTROL
+  resubmit_claude_batch: NOT_AUTHORIZED_ALREADY_COMPLETE
+  accept_v4_openai_as_complete: NOT_AUTHORIZED_INVALID_RESPONSES
+  candidate_universe_api_screen: NOT_AUTHORIZED_PENDING_CALIBRATION
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  g0: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  The v4 Claude judge completed with 384 valid structured responses. The v4
+  OpenAI transport completed but 241 responses hit the output-token ceiling and
+  only 144 rows were valid structured results, so the OpenAI judge is invalid
+  and cannot be partially accepted. This successor retries all 384 OpenAI rows
+  with the same pinned model, IDs, visible content, prompt, and response schema,
+  changing only reasoning effort to minimal and max output tokens to 1024.
+  Claude is not resubmitted. Even a valid retry does not replace human
+  calibration or complete D0, candidate-universe screening, outcomes, G0,
+  model fitting, G4, or a scientific effect.

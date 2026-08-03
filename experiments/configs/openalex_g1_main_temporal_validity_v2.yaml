@@ -1,0 +1,333 @@
+schema_version: openalex_g1_main_temporal_validity_config.v3
+label: openalex_g1_main_temporal_validity_v2_nonblocking_order_profile
+
+prior_v1_terminal_blocked_evidence:
+  schema_version: openalex_g1_main_temporal_validity_outputs.v1
+  status: BLOCKED_MAIN_TEMPORAL_VALIDITY_COMPONENT
+  receipt_sha256: f6eec88337fb8482400ad3a25c7b7b7099b1613d575e0c29c6c26575e8612780
+  result_fingerprint_sha256: a1c5fa100a18a64ca2f5f2fb5375895f2e678578054d982aa248f19703385de3
+  tool_sha256: b4b39c016ba4c6867a3e08366f70f6125230c2a0a18c1e8c45d40826f373f563
+  config_sha256: d208b45cc87de577726a8310a899eb66882a519bae29df5f7dbbf7833562b172
+  terminal_disposition: NONPROMOTABLE_PRESERVE_BYTE_EXACT_AND_NEVER_RESUME_OR_REUSE
+  causal_boundary: all_retained_created_and_updated_values_failed_the_v1_date_only_lexical_contract
+  zero_reversal_or_future_counts_are_non_evidence_because_v1_parsed_zero_metadata_pairs: true
+
+prior_v2_dirty_pilot_evidence:
+  schema_version: openalex_g1_main_temporal_validity_outputs.v2
+  status: PILOT_MAIN_TEMPORAL_VALIDITY_V2_EXACT_UTC_MILLISECOND_ONLY
+  receipt_sha256: ec59f3c649baa4a6a5333daace92a5e46f6492fad62e4c1ed42a1702394425f4
+  report_sha256: 52c2c869ca284890b22c8912fe8f188ea8985666bbaeccb6ebe082664cd3ceef
+  task_fingerprint_sha256: c18e9d9f781a51d36bb4357bebb15829a92541daf82abdf5da26bb1da2c7f8b7
+  result_fingerprint_sha256: 4f3dc7a31e1e2a1d4b92a021edfb544d237ef93c148754d9ecdf5f20d366df16
+  checkpoint_tree_sha256: 8609c5d5ef7e9f0e65757185e9d7d38f39125bea5a1614884352b95a28d17b13
+  tool_sha256: b86f2496bbf7258c4e981f9a7ad8b1618fdcdc34a7385de628b133e0082a89dc
+  config_sha256: 11a668b8f2b10c83e2d36b3f5d2cd16f1e5f86b41ef64f58c79f10cabebc30e8
+  test_sha256: 70ac23af07a8e0832e563ae7df5b8716fc09138c4873cfde9c750855d1364501
+  selected_files: 1
+  selected_footer_rows: 1000000
+  parsed_pair_rows: 1000000
+  created_gt_updated_rows: 3
+  parse_null_future_or_accounting_failures: 0
+  pilot_local_contract_clean: false
+  terminal_disposition: NONPROMOTABLE_PRESERVE_BYTE_EXACT_NEVER_RESUME_OR_RELABEL
+  causal_boundary: reversal_was_blocking_under_v2_but_is_not_a_supported_vendor_validity_invariant
+
+source:
+  root_env: OPENALEX_DERIVED_ROOT
+  root_id: openalex_works_20260330_repairreplay_20260410_190630
+  snapshot_date: "2026-03-30"
+  lineage_id: openalex_20260225_base_plus_20260330_update_repairreplay
+
+parents:
+  inventory:
+    relative_path: experiments/runs/20260716_openalex_g1_source_inventory/source_manifest.json
+    sha256: 6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46
+    schema_version: openalex_source_inventory.v1
+    inventory_fingerprint_sha256: 1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473
+    stability_fingerprint_sha256: a3bfb7f639d4131749c1522f00e5e977bae7abc1a62202790fd41279f8f0a0e5
+    content_sha256_complete: false
+  grammar_valid_main_recount:
+    relative_path: experiments/evidence/results/openalex_g1_grammar_valid_main_id_recount_20260716.summary.json
+    sha256: b25e16abea4a496d1d9160486fe4e322114f309cee1ec78b3955d7489137d585
+    schema_version: openalex_g1_grammar_valid_main_id_recount_summary.v1
+    required_status: PASS_GRAMMAR_VALID_MAIN_ID_RECOUNT_WITH_FROZEN_QUARANTINE
+    required_exact_counts:
+      body_rows_scanned: 492293207
+      null_rows: 0
+      quarantined_malformed_rows: 1
+      unexpected_malformed_rows: 0
+      grammar_valid_rows: 492293206
+      grammar_valid_distinct_ids: 492293206
+      grammar_valid_duplicate_id_groups: 0
+      grammar_valid_duplicate_row_excess: 0
+      grammar_valid_max_multiplicity: 1
+      grammar_valid_min_numeric_id: 0
+      grammar_valid_max_numeric_id: 7143276261
+      zero_id_rows_retained: 1
+    required_gate_states:
+      raw_source_id_validity: BLOCKED
+      parent_content_identity_verified: false
+      g_minus_1_data_readiness: PENDING
+      g1_empirical_signature: NOT_RUN
+      pass_g1: false
+  work_source_membership:
+    relative_path: experiments/evidence/results/openalex_g1_work_source_membership_20260717.summary.json
+    sha256: df626b897bcb53c1bbc3209dbfbec8f69b84361367e09e1a9ffdf39e293d7b83
+    schema_version: openalex_g1_work_source_membership_summary.v1
+    required_status: PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE
+    result_fingerprint_sha256: 8b7d0273a04eb7a231a9d8b466151c562ac80eac6557ff7444508cb174862242
+    required_gate_states:
+      raw_source_id_validity: BLOCKED
+      w_zero_entity_validity: UNRESOLVED
+      parent_content_identity: UNVERIFIED
+      g_minus_1_data_readiness: PENDING
+      empirical_g1_signature: NOT_RUN
+      pass_g1: false
+  current_content_baseline:
+    receipt_path_env: OPENALEX_G1_CONTENT_FREEZE_OUTPUTS
+    expected_basename: content_freeze_audit.outputs.json
+    schema_version: openalex_g1_content_freeze_outputs.v1
+    required_status: PASS_CURRENT_CONTENT_BASELINE_COMPONENT
+    required_plan_sha256: 97294fe1c1fa026f664ca239ebfa9fc6dce593c847a20eb62157e38312b6725e
+    required_task_fingerprint_sha256: f915cade4ce6581832c46957a2ad0a37ceabe2296099f0faeaac56ffa035693e
+    required_file_count: 21019
+    required_bytes: 988404537807
+    required_receipt_artifacts:
+      - audit_plan.json
+      - content_freeze_audit.json
+      - content_freeze_audit.md
+    separately_bound_run_state: run_state.json
+    required_run_state: COMPLETE
+    full_scope_required: true
+    pilot_may_omit_only_because_unpromotable: true
+
+table:
+  key: main
+  name: openalex_works_20260330
+  expected_files: 493
+  expected_footer_rows: 492293207
+  expected_bytes: 150062449219
+  projected_columns:
+    - id
+    - publication_date
+    - publication_year
+    - created_date
+    - updated_date
+  projected_types:
+    id: string
+    publication_date: string
+    publication_year: double
+    created_date: string
+    updated_date: string
+
+identifier_policy:
+  work_pattern: '^https://openalex[.]org/W(0|[1-9][0-9]*)$'
+  w_minus_1:
+    raw_value: https://openalex.org/W-1
+    expected_count: 1
+    relative_path: openalex_works_20260330/part-384.parquet
+    row_group: 13
+    file_row: 428949
+    disposition: frozen_source_row_quarantine
+  w_zero:
+    raw_value: https://openalex.org/W0
+    expected_count: 1
+    disposition: retain_with_entity_validity_unresolved
+
+temporal_policy:
+  resolution: FROZEN_MAIN_TEMPORAL_POLICY_V3
+  calendar: proleptic_gregorian
+  snapshot_date: "2026-03-30"
+  publication_date_year:
+    strict_lexical_format: YYYY-MM-DD
+    exact_ascii_regex: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+    canonical_roundtrip_required: true
+    require_pairwise_null_concordance: true
+    require_finite_integral_year: true
+    require_date_derived_year_equality: true
+    both_null_disposition: exclude_from_temporal_analysis
+    pre_1900_disposition: exclude_from_temporal_analysis
+    valid_window_start_inclusive: "1900-01-01"
+    snapshot_year_on_or_before_snapshot_disposition: retain_for_later_policy
+    snapshot_year_after_snapshot_disposition: exclude_from_temporal_analysis
+    post_snapshot_year_disposition: exclude_from_temporal_analysis
+    invalid_parse_or_mismatch_disposition: block_component_pass
+    aggregate_regression_scope: grammar_valid_w_minus_1_quarantined_w0_retained
+    required_aggregate_regression:
+      publication_year_null_rows: 27565532
+      publication_year_pre_1900_rows: 6692869
+      publication_year_snapshot_year_rows: 11516735
+      publication_year_post_snapshot_year_rows: 4010
+      publication_year_min: 1000
+      publication_year_max: 2050
+  created_updated:
+    strict_lexical_format: YYYY-MM-DDTHH:MM:SS.sssZ
+    exact_ascii_regex: '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[.][0-9]{3}Z$'
+    timezone_representation: literal_uppercase_Z_only
+    fractional_second_digits: 3
+    comparison_precision: epoch_millisecond
+    canonical_roundtrip_required: true
+    snapshot_last_instant_inclusive: "2026-03-30T23:59:59.999Z"
+    next_utc_day_start_exclusive: "2026-03-31T00:00:00.000Z"
+    next_utc_day_start_exclusive_epoch_ms: 1774915200000
+    snapshot_boundary_rule: timestamp_ms_lt_next_utc_day_start_exclusive
+    null_policy: reject_any_null
+    parse_error_policy: block_component_pass
+    require_created_not_after_snapshot: true
+    require_updated_not_after_snapshot: true
+    future_metadata_policy: block_any_timestamp_at_or_after_next_utc_day_start
+    exception_allowlists_forbidden: true
+    relation_diagnostic:
+      relation: created_instant_lte_updated_instant
+      validity_gate: false
+      interpretation: descriptive_only_no_documented_vendor_order_invariant
+      required_accounting: parsed_pair_rows_equals_lte_plus_gt
+      retain_counts_in_result_fingerprint: true
+
+execution:
+  workload_class: local_cpu_io
+  batch_size: 262144
+  deterministic_table_order:
+    - main
+  deterministic_file_order: lexical_relative_path
+  checkpoint_unit: input_file
+  checkpoint_binds:
+    - task_fingerprint_sha256
+    - relative_path
+    - bytes
+    - mtime_ns
+    - footer_rows
+    - projected_schema_sha256
+    - projected_payload_sha256
+    - metrics_sha256
+  resume_verification: rehash_current_projected_payload_before_reusing_metrics
+  verify_source_identity_before_and_after_file: true
+  verify_config_and_parents_at_finalization: true
+  refuse_symlink_inputs: true
+  require_private_output_mode: "0700"
+  output_files_mode: "0600"
+  require_output_outside_source_and_repository: true
+  max_files_is_parser_pilot_only: true
+  pilot_local_contract:
+    required_zero_violation_fields:
+      - unexpected_malformed_id_rows
+      - publication_pairwise_null_mismatch_rows
+      - publication_date_parse_error_rows
+      - publication_year_invalid_rows
+      - publication_date_year_mismatch_rows
+      - created_updated_null_rows
+      - created_date_parse_error_rows
+      - updated_date_parse_error_rows
+      - future_metadata_field_values
+      - policy_resolution_failures
+      - accounting_contract_failures
+    require_created_updated_parsed_pair_rows_equals_retained_rows: true
+    excludes_full_scope_aggregate_regression_and_exact_quarantine_promotion: true
+    clean_pilot_is_nonpromotable: true
+  resource_preflight:
+    projected_bytes_per_row_upper_bound: 1024
+    checkpoint_bytes_per_file_upper_bound: 262144
+    report_bytes_upper_bound: 16777216
+    disk_safety_multiplier_milli: 1500
+    disk_reserve_bytes: 1073741824
+    memory_safety_multiplier_milli: 1500
+    memory_reserve_bytes: 1073741824
+    full_scope_only: true
+    pilot_promotion_allowed: false
+  gpu_used: false
+
+success_contract:
+  full_success_status: PASS_CURRENT_SNAPSHOT_MAIN_TEMPORAL_FIELD_VALIDITY_V3_WITH_EXACT_UTC_MILLISECONDS_AND_NONBLOCKING_ORDER_PROFILE
+  pilot_status: PILOT_MAIN_TEMPORAL_FIELD_VALIDITY_V3_EXACT_UTC_MILLISECOND_ONLY
+  blocked_status: BLOCKED_MAIN_TEMPORAL_FIELD_VALIDITY_V3_COMPONENT
+  required_full_gate_status:
+    main_temporal_validity_component: PASS
+    publication_date_year_validity: PASS_WITH_FROZEN_EXCLUSIONS
+    created_updated_timestamp_validity: PASS_EXACT_UTC_MILLISECOND_NON_NULL_NOT_AFTER_SNAPSHOT
+    created_updated_relation_diagnostic: DESCRIPTIVE_ONLY_NO_VENDOR_ORDER_INVARIANT
+    current_content_baseline_component: PASS
+    historical_content_identity: UNVERIFIED
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    parent_content_identity: UNVERIFIED
+    temporal_available_at: PENDING_NOT_IN_THIS_COMPONENT
+    citation_edge_chronology: PENDING_NOT_IN_THIS_COMPONENT
+    author_entity_validity: PENDING
+    candidate_eligibility: PENDING
+    g_minus_1_data_readiness: PENDING
+    g0_measurement_freeze: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+    scientific_effect: NOT_ESTABLISHED
+  required_pilot_gate_status:
+    main_temporal_validity_component: PILOT_ONLY
+    publication_date_year_validity: NOT_ESTABLISHED_PILOT
+    created_updated_timestamp_validity: NOT_ESTABLISHED_PILOT
+    created_updated_relation_diagnostic: DESCRIPTIVE_ONLY_NONPROMOTABLE_PILOT
+    current_content_baseline_component: NOT_REQUIRED_UNPROMOTABLE_PILOT
+    historical_content_identity: UNVERIFIED
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    parent_content_identity: UNVERIFIED
+    temporal_available_at: PENDING_NOT_IN_THIS_COMPONENT
+    citation_edge_chronology: PENDING_NOT_IN_THIS_COMPONENT
+    author_entity_validity: PENDING
+    candidate_eligibility: PENDING
+    g_minus_1_data_readiness: PENDING
+    g0_measurement_freeze: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+    scientific_effect: NOT_ESTABLISHED
+  required_blocked_common_gate_status:
+    main_temporal_validity_component: BLOCKED
+    current_content_baseline_component: PASS
+    historical_content_identity: UNVERIFIED
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    parent_content_identity: UNVERIFIED
+    temporal_available_at: PENDING_NOT_IN_THIS_COMPONENT
+    citation_edge_chronology: PENDING_NOT_IN_THIS_COMPONENT
+    author_entity_validity: PENDING
+    candidate_eligibility: PENDING
+    g_minus_1_data_readiness: PENDING
+    g0_measurement_freeze: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+    scientific_effect: NOT_ESTABLISHED
+  blocked_subcomponent_gate_rules:
+    publication_date_year_validity:
+      pass_value: PASS_WITH_FROZEN_EXCLUSIONS
+      blocked_value: BLOCKED
+      pass_only_if_publication_violations_policy_and_accounting_are_clean: true
+    created_updated_timestamp_validity:
+      pass_value: PASS_EXACT_UTC_MILLISECOND_NON_NULL_NOT_AFTER_SNAPSHOT
+      blocked_value: BLOCKED
+      pass_only_if_metadata_parse_null_future_policy_and_accounting_are_clean: true
+    created_updated_relation_diagnostic:
+      blocked_run_value: DESCRIPTIVE_ONLY_ON_PARSED_PAIRS_NO_VENDOR_ORDER_INVARIANT
+      validity_gate: false
+
+out_of_scope:
+  - citation_edge_available_at
+  - referenced_work_edges
+  - counts_by_year
+  - fixed_horizon_outcomes
+  - maturation_buffer
+  - author_entity_resolution
+  - candidate_researcher_materialization
+  - field_selection
+  - nabm_fitting
+
+claim_boundary: >-
+  A full v3 component pass establishes exact current-snapshot YYYY-MM-DD
+  publication parsing, pairwise publication-date/year concordance, frozen null
+  and chronology buckets, and exact UTC-millisecond lexical, non-null, and
+  not-after-snapshot validity for created_date and updated_date in the declared
+  main-work projection. The created <= updated relation is retained only as a
+  descriptive count because OpenAlex does not document it as a vendor
+  invariant. A pass does not establish record-event order, edge observation
+  time or citation available_at, historical content identity, author entity or
+  candidate eligibility, G-1 or G0, empirical G1, field selection, NABM
+  effects, or any scientific effect. A max-files run is
+  PILOT_MAIN_TEMPORAL_FIELD_VALIDITY_V3_EXACT_UTC_MILLISECOND_ONLY and can
+  never receive the full component status.

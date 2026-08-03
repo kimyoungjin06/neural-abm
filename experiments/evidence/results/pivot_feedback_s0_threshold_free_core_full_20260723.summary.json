@@ -1,0 +1,105 @@
+{
+  "schema_version": "pivot_feedback_s0_threshold_free_core_full_summary.v1",
+  "status": "PASS_S0_THRESHOLD_FREE_CORE_FIELD_YEAR_INVENTORY_WITH_ORCID_AFFILIATION_AND_GRAPH_TOPOLOGY_PENDING",
+  "scope": {
+    "full_normalized_surface_scan": true,
+    "core_component_pass": true,
+    "s0_gate_pass": false,
+    "d0_authorized": false,
+    "model_fitting_authorized": false,
+    "gpu_used": false,
+    "field_count": 26,
+    "source_snapshot_date": "2026-03-30"
+  },
+  "input_verification": {
+    "selected_artifacts_rehashed": 8192,
+    "selected_artifact_bytes": 9127313828,
+    "all_selected_artifacts_rehashed_exactly": true,
+    "input_roots_mutated": false,
+    "cutoff_primitives_receipt_sha256": "91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e",
+    "author_history_receipt_sha256": "7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8"
+  },
+  "work_accounting": {
+    "rows": 492293206,
+    "classified_field_rows": 354145248,
+    "null_field_rows": 138147958,
+    "null_year_rows": 27565532,
+    "usable_date_rows": 458024059
+  },
+  "author_event_accounting": {
+    "rows": 779630258,
+    "history_usable_rows": 776803175,
+    "classified_field_rows": 675475922,
+    "null_field_rows": 104154336
+  },
+  "field_year_inventory": {
+    "rows": 18544,
+    "null_year_cells": 26,
+    "observed_year_min": 1000,
+    "observed_year_max": 2050,
+    "total_canonical_works": 354145248,
+    "usable_date_works": 329740704,
+    "primary_topic_relation_works": 354145248,
+    "all_topic_relation_works": 354145248,
+    "declared_author_slots": 1009909471,
+    "zero_declared_author_works": 30561425,
+    "single_declared_author_works": 150389821,
+    "multi_declared_author_works": 173194002,
+    "declared_pair_incidences_cap_10": 1275177176,
+    "declared_pair_incidences_cap_50": 2301207230,
+    "declared_pair_incidences_cap_100": 3105390831,
+    "declared_pair_incidences_all": 47627187584,
+    "distinct_author_work_pairs": 675475922,
+    "history_usable_distinct_author_work_pairs": 673318978,
+    "distinct_author_tokens_summed_within_field_year": 384096491,
+    "history_usable_distinct_author_tokens_summed_within_field_year": 382509104,
+    "citation_calendar_support_at_least_1y": 307550957,
+    "citation_calendar_support_at_least_3y": 278577865,
+    "citation_calendar_support_at_least_5y": 253084208,
+    "citation_calendar_support_at_least_10y": 190968107,
+    "field_year_parquet_sha256": "1b8c26720f51ce824c623a46dec324a89e71fb0da32f09ef07a87cea630364d0"
+  },
+  "attention_trajectory_inventory": {
+    "rows": 18518,
+    "resolutions_years": [
+      1,
+      3,
+      5
+    ],
+    "ranked_or_selected": false,
+    "all_annual_counts_replayed": true,
+    "all_trailing_3y_counts_replayed": true,
+    "all_trailing_5y_counts_replayed": true,
+    "attention_parquet_sha256": "9173a42168e068683e81c9283af17ab4b7e801cc86470fcd0616ed3ba4c1168e"
+  },
+  "deferred_required_components": {
+    "orcid_field_year": "NOT_RUN_REQUIRES_RECEIPT_BOUND_AUTHORSHIP_SOURCE_PROJECTION",
+    "affiliation_field_year": "NOT_RUN_REQUIRES_RECEIPT_BOUND_AUTHORSHIP_SOURCE_PROJECTION",
+    "coauthor_graph_field_year": "NOT_RUN_REQUIRES_VERSIONED_NONRANKED_CAP_PROFILE_EDGE_MATERIALIZATION"
+  },
+  "independent_verification": {
+    "status": "PASS_INDEPENDENT_S0_CORE_OUTPUT_CONSERVATION_AND_ATTENTION_REPLAY_DEFERRED_COMPONENTS_STILL_PENDING",
+    "artifacts_rehashed": 5,
+    "output_receipt_sha256": "3dd563eafce498a2e975680064d7589b63710c2f92b75f16f2bea7a9da5a4405",
+    "verification_report_basename": "pivot-feedback-s0-threshold-free-core-v1-full-20260723.verification.json",
+    "verification_report_bytes": 2136,
+    "verification_report_sha256": "dba71d6af83ba4767e9d9d752d077b368da25391c57ca5e8ac270ff25294b16f",
+    "verifier_sha256": "4148c7a196d763aa60e23a5110587f7f46eedade242a43cab15a528a91e1ab9d"
+  },
+  "provenance": {
+    "g_minus_1a_receipt_sha256": "8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802",
+    "config_sha256": "13e13e597e62b4a637c4ac99bdab07284b26b03ed0ce8a12c10f21334e78def9",
+    "runner_sha256": "48ffcb6a30affe68871204ebd656d045ba52563f68872ceca4c3d3604fa60461",
+    "result_fingerprint_sha256": "49301267f0d6267d8cf4a7510040b3ad4c98f25319a5579270b395631f630a52",
+    "operator_report_sha256": "8a439a8651b10f6c972f0c31e3bb82b761e6980484185ec038d0eac83526e69b"
+  },
+  "gate_status": {
+    "g_minus_1a": "PASS_BOUNDED",
+    "s0_threshold_free_inventory": "PARTIAL_CORE_PASS_DEFERRED_COMPONENTS_NOT_RUN",
+    "d0_discovery_pilot": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "PENDING",
+    "empirical_g1_signature": "NOT_RUN",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This full core pass establishes exact field-year counts from receipt-bound normalized work metadata and distinct author-work events, non-ranked descriptive team-size and calendar-support profiles, and independently replayed annual, trailing-three-year, and trailing-five-year attention counts. Counts of distinct author tokens are summed within field-year cells and are not global distinct-person counts. ORCID/token stability, author-work affiliation, and distinct coauthor graph topology have not run, so S0 is not passed and D0, model fitting, G0, empirical, causal, and scientific-effect claims remain unauthorized or not established."
+}

@@ -1,0 +1,261 @@
+schema_version: pivot_feedback_researcher_pivot_definition.v2
+label: pivot_feedback_researcher_pivot_definition_v2
+mode: THRESHOLD_FREE_PAST_ONLY_OBSERVABLE_HISTORY_NEW_TOPIC_ENTRY
+status: FROZEN_THRESHOLD_FREE_OBSERVABLE_HISTORY_PIVOT_DEFINITION_V2_FIXTURES_ONLY
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v41.yaml
+  sha256: 03a131f1fc59ebd04bcc11d07a11b31a2bf63dc8c3a7b061e5caf2f02c2fa5da
+  required_schema_version: pivot_feedback_gate_state.v41
+  required_status: VALID_EXACT_FOUR_PREDECISION_MEASUREMENT_SURFACE_COMPLETE_THRESHOLD_FREE_PIVOT_DEFINITION_V2_AUTHORIZED
+  required_fields:
+    measurement_completeness_decision.status: COMPLETE_INDEPENDENTLY_VERIFIED
+    measurement_completeness_decision.primary_minimum_history_threshold: NONE
+    authorization.d0_threshold_free_researcher_pivot_definition_v2: AUTHORIZED_DEFINITION_AND_FIXTURE_ONLY_NO_OUTCOME_READ
+    authorization.d0_entry_outcome_source_and_classifier_contract: PAUSED_UNTIL_V2_DEFINITION_INDEPENDENTLY_VALIDATED_AND_SUCCESSOR_GATE
+    authorization.d0_production_pivot_classification: NOT_AUTHORIZED
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+superseded_definition:
+  relative_path: experiments/configs/pivot_feedback_researcher_pivot_definition_v1.yaml
+  sha256: 4206a441dd59b6b0c6607951dd9cc59ce55375e4cb60415e8bc51fb7bcef8deb
+  required_schema_version: pivot_feedback_researcher_pivot_definition.v1
+  required_status: FROZEN_SIMPLE_PAST_ONLY_PIVOT_DEFINITION_EXECUTION_NOT_AUTHORIZED
+  retained_principles:
+    - OBSERVABLE_HISTORY_NOT_TRUE_LIFETIME_FIRST
+    - HISTORY_INPUTS_STOP_AT_END_OF_T_MINUS_1
+    - FUTURE_OUTCOMES_DO_NOT_DEFINE_ENTRY
+    - ONE_STATE_PER_AUTHOR_TOPIC_YEAR
+  removed_primary_gate:
+    minimum_prior_observable_span_years: 3
+    minimum_prior_eligible_work_count: 3
+  mutation_allowed: false
+
+primary_event:
+  unit: AUTHOR_TOKEN_X_PRIMARY_TOPIC_X_ENTRY_YEAR
+  event_label: OBSERVABLE_HISTORY_NEW_TOPIC_ENTRY
+  pivot_state: NEW_TOPIC_ENTRY
+  definition: >-
+    An observable-history new-topic entry occurs when an author token has at
+    least one content-confirmed eligible focal-year contribution to the target
+    primary topic and zero eligible target-topic contributions through t-1.
+  true_lifetime_first_claim_allowed: false
+  information_cutoff_for_prior_history: END_OF_T_MINUS_1
+  focal_year_information_allowed:
+    - focal_confirmed_eligible_target_topic_work_count
+  post_focal_information_allowed: false
+  one_state_per_author_topic_year: true
+  repeated_new_topic_entry_for_same_author_topic_allowed: false
+
+classification_input:
+  exact_required_features:
+    - pre_entry_target_topic_work_count
+    - trailing_3y_target_topic_work_count
+    - focal_confirmed_eligible_target_topic_work_count
+  feature_types: NONNEGATIVE_INTEGER
+  trailing_topic_count_must_not_exceed_pre_entry_topic_count: true
+  focal_content_confirmation_minimum_for_entry: 1
+  no_focal_entry_count: 0
+  minimum_prior_observable_span_years: NONE
+  minimum_prior_eligible_work_count: NONE
+  forbidden_feature_name_fragments:
+    - future
+    - persistence
+    - post_entry_impact
+    - realized_future_citation
+    - peer_visible_success
+    - chaperoned_entry
+    - model_score
+    - minimum_history
+    - selected_threshold
+  unknown_event_features_rejected: true
+
+sensitivity_only:
+  fields:
+    - prior_observable_span_years
+    - prior_eligible_work_count
+  feature_types: NONNEGATIVE_INTEGER
+  may_change_primary_state: false
+  threshold_specific_flags_materialized: false
+  primary_minimum_history_threshold: NONE
+
+classification:
+  precedence:
+    - NO_FOCAL_ENTRY
+    - NEW_TOPIC_ENTRY
+    - RETURN
+    - CONTINUATION
+  rules:
+    NO_FOCAL_ENTRY:
+      all:
+        - focal_confirmed_eligible_target_topic_work_count_eq: 0
+    NEW_TOPIC_ENTRY:
+      all:
+        - focal_confirmed_eligible_target_topic_work_count_ge: 1
+        - pre_entry_target_topic_work_count_eq: 0
+    RETURN:
+      all:
+        - focal_confirmed_eligible_target_topic_work_count_ge: 1
+        - pre_entry_target_topic_work_count_gt: 0
+        - trailing_3y_target_topic_work_count_eq: 0
+    CONTINUATION:
+      all:
+        - focal_confirmed_eligible_target_topic_work_count_ge: 1
+        - trailing_3y_target_topic_work_count_gt: 0
+  exhaustive_for_valid_input: true
+  mutually_exclusive_for_valid_input: true
+  threshold_free: true
+
+valid_fixtures:
+  - fixture_id: no_focal_no_prior
+    features:
+      pre_entry_target_topic_work_count: 0
+      trailing_3y_target_topic_work_count: 0
+      focal_confirmed_eligible_target_topic_work_count: 0
+    sensitivity:
+      prior_observable_span_years: 0
+      prior_eligible_work_count: 0
+    expected_state: NO_FOCAL_ENTRY
+  - fixture_id: no_focal_with_recent_prior
+    features:
+      pre_entry_target_topic_work_count: 7
+      trailing_3y_target_topic_work_count: 2
+      focal_confirmed_eligible_target_topic_work_count: 0
+    sensitivity:
+      prior_observable_span_years: 25
+      prior_eligible_work_count: 100
+    expected_state: NO_FOCAL_ENTRY
+  - fixture_id: new_topic_zero_history
+    features:
+      pre_entry_target_topic_work_count: 0
+      trailing_3y_target_topic_work_count: 0
+      focal_confirmed_eligible_target_topic_work_count: 1
+    sensitivity:
+      prior_observable_span_years: 0
+      prior_eligible_work_count: 0
+    expected_state: NEW_TOPIC_ENTRY
+  - fixture_id: new_topic_long_history
+    features:
+      pre_entry_target_topic_work_count: 0
+      trailing_3y_target_topic_work_count: 0
+      focal_confirmed_eligible_target_topic_work_count: 3
+    sensitivity:
+      prior_observable_span_years: 30
+      prior_eligible_work_count: 250
+    expected_state: NEW_TOPIC_ENTRY
+  - fixture_id: return_after_gap
+    features:
+      pre_entry_target_topic_work_count: 4
+      trailing_3y_target_topic_work_count: 0
+      focal_confirmed_eligible_target_topic_work_count: 1
+    sensitivity:
+      prior_observable_span_years: 8
+      prior_eligible_work_count: 15
+    expected_state: RETURN
+  - fixture_id: continuation_recent
+    features:
+      pre_entry_target_topic_work_count: 4
+      trailing_3y_target_topic_work_count: 2
+      focal_confirmed_eligible_target_topic_work_count: 1
+    sensitivity:
+      prior_observable_span_years: 8
+      prior_eligible_work_count: 15
+    expected_state: CONTINUATION
+  - fixture_id: continuation_boundary
+    features:
+      pre_entry_target_topic_work_count: 1
+      trailing_3y_target_topic_work_count: 1
+      focal_confirmed_eligible_target_topic_work_count: 2
+    sensitivity:
+      prior_observable_span_years: 1
+      prior_eligible_work_count: 1
+    expected_state: CONTINUATION
+
+sensitivity_invariance_fixture:
+  event_features:
+    pre_entry_target_topic_work_count: 0
+    trailing_3y_target_topic_work_count: 0
+    focal_confirmed_eligible_target_topic_work_count: 1
+  sensitivity_profiles:
+    - prior_observable_span_years: 0
+      prior_eligible_work_count: 0
+    - prior_observable_span_years: 2
+      prior_eligible_work_count: 2
+    - prior_observable_span_years: 40
+      prior_eligible_work_count: 500
+  expected_state_for_every_profile: NEW_TOPIC_ENTRY
+
+invalid_fixtures:
+  - fixture_id: negative_prior_count
+    features:
+      pre_entry_target_topic_work_count: -1
+      trailing_3y_target_topic_work_count: 0
+      focal_confirmed_eligible_target_topic_work_count: 1
+    expected_error_fragment: nonnegative integer
+  - fixture_id: trailing_exceeds_prior
+    features:
+      pre_entry_target_topic_work_count: 1
+      trailing_3y_target_topic_work_count: 2
+      focal_confirmed_eligible_target_topic_work_count: 1
+    expected_error_fragment: exceeds pre-entry
+  - fixture_id: missing_focal_count
+    features:
+      pre_entry_target_topic_work_count: 0
+      trailing_3y_target_topic_work_count: 0
+    expected_error_fragment: exact feature set
+  - fixture_id: future_feature_injected
+    features:
+      pre_entry_target_topic_work_count: 0
+      trailing_3y_target_topic_work_count: 0
+      focal_confirmed_eligible_target_topic_work_count: 1
+      persistence_t_plus_3: 1
+    expected_error_fragment: forbidden feature
+  - fixture_id: unknown_feature_injected
+    features:
+      pre_entry_target_topic_work_count: 0
+      trailing_3y_target_topic_work_count: 0
+      focal_confirmed_eligible_target_topic_work_count: 1
+      arbitrary_score: 1
+    expected_error_fragment: exact feature set
+  - fixture_id: bool_is_not_integer_count
+    features:
+      pre_entry_target_topic_work_count: false
+      trailing_3y_target_topic_work_count: 0
+      focal_confirmed_eligible_target_topic_work_count: 1
+    expected_error_fragment: nonnegative integer
+
+future_source_boundary:
+  pre_entry_target_topic_work_count_source: VERIFIED_PREDECISION_AUTHOR_MEASUREMENT
+  trailing_3y_target_topic_work_count_source: NOT_YET_CONTRACTED
+  focal_confirmed_eligible_target_topic_work_count_source: NOT_YET_CONTRACTED
+  definition_freeze_reads_source_rows: false
+  definition_freeze_reads_focal_year_rows: false
+  definition_freeze_reads_future_rows: false
+  definition_freeze_creates_api_requests: false
+
+authorization:
+  classification_fixture_execution: AUTHORIZED
+  production_source_contract: NOT_AUTHORIZED_BY_DEFINITION_ALONE
+  production_pivot_classification: NOT_AUTHORIZED
+  entry_or_persistence_outcome_opening: NOT_AUTHORIZED
+  peer_visible_success_construction: NOT_AUTHORIZED
+  new_api_request_creation: NOT_AUTHORIZED
+  paid_api_submission: NOT_AUTHORIZED
+  final_candidate_eligibility: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This v2 contract freezes a threshold-free, past-only, observable-history
+  four-state decision table and bounded synthetic fixtures. It removes the old
+  three-year and three-work eligibility gate; prior span and work counts are
+  sensitivity descriptors that cannot change the primary state. The contract
+  reads no production author, focal-year, persistence, citation, API, model,
+  or G4 rows. It does not authorize production source construction, pivot
+  classification, outcome opening, final eligibility, G0, model fitting, G4,
+  an association, a causal mechanism, or a scientific effect.

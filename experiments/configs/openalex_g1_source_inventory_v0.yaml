@@ -1,0 +1,266 @@
+schema_version: openalex_g1_source_inventory_config.v1
+label: openalex_g1_source_inventory_v0
+
+root:
+  env: OPENALEX_DERIVED_ROOT
+  id: openalex_works_20260330_repairreplay_20260410_190630
+  snapshot_date: "2026-03-30"
+  lineage_id: openalex_20260225_base_plus_20260330_update_repairreplay
+  coverage: through_snapshot_date_pending_full_scan_verification
+  historical_reference_id: openalex_20260330_dataset_profile_20260611
+
+inventory:
+  expected_table_count: 23
+  allowed_filename_pattern: "^(?P<prefix>part|base|delta|repair)-(?P<index>[0-9]+)[.]parquet$"
+  reject_unexpected_table_directories: true
+  reject_unexpected_table_entries: true
+  expected_inventory_fingerprint_sha256: 1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473
+  content_sha256_required_for_pass_metadata: true
+
+feature_roles:
+  prohibited_model_inputs:
+    - cited_by_count
+    - fwci
+    - citation_normalized_percentile__value
+    - citation_normalized_percentile__is_in_top_1_percent
+    - citation_normalized_percentile__is_in_top_10_percent
+    - current_author_summary_stats
+    - current_author_topics
+    - future_coauthor_edges
+    - future_affiliation_edges
+  label_only:
+    - fixed_horizon_citation_outcome
+    - post_entry_persistence
+    - post_entry_return
+  identity_only:
+    - authorships__author__id
+    - authorships__author__orcid
+  note: >-
+    This registry is an extraction allowlist boundary, not evidence that row-level
+    available_at or leakage checks have passed.
+
+tables:
+  openalex_works_20260330:
+    role: main_works
+    expected_file_count: 493
+    expected_footer_rows: 492293207
+    primary_key_candidate: id
+    required_columns: [id, publication_date, publication_year, created_date, updated_date]
+    required_column_types:
+      id: string
+      publication_date: string
+      publication_year: double
+      created_date: string
+      updated_date: string
+    footer_null_checks:
+      id:
+        expected_null_count: 0
+        nonzero_status: BLOCK
+        note: A null primary work ID is a source-integrity failure.
+
+  openalex_works_20260330__authorships:
+    role: works_authorships
+    expected_file_count: 1363
+    expected_footer_rows: 1361551038
+    foreign_key_candidate: id
+    required_columns: [id, authorships__author__id, authorships__author__orcid]
+    required_column_types:
+      id: string
+      authorships__author__id: string
+      authorships__author__orcid: string
+    footer_null_checks:
+      id:
+        expected_null_count: 0
+        nonzero_status: BLOCK
+        note: A null source work ID is a source-integrity failure.
+      authorships__author__id:
+        expected_null_count: 580116420
+        mismatch_status: BLOCK
+        nonzero_status: WARN
+        note: >-
+          The 42.607 percent null share matches the frozen source profile but
+          remains unresolved for eligible-author coverage and G-1 readiness.
+
+  openalex_works_20260330__awards:
+    role: works_awards
+    expected_file_count: 32
+    expected_footer_rows: 31479167
+    foreign_key_candidate: id
+    required_columns: [id, awards__id, awards__funder_id]
+
+  openalex_works_20260330__best_oa_location__source__host_organization_lineage:
+    role: best_location_host_lineage
+    expected_file_count: 110
+    expected_footer_rows: 108758987
+    foreign_key_candidate: id
+    required_columns: [id, best_oa_location__source__host_organization_lineage]
+
+  openalex_works_20260330__best_oa_location__source__host_organization_lineage_names:
+    role: best_location_host_lineage_names
+    expected_file_count: 47
+    expected_footer_rows: 46538137
+    foreign_key_candidate: id
+    required_columns: [id, best_oa_location__source__host_organization_lineage_names]
+
+  openalex_works_20260330__best_oa_location__source__issn:
+    role: best_location_issn
+    expected_file_count: 98
+    expected_footer_rows: 96653276
+    foreign_key_candidate: id
+    required_columns: [id, best_oa_location__source__issn]
+
+  openalex_works_20260330__concepts:
+    role: legacy_concepts
+    expected_file_count: 4877
+    expected_footer_rows: 4876249560
+    foreign_key_candidate: id
+    required_columns: [id, concepts__id, concepts__score]
+
+  openalex_works_20260330__corresponding_author_ids:
+    role: corresponding_authors
+    expected_file_count: 274
+    expected_footer_rows: 272766845
+    foreign_key_candidate: id
+    required_columns: [id, corresponding_author_ids]
+
+  openalex_works_20260330__corresponding_institution_ids:
+    role: corresponding_institutions
+    expected_file_count: 206
+    expected_footer_rows: 204773216
+    foreign_key_candidate: id
+    required_columns: [id, corresponding_institution_ids]
+
+  openalex_works_20260330__counts_by_year:
+    role: citation_counts_by_year_label_source
+    expected_file_count: 449
+    expected_footer_rows: 448043794
+    foreign_key_candidate: id
+    required_columns: [id, counts_by_year__year, counts_by_year__cited_by_count]
+
+  openalex_works_20260330__excepted__abstract_inverted_index:
+    role: excluded_exception_payload_not_primary_text
+    expected_file_count: 493
+    expected_footer_rows: 492293207
+    foreign_key_candidate: id
+    required_columns: [id, value, __except_path__, __source_path__]
+    required_column_types:
+      id: string
+      value: string
+      __except_path__: string
+      __source_path__: string
+
+  openalex_works_20260330__funders:
+    role: works_funders
+    expected_file_count: 48
+    expected_footer_rows: 47243930
+    foreign_key_candidate: id
+    required_columns: [id, funders__id]
+
+  openalex_works_20260330__indexed_in:
+    role: indexed_in
+    expected_file_count: 355
+    expected_footer_rows: 354383191
+    foreign_key_candidate: id
+    required_columns: [id, indexed_in]
+
+  openalex_works_20260330__keywords:
+    role: works_keywords
+    expected_file_count: 2963
+    expected_footer_rows: 2961336807
+    foreign_key_candidate: id
+    required_columns: [id, keywords__id, keywords__score]
+
+  openalex_works_20260330__locations:
+    role: works_locations
+    expected_file_count: 628
+    expected_footer_rows: 626963890
+    foreign_key_candidate: id
+    required_columns: [id, locations__id, locations__source__id]
+
+  openalex_works_20260330__mesh:
+    role: works_mesh
+    expected_file_count: 1213
+    expected_footer_rows: 1212666618
+    foreign_key_candidate: id
+    required_columns: [id, mesh__descriptor_ui]
+    expected_sequence_gaps:
+      base: [213]
+    expected_prefix_contract:
+      base: {count: 1105, min: 1, max: 1106, gaps: [213]}
+      delta: {count: 106, min: 0, max: 105, gaps: []}
+      repair: {count: 2, min: 0, max: 1, gaps: []}
+    required_lineage_files: [repair-0.parquet, repair-1.parquet]
+    lineage_evidence_id: openalex_20260330_repairreplay_report_mesh_v1
+    lineage_status: WARN
+    lineage_note: >-
+      Two-file replacement and post-dedup row totals are historically verified,
+      but the original touched files lack per-file cryptographic checksums.
+    lineage_evidence:
+      removed_source_files: [base-0.parquet, base-213.parquet]
+      replacement_files: [repair-0.parquet, repair-1.parquet]
+      replacement_semantics: pooled_dedup_then_repartitioned_not_one_to_one
+      pre_rows: 1212666663
+      duplicate_row_excess_removed: 45
+      post_rows: 1212666618
+      residual_duplicate_row_excess: 0
+
+  openalex_works_20260330__primary_location__source__host_organization_lineage:
+    role: primary_location_host_lineage
+    expected_file_count: 271
+    expected_footer_rows: 270287049
+    foreign_key_candidate: id
+    required_columns: [id, primary_location__source__host_organization_lineage]
+
+  openalex_works_20260330__primary_location__source__host_organization_lineage_names:
+    role: primary_location_host_lineage_names
+    expected_file_count: 166
+    expected_footer_rows: 164582947
+    foreign_key_candidate: id
+    required_columns: [id, primary_location__source__host_organization_lineage_names]
+
+  openalex_works_20260330__primary_location__source__issn:
+    role: primary_location_issn
+    expected_file_count: 284
+    expected_footer_rows: 282832818
+    foreign_key_candidate: id
+    required_columns: [id, primary_location__source__issn]
+
+  openalex_works_20260330__referenced_works:
+    role: works_references
+    expected_file_count: 3044
+    expected_footer_rows: 3042536160
+    foreign_key_candidate: id
+    required_columns: [id, referenced_works]
+
+  openalex_works_20260330__related_works:
+    role: related_works
+    expected_file_count: 2494
+    expected_footer_rows: 2493161419
+    foreign_key_candidate: id
+    required_columns: [id, related_works]
+
+  openalex_works_20260330__sustainable_development_goals:
+    role: sustainable_development_goals
+    expected_file_count: 181
+    expected_footer_rows: 180275008
+    foreign_key_candidate: id
+    required_columns: [id, sustainable_development_goals__id]
+
+  openalex_works_20260330__topics:
+    role: current_snapshot_topics_robustness_only
+    expected_file_count: 930
+    expected_footer_rows: 928562546
+    foreign_key_candidate: id
+    required_columns: [id, topics__id, topics__score, topics__field__id]
+
+pending_full_scan_gates:
+  - distinct_work_ids_and_duplicate_rows
+  - works_child_join_coverage_and_orphans
+  - authorship_author_id_eligibility_and_missingness
+  - publication_and_citation_date_consistency
+  - author_identity_split_merge_sensitivity
+  - field_coverage_and_right_censoring
+  - cutoff_aware_available_at_validation
+  - t_minus_1_graph_validation
+  - leakage_tests
+  - deterministic_pilot_representativeness

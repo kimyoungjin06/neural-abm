@@ -641,8 +641,8 @@
     ]
   },
   "provenance": {
-    "git_revision": "41350a5fbab0b7c63d526d6b7b1187c6b4500385",
-    "git_worktree_dirty": false,
+    "git_revision": "10dd3e8fd1c7cc1f30088fcdbef510439e172917",
+    "git_worktree_dirty": true,
     "learning_evidence": "raw replicate outcomes plus aggregate mean and dispersion trajectories for all named weights and bias",
     "numpy": "2.4.4",
     "package_version": "0.1.0a6.dev0",
@@ -711,7 +711,7 @@
         "src/neural_abm/workflow_lite.py",
         "uv.lock"
       ],
-      "sha256": "15f68a930e5847f0d53698c5fde69d4b2a2b964e37d57421dddab1681a1ce9e0"
+      "sha256": "98e3dc6225c69d89928e5eecf9f16035359f1458b6210809b91e50bfd691593d"
     },
     "torch": "2.11.0+cu130"
   },

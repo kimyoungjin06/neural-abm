@@ -1,0 +1,54 @@
+{
+  "schema_version": "pivot_feedback_d0_content_review_packet_summary.v1",
+  "generated_at_utc": "2026-07-29T02:33:28+00:00",
+  "status": "PASS_INDEPENDENT_D0_BLINDED_TWO_HUMAN_REVIEWER_PACKETS_REVIEW_NOT_RUN",
+  "producer": {
+    "script": "scripts/build_pivot_feedback_d0_content_review_packets.py",
+    "script_sha256": "b01b6b669b604921f349aac6323a4fe6e0c45af2f68104871ddad9b137f87189",
+    "verifier": "scripts/verify_pivot_feedback_d0_content_review_packets.py",
+    "verifier_sha256": "b42c795411d291fc60e90775538a3509f9de8bddc7d43902f80309e6f861228b",
+    "config": "experiments/configs/pivot_feedback_d0_content_review_v1.yaml",
+    "config_sha256": "d5c5234658dc337acb3df7efbf30828f9b9d216565dc7cbfef22dc5805dc328c"
+  },
+  "source": {
+    "content_audit_root_basename": "pivot-feedback-d0-content-indexing-audit-v1-full-20260724",
+    "content_audit_receipt_sha256": "86be1808a3272ba7a892d8aa90f4d3687f0d253474d1b4470dad1940e4ff5280",
+    "review_template_sha256": "9fe7a70a7e839c3272a5d146b48674dd248932491595dc7bf8c124e9e2e6d9",
+    "review_template_rows": 384
+  },
+  "output": {
+    "root_basename": "pivot-feedback-d0-content-review-packets-v1-20260729",
+    "receipt_sha256": "8938d35c28ae3175a416dd0ef223103376d127bd01ddde7b5e9913299304867a",
+    "artifact_tree_sha256": "36552e421cd80847d41f5787ca3294059f1a7114d87464747f1d9ab95891610d",
+    "artifact_count": 5,
+    "reviewer_1_packet_sha256": "a81e497754e3302f5ea1255e153efd4209023323bab74eea9a47aca48a17c396",
+    "reviewer_2_packet_sha256": "562e42ac7ec494475e439e430d123dda79f31feb5618228ca78e6d2702b8aafb",
+    "adjudication_key_sha256": "7f99ef033bd340b2ac9b4018c88f34b75d14097c39b6af0200513f6ae930a5c5",
+    "reviewer_packet_rows_each": 384,
+    "packet_orders_differ": true,
+    "packet_content_sets_match": true
+  },
+  "independent_verification": {
+    "report_basename": "pivot-feedback-d0-content-review-packets-v1-20260729.verification-v1.json",
+    "report_sha256": "31cbb2567c0ef488ba3c1962a54882a2ad621593d0f8cf6613cec1561511a3b1",
+    "packet_content_exact_match": true,
+    "adjudication_key_exact_match": true,
+    "producer_module_imported": false
+  },
+  "scope": {
+    "packets_prepared": true,
+    "reviewer_labels_filled": 0,
+    "human_review_complete": false,
+    "automatic_title_classification_performed": false,
+    "d0_complete": false,
+    "leaveout_network_bridge_authorized": false,
+    "discovery_outcome_opening_authorized": false,
+    "g0_authorized": false,
+    "model_fitting_authorized": false,
+    "g4_open": false,
+    "outcomes_read": false,
+    "gpu_used": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "Two separately ordered, title-only packets and a private adjudication key were generated and independently verified against the frozen 384-row source template. No title was classified and no human review was completed. Packet preparation does not promote an episode, complete D0, authorize downstream measurement or outcomes, or establish an empirical, causal, mechanism, or scientific effect."
+}

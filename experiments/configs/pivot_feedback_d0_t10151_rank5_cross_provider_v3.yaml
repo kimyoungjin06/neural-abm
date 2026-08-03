@@ -1,0 +1,102 @@
+schema_version: pivot_feedback_d0_t10151_rank5_cross_provider_config.v3
+label: pivot_feedback_d0_t10151_rank5_cross_provider_v3
+mode: OUTCOME_BLIND_TITLE_ONLY_DUAL_HIGH_CONSENSUS_CORRECT_HCV_TARGET
+status: FROZEN_RANK5_HCV_TARGET_CORRECTED_SUCCESSOR_NOT_SUBMITTED
+
+gate_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v28.yaml
+  sha256: dec65d1a8e9dc6cadeaae6f5b85f0c91b25596c9b853c8ae51293f7b8e139b2e
+  required_schema_version: pivot_feedback_gate_state.v28
+  required_status: VALID_RANK5_HCV_TARGET_CORRECTION_TWO_CALL_SUCCESSOR_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authoritative_target.topic_id: 10151
+    authoritative_target.topic_name: Hepatitis C virus research
+    invalidated_api_evidence.may_enter_rank5_consensus: false
+    corrected_successor.exact_request_rows: 25
+    corrected_successor.target_topic_name: Hepatitis C virus research
+    corrected_successor.additional_provider_calls_authorized: 2
+    corrected_successor.retries_within_successor: 0
+    cost_control.incurred_conservative_upper_bound_usd: 0.029226
+    cost_control.cumulative_authorized_cap_usd: 0.10
+    authorization.d0_rank5_corrected_submission: AUTHORIZED_TWO_CALLS_NO_RETRY
+    authorization.d0_rank5_augmented_disposition: NOT_AUTHORIZED_UNTIL_CORRECTED_RESULT_VERIFIED
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+
+contract_parent:
+  relative_path: experiments/configs/pivot_feedback_d0_t10151_rank5_cross_provider_v1.yaml
+  sha256: 52bb266655ca4a408eee0ac13de0efcad2054ce34e2ff4c6c7c623afa518668d
+  required_schema_version: pivot_feedback_d0_t10151_rank5_cross_provider_config.v1
+  required_status: FROZEN_RANK5_25_ROW_CROSS_PROVIDER_CONTRACT_NOT_SUBMITTED
+  inherited_sections:
+    - source_inputs
+    - review_contract
+    - providers
+    - cost_control
+
+review_contract_override:
+  request_seed: pivot-feedback-d0-t10151-rank5-cross-provider-v3-correct-hcv
+  target_topic_name: Hepatitis C virus research
+  target_definition: >-
+    Accept explicit hepatitis C, HCV, hepacivirus, or historically specific
+    non-A/non-B hepatitis evidence. Explicit hepatitis A, B, D, E, delta, HAV,
+    HBV, HDV, or HEV evidence is off-topic when no hepatitis-C anchor is
+    present. Mixed positive and negative anchors, or generic hepatitis without
+    a hepatitis-C anchor, remain ambiguous.
+  source: FROZEN_PIVOT_FEEDBACK_GATE_STATE_V23_TOPIC_CARD
+  prompt_text_unchanged: true
+  labels_unchanged: true
+  confidence_levels_unchanged: true
+  consensus_rules_unchanged: true
+
+transport_amendment:
+  provider: claude
+  reason: STRUCTURED_OUTPUT_ARRAY_CARDINALITY_KEYWORDS_UNSUPPORTED
+  remove_from_decisions_array_schema: [minItems, maxItems]
+  prompt_unchanged: true
+  request_rows_unchanged: true
+  exact_25_unique_response_rows_verified_after_call: true
+  semantic_contract_unchanged_except_corrected_target_identity: true
+
+cost_control_successor:
+  corrected_request_upper_bound_usd: 0.040524
+  prior_attempt_upper_bound_usd: 0.029226
+  cumulative_upper_bound_usd: 0.069750
+  cumulative_authorized_cap_usd: 0.10
+  refuse_before_submission_if_cumulative_upper_bound_exceeds_cap: true
+
+execution:
+  prepared_root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v3-prepared-20260730
+  execution_root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v3-execution-20260730
+  credential_env_path: /home/kimyoungjin06/Desktop/Workspace/1.2.8.TwinPaper/.env
+  openai_key_name: OPENAI_API_KEY
+  claude_key_name: CLAUDE_API_KEY
+  credential_values_persisted: false
+  retries: 0
+  timeout_seconds_per_provider: 180
+  request_artifacts_verified_before_submission: true
+  raw_responses_preserved: true
+  preserve_successful_response_if_peer_fails: true
+  artifact_mode: "0600"
+  receipt_written_last: true
+
+authorization:
+  prepare_exact_corrected_requests: AUTHORIZED
+  verify_exact_corrected_requests: REQUIRED
+  submit_exact_corrected_requests: AUTHORIZED_AFTER_VERIFICATION_AND_CUMULATIVE_COST_PREFLIGHT
+  reduce_results: AUTHORIZED_PRECOMMITTED_RULE_ONLY
+  human_review: NOT_RUN_BY_DESIGN
+  augmented_rank5_disposition: NOT_AUTHORIZED_UNTIL_RESULT_VERIFIED_AND_SUCCESSOR_GATE
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This successor corrects the target to the frozen T10151 hepatitis-C card and
+  changes the opaque item IDs to prevent accidental mixing with invalid prior
+  results. The 25 source rows, generic classification prompt, models, labels,
+  confidence levels, dual-HIGH consensus, visible fields, Claude transport
+  fix, and fail-closed boundaries are otherwise unchanged.

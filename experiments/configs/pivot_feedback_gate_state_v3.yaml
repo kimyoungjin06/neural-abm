@@ -1,0 +1,115 @@
+schema_version: pivot_feedback_gate_state.v3
+label: pivot_feedback_gate_state_v3
+mode: ADDITIVE_S0_COMPLETION_GATE_LEDGER
+status: VALID_G_MINUS_1A_AND_S0_PASS_D0_DISCOVERY_ONLY_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v2.yaml
+  sha256: 4c465fff6ecc35a4f7b5c4cfdcbfc53cd8c909f5488d81ea71e5cb64f637f5f6
+  required_schema_version: pivot_feedback_gate_state.v2
+  required_status: VALID_G_MINUS_1A_PASS_S0_PARTIAL_D0_NOT_AUTHORIZED
+  required_fields:
+    authorization.s0_remaining_components: AUTHORIZED
+    authorization.d0_discovery_pilot: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.scientific_effect: NOT_ESTABLISHED
+  mutation_allowed: false
+
+execution_evidence:
+  g_minus_1a_receipt:
+    relative_path: experiments/evidence/results/pivot_feedback_g_minus_1a_receipt_20260723.summary.json
+    sha256: 8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802
+    required_schema_version: pivot_feedback_g_minus_1a_receipt.v1
+    required_status: PASS_G_MINUS_1A_BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+    required_fields:
+      authorization.s0_threshold_free_inventory: AUTHORIZED
+      authorization.d0_discovery_pilot: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.scientific_effect: NOT_ESTABLISHED
+  s0_completion_receipt:
+    relative_path: experiments/evidence/results/pivot_feedback_s0_completion_full_20260724.summary.json
+    sha256: 3dafee229190047ae14dfeb19f7d285a803138f4a446975993261956d5c00d93
+    required_schema_version: pivot_feedback_s0_completion_receipt.v1
+    required_status: PASS_S0_THRESHOLD_FREE_FIELD_AUTHOR_GRAPH_AND_AFFILIATION_INVENTORY_D0_DISCOVERY_ONLY_AUTHORIZED
+    required_fields:
+      scope.s0_gate_pass: true
+      scope.threshold_free_only: true
+      scope.outcomes_read: false
+      scope.d0_discovery_pilot_authorized: true
+      scope.d0_entry_end_year: 2012
+      scope.g0_measurement_freeze_authorized: false
+      scope.final_panel_materialization_authorized: false
+      scope.model_fitting_authorized: false
+      scope.g4_open: false
+      scope.gpu_used: false
+      scope.scientific_effect: NOT_ESTABLISHED
+      authorization.d0_discovery_only_pre2013: AUTHORIZED
+      authorization.g0_measurement_freeze: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.scientific_effect: NOT_ESTABLISHED
+      verification_accounting.artifacts_and_receipts_rehashed: 13
+      verification_accounting.independent_verification_reports_rehashed: 3
+      verification_accounting.all_current_artifacts_match_receipts: true
+      verification_accounting.all_verifier_hashes_match_current_repository: true
+      verification_accounting.all_component_outputs_unchanged_since_independent_verification: true
+
+gate_state:
+  G_MINUS_1A:
+    state: PASS_BOUNDED
+    complete: true
+    authorizes: [S0]
+  S0:
+    state: PASS_THRESHOLD_FREE_INVENTORY
+    complete: true
+    authorizes: [D0]
+  D0:
+    state: AUTHORIZED_NOT_RUN
+    complete: false
+    requires: [S0]
+    entry_year_end: 2012
+  G0:
+    state: PENDING
+    complete: false
+  G0_5:
+    state: NOT_RUN
+    complete: false
+  G1:
+    state: NOT_RUN
+    complete: false
+  G2:
+    state: NOT_RUN
+    complete: false
+  G3:
+    state: NOT_RUN
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+  G5:
+    state: NOT_RUN_OPTIONAL
+    complete: false
+
+authorization:
+  d0_discovery_pilot: AUTHORIZED_DISCOVERY_ONLY_ENTRY_YEAR_AT_MOST_2012
+  g0_measurement_freeze: NOT_AUTHORIZED
+  final_panel_materialization: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+next_required_implementation:
+  gate: D0
+  role: DISCOVERY_ONLY_MEASUREMENT_CALIBRATION_AND_FEASIBILITY
+  entry_year_end: 2012
+  final_field_choice_by_effect_size_allowed: false
+  confirmatory_year_changes_allowed: false
+  workload_class: CPU_IO
+  gpu_required: false
+
+claim_boundary: >-
+  This additive ledger preserves the partial historical v2 ledger and records
+  that all three current threshold-free S0 components now pass one independent
+  completion receipt. It authorizes only discovery-calibration D0 with entry
+  year at most 2012. G0 measurement freeze, final-panel materialization, model
+  fitting, G4 opening, empirical signatures, causal effects, and scientific
+  effects remain unauthorized, pending, sealed, not run, or not established.

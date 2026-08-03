@@ -1,0 +1,104 @@
+{
+  "schema_version": "pivot_feedback_d0_cross_provider_api_review_summary.v6",
+  "status": "PASS_INDEPENDENT_D0_CROSS_PROVIDER_RESULT_VERIFICATION_HUMAN_REVIEW_PENDING",
+  "contract": {
+    "relative_path": "experiments/configs/pivot_feedback_d0_cross_provider_api_review_v6.yaml",
+    "sha256": "1c8683d89de22c521bf4261726b22bcd4e0dcd37113d2eb7a44f720c3eb83373"
+  },
+  "execution": {
+    "v3_execution_root_basename": "pivot-feedback-d0-cross-provider-api-review-v3-execution-20260729",
+    "v3_openai_batch_id": "batch_6a69854f139c819094687ba9b634b708",
+    "v3_openai_final_status_snapshot_sha256": "07660ecbb6a78943a2cce0bb2a4004c7dfa12aeb07385f7814058f7a63bdce0b",
+    "v3_openai_final_status": "cancelled",
+    "v3_openai_final_request_counts": {
+      "completed": 0,
+      "failed": 0,
+      "total": 0
+    },
+    "v3_claude_batch_created": false,
+    "v3_failure_reason": "CLAUDE_CUSTOM_ID_EXCEEDED_64_CHARACTERS",
+    "v4_openai_batch_id": "batch_6a6987103cf08190a47dedaeb85d00f9",
+    "v4_claude_batch_id": "msgbatch_01DP8X2nv3AP6Locfmq1pnpU",
+    "v4_openai_valid_structured_rows": 144,
+    "v4_openai_incomplete_rows": 241,
+    "v4_openai_disposition": "INVALID_FULL_RETRY_REQUIRED",
+    "v4_claude_valid_structured_rows": 384,
+    "v5_openai_batch_id": "batch_6a698a4613dc819081bb2bbf766ba201",
+    "v5_openai_valid_structured_rows": 384,
+    "v5_openai_incomplete_rows": 0,
+    "v5_claude_resubmitted": false
+  },
+  "validated_results": {
+    "openai_valid_structured_rows": 384,
+    "claude_valid_structured_rows": 384,
+    "shared_expected_custom_ids": 384,
+    "provider_error_rows": 0,
+    "incomplete_rows": 0,
+    "openai_label_counts": {
+      "ON_TOPIC": 247,
+      "AMBIGUOUS": 56,
+      "OFF_TOPIC": 49,
+      "UNREVIEWABLE": 32
+    },
+    "claude_label_counts": {
+      "ON_TOPIC": 217,
+      "AMBIGUOUS": 96,
+      "OFF_TOPIC": 40,
+      "UNREVIEWABLE": 31
+    },
+    "label_agreement_rows": 306,
+    "label_disagreement_rows": 78,
+    "label_agreement_rate": 0.796875,
+    "dual_high_confidence_on_topic_rows": 197
+  },
+  "human_queue": {
+    "api_escalation_rows": 187,
+    "base_calibration_rows": 96,
+    "calibration_escalation_overlap_rows": 50,
+    "deduplicated_rows_per_reviewer": 233,
+    "reviewer_count": 2,
+    "packets_blinded_from_api_outputs": true,
+    "reviewer_1_completed_rows": 0,
+    "reviewer_2_completed_rows": 0,
+    "human_calibration_complete": false,
+    "human_adjudication_complete": false
+  },
+  "cost_control": {
+    "currency": "USD",
+    "v4_actual_total_cost_usd": "0.300103",
+    "v5_openai_retry_actual_batch_cost_usd": "0.052669",
+    "cumulative_actual_cost_usd": "0.352772",
+    "cumulative_authorized_maximum_usd": "1.00"
+  },
+  "output": {
+    "root_basename": "pivot-feedback-d0-cross-provider-api-review-v6-results-20260729",
+    "receipt_sha256": "d10696cd88074d2cefe55cb0bd789c9b8dcecb6b1548488e9e9ae9a7ed22567b",
+    "artifact_tree_sha256": "275d96f638090d39d1832b8e7c005d168044d9c2d63e20ddf1578b1f38ac99af",
+    "verification_report_basename": "pivot-feedback-d0-cross-provider-api-review-v6-results-20260729.verification-v6.json",
+    "verification_report_sha256": "1a43dcbf1b7bd046b94599f8f19c849d29d5dc13638a07cea898199f57eb0ed3",
+    "api_result_summary_sha256": "875011725d0e6ba37ee99bd919fc4a687f43a41d9cda38d40ae3ba5b3a9415e4"
+  },
+  "producer": {
+    "script": "scripts/build_pivot_feedback_d0_cross_provider_results_v6.py",
+    "script_sha256": "861afcb9e92bec855d24e6d2195b6ad68c28fc9253918542b88956abe545ff42",
+    "verifier": "scripts/verify_pivot_feedback_d0_cross_provider_results_v6.py",
+    "verifier_sha256": "7f47cd9c5587b9ea783762eeb924ad97c1dc0f234c89d36e8f23634fc6025144",
+    "config": "experiments/configs/pivot_feedback_d0_cross_provider_api_review_v6.yaml",
+    "config_sha256": "1c8683d89de22c521bf4261726b22bcd4e0dcd37113d2eb7a44f720c3eb83373"
+  },
+  "scope": {
+    "api_review_complete_for_frozen_384_title_set": true,
+    "api_auto_accept_candidates_materialized": true,
+    "human_queue_materialized": true,
+    "human_calibration_complete": false,
+    "candidate_universe_screen_complete": false,
+    "episode_3_quarantined": true,
+    "d0_complete": false,
+    "outcomes_read": false,
+    "g0_authorized": false,
+    "model_fitting_authorized": false,
+    "g4_open": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "Both pinned API judges produced 384 complete structured title-only decisions and the provider-independent verifier accepted the joined result. API triage reduces the frozen two-reviewer workload to 233 deduplicated rows per reviewer, but neither human packet has been completed. D0, complete-candidate-universe screening, outcomes, G0, model fitting, G4, and scientific effects remain pending, unauthorized, sealed, or not established."
+}

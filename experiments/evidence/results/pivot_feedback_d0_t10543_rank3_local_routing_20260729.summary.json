@@ -1,0 +1,59 @@
+{
+  "schema_version": "pivot_feedback_d0_t10543_rank3_local_routing_summary.v1",
+  "status": "PASS_INDEPENDENT_T10543_RANK3_LOCAL_ROUTING_AND_RULE_V2_DRY_RUN",
+  "target": {
+    "field_id": 27,
+    "field_candidate_rank": 3,
+    "topic_id": 10543,
+    "entry_year": 1986
+  },
+  "exact_sample": {
+    "rows": 96,
+    "rows_per_window": 32,
+    "missing_title_rows": 0,
+    "recent_six_year_author_linked_rows": 4645,
+    "window_pool_rows": {"0": 2659, "1": 657, "2": 3988},
+    "independently_replayed": true
+  },
+  "recent_routing": {
+    "accept_rows": 21,
+    "reject_rows": 0,
+    "ambiguous_rows": 16,
+    "opaque_quarantine_rows": 27,
+    "opaque_quarantine_fraction": 0.421875
+  },
+  "rule_v2": {
+    "majority_opaque_branch_fired": false,
+    "baseline_median_primary_topic_score": 0.97865,
+    "signal_median_primary_topic_score": 0.04635,
+    "baseline_to_signal_score_drop": 0.9323,
+    "baseline_dominant_source_share": 0.3125,
+    "signal_dominant_source_share": 0.84375,
+    "baseline_to_signal_source_share_increase": 0.53125,
+    "branch": "JOINT_SCORE_AND_SOURCE_SHIFT_INDEXING_ANOMALY",
+    "dry_run_state": "WOULD_CONTENT_FAIL_INDEXING_ANOMALY",
+    "reason": "JOINT_SCORE_DROP_AND_SOURCE_CONCENTRATION_SHIFT",
+    "production_disposition_created": false
+  },
+  "execution_boundary": {
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000",
+    "selection_certificate_issued": false,
+    "outcomes_read": false
+  },
+  "artifacts": {
+    "sample_config_sha256": "76bfbf4c0483e1f275fee515366e0d1ac8e842182b7a940f5f69564b0e116cec",
+    "sample_producer_sha256": "d4938fd15e761bc71595431b98504ec96b8c3bf58591d553e6104b6d41e465dd",
+    "sample_verifier_sha256": "4642d4c1c5292d4782e0bb4aaebdf9ead6b063dc53621567d6a8816eb281b2c8",
+    "sample_receipt_sha256": "ec99a44f49d89aaaf28ab5692520349432be37cf2c1704b0317731d91651d90b",
+    "sample_verification_sha256": "7e59cd7232e62b0766f062aa682f2e98c0076bfe9602ceecfcd9c393f7e67dae",
+    "routing_config_sha256": "3687de404418f4ede90f7f5923376a29343f25cc68de6534da512942acc082f7",
+    "routing_producer_sha256": "c153670102e2945e2775859354291508d254f0b6666f1c08cca13ca85cc9eeb1",
+    "routing_verifier_sha256": "a73a3a2292b5301335df7fe4b93bde4af7f1bbf4338de547b1b707b7570f596e",
+    "routing_receipt_sha256": "dba3621dc8acb1c48a22013b9909de372f2ffb8b2de97321610e2bd0593bdbb5",
+    "routing_verification_sha256": "2c85d6c7b4650dcedebd22e45ec6602172de2f149b62db497f32a95fef231555",
+    "candidate_dry_run_sha256": "730f2d241926bc0f8a370c8b55ae814575db04f2d0a36e3dabace746060864b7"
+  },
+  "claim_boundary": "This is an exact current-snapshot sample and engineering indexing-quality dry-run. It is not semantic truth, a production rank-3 disposition, a selection certificate, a pivot classification, an outcome result, a model fit, or a scientific effect."
+}

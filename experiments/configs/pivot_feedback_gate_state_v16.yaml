@@ -1,0 +1,148 @@
+schema_version: pivot_feedback_gate_state.v16
+label: pivot_feedback_gate_state_v16
+mode: ADDITIVE_PRODUCTION_CANDIDATE_RULE_FREEZE_EXACT_T10543_SAMPLE_AUTHORIZATION
+status: VALID_PRODUCTION_CANDIDATE_RULE_FROZEN_EXACT_T10543_LOCAL_SAMPLE_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v15.yaml
+  sha256: e6fbecc32a4e9cc7af9d74e93d90eebfa854af05f3f119a0a88842cd66908c40
+  required_schema_version: pivot_feedback_gate_state.v15
+  required_status: VALID_CANDIDATE_CONTENT_DRY_RUN_COMPLETE_PRODUCTION_DISPOSITIONS_NOT_FROZEN_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_candidate_rule_accept_or_reject_decision: AUTHORIZED
+    authorization.d0_raw_openalex_title_scan: NOT_AUTHORIZED
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.d0_selection_certificate: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+production_rule_freeze:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_production_candidate_rule_v1.yaml
+    sha256: 027872f50742421176cfe20b71eb7469fc447e7d9e78a1c556e1c16b74852519
+    required_schema_version: pivot_feedback_d0_production_candidate_rule_config.v1
+    required_status: FROZEN_PRODUCTION_CANDIDATE_RULE_AND_FRONTIER_V2_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_production_candidate_rule_v1.py
+    sha256: c7fc8df4d0fb501b9ca65821cac081c316d2ae17364b613fcd3619f79accbd98
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_production_candidate_rule_v1.py
+    sha256: 446f7900be6f88e9e95ba3b649838f88948c0688681b6c8cebabdcfd823da527
+    mutation_allowed: false
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_production_candidate_rule_20260729.summary.json
+    sha256: c76901d86da75e81b475e3d82684e56388379cd6150ddc86c53e5a287f83b02b
+    required_schema_version: pivot_feedback_d0_production_candidate_rule_summary.v1
+    required_status: PASS_INDEPENDENT_PRODUCTION_CANDIDATE_RULE_AND_FRONTIER_V2
+    mutation_allowed: false
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_production_candidate_rule_20260729.summary.md
+    sha256: 7ec5760c47c3ec82843fe21fcdfc3e14b6108d506a4905fbc32ef1a647759809
+    mutation_allowed: false
+  operator_local_evidence:
+    root_basename: pivot-feedback-d0-production-candidate-rule-v1-20260729
+    receipt_basename: production_candidate_rule.outputs.json
+    receipt_sha256: 098843acbea1856c79207b7ee56ac918a7c607232e3a2a712fd28f81f9d0185e
+    artifact_tree_sha256: a402b0d4c0302a4594023e0d5aa171d6e73abe94049e742b7773b0e4f6658be4
+    verification_report_basename: pivot-feedback-d0-production-candidate-rule-v1-20260729.verification-v1.json
+    verification_report_sha256: 200366d6e611ff9db5b01327aa3f5a2a86b3ac4dc0afd6e0b7efde92b7b883b9
+    verification_status: PASS_INDEPENDENT_PRODUCTION_CANDIDATE_RULE_AND_FRONTIER_V2
+
+production_result:
+  production_candidate_dispositions: 4
+  content_pass_rows: 3
+  content_fail_rows: 1
+  computer_science_field_certificate_issued: true
+  medicine_required_topic_id: 10543
+  medicine_required_entry_year: 1993
+  medicine_required_content_state: CONTENT_UNRESOLVED
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+
+exact_targeted_sample_authorization:
+  field_id: 27
+  field_candidate_rank: 2
+  topic_id: 10543
+  topic_name: Prostate Cancer Treatment and Research
+  entry_year: 1993
+  sample_seed: pivot-feedback-d0-candidate-content-v1
+  rows_per_window: 32
+  total_rows: 96
+  windows:
+    0: {minimum_year: null, maximum_year: 1986}
+    1: {minimum_year: 1987, maximum_year: 1989}
+    2: {minimum_year: 1990, maximum_year: 1992}
+  normalized_work_metadata_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+  normalized_author_event_root_basename: openalex-g1-author-history-v3-full-20260722
+  current_snapshot_root_id: openalex_works_20260330_repairreplay_20260410_190630
+  exact_work_type_and_author_linkage_abi_required: true
+  deterministic_lowest_hash_selection_required: true
+  exact_selected_id_title_lookup_only: true
+  output_create_only: true
+  local_routing_before_api_required: true
+  api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+
+gate_state:
+  D0:
+    state: PARTIAL_PRODUCTION_RULE_FROZEN_TARGETED_T10543_SAMPLE_AUTHORIZED
+    complete: false
+    completed_components:
+      - D0_ZERO_COST_FOUR_CANDIDATE_CONTENT_DRY_RUN
+      - D0_PRODUCTION_CANDIDATE_RULE_FREEZE
+      - D0_FOUR_PRODUCTION_CANDIDATE_DISPOSITIONS
+      - D0_ADAPTIVE_FRONTIER_V2
+      - D0_COMPUTER_SCIENCE_FIELD_CERTIFICATE
+    blocked_components:
+      - T10543_CONTENT_DISPOSITION
+      - MEDICINE_FIELD_CERTIFICATE
+      - GLOBAL_SELECTION_CERTIFICATE
+      - DETERMINISTIC_EPISODE_RESELECTION_SUCCESSOR
+      - REBUILT_AUTHOR_OPPORTUNITY_PANEL
+      - PRODUCTION_RESEARCHER_PIVOT_CLASSIFICATION
+    authorizes:
+      - D0_EXACT_T10543_NORMALIZED_WORK_AND_AUTHOR_LINKAGE_SCAN
+      - D0_EXACT_T10543_96_ID_SAMPLE
+      - D0_EXACT_SELECTED_ID_CURRENT_SNAPSHOT_TITLE_LOOKUP
+      - D0_T10543_TOPIC_CARD_AND_LOCAL_ROUTING
+  G0:
+    state: PENDING
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  d0_production_candidate_rule: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_four_production_candidate_dispositions: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_adaptive_frontier_v2: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_exact_t10543_normalized_candidate_scan: AUTHORIZED_READ_ONLY
+  d0_exact_t10543_96_id_sample: AUTHORIZED_CREATE_ONLY
+  d0_exact_selected_id_title_lookup: AUTHORIZED_READ_ONLY
+  d0_t10543_topic_card_design: AUTHORIZED
+  d0_t10543_local_routing: AUTHORIZED_ZERO_COST_ONLY
+  d0_general_raw_openalex_title_scan: NOT_AUTHORIZED
+  d0_full_candidate_title_copy: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_exception_submission: NOT_AUTHORIZED
+  d0_t10543_production_content_disposition: NOT_AUTHORIZED_UNTIL_LOCAL_ROUTING_VERIFIED
+  d0_global_selection_certificate: NOT_AUTHORIZED
+  d0_episode_reselection_successor: NOT_AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This additive successor freezes the simple production candidate rule, four
+  candidate dispositions, frontier v2, and the Computer Science field
+  certificate. Medicine remains blocked by CONTENT_UNRESOLVED T10543. It
+  authorizes only the exact read-only normalized target scan, deterministic
+  96-ID sample, exact selected-ID title lookup, topic-card design, and
+  zero-cost local routing. General raw scans, full title copies, API requests,
+  T10543 production disposition, global certification, reselection, outcomes,
+  fitting, G4, and scientific effects remain unauthorized or not established.

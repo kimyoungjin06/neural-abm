@@ -1,0 +1,119 @@
+{
+  "schema_version": "pivot_feedback_s0_coauthor_graph_profile_full_summary.v1",
+  "status": "PASS_S0_EXACT_NONRANKED_COAUTHOR_GRAPH_PROFILES_WITH_CURRENT_SNAPSHOT_AUTHOR_TOKEN_LIMITATIONS",
+  "scope": {
+    "full_scope": true,
+    "component_pass": true,
+    "s0_gate_pass": false,
+    "d0_authorized": false,
+    "model_fitting_authorized": false,
+    "gpu_used": false,
+    "source_snapshot_date": "2026-03-30",
+    "profile_caps": [
+      10,
+      50,
+      100
+    ],
+    "profiles_ranked_or_selected": false,
+    "unbounded_all_graph_materialized": false
+  },
+  "source_accounting": {
+    "author_event_rows": 779630258,
+    "classified_author_event_rows": 675475922,
+    "eligible_author_event_rows_cap_10": 574323113,
+    "eligible_author_event_rows_cap_50": 651367381,
+    "eligible_author_event_rows_cap_100": 655423894,
+    "eligible_work_groups_cap_100": 220351601,
+    "partition_violations": 0
+  },
+  "pair_accounting": {
+    "actual_pair_incidences_cap_10": 943733947,
+    "actual_pair_incidences_cap_50": 1561777540,
+    "actual_pair_incidences_cap_100": 1694394005,
+    "distinct_undirected_edges_cap_10": 776875376,
+    "distinct_undirected_edges_cap_50": 1207070104,
+    "distinct_undirected_edges_cap_100": 1289015377,
+    "unbounded_declared_pair_incidences_diagnostic_only": 47627187584
+  },
+  "field_year_graph_inventory": {
+    "core_cells": 18544,
+    "rows": 55632,
+    "null_year_profile_rows": 78,
+    "all_null_year_profile_rows_have_nonzero_nodes": true,
+    "profile_metric_sums": {
+      "graph_node_tokens": {
+        "10": 352175135,
+        "50": 378768092,
+        "100": 380010841
+      },
+      "distinct_undirected_edges": {
+        "10": 776875376,
+        "50": 1207070104,
+        "100": 1289015377
+      },
+      "connected_components": {
+        "10": 97445391,
+        "50": 96253316,
+        "100": 96201999
+      },
+      "largest_component_nodes": {
+        "10": 141082665,
+        "50": 170685918,
+        "100": 172062158
+      }
+    },
+    "null_year_metric_sums": {
+      "graph_node_tokens": {
+        "10": 545616,
+        "50": 584700,
+        "100": 589738
+      },
+      "distinct_undirected_edges": {
+        "10": 762473,
+        "50": 1264766,
+        "100": 1489877
+      },
+      "connected_components": {
+        "10": 219117,
+        "50": 218854,
+        "100": 218825
+      }
+    },
+    "materialized_node_counts_equal_compact_sums_at_every_cap": true,
+    "materialized_edge_counts_equal_compact_sums_at_every_cap": true,
+    "parquet_sha256": "2a5ce7276f70f666be1bd86a1361c14c615d12f4d5c044dfec860041030a6a7c"
+  },
+  "independent_verification": {
+    "status": "PASS_INDEPENDENT_S0_COAUTHOR_GRAPH_PROFILE_TOPOLOGY_CONSERVATION_ORCID_AFFILIATION_RECEIPT_STILL_REQUIRED",
+    "artifacts_rehashed": 4,
+    "all_degree_sums_close": true,
+    "all_component_bounds_hold": true,
+    "all_largest_component_shares_replayed": true,
+    "output_receipt_sha256": "a189f2d891937922b0d15b587477cd8c0fa154f5663b34c0ae94d6ccf7351753",
+    "artifact_tree_sha256": "07ab8e6f266597cd30274a746cb550ac80470ad4e843c652c87e17208b0ca37b",
+    "verification_report_basename": "pivot-feedback-s0-coauthor-graph-profile-v1-full-20260724.verification.json",
+    "verification_report_bytes": 1436,
+    "verification_report_sha256": "cc7920ae361a1de3383e7986fb1e40987b16c83bd2e309a375fce98ef35d846b",
+    "verifier_sha256": "a4af2e05b8f3feff12155c02e71c67fa2f98433a397f3c6215b6a96468e6d571"
+  },
+  "provenance": {
+    "core_receipt_sha256": "3dd563eafce498a2e975680064d7589b63710c2f92b75f16f2bea7a9da5a4405",
+    "author_event_receipt_sha256": "7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8",
+    "author_event_artifact_tree_sha256": "c1185838f56a402081364983b6d3ce182d5684cebf4f5f74b3081af55bed2329",
+    "config_sha256": "6a7744feba8932c05f9dc25a81096070bf48618be79011ed6b75329ea56cfec9",
+    "runner_sha256": "21479377f05297ed04ea83b48f29a37b1275ee0af9a06d4d8479f3301f3f9549",
+    "result_fingerprint_sha256": "2f7c177d671a27c0c159941d50d785da532755a4bf5199d835019beb049002f8",
+    "producer_report_sha256": "f4d845122401785f7ba6c662dfc09b25e9329eea4fdd040cf158d4a7f1a90292",
+    "duckdb_version": "1.5.5",
+    "scipy_connected_components": true
+  },
+  "gate_status": {
+    "g_minus_1a": "PASS_BOUNDED",
+    "s0_threshold_free_inventory": "PARTIAL_GRAPH_PASS_REQUIRES_FULL_ORCID_AFFILIATION_RECEIPT",
+    "d0_discovery_pilot": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "PENDING",
+    "model_fitting": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This full component establishes exact current-snapshot OpenAlex author-token graph nodes, distinct undirected edges, degree order statistics, connected components, and largest-component support within every primary-field and publication-year cell for all three predeclared, non-ranked declared-team caps 10, 50, and 100. Node, edge, component, and largest-component counts are summed within field-year cells and are not global person-graph counts. It does not establish natural persons, historically observed collaboration, a preferred team cap, the unbounded hyperauthorship graph, candidate eligibility, S0 completion by itself, D0, G0, model fitting, empirical effects, causal effects, or a scientific effect."
+}

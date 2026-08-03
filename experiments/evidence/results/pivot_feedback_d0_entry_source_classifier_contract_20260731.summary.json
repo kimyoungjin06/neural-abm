@@ -1,0 +1,95 @@
+{
+  "schema_version": "pivot_feedback_d0_entry_source_classifier_contract_summary.v1",
+  "status": "PASS_EXACT_FOUR_ENTRY_SOURCE_CLASSIFIER_CONTRACT_RECEIPTS_AND_FIXTURES",
+  "scope": {
+    "exact_certified_episode_rows": 4,
+    "registered_author_episode_rows": 3256271,
+    "entry_year_minimum": 1953,
+    "entry_year_maximum": 2012,
+    "threshold_free": true,
+    "minimum_history_threshold": "NONE",
+    "team_cap": "NONE"
+  },
+  "feature_sources": {
+    "pre_entry_target_topic_work_count": {
+      "source": "VERIFIED_PREDECISION_AUTHOR_MEASUREMENT",
+      "window": "ALL_ELIGIBLE_YEARS_THROUGH_T_MINUS_1"
+    },
+    "trailing_3y_target_topic_work_count": {
+      "source": "RECEIPT_BOUND_CUTOFF_WORK_METADATA_X_AUTHOR_WORK_EVENTS",
+      "window_offsets": [
+        -3,
+        -2,
+        -1
+      ]
+    },
+    "focal_confirmed_eligible_target_topic_work_count": {
+      "source": "CERTIFIED_EPISODE_TOPIC_CONTENT_PASS_X_RECEIPT_BOUND_CUTOFF_WORK_METADATA_X_AUTHOR_WORK_EVENTS",
+      "window_offsets": [
+        0
+      ]
+    }
+  },
+  "content_confirmation": {
+    "unit": "CERTIFIED_EPISODE_TOPIC_NOT_INDIVIDUAL_WORK",
+    "individual_work_api_label_required": false,
+    "individual_work_human_label_required": false,
+    "new_api_request_required": false,
+    "provider_consensus_is_ground_truth": false,
+    "current_snapshot_primary_topic_is_semantic_ground_truth": false,
+    "historical_topic_observability_established": false
+  },
+  "verification": {
+    "repository_bindings_validated": 10,
+    "operator_receipts_read_and_hash_validated": 5,
+    "operator_parquet_files_opened": 0,
+    "production_parquet_rows_read": 0,
+    "api_requests_created": 0,
+    "outcomes_read": false,
+    "fixture_input_work_rows": 13,
+    "fixture_input_author_event_rows": 13,
+    "fixture_registered_author_rows": 5,
+    "fixture_classified_author_rows": 5,
+    "fixture_row_mismatches": 0,
+    "fixture_accounting_mismatches": 0,
+    "all_four_states_covered": true,
+    "states": [
+      "NO_FOCAL_ENTRY",
+      "NEW_TOPIC_ENTRY",
+      "RETURN",
+      "CONTINUATION"
+    ],
+    "duplicate_author_work_event_excess_rows": 1,
+    "excluded_outside_window_rows": 2,
+    "excluded_wrong_topic_or_field_rows": 1,
+    "excluded_paratext_or_work_type_rows": 2,
+    "excluded_retracted_rows": 1,
+    "excluded_temporal_disposition_rows": 1,
+    "excluded_zero_valid_author_token_rows": 1,
+    "retained_is_retracted_null_rows": 1
+  },
+  "repository_artifacts": {
+    "contract": {
+      "relative_path": "experiments/configs/pivot_feedback_d0_entry_source_classifier_contract_v1.yaml",
+      "sha256": "4105e9671d28d42ed758406a772bbca437fbe3caf4c278908d597d154d1d364c"
+    },
+    "validator": {
+      "relative_path": "scripts/verify_pivot_feedback_d0_entry_source_classifier_contract_v1.py",
+      "sha256": "7a8716738636cc5d03a6ced97f4e3b2712053cf52fc1fce0bbb610f33d152e5c"
+    },
+    "research_note": {
+      "relative_path": "docs/research/pivot-feedback-d0-entry-source-classifier-contract-v1.md",
+      "sha256": "d06904ec35e3809388789c095a930896513732de2c9f6eec8d6fce38fd4cdef6"
+    }
+  },
+  "authorization": {
+    "contract_and_fixture_validation": "COMPLETE_INDEPENDENTLY_VERIFIED",
+    "production_source_build": "NOT_AUTHORIZED_BY_CONTRACT_ALONE",
+    "production_pivot_classification": "NOT_AUTHORIZED",
+    "entry_or_persistence_outcome_opening": "NOT_AUTHORIZED",
+    "new_api_request_creation": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED"
+  },
+  "claim_boundary": "The exact normalized sources, temporal windows, work and author-linkage ABI, topic-level content-confirmation semantics, missingness rules, and four-state classifier contract pass receipt and fixture validation. No production Parquet row, individual-work API label, outcome, model, or G4 result was read or created."
+}

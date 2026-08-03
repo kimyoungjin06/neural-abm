@@ -1,0 +1,127 @@
+{
+  "schema_version": "pivot_feedback_d0_entry_source_production_summary.v1",
+  "status": "PASS_INDEPENDENT_EXACT_FOUR_THREE_COUNT_SOURCE_REPLAY_NO_STATE_LABELS",
+  "scope": {
+    "exact_certified_episode_rows": 4,
+    "registered_author_episode_rows": 3256271,
+    "feature_columns": 8,
+    "production_classifier_state_columns": 0,
+    "pivot_label_columns": 0,
+    "post_entry_offsets_read": [],
+    "outcomes_read": false,
+    "api_requests_created": 0
+  },
+  "full_source_replay": {
+    "work_source_rows": 492293206,
+    "work_partitions_rehashed": 4096,
+    "author_event_source_rows": 779630258,
+    "author_event_partitions_rehashed": 4096,
+    "candidate_window_rows": 75176568,
+    "eligible_prelink_work_rows": 36138,
+    "linked_work_rows": 35057,
+    "zero_valid_author_token_work_rows": 1081,
+    "distinct_author_work_pairs": 70008,
+    "registered_distinct_author_work_pairs": 61030,
+    "unregistered_distinct_author_work_pairs": 8978,
+    "duplicate_author_work_event_excess_rows": 0,
+    "publication_year_mismatch_rows": 0,
+    "temporal_disposition_mismatch_rows": 0,
+    "declared_authors_count_mismatch_rows": 0,
+    "primary_field_id_mismatch_rows": 0
+  },
+  "feature_replay": {
+    "pre_entry_value_mismatches": 0,
+    "trailing_value_mismatches": 0,
+    "focal_value_mismatches": 0,
+    "output_keys_globally_strict_sorted_unique": true,
+    "trailing_count_exceeds_pre_entry_count": 0,
+    "zero_pre_entry_positive_trailing": 0,
+    "forbidden_post_entry_offset_scan_count": 0,
+    "trailing_pair_rows": 46911,
+    "focal_pair_rows": 14119,
+    "trailing_positive_author_rows": 29661,
+    "focal_positive_author_rows": 9287,
+    "by_episode": [
+      {
+        "certified_episode_index": 1,
+        "field_id": 17,
+        "topic_id": 14430,
+        "entry_year": 2003,
+        "author_rows": 549629,
+        "trailing_pair_rows": 12957,
+        "focal_pair_rows": 2542,
+        "trailing_positive_author_rows": 11208,
+        "focal_positive_author_rows": 2089
+      },
+      {
+        "certified_episode_index": 2,
+        "field_id": 17,
+        "topic_id": 10579,
+        "entry_year": 2012,
+        "author_rows": 1215043,
+        "trailing_pair_rows": 18432,
+        "focal_pair_rows": 6534,
+        "trailing_positive_author_rows": 8182,
+        "focal_positive_author_rows": 3627
+      },
+      {
+        "certified_episode_index": 3,
+        "field_id": 27,
+        "topic_id": 10151,
+        "entry_year": 1993,
+        "author_rows": 1330658,
+        "trailing_pair_rows": 11469,
+        "focal_pair_rows": 4105,
+        "trailing_positive_author_rows": 7142,
+        "focal_positive_author_rows": 2789
+      },
+      {
+        "certified_episode_index": 4,
+        "field_id": 27,
+        "topic_id": 12421,
+        "entry_year": 1953,
+        "author_rows": 160941,
+        "trailing_pair_rows": 4053,
+        "focal_pair_rows": 938,
+        "trailing_positive_author_rows": 3129,
+        "focal_positive_author_rows": 782
+      }
+    ]
+  },
+  "repository_artifacts": {
+    "config": {
+      "relative_path": "experiments/configs/pivot_feedback_d0_entry_source_build_v1.yaml",
+      "sha256": "5f731bd119a87447659535a12dea812228eff1b2eb279dd1b96e5de7b2d52e39"
+    },
+    "producer": {
+      "relative_path": "scripts/build_pivot_feedback_d0_entry_source_v1.py",
+      "sha256": "f8ffb98c711760ddcd1c37a28d7829a3236274a3dc894d9428611fd3e13205c8"
+    },
+    "verifier": {
+      "relative_path": "scripts/verify_pivot_feedback_d0_entry_source_v1.py",
+      "sha256": "32f6ad7330af98eccbe0fa2d9297ca7618db6dc5f410aa12b24e4d8936275999"
+    }
+  },
+  "operator_artifacts": {
+    "root_basename": "pivot-feedback-d0-entry-source-v1-full-20260731",
+    "receipt_basename": "pivot_entry_source_build.outputs.json",
+    "receipt_sha256": "e56329675a51b1c1a2be1003df2e60fa3fdad1a93fce42a2102adc957284e060",
+    "artifact_tree_sha256": "7c89e9c8cb8cc72ad57e483089ff65c03e50b15ac420b338b33ee4a4e66dfa1d",
+    "feature_basename": "pivot_entry_source_features.parquet",
+    "feature_sha256": "812843969ca8b147659173090bcb6f6ea7434e9c13ebf37b4e852418b06f5384",
+    "feature_rows": 3256271,
+    "feature_columns": 8,
+    "verification_basename": "pivot-feedback-d0-entry-source-v1-full-20260731.verification-v1.json",
+    "verification_sha256": "20d2d668f24ce6c16cfb4adccb5758c8092c3d1feb91aa7f4ef3a73a634c2784"
+  },
+  "authorization": {
+    "production_source_build": "COMPLETE_INDEPENDENTLY_VERIFIED",
+    "production_pivot_classification": "NOT_AUTHORIZED_BY_SOURCE_VERIFICATION_ALONE",
+    "entry_or_persistence_outcome_opening": "NOT_AUTHORIZED",
+    "new_api_request_creation": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED"
+  },
+  "claim_boundary": "The three-count source for every registered exact-four author-episode row is independently reproduced from every bound work and author-event partition with zero feature mismatch. No production classifier state, pivot label, post-entry outcome, API result, model, or G4 result is materialized or opened."
+}

@@ -1,0 +1,220 @@
+schema_version: pivot_feedback_gate_state.v13
+label: pivot_feedback_gate_state_v13
+mode: ADDITIVE_SCOPE_CORRECTION_ADAPTIVE_FRONTIER_PREPARATION
+status: VALID_SCOPE_AUDIT_COMPLETE_ADAPTIVE_FRONTIER_PROOF_NOT_RUN_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v12.yaml
+  sha256: c202c52890045d604e7eadddf7a8a18a29aeccc6dcf7bd045cdf715b3cda1b3e
+  required_schema_version: pivot_feedback_gate_state.v12
+  required_status: VALID_API_ONLY_TOPIC_ROUTING_DRY_RUN_COMPLETE_MANIFEST_NOT_RUN_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    routing_result.candidate_universe_screen_complete: false
+    authorization.d0_paid_api_exception_submission: NOT_AUTHORIZED
+    authorization.d0_production_pivot_classification: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+scope_audit_freeze:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_candidate_screen_scope_audit_v1.yaml
+    sha256: d8be03dccbd3f45cec6fcde7bcf02ddd1529d2d26175fdcf158554662d8b65c8
+    required_schema_version: pivot_feedback_d0_candidate_screen_scope_audit_config.v1
+    required_status: FROZEN_ZERO_COST_CANDIDATE_SCREEN_SCOPE_AUDIT_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_candidate_screen_scope_audit_v1.py
+    sha256: 3fe63cddbdd116f5264559b60790cd19d260805c4d4dd8939b5ec7a5486ab705
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_candidate_screen_scope_audit_v1.py
+    sha256: 0acd553c13e5e2e28646317918f0a9e01db6558f17cfe94551ab4e1717f824cc
+    mutation_allowed: false
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_candidate_screen_scope_audit_20260729.summary.json
+    sha256: 34cc2fd6e830c373c4da89da6b0e8f2cd7ad3f371a6b7bb8ad042a9c38a45b8f
+    required_schema_version: pivot_feedback_d0_candidate_screen_scope_audit_summary.v1
+    required_status: PASS_INDEPENDENT_ZERO_COST_CANDIDATE_SCREEN_SCOPE_AND_ROUTER_COVERAGE_AUDIT
+    mutation_allowed: false
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_candidate_screen_scope_audit_20260729.summary.md
+    sha256: 70f2fdb9de34ef09c0130238881be9ce400ba170a0cb47d862ab40dd7ed1fc00
+    mutation_allowed: false
+  operator_local_evidence:
+    root_basename: pivot-feedback-d0-candidate-screen-scope-audit-v1-20260729
+    receipt_basename: candidate_screen_scope_audit.outputs.json
+    receipt_sha256: c8dcf7ac6f0fd4e5a8eeb06ff4e2a4af0792c98cd92a8e500b7f7d7aaf3cb856
+    artifact_tree_sha256: c9e9ed3aae7c76939494fb8262667409d6cefdf8e4172cc975a1f8eee53163d8
+    verification_report_basename: pivot-feedback-d0-candidate-screen-scope-audit-v1-20260729.verification-v1.json
+    verification_report_sha256: 83aef0e52b4a19157a24d5c3cdc87630a8afe73f76ff27734fd6fb01736bdd8d
+    verification_status: PASS_INDEPENDENT_ZERO_COST_CANDIDATE_SCREEN_SCOPE_AND_ROUTER_COVERAGE_AUDIT
+
+scope_result:
+  candidate_rows: 70277
+  distinct_candidate_topics: 994
+  candidate_window_rows: 421662
+  unique_candidate_topic_year_cells: 99433
+  unique_candidate_window_linked_work_rows: 22437851
+  candidate_window_linked_work_memberships: 102900039
+  frozen_topic_card_count: 4
+  card_covered_candidate_topics: 4
+  uncovered_candidate_topics: 990
+  card_covered_candidate_rows: 236
+  full_router_topic_coverage_fraction: "0.004024"
+  full_router_candidate_row_coverage_fraction: "0.003358"
+  current_four_card_router_can_screen_complete_candidate_universe: false
+  complete_title_bearing_work_manifest_materialized: false
+  complete_candidate_universe_screened: false
+  adaptive_frontier_equivalence_proven: false
+
+corrected_strategy:
+  name: DETERMINISTIC_ADAPTIVE_CANDIDATE_FRONTIER
+  objective: >-
+    Produce the same highest-ranked compatible content-valid pair that an
+    eager complete-universe evaluation would produce, while evaluating only
+    candidates that can still alter the pair.
+  required_candidate_order: FIELD_CANDIDATE_RANK_ASCENDING
+  required_content_states:
+    - CONTENT_PASS
+    - CONTENT_FAIL
+    - CONTENT_UNRESOLVED
+    - NOT_EVALUATED
+  fail_closed_state: CONTENT_UNRESOLVED
+  certificate_requirements:
+    - FIRST_SELECTED_IS_HIGHEST_RANKED_CONTENT_PASS
+    - SECOND_SELECTED_IS_HIGHEST_RANKED_CONTENT_PASS_COMPATIBLE_WITH_FIRST
+    - EVERY_EARLIER_NONSELECTED_ROW_HAS_CONTENT_FAIL_OR_STRUCTURAL_INCOMPATIBILITY
+    - NO_NOT_EVALUATED_ROW_CAN_OUTRANK_OR_REPLACE_EITHER_SELECTED_ROW
+    - ANY_CHANGED_EARLIER_DISPOSITION_INVALIDATES_CERTIFICATE
+  eager_lazy_equivalence_required: true
+  eager_lazy_equivalence_proven: false
+  initial_frontier_materialized: false
+  candidate_content_rule_frozen: false
+  title_sampling_rule_frozen: false
+  all_994_topic_cards_required: false
+  api_required_for_every_candidate: false
+  api_only_for_ambiguous_frontier_samples: true
+
+gate_state:
+  G_MINUS_1A:
+    state: PASS_BOUNDED
+    complete: true
+    authorizes: [S0]
+  S0:
+    state: PASS_THRESHOLD_FREE_INVENTORY
+    complete: true
+    authorizes: [D0]
+  D0:
+    state: PARTIAL_SCOPE_AUDIT_COMPLETE_ADAPTIVE_FRONTIER_PROOF_NOT_RUN
+    complete: false
+    requires: [S0]
+    completed_components:
+      - D0_OUTCOME_BLIND_MEASUREMENT_ABI_FREEZE
+      - D0_OUTCOME_BLIND_TWO_FIELD_FOUR_EPISODE_RESELECTION
+      - D0_AUTOMATED_CONTENT_AND_INDEXING_EXTRACTION
+      - D0_API_ONLY_384_TITLE_DIAGNOSTIC
+      - D0_SIMPLE_PAST_ONLY_RESEARCHER_PIVOT_DEFINITION_FREEZE
+      - D0_FOUR_TOPIC_CARD_FREEZE
+      - D0_ZERO_COST_384_TITLE_ROUTING_DRY_RUN
+      - D0_CANDIDATE_WINDOW_SCOPE_AND_ROUTER_COVERAGE_AUDIT
+    not_run_by_design:
+      - HUMAN_CONTENT_REVIEW_AND_ADJUDICATION
+      - HUMAN_CALIBRATED_API_ERROR_RATE_ESTIMATION
+    blocked_components:
+      - ADAPTIVE_FRONTIER_EAGER_LAZY_EQUIVALENCE_PROOF
+      - INITIAL_STRUCTURAL_FRONTIER_MATERIALIZATION
+      - CANDIDATE_LEVEL_CONTENT_DISPOSITION_RULE
+      - FRONTIER_TITLE_SAMPLING_RULE
+      - FRONTIER_CONTENT_SCREEN
+      - DETERMINISTIC_EPISODE_RESELECTION_SUCCESSOR
+      - REBUILT_AUTHOR_OPPORTUNITY_PANEL
+      - PRODUCTION_RESEARCHER_PIVOT_CLASSIFICATION
+    authorizes:
+      - D0_ADAPTIVE_FRONTIER_CONTRACT_AND_EQUIVALENCE_FIXTURES
+      - D0_ZERO_COST_INITIAL_STRUCTURAL_FRONTIER_MATERIALIZATION
+  G0:
+    state: PENDING
+    complete: false
+  G0_5:
+    state: NOT_RUN
+    complete: false
+  G1:
+    state: NOT_RUN
+    complete: false
+  G2:
+    state: NOT_RUN
+    complete: false
+  G3:
+    state: NOT_RUN
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+  G5:
+    state: NOT_RUN_OPTIONAL
+    complete: false
+
+authorization:
+  d0_candidate_scope_audit: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_human_review: NOT_RUN_BY_DESIGN
+  d0_complete_title_bearing_work_manifest: WITHDRAWN_PENDING_EXECUTABLE_SCREENING_DESIGN
+  d0_adaptive_frontier_contract_and_equivalence_fixtures: AUTHORIZED
+  d0_zero_cost_initial_structural_frontier_materialization: AUTHORIZED
+  d0_raw_openalex_title_scan: NOT_AUTHORIZED
+  d0_candidate_content_dispositions: NOT_AUTHORIZED
+  d0_topic_card_expansion: NOT_AUTHORIZED
+  d0_paid_api_exception_submission: NOT_AUTHORIZED
+  d0_api_exception_response_ingestion: NOT_AUTHORIZED
+  d0_episode_reselection_successor: NOT_AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+next_required_implementation:
+  gate: D0_ADAPTIVE_CANDIDATE_FRONTIER_PROOF
+  required_order:
+    - freeze_adaptive_frontier_state_machine_and_certificate_schema
+    - prove_eager_lazy_selection_equivalence_on_exhaustive_small_fixtures
+    - independently_verify_certificate_rejection_of_unresolved_or_skipped_competitors
+    - materialize_initial_structural_frontier_from_frozen_candidate_ranks
+    - freeze_candidate_level_content_disposition_rule_without_outcomes
+    - freeze_deterministic_frontier_title_sampling_rule
+    - estimate_frontier_work_scan_and_api_exception_workload
+    - authorize_raw_title_scan_only_in_a_versioned_successor
+    - route_frontier_samples_with_local_rules
+    - freeze_actual_ambiguous_request_count_and_cost
+    - obtain_explicit_paid_submission_authorization
+    - execute_pinned_cross_provider_ambiguous_only_screen
+    - issue_selection_equivalence_certificate_or_remain_blocked
+  full_eager_title_manifest_required: false
+  all_994_topic_cards_required: false
+  api_required_for_every_candidate: false
+  unresolved_candidate_may_be_skipped: false
+  unevaluated_competitor_may_be_skipped_without_structural_reason: false
+  current_four_episode_set_may_be_reused_as_final: false
+  current_author_panel_may_be_reused_as_final: false
+  paid_submission_may_run_from_this_ledger: false
+  outcomes_may_be_opened: false
+  model_fitting_may_begin: false
+  g4_may_open: false
+  gpu_required: false
+
+claim_boundary: >-
+  This additive scope correction binds an independently verified zero-cost
+  expansion of 70,277 candidates into 421,662 six-year window rows. The
+  candidate universe contains 994 topics and represents 22,437,851 distinct
+  linked works; overlapping eager candidate copies would create 102,900,039
+  memberships. The frozen four-card router covers only four topics and 236
+  candidate rows, so it cannot screen the complete universe. A complete
+  title-bearing copy is withdrawn as the immediate next step. Only an adaptive
+  frontier contract, equivalence fixtures, and zero-cost structural frontier
+  materialization are authorized. The frontier may replace eager evaluation
+  only after independent proof that no unresolved or unevaluated candidate can
+  alter the selected compatible pair. Raw title scanning, topic-card
+  expansion, content dispositions, paid API submission, reselection, author
+  panels, pivot classification, outcomes, fitting, G4, and scientific effects
+  remain not run, unauthorized, incomplete, sealed, or not established.

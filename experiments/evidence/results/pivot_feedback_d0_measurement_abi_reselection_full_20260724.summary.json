@@ -1,0 +1,111 @@
+{
+  "schema_version": "pivot_feedback_d0_measurement_abi_reselection_summary.v1",
+  "generated_at_utc": "2026-07-24T05:13:41.938518+00:00",
+  "status": "PASS_D0_OUTCOME_BLIND_MEASUREMENT_ABI_TWO_FIELD_FOUR_EPISODE_RESELECTION",
+  "producer": {
+    "script": "scripts/build_pivot_feedback_d0_measurement_abi_reselection.py",
+    "script_sha256": "4255030074e5ac331e171c753dcf7d04a659349943fa3109729fa49f4b472b47",
+    "config": "experiments/configs/pivot_feedback_d0_measurement_abi_v1.yaml",
+    "config_sha256": "eb51a85c206da328609b2fa05f9bbb6900160dc837dc345715d1bd709134c36e"
+  },
+  "inputs": {
+    "cutoff_work_rows": 492293206,
+    "cutoff_work_artifacts_rehashed": 4096,
+    "author_event_rows": 779630258,
+    "author_event_artifacts_rehashed": 4096,
+    "topic_taxonomy_rows": 4516
+  },
+  "measurement_abi": {
+    "attention_unit": "DISTINCT_ELIGIBLE_AUTHOR_LINKED_WORK_WITH_CURRENT_SNAPSHOT_PRIMARY_TOPIC",
+    "eligible_prelink_rows": 27043190,
+    "linked_rows": 22952354,
+    "zero_valid_author_token_rows": 4090836,
+    "included_work_types": [
+      "article",
+      "book",
+      "book-chapter",
+      "book-section",
+      "dissertation",
+      "preprint",
+      "report",
+      "review"
+    ]
+  },
+  "reselection": {
+    "candidate_rows": 70277,
+    "selected_field_ids": [
+      17,
+      27
+    ],
+    "selected_episode_count": 4,
+    "selected_episode_predecision_work_rows": 43659,
+    "selected_episodes": [
+      {
+        "episode_index": 1,
+        "field_id": 17,
+        "topic_id": 14430,
+        "topic_name": "Higher Education and Teaching Methods",
+        "entry_year": 2003,
+        "baseline_author_linked_works": 662,
+        "signal_author_linked_works": 12537,
+        "baseline_link_rate": 0.9720998531571219,
+        "signal_link_rate": 0.9980893240983998
+      },
+      {
+        "episode_index": 2,
+        "field_id": 17,
+        "topic_id": 10579,
+        "topic_name": "Cognitive Radio Networks and Spectrum Sensing",
+        "entry_year": 2012,
+        "baseline_author_linked_works": 1704,
+        "signal_author_linked_works": 6167,
+        "baseline_link_rate": 0.8792569659442725,
+        "signal_link_rate": 0.9378041362530414
+      },
+      {
+        "episode_index": 3,
+        "field_id": 27,
+        "topic_id": 12505,
+        "topic_name": "Peptidase Inhibition and Analysis",
+        "entry_year": 1991,
+        "baseline_author_linked_works": 1543,
+        "signal_author_linked_works": 9227,
+        "baseline_link_rate": 0.8233724653148345,
+        "signal_link_rate": 0.7246524778135554
+      },
+      {
+        "episode_index": 4,
+        "field_id": 27,
+        "topic_id": 12421,
+        "topic_name": "Adrenal Hormones and Disorders",
+        "entry_year": 1953,
+        "baseline_author_linked_works": 378,
+        "signal_author_linked_works": 2106,
+        "baseline_link_rate": 0.8790697674418605,
+        "signal_link_rate": 0.9310344827586207
+      }
+    ]
+  },
+  "output": {
+    "root_basename": "pivot-feedback-d0-measurement-abi-reselection-v1-full-20260724",
+    "receipt_sha256": "4b77700fc4693496ae1c1fbf338c60b8f3c03bf5fabb6f70635fc8ebc57140e9",
+    "report_sha256": "97b9f5723826feb2cf987da65f98d41a4f9fefb602d0e1afb3e7963c2f3c19b7",
+    "selected_work_sha256": "b2aee25d37edc0a37fcafd827259dd19277d8fb29dbc2a136f8d2e77bf7b7e24",
+    "artifact_tree_sha256": "a6840a75d330f30270b29bb969a47c3c2d48aff08dd15a0cd6a367ee25db673d",
+    "artifact_count": 6
+  },
+  "scope": {
+    "episode_reselection_complete": true,
+    "content_and_indexing_audit_complete": false,
+    "d0_complete": false,
+    "leaveout_network_bridge_authorized": false,
+    "discovery_outcome_opening_authorized": false,
+    "g0_authorized": false,
+    "model_fitting_authorized": false,
+    "g4_open": false,
+    "outcomes_read": false,
+    "gpu_used": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "The outcome-blind scholarly-communication ABI and deterministic two-field/four-episode reselection passed on the full current-snapshot work and author-event inputs. The result establishes a reproducible pre-decision attention candidate set only. Content coherence and indexing-discontinuity review remain required, and no entry, persistence, peer-exposure, model, association, causal, or scientific-effect claim is authorized."
+}

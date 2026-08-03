@@ -1,0 +1,184 @@
+schema_version: pivot_feedback_gate_state.v52
+label: pivot_feedback_gate_state_v52
+mode: ADDITIVE_METADATA_ONLY_G_MINUS_1A_BINDING_CONTRACT_VALIDATED_G0_V2_BINDING_ONLY_SUCCESSOR_AUTHORIZATION
+status: VALID_G_MINUS_1A_BINDING_CONTRACT_COMPLETE_G0_NOT_READY_G0_V2_BINDING_ONLY_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v51.yaml
+  sha256: b14b1ed090b2a5fc4f0d77101c03905f1242bb8ba8a36552e47f2587b18eb599
+  required_schema_version: pivot_feedback_gate_state.v51
+  required_status: VALID_G0_CLOSURE_PLAN_COMPLETE_G0_NOT_READY_G_MINUS_1A_BINDING_CONTRACT_AUTHORIZED
+  required_fields:
+    gate_state.D0.complete: true
+    gate_state.G0.complete: false
+    authorization.g_minus_1a_binding_reconciliation_contract: AUTHORIZED_METADATA_ONLY_NO_G0_V2_CHANGE
+    authorization.actual_g0_v2_binding_change: NOT_AUTHORIZED
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+verified_g_minus_1a_binding_reconciliation:
+  contract:
+    relative_path: experiments/configs/pivot_feedback_g0_g_minus_1a_binding_reconciliation_v1.yaml
+    sha256: cb6c733fdd793590fa8c3cd57776348d2303e03351a33c94c66e269fb6989905
+    required_schema_version: pivot_feedback_g0_g_minus_1a_binding_reconciliation.v1
+    required_status: PENDING_INDEPENDENT_VALIDATION_FUTURE_G0_V2_BINDING_ONLY
+    required_fields:
+      source_binding_diagnosis.schema_aliasing_allowed: false
+      source_binding_diagnosis.status_relabeling_allowed: false
+      source_binding_diagnosis.legacy_pass_inference_allowed: false
+      future_g0_v2_binding_contract.future_field_name: g_minus_1a_binding
+      future_g0_v2_binding_contract.may_pass_or_relabel_legacy_g_minus_1: false
+      future_g0_v2_binding_contract.may_by_itself_pass_g0: false
+      future_g0_v2_preservation_contract.must_keep_unresolved_quantitative_choice_count: 17
+      future_g0_v2_preservation_contract.must_keep_not_freeze_ready_section_count: 15
+      lifecycle.g0_v2_authored_or_modified: false
+      authorization.actual_g0_v2_authoring_or_modification: NOT_AUTHORIZED
+  validator:
+    relative_path: scripts/verify_pivot_feedback_g0_g_minus_1a_binding_reconciliation_v1.py
+    sha256: ed82486c7475ebf75e54a4c4daf39322faff6a147a3e3f0b5dc6c4f6d6d6ca49
+  research_note:
+    relative_path: docs/research/pivot-feedback-g0-g-minus-1a-binding-reconciliation-v1.md
+    sha256: 83841d80816e73d13e20a918bb30c80df665ad2a40fe238c28efb4969f873791
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_g_minus_1a_binding_reconciliation_20260731.summary.json
+    sha256: 509b5ea549022ceea07521816f2035122949db670c8de0a3bb31076f12d00163
+    required_schema_version: pivot_feedback_g0_g_minus_1a_binding_reconciliation_summary.v1
+    required_status: PASS_METADATA_ONLY_G_MINUS_1A_BINDING_RECONCILIATION_FUTURE_G0_V2_ONLY_NO_RELABEL
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_g_minus_1a_binding_reconciliation_20260731.summary.md
+    sha256: f7e42139013de1a46f3cf577f5d5075df575549fe30ee334dd652c036b0a3334
+  result:
+    repository_documents_read: 9
+    operator_json_metadata_files_read: 0
+    operator_parquet_files_opened: 0
+    production_row_level_files_opened: 0
+    confirmatory_or_holdout_rows_read: 0
+    api_requests_created_or_submitted: 0
+    mismatch_class: CONTRACT_GENERATION_MISMATCH_NOT_EVIDENCE_ABSENCE
+    schema_aliasing_allowed: false
+    status_relabeling_allowed: false
+    legacy_pass_inference_allowed: false
+    future_field_name: g_minus_1a_binding
+    exact_receipt_sha256: 8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802
+    receipt_unresolved_boundary_count: 14
+    receipt_claim_boundary_preserved_exactly: true
+    g0_v1_preserved_subtree_count: 8
+    permitted_semantic_delta_count: 2
+    holdout_binding_remains_pending: true
+    unresolved_quantitative_choice_count: 17
+    not_freeze_ready_section_count: 15
+    future_successor_authored: false
+    legacy_g_minus_1_passed: false
+    pass_g0: false
+    model_fitted: false
+    g4_open: false
+
+binding_reconciliation_decision:
+  status: COMPLETE_INDEPENDENTLY_VALIDATED
+  exact_g_minus_1a_receipt_binding_ready: true
+  receipt_semantics_preserved: true
+  legacy_g_minus_1_status: G_MINUS_1_PENDING
+  legacy_g_minus_1_passed: false
+  g0_v1_mutated: false
+  g0_v2_authored: false
+  g0_freeze_ready: false
+
+authorized_g0_v2_binding_only_successor_scope:
+  mode: VERSIONED_G0_V2_BINDING_ONLY_SUCCESSOR_NO_OTHER_G0_CLOSURE
+  intended_relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v2.yaml
+  must_bind_g0_v1_byte_for_byte: true
+  must_bind_reconciliation_contract_byte_for_byte: true
+  may_add_version_metadata_and_parent_bindings: true
+  may_retain_legacy_binding_as_pending_immutable_lineage: true
+  may_add_exact_g_minus_1a_binding: true
+  may_mark_g_minus_1a_bounded_prerequisite_satisfied: true
+  may_remove_only_readiness_blocker: G_MINUS_1_RECEIPT_ABSENT
+  must_preserve_subtrees:
+    - foundation_parents
+    - holdout_access_binding
+    - fixed_design_choices
+    - resolution
+    - inherited_subtree_digests
+    - completion_contract
+    - failure_policy
+    - authorization
+  must_keep_readiness_blockers:
+    - HOLDOUT_ACCESS_SEAL_RECEIPT_ABSENT
+    - SEVENTEEN_QUANTITATIVE_CHOICES_UNRESOLVED
+    - FIFTEEN_REQUIRED_SECTIONS_NOT_FREEZE_READY
+  must_keep_holdout_binding_pending_and_null: true
+  must_keep_unresolved_quantitative_choice_count: 17
+  must_keep_not_freeze_ready_section_count: 15
+  must_keep_pass_g0_false: true
+  must_keep_model_fitting_unauthorized: true
+  must_keep_g4_unopened: true
+  may_change_any_other_measurement_or_design_subtree: false
+  may_relabel_g_minus_1a_as_legacy_g_minus_1: false
+  may_promote_legacy_g_minus_1: false
+  may_reissue_or_modify_g_minus_1a_receipt: false
+  may_write_holdout_seal_contract_or_receipt: false
+  may_resolve_quantitative_choices: false
+  may_complete_required_sections: false
+  may_read_operator_parquet_or_row_level_data: false
+  may_read_confirmatory_or_holdout_rows: false
+  may_create_or_submit_api_requests: false
+  may_seal_or_pass_g0: false
+  may_fit_or_score_a_model: false
+  may_open_g4: false
+  independent_validation_required: true
+  successor_gate_required_before_next_closure_workstream: true
+
+gate_state:
+  D0:
+    state: COMPLETE_CORE_ENTRY_AND_PERSISTENCE_MEASUREMENT_CALIBRATION_OPTIONAL_PEER_SUCCESS_DEFERRED
+    complete: true
+  G0:
+    state: NOT_READY_G_MINUS_1A_BINDING_CONTRACT_VALIDATED_G0_V2_BINDING_ONLY_AUTHORIZED
+    complete: false
+    completed_components:
+      - G0_PREREQUISITE_CLOSURE_PLAN
+      - G0_G_MINUS_1A_BINDING_RECONCILIATION_CONTRACT
+      - G0_G_MINUS_1A_BINDING_RECONCILIATION_INDEPENDENT_VALIDATION
+    next_components:
+      - G0_V2_BINDING_ONLY_SUCCESSOR
+      - G0_V2_BINDING_ONLY_SUCCESSOR_INDEPENDENT_VALIDATION
+    blocked_components:
+      - HOLDOUT_ACCESS_SEAL_CONTRACT_AND_RECEIPT
+      - G0_QUANTITATIVE_CHOICE_COMPLETION
+      - G0_REQUIRED_SECTION_COMPLETION
+      - G0_MEASUREMENT_FREEZE_SEAL
+      - CONFIRMATORY_OR_HOLDOUT_ACCESS
+      - MODEL_FITTING
+      - G4
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  g0_prerequisite_closure_plan: COMPLETE_INDEPENDENTLY_VALIDATED
+  g_minus_1a_binding_reconciliation_contract: COMPLETE_INDEPENDENTLY_VALIDATED
+  g0_v2_binding_only_successor: AUTHORIZED_NO_OTHER_G0_CLOSURE
+  legacy_g_minus_1_promotion: NOT_AUTHORIZED
+  holdout_access_seal_contract_or_receipt: NOT_AUTHORIZED
+  g0_quantitative_choice_resolution_beyond_d0: NOT_AUTHORIZED
+  g0_required_section_completion: NOT_AUTHORIZED
+  confirmatory_or_holdout_opening: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The G-1A binding-reconciliation contract is independently valid and
+  preserves the exact receipt semantics without aliasing or relabeling legacy
+  G-1. This gate authorizes only a versioned G0 v2 binding-only successor that
+  retains legacy G-1 as pending lineage and adds the exact bounded G-1A
+  prerequisite binding. That successor may remove only the absent-G-1-receipt
+  blocker. It must retain the pending holdout receipt, seventeen unresolved
+  values, fifteen not-freeze-ready sections, and pass_g0=false. This gate does
+  not authorize another design change, value or section completion, holdout
+  sealing or opening, confirmatory access, G0 passage, model fitting, G4,
+  causality, or a scientific effect.

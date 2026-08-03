@@ -1,0 +1,133 @@
+{
+  "schema_version": "pivot_feedback_openalex_topic_reference_snapshot.v1",
+  "retrieved_date": "2026-07-29",
+  "source": "https://api.openalex.org/topics/{topic_id}",
+  "scope": "CURRENT_SNAPSHOT_TOPIC_METADATA_NOT_HISTORICAL_TOPIC_SEMANTICS",
+  "topics": [
+    {
+      "id": "https://openalex.org/T10579",
+      "display_name": "Cognitive Radio Networks and Spectrum Sensing",
+      "description": "This cluster of papers focuses on cognitive radio networks, spectrum sensing, dynamic spectrum access, cooperative sensing, and opportunistic spectrum access. It covers topics such as spectrum sharing, MAC protocols, security threats, and game theory in the context of cognitive radio and wireless networks.",
+      "keywords": [
+        "Cognitive Radio",
+        "Spectrum Sensing",
+        "Dynamic Spectrum Access",
+        "Cooperative Sensing",
+        "Opportunistic Spectrum Access",
+        "Wireless Networks",
+        "Spectrum Sharing",
+        "MAC Protocols",
+        "Security Threats",
+        "Game Theory"
+      ],
+      "subfield": {
+        "id": "https://openalex.org/subfields/1705",
+        "display_name": "Computer Networks and Communications"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/17",
+        "display_name": "Computer Science"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      },
+      "created_date": "2024-01-23T15:27:07",
+      "updated_date": "2026-07-29T03:01:05"
+    },
+    {
+      "id": "https://openalex.org/T12421",
+      "display_name": "Adrenal Hormones and Disorders",
+      "description": "This cluster of papers focuses on the diagnosis and management of adrenal insufficiency, particularly in the context of septic shock and autoimmune polyendocrine syndrome. It covers topics such as corticosteroid therapy, hydrocortisone treatment, AIRE gene mutations, cortisol response, and the impact on the hypothalamic-pituitary-adrenal axis. The research also delves into glucocorticoid replacement, autoimmune disorders, and endocrine dysfunction.",
+      "keywords": [
+        "Adrenal Insufficiency",
+        "Corticosteroid Therapy",
+        "Septic Shock",
+        "Autoimmune Polyendocrine Syndrome",
+        "Hydrocortisone Treatment",
+        "Glucocorticoid Replacement",
+        "AIRE Gene Mutations",
+        "Cortisol Response",
+        "Endocrine Disorders",
+        "Hypothalamic-Pituitary-Adrenal Axis Dysfunction"
+      ],
+      "subfield": {
+        "id": "https://openalex.org/subfields/2712",
+        "display_name": "Endocrinology, Diabetes and Metabolism"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/27",
+        "display_name": "Medicine"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/4",
+        "display_name": "Health Sciences"
+      },
+      "created_date": "2024-01-23T15:27:14",
+      "updated_date": "2026-07-29T03:01:05"
+    },
+    {
+      "id": "https://openalex.org/T12505",
+      "display_name": "Peptidase Inhibition and Analysis",
+      "description": "This cluster of papers explores the role of fibroblast activation in cancer progression, focusing on the expression of fibroblast activation protein, immunosuppression in the tumor microenvironment, N-terminal acetylation of proteins, protease inhibitors for cancer therapy, angiogenesis, and PET imaging to target stromal cells in the tumor microenvironment.",
+      "keywords": [
+        "Fibroblast Activation Protein",
+        "Tumor Microenvironment",
+        "Immunosuppression",
+        "Cancer Therapy",
+        "N-terminal Acetylation",
+        "Protease Inhibitors",
+        "Angiogenesis",
+        "PET Imaging",
+        "Stromal Cells",
+        "Tumor Stroma"
+      ],
+      "subfield": {
+        "id": "https://openalex.org/subfields/2730",
+        "display_name": "Oncology"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/27",
+        "display_name": "Medicine"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/4",
+        "display_name": "Health Sciences"
+      },
+      "created_date": "2024-01-23T15:27:14",
+      "updated_date": "2026-07-29T03:01:05"
+    },
+    {
+      "id": "https://openalex.org/T14430",
+      "display_name": "Higher Education and Teaching Methods",
+      "description": "This cluster of papers explores the impact of technology on education and training, including topics such as web-based learning portals, vocational and technical education, bilingual teaching, e-learning, cloud computing, digital libraries, virtual reality technology, and educational reform.",
+      "keywords": [
+        "Web-based B2B portals",
+        "Vocational and Technical Education",
+        "Conjoint analysis",
+        "E-Learning",
+        "Bilingual Teaching",
+        "Cloud Computing",
+        "Digital Library",
+        "Virtual Reality Technology",
+        "Language Education",
+        "Educational Reform"
+      ],
+      "subfield": {
+        "id": "https://openalex.org/subfields/1710",
+        "display_name": "Information Systems"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/17",
+        "display_name": "Computer Science"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      },
+      "created_date": "2024-01-23T15:27:22",
+      "updated_date": "2026-07-29T03:01:05"
+    }
+  ],
+  "claim_boundary": "The stored descriptions and keywords are a current OpenAlex topic-metadata snapshot. They do not reconstruct the meanings available when historical works were published or when an earlier OpenAlex snapshot assigned topics."
+}

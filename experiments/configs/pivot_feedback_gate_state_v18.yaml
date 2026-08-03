@@ -1,0 +1,130 @@
+schema_version: pivot_feedback_gate_state.v18
+label: pivot_feedback_gate_state_v18
+mode: ADDITIVE_CANDIDATE_RULE_V2_REPLAY_CLOSEOUT_PRODUCTION_FREEZE_AUTHORIZATION
+status: VALID_CANDIDATE_RULE_V2_REPLAY_VERIFIED_PRODUCTION_FREEZE_AND_FRONTIER_V3_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v17.yaml
+  sha256: 0f575abca91c6610d6a3404f54708cc1f8f5a46ed4dbd198ab993f4cecbc1311
+  required_schema_version: pivot_feedback_gate_state.v17
+  required_status: VALID_T10543_LOCAL_ROUTING_UNRESOLVED_PERSISTENT_OPAQUE_RULE_GAP_IDENTIFIED_OUTCOMES_FAIL_CLOSED
+  mutation_allowed: false
+
+candidate_rule_v2_replay_evidence:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_candidate_rule_v2_retrospective_replay_v1.yaml
+    sha256: 63c964c42b0b6b2a999b470e72d9eb8fcd22846a7e3f1eb814760b1330aeb9a9
+    required_schema_version: pivot_feedback_d0_candidate_rule_v2_replay_config.v1
+    required_status: FROZEN_CANDIDATE_RULE_V2_RETROSPECTIVE_REPLAY_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_candidate_rule_v2_replay_v1.py
+    sha256: 87558b3bc813b147664cbcf53ed3243f46d330c07898bc2350197526b2ca8aa7
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_candidate_rule_v2_replay_v1.py
+    sha256: 9cae3e7aa99632dee2c922bf24b8b59fd7a89c493ca105a05bbb893cda7cc0f8
+    mutation_allowed: false
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_candidate_rule_v2_replay_20260729.summary.json
+    sha256: dd78394ce953e436b8b28386f4c3cc36ee5bdf8ddc4ce538f6ee539868235211
+    required_schema_version: pivot_feedback_d0_candidate_rule_v2_replay_summary.v1
+    required_status: PASS_INDEPENDENT_CANDIDATE_RULE_V2_FIVE_CANDIDATE_REPLAY
+    mutation_allowed: false
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_candidate_rule_v2_replay_20260729.summary.md
+    sha256: 40f4429a561c3d5cc144d1d18fa45fa37a4d15d7904dd807f43878451c78356c
+    mutation_allowed: false
+  operator_local:
+    root_basename: pivot-feedback-d0-candidate-rule-v2-replay-v1-20260729
+    receipt_basename: candidate_rule_v2_replay.outputs.json
+    receipt_sha256: 0984c03196feed5910b0d8199d81e8dbe2f01466b44aa6889c16b08d27a94eea
+    receipt_status: PASS_CANDIDATE_RULE_V2_FIVE_CANDIDATE_RETROSPECTIVE_REPLAY
+    verification_basename: pivot-feedback-d0-candidate-rule-v2-replay-v1-20260729.verification-v1.json
+    verification_sha256: bd4724bbaa61daa326da34e14d4dc08993c54588d28f9fba03467c799cf46ff0
+    verification_status: PASS_INDEPENDENT_CANDIDATE_RULE_V2_FIVE_CANDIDATE_REPLAY
+
+verified_replay_result:
+  amendment_disclosure: POST_DIAGNOSTIC_AFTER_T10543_RULE_V1_GAP
+  candidate_rows: 5
+  unchanged_rows: 4
+  changed_rows: 1
+  would_content_pass_rows: 3
+  would_content_fail_indexing_anomaly_rows: 2
+  would_content_unresolved_rows: 0
+  t10543_v2_state: WOULD_CONTENT_FAIL_INDEXING_ANOMALY
+  t10543_v2_reason: RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS
+  replay_is_out_of_sample_validation: false
+  production_rule_frozen: false
+  production_dispositions_created: 0
+
+authorized_successor:
+  production_rule:
+    version: candidate_rule_v2
+    post_diagnostic_amendment_must_remain_disclosed: true
+    majority_opaque_threshold: 0.50
+    retained_v1_branches_unchanged: true
+  production_dispositions:
+    total_rows: 5
+    t10543_content_state: CONTENT_FAIL
+    t10543_reason: RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS
+  frontier:
+    version: adaptive_frontier_v3
+    regenerate_after_rank_2_fail: true
+    selection_certificate_may_be_issued_only_if_lazy_state_machine_closes: true
+    unresolved_required_row_blocks_certificate: true
+  new_title_extraction: NOT_AUTHORIZED
+  api_request_creation: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+
+gate_state:
+  D0:
+    state: PARTIAL_RULE_V2_PRODUCTION_FREEZE_AND_FRONTIER_V3_AUTHORIZED
+    complete: false
+    completed_components:
+      - D0_CANDIDATE_RULE_V2_FIVE_CANDIDATE_RETROSPECTIVE_REPLAY
+      - D0_CANDIDATE_RULE_V2_INDEPENDENT_REPLAY_VERIFICATION
+    blocked_components:
+      - MEDICINE_FIELD_CERTIFICATE_UNTIL_FRONTIER_V3
+      - GLOBAL_SELECTION_CERTIFICATE_UNTIL_FRONTIER_V3
+      - DETERMINISTIC_EPISODE_RESELECTION_SUCCESSOR
+      - REBUILT_AUTHOR_OPPORTUNITY_PANEL
+      - PRODUCTION_RESEARCHER_PIVOT_CLASSIFICATION
+    authorizes:
+      - D0_CANDIDATE_RULE_V2_PRODUCTION_FREEZE
+      - D0_FIVE_PRODUCTION_CANDIDATE_DISPOSITIONS
+      - D0_ADAPTIVE_FRONTIER_V3_REGENERATION
+  G0:
+    state: PENDING
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  d0_candidate_rule_v2_replay: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_candidate_rule_v2_production_freeze: AUTHORIZED
+  d0_five_production_candidate_dispositions: AUTHORIZED
+  d0_adaptive_frontier_v3_regeneration: AUTHORIZED
+  d0_selection_certificate_from_frontier_v3: AUTHORIZED_ONLY_IF_LAZY_STATE_MACHINE_CLOSES
+  d0_new_title_extraction: NOT_AUTHORIZED
+  d0_raw_openalex_title_scan: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_exception_submission: NOT_AUTHORIZED
+  d0_episode_reselection_successor: NOT_AUTHORIZED_UNTIL_SELECTION_CERTIFICATE
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This additive successor authorizes freezing the disclosed post-diagnostic
+  candidate rule v2, its five production candidate dispositions, and a fresh
+  adaptive-frontier-v3 regeneration. A selection certificate may be issued
+  only if the already proved lazy state machine closes with no unresolved
+  required row. It does not authorize new title extraction, API requests,
+  reselection before certification, author-panel rebuild, pivot classification,
+  outcomes, fitting, G4, out-of-sample validation claims, semantic truth, or a
+  scientific effect.

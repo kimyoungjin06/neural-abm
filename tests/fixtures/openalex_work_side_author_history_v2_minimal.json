@@ -1,0 +1,288 @@
+{
+  "schema_version": "openalex_g1_work_side_author_history_synthetic_fixture.v2",
+  "surface_kind": "SYNTHETIC_FIXTURE_ONLY",
+  "production_input_access_allowed": false,
+  "root_id": "synthetic-author-history-v2-minimal",
+  "snapshot_date": "2026-03-30",
+  "synthetic_parents": {
+    "current_content_baseline": {
+      "schema_version": "openalex_g1_work_side_author_history_synthetic_content_parent.v1",
+      "status": "SYNTHETIC_CONTENT_BASELINE_PARENT_ONLY",
+      "synthetic_content_tree_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "synthetic_content_result_fingerprint_sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+    },
+    "main_temporal_validity": {
+      "schema_version": "openalex_g1_work_side_author_history_synthetic_temporal_parent.v1",
+      "status": "SYNTHETIC_MAIN_TEMPORAL_PARENT_ONLY",
+      "synthetic_content_tree_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "synthetic_content_result_fingerprint_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "synthetic_temporal_result_fingerprint_sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+    },
+    "canonical_work_time_spine": {
+      "schema_version": "openalex_g1_work_side_author_history_synthetic_spine_parent.v1",
+      "status": "SYNTHETIC_CANONICAL_SPINE_PARENT_ONLY",
+      "synthetic_content_tree_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "synthetic_content_result_fingerprint_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "synthetic_temporal_result_fingerprint_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "synthetic_spine_result_fingerprint_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "synthetic_spine_data_tree_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+      "rows": 7
+    }
+  },
+  "main_rows": [
+    {
+      "id": "https://openalex.org/W-1",
+      "authors_count": 1,
+      "primary_topic__field__id": null
+    },
+    {
+      "id": "https://openalex.org/W0",
+      "authors_count": 1,
+      "primary_topic__field__id": "https://openalex.org/fields/1"
+    },
+    {
+      "id": "https://openalex.org/W1",
+      "authors_count": 1,
+      "primary_topic__field__id": "https://openalex.org/fields/2"
+    },
+    {
+      "id": "https://openalex.org/W2",
+      "authors_count": 2,
+      "primary_topic__field__id": "https://openalex.org/fields/3"
+    },
+    {
+      "id": "https://openalex.org/W3",
+      "authors_count": 3,
+      "primary_topic__field__id": "https://openalex.org/fields/4"
+    },
+    {
+      "id": "https://openalex.org/W4",
+      "authors_count": 1,
+      "primary_topic__field__id": "https://openalex.org/fields/5"
+    },
+    {
+      "id": "https://openalex.org/W5",
+      "authors_count": 1,
+      "primary_topic__field__id": "https://openalex.org/fields/6"
+    },
+    {
+      "id": "https://openalex.org/W6",
+      "authors_count": 11,
+      "primary_topic__field__id": "https://openalex.org/fields/26"
+    }
+  ],
+  "spine_rows": [
+    {
+      "work_id_numeric": 0,
+      "publication_day": 18262,
+      "publication_year": 2020,
+      "temporal_disposition": 2
+    },
+    {
+      "work_id_numeric": 1,
+      "publication_day": -25568,
+      "publication_year": 1899,
+      "temporal_disposition": 1
+    },
+    {
+      "work_id_numeric": 2,
+      "publication_day": null,
+      "publication_year": null,
+      "temporal_disposition": 0
+    },
+    {
+      "work_id_numeric": 3,
+      "publication_day": 20542,
+      "publication_year": 2026,
+      "temporal_disposition": 3
+    },
+    {
+      "work_id_numeric": 4,
+      "publication_day": 20543,
+      "publication_year": 2026,
+      "temporal_disposition": 4
+    },
+    {
+      "work_id_numeric": 5,
+      "publication_day": 20819,
+      "publication_year": 2027,
+      "temporal_disposition": 5
+    },
+    {
+      "work_id_numeric": 6,
+      "publication_day": 19889,
+      "publication_year": 2024,
+      "temporal_disposition": 2
+    }
+  ],
+  "authorship_rows": [
+    {
+      "id": "https://openalex.org/W-1",
+      "authorships__author__id": "https://openalex.org/A999",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "quarantined",
+      "authorships__author__display_name": "Quarantined",
+      "authorships__author_position": "first"
+    },
+    {
+      "id": "https://openalex.org/W0",
+      "authorships__author__id": "https://openalex.org/A0",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "zero token",
+      "authorships__author__display_name": "Zero Token",
+      "authorships__author_position": "first"
+    },
+    {
+      "id": "https://openalex.org/W1",
+      "authorships__author__id": "https://openalex.org/A1",
+      "authorships__author__orcid": "https://orcid.org/0000-0002-1825-0097",
+      "authorships__raw_author_name": "Ada Lovelace",
+      "authorships__author__display_name": "Ada Lovelace",
+      "authorships__author_position": "first"
+    },
+    {
+      "id": "https://openalex.org/W2",
+      "authorships__author__id": "https://openalex.org/A1",
+      "authorships__author__orcid": "https://orcid.org/0000-0002-1825-0097",
+      "authorships__raw_author_name": "Ada Lovelace",
+      "authorships__author__display_name": "Ada Lovelace",
+      "authorships__author_position": "first"
+    },
+    {
+      "id": "https://openalex.org/W2",
+      "authorships__author__id": null,
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": null,
+      "authorships__author__display_name": null,
+      "authorships__author_position": "last"
+    },
+    {
+      "id": "https://openalex.org/W3",
+      "authorships__author__id": "https://openalex.org/A1",
+      "authorships__author__orcid": "https://orcid.org/0000-0002-1825-0097",
+      "authorships__raw_author_name": "Ada Lovelace",
+      "authorships__author__display_name": "Ada Lovelace",
+      "authorships__author_position": "first"
+    },
+    {
+      "id": "https://openalex.org/W3",
+      "authorships__author__id": "https://openalex.org/A1",
+      "authorships__author__orcid": "0000-0002-1825-0097",
+      "authorships__raw_author_name": "ADA  LOVELACE",
+      "authorships__author__display_name": "Ada Lovelace",
+      "authorships__author_position": "last"
+    },
+    {
+      "id": "https://openalex.org/W3",
+      "authorships__author__id": "https://openalex.org/A2",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Grace Hopper",
+      "authorships__author__display_name": "Grace Hopper",
+      "authorships__author_position": "middle"
+    },
+    {
+      "id": "https://openalex.org/W4",
+      "authorships__author__id": "https://openalex.org/A2",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Grace Hopper",
+      "authorships__author__display_name": "Grace Hopper",
+      "authorships__author_position": "first"
+    },
+    {
+      "id": "https://openalex.org/W5",
+      "authorships__author__id": "https://openalex.org/A3",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Katherine Johnson",
+      "authorships__author__display_name": "Katherine Johnson",
+      "authorships__author_position": "first"
+    },
+    {
+      "id": "https://openalex.org/W6",
+      "authorships__author__id": "https://openalex.org/A1",
+      "authorships__author__orcid": "https://orcid.org/0000-0002-1825-0097",
+      "authorships__raw_author_name": "Ada Lovelace",
+      "authorships__author__display_name": "Ada Lovelace",
+      "authorships__author_position": "first"
+    },
+    {
+      "id": "https://openalex.org/W6",
+      "authorships__author__id": "https://openalex.org/A4",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Author Four",
+      "authorships__author__display_name": "Author Four",
+      "authorships__author_position": "middle"
+    },
+    {
+      "id": "https://openalex.org/W6",
+      "authorships__author__id": "https://openalex.org/A5",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Author Five",
+      "authorships__author__display_name": "Author Five",
+      "authorships__author_position": "middle"
+    },
+    {
+      "id": "https://openalex.org/W6",
+      "authorships__author__id": "https://openalex.org/A6",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Author Six",
+      "authorships__author__display_name": "Author Six",
+      "authorships__author_position": "middle"
+    },
+    {
+      "id": "https://openalex.org/W6",
+      "authorships__author__id": "https://openalex.org/A7",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Author Seven",
+      "authorships__author__display_name": "Author Seven",
+      "authorships__author_position": "middle"
+    },
+    {
+      "id": "https://openalex.org/W6",
+      "authorships__author__id": "https://openalex.org/A8",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Author Eight",
+      "authorships__author__display_name": "Author Eight",
+      "authorships__author_position": "middle"
+    },
+    {
+      "id": "https://openalex.org/W6",
+      "authorships__author__id": "https://openalex.org/A9",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Author Nine",
+      "authorships__author__display_name": "Author Nine",
+      "authorships__author_position": "middle"
+    },
+    {
+      "id": "https://openalex.org/W6",
+      "authorships__author__id": "https://openalex.org/A10",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Author Ten",
+      "authorships__author__display_name": "Author Ten",
+      "authorships__author_position": "middle"
+    },
+    {
+      "id": "https://openalex.org/W6",
+      "authorships__author__id": "https://openalex.org/A11",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Author Eleven",
+      "authorships__author__display_name": "Author Eleven",
+      "authorships__author_position": "middle"
+    },
+    {
+      "id": "https://openalex.org/W6",
+      "authorships__author__id": "https://openalex.org/A12",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Author Twelve",
+      "authorships__author__display_name": "Author Twelve",
+      "authorships__author_position": "middle"
+    },
+    {
+      "id": "https://openalex.org/W6",
+      "authorships__author__id": "https://openalex.org/A13",
+      "authorships__author__orcid": null,
+      "authorships__raw_author_name": "Author Thirteen",
+      "authorships__author__display_name": "Author Thirteen",
+      "authorships__author_position": "last"
+    }
+  ]
+}

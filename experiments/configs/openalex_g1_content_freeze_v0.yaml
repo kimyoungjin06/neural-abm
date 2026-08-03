@@ -1,0 +1,74 @@
+schema_version: openalex_g1_content_freeze_config.v1
+label: openalex_g1_content_freeze_v0
+
+parent_inventory:
+  manifest_relative_path: experiments/runs/20260716_openalex_g1_source_inventory/source_manifest.json
+  manifest_sha256: 6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46
+  required_schema_version: openalex_source_inventory.v1
+  required_manifest_id: openalex_g1_source_inventory_v0
+  required_status: INVENTORY_ONLY
+  required_content_sha256: false
+  source_root_id: openalex_works_20260330_repairreplay_20260410_190630
+  expected_table_count: 23
+  expected_parquet_file_count: 21019
+  expected_bytes: 988404537807
+  inventory_fingerprint_sha256: 1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473
+  stability_fingerprint_sha256: a3bfb7f639d4131749c1522f00e5e977bae7abc1a62202790fd41279f8f0a0e5
+
+source:
+  root_env: OPENALEX_DERIVED_ROOT
+  expected_root_id: openalex_works_20260330_repairreplay_20260410_190630
+
+execution:
+  hash_algorithm: sha256
+  read_chunk_bytes: 16777216
+  progress_every_files: 25
+  progress_every_seconds: 30
+  workers: 1
+  checkpoint_reuse: validate_schema_task_parent_and_current_stat_without_content_rehash
+  checkpoint_current_stat_fields: [device, inode, mode, bytes, mtime_ns, ctime_ns]
+  checkpoint_integrity: unkeyed_sha256_self_digest_accidental_corruption_only
+  trusted_output_directory_required: true
+
+success_contract:
+  full_success_status: PASS_CURRENT_CONTENT_BASELINE_COMPONENT
+  pilot_status: PILOT_CONTENT_FREEZE_ONLY
+  paused_status: PAUSED_CURRENT_CONTENT_FREEZE
+  required_gate_status_after_full_success:
+    current_content_baseline_component: PASS
+    historical_inventory_era_byte_identity: UNVERIFIED
+    prior_component_run_content_identity: UNVERIFIED
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    g_minus_1_data_readiness: PENDING
+    g0_measurement_freeze: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+    scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  A full pass records the first per-file SHA-256 baseline for bytes read from
+  the currently declared source after exact parent-inventory and pre/post stat
+  validation. It does not prove that these bytes equal the earlier footer-only
+  inventory-era bytes, does not retroactively bind prior component runs, does
+  not validate raw entity semantics, establish G-1 or G0, run empirical G1, or
+  establish a scientific effect. A --max-files run is
+  PILOT_CONTENT_FREEZE_ONLY and cannot be promoted to the full component
+  status.
+
+same_size_restored_mtime_limitation: >-
+  Resume reuses a checkpoint only after its schema, task, parent source
+  identity, checkpoint digest, and current device, inode, mode, size, mtime,
+  and ctime match. It does not rehash completed files. A privileged or
+  storage-layer mutation that restores every checked stat field, or a mutation
+  after the final stat snapshot, can evade this check; therefore the source
+  must remain operationally immutable, and this first baseline cannot
+  establish historical byte identity.
+
+checkpoint_trust_limitation: >-
+  Checkpoint SHA-256 is an unkeyed self-digest for accidental-corruption
+  detection, not an authentication signature. A writer who can modify the
+  output directory can replace a checkpoint hash and recompute its digest;
+  resume cannot detect that without rehashing the source or an external
+  trusted or WORM anchor. The output directory must therefore remain
+  operator-controlled and immutable to untrusted writers.

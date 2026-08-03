@@ -1,0 +1,136 @@
+schema_version: pivot_feedback_d0_rank5_api_augmented_closeout_config.v1
+label: pivot_feedback_d0_rank5_api_augmented_closeout_v1
+mode: CORRECT_HCV_API_AUGMENTED_UNRESOLVED_PRODUCTION_CLOSEOUT
+status: FROZEN_RANK5_API_AUGMENTED_UNRESOLVED_CLOSEOUT_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v29.yaml
+  sha256: 36ee367613fd6cd2213cbf80f40b6286cf3ffbeb01f1b7ebb301d4de2d7af5e8
+  required_schema_version: pivot_feedback_gate_state.v29
+  required_status: VALID_RANK5_HCV_API_AUGMENTED_UNRESOLVED_PRODUCTION_CLOSEOUT_AUTHORIZED
+  required_fields:
+    verified_corrected_result.augmented_accept_rows: 27
+    verified_corrected_result.augmented_reject_rows: 21
+    verified_corrected_result.augmented_unresolved_rows: 16
+    verified_corrected_result.augmented_content_state: CONTENT_UNRESOLVED
+    verified_corrected_result.human_review: NOT_RUN_BY_DESIGN
+    verified_corrected_result.api_labels_are_ground_truth: false
+    authorization.d0_rank5_augmented_production_disposition: AUTHORIZED_CONTENT_UNRESOLVED_ONLY
+    authorization.d0_adaptive_frontier_v7_materialization: AUTHORIZED
+    authorization.d0_terminal_certificate_status_v2_materialization: AUTHORIZED_BLOCKED_ONLY
+    authorization.d0_selection_certificate: NOT_AUTHORIZED_REQUIRED_CONTENT_UNRESOLVED
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+
+frozen_inputs:
+  prior_terminal:
+    root_basename: pivot-feedback-d0-rank5-terminal-disposition-v1-20260729
+    dispositions_basename: cumulative_production_candidate_dispositions_v5.parquet
+    dispositions_sha256: 16d4c7d99795e383677f12df60f861c84c1a0ddd49d16dbf37ebff266b9ea107
+    disposition_rows: 8
+    frontier_basename: adaptive_candidate_frontier_v6.parquet
+    frontier_sha256: f518e3d7018587286bd56a9d83bc46569b6b916660946a658241bd5085df9b99
+    frontier_rows: 51
+    certificate_basename: terminal_selection_certificate_status.json
+    certificate_sha256: 4285dbd09f9d0e788557370722c7e78242a067742f852bca29b61e0be1719dfc
+    receipt_basename: rank5_terminal_disposition.outputs.json
+    receipt_sha256: 5378029024826816b8260376deb55f980e4f36ef4255f1d136cdae7df9f0486f
+    verification_basename: pivot-feedback-d0-rank5-terminal-disposition-v1-20260729.verification-v1.json
+    verification_sha256: 9a54f760ff0ccc613c498801eb5a6e8b6c4711a52c3cfde2d476b54d0cb17d5e
+  corrected_api_result:
+    root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v3-results-20260730
+    candidate_basename: rank5_augmented_candidate.json
+    candidate_sha256: 569c1d26792b759e6462ab758a18bf1510bb1ae5732171ccd4ee74708e43d87b
+    decisions_basename: rank5_cross_provider_decisions.csv
+    decisions_sha256: 0c136465cb5602a34d2367c988683967c68eb4726b92973b898f56f9a48b82b9
+    receipt_basename: cross_provider_result.outputs.json
+    receipt_sha256: a00f958a924eb16b41ba048f985d0c7a01e8b1292119fe56af7766496242f95b
+    verification_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v3-results-20260730.verification-v2.json
+    verification_sha256: 3e5460028f5613144698731d67e417fd8dcb70dda1b86c17c69ffe2c1e1a771d
+    rows: 25
+
+rank5_production_disposition:
+  field_id: 27
+  field_candidate_rank: 5
+  topic_id: 10151
+  entry_year: 1993
+  content_state: CONTENT_UNRESOLVED
+  disposition_reason: AUGMENTED_CONSERVATIVE_EVIDENCE_NOT_DECISIVE
+  production_rule_version: candidate_rule_v2_plus_correct_hcv_dual_high_api_v1
+  source_replay_state: WOULD_CONTENT_UNRESOLVED
+  post_diagnostic_amendment_used: true
+  human_review_used: false
+  api_labels_used_as_ground_truth: false
+  api_evidence_used: true
+  local_accept_rows: 27
+  local_reject_rows: 12
+  api_dual_high_accept_rows: 0
+  api_dual_high_reject_rows: 9
+  augmented_accept_rows: 27
+  augmented_reject_rows: 21
+  augmented_unresolved_rows: 16
+
+frontier_v7:
+  total_frontier_rows: 51
+  total_content_pass_rows: 3
+  total_content_fail_rows: 4
+  total_content_unresolved_rows: 1
+  total_not_evaluated_rows: 43
+  field_certificates_issued: 1
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  rank5_frontier_role: FROZEN_PRODUCTION_API_AUGMENTED_CONTENT_UNRESOLVED_BLOCKER
+  rank5_state_reason: AUGMENTED_CONSERVATIVE_EVIDENCE_NOT_DECISIVE
+  rank6_frontier_role: FROZEN_PRODUCTION_PASS_BLOCKED_BY_API_AUGMENTED_UNRESOLVED
+
+terminal_certificate_status:
+  schema_version: pivot_feedback_d0_terminal_selection_certificate_status.v2
+  status: BLOCKED_REQUIRED_RANK5_AUGMENTED_CONTENT_UNRESOLVED
+  computer_science_field_certificate_issued: true
+  computer_science_selected_candidate_ranks: [1, 45]
+  medicine_field_certificate_issued: false
+  medicine_blocking_candidate_rank: 5
+  medicine_blocking_topic_id: 10151
+  medicine_blocking_state: CONTENT_UNRESOLVED
+  medicine_blocking_evidence: LOCAL_PLUS_CORRECT_HCV_DUAL_HIGH_API
+  medicine_later_pass_rank: 6
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  resolution_requires_new_authorization: true
+  authorized_resolution_path: NONE
+  human_review: NOT_RUN_BY_DESIGN
+
+output_contract:
+  root_basename: pivot-feedback-d0-rank5-api-augmented-closeout-v1-20260730
+  dispositions_basename: cumulative_production_candidate_dispositions_v6.parquet
+  dispositions_schema_version: pivot_feedback_d0_production_candidate_dispositions.v6
+  frontier_basename: adaptive_candidate_frontier_v7.parquet
+  frontier_schema_version: pivot_feedback_d0_adaptive_candidate_frontier.v7
+  certificate_basename: terminal_selection_certificate_status_v2.json
+  report_basename: RANK5_API_AUGMENTED_TERMINAL_CLOSEOUT.md
+  receipt_basename: rank5_api_augmented_closeout.outputs.json
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+authorization:
+  production_disposition: AUTHORIZED_CONTENT_UNRESOLVED_ONLY
+  frontier_v7: AUTHORIZED
+  terminal_certificate_status_v2: AUTHORIZED_BLOCKED_ONLY
+  new_api_request: NOT_AUTHORIZED
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  production_pivot_classification: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This closeout updates only the rank-5 unresolved row's evidence provenance,
+  frontier v7, and terminal blocked certificate status using the independently
+  verified correct-HCV dual-HIGH result. It does not convert API labels into
+  ground truth, use human review, issue a Medicine/global certificate, perform
+  reselection, read outcomes, fit a model, open G4, or establish an effect.

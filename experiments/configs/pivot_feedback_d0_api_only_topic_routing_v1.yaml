@@ -1,0 +1,262 @@
+schema_version: pivot_feedback_d0_api_only_topic_routing_config.v1
+label: pivot_feedback_d0_api_only_topic_routing_v1
+mode: ZERO_COST_DETERMINISTIC_TITLE_ROUTING_WITH_API_EXCEPTION_QUEUE
+status: FROZEN_ZERO_COST_TOPIC_CARD_ROUTING_DRY_RUN_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v11.yaml
+  sha256: 5b3f888d839dbba95fb8b790938c1235a7d7bc451462245faec4428d34c28feb
+  required_schema_version: pivot_feedback_gate_state.v11
+  required_status: VALID_API_ONLY_DEFINITION_FROZEN_FULL_SCREEN_NOT_RUN_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    api_only_branch.human_review: NOT_RUN_BY_DESIGN
+    api_only_branch.api_consensus_is_ground_truth: false
+    authorization.d0_api_only_topic_card_and_request_successor_preparation: AUTHORIZED
+    authorization.d0_api_only_paid_candidate_universe_submission: NOT_AUTHORIZED
+  mutation_allowed: false
+
+topic_reference:
+  relative_path: experiments/evidence/reference/pivot_feedback_topic_cards_openalex_snapshot_20260729.json
+  sha256: d81461ef674c95f186fcc5ab0cd60365a38c9b809524c4d2e3c2093c418373da
+  required_schema_version: pivot_feedback_openalex_topic_reference_snapshot.v1
+  scope: CURRENT_SNAPSHOT_TOPIC_METADATA_NOT_HISTORICAL_TOPIC_SEMANTICS
+  reference_is_ground_truth: false
+
+frozen_inputs:
+  content_audit:
+    root_basename: pivot-feedback-d0-content-indexing-audit-v1-full-20260724
+    sample_basename: content_review_sample.parquet
+    sample_sha256: b14942ec2ca6628fd9a421c58cde4105610deb640eb407178eacdb661cf7f427
+    sample_schema_version: pivot_feedback_d0_content_review_sample.v1
+    sample_rows: 384
+    receipt_basename: content_indexing_audit.outputs.json
+    receipt_sha256: 86be1808a3272ba7a892d8aa90f4d3687f0d253474d1b4470dad1940e4ff5280
+  prior_api_diagnostic:
+    root_basename: pivot-feedback-d0-cross-provider-api-review-v6-results-20260729
+    decisions_basename: api_cross_provider_decisions.csv
+    decisions_sha256: 54945a470576b7123e67af91a8cda538ba635d367bbdb6e8badb9a60ddec52f8
+    receipt_basename: cross_provider_result.outputs.json
+    receipt_sha256: d10696cd88074d2cefe55cb0bd789c9b8dcecb6b1548488e9e9ae9a7ed22567b
+    diagnostic_labels_are_ground_truth: false
+    use_for_rule_execution: false
+    use_for_descriptive_comparison_only: true
+
+routing_contract:
+  states:
+    - NO_API_RULE_ACCEPT
+    - NO_API_RULE_REJECT
+    - API_REQUIRED_AMBIGUOUS
+    - QUARANTINE_UNRESOLVED
+  precedence:
+    - QUARANTINE_IF_OPAQUE_OR_UNINFORMATIVE
+    - ACCEPT_IF_POSITIVE_AND_NOT_NEGATIVE
+    - REJECT_IF_NEGATIVE_AND_NOT_POSITIVE
+    - API_REQUIRED_OTHERWISE
+  title_normalization:
+    strip_html: true
+    unicode_nfkd_ascii_fold: true
+    lowercase: true
+    alphanumeric_tokens_only: true
+    collapse_whitespace: true
+  minimum_informative_token_count: 2
+  global_opaque_title_patterns:
+    - '^(?:pvn|psb) lot [a-z0-9 ]+$'
+    - '^fy[0-9]{2}$'
+  primary_topic_score_used_for_acceptance: false
+  source_name_used_for_acceptance: false
+  api_labels_used_for_rule_execution: false
+  unresolved_may_be_forced_to_decisive_label: false
+  default_state: API_REQUIRED_AMBIGUOUS
+
+topic_cards:
+  10579:
+    display_name: Cognitive Radio Networks and Spectrum Sensing
+    reference_id: https://openalex.org/T10579
+    positive_patterns:
+      - '\bcognitive radio\b'
+      - '\bcognitive network'
+      - '\bspectrum sensing\b'
+      - '\bcooperative sensing\b'
+      - '\bdynamic spectrum access\b'
+      - '\bopportunistic spectrum access\b'
+      - '\bopportunistic spectral reuse\b'
+      - '\bspectrum sharing\b'
+      - '\bspectrum pooling\b'
+      - '\bspectral reuse\b'
+      - '\bprimary user emulation\b'
+      - '\bspectrum etiquette'
+      - '\bspectrum management\b'
+    negative_patterns:
+      - '\bcompton effect\b'
+      - '\bdisplay cells?\b'
+      - '\bsource routing in the internet\b'
+      - '\bnoncentral chi square\b'
+      - '\bnetview trap\b'
+      - '\bradio station\b'
+      - '\blearning by doing\b'
+    boundary_note: >-
+      Generic radio, wireless, detection, allocation, or signal-processing
+      language without an explicit spectrum-access or cognitive-radio anchor
+      remains API_REQUIRED_AMBIGUOUS.
+  12421:
+    display_name: Adrenal Hormones and Disorders
+    reference_id: https://openalex.org/T12421
+    positive_patterns:
+      - 'adrenal'
+      - 'adreno'
+      - 'suprarenal'
+      - 'nebennieren'
+      - 'addison'
+      - 'cortisol'
+      - 'corticotrop'
+      - '\bacth\b'
+      - 'desoxycortic'
+      - 'deoxycortic'
+      - '17 ketosteroid'
+      - 'hypernephroma'
+    negative_patterns:
+      - '\bpenicillin\b'
+      - '\bperitonitis\b'
+      - '\berysipel'
+      - '\bteropterin\b'
+    boundary_note: >-
+      Cortisone, hydrocortisone, corticosteroid, or glucocorticoid therapy
+      without an adrenal, HPA-axis, cortisol, ACTH, or adrenal-disorder anchor
+      remains API_REQUIRED_AMBIGUOUS.
+  12505:
+    display_name: Peptidase Inhibition and Analysis
+    reference_id: https://openalex.org/T12505
+    positive_patterns:
+      - 'peptidase'
+      - 'protease'
+      - 'proteinase'
+      - 'endopeptid'
+      - 'aminopeptid'
+      - 'carboxypeptid'
+      - 'dipeptidyl'
+      - 'peptidolyt'
+      - 'proteolyt'
+      - '\bcathepsin\b'
+      - '\bthermolysin\b'
+      - '\btrypsin\b'
+      - '\bchymotrypsin\b'
+      - '\belastase\b'
+      - 'fibroblast activation protein'
+      - 'protease inhibitor'
+      - 'n terminal acetylation'
+    negative_patterns:
+      - '\bamylase\b'
+      - '\bglycosidase\b'
+      - '\bphosphorylases?\b'
+      - '\bfibronectin\b'
+      - '\bsarcoidosis\b'
+      - '\bmelanoma\b'
+      - '\bbreast cancer\b'
+      - '\bcytolytic t lymphocyte\b'
+      - '\btransferrin receptor\b'
+      - '\bchromosomes?\b'
+      - '\bstreptokinase\b'
+    boundary_note: >-
+      Peptide or protein sequence analysis alone is not peptidase analysis.
+      Non-peptidase enzymes are rejected only when no positive peptidase,
+      protease, or proteolysis anchor is present. The current OpenAlex
+      description emphasizes fibroblast activation protein and oncology, while
+      the historical sample also contains foundational peptidase biochemistry;
+      mixed cases remain API_REQUIRED_AMBIGUOUS.
+  14430:
+    display_name: Higher Education and Teaching Methods
+    reference_id: https://openalex.org/T14430
+    positive_patterns:
+      - '\bhigher education\b'
+      - '\bhigh education\b'
+      - '\buniversity\b'
+      - '\buniversities\b'
+      - '\bcollege\b'
+      - '\bcolleges\b'
+      - '\bundergraduate\b'
+      - '\bgraduate education\b'
+      - '\bvocational\b'
+      - '\bteacher'
+      - '\bteaching\b'
+      - '\binstruction(?:al)?\b'
+      - '\bcurricul'
+      - '\bclassroom\b'
+      - '\bpedagog'
+      - '\be learning\b'
+      - '\belearning\b'
+      - '\beducation(?:al)?\b'
+      - '\bschools?\b'
+      - '\bstudents?\b'
+    negative_patterns:
+      - '\bcountryside information system\b'
+      - '\bcomputer progress\b'
+      - '\bprimary school\b'
+      - '\belementary school\b'
+      - '\bkindergarten\b'
+    boundary_note: >-
+      Generic computing, information systems, construction, or administration
+      without an education or teaching anchor remains API_REQUIRED_AMBIGUOUS.
+      Primary and elementary education without a higher, vocational, teacher,
+      or educational-technology context is not auto-accepted.
+
+dry_run_contract:
+  network_access: false
+  credential_access: false
+  api_requests_created: false
+  api_requests_submitted: false
+  prior_api_results_may_be_joined_after_routing: true
+  prior_api_join_purpose: DESCRIPTIVE_COMPARISON_AND_COUNTERFACTUAL_REQUEST_COUNT_ONLY
+  comparison_metrics:
+    - route_count
+    - route_by_topic_count
+    - rule_accept_dual_high_api_count
+    - rule_accept_either_api_off_or_unreviewable_count
+    - rule_reject_both_api_off_topic_count
+    - avoided_api_request_row_count
+    - counterfactual_api_request_row_count
+  api_request_avoidance_definition:
+    avoided_states:
+      - NO_API_RULE_ACCEPT
+      - NO_API_RULE_REJECT
+      - QUARANTINE_UNRESOLVED
+    requested_state:
+      - API_REQUIRED_AMBIGUOUS
+  accuracy_claim_allowed: false
+  error_rate_claim_allowed: false
+  calibration_claim_allowed: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-api-only-topic-routing-v1-dry-run-20260729
+  decisions_basename: topic_routing_decisions.csv
+  topic_summary_basename: topic_routing_summary.csv
+  report_basename: API_ONLY_TOPIC_ROUTING_DRY_RUN.md
+  receipt_basename: topic_routing_dry_run.outputs.json
+  receipt_schema_version: pivot_feedback_d0_api_only_topic_routing_outputs.v1
+  status: PASS_ZERO_COST_API_ONLY_TOPIC_ROUTING_DRY_RUN
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+authorization:
+  zero_cost_dry_run: AUTHORIZED
+  topic_card_fixture_tests: AUTHORIZED
+  complete_candidate_work_manifest: NOT_AUTHORIZED
+  paid_api_submission: NOT_AUTHORIZED
+  production_rule_accept_or_reject: NOT_AUTHORIZED
+  episode_reselection: NOT_AUTHORIZED
+  author_panel_rebuild: NOT_AUTHORIZED
+  pivot_classification: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract freezes current-snapshot topic cards and authorizes only a
+  zero-cost routing dry-run on the frozen 384-title diagnostic sample. The
+  lexical rules are conservative routing rules, not a semantic gold standard.
+  Current OpenAlex topic descriptions, prior API labels, rule/API agreement,
+  and request avoidance do not establish accuracy. No API request, production
+  disposition, full candidate-work manifest, episode reselection, author-panel
+  rebuild, pivot classification, outcome read, model fit, G4 opening, or
+  scientific effect is authorized.

@@ -1,0 +1,1244 @@
+{
+  "claim_boundary": "A successful summary validates the small 20260330 taxonomy entity graph and reprojects the already-frozen work-level primary-field, publication-year, declared-author-band, and author-ID-availability cube into an exact cross-field feasibility profile. It performs no OpenAlex work-table rescan. It does not validate work-to-topic or work-to-field entity references, duplicate work-topic edges, publication dates, author entities, candidate researchers, temporal leakage safety, final field selection, G-1 data readiness, G0 measurement freeze, empirical G1, or any scientific effect.",
+  "domains": [
+    {
+      "authorship_status_counts": {
+        "complete": 28534344,
+        "none_usable": 17947182,
+        "partial": 244909,
+        "zero_authorship_row": 3346793
+      },
+      "domain_id": 1,
+      "domain_name": "Life Sciences",
+      "field_count": 5,
+      "fields": [
+        {
+          "authorship_status_counts": {
+            "complete": 10607510,
+            "none_usable": 9692772,
+            "partial": 127049,
+            "zero_authorship_row": 1303143
+          },
+          "authorship_status_rates": {
+            "complete": 0.488139835329869,
+            "none_usable": 0.4460451253847477,
+            "partial": 0.0058465820856001575,
+            "zero_authorship_row": 0.05996845719978312
+          },
+          "domain_id": 1,
+          "domain_name": "Life Sciences",
+          "field_id": 11,
+          "field_name": "Agricultural and Biological Sciences",
+          "subfield_count": 11,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 142,
+            "pre_1900": 291716,
+            "publication_year_null": 1007197,
+            "snapshot_year": 101128
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 8597872,
+            "followup_diagnostic_2023_2025": 3448627,
+            "g1_replication_2013_2016": 3185258,
+            "g4_temporal_2020_2022": 2791404,
+            "model_selection_2017_2019": 2598846
+          },
+          "topic_count": 235,
+          "works": 21730474
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 11750369,
+            "none_usable": 6679048,
+            "partial": 79168,
+            "zero_authorship_row": 1671401
+          },
+          "authorship_status_rates": {
+            "complete": 0.5822783524230394,
+            "none_usable": 0.3309738668797887,
+            "partial": 0.00392309489213719,
+            "zero_authorship_row": 0.08282468580503476
+          },
+          "domain_id": 1,
+          "domain_name": "Life Sciences",
+          "field_id": 13,
+          "field_name": "Biochemistry, Genetics and Molecular Biology",
+          "subfield_count": 14,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 186,
+            "pre_1900": 228725,
+            "publication_year_null": 1216773,
+            "snapshot_year": 115486
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 9097914,
+            "followup_diagnostic_2023_2025": 3414085,
+            "g1_replication_2013_2016": 2407617,
+            "g4_temporal_2020_2022": 2084500,
+            "model_selection_2017_2019": 1843425
+          },
+          "topic_count": 248,
+          "works": 20179986
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 2064771,
+            "none_usable": 589807,
+            "partial": 15033,
+            "zero_authorship_row": 124579
+          },
+          "authorship_status_rates": {
+            "complete": 0.7389515387285761,
+            "none_usable": 0.2110833551046994,
+            "partial": 0.005380092262874035,
+            "zero_authorship_row": 0.04458501390385049
+          },
+          "domain_id": 1,
+          "domain_name": "Life Sciences",
+          "field_id": 24,
+          "field_name": "Immunology and Microbiology",
+          "subfield_count": 5,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 25,
+            "pre_1900": 12453,
+            "publication_year_null": 51229,
+            "snapshot_year": 20813
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 1384092,
+            "followup_diagnostic_2023_2025": 455655,
+            "g1_replication_2013_2016": 337561,
+            "g4_temporal_2020_2022": 291146,
+            "model_selection_2017_2019": 253669
+          },
+          "topic_count": 44,
+          "works": 2794190
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 3271722,
+            "none_usable": 789977,
+            "partial": 18453,
+            "zero_authorship_row": 180503
+          },
+          "authorship_status_rates": {
+            "complete": 0.7678917912856121,
+            "none_usable": 0.18541210212983683,
+            "partial": 0.004331024220454367,
+            "zero_authorship_row": 0.0423650823640966
+          },
+          "domain_id": 1,
+          "domain_name": "Life Sciences",
+          "field_id": 28,
+          "field_name": "Neuroscience",
+          "subfield_count": 8,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 39,
+            "pre_1900": 29873,
+            "publication_year_null": 89163,
+            "snapshot_year": 47529
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 2099075,
+            "followup_diagnostic_2023_2025": 638228,
+            "g1_replication_2013_2016": 525035,
+            "g4_temporal_2020_2022": 449535,
+            "model_selection_2017_2019": 412051
+          },
+          "topic_count": 62,
+          "works": 4260655
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 839972,
+            "none_usable": 195578,
+            "partial": 5206,
+            "zero_authorship_row": 67167
+          },
+          "authorship_status_rates": {
+            "complete": 0.7581501602548192,
+            "none_usable": 0.17652670808350399,
+            "partial": 0.004698882503567486,
+            "zero_authorship_row": 0.060624249158109364
+          },
+          "domain_id": 1,
+          "domain_name": "Life Sciences",
+          "field_id": 30,
+          "field_name": "Pharmacology, Toxicology and Pharmaceutics",
+          "subfield_count": 4,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 5,
+            "pre_1900": 12828,
+            "publication_year_null": 21367,
+            "snapshot_year": 9359
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 599239,
+            "followup_diagnostic_2023_2025": 141429,
+            "g1_replication_2013_2016": 139864,
+            "g4_temporal_2020_2022": 102518,
+            "model_selection_2017_2019": 94142
+          },
+          "topic_count": 25,
+          "works": 1107923
+        }
+      ],
+      "subfield_count": 42,
+      "temporal_diagnostics": {
+        "future_after_snapshot_year": 397,
+        "pre_1900": 575595,
+        "publication_year_null": 2385729,
+        "snapshot_year": 294315
+      },
+      "temporal_window_counts": {
+        "discovery_through_2012": 21778192,
+        "followup_diagnostic_2023_2025": 8098024,
+        "g1_replication_2013_2016": 6595335,
+        "g4_temporal_2020_2022": 5719103,
+        "model_selection_2017_2019": 5202133
+      },
+      "topic_count": 614,
+      "works": 50073228
+    },
+    {
+      "authorship_status_counts": {
+        "complete": 66589497,
+        "none_usable": 29001436,
+        "partial": 681217,
+        "zero_authorship_row": 10315974
+      },
+      "domain_id": 2,
+      "domain_name": "Social Sciences",
+      "field_count": 6,
+      "fields": [
+        {
+          "authorship_status_counts": {
+            "complete": 13933341,
+            "none_usable": 8683448,
+            "partial": 308656,
+            "zero_authorship_row": 2978199
+          },
+          "authorship_status_rates": {
+            "complete": 0.5378911553911102,
+            "none_usable": 0.33522109862226335,
+            "partial": 0.011915543620040485,
+            "zero_authorship_row": 0.11497220236658595
+          },
+          "domain_id": 2,
+          "domain_name": "Social Sciences",
+          "field_id": 12,
+          "field_name": "Arts and Humanities",
+          "subfield_count": 13,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 201,
+            "pre_1900": 1180996,
+            "publication_year_null": 2119947,
+            "snapshot_year": 108806
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 13384243,
+            "followup_diagnostic_2023_2025": 2239726,
+            "g1_replication_2013_2016": 3298260,
+            "g4_temporal_2020_2022": 2295629,
+            "model_selection_2017_2019": 2456832
+          },
+          "topic_count": 266,
+          "works": 25903644
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 6405118,
+            "none_usable": 1761657,
+            "partial": 55070,
+            "zero_authorship_row": 614108
+          },
+          "authorship_status_rates": {
+            "complete": 0.7248927195515865,
+            "none_usable": 0.19937374044429615,
+            "partial": 0.0062324912773981484,
+            "zero_authorship_row": 0.06950104872671913
+          },
+          "domain_id": 2,
+          "domain_name": "Social Sciences",
+          "field_id": 14,
+          "field_name": "Business, Management and Accounting",
+          "subfield_count": 9,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 139,
+            "pre_1900": 66708,
+            "publication_year_null": 309962,
+            "snapshot_year": 78648
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 3596557,
+            "followup_diagnostic_2023_2025": 1238968,
+            "g1_replication_2013_2016": 1417720,
+            "g4_temporal_2020_2022": 1048710,
+            "model_selection_2017_2019": 1145249
+          },
+          "topic_count": 146,
+          "works": 8835953
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 2021421,
+            "none_usable": 995869,
+            "partial": 16437,
+            "zero_authorship_row": 304895
+          },
+          "authorship_status_rates": {
+            "complete": 0.6054656681708801,
+            "none_usable": 0.2982874371522143,
+            "partial": 0.004923288710132504,
+            "zero_authorship_row": 0.09132360596677312
+          },
+          "domain_id": 2,
+          "domain_name": "Social Sciences",
+          "field_id": 18,
+          "field_name": "Decision Sciences",
+          "subfield_count": 4,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 21,
+            "pre_1900": 26954,
+            "publication_year_null": 179110,
+            "snapshot_year": 33070
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 1283813,
+            "followup_diagnostic_2023_2025": 561156,
+            "g1_replication_2013_2016": 484422,
+            "g4_temporal_2020_2022": 413271,
+            "model_selection_2017_2019": 383759
+          },
+          "topic_count": 60,
+          "works": 3338622
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 5710819,
+            "none_usable": 3763476,
+            "partial": 66799,
+            "zero_authorship_row": 1297017
+          },
+          "authorship_status_rates": {
+            "complete": 0.5269201431873137,
+            "none_usable": 0.34724464438498553,
+            "partial": 0.006163343409197415,
+            "zero_authorship_row": 0.11967186901850331
+          },
+          "domain_id": 2,
+          "domain_name": "Social Sciences",
+          "field_id": 20,
+          "field_name": "Economics, Econometrics and Finance",
+          "subfield_count": 3,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 126,
+            "pre_1900": 141263,
+            "publication_year_null": 809908,
+            "snapshot_year": 66043
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 4525127,
+            "followup_diagnostic_2023_2025": 1693498,
+            "g1_replication_2013_2016": 1502831,
+            "g4_temporal_2020_2022": 1047120,
+            "model_selection_2017_2019": 1193458
+          },
+          "topic_count": 107,
+          "works": 10838111
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 6025597,
+            "none_usable": 1827953,
+            "partial": 37041,
+            "zero_authorship_row": 521318
+          },
+          "authorship_status_rates": {
+            "complete": 0.7163174256877958,
+            "none_usable": 0.21730537027920774,
+            "partial": 0.004403399989229556,
+            "zero_authorship_row": 0.061973804043767
+          },
+          "domain_id": 2,
+          "domain_name": "Social Sciences",
+          "field_id": 32,
+          "field_name": "Psychology",
+          "subfield_count": 7,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 66,
+            "pre_1900": 65521,
+            "publication_year_null": 230355,
+            "snapshot_year": 98682
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 3562477,
+            "followup_diagnostic_2023_2025": 1310952,
+            "g1_replication_2013_2016": 1180306,
+            "g4_temporal_2020_2022": 1066173,
+            "model_selection_2017_2019": 962898
+          },
+          "topic_count": 144,
+          "works": 8411909
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 32493201,
+            "none_usable": 11969033,
+            "partial": 197214,
+            "zero_authorship_row": 4600437
+          },
+          "authorship_status_rates": {
+            "complete": 0.6596280320183452,
+            "none_usable": 0.2429772826306842,
+            "partial": 0.004003541624183654,
+            "zero_authorship_row": 0.09339114372678702
+          },
+          "domain_id": 2,
+          "domain_name": "Social Sciences",
+          "field_id": 33,
+          "field_name": "Social Sciences",
+          "subfield_count": 22,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 358,
+            "pre_1900": 815643,
+            "publication_year_null": 2220936,
+            "snapshot_year": 360924
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 21576764,
+            "followup_diagnostic_2023_2025": 6075027,
+            "g1_replication_2013_2016": 7385832,
+            "g4_temporal_2020_2022": 5685768,
+            "model_selection_2017_2019": 5954276
+          },
+          "topic_count": 764,
+          "works": 49259885
+        }
+      ],
+      "subfield_count": 58,
+      "temporal_diagnostics": {
+        "future_after_snapshot_year": 911,
+        "pre_1900": 2297085,
+        "publication_year_null": 5870218,
+        "snapshot_year": 746173
+      },
+      "temporal_window_counts": {
+        "discovery_through_2012": 47928981,
+        "followup_diagnostic_2023_2025": 13119327,
+        "g1_replication_2013_2016": 15269371,
+        "g4_temporal_2020_2022": 11556671,
+        "model_selection_2017_2019": 12096472
+      },
+      "topic_count": 1487,
+      "works": 106588124
+    },
+    {
+      "authorship_status_counts": {
+        "complete": 77978134,
+        "none_usable": 44870437,
+        "partial": 600260,
+        "zero_authorship_row": 12620812
+      },
+      "domain_id": 3,
+      "domain_name": "Physical Sciences",
+      "field_count": 10,
+      "fields": [
+        {
+          "authorship_status_counts": {
+            "complete": 693255,
+            "none_usable": 134790,
+            "partial": 3908,
+            "zero_authorship_row": 54513
+          },
+          "authorship_status_rates": {
+            "complete": 0.7820435301523126,
+            "none_usable": 0.15205320903452585,
+            "partial": 0.00440851651388773,
+            "zero_authorship_row": 0.06149474429927375
+          },
+          "domain_id": 3,
+          "domain_name": "Physical Sciences",
+          "field_id": 15,
+          "field_name": "Chemical Engineering",
+          "subfield_count": 6,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 8,
+            "pre_1900": 6882,
+            "publication_year_null": 21487,
+            "snapshot_year": 6664
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 491707,
+            "followup_diagnostic_2023_2025": 99814,
+            "g1_replication_2013_2016": 107094,
+            "g4_temporal_2020_2022": 80873,
+            "model_selection_2017_2019": 78819
+          },
+          "topic_count": 13,
+          "works": 886466
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 4956784,
+            "none_usable": 1235710,
+            "partial": 21210,
+            "zero_authorship_row": 612668
+          },
+          "authorship_status_rates": {
+            "complete": 0.7261227486577058,
+            "none_usable": 0.18102002059073252,
+            "partial": 0.0031070677074147147,
+            "zero_authorship_row": 0.08975016304414703
+          },
+          "domain_id": 3,
+          "domain_name": "Physical Sciences",
+          "field_id": 16,
+          "field_name": "Chemistry",
+          "subfield_count": 6,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 47,
+            "pre_1900": 80441,
+            "publication_year_null": 130087,
+            "snapshot_year": 25569
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 4179131,
+            "followup_diagnostic_2023_2025": 792064,
+            "g1_replication_2013_2016": 757418,
+            "g4_temporal_2020_2022": 484447,
+            "model_selection_2017_2019": 457609
+          },
+          "topic_count": 101,
+          "works": 6826372
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 13146556,
+            "none_usable": 7996521,
+            "partial": 97970,
+            "zero_authorship_row": 1122506
+          },
+          "authorship_status_rates": {
+            "complete": 0.5878563213993769,
+            "none_usable": 0.35756934508572946,
+            "partial": 0.004380788687736694,
+            "zero_authorship_row": 0.05019354482715694
+          },
+          "domain_id": 3,
+          "domain_name": "Physical Sciences",
+          "field_id": 17,
+          "field_name": "Computer Science",
+          "subfield_count": 11,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 263,
+            "pre_1900": 116603,
+            "publication_year_null": 733856,
+            "snapshot_year": 243979
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 7926947,
+            "followup_diagnostic_2023_2025": 6150093,
+            "g1_replication_2013_2016": 2790648,
+            "g4_temporal_2020_2022": 2376200,
+            "model_selection_2017_2019": 2141567
+          },
+          "topic_count": 302,
+          "works": 22363553
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 4177442,
+            "none_usable": 2842076,
+            "partial": 62453,
+            "zero_authorship_row": 541143
+          },
+          "authorship_status_rates": {
+            "complete": 0.5479967897633434,
+            "none_usable": 0.3728234944407233,
+            "partial": 0.008192583765636982,
+            "zero_authorship_row": 0.07098713203029627
+          },
+          "domain_id": 3,
+          "domain_name": "Physical Sciences",
+          "field_id": 19,
+          "field_name": "Earth and Planetary Sciences",
+          "subfield_count": 8,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 62,
+            "pre_1900": 102753,
+            "publication_year_null": 390669,
+            "snapshot_year": 45257
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 3274413,
+            "followup_diagnostic_2023_2025": 1466234,
+            "g1_replication_2013_2016": 858923,
+            "g4_temporal_2020_2022": 909419,
+            "model_selection_2017_2019": 678137
+          },
+          "topic_count": 57,
+          "works": 7623114
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 1280719,
+            "none_usable": 339001,
+            "partial": 10677,
+            "zero_authorship_row": 198661
+          },
+          "authorship_status_rates": {
+            "complete": 0.7002068824498731,
+            "none_usable": 0.18534185356615263,
+            "partial": 0.005837431071075931,
+            "zero_authorship_row": 0.10861383291289833
+          },
+          "domain_id": 3,
+          "domain_name": "Physical Sciences",
+          "field_id": 21,
+          "field_name": "Energy",
+          "subfield_count": 5,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 11,
+            "pre_1900": 8475,
+            "publication_year_null": 29310,
+            "snapshot_year": 19034
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 620245,
+            "followup_diagnostic_2023_2025": 343753,
+            "g1_replication_2013_2016": 291122,
+            "g4_temporal_2020_2022": 281262,
+            "model_selection_2017_2019": 244321
+          },
+          "topic_count": 27,
+          "works": 1829058
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 26848023,
+            "none_usable": 11022781,
+            "partial": 205418,
+            "zero_authorship_row": 3322580
+          },
+          "authorship_status_rates": {
+            "complete": 0.6485217374164596,
+            "none_usable": 0.2662584535658786,
+            "partial": 0.004961931023994366,
+            "zero_authorship_row": 0.08025787799366754
+          },
+          "domain_id": 3,
+          "domain_name": "Physical Sciences",
+          "field_id": 22,
+          "field_name": "Engineering",
+          "subfield_count": 16,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 221,
+            "pre_1900": 434718,
+            "publication_year_null": 2498410,
+            "snapshot_year": 334349
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 17949535,
+            "followup_diagnostic_2023_2025": 6835382,
+            "g1_replication_2013_2016": 5305719,
+            "g4_temporal_2020_2022": 4218234,
+            "model_selection_2017_2019": 4256952
+          },
+          "topic_count": 560,
+          "works": 41398802
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 9702780,
+            "none_usable": 5552700,
+            "partial": 81525,
+            "zero_authorship_row": 1467011
+          },
+          "authorship_status_rates": {
+            "complete": 0.5774084004680786,
+            "none_usable": 0.33043886651857507,
+            "partial": 0.004851518827404116,
+            "zero_authorship_row": 0.08730121418594222
+          },
+          "domain_id": 3,
+          "domain_name": "Physical Sciences",
+          "field_id": 23,
+          "field_name": "Environmental Science",
+          "subfield_count": 11,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 114,
+            "pre_1900": 187262,
+            "publication_year_null": 864716,
+            "snapshot_year": 133301
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 6829422,
+            "followup_diagnostic_2023_2025": 2977097,
+            "g1_replication_2013_2016": 2125563,
+            "g4_temporal_2020_2022": 2159600,
+            "model_selection_2017_2019": 1714203
+          },
+          "topic_count": 202,
+          "works": 16804016
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 6971004,
+            "none_usable": 1891308,
+            "partial": 41465,
+            "zero_authorship_row": 534610
+          },
+          "authorship_status_rates": {
+            "complete": 0.7385800137248028,
+            "none_usable": 0.20038466318450388,
+            "partial": 0.00439322947872343,
+            "zero_authorship_row": 0.056642093611969924
+          },
+          "domain_id": 3,
+          "domain_name": "Physical Sciences",
+          "field_id": 25,
+          "field_name": "Materials Science",
+          "subfield_count": 8,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 56,
+            "pre_1900": 72233,
+            "publication_year_null": 306958,
+            "snapshot_year": 70825
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 4367806,
+            "followup_diagnostic_2023_2025": 1278712,
+            "g1_replication_2013_2016": 1313090,
+            "g4_temporal_2020_2022": 1069855,
+            "model_selection_2017_2019": 1031085
+          },
+          "topic_count": 123,
+          "works": 9438387
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 3021470,
+            "none_usable": 1052940,
+            "partial": 17147,
+            "zero_authorship_row": 243816
+          },
+          "authorship_status_rates": {
+            "complete": 0.6969342660942899,
+            "none_usable": 0.2428718359412212,
+            "partial": 0.0039551383468043,
+            "zero_authorship_row": 0.05623875961768457
+          },
+          "domain_id": 3,
+          "domain_name": "Physical Sciences",
+          "field_id": 26,
+          "field_name": "Mathematics",
+          "subfield_count": 10,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 22,
+            "pre_1900": 50686,
+            "publication_year_null": 181671,
+            "snapshot_year": 55153
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 2063433,
+            "followup_diagnostic_2023_2025": 582267,
+            "g1_replication_2013_2016": 554632,
+            "g4_temporal_2020_2022": 489144,
+            "model_selection_2017_2019": 409051
+          },
+          "topic_count": 82,
+          "works": 4335373
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 7180101,
+            "none_usable": 12802610,
+            "partial": 58487,
+            "zero_authorship_row": 4523304
+          },
+          "authorship_status_rates": {
+            "complete": 0.29229580961991414,
+            "none_usable": 0.5211833726570154,
+            "partial": 0.002380956064161203,
+            "zero_authorship_row": 0.18413986165890928
+          },
+          "domain_id": 3,
+          "domain_name": "Physical Sciences",
+          "field_id": 31,
+          "field_name": "Physics and Astronomy",
+          "subfield_count": 8,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 130,
+            "pre_1900": 839741,
+            "publication_year_null": 4050582,
+            "snapshot_year": 139845
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 11079104,
+            "followup_diagnostic_2023_2025": 3022080,
+            "g1_replication_2013_2016": 2494333,
+            "g4_temporal_2020_2022": 1878623,
+            "model_selection_2017_2019": 1899805
+          },
+          "topic_count": 104,
+          "works": 24564502
+        }
+      ],
+      "subfield_count": 89,
+      "temporal_diagnostics": {
+        "future_after_snapshot_year": 934,
+        "pre_1900": 1899794,
+        "publication_year_null": 9207746,
+        "snapshot_year": 1073976
+      },
+      "temporal_window_counts": {
+        "discovery_through_2012": 58781743,
+        "followup_diagnostic_2023_2025": 23547496,
+        "g1_replication_2013_2016": 16598542,
+        "g4_temporal_2020_2022": 13947657,
+        "model_selection_2017_2019": 12911549
+      },
+      "topic_count": 1571,
+      "works": 136069643
+    },
+    {
+      "authorship_status_counts": {
+        "complete": 45410159,
+        "none_usable": 11341295,
+        "partial": 384953,
+        "zero_authorship_row": 4277846
+      },
+      "domain_id": 4,
+      "domain_name": "Health Sciences",
+      "field_count": 5,
+      "fields": [
+        {
+          "authorship_status_counts": {
+            "complete": 37645562,
+            "none_usable": 9646556,
+            "partial": 326657,
+            "zero_authorship_row": 3427858
+          },
+          "authorship_status_rates": {
+            "complete": 0.7374739485756093,
+            "none_usable": 0.18897536297839665,
+            "partial": 0.006399187973866954,
+            "zero_authorship_row": 0.06715150047212712
+          },
+          "domain_id": 4,
+          "domain_name": "Health Sciences",
+          "field_id": 27,
+          "field_name": "Medicine",
+          "subfield_count": 42,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 250,
+            "pre_1900": 440337,
+            "publication_year_null": 1397873,
+            "snapshot_year": 420341
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 24169918,
+            "followup_diagnostic_2023_2025": 7701345,
+            "g1_replication_2013_2016": 6393170,
+            "g4_temporal_2020_2022": 5913322,
+            "model_selection_2017_2019": 5050414
+          },
+          "topic_count": 692,
+          "works": 51046633
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 1038359,
+            "none_usable": 189155,
+            "partial": 9447,
+            "zero_authorship_row": 75164
+          },
+          "authorship_status_rates": {
+            "complete": 0.7913567686005525,
+            "none_usable": 0.14415928360483948,
+            "partial": 0.007199771363246642,
+            "zero_authorship_row": 0.05728417643136134
+          },
+          "domain_id": 4,
+          "domain_name": "Health Sciences",
+          "field_id": 29,
+          "field_name": "Nursing",
+          "subfield_count": 4,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 10,
+            "pre_1900": 6726,
+            "publication_year_null": 21870,
+            "snapshot_year": 10496
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 658997,
+            "followup_diagnostic_2023_2025": 182184,
+            "g1_replication_2013_2016": 167722,
+            "g4_temporal_2020_2022": 139395,
+            "model_selection_2017_2019": 131451
+          },
+          "topic_count": 21,
+          "works": 1312125
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 366969,
+            "none_usable": 103560,
+            "partial": 2232,
+            "zero_authorship_row": 23925
+          },
+          "authorship_status_rates": {
+            "complete": 0.738834998369191,
+            "none_usable": 0.20850195093076915,
+            "partial": 0.004493784805692127,
+            "zero_authorship_row": 0.04816926589434774
+          },
+          "domain_id": 4,
+          "domain_name": "Health Sciences",
+          "field_id": 34,
+          "field_name": "Veterinary",
+          "subfield_count": 2,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 5,
+            "pre_1900": 3227,
+            "publication_year_null": 9955,
+            "snapshot_year": 3798
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 267844,
+            "followup_diagnostic_2023_2025": 64502,
+            "g1_replication_2013_2016": 59149,
+            "g4_temporal_2020_2022": 46401,
+            "model_selection_2017_2019": 45032
+          },
+          "topic_count": 11,
+          "works": 496686
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 793058,
+            "none_usable": 145045,
+            "partial": 6442,
+            "zero_authorship_row": 37816
+          },
+          "authorship_status_rates": {
+            "complete": 0.8072979281547211,
+            "none_usable": 0.14764938754694049,
+            "partial": 0.0065576707544375236,
+            "zero_authorship_row": 0.03849501354390087
+          },
+          "domain_id": 4,
+          "domain_name": "Health Sciences",
+          "field_id": 35,
+          "field_name": "Dentistry",
+          "subfield_count": 4,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 5,
+            "pre_1900": 4617,
+            "publication_year_null": 12478,
+            "snapshot_year": 10741
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 406783,
+            "followup_diagnostic_2023_2025": 160605,
+            "g1_replication_2013_2016": 138334,
+            "g4_temporal_2020_2022": 138147,
+            "model_selection_2017_2019": 115268
+          },
+          "topic_count": 13,
+          "works": 982361
+        },
+        {
+          "authorship_status_counts": {
+            "complete": 5566211,
+            "none_usable": 1256979,
+            "partial": 40175,
+            "zero_authorship_row": 713083
+          },
+          "authorship_status_rates": {
+            "complete": 0.7346728968508726,
+            "none_usable": 0.16590610798094305,
+            "partial": 0.005302616740720718,
+            "zero_authorship_row": 0.09411837842746364
+          },
+          "domain_id": 4,
+          "domain_name": "Health Sciences",
+          "field_id": 36,
+          "field_name": "Health Professions",
+          "subfield_count": 11,
+          "temporal_diagnostics": {
+            "future_after_snapshot_year": 53,
+            "pre_1900": 91853,
+            "publication_year_null": 171817,
+            "snapshot_year": 53402
+          },
+          "temporal_window_counts": {
+            "discovery_through_2012": 3470803,
+            "followup_diagnostic_2023_2025": 1000407,
+            "g1_replication_2013_2016": 1088933,
+            "g4_temporal_2020_2022": 891054,
+            "model_selection_2017_2019": 899979
+          },
+          "topic_count": 107,
+          "works": 7576448
+        }
+      ],
+      "subfield_count": 63,
+      "temporal_diagnostics": {
+        "future_after_snapshot_year": 323,
+        "pre_1900": 546760,
+        "publication_year_null": 1613993,
+        "snapshot_year": 498778
+      },
+      "temporal_window_counts": {
+        "discovery_through_2012": 28974345,
+        "followup_diagnostic_2023_2025": 9109043,
+        "g1_replication_2013_2016": 7847308,
+        "g4_temporal_2020_2022": 7128319,
+        "model_selection_2017_2019": 6242144
+      },
+      "topic_count": 844,
+      "works": 61414253
+    }
+  ],
+  "field_selection": {
+    "final_domain_holdout": null,
+    "selected_domain_ids": [],
+    "selected_field_ids": [],
+    "selection_used_scientific_outcomes": false,
+    "status": "PENDING_G0"
+  },
+  "gate_status": {
+    "candidate_eligibility": "NOT_ESTABLISHED",
+    "cross_field_profile_projection": "PASS",
+    "empirical_g1_signature": "NOT_RUN",
+    "field_entity_validity": "UNVERIFIED",
+    "final_field_selection": "PENDING_G0",
+    "g0_measurement_freeze": "PENDING",
+    "g_minus_1_data_readiness": "PENDING",
+    "parent_work_source_profile": "PASS_REVALIDATED",
+    "pass_g1": false,
+    "taxonomy_internal_graph": "PASS"
+  },
+  "generated_at_utc": "2026-07-18T09:29:10.678249+00:00",
+  "label": "openalex_g1_cross_field_feasibility_20260718",
+  "pending_full_taxonomy_reference_audit": {
+    "main_files": 493,
+    "main_raw_rows": 492293207,
+    "main_retained_rows": 492293206,
+    "required_extensions": [
+      "work_primary_topic_entity_and_hierarchy_validity",
+      "work_topic_entity_and_hierarchy_validity",
+      "duplicate_work_topic_edge_audit",
+      "primary_topic_present_in_work_topic_rows",
+      "topic_score_validity",
+      "publication_date_and_year_validity"
+    ],
+    "status": "PENDING",
+    "topic_files": 930,
+    "topic_rows": 928562546,
+    "total_files": 1423,
+    "workload_class": "local_cpu_io"
+  },
+  "profile": {
+    "classified_primary_field_rate": 0.71937870294314,
+    "classified_primary_field_works": 354145248,
+    "global_temporal_diagnostics": {
+      "future_after_snapshot_year": 4010,
+      "observed_nonnull_year_max": 2050,
+      "observed_nonnull_year_min": 1000,
+      "pre_1900": 6692869,
+      "publication_year_null": 27565532,
+      "snapshot_year": 11516735
+    },
+    "global_temporal_window_counts": {
+      "discovery_through_2012": 200148775,
+      "followup_diagnostic_2023_2025": 96738862,
+      "g1_replication_2013_2016": 58763594,
+      "g4_temporal_2020_2022": 50823699,
+      "model_selection_2017_2019": 46731999
+    },
+    "master_work_rows": 492293206,
+    "null_primary_field_profile": {
+      "authorship_status_counts": {
+        "complete": 45238864,
+        "none_usable": 74056719,
+        "partial": 197703,
+        "zero_authorship_row": 18654672
+      },
+      "temporal_diagnostics": {
+        "future_after_snapshot_year": 1445,
+        "pre_1900": 1373635,
+        "publication_year_null": 8487846,
+        "snapshot_year": 8903493
+      },
+      "temporal_window_counts": {
+        "discovery_through_2012": 42685514,
+        "followup_diagnostic_2023_2025": 42864972,
+        "g1_replication_2013_2016": 12453038,
+        "g4_temporal_2020_2022": 12471949,
+        "model_selection_2017_2019": 10279701
+      },
+      "works": 138147958
+    },
+    "null_primary_field_rate": 0.28062129705686006,
+    "null_primary_field_works": 138147958,
+    "projection_checks": {
+      "domain_field_work_counts_conserve_classified_works": true,
+      "joint_cube_cells": 122472,
+      "joint_cube_reproduces_all_27_primary_field_status_margins": true,
+      "joint_cube_total_equals_master_rows": true,
+      "taxonomy_field_ids_equal_profile_nonnull_field_ids": true
+    }
+  },
+  "provenance": {
+    "compact_summary_sha256": "df626b897bcb53c1bbc3209dbfbec8f69b84361367e09e1a9ffdf39e293d7b83",
+    "config_relative_path": "experiments/configs/openalex_g1_cross_field_feasibility_v0.yaml",
+    "config_sha256": "a551207d662cc49e12d4d9c1e7e5abb08b82f39d5e8a3e71055a24f1a9f268b2",
+    "full_report_sha256": "1c385d42595fc34794116189ce940526e1095ccd2a5da9eccd3da902e8f152ce",
+    "parent_compact_status": "PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE",
+    "parent_full_report_status": "PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE",
+    "parent_result_fingerprint_sha256": "8b7d0273a04eb7a231a9d8b466151c562ac80eac6557ff7444508cb174862242",
+    "path_redacted": true,
+    "result_fingerprint_sha256": "d7dd61e46f2556fe7d97f9ac3d5d5e595bbaa10360bd0bddcf039867b8aa84fe",
+    "taxonomy_canonical_sha256": "8b9f4e2f492eb6939e1dbb6a8187f06d4ea8fdebb9c1bafce017cd39e54401b4",
+    "taxonomy_file_commitments": [
+      {
+        "entity": "domains",
+        "rows": 4,
+        "sha256": "6a1f3b5a582960fd1fee5e2c1f082a48dddaa3a06c9586c425fee8d375a19551"
+      },
+      {
+        "entity": "fields",
+        "rows": 26,
+        "sha256": "fe90f0841e208c212de267d9509e5ee22bb3619470d8cf99402091f25d93d551"
+      },
+      {
+        "entity": "subfields",
+        "rows": 252,
+        "sha256": "618cbefc555bf7fa2dba8ac9e1822023772c804b758246929841cddc05229e6d"
+      },
+      {
+        "entity": "topics",
+        "rows": 4,
+        "sha256": "c0db36d0efa3dc618bcccf8a8059c6fd5e9b30a8f24060e15ad1dfe0f2a3b905"
+      },
+      {
+        "entity": "topics",
+        "rows": 9,
+        "sha256": "7357571fbf176e1547a8e7274c011fc139f23c4f4a319d35bd71e18f04b3eb3c"
+      },
+      {
+        "entity": "topics",
+        "rows": 91,
+        "sha256": "3045dd99ed786db5795f42ca269f81391d36fa941371f00ee26e2a7c620bde0c"
+      },
+      {
+        "entity": "topics",
+        "rows": 4412,
+        "sha256": "2ec9e83d036556ad0c071ca48eebb70ca717c9b5cf0e572e21fcb2a6e973b3af"
+      }
+    ],
+    "tool_relative_path": "scripts/summarize_openalex_cross_field_feasibility.py",
+    "tool_sha256": "8aaa4f58bea7bfa0345b805e781c38501b65cb37b29977d740f21d330871fd63"
+  },
+  "schema_version": "openalex_g1_cross_field_feasibility_summary.v1",
+  "scope": {
+    "final_field_selection_performed": false,
+    "parent_full_report_reused": true,
+    "parent_joint_sparse_cube_cells_reprojected": 122472,
+    "taxonomy_entity_rows_read": 4798,
+    "work_parquet_files_read": 0,
+    "work_parquet_rows_scanned": 0
+  },
+  "status": "PASS_CROSS_FIELD_PROFILE_FEASIBILITY_ONLY",
+  "taxonomy": {
+    "canonical_sha256": "8b9f4e2f492eb6939e1dbb6a8187f06d4ea8fdebb9c1bafce017cd39e54401b4",
+    "distinct_display_name_counts": {
+      "domains": 4,
+      "fields": 26,
+      "subfields": 244,
+      "topics": 4516
+    },
+    "duplicate_display_names": {
+      "domains": [],
+      "fields": [],
+      "subfields": [
+        {
+          "display_name": "Archeology",
+          "entity_ids": [
+            "https://openalex.org/subfields/1204",
+            "https://openalex.org/subfields/3302"
+          ]
+        },
+        {
+          "display_name": "Biochemistry",
+          "entity_ids": [
+            "https://openalex.org/subfields/1303",
+            "https://openalex.org/subfields/2704"
+          ]
+        },
+        {
+          "display_name": "Genetics",
+          "entity_ids": [
+            "https://openalex.org/subfields/1311",
+            "https://openalex.org/subfields/2716"
+          ]
+        },
+        {
+          "display_name": "Industrial and Manufacturing Engineering",
+          "entity_ids": [
+            "https://openalex.org/subfields/2209",
+            "https://openalex.org/subfields/2311"
+          ]
+        },
+        {
+          "display_name": "Microbiology",
+          "entity_ids": [
+            "https://openalex.org/subfields/2404",
+            "https://openalex.org/subfields/2726"
+          ]
+        },
+        {
+          "display_name": "Neurology",
+          "entity_ids": [
+            "https://openalex.org/subfields/2728",
+            "https://openalex.org/subfields/2808"
+          ]
+        },
+        {
+          "display_name": "Pharmacology",
+          "entity_ids": [
+            "https://openalex.org/subfields/2736",
+            "https://openalex.org/subfields/3004"
+          ]
+        },
+        {
+          "display_name": "Physiology",
+          "entity_ids": [
+            "https://openalex.org/subfields/1314",
+            "https://openalex.org/subfields/2737"
+          ]
+        }
+      ],
+      "topics": []
+    },
+    "entity_counts": {
+      "domains": 4,
+      "fields": 26,
+      "subfields": 252,
+      "topics": 4516
+    },
+    "internal_graph_checks": {
+      "declared_child_ids_unique": true,
+      "declared_child_names_match": true,
+      "declared_child_sets_match": true,
+      "parent_chains_match": true,
+      "parent_ids_resolve": true,
+      "parent_names_match": true,
+      "unique_entity_ids": true
+    },
+    "snapshot_date": "2026-03-30"
+  }
+}

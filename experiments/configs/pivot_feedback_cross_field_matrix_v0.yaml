@@ -1,0 +1,348 @@
+schema_version: pivot_feedback_cross_field_matrix.v1
+label: pivot_feedback_cross_field_matrix_engineering_v0
+mode: ENGINEERING_ONLY_PLAN
+
+gate_state:
+  g_minus_1_data_readiness: PENDING
+  g0_measurement_freeze: PENDING
+  empirical_g1_signature: NOT_RUN
+  pass_g1: false
+  execution_authorized: false
+
+source_audit:
+  summary_relative_path: experiments/evidence/results/openalex_g1_work_source_membership_20260717.summary.json
+  summary_sha256: df626b897bcb53c1bbc3209dbfbec8f69b84361367e09e1a9ffdf39e293d7b83
+  summary_schema_version: openalex_g1_work_source_membership_summary.v1
+  required_status: PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE
+  result_fingerprint_sha256: 8b7d0273a04eb7a231a9d8b466151c562ac80eac6557ff7444508cb174862242
+  required_gate_status:
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    author_entity_validity_established: false
+    parent_content_identity: UNVERIFIED
+    analysis_view_materialized: false
+    g_minus_1_data_readiness: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+
+taxonomy_reference_audit:
+  summary_relative_path: experiments/evidence/results/openalex_g1_field_taxonomy_reference_20260718.summary.json
+  summary_sha256: f8a0d01ee5b04133c1472d4ed7c07f7a578343004c859645f174f1a0f6021f62
+  summary_schema_version: openalex_g1_field_taxonomy_reference_report.v1
+  required_status: PASS_CURRENT_SNAPSHOT_TAXONOMY_REFERENCE_COMPONENT
+  result_fingerprint_sha256: 36209d119cc32802d0e7391b92425dcef931e9513841afa19e8be7b0bc06b30b
+  taxonomy_canonical_sha256: 8b9f4e2f492eb6939e1dbb6a8187f06d4ea8fdebb9c1bafce017cd39e54401b4
+  required_full_scope: true
+  required_scientific_effect_estimation_performed: false
+  required_field_status_margin: PASS
+  required_gate_status:
+    current_snapshot_taxonomy_reference_component: PASS
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    parent_content_identity: UNVERIFIED
+    duplicate_work_topic_edges: PENDING
+    primary_topic_child_inclusion: PENDING
+    publication_date_validity: PENDING
+    temporal_available_at: PENDING
+    author_entity_validity: PENDING
+    candidate_eligibility: PENDING
+    g_minus_1_data_readiness: PENDING
+    g0_measurement_freeze: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+
+candidate_universe:
+  taxonomy: openalex_topic_hierarchy_4_domains_26_fields
+  taxonomy_reference_url: https://developers.openalex.org/api-reference/fields
+  scientific_field_selection: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+  domains:
+    - domain_id: life_sciences
+      display_name: Life Sciences
+      rng_code: 1
+      fields:
+        - field_id: 11
+          field_slug: agricultural_and_biological_sciences
+          display_name: Agricultural and Biological Sciences
+          rng_code: 11
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 13
+          field_slug: biochemistry_genetics_and_molecular_biology
+          display_name: Biochemistry, Genetics and Molecular Biology
+          rng_code: 13
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 24
+          field_slug: immunology_and_microbiology
+          display_name: Immunology and Microbiology
+          rng_code: 24
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 28
+          field_slug: neuroscience
+          display_name: Neuroscience
+          rng_code: 28
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 30
+          field_slug: pharmacology_toxicology_and_pharmaceutics
+          display_name: Pharmacology, Toxicology and Pharmaceutics
+          rng_code: 30
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+
+    - domain_id: social_sciences
+      display_name: Social Sciences
+      rng_code: 2
+      fields:
+        - field_id: 12
+          field_slug: arts_and_humanities
+          display_name: Arts and Humanities
+          rng_code: 12
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 14
+          field_slug: business_management_and_accounting
+          display_name: Business, Management and Accounting
+          rng_code: 14
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 18
+          field_slug: decision_sciences
+          display_name: Decision Sciences
+          rng_code: 18
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 20
+          field_slug: economics_econometrics_and_finance
+          display_name: Economics, Econometrics and Finance
+          rng_code: 20
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 32
+          field_slug: psychology
+          display_name: Psychology
+          rng_code: 32
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 33
+          field_slug: social_sciences
+          display_name: Social Sciences
+          rng_code: 33
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+
+    - domain_id: physical_sciences
+      display_name: Physical Sciences
+      rng_code: 3
+      fields:
+        - field_id: 15
+          field_slug: chemical_engineering
+          display_name: Chemical Engineering
+          rng_code: 15
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 16
+          field_slug: chemistry
+          display_name: Chemistry
+          rng_code: 16
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 17
+          field_slug: computer_science
+          display_name: Computer Science
+          rng_code: 17
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 19
+          field_slug: earth_and_planetary_sciences
+          display_name: Earth and Planetary Sciences
+          rng_code: 19
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 21
+          field_slug: energy
+          display_name: Energy
+          rng_code: 21
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 22
+          field_slug: engineering
+          display_name: Engineering
+          rng_code: 22
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 23
+          field_slug: environmental_science
+          display_name: Environmental Science
+          rng_code: 23
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 25
+          field_slug: materials_science
+          display_name: Materials Science
+          rng_code: 25
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 26
+          field_slug: mathematics
+          display_name: Mathematics
+          rng_code: 26
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 31
+          field_slug: physics_and_astronomy
+          display_name: Physics and Astronomy
+          rng_code: 31
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+
+    - domain_id: health_sciences
+      display_name: Health Sciences
+      rng_code: 4
+      fields:
+        - field_id: 27
+          field_slug: medicine
+          display_name: Medicine
+          rng_code: 27
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 29
+          field_slug: nursing
+          display_name: Nursing
+          rng_code: 29
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 34
+          field_slug: veterinary
+          display_name: Veterinary
+          rng_code: 34
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 35
+          field_slug: dentistry
+          display_name: Dentistry
+          rng_code: 35
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+        - field_id: 36
+          field_slug: health_professions
+          display_name: Health Professions
+          rng_code: 36
+          scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+
+selection_rules:
+  status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+  primary_rule: LEXICOGRAPHIC_MAXIMIN_STRUCTURAL_COVERAGE
+  eligible_structural_metrics:
+    - eligible_author_count
+    - matured_entry_opportunity_count
+    - pre_cutoff_work_count
+    - publication_date_completeness
+    - fixed_horizon_outcome_coverage
+    - pre_entry_t_minus_1_edge_coverage
+    - orcid_linked_author_rate
+    - independent_attention_shock_count
+  forbidden_outcome_metrics:
+    - entry_effect_size
+    - persistence_effect_size
+    - overshoot_timing_gap
+    - baseline_or_nabm_predictive_score
+    - intervention_ranking
+    - g4_label_or_outcome
+    - future_information_derived_metric
+  tie_breakers:
+    - minimum_structural_coverage_desc
+    - eligible_author_count_desc
+    - fixed_horizon_outcome_coverage_desc
+    - numeric_field_id_asc
+  reserves_per_domain: 2
+  reserve_rule: NEXT_RANKED_BY_IDENTICAL_FROZEN_RULE
+  domain_assignment_rule: TOP_THREE_STRUCTURAL_DOMAINS_TO_G1_REMAINDER_TO_SEALED_G4
+  one_slot_per_domain_without_replacement: true
+  g4_domain_disjoint_from_g1: true
+  g4_author_cold: true
+
+temporal_partitions:
+  - partition_id: discovery_calibration
+    entry_start_year: null
+    entry_end_year: 2012
+    outcome_followup_through_year: 2025
+    sealed: false
+  - partition_id: g1_empirical_replication
+    entry_start_year: 2013
+    entry_end_year: 2016
+    outcome_followup_through_year: 2025
+    sealed: false
+  - partition_id: model_selection
+    entry_start_year: 2017
+    entry_end_year: 2019
+    outcome_followup_through_year: 2025
+    sealed: false
+  - partition_id: g4_temporal_holdout
+    entry_start_year: 2020
+    entry_end_year: 2022
+    outcome_followup_through_year: 2025
+    sealed: true
+
+engineering_slots:
+  - slot_id: g1_domain_slot_01
+    rng_code: 1001
+    role: g1_replication
+    temporal_partition_id: g1_empirical_replication
+    scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+    selected_domain_id: null
+    selected_field_id: null
+    sealed: false
+    author_cold: false
+  - slot_id: g1_domain_slot_02
+    rng_code: 1002
+    role: g1_replication
+    temporal_partition_id: g1_empirical_replication
+    scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+    selected_domain_id: null
+    selected_field_id: null
+    sealed: false
+    author_cold: false
+  - slot_id: g1_domain_slot_03
+    rng_code: 1003
+    role: g1_replication
+    temporal_partition_id: g1_empirical_replication
+    scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+    selected_domain_id: null
+    selected_field_id: null
+    sealed: false
+    author_cold: false
+  - slot_id: g4_domain_author_cold_slot
+    rng_code: 1004
+    role: g4_domain_author_cold
+    temporal_partition_id: g4_temporal_holdout
+    scientific_selection_status: PENDING_OUTCOME_BLIND_STRUCTURAL_AUDIT
+    selected_domain_id: null
+    selected_field_id: null
+    sealed: true
+    author_cold: true
+
+core_factorial:
+  outcome_disclosure:
+    - {level_id: full, rng_code: 101}
+    - {level_id: success_biased, rng_code: 102}
+    - {level_id: volume_matched_random, rng_code: 103}
+  revelation_delay:
+    - {level_id: immediate, rng_code: 201}
+    - {level_id: empirical_central, rng_code: 202}
+    - {level_id: long_delay_stress, rng_code: 203}
+  peer_signal_diffusion:
+    - {level_id: slow, rng_code: 301}
+    - {level_id: empirical_central, rng_code: 302}
+    - {level_id: fast, rng_code: 303}
+  learner:
+    - level_id: b2_fixed_rule_abm
+      rng_code: 401
+      baseline_level: B2
+      default_compute: cpu
+    - level_id: b3_explicit_adaptive_baseline
+      rng_code: 402
+      baseline_level: B3
+      default_compute: cpu
+    - level_id: b4_adaptive_nabm
+      rng_code: 403
+      baseline_level: B4
+      default_compute: gpu_after_promotion_gate
+  environment:
+    - {level_id: attention_only, rng_code: 501}
+    - {level_id: structural_support_matched_direct_pressure, rng_code: 502}
+  capacity_bridge:
+    - {level_id: absent, rng_code: 601}
+    - {level_id: pre_existing, rng_code: 602}
+
+rng:
+  algorithm: numpy.random.SeedSequence
+  base_seed: 20260718
+  replicate_seeds: [1, 2, 3]
+  components:
+    - {component_id: population, rng_code: 7001, pairing_scope: slot_seed}
+    - {component_id: base_network, rng_code: 7002, pairing_scope: slot_seed}
+    - {component_id: local_noise, rng_code: 7003, pairing_scope: slot_seed}
+    - {component_id: latent_outcome_quantile, rng_code: 7004, pairing_scope: slot_seed}
+    - {component_id: outcome_disclosure, rng_code: 7005, pairing_scope: slot_seed_disclosure}
+    - {component_id: revelation_delay, rng_code: 7006, pairing_scope: slot_seed_delay}
+    - {component_id: peer_signal_diffusion, rng_code: 7007, pairing_scope: slot_seed_diffusion}
+    - {component_id: environment_mapping, rng_code: 7008, pairing_scope: slot_seed_environment_bridge}
+    - {component_id: learner_initialization, rng_code: 7009, pairing_scope: slot_seed_learner}
+    - {component_id: learner_update, rng_code: 7010, pairing_scope: slot_seed_learner}

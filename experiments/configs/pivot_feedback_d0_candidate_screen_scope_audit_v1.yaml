@@ -1,0 +1,130 @@
+schema_version: pivot_feedback_d0_candidate_screen_scope_audit_config.v1
+label: pivot_feedback_d0_candidate_screen_scope_audit_v1
+mode: ZERO_COST_CANDIDATE_WINDOW_SCOPE_AND_ROUTER_COVERAGE_AUDIT
+status: FROZEN_ZERO_COST_CANDIDATE_SCREEN_SCOPE_AUDIT_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v12.yaml
+  sha256: c202c52890045d604e7eadddf7a8a18a29aeccc6dcf7bd045cdf715b3cda1b3e
+  required_schema_version: pivot_feedback_gate_state.v12
+  required_status: VALID_API_ONLY_TOPIC_ROUTING_DRY_RUN_COMPLETE_MANIFEST_NOT_RUN_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_complete_candidate_work_manifest_design: AUTHORIZED
+    authorization.d0_zero_cost_candidate_work_manifest_materialization: AUTHORIZED
+    authorization.d0_paid_api_exception_submission: NOT_AUTHORIZED
+    next_required_implementation.existing_70277_rows_are_topic_year_candidates_not_candidate_works: true
+  mutation_allowed: false
+
+frozen_inputs:
+  measurement_abi_reselection:
+    root_basename: pivot-feedback-d0-measurement-abi-reselection-v1-full-20260724
+    receipt_basename: measurement_abi_reselection.outputs.json
+    receipt_sha256: 4b77700fc4693496ae1c1fbf338c60b8f3c03bf5fabb6f70635fc8ebc57140e9
+    required_status: PASS_D0_OUTCOME_BLIND_MEASUREMENT_ABI_TWO_FIELD_FOUR_EPISODE_RESELECTION
+    candidate_basename: episode_candidates.parquet
+    candidate_sha256: c5588aef34381179b93785fd5dd3953f2ee7a982bf3d38cb71341eb49fe4e029
+    candidate_schema_version: pivot_feedback_d0_measurement_abi_episode_candidates.v1
+    candidate_rows: 70277
+    topic_year_basename: author_linked_topic_year_attention.parquet
+    topic_year_sha256: 1804e421e02693891fb0b72e3b7da493945e1f9f36666cd6c2b44b6d2ae40f49
+    topic_year_schema_version: pivot_feedback_d0_measurement_abi_topic_year_attention.v1
+    topic_year_rows: 106951
+  frozen_topic_router:
+    relative_path: experiments/configs/pivot_feedback_d0_api_only_topic_routing_v1.yaml
+    sha256: 1c98b50d9e5c9c0cbc1555f41e86ae87a276571195a7125fec9daf85e39c1406
+    required_schema_version: pivot_feedback_d0_api_only_topic_routing_config.v1
+    required_status: FROZEN_ZERO_COST_TOPIC_CARD_ROUTING_DRY_RUN_AUTHORIZED
+    card_count: 4
+    mutation_allowed: false
+
+scope_definition:
+  candidate_unit: FIELD_TOPIC_ENTRY_YEAR_WITH_POSITIVE_BASELINE_AND_RECENT_GAIN
+  candidate_window_offsets: [-6, -5, -4, -3, -2, -1]
+  window_codes:
+    1: BASELINE
+    2: RECENT
+  work_count_unit: DISTINCT_ELIGIBLE_AUTHOR_LINKED_CURRENT_PRIMARY_TOPIC_WORK
+  unique_work_count_derivation: >-
+    Sum author_linked_works once per unique field-topic-publication-year cell.
+    Current primary topic assigns each work to one such cell, so cells are
+    disjoint within the frozen measurement ABI.
+  candidate_window_membership_derivation: >-
+    Sum author_linked_works for all six window years of every candidate. The
+    same work may contribute to several overlapping entry-year candidates.
+  title_bearing_work_manifest_materialized: false
+  raw_openalex_main_table_read: false
+  outcomes_read: false
+
+expected_closure:
+  selected_field_ids: [17, 27]
+  candidate_rows: 70277
+  distinct_candidate_topics: 994
+  candidate_window_rows: 421662
+  unique_candidate_topic_year_cells: 99433
+  unique_candidate_window_linked_work_rows: 22437851
+  candidate_window_linked_work_memberships: 102900039
+  frozen_topic_card_count: 4
+  card_covered_candidate_topics: 4
+  uncovered_candidate_topics: 990
+  card_covered_candidate_rows: 236
+  card_covered_candidate_window_rows: 1416
+  card_covered_unique_topic_year_cells: 362
+  card_covered_unique_linked_work_rows: 195708
+  card_covered_linked_work_memberships: 755882
+  full_router_topic_coverage_fraction: "0.004024"
+  full_router_candidate_row_coverage_fraction: "0.003358"
+
+execution_boundary:
+  scope_audit_only: true
+  candidate_window_map_materialization: AUTHORIZED
+  topic_scope_profile_materialization: AUTHORIZED
+  title_bearing_work_manifest_materialization: NOT_AUTHORIZED_BY_THIS_CONTRACT
+  raw_openalex_scan: NOT_AUTHORIZED_BY_THIS_CONTRACT
+  topic_card_expansion: NOT_AUTHORIZED
+  api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+  production_dispositions: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  author_panel_rebuild: NOT_AUTHORIZED
+  pivot_classification: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+output_contract:
+  root_basename: pivot-feedback-d0-candidate-screen-scope-audit-v1-20260729
+  candidate_window_map_basename: candidate_window_scope.parquet
+  topic_scope_profile_basename: candidate_topic_scope.parquet
+  report_basename: candidate_screen_scope_audit.json
+  markdown_basename: CANDIDATE_SCREEN_SCOPE_AUDIT.md
+  receipt_basename: candidate_screen_scope_audit.outputs.json
+  receipt_schema_version: pivot_feedback_d0_candidate_screen_scope_audit_outputs.v1
+  report_schema_version: pivot_feedback_d0_candidate_screen_scope_audit_report.v1
+  passing_status: PASS_ZERO_COST_CANDIDATE_SCREEN_SCOPE_AND_ROUTER_COVERAGE_AUDIT
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+decision_rule:
+  current_four_card_router_can_screen_complete_candidate_universe: false
+  reason: FOUR_CARDS_COVER_ONLY_4_OF_994_CANDIDATE_TOPICS
+  full_title_bearing_work_copy_is_required_before_next_design: false
+  preferred_successor: >-
+    Freeze a deterministic adaptive candidate frontier. Evaluate candidate
+    content in rank order and retain a certificate that every candidate able
+    to outrank or alter the selected compatible pair has either a frozen
+    content disposition or a structural incompatibility. Use local rules
+    first and cross-provider API only for ambiguous sampled titles.
+  adaptive_frontier_equivalence_must_be_proven_before_use: true
+
+claim_boundary: >-
+  This zero-cost audit expands the 70,277 frozen field-topic-entry-year
+  candidates into their six pre-entry window cells and measures work
+  membership and four-card router coverage from already frozen aggregate
+  artifacts. It does not materialize titles or work IDs and does not read the
+  raw OpenAlex main table. Counts are workload and coverage facts, not content
+  validity or accuracy. Four cards cannot screen 994 topics. Paid API work,
+  production dispositions, reselection, author-panel rebuilding, pivot
+  classification, outcomes, model fitting, G4, and scientific effects remain
+  unopened, unauthorized, not run, or not established.

@@ -1,0 +1,159 @@
+schema_version: pivot_feedback_gate_state.v60
+label: pivot_feedback_gate_state_v60
+mode: ADDITIVE_SIX_CHOICE_RISK_SET_WEIGHT_SUPPORT_PRECOMMITMENT_FIXTURE_VALIDATED
+status: VALID_SIX_RISK_SET_WEIGHT_SUPPORT_CHOICES_FIXTURE_ONLY_G0_V4_BINDING_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v59.yaml
+  sha256: 32e061d10d9b06d5962848ec9d8819f8a98609e2a09b72ffcaaf182cc989a141
+  required_schema_version: pivot_feedback_gate_state.v59
+  required_status: VALID_G0_V3_SIX_RESOLVED_THIRTEEN_PENDING_NEXT_SIX_CHOICE_PRECOMMITMENT_AUTHORIZED
+  mutation_allowed: false
+
+verified_risk_set_weight_support_precommitment:
+  contract:
+    relative_path: experiments/configs/pivot_feedback_g0_risk_set_weight_support_precommitment_v1.yaml
+    sha256: 8f38863eba1880ee375d982cbb2ac094d3ae64028ee651e92b59f13d0189f26e
+  application_tool:
+    relative_path: scripts/apply_pivot_feedback_g0_risk_set_weight_support_precommitment_v1.py
+    sha256: 4642a193b369a7cec82cd9b090d626de2371aaa71b3b41c45b0bb6c5ed090d1c
+  independent_validator:
+    relative_path: scripts/verify_pivot_feedback_g0_risk_set_weight_support_precommitment_v1.py
+    sha256: b58f5312cbd3872ae0d65d9ee5b702a650db9ac1fc0ba6a11896244f620e5524
+  fixture_input:
+    relative_path: tests/fixtures/pivot_feedback_g0_risk_set_weight_support_discovery_v1.input.json
+    sha256: ff4aa3529385a79eae65986cf3a3322f065553ffb95dce59a15d360b35e6313f
+  fixture_expected:
+    relative_path: tests/fixtures/pivot_feedback_g0_risk_set_weight_support_discovery_v1.expected.json
+    sha256: 7616cb3e09afa4696e103dca76816c5c5acd1706d28e98d90d871b11a86afe14
+  research_note:
+    relative_path: docs/research/pivot-feedback-g0-risk-set-weight-support-precommitment-v1.md
+    sha256: 46cdd474060079dc6542e5c41ca69d1e19e4bde9406fa43b4ae6e95c2a78cd61
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_risk_set_weight_support_precommitment_closed_fixture_20260731.summary.json
+    sha256: 9305d25f30ed30ac5f7dcbe85144a0201637f01f8f55dc2e0ecd2b69d3408304
+    required_schema_version: pivot_feedback_g0_risk_set_weight_support_precommitment_summary.v1
+    required_status: PASS_SIX_OUTCOME_BLIND_RISK_SET_WEIGHT_SUPPORT_CHOICES_AND_CLOSED_FIXTURE
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_risk_set_weight_support_precommitment_closed_fixture_20260731.summary.md
+    sha256: 3cce867a42bd656c753daea16a04c80ca677bc6bbb7f237d2b99029b180c3aee
+  result:
+    choice_count: 6
+    controls_per_case: 10
+    weight_percentiles: [0.01, 0.99]
+    minimum_cohort: [500, 100, 100]
+    suppressed_counts: [1, 10]
+    capacity_cell_minimum: [50, 11, 11]
+    vif_strict_upper_bound: 5.0
+    fixture_sampling_stratum_count: 2
+    fixture_selected_control_count: 25
+    fixture_upper_weight_clipped_count: 1
+    fixture_cohort_fail_count: 3
+    fixture_suppressed_cell_count: 2
+    fixture_capacity_support_fail_count: 1
+    fixture_capacity_vif_fail_count: 1
+    fixture_separate_channel_pass_count: 1
+    row_data_library_imports: []
+    discovery_production_application_run: false
+    g0_v3_changed: false
+    confirmatory_or_holdout_rows_read: 0
+    model_fitted: false
+    g4_open: false
+
+precommitment_decision:
+  status: COMPLETE_INDEPENDENTLY_VALIDATED_FIXTURE_ONLY
+  values_are_outcome_blind_policy_not_empirical_truth: true
+  values_are_power_or_precision_guarantees: false
+  cms_policy_applies_to_openalex: false
+  production_rule_application_status: NOT_RUN_REQUIRES_SEPARATE_INPUT_CONTRACT_AND_GATE
+  g0_successor_binding_status: AUTHORIZED_BINDING_ONLY_EXACT_SIX_CHOICES
+  remaining_quantitative_choice_count_after_binding: 7
+  required_section_completion_status: NOT_RUN
+  next_workstream: G0_V4_EXACT_SIX_CHOICE_BINDING_ONLY_SUCCESSOR
+
+authorized_g0_v4_binding_scope:
+  intended_relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v4.yaml
+  must_copy_g0_v3_except_versioned_parent_and_exact_six_choice_binding: true
+  must_bind_g0_v3_byte_for_byte: true
+  must_bind_risk_set_weight_support_contract_byte_for_byte: true
+  must_bind_this_gate_byte_for_byte: true
+  exact_choice_ids:
+    - negative_sampling_ratio
+    - inverse_probability_weight_truncation
+    - minimum_cohort_size
+    - small_cell_suppression_threshold
+    - capacity_cell_support_threshold
+    - collinearity_threshold
+  may_resolve_other_quantitative_choices: false
+  may_complete_required_sections: false
+  may_apply_rules_to_discovery_production_data: false
+  may_read_confirmatory_or_holdout_rows: false
+  may_change_temporal_partitions: false
+  may_select_g4_field_or_episode: false
+  may_materialize_g4_artifacts: false
+  may_create_holdout_preflight_or_seal: false
+  may_pass_g0: false
+  may_fit_model: false
+  may_open_g4: false
+
+gate_state:
+  D0:
+    state: COMPLETE_CORE_ENTRY_AND_PERSISTENCE_MEASUREMENT_CALIBRATION_OPTIONAL_PEER_SUCCESS_DEFERRED
+    complete: true
+  G0:
+    state: NOT_READY_SIX_RISK_SET_WEIGHT_SUPPORT_POLICIES_VALIDATED_BINDING_SUCCESSOR_AUTHORIZED
+    complete: false
+    completed_components:
+      - G0_G_MINUS_1A_BINDING_RECONCILIATION
+      - G0_V2_BINDING_ONLY_SUCCESSOR
+      - HOLDOUT_ACCESS_SEAL_CONTRACT
+      - HOLDOUT_ACCESS_SEAL_CONTRACT_INDEPENDENT_VALIDATION
+      - HOLDOUT_ACCESS_SEAL_TOOLING_CLOSED_FIXTURE_VALIDATION
+      - HOLDOUT_ACCESS_SEAL_PREFLIGHT_TOOLING_CLOSED_FIXTURE_VALIDATION
+      - HOLDOUT_PRODUCTION_INPUT_METADATA_RESOLUTION
+      - G0_MEASUREMENT_PROXY_PRECOMMITMENT_CLOSED_FIXTURE_VALIDATION
+      - G0_V3_EXACT_FOUR_CHOICE_BINDING_SUCCESSOR
+      - G0_RISK_SET_WEIGHT_SUPPORT_PRECOMMITMENT_CLOSED_FIXTURE_VALIDATION
+    next_components:
+      - G0_V4_EXACT_SIX_CHOICE_BINDING_ONLY_SUCCESSOR
+      - G0_REMAINING_SEVEN_QUANTITATIVE_CHOICE_PRECOMMITMENTS
+      - FIFTEEN_REQUIRED_SECTION_COMPLETION
+      - G4_FIELD_EPISODE_AND_ATOMIC_PARTITION_ASSIGNMENT
+      - G4_PRIVATE_ARTIFACT_MATERIALIZATION
+      - HOLDOUT_ACCESS_SEAL_OPERATOR_PREFLIGHT_AND_CREATION
+    blocked_components:
+      - G0_MEASUREMENT_FREEZE_SEAL
+      - CONFIRMATORY_OR_HOLDOUT_ACCESS
+      - MODEL_FITTING
+      - G4
+  G4:
+    state: LOGICALLY_RESERVED_NOT_BYTE_SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  risk_set_weight_support_precommitment_contract: COMPLETE_INDEPENDENTLY_VALIDATED_FIXTURE_ONLY
+  g0_v4_six_choice_binding_only_successor: AUTHORIZED_EXACT_SCOPE
+  discovery_production_rule_application: NOT_AUTHORIZED_REQUIRES_SEPARATE_INPUT_CONTRACT_AND_GATE
+  other_quantitative_choice_resolution: NOT_AUTHORIZED
+  required_section_completion: NOT_AUTHORIZED
+  g4_field_or_episode_selection: NOT_AUTHORIZED
+  holdout_artifact_materialization: NOT_AUTHORIZED
+  holdout_preflight_or_seal: NOT_AUTHORIZED
+  confirmatory_or_holdout_access: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  Six outcome-blind risk-set, weighting, support, suppression, and collinearity
+  policies and their closed synthetic fixture are independently valid. The
+  values are explicit conservative design policies, not literature-mandated
+  truths, power guarantees, production measurements, or empirical effects.
+  The one-through-ten suppression rule is analogous and does not assert CMS
+  jurisdiction over OpenAlex. This gate authorizes only an additive G0 v4
+  binding successor for the exact six choices. It does not run discovery
+  production application, resolve the other seven choices, complete required
+  sections, materialize or seal G4, read confirmatory rows, pass G0, fit a
+  model, open G4, assert causality, or establish a scientific effect.

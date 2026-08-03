@@ -1,0 +1,64 @@
+{
+  "api_cost": {
+    "cumulative_actual_plus_prior_upper_bound_usd": "0.07059325",
+    "cumulative_authorized_cap_usd": "0.12",
+    "external_pair_estimated_actual_usd": "0.01450475",
+    "prior_conservative_cumulative_upper_bound_usd": "0.0560885"
+  },
+  "artifacts": {
+    "certificate_status_v4_sha256": "e5b29223d57c5cf54d89112eb658a4575a2565eea21f834a1aad1d20a094537c",
+    "closeout_config_sha256": "5d4d703c0de760a9cf3ebc7ab7d9fa8ee9ad52b0c1816abdfcb173b7e8c38c15",
+    "closeout_producer_sha256": "4d7563030433f5561186197f79fab80622153836b6b14f2a85fb8dc77f4188b0",
+    "closeout_receipt_sha256": "089803cca2fd292171a910afff067f992b586c3a4a56539d5afaac45e14aca67",
+    "closeout_verification_sha256": "3fec0ed0db61dc11c9ac90343a49d3cd04498093bc6738f60485b442d216d3a5",
+    "closeout_verifier_sha256": "00e5d7014a7ad2baf1ea534e32745978eac0dd0002e534f0250db3ab13fd599b",
+    "dispositions_v8_sha256": "d26c941279f5684368ec95b8dc546c5a1934f95628516a0dc7d9fa2df24e0a80",
+    "frontier_v9_sha256": "270386b02480dffed15b911ffc5253a4d32893450fd633f33fe9c3cb092354d1"
+  },
+  "claim_boundary": "External bibliographic evidence raises the conservative lower bounds to 30 accept and 25 reject but leaves 9 unresolved. It does not establish semantic ground truth, issue a Medicine or global certificate, execute reselection, classify pivots, read outcomes, fit a model, open G4, or establish a scientific effect.",
+  "external_collection": {
+    "crossref_rows": 7,
+    "exact_unresolved_rows": 14,
+    "holdout_rows": 3,
+    "human_review": "NOT_RUN_BY_DESIGN",
+    "openalex_current_rows": 14,
+    "pubmed_rows": 8,
+    "review_packet_rows": 11
+  },
+  "provider_result": {
+    "dual_high_accept_rows": 2,
+    "dual_high_reject_rows": 3,
+    "provider_calls": 2,
+    "provider_labels_are_ground_truth": false,
+    "retries": 0,
+    "reviewed_unresolved_rows": 6
+  },
+  "rank5_production_disposition": {
+    "accept_rows": 30,
+    "content_state": "CONTENT_UNRESOLVED",
+    "human_review_used": false,
+    "recent_denominator_rows": 64,
+    "reject_rows": 25,
+    "unresolved_rows": 9
+  },
+  "schema_version": "pivot_feedback_d0_rank5_external_evidence_closeout_summary.v1",
+  "status": "PASS_INDEPENDENT_RANK5_EXTERNAL_EVIDENCE_UNRESOLVED_TERMINAL_CLOSEOUT",
+  "terminal_certificate_status": {
+    "computer_science_field_certificate_issued": true,
+    "computer_science_selected_candidate_ranks": [
+      1,
+      45
+    ],
+    "deterministic_reselection_executed": false,
+    "global_selection_certificate_issued": false,
+    "medicine_field_certificate_issued": false,
+    "status": "BLOCKED_REQUIRED_RANK5_EXTERNAL_EVIDENCE_AUGMENTED_CONTENT_UNRESOLVED"
+  },
+  "transport_normalization": {
+    "claude_rationales_truncated": 10,
+    "labels_or_confidence_changed": false,
+    "openai_rationales_truncated": 0,
+    "provider_retries": 0,
+    "raw_responses_preserved": true
+  }
+}

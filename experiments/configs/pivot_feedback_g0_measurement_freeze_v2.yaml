@@ -1,0 +1,361 @@
+schema_version: pivot_feedback_g0_measurement_freeze.v3
+label: pivot_feedback_g0_measurement_freeze_v2
+mode: VERSIONED_G_MINUS_1A_BINDING_ONLY_SUCCESSOR_THREE_BLOCKERS_REMAIN
+status: PENDING_G0_V2_G_MINUS_1A_BOUND_THREE_BLOCKERS_NO_SEAL
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v52.yaml
+  sha256: 420dce85a01884dba1d54604f4caea6f0debefcd0aed246265e67598f635a889
+  required_schema_version: pivot_feedback_gate_state.v52
+  required_status: VALID_G_MINUS_1A_BINDING_CONTRACT_COMPLETE_G0_NOT_READY_G0_V2_BINDING_ONLY_AUTHORIZED
+  required_fields:
+    gate_state.D0.complete: true
+    gate_state.G0.complete: false
+    authorization.g0_v2_binding_only_successor: AUTHORIZED_NO_OTHER_G0_CLOSURE
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+immutable_predecessor:
+  relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v1.yaml
+  sha256: dc947df2f87220379401c43ea1914b48c71ed04ae474e5695003723d2c591590
+  required_schema_version: pivot_feedback_g0_measurement_freeze.v2
+  required_status: PENDING_G0_SUCCESSOR_SKELETON_TWO_D0_VALUES_SERIALIZED_NO_SEAL
+  required_fields:
+    g_minus_1_binding.state: PENDING
+    g_minus_1_binding.receipt_sha256: null
+    holdout_access_binding.state: PENDING
+    holdout_access_binding.receipt_sha256: null
+    resolution.unresolved_quantitative_choice_count: 17
+    resolution.unresolved_required_section_count: 15
+    lifecycle.pass_g0: false
+  predecessor_mutation_allowed: false
+
+binding_reconciliation_contract:
+  relative_path: experiments/configs/pivot_feedback_g0_g_minus_1a_binding_reconciliation_v1.yaml
+  sha256: cb6c733fdd793590fa8c3cd57776348d2303e03351a33c94c66e269fb6989905
+  required_schema_version: pivot_feedback_g0_g_minus_1a_binding_reconciliation.v1
+  required_status: PENDING_INDEPENDENT_VALIDATION_FUTURE_G0_V2_BINDING_ONLY
+  required_fields:
+    source_binding_diagnosis.schema_aliasing_allowed: false
+    source_binding_diagnosis.status_relabeling_allowed: false
+    source_binding_diagnosis.legacy_pass_inference_allowed: false
+    future_g0_v2_binding_contract.future_field_name: g_minus_1a_binding
+    future_g0_v2_binding_contract.may_pass_or_relabel_legacy_g_minus_1: false
+    future_g0_v2_preservation_contract.must_keep_unresolved_quantitative_choice_count: 17
+    future_g0_v2_preservation_contract.must_keep_not_freeze_ready_section_count: 15
+  mutation_allowed: false
+
+lifecycle:
+  design_status: PROSPECTIVE_PENDING_G0_VALUES
+  freeze_status: PENDING_G0_MEASUREMENT_FREEZE
+  successor_skeleton_status: G_MINUS_1A_BOUND_THREE_BLOCKERS_PENDING
+  confirmatory_outcomes_inspected: false
+  g4_holdout_opened: false
+  pass_g0: false
+  empirical_g1_signature: NOT_RUN
+  pass_g1: false
+  execution_authorized: false
+  config_alone_can_authorize_execution: false
+  successor_required_for_freeze: true
+
+foundation_parents:
+  peer_mechanism_registry:
+    relative_path: experiments/configs/pivot_feedback_peer_mechanism_registry_v0.yaml
+    required_file_sha256: 99eeb68b632f9f9a250f50320cfc7a293e3595de81984419d1528e2ee12aa6f8
+    required_canonical_sha256: 82f9b6800023ee7c963727f0447b658d71cfafd9d04c2397aef8452a3e2a1629
+    required_schema_version: pivot_feedback_peer_mechanism_registry.v1
+    required_label: pivot_feedback_peer_mechanism_registry_v0
+    required_mode: PROSPECTIVE_G0_COMPONENT
+    required_status: PENDING_G0_MEASUREMENT_FREEZE
+    parent_mutation_allowed: false
+    fallback_parent_allowed: false
+  cross_field_matrix:
+    relative_path: experiments/configs/pivot_feedback_cross_field_matrix_v0.yaml
+    required_file_sha256: 6fd3e2c7aae7a7aac085ed73ba4bf3d64a91c02d60dce8a9a6a262591a0c934a
+    required_canonical_sha256: 067ed8a61f3e6d920287377bf781083264ba661ede1ac779230292006bea28b7
+    required_schema_version: pivot_feedback_cross_field_matrix.v1
+    required_label: pivot_feedback_cross_field_matrix_engineering_v0
+    required_mode: ENGINEERING_ONLY_PLAN
+    parent_mutation_allowed: false
+    fallback_parent_allowed: false
+  cross_binding:
+    peer_declared_parent_relative_path: experiments/configs/pivot_feedback_cross_field_matrix_v0.yaml
+    peer_declared_parent_schema_version: pivot_feedback_cross_field_matrix.v1
+    peer_declared_binding_status: PATH_AND_SCHEMA_ONLY_PENDING_G0_HASH_FREEZE
+    resolution_overlay_only: true
+    rewrite_parent_allowed: false
+
+legacy_g_minus_1_binding:
+  source_field_name: g_minus_1_binding
+  state: PENDING_NOT_PASSED_IMMUTABLE_LINEAGE
+  receipt_relative_path: null
+  receipt_sha256: null
+  required_schema_version: pivot_feedback_g_minus_1_data_readiness_outputs.v1
+  required_status: PASS_G_MINUS_1_DATA_READINESS
+  result_fingerprint_sha256: null
+  lineage_only: true
+  prerequisite_role_active: false
+  legacy_pass_inferred: false
+
+g_minus_1a_binding:
+  state: SATISFIED_G_MINUS_1A_BOUNDED_EVIDENCE_ONLY
+  receipt_relative_path: experiments/evidence/results/pivot_feedback_g_minus_1a_receipt_20260723.summary.json
+  receipt_sha256: 8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802
+  required_schema_version: pivot_feedback_g_minus_1a_receipt.v1
+  required_status: PASS_G_MINUS_1A_BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+  required_gate_id: G_MINUS_1A
+  config_relative_path: experiments/configs/pivot_feedback_g_minus_1a_receipt_v1.yaml
+  config_sha256: be240ec0e06778973194fda772c398cb560b0ac7ff886ee583d34140d889e7bb
+  verifier_relative_path: scripts/verify_pivot_feedback_g_minus_1a_receipt_v1.py
+  verifier_sha256: b1971e35eb3a33dbb385073bd02536c87cb99f304114b33d619448dede9a0237
+  semantic_role: BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_PREREQUISITE_ONLY
+  receipt_unresolved_boundary_count: 14
+  current_snapshot_proxy_and_author_token_caveats_preserved: true
+  may_pass_or_relabel_legacy_g_minus_1: false
+  may_by_itself_pass_g0: false
+  may_by_itself_authorize_model_fitting: false
+  may_by_itself_open_g4: false
+  may_by_itself_establish_scientific_effect: false
+
+holdout_access_binding:
+  state: PENDING
+  receipt_relative_path: null
+  receipt_sha256: null
+  required_schema_version: pivot_feedback_holdout_access_seal_outputs.v1
+  required_status: PASS_CONFIRMATORY_PARTITIONS_SEALED_AND_UNOPENED
+  result_fingerprint_sha256: null
+
+fixed_design_choices:
+  temporal_clocks:
+    resolution: ANNUAL
+    portfolio_history:
+      start_offset: -3
+      end_offset: -1
+      inclusive: true
+    pre_entry_graph:
+      start_offset: -5
+      end_offset: -1
+      inclusive: true
+    attention_acceleration:
+      recent_window:
+        start_offset: -3
+        end_offset: -1
+        inclusive: true
+      reference_window:
+        start_offset: -6
+        end_offset: -4
+        inclusive: true
+    persistence_outcome:
+      start_offset: 1
+      end_offset: 3
+      inclusive: true
+    response_offsets: [0, 1, 2]
+    pretrend_offsets: [-3, -2, -1]
+    public_availability_rule: AVAILABLE_AT_LESS_THAN_OR_EQUAL_TO_T_MINUS_1
+  h3_primary:
+    endpoint: EARLIEST_ARGMAX_ADJUSTED_ENTRY_HAZARD_K_0_1_2_MINUS_EARLIEST_ARGMAX_ADJUSTED_THREE_YEAR_PERSISTENCE_PROBABILITY_K_0_1_2
+    minimum_point_gap_cohort_years: 1
+    interval_sidedness: ONE_SIDED
+    confidence_level: 0.95
+    lower_bound_rule: GREATER_THAN_ZERO
+    field_balanced: true
+    episode_clustered: true
+    field_weighting: EQUAL
+    within_field_episode_weighting: EQUAL
+    leave_one_field_out_direction_rule: ALL_POSITIVE
+    alternative_pivot_construction_count: 1
+    alternative_pivot_predeclared: true
+    alternative_pivot_substantively_different: true
+  multiplicity:
+    first_test: H3
+    family_wise_alpha: 0.05
+    conditional_family: [H1, H2, H4]
+    conditional_method: HOLM
+    conditional_family_opens_only_if_h3_passes: true
+  full_panel:
+    field_count: 4
+    g1_field_count: 3
+    sealed_g4_field_count: 1
+    g4_domain_and_author_cold: true
+    minimum_independent_episodes_per_field: 3
+  discovery_pilot:
+    label: DISCOVERY_ONLY
+    field_count: 2
+    independent_shocks_per_field: 2
+    may_pass_g1: false
+    may_tune_confirmatory_period: false
+  temporal_partitions:
+    - partition_id: discovery_calibration
+      entry_start_year: null
+      entry_end_year: 2012
+      outcome_followup_through_year: 2025
+      sealed: false
+    - partition_id: g1_empirical_replication
+      entry_start_year: 2013
+      entry_end_year: 2016
+      outcome_followup_through_year: 2025
+      sealed: false
+    - partition_id: model_selection
+      entry_start_year: 2017
+      entry_end_year: 2019
+      outcome_followup_through_year: 2025
+      sealed: false
+    - partition_id: g4_temporal_holdout
+      entry_start_year: 2020
+      entry_end_year: 2022
+      outcome_followup_through_year: 2025
+      sealed: true
+  peer_mechanism:
+    negative_control_ids:
+      - lead_attention
+      - same_peer_unrelated_topic_success
+      - post_decision_future_citation_success
+      - future_tie
+      - degree_preserving_shuffled_network
+      - matched_non_neighbor
+      - matched_non_surge_topic
+    capacity_cells: [NEITHER, PUBLIC_SUCCESS_ONLY, CAPACITY_BRIDGE_ONLY, BOTH]
+    entry_mode_ids: [chaperoned_entry, independent_entry, unresolved_entry_mode]
+  engineering_rng:
+    algorithm: numpy.random.SeedSequence
+    base_seed: 20260718
+    replicate_seeds: [1, 2, 3]
+    role: ENGINEERING_PAIRING_ONLY
+    monte_carlo_sufficiency_established: false
+    confirmatory_draw_count_frozen: false
+
+resolution:
+  state: PENDING_TWO_D0_VALUES_SERIALIZED_SEVENTEEN_PENDING
+  resolved_measurements:
+    author_minimum_history_works:
+      value: NONE
+      selected_from_observed_outcomes: false
+      source: D0_THRESHOLD_FREE_OBSERVABLE_HISTORY_RULE
+    primary_pivot_thresholds:
+      value: FOCAL_GE_1_AND_PRE_ENTRY_EQ_0_WITH_FOUR_STATE_PRECEDENCE
+      selected_from_observed_outcomes: false
+      source: D0_EXACT_THRESHOLD_FREE_FOUR_STATE_CLASSIFIER
+  resolved_measurement_count: 2
+  unresolved_quantitative_choice_count: 17
+  unresolved_required_section_count: 15
+  freeze_ready_required_section_count: 0
+  successor_required: true
+  unresolved_quantitative_choices:
+    attention_surge_threshold: null
+    public_success_threshold: null
+    citation_maturation_lag_years: null
+    negative_control_equivalence_margins: null
+    negative_sampling_ratio: null
+    inverse_probability_weight_truncation: null
+    minimum_cohort_size: null
+    small_cell_suppression_threshold: null
+    capacity_cell_support_threshold: null
+    collinearity_threshold: null
+    g1_replication_tolerance: null
+    g2_score_margin: null
+    g2_maximum_calibration_degradation: null
+    g2_macro_trajectory_tolerance: null
+    simulation_draws_or_mcse_stopping_rule: null
+    parameter_budget: null
+    tuning_budget: null
+  unresolved_required_sections:
+    - population_and_author_eligibility
+    - pivot_and_robustness_definitions
+    - topic_attention_and_surge
+    - temporal_availability_and_maturation
+    - peer_exposure_and_source_assignment
+    - capacity_bridge_and_entry_mode
+    - risk_set_sampling_and_weights
+    - outcome_horizons_and_h3_timing
+    - negative_control_decision_gates
+    - minimum_support_and_suppression
+    - partition_and_atomic_fold_resolution
+    - estimators_and_uncertainty
+    - hierarchical_multiplicity
+    - g2_predictive_gate
+    - g3_simulation_gate
+
+inherited_subtree_digests:
+  serialization: JSON_SORTED_KEYS_COMPACT_UTF8_ALLOW_NAN_FALSE
+  peer_mechanism_registry:
+    exposure_constructs_sha256: e6c967d329717811789fb405a4d1b0c938f5dfe5d25509cb559c402f0e9741f8
+    entry_mode_strata_sha256: 51380773712a245d37bac17cbe96558b1479dd8e9f4d7644b7e0b01ff46ef190
+    negative_controls_sha256: cbd268699151056df1648858f55277535f27b60c613ac1f4e153ac63569d15f3
+    claim_levels_sha256: 299495583072eb4d8575276d428351f156045bb5952a99317268d5a7ef00b14e
+    claim_downgrade_rules_sha256: 774161ea582c3521f4bf2c9d601c320e8d5905f97371a43f7299960a2034e6b9
+  cross_field_matrix:
+    candidate_universe_sha256: 67a1eff78c23965cfb62ee0f762eb8cb890088094e4b9da91326384d37ad27ad
+    selection_rules_sha256: ff3429e7fa58214436403c4c074c02bd49055c083673e22de0fea4ed8be54a11
+    temporal_partitions_sha256: 8fbb4131d3bdbe09049fcd44dc0ff476d964a5a2009efb6bc2653e13b04449b0
+  override_allowed: false
+
+readiness:
+  status: G0_NOT_READY_THREE_BLOCKERS_REMAIN
+  resolved_blocker: G_MINUS_1_RECEIPT_ABSENT
+  resolved_blocker_count: 1
+  remaining_blocker_count: 3
+  remaining_blockers:
+    - HOLDOUT_ACCESS_SEAL_RECEIPT_ABSENT
+    - SEVENTEEN_QUANTITATIVE_CHOICES_UNRESOLVED
+    - FIFTEEN_REQUIRED_SECTIONS_NOT_FREEZE_READY
+  g_minus_1a_bounded_prerequisite_satisfied: true
+  legacy_g_minus_1_passed: false
+  g0_freeze_ready: false
+
+completion_contract:
+  validation_status: VALID_PENDING_G0_SUCCESSOR_SKELETON
+  seal_status_if_complete: PASS_G0_MEASUREMENT_FREEZE_CONTRACT_ONLY
+  pending_contract_sealable: false
+  seal_receipt_required_before_g1: true
+  seal_does_not_establish_scientific_effect: true
+  seal_does_not_authorize_execution_by_itself: true
+  canonical_serialization: JSON_SORTED_KEYS_COMPACT_UTF8_ALLOW_NAN_FALSE
+
+authorization:
+  repository_metadata_validation: AUTHORIZED
+  additional_quantitative_choice_resolution: NOT_AUTHORIZED
+  required_section_completion: NOT_AUTHORIZED
+  operator_parquet_or_row_level_read: NOT_AUTHORIZED
+  confirmatory_or_holdout_access: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  final_candidate_eligibility: NOT_AUTHORIZED
+  g0_measurement_freeze_seal: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+failure_policy:
+  invalid_contract_status: BLOCKED_INVALID_G0_MEASUREMENT_FREEZE_CONTRACT
+  pending_seal_status: BLOCKED_PENDING_G0_MEASUREMENT_FREEZE
+  parent_mismatch_action: FAIL_CLOSED_NO_RECEIPT
+  unresolved_value_action: REQUIRE_VERSIONED_SUCCESSOR
+  forbidden_commands:
+    - run
+    - execute
+    - authorize
+    - promote
+  failure_writes_pass_receipt: false
+
+access_accounting_contract:
+  repository_documents_read: 7
+  operator_json_metadata_files_read: 0
+  operator_parquet_files_opened: 0
+  production_row_level_files_opened: 0
+  confirmatory_or_holdout_rows_read: 0
+  api_requests_created_or_submitted: 0
+  model_fitted: false
+  g4_open: false
+
+claim_boundary: >-
+  This versioned G0 v2 successor makes only the authorized binding change. It
+  preserves the immutable G0 v1 measurement, design, resolution, holdout,
+  completion, failure, and authorization subtrees; retains legacy G-1 as
+  pending immutable lineage; and binds the exact passing G-1A receipt under a
+  distinct bounded-evidence field without relabeling its meaning. Only the
+  absent-G-1-receipt blocker is removed. The holdout receipt remains absent,
+  seventeen quantitative choices remain unresolved, all fifteen required
+  sections remain not freeze-ready, and G0 remains unsealed. No operator row
+  data, confirmatory or holdout data, API request, model, G4 result, causality,
+  or scientific effect is established.

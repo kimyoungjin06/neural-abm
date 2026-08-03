@@ -1,0 +1,210 @@
+schema_version: pivot_feedback_gate_state.v15
+label: pivot_feedback_gate_state_v15
+mode: ADDITIVE_CANDIDATE_CONTENT_DRY_RUN_FREEZE_PRODUCTION_DISPOSITIONS_FAIL_CLOSED
+status: VALID_CANDIDATE_CONTENT_DRY_RUN_COMPLETE_PRODUCTION_DISPOSITIONS_NOT_FROZEN_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v14.yaml
+  sha256: dee4ce5e193051d25025b9120cf46cab617f208f01309594dbe58dd39b52ee58
+  required_schema_version: pivot_feedback_gate_state.v14
+  required_status: VALID_ADAPTIVE_FRONTIER_PROOF_COMPLETE_CONTENT_DISPOSITIONS_NOT_RUN_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_raw_openalex_title_scan: NOT_AUTHORIZED
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.d0_candidate_content_dispositions: NOT_AUTHORIZED
+    authorization.d0_selection_certificate: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+candidate_content_dry_run_freeze:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_candidate_content_dry_run_v1.yaml
+    sha256: 409c982bc53d06a7608c588efdbe05acf59c8a76d32abc18936da74abcf7f4e4
+    required_schema_version: pivot_feedback_d0_candidate_content_dry_run_config.v1
+    required_status: FROZEN_ZERO_COST_CANDIDATE_CONTENT_DRY_RUN_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_candidate_content_dry_run_v1.py
+    sha256: fedf9587d2424e595a488da6d384a5361f0c3742551553c339abed0eb45aab3f
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_candidate_content_dry_run_v1.py
+    sha256: 7248c71e0233b7359c9b7b5a5021426ee2999d16e31f3bd827903f8a3a256efd
+    mutation_allowed: false
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_candidate_content_dry_run_20260729.summary.json
+    sha256: 228e40589ce7c2c5c77537ecbab6a299e20d556a8be0417ca6fe794799e1ade4
+    required_schema_version: pivot_feedback_d0_candidate_content_dry_run_summary.v1
+    required_status: PASS_INDEPENDENT_ZERO_COST_CANDIDATE_CONTENT_DRY_RUN
+    mutation_allowed: false
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_candidate_content_dry_run_20260729.summary.md
+    sha256: 951eca0e389867c82b096a2641c6d7b22c52b5fe92099fcdd18e921fb28672d0
+    mutation_allowed: false
+  operator_local_evidence:
+    root_basename: pivot-feedback-d0-candidate-content-dry-run-v1-20260729
+    receipt_basename: candidate_content_dry_run.outputs.json
+    receipt_sha256: 33d997d5e5c938e3f166a2f187eba01ae0446e14aacc1bf9143aebce3d590ced
+    artifact_tree_sha256: e3c24294630a0e427dcaa8549350aa3d2ff9c9f25610c72ebe535149908972c3
+    verification_report_basename: pivot-feedback-d0-candidate-content-dry-run-v1-20260729.verification-v1.json
+    verification_report_sha256: 69ce5a5d1c277b39b08e88b44e77ffac3ee3e44ca0e5d0a7765047f911d251d5
+    verification_status: PASS_INDEPENDENT_ZERO_COST_CANDIDATE_CONTENT_DRY_RUN
+
+dry_run_result:
+  candidate_rows: 4
+  would_content_pass_rows: 3
+  would_content_fail_indexing_anomaly_rows: 1
+  would_content_fail_semantic_off_topic_rows: 0
+  would_content_unresolved_rows: 0
+  indexing_anomaly_topic_ids: [12505]
+  production_content_dispositions_created: 0
+  production_content_required_rows_resolved: 0
+  selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  semantic_ground_truth_established: false
+  accuracy_established: false
+
+sensitivity_result:
+  accept_threshold_0_50: {would_pass: 3, would_fail_indexing: 1, would_unresolved: 0}
+  accept_threshold_0_60: {would_pass: 3, would_fail_indexing: 1, would_unresolved: 0}
+  accept_threshold_0_70: {would_pass: 2, would_fail_indexing: 1, would_unresolved: 1}
+  t12505_indexing_anomaly_stable_over_declared_grid: true
+  t12421_pass_is_threshold_sensitive: true
+
+counterfactual_next_frontier:
+  applied_to_production_states: false
+  next_required_candidate_if_t12505_were_later_frozen_fail: F27_RANK2_T10543_1993
+  frozen_topic_card_available: false
+  recent_six_year_author_linked_work_memberships: 13080
+  target_title_sample_rows: 96
+  observed_ambiguous_rows_per_96_range: [15, 30]
+  historical_pro_rata_two_provider_cost_usd_range: ["0.009619", "0.019238"]
+  cost_reference_is_current_quote: false
+  raw_title_scan_authorized: false
+  new_api_request_creation_authorized: false
+  api_submission_authorized: false
+
+gate_state:
+  G_MINUS_1A:
+    state: PASS_BOUNDED
+    complete: true
+    authorizes: [S0]
+  S0:
+    state: PASS_THRESHOLD_FREE_INVENTORY
+    complete: true
+    authorizes: [D0]
+  D0:
+    state: PARTIAL_CANDIDATE_CONTENT_DRY_RUN_COMPLETE_PRODUCTION_DISPOSITIONS_NOT_FROZEN
+    complete: false
+    completed_components:
+      - D0_OUTCOME_BLIND_MEASUREMENT_ABI_FREEZE
+      - D0_OUTCOME_BLIND_TWO_FIELD_FOUR_EPISODE_RESELECTION
+      - D0_AUTOMATED_CONTENT_AND_INDEXING_EXTRACTION
+      - D0_API_ONLY_384_TITLE_DIAGNOSTIC
+      - D0_SIMPLE_PAST_ONLY_RESEARCHER_PIVOT_DEFINITION_FREEZE
+      - D0_FOUR_TOPIC_CARD_FREEZE
+      - D0_ZERO_COST_384_TITLE_ROUTING_DRY_RUN
+      - D0_CANDIDATE_WINDOW_SCOPE_AND_ROUTER_COVERAGE_AUDIT
+      - D0_ADAPTIVE_FRONTIER_STATE_MACHINE
+      - D0_EXHAUSTIVE_SMALL_FIXTURE_EQUIVALENCE_REPLAY
+      - D0_INITIAL_51_ROW_STRUCTURAL_FRONTIER
+      - D0_ZERO_COST_FOUR_CANDIDATE_CONTENT_DRY_RUN
+      - D0_CANDIDATE_CONTENT_SENSITIVITY_GRID
+      - D0_COUNTERFACTUAL_NEXT_FRONTIER_COST_ESTIMATE
+    not_run_by_design:
+      - HUMAN_CONTENT_REVIEW_AND_ADJUDICATION
+      - HUMAN_CALIBRATED_API_ERROR_RATE_ESTIMATION
+    blocked_components:
+      - PRODUCTION_CANDIDATE_CONTENT_DISPOSITIONS
+      - TARGETED_T10543_TITLE_SAMPLE
+      - T10543_TOPIC_CARD
+      - SELECTION_EQUIVALENCE_CERTIFICATE
+      - DETERMINISTIC_EPISODE_RESELECTION_SUCCESSOR
+      - REBUILT_AUTHOR_OPPORTUNITY_PANEL
+      - PRODUCTION_RESEARCHER_PIVOT_CLASSIFICATION
+    authorizes:
+      - D0_CANDIDATE_RULE_ACCEPT_OR_REJECT_DECISION
+      - D0_TARGETED_T10543_TITLE_SAMPLING_SUCCESSOR_DESIGN
+      - D0_T10543_TOPIC_CARD_SUCCESSOR_DESIGN
+  G0:
+    state: PENDING
+    complete: false
+  G0_5:
+    state: NOT_RUN
+    complete: false
+  G1:
+    state: NOT_RUN
+    complete: false
+  G2:
+    state: NOT_RUN
+    complete: false
+  G3:
+    state: NOT_RUN
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+  G5:
+    state: NOT_RUN_OPTIONAL
+    complete: false
+
+authorization:
+  d0_candidate_content_dry_run: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_candidate_content_sensitivity: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_counterfactual_next_frontier_cost_estimate: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_human_review: NOT_RUN_BY_DESIGN
+  d0_candidate_rule_accept_or_reject_decision: AUTHORIZED
+  d0_targeted_t10543_sampling_successor_design: AUTHORIZED
+  d0_t10543_topic_card_successor_design: AUTHORIZED
+  d0_raw_openalex_title_scan: NOT_AUTHORIZED
+  d0_new_title_extraction: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_exception_submission: NOT_AUTHORIZED
+  d0_candidate_content_dispositions: NOT_AUTHORIZED
+  d0_selection_certificate: NOT_AUTHORIZED
+  d0_episode_reselection_successor: NOT_AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+next_required_implementation:
+  gate: D0_PRODUCTION_CANDIDATE_CONTENT_RULE_DECISION
+  required_order:
+    - accept_revise_or_reject_the_simple_candidate_aggregation_rule
+    - if_accepted_freeze_three_pass_and_t12505_indexing_fail_as_production_dispositions
+    - regenerate_the_medicine_frontier_from_rank_2
+    - authorize_only_the_targeted_t10543_local_96_title_sample
+    - build_and_freeze_t10543_card_without_using_api_labels_as_ground_truth
+    - run_local_routing_before_any_api_exception_decision
+    - preserve_unresolved_if_targeted_evidence_is_not_decisive
+    - issue_certificate_only_when_every_required_production_state_is_decisive
+  human_review_required: false
+  api_required_for_every_candidate: false
+  dry_run_may_create_production_dispositions: false
+  raw_title_scan_may_run_now: false
+  new_title_extraction_may_run_now: false
+  new_api_requests_may_be_created_now: false
+  paid_submission_may_run_now: false
+  selection_certificate_may_be_issued_now: false
+  deterministic_reselection_may_run_now: false
+  outcomes_may_be_opened: false
+  model_fitting_may_begin: false
+  g4_may_open: false
+  gpu_required: false
+
+claim_boundary: >-
+  This additive successor freezes an independently replayed zero-cost
+  candidate-level dry-run over the existing 384 titles. Three candidates would
+  pass the simple conservative rule and T12505 would fail a joint score/source
+  indexing-anomaly rule, but these dry-run states are not production
+  dispositions. All four production content states remain unresolved. The
+  T12505 signal is stable over the declared accept-threshold grid, while T12421
+  is threshold-sensitive. Only a rule decision and targeted-successor design
+  are authorized. Raw title scans, new title extraction, API requests, paid
+  submission, production dispositions, certificates, reselection, outcomes,
+  fitting, G4, and scientific effects remain not run, unauthorized, incomplete,
+  sealed, or not established.

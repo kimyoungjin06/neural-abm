@@ -1,0 +1,195 @@
+schema_version: pivot_feedback_gate_state.v9
+label: pivot_feedback_gate_state_v9
+mode: ADDITIVE_D0_API_ASSISTED_REVIEW_INPUT_PREPARATION_GATE_LEDGER
+status: VALID_D0_API_REVIEW_INPUTS_PREPARED_NOT_SUBMITTED_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v8.yaml
+  sha256: 97b44f3ff6c79adb2f6f551a29e662360c92acd21343c2125375c6f996d43f67
+  required_schema_version: pivot_feedback_gate_state.v8
+  required_status: VALID_D0_REVIEW_PACKETS_PREPARED_HUMAN_REVIEW_NOT_RUN_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    review_packet_state.reviewer_packet_rows_each: 384
+    review_packet_state.reviewer_1_completed_rows: 0
+    review_packet_state.reviewer_2_completed_rows: 0
+    review_packet_state.adjudicated_rows: 0
+    review_packet_state.human_review_complete: false
+    review_packet_state.artificial_agent_may_substitute_for_human_reviewer: false
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+execution_evidence:
+  api_review_preparation:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_api_review_preparation_20260729.summary.json
+    sha256: 06c6f7eb46315eedb1bd5be3883ea4dd6406d566f9b52431cb1b2b57eeec75bf
+    required_schema_version: pivot_feedback_d0_api_review_preparation_summary.v2
+    required_status: PASS_INDEPENDENT_D0_API_ASSISTED_REVIEW_INPUT_VERIFICATION_NOT_SUBMITTED
+    required_fields:
+      source.review_template_rows: 384
+      output.artifact_count: 8
+      output.request_rows_per_judge: 384
+      output.total_request_rows: 768
+      output.calibration_rows: 96
+      output.calibration_strata: 12
+      independent_verification.request_content_exact_match: true
+      independent_verification.request_visible_fields_exact_match: true
+      independent_verification.request_bodies_contain_forbidden_fields: false
+      independent_verification.calibration_packets_exact_match: true
+      independent_verification.calibration_key_exact_match: true
+      independent_verification.producer_module_imported: false
+      scope.batch_requests_prepared: true
+      scope.api_submitted: false
+      scope.api_responses_received: false
+      scope.human_calibration_complete: false
+      scope.candidate_universe_screen_complete: false
+      scope.episode_3_quarantined: true
+      scope.d0_complete: false
+      scope.discovery_outcome_opening_authorized: false
+      scope.g0_authorized: false
+      scope.model_fitting_authorized: false
+      scope.g4_open: false
+      scope.outcomes_read: false
+      scope.scientific_effect: NOT_ESTABLISHED
+
+gate_state:
+  G_MINUS_1A:
+    state: PASS_BOUNDED
+    complete: true
+    authorizes: [S0]
+  S0:
+    state: PASS_THRESHOLD_FREE_INVENTORY
+    complete: true
+    authorizes: [D0]
+  D0:
+    state: PARTIAL_API_REVIEW_INPUTS_PREPARED_NOT_SUBMITTED
+    complete: false
+    requires: [S0]
+    entry_year_end: 2012
+    completed_components:
+      - D0_OUTCOME_BLIND_MEASUREMENT_ABI_FREEZE
+      - D0_OUTCOME_BLIND_TWO_FIELD_FOUR_EPISODE_RESELECTION
+      - D0_AUTOMATED_CONTENT_AND_INDEXING_EXTRACTION
+      - D0_DUAL_PINNED_MODEL_BATCH_REQUEST_PREPARATION
+      - D0_STRATIFIED_BLINDED_HUMAN_CALIBRATION_PACKET_PREPARATION
+      - D0_INDEPENDENT_API_INPUT_AND_CALIBRATION_PACKET_VERIFICATION
+    blocked_components:
+      - DUAL_MODEL_API_BATCH_EXECUTION
+      - VALIDATED_API_RESPONSE_INGESTION
+      - TWO_INDEPENDENT_HUMAN_CALIBRATION_AND_ESCALATION_REVIEWS
+      - THIRD_PARTY_HUMAN_DISAGREEMENT_ADJUDICATION
+      - FROZEN_CALIBRATED_REVIEW_RECEIPT_AND_AGREEMENT_STATISTICS
+      - CANDIDATE_LEVEL_INDEXING_CONTAMINATION_RULE_FREEZE
+      - COMPLETE_CANDIDATE_UNIVERSE_RESELECTION_SUCCESSOR
+      - REBUILT_AUTHOR_OPPORTUNITY_PANEL
+      - INCUMBENT_AND_NETWORK_MEASUREMENTS
+    authorizes:
+      - D0_DUAL_MODEL_API_BATCH_SUBMISSION_WITH_OPERATOR_CREDENTIAL_AND_COST_CONTROL
+      - D0_OUTCOME_BLIND_API_RESPONSE_INGESTION
+      - D0_TWO_DISTINCT_HUMAN_CALIBRATION_AND_ESCALATION_REVIEWS
+      - D0_THIRD_PARTY_ADJUDICATION_AFTER_REVIEWER_FREEZE
+  G0:
+    state: PENDING
+    complete: false
+  G0_5:
+    state: NOT_RUN
+    complete: false
+  G1:
+    state: NOT_RUN
+    complete: false
+  G2:
+    state: NOT_RUN
+    complete: false
+  G3:
+    state: NOT_RUN
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+  G5:
+    state: NOT_RUN_OPTIONAL
+    complete: false
+
+authorization:
+  d0_api_batch_request_preparation: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_api_batch_submission: AUTHORIZED_ONLY_WITH_OPERATOR_CREDENTIAL_AND_COST_CONTROL
+  d0_api_response_ingestion: AUTHORIZED_OUTCOME_BLIND
+  d0_human_calibration_reviewer_1: AUTHORIZED_DISTINCT_HUMAN_OUTCOME_BLIND
+  d0_human_calibration_reviewer_2: AUTHORIZED_DISTINCT_HUMAN_OUTCOME_BLIND
+  d0_human_adjudication: AUTHORIZED_AFTER_BOTH_REVIEWER_FILES_FROZEN
+  d0_candidate_universe_api_screen: NOT_AUTHORIZED_PENDING_CALIBRATION
+  d0b_leaveout_network_bridge_build: PAUSED_PENDING_REVIEW_AND_RESELECTION_SUCCESSOR
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  final_panel_materialization: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+api_review_state:
+  output_root_basename: pivot-feedback-d0-api-review-v2-prepared-20260729
+  receipt_sha256: 01186d0d4804a35ff32f63b55f5ac9ef5c17d473cf4bdd2cd8a35aeb78d27373
+  artifact_tree_sha256: 3dd28d0bfe752515f09b0d171da7abfd4827c9136fe36379bb2199395bcaeb96
+  verification_report_basename: pivot-feedback-d0-api-review-v2-prepared-20260729.verification-v2.json
+  verification_report_sha256: f216da2a1c6bccdf70588c1227d850c0f2e6d62fb0f38b8e1574208698f33fe3
+  request_rows_per_judge: 384
+  total_request_rows: 768
+  calibration_rows: 96
+  calibration_strata: 12
+  request_content_exact_match: true
+  forbidden_request_fields_present: false
+  calibration_packets_exact_match: true
+  api_submitted: false
+  api_responses_received: false
+  human_calibration_complete: false
+  candidate_universe_screen_complete: false
+  artificial_agent_may_substitute_for_human_reviewer: false
+
+provisional_scientific_scope:
+  episode_3_quarantined_pending_review: true
+  remaining_episodes_automatically_promoted: false
+  current_four_episode_set_valid_for_leaveout_or_author_panel: false
+  prior_author_episode_rows_are_current_panel: false
+  entry_or_persistence_outcomes_read: false
+  scientific_effect: NOT_ESTABLISHED
+
+next_required_implementation:
+  gate: D0_API_EXECUTION_AND_HUMAN_CALIBRATION
+  required_order:
+    - confirm_operator_credential_and_cost_control
+    - upload_both_frozen_jsonl_files_with_batch_purpose
+    - submit_two_24_hour_responses_batches
+    - preserve_upload_file_ids_batch_ids_and_request_ids
+    - download_and_hash_output_and_error_files
+    - validate_all_768_responses_against_frozen_schema
+    - derive_deduplicated_base_plus_escalation_human_queue
+    - assign_two_distinct_human_reviewers
+    - complete_both_blinded_human_packets_without_cross_review
+    - freeze_and_hash_both_completed_reviewer_files
+    - compute_exact_agreement_and_cohen_kappa
+    - adjudicate_every_human_disagreement_with_a_third_human
+    - apply_fail_close_rules_or_freeze_calibrated_review_receipt
+    - freeze_candidate_universe_screen_successor_before_any_full_screen
+  reviewer_discussion_before_independent_freeze_allowed: false
+  artificial_reviewer_substitution_allowed: false
+  api_only_may_complete_d0: false
+  candidate_universe_screen_may_run_before_calibration: false
+  entry_or_persistence_outcomes_may_be_opened: false
+  leaveout_or_peer_measurement_may_be_built_before_successor_freeze: false
+  current_episode_set_may_be_reused_as_final: false
+  current_author_panel_may_be_reused_as_final: false
+  final_candidate_eligibility_may_be_claimed: false
+  workload_class: EXTERNAL_API_THEN_HUMAN_REVIEW
+  gpu_required: false
+
+claim_boundary: >-
+  This additive ledger records exact outcome-blind Batch API request preparation,
+  deterministic 96-title human calibration packets, and producer-independent
+  verification against the frozen 384-title source. No API batch was submitted,
+  no response was received, and no human calibration or adjudication was run.
+  The API judges cannot substitute for human reviewers. Episode 3 remains
+  quarantined, the other episodes are not promoted, and the prior author panel
+  remains superseded. D0, the complete-candidate-universe screen, downstream
+  measurement, outcomes, G0, model fitting, G4, and scientific effects remain
+  incomplete, unauthorized, sealed, not run, or not established.

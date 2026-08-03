@@ -1,0 +1,51 @@
+{
+  "schema_version": "pivot_feedback_d0_candidate_rule_v2_replay_summary.v1",
+  "status": "PASS_INDEPENDENT_CANDIDATE_RULE_V2_FIVE_CANDIDATE_REPLAY",
+  "amendment_disclosure": "POST_DIAGNOSTIC_AFTER_T10543_RULE_V1_GAP",
+  "new_branch": {
+    "name": "RECENT_MAJORITY_OPAQUE_INDEXING_ANOMALY",
+    "minimum_recent_opaque_quarantine_fraction": 0.5,
+    "source_name_used": false,
+    "primary_topic_score_used": false,
+    "api_label_used": false,
+    "human_review_used": false
+  },
+  "replay": {
+    "candidate_rows": 5,
+    "unchanged_rows": 4,
+    "changed_rows": 1,
+    "v2_would_content_pass_rows": 3,
+    "v2_would_content_fail_indexing_anomaly_rows": 2,
+    "v2_would_content_unresolved_rows": 0,
+    "changed_candidate": {
+      "field_id": 27,
+      "field_candidate_rank": 2,
+      "topic_id": 10543,
+      "entry_year": 1993,
+      "v1_state": "WOULD_CONTENT_UNRESOLVED",
+      "v2_state": "WOULD_CONTENT_FAIL_INDEXING_ANOMALY",
+      "v2_reason": "RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS"
+    }
+  },
+  "execution_boundary": {
+    "existing_title_rows_read": 480,
+    "new_titles_read": false,
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000",
+    "production_candidate_rule_frozen": false,
+    "production_content_dispositions_created": 0,
+    "selection_certificate_issued": false,
+    "outcomes_read": false
+  },
+  "artifacts": {
+    "config_sha256": "63c964c42b0b6b2a999b470e72d9eb8fcd22846a7e3f1eb814760b1330aeb9a9",
+    "producer_sha256": "87558b3bc813b147664cbcf53ed3243f46d330c07898bc2350197526b2ca8aa7",
+    "verifier_sha256": "9cae3e7aa99632dee2c922bf24b8b59fd7a89c493ca105a05bbb893cda7cc0f8",
+    "operator_receipt_sha256": "0984c03196feed5910b0d8199d81e8dbe2f01466b44aa6889c16b08d27a94eea",
+    "verification_report_sha256": "bd4724bbaa61daa326da34e14d4dc08993c54588d28f9fba03467c799cf46ff0",
+    "replay_parquet_sha256": "9d22ba0ad4acc1087cf963cfaf43e713bd83b99e519ed54ef250d6141d042b7e",
+    "change_summary_sha256": "b2cc5309a2538fffad7a651c5024cf5e3fcb6b62dc4d94ce6196ca46c9968073"
+  },
+  "claim_boundary": "This is a disclosed post-diagnostic rule-adequacy replay on five already sampled candidates. It is not out-of-sample validation, semantic truth, a production-rule freeze, a production disposition, a selection certificate, a pivot classification, an outcome result, a model fit, or a scientific effect."
+}

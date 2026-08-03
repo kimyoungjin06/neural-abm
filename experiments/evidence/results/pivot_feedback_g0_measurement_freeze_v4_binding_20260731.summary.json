@@ -1,0 +1,80 @@
+{
+  "schema_version": "pivot_feedback_g0_measurement_freeze_v4_binding_summary.v1",
+  "status": "PASS_G0_V4_EXACT_SIX_CHOICE_BINDING_SEVEN_CHOICES_REMAIN",
+  "preservation_replay": {
+    "immutable_predecessor_sha256": "0d15a1a7df535dbbc7e50ca0c3bb386da9a704cd051fb829d275b6d5a776a8fe",
+    "unchanged_top_level_subtrees": [
+      "binding_reconciliation_contract",
+      "completion_contract",
+      "failure_policy",
+      "fixed_design_choices",
+      "foundation_parents",
+      "g_minus_1a_binding",
+      "holdout_access_binding",
+      "inherited_subtree_digests",
+      "legacy_g_minus_1_binding",
+      "measurement_proxy_precommitment_binding"
+    ],
+    "unchanged_top_level_subtree_count": 10,
+    "only_authorized_six_choice_binding_changed": true
+  },
+  "resolution_replay": {
+    "resolved_measurement_count": 12,
+    "newly_bound_choice_ids": [
+      "negative_sampling_ratio",
+      "inverse_probability_weight_truncation",
+      "minimum_cohort_size",
+      "small_cell_suppression_threshold",
+      "capacity_cell_support_threshold",
+      "collinearity_threshold"
+    ],
+    "remaining_choice_ids": [
+      "g1_replication_tolerance",
+      "g2_score_margin",
+      "g2_maximum_calibration_degradation",
+      "g2_macro_trajectory_tolerance",
+      "simulation_draws_or_mcse_stopping_rule",
+      "parameter_budget",
+      "tuning_budget"
+    ],
+    "remaining_choice_count": 7,
+    "required_section_count_pending": 15
+  },
+  "current_boundary_replay": {
+    "holdout_receipt_bound": false,
+    "g0_freeze_ready": false,
+    "confirmatory_or_holdout_rows_read": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "access_accounting": {
+    "repository_yaml_documents_read": 4,
+    "operator_json_metadata_files_read": 0,
+    "operator_parquet_files_opened": 0,
+    "production_row_level_files_opened": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "repository_artifacts": {
+    "g0_v4": {
+      "relative_path": "experiments/configs/pivot_feedback_g0_measurement_freeze_v4.yaml",
+      "sha256": "cd49a31ab67e7a66d038b3198493df8b3a309aa14ee9de80410557a194581ce4"
+    },
+    "validator": {
+      "relative_path": "scripts/verify_pivot_feedback_g0_measurement_freeze_v4.py",
+      "sha256": "4c47fe920d90775d3d1ef357a154bd1d9985a24a72812155be09239c1c1d6670"
+    }
+  },
+  "authorization": {
+    "g0_v4_six_choice_binding": "COMPLETE_INDEPENDENTLY_VERIFIED",
+    "remaining_choice_resolution": "REQUIRES_SUCCESSOR_GATE",
+    "required_section_completion": "NOT_AUTHORIZED",
+    "confirmatory_or_holdout_access": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This versioned G0 v4 successor preserves G0 v3 and makes only the v60-authorized six-choice binding change. It serializes ten controls per case, nearest-rank P01-P99 stabilized-weight winsorization, the 500/100/100 cohort floor, suppression of counts one through ten, the 50/11/11 four-cell capacity floor, and a strict VIF-below-five rule without applying them to production data. The values are outcome-blind conservative design policies, not literature-mandated truths, power guarantees, or effects, and the CMS threshold is used only by analogy. The holdout receipt remains absent, seven quantitative choices remain unresolved, all fifteen required sections remain not freeze-ready, and G0 remains unsealed. No operator row data, confirmatory or holdout data, API request, model, G4 result, causality, or scientific effect is established."
+}

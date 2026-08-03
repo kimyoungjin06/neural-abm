@@ -1,0 +1,208 @@
+schema_version: pivot_feedback_d0_production_candidate_rule_config.v2
+label: pivot_feedback_d0_production_candidate_rule_v2
+mode: FREEZE_POST_DIAGNOSTIC_RULE_V2_FIVE_DISPOSITIONS_AND_FRONTIER_V3
+status: FROZEN_PRODUCTION_CANDIDATE_RULE_V2_AND_FRONTIER_V3_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v18.yaml
+  sha256: 35ee39099115ffe4a52cfa21c89d90985d83c38f1ef7dd1c3badc96cecc4276a
+  required_schema_version: pivot_feedback_gate_state.v18
+  required_status: VALID_CANDIDATE_RULE_V2_REPLAY_VERIFIED_PRODUCTION_FREEZE_AND_FRONTIER_V3_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_candidate_rule_v2_production_freeze: AUTHORIZED
+    authorization.d0_five_production_candidate_dispositions: AUTHORIZED
+    authorization.d0_adaptive_frontier_v3_regeneration: AUTHORIZED
+    authorization.d0_selection_certificate_from_frontier_v3: AUTHORIZED_ONLY_IF_LAZY_STATE_MACHINE_CLOSES
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+frozen_inputs:
+  candidate_table:
+    root_basename: pivot-feedback-d0-measurement-abi-reselection-v1-full-20260724
+    basename: episode_candidates.parquet
+    sha256: c5588aef34381179b93785fd5dd3953f2ee7a982bf3d38cb71341eb49fe4e029
+    rows: 70277
+  production_rule_v1:
+    root_basename: pivot-feedback-d0-production-candidate-rule-v1-20260729
+    dispositions_basename: production_candidate_dispositions.parquet
+    dispositions_sha256: aab5af94fe0bcf78de3959af30b06b51cf55560e89e06e24adf21d5fe4cd4faf
+    disposition_rows: 4
+    receipt_basename: production_candidate_rule.outputs.json
+    receipt_sha256: 098843acbea1856c79207b7ee56ac918a7c607232e3a2a712fd28f81f9d0185e
+  candidate_rule_v2_replay:
+    root_basename: pivot-feedback-d0-candidate-rule-v2-replay-v1-20260729
+    replay_basename: candidate_rule_v2_retrospective_replay.parquet
+    replay_sha256: 9d22ba0ad4acc1087cf963cfaf43e713bd83b99e519ed54ef250d6141d042b7e
+    replay_rows: 5
+    receipt_basename: candidate_rule_v2_replay.outputs.json
+    receipt_sha256: 0984c03196feed5910b0d8199d81e8dbe2f01466b44aa6889c16b08d27a94eea
+    verification_basename: pivot-feedback-d0-candidate-rule-v2-replay-v1-20260729.verification-v1.json
+    verification_sha256: bd4724bbaa61daa326da34e14d4dc08993c54588d28f9fba03467c799cf46ff0
+
+production_rule_v2:
+  amendment_disclosure: POST_DIAGNOSTIC_AFTER_T10543_RULE_V1_GAP
+  amendment_is_out_of_sample_validated: false
+  precedence:
+    - RECENT_MAJORITY_OPAQUE_INDEXING_ANOMALY
+    - JOINT_SCORE_AND_SOURCE_SHIFT_INDEXING_ANOMALY
+    - SEMANTIC_OFF_TOPIC
+    - CONTENT_PASS
+    - CONTENT_UNRESOLVED
+  new_branch:
+    minimum_recent_opaque_quarantine_fraction: 0.50
+    comparison: GREATER_THAN_OR_EQUAL
+    disposition_state: CONTENT_FAIL
+    disposition_reason: RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS
+    source_name_used: false
+    primary_topic_score_used: false
+    api_label_used: false
+    human_review_used: false
+  retained_v1_branches_unchanged: true
+  ambiguous_and_quarantined_count_as_semantic_accept: false
+  ambiguous_and_quarantined_count_as_semantic_reject: false
+  current_snapshot_rule_is_historical_semantic_ground_truth: false
+  api_labels_are_ground_truth: false
+  human_review_required: false
+
+production_candidate_dispositions:
+  - field_id: 17
+    field_candidate_rank: 1
+    topic_id: 14430
+    entry_year: 2003
+    content_state: CONTENT_PASS
+    disposition_reason: RECENT_RULE_ACCEPT_LOWER_BOUND_AT_OR_ABOVE_THRESHOLD
+  - field_id: 17
+    field_candidate_rank: 45
+    topic_id: 10579
+    entry_year: 2012
+    content_state: CONTENT_PASS
+    disposition_reason: RECENT_RULE_ACCEPT_LOWER_BOUND_AT_OR_ABOVE_THRESHOLD
+  - field_id: 27
+    field_candidate_rank: 1
+    topic_id: 12505
+    entry_year: 1991
+    content_state: CONTENT_FAIL
+    disposition_reason: JOINT_SCORE_DROP_AND_SOURCE_CONCENTRATION_SHIFT
+  - field_id: 27
+    field_candidate_rank: 2
+    topic_id: 10543
+    entry_year: 1993
+    content_state: CONTENT_FAIL
+    disposition_reason: RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS
+  - field_id: 27
+    field_candidate_rank: 6
+    topic_id: 12421
+    entry_year: 1953
+    content_state: CONTENT_PASS
+    disposition_reason: RECENT_RULE_ACCEPT_LOWER_BOUND_AT_OR_ABOVE_THRESHOLD
+
+frontier_v3:
+  minimum_entry_year_separation: 9
+  require_distinct_subfield_ids: true
+  fields:
+    17:
+      frontier_rows: 45
+      content_pass_rows: 2
+      content_fail_rows: 0
+      content_unresolved_rows: 0
+      not_evaluated_rows: 43
+      field_selection_certificate_issued: true
+      selected_candidate_ranks: [1, 45]
+      selected_topic_ids: [14430, 10579]
+    27:
+      frontier_rows: 6
+      content_pass_rows: 1
+      content_fail_rows: 2
+      content_unresolved_rows: 1
+      not_evaluated_rows: 2
+      field_selection_certificate_issued: false
+      required_next_candidate_rank: 3
+      required_next_topic_id: 10543
+      required_next_entry_year: 1986
+      required_next_subfield_id: 2740
+      later_compatible_frozen_pass_rank_under_rank_3_pass_branch: 6
+  total_frontier_rows: 51
+  total_content_pass_rows: 3
+  total_content_fail_rows: 2
+  total_content_unresolved_rows: 1
+  total_not_evaluated_rows: 45
+  field_certificates_issued: 1
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+
+targeted_successor:
+  exact_field_id: 27
+  exact_field_candidate_rank: 3
+  exact_topic_id: 10543
+  exact_topic_name: Prostate Cancer Treatment and Research
+  exact_entry_year: 1986
+  exact_subfield_id: 2740
+  exact_subfield_name: Pulmonary and Respiratory Medicine
+  sample_algorithm: SHA256_LOWEST_BY_CANDIDATE_AND_WINDOW
+  sample_seed: pivot-feedback-d0-candidate-content-v1
+  rows_per_window: 32
+  total_rows: 96
+  window_definitions:
+    0: publication_year <= 1979
+    1: 1980 <= publication_year <= 1982
+    2: 1983 <= publication_year <= 1985
+  normalized_work_and_author_linkage_scan_required: true
+  exact_96_id_title_lookup_in_current_snapshot_required: true
+  full_candidate_universe_title_copy_required: false
+  existing_t10543_topic_card_may_be_reused: true
+  local_routing_required_before_any_api_decision: true
+
+output_contract:
+  root_basename: pivot-feedback-d0-production-candidate-rule-v2-20260729
+  dispositions_basename: production_candidate_dispositions_v2.parquet
+  frontier_basename: adaptive_candidate_frontier_v3.parquet
+  report_basename: PRODUCTION_CANDIDATE_RULE_V2_AND_FRONTIER_V3.md
+  receipt_basename: production_candidate_rule_v2.outputs.json
+  receipt_schema_version: pivot_feedback_d0_production_candidate_rule_outputs.v2
+  status: PASS_PRODUCTION_CANDIDATE_RULE_V2_FROZEN_FRONTIER_V3_TARGETED_RANK3_REQUIRED
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+execution_boundary:
+  existing_rule_replay_rows_read: 5
+  new_titles_read: false
+  raw_openalex_main_table_read: false
+  network_accessed: false
+  credentials_accessed: false
+  api_requests_created: false
+  api_requests_submitted: false
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  outcomes_read: false
+
+authorization:
+  production_candidate_rule_v2_freeze: AUTHORIZED
+  five_production_candidate_dispositions: AUTHORIZED
+  adaptive_frontier_v3_materialization: AUTHORIZED
+  computer_science_field_certificate_preservation: AUTHORIZED
+  medicine_field_certificate: NOT_AUTHORIZED_UNTIL_FRONTIER_V3_CLOSES
+  targeted_rank3_sample_successor_contract: AUTHORIZED
+  targeted_rank3_sample_execution: NOT_AUTHORIZED_UNTIL_V19_GATE
+  general_raw_openalex_title_scan: NOT_AUTHORIZED
+  new_api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+  global_selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  author_panel_rebuild: NOT_AUTHORIZED
+  pivot_classification: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract freezes the disclosed post-diagnostic candidate rule v2 and
+  five production candidate dispositions. It regenerates adaptive frontier v3
+  and preserves only the Computer Science field certificate. Medicine rank 3
+  T10543 entry 1986 becomes the next required candidate, so no global
+  certificate is issued. Only a versioned v19 gate may authorize its exact
+  targeted sample. No general raw scan, API request, deterministic reselection,
+  outcomes, fitting, G4, out-of-sample validation claim, semantic truth, or
+  scientific effect is authorized.

@@ -1,0 +1,114 @@
+{
+  "schema_version": "pivot_feedback_d0_api_only_topic_routing_summary.v1",
+  "status": "PASS_INDEPENDENTLY_VERIFIED_ZERO_COST_API_ONLY_TOPIC_ROUTING_DRY_RUN",
+  "date": "2026-07-29",
+  "scope": "FROZEN_384_TITLE_DIAGNOSTIC_SAMPLE_ONLY",
+  "repository_bindings": {
+    "config_relative_path": "experiments/configs/pivot_feedback_d0_api_only_topic_routing_v1.yaml",
+    "config_sha256": "1c98b50d9e5c9c0cbc1555f41e86ae87a276571195a7125fec9daf85e39c1406",
+    "producer_relative_path": "scripts/build_pivot_feedback_d0_api_only_topic_routing_v1.py",
+    "producer_sha256": "c51d3e6e9035a8d0c7d267a11fe770fe5ebd46a078e6c804e7cb09a72d73619c",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_d0_api_only_topic_routing_v1.py",
+    "verifier_sha256": "6c8dd99e8a20e4af2638c51d5c1897f31f407720c6109b478e29f4948485ed76"
+  },
+  "operator_local_evidence": {
+    "root_basename": "pivot-feedback-d0-api-only-topic-routing-v1-dry-run-20260729",
+    "receipt_basename": "topic_routing_dry_run.outputs.json",
+    "receipt_sha256": "15a1519d5a32882826847bb3aeded0b21f5e3257c9fb29a38da15adb9c93b7d5",
+    "artifact_tree_sha256": "907408d4917dc99d00f89ba65ffc69376668de39a9556d567eb4885bcfe7786b",
+    "verification_report_basename": "pivot-feedback-d0-api-only-topic-routing-v1-dry-run-20260729.verification-v1.json",
+    "verification_report_sha256": "bb99f403a18a4d5fcf9f5377da082ba3e980882f7514eaa1e139c9a801098a82",
+    "verification_status": "PASS_INDEPENDENT_ZERO_COST_API_ONLY_TOPIC_ROUTING_DRY_RUN"
+  },
+  "overall": {
+    "sample_rows": 384,
+    "topic_card_count": 4,
+    "route_counts": {
+      "NO_API_RULE_ACCEPT": 229,
+      "NO_API_RULE_REJECT": 24,
+      "API_REQUIRED_AMBIGUOUS": 94,
+      "QUARANTINE_UNRESOLVED": 37
+    },
+    "avoided_api_request_rows": 290,
+    "counterfactual_api_request_rows": 94,
+    "api_request_avoidance_fraction": "0.755208"
+  },
+  "by_topic": [
+    {
+      "topic_id": 10579,
+      "display_name": "Cognitive Radio Networks and Spectrum Sensing",
+      "sample_rows": 96,
+      "no_api_rule_accept_rows": 58,
+      "no_api_rule_reject_rows": 7,
+      "api_required_ambiguous_rows": 30,
+      "quarantine_unresolved_rows": 1,
+      "avoided_api_request_rows": 66,
+      "api_request_avoidance_fraction": "0.687500"
+    },
+    {
+      "topic_id": 12421,
+      "display_name": "Adrenal Hormones and Disorders",
+      "sample_rows": 96,
+      "no_api_rule_accept_rows": 65,
+      "no_api_rule_reject_rows": 3,
+      "api_required_ambiguous_rows": 25,
+      "quarantine_unresolved_rows": 3,
+      "avoided_api_request_rows": 71,
+      "api_request_avoidance_fraction": "0.739583"
+    },
+    {
+      "topic_id": 12505,
+      "display_name": "Peptidase Inhibition and Analysis",
+      "sample_rows": 96,
+      "no_api_rule_accept_rows": 29,
+      "no_api_rule_reject_rows": 12,
+      "api_required_ambiguous_rows": 24,
+      "quarantine_unresolved_rows": 31,
+      "avoided_api_request_rows": 72,
+      "api_request_avoidance_fraction": "0.750000"
+    },
+    {
+      "topic_id": 14430,
+      "display_name": "Higher Education and Teaching Methods",
+      "sample_rows": 96,
+      "no_api_rule_accept_rows": 77,
+      "no_api_rule_reject_rows": 2,
+      "api_required_ambiguous_rows": 15,
+      "quarantine_unresolved_rows": 2,
+      "avoided_api_request_rows": 81,
+      "api_request_avoidance_fraction": "0.843750"
+    }
+  ],
+  "descriptive_prior_api_comparison": {
+    "rule_accept_dual_high_api_rows": 174,
+    "rule_accept_either_api_off_or_unreviewable_rows": 0,
+    "rule_reject_both_api_off_topic_rows": 24,
+    "quarantine_both_api_unreviewable_rows": 31,
+    "api_required_dual_high_api_rows": 23,
+    "comparison_is_accuracy_or_calibration_evidence": false
+  },
+  "execution": {
+    "network_accessed": false,
+    "credentials_accessed": false,
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000"
+  },
+  "boundaries": {
+    "topic_cards_are_semantic_ground_truth": false,
+    "current_openalex_topic_metadata_reconstructs_historical_semantics": false,
+    "prior_api_labels_are_ground_truth": false,
+    "accuracy_established": false,
+    "error_rate_established": false,
+    "candidate_universe_screen_complete": false,
+    "production_dispositions_authorized": false,
+    "paid_api_submission_authorized": false,
+    "human_review": "NOT_RUN_BY_DESIGN",
+    "episode_reselection_authorized": false,
+    "pivot_classification_authorized": false,
+    "outcomes_read": false,
+    "model_fitting_authorized": false,
+    "g4_open": false
+  },
+  "next_required_step": "MATERIALIZE_AND_VERIFY_COMPLETE_TITLE_BEARING_CANDIDATE_WORK_MANIFEST_WITHOUT_API_SUBMISSION"
+}

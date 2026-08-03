@@ -1,0 +1,86 @@
+{
+  "schema_version": "pivot_feedback_researcher_pivot_definition_v2_summary.v1",
+  "status": "PASS_THRESHOLD_FREE_PAST_ONLY_OBSERVABLE_HISTORY_PIVOT_DEFINITION_V2",
+  "definition": {
+    "unit": "AUTHOR_TOKEN_X_PRIMARY_TOPIC_X_ENTRY_YEAR",
+    "event_label": "OBSERVABLE_HISTORY_NEW_TOPIC_ENTRY",
+    "pivot_state": "NEW_TOPIC_ENTRY",
+    "states": [
+      "NO_FOCAL_ENTRY",
+      "NEW_TOPIC_ENTRY",
+      "RETURN",
+      "CONTINUATION"
+    ],
+    "required_features": [
+      "pre_entry_target_topic_work_count",
+      "trailing_3y_target_topic_work_count",
+      "focal_confirmed_eligible_target_topic_work_count"
+    ],
+    "primary_minimum_history_threshold": "NONE",
+    "threshold_free": true,
+    "past_only": true,
+    "observable_history_claim_only": true
+  },
+  "supersession": {
+    "superseded_definition": "pivot_feedback_researcher_pivot_definition.v1",
+    "removed_minimum_prior_observable_span_years": 3,
+    "removed_minimum_prior_eligible_work_count": 3,
+    "prior_observable_span_years_role": "SENSITIVITY_ONLY",
+    "prior_eligible_work_count_role": "SENSITIVITY_ONLY"
+  },
+  "verification": {
+    "valid_fixture_rows": 7,
+    "invalid_fail_closed_fixture_rows": 6,
+    "valid_fixture_state_coverage": [
+      "NO_FOCAL_ENTRY",
+      "NEW_TOPIC_ENTRY",
+      "RETURN",
+      "CONTINUATION"
+    ],
+    "bounded_exhaustive_valid_count_tuples": 45,
+    "bounded_exhaustive_state_counts": {
+      "NO_FOCAL_ENTRY": 15,
+      "NEW_TOPIC_ENTRY": 2,
+      "RETURN": 8,
+      "CONTINUATION": 20
+    },
+    "bounded_exhaustive_mismatches": 0,
+    "sensitivity_profiles_compared": 3,
+    "sensitivity_state_changes": 0,
+    "invalid_fixtures_unexpectedly_classified": 0
+  },
+  "source_boundary": {
+    "pre_entry_target_topic_work_count_source": "VERIFIED_PREDECISION_AUTHOR_MEASUREMENT",
+    "trailing_3y_target_topic_work_count_source": "NOT_YET_CONTRACTED",
+    "focal_confirmed_eligible_target_topic_work_count_source": "NOT_YET_CONTRACTED",
+    "production_sources_read": false,
+    "focal_year_rows_read": false,
+    "future_rows_read": false,
+    "outcomes_read": false,
+    "api_requests_created": 0
+  },
+  "repository_artifacts": {
+    "contract": {
+      "relative_path": "experiments/configs/pivot_feedback_researcher_pivot_definition_v2.yaml",
+      "sha256": "625145e60fa38b787b25842b8b2d6877880b2f6102169588dfd1efb919e224de"
+    },
+    "validator": {
+      "relative_path": "scripts/verify_pivot_feedback_researcher_pivot_definition_v2.py",
+      "sha256": "1e5d4974b9e0b20feb10d316a3512639759c957021568e34c044e2cb21465699"
+    },
+    "research_note": {
+      "relative_path": "docs/research/pivot-feedback-researcher-pivot-definition-v2.md",
+      "sha256": "5982c7f656df8b70eff6965004845d10e9e4be9604ceb9ab615ccf79c19b78c0"
+    }
+  },
+  "authorization": {
+    "classification_fixture_execution": "COMPLETE_INDEPENDENTLY_VALIDATED",
+    "production_source_contract": "NOT_AUTHORIZED_BY_DEFINITION_ALONE",
+    "production_pivot_classification": "NOT_AUTHORIZED",
+    "entry_or_persistence_outcome_opening": "NOT_AUTHORIZED",
+    "new_api_request_creation": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED"
+  },
+  "claim_boundary": "The threshold-free, past-only observable-history decision table and synthetic boundary fixtures pass. No production source, focal-year, future, API, model, or G4 rows were read, and no production pivot classification or scientific result is established."
+}

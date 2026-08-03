@@ -1,0 +1,37 @@
+schema_version: openalex_sentinel_incidence_config.v1
+label: openalex_g1_sentinel_incidence_v0
+
+parent_inventory:
+  schema_version: openalex_source_inventory.v1
+  manifest_id: openalex_g1_source_inventory_v0
+  manifest_sha256: 6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46
+  source_root_env: OPENALEX_DERIVED_ROOT
+  source_root_id: openalex_works_20260330_repairreplay_20260410_190630
+  expected_table_count: 23
+  inventory_fingerprint_sha256: 1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473
+  stability_fingerprint_sha256: a3bfb7f639d4131749c1522f00e5e977bae7abc1a62202790fd41279f8f0a0e5
+
+targeted_incidence:
+  source_id_column: id
+  sentinels:
+    w_minus_1:
+      value: "https://openalex.org/W-1"
+      disposition: quarantine_candidate
+    w_zero:
+      value: "https://openalex.org/W0"
+      disposition: unresolved_diagnostic
+  work_target_columns:
+    openalex_works_20260330__referenced_works: referenced_works
+    openalex_works_20260330__related_works: related_works
+  batch_size: 262144
+  workers: 8
+  predicate_pushdown_required: true
+
+claim_boundary: >-
+  This audit reports exact targeted W-1 and W0 incidence only in the frozen
+  source-ID and declared work-target columns. It does not claim row
+  conservation, apply a quarantine, validate every non-sentinel identifier,
+  establish join coverage, establish PASS_G1, or establish any scientific
+  effect. W-1 is a quarantine candidate; W0 remains a separate unresolved
+  diagnostic.
+

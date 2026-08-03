@@ -1,0 +1,193 @@
+schema_version: pivot_feedback_gate_state.v6
+label: pivot_feedback_gate_state_v6
+mode: ADDITIVE_D0B_LINKAGE_AUDIT_MEASUREMENT_REVIEW_GATE_LEDGER
+status: VALID_D0_MEASUREMENT_REVIEW_REQUIRED_LEAVEOUT_AND_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v5.yaml
+  sha256: 0e1e04bc16429a6e6bd910903b17f4178e7b3d3ee41b6a76735367280fd7904c
+  required_schema_version: pivot_feedback_gate_state.v5
+  required_status: VALID_G_MINUS_1A_S0_D0A_AND_D0B_AUTHOR_FOUNDATION_REMAINING_D0B_MEASUREMENTS_AUTHORIZED
+  required_fields:
+    gate_state.D0.state: PARTIAL_D0A_AND_D0B_AUTHOR_FOUNDATION_PASS
+    gate_state.D0.complete: false
+    authorization.d0b_author_opportunity_foundation: COMPLETE
+    authorization.d0b_remaining_outcome_blind_measurements: AUTHORIZED_FOUR_FROZEN_EPISODES_ONLY
+    authorization.d0_discovery_outcome_opening: NOT_YET_AUTHORIZED
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+    authorization.scientific_effect: NOT_ESTABLISHED
+  mutation_allowed: false
+
+execution_evidence:
+  selected_work_author_linkage_audit:
+    relative_path: experiments/evidence/results/pivot_feedback_d0b_selected_work_author_linkage_audit_full_20260724.summary.json
+    sha256: 98d1a43b0d23cc964a6cd6b76113b37bb401a2dfdda597184bec62617a8f5c62
+    required_schema_version: pivot_feedback_d0b_selected_work_author_linkage_audit_summary.v1
+    required_status: PASS_INDEPENDENT_D0B_LINKAGE_AUDIT_MEASUREMENT_REVIEW_REQUIRED_LEAVEOUT_BUILD_PAUSED
+    required_fields:
+      scope.linkage_audit_independently_verified: true
+      scope.measurement_review_required: true
+      scope.linkage_threshold_selected: false
+      scope.episode_exclusion_decision_made: false
+      scope.incumbent_attention_definition_validated: false
+      scope.focal_or_network_leaveout_built: false
+      scope.d0b_complete: false
+      scope.d0_complete: false
+      scope.discovery_outcomes_read: false
+      scope.persistence_rows_read: false
+      scope.model_fitting_performed: false
+      scope.g4_rows_read: false
+      scope.gpu_used: false
+      scope.scientific_effect: NOT_ESTABLISHED
+      linkage_accounting.selected_work_rows: 83565
+      linkage_accounting.linked_work_rows: 48245
+      linkage_accounting.zero_valid_author_token_work_rows: 35320
+      linkage_accounting.valid_author_incidence_rows: 106148
+      critical_readout.episode_3_signal_selected_work_rows: 23073
+      critical_readout.episode_3_signal_linked_work_rows: 1790
+      critical_readout.episode_3_signal_zero_valid_author_token_work_rows: 21283
+      critical_readout.episode_3_other_type_selected_work_rows: 22451
+      critical_readout.episode_3_other_type_linked_work_rows: 14
+      critical_readout.interpretation: SEVERE_HETEROGENEOUS_WORK_TYPE_AND_AUTHOR_LINKAGE_GAP_BLOCKS_UNQUALIFIED_INCUMBENT_ATTENTION_USE
+      source_replay.cutoff_work_artifacts_rehashed: 4096
+      source_replay.author_event_artifacts_rehashed: 4096
+      source_replay.source_rows_replayed_total: 1271923464
+      source_replay.work_metadata_exact_match: true
+      source_replay.author_incidence_exact_match: true
+      source_replay.work_linkage_count_exact_match: true
+      source_replay.profile_exact_match: true
+      source_replay.producer_module_imported: false
+      authorization.d0_measurement_abi_redesign: AUTHORIZED_OUTCOME_BLIND
+      authorization.d0b_leaveout_network_bridge_build: PAUSED_PENDING_MEASUREMENT_REVIEW
+      authorization.discovery_outcome_opening: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+      authorization.scientific_effect: NOT_ESTABLISHED
+
+gate_state:
+  G_MINUS_1A:
+    state: PASS_BOUNDED
+    complete: true
+    authorizes: [S0]
+  S0:
+    state: PASS_THRESHOLD_FREE_INVENTORY
+    complete: true
+    authorizes: [D0]
+  D0:
+    state: PARTIAL_MEASUREMENT_REVIEW_REQUIRED_AFTER_LINKAGE_AUDIT
+    complete: false
+    requires: [S0]
+    entry_year_end: 2012
+    completed_components:
+      - D0A_OUTCOME_BLIND_FIELD_AND_EPISODE_FREEZE_HISTORICAL_PROVISIONAL
+      - D0B_PRE_ENTRY_AUTHOR_OPPORTUNITY_FOUNDATION_AUDIT_BASE
+      - D0B_SELECTED_WORK_AUTHOR_LINKAGE_AUDIT
+    blocked_components:
+      - INCUMBENT_ONLY_ATTENTION
+      - FOCAL_AUTHOR_LEAVEOUT
+      - REGISTERED_LOCAL_NETWORK_LEAVEOUT
+      - PRIOR_PEER_ACTIVITY
+      - RECENT_COLLABORATION_BRIDGE
+      - SAME_AFFILIATION_BRIDGE
+    authorizes:
+      - D0_OUTCOME_BLIND_MEASUREMENT_ABI_REDESIGN
+      - D0_OUTCOME_BLIND_EPISODE_RESELECTION_SUCCESSOR
+  G0:
+    state: PENDING
+    complete: false
+  G0_5:
+    state: NOT_RUN
+    complete: false
+  G1:
+    state: NOT_RUN
+    complete: false
+  G2:
+    state: NOT_RUN
+    complete: false
+  G3:
+    state: NOT_RUN
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+  G5:
+    state: NOT_RUN_OPTIONAL
+    complete: false
+
+authorization:
+  d0a_structural_freeze_historical_record: COMPLETE_BUT_PROVISIONAL_FOR_AUTHOR_LEVEL_USE
+  d0b_author_opportunity_foundation: COMPLETE_AUDIT_BASE_NOT_ANALYTIC_PANEL
+  d0b_selected_work_author_linkage_audit: COMPLETE
+  d0_measurement_abi_redesign: AUTHORIZED_OUTCOME_BLIND
+  d0_episode_reselection_successor: AUTHORIZED_AFTER_ABI_FREEZE
+  d0b_leaveout_network_bridge_build: PAUSED_PENDING_ABI_AND_RESELECTION
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  final_panel_materialization: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+measurement_diagnosis:
+  selected_work_rows: 83565
+  linked_work_rows: 48245
+  zero_valid_author_token_work_rows: 35320
+  overall_work_link_rate: 0.5773350086758811
+  heterogeneous_linkage_gap: true
+  decisive_episode:
+    field_id: 27
+    topic_id: 11361
+    entry_year: 2007
+    signal_selected_work_rows: 23073
+    signal_linked_work_rows: 1790
+    signal_zero_valid_author_token_work_rows: 21283
+    other_type_selected_work_rows: 22451
+    other_type_linked_work_rows: 14
+  current_all_work_attention_valid_for_unqualified_author_level_use: false
+  current_four_episode_freeze_valid_for_leaveout_build: false
+  episode_exclusion_decision_made: false
+  eligible_work_types_selected: false
+  valid_author_linkage_rule_selected: false
+
+next_required_implementation:
+  gate: D0_MEASUREMENT_ABI_REDESIGN
+  role: OUTCOME_BLIND_ATTENTION_OBSERVATION_UNIVERSE_AND_EPISODE_RESELECTION
+  required_order:
+    - freeze_scholarly_work_type_eligibility_without_outcomes
+    - freeze_is_paratext_and_retraction_treatment_without_outcomes
+    - freeze_valid_author_token_linkage_requirement_and_missingness_reporting
+    - rebuild_all_field_topic_year_attention_candidates_under_the_new_abi
+    - rerun_deterministic_two_field_four_episode_selection_or_fail_coverage
+    - audit_content_coherence_and_indexing_discontinuity_before_leaveouts
+    - independently_replay_the_successor_freeze
+  current_episode_topic_years_are_provisional_not_authorized_for_leaveout:
+    - [17, 14430, 2003]
+    - [17, 10579, 2012]
+    - [27, 11361, 2007]
+    - [27, 12505, 1991]
+  selection_must_use_outcomes: false
+  entry_or_persistence_outcomes_may_be_opened: false
+  leaveout_or_peer_measurement_may_be_built_before_successor_freeze: false
+  linkage_threshold_may_be_selected_from_entry_or_persistence: false
+  final_candidate_eligibility_may_be_claimed: false
+  final_field_choice_by_effect_size_allowed: false
+  confirmatory_year_changes_allowed: false
+  workload_class: CPU_IO
+  gpu_required: false
+
+claim_boundary: >-
+  This additive ledger preserves the v5 author-foundation record and adds an
+  independently replayed selected-work-to-author-token linkage audit. The
+  severe and heterogeneous work-type/linkage gap means that the current
+  all-work attention episodes and author-linked incumbent/network measurements
+  do not share a stable observation universe. The current four episodes remain
+  historical provisional D0-A selections but are not authorized for further
+  leave-out, peer, or bridge construction. Only outcome-blind measurement-ABI
+  redesign and a versioned deterministic episode-reselection successor are
+  authorized. No eligible work type, linkage threshold, or episode exclusion
+  has yet been selected. D0-B and D0 remain incomplete; entry and persistence
+  outcomes, G0, final-panel materialization, model fitting, G4, empirical
+  signatures, causal effects, and scientific effects remain not authorized,
+  pending, paused, sealed, not run, or not established.

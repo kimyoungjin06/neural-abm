@@ -1,0 +1,344 @@
+schema_version: pivot_feedback_d0_entry_source_classifier_contract.v1
+label: pivot_feedback_d0_entry_source_classifier_contract_v1
+mode: EXACT_FOUR_NORMALIZED_ENTRY_SOURCE_AND_THRESHOLD_FREE_CLASSIFIER_DESIGN
+status: FROZEN_EXACT_FOUR_ENTRY_SOURCE_CLASSIFIER_CONTRACT_FIXTURES_ONLY
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v42.yaml
+  sha256: 7290ec723136bb269aeaac15594c711981108431aa6213b510ec99013fd256c7
+  required_schema_version: pivot_feedback_gate_state.v42
+  required_status: VALID_THRESHOLD_FREE_PIVOT_DEFINITION_V2_INDEPENDENTLY_VALIDATED_ENTRY_SOURCE_CONTRACT_AUTHORIZED
+  required_fields:
+    definition_decision.status: COMPLETE_INDEPENDENTLY_VALIDATED
+    definition_decision.primary_minimum_history_threshold: NONE
+    authorization.d0_entry_outcome_source_and_classifier_contract: AUTHORIZED_DESIGN_AND_FIXTURES_ONLY_NO_PRODUCTION_ROW_READ
+    authorization.d0_entry_outcome_source_build: NOT_AUTHORIZED
+    authorization.d0_production_pivot_classification: NOT_AUTHORIZED
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.d0_paid_api_submission: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+repository_bindings:
+  pivot_definition_v2:
+    relative_path: experiments/configs/pivot_feedback_researcher_pivot_definition_v2.yaml
+    sha256: 625145e60fa38b787b25842b8b2d6877880b2f6102169588dfd1efb919e224de
+    required_schema_version: pivot_feedback_researcher_pivot_definition.v2
+    required_status: FROZEN_THRESHOLD_FREE_OBSERVABLE_HISTORY_PIVOT_DEFINITION_V2_FIXTURES_ONLY
+  measurement_abi:
+    relative_path: experiments/configs/pivot_feedback_d0_measurement_abi_v1.yaml
+    sha256: eb51a85c206da328609b2fa05f9bbb6900160dc837dc345715d1bd709134c36e
+    required_schema_version: pivot_feedback_d0_measurement_abi.v1
+    required_status: FROZEN_OUTCOME_BLIND_MEASUREMENT_ABI_EPISODE_RESELECTION_AUTHORIZED
+  certified_episode_reselection:
+    relative_path: experiments/configs/pivot_feedback_d0_certified_episode_reselection_v1.yaml
+    sha256: 8b0677a84b94db5ffca4def3249a71c10833479a72f985e8f3219ce5bea4483b
+    required_schema_version: pivot_feedback_d0_certified_episode_reselection_config.v1
+    required_status: FROZEN_EXACT_FOUR_CERTIFIED_EPISODE_RESELECTION_AUTHORIZED
+  certified_author_opportunity:
+    relative_path: experiments/configs/pivot_feedback_d0_certified_author_opportunity_rebuild_v1.yaml
+    sha256: 4e5066f740f8358ab4936c13c651b895118434773fc88c91ae49e337fed15245
+    required_schema_version: pivot_feedback_d0_certified_author_opportunity_rebuild_config.v1
+    required_status_key: status_before_execution
+    required_status: AUTHORIZED_BY_GATE_STATE_V37
+  cutoff_projection:
+    relative_path: experiments/configs/pivot_feedback_cutoff_primitives_v0.yaml
+    sha256: bdc1365d87a56d3571559ef21fdd56d21be570a8e712081d30748361f22bf764
+    required_schema_version: pivot_feedback_cutoff_primitives_config.v1
+  author_event_projection:
+    relative_path: experiments/configs/openalex_g1_work_side_author_history_v3.yaml
+    sha256: ef73d41387d6186a50f44eddd31db7c9f10dd5b26cda869fb54dcea3352018f3
+    required_schema_version: openalex_g1_work_side_author_history_production_config.v3
+  cutoff_source_replay_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_cutoff_primitives_source_replay_full_20260723.summary.json
+    sha256: 6c61f89b289b8575dfcda226cbc9a739a445e611280378708a223434aade1a67
+    required_schema_version: pivot_feedback_cutoff_primitives_source_replay_full_summary.v1
+    required_status: PASS_INDEPENDENT_FULL_SOURCE_PROJECTION_REPLAY_AND_CANONICAL_TIME_VERIFICATION_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+  author_history_summary:
+    relative_path: experiments/evidence/results/openalex_g1_author_history_production_full_20260722.summary.json
+    sha256: 125fa24dfc8c59c76867e60e7431f72f325bc6341fc84c28fad111a66dbfbb86
+    required_schema_version: openalex_g1_author_history_production_full_summary.v1
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+  episode_reselection_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_certified_episode_reselection_20260730.summary.json
+    sha256: b128f12d2e91510a7da5a689c16667f7fd4ec9329f3ff68ceda32adf3533ec25
+    required_schema_version: pivot_feedback_d0_certified_episode_reselection_summary.v1
+    required_status: PASS_INDEPENDENT_EXACT_FOUR_CERTIFIED_EPISODE_RESELECTION
+  predecision_measurement_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_certified_predecision_author_measurement_20260731.summary.json
+    sha256: a9ecd79274139e5b9a375276eacdc51703fd561cabe38f8e8ce4356c3c7c311f
+    required_schema_version: pivot_feedback_d0_certified_predecision_author_measurement_summary.v1
+    required_status: PASS_INDEPENDENT_EXACT_FOUR_AUTHOR_MEMBERSHIP_CONSOLIDATED_TEMPORAL_LEAKAGE_AUDIT
+
+operator_receipt_bindings:
+  cutoff_work_metadata:
+    root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    receipt_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    rows: 492293206
+  author_work_events:
+    root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    receipt_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    rows: 779630258
+  certified_episode_selection:
+    root_basename: pivot-feedback-d0-certified-episode-reselection-v1-20260730
+    receipt_basename: certified_episode_reselection.outputs.json
+    receipt_sha256: cc4e7729f4e1c0865fe059ed7a5df5c1f053a5dbe4a2e09e68fe0389e74ec96a
+    receipt_schema_version: pivot_feedback_d0_certified_episode_reselection_outputs.v1
+    receipt_status: PASS_EXACT_FOUR_GLOBAL_CERTIFICATE_BOUND_EPISODE_RESELECTION
+    artifact_basename: certified_episode_selection.parquet
+    artifact_sha256: 2a24ddc9d6519e653718e53e8751758d2033391e250e0f2ada175747c169ffed
+    rows: 4
+  content_selection_certificate:
+    root_basename: pivot-feedback-d0-rank5-post-diagnostic-certificate-closeout-v1-20260730
+    receipt_basename: rank5_post_diagnostic_certificate_closeout.outputs.json
+    receipt_sha256: 7a37c840f37ac29040a1a40414c0e20402b68061b02bdffa9a54de6bdca1f4ba
+    receipt_schema_version: pivot_feedback_d0_rank5_post_diagnostic_certificate_closeout_outputs.v1
+    receipt_status: PASS_RANK5_POST_DIAGNOSTIC_CONTENT_PASS_GLOBAL_CERTIFICATES_FROZEN
+    certificate_basename: terminal_selection_certificate_status_v5.json
+    certificate_sha256: 4c19810ceaff4dba756541688ebbd52ae2cdb933404d9ff38ff5d247c1060073
+    certificate_status: PASS_GLOBAL_SELECTION_CERTIFICATE_ISSUED
+  predecision_author_measurement:
+    root_basename: pivot-feedback-d0-certified-predecision-author-measurement-v1-20260731
+    receipt_basename: certified_predecision_author_measurement.outputs.json
+    receipt_sha256: 45c594da3ff0531856f50518226f92545851d26d81753bc66d030aac31032f3c
+    receipt_schema_version: pivot_feedback_d0_certified_predecision_author_measurement_outputs.v1
+    receipt_status: PASS_EXACT_FOUR_OUTCOME_BLIND_AUTHOR_MEMBERSHIP_AND_CONSOLIDATED_PREDECISION_JOIN
+    artifact_basename: predecision_author_measurement.parquet
+    artifact_sha256: 9797fed53311742eaee0adf19e46d88094c9eb17a2b8aae71b9362ab5456b081
+    rows: 3256271
+
+exact_episode_scope:
+  rows:
+    - [1, 17, 14430, 2003]
+    - [2, 17, 10579, 2012]
+    - [3, 27, 10151, 1993]
+    - [4, 27, 12421, 1953]
+  topic_content_state: CONTENT_PASS_UNDER_GLOBAL_SELECTION_CERTIFICATE
+  candidate_substitution: FORBIDDEN
+  field_or_topic_reinterpretation: FORBIDDEN
+  entry_year_minimum: 1953
+  entry_year_maximum: 2012
+
+content_confirmation_resolution:
+  frozen_feature_name: focal_confirmed_eligible_target_topic_work_count
+  confirmation_unit: CERTIFIED_EPISODE_TOPIC_NOT_INDIVIDUAL_WORK
+  exact_semantics: >-
+    Count a distinct focal-year work when the episode topic already has the
+    frozen CONTENT_PASS global selection certificate, the work's
+    current-snapshot primary topic and field exactly match that certified
+    episode, the work passes the frozen scholarly-work ABI, and at least one
+    distinct valid current-snapshot author-token work event links the work.
+  individual_work_api_label_required: false
+  individual_work_human_label_required: false
+  new_api_request_required: false
+  provider_consensus_is_ground_truth: false
+  current_snapshot_primary_topic_is_semantic_ground_truth: false
+  episode_content_pass_is_work_level_ground_truth: false
+  retrospective_post_diagnostic_certificate: true
+  historical_topic_observability_established: false
+  missing_or_nonmatching_primary_topic_rule: EXCLUDE_AND_REPORT
+
+normalized_work_eligibility:
+  source: RECEIPT_BOUND_CUTOFF_WORK_METADATA
+  exact_projected_columns:
+    - work_id_numeric
+    - publication_year
+    - temporal_disposition
+    - work_type_code
+    - is_paratext
+    - is_retracted
+    - declared_authors_count
+    - primary_topic_id
+    - primary_field_id
+  inherited_work_type_codes: [1, 2, 3, 4, 7, 16, 18, 21]
+  allowed_temporal_dispositions: [2, 3]
+  exact_four_expected_temporal_disposition: 2
+  exact_four_disposition_reason: ALL_ENTRY_YEARS_PRECEDE_2026_SNAPSHOT_YEAR
+  null_publication_year_rule: EXCLUDE_AND_REPORT
+  exact_primary_topic_and_field_match_required: true
+  paratext_rule: EXCLUDE_IF_WORK_TYPE_PARATEXT_OR_IS_PARATEXT_TRUE
+  retraction_rule: EXCLUDE_IF_WORK_TYPE_RETRACTION_OR_IS_RETRACTED_TRUE
+  is_retracted_null_rule: RETAIN_IF_OTHERWISE_ELIGIBLE_AND_REPORT
+  team_cap_for_primary_event: NONE
+  current_snapshot_topic_annotation_role: RETROSPECTIVE_PROXY_NOT_HISTORICAL_OBSERVATION
+
+author_linkage:
+  source: RECEIPT_BOUND_AUTHOR_WORK_EVENT_PARTITIONS
+  exact_projected_columns:
+    - author_numeric_id
+    - work_numeric_id
+    - publication_year
+    - temporal_disposition
+    - declared_authors_count
+    - primary_field_id
+  unit: CURRENT_SNAPSHOT_OPENALEX_AUTHOR_ID_TOKEN_NOT_PERSON
+  work_event_year_field_disposition_and_team_must_match_work_metadata: true
+  duplicate_author_work_events: DEDUPLICATE_EXACT_AUTHOR_WORK_PAIR_AND_REPORT
+  zero_valid_author_token_work: EXCLUDE_FROM_COUNT_AND_REPORT
+  registered_population_join: LEFT_JOIN_ALL_3256271_AUTHOR_EPISODE_ROWS
+  unregistered_author_event_role: EXCLUDE_FROM_CLASSIFIER_AND_REPORT
+  natural_person_identity_established: false
+
+feature_construction:
+  key_columns:
+    - certified_episode_index
+    - field_id
+    - topic_id
+    - entry_year
+    - author_numeric_id
+  pre_entry_target_topic_work_count:
+    source_column: pre_entry_target_topic_work_count
+    source_artifact: VERIFIED_PREDECISION_AUTHOR_MEASUREMENT
+    window: ALL_ELIGIBLE_YEARS_THROUGH_T_MINUS_1
+    aggregation: COUNT_DISTINCT_WORK
+  trailing_3y_target_topic_work_count:
+    source_artifacts:
+      - RECEIPT_BOUND_CUTOFF_WORK_METADATA
+      - RECEIPT_BOUND_AUTHOR_WORK_EVENTS
+    window_offsets: [-3, -2, -1]
+    aggregation: COUNT_DISTINCT_ELIGIBLE_TARGET_TOPIC_WORK_PER_AUTHOR_TOKEN
+  focal_confirmed_eligible_target_topic_work_count:
+    source_artifacts:
+      - CERTIFIED_EPISODE_TOPIC_CONTENT_PASS
+      - RECEIPT_BOUND_CUTOFF_WORK_METADATA
+      - RECEIPT_BOUND_AUTHOR_WORK_EVENTS
+    window_offsets: [0]
+    aggregation: COUNT_DISTINCT_ELIGIBLE_TARGET_TOPIC_WORK_PER_AUTHOR_TOKEN
+  required_invariants:
+    - TRAILING_COUNT_LE_PRE_ENTRY_COUNT
+    - ZERO_PRE_ENTRY_IMPLIES_ZERO_TRAILING
+    - ALL_REGISTERED_AUTHOR_EPISODE_ROWS_RETAINED
+    - ONE_CLASSIFICATION_STATE_PER_AUTHOR_TOPIC_YEAR
+    - REPEATED_NEW_TOPIC_ENTRY_FOR_SAME_AUTHOR_TOPIC_FORBIDDEN
+    - NO_POST_ENTRY_WORK_OR_FUTURE_OUTCOME_INPUT
+  entry_year_is_reserved_response_offset_zero_not_attention_year: true
+  measurement_abi_latest_attention_year_does_not_truncate_focal_outcome_year: true
+  post_entry_offsets_allowed: []
+  source_output_before_classification:
+    - pre_entry_target_topic_work_count
+    - trailing_3y_target_topic_work_count
+    - focal_confirmed_eligible_target_topic_work_count
+    - excluded_work_missingness_counts
+
+classification:
+  exact_definition: PIVOT_FEEDBACK_RESEARCHER_PIVOT_DEFINITION_V2
+  states:
+    - NO_FOCAL_ENTRY
+    - NEW_TOPIC_ENTRY
+    - RETURN
+    - CONTINUATION
+  primary_pivot_state: NEW_TOPIC_ENTRY
+  minimum_history_threshold: NONE
+  graph_team_cap: NONE
+  future_or_persistence_input: FORBIDDEN
+
+synthetic_fixture:
+  episode:
+    certified_episode_index: 1
+    field_id: 17
+    topic_id: 14430
+    entry_year: 2003
+    content_state: CONTENT_PASS
+  registered_authors:
+    - {author_numeric_id: 101, pre_entry_target_topic_work_count: 2}
+    - {author_numeric_id: 102, pre_entry_target_topic_work_count: 1}
+    - {author_numeric_id: 103, pre_entry_target_topic_work_count: 0}
+    - {author_numeric_id: 104, pre_entry_target_topic_work_count: 5}
+    - {author_numeric_id: 105, pre_entry_target_topic_work_count: 0}
+  work_rows:
+    - {work_id_numeric: 1, publication_year: 2000, temporal_disposition: 2, work_type_code: 1, is_paratext: false, is_retracted: false, declared_authors_count: 1, primary_topic_id: 14430, primary_field_id: 17}
+    - {work_id_numeric: 2, publication_year: 2003, temporal_disposition: 2, work_type_code: 1, is_paratext: false, is_retracted: false, declared_authors_count: 1, primary_topic_id: 14430, primary_field_id: 17}
+    - {work_id_numeric: 3, publication_year: 2003, temporal_disposition: 2, work_type_code: 1, is_paratext: false, is_retracted: false, declared_authors_count: 1, primary_topic_id: 14430, primary_field_id: 17}
+    - {work_id_numeric: 4, publication_year: 2003, temporal_disposition: 2, work_type_code: 1, is_paratext: false, is_retracted: false, declared_authors_count: 1, primary_topic_id: 14430, primary_field_id: 17}
+    - {work_id_numeric: 5, publication_year: 2003, temporal_disposition: 2, work_type_code: 1, is_paratext: false, is_retracted: null, declared_authors_count: 2, primary_topic_id: 14430, primary_field_id: 17}
+    - {work_id_numeric: 6, publication_year: 1999, temporal_disposition: 2, work_type_code: 1, is_paratext: false, is_retracted: false, declared_authors_count: 1, primary_topic_id: 14430, primary_field_id: 17}
+    - {work_id_numeric: 7, publication_year: 2004, temporal_disposition: 2, work_type_code: 1, is_paratext: false, is_retracted: false, declared_authors_count: 1, primary_topic_id: 14430, primary_field_id: 17}
+    - {work_id_numeric: 8, publication_year: 2003, temporal_disposition: 2, work_type_code: 1, is_paratext: false, is_retracted: false, declared_authors_count: 1, primary_topic_id: 99999, primary_field_id: 17}
+    - {work_id_numeric: 9, publication_year: 2003, temporal_disposition: 2, work_type_code: 1, is_paratext: true, is_retracted: false, declared_authors_count: 1, primary_topic_id: 14430, primary_field_id: 17}
+    - {work_id_numeric: 10, publication_year: 2003, temporal_disposition: 2, work_type_code: 1, is_paratext: false, is_retracted: true, declared_authors_count: 1, primary_topic_id: 14430, primary_field_id: 17}
+    - {work_id_numeric: 11, publication_year: 2003, temporal_disposition: 2, work_type_code: 1, is_paratext: false, is_retracted: false, declared_authors_count: 1, primary_topic_id: 14430, primary_field_id: 17}
+    - {work_id_numeric: 12, publication_year: 2003, temporal_disposition: 4, work_type_code: 1, is_paratext: false, is_retracted: false, declared_authors_count: 1, primary_topic_id: 14430, primary_field_id: 17}
+    - {work_id_numeric: 13, publication_year: 2003, temporal_disposition: 2, work_type_code: 6, is_paratext: false, is_retracted: false, declared_authors_count: 1, primary_topic_id: 14430, primary_field_id: 17}
+  author_event_rows:
+    - {work_numeric_id: 1, author_numeric_id: 102, publication_year: 2000, temporal_disposition: 2, declared_authors_count: 1, primary_field_id: 17}
+    - {work_numeric_id: 2, author_numeric_id: 101, publication_year: 2003, temporal_disposition: 2, declared_authors_count: 1, primary_field_id: 17}
+    - {work_numeric_id: 3, author_numeric_id: 102, publication_year: 2003, temporal_disposition: 2, declared_authors_count: 1, primary_field_id: 17}
+    - {work_numeric_id: 4, author_numeric_id: 103, publication_year: 2003, temporal_disposition: 2, declared_authors_count: 1, primary_field_id: 17}
+    - {work_numeric_id: 5, author_numeric_id: 105, publication_year: 2003, temporal_disposition: 2, declared_authors_count: 2, primary_field_id: 17}
+    - {work_numeric_id: 5, author_numeric_id: 105, publication_year: 2003, temporal_disposition: 2, declared_authors_count: 2, primary_field_id: 17}
+    - {work_numeric_id: 6, author_numeric_id: 101, publication_year: 1999, temporal_disposition: 2, declared_authors_count: 1, primary_field_id: 17}
+    - {work_numeric_id: 7, author_numeric_id: 103, publication_year: 2004, temporal_disposition: 2, declared_authors_count: 1, primary_field_id: 17}
+    - {work_numeric_id: 8, author_numeric_id: 103, publication_year: 2003, temporal_disposition: 2, declared_authors_count: 1, primary_field_id: 17}
+    - {work_numeric_id: 9, author_numeric_id: 103, publication_year: 2003, temporal_disposition: 2, declared_authors_count: 1, primary_field_id: 17}
+    - {work_numeric_id: 10, author_numeric_id: 103, publication_year: 2003, temporal_disposition: 2, declared_authors_count: 1, primary_field_id: 17}
+    - {work_numeric_id: 12, author_numeric_id: 103, publication_year: 2003, temporal_disposition: 4, declared_authors_count: 1, primary_field_id: 17}
+    - {work_numeric_id: 13, author_numeric_id: 103, publication_year: 2003, temporal_disposition: 2, declared_authors_count: 1, primary_field_id: 17}
+  expected_rows:
+    - {author_numeric_id: 101, pre_entry_target_topic_work_count: 2, trailing_3y_target_topic_work_count: 0, focal_confirmed_eligible_target_topic_work_count: 1, state: RETURN}
+    - {author_numeric_id: 102, pre_entry_target_topic_work_count: 1, trailing_3y_target_topic_work_count: 1, focal_confirmed_eligible_target_topic_work_count: 1, state: CONTINUATION}
+    - {author_numeric_id: 103, pre_entry_target_topic_work_count: 0, trailing_3y_target_topic_work_count: 0, focal_confirmed_eligible_target_topic_work_count: 1, state: NEW_TOPIC_ENTRY}
+    - {author_numeric_id: 104, pre_entry_target_topic_work_count: 5, trailing_3y_target_topic_work_count: 0, focal_confirmed_eligible_target_topic_work_count: 0, state: NO_FOCAL_ENTRY}
+    - {author_numeric_id: 105, pre_entry_target_topic_work_count: 0, trailing_3y_target_topic_work_count: 0, focal_confirmed_eligible_target_topic_work_count: 1, state: NEW_TOPIC_ENTRY}
+  expected_accounting:
+    input_work_rows: 13
+    input_author_event_rows: 13
+    duplicate_author_work_event_excess_rows: 1
+    eligible_linked_target_work_rows_in_t_minus_3_through_t: 5
+    trailing_distinct_author_work_rows: 1
+    focal_distinct_author_work_rows: 4
+    excluded_outside_t_minus_3_through_t_rows: 2
+    excluded_wrong_topic_or_field_rows: 1
+    excluded_paratext_or_work_type_rows: 2
+    excluded_retracted_rows: 1
+    excluded_temporal_disposition_rows: 1
+    excluded_zero_valid_author_token_rows: 1
+    retained_is_retracted_null_rows: 1
+    registered_author_rows: 5
+    classified_author_rows: 5
+
+verification_contract:
+  validator_must_not_import_pivot_v2_validator: true
+  validator_must_not_import_future_source_builder: true
+  repository_binding_hashes_required: true
+  operator_receipt_hashes_and_statuses_required: true
+  operator_parquet_rows_must_not_be_opened: true
+  fixture_expected_rows_reconstructed_not_trusted: true
+  fixture_expected_accounting_reconstructed_not_trusted: true
+  all_four_states_required: true
+
+authorization:
+  contract_fixture_validation: AUTHORIZED
+  production_source_build: NOT_AUTHORIZED
+  production_pivot_classification: NOT_AUTHORIZED
+  discovery_outcome_opening: NOT_AUTHORIZED
+  peer_visible_success: NOT_AUTHORIZED
+  new_api_request_creation: NOT_AUTHORIZED
+  paid_api_submission: NOT_AUTHORIZED
+  final_candidate_eligibility: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract resolves the exact normalized sources, time windows,
+  work/linkage ABI, and topic-level content-confirmation meaning for the three
+  threshold-free pivot-definition inputs. No new API or individual-work label
+  is required: the focal feature uses the already certified CONTENT_PASS
+  episode topic plus exact current-snapshot primary-topic membership and the
+  frozen scholarly-work ABI. This is not work-level semantic ground truth or
+  historical topic observability. The contract and fixtures read no production
+  Parquet rows and do not authorize source construction, production pivot
+  classification, outcome opening, final eligibility, G0, model fitting, G4,
+  an association, a causal mechanism, or a scientific effect.

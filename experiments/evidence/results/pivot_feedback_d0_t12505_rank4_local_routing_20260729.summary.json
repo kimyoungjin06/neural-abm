@@ -1,0 +1,67 @@
+{
+  "schema_version": "pivot_feedback_d0_t12505_rank4_local_routing_summary.v1",
+  "status": "PASS_INDEPENDENT_T12505_RANK4_LOCAL_ROUTING_AND_RULE_V2_DRY_RUN",
+  "target": {
+    "field_id": 27,
+    "field_candidate_rank": 4,
+    "topic_id": 12505,
+    "entry_year": 1993,
+    "sample_rows": 96,
+    "recent_rows": 64
+  },
+  "normalized_sample_replay": {
+    "normalized_work_rows_scanned": 492293206,
+    "normalized_event_rows_scanned": 779630258,
+    "eligible_prelink_rows": 28447,
+    "author_linked_pool_rows": 20674,
+    "recent_six_year_author_linked_rows": 13766,
+    "window_pool_rows": {
+      "0": 6908,
+      "1": 3865,
+      "2": 9901
+    },
+    "missing_title_rows": 0
+  },
+  "recent_local_routes": {
+    "accept_rows": 12,
+    "reject_rows": 3,
+    "ambiguous_rows": 11,
+    "opaque_quarantine_rows": 38,
+    "opaque_quarantine_fraction": 0.59375
+  },
+  "indexing_diagnostics": {
+    "baseline_median_primary_topic_score": 0.9933000000000001,
+    "signal_median_primary_topic_score": 0.03955,
+    "baseline_to_signal_score_drop": 0.9537500000000001,
+    "baseline_dominant_source_share": 0.375,
+    "signal_dominant_source_share": 0.84375,
+    "baseline_to_signal_source_share_increase": 0.46875
+  },
+  "candidate_rule_v2_dry_run": {
+    "branch": "RECENT_MAJORITY_OPAQUE_INDEXING_ANOMALY",
+    "state": "WOULD_CONTENT_FAIL_INDEXING_ANOMALY",
+    "reason": "RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS",
+    "production_content_disposition_created": false
+  },
+  "execution_boundary": {
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000",
+    "human_review_used": false,
+    "selection_certificate_issued": false,
+    "outcomes_read": false
+  },
+  "artifacts": {
+    "sample_sha256": "9ff55e4032cc33cdd86bcc190ad5b69836c6cd520fd5436da9bb091186900863",
+    "sample_receipt_sha256": "e7aec9d9c2d85f4dfc786beb9eac411aeda35a4c2e8b8b9e3a793da39dedb52f",
+    "sample_verification_sha256": "196b6983b7611730b5c5291774aed9ecac0c76ee2a9b8c35cf7ed34b0bd2d3c5",
+    "routing_config_sha256": "5472fe9ab29ece16aba8870df64db79a193b9782a4f3a5b919523139d161db57",
+    "routing_producer_sha256": "3049c6f3523926cc37471460c0ba5f7c3ee475001b1cc35d0a976deac3e464a3",
+    "routing_verifier_sha256": "ca797c29fec41922a073f1baa4aa35729debcbe69b23506372655e5e3db2f7f3",
+    "routing_receipt_sha256": "f0664845f3de6720530ba4729e286439ec6d78c4051422ceb6c755134b8bc557",
+    "routing_verification_sha256": "0795ede1ea9aa89e7708da5679caafdd15622a0c95c17d13303ea5f10c75eda6",
+    "candidate_sha256": "4caf9e65cbb6b5fc96d5cf689f35efcf62fb49433c48561d567ac403367580db",
+    "routes_sha256": "8ee82e7c09823773ce882add137a5c10490827d313491ba1868892e4659aa135"
+  },
+  "claim_boundary": "This is an outcome-blind indexing-quality dry run, not a production disposition, semantic truth, out-of-sample validation of candidate rule v2, selection certificate, pivot classification, outcome result, model fit, or scientific effect."
+}

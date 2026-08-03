@@ -1,0 +1,199 @@
+schema_version: pivot_feedback_gate_state.v14
+label: pivot_feedback_gate_state_v14
+mode: ADDITIVE_ADAPTIVE_FRONTIER_PROOF_FREEZE_CONTENT_RULE_PREPARATION
+status: VALID_ADAPTIVE_FRONTIER_PROOF_COMPLETE_CONTENT_DISPOSITIONS_NOT_RUN_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v13.yaml
+  sha256: b980cc0f55af7e74ac7e9b027800f752f9b6007da1347401934af95b851e7dea
+  required_schema_version: pivot_feedback_gate_state.v13
+  required_status: VALID_SCOPE_AUDIT_COMPLETE_ADAPTIVE_FRONTIER_PROOF_NOT_RUN_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_raw_openalex_title_scan: NOT_AUTHORIZED
+    authorization.d0_paid_api_exception_submission: NOT_AUTHORIZED
+    authorization.d0_production_pivot_classification: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+adaptive_frontier_freeze:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_adaptive_candidate_frontier_v1.yaml
+    sha256: 154b9f831ebe1549ea747afe701a00c90703e86fbe7966cd67cb51ae8787f72d
+    required_schema_version: pivot_feedback_d0_adaptive_candidate_frontier_config.v1
+    required_status: FROZEN_ADAPTIVE_FRONTIER_PROOF_AND_INITIAL_MATERIALIZATION_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_adaptive_candidate_frontier_v1.py
+    sha256: 0a1f0eee17f73e1921244f179b0336250655b405a50803ae54c179e8cd2654d6
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_adaptive_candidate_frontier_v1.py
+    sha256: 5381c5b8eb050952989a6a3aaef8db328c37a2c8d7d13077f6e176c1acbdbcdc
+    mutation_allowed: false
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_adaptive_candidate_frontier_20260729.summary.json
+    sha256: ac1a7066ca08abec04b888eaf01372fb994424e6bbb0a0945e93f58bdbcdd5d2
+    required_schema_version: pivot_feedback_d0_adaptive_candidate_frontier_summary.v1
+    required_status: PASS_INDEPENDENT_ADAPTIVE_FRONTIER_STATE_MACHINE_EXHAUSTIVE_SMALL_FIXTURES_AND_INITIAL_STRUCTURE
+    mutation_allowed: false
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_adaptive_candidate_frontier_20260729.summary.md
+    sha256: 4765f67cd27bf59786129c7eaa053cb692bf77899c5cb63952093222286725a8
+    mutation_allowed: false
+  operator_local_evidence:
+    root_basename: pivot-feedback-d0-adaptive-candidate-frontier-v1-20260729
+    receipt_basename: adaptive_candidate_frontier.outputs.json
+    receipt_sha256: c2bc2d76dabb8e6da72266961f1da30abd05aadfc8af5b4e1cd077b3df3b6df6
+    artifact_tree_sha256: 260c5544aaaa6e32b4bbf3dc90ffc254b275b33f00e3a28c7b5ff61386ca4f52
+    verification_report_basename: pivot-feedback-d0-adaptive-candidate-frontier-v1-20260729.verification-v1.json
+    verification_report_sha256: c6aceb6e665ad018dc99110c91be4f1826d35371b79196cd83178eba38f64717
+    verification_status: PASS_INDEPENDENT_ADAPTIVE_FRONTIER_STATE_MACHINE_EXHAUSTIVE_SMALL_FIXTURES_AND_INITIAL_STRUCTURE
+
+proof_result:
+  total_fixture_cases: 299584
+  eager_pair_cases: 118404
+  required_state_unresolved_mutation_cases: 331424
+  structurally_incompatible_not_evaluated_cases: 146832
+  bounded_fixture_equivalence_passed: true
+  general_formal_proof_claimed: false
+
+frontier_result:
+  total_frontier_rows: 51
+  total_structurally_incompatible_rows: 47
+  total_content_required_rows: 4
+  distinct_frontier_topics: 22
+  content_required_topic_ids: [10579, 12421, 12505, 14430]
+  every_content_required_topic_has_frozen_card: true
+  content_required_rows_resolved: 0
+  rank_1_pass_assumption_is_content_disposition: false
+  selection_certificate_issued: false
+  deterministic_reselection_executed: false
+
+gate_state:
+  G_MINUS_1A:
+    state: PASS_BOUNDED
+    complete: true
+    authorizes: [S0]
+  S0:
+    state: PASS_THRESHOLD_FREE_INVENTORY
+    complete: true
+    authorizes: [D0]
+  D0:
+    state: PARTIAL_ADAPTIVE_FRONTIER_PROOF_COMPLETE_CONTENT_DISPOSITIONS_NOT_RUN
+    complete: false
+    requires: [S0]
+    completed_components:
+      - D0_OUTCOME_BLIND_MEASUREMENT_ABI_FREEZE
+      - D0_OUTCOME_BLIND_TWO_FIELD_FOUR_EPISODE_RESELECTION
+      - D0_AUTOMATED_CONTENT_AND_INDEXING_EXTRACTION
+      - D0_API_ONLY_384_TITLE_DIAGNOSTIC
+      - D0_SIMPLE_PAST_ONLY_RESEARCHER_PIVOT_DEFINITION_FREEZE
+      - D0_FOUR_TOPIC_CARD_FREEZE
+      - D0_ZERO_COST_384_TITLE_ROUTING_DRY_RUN
+      - D0_CANDIDATE_WINDOW_SCOPE_AND_ROUTER_COVERAGE_AUDIT
+      - D0_ADAPTIVE_FRONTIER_STATE_MACHINE
+      - D0_EXHAUSTIVE_SMALL_FIXTURE_EQUIVALENCE_REPLAY
+      - D0_INITIAL_51_ROW_STRUCTURAL_FRONTIER
+    not_run_by_design:
+      - HUMAN_CONTENT_REVIEW_AND_ADJUDICATION
+      - HUMAN_CALIBRATED_API_ERROR_RATE_ESTIMATION
+    blocked_components:
+      - CANDIDATE_LEVEL_CONTENT_DISPOSITION_RULE
+      - FRONTIER_TITLE_SAMPLING_RULE
+      - FOUR_REQUIRED_CANDIDATE_CONTENT_DISPOSITIONS
+      - SELECTION_EQUIVALENCE_CERTIFICATE
+      - DETERMINISTIC_EPISODE_RESELECTION_SUCCESSOR
+      - REBUILT_AUTHOR_OPPORTUNITY_PANEL
+      - PRODUCTION_RESEARCHER_PIVOT_CLASSIFICATION
+    authorizes:
+      - D0_CANDIDATE_CONTENT_DISPOSITION_RULE_DESIGN
+      - D0_FRONTIER_TITLE_SAMPLING_RULE_DESIGN
+      - D0_EXISTING_384_TITLE_ZERO_COST_CANDIDATE_DISPOSITION_DRY_RUN
+  G0:
+    state: PENDING
+    complete: false
+  G0_5:
+    state: NOT_RUN
+    complete: false
+  G1:
+    state: NOT_RUN
+    complete: false
+  G2:
+    state: NOT_RUN
+    complete: false
+  G3:
+    state: NOT_RUN
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+  G5:
+    state: NOT_RUN_OPTIONAL
+    complete: false
+
+authorization:
+  d0_candidate_scope_audit: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_adaptive_frontier_proof: COMPLETE_INDEPENDENTLY_VERIFIED_BOUNDED_FIXTURES
+  d0_initial_structural_frontier: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_human_review: NOT_RUN_BY_DESIGN
+  d0_candidate_content_disposition_rule_design: AUTHORIZED
+  d0_frontier_title_sampling_rule_design: AUTHORIZED
+  d0_existing_384_title_candidate_disposition_dry_run: AUTHORIZED_ZERO_COST_ONLY
+  d0_raw_openalex_title_scan: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_exception_submission: NOT_AUTHORIZED
+  d0_candidate_content_dispositions: NOT_AUTHORIZED
+  d0_selection_certificate: NOT_AUTHORIZED
+  d0_episode_reselection_successor: NOT_AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+next_required_implementation:
+  gate: D0_CANDIDATE_CONTENT_DISPOSITION_RULE
+  required_order:
+    - freeze_candidate_content_states_and_fail_closed_precedence
+    - freeze_candidate_level_aggregation_over_earlier_baseline_and_recent_windows
+    - distinguish_indexing_anomaly_from_semantic_off_topic_evidence
+    - freeze_deterministic_frontier_title_sampling_rule
+    - run_zero_cost_dry_run_on_existing_384_title_evidence
+    - report_sensitivity_without_calling_api_or_rules_ground_truth
+    - keep_every_required_candidate_unresolved_if_rule_is_not_decisive
+    - estimate_incremental_frontier_scan_and_ambiguous_api_cost
+    - authorize_raw_title_scan_or_paid_api_only_in_a_versioned_successor
+    - freeze_four_required_content_dispositions_or_expand_frontier
+    - issue_selection_certificate_only_if_all_required_states_are_decisive
+  existing_384_titles_may_be_reused_for_zero_cost_dry_run: true
+  existing_384_titles_may_establish_accuracy: false
+  dry_run_may_create_production_content_dispositions: false
+  full_eager_title_manifest_required: false
+  all_994_topic_cards_required: false
+  api_required_for_every_candidate: false
+  unresolved_candidate_may_be_skipped: false
+  selection_certificate_may_be_issued_now: false
+  deterministic_reselection_may_run_now: false
+  raw_title_scan_may_run_now: false
+  new_api_requests_may_be_created_now: false
+  paid_submission_may_run_now: false
+  outcomes_may_be_opened: false
+  model_fitting_may_begin: false
+  g4_may_open: false
+  gpu_required: false
+
+claim_boundary: >-
+  This additive successor freezes the independently replayed adaptive-frontier
+  state machine, bounded exhaustive fixture evidence, and initial 51-row
+  structural frontier. The bounded fixture result is not claimed as a general
+  formal proof. Forty-seven rows are structurally irrelevant under the rank-1
+  pass branches, while four rows require content dispositions and all four
+  remain unresolved. Only outcome-blind content-rule design, title-sampling
+  design, and a zero-cost dry-run on the already frozen 384 titles are
+  authorized. A dry-run cannot create production dispositions. Raw title
+  scans, new API requests, paid submission, selection certificates,
+  reselection, author-panel rebuilding, pivot classification, outcomes,
+  fitting, G4, and scientific effects remain not run, unauthorized,
+  incomplete, sealed, or not established.

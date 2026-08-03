@@ -1,0 +1,99 @@
+{
+  "schema_version": "pivot_feedback_s0_authorship_orcid_affiliation_full_summary.v1",
+  "status": "PASS_S0_FULL_AUTHORSHIP_ORCID_AND_AFFILIATION_PROJECTION_WITH_TOKEN_AND_CURRENT_SNAPSHOT_LIMITATIONS",
+  "scope": {
+    "full_scope": true,
+    "component_pass": true,
+    "s0_gate_pass": false,
+    "d0_authorized": false,
+    "model_fitting_authorized": false,
+    "gpu_used": false,
+    "source_files": 1363,
+    "author_event_files": 4096,
+    "source_snapshot_date": "2026-03-30"
+  },
+  "source_accounting": {
+    "raw_authorship_rows": 1361551038,
+    "w_minus_1_rows": 1,
+    "retained_authorship_rows": 1361551037,
+    "nonnull_author_id_rows": 781434618,
+    "null_author_id_rows": 580116420,
+    "grammar_valid_author_id_rows": 781434618,
+    "nonnull_orcid_rows": 458308219,
+    "syntax_valid_orcid_rows": 458276860,
+    "checksum_valid_orcid_rows": 458275464,
+    "raw_affiliation_present_rows": 644104744,
+    "institution_present_rows": 594266979,
+    "author_work_affiliation_rows": 487064370,
+    "author_work_institution_rows": 442695661,
+    "unmatched_valid_work_rows": 0
+  },
+  "orcid_token_diagnostics": {
+    "author_tokens_with_valid_orcid": 8324011,
+    "distinct_author_orcid_pairs": 8324011,
+    "stable_single_valid_orcid_author_tokens": 8324011,
+    "multiple_valid_orcid_author_tokens": 0,
+    "distinct_valid_orcids_on_stable_tokens": 8280813,
+    "shared_valid_orcids_across_stable_tokens": 35765,
+    "stable_author_tokens_on_shared_valid_orcids": 78963,
+    "maximum_stable_author_tokens_per_valid_orcid": 37
+  },
+  "institution_diagnostics": {
+    "distinct_institution_tokens": 103574,
+    "distinct_institution_field_year_pairs": 16099316
+  },
+  "stable_event_diagnostics": {
+    "event_rows_scanned": 779630258,
+    "stable_orcid_author_work_pairs": 347389013,
+    "stable_orcid_author_tokens_summed_within_field_year": 151701586,
+    "event_artifacts_rehashed": 4096,
+    "event_artifact_tree_sha256": "2b328d3172da8eb1a3e85178359201a821b46f74bc655aa148a1d2da42b26d21"
+  },
+  "field_year_inventory": {
+    "rows": 16758,
+    "field_count": 26,
+    "null_year_cells": 26,
+    "classified_raw_authorship_rows": 1009909471,
+    "classified_checksum_valid_orcid_rows": 392155419,
+    "classified_author_work_affiliation_rows": 449086849,
+    "classified_author_work_institution_rows": 409767672,
+    "stable_orcid_author_work_pairs": 347389013,
+    "stable_orcid_author_tokens_summed_within_field_year": 151701586,
+    "distinct_institution_field_year_pairs": 16099316,
+    "parquet_sha256": "f503b041b716024bff27a26a462da4bb4896e00c11d0c2ef4fd71042017a8429"
+  },
+  "source_binding": {
+    "selected_source_files": 1363,
+    "selected_source_bytes": 103412497044,
+    "selected_checkpoints_verified": 1363,
+    "current_exact_stat_verified_for_every_source_file": true,
+    "selected_source_content_rehashed_in_this_run": false,
+    "content_tree_sha256": "73bb8b0409c782ce5964d480ac6c6cecb04bab8c09df31999e581000b79ccff6",
+    "checkpoint_tree_sha256": "e509867989cec9dfd398221ee5d7abd69dc73fa7330acf9302413184d786bfef"
+  },
+  "independent_verification": {
+    "status": "PASS_INDEPENDENT_S0_AUTHORSHIP_ORCID_AFFILIATION_CONSERVATION_COAUTHOR_GRAPH_STILL_NOT_RUN",
+    "artifacts_rehashed": 4,
+    "output_receipt_sha256": "5aa234882dd2a310c68fb5b6d8dea9bba4282d901298cdafaa8dc3259807fba9",
+    "artifact_tree_sha256": "c7b85d571d68b825e7c4f31bb6ef9dd04570961f9913d1ab41c5f779326d9731",
+    "verification_report_basename": "pivot-feedback-s0-authorship-orcid-affiliation-v1-full-20260724.verification.json",
+    "verification_report_bytes": 1755,
+    "verification_report_sha256": "bd67c646c259f4fabc01bd7d4a93ff40955354192c5c13729add5ed5e2972824",
+    "verifier_sha256": "0c3ef39e56911931f00d58634555b5e45c921f1427a97d3fce0d6677f67118a0"
+  },
+  "provenance": {
+    "config_sha256": "a792355ab2afec5ecef7cdc10cc97a4721ed744e620a795ec7ddefbef0a30636",
+    "runner_sha256": "8ea504521dd754bf84fd403411f01e66a7fed5fc19a2dc81f2a12120ca8fdd61",
+    "result_fingerprint_sha256": "30ae846424e98351b7fd6aea625d180b5e9a3d9f4cecc0898e515b347f4c5700",
+    "producer_report_sha256": "02aec391ceb3b8caa33690dba6163bfb8f18f52365783eabfdcb28a918ecef57"
+  },
+  "gate_status": {
+    "g_minus_1a": "PASS_BOUNDED",
+    "s0_threshold_free_inventory": "PARTIAL_ORCID_AFFILIATION_PASS_COAUTHOR_GRAPH_NOT_RUN",
+    "d0_discovery_pilot": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "PENDING",
+    "model_fitting": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This full component establishes exact current-snapshot authorship-row ORCID syntax and checksum coverage, author-token to valid-ORCID multiplicity diagnostics, field-year counts of stable-token events, nonempty raw affiliation presence, grammar-valid institution presence, and distinct current-snapshot OpenAlex institution tokens. Stable token means exactly one distinct checksum-valid ORCID on an OpenAlex author token; it does not establish a natural person, ORCID ownership, or split/merge truth. Field-year stable-token and institution counts are summed within cells and are not global distinct-person counts. Historical identity and affiliation observability, candidate eligibility, coauthor topology, S0 completion, D0, G0, model fitting, empirical effects, causal effects, and a scientific effect remain unestablished, incomplete, unauthorized, pending, or not run."
+}

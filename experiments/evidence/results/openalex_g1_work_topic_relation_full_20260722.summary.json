@@ -1,0 +1,109 @@
+{
+  "schema_version": "openalex_g1_work_topic_relation_full_summary.v1",
+  "label": "openalex_g1_work_topic_relation_full_20260722",
+  "generated_at_utc": "2026-07-22T05:27:09Z",
+  "status": "BLOCKED_WORK_TOPIC_RELATION_COMPONENT",
+  "scope": {
+    "full_scope": true,
+    "selected_files": 1423,
+    "selected_footer_rows": 1420855753,
+    "selected_event_rows": 1420855752,
+    "selected_source_bytes": 166699471247,
+    "gpu_used": false,
+    "component_pass": false,
+    "downstream_promoted": false
+  },
+  "source_accounting": {
+    "main_raw_rows": 492293207,
+    "main_grammar_valid_rows": 492293206,
+    "main_quarantined_w_minus_1_rows": 1,
+    "main_w_zero_rows": 1,
+    "topic_raw_rows": 928562546,
+    "unexpected_malformed_work_rows": 0,
+    "topic_source_work_orphans": 0,
+    "duplicate_main_work_groups": 0
+  },
+  "edge_accounting": {
+    "unique_work_topic_edges": 928561783,
+    "duplicate_edge_groups": 714,
+    "duplicate_row_excess": 763,
+    "maximum_raw_edge_multiplicity": 3,
+    "score_conflict_edge_groups": 2,
+    "main_primary_nonnull_rows": 354145248,
+    "primary_child_present_rows": 354145248,
+    "primary_child_missing_rows": 0,
+    "main_primary_null_rows": 138147958,
+    "raw_unique_duplicate_conservation": true,
+    "primary_denominator_conserved": true
+  },
+  "score_conflicts": {
+    "policy": "BLOCK_WITHOUT_CHOOSING_FIRST_MAX_MEAN_OR_OTHER_VALUE",
+    "deduplicated_relation_artifact_status": "NOT_MATERIALIZED_SCORE_CONFLICT",
+    "conflict_samples": [
+      {
+        "work_numeric_id": 5401631,
+        "topic_numeric_id": 13112,
+        "first_score": 0.0805,
+        "last_score": 0.0806,
+        "relative_path": "openalex_works_20260330__topics/delta-12.parquet",
+        "file_rows": [527787, 527788],
+        "source_values_rechecked": true
+      },
+      {
+        "work_numeric_id": 26888826,
+        "topic_numeric_id": 10455,
+        "first_score": 0.7346,
+        "last_score": 0.7347,
+        "relative_path": "openalex_works_20260330__topics/delta-41.parquet",
+        "file_rows": [256211, 256212],
+        "source_values_rechecked": true
+      }
+    ]
+  },
+  "w0_structural_sensitivity": {
+    "status": "PASS_WORK_TOPIC_STRUCTURAL_SENSITIVITY_ONLY",
+    "ledger_conserved": true,
+    "w_zero_entity_validity": "UNRESOLVED",
+    "main_work_row_delta": 1,
+    "main_primary_null_row_delta": 1,
+    "all_nonnull_relation_metric_deltas": 0,
+    "scientific_or_panel_sensitivity_established": false
+  },
+  "gate_status": {
+    "work_topic_relation_component": "BLOCKED",
+    "duplicate_work_topic_audit": "PASS",
+    "raw_work_topic_edge_uniqueness": "FAIL_DUPLICATES_PRESENT",
+    "frozen_exact_score_dedup_view": "BLOCKED_SCORE_CONFLICT",
+    "primary_topic_child_inclusion": "PASS",
+    "w_zero_positive_id_structural_sensitivity": "PASS_COMPONENT_ONLY",
+    "g_minus_1_data_readiness": "PENDING",
+    "g0_measurement_freeze": "PENDING",
+    "empirical_g1_signature": "NOT_RUN",
+    "pass_g1": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "provenance": {
+    "config_sha256": "7e7d50f212e9738dfce5b437174cfecbfa76679e532a15e23d84ca88c5e0b7fc",
+    "tool_sha256": "5503ed01c80282fa118ae47f86901e6e5588f52e04c19a1c3646e86274622786",
+    "content_freeze_receipt_sha256": "082161a29bcd8fd79fd85e0bf6814a5c7950b97b847ea08056e17eebcd369a12",
+    "task_fingerprint_sha256": "edf3261950461461fc6f2a339c8d63899443b620b71aeb1aa254ed85dd940e9d",
+    "result_fingerprint_sha256": "ce13bc8aa2e07578c84c1f540d2f21f7e46b18189ddda12c963a2ccc154db6d5",
+    "checkpoint_tree_sha256": "8cac1795cf72a3d659d2526cfb3178e79328cbb26bf359e8e69e8463f88a645f",
+    "source_rich_stat_tree_sha256": "75cba06f919ee2a6a0931eb5a3e0c7ae3a923b6c54732657c6139880744dc314",
+    "relation_source_bridge_tree_sha256": "61e6324b8995614f63ba6f00e5617c0af07748857b762aa642dc90f5272f39a5",
+    "raw_event_sha256": "aac57e819b6b49a60a87759cf2c8abf4a3850ecee9defc14820ce7ebc2606cc1",
+    "sorted_event_sha256": "b714008803b49dca0e6c4d5f273aa458a20549b415185721b255492f99768623",
+    "report_sha256": "88aa8fa4d854e508c7e513b63f3240002a1ae19e25a1248ebf5e4fb2a08798f5",
+    "receipt_sha256": "7cf91e50a3934f783d278ae47b3764ec650b7d36c3625bfc4564da405a551507",
+    "receipt_artifacts_rehashed_exactly": 1430,
+    "receipt_artifact_bytes_rehashed": 68205416394,
+    "receipt_artifacts_all_exact": true,
+    "extra_or_missing_contract_artifacts": 0,
+    "independent_receipt_rehash_status": "PASS_INDEPENDENT_RECEIPT_ARTIFACT_REHASH",
+    "independent_rehash_imported_producer": false,
+    "output_directory_mode": "0700",
+    "output_file_mode": "0600",
+    "path_redacted": true
+  },
+  "claim_boundary": "This full result establishes exact current-snapshot work-topic multiplicity, source/work conservation, zero orphan topic-work groups, complete child inclusion for every retained non-null primary topic, and the bounded W0 structural delta. It does not pass the work-topic relation component because two duplicate edge groups carry different source scores, so the frozen exact-score set view was not materialized. The 714 duplicate groups and 763 excess rows are source-profile findings, not an estimated social mechanism. This result does not establish W0 entity validity, historical content identity, publication or cutoff-aware availability, author or candidate validity, G-1 or G0, empirical G1, final field selection, NABM effects, or a scientific effect."
+}

@@ -1,0 +1,371 @@
+schema_version: pivot_feedback_g0_prerequisite_closure_plan.v1
+label: pivot_feedback_g0_prerequisite_closure_plan_v1
+mode: VERSIONED_METADATA_ONLY_FOUR_WORKSTREAM_CLOSURE_PLAN_NO_EXECUTION
+status: PENDING_INDEPENDENT_VALIDATION_FOUR_WORKSTREAM_PLAN_NO_EXECUTION
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v50.yaml
+  sha256: bfbba47a5fd2b76c84941bfa741a16e40f5bb8ce89b25b334685760e1e45f375
+  required_schema_version: pivot_feedback_gate_state.v50
+  required_status: VALID_G0_V1_SUCCESSOR_SKELETON_COMPLETE_G0_NOT_READY_CLOSURE_PLAN_AUTHORIZED
+  required_fields:
+    gate_state.D0.complete: true
+    gate_state.G0.complete: false
+    authorization.g0_prerequisite_closure_plan: AUTHORIZED_METADATA_ONLY_NO_EXECUTION
+    authorization.g_minus_1_receipt_closure_execution: NOT_AUTHORIZED
+    authorization.holdout_access_seal_receipt_closure_execution: NOT_AUTHORIZED
+    authorization.g0_quantitative_choice_resolution_beyond_d0: NOT_AUTHORIZED
+    authorization.g0_required_section_completion: NOT_AUTHORIZED
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+immutable_g0_v1_skeleton:
+  relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v1.yaml
+  sha256: dc947df2f87220379401c43ea1914b48c71ed04ae474e5695003723d2c591590
+  required_schema_version: pivot_feedback_g0_measurement_freeze.v2
+  required_status: PENDING_G0_SUCCESSOR_SKELETON_TWO_D0_VALUES_SERIALIZED_NO_SEAL
+  required_fields:
+    lifecycle.pass_g0: false
+    g_minus_1_binding.state: PENDING
+    g_minus_1_binding.receipt_sha256: null
+    holdout_access_binding.state: PENDING
+    holdout_access_binding.receipt_sha256: null
+    resolution.resolved_measurement_count: 2
+    resolution.unresolved_quantitative_choice_count: 17
+    resolution.unresolved_required_section_count: 15
+    completion_contract.pending_contract_sealable: false
+  mutation_allowed: false
+
+readiness_inventory:
+  relative_path: experiments/configs/pivot_feedback_g0_readiness_inventory_v1.yaml
+  sha256: 85e9f5c1ffa25a516261d5756074a3ab0ef7dd893c6a00adb081449d5b72419d
+  required_schema_version: pivot_feedback_g0_readiness_inventory.v1
+  required_status: G0_NOT_READY_VERSIONED_SUCCESSOR_CONTRACT_REQUIRED
+  required_fields:
+    inventory_totals.quantitative_choices_still_unresolved: 17
+    inventory_totals.required_sections_freeze_ready: 0
+    readiness_decision.g0_freeze_ready: false
+  mutation_allowed: false
+
+gate_sequence:
+  relative_path: experiments/configs/pivot_feedback_gate_sequence_v1.yaml
+  sha256: 3a3a655234c4efb74a4900e65624c903176615cee19da760cd06b1416e3fd365
+  required_schema_version: pivot_feedback_gate_sequence.v1
+  required_status: VALID_PENDING_SUCCESSOR_IMPLEMENTATION
+  required_fields:
+    separation_rules.final_cutoff_panel_owner: G0_5
+    separation_rules.final_cutoff_panel_is_g_minus_1a_prerequisite: false
+    separation_rules.final_cutoff_panel_is_g0_prerequisite: false
+    completion_contract.config_alone_can_pass_g_minus_1a: false
+    completion_contract.config_alone_can_pass_g0: false
+  mutation_allowed: false
+
+legacy_g_minus_1_registry:
+  relative_path: experiments/configs/pivot_feedback_g_minus_1_readiness_v0.yaml
+  sha256: e5048af2d3cca3b1ff04bbecc1a6cbf5dcc6756bf29db995d3cefbe3a017f2be
+  required_schema_version: pivot_feedback_g_minus_1_readiness.v1
+  required_status: G_MINUS_1_PENDING
+  required_fields:
+    gate_state.pass_g_minus_1: false
+    gate_state.execution_authorized: false
+  mutation_allowed: false
+  may_be_promoted_or_rewritten: false
+
+passed_g_minus_1a_receipt:
+  summary:
+    relative_path: experiments/evidence/results/pivot_feedback_g_minus_1a_receipt_20260723.summary.json
+    sha256: 8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802
+    required_schema_version: pivot_feedback_g_minus_1a_receipt.v1
+    required_status: PASS_G_MINUS_1A_BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+    required_fields:
+      gate_id: G_MINUS_1A
+      authorization.legacy_g_minus_1: NOT_PASSED
+      authorization.g0_measurement_freeze: PENDING
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.scientific_effect: NOT_ESTABLISHED
+  config:
+    relative_path: experiments/configs/pivot_feedback_g_minus_1a_receipt_v1.yaml
+    sha256: be240ec0e06778973194fda772c398cb560b0ac7ff886ee583d34140d889e7bb
+    required_schema_version: pivot_feedback_g_minus_1a_receipt_config.v1
+    required_status_key: status_before_verification
+    required_status: READY_TO_VERIFY_BOUNDED_G_MINUS_1A
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_g_minus_1a_receipt_v1.py
+    sha256: b1971e35eb3a33dbb385073bd02536c87cb99f304114b33d619448dede9a0237
+
+lifecycle:
+  plan_status: PENDING_INDEPENDENT_VALIDATION
+  g0_v1_skeleton_mutated: false
+  legacy_g_minus_1_promoted: false
+  g_minus_1a_receipt_reissued: false
+  holdout_seal_contract_written: false
+  holdout_seal_receipt_issued: false
+  unresolved_values_changed: false
+  required_sections_completed: false
+  confirmatory_or_holdout_rows_read: false
+  api_requests_created_or_submitted: false
+  pass_g0: false
+  model_fitted: false
+  g4_open: false
+
+workstream_dag:
+  workstream_count: 4
+  order:
+    - G_MINUS_1_RECEIPT_CLOSURE
+    - HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE
+    - SEVENTEEN_QUANTITATIVE_CHOICE_PRECOMMITMENTS
+    - FIFTEEN_REQUIRED_SECTION_COMPLETION_CONTRACTS
+  dependencies:
+    G_MINUS_1_RECEIPT_CLOSURE: []
+    HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE: []
+    SEVENTEEN_QUANTITATIVE_CHOICE_PRECOMMITMENTS: []
+    FIFTEEN_REQUIRED_SECTION_COMPLETION_CONTRACTS:
+      - G_MINUS_1_RECEIPT_CLOSURE
+      - HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE
+      - SEVENTEEN_QUANTITATIVE_CHOICE_PRECOMMITMENTS
+  all_workstreams_currently_complete: false
+  plan_does_not_authorize_execution: true
+
+workstreams:
+  G_MINUS_1_RECEIPT_CLOSURE:
+    order: 10
+    current_state: PASSED_G_MINUS_1A_RECEIPT_EXISTS_LEGACY_G_MINUS_1_BINDING_INCOMPATIBLE
+    diagnostic:
+      g0_v1_expected_schema_version: pivot_feedback_g_minus_1_data_readiness_outputs.v1
+      g0_v1_expected_status: PASS_G_MINUS_1_DATA_READINESS
+      available_receipt_schema_version: pivot_feedback_g_minus_1a_receipt.v1
+      available_receipt_status: PASS_G_MINUS_1A_BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+      available_receipt_sha256: 8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802
+      legacy_registry_status: G_MINUS_1_PENDING
+      legacy_registry_can_pass: false
+      mismatch_class: CONTRACT_GENERATION_MISMATCH_NOT_EVIDENCE_ABSENCE
+    next_deliverable:
+      kind: VERSIONED_METADATA_ONLY_BINDING_RECONCILIATION_CONTRACT
+      relative_path: experiments/configs/pivot_feedback_g0_g_minus_1a_binding_reconciliation_v1.yaml
+      may_mutate_g0_v1: false
+      may_pass_legacy_g_minus_1: false
+      may_reissue_g_minus_1a_receipt: false
+      may_read_operator_or_row_data: false
+    acceptance_criteria:
+      - BIND_EXACT_EXISTING_G_MINUS_1A_RECEIPT_CONFIG_AND_VERIFIER_HASHES
+      - PRESERVE_CURRENT_SNAPSHOT_PROXY_AND_AUTHOR_TOKEN_CAVEATS
+      - STATE_LEGACY_G_MINUS_1_REMAINS_NOT_PASSED
+      - KEEP_FINAL_CUTOFF_PANEL_OWNED_BY_G0_5
+      - DEFINE_ONLY_A_FUTURE_VERSIONED_G0_SUCCESSOR_BINDING
+      - REQUIRE_INDEPENDENT_VALIDATION_AND_SUCCESSOR_GATE_BEFORE_G0_V2
+    execution_status: NOT_AUTHORIZED_PLAN_ONLY
+
+  HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE:
+    order: 20
+    current_state: NULL_BINDING_NO_VERSIONED_CONTRACT_OR_RECEIPT_BOUND
+    diagnostic:
+      expected_schema_version: pivot_feedback_holdout_access_seal_outputs.v1
+      expected_status: PASS_CONFIRMATORY_PARTITIONS_SEALED_AND_UNOPENED
+      receipt_relative_path: null
+      receipt_sha256: null
+      g4_partition_entry_years: [2020, 2021, 2022]
+      outcome_followup_through_year: 2025
+      g4_domain_and_author_cold: true
+    next_deliverable:
+      kind: VERSIONED_METADATA_ONLY_HOLDOUT_SEAL_CONTRACT
+      relative_path: experiments/configs/pivot_feedback_holdout_access_seal_v1.yaml
+      may_issue_or_open_seal: false
+      may_enumerate_or_hash_holdout_artifacts: false
+      may_read_confirmatory_or_holdout_rows: false
+    acceptance_criteria:
+      - SEPARATE_SEAL_CREATION_FROM_SEAL_OPENING
+      - FREEZE_PARTITION_YEARS_AND_DOMAIN_AUTHOR_COLD_RULE
+      - REQUIRE_ATOMIC_MANIFEST_AND_HASH_CLOSURE_BEFORE_ANY_CONFIRMATORY_READ
+      - REQUIRE_RECEIPT_WRITTEN_LAST_AND_INDEPENDENTLY_VERIFIED
+      - FAIL_CLOSED_ON_MISSING_CHANGED_OR_PREVIOUSLY_OPENED_ARTIFACT
+      - MAKE_SEAL_RECEIPT_NONAUTHORIZING_FOR_MODEL_FITTING_OR_G4_OPEN
+    execution_status: NOT_AUTHORIZED_PLAN_ONLY
+
+  SEVENTEEN_QUANTITATIVE_CHOICE_PRECOMMITMENTS:
+    order: 30
+    current_state: SEVENTEEN_VALUES_NULL_NO_RESOLUTION_AUTHORIZED
+    selection_boundary:
+      may_use_existing_d0_discovery_evidence: true
+      may_use_methodological_or_domain_standards_under_future_separate_contract: true
+      may_use_confirmatory_or_holdout_outcomes: false
+      may_change_confirmatory_periods: false
+      may_rank_or_select_fields_episodes_or_thresholds_by_effect: false
+      every_value_requires_source_rationale_and_failure_rule: true
+      every_value_requires_independent_validation: true
+    packages:
+      - package_id: MEASUREMENT_AND_PROXY_RULES
+        choice_ids:
+          - attention_surge_threshold
+          - public_success_threshold
+          - citation_maturation_lag_years
+          - negative_control_equivalence_margins
+        resolution_method: PRECOMMIT_FROM_D0_MEASUREMENT_BEHAVIOR_AND_DECLARED_PROXY_LIMITATIONS
+        current_values: [null, null, null, null]
+      - package_id: RISK_SET_WEIGHT_SUPPORT_AND_STABILITY
+        choice_ids:
+          - negative_sampling_ratio
+          - inverse_probability_weight_truncation
+          - minimum_cohort_size
+          - small_cell_suppression_threshold
+          - capacity_cell_support_threshold
+          - collinearity_threshold
+        resolution_method: PRECOMMIT_FROM_DESIGN_CAPACITY_PRIVACY_AND_NUMERICAL_STABILITY
+        current_values: [null, null, null, null, null, null]
+      - package_id: G1_REPLICATION
+        choice_ids:
+          - g1_replication_tolerance
+        resolution_method: PRECOMMIT_REPLICATION_DECISION_RULE_BEFORE_G1_ACCESS
+        current_values: [null]
+      - package_id: G2_PREDICTIVE_GATE
+        choice_ids:
+          - g2_score_margin
+          - g2_maximum_calibration_degradation
+          - g2_macro_trajectory_tolerance
+        resolution_method: PRECOMMIT_PREDICTIVE_ACCEPTANCE_RULES_BEFORE_MODEL_SELECTION
+        current_values: [null, null, null]
+      - package_id: G3_SIMULATION_GATE
+        choice_ids:
+          - simulation_draws_or_mcse_stopping_rule
+          - parameter_budget
+          - tuning_budget
+        resolution_method: PRECOMMIT_COMPUTATIONAL_PRECISION_AND_COMPLEXITY_BUDGETS
+        current_values: [null, null, null]
+    package_count: 5
+    choice_count: 17
+    resolved_value_count: 0
+    next_deliverable:
+      kind: FIVE_VERSIONED_PRECOMMITMENT_CONTRACTS
+      may_write_values_now: false
+      may_call_external_api_now: false
+      may_read_confirmatory_or_holdout_rows: false
+    execution_status: NOT_AUTHORIZED_PLAN_ONLY
+
+  FIFTEEN_REQUIRED_SECTION_COMPLETION_CONTRACTS:
+    order: 40
+    current_state: FIFTEEN_SECTIONS_NOT_FREEZE_READY
+    completion_boundary:
+      section_may_be_complete_without_bound_dependencies: false
+      all_acceptance_rules_must_be_machine_checkable: true
+      narrative_declaration_alone_is_sufficient: false
+      independent_validation_required: true
+    sections:
+      - section_id: population_and_author_eligibility
+        state: NOT_FREEZE_READY
+        depends_on: [G_MINUS_1_RECEIPT_CLOSURE]
+        required_closure: FREEZE_AUTHOR_TOKEN_ELIGIBILITY_AND_OPEN_WORLD_CAVEAT
+      - section_id: pivot_and_robustness_definitions
+        state: NOT_FREEZE_READY
+        depends_on: []
+        required_closure: ADD_SUBSTANTIVELY_DIFFERENT_ALTERNATIVE_PIVOT_AND_ROBUSTNESS_RULE
+      - section_id: topic_attention_and_surge
+        state: NOT_FREEZE_READY
+        depends_on: [MEASUREMENT_AND_PROXY_RULES]
+        required_closure: FREEZE_ATTENTION_SURGE_AND_OPTIONAL_PUBLIC_SUCCESS_APPLICATION
+      - section_id: temporal_availability_and_maturation
+        state: NOT_FREEZE_READY
+        depends_on:
+          - MEASUREMENT_AND_PROXY_RULES
+          - HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE
+        required_closure: FREEZE_PROXY_MATURATION_AND_HOLDOUT_ACCESS_BOUNDARY
+      - section_id: peer_exposure_and_source_assignment
+        state: NOT_FREEZE_READY
+        depends_on: [MEASUREMENT_AND_PROXY_RULES]
+        required_closure: FREEZE_TIME_ELIGIBLE_SUCCESS_PROXY_AND_SOURCE_ASSIGNMENT
+      - section_id: capacity_bridge_and_entry_mode
+        state: NOT_FREEZE_READY
+        depends_on: [RISK_SET_WEIGHT_SUPPORT_AND_STABILITY]
+        required_closure: FREEZE_SUPPORT_COLLINEARITY_AND_CHANNEL_COLLAPSE_RULES
+      - section_id: risk_set_sampling_and_weights
+        state: NOT_FREEZE_READY
+        depends_on: [RISK_SET_WEIGHT_SUPPORT_AND_STABILITY]
+        required_closure: FREEZE_SAMPLING_RATIO_WEIGHT_RULE_AND_TRUNCATION
+      - section_id: outcome_horizons_and_h3_timing
+        state: NOT_FREEZE_READY
+        depends_on: [MEASUREMENT_AND_PROXY_RULES]
+        required_closure: FREEZE_H3_COHORT_TIMING_ESTIMAND_AND_ESTIMATION_RULE
+      - section_id: negative_control_decision_gates
+        state: NOT_FREEZE_READY
+        depends_on: [MEASUREMENT_AND_PROXY_RULES]
+        required_closure: FREEZE_EQUIVALENCE_MARGINS_AND_PASS_FAIL_IMPLEMENTATION
+      - section_id: minimum_support_and_suppression
+        state: NOT_FREEZE_READY
+        depends_on: [RISK_SET_WEIGHT_SUPPORT_AND_STABILITY]
+        required_closure: FREEZE_COHORT_CELL_CAPACITY_AND_SUPPRESSION_THRESHOLDS
+      - section_id: partition_and_atomic_fold_resolution
+        state: NOT_FREEZE_READY
+        depends_on:
+          - G_MINUS_1_RECEIPT_CLOSURE
+          - HOLDOUT_ACCESS_SEAL_RECEIPT_CLOSURE
+        required_closure: BIND_G_MINUS_1A_COMPATIBILITY_HOLDOUT_SEAL_AND_ATOMIC_FOLDS
+      - section_id: estimators_and_uncertainty
+        state: NOT_FREEZE_READY
+        depends_on: [RISK_SET_WEIGHT_SUPPORT_AND_STABILITY]
+        required_closure: FREEZE_ESTIMATORS_CLUSTERING_INTERVALS_AND_FAILURE_RULES
+      - section_id: hierarchical_multiplicity
+        state: NOT_FREEZE_READY
+        depends_on: []
+        required_closure: SERIALIZE_AND_VALIDATE_H3_FIRST_HOLM_CONTRACT
+      - section_id: g2_predictive_gate
+        state: NOT_FREEZE_READY
+        depends_on: [G2_PREDICTIVE_GATE]
+        required_closure: FREEZE_SCORE_CALIBRATION_AND_MACRO_TRAJECTORY_RULES
+      - section_id: g3_simulation_gate
+        state: NOT_FREEZE_READY
+        depends_on: [G3_SIMULATION_GATE]
+        required_closure: FREEZE_MCSE_STOPPING_PARAMETER_AND_TUNING_BUDGETS
+    section_count: 15
+    freeze_ready_section_count: 0
+    next_deliverable:
+      kind: VERSIONED_SECTION_COMPLETION_MATRIX
+      may_mark_any_section_complete_now: false
+      may_pass_g0_now: false
+    execution_status: NOT_AUTHORIZED_PLAN_ONLY
+
+next_atomic_step:
+  workstream_id: G_MINUS_1_RECEIPT_CLOSURE
+  reason: EXISTING_PASSING_G_MINUS_1A_RECEIPT_MAKES_CONTRACT_RECONCILIATION_METADATA_ONLY_AND_ROW_FREE
+  deliverable_kind: VERSIONED_METADATA_ONLY_BINDING_RECONCILIATION_CONTRACT
+  intended_relative_path: experiments/configs/pivot_feedback_g0_g_minus_1a_binding_reconciliation_v1.yaml
+  execution_requires_successor_gate: true
+  actual_g0_v2_binding_change_authorized: false
+
+access_accounting_contract:
+  repository_documents_read: 9
+  operator_json_metadata_files_read: 0
+  operator_parquet_files_opened: 0
+  production_row_level_files_opened: 0
+  confirmatory_or_holdout_rows_read: 0
+  api_requests_created_or_submitted: 0
+  model_fitted: false
+  g4_open: false
+
+authorization:
+  plan_validation: AUTHORIZED_METADATA_ONLY
+  g_minus_1a_binding_reconciliation_contract: REQUIRES_SUCCESSOR_GATE
+  actual_g0_v2_binding_change: NOT_AUTHORIZED
+  legacy_g_minus_1_promotion: NOT_AUTHORIZED
+  holdout_seal_contract: REQUIRES_LATER_SUCCESSOR_GATE
+  holdout_seal_receipt_issuance_or_opening: NOT_AUTHORIZED
+  quantitative_choice_resolution: NOT_AUTHORIZED
+  required_section_completion: NOT_AUTHORIZED
+  confirmatory_or_holdout_access: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This metadata-only plan decomposes the four G0 blockers without executing
+  any closure. It identifies the first blocker as a contract-generation
+  mismatch: an exact passing G-1A receipt exists, while the immutable G0 v1
+  skeleton still expects a legacy G-1 schema that the acyclic gate design does
+  not pass. The plan therefore routes a versioned binding-reconciliation
+  contract and does not promote legacy G-1. It also specifies future holdout
+  seal, seventeen-choice precommitment, and fifteen-section completion
+  workstreams while leaving every current value, section, receipt, and gate
+  state unchanged. It reads no operator row data, opens no confirmatory or
+  holdout data, creates no API request, and establishes no G0 seal, model, G4
+  result, causality, or scientific effect.

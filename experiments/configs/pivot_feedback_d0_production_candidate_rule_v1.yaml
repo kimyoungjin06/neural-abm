@@ -1,0 +1,191 @@
+schema_version: pivot_feedback_d0_production_candidate_rule_config.v1
+label: pivot_feedback_d0_production_candidate_rule_v1
+mode: FREEZE_SIMPLE_CANDIDATE_RULE_AND_REGENERATE_ADAPTIVE_FRONTIER
+status: FROZEN_PRODUCTION_CANDIDATE_RULE_AND_FRONTIER_V2_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v15.yaml
+  sha256: e6fbecc32a4e9cc7af9d74e93d90eebfa854af05f3f119a0a88842cd66908c40
+  required_schema_version: pivot_feedback_gate_state.v15
+  required_status: VALID_CANDIDATE_CONTENT_DRY_RUN_COMPLETE_PRODUCTION_DISPOSITIONS_NOT_FROZEN_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_candidate_rule_accept_or_reject_decision: AUTHORIZED
+    authorization.d0_targeted_t10543_sampling_successor_design: AUTHORIZED
+    authorization.d0_raw_openalex_title_scan: NOT_AUTHORIZED
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.d0_candidate_content_dispositions: NOT_AUTHORIZED
+    authorization.d0_selection_certificate: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+frozen_inputs:
+  candidate_table:
+    root_basename: pivot-feedback-d0-measurement-abi-reselection-v1-full-20260724
+    basename: episode_candidates.parquet
+    sha256: c5588aef34381179b93785fd5dd3953f2ee7a982bf3d38cb71341eb49fe4e029
+    rows: 70277
+  dry_run:
+    config:
+      relative_path: experiments/configs/pivot_feedback_d0_candidate_content_dry_run_v1.yaml
+      sha256: 409c982bc53d06a7608c588efdbe05acf59c8a76d32abc18936da74abcf7f4e4
+    summary:
+      relative_path: experiments/evidence/results/pivot_feedback_d0_candidate_content_dry_run_20260729.summary.json
+      sha256: 228e40589ce7c2c5c77537ecbab6a299e20d556a8be0417ca6fe794799e1ade4
+      required_schema_version: pivot_feedback_d0_candidate_content_dry_run_summary.v1
+      required_status: PASS_INDEPENDENT_ZERO_COST_CANDIDATE_CONTENT_DRY_RUN
+    operator_root_basename: pivot-feedback-d0-candidate-content-dry-run-v1-20260729
+    candidate_basename: candidate_content_dry_run.parquet
+    candidate_sha256: 05add957bfb3524fc18b3b744eb6b5f4ea5f7889582c1f159f8c17ce7d516a9f
+    candidate_rows: 4
+    receipt_basename: candidate_content_dry_run.outputs.json
+    receipt_sha256: 33d997d5e5c938e3f166a2f187eba01ae0446e14aacc1bf9143aebce3d590ced
+    verification_report_basename: pivot-feedback-d0-candidate-content-dry-run-v1-20260729.verification-v1.json
+    verification_report_sha256: 69ce5a5d1c277b39b08e88b44e77ffac3ee3e44ca0e5d0a7765047f911d251d5
+
+production_rule:
+  accepted_without_change_from_dry_run: true
+  recent_windows: [1, 2]
+  recent_title_rows_per_candidate: 64
+  minimum_recent_rule_accept_lower_bound_fraction: 0.50
+  minimum_recent_rule_reject_lower_bound_fraction_for_semantic_fail: 0.50
+  indexing_anomaly_requires_all_signals: true
+  minimum_baseline_to_signal_median_primary_topic_score_drop: 0.15
+  minimum_baseline_to_signal_dominant_source_share_increase: 0.25
+  ambiguous_and_quarantined_count_as_accept: false
+  ambiguous_and_quarantined_count_as_reject: false
+  current_snapshot_rule_is_historical_semantic_ground_truth: false
+  api_labels_are_ground_truth: false
+  human_review_required: false
+
+production_candidate_dispositions:
+  - field_id: 17
+    field_candidate_rank: 1
+    topic_id: 14430
+    entry_year: 2003
+    content_state: CONTENT_PASS
+    disposition_reason: RECENT_RULE_ACCEPT_LOWER_BOUND_AT_OR_ABOVE_THRESHOLD
+  - field_id: 17
+    field_candidate_rank: 45
+    topic_id: 10579
+    entry_year: 2012
+    content_state: CONTENT_PASS
+    disposition_reason: RECENT_RULE_ACCEPT_LOWER_BOUND_AT_OR_ABOVE_THRESHOLD
+  - field_id: 27
+    field_candidate_rank: 1
+    topic_id: 12505
+    entry_year: 1991
+    content_state: CONTENT_FAIL
+    disposition_reason: JOINT_SCORE_DROP_AND_SOURCE_CONCENTRATION_SHIFT
+  - field_id: 27
+    field_candidate_rank: 6
+    topic_id: 12421
+    entry_year: 1953
+    content_state: CONTENT_PASS
+    disposition_reason: RECENT_RULE_ACCEPT_LOWER_BOUND_AT_OR_ABOVE_THRESHOLD
+
+frontier_v2:
+  minimum_entry_year_separation: 9
+  require_distinct_subfield_ids: true
+  fields:
+    17:
+      frontier_rows: 45
+      content_pass_rows: 2
+      content_fail_rows: 0
+      content_unresolved_rows: 0
+      not_evaluated_rows: 43
+      field_selection_certificate_issued: true
+      selected_candidate_ranks: [1, 45]
+      selected_topic_ids: [14430, 10579]
+    27:
+      frontier_rows: 6
+      content_pass_rows: 1
+      content_fail_rows: 1
+      content_unresolved_rows: 1
+      not_evaluated_rows: 3
+      field_selection_certificate_issued: false
+      required_next_candidate_rank: 2
+      required_next_topic_id: 10543
+      required_next_entry_year: 1993
+      later_compatible_pass_rank_under_rank_2_pass_branch: 6
+  total_frontier_rows: 51
+  total_content_pass_rows: 3
+  total_content_fail_rows: 1
+  total_content_unresolved_rows: 1
+  total_not_evaluated_rows: 46
+  field_certificates_issued: 1
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+
+targeted_successor:
+  exact_field_id: 27
+  exact_field_candidate_rank: 2
+  exact_topic_id: 10543
+  exact_topic_name: Prostate Cancer Treatment and Research
+  exact_entry_year: 1993
+  exact_subfield_id: 2740
+  exact_subfield_name: Pulmonary and Respiratory Medicine
+  sample_algorithm: SHA256_LOWEST_BY_CANDIDATE_AND_WINDOW
+  sample_seed: pivot-feedback-d0-candidate-content-v1
+  rows_per_window: 32
+  total_rows: 96
+  window_definitions:
+    0: publication_year <= 1986
+    1: 1987 <= publication_year <= 1989
+    2: 1990 <= publication_year <= 1992
+  normalized_work_and_author_linkage_scan_required: true
+  exact_96_id_title_lookup_in_current_snapshot_required: true
+  full_candidate_universe_title_copy_required: false
+  topic_card_required_before_local_routing: true
+  local_routing_required_before_api_decision: true
+
+output_contract:
+  root_basename: pivot-feedback-d0-production-candidate-rule-v1-20260729
+  dispositions_basename: production_candidate_dispositions.parquet
+  frontier_basename: adaptive_candidate_frontier_v2.parquet
+  report_basename: PRODUCTION_CANDIDATE_RULE_AND_FRONTIER_V2.md
+  receipt_basename: production_candidate_rule.outputs.json
+  receipt_schema_version: pivot_feedback_d0_production_candidate_rule_outputs.v1
+  status: PASS_PRODUCTION_CANDIDATE_RULE_FROZEN_FRONTIER_V2_TARGETED_SAMPLE_REQUIRED
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+execution_boundary:
+  new_titles_read: false
+  raw_openalex_main_table_read: false
+  network_accessed: false
+  credentials_accessed: false
+  api_requests_created: false
+  api_requests_submitted: false
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  outcomes_read: false
+
+authorization:
+  production_candidate_rule_freeze: AUTHORIZED
+  four_production_candidate_dispositions: AUTHORIZED
+  adaptive_frontier_v2_materialization: AUTHORIZED
+  computer_science_field_certificate: AUTHORIZED
+  targeted_t10543_sample_successor_contract: AUTHORIZED
+  targeted_t10543_local_sample_execution: NOT_AUTHORIZED_UNTIL_V16_GATE
+  general_raw_openalex_title_scan: NOT_AUTHORIZED
+  new_api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+  global_selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  author_panel_rebuild: NOT_AUTHORIZED
+  pivot_classification: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract accepts the simple predeclared candidate aggregation rule and
+  freezes four production candidate dispositions without human review or API
+  labels as ground truth. It certifies only the Computer Science field pair.
+  Medicine rank 2 T10543 remains CONTENT_UNRESOLVED and blocks the global
+  certificate. Only a versioned v16 gate may authorize the exact 96-title
+  targeted local sample. General raw scans, full title copies, API requests,
+  global certification, deterministic reselection, outcomes, fitting, G4, and
+  scientific effects remain unauthorized or not established.

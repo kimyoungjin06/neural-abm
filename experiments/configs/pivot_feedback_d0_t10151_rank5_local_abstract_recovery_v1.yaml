@@ -1,0 +1,94 @@
+schema_version: pivot_feedback_d0_t10151_rank5_local_abstract_recovery_config.v1
+label: pivot_feedback_d0_t10151_rank5_local_abstract_recovery_v1
+mode: EXACT_16_ID_LOCAL_OPENALEX_ABSTRACT_RECOVERY_NO_SEMANTIC_LABELS
+status: FROZEN_EXACT_16_LOCAL_ABSTRACT_RECOVERY_AUTHORIZED
+
+gate_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v30.yaml
+  sha256: da5f070379d672dd4e2f437b3ef5a196e2f1a018c51d1f4b31081b06bc40f216
+  required_schema_version: pivot_feedback_gate_state.v30
+  required_status: VALID_RANK5_LOCAL_ABSTRACT_RECOVERY_AND_FIVE_ROW_DUAL_HIGH_REVIEW_AUTHORIZED
+  required_fields:
+    frozen_unresolved_input.selected_rows: 16
+    frozen_unresolved_input.sorted_openalex_ids_sha256: 9c9f8bd705ead4a68dcd59ac141557158384bbcde49189ae351d25ab2d036633
+    abstract_eligibility_contract.expected_reconstructable_rows: 6
+    abstract_eligibility_contract.expected_eligible_review_rows: 5
+    authorization.d0_rank5_exact_local_abstract_id_scan: AUTHORIZED_READ_ONLY
+    authorization.d0_rank5_selected_local_abstract_value_read: AUTHORIZED_EXACT_16_ONLY
+    authorization.d0_rank5_production_disposition: NOT_AUTHORIZED_UNTIL_RESULT_INDEPENDENTLY_VERIFIED_AND_SUCCESSOR_GATE
+
+source_inputs:
+  decisions:
+    root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v3-results-20260730
+    basename: rank5_cross_provider_decisions.csv
+    sha256: 0c136465cb5602a34d2367c988683967c68eb4726b92973b898f56f9a48b82b9
+    rows: 25
+    selected_route: API_REMAINS_UNRESOLVED
+    selected_rows: 16
+    sorted_openalex_ids_sha256: 9c9f8bd705ead4a68dcd59ac141557158384bbcde49189ae351d25ab2d036633
+  sample:
+    root_basename: pivot-feedback-d0-t10151-rank5-targeted-title-sample-v1-20260729
+    basename: t10151_rank5_targeted_title_sample.parquet
+    sha256: 23c06acbf465ac85d3cfba431fd994a02cd73054f38d5baad25dce0fc568d0f2
+    schema_version: pivot_feedback_d0_t10151_rank5_targeted_title_sample.v1
+    rows: 96
+
+openalex_source:
+  root_env: OPENALEX_DERIVED_ROOT
+  required_root_id: openalex_works_20260330_repairreplay_20260410_190630
+  table_directory: openalex_works_20260330__excepted__abstract_inverted_index
+  expected_parquet_files: 493
+  expected_footer_rows: 492293207
+  required_columns: [id, value]
+  allowed_filename_pattern: '^(?:base|delta|repair)-[0-9]+[.]parquet$'
+  full_scan_columns: [id]
+  selected_row_group_columns: [id, value]
+  full_value_column_scan: false
+  reconstruction_reference:
+    path: /home/kimyoungjin06/Desktop/Workspace/1.1.1.KISTI_DB_Manager/KISTI_DB_Manager/openalex_abstract.py
+    sha256: e25ec277189b9d1b723d1aea4fd0947cee1bd9f556d1eebc8c66fb1e4ea9cde2
+    function: reconstruct_abstract_text
+
+eligibility:
+  minimum_whitespace_words: 20
+  maximum_position_collisions: 0
+  expected:
+    source_rows_found: 16
+    reconstructable_rows: 6
+    eligible_review_rows: 5
+    missing_rows: 10
+    fragment_rows: 1
+  states:
+    - ELIGIBLE_ABSTRACT_REVIEW
+    - NO_LOCAL_ABSTRACT
+    - FRAGMENT_UNUSABLE
+  semantic_labels_created: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-t10151-rank5-local-abstract-recovery-v1-20260730
+  parquet_basename: rank5_local_abstract_recovery.parquet
+  availability_basename: rank5_local_abstract_availability.csv
+  report_basename: LOCAL_ABSTRACT_RECOVERY.md
+  receipt_basename: local_abstract_recovery.outputs.json
+  artifact_mode: "0600"
+  root_mode: "0700"
+
+authorization:
+  network_access: false
+  credentials_access: false
+  provider_calls: 0
+  human_review: NOT_RUN_BY_DESIGN
+  local_semantic_labels: 0
+  production_disposition: NOT_AUTHORIZED
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: false
+  model_fitting: false
+  g4_open: false
+
+claim_boundary: >-
+  This contract recovers only the local OpenAlex abstract payloads attached to
+  the exact sixteen previously unresolved work IDs. Mechanical availability
+  and length eligibility are not semantic labels. No network, credential,
+  provider, human, production, certificate, outcome, fitting, G4, or
+  scientific-effect action is authorized.

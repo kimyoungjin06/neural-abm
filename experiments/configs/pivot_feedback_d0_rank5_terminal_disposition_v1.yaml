@@ -1,0 +1,146 @@
+schema_version: pivot_feedback_d0_rank5_terminal_disposition_config.v1
+label: pivot_feedback_d0_rank5_terminal_disposition_v1
+mode: FREEZE_RANK5_CONTENT_UNRESOLVED_CUMULATIVE_EIGHT_AND_TERMINAL_FRONTIER_V6
+status: FROZEN_RANK5_CONTENT_UNRESOLVED_TERMINAL_CERTIFICATE_BLOCK_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v25.yaml
+  sha256: 1811fd6a7eb1ad278827d24672f1b1686f44050cf664b6e2f7f4c5b852fbfa7e
+  required_schema_version: pivot_feedback_gate_state.v25
+  required_status: VALID_MEDICINE_RANK5_UNRESOLVED_VERIFIED_TERMINAL_FRONTIER_V6_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_rank5_production_content_disposition: AUTHORIZED_CONTENT_UNRESOLVED_ONLY
+    authorization.d0_cumulative_eight_production_dispositions: AUTHORIZED
+    authorization.d0_adaptive_frontier_v6_terminal_materialization: AUTHORIZED
+    authorization.d0_terminal_certificate_status_materialization: AUTHORIZED_BLOCKED_ONLY
+    authorization.d0_selection_certificate: NOT_AUTHORIZED_REQUIRED_CONTENT_UNRESOLVED
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+selection_contract:
+  relative_path: experiments/configs/pivot_feedback_d0_adaptive_candidate_frontier_v1.yaml
+  sha256: 154b9f831ebe1549ea747afe701a00c90703e86fbe7966cd67cb51ae8787f72d
+  required_schema_version: pivot_feedback_d0_adaptive_candidate_frontier_config.v1
+  content_unresolved_is_pass: false
+  unresolved_required_row_blocks_certificate: true
+  mutation_allowed: false
+
+frozen_inputs:
+  rank4_production:
+    root_basename: pivot-feedback-d0-rank4-production-disposition-v1-20260729
+    dispositions_basename: cumulative_production_candidate_dispositions_v4.parquet
+    dispositions_sha256: 4e3e23c1d8f28096a3a56375ac20e089b26b7592f6846a650b41208240107d4a
+    disposition_rows: 7
+    frontier_basename: adaptive_candidate_frontier_v5.parquet
+    frontier_sha256: 8a567471f7995a85bb2ab75114b8abf2bc4ddd13a5d2b52ab5f0f066b800d3cb
+    frontier_rows: 51
+    receipt_basename: rank4_production_disposition.outputs.json
+    receipt_sha256: 1af06a789217a5486eaaadc74993f4725356cb0b25848966eaf6505caee425c4
+  rank5_dry_run:
+    root_basename: pivot-feedback-d0-t10151-rank5-local-routing-v1-20260729
+    candidate_basename: t10151_rank5_candidate_rule_v2_dry_run.parquet
+    candidate_sha256: b1ef2f91f073ebff3ed941f2d37b4265f65991707417e6ab04fee0ab695eb877
+    candidate_rows: 1
+    receipt_basename: t10151_rank5_local_routing.outputs.json
+    receipt_sha256: d5aacf69a8a045601b756442f59256e2eb420770b1ce1adb74fe67c304825952
+    verification_basename: pivot-feedback-d0-t10151-rank5-local-routing-v1-20260729.verification-v1.json
+    verification_sha256: 9d86c649ddee93be978dccb5401d07ccb8cfccd5830dd856f5490c61e8e97e15
+
+rank5_production_disposition:
+  field_id: 27
+  field_candidate_rank: 5
+  topic_id: 10151
+  entry_year: 1993
+  content_state: CONTENT_UNRESOLVED
+  disposition_reason: CONSERVATIVE_RECENT_EVIDENCE_NOT_DECISIVE
+  source_rule_state: WOULD_CONTENT_UNRESOLVED
+  production_rule_version: candidate_rule_v2
+  post_diagnostic_amendment_used: false
+  human_review_used: false
+  api_labels_used_as_ground_truth: false
+
+frontier_v6:
+  fields:
+    17:
+      frontier_rows: 45
+      content_pass_rows: 2
+      content_fail_rows: 0
+      content_unresolved_rows: 0
+      not_evaluated_rows: 43
+      field_selection_certificate_issued: true
+      selected_candidate_ranks: [1, 45]
+    27:
+      frontier_rows: 6
+      content_pass_rows: 1
+      content_fail_rows: 4
+      content_unresolved_rows: 1
+      not_evaluated_rows: 0
+      field_selection_certificate_issued: false
+      blocking_candidate_rank: 5
+      blocking_topic_id: 10151
+      blocking_content_state: CONTENT_UNRESOLVED
+      deferred_later_content_pass_rank: 6
+  total_frontier_rows: 51
+  total_content_pass_rows: 3
+  total_content_fail_rows: 4
+  total_content_unresolved_rows: 1
+  total_not_evaluated_rows: 43
+  field_certificates_issued: 1
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+
+terminal_certificate_status:
+  status: BLOCKED_REQUIRED_RANK5_CONTENT_UNRESOLVED
+  computer_science_field_certificate_issued: true
+  computer_science_selected_candidate_ranks: [1, 45]
+  medicine_field_certificate_issued: false
+  medicine_blocking_candidate_rank: 5
+  medicine_blocking_topic_id: 10151
+  medicine_blocking_state: CONTENT_UNRESOLVED
+  medicine_later_pass_rank: 6
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  resolution_requires_new_authorization: true
+  authorized_resolution_path: NONE
+
+output_contract:
+  root_basename: pivot-feedback-d0-rank5-terminal-disposition-v1-20260729
+  dispositions_basename: cumulative_production_candidate_dispositions_v5.parquet
+  frontier_basename: adaptive_candidate_frontier_v6.parquet
+  certificate_status_basename: terminal_selection_certificate_status.json
+  report_basename: RANK5_TERMINAL_DISPOSITION_AND_CERTIFICATE_STATUS.md
+  receipt_basename: rank5_terminal_disposition.outputs.json
+  receipt_schema_version: pivot_feedback_d0_rank5_terminal_disposition_outputs.v1
+  status: PASS_RANK5_CONTENT_UNRESOLVED_TERMINAL_CERTIFICATE_BLOCK_FROZEN
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+authorization:
+  rank5_content_unresolved_disposition: AUTHORIZED
+  cumulative_eight_production_dispositions: AUTHORIZED
+  adaptive_frontier_v6_terminal_materialization: AUTHORIZED
+  blocked_certificate_status_materialization: AUTHORIZED
+  new_candidate_evaluation: NOT_AUTHORIZED
+  topic_card_amendment: NOT_AUTHORIZED
+  new_title_extraction: NOT_AUTHORIZED
+  raw_title_scan: NOT_AUTHORIZED
+  new_api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  production_pivot_classification: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract freezes the rank-5 CONTENT_UNRESOLVED disposition, the
+  cumulative eight-disposition table, frontier v6, and an explicit blocked
+  certificate status. It does not issue a Medicine or global certificate and
+  does not treat unresolved as failure or pass. No new candidate, card
+  amendment, title, API request, reselection, outcome, fit, G4, semantic truth,
+  historical topic validation, or scientific effect is authorized.

@@ -1,0 +1,122 @@
+{
+  "availability_accounting": {
+    "edge_available_at_field": "citing_work_publication_date",
+    "historical_openalex_graph_established": false,
+    "openalex_observation_time_established": false,
+    "raw_pair_rows_with_available_at": 3041631144,
+    "raw_pair_rows_without_available_at": 905016,
+    "resolution": "BIBLIOGRAPHIC_EVENT_TIME_CONVENTION"
+  },
+  "chronology_sensitivity_unique_pairs": {
+    "annual_only": 2868135526,
+    "primary_zero_day": 2858679472,
+    "tolerance_30_days": 2860562436,
+    "tolerance_365_days": 2871494133
+  },
+  "claim_boundary": "A full PASS establishes exact current-byte reference-source accounting, exact directed-pair deduplication, the frozen seven-bucket chronology classification, open-world target accounting, and current-snapshot proxy partitions whose available_at value is the citing work publication date. This bibliographic event time is not evidence of when OpenAlex first observed an edge or when a researcher could see it. The component does not reconstruct a historical graph, resolve external-target chronology, choose a fixed-horizon outcome, establish author or candidate validity, materialize a cutoff panel, establish G-1 or G0, run empirical G1, fit an NABM, or establish a scientific effect.",
+  "exclusive_pair_buckets": {
+    "negative_lag_target_after_source": 39470296,
+    "positive_lag": 2852859152,
+    "same_day": 5820320,
+    "self_loop": 1072993,
+    "source_temporal_unusable": 903389,
+    "target_external_open_world": 137937261,
+    "target_temporal_unusable": 4472749
+  },
+  "gate_status": {
+    "citation_chronology": "PASS_CURRENT_SNAPSHOT_RETROSPECTIVE_PROXY_ONLY",
+    "cutoff_panel": "PENDING_NOT_IN_THIS_COMPONENT",
+    "g0_measurement_freeze": "PENDING",
+    "g_minus_1_data_readiness": "PENDING",
+    "historical_graph_reconstruction": "RETROSPECTIVE_PROXY_ONLY",
+    "openalex_first_observed_time": "UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT",
+    "outcome_blind_field_structure": "PENDING_NOT_IN_THIS_COMPONENT",
+    "pass_g1": false,
+    "representative_discovery_pilot": "PENDING_NOT_IN_THIS_COMPONENT",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "independent_verification": {
+    "full_artifact_hash_verification": true,
+    "full_chronology_safe_row_scan": true,
+    "full_deduplicated_row_scan": true,
+    "output_tree_unchanged": true,
+    "producer_imported": false,
+    "status": "PASS_INDEPENDENT_FULL_ARTIFACT_AND_ROW_LEVEL_CITATION_CHRONOLOGY_VERIFICATION",
+    "verification_report_sha256": "41f33c032282e465294baf2865584c82cf0e277cc0f56f987eb0122260c60f04",
+    "verifier_sha256": "c906edfceba7fa133d5556acfb6b7224f8c075a17663d0c80f5a451910a26cfc"
+  },
+  "pair_accounting": {
+    "chronology_safe_primary_pairs": 2858679472,
+    "distinct_external_target_ids": 23589745,
+    "distinct_in_snapshot_target_ids": 112406279,
+    "distinct_valid_target_ids": 135996024,
+    "duplicate_pair_groups": 0,
+    "duplicate_pair_row_excess": 0,
+    "maximum_pair_multiplicity": 1,
+    "raw_pair_rows": 3042536160,
+    "raw_self_loop_rows": 1072993,
+    "unique_external_target_pairs": 138015847,
+    "unique_in_snapshot_target_pairs": 2904520313,
+    "unique_pair_rows": 3042536160,
+    "unique_pairs_with_available_at": 3041631144,
+    "unique_pairs_without_available_at": 905016,
+    "unique_self_loop_pairs": 1072993
+  },
+  "parent_evidence": {
+    "canonical_receipt_sha256": "2760b3aa5c5960d9356cc30339338418ff9000ab22e9c4b94caf82f6216f9aa1",
+    "canonical_result_fingerprint_sha256": "58492b9182d9b213c0616ce5d29d69bd82714167f57619885dc013dd0219144d",
+    "canonical_spine_data_tree_sha256": "a5e14799ed8da2366c126219ba79e6b83b07ed605cb1270e17494f5cfb70975d",
+    "content_receipt_sha256": "082161a29bcd8fd79fd85e0bf6814a5c7950b97b847ea08056e17eebcd369a12",
+    "temporal_receipt_sha256": "2908087fc6c96f2aadfdfb08774ed8c3cd54dd38bd54d4e12b1831e7d863ddfe"
+  },
+  "partition_products": {
+    "chronology_safe_edge_manifest": {
+      "partition_count": 4096,
+      "partition_tree_sha256": "b7df63533d4f11dd83dc071f1e68f77cedaaaea27a6000943c82c88262c6f6cf",
+      "rows": 2858679472
+    },
+    "deduplicated_edge_manifest": {
+      "partition_count": 4096,
+      "partition_tree_sha256": "e17eaf6f36ff76091b2b00fc4ec73300dd06b2eba509f0315d7dde9ad276e901",
+      "rows": 3042536160
+    }
+  },
+  "production_surface": {
+    "artifact_bytes": 49118338001,
+    "artifact_count": 19438,
+    "artifact_tree_sha256": "2c26cd80990a270b1fb1fd5780f1eab253a29f2c4f5f9e01ee878f630e13184d",
+    "completion_contract": "RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED",
+    "operator_paths_redacted": true,
+    "output_receipt_sha256": "fbe753c84ceb3858a06c627f318eb756e997f73577498b06a5e88f72cacabe76"
+  },
+  "provenance": {
+    "config_sha256": "735239ecd2194ec60542c7c5b6e5e15f4634ee9e8d0449b244daf261df58414b",
+    "report_sha256": "8c36ba3802893c2149ef093375639890f719d5b964689268f227bb877d7089c3",
+    "result_fingerprint_sha256": "0dded429cc69a6b6339540c592fa7c43656438c5631148e52d38ab2f82d82a7c",
+    "task_fingerprint_sha256": "7cc536e848ca06905ee4ca648fb13c86ac04a4e0b9a80703bacc2207116e086b",
+    "tool_sha256": "b332319fa1da4a1b7cbf4f68cd6a200292d129bfb12bac210df50aac8f37b0a4"
+  },
+  "schema_version": "openalex_g1_citation_chronology_production_full_summary.v1",
+  "scope": {
+    "execution_scope": "FULL_CURRENT_SNAPSHOT_PRODUCTION",
+    "full_scope": true,
+    "gpu_used": false,
+    "production_component_pass": true,
+    "reference_source_bytes": 37119669321,
+    "reference_source_files": 3044,
+    "reference_source_rows": 3042536160
+  },
+  "source_accounting": {
+    "malformed_source_rows": 0,
+    "malformed_target_rows": 0,
+    "null_source_rows": 0,
+    "null_target_rows": 0,
+    "raw_external_target_rows": 138015847,
+    "raw_in_snapshot_target_rows": 2904520313,
+    "source_w_minus_1_rows": 0,
+    "source_w_zero_rows": 0,
+    "target_w_minus_1_rows": 0,
+    "target_w_zero_rows": 0
+  },
+  "status": "PASS_CURRENT_SNAPSHOT_CITATION_EDGE_CHRONOLOGY_ACCOUNTING_WITH_CANONICAL_TEMPORAL_V3_PARENT_AND_BIBLIOGRAPHIC_EVENT_TIME_CONVENTION_LIMITATION"
+}

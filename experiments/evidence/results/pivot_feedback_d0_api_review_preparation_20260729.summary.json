@@ -1,0 +1,62 @@
+{
+  "schema_version": "pivot_feedback_d0_api_review_preparation_summary.v2",
+  "generated_at_utc": "2026-07-29T03:39:55+00:00",
+  "status": "PASS_INDEPENDENT_D0_API_ASSISTED_REVIEW_INPUT_VERIFICATION_NOT_SUBMITTED",
+  "producer": {
+    "script": "scripts/prepare_pivot_feedback_d0_api_review_v2.py",
+    "script_sha256": "f8dacf1882f501a72fc17f51e911722db36f221feca2afb5fe5f17c08dd3cd09",
+    "verifier": "scripts/verify_pivot_feedback_d0_api_review_preparation_v2.py",
+    "verifier_sha256": "462680fa9304a88ac0bba19458d6db6e455ad5e17e2d0bae7d64d365bdf08db7",
+    "config": "experiments/configs/pivot_feedback_d0_api_assisted_review_v2.yaml",
+    "config_sha256": "1c1546ff86d54c74b96eb5e6cf73a5653883cafbc5c88155607e86b3872251b7"
+  },
+  "source": {
+    "content_audit_root_basename": "pivot-feedback-d0-content-indexing-audit-v1-full-20260724",
+    "content_audit_receipt_sha256": "86be1808a3272ba7a892d8aa90f4d3687f0d253474d1b4470dad1940e4ff5280",
+    "review_template_sha256": "9fe7a70a7e7e839c3272a5d146b48674dd248932491595dc7bf8c124e9e2e6d9",
+    "review_template_rows": 384
+  },
+  "output": {
+    "root_basename": "pivot-feedback-d0-api-review-v2-prepared-20260729",
+    "receipt_sha256": "01186d0d4804a35ff32f63b55f5ac9ef5c17d473cf4bdd2cd8a35aeb78d27373",
+    "artifact_tree_sha256": "3dd28d0bfe752515f09b0d171da7abfd4827c9136fe36379bb2199395bcaeb96",
+    "artifact_count": 8,
+    "judge_a_requests_sha256": "9b9c05a3743e8113ac0824f18bcc7bb3246c5db23b204f20ac9c3e2101fb32b6",
+    "judge_b_requests_sha256": "aba08e458a78af485ab934e81960f25180c6a1d5453ae2968accc731c841c57e",
+    "human_calibration_reviewer_1_sha256": "34d0fd2cb753e6dcc9494ad8121a43cf2d510cf9afb81826b49252dc56df2123",
+    "human_calibration_reviewer_2_sha256": "a70cc6cb0a7e45589edc764a6133706f24af6097edcc52c97e12d07885462873",
+    "request_rows_per_judge": 384,
+    "total_request_rows": 768,
+    "calibration_rows": 96,
+    "calibration_strata": 12
+  },
+  "independent_verification": {
+    "report_basename": "pivot-feedback-d0-api-review-v2-prepared-20260729.verification-v2.json",
+    "report_sha256": "f216da2a1c6bccdf70588c1227d850c0f2e6d62fb0f38b8e1574208698f33fe3",
+    "request_content_exact_match": true,
+    "request_visible_fields_exact_match": true,
+    "request_bodies_contain_forbidden_fields": false,
+    "calibration_packets_exact_match": true,
+    "calibration_key_exact_match": true,
+    "producer_module_imported": false
+  },
+  "scope": {
+    "batch_requests_prepared": true,
+    "api_submitted": false,
+    "api_responses_received": false,
+    "human_calibration_complete": false,
+    "candidate_universe_screen_complete": false,
+    "episode_3_quarantined": true,
+    "remaining_episodes_promoted": false,
+    "old_author_panel_current": false,
+    "d0_complete": false,
+    "discovery_outcome_opening_authorized": false,
+    "g0_authorized": false,
+    "model_fitting_authorized": false,
+    "g4_open": false,
+    "outcomes_read": false,
+    "gpu_used": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "Two pinned-model, outcome-blind Batch API input files and two blinded 96-row human calibration packets were generated and independently reconstructed from the frozen 384-row source template. No API request was submitted, no API response was received, and no human calibration was performed. Preparation does not complete D0, authorize the complete-candidate-universe screen, promote an episode, open outcomes, or establish an empirical, causal, mechanism, or scientific effect."
+}

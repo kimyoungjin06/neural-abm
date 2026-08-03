@@ -1,0 +1,177 @@
+schema_version: pivot_feedback_d0_candidate_content_dry_run_config.v1
+label: pivot_feedback_d0_candidate_content_dry_run_v1
+mode: ZERO_COST_CANDIDATE_LEVEL_AGGREGATION_WITHOUT_PRODUCTION_DISPOSITIONS
+status: FROZEN_ZERO_COST_CANDIDATE_CONTENT_DRY_RUN_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v14.yaml
+  sha256: dee4ce5e193051d25025b9120cf46cab617f208f01309594dbe58dd39b52ee58
+  required_schema_version: pivot_feedback_gate_state.v14
+  required_status: VALID_ADAPTIVE_FRONTIER_PROOF_COMPLETE_CONTENT_DISPOSITIONS_NOT_RUN_OUTCOMES_FAIL_CLOSED
+  mutation_allowed: false
+
+frozen_inputs:
+  title_sample:
+    root_basename: pivot-feedback-d0-content-indexing-audit-v1-full-20260724
+    basename: content_review_sample.parquet
+    sha256: b14942ec2ca6628fd9a421c58cde4105610deb640eb407178eacdb661cf7f427
+    schema_version: pivot_feedback_d0_content_review_sample.v1
+    rows: 384
+    receipt_basename: content_indexing_audit.outputs.json
+    receipt_sha256: 86be1808a3272ba7a892d8aa90f4d3687f0d253474d1b4470dad1940e4ff5280
+  local_title_routes:
+    root_basename: pivot-feedback-d0-api-only-topic-routing-v1-dry-run-20260729
+    basename: topic_routing_decisions.csv
+    sha256: 147c2e3f5b9708f83f17cc8119708fa44ca26075a99a505d482297d7674d8668
+    rows: 384
+    receipt_basename: topic_routing_dry_run.outputs.json
+    receipt_sha256: 15a1519d5a32882826847bb3aeded0b21f5e3257c9fb29a38da15adb9c93b7d5
+    prior_api_columns_used_for_rule: false
+  candidate_window_scope:
+    root_basename: pivot-feedback-d0-candidate-screen-scope-audit-v1-20260729
+    basename: candidate_window_scope.parquet
+    sha256: d530d6f73f47240ce9e3ad19c813722cac35062dcd0adf09e87a825911449f9c
+    schema_version: pivot_feedback_d0_candidate_window_scope.v1
+    rows: 421662
+    receipt_basename: candidate_screen_scope_audit.outputs.json
+    receipt_sha256: c8dcf7ac6f0fd4e5a8eeb06ff4e2a4af0792c98cd92a8e500b7f7d7aaf3cb856
+  candidate_table:
+    root_basename: pivot-feedback-d0-measurement-abi-reselection-v1-full-20260724
+    basename: episode_candidates.parquet
+    sha256: c5588aef34381179b93785fd5dd3953f2ee7a982bf3d38cb71341eb49fe4e029
+    rows: 70277
+
+candidate_rule:
+  production_states:
+    - CONTENT_PASS
+    - CONTENT_FAIL
+    - CONTENT_UNRESOLVED
+    - NOT_EVALUATED
+  dry_run_states:
+    - WOULD_CONTENT_PASS
+    - WOULD_CONTENT_FAIL_INDEXING_ANOMALY
+    - WOULD_CONTENT_FAIL_SEMANTIC_OFF_TOPIC
+    - WOULD_CONTENT_UNRESOLVED
+  precedence:
+    - INDEXING_ANOMALY
+    - SEMANTIC_OFF_TOPIC
+    - CONTENT_PASS
+    - CONTENT_UNRESOLVED
+  window_codes:
+    0: EARLIER_PRE_BASELINE
+    1: BASELINE_ENTRY_MINUS_6_TO_MINUS_4
+    2: SIGNAL_ENTRY_MINUS_3_TO_MINUS_1
+  recent_window_codes: [1, 2]
+  recent_title_rows: 64
+  minimum_recent_rule_accept_lower_bound_fraction: 0.50
+  minimum_recent_rule_reject_lower_bound_fraction_for_semantic_fail: 0.50
+  unresolved_and_quarantine_count_as_accept: false
+  unresolved_and_quarantine_count_as_reject: false
+  indexing_anomaly:
+    require_all_signals: true
+    minimum_baseline_to_signal_median_primary_topic_score_drop: 0.15
+    minimum_baseline_to_signal_dominant_source_share_increase: 0.25
+    opaque_signal_title_fraction_is_corroboration_only: true
+  sensitivity_accept_thresholds: [0.50, 0.60, 0.70]
+  rule_is_semantic_ground_truth: false
+  dry_run_state_is_production_disposition: false
+
+future_title_sampling_rule:
+  algorithm: SHA256_LOWEST_BY_CANDIDATE_AND_WINDOW
+  seed: pivot-feedback-d0-candidate-content-v1
+  rows_per_candidate_window: 32
+  window_definitions:
+    0: publication_year <= entry_year - 7
+    1: entry_year - 6 <= publication_year <= entry_year - 4
+    2: entry_year - 3 <= publication_year <= entry_year - 1
+  total_target_rows_per_candidate: 96
+  insufficient_window_action: CONTENT_UNRESOLVED
+  full_eager_manifest_required: false
+
+expected_dry_run:
+  candidate_rows: 4
+  would_content_pass_rows: 3
+  would_content_fail_indexing_anomaly_rows: 1
+  would_content_fail_semantic_off_topic_rows: 0
+  would_content_unresolved_rows: 0
+  indexing_anomaly_topic_ids: [12505]
+  production_content_dispositions_created: 0
+  production_content_required_rows_resolved: 0
+  selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  sensitivity:
+    "0.50": {would_pass: 3, would_fail_indexing: 1, would_unresolved: 0}
+    "0.60": {would_pass: 3, would_fail_indexing: 1, would_unresolved: 0}
+    "0.70": {would_pass: 2, would_fail_indexing: 1, would_unresolved: 1}
+
+counterfactual_frontier_estimate:
+  dry_run_states_must_not_be_applied_as_production_states: true
+  if_topic_12505_were_frozen_content_fail:
+    next_required_field_id: 27
+    next_required_field_candidate_rank: 2
+    next_required_topic_id: 10543
+    next_required_entry_year: 1993
+    frozen_topic_card_available: false
+    recent_six_year_author_linked_work_memberships: 13080
+    target_title_sample_rows: 96
+  historical_pro_rata_api_cost_reference:
+    reference_only_not_current_quote: true
+    successful_openai_and_claude_cost_usd_for_384_titles: 0.246244
+    observed_ambiguous_rows_per_96_topic_sample_minimum: 15
+    observed_ambiguous_rows_per_96_topic_sample_maximum: 30
+    projected_two_provider_cost_usd_minimum: 0.009619
+    projected_two_provider_cost_usd_maximum: 0.019238
+    api_submission_authorized: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-candidate-content-dry-run-v1-20260729
+  candidate_basename: candidate_content_dry_run.parquet
+  sensitivity_basename: candidate_content_sensitivity.parquet
+  estimate_basename: candidate_frontier_cost_estimate.json
+  markdown_basename: CANDIDATE_CONTENT_DRY_RUN.md
+  receipt_basename: candidate_content_dry_run.outputs.json
+  receipt_schema_version: pivot_feedback_d0_candidate_content_dry_run_outputs.v1
+  status: PASS_ZERO_COST_CANDIDATE_CONTENT_DRY_RUN
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+execution_boundary:
+  raw_openalex_main_table_read: false
+  new_titles_read: false
+  network_accessed: false
+  credentials_accessed: false
+  api_requests_created: false
+  api_requests_submitted: false
+  production_content_dispositions_created: false
+  selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  outcomes_read: false
+
+authorization:
+  existing_384_title_candidate_dry_run: AUTHORIZED
+  sensitivity_report: AUTHORIZED
+  counterfactual_frontier_cost_estimate: AUTHORIZED
+  raw_title_scan: NOT_AUTHORIZED
+  new_api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+  production_content_dispositions: NOT_AUTHORIZED
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  author_panel_rebuild: NOT_AUTHORIZED
+  pivot_classification: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract authorizes only a zero-cost candidate-level aggregation of the
+  already frozen 384 title routes and their frozen current-snapshot metadata.
+  It separates a joint score/source indexing anomaly from conservative lexical
+  semantic evidence and treats ambiguous or quarantined titles as neither
+  accept nor reject. The dry-run states are engineering sensitivity results,
+  not production content dispositions, semantic truth, accuracy estimates, or
+  scientific evidence. No raw scan, new title extraction, API request,
+  production disposition, certificate, reselection, outcomes, fitting, G4, or
+  scientific effect is authorized.

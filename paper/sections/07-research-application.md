@@ -9,6 +9,15 @@ Source code: `examples/research_pivot_study.py`,
 Result artifacts: `docs/case-studies/researcher-pivot/data/study_results.json`,
 `docs/case-studies/researcher-pivot/data/learning_study_results.json`.
 
+Route boundary: the prospective empirical pivot-feedback study is governed by
+`docs/case-studies/researcher-pivot/pivot-feedback-empirical-nabm-protocol.md`.
+It is a separate science-first companion route. Its future results do not turn
+the hand-set studies in this section into empirical estimates, and this section
+remains stylized lifecycle evidence even if that protocol later passes.
+The empirical companion does not inherit Study 2's perfect-observation
+assumption: prior-collaborator outcomes are time-eligible availability proxies,
+not evidence of receipt or belief updating.
+
 ## 7.1 Purpose
 
 Sections 4-6 validate the unit contract on capability-first toy families. This

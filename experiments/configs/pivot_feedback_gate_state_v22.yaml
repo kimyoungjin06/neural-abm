@@ -1,0 +1,93 @@
+schema_version: pivot_feedback_gate_state.v22
+label: pivot_feedback_gate_state_v22
+mode: ADDITIVE_RANK4_LOCAL_ROUTING_CLOSEOUT_PRODUCTION_DISPOSITION_AND_FRONTIER_V5_AUTHORIZATION
+status: VALID_MEDICINE_RANK4_INDEXING_FAIL_VERIFIED_PRODUCTION_DISPOSITION_AND_FRONTIER_V5_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v21.yaml
+  sha256: 73489c0e8cba68f5a94707677953c7b0eb24c0aa69f7f9858570e3f1a1d0d0a7
+  required_schema_version: pivot_feedback_gate_state.v21
+  required_status: VALID_RANK3_CONTENT_FAIL_FRONTIER_V4_FROZEN_EXACT_MEDICINE_RANK4_SAMPLE_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  mutation_allowed: false
+
+rank4_local_routing_evidence:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_t12505_rank4_local_routing_v1.yaml
+    sha256: 5472fe9ab29ece16aba8870df64db79a193b9782a4f3a5b919523139d161db57
+    required_schema_version: pivot_feedback_d0_t12505_rank4_local_routing_config.v1
+    required_status: FROZEN_T12505_RANK4_LOCAL_ROUTING_DRY_RUN_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_t12505_rank4_local_routing_v1.py
+    sha256: 3049c6f3523926cc37471460c0ba5f7c3ee475001b1cc35d0a976deac3e464a3
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_t12505_rank4_local_routing_v1.py
+    sha256: ca797c29fec41922a073f1baa4aa35729debcbe69b23506372655e5e3db2f7f3
+    mutation_allowed: false
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_t12505_rank4_local_routing_20260729.summary.json
+    sha256: 7333974f9bbe2a0c335659b2b67fec3becee1c97a3a0def3dfb55f434a71d6b4
+    required_schema_version: pivot_feedback_d0_t12505_rank4_local_routing_summary.v1
+    required_status: PASS_INDEPENDENT_T12505_RANK4_LOCAL_ROUTING_AND_RULE_V2_DRY_RUN
+    mutation_allowed: false
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_t12505_rank4_local_routing_20260729.summary.md
+    sha256: bc5aff35d71d438656b5380ce4375f5db136706a53cf0a1342a993266d92f0b5
+    mutation_allowed: false
+  operator_local:
+    root_basename: pivot-feedback-d0-t12505-rank4-local-routing-v1-20260729
+    receipt_basename: t12505_rank4_local_routing.outputs.json
+    receipt_sha256: f0664845f3de6720530ba4729e286439ec6d78c4051422ceb6c755134b8bc557
+    receipt_status: PASS_ZERO_COST_T12505_RANK4_LOCAL_ROUTING_AND_RULE_V2_DRY_RUN
+    verification_basename: pivot-feedback-d0-t12505-rank4-local-routing-v1-20260729.verification-v1.json
+    verification_sha256: 0795ede1ea9aa89e7708da5679caafdd15622a0c95c17d13303ea5f10c75eda6
+    verification_status: PASS_INDEPENDENT_T12505_RANK4_LOCAL_ROUTING_AND_RULE_V2_DRY_RUN
+
+verified_rank4_result:
+  field_id: 27
+  field_candidate_rank: 4
+  topic_id: 12505
+  entry_year: 1993
+  candidate_rule_v2_branch: RECENT_MAJORITY_OPAQUE_INDEXING_ANOMALY
+  candidate_rule_v2_state: WOULD_CONTENT_FAIL_INDEXING_ANOMALY
+  production_content_state_to_freeze: CONTENT_FAIL
+  production_disposition_reason: RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS
+  api_requests_created: 0
+
+authorized_successor:
+  cumulative_production_dispositions: 7
+  rank4_content_state: CONTENT_FAIL
+  adaptive_frontier_version: v5
+  expected_next_required_candidate_if_rank4_fails:
+    field_id: 27
+    field_candidate_rank: 5
+    topic_id: 10151
+    entry_year: 1993
+  selection_certificate_may_be_issued_only_if_lazy_state_machine_closes: true
+
+authorization:
+  d0_rank4_local_routing: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_rank4_production_content_disposition: AUTHORIZED
+  d0_cumulative_seven_production_dispositions: AUTHORIZED
+  d0_adaptive_frontier_v5_regeneration: AUTHORIZED
+  d0_selection_certificate_from_frontier_v5: AUTHORIZED_ONLY_IF_LAZY_STATE_MACHINE_CLOSES
+  d0_new_title_extraction: NOT_AUTHORIZED
+  d0_raw_openalex_title_scan: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_exception_submission: NOT_AUTHORIZED
+  d0_episode_reselection_successor: NOT_AUTHORIZED_UNTIL_SELECTION_CERTIFICATE
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This additive successor authorizes converting the independently verified
+  rank-4 indexing-anomaly dry run into a production CONTENT_FAIL disposition,
+  creating the cumulative seven-disposition table, and regenerating frontier
+  v5. Certification remains conditional on the lazy state machine. It does not
+  authorize new title extraction, API requests, reselection before
+  certification, outcomes, fitting, G4, semantic truth, or scientific effects.

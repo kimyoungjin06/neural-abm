@@ -1,0 +1,142 @@
+schema_version: openalex_g1_cross_field_feasibility_config.v1
+label: openalex_g1_cross_field_feasibility_v0
+
+parent_work_source_profile:
+  compact_summary:
+    relative_path: experiments/evidence/results/openalex_g1_work_source_membership_20260717.summary.json
+    sha256: df626b897bcb53c1bbc3209dbfbec8f69b84361367e09e1a9ffdf39e293d7b83
+    required_status: PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE
+    result_fingerprint_sha256: 8b7d0273a04eb7a231a9d8b466151c562ac80eac6557ff7444508cb174862242
+  full_report:
+    path_env: OPENALEX_G1_WORK_SOURCE_FULL_REPORT
+    expected_basename: work_source_membership_audit.json
+    sha256: 1c385d42595fc34794116189ce940526e1095ccd2a5da9eccd3da902e8f152ce
+    required_status: PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE
+    result_fingerprint_sha256: 8b7d0273a04eb7a231a9d8b466151c562ac80eac6557ff7444508cb174862242
+    required_main_rows_profiled: 492293206
+    required_joint_sparse_cube_cells: 122472
+
+taxonomy:
+  root_env: OPENALEX_TAXONOMY_ROOT
+  root_id: openalex_nonworks_20260330_delta_taxonomy_entities
+  snapshot_date: "2026-03-30"
+  canonicalization: sorted_key_compact_utf8_json_lines_in_declared_file_order
+  canonical_sha256: 8b9f4e2f492eb6939e1dbb6a8187f06d4ea8fdebb9c1bafce017cd39e54401b4
+  expected_entity_counts:
+    domains: 4
+    fields: 26
+    subfields: 252
+    topics: 4516
+  files:
+    - entity: domains
+      relative_path: domains/updated_date=2026-03-30/part_0000.gz
+      sha256: 6a1f3b5a582960fd1fee5e2c1f082a48dddaa3a06c9586c425fee8d375a19551
+      expected_rows: 4
+    - entity: fields
+      relative_path: fields/updated_date=2026-03-30/part_0000.gz
+      sha256: fe90f0841e208c212de267d9509e5ee22bb3619470d8cf99402091f25d93d551
+      expected_rows: 26
+    - entity: subfields
+      relative_path: subfields/updated_date=2026-03-30/part_0000.gz
+      sha256: 618cbefc555bf7fa2dba8ac9e1822023772c804b758246929841cddc05229e6d
+      expected_rows: 252
+    - entity: topics
+      relative_path: topics/updated_date=2026-03-27/part_0000.gz
+      sha256: c0db36d0efa3dc618bcccf8a8059c6fd5e9b30a8f24060e15ad1dfe0f2a3b905
+      expected_rows: 4
+    - entity: topics
+      relative_path: topics/updated_date=2026-03-28/part_0000.gz
+      sha256: 7357571fbf176e1547a8e7274c011fc139f23c4f4a319d35bd71e18f04b3eb3c
+      expected_rows: 9
+    - entity: topics
+      relative_path: topics/updated_date=2026-03-29/part_0000.gz
+      sha256: 3045dd99ed786db5795f42ca269f81391d36fa941371f00ee26e2a7c620bde0c
+      expected_rows: 91
+    - entity: topics
+      relative_path: topics/updated_date=2026-03-30/part_0000.gz
+      sha256: 2ec9e83d036556ad0c071ca48eebb70ca717c9b5cf0e572e21fcb2a6e973b3af
+      expected_rows: 4412
+  hierarchy_contract:
+    require_unique_entity_ids: true
+    require_parent_id_and_name_match: true
+    require_parent_chain_match: true
+    require_exact_declared_child_sets: true
+    identifier_is_join_key: true
+    display_name_is_not_join_key: true
+
+profile_projection:
+  field_id_source: author_work_profile.by_primary_field
+  independent_projection_source: author_work_profile.joint_sparse_cube
+  expected_primary_field_buckets_including_null: 27
+  expected_author_id_statuses:
+    - complete
+    - partial
+    - none_usable
+    - zero_authorship_row
+  temporal_windows:
+    - key: discovery_through_2012
+      label: Discovery through 2012
+      start_year_inclusive: null
+      end_year_inclusive: 2012
+    - key: g1_replication_2013_2016
+      label: G1 replication 2013-2016
+      start_year_inclusive: 2013
+      end_year_inclusive: 2016
+    - key: model_selection_2017_2019
+      label: Model selection 2017-2019
+      start_year_inclusive: 2017
+      end_year_inclusive: 2019
+    - key: g4_temporal_2020_2022
+      label: G4 temporal 2020-2022
+      start_year_inclusive: 2020
+      end_year_inclusive: 2022
+    - key: followup_diagnostic_2023_2025
+      label: Follow-up diagnostic 2023-2025
+      start_year_inclusive: 2023
+      end_year_inclusive: 2025
+  snapshot_year: 2026
+  retain_null_field_bucket: true
+  retain_null_year_bucket: true
+  report_years_after_snapshot_year: true
+  select_final_fields: false
+
+pending_full_taxonomy_reference_audit:
+  status: PENDING
+  workload_class: local_cpu_io
+  main_files: 493
+  topic_files: 930
+  total_files: 1423
+  main_raw_rows: 492293207
+  main_retained_rows: 492293206
+  topic_rows: 928562546
+  required_extensions:
+    - work_primary_topic_entity_and_hierarchy_validity
+    - work_topic_entity_and_hierarchy_validity
+    - duplicate_work_topic_edge_audit
+    - primary_topic_present_in_work_topic_rows
+    - topic_score_validity
+    - publication_date_and_year_validity
+
+success_contract:
+  success_status: PASS_CROSS_FIELD_PROFILE_FEASIBILITY_ONLY
+  required_gate_status:
+    parent_work_source_profile: PASS_REVALIDATED
+    taxonomy_internal_graph: PASS
+    cross_field_profile_projection: PASS
+    field_entity_validity: UNVERIFIED
+    candidate_eligibility: NOT_ESTABLISHED
+    final_field_selection: PENDING_G0
+    g_minus_1_data_readiness: PENDING
+    g0_measurement_freeze: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+
+claim_boundary: >-
+  A successful summary validates the small 20260330 taxonomy entity graph and
+  reprojects the already-frozen work-level primary-field, publication-year,
+  declared-author-band, and author-ID-availability cube into an exact
+  cross-field feasibility profile. It performs no OpenAlex work-table rescan.
+  It does not validate work-to-topic or work-to-field entity references,
+  duplicate work-topic edges, publication dates, author entities, candidate
+  researchers, temporal leakage safety, final field selection, G-1 data
+  readiness, G0 measurement freeze, empirical G1, or any scientific effect.

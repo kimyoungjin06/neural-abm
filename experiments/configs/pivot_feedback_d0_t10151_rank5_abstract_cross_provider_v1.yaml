@@ -1,0 +1,180 @@
+schema_version: pivot_feedback_d0_t10151_rank5_abstract_cross_provider_config.v1
+label: pivot_feedback_d0_t10151_rank5_abstract_cross_provider_v1
+mode: EXACT_FIVE_LOCAL_ABSTRACT_DUAL_HIGH_CONSENSUS
+status: FROZEN_EXACT_FIVE_LOCAL_ABSTRACT_REVIEW_NOT_SUBMITTED
+
+gate_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v30.yaml
+  sha256: da5f070379d672dd4e2f437b3ef5a196e2f1a018c51d1f4b31081b06bc40f216
+  required_schema_version: pivot_feedback_gate_state.v30
+  required_status: VALID_RANK5_LOCAL_ABSTRACT_RECOVERY_AND_FIVE_ROW_DUAL_HIGH_REVIEW_AUTHORIZED
+  required_fields:
+    abstract_review_contract.exact_review_rows: 5
+    abstract_review_contract.provider_calls: 2
+    abstract_review_contract.retries: 0
+    abstract_review_contract.consensus_accept: BOTH_LABEL_ON_TOPIC_AND_CONFIDENCE_HIGH
+    abstract_review_contract.consensus_reject: BOTH_LABEL_OFF_TOPIC_AND_CONFIDENCE_HIGH
+    abstract_review_contract.human_review: NOT_RUN_BY_DESIGN
+    authorization.d0_rank5_eligible_abstract_paid_api_submission: AUTHORIZED_TWO_CALLS_NO_RETRY
+    authorization.d0_rank5_production_disposition: NOT_AUTHORIZED_UNTIL_RESULT_INDEPENDENTLY_VERIFIED_AND_SUCCESSOR_GATE
+
+source_input:
+  root_basename: pivot-feedback-d0-t10151-rank5-local-abstract-recovery-v1-20260730
+  parquet_basename: rank5_local_abstract_recovery.parquet
+  parquet_sha256: 70cc9e2516762712ff67662a59626b913db9f6f836e6693615e0c8a573739c3f
+  parquet_schema_version: pivot_feedback_d0_t10151_rank5_local_abstract_recovery.v1
+  rows: 16
+  selected_state: ELIGIBLE_ABSTRACT_REVIEW
+  selected_rows: 5
+  receipt_basename: local_abstract_recovery.outputs.json
+  receipt_sha256: ca2a4bd63440fa4d4cf2a5a7b84da895794b348f121153d9831cd64fa5a4fccc
+  receipt_status: PASS_EXACT_16_LOCAL_OPENALEX_ABSTRACT_RECOVERY_FIVE_ELIGIBLE
+  verification_basename: pivot-feedback-d0-t10151-rank5-local-abstract-recovery-v1-20260730.verification-v1.json
+  verification_sha256: b0fe5f3684efba374d3d0145f71304dfc6af52db80d37571ccbad89eba01aff2
+  verification_status: PASS_INDEPENDENT_EXACT_16_LOCAL_ABSTRACT_RECOVERY_VERIFICATION
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_t10151_rank5_local_abstract_recovery_v1.py
+    sha256: 2dd89fd2f1538f3541016b84b6b8260ff918a2befe99577d4f041d665faa55eb
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_t10151_rank5_local_abstract_recovery_v1.py
+    sha256: 5ebfd386568dd2085b640e5430433464463517831cce85dc9e36116fe6247b0d
+
+review_contract:
+  request_seed: pivot-feedback-d0-t10151-rank5-abstract-cross-provider-v1
+  target_topic_name: Hepatitis C virus research
+  target_definition: >-
+    A work is on topic when its abstract shows that the objective, population,
+    exposure, intervention, diagnostic test, analysis, or primary findings
+    substantively concern hepatitis C, HCV, hepacivirus, or historically
+    specific non-A/non-B hepatitis. HCV may be one of several explicitly
+    measured primary infections. A work is off topic when the abstract
+    substantively concerns another condition and contains no such hepatitis-C
+    role, or mentions it only incidentally or as background.
+  prompt_text: |-
+    Classify each scholarly work using only the supplied target topic,
+    definition, title, language, work type, and abstract. Do not infer or use
+    authors, year, source, citations, identifiers outside the opaque item ID,
+    OpenAlex topic scores, episode, treatment assignment, outcomes, or
+    downstream effects.
+
+    Assign exactly one label and confidence to every item:
+    ON_TOPIC: the abstract affirmatively shows that the work substantively
+    studies, applies, measures, diagnoses, treats, or analyzes the target.
+    This includes historically specific non-A/non-B hepatitis and studies in
+    which HCV is one of several explicitly measured primary infections.
+    AMBIGUOUS: a plausible relation exists, but abstract evidence is
+    insufficient to establish a substantive target role or clear absence.
+    OFF_TOPIC: the abstract affirmatively concerns another subject and has no
+    substantive target role, or mentions the target only incidentally.
+    UNREVIEWABLE: the supplied title and abstract are corrupted,
+    uninterpretable, or internally incompatible.
+
+    Be conservative. Return exactly one decision for each supplied opaque
+    item_id, with no omissions or duplicates. Keep each rationale concise and
+    grounded only in the supplied title and abstract.
+  labels: [ON_TOPIC, AMBIGUOUS, OFF_TOPIC, UNREVIEWABLE]
+  confidence_levels: [HIGH, MEDIUM, LOW]
+  exact_items: 5
+  request_visible_fields:
+    - item_id
+    - target_topic_name
+    - target_definition
+    - title
+    - language
+    - work_type
+    - abstract
+  forbidden_request_fields:
+    - openalex_id
+    - source_file
+    - source_row_group
+    - publication_year
+    - primary_topic_name
+    - primary_topic_score
+    - author
+    - citation
+    - outcomes
+  response_fields: [item_id, label, confidence, rationale]
+  maximum_rationale_characters: 280
+  consensus_accept: BOTH_LABEL_ON_TOPIC_AND_CONFIDENCE_HIGH
+  consensus_reject: BOTH_LABEL_OFF_TOPIC_AND_CONFIDENCE_HIGH
+  all_other_results: REMAIN_UNRESOLVED
+  current_accept_rows: 27
+  current_reject_rows: 21
+  current_unresolved_rows: 16
+  recent_denominator_rows: 64
+  pass_lower_bound_rows: 32
+  fail_lower_bound_rows: 32
+  human_review: NOT_RUN_BY_DESIGN
+  provider_labels_are_ground_truth: false
+  evidence_role: POST_DIAGNOSTIC_LOCAL_ABSTRACT_AUGMENTATION
+
+providers:
+  openai:
+    provider: OpenAI
+    model: gpt-5-mini-2025-08-07
+    endpoint: https://api.openai.com/v1/responses
+    store: false
+    tools_enabled: false
+    reasoning_effort: minimal
+    maximum_output_tokens: 2048
+    structured_output_parameter: text.format
+  claude:
+    provider: Anthropic
+    model: claude-haiku-4-5-20251001
+    endpoint: https://api.anthropic.com/v1/messages
+    tools_enabled: false
+    maximum_output_tokens: 2048
+    structured_output_parameter: output_config.format
+    remove_array_schema_keywords: [minItems, maxItems]
+
+cost_control:
+  currency: USD
+  maximum_authorized_pair_usd: 0.040000
+  maximum_provider_calls: 2
+  estimate_method: SERIALIZED_REQUEST_BODY_BYTES_AS_INPUT_TOKEN_UPPER_BOUND_PLUS_MAX_OUTPUT_TOKENS
+  pricing_checked_at_utc: 2026-07-30T00:00:00Z
+  pricing:
+    openai:
+      input_usd_per_million_tokens: 0.25
+      output_usd_per_million_tokens: 2.00
+      source_url: https://developers.openai.com/api/docs/models/gpt-5-mini
+    claude:
+      input_usd_per_million_tokens: 1.00
+      output_usd_per_million_tokens: 5.00
+      source_url: https://platform.claude.com/docs/en/about-claude/pricing
+  prior_conservative_cumulative_upper_bound_usd: 0.048650
+  cumulative_authorized_cap_usd: 0.10
+  refuse_before_submission_if_upper_bound_exceeds_cap: true
+  actual_cost_must_be_computed_from_provider_usage: true
+
+execution:
+  prepared_root_basename: pivot-feedback-d0-t10151-rank5-abstract-cross-provider-v1-prepared-20260730
+  verification_basename: pivot-feedback-d0-t10151-rank5-abstract-cross-provider-v1-prepared-20260730.verification-v1.json
+  execution_root_basename: pivot-feedback-d0-t10151-rank5-abstract-cross-provider-v1-execution-20260730
+  credential_env_path: /home/kimyoungjin06/Desktop/Workspace/1.2.8.TwinPaper/.env
+  retries: 0
+  timeout_seconds_per_provider: 180
+  raw_responses_preserved: true
+  credential_values_persisted: false
+  artifact_mode: "0600"
+
+authorization:
+  prepare_exact_requests: AUTHORIZED
+  verify_exact_requests: REQUIRED
+  submit_exact_requests: AUTHORIZED_AFTER_VERIFICATION_AND_COST_PREFLIGHT
+  reduce_results: AUTHORIZED_PRECOMMITTED_DUAL_HIGH_ONLY
+  human_review: NOT_RUN_BY_DESIGN
+  production_disposition: NOT_AUTHORIZED_UNTIL_RESULT_VERIFIED_AND_SUCCESSOR_GATE
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: false
+  model_fitting: false
+  g4_open: false
+
+claim_boundary: >-
+  This contract sends only five independently verified local abstracts to one
+  pinned OpenAI model and one pinned Claude model. The request exposes no
+  OpenAlex identifiers, source metadata, topic scores, authors, citations, or
+  outcomes. Only exact dual-HIGH agreement may augment conservative counts;
+  all other results remain unresolved and no production or certificate action
+  is authorized here.

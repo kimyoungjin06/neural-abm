@@ -1,0 +1,94 @@
+{
+  "schema_version": "pivot_feedback_cutoff_primitives_production_full_summary.v1",
+  "status": "PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS",
+  "scope": {
+    "full_scope": true,
+    "production_component_pass": true,
+    "gpu_used": false,
+    "source_files": 493,
+    "source_bytes": 150062449219
+  },
+  "source_accounting": {
+    "raw_rows": 492293207,
+    "quarantined_w_minus_1_rows": 1,
+    "retained_rows": 492293206,
+    "authors_count_minimum": 0,
+    "authors_count_maximum": 5000,
+    "work_type_count": 24,
+    "primary_topic_null_rows": 138147959,
+    "primary_field_null_rows": 138147959,
+    "primary_domain_null_rows": 138147959,
+    "is_retracted_null_rows": 1838440,
+    "forbidden_current_outcome_columns_projected": 0
+  },
+  "work_metadata": {
+    "partition_count": 4096,
+    "partition_formula": "work_id_numeric_mod_4096",
+    "rows": 492293206,
+    "full_source_canonical_closure": true,
+    "work_metadata_tree_sha256": "a37448b4df39c00e97b540b3ac7d06de6f2e9ce12186838120d59c820aa89d77"
+  },
+  "normalized_parent_surfaces": {
+    "canonical_work_time_spine_receipt_sha256": "2760b3aa5c5960d9356cc30339338418ff9000ab22e9c4b94caf82f6216f9aa1",
+    "author_history_receipt_sha256": "7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8",
+    "work_topic_relation_receipt_sha256": "124ee59348a4f3c73cac8e0d567f764a57cf8ba6700c02ffa05a276e05562b5d",
+    "citation_chronology_receipt_sha256": "fbe753c84ceb3858a06c627f318eb756e997f73577498b06a5e88f72cacabe76",
+    "all_parent_receipt_artifacts_rehashed_before_production": true,
+    "author_unit": "CURRENT_SNAPSHOT_OPENALEX_AUTHOR_ID_TOKEN_NOT_PERSON",
+    "topic_annotation_time": "CURRENT_SNAPSHOT_RETROSPECTIVE",
+    "citation_available_at_semantics": "CITING_WORK_PUBLICATION_DATE_BIBLIOGRAPHIC_EVENT_TIME_CONVENTION"
+  },
+  "cutoff_contract": {
+    "resolution": "ANNUAL",
+    "public_cutoff": "DECEMBER_31_OF_T_MINUS_1",
+    "work_and_author_event_rule": "TEMPORAL_DISPOSITION_IN_2_3_AND_PUBLICATION_YEAR_LESS_THAN_OR_EQUAL_TO_T_MINUS_1",
+    "citation_rule": "AVAILABLE_AT_LESS_THAN_OR_EQUAL_TO_DECEMBER_31_OF_T_MINUS_1_RETROSPECTIVE_PROXY",
+    "fixed_outcome_horizon": "UNRESOLVED_REQUIRES_G0_SUCCESSOR",
+    "candidate_author_eligibility": "UNRESOLVED_REQUIRES_G0_SUCCESSOR",
+    "allowed_work_types": "UNRESOLVED_REQUIRES_G0_SUCCESSOR",
+    "same_day_citation_policy": "UNRESOLVED_REQUIRES_G0_SUCCESSOR"
+  },
+  "independent_verification": {
+    "schema_version": "pivot_feedback_cutoff_primitives_independent_verification.v1",
+    "status": "PASS_READ_ONLY_INDEPENDENT_NORMALIZED_CUTOFF_PRIMITIVES_VERIFICATION",
+    "verification_report_sha256": "703d98eeddb5266cef507ef00400c5cb3700958bf3a1744fc16b6ade2121d485",
+    "verification_report_bytes": 2062,
+    "artifacts_rehashed": 4101,
+    "full_work_metadata_row_scan": true,
+    "canonical_row_join_replayed": true,
+    "relation_payload_rehashed": true,
+    "citation_manifest_tree_verified": true,
+    "output_tree_unchanged": true
+  },
+  "production_surface": {
+    "artifact_count": 4101,
+    "artifact_bytes_excluding_receipt": 4121965003,
+    "output_bytes_including_receipt": 4122556142,
+    "artifact_tree_sha256": "3417bb671183e47ab414a8f6a4d378844090d6e8725ed3a2758023b9cd569c53",
+    "output_receipt_sha256": "91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e"
+  },
+  "gate_status": {
+    "normalized_cutoff_primitives": "PASS_WITH_RETROSPECTIVE_PROXY_LIMITATIONS",
+    "cutoff_panel": "PENDING_G0_RESOLVED_FINAL_PANEL_SUCCESSOR",
+    "final_analytic_risk_set": "PENDING_G0_SUCCESSOR",
+    "historical_topic_observability": "UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT",
+    "historical_citation_observability": "UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT",
+    "fixed_horizon_outcome_maturation": "PENDING_G0_SUCCESSOR",
+    "outcome_blind_field_structure": "PENDING",
+    "representative_discovery_pilot": "PENDING",
+    "g_minus_1_data_readiness": "PENDING",
+    "g0_measurement_freeze": "PENDING",
+    "empirical_g1_signature": "NOT_RUN",
+    "pass_g1": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "provenance": {
+    "config_sha256": "bdc1365d87a56d3571559ef21fdd56d21be570a8e712081d30748361f22bf764",
+    "runner_sha256": "a88ca98e5c75199f99ba70079cb8b8e39b1a2d6fc3f2894364d2e94d1ac40c53",
+    "verifier_sha256": "5b39380fec90408f9f7dd9a83de40046bbe32333f3bbf53cfca4fcbf0c80e791",
+    "task_fingerprint_sha256": "768a0795b4bb88da178355d33ce873defee152309d49d03d5952e3c21a49f8b6",
+    "result_fingerprint_sha256": "094b44774418dab35e2374d3b5c49caca854bdcb577462786b2820b75592cef7"
+  },
+  "claim_scope": "FULL_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_ONLY_NOT_FINAL_ANALYTIC_PANEL_OR_HISTORICAL_OBSERVABILITY",
+  "claim_boundary": "This production pass establishes an exact normalized current-snapshot work-metadata index, receipt-bound references to the verified author-event, work-topic, canonical-time, and citation-proxy parents, and deterministic annual cutoff predicates. Current topic membership, author-token linkage, and bibliographic citation event time remain retrospective proxies rather than evidence of historical visibility. Candidate eligibility, included work types, team caps, pivot and surge thresholds, same-day treatment, fixed maturation horizon, sampling, and weights remain unresolved and require a G0 successor. Therefore this pass adds a cutoff-primitives foundation but does not complete the protocol's final cutoff panel, establish G-1 or G0, run empirical G1, fit an NABM effect, or establish any scientific effect."
+}

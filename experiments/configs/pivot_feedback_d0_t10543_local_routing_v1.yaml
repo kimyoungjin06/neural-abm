@@ -1,0 +1,174 @@
+schema_version: pivot_feedback_d0_t10543_local_routing_config.v1
+label: pivot_feedback_d0_t10543_local_routing_v1
+mode: ZERO_COST_LOCAL_TITLE_ROUTING_AND_FROZEN_V1_CANDIDATE_AGGREGATION
+status: FROZEN_T10543_LOCAL_ROUTING_DRY_RUN_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v16.yaml
+  sha256: a1329781dc5e88f66535d04a6d265b4e42a45fd507e48dee5fbd4535ec34caf0
+  required_schema_version: pivot_feedback_gate_state.v16
+  required_status: VALID_PRODUCTION_CANDIDATE_RULE_FROZEN_EXACT_T10543_LOCAL_SAMPLE_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_t10543_topic_card_design: AUTHORIZED
+    authorization.d0_t10543_local_routing: AUTHORIZED_ZERO_COST_ONLY
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.d0_t10543_production_content_disposition: NOT_AUTHORIZED_UNTIL_LOCAL_ROUTING_VERIFIED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+frozen_input:
+  root_basename: pivot-feedback-d0-t10543-targeted-title-sample-v1-20260729
+  sample_basename: t10543_targeted_title_sample.parquet
+  sample_sha256: 9436d1802285ffec83f43903e552c3f8ed8307b47bc5017575e0e3f1f0a82ddc
+  sample_schema_version: pivot_feedback_d0_t10543_targeted_title_sample.v1
+  sample_rows: 96
+  receipt_basename: t10543_targeted_title_sample.outputs.json
+  receipt_sha256: 45111116ff8f3f88493976b99231e74e66a61fba0b94c8df122394c6f8aab174
+  receipt_status: PASS_EXACT_T10543_96_TITLE_LOCAL_SAMPLE
+  verification_basename: pivot-feedback-d0-t10543-targeted-title-sample-v1-20260729.verification-v1.json
+  verification_sha256: a5c0afb4c66f1b6f7adc47a8e747ee8c7186fe922f6566a508eac76054b2ec9b
+  verification_status: PASS_INDEPENDENT_EXACT_T10543_96_TITLE_LOCAL_SAMPLE
+
+routing_contract:
+  states:
+    - NO_API_RULE_ACCEPT
+    - NO_API_RULE_REJECT
+    - API_REQUIRED_AMBIGUOUS
+    - QUARANTINE_UNRESOLVED
+  precedence:
+    - QUARANTINE_IF_OPAQUE_OR_UNINFORMATIVE
+    - ACCEPT_IF_POSITIVE_AND_NOT_NEGATIVE
+    - REJECT_IF_NEGATIVE_AND_NOT_POSITIVE
+    - API_REQUIRED_OTHERWISE
+  title_normalization:
+    strip_html: true
+    unicode_nfkd_ascii_fold: true
+    lowercase: true
+    alphanumeric_tokens_only: true
+    collapse_whitespace: true
+  minimum_informative_token_count: 2
+  global_opaque_title_patterns:
+    - '^(?:pvn|psb) (?:lot|rdo) [a-z0-9 ]+$'
+  primary_topic_score_used_for_semantic_acceptance: false
+  source_name_used_for_semantic_acceptance: false
+  api_labels_used_for_rule_execution: false
+  unresolved_may_be_forced_to_decisive_label: false
+  default_state: API_REQUIRED_AMBIGUOUS
+
+topic_card:
+  topic_id: 10543
+  display_name: Prostate Cancer Treatment and Research
+  reference_id: https://openalex.org/T10543
+  positive_patterns:
+    - '\bprostat(?:e|ic)\b.*\b(?:cancer|carcinoma|adenocarcinoma|tumou?r)\b'
+    - '\b(?:cancer|carcinoma|adenocarcinoma|tumou?r)\b.*\bprostat'
+    - 'prostatakarzinom'
+    - '\bprostatectomy\b'
+    - '\bprostatovesikulektomie\b'
+  negative_patterns:
+    - '\bbladder tumou?r'
+    - '\btrophoblast'
+    - '\bandrogen secreting tumou?r'
+    - '\bplatelets?\b.*\bmetastasis\b'
+  boundary_note: >-
+    Explicit prostate-cancer or prostate-carcinoma anchors and named radical
+    prostate procedures are accepted. Generic prostate biology, endocrine
+    treatment, hormone language, tumor language without a prostate anchor, and
+    other organ tumors remain ambiguous or rejected only when an explicit
+    negative pattern applies. Opaque archival identifiers are quarantined
+    before semantic routing.
+
+candidate_rule_v1:
+  provenance:
+    relative_path: experiments/configs/pivot_feedback_d0_candidate_content_dry_run_v1.yaml
+    sha256: 409c982bc53d06a7608c588efdbe05acf59c8a76d32abc18936da74abcf7f4e4
+    rule_is_reused_without_threshold_change: true
+  precedence:
+    - INDEXING_ANOMALY
+    - SEMANTIC_OFF_TOPIC
+    - CONTENT_PASS
+    - CONTENT_UNRESOLVED
+  recent_window_codes: [1, 2]
+  recent_title_rows: 64
+  minimum_recent_rule_accept_lower_bound_fraction: 0.50
+  minimum_recent_rule_reject_lower_bound_fraction_for_semantic_fail: 0.50
+  unresolved_and_quarantine_count_as_accept: false
+  unresolved_and_quarantine_count_as_reject: false
+  indexing_anomaly:
+    require_all_signals: true
+    minimum_baseline_to_signal_median_primary_topic_score_drop: 0.15
+    minimum_baseline_to_signal_dominant_source_share_increase: 0.25
+    opaque_signal_title_fraction_is_corroboration_only: true
+  sensitivity_accept_thresholds: [0.50, 0.60, 0.70]
+  dry_run_state_is_production_disposition: false
+
+post_diagnostic_indexing_evidence:
+  purpose: DESCRIBE_V1_UNRESOLVED_REASON_NOT_CHANGE_V1_DECISION
+  recent_opaque_title_fraction: true
+  recent_opaque_single_source_concentration: true
+  recent_opaque_primary_topic_score_median: true
+  source_and_topic_score_used_for_semantic_acceptance: false
+  may_change_candidate_rule_v1_state: false
+  may_create_production_disposition: false
+  api_helpfulness_rule: >-
+    Opaque archival identifiers contain no semantic title evidence and must not
+    create paid API requests. Ambiguous informative titles remain separately
+    countable, but API creation is not authorized by this contract.
+
+expected_dry_run:
+  candidate_rows: 1
+  production_content_dispositions_created: 0
+  selection_certificate_issued: false
+  deterministic_reselection_executed: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-t10543-local-routing-v1-20260729
+  routes_basename: t10543_local_title_routes.csv
+  candidate_basename: t10543_candidate_content_dry_run.parquet
+  sensitivity_basename: t10543_candidate_content_sensitivity.parquet
+  report_basename: T10543_LOCAL_ROUTING_AND_CANDIDATE_DRY_RUN.md
+  receipt_basename: t10543_local_routing.outputs.json
+  receipt_schema_version: pivot_feedback_d0_t10543_local_routing_outputs.v1
+  status: PASS_ZERO_COST_T10543_LOCAL_ROUTING_AND_CANDIDATE_DRY_RUN
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+execution_boundary:
+  sample_title_rows_read: 96
+  raw_openalex_main_table_read: false
+  new_titles_read: false
+  network_accessed: false
+  credentials_accessed: false
+  api_requests_created: false
+  api_requests_submitted: false
+  production_content_dispositions_created: false
+  selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  outcomes_read: false
+
+authorization:
+  zero_cost_local_routing: AUTHORIZED
+  candidate_v1_dry_run_aggregation: AUTHORIZED
+  post_diagnostic_indexing_description: AUTHORIZED
+  raw_title_scan: NOT_AUTHORIZED
+  new_api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+  production_content_disposition: NOT_AUTHORIZED
+  candidate_rule_amendment: NOT_AUTHORIZED
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract applies a conservative local topic card and the unchanged
+  candidate-rule-v1 thresholds to the independently verified current-snapshot
+  T10543 sample. Opaque archival identifiers are quarantined and never sent to
+  an API. Post-diagnostic source and score summaries explain indexing quality;
+  they do not alter the frozen v1 candidate state. The dry-run result is not a
+  production disposition, semantic truth, historical topic validation,
+  selection certificate, pivot classification, outcome result, model fit, G4
+  opening, or scientific claim.

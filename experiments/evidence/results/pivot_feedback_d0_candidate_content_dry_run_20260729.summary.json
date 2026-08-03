@@ -1,0 +1,139 @@
+{
+  "schema_version": "pivot_feedback_d0_candidate_content_dry_run_summary.v1",
+  "status": "PASS_INDEPENDENT_ZERO_COST_CANDIDATE_CONTENT_DRY_RUN",
+  "date": "2026-07-29",
+  "scope": "FOUR_INITIAL_CONTENT_REQUIRED_CANDIDATES_EXISTING_384_TITLES_ONLY",
+  "repository_bindings": {
+    "config_relative_path": "experiments/configs/pivot_feedback_d0_candidate_content_dry_run_v1.yaml",
+    "config_sha256": "409c982bc53d06a7608c588efdbe05acf59c8a76d32abc18936da74abcf7f4e4",
+    "producer_relative_path": "scripts/build_pivot_feedback_d0_candidate_content_dry_run_v1.py",
+    "producer_sha256": "fedf9587d2424e595a488da6d384a5361f0c3742551553c339abed0eb45aab3f",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_d0_candidate_content_dry_run_v1.py",
+    "verifier_sha256": "7248c71e0233b7359c9b7b5a5021426ee2999d16e31f3bd827903f8a3a256efd"
+  },
+  "operator_local_evidence": {
+    "root_basename": "pivot-feedback-d0-candidate-content-dry-run-v1-20260729",
+    "receipt_basename": "candidate_content_dry_run.outputs.json",
+    "receipt_sha256": "33d997d5e5c938e3f166a2f187eba01ae0446e14aacc1bf9143aebce3d590ced",
+    "artifact_tree_sha256": "e3c24294630a0e427dcaa8549350aa3d2ff9c9f25610c72ebe535149908972c3",
+    "verification_report_basename": "pivot-feedback-d0-candidate-content-dry-run-v1-20260729.verification-v1.json",
+    "verification_report_sha256": "69ce5a5d1c277b39b08e88b44e77ffac3ee3e44ca0e5d0a7765047f911d251d5",
+    "verification_status": "PASS_INDEPENDENT_ZERO_COST_CANDIDATE_CONTENT_DRY_RUN"
+  },
+  "primary_rule": {
+    "recent_title_rows_per_candidate": 64,
+    "minimum_recent_accept_lower_bound_fraction": "0.500000",
+    "minimum_recent_reject_lower_bound_fraction_for_semantic_fail": "0.500000",
+    "indexing_anomaly_requires_both_score_and_source_signals": true,
+    "minimum_median_primary_topic_score_drop": "0.150000",
+    "minimum_dominant_source_share_increase": "0.250000",
+    "ambiguous_or_quarantined_titles_count_as_accept_or_reject": false
+  },
+  "dry_run_result": {
+    "candidate_rows": 4,
+    "would_content_pass_rows": 3,
+    "would_content_fail_indexing_anomaly_rows": 1,
+    "would_content_fail_semantic_off_topic_rows": 0,
+    "would_content_unresolved_rows": 0,
+    "indexing_anomaly_topic_ids": [
+      12505
+    ],
+    "production_content_dispositions_created": 0,
+    "production_content_required_rows_resolved": 0,
+    "selection_certificate_issued": false,
+    "deterministic_reselection_executed": false
+  },
+  "candidate_readout": [
+    {
+      "candidate": "F17/T14430/2003",
+      "recent_accept_lower_bound_fraction": "0.796875",
+      "baseline_to_signal_score_drop": "0.061250",
+      "baseline_to_signal_source_share_increase": "-0.125000",
+      "dry_run_state": "WOULD_CONTENT_PASS",
+      "production_content_state": "CONTENT_UNRESOLVED"
+    },
+    {
+      "candidate": "F17/T10579/2012",
+      "recent_accept_lower_bound_fraction": "0.781250",
+      "baseline_to_signal_score_drop": "0.000000",
+      "baseline_to_signal_source_share_increase": "-0.156250",
+      "dry_run_state": "WOULD_CONTENT_PASS",
+      "production_content_state": "CONTENT_UNRESOLVED"
+    },
+    {
+      "candidate": "F27/T12505/1991",
+      "recent_accept_lower_bound_fraction": "0.218750",
+      "baseline_to_signal_score_drop": "0.962600",
+      "baseline_to_signal_source_share_increase": "0.750000",
+      "signal_opaque_title_rows": 27,
+      "dry_run_state": "WOULD_CONTENT_FAIL_INDEXING_ANOMALY",
+      "production_content_state": "CONTENT_UNRESOLVED"
+    },
+    {
+      "candidate": "F27/T12421/1953",
+      "recent_accept_lower_bound_fraction": "0.656250",
+      "baseline_to_signal_score_drop": "-0.055200",
+      "baseline_to_signal_source_share_increase": "0.218750",
+      "dry_run_state": "WOULD_CONTENT_PASS",
+      "production_content_state": "CONTENT_UNRESOLVED"
+    }
+  ],
+  "sensitivity": {
+    "accept_threshold_0.50": {
+      "would_pass": 3,
+      "would_fail_indexing": 1,
+      "would_unresolved": 0
+    },
+    "accept_threshold_0.60": {
+      "would_pass": 3,
+      "would_fail_indexing": 1,
+      "would_unresolved": 0
+    },
+    "accept_threshold_0.70": {
+      "would_pass": 2,
+      "would_fail_indexing": 1,
+      "would_unresolved": 1
+    }
+  },
+  "counterfactual_next_frontier": {
+    "applied_to_production_states": false,
+    "next_required_candidate_if_t12505_were_later_frozen_fail": "F27/rank2/T10543/1993",
+    "frozen_topic_card_available": false,
+    "recent_six_year_author_linked_work_memberships": 13080,
+    "target_title_sample_rows": 96,
+    "observed_ambiguous_rows_per_96_range": [
+      15,
+      30
+    ],
+    "historical_pro_rata_two_provider_cost_usd_range": [
+      "0.009619",
+      "0.019238"
+    ],
+    "cost_reference_is_current_quote": false
+  },
+  "execution": {
+    "raw_openalex_main_table_read": false,
+    "new_titles_read": false,
+    "network_accessed": false,
+    "credentials_accessed": false,
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000",
+    "outcomes_read": false
+  },
+  "boundaries": {
+    "dry_run_states_are_production_dispositions": false,
+    "semantic_ground_truth_established": false,
+    "accuracy_established": false,
+    "raw_title_scan_authorized": false,
+    "new_api_request_creation_authorized": false,
+    "api_submission_authorized": false,
+    "selection_certificate_authorized": false,
+    "deterministic_reselection_authorized": false,
+    "outcomes_read": false,
+    "model_fitting_authorized": false,
+    "g4_open": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "next_required_step": "FREEZE_OR_REJECT_THE_CANDIDATE_RULE_THEN_AUTHORIZE_ONLY_THE_TARGETED_T10543_LOCAL_SAMPLE_IN_A_VERSIONED_SUCCESSOR"
+}

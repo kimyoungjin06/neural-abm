@@ -1,0 +1,127 @@
+{
+  "schema_version": "pivot_feedback_g0_risk_set_weight_support_discovery_input.v1",
+  "status": "SYNTHETIC_CLOSED_FIXTURE",
+  "sampling_strata": [
+    {
+      "stratum_id": "field17-episode1-2012",
+      "analysis_partition_id": "discovery_calibration",
+      "field_id": 17,
+      "episode_id": 1,
+      "decision_year": 2012,
+      "case_ids": ["case-a", "case-b"],
+      "control_ids": [
+        "control-01", "control-02", "control-03", "control-04", "control-05",
+        "control-06", "control-07", "control-08", "control-09", "control-10",
+        "control-11", "control-12", "control-13", "control-14", "control-15",
+        "control-16", "control-17", "control-18", "control-19", "control-20",
+        "control-21", "control-22", "control-23", "control-24", "control-25"
+      ]
+    },
+    {
+      "stratum_id": "field27-episode3-2011",
+      "analysis_partition_id": "discovery_calibration",
+      "field_id": 27,
+      "episode_id": 3,
+      "decision_year": 2011,
+      "case_ids": ["case-c"],
+      "control_ids": [
+        "small-control-01", "small-control-02", "small-control-03",
+        "small-control-04", "small-control-05"
+      ]
+    }
+  ],
+  "weight_groups": [
+    {
+      "group_id": "discovery-field17",
+      "analysis_partition_id": "discovery_calibration",
+      "field_id": 17,
+      "raw_weight_counts": [
+        {"weight": 1.0, "count": 99},
+        {"weight": 1000.0, "count": 1}
+      ]
+    }
+  ],
+  "cohort_groups": [
+    {
+      "group_id": "cohort-pass",
+      "analysis_partition_id": "discovery_calibration",
+      "field_id": 17,
+      "episode_id": 1,
+      "total_opportunity_rows": 1000,
+      "entry_events": 150,
+      "non_entry_opportunities": 850
+    },
+    {
+      "group_id": "cohort-total-fail",
+      "analysis_partition_id": "discovery_calibration",
+      "field_id": 17,
+      "episode_id": 2,
+      "total_opportunity_rows": 499,
+      "entry_events": 100,
+      "non_entry_opportunities": 399
+    },
+    {
+      "group_id": "cohort-event-fail",
+      "analysis_partition_id": "discovery_calibration",
+      "field_id": 27,
+      "episode_id": 3,
+      "total_opportunity_rows": 1000,
+      "entry_events": 99,
+      "non_entry_opportunities": 901
+    },
+    {
+      "group_id": "cohort-non-event-fail",
+      "analysis_partition_id": "discovery_calibration",
+      "field_id": 27,
+      "episode_id": 4,
+      "total_opportunity_rows": 1000,
+      "entry_events": 901,
+      "non_entry_opportunities": 99
+    }
+  ],
+  "report_cells": [
+    {"cell_id": "zero", "count": 0},
+    {"cell_id": "one", "count": 1},
+    {"cell_id": "ten", "count": 10},
+    {"cell_id": "eleven", "count": 11},
+    {"cell_id": "large", "count": 100}
+  ],
+  "capacity_tables": [
+    {
+      "table_id": "capacity-pass",
+      "analysis_partition_id": "discovery_calibration",
+      "field_id": 17,
+      "episode_id": 1,
+      "cells": [
+        {"signal": 0, "capacity": 0, "entry_events": 20, "non_entry_opportunities": 80, "analytic_weight_sum": 100.0},
+        {"signal": 1, "capacity": 0, "entry_events": 20, "non_entry_opportunities": 80, "analytic_weight_sum": 100.0},
+        {"signal": 0, "capacity": 1, "entry_events": 20, "non_entry_opportunities": 80, "analytic_weight_sum": 100.0},
+        {"signal": 1, "capacity": 1, "entry_events": 20, "non_entry_opportunities": 80, "analytic_weight_sum": 100.0}
+      ]
+    },
+    {
+      "table_id": "capacity-support-fail",
+      "analysis_partition_id": "discovery_calibration",
+      "field_id": 17,
+      "episode_id": 2,
+      "cells": [
+        {"signal": 0, "capacity": 0, "entry_events": 20, "non_entry_opportunities": 80, "analytic_weight_sum": 100.0},
+        {"signal": 1, "capacity": 0, "entry_events": 10, "non_entry_opportunities": 90, "analytic_weight_sum": 100.0},
+        {"signal": 0, "capacity": 1, "entry_events": 20, "non_entry_opportunities": 80, "analytic_weight_sum": 100.0},
+        {"signal": 1, "capacity": 1, "entry_events": 20, "non_entry_opportunities": 80, "analytic_weight_sum": 100.0}
+      ]
+    },
+    {
+      "table_id": "capacity-vif-fail",
+      "analysis_partition_id": "discovery_calibration",
+      "field_id": 27,
+      "episode_id": 3,
+      "cells": [
+        {"signal": 0, "capacity": 0, "entry_events": 11, "non_entry_opportunities": 39, "analytic_weight_sum": 50.0},
+        {"signal": 1, "capacity": 0, "entry_events": 11, "non_entry_opportunities": 39, "analytic_weight_sum": 50.0},
+        {"signal": 0, "capacity": 1, "entry_events": 11, "non_entry_opportunities": 39, "analytic_weight_sum": 50.0},
+        {"signal": 1, "capacity": 1, "entry_events": 200, "non_entry_opportunities": 800, "analytic_weight_sum": 1000.0}
+      ]
+    }
+  ]
+}

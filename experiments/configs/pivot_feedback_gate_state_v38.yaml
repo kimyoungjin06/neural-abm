@@ -1,0 +1,168 @@
+schema_version: pivot_feedback_gate_state.v38
+label: pivot_feedback_gate_state_v38
+mode: ADDITIVE_EXACT_FOUR_AUTHOR_OPPORTUNITY_REBUILD_VERIFIED_LEAVEOUT_NETWORK_BRIDGE_AUTHORIZATION
+status: VALID_EXACT_FOUR_AUTHOR_OPPORTUNITY_REBUILD_INDEPENDENTLY_VERIFIED_LEAVEOUT_NETWORK_BRIDGE_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v37.yaml
+  sha256: 9b4453c57f7efff8095cc558d4caf938c6b213b273012d8ea8cf835d1285f7c4
+  required_schema_version: pivot_feedback_gate_state.v37
+  required_status: VALID_CERTIFIED_EPISODE_RESELECTION_COMPLETE_EXACT_OUTCOME_BLIND_PANEL_REBUILD_AUTHORIZED
+  required_fields:
+    authorization.d0_exact_selected_work_manifest_rebuild: AUTHORIZED_OUTCOME_BLIND_EXACT_FOUR_ONLY
+    authorization.d0_author_opportunity_panel_rebuild: AUTHORIZED_OUTCOME_BLIND_EXACT_FOUR_ONLY
+    authorization.d0_rebuild_independent_verification: REQUIRED
+    authorization.d0_leaveout_network_bridge_build: PAUSED_UNTIL_REBUILT_PANEL_INDEPENDENTLY_VERIFIED
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+verified_rebuild:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_certified_author_opportunity_rebuild_v1.yaml
+    sha256: 4e5066f740f8358ab4936c13c651b895118434773fc88c91ae49e337fed15245
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_certified_author_opportunity_rebuild_v1.py
+    sha256: 57df96ac416af03d5c42338b22868e007c72eba5e2b423c29b644b8af87c1e91
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_certified_author_opportunity_rebuild_v1.py
+    sha256: 06c56bf5268d79810978f833ba1473b3bbbf2f7ee351d6f694256eb0d2056ee6
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_certified_author_opportunity_rebuild_20260730.summary.json
+    sha256: ace2dc5a0f6d00855e7c33d4844dc8f3f1f91a85c01d8e1b3bd5d1df89640a03
+    required_schema_version: pivot_feedback_d0_certified_author_opportunity_rebuild_summary.v1
+    required_status: PASS_INDEPENDENT_EXACT_FOUR_OUTCOME_BLIND_MEASUREMENT_ABI_AUTHOR_OPPORTUNITY_REBUILD
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_certified_author_opportunity_rebuild_20260730.summary.md
+    sha256: 569dc8d225398f02b788db644282044fed7e131654a29b33138f48e5ad6b0ee3
+  operator_local:
+    root_basename: pivot-feedback-d0-certified-author-opportunity-rebuild-v1-20260730
+    receipt_basename: certified_author_opportunity_rebuild.outputs.json
+    receipt_sha256: 1cc0a55dfa5a5bdae14963f876ff81e78e9e69fbe10e6aa7a5ac82872d50445d
+    receipt_status: PASS_EXACT_FOUR_OUTCOME_BLIND_MEASUREMENT_ABI_AUTHOR_OPPORTUNITY_REBUILD
+    report_basename: certified_author_opportunity_rebuild.json
+    report_sha256: 3d2e6024c122a2872944b5b0d0ef42fe5496be525b47dbcde4f128fcbf2cf4e8
+    selected_work_basename: certified_episode_selected_predecision_works.parquet
+    selected_work_sha256: 4bf2ae3339de6764fc7a77631e747bfe9c74091477a317d2295693078e7c3d3c
+    author_base_basename: certified_pre_entry_author_opportunity_base.parquet
+    author_base_sha256: cc6096389e25b456dec1ff6144a50e2dd0fff7ea48b77e5957757b8689ba41ad
+    verification_basename: pivot-feedback-d0-certified-author-opportunity-rebuild-v1-20260730.verification-v1.json
+    verification_sha256: d5a8f7dd983e0909dcce7cb413e5b2e69be65a313e51a5e8cda47dcb6b6116c3
+    verification_status: PASS_INDEPENDENT_EXACT_FOUR_OUTCOME_BLIND_MEASUREMENT_ABI_AUTHOR_OPPORTUNITY_REBUILD
+  result:
+    exact_certified_episode_rows: 4
+    selected_work_rows: 30765
+    author_opportunity_rows: 3256271
+    eligible_prelink_work_rows: 127506992
+    eligible_author_linked_work_rows: 101378625
+    eligible_author_work_event_rows: 250398999
+    author_row_groups_independently_compared: 16384
+    duplicate_author_work_event_rows: 0
+    selected_work_rows_by_episode: [15099, 8068, 3797, 3801]
+    author_rows_by_episode: [549629, 1215043, 1330658, 160941]
+    outcomes_read: false
+    api_requests_created: 0
+
+current_measurement_surface:
+  exact_episode_rows:
+    - [17, 1, 14430, 2003]
+    - [17, 45, 10579, 2012]
+    - [27, 5, 10151, 1993]
+    - [27, 6, 12421, 1953]
+  selected_work_manifest_role: CURRENT_INDEPENDENTLY_VERIFIED_EXACT_ELIGIBLE_AUTHOR_LINKED_TARGET_WORKS
+  author_opportunity_base_role: CURRENT_INDEPENDENTLY_VERIFIED_EXACT_FOUR_OUTCOME_BLIND_MEASUREMENT_BASE
+  old_author_panel_role: SUPERSEDED_PROVISIONAL_DO_NOT_REUSE
+  focal_field_ids: [17, 27]
+  all_field_metric_field_ids:
+    [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
+     27, 28, 29, 30, 31, 32, 33, 34, 35, 36]
+  team_cap_profiles_retained: [10, 50, 100, ALL]
+  team_cap_selected: false
+  final_minimum_history_works: UNRESOLVED
+  final_candidate_eligibility_established: false
+  natural_person_identity_established: false
+  historical_topic_observability_established: false
+
+gate_state:
+  D0:
+    state: PARTIAL_EXACT_FOUR_AUTHOR_OPPORTUNITY_BASE_INDEPENDENTLY_VERIFIED
+    complete: false
+    completed_components:
+      - D0_GLOBAL_SELECTION_CERTIFICATE
+      - D0_EXACT_FOUR_CERTIFIED_EPISODE_RESELECTION
+      - D0_FROZEN_SCHOLARLY_WORK_MEASUREMENT_ABI
+      - D0_EXACT_SELECTED_WORK_MANIFEST_REBUILD
+      - D0_EXACT_FOUR_AUTHOR_OPPORTUNITY_BASE_REBUILD
+      - D0_INDEPENDENT_WORK_FIRST_AUTHOR_OPPORTUNITY_REPLAY
+    next_components:
+      - D0_AUTHOR_MEMBERSHIP_FREEZE_WITHOUT_OUTCOME_TUNING
+      - D0_INCUMBENT_ONLY_TARGET_ATTENTION
+      - D0_FOCAL_AUTHOR_LEAVEOUT
+      - D0_PRIOR_COLLABORATOR_GRAPH
+      - D0_REGISTERED_LOCAL_NETWORK_LEAVEOUT
+      - D0_PRIOR_PEER_TARGET_ACTIVITY
+      - D0_SAME_AFFILIATION_BRIDGE_PROXY
+      - D0_ORCID_STABLE_SUBSET_FLAG
+      - D0_TEMPORAL_LEAKAGE_INDEPENDENT_VERIFICATION
+    blocked_components:
+      - D0_PRODUCTION_RESEARCHER_PIVOT_CLASSIFICATION
+      - D0_DISCOVERY_OUTCOME_OPENING
+      - D0_FINAL_CANDIDATE_ELIGIBILITY
+      - G0_MEASUREMENT_FREEZE
+      - MODEL_FITTING
+      - G4
+  G0:
+    state: PENDING
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorized_next_scope:
+  source_author_base: CURRENT_INDEPENDENTLY_VERIFIED_EXACT_FOUR_OUTCOME_BLIND_MEASUREMENT_BASE
+  exact_certified_episode_rows: 4
+  outcome_blind: true
+  predecision_only: true
+  author_membership_rule_may_use_outcomes: false
+  final_minimum_history_threshold_selection: NOT_AUTHORIZED
+  team_cap_selection: NOT_AUTHORIZED
+  episode_or_field_substitution: FORBIDDEN
+  measurement_abi_amendment: FORBIDDEN
+  focal_author_leaveout: AUTHORIZED
+  incumbent_only_target_attention: AUTHORIZED
+  prior_collaborator_graph_window: T_MINUS_5_THROUGH_T_MINUS_1
+  prior_collaborator_graph: AUTHORIZED
+  registered_local_network_leaveout: AUTHORIZED
+  prior_peer_target_activity: AUTHORIZED
+  same_affiliation_bridge_proxy: AUTHORIZED_CURRENT_SNAPSHOT_PROXY_MUST_REMAIN_LABELED
+  orcid_stable_subset_flag: AUTHORIZED_SENSITIVITY_FLAG_ONLY
+  temporal_leakage_independent_verification: REQUIRED
+  raw_numeric_ids: PRIVATE_OPERATOR_LOCAL_ONLY
+
+authorization:
+  d0_exact_selected_work_manifest_rebuild: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_author_opportunity_panel_rebuild: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_leaveout_network_bridge_contract_and_build: AUTHORIZED_OUTCOME_BLIND_EXACT_FOUR_ONLY
+  d0_leaveout_network_bridge_independent_verification: REQUIRED
+  d0_production_pivot_classification: PAUSED_UNTIL_LEAVEOUT_NETWORK_BRIDGE_INDEPENDENTLY_VERIFIED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_submission: NOT_AUTHORIZED
+  final_candidate_eligibility: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The exact four certified predecision selected-work manifest and
+  author-opportunity measurement base have passed a full work-first independent
+  replay. This successor authorizes only outcome-blind, predecision leave-out,
+  incumbent, prior-collaboration, peer, affiliation-proxy, and ORCID
+  sensitivity measurement for those four episodes under the unchanged ABI.
+  The old panel remains superseded and cannot be reused. No team cap, final
+  history threshold, candidate eligibility, researcher pivot, entry or
+  persistence outcome, API request, G0 freeze, model fit, G4 result,
+  association, causal mechanism, or scientific effect is selected, opened,
+  run, or established.

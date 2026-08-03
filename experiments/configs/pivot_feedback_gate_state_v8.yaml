@@ -1,0 +1,189 @@
+schema_version: pivot_feedback_gate_state.v8
+label: pivot_feedback_gate_state_v8
+mode: ADDITIVE_D0_HUMAN_REVIEW_PACKET_PREPARATION_GATE_LEDGER
+status: VALID_D0_REVIEW_PACKETS_PREPARED_HUMAN_REVIEW_NOT_RUN_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v7.yaml
+  sha256: 03b56aa479ce1b54415c9f811c036e6e62d9f7e7cd2dcff5b725fcd9194549cf
+  required_schema_version: pivot_feedback_gate_state.v7
+  required_status: VALID_D0_CONTENT_REVIEW_REQUIRED_EPISODE_3_QUARANTINED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    gate_state.D0.state: PARTIAL_ABI_RESELECTION_PASS_CONTENT_REVIEW_REQUIRED
+    gate_state.D0.complete: false
+    human_review_state.sample_rows: 384
+    human_review_state.reviewer_1_completed_rows: 0
+    human_review_state.reviewer_2_completed_rows: 0
+    human_review_state.adjudicated_rows: 0
+    human_review_state.review_freeze_complete: false
+    authorization.d0_human_double_content_review: AUTHORIZED_OUTCOME_BLIND
+    authorization.d0b_leaveout_network_bridge_build: PAUSED_PENDING_REVIEW_AND_RESELECTION_SUCCESSOR
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+    authorization.scientific_effect: NOT_ESTABLISHED
+  mutation_allowed: false
+
+execution_evidence:
+  blinded_human_review_packets:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_content_review_packets_20260729.summary.json
+    sha256: 6eba0c1c43050c048786189875ff596cd8bcdc8422d9b0d9920d25168df57006
+    required_schema_version: pivot_feedback_d0_content_review_packet_summary.v1
+    required_status: PASS_INDEPENDENT_D0_BLINDED_TWO_HUMAN_REVIEWER_PACKETS_REVIEW_NOT_RUN
+    required_fields:
+      source.review_template_rows: 384
+      output.artifact_count: 5
+      output.reviewer_packet_rows_each: 384
+      output.packet_orders_differ: true
+      output.packet_content_sets_match: true
+      independent_verification.packet_content_exact_match: true
+      independent_verification.adjudication_key_exact_match: true
+      independent_verification.producer_module_imported: false
+      scope.packets_prepared: true
+      scope.reviewer_labels_filled: 0
+      scope.human_review_complete: false
+      scope.automatic_title_classification_performed: false
+      scope.d0_complete: false
+      scope.leaveout_network_bridge_authorized: false
+      scope.discovery_outcome_opening_authorized: false
+      scope.g0_authorized: false
+      scope.model_fitting_authorized: false
+      scope.g4_open: false
+      scope.outcomes_read: false
+      scope.gpu_used: false
+      scope.scientific_effect: NOT_ESTABLISHED
+
+gate_state:
+  G_MINUS_1A:
+    state: PASS_BOUNDED
+    complete: true
+    authorizes: [S0]
+  S0:
+    state: PASS_THRESHOLD_FREE_INVENTORY
+    complete: true
+    authorizes: [D0]
+  D0:
+    state: PARTIAL_REVIEW_PACKETS_PREPARED_HUMAN_REVIEW_NOT_RUN
+    complete: false
+    requires: [S0]
+    entry_year_end: 2012
+    completed_components:
+      - D0_OUTCOME_BLIND_MEASUREMENT_ABI_FREEZE
+      - D0_OUTCOME_BLIND_TWO_FIELD_FOUR_EPISODE_RESELECTION
+      - D0_AUTOMATED_CONTENT_AND_INDEXING_EXTRACTION
+      - D0_TWO_SEPARATELY_ORDERED_BLINDED_HUMAN_REVIEW_PACKETS
+      - D0_PRIVATE_ADJUDICATION_KEY
+      - D0_INDEPENDENT_PACKET_VERIFICATION
+    blocked_components:
+      - TWO_INDEPENDENT_COMPLETE_HUMAN_TITLE_REVIEWS
+      - THIRD_PARTY_DISAGREEMENT_ADJUDICATION
+      - FROZEN_REVIEW_RECEIPT_AND_AGREEMENT_STATISTICS
+      - CANDIDATE_LEVEL_INDEXING_CONTAMINATION_RULE_FREEZE
+      - COMPLETE_CANDIDATE_UNIVERSE_RESELECTION_SUCCESSOR
+      - REBUILT_AUTHOR_OPPORTUNITY_PANEL
+      - INCUMBENT_AND_NETWORK_MEASUREMENTS
+    authorizes:
+      - D0_TWO_HUMAN_TITLE_REVIEWS
+      - D0_THIRD_PARTY_ADJUDICATION_AFTER_REVIEWER_FREEZE
+      - D0_OUTCOME_BLIND_INDEXING_CONTAMINATION_SUCCESSOR_AFTER_ADJUDICATION
+  G0:
+    state: PENDING
+    complete: false
+  G0_5:
+    state: NOT_RUN
+    complete: false
+  G1:
+    state: NOT_RUN
+    complete: false
+  G2:
+    state: NOT_RUN
+    complete: false
+  G3:
+    state: NOT_RUN
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+  G5:
+    state: NOT_RUN_OPTIONAL
+    complete: false
+
+authorization:
+  d0_blinded_review_packet_preparation: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_human_reviewer_1: AUTHORIZED_DISTINCT_HUMAN_OUTCOME_BLIND
+  d0_human_reviewer_2: AUTHORIZED_DISTINCT_HUMAN_OUTCOME_BLIND
+  d0_adjudication: AUTHORIZED_AFTER_BOTH_REVIEWER_FILES_FROZEN
+  d0_indexing_contamination_successor: AUTHORIZED_AFTER_ADJUDICATION_FREEZE
+  d0b_author_opportunity_foundation_v1: SUPERSEDED_AUDIT_BASE_NOT_CURRENT_PANEL
+  d0b_leaveout_network_bridge_build: PAUSED_PENDING_REVIEW_AND_RESELECTION_SUCCESSOR
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  final_panel_materialization: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+review_packet_state:
+  output_root_basename: pivot-feedback-d0-content-review-packets-v1-20260729
+  receipt_sha256: 8938d35c28ae3175a416dd0ef223103376d127bd01ddde7b5e9913299304867a
+  artifact_tree_sha256: 36552e421cd80847d41f5787ca3294059f1a7114d87464747f1d9ab95891610d
+  verification_report_basename: pivot-feedback-d0-content-review-packets-v1-20260729.verification-v1.json
+  verification_report_sha256: 31cbb2567c0ef488ba3c1962a54882a2ad621593d0f8cf6613cec1561511a3b1
+  reviewer_packet_rows_each: 384
+  packet_orders_differ: true
+  packet_content_sets_match: true
+  packet_content_exact_match: true
+  adjudication_key_exact_match: true
+  reviewer_1_completed_rows: 0
+  reviewer_2_completed_rows: 0
+  adjudicated_rows: 0
+  human_review_complete: false
+  artificial_agent_may_substitute_for_human_reviewer: false
+
+provisional_scientific_scope:
+  episode_3_quarantined_pending_review: true
+  remaining_episodes_automatically_promoted: false
+  current_four_episode_set_valid_for_leaveout_or_author_panel: false
+  prior_author_episode_rows_are_current_panel: false
+  entry_or_persistence_outcomes_read: false
+  scientific_effect: NOT_ESTABLISHED
+
+next_required_implementation:
+  gate: D0_HUMAN_CONTENT_REVIEW_EXECUTION
+  required_order:
+    - assign_two_distinct_human_reviewers
+    - complete_reviewer_1_packet_without_cross_review
+    - complete_reviewer_2_packet_without_cross_review
+    - freeze_and_hash_both_completed_reviewer_files
+    - verify_complete_allowed_labels_and_required_notes
+    - compute_exact_agreement_and_cohen_kappa
+    - adjudicate_every_disagreement_with_a_third_human
+    - freeze_adjudicated_review_receipt
+    - define_candidate_level_indexing_contamination_rule_without_outcomes
+    - apply_rule_to_complete_candidate_universe
+    - rerun_deterministic_two_field_four_episode_selection_or_fail_coverage
+    - independently_replay_the_successor_freeze
+    - rebuild_author_opportunity_panel_for_successor_episodes
+  reviewer_discussion_before_independent_freeze_allowed: false
+  artificial_reviewer_substitution_allowed: false
+  entry_or_persistence_outcomes_may_be_opened: false
+  leaveout_or_peer_measurement_may_be_built_before_successor_freeze: false
+  current_episode_set_may_be_reused_as_final: false
+  current_author_panel_may_be_reused_as_final: false
+  manual_episode_replacement_without_complete_universe_rule_allowed: false
+  final_candidate_eligibility_may_be_claimed: false
+  final_field_choice_by_effect_size_allowed: false
+  confirmatory_year_changes_allowed: false
+  workload_class: HUMAN_REVIEW_THEN_CPU_IO
+  gpu_required: false
+
+claim_boundary: >-
+  This additive ledger records two separately ordered, title-only human review
+  packets and a private adjudication key that independently match the frozen
+  384-row source template. No title has been classified, no human review or
+  adjudication has been completed, and no episode has been promoted or
+  replaced. Episode 3 remains quarantined and the prior author panel remains
+  superseded. D0, leave-out/network/bridge construction, entry, persistence,
+  G0, final-panel materialization, model fitting, G4, empirical associations,
+  causal effects, and scientific effects remain incomplete, paused,
+  unauthorized, sealed, not run, or not established.

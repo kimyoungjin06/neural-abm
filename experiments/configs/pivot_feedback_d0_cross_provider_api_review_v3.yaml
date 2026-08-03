@@ -1,0 +1,207 @@
+schema_version: pivot_feedback_d0_cross_provider_api_review_config.v3
+label: pivot_feedback_d0_cross_provider_api_review_v3
+mode: OUTCOME_BLIND_OPENAI_CLAUDE_API_FIRST_HUMAN_CALIBRATION_CONTRACT
+status: FROZEN_CROSS_PROVIDER_REVIEW_CONTRACT_BATCH_REQUESTS_NOT_SUBMITTED
+
+gate_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v9.yaml
+  sha256: 3f054ec9bb16208fdc1bfa87c7478cdb02e16871e5467691b3b3e43d8a295241
+  required_schema_version: pivot_feedback_gate_state.v9
+  required_status: VALID_D0_API_REVIEW_INPUTS_PREPARED_NOT_SUBMITTED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    api_review_state.api_submitted: false
+    api_review_state.api_responses_received: false
+    api_review_state.human_calibration_complete: false
+    api_review_state.candidate_universe_screen_complete: false
+    api_review_state.artificial_agent_may_substitute_for_human_reviewer: false
+    authorization.d0_candidate_universe_api_screen: NOT_AUTHORIZED_PENDING_CALIBRATION
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+
+superseded_openai_only_path:
+  config_relative_path: experiments/configs/pivot_feedback_d0_api_assisted_review_v2.yaml
+  config_sha256: 1c1546ff86d54c74b96eb5e6cf73a5653883cafbc5c88155607e86b3872251b7
+  summary_relative_path: experiments/evidence/results/pivot_feedback_d0_api_review_preparation_20260729.summary.json
+  summary_sha256: 06c6f7eb46315eedb1bd5be3883ea4dd6406d566f9b52431cb1b2b57eeec75bf
+  output_root_basename: pivot-feedback-d0-api-review-v2-prepared-20260729
+  output_receipt_sha256: 01186d0d4804a35ff32f63b55f5ac9ef5c17d473cf4bdd2cd8a35aeb78d27373
+  verification_report_sha256: f216da2a1c6bccdf70588c1227d850c0f2e6d62fb0f38b8e1574208698f33fe3
+  disposition: PRESERVED_PREPARED_NOT_SUBMITTED_SUPERSEDED_BY_CROSS_PROVIDER_V3
+  v2_requests_may_be_submitted_after_v3_freeze: false
+
+source_audit:
+  output_root_basename: pivot-feedback-d0-content-indexing-audit-v1-full-20260724
+  receipt_basename: content_indexing_audit.outputs.json
+  receipt_sha256: 86be1808a3272ba7a892d8aa90f4d3687f0d253474d1b4470dad1940e4ff5280
+  required_receipt_schema_version: pivot_feedback_d0_content_indexing_audit_outputs.v1
+  required_receipt_status: PASS_D0_CONTENT_INDEXING_EXTRACTION_HUMAN_REVIEW_REQUIRED
+  template_basename: content_review_template.csv
+  template_sha256: 9fe7a70a7e7e839c3272a5d146b48674dd248932491595dc7bf8c124e9e2e6d9
+  expected_rows: 384
+  expected_episode_window_strata: 12
+  expected_rows_per_stratum: 32
+
+shared_review_contract:
+  request_seed: pivot-feedback-d0-cross-provider-api-review-v3
+  max_output_tokens: 256
+  prompt_text: |-
+    You are auditing whether a scholarly work title substantively belongs to a
+    target research topic. Use only the supplied target topic, title, language,
+    and work type. Do not infer an episode, year, source, author, citation,
+    treatment, outcome, or downstream effect.
+
+    Assign exactly one label:
+    ON_TOPIC: the title gives affirmative evidence that the work substantively
+    studies, applies, measures, or develops the target topic.
+    AMBIGUOUS: the title has a plausible relation, but title-only evidence is
+    insufficient for an on-topic decision.
+    OFF_TOPIC: the title affirmatively concerns a different subject or only a
+    coincidental lexical overlap.
+    UNREVIEWABLE: the title is missing, corrupted, opaque, or cannot be
+    interpreted well enough for the other labels.
+
+    Be conservative: broad field proximity is not enough for ON_TOPIC. Return
+    the structured label, a concise title-grounded rationale, and HIGH, MEDIUM,
+    or LOW confidence.
+  allowed_labels:
+    - ON_TOPIC
+    - AMBIGUOUS
+    - OFF_TOPIC
+    - UNREVIEWABLE
+  confidence_levels:
+    - HIGH
+    - MEDIUM
+    - LOW
+  request_visible_fields:
+    - target_topic_name
+    - title
+    - language
+    - work_type
+  forbidden_request_fields:
+    - episode_index
+    - field_id
+    - topic_id
+    - entry_year
+    - window_code
+    - work_numeric_id
+    - openalex_id
+    - expected_publication_year
+    - observed_publication_year
+    - primary_topic_score
+    - source_id
+    - source_name
+    - source_file_index
+    - source_row_group
+    - reviewer_1_label
+    - reviewer_2_label
+    - adjudicated_label
+    - review_notes
+    - entry_outcome
+    - persistence_outcome
+
+provider_judges:
+  - judge_id: openai
+    provider: OpenAI
+    model: gpt-5-mini-2025-08-07
+    transport: BATCH_API
+    batch_endpoint: /v1/batches
+    request_endpoint: /v1/responses
+    completion_window: 24h
+    store: false
+    tools_enabled: false
+    web_search_enabled: false
+    structured_output_parameter: text.format
+    batch_input_format: JSONL_FILE_UPLOAD
+    batch_input_purpose: batch
+    requests: 384
+  - judge_id: claude
+    provider: Anthropic
+    model: claude-haiku-4-5-20251001
+    transport: MESSAGE_BATCHES_API
+    batch_endpoint: /v1/messages/batches
+    request_endpoint: /v1/messages
+    completion_window: 24h
+    tools_enabled: false
+    web_search_enabled: false
+    structured_output_parameter: output_config.format
+    batch_input_format: JSON_REQUEST_BODY
+    requests: 384
+
+human_calibration:
+  base_sample_seed: pivot-feedback-d0-api-human-calibration-v2
+  base_rows_per_episode_window_stratum: 8
+  base_sample_rows: 96
+  reviewer_count: 2
+  reviewers_must_be_distinct_humans: true
+  artificial_agent_may_substitute_for_human_reviewer: false
+  reviewers_blind_to_api_outputs: true
+  reviewer_discussion_before_freeze_allowed: false
+  adjudicate_human_disagreements_with_third_human: true
+  escalation_union:
+    - API_JUDGES_DISAGREE
+    - EITHER_API_LABEL_NOT_ON_TOPIC
+    - EITHER_API_CONFIDENCE_NOT_HIGH
+    - API_REQUEST_OR_RESPONSE_INVALID
+  base_and_escalation_union_deduplicated: true
+  fail_close_rules:
+    - ANY_BASE_ROW_HUMAN_NON_ON_TOPIC_WHILE_BOTH_APIS_ON_TOPIC
+    - ANY_MISSING_OR_INVALID_API_RESPONSE
+    - ANY_REQUIRED_HUMAN_LABEL_MISSING
+    - HUMAN_EXACT_AGREEMENT_BELOW_0_80
+    - HUMAN_COHEN_KAPPA_BELOW_0_60_WHEN_DEFINED
+  fail_close_action: REQUIRE_FULL_384_ROW_HUMAN_DOUBLE_REVIEW
+  api_only_may_complete_d0: false
+
+operator_cost_control:
+  currency: USD
+  maximum_authorized_total_usd: 1.00
+  estimate_method: REQUEST_ARTIFACT_BYTES_AS_INPUT_TOKEN_UPPER_BOUND_PLUS_64_TOKENS_PER_REQUEST_AND_MAX_OUTPUT_TOKENS
+  input_token_safety_overhead_per_request: 64
+  pricing_checked_at_utc: 2026-07-29T04:00:00+00:00
+  openai_batch_price_per_million:
+    input: 0.125
+    output: 1.00
+  anthropic_haiku_4_5_batch_price_per_million:
+    input: 0.50
+    output: 2.50
+  price_sources:
+    - https://platform.openai.com/docs/api-reference/batch/object?api-mode=responses
+    - https://openai.com/index/introducing-gpt-5-for-developers/
+    - https://platform.claude.com/docs/en/about-claude/pricing
+  reject_submission_when_estimate_exceeds_authorized_maximum: true
+  credential_values_may_be_persisted: false
+
+phase_boundary:
+  prepared_batch_requests_are_api_execution: false
+  api_submission_is_human_validation: false
+  api_responses_are_human_validation: false
+  calibrated_384_row_pass_is_candidate_universe_pass: false
+  candidate_universe_rows: 70277
+  candidate_universe_api_screen_requires_successor_contract: true
+  episode_3_remains_quarantined: true
+  remaining_episodes_automatically_promoted: false
+  old_author_panel_current: false
+
+authorization:
+  prepare_cross_provider_batch_requests: AUTHORIZED_OUTCOME_BLIND
+  submit_cross_provider_batches: AUTHORIZED_WITH_VALIDATED_CREDENTIALS_AND_MAXIMUM_1_USD_COST_CONTROL
+  ingest_cross_provider_responses: AUTHORIZED_OUTCOME_BLIND
+  prepare_human_calibration_packets: AUTHORIZED_OUTCOME_BLIND
+  human_calibration_review: AUTHORIZED_AFTER_PACKET_FREEZE
+  candidate_universe_api_screen: NOT_AUTHORIZED_PENDING_CALIBRATION
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  g0: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This successor replaces the unsubmitted OpenAI-only v2 execution path with
+  one pinned OpenAI judge and one dated Claude judge. The same outcome-blind
+  384-title surface and deterministic 96-title two-human calibration remain in
+  force. Cross-provider agreement is not human evidence and cannot complete D0.
+  Request preparation is not API execution; API execution is not human
+  calibration; and a calibrated 384-title result is not a complete-candidate-
+  universe contamination pass. Episode 3 remains quarantined, the other
+  episodes are not promoted, the old author panel remains superseded, and no
+  outcome, G0, model, G4, or scientific effect is opened or established.

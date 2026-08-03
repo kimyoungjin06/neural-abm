@@ -1,0 +1,146 @@
+schema_version: pivot_feedback_d0_t10151_rank5_external_evidence_config.v1
+label: pivot_feedback_d0_t10151_rank5_external_evidence_v1
+mode: EXACT_14_EXTERNAL_BIBLIOGRAPHIC_EVIDENCE_EXACT_11_REVIEW_PACKET
+status: FROZEN_EXACT_14_EXTERNAL_COLLECTION_AUTHORIZED
+
+gate_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v32.yaml
+  sha256: 96c4f6dd38cf6d2a5aff53e7ee65f9c0afb725864f3eb4a43093c310a60025c7
+  required_schema_version: pivot_feedback_gate_state.v32
+  required_status: VALID_RANK5_EXACT_14_EXTERNAL_EVIDENCE_COLLECTION_AND_EXACT_11_REVIEW_AUTHORIZED
+
+source_inputs:
+  recovery:
+    root_basename: pivot-feedback-d0-t10151-rank5-local-abstract-recovery-v1-20260730
+    basename: rank5_local_abstract_recovery.parquet
+    sha256: 70cc9e2516762712ff67662a59626b913db9f6f836e6693615e0c8a573739c3f
+    rows: 16
+    schema_version: pivot_feedback_d0_t10151_rank5_local_abstract_recovery.v1
+  abstract_decisions:
+    root_basename: pivot-feedback-d0-t10151-rank5-abstract-cross-provider-v1-results-20260730
+    basename: rank5_abstract_cross_provider_decisions.csv
+    sha256: 8fe29a45609714ad8a69005c551e33532d58461ac1d73933a5483e3b49417d5a
+    rows: 5
+    resolved_accept_id: https://openalex.org/W2412228338
+    resolved_reject_id: https://openalex.org/W2917660375
+  expected_unresolved_rows: 14
+  sorted_openalex_ids_sha256: ce4188ffae63cf45cbe43f171e77501ff2ef5acf570504fa1c534aedff8bff5c
+
+network_sources:
+  user_agent: Neural_ABM-external-evidence-audit/1.0
+  timeout_seconds: 60
+  retries: 0
+  openalex:
+    endpoint: https://api.openalex.org/works
+    allowed_host: api.openalex.org
+    exact_rows: 14
+    select:
+      - id
+      - doi
+      - ids
+      - title
+      - publication_year
+      - type
+      - language
+      - primary_location
+      - locations
+      - best_oa_location
+      - open_access
+      - abstract_inverted_index
+  crossref:
+    endpoint: https://api.crossref.org/works
+    allowed_host: api.crossref.org
+    exact_doi_by_openalex_id:
+      https://openalex.org/W1975142976: 10.1016/0888-0786(89)90056-5
+      https://openalex.org/W1992671670: 10.1111/j.1399-6576.1988.tb02840.x
+      https://openalex.org/W2029221934: 10.1016/s0272-6386(12)80962-0
+      https://openalex.org/W2320892240: 10.3949/ccjm.57.3.218
+      https://openalex.org/W2336012383: 10.1016/0016-5085(89)90530-1
+      https://openalex.org/W2479898326: 10.1007/978-3-642-75043-4_245
+      https://openalex.org/W4236630938: 10.1097/00001574-199106000-00006
+  pubmed:
+    endpoint: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi
+    allowed_host: eutils.ncbi.nlm.nih.gov
+    exact_pmid_by_openalex_id:
+      https://openalex.org/W1992671670: "3067487"
+      https://openalex.org/W2029221934: "1585941"
+      https://openalex.org/W2320892240: "1694113"
+      https://openalex.org/W2402692453: "3496583"
+      https://openalex.org/W2417302102: "2512724"
+      https://openalex.org/W2417500009: "1909531"
+      https://openalex.org/W2596706647: "3444748"
+      https://openalex.org/W7124514286: "1662091"
+
+review_packet:
+  request_seed: pivot-feedback-d0-t10151-rank5-external-evidence-v1
+  exact_review_ids:
+    - https://openalex.org/W1975142976
+    - https://openalex.org/W1992671670
+    - https://openalex.org/W2029221934
+    - https://openalex.org/W2320892240
+    - https://openalex.org/W2336012383
+    - https://openalex.org/W2402692453
+    - https://openalex.org/W2417302102
+    - https://openalex.org/W2417500009
+    - https://openalex.org/W2479898326
+    - https://openalex.org/W2596706647
+    - https://openalex.org/W7124514286
+  exact_holdout_ids:
+    - https://openalex.org/W3206943743
+    - https://openalex.org/W4236630938
+    - https://openalex.org/W7132643734
+  exact_review_rows: 11
+  exact_holdout_rows: 3
+  title_correction:
+    openalex_id: https://openalex.org/W2336012383
+    corrupt_local_title: I% the M .lure Iana gement
+    corrected_crossref_title: Liver transplantation in the management of fulminant hepatic failure
+  eligibility_reasons:
+    https://openalex.org/W1975142976: CROSS_SOURCE_EXACT_TITLE_WITH_HISTORICAL_HCV_ALIAS
+    https://openalex.org/W1992671670: EXTERNAL_ABSTRACT_AND_CONTROLLED_SUBJECTS
+    https://openalex.org/W2029221934: PUBMED_CONTROLLED_SUBJECTS
+    https://openalex.org/W2320892240: PUBMED_CONTROLLED_SUBJECTS
+    https://openalex.org/W2336012383: CROSSREF_CORRECTED_TITLE
+    https://openalex.org/W2402692453: PUBMED_CONTROLLED_SUBJECTS
+    https://openalex.org/W2417302102: PUBMED_CONTROLLED_SUBJECTS
+    https://openalex.org/W2417500009: PUBMED_CONTROLLED_SUBJECTS
+    https://openalex.org/W2479898326: CROSSREF_EXACT_OTHER_SUBJECT_TITLE
+    https://openalex.org/W2596706647: EXTERNAL_ABSTRACT_AND_CONTROLLED_SUBJECTS
+    https://openalex.org/W7124514286: PUBMED_CONTROLLED_SUBJECTS
+  mesh_absence_is_proof: false
+  external_labels_created: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-t10151-rank5-external-evidence-v1-20260730
+  evidence_basename: rank5_external_evidence.parquet
+  review_packet_basename: rank5_external_review_packet.json
+  availability_basename: rank5_external_evidence_availability.csv
+  raw_openalex_basename: raw_openalex_response.json
+  raw_crossref_basename: raw_crossref_responses.json
+  raw_pubmed_basename: raw_pubmed_response.xml
+  report_basename: EXTERNAL_EVIDENCE_COLLECTION.md
+  receipt_basename: external_evidence.outputs.json
+  root_mode: "0700"
+  artifact_mode: "0600"
+
+authorization:
+  network_access: AUTHORIZED_EXACT_HOSTS_ONLY
+  credentials_access: false
+  provider_calls: 0
+  semantic_labels_created: 0
+  human_review: NOT_RUN_BY_DESIGN
+  production_disposition: NOT_AUTHORIZED
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: false
+  model_fitting: false
+  g4_open: false
+
+claim_boundary: >-
+  This contract collects exact current OpenAlex, DOI-registry, and PubMed
+  records for the fourteen unresolved works and builds an eleven-row evidence
+  packet without semantic labels. Controlled subject headings and cross-source
+  titles are evidence, not ground truth; absence of a heading is never proof of
+  exclusion. No provider call, human review, production disposition,
+  certificate, reselection, outcome read, model fit, G4 opening, or effect claim
+  is authorized here.

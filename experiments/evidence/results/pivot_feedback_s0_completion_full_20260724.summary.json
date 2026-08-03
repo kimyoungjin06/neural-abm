@@ -1,0 +1,128 @@
+{
+  "authorization": {
+    "d0_discovery_only_pre2013": "AUTHORIZED",
+    "g0_5_final_panel_conformance": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "g4_holdout_open": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This receipt combines three independently verified, current, threshold-free S0 components and authorizes only the pre-2013 D0 discovery-calibration gate. It establishes current-snapshot OpenAlex author-token, ORCID-syntax/checksum, affiliation-token, institution-token, and predeclared non-ranked coauthor-graph inventories. It does not establish natural-person identity, ORCID ownership, historical affiliation or collaboration observability, a preferred graph cap, candidate eligibility, final fields or thresholds, G0, a final panel, model fitting, empirical or causal effects, or a scientific effect.",
+  "coauthor_graph_inventory": {
+    "field_year_profile_rows": 55632,
+    "profile_caps": [
+      10,
+      50,
+      100
+    ],
+    "profile_metric_sums": {
+      "connected_components": {
+        "10": 97445391,
+        "100": 96201999,
+        "50": 96253316
+      },
+      "distinct_undirected_edges": {
+        "10": 776875376,
+        "100": 1289015377,
+        "50": 1207070104
+      },
+      "graph_node_tokens": {
+        "10": 352175135,
+        "100": 380010841,
+        "50": 378768092
+      },
+      "largest_component_nodes": {
+        "10": 141082665,
+        "100": 172062158,
+        "50": 170685918
+      }
+    },
+    "profiles_ranked_or_selected": false,
+    "source_author_event_rows": 779630258,
+    "unbounded_all_graph_materialized": false
+  },
+  "completion_verifier_sha256": "fd4133fa679ff6ba4517bcdbf33f6a029bf38ecf369837ad04a2ec4db26d0f0a",
+  "component_receipts": {
+    "coauthor_graph": {
+      "artifact_count": 4,
+      "artifact_tree_sha256": "07ab8e6f266597cd30274a746cb550ac80470ad4e843c652c87e17208b0ca37b",
+      "receipt_sha256": "a189f2d891937922b0d15b587477cd8c0fa154f5663b34c0ae94d6ccf7351753",
+      "root_basename": "pivot-feedback-s0-coauthor-graph-profile-v1-full-20260724",
+      "verification_report_basename": "pivot-feedback-s0-coauthor-graph-profile-v1-full-20260724.verification.json",
+      "verification_report_sha256": "cc7920ae361a1de3383e7986fb1e40987b16c83bd2e309a375fce98ef35d846b",
+      "verifier_sha256": "a4af2e05b8f3feff12155c02e71c67fa2f98433a397f3c6215b6a96468e6d571"
+    },
+    "core": {
+      "artifact_count": 5,
+      "artifact_tree_sha256": "2d3040739932287a8c8033778899e549201f619214c3ab70d2939e25f90b0720",
+      "receipt_sha256": "3dd563eafce498a2e975680064d7589b63710c2f92b75f16f2bea7a9da5a4405",
+      "root_basename": "pivot-feedback-s0-threshold-free-core-v1-full-20260723",
+      "verification_report_basename": "pivot-feedback-s0-threshold-free-core-v1-full-20260723.verification.json",
+      "verification_report_sha256": "dba71d6af83ba4767e9d9d752d077b368da25391c57ca5e8ac270ff25294b16f",
+      "verifier_sha256": "4148c7a196d763aa60e23a5110587f7f46eedade242a43cab15a528a91e1ab9d"
+    },
+    "orcid_affiliation": {
+      "artifact_count": 4,
+      "artifact_tree_sha256": "c7b85d571d68b825e7c4f31bb6ef9dd04570961f9913d1ab41c5f779326d9731",
+      "receipt_sha256": "5aa234882dd2a310c68fb5b6d8dea9bba4282d901298cdafaa8dc3259807fba9",
+      "root_basename": "pivot-feedback-s0-authorship-orcid-affiliation-v1-full-20260724",
+      "verification_report_basename": "pivot-feedback-s0-authorship-orcid-affiliation-v1-full-20260724.verification.json",
+      "verification_report_sha256": "bd67c646c259f4fabc01bd7d4a93ff40955354192c5c13729add5ed5e2972824",
+      "verifier_sha256": "0c3ef39e56911931f00d58634555b5e45c921f1427a97d3fce0d6677f67118a0"
+    }
+  },
+  "core_inventory": {
+    "attention_rows": 18518,
+    "author_event_rows": 779630258,
+    "field_count": 26,
+    "field_year_rows": 18544,
+    "null_year_cells": 26,
+    "work_rows": 492293206
+  },
+  "next_required_implementation": {
+    "confirmatory_year_changes_allowed": false,
+    "entry_year_end": 2012,
+    "final_field_choice_by_effect_size_allowed": false,
+    "gate": "D0",
+    "gpu_required": false,
+    "role": "DISCOVERY_ONLY_MEASUREMENT_CALIBRATION_AND_FEASIBILITY",
+    "workload_class": "CPU_IO"
+  },
+  "orcid_affiliation_inventory": {
+    "author_work_affiliation_rows": 487064370,
+    "author_work_institution_rows": 442695661,
+    "checksum_valid_orcid_rows": 458275464,
+    "distinct_institution_tokens": 103574,
+    "field_year_rows": 16758,
+    "multiple_valid_orcid_author_tokens": 0,
+    "nonnull_orcid_rows": 458308219,
+    "raw_authorship_rows": 1361551038,
+    "retained_authorship_rows": 1361551037,
+    "shared_valid_orcids_across_stable_tokens": 35765,
+    "stable_single_valid_orcid_author_tokens": 8324011,
+    "syntax_valid_orcid_rows": 458276860
+  },
+  "schema_version": "pivot_feedback_s0_completion_receipt.v1",
+  "scope": {
+    "d0_discovery_pilot_authorized": true,
+    "d0_entry_end_year": 2012,
+    "final_panel_materialization_authorized": false,
+    "g0_measurement_freeze_authorized": false,
+    "g4_open": false,
+    "gpu_used": false,
+    "model_fitting_authorized": false,
+    "outcomes_read": false,
+    "s0_gate_pass": true,
+    "scientific_effect": "NOT_ESTABLISHED",
+    "threshold_free_only": true
+  },
+  "status": "PASS_S0_THRESHOLD_FREE_FIELD_AUTHOR_GRAPH_AND_AFFILIATION_INVENTORY_D0_DISCOVERY_ONLY_AUTHORIZED",
+  "verification_accounting": {
+    "all_component_outputs_unchanged_since_independent_verification": true,
+    "all_current_artifacts_match_receipts": true,
+    "all_verifier_hashes_match_current_repository": true,
+    "artifacts_and_receipts_rehashed": 13,
+    "independent_verification_reports_rehashed": 3,
+    "total_current_files_rehashed": 16
+  }
+}

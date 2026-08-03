@@ -1,0 +1,186 @@
+schema_version: pivot_feedback_d0_t10151_rank5_cross_provider_config.v1
+label: pivot_feedback_d0_t10151_rank5_cross_provider_v1
+mode: OUTCOME_BLIND_TITLE_ONLY_DUAL_HIGH_CONSENSUS
+status: FROZEN_RANK5_25_ROW_CROSS_PROVIDER_CONTRACT_NOT_SUBMITTED
+
+gate_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v26.yaml
+  sha256: 89d8a71e225d814a1f235538f4c72ac091b1722085433a2c3de22aa9ad4ee92b
+  required_schema_version: pivot_feedback_gate_state.v26
+  required_status: VALID_RANK5_25_ROW_CROSS_PROVIDER_EXCEPTION_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    frozen_exception.exact_request_rows: 25
+    frozen_exception.provider_calls: 2
+    frozen_exception.maximum_authorized_total_usd: 0.10
+    frozen_exception.human_review: NOT_RUN_BY_DESIGN
+    frozen_exception.consensus_accept: BOTH_PROVIDERS_ON_TOPIC_AND_HIGH
+    frozen_exception.consensus_reject: BOTH_PROVIDERS_OFF_TOPIC_AND_HIGH
+    frozen_exception.single_provider_promotion: false
+    frozen_exception.outcome_fields_visible: false
+    authorization.d0_rank5_paid_api_exception_submission: AUTHORIZED_MAXIMUM_TOTAL_USD_0_10
+    authorization.d0_rank5_augmented_disposition: NOT_AUTHORIZED_UNTIL_API_RESULT_VERIFIED
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+
+source_inputs:
+  sample:
+    root_basename: pivot-feedback-d0-t10151-rank5-targeted-title-sample-v1-20260729
+    basename: t10151_rank5_targeted_title_sample.parquet
+    sha256: 23c06acbf465ac85d3cfba431fd994a02cd73054f38d5baad25dce0fc568d0f2
+    schema_version: pivot_feedback_d0_t10151_rank5_targeted_title_sample.v1
+    rows: 96
+  local_routes:
+    root_basename: pivot-feedback-d0-t10151-rank5-local-routing-v1-20260729
+    basename: t10151_rank5_local_title_routes.csv
+    sha256: 3f6fdd3578f4fe6022c3e160ce4759d231ce05c41420b659258bb161ce47b126
+    rows: 96
+    selected_window_codes: [1, 2]
+    selected_local_route: API_REQUIRED_AMBIGUOUS
+    selected_rows: 25
+
+review_contract:
+  request_seed: pivot-feedback-d0-t10151-rank5-cross-provider-v1
+  target_topic_name: Hepatitis B Virus Infection
+  target_definition: >-
+    Substantive study of hepatitis B virus or hepatitis B infection, including
+    its biology, transmission, prevention, diagnosis, treatment, complications,
+    or clinical and population outcomes. Hepatitis without title-level evidence
+    of type B or HBV remains ambiguous; another explicit disease or subject is
+    off-topic.
+  prompt_text: |-
+    Classify each scholarly work using only the supplied target topic,
+    definition, title, language, and work type. Do not infer or use authors,
+    year, source, citation, identifiers outside the opaque item ID, episode,
+    treatment assignment, outcomes, or downstream effects.
+
+    Assign exactly one label and confidence to every item:
+    ON_TOPIC: affirmative title-level evidence that the work substantively
+    studies, applies, measures, or develops the target topic.
+    AMBIGUOUS: a plausible relation exists, but title-only evidence is
+    insufficient for ON_TOPIC or OFF_TOPIC.
+    OFF_TOPIC: affirmative title-level evidence of a different subject or only
+    coincidental lexical overlap.
+    UNREVIEWABLE: missing, corrupted, opaque, or uninterpretable title.
+
+    Be conservative: broad medical or infectious-disease proximity is not
+    enough for ON_TOPIC. Return exactly one decision for each supplied opaque
+    item_id, with no omissions or duplicates. Keep each rationale concise and
+    grounded only in title text.
+  labels: [ON_TOPIC, AMBIGUOUS, OFF_TOPIC, UNREVIEWABLE]
+  confidence_levels: [HIGH, MEDIUM, LOW]
+  exact_items: 25
+  request_visible_fields:
+    - item_id
+    - target_topic_name
+    - target_definition
+    - title
+    - language
+    - work_type
+  forbidden_request_fields:
+    - openalex_id
+    - work_numeric_id
+    - publication_year
+    - entry_year
+    - field_id
+    - topic_id
+    - field_candidate_rank
+    - window_code
+    - source_id
+    - source_name
+    - source_file_index
+    - source_row_group
+    - primary_topic_score
+    - selection_sha256
+    - author
+    - citation
+    - entry_outcome
+    - persistence_outcome
+  response_fields: [item_id, label, confidence, rationale]
+  maximum_rationale_characters: 240
+  consensus_accept: BOTH_LABEL_ON_TOPIC_AND_CONFIDENCE_HIGH
+  consensus_reject: BOTH_LABEL_OFF_TOPIC_AND_CONFIDENCE_HIGH
+  all_other_results: REMAIN_UNRESOLVED
+  local_recent_accept_rows: 27
+  local_recent_reject_rows: 12
+  local_recent_unresolved_rows: 25
+  recent_denominator_rows: 64
+  pass_lower_bound_rows: 32
+  fail_lower_bound_rows: 32
+  pass_rule: AUGMENTED_ACCEPT_ROWS_AT_LEAST_32
+  fail_rule: AUGMENTED_REJECT_ROWS_AT_LEAST_32
+  otherwise_rule: CONTENT_UNRESOLVED
+  human_review: NOT_RUN_BY_DESIGN
+  api_labels_are_ground_truth: false
+  evidence_role: POST_DIAGNOSTIC_TITLE_ONLY_AUGMENTATION
+
+providers:
+  openai:
+    provider: OpenAI
+    model: gpt-5-mini-2025-08-07
+    endpoint: https://api.openai.com/v1/responses
+    store: false
+    tools_enabled: false
+    reasoning_effort: minimal
+    maximum_output_tokens: 4096
+    structured_output_parameter: text.format
+  claude:
+    provider: Anthropic
+    model: claude-haiku-4-5-20251001
+    endpoint: https://api.anthropic.com/v1/messages
+    tools_enabled: false
+    maximum_output_tokens: 4096
+    structured_output_parameter: output_config.format
+
+cost_control:
+  currency: USD
+  maximum_authorized_total_usd: 0.10
+  maximum_provider_calls: 2
+  estimate_method: SERIALIZED_REQUEST_BODY_BYTES_AS_INPUT_TOKEN_UPPER_BOUND_PLUS_MAX_OUTPUT_TOKENS
+  pricing_checked_at_utc: 2026-07-30T00:00:00Z
+  pricing:
+    openai:
+      input_usd_per_million_tokens: 0.25
+      output_usd_per_million_tokens: 2.00
+      source_url: https://developers.openai.com/api/docs/models/gpt-5-mini
+    claude:
+      input_usd_per_million_tokens: 1.00
+      output_usd_per_million_tokens: 5.00
+      source_url: https://platform.claude.com/docs/en/about-claude/pricing
+  refuse_before_submission_if_upper_bound_exceeds_cap: true
+  actual_cost_must_be_computed_from_provider_usage: true
+
+execution:
+  prepared_root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v1-prepared-20260730
+  execution_root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v1-execution-20260730
+  credential_env_path: /home/kimyoungjin06/Desktop/Workspace/1.2.8.TwinPaper/.env
+  openai_key_name: OPENAI_API_KEY
+  claude_key_name: CLAUDE_API_KEY
+  credential_values_persisted: false
+  retries: 0
+  timeout_seconds_per_provider: 180
+  request_artifacts_verified_before_submission: true
+  raw_responses_preserved: true
+  artifact_mode: "0600"
+  receipt_written_last: true
+
+authorization:
+  prepare_exact_requests: AUTHORIZED
+  verify_exact_requests: REQUIRED
+  submit_exact_requests: AUTHORIZED_AFTER_VERIFICATION_AND_COST_PREFLIGHT
+  reduce_results: AUTHORIZED_PRECOMMITTED_RULE_ONLY
+  human_review: NOT_RUN_BY_DESIGN
+  augmented_rank5_disposition: NOT_AUTHORIZED_UNTIL_RESULT_VERIFIED_AND_SUCCESSOR_GATE
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This frozen contract is a bounded post-diagnostic title-only augmentation,
+  not expert ground truth or out-of-sample validation. Only exact dual-HIGH
+  agreement changes the two local counts. Any disagreement, lower confidence,
+  missing item, invalid structure, provider failure, or incomplete execution
+  fails closed. Human review is deliberately not run. Results cannot alter the
+  production disposition until independent verification and a successor gate.

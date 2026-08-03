@@ -1,0 +1,240 @@
+schema_version: pivot_feedback_peer_mechanism_registry.v1
+label: pivot_feedback_peer_mechanism_registry_v0
+mode: PROSPECTIVE_G0_COMPONENT
+status: PENDING_G0_MEASUREMENT_FREEZE
+
+parent_contract:
+  relative_path: experiments/configs/pivot_feedback_cross_field_matrix_v0.yaml
+  required_schema_version: pivot_feedback_cross_field_matrix.v1
+  binding_status: PATH_AND_SCHEMA_ONLY_PENDING_G0_HASH_FREEZE
+
+gate_state:
+  g_minus_1_data_readiness: PENDING
+  g0_measurement_freeze: PENDING
+  empirical_g1_signature: NOT_RUN
+  external_causal_axis: NOT_RUN
+  execution_authorized: false
+
+interpretation_boundary:
+  observed_object: TIME_ORDERED_BIBLIOMETRIC_AND_PRE_EXISTING_NETWORK_TRACES
+  direct_information_receipt_observed: false
+  belief_update_observed: false
+  causal_social_learning_identified: false
+  strongest_openalex_only_interpretation: NETWORK_LOCAL_PREDICTIVE_ASSOCIATION_COMPATIBLE_WITH_INFORMATION_OR_CAPACITY
+  forbidden_claims:
+    - RESEARCHERS_SAW_THE_PEER_PIVOT
+    - RESEARCHERS_CHANGED_BELIEFS_BECAUSE_OF_PEERS
+    - PEER_EXPOSURE_CAUSED_ENTRY
+    - PEER_EXPOSURE_CAUSED_PERSISTENCE
+
+exposure_constructs:
+  - construct_id: peer_active
+    label: PEER_ACTIVE_TARGET_TOPIC_EXPOSURE
+    peer_set_rule: PRE_EXISTING_T_MINUS_1_COLLABORATORS_ONLY
+    event_rule: PEER_HAS_QUALIFYING_TARGET_TOPIC_ACTIVITY_BEFORE_FOCAL_DECISION
+    availability_rule: ACTIVITY_PUBLIC_AT_OR_BEFORE_FOCAL_DECISION_CUTOFF
+    success_required: false
+    excludes:
+      - FUTURE_TIES
+      - FOCAL_ENTRY_WORK
+      - POST_DECISION_PEER_ACTIVITY
+      - POST_DECISION_CITATIONS
+  - construct_id: peer_visible_success
+    label: PEER_VISIBLE_TARGET_TOPIC_SUCCESS_EXPOSURE
+    subset_of: peer_active
+    peer_set_rule: PRE_EXISTING_T_MINUS_1_COLLABORATORS_ONLY
+    event_rule: PEER_TARGET_TOPIC_SUCCESS_PROXY_CROSSES_FROZEN_G0_RULE
+    availability_rule: SUCCESS_EVIDENCE_PUBLIC_AT_OR_BEFORE_FOCAL_DECISION_CUTOFF
+    success_rule_status: PENDING_G0_MEASUREMENT_FREEZE
+    excludes:
+      - FUTURE_TIES
+      - FOCAL_ENTRY_WORK
+      - POST_DECISION_PEER_ACTIVITY
+      - POST_DECISION_CITATIONS
+
+contrast_ladder:
+  - contrast_id: peer_active_increment
+    focal_construct: peer_active
+    reference: NO_PRE_DECISION_TARGET_ACTIVE_PEER
+    estimand: INCREMENT_BEYOND_FIELD_WIDE_ATTENTION_AND_PRE_ENTRY_COVARIATES
+    required_comparators:
+      - MATCHED_NON_NEIGHBOR_ACTIVITY
+      - DEGREE_PRESERVING_SHUFFLED_NETWORK
+  - contrast_id: peer_visible_success_increment
+    focal_construct: peer_visible_success
+    reference: PEER_ACTIVE_WITHOUT_VISIBLE_SUCCESS_AT_DECISION_CUTOFF
+    estimand: INCREMENT_BEYOND_PEER_ACTIVITY_FIELD_WIDE_ATTENTION_AND_PRE_ENTRY_COVARIATES
+    required_comparators:
+      - MATCHED_NON_NEIGHBOR_VISIBLE_SUCCESS
+      - SAME_PEER_UNRELATED_TOPIC_SUCCESS
+      - POST_DECISION_FUTURE_CITATION_SUCCESS
+
+competing_explanations:
+  - explanation_id: field_wide_attention_or_common_opportunity
+    required_separation:
+      - CONDITION_ON_INCUMBENT_ONLY_FIELD_ATTENTION
+      - MATCHED_NON_NEIGHBOR_GATE
+      - MATCHED_NON_SURGE_TOPIC_GATE
+    interpretation_if_not_separated: FIELD_WIDE_ASSOCIATION_NOT_NETWORK_LOCAL_CHANNEL
+  - explanation_id: selection_or_homophily
+    required_separation:
+      - PRE_TIE_TOPIC_SIMILARITY_AND_TRAJECTORY_DIAGNOSTICS
+      - FUTURE_TIE_GATE
+      - DEGREE_PRESERVING_SHUFFLED_NETWORK_GATE
+    interpretation_if_not_separated: PRIOR_SELECTION_INTO_COLLABORATION_UNRESOLVED
+  - explanation_id: recruitment_or_capacity_transfer
+    required_separation:
+      - CHAPERONED_VERSUS_INDEPENDENT_ENTRY_CONTRAST
+      - CAPACITY_BRIDGE_CONDITIONAL_CONTRAST
+    interpretation_if_not_separated: RECRUITMENT_COPRODUCTION_OR_CAPACITY_TRANSFER_COMPATIBLE
+  - explanation_id: network_local_information
+    required_separation:
+      - PUBLIC_SUCCESS_INCREMENT_BEYOND_PEER_ACTIVITY
+      - INDEPENDENT_ENTRY_INCREMENT
+      - ALL_SEVEN_NEGATIVE_CONTROL_GATES
+    interpretation_if_separated: INFORMATION_CHANNEL_COMPATIBLE_NOT_RECEIPT_BELIEF_UPDATE_OR_CAUSAL_LEARNING
+
+capacity_bridge_conditional_contrast:
+  contrast_id: capacity_bridge_increment_at_comparable_signal
+  bridge_rule: PRE_EXISTING_T_MINUS_1_ACTIVE_COLLABORATION_OR_LOCAL_RESOURCE_RELATION_WITH_TARGET_EXPERIENCED_PEER
+  focal_entry_work_allowed_in_bridge_construction: false
+  conditioning_set:
+    - PEER_ACTIVE
+    - PEER_VISIBLE_SUCCESS
+    - INCUMBENT_ONLY_FIELD_ATTENTION
+    - PRE_ENTRY_RESEARCHER_AND_NETWORK_COVARIATES
+  primary_cells:
+    - NEITHER
+    - PUBLIC_SUCCESS_ONLY
+    - CAPACITY_BRIDGE_ONLY
+    - BOTH
+  primary_outcome: FIXED_HORIZON_TARGET_TOPIC_PERSISTENCE
+  interaction_required: true
+  causal_capacity_effect_identified: false
+  failure_action: COLLAPSE_CHANNELS_AND_ABANDON_SEPARATE_PUBLIC_SUCCESS_VERSUS_CAPACITY_CLAIM
+
+entry_mode_strata:
+  - stratum_id: chaperoned_entry
+    rule: FIRST_QUALIFYING_TARGET_TOPIC_WORK_INCLUDES_ANY_EXPOSURE_CONTRIBUTING_PEER
+    interpretation: COMPATIBLE_WITH_RECRUITMENT_DIRECT_COLLABORATION_OR_CAPACITY_TRANSFER
+    social_learning_sufficient: false
+  - stratum_id: independent_entry
+    rule: FIRST_QUALIFYING_TARGET_TOPIC_WORK_INCLUDES_NO_EXPOSURE_CONTRIBUTING_PEER
+    interpretation: RELATIONALLY_INDEPENDENT_OF_EXPOSING_PEERS_NOT_PROOF_OF_UNOBSERVED_INFORMATION_TRANSFER
+    social_learning_sufficient: false
+  - stratum_id: unresolved_entry_mode
+    rule: AUTHOR_IDENTITY_OR_FIRST_ENTRY_BYLINE_IS_NOT_ANALYSIS_ELIGIBLE
+    interpretation: EXCLUDE_FROM_PRIMARY_ENTRY_MODE_CONTRAST_AND_REPORT_COUNTS
+    social_learning_sufficient: false
+
+negative_controls:
+  - control_id: lead_attention
+    exposure_time: T_PLUS_1_OR_T_PLUS_2_RELATIVE_TO_ENTRY_AT_T
+    construction: FUTURE_INCUMBENT_ONLY_FIELD_ATTENTION_PREDICTING_CURRENT_ENTRY
+    required_gate: EQUIVALENCE_TO_FROZEN_NULL_REGION
+    not_merely: NONSIGNIFICANT_NULL_HYPOTHESIS_TEST
+    failure_interpretation: TEMPORAL_DIRECTION_OR_FIELD_TREND_UNRESOLVED
+    blocks_claims:
+      - ATTENTION_PRECEDES_ENTRY
+      - DELAYED_FEEDBACK_MECHANISM
+  - control_id: same_peer_unrelated_topic_success
+    exposure_time: AT_OR_BEFORE_FOCAL_DECISION_CUTOFF
+    construction: SAME_PEERS_PREREGISTERED_UNRELATED_TOPIC_ACTIVITY_AND_SUCCESS_VOLUME_RECENCY_MATCHED
+    required_gate: EQUIVALENCE_TO_FROZEN_NULL_REGION
+    not_merely: NONSIGNIFICANT_NULL_HYPOTHESIS_TEST
+    failure_interpretation: GENERIC_PEER_PRESTIGE_ACCESS_OR_HOMOPHILOUS_SELECTION_UNRESOLVED
+    blocks_claims:
+      - TOPIC_SPECIFIC_VISIBLE_SUCCESS_CHANNEL
+      - SOCIAL_LEARNING_FROM_TARGET_TOPIC_SUCCESS
+  - control_id: post_decision_future_citation_success
+    exposure_time: STRICTLY_AFTER_FOCAL_DECISION_CUTOFF
+    construction: SAME_PEER_TARGET_TOPIC_CITATIONS_NOT_YET_OBSERVABLE_AT_DECISION_TIME
+    feature_use: PLACEBO_ONLY_NEVER_PRIMARY_OR_ROBUSTNESS_EXPOSURE
+    required_gate: EQUIVALENCE_TO_FROZEN_NULL_REGION
+    not_merely: NONSIGNIFICANT_NULL_HYPOTHESIS_TEST
+    failure_interpretation: TEMPORAL_AVAILABILITY_OR_LATENT_QUALITY_CONFOUNDING_UNRESOLVED
+    blocks_claims:
+      - TEMPORALLY_VALID_VISIBLE_SUCCESS_CHANNEL
+      - SOCIAL_LEARNING_FROM_OBSERVED_SUCCESS
+  - control_id: future_tie
+    exposure_time: AFTER_FOCAL_DECISION_CUTOFF
+    construction: COLLABORATION_EDGE_FIRST_OBSERVED_AFTER_FOCAL_DECISION
+    required_gate: EQUIVALENCE_TO_FROZEN_NULL_REGION
+    not_merely: NONSIGNIFICANT_NULL_HYPOTHESIS_TEST
+    failure_interpretation: REVERSE_TIMING_OR_RELATIONSHIP_SELECTION_UNRESOLVED
+    blocks_claims:
+      - PRE_EXISTING_NETWORK_CHANNEL
+  - control_id: degree_preserving_shuffled_network
+    exposure_time: AT_OR_BEFORE_FOCAL_DECISION_CUTOFF
+    construction: FIELD_YEAR_DEGREE_PRESERVING_NETWORK_SHUFFLE
+    required_gate: TRUE_MINUS_PLACEBO_CONTRAST_PASSES_FROZEN_G0_RULE
+    not_merely: NONSIGNIFICANT_NULL_HYPOTHESIS_TEST
+    failure_interpretation: NETWORK_LOCALITY_NOT_ESTABLISHED
+    blocks_claims:
+      - NETWORK_LOCAL_PEER_CHANNEL
+  - control_id: matched_non_neighbor
+    exposure_time: AT_OR_BEFORE_FOCAL_DECISION_CUTOFF
+    construction: OUTCOME_BLIND_MATCHED_NON_NEIGHBORS_WITH_COMPARABLE_FIELD_POSITION
+    required_gate: TRUE_MINUS_PLACEBO_CONTRAST_PASSES_FROZEN_G0_RULE
+    not_merely: NONSIGNIFICANT_NULL_HYPOTHESIS_TEST
+    failure_interpretation: FIELD_WIDE_ATTENTION_OR_COMMON_OPPORTUNITY_UNRESOLVED
+    blocks_claims:
+      - NETWORK_LOCAL_PEER_CHANNEL
+  - control_id: matched_non_surge_topic
+    exposure_time: SAME_FIELD_AND_CALENDAR_PERIOD
+    construction: OUTCOME_BLIND_MATCHED_TOPIC_WITHOUT_REGISTERED_ATTENTION_SURGE
+    required_gate: EQUIVALENCE_TO_FROZEN_NULL_REGION
+    not_merely: NONSIGNIFICANT_NULL_HYPOTHESIS_TEST
+    failure_interpretation: GENERIC_FIELD_TIME_DYNAMICS_OR_COMMON_OPPORTUNITY_UNRESOLVED
+    blocks_claims:
+      - ATTENTION_SURGE_SPECIFICITY
+      - DELAYED_FEEDBACK_MECHANISM
+
+claim_levels:
+  - DESCRIPTIVE_TIMING_ONLY
+  - PEER_ACTIVITY_ASSOCIATION_NONCAUSAL
+  - TOPIC_SPECIFIC_VISIBLE_SUCCESS_ASSOCIATION_NONCAUSAL
+  - NETWORK_LOCAL_INFORMATION_CHANNEL_COMPATIBLE_NONCAUSAL
+  - CAUSAL_SOCIAL_LEARNING_EXTERNAL_AXIS_ONLY
+
+claim_downgrade_rules:
+  - rule_id: peer_active_increment_not_established
+    trigger: PEER_ACTIVE_INCREMENT_FAILS_FROZEN_G0_DECISION_RULE
+    claim_ceiling: DESCRIPTIVE_TIMING_ONLY
+    required_interpretation: NO_PEER_MECHANISM_CLAIM
+  - rule_id: visible_success_increment_not_established
+    trigger: PEER_ACTIVE_INCREMENT_PASSES_BUT_VISIBLE_SUCCESS_INCREMENT_FAILS
+    claim_ceiling: PEER_ACTIVITY_ASSOCIATION_NONCAUSAL
+    required_interpretation: PEER_ACTIVITY_RECRUITMENT_OR_CAPACITY_MAY_EXPLAIN_ASSOCIATION
+  - rule_id: visible_success_confined_to_chaperoned_entry
+    trigger: VISIBLE_SUCCESS_INCREMENT_PASSES_FOR_CHAPERONED_BUT_NOT_INDEPENDENT_ENTRY
+    claim_ceiling: PEER_ACTIVITY_ASSOCIATION_NONCAUSAL
+    required_interpretation: RECRUITMENT_DIRECT_COLLABORATION_OR_CAPACITY_TRANSFER_COMPATIBLE
+  - rule_id: unrelated_topic_control_fails
+    trigger: SAME_PEER_UNRELATED_TOPIC_SUCCESS_FAILS_REQUIRED_GATE
+    claim_ceiling: PEER_ACTIVITY_ASSOCIATION_NONCAUSAL
+    required_interpretation: GENERIC_PEER_PRESTIGE_ACCESS_OR_SELECTION_NOT_TARGET_TOPIC_LEARNING
+  - rule_id: future_citation_control_fails
+    trigger: POST_DECISION_FUTURE_CITATION_SUCCESS_FAILS_REQUIRED_GATE
+    claim_ceiling: PEER_ACTIVITY_ASSOCIATION_NONCAUSAL
+    required_interpretation: OBSERVABLE_AT_DECISION_VISIBLE_SUCCESS_CHANNEL_NOT_ESTABLISHED
+  - rule_id: network_locality_control_fails
+    trigger: SHUFFLED_NETWORK_OR_MATCHED_NON_NEIGHBOR_GATE_FAILS
+    claim_ceiling: DESCRIPTIVE_TIMING_ONLY
+    required_interpretation: COMMON_OPPORTUNITY_HOMOPHILY_OR_FIELD_WIDE_ATTENTION_UNRESOLVED
+  - rule_id: temporal_or_non_surge_control_fails
+    trigger: LEAD_ATTENTION_OR_MATCHED_NON_SURGE_TOPIC_GATE_FAILS
+    claim_ceiling: DESCRIPTIVE_TIMING_ONLY
+    required_interpretation: TEMPORAL_DIRECTION_OR_ATTENTION_SURGE_SPECIFICITY_NOT_ESTABLISHED
+  - rule_id: capacity_bridge_not_separable
+    trigger: CAPACITY_BRIDGE_CELLS_ARE_SPARSE_COLLINEAR_LEAKED_OR_FAIL_CONDITIONAL_CONTRAST
+    claim_ceiling: TOPIC_SPECIFIC_VISIBLE_SUCCESS_ASSOCIATION_NONCAUSAL
+    required_interpretation: NO_SEPARATE_NETWORK_INFORMATION_VERSUS_CAPACITY_CHANNEL_CLAIM
+  - rule_id: independent_visible_success_survives_openalex_gates
+    trigger: VISIBLE_SUCCESS_INCREMENT_PASSES_INDEPENDENT_ENTRY_AND_ALL_NEGATIVE_CONTROLS_PASS
+    claim_ceiling: NETWORK_LOCAL_INFORMATION_CHANNEL_COMPATIBLE_NONCAUSAL
+    required_interpretation: CONSISTENT_WITH_INFORMATION_CHANNEL_BUT_INFORMATION_RECEIPT_AND_BELIEF_UPDATE_UNOBSERVED
+  - rule_id: external_causal_axis_absent
+    trigger: EXTERNAL_CAUSAL_AXIS_DOES_NOT_PASS
+    claim_ceiling: NETWORK_LOCAL_INFORMATION_CHANNEL_COMPATIBLE_NONCAUSAL
+    required_interpretation: NO_CAUSAL_SOCIAL_LEARNING_OR_POLICY_EFFECT_CLAIM

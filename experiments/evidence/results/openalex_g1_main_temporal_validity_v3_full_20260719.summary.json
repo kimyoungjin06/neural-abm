@@ -1,0 +1,123 @@
+{
+  "schema_version": "openalex_g1_main_temporal_validity_v3_full_summary.v1",
+  "label": "openalex_g1_main_temporal_field_validity_v3_full_20260719",
+  "generated_at_utc": "2026-07-19T11:02:15Z",
+  "status": "PASS_CURRENT_SNAPSHOT_MAIN_TEMPORAL_FIELD_VALIDITY_V3_WITH_EXACT_UTC_MILLISECONDS_AND_NONBLOCKING_ORDER_PROFILE",
+  "scope": {
+    "full_scope": true,
+    "selected_files": 493,
+    "selected_footer_rows": 492293207,
+    "selected_source_bytes": 150062449219,
+    "gpu_used": false,
+    "component_pass": true,
+    "downstream_promoted": false
+  },
+  "row_accounting": {
+    "raw_rows": 492293207,
+    "quarantined_w_minus_1_rows": 1,
+    "retained_rows": 492293206,
+    "grammar_valid_id_rows": 492293206,
+    "unexpected_malformed_id_rows": 0,
+    "w_zero_rows_retained": 1,
+    "all_accounting_contracts_passed": true
+  },
+  "publication_date_year": {
+    "both_null_rows": 27565532,
+    "both_nonnull_rows": 464727674,
+    "exactly_one_null_rows": 0,
+    "concordance_checked_rows": 464727674,
+    "date_year_match_rows": 464727674,
+    "date_year_mismatch_rows": 0,
+    "date_parse_error_rows": 0,
+    "year_invalid_rows": 0,
+    "pre_1900_rows": 6692869,
+    "year_1900_before_snapshot_year_rows": 446514060,
+    "snapshot_year_on_or_before_snapshot_rows": 11509999,
+    "snapshot_year_after_snapshot_rows": 6736,
+    "post_snapshot_year_rows": 4010,
+    "year_minimum": 1000,
+    "year_maximum": 2050,
+    "frozen_aggregate_regression_exact": true
+  },
+  "metadata_timestamp_validity": {
+    "created_updated_both_nonnull_rows": 492293206,
+    "created_updated_null_rows": 0,
+    "created_updated_parsed_pair_rows": 492293206,
+    "created_date_parse_error_rows": 0,
+    "updated_date_parse_error_rows": 0,
+    "created_after_snapshot_rows": 0,
+    "updated_after_snapshot_rows": 0,
+    "future_metadata_field_values": 0,
+    "comparison_precision": "epoch_millisecond",
+    "snapshot_next_utc_day_start_exclusive": "2026-03-31T00:00:00.000Z"
+  },
+  "ordering_profile": {
+    "validity_gate": false,
+    "interpretation": "DESCRIPTIVE_ONLY_NO_VENDOR_ORDER_INVARIANT",
+    "created_lte_updated_rows": 492293203,
+    "created_gt_updated_rows": 3,
+    "parsed_pair_rows": 492293206,
+    "partition_exact": true,
+    "exception_allowlist_used": false,
+    "documented_semantics": [
+      {
+        "url": "https://github.com/ourresearch/openalex-docs/blob/main/api-entities/works/work-object/README.md",
+        "accessed_date": "2026-07-19"
+      },
+      {
+        "url": "https://developers.openalex.org/api-reference/works/get-a-single-work",
+        "accessed_date": "2026-07-19"
+      }
+    ]
+  },
+  "gate_status": {
+    "main_temporal_validity_component": "PASS",
+    "publication_date_year_validity": "PASS_WITH_FROZEN_EXCLUSIONS",
+    "created_updated_timestamp_validity": "PASS_EXACT_UTC_MILLISECOND_NON_NULL_NOT_AFTER_SNAPSHOT",
+    "created_updated_relation_diagnostic": "DESCRIPTIVE_ONLY_NO_VENDOR_ORDER_INVARIANT",
+    "current_content_baseline_component": "PASS",
+    "historical_content_identity": "UNVERIFIED",
+    "raw_source_id_validity": "BLOCKED",
+    "w_zero_entity_validity": "UNRESOLVED",
+    "temporal_available_at": "PENDING_NOT_IN_THIS_COMPONENT",
+    "citation_edge_chronology": "PENDING_NOT_IN_THIS_COMPONENT",
+    "author_entity_validity": "PENDING",
+    "candidate_eligibility": "PENDING",
+    "g_minus_1_data_readiness": "PENDING",
+    "g0_measurement_freeze": "PENDING",
+    "empirical_g1_signature": "NOT_RUN",
+    "pass_g1": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "preflight_pilot": {
+    "status": "PILOT_MAIN_TEMPORAL_FIELD_VALIDITY_V3_EXACT_UTC_MILLISECOND_ONLY",
+    "selected_files": 1,
+    "selected_footer_rows": 1000000,
+    "pilot_local_contract_clean": true,
+    "component_pass": false,
+    "report_sha256": "8406eeb2519915c68b47ae303a81e3e839857984c1eae1081d6cce33fff45058",
+    "receipt_sha256": "171abafccb57abbc09b3f1e57bc13051db18861019d29ec0918ada8c4e6b49ab"
+  },
+  "provenance": {
+    "source_root_id": "openalex_works_20260330_repairreplay_20260410_190630",
+    "source_snapshot_date": "2026-03-30",
+    "config_sha256": "672940908090fedd0b562dd938ad4583f5e8238830fc1ff5b613be9618f033f7",
+    "tool_sha256": "76e25ffb2bb45977f70ac089db1011b4219d6215e546f16cbe11ce1efdb2cc1d",
+    "test_sha256": "4850c99ff8245a71275a003deecc03fe30022ccb5c29495bb092cacafe917bed",
+    "task_fingerprint_sha256": "5d86a797481a14e95d08ecbe333bb207ff476bf7dc49886aec1db7b5b366001d",
+    "result_fingerprint_sha256": "a844c624e81567bf89536218b0c488144fe2730f93c53e72193e6cfe4931bfb5",
+    "checkpoint_tree_sha256": "725cf22ce96eca153fa1c9542bd09bd628a4ea1687a2fee3e5610a8cded95392",
+    "source_rich_stat_tree_sha256": "da3fa570a5fb49a36668dffdee008c2fea4d4b6fd5a3f7f17873df78b603b2a0",
+    "content_freeze_receipt_sha256": "082161a29bcd8fd79fd85e0bf6814a5c7950b97b847ea08056e17eebcd369a12",
+    "content_freeze_main_source_bridge_sha256": "c1b36c688b7fbc14b44ff1a6c5def627bd88da60e7ba3586eb2d973f3363d44b",
+    "report_sha256": "de98be73fb0365672cec7ee770c40de090ae012d45a0422faebd34c0b9d19200",
+    "receipt_sha256": "2908087fc6c96f2aadfdfb08774ed8c3cd54dd38bd54d4e12b1831e7d863ddfe",
+    "receipt_artifacts_rehashed_exactly": 497,
+    "receipt_artifacts_all_exact": true,
+    "extra_or_missing_contract_artifacts": 0,
+    "output_directory_mode": "0700",
+    "output_file_mode": "0600",
+    "path_redacted": true
+  },
+  "claim_boundary": "This full v3 pass establishes current-snapshot publication-date parsing and date/year concordance, frozen publication buckets, and exact non-null UTC-millisecond created_date and updated_date values not after the declared snapshot boundary for the retained main-work projection. The three created_date > updated_date rows are a fingerprint-bound descriptive profile, not validity failures. This pass does not establish record-event order, citation-edge observation time or available_at, historical content identity, author or candidate validity, G-1 or G0, empirical G1, field selection, NABM effects, or a scientific effect."
+}

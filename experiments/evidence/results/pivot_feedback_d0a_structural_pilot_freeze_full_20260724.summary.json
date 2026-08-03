@@ -1,0 +1,134 @@
+{
+  "authorization": {
+    "d0_discovery_outcome_opening": "NOT_YET_AUTHORIZED",
+    "d0b_outcome_blind_author_panel": "AUTHORIZED",
+    "final_panel_materialization": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This compact summary records an independently replayed D0-A structural freeze. It freezes two discovery-only pilot fields and two provisional calendar-disjoint current-snapshot primary-topic attention episodes per field without reading entry, persistence, realized citation, predictive, model-selection, or G4 outcomes. It does not complete D0, validate incumbent or network leave-outs, establish eligible author opportunities, select final G0 fields or thresholds, authorize model fitting, or establish an empirical, causal, mechanism, or scientific effect.",
+  "execution": {
+    "builder_relative_path": "scripts/build_pivot_feedback_d0_structural_pilot_freeze.py",
+    "builder_sha256": "4f3e39a6dc18c938a1b5de7c1e3d8bf5ff517e9b42990512bbece93d638582b2",
+    "config_relative_path": "experiments/configs/pivot_feedback_d0_structural_pilot_freeze_v1.yaml",
+    "config_sha256": "5039ad7105b7d60ec40538e364481855997e5025858743870f9fc937715592a9",
+    "gpu_used": false,
+    "runtime_seconds": 26.047619,
+    "verifier_relative_path": "scripts/verify_pivot_feedback_d0_structural_pilot_freeze.py",
+    "verifier_sha256": "fc360c16756697567f5b61e51206ac3e215e9b7bad7ae500fb7dd4b8d7b042c7",
+    "workers": 8,
+    "workload_class": "CPU_IO"
+  },
+  "field_selection": {
+    "candidate_fields": 26,
+    "require_distinct_domains": true,
+    "selected_pilot_fields": [
+      {
+        "domain_id": "physical_sciences",
+        "field_id": 17,
+        "field_name": "Computer Science",
+        "global_rank": 1,
+        "mean_metric_percentile": 0.77,
+        "minimum_metric_percentile": 0.64,
+        "pilot_selection_order": 1
+      },
+      {
+        "domain_id": "health_sciences",
+        "field_id": 27,
+        "field_name": "Medicine",
+        "global_rank": 3,
+        "mean_metric_percentile": 0.75,
+        "minimum_metric_percentile": 0.52,
+        "pilot_selection_order": 2
+      }
+    ]
+  },
+  "label": "pivot_feedback_d0a_structural_pilot_freeze_full_20260724",
+  "output_binding": {
+    "artifact_count_including_receipt": 6,
+    "output_receipt_sha256": "a1d13a21304742437b44400e16544e40e7da4a7f4084f2fc45316aa1ce014a94",
+    "output_root_basename": "pivot-feedback-d0-structural-pilot-freeze-v1-full-20260724",
+    "producer_status": "PASS_D0A_OUTCOME_BLIND_TWO_FIELD_FOUR_EPISODE_STRUCTURAL_FREEZE",
+    "verification_report_basename": "pivot-feedback-d0-structural-pilot-freeze-v1-full-20260724.verification-v2.json",
+    "verification_report_sha256": "d46fd953207a483f0f8e0658f2fb2689fa5d358531cb8124f093ec7cdaa4046a",
+    "verification_status": "PASS_INDEPENDENT_D0A_OUTCOME_BLIND_STRUCTURAL_FREEZE_D0B_AUTHOR_PANEL_STILL_NOT_RUN"
+  },
+  "scope": {
+    "author_entry_rows_read": false,
+    "citations_realized_read": false,
+    "d0_complete": false,
+    "d0a_structural_freeze_complete": true,
+    "entry_year_end_inclusive": 2012,
+    "g4_rows_read": false,
+    "gpu_used": false,
+    "model_fitting_performed": false,
+    "outcomes_read": false,
+    "persistence_rows_read": false,
+    "pilot_episodes": 4,
+    "pilot_fields": 2,
+    "predictive_scores_computed": false,
+    "scientific_effect": "NOT_ESTABLISHED",
+    "threshold_tuning_performed": false
+  },
+  "schema_version": "pivot_feedback_d0a_structural_pilot_freeze_summary.v1",
+  "selected_pilot_episodes": [
+    {
+      "baseline_works": 689,
+      "entry_year": 2003,
+      "field_id": 17,
+      "pilot_episode_order": 1,
+      "recent_works": 12575,
+      "subfield_id": 1710,
+      "subfield_name": "Information Systems",
+      "topic_id": 14430,
+      "topic_name": "Higher Education and Teaching Methods"
+    },
+    {
+      "baseline_works": 1998,
+      "entry_year": 2012,
+      "field_id": 17,
+      "pilot_episode_order": 2,
+      "recent_works": 6664,
+      "subfield_id": 1705,
+      "subfield_name": "Computer Networks and Communications",
+      "topic_id": 10579,
+      "topic_name": "Cognitive Radio Networks and Spectrum Sensing"
+    },
+    {
+      "baseline_works": 1557,
+      "entry_year": 2007,
+      "field_id": 27,
+      "pilot_episode_order": 1,
+      "recent_works": 23073,
+      "subfield_id": 2740,
+      "subfield_name": "Pulmonary and Respiratory Medicine",
+      "topic_id": 11361,
+      "topic_name": "Digital Radiography and Breast Imaging"
+    },
+    {
+      "baseline_works": 2137,
+      "entry_year": 1991,
+      "field_id": 27,
+      "pilot_episode_order": 2,
+      "recent_works": 13023,
+      "subfield_id": 2730,
+      "subfield_name": "Oncology",
+      "topic_id": 12505,
+      "topic_name": "Peptidase Inhibition and Analysis"
+    }
+  ],
+  "source_replay": {
+    "episode_candidate_rows": 76062,
+    "field_ranking_rows": 26,
+    "selected_field_primary_topic_work_rows": 29566464,
+    "selected_field_topic_year_rows": 109659,
+    "selected_field_topics": 994,
+    "source_work_artifacts_rehashed": 4096,
+    "source_work_rows_replayed": 492293206,
+    "taxonomy_field_mismatch_topic_field_pairs": 0,
+    "taxonomy_missing_topic_field_pairs": 0
+  },
+  "status": "PASS_INDEPENDENT_D0A_STRUCTURAL_FREEZE_D0_PARTIAL_D0B_ONLY_AUTHORIZED"
+}

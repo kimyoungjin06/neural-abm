@@ -1,0 +1,76 @@
+schema_version: pivot_feedback_gate_state.v27
+label: pivot_feedback_gate_state_v27
+mode: ADDITIVE_RANK5_CLAUDE_TRANSPORT_SCHEMA_CORRECTION_AUTHORIZATION
+status: VALID_RANK5_TRANSPORT_ONLY_SUCCESSOR_AUTHORIZED_CUMULATIVE_COST_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v26.yaml
+  sha256: 89d8a71e225d814a1f235538f4c72ac091b1722085433a2c3de22aa9ad4ee92b
+  required_schema_version: pivot_feedback_gate_state.v26
+  required_status: VALID_RANK5_25_ROW_CROSS_PROVIDER_EXCEPTION_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  mutation_allowed: false
+
+failed_attempt:
+  contract_relative_path: experiments/configs/pivot_feedback_d0_t10151_rank5_cross_provider_v1.yaml
+  contract_sha256: 52bb266655ca4a408eee0ac13de0efcad2054ce34e2ff4c6c7c623afa518668d
+  required_contract_schema: pivot_feedback_d0_t10151_rank5_cross_provider_config.v1
+  prepared_root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v1-prepared-20260730
+  preparation_receipt_sha256: 18ac469fbea8f539bca1aafa4bf610701400af6947beebbe8a938bbcdd5a1fdd
+  preparation_verification_sha256: 3c5a4f38677b3f0a53895c032a547fd0a9a549c47b9b2ef483c0b9d8656ead15
+  execution_root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v1-execution-20260730
+  failure_basename: execution_failure.outputs.json
+  failure_sha256: 68b17ba8857b9a70ef94e1fbb5d8a6cf12ddf62ac3c8d6d6a34ade7d5cfd4d76
+  failure_status: BLOCKED_OR_PARTIAL_RANK5_CROSS_PROVIDER_EXECUTION
+  failed_provider: claude
+  failed_http_status: 400
+  failure_reason: CLAUDE_STRUCTURED_OUTPUT_ARRAY_MINITEMS_GT_1_UNSUPPORTED
+  usable_provider_results_preserved: 0
+  first_attempt_result_may_enter_consensus: false
+  conservative_prior_attempt_cost_upper_bound_usd: 0.010582
+
+transport_only_successor:
+  request_row_set_change_allowed: false
+  prompt_change_allowed: false
+  label_change_allowed: false
+  confidence_change_allowed: false
+  consensus_rule_change_allowed: false
+  model_change_allowed: false
+  input_visibility_change_allowed: false
+  openai_request_change_allowed: false
+  claude_request_change:
+    remove_unsupported_array_minItems: true
+    remove_unsupported_array_maxItems: true
+    exact_25_rows_remains_prompt_requirement: true
+    exact_25_unique_rows_remains_post_response_verification_requirement: true
+  additional_provider_calls_authorized: 2
+  retries_within_successor: 0
+  successor_request_cost_upper_bound_usd: 0.040524
+  cumulative_attempt_cost_upper_bound_usd: 0.051106
+  cumulative_authorized_cap_usd: 0.10
+  cumulative_upper_bound_within_cap: true
+
+authorization:
+  d0_rank5_transport_successor_contract: AUTHORIZED_EXACT_CORRECTION_ONLY
+  d0_rank5_transport_successor_preparation: AUTHORIZED
+  d0_rank5_transport_successor_submission: AUTHORIZED_TWO_CALLS_NO_RETRY
+  d0_rank5_result_reduction: AUTHORIZED_PRECOMMITTED_CONSENSUS_ONLY_AFTER_VERIFICATION
+  d0_rank5_augmented_disposition: NOT_AUTHORIZED_UNTIL_SUCCESSOR_RESULT_VERIFIED
+  d0_selection_certificate: NOT_AUTHORIZED_UNTIL_AUGMENTED_DISPOSITION
+  d0_deterministic_reselection: NOT_AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The first attempt produced no usable cross-provider pair because Claude
+  rejected an unsupported array cardinality keyword before inference; no
+  first-attempt output may enter consensus. This successor changes only the
+  Claude transport schema by removing minItems and maxItems. The prompt,
+  25-row set, visible fields, models, labels, dual-HIGH consensus, and
+  post-response exact-cardinality verification remain frozen. A conservative
+  bound for the unobserved first OpenAI request is carried into the cumulative
+  USD 0.10 cap. No disposition, certificate, reselection, outcome, fit, G4, or
+  scientific claim is authorized.

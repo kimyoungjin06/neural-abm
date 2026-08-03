@@ -1,0 +1,81 @@
+{
+  "schema_version": "pivot_feedback_holdout_production_input_resolution_summary.v1",
+  "status": "PASS_METADATA_ONLY_INPUT_RESOLUTION_NO_MATERIALIZED_G4_ARTIFACT_SET",
+  "declared_inputs": {
+    "source_root_bound": false,
+    "complete_artifact_list_bound": false,
+    "artifact_count": 0,
+    "production_preflight_written": false,
+    "production_seal_created": false,
+    "production_receipt_written": false
+  },
+  "materialization_replay": {
+    "logical_partition_reserved": true,
+    "g4_domain_selected": false,
+    "g4_field_selected": false,
+    "g4_artifact_set_materialized": false,
+    "unresolved_quantitative_choice_count": 17,
+    "unresolved_required_section_count": 15,
+    "available_d0_entry_year_maximum": 2012,
+    "requested_g4_entry_years": [
+      2020,
+      2021,
+      2022
+    ],
+    "existing_d0_artifact_substitution_valid": false
+  },
+  "resolution_decision": {
+    "blocker_class": "PREREQUISITE_ARTIFACT_NOT_MATERIALIZED_NOT_MISSING_USER_PATH",
+    "production_status": "NOT_RUN_NO_MATERIALIZED_G4_ARTIFACT_SET",
+    "logical_partition_reservation_equals_byte_seal": false,
+    "next_workstream": "G0_PRECOMMITMENT_SELECTION_AND_HOLDOUT_MATERIALIZATION_BEFORE_SEAL",
+    "required_successor_order": [
+      "COMPLETE_OUTCOME_BLIND_G0_PRECOMMITMENTS_AND_REQUIRED_SECTIONS",
+      "FREEZE_OUTCOME_BLIND_FIELD_EPISODE_AND_ATOMIC_PARTITION_ASSIGNMENT",
+      "MATERIALIZE_PRIVATE_G4_ARTIFACT_SET_WITHOUT_CONFIRMATORY_ANALYSIS",
+      "BIND_PRIVATE_SOURCE_ROOT_AND_COMPLETE_EXPLICIT_ARTIFACT_LIST",
+      "AUTHOR_OPERATOR_PREFLIGHT_FROM_EXPLICIT_LIST_ONLY",
+      "CREATE_AND_INDEPENDENTLY_VERIFY_BYTE_SEAL",
+      "BIND_VERIFIED_RECEIPT_IN_FINAL_G0_SUCCESSOR"
+    ]
+  },
+  "access_accounting": {
+    "repository_yaml_documents_read": 4,
+    "repository_json_documents_read": 2,
+    "operator_directories_listed": 0,
+    "operator_paths_searched_or_scanned": 0,
+    "operator_json_metadata_files_read": 0,
+    "operator_parquet_files_opened": 0,
+    "production_row_level_files_opened": 0,
+    "holdout_artifact_paths_enumerated": 0,
+    "holdout_artifact_bytes_hashed": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "production_preflight_written": false,
+    "production_seal_created": false,
+    "production_receipt_written": false,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "repository_artifacts": {
+    "resolution_contract": {
+      "relative_path": "experiments/configs/pivot_feedback_holdout_production_input_resolution_v1.yaml",
+      "sha256": "0abc726af2abcc58153488e0a50ac29b68f8e7840b0214ce3c2c7fd96fd160d9"
+    },
+    "validator": {
+      "relative_path": "scripts/verify_pivot_feedback_holdout_production_input_resolution_v1.py",
+      "sha256": "9c1ee153fc9383c79cb9684b30642e1cd14f4a1de7ea973947d97ca564b8c411"
+    }
+  },
+  "authorization": {
+    "repository_metadata_resolution": "COMPLETE_INDEPENDENTLY_VERIFIED",
+    "operator_path_search_or_scan": "NOT_AUTHORIZED",
+    "production_preflight": "NOT_AUTHORIZED_PREREQUISITE_ARTIFACT_NOT_MATERIALIZED",
+    "production_seal_creation_or_receipt_issuance": "NOT_AUTHORIZED_NO_VALID_PREFLIGHT",
+    "holdout_seal_opening": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "Repository metadata closes the requested input-resolution check without scanning any operator directory. The 2020-2022 domain- and author-cold partition is logically reserved, but the G4 field slot has no selected domain or field and no materialized artifact set. The available D0 entry source ends in 2012 and cannot be relabelled as the G4 package. Therefore no source root or complete artifact list can be truthfully inferred and no production preflight, byte seal, receipt, or independent receipt verification was run. This result does not open a holdout, pass G0, fit a model, open G4, assert causality, or establish a scientific effect."
+}

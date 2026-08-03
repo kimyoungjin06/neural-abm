@@ -1,0 +1,96 @@
+schema_version: pivot_feedback_d0_t10151_rank5_abstract_cross_provider_result_config.v1
+label: pivot_feedback_d0_t10151_rank5_abstract_cross_provider_result_v1
+mode: PRECOMMITTED_DUAL_HIGH_ABSTRACT_RESULT_REDUCTION
+status: FROZEN_EXACT_FIVE_ABSTRACT_RESULT_REDUCTION_AUTHORIZED
+
+request_contract:
+  relative_path: experiments/configs/pivot_feedback_d0_t10151_rank5_abstract_cross_provider_v1.yaml
+  sha256: 299ffa47c6e95dce1b3eaaccdfcd3b41084b096510e338c7a74fac948db4ff75
+  required_schema_version: pivot_feedback_d0_t10151_rank5_abstract_cross_provider_config.v1
+  required_status: FROZEN_EXACT_FIVE_LOCAL_ABSTRACT_REVIEW_NOT_SUBMITTED
+  prepare_script:
+    relative_path: scripts/prepare_pivot_feedback_d0_t10151_rank5_abstract_cross_provider_v1.py
+    sha256: 5ebe982e8f351a792f6e8eb661583fa9a34435b094d951cbcea9b05ac3040ea9
+  request_verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_t10151_rank5_abstract_cross_provider_v1.py
+    sha256: 83824199a8e7c27001e8c4e7b1e4512e4b1a704b4049fbf82055d783fa4542fc
+  execution_script:
+    relative_path: scripts/execute_pivot_feedback_d0_t10151_rank5_abstract_cross_provider_v1.py
+    sha256: 6d0bb47de1e8c787a68a32d524b7c1ccd119de0e06c61f5f45a74895d70255e3
+
+prepared_input:
+  root_basename: pivot-feedback-d0-t10151-rank5-abstract-cross-provider-v1-prepared-20260730
+  key_basename: request_key.csv
+  preparation_receipt_basename: abstract_cross_provider_preparation.outputs.json
+  preparation_receipt_sha256: 4bd9fcd2f36e74b2794c54adc2358f0e43e290d3e40eae5bf4a312e8c77d135d
+  preparation_receipt_status: PASS_EXACT_FIVE_LOCAL_ABSTRACT_CROSS_PROVIDER_REQUESTS_PREPARED
+  verification_basename: pivot-feedback-d0-t10151-rank5-abstract-cross-provider-v1-prepared-20260730.verification-v1.json
+  verification_sha256: 8ef00c41f256c310397c1023524a9d075f0d694070c2dab79750ea8fe5489b2e
+  verification_status: PASS_INDEPENDENT_EXACT_FIVE_LOCAL_ABSTRACT_REQUEST_VERIFICATION
+  rows: 5
+
+execution_input:
+  root_basename: pivot-feedback-d0-t10151-rank5-abstract-cross-provider-v1-execution-20260730
+  receipt_basename: abstract_cross_provider_execution.outputs.json
+  receipt_sha256: 8826d9e7d32d2bc2e93377f2b4faa7837f18cf8f99afe6215e2253d320cca68c
+  receipt_status: PASS_EXACT_FIVE_LOCAL_ABSTRACT_CROSS_PROVIDER_EXECUTION_COMPLETE
+  openai_response_basename: openai_response.json
+  openai_response_sha256: 2fb8cf0951331a9c8e1dd8d7d4b3fa618a819bc53a985f2d581688e157b7fde9
+  claude_response_basename: claude_response.json
+  claude_response_sha256: 754d7a778f82de9156b464e082889ce00481e2e2b1ebf1f57cec02c826503da9
+  rows_per_provider: 5
+  provider_calls: 2
+  estimated_actual_pair_usd: 0.0074385
+  cumulative_actual_plus_prior_upper_bound_usd: 0.0560885
+  cumulative_authorized_cap_usd: 0.10
+
+reduction:
+  consensus_accept: BOTH_LABEL_ON_TOPIC_AND_CONFIDENCE_HIGH
+  consensus_reject: BOTH_LABEL_OFF_TOPIC_AND_CONFIDENCE_HIGH
+  all_other_results: REMAIN_UNRESOLVED
+  expected:
+    exact_label_agreement_rows: 3
+    dual_high_accept_rows: 1
+    dual_high_reject_rows: 1
+    reviewed_remains_unresolved_rows: 3
+    unavailable_or_fragment_rows: 11
+    total_previous_unresolved_rows: 16
+    final_accept_rows: 28
+    final_reject_rows: 22
+    final_unresolved_rows: 14
+    final_content_state: CONTENT_UNRESOLVED
+  current:
+    accept_rows: 27
+    reject_rows: 21
+    unresolved_rows: 16
+    recent_denominator_rows: 64
+    pass_threshold_rows: 32
+    fail_threshold_rows: 32
+  human_review: NOT_RUN_BY_DESIGN
+  provider_labels_are_ground_truth: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-t10151-rank5-abstract-cross-provider-v1-results-20260730
+  decisions_basename: rank5_abstract_cross_provider_decisions.csv
+  candidate_basename: rank5_abstract_augmented_candidate.json
+  summary_basename: rank5_abstract_cross_provider_result_summary.json
+  report_basename: ABSTRACT_RESULT_SUMMARY.md
+  receipt_basename: abstract_cross_provider_result.outputs.json
+  artifact_mode: "0600"
+
+authorization:
+  result_reduction: AUTHORIZED_PRECOMMITTED_RULE_ONLY
+  human_review: NOT_RUN_BY_DESIGN
+  production_disposition: NOT_AUTHORIZED_UNTIL_INDEPENDENT_VERIFICATION_AND_SUCCESSOR_GATE
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: false
+  model_fitting: false
+  g4_open: false
+
+claim_boundary: >-
+  This reduction may add only exact dual-HIGH provider agreement to the
+  previously verified lower-bound counts. Missing local abstracts, the
+  fragment, label disagreement, or lower confidence remain unresolved.
+  Provider labels are not ground truth and no production or certificate action
+  is authorized by this result artifact.

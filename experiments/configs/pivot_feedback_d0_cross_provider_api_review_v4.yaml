@@ -1,0 +1,86 @@
+schema_version: pivot_feedback_d0_cross_provider_api_review_config.v4
+label: pivot_feedback_d0_cross_provider_api_review_v4
+mode: FAIL_CLOSED_CUSTOM_ID_LENGTH_REPAIR_SUCCESSOR
+status: FROZEN_CROSS_PROVIDER_RETRY_CONTRACT_BATCH_REQUESTS_NOT_SUBMITTED
+
+contract_parent:
+  relative_path: experiments/configs/pivot_feedback_d0_cross_provider_api_review_v3.yaml
+  sha256: 8eb81220192240d9c35b02febbadbeba2e3249b9c0af6f659d5775b1531b079c
+  required_schema_version: pivot_feedback_d0_cross_provider_api_review_config.v3
+  required_status: FROZEN_CROSS_PROVIDER_REVIEW_CONTRACT_BATCH_REQUESTS_NOT_SUBMITTED
+  inherited_sections:
+    - gate_parent
+    - source_audit
+    - shared_review_contract
+    - provider_judges
+    - human_calibration
+    - operator_cost_control
+    - phase_boundary
+    - authorization
+  mutation_allowed: false
+
+failed_attempt:
+  prepared_root_basename: pivot-feedback-d0-cross-provider-api-review-v3-prepared-20260729
+  preparation_receipt_sha256: 4ac30cd20de008e668e267571b56ecf191447097758d4de81a10755888c89a8d
+  verification_report_sha256: add246bfd2c8be91ee014f27f677eb486dd8b0d1dc74609a6fb12180493c11af
+  execution_root_basename: pivot-feedback-d0-cross-provider-api-review-v3-execution-20260729
+  failure_receipt_sha256: fa9862af79ba635e881b37646f88fee0073a35a8cf042294119c95ef9ed5023f
+  openai_batch_id: batch_6a69854f139c819094687ba9b634b708
+  openai_request_total_at_cancel_check: 0
+  openai_request_completed_at_cancel_check: 0
+  openai_request_failed_at_cancel_check: 0
+  openai_cancel_requested: true
+  openai_cancel_response_sha256: 49b8cc980f3ed5b3e8883d4f5780a2c3d9103bc6e8caa447778a3c8a7422dc41
+  claude_http_status: 400
+  claude_error_type: invalid_request_error
+  claude_error_path: requests.0.custom_id
+  claude_error_reason: STRING_AT_MOST_64_CHARACTERS
+  claude_batch_created: false
+  disposition: PRESERVED_FAILED_PARTIAL_SUBMISSION_OPENAI_CANCEL_REQUESTED
+  v3_may_be_resubmitted: false
+
+repair:
+  api_item_id_derivation: SHA256_HEX_OF_FROZEN_SEED_KIND_AND_SOURCE_ID
+  api_item_id_hex_characters: 64
+  provider_custom_id: API_ITEM_ID_WITHOUT_PROVIDER_PREFIX
+  provider_custom_id_characters: 64
+  provider_custom_id_maximum_characters: 64
+  custom_id_uniqueness_scope: WITHIN_EACH_PROVIDER_BATCH
+  source_rows_changed: false
+  visible_fields_changed: false
+  prompt_changed: false
+  response_schema_changed: false
+  models_changed: false
+  human_calibration_changed: false
+  cost_control_changed: false
+
+output_contract:
+  prepared_root_basename: pivot-feedback-d0-cross-provider-api-review-v4-prepared-20260729
+  execution_root_basename: pivot-feedback-d0-cross-provider-api-review-v4-execution-20260729
+  preparation_receipt_schema: pivot_feedback_d0_cross_provider_outputs.v4
+  verification_report_schema: pivot_feedback_d0_cross_provider_verification.v4
+  submission_receipt_schema: pivot_feedback_d0_cross_provider_submission_outputs.v4
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+
+authorization:
+  prepare_repaired_cross_provider_batch_requests: AUTHORIZED_OUTCOME_BLIND
+  submit_repaired_cross_provider_batches: AUTHORIZED_WITH_VALIDATED_CREDENTIALS_AND_MAXIMUM_1_USD_COST_CONTROL
+  submit_v3_batches: NOT_AUTHORIZED
+  candidate_universe_api_screen: NOT_AUTHORIZED_PENDING_CALIBRATION
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  g0: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This successor changes only the provider custom-ID representation from a
+  provider prefix plus a 64-character digest to the unique 64-character digest
+  itself. It preserves the v3 failed partial-submission evidence and does not
+  relabel the canceled OpenAI attempt or rejected Claude request as completed
+  review. Source rows, visible fields, prompt, schemas, models, human
+  calibration, and cost authorization are unchanged. Cross-provider execution
+  remains pending until both v4 batches are accepted. D0, candidate-universe
+  screening, outcomes, G0, model fitting, G4, and scientific effects remain
+  closed or unestablished.

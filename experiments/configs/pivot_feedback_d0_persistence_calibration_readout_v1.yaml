@@ -1,0 +1,106 @@
+schema_version: pivot_feedback_d0_persistence_calibration_readout_config.v1
+label: pivot_feedback_d0_persistence_calibration_readout_v1
+mode: EXISTING_VERIFIED_4301_ROW_ARTIFACT_ONLY_DESCRIPTIVE_MEASUREMENT_CALIBRATION
+status_before_execution: AUTHORIZED_BY_GATE_STATE_V47
+
+repository_bindings:
+  gate_state:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v47.yaml
+    sha256: 04eb7576c819b121f01592f1ff9cc315a66ef276f9decad66d0684232f7e7f38
+    required_schema_version: pivot_feedback_gate_state.v47
+    required_status: VALID_D0_PRODUCTION_PERSISTENCE_SOURCE_INDEPENDENTLY_VERIFIED_DESCRIPTIVE_CALIBRATION_READOUT_AUTHORIZED
+    required_fields:
+      production_persistence_source_decision.status: COMPLETE_INDEPENDENTLY_VERIFIED
+      production_persistence_source_decision.exact_denominator_rows: 4301
+      authorization.d0_descriptive_persistence_calibration_readout: AUTHORIZED_EXISTING_VERIFIED_4301_ARTIFACT_ONLY
+      authorization.d0_exposure_or_outcome_association_analysis: NOT_AUTHORIZED
+      authorization.d0_outcome_based_selection: NOT_AUTHORIZED
+      authorization.g0_measurement_freeze: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+
+operator_input:
+  root_basename: pivot-feedback-d0-persistence-source-v1-full-20260731
+  receipt_basename: persistence_outcome_source.outputs.json
+  receipt_sha256: 3aa45f93e4cbf40c0e9543482ec3c6a908b6026b7f9d23b719c615c68180295a
+  receipt_schema_version: pivot_feedback_d0_persistence_outcome_source_outputs.v1
+  required_status: PASS_EXACT_4301_NEW_TOPIC_ENTRY_THREE_YEAR_PERSISTENCE_SOURCE
+  artifact_basename: persistence_outcome_source.parquet
+  artifact_sha256: 0d347a296dbe08960e8a0fd2d5aaf9ff0afa7c9f55b08b761258e9874ae7f6c5
+  artifact_schema_version: pivot_feedback_d0_persistence_outcome_source.v1
+  rows: 4301
+  columns: 13
+  external_verification_basename: pivot-feedback-d0-persistence-source-v1-full-20260731.verification-v1.json
+  external_verification_sha256: 071ca98ae1ff5b6599756ca89397c430333810ef6ee368b6173f76a6d6bfd74a
+  external_verification_schema_version: pivot_feedback_d0_persistence_outcome_source_verification.v1
+  external_verification_status: PASS_INDEPENDENT_EXACT_4301_THREE_YEAR_PERSISTENCE_SOURCE_ALL_ROW_REPLAY
+
+readout_contract:
+  exact_denominator_state: NEW_TOPIC_ENTRY
+  exact_denominator_rows: 4301
+  grouping_levels:
+    - OVERALL
+    - CERTIFIED_EPISODE
+  count_distribution_bins:
+    - "0"
+    - "1"
+    - "2"
+    - "3"
+    - "4"
+    - "5_PLUS"
+  first_observed_persistence_offsets:
+    - NONE
+    - T_PLUS_1
+    - T_PLUS_2
+    - T_PLUS_3
+  yearly_presence_patterns:
+    - "000"
+    - "001"
+    - "010"
+    - "011"
+    - "100"
+    - "101"
+    - "110"
+    - "111"
+  descriptive_rate_definition: MATURED_PERSISTENCE_ROWS_DIVIDED_BY_MATURED_ROWS
+  adjusted_comparison: NONE
+  inferential_interval: NONE
+  ranking_or_selection: FORBIDDEN
+  independent_all_derived_value_replay_required: true
+
+output_contract:
+  root_basename: pivot-feedback-d0-persistence-calibration-readout-v1-20260731
+  report_basename: persistence_calibration_readout.json
+  markdown_basename: PERSISTENCE_CALIBRATION_READOUT.md
+  receipt_basename: persistence_calibration_readout.outputs.json
+  report_schema_version: pivot_feedback_d0_persistence_calibration_readout_report.v1
+  receipt_schema_version: pivot_feedback_d0_persistence_calibration_readout_outputs.v1
+  passing_status: PASS_EXACT_4301_DESCRIPTIVE_PERSISTENCE_CALIBRATION_READOUT
+  root_mode: "0700"
+  file_mode: "0600"
+  aggregate_only_no_author_ids: true
+  receipt_written_last: true
+
+forbidden_inputs_and_outputs:
+  raw_work_or_author_event_partition_read: false
+  confirmatory_or_holdout_row_read: false
+  exposure_peer_citation_impact_or_affiliation_join: false
+  api_request_created_or_submitted: false
+  adjusted_comparison_or_inferential_effect_computed: false
+  field_episode_or_threshold_ranked_or_selected_by_outcome: false
+  author_level_row_written: false
+  final_candidate_eligibility_established: false
+  g0_measurement_frozen: false
+  model_fitted: false
+  g4_opened: false
+
+claim_boundary: >-
+  This readout may rehash and read only the independently verified 4,301-row
+  persistence artifact. It may report exact overall and certified-episode
+  counts, unadjusted descriptive rates, total-work count bins, first observed
+  persistence offsets, and yearly presence patterns. It may not read raw,
+  confirmatory, or holdout rows; join any exposure or other outcome; create an
+  API request; perform adjusted or inferential comparisons; rank or select a
+  field, episode, or threshold; write author identifiers; establish true
+  researcher-topic persistence, final eligibility, causality, or a scientific
+  effect; freeze G0; fit a model; or open G4.

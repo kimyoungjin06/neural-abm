@@ -1,0 +1,112 @@
+{
+  "schema_version": "pivot_feedback_g0_risk_set_weight_support_precommitment_summary.v1",
+  "status": "PASS_SIX_OUTCOME_BLIND_RISK_SET_WEIGHT_SUPPORT_CHOICES_AND_CLOSED_FIXTURE",
+  "source_replay": {
+    "author_episode_rows": 3256271,
+    "production_rows_read": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "g0_v3_changed": false
+  },
+  "choice_replay": {
+    "choice_count": 6,
+    "controls_per_case": 10,
+    "weight_percentiles": [
+      0.01,
+      0.99
+    ],
+    "minimum_cohort": [
+      500,
+      100,
+      100
+    ],
+    "suppressed_counts": [
+      1,
+      10
+    ],
+    "capacity_cell_minimum": [
+      50,
+      11,
+      11
+    ],
+    "vif_strict_upper_bound": 5.0,
+    "values_are_policy_not_empirical_truth": true
+  },
+  "fixture_replay": {
+    "sampling_stratum_count": 2,
+    "selected_control_count": 25,
+    "all_control_retention_stratum_count": 1,
+    "weight_group_count": 1,
+    "upper_weight_clipped_count": 1,
+    "cohort_group_count": 4,
+    "cohort_fail_count": 3,
+    "report_cell_count": 5,
+    "suppressed_cell_count": 2,
+    "capacity_table_count": 3,
+    "capacity_support_fail_count": 1,
+    "capacity_vif_fail_count": 1,
+    "separate_channel_pass_count": 1
+  },
+  "application_tool": {
+    "relative_path": "scripts/apply_pivot_feedback_g0_risk_set_weight_support_precommitment_v1.py",
+    "sha256": "4642a193b369a7cec82cd9b090d626de2371aaa71b3b41c45b0bb6c5ed090d1c",
+    "row_data_library_imports": [],
+    "imports_this_validator": false
+  },
+  "lifecycle_replay": {
+    "discovery_production_application_run": false,
+    "g0_v3_changed": false,
+    "remaining_choice_count_after_future_binding": 7,
+    "required_sections_completed": false,
+    "confirmatory_or_holdout_rows_read": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "access_accounting": {
+    "repository_yaml_documents_read": 7,
+    "repository_json_documents_read": 3,
+    "repository_text_documents_read": 3,
+    "synthetic_fixture_files_read": 2,
+    "operator_directories_listed_or_scanned": 0,
+    "operator_json_metadata_files_read": 0,
+    "parquet_files_opened": 0,
+    "production_row_level_files_opened": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "repository_artifacts": {
+    "contract": {
+      "relative_path": "experiments/configs/pivot_feedback_g0_risk_set_weight_support_precommitment_v1.yaml",
+      "sha256": "8f38863eba1880ee375d982cbb2ac094d3ae64028ee651e92b59f13d0189f26e"
+    },
+    "application_tool": {
+      "relative_path": "scripts/apply_pivot_feedback_g0_risk_set_weight_support_precommitment_v1.py",
+      "sha256": "4642a193b369a7cec82cd9b090d626de2371aaa71b3b41c45b0bb6c5ed090d1c",
+      "row_data_library_imports": [],
+      "imports_this_validator": false
+    },
+    "validator": {
+      "relative_path": "scripts/verify_pivot_feedback_g0_risk_set_weight_support_precommitment_v1.py",
+      "sha256": "b58f5312cbd3872ae0d65d9ee5b702a650db9ac1fc0ba6a11896244f620e5524"
+    },
+    "fixture_input": {
+      "relative_path": "tests/fixtures/pivot_feedback_g0_risk_set_weight_support_discovery_v1.input.json",
+      "sha256": "ff4aa3529385a79eae65986cf3a3322f065553ffb95dce59a15d360b35e6313f"
+    },
+    "fixture_expected": {
+      "relative_path": "tests/fixtures/pivot_feedback_g0_risk_set_weight_support_discovery_v1.expected.json",
+      "sha256": "7616cb3e09afa4696e103dca76816c5c5acd1706d28e98d90d871b11a86afe14"
+    }
+  },
+  "authorization": {
+    "six_choice_contract": "COMPLETE_INDEPENDENTLY_VALIDATED_FIXTURE_ONLY",
+    "discovery_production_application": "REQUIRES_SUCCESSOR_GATE",
+    "g0_successor_binding": "REQUIRES_SUCCESSOR_GATE",
+    "confirmatory_or_holdout_access": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This outcome-blind contract precommits six risk-set, weighting, support, suppression, and collinearity choices plus a synthetic fixture interface. Ten controls per case, P01-P99 winsorization, the cohort and cell floors, and VIF five are explicit conservative design policies, not literature-mandated truths, power guarantees, or empirical effects. The one-through-ten suppression rule is used by analogy and does not assert that CMS policy governs OpenAlex. No discovery production input is opened, G0 v3 is not changed, the remaining seven quantitative choices and all required sections remain unresolved, and no holdout artifact, seal, model, G4 result, causality, or scientific effect is established."
+}

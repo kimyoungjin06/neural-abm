@@ -1,0 +1,49 @@
+{
+  "schema_version": "pivot_feedback_d0_production_candidate_rule_summary.v2",
+  "status": "PASS_INDEPENDENT_PRODUCTION_CANDIDATE_RULE_V2_AND_FRONTIER_V3",
+  "production_rule": {
+    "version": "candidate_rule_v2",
+    "post_diagnostic_amendment": true,
+    "out_of_sample_validated": false,
+    "majority_opaque_threshold": 0.5
+  },
+  "production_candidate_dispositions": {
+    "rows": 5,
+    "content_pass_rows": 3,
+    "content_fail_rows": 2,
+    "post_diagnostic_amendment_rows": 1,
+    "t10543_rank2_state": "CONTENT_FAIL",
+    "t10543_rank2_reason": "RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS"
+  },
+  "frontier_v3": {
+    "rows": 51,
+    "content_pass_rows": 3,
+    "content_fail_rows": 2,
+    "content_unresolved_rows": 1,
+    "not_evaluated_rows": 45,
+    "field_certificates_issued": 1,
+    "global_selection_certificate_issued": false,
+    "medicine_required_candidate_rank": 3,
+    "medicine_required_topic_id": 10543,
+    "medicine_required_entry_year": 1986,
+    "rank3_pass_branch_closes_with_rank": 6
+  },
+  "execution_boundary": {
+    "new_titles_read": false,
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000",
+    "deterministic_reselection_executed": false,
+    "outcomes_read": false
+  },
+  "artifacts": {
+    "config_sha256": "527ab2d43f878fdd5cceb228d5fb13cf5d7ee2342908ce7264d7bede4d39603d",
+    "producer_sha256": "5375965851710f958882673cfa382cd0d25bb6c6ada77753ff040daf3f70caea",
+    "verifier_sha256": "7f38cfaed1938fbe38b9d184a017524453d13d88b1300e64efb18d86bef43968",
+    "operator_receipt_sha256": "42aed924e5747c935ef6193d60e922dba018e405b2b20519fa7bcbbd853b0a8e",
+    "verification_report_sha256": "79c533e1b00d213a9919a2f500b727ee85444da224607d286ba6887bab6701b4",
+    "dispositions_sha256": "948edbb2309999ef0e849f6d6df64f869abe22eb659045d685ac5667f38e8f5f",
+    "frontier_v3_sha256": "66267452cb054e0370f08c638e2588e3d1d672c277bd23502e9f43a12ef461ba"
+  },
+  "claim_boundary": "This freezes a disclosed post-diagnostic engineering screen and frontier state. It is not out-of-sample validation, semantic truth, a global selection certificate, a pivot classification, an outcome result, a model fit, or a scientific effect."
+}

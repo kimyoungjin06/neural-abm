@@ -1,0 +1,70 @@
+{
+  "schema_version": "pivot_feedback_d0_production_candidate_rule_summary.v1",
+  "status": "PASS_INDEPENDENT_PRODUCTION_CANDIDATE_RULE_AND_FRONTIER_V2",
+  "date": "2026-07-29",
+  "repository_bindings": {
+    "config_relative_path": "experiments/configs/pivot_feedback_d0_production_candidate_rule_v1.yaml",
+    "config_sha256": "027872f50742421176cfe20b71eb7469fc447e7d9e78a1c556e1c16b74852519",
+    "producer_relative_path": "scripts/build_pivot_feedback_d0_production_candidate_rule_v1.py",
+    "producer_sha256": "c7fc8df4d0fb501b9ca65821cac081c316d2ae17364b613fcd3619f79accbd98",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_d0_production_candidate_rule_v1.py",
+    "verifier_sha256": "446f7900be6f88e9e95ba3b649838f88948c0688681b6c8cebabdcfd823da527"
+  },
+  "operator_local_evidence": {
+    "root_basename": "pivot-feedback-d0-production-candidate-rule-v1-20260729",
+    "receipt_basename": "production_candidate_rule.outputs.json",
+    "receipt_sha256": "098843acbea1856c79207b7ee56ac918a7c607232e3a2a712fd28f81f9d0185e",
+    "artifact_tree_sha256": "a402b0d4c0302a4594023e0d5aa171d6e73abe94049e742b7773b0e4f6658be4",
+    "verification_report_basename": "pivot-feedback-d0-production-candidate-rule-v1-20260729.verification-v1.json",
+    "verification_report_sha256": "200366d6e611ff9db5b01327aa3f5a2a86b3ac4dc0afd6e0b7efde92b7b883b9",
+    "verification_status": "PASS_INDEPENDENT_PRODUCTION_CANDIDATE_RULE_AND_FRONTIER_V2"
+  },
+  "production_dispositions": [
+    {"candidate": "F17/r1/T14430/2003", "content_state": "CONTENT_PASS"},
+    {"candidate": "F17/r45/T10579/2012", "content_state": "CONTENT_PASS"},
+    {"candidate": "F27/r1/T12505/1991", "content_state": "CONTENT_FAIL"},
+    {"candidate": "F27/r6/T12421/1953", "content_state": "CONTENT_PASS"}
+  ],
+  "frontier_v2": {
+    "rows": 51,
+    "content_pass_rows": 3,
+    "content_fail_rows": 1,
+    "content_unresolved_rows": 1,
+    "not_evaluated_rows": 46,
+    "computer_science_field_certificate_issued": true,
+    "medicine_required_candidate": "F27/r2/T10543/1993",
+    "medicine_required_content_state": "CONTENT_UNRESOLVED",
+    "global_selection_certificate_issued": false
+  },
+  "targeted_successor": {
+    "topic_id": 10543,
+    "entry_year": 1993,
+    "rows_per_window": 32,
+    "total_rows": 96,
+    "full_candidate_universe_title_copy_required": false,
+    "local_routing_required_before_api_decision": true
+  },
+  "execution": {
+    "new_titles_read": false,
+    "raw_openalex_main_table_read": false,
+    "network_accessed": false,
+    "credentials_accessed": false,
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000",
+    "outcomes_read": false
+  },
+  "boundaries": {
+    "human_review_used": false,
+    "api_labels_are_ground_truth": false,
+    "targeted_sample_execution_authorized_by_component": false,
+    "general_raw_title_scan_authorized": false,
+    "new_api_request_creation_authorized": false,
+    "global_selection_certificate_authorized": false,
+    "deterministic_reselection_authorized": false,
+    "model_fitting_authorized": false,
+    "g4_open": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "next_required_step": "V16_AUTHORIZE_EXACT_T10543_96_TITLE_LOCAL_SAMPLE_ONLY"
+}

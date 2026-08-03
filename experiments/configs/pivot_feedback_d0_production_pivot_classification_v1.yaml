@@ -1,0 +1,141 @@
+schema_version: pivot_feedback_d0_production_pivot_classification_config.v1
+label: pivot_feedback_d0_production_pivot_classification_v1
+mode: EXACT_FOUR_THRESHOLD_FREE_OBSERVABLE_HISTORY_FOUR_STATE_CLASSIFICATION
+status_before_execution: AUTHORIZED_BY_GATE_STATE_V44
+
+repository_bindings:
+  gate_state:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v44.yaml
+    sha256: dc82839e944dc9da2b686cc8da69c266f996766ef05d6149caaf117acc35f3b5
+    required_schema_version: pivot_feedback_gate_state.v44
+    required_status: VALID_EXACT_FOUR_PRODUCTION_ENTRY_SOURCE_INDEPENDENTLY_VERIFIED_PRODUCTION_CLASSIFIER_STATES_AUTHORIZED
+    required_fields:
+      production_source_decision.status: COMPLETE_INDEPENDENTLY_VERIFIED
+      authorization.d0_production_pivot_classification: AUTHORIZED_EXACT_FOUR_DETERMINISTIC_STATES_ONLY
+      authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+      authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+      authorization.g0_measurement_freeze: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+  pivot_definition_v2:
+    relative_path: experiments/configs/pivot_feedback_researcher_pivot_definition_v2.yaml
+    sha256: 625145e60fa38b787b25842b8b2d6877880b2f6102169588dfd1efb919e224de
+    required_schema_version: pivot_feedback_researcher_pivot_definition.v2
+    required_status: FROZEN_THRESHOLD_FREE_OBSERVABLE_HISTORY_PIVOT_DEFINITION_V2_FIXTURES_ONLY
+  source_build_config:
+    relative_path: experiments/configs/pivot_feedback_d0_entry_source_build_v1.yaml
+    sha256: 5f731bd119a87447659535a12dea812228eff1b2eb279dd1b96e5de7b2d52e39
+    required_schema_version: pivot_feedback_d0_entry_source_build_config.v1
+
+verified_operator_input:
+  root_basename: pivot-feedback-d0-entry-source-v1-full-20260731
+  receipt_basename: pivot_entry_source_build.outputs.json
+  receipt_sha256: e56329675a51b1c1a2be1003df2e60fa3fdad1a93fce42a2102adc957284e060
+  receipt_schema_version: pivot_feedback_d0_entry_source_build_outputs.v1
+  receipt_status: PASS_EXACT_FOUR_THREE_COUNT_PRODUCTION_FEATURE_SOURCE_NO_STATE_LABELS
+  artifact_tree_sha256: 7c89e9c8cb8cc72ad57e483089ff65c03e50b15ac420b338b33ee4a4e66dfa1d
+  feature_basename: pivot_entry_source_features.parquet
+  feature_sha256: 812843969ca8b147659173090bcb6f6ea7434e9c13ebf37b4e852418b06f5384
+  feature_schema_version: pivot_feedback_d0_entry_source_features.v1
+  feature_rows: 3256271
+  feature_columns: 8
+  verification_basename: pivot-feedback-d0-entry-source-v1-full-20260731.verification-v1.json
+  verification_sha256: 20d2d668f24ce6c16cfb4adccb5758c8092c3d1feb91aa7f4ef3a73a634c2784
+  verification_schema_version: pivot_feedback_d0_entry_source_verification.v1
+  verification_status: PASS_INDEPENDENT_EXACT_FOUR_THREE_COUNT_SOURCE_REPLAY_NO_STATE_LABELS
+  exact_input_columns:
+    - certified_episode_index
+    - field_id
+    - topic_id
+    - entry_year
+    - author_numeric_id
+    - pre_entry_target_topic_work_count
+    - trailing_3y_target_topic_work_count
+    - focal_confirmed_eligible_target_topic_work_count
+
+classification_contract:
+  unit: AUTHOR_TOKEN_X_CERTIFIED_PRIMARY_TOPIC_X_ENTRY_YEAR
+  exact_states:
+    - NO_FOCAL_ENTRY
+    - NEW_TOPIC_ENTRY
+    - RETURN
+    - CONTINUATION
+  primary_pivot_state: NEW_TOPIC_ENTRY
+  rules_in_precedence_order:
+    - state: NO_FOCAL_ENTRY
+      predicate: FOCAL_COUNT_EQUALS_ZERO
+    - state: NEW_TOPIC_ENTRY
+      predicate: FOCAL_POSITIVE_AND_PRE_ENTRY_COUNT_EQUALS_ZERO
+    - state: RETURN
+      predicate: FOCAL_POSITIVE_AND_PRE_ENTRY_POSITIVE_AND_TRAILING_COUNT_EQUALS_ZERO
+    - state: CONTINUATION
+      predicate: FOCAL_POSITIVE_AND_TRAILING_COUNT_POSITIVE
+  minimum_history_threshold: NONE
+  graph_team_cap: NONE
+  primary_boolean_column: observable_history_new_topic_entry
+  state_column: observable_history_pivot_state
+  source_population_filtering: FORBIDDEN
+  source_feature_mutation: FORBIDDEN
+  repeated_author_topic_year_rows: FORBIDDEN
+  post_entry_input_allowed: false
+  observable_history_claim_only: true
+  true_lifetime_first_claim_allowed: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-production-pivot-classification-v1-20260731
+  artifact_basename: production_pivot_classification.parquet
+  report_basename: production_pivot_classification.json
+  markdown_basename: PRODUCTION_PIVOT_CLASSIFICATION.md
+  receipt_basename: production_pivot_classification.outputs.json
+  artifact_schema_version: pivot_feedback_d0_production_pivot_classification.v1
+  report_schema_version: pivot_feedback_d0_production_pivot_classification_report.v1
+  receipt_schema_version: pivot_feedback_d0_production_pivot_classification_outputs.v1
+  passing_status: PASS_EXACT_FOUR_THRESHOLD_FREE_OBSERVABLE_HISTORY_FOUR_STATE_CLASSIFICATION
+  required_rows: 3256271
+  required_columns:
+    - certified_episode_index
+    - field_id
+    - topic_id
+    - entry_year
+    - author_numeric_id
+    - pre_entry_target_topic_work_count
+    - trailing_3y_target_topic_work_count
+    - focal_confirmed_eligible_target_topic_work_count
+    - observable_history_pivot_state
+    - observable_history_new_topic_entry
+
+verification_contract:
+  verifier_must_not_import_producer: true
+  verifier_must_not_use_producer_engine: true
+  exact_source_columns_must_be_replayed: true
+  every_state_must_be_recomputed_from_counts: true
+  primary_boolean_must_equal_new_topic_entry_state: true
+  exact_state_partition_closure_required: true
+  source_population_key_preservation_required: true
+
+forbidden_inputs_and_outputs:
+  raw_work_partition_read: false
+  raw_author_event_partition_read: false
+  source_population_filtered: false
+  source_feature_mutated: false
+  post_entry_persistence_read: false
+  post_entry_impact_read: false
+  realized_citation_outcome_read: false
+  peer_visible_success_computed: false
+  api_request_created: false
+  paid_api_submitted: false
+  final_candidate_eligibility_established: false
+  g0_measurement_frozen: false
+  model_fitted: false
+  g4_opened: false
+
+claim_boundary: >-
+  This build deterministically applies the frozen threshold-free four-state
+  observable-history definition to the independently verified three-count
+  source without changing or filtering any of its 3,256,271 rows. A
+  NEW_TOPIC_ENTRY is zero prior observed target-topic work plus at least one
+  focal-year work under the current-snapshot ABI; it is not true lifetime-first
+  entry. The build may not read raw work or author-event partitions, open
+  post-entry persistence or impact, create API requests, establish final
+  eligibility, freeze G0, fit a model, open G4, or establish an association,
+  causal mechanism, or scientific effect.

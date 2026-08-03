@@ -1,0 +1,52 @@
+{
+  "artifacts": {
+    "decision_sha256": "1acb536a049950f69fda4c08101b0267603384869890ca941a940e8f145c981b",
+    "panel_rebuild_gate_v37_sha256": "9b4453c57f7efff8095cc558d4caf938c6b213b273012d8ea8cf835d1285f7c4",
+    "producer_sha256": "94d8e5ba87d7500a1fe7e87c1dc28dbdc9f99f764c96c25f796f99b7fa47a0de",
+    "receipt_sha256": "cc4e7729f4e1c0865fe059ed7a5df5c1f053a5dbe4a2e09e68fe0389e74ec96a",
+    "reselection_config_sha256": "8b0677a84b94db5ffca4def3249a71c10833479a72f985e8f3219ce5bea4483b",
+    "selection_sha256": "2a24ddc9d6519e653718e53e8751758d2033391e250e0f2ada175747c169ffed",
+    "verification_sha256": "d1259442e3d2f4e59d42d0e23bf75f1a0a0da046e253fa378cb8d379f7349bc9",
+    "verifier_sha256": "ecf4eed2e59ffcec8b3b113771a2b03718533ce6b934e3598c7df23d0e1796e8"
+  },
+  "claim_boundary": "The global-certificate-bound four-episode reselection is complete and independently verified. It materializes candidate decisions only. Source works and author panels were not rebuilt, pivots were not classified, outcomes were not read, and no model, G4, or scientific effect was opened.",
+  "execution_boundary": {
+    "api_requests_created": 0,
+    "author_opportunity_panel_rebuild_executed": false,
+    "deterministic_reselection_executed": true,
+    "g4_open": false,
+    "outcomes_read": false,
+    "production_pivot_classification_executed": false,
+    "source_work_rescan_executed": false
+  },
+  "next_authorization": {
+    "author_opportunity_panel_rebuild": "AUTHORIZED_OUTCOME_BLIND_EXACT_FOUR_ONLY",
+    "exact_selected_work_manifest_rebuild": "AUTHORIZED_OUTCOME_BLIND_EXACT_FOUR_ONLY",
+    "leaveout_network_bridge_build": "PAUSED_UNTIL_REBUILT_PANEL_INDEPENDENTLY_VERIFIED",
+    "old_panel_role": "SUPERSEDED_PROVISIONAL_DO_NOT_REUSE",
+    "outcome_opening": "NOT_AUTHORIZED",
+    "pivot_classification": "NOT_AUTHORIZED"
+  },
+  "schema_version": "pivot_feedback_d0_certified_episode_reselection_summary.v1",
+  "selection": {
+    "computer_science_selected_candidate_ranks": [
+      1,
+      45
+    ],
+    "deselected_prior_episode": {
+      "entry_year": 1991,
+      "field_candidate_rank": 1,
+      "field_id": 27,
+      "topic_id": 12505
+    },
+    "deselected_prior_episode_rows": 1,
+    "medicine_selected_candidate_ranks": [
+      5,
+      6
+    ],
+    "newly_selected_episode_rows": 1,
+    "retained_episode_rows": 3,
+    "selected_episode_rows": 4
+  },
+  "status": "PASS_INDEPENDENT_EXACT_FOUR_CERTIFIED_EPISODE_RESELECTION"
+}

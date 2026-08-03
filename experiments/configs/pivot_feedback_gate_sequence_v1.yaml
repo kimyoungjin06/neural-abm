@@ -1,0 +1,209 @@
+schema_version: pivot_feedback_gate_sequence.v1
+label: pivot_feedback_gate_sequence_v1
+mode: PROSPECTIVE_ACYCLIC_GATE_ORDER_AMENDMENT
+status: VALID_PENDING_SUCCESSOR_IMPLEMENTATION
+
+lifecycle:
+  legacy_v0_parents_mutated: false
+  contract_validated: false
+  g_minus_1a_receipt_issued: false
+  s0_threshold_free_inventory: NOT_RUN
+  d0_discovery_pilot: NOT_RUN
+  g0_measurement_freeze: PENDING
+  g0_5_panel_conformance: NOT_RUN
+  empirical_g1_signature: NOT_RUN
+  execution_authorized: false
+  scientific_effect: NOT_ESTABLISHED
+
+immutable_parents:
+  legacy_g_minus_1_registry:
+    relative_path: experiments/configs/pivot_feedback_g_minus_1_readiness_v0.yaml
+    sha256: e5048af2d3cca3b1ff04bbecc1a6cbf5dcc6756bf29db995d3cefbe3a017f2be
+    schema_version: pivot_feedback_g_minus_1_readiness.v1
+    status: G_MINUS_1_PENDING
+    mutation_allowed: false
+  pending_g0_overlay:
+    relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v0.yaml
+    sha256: 2c2912506b96e1c7a09ba008bd15fb824a5b8e3545cf9c387cd3e0cb81044606
+    schema_version: pivot_feedback_g0_measurement_freeze.v1
+    status: PENDING_G0_MEASUREMENT_FREEZE
+    mutation_allowed: false
+  cross_field_matrix:
+    relative_path: experiments/configs/pivot_feedback_cross_field_matrix_v0.yaml
+    sha256: 6fd3e2c7aae7a7aac085ed73ba4bf3d64a91c02d60dce8a9a6a262591a0c934a
+    schema_version: pivot_feedback_cross_field_matrix.v1
+    mutation_allowed: false
+  peer_mechanism_registry:
+    relative_path: experiments/configs/pivot_feedback_peer_mechanism_registry_v0.yaml
+    sha256: 99eeb68b632f9f9a250f50320cfc7a293e3595de81984419d1528e2ee12aa6f8
+    schema_version: pivot_feedback_peer_mechanism_registry.v1
+    mutation_allowed: false
+
+completed_bounded_evidence:
+  cutoff_primitives:
+    relative_path: experiments/evidence/results/pivot_feedback_cutoff_primitives_production_full_20260723.summary.json
+    sha256: 874698fa70edf98d62e73a7f5cb7e3d0b15ecd653535781916af4832e7ded12e
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+  cutoff_source_replay:
+    relative_path: experiments/evidence/results/pivot_feedback_cutoff_primitives_source_replay_full_20260723.summary.json
+    sha256: 6c61f89b289b8575dfcda226cbc9a739a445e611280378708a223434aade1a67
+    required_status: PASS_INDEPENDENT_FULL_SOURCE_PROJECTION_REPLAY_AND_CANONICAL_TIME_VERIFICATION_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+
+gate_nodes:
+  - gate_id: G_MINUS_1A
+    order: 10
+    requires: []
+    role: BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_READINESS
+    current_state: EVIDENCE_AVAILABLE_RECEIPT_NOT_YET_ISSUED
+    may_read_discovery_outcomes: false
+    may_read_confirmatory_outcomes: false
+    may_authorize_model_fitting: false
+    owns_final_cutoff_panel: false
+
+  - gate_id: S0
+    order: 20
+    requires: [G_MINUS_1A]
+    role: THRESHOLD_FREE_FIELD_AUTHOR_GRAPH_AND_AFFILIATION_INVENTORY
+    current_state: NOT_RUN
+    may_read_discovery_outcomes: false
+    may_read_confirmatory_outcomes: false
+    may_authorize_model_fitting: false
+    owns_final_cutoff_panel: false
+
+  - gate_id: D0
+    order: 30
+    requires: [S0]
+    role: DISCOVERY_ONLY_MEASUREMENT_CALIBRATION_AND_FEASIBILITY
+    current_state: NOT_RUN
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_outcomes: false
+    may_authorize_model_fitting: false
+    owns_final_cutoff_panel: false
+
+  - gate_id: G0
+    order: 40
+    requires: [D0]
+    role: QUANTITATIVE_MEASUREMENT_FREEZE_AND_ATOMIC_HOLDOUT_SEAL
+    current_state: PENDING
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_outcomes: false
+    may_authorize_model_fitting: false
+    owns_final_cutoff_panel: false
+
+  - gate_id: G0_5
+    order: 50
+    requires: [G0]
+    role: FROZEN_FINAL_PANEL_CONFORMANCE_LEAKAGE_AND_SUPPORT_AUDIT
+    current_state: NOT_RUN
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_outcomes: false
+    may_authorize_model_fitting: false
+    owns_final_cutoff_panel: true
+
+  - gate_id: G1
+    order: 60
+    requires: [G0_5]
+    role: EMPIRICAL_REPLICATION_2013_2016
+    current_state: NOT_RUN
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_outcomes: true
+    may_authorize_model_fitting: false
+    owns_final_cutoff_panel: false
+
+  - gate_id: G2
+    order: 70
+    requires: [G1]
+    role: EXPLICIT_BASELINE_AND_MODEL_SELECTION_2017_2019
+    current_state: NOT_RUN
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_outcomes: true
+    may_authorize_model_fitting: true
+    owns_final_cutoff_panel: false
+
+  - gate_id: G3
+    order: 80
+    requires: [G2]
+    role: CONDITIONAL_NABM_AND_PAIRED_SIMULATION
+    current_state: NOT_RUN
+    resolution_states: [PASS, NOT_REQUIRED_SIMPLER_MODEL_SELECTED]
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_outcomes: true
+    may_authorize_model_fitting: true
+    owns_final_cutoff_panel: false
+
+  - gate_id: G4
+    order: 90
+    requires: [G3]
+    role: SEALED_TEMPORAL_DOMAIN_AND_AUTHOR_COLD_HOLDOUT
+    current_state: SEALED_NOT_OPENED
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_outcomes: true
+    opens_sealed_holdout: true
+    may_authorize_model_fitting: false
+    owns_final_cutoff_panel: false
+
+  - gate_id: G5
+    order: 100
+    requires: [G4]
+    role: OPTIONAL_EXTERNAL_CAUSAL_AXIS
+    current_state: NOT_RUN
+    optional_for_bounded_noncausal_paper: true
+    may_authorize_model_fitting: false
+    owns_final_cutoff_panel: false
+
+separation_rules:
+  final_cutoff_panel_owner: G0_5
+  final_cutoff_panel_is_g_minus_1a_prerequisite: false
+  final_cutoff_panel_is_g0_prerequisite: false
+  g0_freezes_definitions_before_final_panel_materialization: true
+  s0_metric_class: THRESHOLD_FREE_STRUCTURE_ONLY
+  s0_forbidden_metrics:
+    - eligible_author_count
+    - matured_entry_opportunity_count
+    - fixed_horizon_outcome_coverage
+    - independent_attention_shock_count
+    - entry_effect_size
+    - persistence_effect_size
+    - overshoot_timing_gap
+    - predictive_score
+  g0_5_allowed_threshold_dependent_support:
+    - eligible_author_count
+    - matured_entry_opportunity_count
+    - fixed_horizon_outcome_coverage
+    - independent_attention_shock_count
+    - signal_by_bridge_cell_support
+  d0_entry_end_year: 2012
+  d0_may_inform_quantitative_g0_values: true
+  d0_may_select_final_fields_by_effect_size: false
+  d0_may_change_confirmatory_years: false
+  g1_entry_years: [2013, 2014, 2015, 2016]
+  model_selection_entry_years: [2017, 2018, 2019]
+  g4_entry_years: [2020, 2021, 2022]
+  g4_open_before_g3_resolution: false
+
+legacy_blocker_routing:
+  cutoff_panel:
+    legacy_state: MISSING_G0_RESOLVED_FINAL_PANEL_SUCCESSOR
+    successor_owner: G0_5
+  outcome_blind_field_structure:
+    threshold_free_owner: S0
+    threshold_dependent_support_owner: G0_5
+  representative_discovery_pilot:
+    successor_owner: D0
+
+completion_contract:
+  passing_validator_status: PASS_ACYCLIC_GATE_SEQUENCE_CONTRACT_ONLY
+  config_alone_can_pass_g_minus_1a: false
+  config_alone_can_pass_g0: false
+  config_alone_can_authorize_execution: false
+  config_alone_can_establish_scientific_effect: false
+  next_required_implementation: G_MINUS_1A_RECEIPT_AND_S0_THRESHOLD_FREE_INVENTORY
+
+claim_boundary: >-
+  This amendment removes the logical G-1/G0 cycle by assigning primitive
+  readiness, threshold-free structure, discovery calibration, measurement
+  freeze, and final-panel conformance to distinct ordered gates. It preserves
+  every v0 parent byte-for-byte and binds the completed cutoff source replay.
+  Validation establishes only an acyclic prospective contract. It does not
+  issue a G-1A receipt, run S0 or D0, pass G0 or G0.5, authorize model fitting,
+  open G4, establish an empirical signature, or establish a scientific effect.

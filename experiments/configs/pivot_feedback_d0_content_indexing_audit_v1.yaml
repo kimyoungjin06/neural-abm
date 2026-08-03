@@ -1,0 +1,115 @@
+schema_version: pivot_feedback_d0_content_indexing_audit_config.v1
+label: pivot_feedback_d0_content_indexing_audit_v1
+
+parent_reselection:
+  required_status: PASS_D0_OUTCOME_BLIND_MEASUREMENT_ABI_TWO_FIELD_FOUR_EPISODE_RESELECTION
+  receipt_basename: measurement_abi_reselection.outputs.json
+  receipt_sha256: 4b77700fc4693496ae1c1fbf338c60b8f3c03bf5fabb6f70635fc8ebc57140e9
+  report_basename: measurement_abi_reselection.json
+  report_sha256: 97b9f5723826feb2cf987da65f98d41a4f9fefb602d0e1afb3e7963c2f3c19b7
+  selected_work_basename: selected_episode_predecision_works.parquet
+  selected_work_sha256: b2aee25d37edc0a37fcafd827259dd19277d8fb29dbc2a136f8d2e77bf7b7e24
+  selected_work_rows: 43659
+  abi_sha256: eb51a85c206da328609b2fa05f9bbb6900160dc837dc345715d1bd709134c36e
+  expected_episodes:
+    - {episode_index: 1, field_id: 17, topic_id: 14430, entry_year: 2003}
+    - {episode_index: 2, field_id: 17, topic_id: 10579, entry_year: 2012}
+    - {episode_index: 3, field_id: 27, topic_id: 12505, entry_year: 1991}
+    - {episode_index: 4, field_id: 27, topic_id: 12421, entry_year: 1953}
+
+current_snapshot_source:
+  root_env: OPENALEX_DERIVED_ROOT
+  root_id: openalex_works_20260330_repairreplay_20260410_190630
+  main_table_directory: openalex_works_20260330
+  source_inventory_manifest_sha256: 6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46
+  expected_main_file_count: 493
+  expected_main_footer_rows: 492293207
+  required_columns:
+    - id
+    - title
+    - display_name
+    - publication_year
+    - language
+    - type
+    - authors_count
+    - is_paratext
+    - is_retracted
+    - primary_topic__id
+    - primary_topic__display_name
+    - primary_topic__score
+    - primary_topic__field__id
+    - primary_topic__subfield__id
+    - primary_location__source__id
+    - primary_location__source__display_name
+    - created_date
+    - updated_date
+
+sampling:
+  algorithm: SHA256_LOWEST_BY_EPISODE_AND_WINDOW
+  seed: pivot-feedback-d0-content-indexing-v1
+  per_episode_window: 32
+  window_codes:
+    0: EARLIER_PRE_SIGNAL
+    1: BASELINE
+    2: SIGNAL
+
+automated_checks:
+  require_every_sampled_work_found_once: true
+  require_publication_year_match: true
+  require_primary_topic_match: true
+  require_work_type_match: true
+  maximum_missing_title_fraction_per_episode_window: 0.05
+  maximum_missing_topic_score_fraction_per_episode_window: 0.05
+  indexing_review_flags:
+    absolute_baseline_signal_link_rate_shift: 0.10
+    absolute_baseline_signal_median_topic_score_shift: 0.15
+    absolute_baseline_signal_dominant_source_share_shift: 0.25
+    single_year_attention_ratio_with_minimum_previous_count:
+      ratio: 4.0
+      minimum_previous_count: 25
+
+human_review:
+  required: true
+  unit: SAMPLED_WORK_TITLE
+  labels: [ON_TOPIC, AMBIGUOUS, OFF_TOPIC, UNREVIEWABLE]
+  minimum_two_reviewers: true
+  adjudicate_disagreements: true
+  freeze_completed_review_before_leaveout_or_network_construction: true
+
+forbidden_inputs_and_outputs:
+  entry_rows_read: false
+  persistence_rows_read: false
+  realized_citation_rows_read: false
+  effect_sizes_read: false
+  prediction_rows_read: false
+  g4_rows_read: false
+  model_fitting: false
+  episode_reselection: false
+
+output_contract:
+  automated_pass_status: PASS_D0_CONTENT_INDEXING_EXTRACTION_HUMAN_REVIEW_REQUIRED
+  blocked_status: BLOCKED_D0_CONTENT_INDEXING_AUDIT
+  report_schema_version: pivot_feedback_d0_content_indexing_audit_report.v1
+  receipt_schema_version: pivot_feedback_d0_content_indexing_audit_outputs.v1
+  sample_schema_version: pivot_feedback_d0_content_review_sample.v1
+  annual_profile_schema_version: pivot_feedback_d0_episode_annual_indexing_profile.v1
+  output_directory_must_be_new: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  receipt_written_last: true
+  d0_complete_after_automated_pass: false
+  leaveout_network_bridge_authorized_after_automated_pass: false
+  discovery_outcome_opening_authorized: false
+  model_fitting_authorized: false
+  g4_open: false
+  gpu_used: false
+
+claim_boundary: >-
+  This outcome-blind audit extracts a deterministic title-and-metadata sample
+  and profiles pre-decision annual attention for the four measurement-ABI
+  episodes. Automated agreement with the current OpenAlex primary-topic
+  snapshot cannot establish historical topic truth or semantic coherence.
+  Human double review and indexing-discontinuity adjudication remain required.
+  Entry, persistence, citations, predictions, G4, model fitting, leave-outs,
+  network bridges, associations, causal mechanisms, and scientific effects
+  remain unopened, unauthorized, not run, or not established.

@@ -1,0 +1,171 @@
+schema_version: pivot_feedback_d0_adaptive_candidate_frontier_config.v1
+label: pivot_feedback_d0_adaptive_candidate_frontier_v1
+mode: ZERO_COST_ADAPTIVE_FRONTIER_STATE_MACHINE_AND_EQUIVALENCE_PROOF
+status: FROZEN_ADAPTIVE_FRONTIER_PROOF_AND_INITIAL_MATERIALIZATION_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v13.yaml
+  sha256: b980cc0f55af7e74ac7e9b027800f752f9b6007da1347401934af95b851e7dea
+  required_schema_version: pivot_feedback_gate_state.v13
+  required_status: VALID_SCOPE_AUDIT_COMPLETE_ADAPTIVE_FRONTIER_PROOF_NOT_RUN_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_adaptive_frontier_contract_and_equivalence_fixtures: AUTHORIZED
+    authorization.d0_zero_cost_initial_structural_frontier_materialization: AUTHORIZED
+    authorization.d0_raw_openalex_title_scan: NOT_AUTHORIZED
+    authorization.d0_paid_api_exception_submission: NOT_AUTHORIZED
+  mutation_allowed: false
+
+frozen_inputs:
+  candidate_table:
+    root_basename: pivot-feedback-d0-measurement-abi-reselection-v1-full-20260724
+    basename: episode_candidates.parquet
+    sha256: c5588aef34381179b93785fd5dd3953f2ee7a982bf3d38cb71341eb49fe4e029
+    schema_version: pivot_feedback_d0_measurement_abi_episode_candidates.v1
+    rows: 70277
+    selected_field_ids: [17, 27]
+  scope_audit:
+    root_basename: pivot-feedback-d0-candidate-screen-scope-audit-v1-20260729
+    receipt_basename: candidate_screen_scope_audit.outputs.json
+    receipt_sha256: c8dcf7ac6f0fd4e5a8eeb06ff4e2a4af0792c98cd92a8e500b7f7d7aaf3cb856
+    required_status: PASS_ZERO_COST_CANDIDATE_SCREEN_SCOPE_AND_ROUTER_COVERAGE_AUDIT
+    candidate_rows: 70277
+    candidate_topics: 994
+    complete_candidate_work_manifest_materialized: false
+  topic_router:
+    relative_path: experiments/configs/pivot_feedback_d0_api_only_topic_routing_v1.yaml
+    sha256: 1c98b50d9e5c9c0cbc1555f41e86ae87a276571195a7125fec9daf85e39c1406
+    card_topic_ids: [10579, 12421, 12505, 14430]
+    mutation_allowed: false
+
+selection_contract:
+  candidate_order: FIELD_CANDIDATE_RANK_ASCENDING
+  content_states:
+    - CONTENT_PASS
+    - CONTENT_FAIL
+    - CONTENT_UNRESOLVED
+    - NOT_EVALUATED
+  content_unresolved_is_pass: false
+  not_evaluated_is_pass: false
+  compatibility:
+    distinct_subfield_required: true
+    minimum_entry_year_separation: 9
+  eager_algorithm:
+    first: LOWEST_RANK_CONTENT_PASS
+    second: LOWEST_RANK_LATER_CONTENT_PASS_COMPATIBLE_WITH_FIRST
+    fail_if_pair_missing: true
+  lazy_certificate:
+    first_selected_must_be_content_pass: true
+    every_earlier_row_must_be_content_fail: true
+    second_selected_must_be_content_pass_and_compatible: true
+    every_earlier_compatible_row_after_first_must_be_content_fail: true
+    earlier_structurally_incompatible_rows_may_be_not_evaluated: true
+    unresolved_required_row_blocks_certificate: true
+    unevaluated_required_row_blocks_certificate: true
+    later_rows_need_not_be_evaluated_after_certificate: true
+    disposition_change_invalidates_certificate_hash: true
+
+exhaustive_small_fixture_proof:
+  candidate_lengths: [2, 3, 4, 5, 6]
+  subfield_values: [1, 2]
+  entry_year_values: [0, 9]
+  truth_states: [CONTENT_FAIL, CONTENT_PASS]
+  enumerate_cartesian_product: true
+  total_fixture_cases: 299584
+  eager_pair_cases: 118404
+  required_state_unresolved_mutation_cases: 331424
+  structurally_incompatible_not_evaluated_cases: 146832
+  require_lazy_pair_equals_eager_pair_for_every_eager_pair_case: true
+  require_every_required_state_unresolved_mutation_to_block: true
+
+initial_structural_frontier:
+  assumption: FIELD_RANK_1_CONTENT_PASS_BRANCH_ONLY
+  assumption_is_content_disposition: false
+  if_rank_1_fails_or_remains_unresolved: REGENERATE_FRONTIER_FROM_NEXT_RANK
+  fields:
+    17:
+      first_candidate_rank: 1
+      first_topic_id: 14430
+      first_entry_year: 2003
+      first_subfield_id: 1710
+      first_compatible_candidate_rank: 45
+      first_compatible_topic_id: 10579
+      first_compatible_entry_year: 2012
+      first_compatible_subfield_id: 1705
+      frontier_rows: 45
+      structurally_incompatible_rows: 43
+      content_required_rows: 2
+    27:
+      first_candidate_rank: 1
+      first_topic_id: 12505
+      first_entry_year: 1991
+      first_subfield_id: 2730
+      first_compatible_candidate_rank: 6
+      first_compatible_topic_id: 12421
+      first_compatible_entry_year: 1953
+      first_compatible_subfield_id: 2712
+      frontier_rows: 6
+      structurally_incompatible_rows: 4
+      content_required_rows: 2
+  total_frontier_rows: 51
+  total_structurally_incompatible_rows: 47
+  total_content_required_rows: 4
+  distinct_frontier_topics: 22
+  content_required_topic_ids: [10579, 12421, 12505, 14430]
+  every_content_required_topic_has_frozen_card: true
+  initial_selection_certificate_issued: false
+
+execution_boundary:
+  raw_openalex_main_table_read: false
+  titles_read: false
+  work_ids_materialized: false
+  credentials_accessed: false
+  network_accessed: false
+  api_requests_created: false
+  api_requests_submitted: false
+  content_dispositions_created: false
+  selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  outcomes_read: false
+  model_fitting: false
+  g4_open: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-adaptive-candidate-frontier-v1-20260729
+  frontier_basename: initial_structural_frontier.parquet
+  proof_basename: adaptive_frontier_equivalence_proof.json
+  markdown_basename: ADAPTIVE_CANDIDATE_FRONTIER.md
+  receipt_basename: adaptive_candidate_frontier.outputs.json
+  frontier_schema_version: pivot_feedback_d0_initial_structural_frontier.v1
+  proof_schema_version: pivot_feedback_d0_adaptive_frontier_equivalence_proof.v1
+  receipt_schema_version: pivot_feedback_d0_adaptive_candidate_frontier_outputs.v1
+  passing_status: PASS_ADAPTIVE_FRONTIER_STATE_MACHINE_EXHAUSTIVE_SMALL_FIXTURES_AND_INITIAL_STRUCTURE
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+authorization:
+  adaptive_frontier_contract: AUTHORIZED
+  exhaustive_small_fixture_proof: AUTHORIZED
+  initial_structural_frontier_materialization: AUTHORIZED
+  raw_title_scan: NOT_AUTHORIZED
+  candidate_content_dispositions: NOT_AUTHORIZED
+  api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+  selection_certificate: NOT_AUTHORIZED_UNTIL_REQUIRED_CONTENT_DISPOSITIONS_FROZEN
+  deterministic_reselection: NOT_AUTHORIZED
+  author_panel_rebuild: NOT_AUTHORIZED
+  pivot_classification: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract proves the adaptive selection state machine on every binary
+  content assignment and two-subfield/two-year structural assignment for
+  candidate sequences of length two through six. It also materializes the
+  initial rank-1-pass structural branches for the two frozen fields. The
+  branch assumption is not a content disposition. All four content-required
+  rows remain unresolved, so no selection certificate or reselection is
+  issued. No raw title, work ID, credential, API, outcome, model, G4, or
+  scientific-effect surface is opened.

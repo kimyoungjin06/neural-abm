@@ -1,0 +1,217 @@
+schema_version: openalex_g1_citation_edge_chronology_production_config.v3
+label: openalex_g1_citation_available_at_v2_canonical_production_parent
+
+lifecycle:
+  implementation_status: PRODUCTION_CAPABLE_VERSIONED_SUCCESSOR
+  production_status_before_execution: PRODUCTION_NOT_RUN
+  execution_script: scripts/audit_openalex_citation_available_at_v3.py
+  independent_verifier: scripts/verify_openalex_citation_available_at_v3.py
+  full_execution_requires_explicit_authorization: true
+  pilot_is_permanently_nonpromotable: true
+  gpu_used: false
+
+frozen_predecessors:
+  preservation_policy: BYTE_EXACT_DO_NOT_REBIND_IN_PLACE
+  paths_and_sha256:
+    docs/case-studies/researcher-pivot/openalex-citation-available-at-audit-design.md: 0a143334d59b3cbddd441b0ccf00c5683ef13d2e96b7da771b0abfee8692ae33
+    docs/case-studies/researcher-pivot/openalex-citation-available-at-v1-audit-design.md: 5f1f9841507c03c156e0fea66d251003fc2d0afe32c0b11aebea46b759823062
+    experiments/configs/openalex_g1_citation_available_at_v0.yaml: 51f5044459514b5150a8e24b2e4daf05575e06fc366d412bc3d046d87ba3c798
+    experiments/configs/openalex_g1_citation_available_at_v1.yaml: e281f7bca4ac801073a8d0cbd59cf8b9e7eca2d924f19545925a5cbff38fe75b
+    scripts/audit_openalex_citation_available_at.py: 0be5444c9b72aea95251e609543a0da44d1ff95a432c839b674921e639409bde
+    scripts/audit_openalex_citation_available_at_v2.py: 71de51ac081cb17b342395d3b9e1435d752340457e233367b84907e17188907a
+    tests/test_openalex_citation_available_at.py: dfab9957856e985fd2609db0c708cc9d8426ecbb68b24f05390d274b093a41eb
+    tests/test_openalex_citation_available_at_design.py: 7121cc3058d564256c3b696566c508966b5478a290beefef716e1be956a801b3
+    tests/test_openalex_citation_available_at_v2.py: 549a698392fbab007c938b70a660af247fba1773677624e5fc113d595204b1f1
+    tests/test_openalex_citation_available_at_v2_design.py: 76574e913dbf903c9c43923affdb4208c67302d1b628c34d2c68973cb45301c6
+
+implementation_dependencies:
+  canonical_helper_path: scripts/audit_openalex_canonical_work_time_spine_v3.py
+  canonical_helper_sha256: bf9ed534b2e9f9c2d6c9851be7fde298eb372d8a3cf5e17363ea6afe51cf1280
+  partition_helper_path: scripts/audit_openalex_work_side_author_history_v3.py
+  partition_helper_sha256: fe226e1d1348c32a4a077c8ce4852f44e0064b92fe3aaebfd10a43cd9f41e9b9
+
+source:
+  root_env: OPENALEX_DERIVED_ROOT
+  root_id: openalex_works_20260330_repairreplay_20260410_190630
+  snapshot_date: "2026-03-30"
+  lineage_id: openalex_20260225_base_plus_20260330_update_repairreplay
+  historical_content_identity: UNVERIFIED
+  referenced_work_table: openalex_works_20260330__referenced_works
+  referenced_works:
+    files: 3044
+    raw_rows: 3042536160
+    source_bytes: 37119669321
+    projected_columns: [id, referenced_works]
+    raw_in_snapshot_target_rows: 2904520313
+    raw_external_target_rows: 138015847
+    raw_self_loop_rows: 1072993
+    distinct_valid_target_ids: 135996024
+    distinct_in_snapshot_target_ids: 112406279
+    distinct_external_target_ids: 23589745
+    null_source_rows: 0
+    malformed_source_rows: 0
+    source_w_minus_1_rows: 0
+    source_w_zero_rows: 0
+    null_target_rows: 0
+    malformed_target_rows: 0
+    target_w_minus_1_rows: 0
+    target_w_zero_rows: 0
+
+parents:
+  current_content_baseline:
+    receipt_schema_version: openalex_g1_content_freeze_outputs.v1
+    required_status: PASS_CURRENT_CONTENT_BASELINE_COMPONENT
+    receipt_sha256: 082161a29bcd8fd79fd85e0bf6814a5c7950b97b847ea08056e17eebcd369a12
+    task_fingerprint_sha256: f915cade4ce6581832c46957a2ad0a37ceabe2296099f0faeaac56ffa035693e
+    plan_sha256: 97294fe1c1fa026f664ca239ebfa9fc6dce593c847a20eb62157e38312b6725e
+    content_tree_sha256: 73bb8b0409c782ce5964d480ac6c6cecb04bab8c09df31999e581000b79ccff6
+  main_temporal_v3:
+    receipt_schema_version: openalex_g1_main_temporal_validity_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_MAIN_TEMPORAL_FIELD_VALIDITY_V3_WITH_EXACT_UTC_MILLISECONDS_AND_NONBLOCKING_ORDER_PROFILE
+    receipt_sha256: 2908087fc6c96f2aadfdfb08774ed8c3cd54dd38bd54d4e12b1831e7d863ddfe
+    task_fingerprint_sha256: 5d86a797481a14e95d08ecbe333bb207ff476bf7dc49886aec1db7b5b366001d
+    result_fingerprint_sha256: a844c624e81567bf89536218b0c488144fe2730f93c53e72193e6cfe4931bfb5
+  canonical_work_time_spine:
+    receipt_schema_version: openalex_g1_canonical_work_time_spine_production_outputs.v1
+    required_status: PASS_CURRENT_SNAPSHOT_CANONICAL_WORK_TIME_SPINE_COMPONENT_WITH_TEMPORAL_V3_PARENT
+    receipt_sha256: 2760b3aa5c5960d9356cc30339338418ff9000ab22e9c4b94caf82f6216f9aa1
+    task_fingerprint_sha256: 94cf717b7d986a3402b6e91a6c20ad5223f652d724899b1210bd94208bd703b0
+    result_fingerprint_sha256: 58492b9182d9b213c0616ce5d29d69bd82714167f57619885dc013dd0219144d
+    spine_data_tree_sha256: a5e14799ed8da2366c126219ba79e6b83b07ed605cb1270e17494f5cfb70975d
+    partition_count: 4096
+    retained_rows: 492293206
+    maximum_numeric_id: 7143276261
+    partition_bytes: 9668062550
+    artifact_count: 9185
+    config_path: experiments/configs/openalex_g1_canonical_work_time_spine_v2.yaml
+    config_sha256: 6e8b74ddd12cbef46c8d15d3560f0d54f470b5017685fc1bce2389250cde0484
+    runner_path: scripts/audit_openalex_canonical_work_time_spine_v3.py
+    runner_sha256: bf9ed534b2e9f9c2d6c9851be7fde298eb372d8a3cf5e17363ea6afe51cf1280
+    verifier_path: scripts/verify_openalex_canonical_work_time_spine_v1.py
+    verifier_sha256: 2cc47587ecd70bd1ae169f1f987828f024d6b8f7dd217e2e9b7964fabfcd5ede
+
+semantics:
+  edge_direction: CITING_WORK_TO_CITED_WORK
+  exact_pair_unit: DISTINCT_DIRECTED_CITING_WORK_CITED_WORK_PAIR
+  duplicate_pair_policy: COUNT_ONCE_IN_GRAPH_PRESERVE_RAW_MULTIPLICITY
+  temporal_row_source: RECEIPT_BOUND_CANONICAL_WORK_TIME_SPINE_ONLY
+  history_usable_dispositions: [2, 3]
+  available_at_resolution: BIBLIOGRAPHIC_EVENT_TIME_CONVENTION
+  edge_available_at_field: citing_work_publication_date
+  openalex_first_observation_time_established: false
+  historical_graph_established: false
+  external_target_policy: OPEN_WORLD_MEASURE_AND_EXCLUDE_FROM_PRIMARY
+  primary_bucket_precedence:
+    - self_loop
+    - source_temporal_unusable
+    - target_external_open_world
+    - target_temporal_unusable
+    - negative_lag_target_after_source
+    - same_day
+    - positive_lag
+  chronology_safe_primary_buckets: [same_day, positive_lag]
+  signed_lag_days: citing_publication_day_minus_cited_publication_day
+  supplemental_tolerance_days: [30, 365]
+  maturation_policy: PENDING_SEPARATE_HASHED_G0_POLICY
+  fixed_horizon_label_created: false
+
+execution:
+  execution_abi: CITATION_CANONICAL_SPINE_REUSE_PRODUCTION_V3
+  partition_count: 4096
+  raw_pair_partition_formula: citing_work_id_numeric_mod_4096
+  chronology_safe_partition_formula: cited_work_id_numeric_mod_4096
+  deterministic_source_order: lexical_relative_path
+  canonical_lookup_encoding: uint32_biased_date32_and_disposition_direct_address
+  canonical_lookup_day_bias: 400000
+  source_checkpoint_unit: one_projected_parquet_file
+  raw_pair_record: little_endian_uint64_citing_uint64_cited
+  chronology_safe_spool_record: little_endian_uint64_citing_uint64_cited_int32_available_int32_cited_int32_lag_uint32_multiplicity
+  deduplicated_edge_schema:
+    - [citing_work_id, uint64, false]
+    - [cited_work_id, uint64, false]
+    - [raw_pair_multiplicity, uint32, false]
+    - [citing_temporal_disposition, uint8, false]
+    - [target_membership, uint8, false]
+    - [cited_temporal_disposition, uint8, true]
+    - [citing_publication_date, date32, true]
+    - [available_at, date32, true]
+    - [cited_publication_date, date32, true]
+    - [signed_lag_days, int32, true]
+    - [primary_bucket, uint8, false]
+  chronology_safe_schema:
+    - [cited_work_id, uint64, false]
+    - [citing_work_id, uint64, false]
+    - [available_at, date32, false]
+    - [cited_publication_date, date32, false]
+    - [signed_lag_days, int32, false]
+    - [raw_pair_multiplicity, uint32, false]
+  receipt_bound_private_artifacts:
+    - source scan checkpoints
+    - exact deduplicated directed edge partitions
+    - chronology-safe edge partitions by cited work
+    - per-partition accounting checkpoints
+    - aggregate diagnostic parquet tables
+  terminal_reentry:
+    rehash_every_receipt_artifact: true
+    revalidate_all_parent_receipts: true
+    reopen_data_partition_footers: true
+
+scope:
+  full_status: PASS_CURRENT_SNAPSHOT_CITATION_EDGE_CHRONOLOGY_ACCOUNTING_WITH_CANONICAL_TEMPORAL_V3_PARENT_AND_BIBLIOGRAPHIC_EVENT_TIME_CONVENTION_LIMITATION
+  pilot_status: PILOT_CITATION_EDGE_CHRONOLOGY_ONLY
+  blocked_status: BLOCKED_CITATION_EDGE_CHRONOLOGY_COMPONENT
+  completion_contract: RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+  pilot_promotion_allowed: false
+  full_component_may_establish_historical_edge_observation: false
+  full_component_may_establish_fixed_horizon_maturation: false
+  full_component_may_establish_g_minus_1: false
+  full_component_may_establish_g0: false
+  full_component_may_establish_empirical_g1: false
+
+resource_envelope:
+  workload_class: LOCAL_CPU_HDD_TO_SSD_EXTERNAL_PARTITION
+  minimum_available_ram_bytes: 68719476736
+  minimum_free_disk_bytes: 322122547200
+  maximum_projected_batch_rows: 262144
+  maximum_open_spool_files: 4096
+  require_source_and_output_distinct_devices: true
+  require_live_preflight_before_full: true
+  require_exclusive_heavy_source_scan: true
+  gpu_used: false
+
+privacy:
+  runtime_output_operator_local_only: true
+  public_summary_aggregates_and_hashes_only: true
+  raw_work_ids_allowed_in_repository: false
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+
+gate_state_after_component_pass:
+  citation_chronology: PASS_CURRENT_SNAPSHOT_RETROSPECTIVE_PROXY_ONLY
+  exact_directed_pair_deduplication: PASS
+  bibliographic_available_at_convention: PASS_WITH_LIMITATION
+  openalex_first_observed_time: UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+  historical_graph_reconstruction: RETROSPECTIVE_PROXY_ONLY
+  external_target_chronology: UNRESOLVED_OPEN_WORLD
+  fixed_horizon_outcome_maturation: PENDING_SEPARATE_G0_POLICY
+  cutoff_panel: PENDING_NOT_IN_THIS_COMPONENT
+  outcome_blind_field_structure: PENDING_NOT_IN_THIS_COMPONENT
+  representative_discovery_pilot: PENDING_NOT_IN_THIS_COMPONENT
+  g_minus_1_data_readiness: PENDING
+  g0_measurement_freeze: PENDING
+  empirical_g1_signature: NOT_RUN
+  pass_g1: false
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  A full PASS from this version may establish exact current-byte source
+  accounting, exact directed-pair deduplication, the frozen seven-bucket
+  chronology classification, open-world target accounting, and operator-local
+  current-snapshot citation proxy partitions whose available_at value is the
+  citing work publication date. That date is a BIBLIOGRAPHIC_EVENT_TIME_CONVENTION,
+  not evidence of when OpenAlex first observed the edge or when a researcher
+  could see it. The component does not reconstruct a historical OpenAlex graph,
+  establish external-target chronology, select or create a fixed-horizon
+  outcome, establish author or candidate validity, materialize a cutoff panel,
+  establish G-1 or G0, run empirical G1, fit an NABM, or establish any
+  scientific effect.

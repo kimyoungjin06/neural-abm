@@ -1,0 +1,65 @@
+{
+  "artifacts": {
+    "certificate_closeout_config_sha256": "c901ad8ce07d6ad8747d549b14fa65e9d69e096896193e5780d8685ea40bd3a5",
+    "certificate_closeout_producer_sha256": "64162785a37b4ebfd00f096cca012647540b458878ab752d2bab2851f5a7d67d",
+    "certificate_closeout_receipt_sha256": "7a37c840f37ac29040a1a40414c0e20402b68061b02bdffa9a54de6bdca1f4ba",
+    "certificate_closeout_verification_sha256": "394e808c7a5e902a3ef23127b67af3793fb2c9e9f8bfaff2a6a94905616ea5e0",
+    "certificate_closeout_verifier_sha256": "33a7a57d25a27d705c8e9effc822be56c9afac3538a6a725f7e7f037cbad8ebd",
+    "certificate_status_v5_sha256": "4c19810ceaff4dba756541688ebbd52ae2cdb933404d9ff38ff5d247c1060073",
+    "dispositions_v9_sha256": "04d11b0bc6f84cefbbbd5f931bd53ceb9074e1f449a2b1b06bd76ac28d56ef48",
+    "frontier_v10_sha256": "2b3ed62142e509be3e3be743e20043fae8de068e24d88873af29b3f2e4a9c28d",
+    "reselection_successor_gate_v36_sha256": "9f87534d9eebef8ae8079bb752e9cd8da29266f14721247b3f11f13b846ec14d",
+    "rule_candidate_sha256": "d5704c51bb89ba9f7d5e6b8c783ededa5790d4c0191ff39b2bd55e96fde6c462",
+    "rule_config_sha256": "feec76b626566e2cdcb11461a9b79070ae979141f20a87f9ef4791fa9e16dfe5",
+    "rule_producer_sha256": "3ad92ab03f126824644b6e8b9b454134d8271a9df92619832ea8db4b00f61553",
+    "rule_receipt_sha256": "c94cf266b5fe192d788401a17fdde1e31d23211bad986f61d5f0d4f1d04cd6da",
+    "rule_replay_sha256": "b443bf06ae0e7699cc512aae466e702a5e6aa2723f18f66ff2e99742aea2d4de",
+    "rule_verification_sha256": "1a0b9c5426c9b86cc912361b1101a58e42fa45f776573a63e3396b0c3e1174cf",
+    "rule_verifier_sha256": "81da80e68154113edada8c6c25e2b44a3ec14141119ca37ff3c17d2076db4dbe"
+  },
+  "claim_boundary": "The exact nine-row accept-only replay is a retrospective post-diagnostic amendment, not out-of-sample validation or semantic ground truth. It establishes only the rank-5 CONTENT_PASS production state and exact field/global selection certificates. Deterministic reselection is authorized as a successor but not executed; pivot classification, outcomes, fitting, G4, and scientific effects remain closed.",
+  "methodology": {
+    "absence_creates_reject": false,
+    "human_review": "NOT_RUN_BY_DESIGN",
+    "out_of_sample_validation": false,
+    "provider_labels_are_ground_truth": false,
+    "pubmed_indexing_is_ground_truth": false,
+    "retrospective_post_diagnostic": true,
+    "rule_kind": "DETERMINISTIC_ACCEPT_ONLY"
+  },
+  "rank5_production_disposition": {
+    "accept_rows": 32,
+    "content_state": "CONTENT_PASS",
+    "pass_threshold_rows": 32,
+    "recent_denominator_rows": 64,
+    "reject_rows": 25,
+    "unresolved_rows": 7
+  },
+  "replay": {
+    "accepted_openalex_ids": [
+      "W7124514286",
+      "W2417500009"
+    ],
+    "cohort_rows": 9,
+    "new_accept_rows": 2,
+    "new_reject_rows": 0,
+    "remaining_unresolved_rows": 7,
+    "status": "PASS_INDEPENDENT_EXACT_NINE_EXTERNAL_CONTROLLED_SUBJECT_RULE_REPLAY"
+  },
+  "schema_version": "pivot_feedback_d0_rank5_post_diagnostic_certificate_closeout_summary.v1",
+  "selection_certificates": {
+    "computer_science_selected_candidate_ranks": [
+      1,
+      45
+    ],
+    "deterministic_reselection_executed": false,
+    "deterministic_reselection_successor_authorized": true,
+    "field_certificates_issued": 2,
+    "global_selection_certificate_issued": true,
+    "medicine_selected_candidate_ranks": [
+      5,
+      6
+    ]
+  },
+  "status": "PASS_INDEPENDENT_RANK5_POST_DIAGNOSTIC_CONTENT_PASS_GLOBAL_CERTIFICATES"
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "pivot_feedback_g0_measurement_freeze_v2_binding_summary.v1",
+  "status": "PASS_G0_V2_BINDING_ONLY_G_MINUS_1A_SATISFIED_THREE_BLOCKERS_REMAIN_NO_SEAL",
+  "access_accounting": {
+    "repository_documents_read": 7,
+    "operator_json_metadata_files_read": 0,
+    "operator_parquet_files_opened": 0,
+    "production_row_level_files_opened": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "api_requests_created_or_submitted": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "predecessor_preservation": {
+    "immutable_predecessor_sha256": "dc947df2f87220379401c43ea1914b48c71ed04ae474e5695003723d2c591590",
+    "predecessor_mutated": false,
+    "preserved_subtree_count": 8
+  },
+  "legacy_binding": {
+    "state": "PENDING_NOT_PASSED_IMMUTABLE_LINEAGE",
+    "lineage_only": true,
+    "prerequisite_role_active": false,
+    "legacy_pass_inferred": false
+  },
+  "g_minus_1a_binding": {
+    "state": "SATISFIED_G_MINUS_1A_BOUNDED_EVIDENCE_ONLY",
+    "receipt_sha256": "8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802",
+    "receipt_unresolved_boundary_count": 14,
+    "claim_boundary_preserved_exactly": true,
+    "legacy_g_minus_1_passed": false,
+    "g0_passed": false
+  },
+  "readiness": {
+    "resolved_blocker": "G_MINUS_1_RECEIPT_ABSENT",
+    "remaining_blocker_count": 3,
+    "remaining_blockers": [
+      "HOLDOUT_ACCESS_SEAL_RECEIPT_ABSENT",
+      "SEVENTEEN_QUANTITATIVE_CHOICES_UNRESOLVED",
+      "FIFTEEN_REQUIRED_SECTIONS_NOT_FREEZE_READY"
+    ],
+    "g_minus_1a_bounded_prerequisite_satisfied": true,
+    "g0_freeze_ready": false
+  },
+  "repository_artifacts": {
+    "config": {
+      "relative_path": "experiments/configs/pivot_feedback_g0_measurement_freeze_v2.yaml",
+      "sha256": "a2cb0cbf444a7c128eecc40a815b80d5fe86f617a36849330612491b03934eb3"
+    },
+    "validator": {
+      "relative_path": "scripts/verify_pivot_feedback_g0_measurement_freeze_v2.py",
+      "sha256": "018d022ebfa00959c360fa4f08b195363b83c153dcc856b0136456e54ef26358"
+    }
+  },
+  "authorization": {
+    "g0_v2_binding_only_successor": "COMPLETE_INDEPENDENTLY_VALIDATED",
+    "holdout_seal_contract": "REQUIRES_SUCCESSOR_GATE",
+    "quantitative_choice_resolution": "NOT_AUTHORIZED",
+    "required_section_completion": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "G0 v2 is a valid binding-only successor. It preserves eight G0 v1 subtrees exactly, retains legacy G-1 as pending immutable lineage, and binds the exact G-1A receipt without relabeling. Only the absent-G-1-receipt blocker is resolved; the holdout receipt, seventeen quantitative choices, and fifteen required sections remain blockers, so G0 remains unsealed. No operator row data, confirmatory or holdout data, API request, model, G4 result, causality, or scientific effect is established."
+}

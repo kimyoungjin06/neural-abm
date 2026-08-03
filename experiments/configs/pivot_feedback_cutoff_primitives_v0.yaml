@@ -1,0 +1,275 @@
+schema_version: pivot_feedback_cutoff_primitives_config.v1
+label: pivot_feedback_cutoff_primitives_v0
+mode: NORMALIZED_CUTOFF_PRIMITIVES_PRODUCTION_SUCCESSOR
+
+lifecycle:
+  implementation_status: PRODUCTION_CAPABLE_VERSIONED_SUCCESSOR
+  production_status_before_execution: PRODUCTION_NOT_RUN
+  execution_script: scripts/build_pivot_feedback_cutoff_primitives.py
+  independent_verifier: scripts/verify_pivot_feedback_cutoff_primitives.py
+  pilot_is_permanently_nonpromotable: true
+  gpu_used: false
+
+source:
+  root_env: OPENALEX_DERIVED_ROOT
+  root_id: openalex_works_20260330_repairreplay_20260410_190630
+  snapshot_date: "2026-03-30"
+  lineage_id: openalex_20260225_base_plus_20260330_update_repairreplay
+  historical_content_identity: UNVERIFIED
+  table: openalex_works_20260330
+  files: 493
+  source_bytes: 150062449219
+  raw_rows: 492293207
+  quarantined_w_minus_1_rows: 1
+  retained_rows: 492293206
+  projected_columns:
+    - id
+    - type
+    - is_paratext
+    - is_retracted
+    - authors_count
+    - primary_topic__id
+    - primary_topic__domain__id
+    - primary_topic__field__id
+  forbidden_columns:
+    - cited_by_count
+    - fwci
+    - cited_by_percentile_year__min
+    - cited_by_percentile_year__max
+    - citation_normalized_percentile__value
+    - citation_normalized_percentile__is_in_top_1_percent
+    - citation_normalized_percentile__is_in_top_10_percent
+
+input_profile:
+  profile_kind: FULL_OUTCOME_BLIND_PROJECTED_SCHEMA_AND_RANGE_SCAN
+  files: 493
+  rows: 492293207
+  null_counts:
+    type: 0
+    is_paratext: 0
+    is_retracted: 1838440
+    authors_count: 0
+    primary_topic__id: 138147959
+    primary_topic__domain__id: 138147959
+    primary_topic__field__id: 138147959
+  authors_count_minimum: 0
+  authors_count_maximum: 5000
+  work_type_dictionary:
+    1: article
+    2: book
+    3: book-chapter
+    4: book-section
+    5: database
+    6: dataset
+    7: dissertation
+    8: editorial
+    9: erratum
+    10: grant
+    11: letter
+    12: libguides
+    13: other
+    14: paratext
+    15: peer-review
+    16: preprint
+    17: reference-entry
+    18: report
+    19: report-component
+    20: retraction
+    21: review
+    22: software
+    23: standard
+    24: supplementary-materials
+  exact_work_type_counts:
+    article: 261555268
+    book: 7904812
+    book-chapter: 25407648
+    book-section: 1294
+    database: 1725
+    dataset: 68895197
+    dissertation: 13371431
+    editorial: 789009
+    erratum: 419411
+    grant: 112
+    letter: 1722244
+    libguides: 1776332
+    other: 89563229
+    paratext: 3925451
+    peer-review: 952612
+    preprint: 8440065
+    reference-entry: 907177
+    report: 1923446
+    report-component: 626
+    retraction: 23134
+    review: 4211571
+    software: 10360
+    standard: 424684
+    supplementary-materials: 66369
+
+parents:
+  current_content_baseline:
+    receipt_basename: content_freeze_audit.outputs.json
+    receipt_schema_version: openalex_g1_content_freeze_outputs.v1
+    required_status: PASS_CURRENT_CONTENT_BASELINE_COMPONENT
+    receipt_sha256: 082161a29bcd8fd79fd85e0bf6814a5c7950b97b847ea08056e17eebcd369a12
+    task_fingerprint_sha256: f915cade4ce6581832c46957a2ad0a37ceabe2296099f0faeaac56ffa035693e
+    result_fingerprint_sha256: 12ebd47d88973f37f4ed5b6f8cdd5901eb5c0b7005a41a6ab3b96423a40bbdf1
+    plan_sha256: 97294fe1c1fa026f664ca239ebfa9fc6dce593c847a20eb62157e38312b6725e
+  canonical_work_time_spine:
+    receipt_basename: work_time_spine_audit.outputs.json
+    receipt_schema_version: openalex_g1_canonical_work_time_spine_production_outputs.v1
+    required_status: PASS_CURRENT_SNAPSHOT_CANONICAL_WORK_TIME_SPINE_COMPONENT_WITH_TEMPORAL_V3_PARENT
+    receipt_sha256: 2760b3aa5c5960d9356cc30339338418ff9000ab22e9c4b94caf82f6216f9aa1
+    task_fingerprint_sha256: 94cf717b7d986a3402b6e91a6c20ad5223f652d724899b1210bd94208bd703b0
+    result_fingerprint_sha256: 58492b9182d9b213c0616ce5d29d69bd82714167f57619885dc013dd0219144d
+    artifact_count: 9185
+    partition_count: 4096
+    rows: 492293206
+    spine_data_tree_sha256: a5e14799ed8da2366c126219ba79e6b83b07ed605cb1270e17494f5cfb70975d
+  author_history:
+    receipt_basename: author_history_audit.outputs.json
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    task_fingerprint_sha256: 00293bd7d72bf77f47e52a4e50f96821d1c873492143b3a95d4fb62b97730d4e
+    result_fingerprint_sha256: 73a3da022a1dc9373e8941f794cafe7b0a4c5239846783e693a661c02e053b7e
+    artifact_count: 24196
+    event_rows: 779630258
+    history_usable_event_rows: 776803175
+    partition_count: 4096
+  work_topic_relation:
+    receipt_basename: work_topic_relation_primary_adjudication.outputs.json
+    receipt_schema_version: openalex_g1_work_topic_relation_primary_adjudication_outputs.v1
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_TOPIC_RELATION_COMPONENT_WITH_PRIMARY_EXACT_SCORE_ADJUDICATION
+    receipt_sha256: 124ee59348a4f3c73cac8e0d567f764a57cf8ba6700c02ffa05a276e05562b5d
+    result_fingerprint_sha256: aae2909cd85313f47549ebf20c5f8d29c32aa22972eb46a6b6d076a64fb8dff1
+    relation_relative_path: work_topic_edges.primary_adjudicated.sorted.bin
+    relation_bytes: 14856988528
+    relation_rows: 928561783
+    relation_sha256: 617a508c458ae664689745e8bcf9de0b9b416f1a2bb961a406b96cf74f43873d
+  citation_chronology:
+    receipt_basename: citation_edge_chronology_audit.outputs.json
+    receipt_schema_version: openalex_g1_citation_edge_chronology_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_CITATION_EDGE_CHRONOLOGY_ACCOUNTING_WITH_CANONICAL_TEMPORAL_V3_PARENT_AND_BIBLIOGRAPHIC_EVENT_TIME_CONVENTION_LIMITATION
+    receipt_sha256: fbe753c84ceb3858a06c627f318eb756e997f73577498b06a5e88f72cacabe76
+    task_fingerprint_sha256: 7cc536e848ca06905ee4ca648fb13c86ac04a4e0b9a80703bacc2207116e086b
+    result_fingerprint_sha256: 0dded429cc69a6b6339540c592fa7c43656438c5631148e52d38ab2f82d82a7c
+    artifact_count: 19438
+    partition_count: 4096
+    chronology_safe_rows: 2858679472
+    chronology_safe_partition_tree_sha256: b7df63533d4f11dd83dc071f1e68f77cedaaaea27a6000943c82c88262c6f6cf
+
+implementation_dependencies:
+  canonical_helper_path: scripts/audit_openalex_canonical_work_time_spine_v3.py
+  canonical_helper_sha256: bf9ed534b2e9f9c2d6c9851be7fde298eb372d8a3cf5e17363ea6afe51cf1280
+  author_helper_path: scripts/audit_openalex_work_side_author_history_v3.py
+  author_helper_sha256: fe226e1d1348c32a4a077c8ce4852f44e0064b92fe3aaebfd10a43cd9f41e9b9
+
+normalized_relational_abi:
+  partition_count: 4096
+  partition_formula: work_id_numeric_mod_4096
+  work_metadata_schema:
+    - [work_id_numeric, uint64, false]
+    - [publication_day, int32, true]
+    - [publication_year, uint16, true]
+    - [temporal_disposition, uint8, false]
+    - [work_type_code, uint8, false]
+    - [is_paratext, bool, false]
+    - [is_retracted, bool, true]
+    - [declared_authors_count, uint16, false]
+    - [primary_topic_id, uint32, true]
+    - [primary_field_id, uint8, true]
+    - [primary_domain_id, uint8, true]
+  author_event_surface:
+    root_relative_path: events
+    join_key: work_numeric_id
+    author_unit: CURRENT_SNAPSHOT_OPENALEX_AUTHOR_ID_TOKEN_NOT_PERSON
+  work_topic_surface:
+    relation_record_dtype: [[key, "<u8"], [score_bits, "<u8"]]
+    topic_bits: 14
+    join_key_encoding: work_id_numeric_shift_left_14_bitwise_or_topic_id
+    annotation_time: CURRENT_SNAPSHOT_RETROSPECTIVE
+  citation_surface:
+    root_relative_path: chronology_safe_edges_by_cited_work
+    partition_formula: cited_work_id_mod_4096
+    available_at_semantics: CITING_WORK_PUBLICATION_DATE_BIBLIOGRAPHIC_EVENT_TIME_CONVENTION
+
+cutoff_predicate_abi:
+  cutoff_parameter: integer_entry_year_t
+  inclusive_public_cutoff: december_31_of_t_minus_1
+  canonical_work_is_pre_cutoff: >-
+    temporal_disposition in {2,3} and publication_year <= t-1
+  author_event_is_pre_cutoff: >-
+    temporal_disposition in {2,3} and publication_year <= t-1
+  topic_edge_is_pre_cutoff_proxy: >-
+    relation joins a work satisfying canonical_work_is_pre_cutoff; topic
+    membership remains a current-snapshot retrospective annotation
+  citation_edge_is_pre_cutoff_proxy: >-
+    chronology-safe edge available_at <= December 31 of t-1; available_at is
+    bibliographic event time, not historical OpenAlex observation time
+  collaboration_edge_is_pre_cutoff: >-
+    two distinct author tokens share at least one author-event work satisfying
+    author_event_is_pre_cutoff; team-size cap remains unresolved in G0
+  fixed_outcome_horizon: UNRESOLVED_REQUIRES_G0_SUCCESSOR
+  candidate_author_eligibility: UNRESOLVED_REQUIRES_G0_SUCCESSOR
+  allowed_work_types: UNRESOLVED_REQUIRES_G0_SUCCESSOR
+  same_day_citation_policy: UNRESOLVED_REQUIRES_G0_SUCCESSOR
+
+execution:
+  workload_class: LOCAL_CPU_HDD_TO_SSD_EXTERNAL_PARTITION
+  batch_rows: 262144
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  minimum_available_ram_bytes: 68719476736
+  minimum_free_disk_bytes: 68719476736
+  require_source_and_output_distinct_devices: true
+  full_scope_requires_explicit_authorization: true
+  verify_every_parent_receipt_artifact_before_full: true
+  gpu_used: false
+
+scope:
+  full_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+  pilot_status: PILOT_NORMALIZED_CUTOFF_PRIMITIVES_NONPROMOTABLE
+  blocked_status: BLOCKED_NORMALIZED_CUTOFF_PRIMITIVES
+  completion_contract: RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+  full_component_may_resolve_g0_measurements: false
+  full_component_may_establish_historical_observability: false
+  full_component_may_establish_author_entity_validity: false
+  full_component_may_establish_g_minus_1: false
+  full_component_may_establish_empirical_g1: false
+
+gate_state_after_component_pass:
+  normalized_cutoff_primitives: PASS_WITH_RETROSPECTIVE_PROXY_LIMITATIONS
+  final_analytic_risk_set: PENDING_G0_SUCCESSOR
+  historical_topic_observability: UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+  historical_citation_observability: UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+  author_entity_validity: UNRESOLVED_WORK_SIDE_TOKEN_ONLY
+  fixed_horizon_outcome_maturation: PENDING_G0_SUCCESSOR
+  cutoff_panel: PASS_NORMALIZED_PRIMITIVES_ONLY
+  outcome_blind_field_structure: PENDING
+  representative_discovery_pilot: PENDING
+  g_minus_1_data_readiness: PENDING
+  g0_measurement_freeze: PENDING
+  empirical_g1_signature: NOT_RUN
+  pass_g1: false
+  scientific_effect: NOT_ESTABLISHED
+
+privacy:
+  runtime_output_operator_local_only: true
+  public_summary_aggregates_and_hashes_only: true
+  raw_work_or_author_ids_allowed_in_repository: false
+
+claim_boundary: >-
+  A full PASS may establish a deterministic normalized relational component for
+  constructing annual cutoff views from the exact current-snapshot work,
+  author-event, work-topic, and citation-proxy parents. It may establish exact
+  projected work-metadata row conservation, strict work-modulo partitions, the
+  absence of forbidden current outcome columns, explicit available_at
+  predicates, and receipt-bound parent references. Current topic membership,
+  author-token linkage, and bibliographic citation event time remain
+  retrospective current-snapshot proxies and do not prove what a researcher or
+  OpenAlex could observe historically. This component deliberately does not
+  choose candidate eligibility, work-type inclusion, team caps, pivot or surge
+  thresholds, same-day citation treatment, a fixed outcome horizon, sampling,
+  or weights; those require a versioned G0 successor. It does not establish
+  author-person validity, a final analytic risk set, G-1, G0, empirical G1, an
+  NABM effect, or any scientific effect.

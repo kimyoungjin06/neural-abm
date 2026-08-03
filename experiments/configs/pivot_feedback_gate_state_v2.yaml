@@ -1,0 +1,106 @@
+schema_version: pivot_feedback_gate_state.v2
+label: pivot_feedback_gate_state_v2
+mode: ADDITIVE_POST_EXECUTION_GATE_LEDGER
+status: VALID_G_MINUS_1A_PASS_S0_PARTIAL_D0_NOT_AUTHORIZED
+
+acyclic_order_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_sequence_v1.yaml
+  sha256: 3a3a655234c4efb74a4900e65624c903176615cee19da760cd06b1416e3fd365
+  required_schema_version: pivot_feedback_gate_sequence.v1
+  required_status: VALID_PENDING_SUCCESSOR_IMPLEMENTATION
+  mutation_allowed: false
+
+execution_evidence:
+  g_minus_1a_receipt:
+    relative_path: experiments/evidence/results/pivot_feedback_g_minus_1a_receipt_20260723.summary.json
+    sha256: 8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802
+    required_schema_version: pivot_feedback_g_minus_1a_receipt.v1
+    required_status: PASS_G_MINUS_1A_BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+    required_fields:
+      authorization.s0_threshold_free_inventory: AUTHORIZED
+      authorization.d0_discovery_pilot: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.scientific_effect: NOT_ESTABLISHED
+  s0_core_inventory:
+    relative_path: experiments/evidence/results/pivot_feedback_s0_threshold_free_core_full_20260723.summary.json
+    sha256: a579c147391d2e720048701a465120e4b1885e4a15ccc79c4a2f2c02565be206
+    required_schema_version: pivot_feedback_s0_threshold_free_core_full_summary.v1
+    required_status: PASS_S0_THRESHOLD_FREE_CORE_FIELD_YEAR_INVENTORY_WITH_ORCID_AFFILIATION_AND_GRAPH_TOPOLOGY_PENDING
+    required_fields:
+      scope.core_component_pass: true
+      scope.s0_gate_pass: false
+      scope.d0_authorized: false
+      scope.model_fitting_authorized: false
+      scope.gpu_used: false
+      work_accounting.rows: 492293206
+      author_event_accounting.rows: 779630258
+      field_year_inventory.rows: 18544
+      independent_verification.status: PASS_INDEPENDENT_S0_CORE_OUTPUT_CONSERVATION_AND_ATTENTION_REPLAY_DEFERRED_COMPONENTS_STILL_PENDING
+      gate_status.s0_threshold_free_inventory: PARTIAL_CORE_PASS_DEFERRED_COMPONENTS_NOT_RUN
+      gate_status.d0_discovery_pilot: NOT_AUTHORIZED
+      gate_status.scientific_effect: NOT_ESTABLISHED
+
+gate_state:
+  G_MINUS_1A:
+    state: PASS_BOUNDED
+    complete: true
+    authorizes: [S0]
+  S0:
+    state: PARTIAL_CORE_PASS_DEFERRED_COMPONENTS_NOT_RUN
+    complete: false
+    missing_components:
+      - ORCID_TOKEN_STABILITY_FIELD_YEAR
+      - AUTHOR_WORK_AFFILIATION_FIELD_YEAR
+      - DISTINCT_COAUTHOR_GRAPH_FIELD_YEAR
+    authorizes: []
+  D0:
+    state: NOT_AUTHORIZED
+    complete: false
+    requires: [S0]
+  G0:
+    state: PENDING
+    complete: false
+  G0_5:
+    state: NOT_RUN
+    complete: false
+  G1:
+    state: NOT_RUN
+    complete: false
+  G2:
+    state: NOT_RUN
+    complete: false
+  G3:
+    state: NOT_RUN
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+  G5:
+    state: NOT_RUN_OPTIONAL
+    complete: false
+
+authorization:
+  s0_remaining_components: AUTHORIZED
+  d0_discovery_pilot: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  final_panel_materialization: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+next_required_implementation:
+  gate: S0
+  components:
+    - RECEIPT_BOUND_AUTHORSHIP_ORCID_AND_AFFILIATION_PROJECTION
+    - VERSIONED_NONRANKED_COAUTHOR_GRAPH_PROFILE
+  workload_class: CPU_IO
+  gpu_required: false
+  d0_may_start_before_completion: false
+
+claim_boundary: >-
+  This additive ledger records that bounded G-1A has passed and the normalized
+  S0 core component has passed while S0 as a gate remains incomplete. It does
+  not mutate the v1 order contract or any legacy v0 evidence. D0, G0, final
+  panel materialization, model fitting, G4 opening, empirical signatures, and
+  scientific effects remain unauthorized, pending, sealed, not run, or not
+  established as declared.

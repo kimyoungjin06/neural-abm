@@ -1,0 +1,161 @@
+schema_version: pivot_feedback_d0_t12505_rank4_targeted_title_sample_config.v1
+label: pivot_feedback_d0_t12505_rank4_targeted_title_sample_v1
+mode: EXACT_RANK4_NORMALIZED_ABI_SCAN_AND_SELECTED_ID_TITLE_LOOKUP
+status: FROZEN_EXACT_T12505_RANK4_96_TITLE_LOCAL_SAMPLE_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v21.yaml
+  sha256: 73489c0e8cba68f5a94707677953c7b0eb24c0aa69f7f9858570e3f1a1d0d0a7
+  required_schema_version: pivot_feedback_gate_state.v21
+  required_status: VALID_RANK3_CONTENT_FAIL_FRONTIER_V4_FROZEN_EXACT_MEDICINE_RANK4_SAMPLE_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_exact_rank4_normalized_candidate_scan: AUTHORIZED_READ_ONLY
+    authorization.d0_exact_rank4_96_id_sample: AUTHORIZED_CREATE_ONLY
+    authorization.d0_exact_rank4_selected_id_title_lookup: AUTHORIZED_READ_ONLY
+    authorization.d0_general_raw_openalex_title_scan: NOT_AUTHORIZED
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.d0_rank4_production_content_disposition: NOT_AUTHORIZED_UNTIL_LOCAL_ROUTING_VERIFIED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+implementation_helpers:
+  normalized_scan_and_raw_lookup:
+    relative_path: scripts/build_pivot_feedback_d0_t10543_targeted_title_sample_v1.py
+    sha256: 32707470ba178057e175d2379c8bf2305019bc39293ae4d9e4de04d32dc7912c
+    mutation_allowed: false
+  independent_partition_and_raw_replay:
+    relative_path: scripts/verify_pivot_feedback_d0_t10543_targeted_title_sample_v1.py
+    sha256: 029654693c842167a7a56fef46d5521ce1eb973d0d2972228b4b0881735f2950
+    mutation_allowed: false
+
+normalized_inputs:
+  cutoff_work_metadata:
+    expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    rows: 492293206
+  author_history_events:
+    expected_root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    rows: 779630258
+
+target:
+  field_id: 27
+  field_candidate_rank: 4
+  topic_id: 12505
+  topic_name: Peptidase Inhibition and Analysis
+  entry_year: 1993
+  allowed_temporal_dispositions: [2, 3]
+  included_work_type_codes: [1, 2, 3, 4, 7, 16, 18, 21]
+  exclude_is_paratext_true: true
+  exclude_work_type_retraction_code: true
+  exclude_is_retracted_true: true
+  require_at_least_one_matching_author_event: true
+  require_event_year_field_and_temporal_disposition_match: true
+  windows:
+    0: {label: EARLIER_PRE_BASELINE, minimum_year: null, maximum_year: 1986}
+    1: {label: BASELINE, minimum_year: 1987, maximum_year: 1989}
+    2: {label: SIGNAL, minimum_year: 1990, maximum_year: 1992}
+
+sampling:
+  algorithm: SHA256_LOWEST_BY_CANDIDATE_AND_WINDOW
+  seed: pivot-feedback-d0-candidate-content-v1
+  exact_preimage_fields:
+    - seed
+    - field_id
+    - topic_id
+    - entry_year
+    - window_code
+    - work_numeric_id
+  separator: NUL
+  rows_per_window: 32
+  total_rows: 96
+  insufficient_window_action: BLOCK
+  duplicate_work_across_windows_allowed: false
+
+current_snapshot_source:
+  required_root_id: openalex_works_20260330_repairreplay_20260410_190630
+  main_table_directory: openalex_works_20260330
+  expected_main_file_count: 493
+  expected_main_footer_rows: 492293207
+  exact_selected_id_lookup_only: true
+  required_columns:
+    - id
+    - title
+    - publication_year
+    - language
+    - type
+    - authors_count
+    - is_paratext
+    - is_retracted
+    - primary_topic__id
+    - primary_topic__display_name
+    - primary_topic__score
+    - primary_topic__field__id
+    - primary_topic__subfield__id
+    - primary_location__source__id
+    - primary_location__source__display_name
+  require_every_selected_id_found_exactly_once: true
+  require_publication_year_match: true
+  require_primary_topic_match: true
+  require_work_type_match: true
+
+output_contract:
+  root_basename: pivot-feedback-d0-t12505-rank4-targeted-title-sample-v1-20260729
+  sample_basename: t12505_rank4_targeted_title_sample.parquet
+  pool_summary_basename: t12505_rank4_candidate_pool_summary.json
+  report_basename: T12505_RANK4_TARGETED_TITLE_SAMPLE.md
+  receipt_basename: t12505_rank4_targeted_title_sample.outputs.json
+  receipt_schema_version: pivot_feedback_d0_t12505_rank4_targeted_title_sample_outputs.v1
+  status: PASS_EXACT_T12505_RANK4_96_TITLE_LOCAL_SAMPLE
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+execution_boundary:
+  target_topic_ids_read: [12505]
+  selected_title_ids_read: 96
+  general_raw_title_scan: false
+  full_candidate_title_copy: false
+  network_accessed: false
+  credentials_accessed: false
+  api_requests_created: false
+  api_requests_submitted: false
+  content_disposition_created: false
+  selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  outcomes_read: false
+
+authorization:
+  exact_normalized_target_scan: AUTHORIZED
+  exact_96_id_sample: AUTHORIZED
+  exact_selected_id_title_lookup: AUTHORIZED
+  output_materialization: AUTHORIZED_CREATE_ONLY
+  general_raw_title_scan: NOT_AUTHORIZED
+  full_candidate_title_copy: NOT_AUTHORIZED
+  api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+  production_content_disposition: NOT_AUTHORIZED
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract authorizes the exact normalized ABI scan needed to identify
+  author-linked T12505 works through 1992, a deterministic rank-4 32-per-window
+  sample, and title lookup only for the resulting 96 IDs in the frozen current
+  snapshot. It does not authorize a general title scan, full candidate title
+  copy, API request, content disposition, certificate, reselection, outcomes,
+  fitting, G4, or a semantic, historical, causal, or scientific claim.

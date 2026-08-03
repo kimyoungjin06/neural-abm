@@ -1,0 +1,245 @@
+schema_version: pivot_feedback_g0_measurement_proxy_precommitment.v1
+label: pivot_feedback_g0_measurement_proxy_precommitment_v1
+mode: OUTCOME_BLIND_MEASUREMENT_PROXY_RULE_FREEZE_FIXTURE_ONLY
+status: FROZEN_FOUR_MEASUREMENT_PROXY_CHOICES_PENDING_INDEPENDENT_VALIDATION_NO_G0_PROMOTION
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v57.yaml
+  sha256: 44b35596624a13e58e5928355aea94221fc684d63b135ce81fa4482da452f3ce
+  required_schema_version: pivot_feedback_gate_state.v57
+  required_status: VALID_PRODUCTION_INPUT_RESOLUTION_NO_MATERIALIZED_G4_ARTIFACT_SET_NO_SEAL
+  mutation_allowed: false
+
+bound_design_sources:
+  peer_mechanism_registry:
+    relative_path: experiments/configs/pivot_feedback_peer_mechanism_registry_v0.yaml
+    sha256: 99eeb68b632f9f9a250f50320cfc7a293e3595de81984419d1528e2ee12aa6f8
+    required_schema_version: pivot_feedback_peer_mechanism_registry.v1
+    required_status: PENDING_G0_MEASUREMENT_FREEZE
+    mutation_allowed: false
+  cross_field_matrix:
+    relative_path: experiments/configs/pivot_feedback_cross_field_matrix_v0.yaml
+    sha256: 6fd3e2c7aae7a7aac085ed73ba4bf3d64a91c02d60dce8a9a6a262591a0c934a
+    required_schema_version: pivot_feedback_cross_field_matrix.v1
+    mutation_allowed: false
+  g0_v2:
+    relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v2.yaml
+    sha256: a2cb0cbf444a7c128eecc40a815b80d5fe86f617a36849330612491b03934eb3
+    required_schema_version: pivot_feedback_g0_measurement_freeze.v3
+    required_status: PENDING_G0_V2_G_MINUS_1A_BOUND_THREE_BLOCKERS_NO_SEAL
+    mutation_allowed: false
+  persistence_outcome_contract:
+    relative_path: experiments/configs/pivot_feedback_d0_persistence_outcome_contract_v1.yaml
+    sha256: 177fd11366c36143f601743a27afb952b1482c2f90bc536b95787e114c482b6c
+    required_schema_version: pivot_feedback_d0_persistence_outcome_contract.v1
+    required_status: FROZEN_D0_PERSISTENCE_OUTCOME_SOURCE_CONTRACT_FIXTURES_ONLY
+    mutation_allowed: false
+  citation_chronology_summary:
+    relative_path: experiments/evidence/results/openalex_g1_citation_chronology_production_full_20260722.summary.json
+    sha256: 79cfca7ce217a25e682ef617c26d42d234fe84f5f4a0fafdae19d7d16c99893a
+    required_schema_version: openalex_g1_citation_chronology_production_full_summary.v1
+    required_status: PASS_CURRENT_SNAPSHOT_CITATION_EDGE_CHRONOLOGY_ACCOUNTING_WITH_CANONICAL_TEMPORAL_V3_PARENT_AND_BIBLIOGRAPHIC_EVENT_TIME_CONVENTION_LIMITATION
+    mutation_allowed: false
+  empirical_protocol:
+    relative_path: docs/case-studies/researcher-pivot/pivot-feedback-empirical-nabm-protocol.md
+    sha256: 731e39dec4c7be5c29a0f0404b48992ad0caef152062d1d1d7876acc07064746
+    mutation_allowed: false
+
+scope:
+  choice_ids:
+    - attention_surge_threshold
+    - public_success_threshold
+    - citation_maturation_lag_years
+    - negative_control_equivalence_margins
+  choice_count: 4
+  selection_uses_confirmatory_or_holdout_outcomes: false
+  selection_uses_g4_field_identity: false
+  selection_uses_model_performance: false
+  rule_freeze_is_not_production_application: true
+  rule_freeze_is_not_g0_promotion: true
+
+precommitment_choices:
+  attention_surge_threshold:
+    resolution_status: FROZEN_OUTCOME_BLIND_POLICY_RULE
+    rule_id: ROBUST_INCUMBENT_ATTENTION_ACCELERATION_MAD_V1
+    unit: PRIMARY_TOPIC_X_PRIMARY_FIELD_X_DECISION_YEAR
+    decision_year_scope: DISCOVERY_CALIBRATION_THROUGH_2012
+    focal_population: INCUMBENT_ONLY_EXCLUDES_FOCAL_ENTRANTS
+    recent_window_offsets: [-3, -2, -1]
+    reference_window_offsets: [-6, -5, -4]
+    window_year_count: 3
+    recent_value: SUM_ELIGIBLE_INCUMBENT_ATTENTION_IN_RECENT_WINDOW
+    reference_value: SUM_ELIGIBLE_INCUMBENT_ATTENTION_IN_REFERENCE_WINDOW
+    acceleration_score: LOG1P_RECENT_ANNUAL_MEAN_MINUS_LOG1P_REFERENCE_ANNUAL_MEAN
+    normalization_group: PRIMARY_FIELD_ID_X_DECISION_YEAR_ACROSS_ELIGIBLE_TOPICS
+    location_estimator: MEDIAN
+    scale_estimator: MEDIAN_ABSOLUTE_DEVIATION
+    modified_z_multiplier: 0.6744897501960817
+    primary_modified_z_threshold_inclusive: 3.0
+    raw_acceleration_must_be_positive: true
+    recent_count_must_exceed_reference_count: true
+    mad_zero_action: NO_SURGE_FAIL_CLOSED
+    nonfinite_or_missing_action: EXCLUDE_AND_REPORT
+    primary_threshold_may_be_relaxed_for_coverage: false
+    sensitivity_thresholds_report_only: [2.5, 3.5]
+    sensitivity_may_replace_primary: false
+    minimum_analytic_support_owned_by_separate_choice: true
+    claim_role: SHOCK_EPISODE_CANDIDATE_RULE_NOT_EFFECT_ESTIMATE
+
+  public_success_threshold:
+    resolution_status: FROZEN_INCLUDE_TIME_ELIGIBLE_PROXY
+    rule_id: FIELD_YEAR_TOP_DECILE_AGE3_CITATION_PROXY_INCLUSIVE_TIES_V1
+    proxy_included: true
+    unit: ELIGIBLE_WORK
+    reference_cohort: PRIMARY_FIELD_ID_X_PUBLICATION_YEAR
+    citation_horizon_years: 3
+    citation_count_definition: DISTINCT_SOURCE_WORK_CITATIONS_AVAILABLE_BY_END_OF_PUBLICATION_YEAR_PLUS_3
+    citation_available_at_proxy: CITING_WORK_PUBLICATION_DATE
+    historical_platform_observation_time_established: false
+    researcher_visibility_established: false
+    current_snapshot_primary_field_role: RETROSPECTIVE_NORMALIZATION_PROXY
+    target_fraction: 0.10
+    target_count_rule: CEILING_REFERENCE_COHORT_COUNT_TIMES_TARGET_FRACTION
+    cutoff_rule: DESCENDING_CITATION_COUNT_AT_TARGET_COUNT_POSITION
+    boundary_tie_rule: INCLUDE_ALL_WORKS_AT_OR_ABOVE_CUTOFF
+    realized_fraction_must_be_reported: true
+    exact_ten_percent_membership_claim_allowed: false
+    minimum_reference_cohort_for_decile_calculation: 10
+    smaller_cohort_action: UNRESOLVED_INSUFFICIENT_REFERENCE_COHORT
+    deterministic_random_tie_break_allowed: false
+    outcome_or_model_performance_tuning_allowed: false
+    claim_role: CURRENT_SNAPSHOT_BIBLIOGRAPHIC_SUCCESS_PROXY_NOT_OBSERVED_RECEIPT_OR_VALUE
+
+  citation_maturation_lag_years:
+    resolution_status: FROZEN_OUTCOME_BLIND_POLICY_VALUE
+    value: 3
+    unit: COMPLETE_CALENDAR_YEARS_AFTER_PUBLICATION_YEAR
+    work_matured_at_decision_year_rule: PUBLICATION_YEAR_PLUS_3_LESS_THAN_OR_EQUAL_TO_DECISION_YEAR_MINUS_1
+    citation_window_end: END_OF_PUBLICATION_YEAR_PLUS_3
+    same_horizon_as_three_year_persistence: true
+    last_complete_calendar_year: 2025
+    current_snapshot_bibliographic_time_proxy_only: true
+    historical_first_observation_time_claim_allowed: false
+    right_censored_action: EXCLUDE_FROM_SUCCESS_CLASSIFICATION_AND_REPORT
+
+  negative_control_equivalence_margins:
+    resolution_status: FROZEN_OUTCOME_BLIND_POLICY_RULE
+    estimand_scale: AVERAGE_MARGINAL_BINARY_OUTCOME_PROBABILITY_DIFFERENCE
+    coefficient_scale_substitution_allowed: false
+    symmetric_practical_null_lower: -0.01
+    symmetric_practical_null_upper: 0.01
+    probability_point_interpretation: PLUS_OR_MINUS_ONE_PERCENTAGE_POINT
+    equivalence_test: TWO_ONE_SIDED_TESTS
+    one_sided_alpha: 0.05
+    equivalent_confidence_interval: TWO_SIDED_90_PERCENT
+    pass_rule: ENTIRE_90_PERCENT_INTERVAL_STRICTLY_INSIDE_PRACTICAL_NULL
+    interval_boundary_counts_as_pass: false
+    uncertainty: FIELD_BALANCED_EPISODE_CLUSTERED
+    missing_or_nonfinite_interval_action: FAIL_GATE
+    low_power_or_wide_interval_action: NOT_EQUIVALENT_FAIL_GATE
+    nonsignificant_zero_test_counts_as_equivalence: false
+    equivalence_control_ids:
+      - lead_attention
+      - same_peer_unrelated_topic_success
+      - post_decision_future_citation_success
+      - future_tie
+      - matched_non_surge_topic
+    true_minus_placebo_control_ids:
+      - degree_preserving_shuffled_network
+      - matched_non_neighbor
+    true_minus_placebo_primary_rule: ONE_SIDED_95_PERCENT_LOWER_BOUND_GREATER_THAN_ZERO
+    placebo_component_must_also_pass_practical_null: true
+    sensitivity_margins_report_only: [0.005, 0.02]
+    sensitivity_may_replace_primary: false
+    confirmatory_effect_estimate_may_set_margin: false
+
+methodological_rationale:
+  references:
+    - reference_id: LEYS_ET_AL_2013_MAD
+      doi: 10.1016/j.jesp.2013.03.013
+      role: ROBUST_LOCATION_AND_SCALE_RATIONALE_NOT_THRESHOLD_MANDATE
+    - reference_id: WALTMAN_SCHREIBER_2013_PERCENTILES
+      doi: 10.1002/asi.22775
+      role: FIELD_NORMALIZED_PERCENTILE_AND_TIE_AWARENESS_RATIONALE
+    - reference_id: SCHUIRMANN_1987_TOST
+      doi: 10.1007/BF01068419
+      role: TWO_ONE_SIDED_EQUIVALENCE_TEST_RATIONALE
+  policy_value_boundary:
+    literature_mandates_modified_z_3: false
+    literature_mandates_top_decile: false
+    literature_mandates_three_year_horizon: false
+    literature_mandates_one_percentage_point_margin: false
+    values_are_precommitted_design_policy_not_empirical_truth: true
+
+application_contract:
+  intended_tool_relative_path: scripts/apply_pivot_feedback_g0_measurement_proxy_precommitment_v1.py
+  input_schema_version: pivot_feedback_g0_measurement_proxy_discovery_input.v1
+  output_schema_version: pivot_feedback_g0_measurement_proxy_discovery_output.v1
+  permitted_input_statuses:
+    - SYNTHETIC_CLOSED_FIXTURE
+    - DISCOVERY_ONLY_AGGREGATED_NO_CONFIRMATORY_ROWS
+  input_may_contain_confirmatory_or_holdout_rows: false
+  input_may_contain_post_2012_decision_year: false
+  input_may_contain_model_scores_or_g4_labels: false
+  exact_input_lists_required:
+    - attention_topic_year_rows
+    - citation_work_rows
+  output_float_round_decimal_places: 12
+  output_must_report_mad_zero_groups: true
+  output_must_report_inclusive_tie_inflation: true
+  output_must_preserve_current_snapshot_proxy_caveat: true
+  production_application_requires_successor_gate: true
+
+fixture_contract:
+  input_relative_path: tests/fixtures/pivot_feedback_g0_measurement_proxy_discovery_v1.input.json
+  expected_output_relative_path: tests/fixtures/pivot_feedback_g0_measurement_proxy_discovery_v1.expected.json
+  synthetic_only: true
+  may_promote_to_production_evidence: false
+  must_cover:
+    - ROBUST_MAD_PRIMARY_SURGE
+    - MAD_ZERO_FAIL_CLOSED
+    - TOP_DECILE_UNIQUE_BOUNDARY
+    - TOP_DECILE_INCLUSIVE_TIE_INFLATION
+    - REFERENCE_COHORT_BELOW_TEN_UNRESOLVED
+
+lifecycle:
+  contract_frozen: true
+  independently_validated: false
+  fixture_application_run: false
+  discovery_production_application_run: false
+  g0_v2_changed: false
+  unresolved_g0_choice_count_before: 17
+  resolved_choice_count_in_this_contract: 4
+  unresolved_g0_choice_count_after_future_binding: 13
+  required_sections_completed: false
+  g4_artifact_set_materialized: false
+  holdout_preflight_written: false
+  holdout_seal_created: false
+  confirmatory_or_holdout_rows_read: 0
+  model_fitted: false
+  g4_open: false
+
+authorization:
+  contract_authoring: AUTHORIZED_OUTCOME_BLIND
+  fixture_application_and_validation: AUTHORIZED_SYNTHETIC_ONLY
+  discovery_production_application: REQUIRES_SUCCESSOR_GATE
+  g0_successor_binding: REQUIRES_INDEPENDENT_VALIDATION_AND_SUCCESSOR_GATE
+  threshold_relaxation_after_coverage_or_outcome_inspection: NOT_AUTHORIZED
+  confirmatory_or_holdout_access: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This outcome-blind contract precommits four measurement/proxy choices and a
+  synthetic fixture interface. The robust-surge threshold, top-decile proxy,
+  three-year horizon, and one-percentage-point equivalence margin are explicit
+  design policies, not literature-mandated truths or empirical effects. The
+  citation proxy uses citing-work publication time from a current snapshot and
+  does not establish platform observation, researcher visibility, or
+  information receipt. No discovery production input is opened, G0 v2 is not
+  changed, the remaining thirteen quantitative choices and all required
+  sections remain unresolved, and no holdout artifact, seal, model, G4 result,
+  causality, or scientific effect is established.

@@ -1,0 +1,151 @@
+schema_version: pivot_feedback_d0_candidate_rule_v2_replay_config.v1
+label: pivot_feedback_d0_candidate_rule_v2_retrospective_replay_v1
+mode: ZERO_COST_POST_DIAGNOSTIC_FIVE_CANDIDATE_RETROSPECTIVE_REPLAY
+status: FROZEN_CANDIDATE_RULE_V2_RETROSPECTIVE_REPLAY_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v17.yaml
+  sha256: 0f575abca91c6610d6a3404f54708cc1f8f5a46ed4dbd198ab993f4cecbc1311
+  required_schema_version: pivot_feedback_gate_state.v17
+  required_status: VALID_T10543_LOCAL_ROUTING_UNRESOLVED_PERSISTENT_OPAQUE_RULE_GAP_IDENTIFIED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_candidate_rule_v2_post_diagnostic_amendment_design: AUTHORIZED
+    authorization.d0_candidate_rule_v2_five_candidate_retrospective_replay: AUTHORIZED_ZERO_COST_ONLY
+    authorization.d0_candidate_rule_v2_production_freeze: NOT_AUTHORIZED_UNTIL_RETROSPECTIVE_REPLAY_VERIFIED
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+frozen_inputs:
+  original_sample:
+    root_basename: pivot-feedback-d0-content-indexing-audit-v1-full-20260724
+    sample_basename: content_review_sample.parquet
+    sample_sha256: b14942ec2ca6628fd9a421c58cde4105610deb640eb407178eacdb661cf7f427
+    sample_rows: 384
+  original_routes:
+    root_basename: pivot-feedback-d0-api-only-topic-routing-v1-dry-run-20260729
+    routes_basename: topic_routing_decisions.csv
+    routes_sha256: 147c2e3f5b9708f83f17cc8119708fa44ca26075a99a505d482297d7674d8668
+    route_rows: 384
+  original_candidate_v1:
+    root_basename: pivot-feedback-d0-candidate-content-dry-run-v1-20260729
+    candidate_basename: candidate_content_dry_run.parquet
+    candidate_sha256: 05add957bfb3524fc18b3b744eb6b5f4ea5f7889582c1f159f8c17ce7d516a9f
+    candidate_rows: 4
+  t10543_sample:
+    root_basename: pivot-feedback-d0-t10543-targeted-title-sample-v1-20260729
+    sample_basename: t10543_targeted_title_sample.parquet
+    sample_sha256: 9436d1802285ffec83f43903e552c3f8ed8307b47bc5017575e0e3f1f0a82ddc
+    sample_rows: 96
+  t10543_routes:
+    root_basename: pivot-feedback-d0-t10543-local-routing-v1-20260729
+    routes_basename: t10543_local_title_routes.csv
+    routes_sha256: 5d1a3a82bed1402e44ee1c8a97bbfbf2bf481a0132708fa74f69e0bf3f998ff1
+    route_rows: 96
+  t10543_candidate_v1:
+    root_basename: pivot-feedback-d0-t10543-local-routing-v1-20260729
+    candidate_basename: t10543_candidate_content_dry_run.parquet
+    candidate_sha256: 81b5fe133c0301aab5d626f60f83cbd379cb3c258cb7f9625beaf1cce481ff04
+    candidate_rows: 1
+
+candidate_rule_v2:
+  amendment_disclosure: POST_DIAGNOSTIC_AFTER_T10543_RULE_V1_GAP
+  precedence:
+    - RECENT_MAJORITY_OPAQUE_INDEXING_ANOMALY
+    - JOINT_SCORE_AND_SOURCE_SHIFT_INDEXING_ANOMALY
+    - SEMANTIC_OFF_TOPIC
+    - CONTENT_PASS
+    - CONTENT_UNRESOLVED
+  new_branch:
+    name: RECENT_MAJORITY_OPAQUE_INDEXING_ANOMALY
+    recent_window_codes: [1, 2]
+    recent_title_rows: 64
+    qualifying_local_reason: OPAQUE_ARCHIVAL_IDENTIFIER
+    minimum_opaque_quarantine_fraction: 0.50
+    comparison: GREATER_THAN_OR_EQUAL
+    dry_run_state: WOULD_CONTENT_FAIL_INDEXING_ANOMALY
+    reason: RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS
+    source_name_used: false
+    primary_topic_score_used: false
+    api_label_used: false
+    human_review_used: false
+  retained_v1_branches:
+    minimum_baseline_to_signal_median_primary_topic_score_drop: 0.15
+    minimum_baseline_to_signal_dominant_source_share_increase: 0.25
+    minimum_recent_rule_reject_lower_bound_fraction_for_semantic_fail: 0.50
+    minimum_recent_rule_accept_lower_bound_fraction: 0.50
+    ambiguous_and_quarantined_count_as_accept: false
+    ambiguous_and_quarantined_count_as_reject: false
+  rule_is_semantic_ground_truth: false
+  replay_is_out_of_sample_validation: false
+  replay_is_production_freeze: false
+
+expected_replay:
+  candidate_rows: 5
+  unchanged_rows: 4
+  changed_rows: 1
+  v2_would_content_pass_rows: 3
+  v2_would_content_fail_indexing_anomaly_rows: 2
+  v2_would_content_fail_semantic_off_topic_rows: 0
+  v2_would_content_unresolved_rows: 0
+  changed_candidate:
+    field_id: 27
+    field_candidate_rank: 2
+    topic_id: 10543
+    entry_year: 1993
+    v1_state: WOULD_CONTENT_UNRESOLVED
+    v2_state: WOULD_CONTENT_FAIL_INDEXING_ANOMALY
+    v2_reason: RECENT_SAMPLE_MAJORITY_OPAQUE_INDEXING_ARTIFACTS
+  production_candidate_rule_frozen: false
+  production_content_dispositions_created: 0
+  selection_certificate_issued: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-candidate-rule-v2-replay-v1-20260729
+  replay_basename: candidate_rule_v2_retrospective_replay.parquet
+  change_basename: candidate_rule_v2_change_summary.json
+  report_basename: CANDIDATE_RULE_V2_RETROSPECTIVE_REPLAY.md
+  receipt_basename: candidate_rule_v2_replay.outputs.json
+  receipt_schema_version: pivot_feedback_d0_candidate_rule_v2_replay_outputs.v1
+  status: PASS_CANDIDATE_RULE_V2_FIVE_CANDIDATE_RETROSPECTIVE_REPLAY
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+execution_boundary:
+  existing_title_rows_read: 480
+  new_titles_read: false
+  raw_openalex_main_table_read: false
+  network_accessed: false
+  credentials_accessed: false
+  api_requests_created: false
+  api_requests_submitted: false
+  production_candidate_rule_frozen: false
+  production_content_dispositions_created: false
+  selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  outcomes_read: false
+
+authorization:
+  candidate_rule_v2_retrospective_replay: AUTHORIZED
+  replay_change_summary: AUTHORIZED
+  new_title_extraction: NOT_AUTHORIZED
+  raw_title_scan: NOT_AUTHORIZED
+  new_api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+  production_candidate_rule_freeze: NOT_AUTHORIZED
+  production_content_disposition: NOT_AUTHORIZED
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract retrospectively replays a disclosed post-diagnostic majority-
+  opaque indexing branch across the five already sampled candidates. The replay
+  is a rule-adequacy check, not out-of-sample validation, semantic truth,
+  accuracy estimation, production-rule freeze, production disposition,
+  selection certificate, pivot classification, outcome result, model fit, G4
+  opening, or scientific effect.

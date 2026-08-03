@@ -1,0 +1,80 @@
+schema_version: pivot_feedback_gate_state.v32
+label: pivot_feedback_gate_state_v32
+mode: ADDITIVE_RANK5_EXTERNAL_BIBLIOGRAPHIC_EVIDENCE_ACQUISITION_AND_REVIEW
+status: VALID_RANK5_EXACT_14_EXTERNAL_EVIDENCE_COLLECTION_AND_EXACT_11_REVIEW_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v31.yaml
+  sha256: 83f9dba1c81ae18a1cb1bff3bc74693579cefb4f6b0cb60b0cb65f6d7838984a
+  required_schema_version: pivot_feedback_gate_state.v31
+  required_status: VALID_RANK5_LOCAL_ABSTRACT_AUGMENTED_UNRESOLVED_PRODUCTION_CLOSEOUT_AUTHORIZED
+  mutation_allowed: false
+
+frozen_input:
+  unresolved_rows: 14
+  sorted_openalex_ids_sha256: ce4188ffae63cf45cbe43f171e77501ff2ef5acf570504fa1c534aedff8bff5c
+  local_recovery:
+    root_basename: pivot-feedback-d0-t10151-rank5-local-abstract-recovery-v1-20260730
+    basename: rank5_local_abstract_recovery.parquet
+    sha256: 70cc9e2516762712ff67662a59626b913db9f6f836e6693615e0c8a573739c3f
+  local_abstract_decisions:
+    root_basename: pivot-feedback-d0-t10151-rank5-abstract-cross-provider-v1-results-20260730
+    basename: rank5_abstract_cross_provider_decisions.csv
+    sha256: 8fe29a45609714ad8a69005c551e33532d58461ac1d73933a5483e3b49417d5a
+
+external_collection_contract:
+  exact_rows: 14
+  allowed_hosts:
+    - api.openalex.org
+    - api.crossref.org
+    - eutils.ncbi.nlm.nih.gov
+  sources:
+    - OPENALEX_CURRENT_WORK_RECORD
+    - CROSSREF_EXACT_DOI_RECORD
+    - PUBMED_EXACT_PMID_RECORD
+  raw_responses_preserved: true
+  credentials_required: false
+  retries: 0
+  timeout_seconds_per_request: 60
+  user_authorized_at_local_date: "2026-07-30"
+  exploratory_exposure_disclosed: true
+
+review_eligibility_contract:
+  exact_review_rows: 11
+  exact_holdout_rows: 3
+  eligible_evidence:
+    - EXTERNAL_ABSTRACT
+    - PUBMED_CONTROLLED_SUBJECTS
+    - CROSSREF_CORRECTED_TITLE
+    - CROSS_SOURCE_EXACT_TITLE_WITH_DECISION_TERMS
+  holdout_reason: NO_NEW_DECISION_RELEVANT_EXTERNAL_TEXT_OR_CONTROLLED_SUBJECTS
+  provider_calls: 2
+  retries: 0
+  consensus_accept: BOTH_LABEL_ON_TOPIC_AND_CONFIDENCE_HIGH
+  consensus_reject: BOTH_LABEL_OFF_TOPIC_AND_CONFIDENCE_HIGH
+  all_other_results: REMAIN_UNRESOLVED
+  human_review: NOT_RUN_BY_DESIGN
+  provider_labels_are_ground_truth: false
+
+authorization:
+  d0_rank5_exact_14_external_metadata_collection: AUTHORIZED_READ_ONLY
+  d0_rank5_exact_11_external_evidence_request_preparation: AUTHORIZED
+  d0_rank5_exact_11_paid_api_submission: AUTHORIZED_TWO_CALLS_NO_RETRY_AFTER_INDEPENDENT_PACKET_VERIFICATION
+  d0_rank5_external_result_reduction: AUTHORIZED_PRECOMMITTED_DUAL_HIGH_ONLY
+  d0_rank5_production_disposition: NOT_AUTHORIZED_UNTIL_RESULT_INDEPENDENTLY_VERIFIED_AND_SUCCESSOR_GATE
+  d0_human_review: NOT_RUN_BY_DESIGN
+  d0_deterministic_reselection: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This additive gate authorizes read-only collection of exact external
+  bibliographic records for the fourteen remaining rank-5 rows and one
+  no-retry OpenAI/Claude review pair for only the eleven rows receiving new
+  decision-relevant evidence. It does not treat missing subject headings as
+  proof, use provider labels as ground truth, authorize human review, create a
+  production disposition, issue a certificate, reselect candidates, read
+  outcomes, fit a model, open G4, or establish a scientific effect.

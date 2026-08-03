@@ -1,0 +1,64 @@
+{
+  "schema_version": "pivot_feedback_holdout_seal_preflight_tooling_summary.v1",
+  "status": "PASS_CLOSED_FIXTURE_EXPLICIT_PREFLIGHT_TO_SEAL_CHAIN_PRODUCTION_NOT_RUN",
+  "tooling": {
+    "preflight_author_relative_path": "scripts/prepare_pivot_feedback_holdout_access_seal_preflight_v1.py",
+    "preflight_author_sha256": "ed6fd2c0369d23648a2d068eb3abac40d433ec9dac6590ac89b08fbd949725fb",
+    "output_basename": "pivot_feedback_holdout_access_seal_preflight_v1.json",
+    "row_data_libraries_imported": [],
+    "explicit_paths_only": true,
+    "implicit_discovery": false,
+    "recursive_directory_input": false,
+    "output_create_only": true,
+    "output_mode": "0400"
+  },
+  "closed_fixture_chain": {
+    "artifact_count": 2,
+    "artifact_bytes_total": 27,
+    "unlisted_source_files_discovered": 0,
+    "preflight_written": true,
+    "seal_created": true,
+    "receipt_written_last": true,
+    "independent_rehash_passed": true,
+    "operator_parquet_files_parsed": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "test_count": 14
+  },
+  "fail_closed_checks": {
+    "wildcard_input_rejected": true,
+    "directory_input_rejected": true,
+    "symlinked_input_rejected": true,
+    "duplicate_path_rejected": true,
+    "missing_complete_attestation_rejected": true,
+    "missing_private_root_attestation_rejected": true,
+    "missing_no_row_parse_attestation_rejected": true,
+    "nonzero_prior_open_count_rejected": true,
+    "nonzero_holdout_row_read_count_rejected": true,
+    "existing_output_rejected": true,
+    "symlinked_source_root_rejected": true
+  },
+  "production_state": {
+    "source_root_supplied": false,
+    "explicit_artifact_list_supplied": false,
+    "operator_preflight_written": false,
+    "production_artifact_paths_enumerated": 0,
+    "production_artifact_bytes_hashed": 0,
+    "production_seal_created": false,
+    "production_receipt_written": false,
+    "production_independent_verification_run": false,
+    "confirmatory_or_holdout_rows_read": 0,
+    "pass_g0": false,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "authorization": {
+    "production_preflight": "NOT_RUN_MISSING_SOURCE_ROOT_AND_EXPLICIT_ARTIFACT_LIST",
+    "production_seal_creation": "NOT_RUN_NO_PRODUCTION_PREFLIGHT",
+    "seal_opening": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "The explicit-list-only preflight author and downstream seal chain pass only a closed synthetic fixture. No production source root or artifact list was supplied, so no production path or byte was enumerated or hashed and no production preflight, seal, receipt, or verification result exists. This tooling result does not pass G0, authorize seal opening or model fitting, open G4, or establish a scientific effect."
+}

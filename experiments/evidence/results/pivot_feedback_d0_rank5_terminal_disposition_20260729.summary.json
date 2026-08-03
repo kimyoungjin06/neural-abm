@@ -1,0 +1,61 @@
+{
+  "schema_version": "pivot_feedback_d0_rank5_terminal_disposition_summary.v1",
+  "status": "PASS_INDEPENDENT_RANK5_UNRESOLVED_TERMINAL_CERTIFICATE_BLOCK",
+  "rank5_production_disposition": {
+    "field_id": 27,
+    "field_candidate_rank": 5,
+    "topic_id": 10151,
+    "entry_year": 1993,
+    "content_state": "CONTENT_UNRESOLVED",
+    "reason": "CONSERVATIVE_RECENT_EVIDENCE_NOT_DECISIVE",
+    "production_rule_version": "candidate_rule_v2",
+    "human_review_used": false,
+    "api_labels_used_as_ground_truth": false
+  },
+  "cumulative_production_dispositions": {
+    "rows": 8,
+    "content_pass_rows": 3,
+    "content_fail_rows": 4,
+    "content_unresolved_rows": 1
+  },
+  "frontier_v6": {
+    "rows": 51,
+    "content_pass_rows": 3,
+    "content_fail_rows": 4,
+    "content_unresolved_rows": 1,
+    "not_evaluated_rows": 43,
+    "computer_science_field_certificate_issued": true,
+    "computer_science_selected_candidate_ranks": [1, 45],
+    "medicine_field_certificate_issued": false,
+    "medicine_blocking_candidate_rank": 5,
+    "medicine_later_content_pass_rank": 6,
+    "global_selection_certificate_issued": false
+  },
+  "terminal_certificate_status": {
+    "status": "BLOCKED_REQUIRED_RANK5_CONTENT_UNRESOLVED",
+    "deterministic_reselection_executed": false,
+    "resolution_requires_new_authorization": true,
+    "authorized_resolution_path": "NONE"
+  },
+  "execution_boundary": {
+    "new_candidate_evaluation_executed": false,
+    "new_titles_read": false,
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000",
+    "deterministic_reselection_executed": false,
+    "outcomes_read": false
+  },
+  "artifacts": {
+    "config_sha256": "c687109645a467792f6902240a26f0fb74e70062dc509ed48b085361b4d6189a",
+    "producer_sha256": "620e0b9f1afaf339d215d3c82fe0a4c8b9bf49b76bae191905b521855bf44ef7",
+    "verifier_sha256": "495026765449f3e0fd3dc6eb1cc12ec7446f5c91aed0e0dc9ca14a2e7da57b8d",
+    "operator_receipt_sha256": "5378029024826816b8260376deb55f980e4f36ef4255f1d136cdae7df9f0486f",
+    "verification_report_sha256": "9a54f760ff0ccc613c498801eb5a6e8b6c4711a52c3cfde2d476b54d0cb17d5e",
+    "dispositions_sha256": "16d4c7d99795e383677f12df60f861c84c1a0ddd49d16dbf37ebff266b9ea107",
+    "frontier_v6_sha256": "f518e3d7018587286bd56a9d83bc46569b6b916660946a658241bd5085df9b99",
+    "certificate_status_sha256": "4285dbd09f9d0e788557370722c7e78242a067742f852bca29b61e0be1719dfc",
+    "artifact_tree_sha256": "c42344591ea6b58b29b6057d62189771b107f412d510a0c9801caf0c5ef8075f"
+  },
+  "claim_boundary": "This freezes an unresolved required state and an explicit certificate block. It does not convert unresolved to fail, issue a Medicine or global certificate, execute reselection, classify pivots, read outcomes, fit a model, or establish a scientific effect."
+}

@@ -12,6 +12,21 @@ Use this directory for manuscript material only:
 Raw experiment runs should remain in `experiments/runs/`. Curated figures and
 tables can be copied or exported here when they are paper-ready.
 
+## Route Boundary
+
+The current root `paper/` workspace is the method-first Neural Social Nodes
+track. The prospective science-first pivot-feedback study is governed by
+[the tracked empirical/NABM protocol](../docs/case-studies/researcher-pivot/pivot-feedback-empirical-nabm-protocol.md).
+Its
+[peer-exposure identification design](../docs/research/peer-exposure-identification-design.md)
+keeps public outcome availability separate from unobserved receipt and belief
+updating, and tests network-local proxies against attention, selection,
+recruitment, and capacity explanations.
+It does not become a second manuscript track here until its data-readiness,
+empirical-signature, baseline, and frozen-holdout gates pass. The existing
+researcher-pivot Study 1 and Study 2 remain stylized hypothesis generators and
+lifecycle evidence.
+
 Current planning artifacts:
 
 - [claim-matrix.md](claim-matrix.md)

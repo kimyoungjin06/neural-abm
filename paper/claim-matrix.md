@@ -2,6 +2,8 @@
 
 Date: 2026-07-16
 
+Operational status refresh: 2026-08-03
+
 ## Purpose
 
 This matrix is the paper-facing boundary for current NABM Unit v1 evidence. It
@@ -10,6 +12,45 @@ candidate figure or table, and limitation that must travel with the claim.
 
 Claims not listed here should stay out of the primary manuscript narrative until
 their evidence is upgraded.
+
+## Route Boundary
+
+The document date above records the original manuscript-matrix checkpoint.
+Current pivot-feedback status is consolidated in the
+[`current-status and evidence ledger v1`](../docs/research/pivot-feedback-current-status-evidence-ledger-v1.md),
+with machine-readable authority in
+[`pivot_feedback_gate_state_v61.yaml`](../experiments/configs/pivot_feedback_gate_state_v61.yaml).
+The protocol v0.4 byte is retained because multiple immutable contracts bind
+its hash; the ledger is the additive operational update rather than an in-place
+protocol mutation.
+
+This matrix governs the current method-first manuscript. The prospective
+science-first pivot-feedback study is governed by
+[`docs/case-studies/researcher-pivot/pivot-feedback-empirical-nabm-protocol.md`](../docs/case-studies/researcher-pivot/pivot-feedback-empirical-nabm-protocol.md).
+Its proposed empirical and adaptive-model claims are not current evidence and
+must not be promoted into the primary claim path before their gates pass.
+The current operational boundary is:
+
+- bounded G-1A source and primitive fidelity is satisfied, while immutable
+  legacy G-1 remains unpassed;
+- the discovery-only D0 entry and persistence measurement chain is complete
+  for four certified episodes in two fields;
+- all 3,256,271 registered author-episode rows have an independently replayed
+  observable-history classification, including 4,301 `NEW_TOPIC_ENTRY` rows;
+- the 4,301-row three-year persistence source and aggregate descriptive
+  readout are independently replayed, but are not adjusted comparisons;
+- G0 v4 has twelve resolved policy choices, seven unresolved quantitative
+  choices, zero of fifteen freeze-ready required sections, and no holdout
+  receipt; and
+- empirical G1 is `NOT_RUN`, no baseline or NABM model has run, and G4 is
+  logically reserved but neither byte-sealed nor opened.
+
+These advances establish source, measurement, and precommitment infrastructure
+only. Author IDs remain current-snapshot tokens rather than verified persons;
+historical topic and citation visibility remains unidentifiable from the
+snapshot; final confirmatory field selection remains pending; and no
+association, timing gap, adaptive-model advantage, causal mechanism, transport,
+or scientific effect is established.
 
 ## Primary Claim Path
 
@@ -24,6 +65,37 @@ their evidence is upgraded.
 | A source-free adapter can use NABM Unit v1 in a closed-loop stochastic commons where actions change future state. | Public binary policy lifecycle callbacks only; the holdout domain lives in `scripts/run_adapter_stochastic_commons_holdout_evidence.py`, not `src/neural_abm`. | `experiments/evidence/adapter_only_stochastic_commons_quick.yaml`, `experiments/results/nabm_effect_matrix/adapter_only_stochastic_commons_quick_findings.md` | In steady-regeneration, localized-shock, and heterogeneous-need cases, the local-resource main avoids collapse while greedy harvest and global-pressure controls dip below the resource floor. | `paper/tables/nabm-unit-v1-manuscript-tables.md` Table 7. | This strengthens closed-loop extensibility, but remains a compact scripted binary commons rather than a full general-purpose ABM framework proof. |
 | The torch-free surface carries a researcher-authored replicated counterfactual scenario study end to end, with paired mean-effect CIs separated from empirical replicate intervals and a true-null invariant. | `src/neural_abm/scenario_lite.py`, `src/neural_abm/workflow_lite.py`, `examples/research_pivot_study.py` | `docs/case-studies/researcher-pivot/README.md`, `docs/case-studies/researcher-pivot/data/study_results.json`, `tests/test_scenario_lite.py`, `tests/test_research_pivot_evidence.py` | Seed grants raise the productive pivot rate +0.191 [95% mean CI 0.181, 0.202]; hype raises it +0.187 [0.180, 0.194] at 2.3x the pivots and 8.6x the failures. The direct hype-minus-grant contrast is -0.004 [-0.012, 0.004], without an equivalence claim. Zeroing every grant component yields exactly 0.000 [0.000, 0.000]. | `paper/sections/07-research-application.md`, `paper/figures/pivot_composition.png`. | The domain model is hand-set and uncalibrated; the true-null result validates the pipeline invariant, not the scenario's external validity. Hype bundles multiple mechanisms, so susceptibility is not separately identified. |
 | The NABM lifecycle supports a controlled frozen-versus-adaptive comparison with component-keyed paired shocks and complete named-parameter traces. | `src/neural_abm/unit.py` lifecycle via `examples/research_pivot_learning_study.py` (shared population and base-network generators with Study 1). | `docs/case-studies/researcher-pivot/README.md` Study 2, `docs/case-studies/researcher-pivot/data/learning_study_results.json`, `tests/test_research_pivot_evidence.py` | Imitative learning raises failed pivots +0.281 [0.235, 0.322] at baseline and +0.289 [0.268, 0.308] under grants, but not under hype (-0.009 [-0.024, 0.007]). Failure-only learning reduces hype failures -0.144 [-0.159, -0.129] and productive pivots -0.050 [-0.056, -0.044]; the attention coefficient falls 1.00 -> 0.81 while other weights and bias also move. | `paper/sections/07-research-application.md`, `paper/figures/pivot_learning_failed_trajectories.png`, `paper/figures/pivot_learning_attention_weights.png`. | This is a lifecycle expressiveness and audit claim, not performance, causal-mechanism, canonical-cascade, or ABM-framework exclusivity evidence. The frozen policy is a sigmoid reparameterization, learning rules are postulated, and failure-only learning also loses productive pivots under grants (-0.069). |
+
+## Prospective Pivot-Feedback Claim Gates
+
+These rows are planned tests, not supported claims.
+
+Here, `exposure` means a time-eligible bibliographic and network-availability
+proxy. It does not establish receipt, attention, belief revision, or social
+influence. Chaperoned and independent entry must be separated before the study
+distinguishes recruitment or capacity transfer from a pattern consistent with
+network-local outcome learning.
+
+The bounded G-1A receipt, completed D0 measurement chain, and pending G0 v4
+successor are fail-closed source, measurement, and design evidence. Their
+validation does not change any row below from planned or untested to supported.
+
+| Candidate claim | Current status | Promotion evidence | Mandatory stop condition |
+| --- | --- | --- | --- |
+| The field-balanced H3 timing-gap primary is positive: topic entry peaks at least one cohort-year after adjusted three-year persistence peaks. | Planned and untested. The compact cross-field result is profile-feasibility only; final field selection is `PENDING` and empirical G1 is `NOT_RUN`. | Authoritative taxonomy/reference binding, outcome-blind maximin field selection, at least three independent episodes in each of three G1 fields, past-only cohort clocks, equal field and within-field episode weights, the registered positive interval, leave-one-field-out direction, and one frozen alternative pivot construction. | No reproducible timing gap; a lead-attention or matched non-surge equivalence gate fails; an atomic author/topic/shock split is violated; or one field or shock alone supplies the result. |
+| The pre-surge episode-level ratio `R = bibliographic outcome-availability lag / prior-collaborator exposure-opportunity timescale` predicts the magnitude or ordering of the later H3 gap across fields. | Planned, untested secondary transport endpoint. It is not a co-primary, does not measure actual information receipt, and no model run exists. | Pre-surge time-eligible estimators frozen at G0, episode-level uncertainty, no confirmatory-outcome field selection, and successful prediction in the sealed domain-and-author-cold G4 field after the H3 primary passes. | H3 fails; `R` only fits inspected episodes; its ordering fails in domain-and-author-cold G4; or it is interpreted as a causal field coefficient or measured cognitive diffusion rate. |
+| Time-eligible target-topic outcomes among prior collaborators predict entry beyond field-wide attention, matched non-neighbor exposure, and pre-entry selection covariates. | Untested and observational. | Incumbent-only leave-out attention, peer-active and visible-success increments, past-only ties and outcomes, a pre-specified split between chaperoned and independent entry, stable pretrend-adjusted direction, and future-tie, future-success, unrelated-topic-success, matched-non-neighbor, and shuffled-network controls. | The network-local association disappears under the registered controls. If it is confined to chaperoned entry, report recruitment or capacity transfer rather than social learning. |
+| A pre-entry target-topic capacity-bridge proxy is associated with later-cohort persistence after conditioning on the prior-collaborator outcome-availability proxy. | Untested and observational. | Four-state signal/capacity-proxy coding, pre-entry network definition, multiple outcomes, matched risk sets, and final holdout transport; a post-entry tie is not the primary comparator. | Sparse cells, collinearity, or selection adjustment prevents separation from the signal proxy. |
+| Adaptive NABM adds scientific value beyond simpler models. | Untested. | Frozen comparison against fixed/logistic hazard, fixed-rule ABM, and explicit adaptive baseline using log score, Brier score, calibration, and macro timing. | A simpler model matches holdout prediction or intervention ordering. |
+| Within the registered simulation, disclosure delay, modeled information-propagation speed, or structural support changes a robust phase boundary. | Untested and model-based. | Shared latent outcomes, orthogonalized channels, explicit delay-by-diffusion-speed manipulation, paired shocks, uncertainty analysis, and stable held-out intervention ordering. | Policy ranking changes across plausible calibration, measurement, seed, or architecture choices. |
+
+H3 is the single confirmatory primary at family-wise alpha 0.05. Only after H3
+and all registered equivalence controls pass may H1, H2, and H4 enter their
+three-hypothesis Holm family. The episode-level `R` result is secondary and
+cannot rescue H3. The G4 transport test is domain-and-author-cold; an
+author-warm or in-domain result cannot replace it. Any placebo, multiplicity,
+atomic-split, or cold-holdout failure triggers the stop boundary in the table
+rather than a post hoc field, endpoint, or model substitution.
 
 ## Secondary or Deferred Claims
 

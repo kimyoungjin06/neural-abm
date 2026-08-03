@@ -1,0 +1,97 @@
+schema_version: pivot_feedback_gate_state.v25
+label: pivot_feedback_gate_state_v25
+mode: ADDITIVE_RANK5_LOCAL_ROUTING_CLOSEOUT_TERMINAL_UNRESOLVED_DISPOSITION_AUTHORIZATION
+status: VALID_MEDICINE_RANK5_UNRESOLVED_VERIFIED_TERMINAL_FRONTIER_V6_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v24.yaml
+  sha256: dd8b812f16a2f5aeaa84a0bac1daeb15fdeed7214b7eeafec404addb89bfc467
+  required_schema_version: pivot_feedback_gate_state.v24
+  required_status: VALID_EXACT_T10151_RANK5_SAMPLE_VERIFIED_ZERO_COST_LOCAL_ROUTING_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  mutation_allowed: false
+
+rank5_local_routing_evidence:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_t10151_rank5_local_routing_v1.yaml
+    sha256: 1dfa01edbd56391b6aafd2eff25f890358a846108e8f017611c97745f4ce47ec
+    required_schema_version: pivot_feedback_d0_t10151_rank5_local_routing_config.v1
+    required_status: FROZEN_T10151_RANK5_LOCAL_ROUTING_DRY_RUN_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_t10151_rank5_local_routing_v1.py
+    sha256: e1d1963d6dcfbb81e26b84b343620df43bd4045e539d5cafbd14f711a74eaf84
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_t10151_rank5_local_routing_v1.py
+    sha256: b228a639d4b4253a295d700873691a11e350452f1a4583aab662a528099299e8
+    mutation_allowed: false
+  operator_local:
+    root_basename: pivot-feedback-d0-t10151-rank5-local-routing-v1-20260729
+    candidate_basename: t10151_rank5_candidate_rule_v2_dry_run.parquet
+    candidate_sha256: b1ef2f91f073ebff3ed941f2d37b4265f65991707417e6ab04fee0ab695eb877
+    routes_basename: t10151_rank5_local_title_routes.csv
+    routes_sha256: 3f6fdd3578f4fe6022c3e160ce4759d231ce05c41420b659258bb161ce47b126
+    receipt_basename: t10151_rank5_local_routing.outputs.json
+    receipt_sha256: d5aacf69a8a045601b756442f59256e2eb420770b1ce1adb74fe67c304825952
+    receipt_status: PASS_ZERO_COST_T10151_RANK5_LOCAL_ROUTING_AND_RULE_V2_DRY_RUN
+    verification_basename: pivot-feedback-d0-t10151-rank5-local-routing-v1-20260729.verification-v1.json
+    verification_sha256: 9d86c649ddee93be978dccb5401d07ccb8cfccd5830dd856f5490c61e8e97e15
+    verification_status: PASS_INDEPENDENT_T10151_RANK5_LOCAL_ROUTING_AND_RULE_V2_DRY_RUN
+
+verified_rank5_result:
+  field_id: 27
+  field_candidate_rank: 5
+  topic_id: 10151
+  entry_year: 1993
+  recent_title_rows: 64
+  recent_accept_rows: 27
+  recent_reject_rows: 12
+  recent_ambiguous_rows: 25
+  recent_opaque_quarantine_rows: 0
+  candidate_rule_v2_branch: CONTENT_UNRESOLVED
+  candidate_rule_v2_state: WOULD_CONTENT_UNRESOLVED
+  production_content_state_to_freeze: CONTENT_UNRESOLVED
+  production_disposition_reason: CONSERVATIVE_RECENT_EVIDENCE_NOT_DECISIVE
+  api_requests_created: 0
+
+authorized_successor:
+  cumulative_production_dispositions: 8
+  rank5_content_state: CONTENT_UNRESOLVED
+  adaptive_frontier_version: v6
+  terminal_certificate_state: BLOCKED_REQUIRED_RANK5_CONTENT_UNRESOLVED
+  computer_science_field_certificate_issued: true
+  medicine_field_certificate_issued: false
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  no_further_candidate_evaluation_can_remove_earlier_unresolved_blocker: true
+
+authorization:
+  d0_rank5_local_routing: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_rank5_production_content_disposition: AUTHORIZED_CONTENT_UNRESOLVED_ONLY
+  d0_cumulative_eight_production_dispositions: AUTHORIZED
+  d0_adaptive_frontier_v6_terminal_materialization: AUTHORIZED
+  d0_terminal_certificate_status_materialization: AUTHORIZED_BLOCKED_ONLY
+  d0_new_candidate_evaluation: NOT_AUTHORIZED
+  d0_topic_card_amendment: NOT_AUTHORIZED
+  d0_new_title_extraction: NOT_AUTHORIZED
+  d0_raw_openalex_title_scan: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_exception_submission: NOT_AUTHORIZED
+  d0_selection_certificate: NOT_AUTHORIZED_REQUIRED_CONTENT_UNRESOLVED
+  d0_deterministic_reselection: NOT_AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This additive successor authorizes freezing only the independently verified
+  rank-5 CONTENT_UNRESOLVED disposition, the cumulative eight-disposition
+  table, and an explicit terminal frontier-v6 certificate-blocked status. The
+  earlier unresolved required row blocks Medicine and global certification;
+  evaluating later candidates cannot remove that blocker. It does not
+  authorize a new candidate, card amendment, title extraction, API request,
+  certificate, reselection, outcomes, fitting, G4, semantic truth, historical
+  topic validation, or scientific effects.

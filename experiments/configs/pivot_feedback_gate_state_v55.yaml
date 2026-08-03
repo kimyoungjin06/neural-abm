@@ -1,0 +1,153 @@
+schema_version: pivot_feedback_gate_state.v55
+label: pivot_feedback_gate_state_v55
+mode: ADDITIVE_CLOSED_FIXTURE_SEAL_TOOLING_VALIDATED_PRODUCTION_PREFLIGHT_PENDING
+status: VALID_HOLDOUT_SEAL_TOOLING_CLOSED_FIXTURE_PRODUCTION_NOT_RUN_OPERATOR_PREFLIGHT_REQUIRED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v54.yaml
+  sha256: 243145fadeee3586a141dcd5e9b0d34af1d87042b4586f3613bc3ea8d30768c8
+  required_schema_version: pivot_feedback_gate_state.v54
+  required_status: VALID_HOLDOUT_SEAL_CONTRACT_COMPLETE_G0_NOT_READY_SEAL_CREATION_ONLY_AUTHORIZED
+  required_fields:
+    gate_state.D0.complete: true
+    gate_state.G0.complete: false
+    authorization.holdout_seal_creator_and_receipt_implementation: AUTHORIZED_EXACT_CONTRACT_ONLY
+    authorization.holdout_seal_creation_or_receipt_issuance: AUTHORIZED_CONDITIONAL_EXPLICIT_ALLOWLIST_AND_PREFLIGHT
+    authorization.holdout_seal_opening: NOT_AUTHORIZED
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+verified_holdout_seal_tooling:
+  creator:
+    relative_path: scripts/create_pivot_feedback_holdout_access_seal_v1.py
+    sha256: e65d8fa3a3c85d6f1c87564dab586fcda0ed163cf4455426caff7e773140cf76
+  independent_verifier:
+    relative_path: scripts/verify_pivot_feedback_holdout_access_seal_receipt_v1.py
+    sha256: f42563e6852e4624938dcc70ccd7da7d847c8d7528c01ca9aa51833d568aa2c5
+  research_note:
+    relative_path: docs/research/pivot-feedback-holdout-seal-tooling-v1.md
+    sha256: 8ec4c668d7d0ecb6ef88aae912ea795f9477203002d18a5eeec8d2937892054d
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_holdout_seal_tooling_closed_fixture_20260731.summary.json
+    sha256: 8907eed96d0448e795c503b76bb31eafb4ef610dc1ccf986a73cdb016f5756b7
+    required_schema_version: pivot_feedback_holdout_seal_tooling_closed_fixture_summary.v1
+    required_status: PASS_CLOSED_FIXTURE_HOLDOUT_SEAL_TOOLING_PRODUCTION_NOT_RUN
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_holdout_seal_tooling_closed_fixture_20260731.summary.md
+    sha256: 335ff98aa8ab85c2a1df4ab94af815f8f83f69452f2d28b0941f03d5f42b2904
+  closed_fixture_result:
+    test_count: 10
+    artifact_count: 2
+    artifact_bytes_total: 39
+    creator_is_create_only: true
+    verifier_is_read_only: true
+    row_data_libraries_imported: []
+    manifest_finalized: true
+    receipt_written_last: true
+    independent_rehash_passed: true
+    operator_parquet_files_parsed: 0
+    confirmatory_or_holdout_rows_read: 0
+    fail_closed_check_count: 9
+  production_state:
+    operator_preflight_present: false
+    production_artifact_paths_enumerated: 0
+    production_artifact_bytes_hashed: 0
+    production_manifest_written: false
+    production_seal_created: false
+    production_receipt_written: false
+    production_independent_verification_run: false
+    confirmatory_or_holdout_rows_read: 0
+    pass_g0: false
+    model_fitted: false
+    g4_open: false
+
+tooling_decision:
+  status: COMPLETE_CLOSED_FIXTURE_ONLY
+  production_status: NOT_RUN_MISSING_OPERATOR_PREFLIGHT
+  creator_ready_for_explicit_allowlist: true
+  independent_verifier_ready: true
+  production_seal_created: false
+  production_receipt_verified: false
+  g0_freeze_ready: false
+  next_workstream: HOLDOUT_ACCESS_SEAL_OPERATOR_PREFLIGHT_AND_EXECUTION
+
+authorized_operator_preflight_scope:
+  mode: OPERATOR_LOCAL_EXPLICIT_PATH_SIZE_SHA256_ALLOWLIST_NO_ROW_PARSING
+  required_schema_version: pivot_feedback_holdout_access_seal_preflight.v1
+  required_status: PASS_EXPLICIT_ALLOWLIST_HASHES_BOUND_ZERO_PRIOR_OPEN_EVENTS
+  must_bind_gate_v54_byte_for_byte: true
+  must_bind_holdout_contract_byte_for_byte: true
+  must_bind_g0_v2_byte_for_byte: true
+  must_bind_prerequisite_closure_plan_byte_for_byte: true
+  must_use_sorted_unique_canonical_relative_paths: true
+  each_entry_requires_expected_byte_size_and_sha256: true
+  must_attest_explicit_artifact_set_complete: true
+  must_attest_paths_and_hashes_created_under_v54_authorization: true
+  must_attest_private_access_controlled_source_root: true
+  must_attest_zero_row_parsing_or_analysis: true
+  must_attest_zero_prior_open_events: true
+  must_attest_zero_confirmatory_or_holdout_rows_read: true
+  production_execution_requires_preflight_file: true
+  may_implicitly_discover_artifacts: false
+  may_use_wildcards_or_recursive_directory_inputs: false
+  may_parse_or_analyze_holdout_rows: false
+  may_open_holdout_seal: false
+  may_fit_or_score_a_model: false
+  may_open_g4: false
+
+gate_state:
+  D0:
+    state: COMPLETE_CORE_ENTRY_AND_PERSISTENCE_MEASUREMENT_CALIBRATION_OPTIONAL_PEER_SUCCESS_DEFERRED
+    complete: true
+  G0:
+    state: NOT_READY_SEAL_TOOLING_VALIDATED_PRODUCTION_PREFLIGHT_AND_SEAL_PENDING
+    complete: false
+    completed_components:
+      - G0_G_MINUS_1A_BINDING_RECONCILIATION
+      - G0_V2_BINDING_ONLY_SUCCESSOR
+      - HOLDOUT_ACCESS_SEAL_CONTRACT
+      - HOLDOUT_ACCESS_SEAL_CONTRACT_INDEPENDENT_VALIDATION
+      - HOLDOUT_ACCESS_SEAL_TOOLING_CLOSED_FIXTURE_VALIDATION
+    next_components:
+      - HOLDOUT_ACCESS_SEAL_OPERATOR_PREFLIGHT
+      - HOLDOUT_ACCESS_SEAL_CREATION_AND_RECEIPT_ISSUANCE
+      - HOLDOUT_ACCESS_SEAL_RECEIPT_INDEPENDENT_VALIDATION
+    blocked_components:
+      - HOLDOUT_SEAL_OPENING
+      - G0_QUANTITATIVE_CHOICE_COMPLETION
+      - G0_REQUIRED_SECTION_COMPLETION
+      - G0_MEASUREMENT_FREEZE_SEAL
+      - CONFIRMATORY_OR_HOLDOUT_ACCESS
+      - MODEL_FITTING
+      - G4
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  holdout_access_seal_contract: COMPLETE_INDEPENDENTLY_VALIDATED
+  holdout_seal_creator_and_verifier: COMPLETE_CLOSED_FIXTURE_ONLY
+  operator_preflight_authoring: AUTHORIZED_EXACT_V54_CONTRACT_ONLY
+  production_seal_creation_or_receipt_issuance: CONDITIONAL_NOT_RUN_MISSING_OPERATOR_PREFLIGHT
+  production_receipt_independent_verification: NOT_RUN_NO_PRODUCTION_RECEIPT
+  holdout_seal_opening: NOT_AUTHORIZED
+  confirmatory_or_holdout_row_read: NOT_AUTHORIZED
+  g0_quantitative_choice_resolution_beyond_d0: NOT_AUTHORIZED
+  g0_required_section_completion: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The create-only seal tool and independent read-only verifier pass a closed
+  synthetic fixture and fail-closed mutation tests. No production preflight
+  was supplied, so no production path or byte was enumerated or hashed and no
+  production manifest, seal, receipt, or verification result exists. This
+  gate authorizes only operator-local authoring of the exact explicit
+  path-size-SHA256 preflight required by v54. It does not authorize implicit
+  discovery, row parsing, seal opening, passing G0, model fitting, opening G4,
+  asserting causality, or establishing a scientific effect.

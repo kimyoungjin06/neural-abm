@@ -1,0 +1,186 @@
+schema_version: pivot_feedback_d0_certified_predecision_author_measurement_config.v1
+label: pivot_feedback_d0_certified_predecision_author_measurement_v1
+mode: OUTCOME_BLIND_EXACT_FOUR_MEMBERSHIP_REGISTRATION_AND_VERIFIED_COMPONENT_JOIN
+status_before_execution: AUTHORIZED_BY_GATE_STATE_V40
+
+repository_bindings:
+  gate_state:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v40.yaml
+    sha256: 4dfbb797f321da618a7dfdf27cb8ebd7566c973d5e215bca9713b975c7977e77
+    required_schema_version: pivot_feedback_gate_state.v40
+    required_status: VALID_EXACT_FOUR_RAW_AUTHORSHIP_IDENTITY_AFFILIATION_INDEPENDENTLY_VERIFIED_MEMBERSHIP_REGISTRATION_TEMPORAL_AUDIT_AUTHORIZED
+    required_fields:
+      authorization.d0_author_membership_rule_registration: AUTHORIZED_OUTCOME_BLIND_NO_THRESHOLD_TUNING
+      authorization.d0_consolidated_predecision_join_and_temporal_audit: AUTHORIZED_EXACT_FOUR_VERIFIED_COMPONENTS_ONLY
+      authorization.d0_measurement_completeness_decision: PAUSED_UNTIL_CONSOLIDATED_TEMPORAL_AUDIT_INDEPENDENTLY_VERIFIED
+      authorization.d0_peer_visible_success: NOT_AUTHORIZED
+      authorization.d0_production_pivot_classification: NOT_AUTHORIZED
+      authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+      authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+
+verified_operator_components:
+  author_opportunity:
+    root_basename: pivot-feedback-d0-certified-author-opportunity-rebuild-v1-20260730
+    receipt_basename: certified_author_opportunity_rebuild.outputs.json
+    receipt_sha256: 1cc0a55dfa5a5bdae14963f876ff81e78e9e69fbe10e6aa7a5ac82872d50445d
+    receipt_schema_version: pivot_feedback_d0_certified_author_opportunity_rebuild_outputs.v1
+    required_status: PASS_EXACT_FOUR_OUTCOME_BLIND_MEASUREMENT_ABI_AUTHOR_OPPORTUNITY_REBUILD
+    verification_basename: pivot-feedback-d0-certified-author-opportunity-rebuild-v1-20260730.verification-v1.json
+    verification_sha256: d5a8f7dd983e0909dcce7cb413e5b2e69be65a313e51a5e8cda47dcb6b6116c3
+    verification_status: PASS_INDEPENDENT_EXACT_FOUR_OUTCOME_BLIND_MEASUREMENT_ABI_AUTHOR_OPPORTUNITY_REBUILD
+    artifact_basename: certified_pre_entry_author_opportunity_base.parquet
+    artifact_sha256: cc6096389e25b456dec1ff6144a50e2dd0fff7ea48b77e5957757b8689ba41ad
+    artifact_schema_version: pivot_feedback_d0_certified_pre_entry_author_opportunity_base.v1
+    rows: 3256271
+  leaveout_prior_peer:
+    root_basename: pivot-feedback-d0-certified-leaveout-prior-peer-v1-20260730
+    receipt_basename: certified_leaveout_prior_peer.outputs.json
+    receipt_sha256: e3277e0f34bda191325a0a15ad09fe38cae0c85bd9d092251e39997d73b8cf3d
+    receipt_schema_version: pivot_feedback_d0_certified_leaveout_prior_peer_outputs.v1
+    required_status: PASS_EXACT_FOUR_OUTCOME_BLIND_INCUMBENT_FOCAL_AND_PRIOR_TARGET_PEER_LEAVEOUT
+    verification_basename: pivot-feedback-d0-certified-leaveout-prior-peer-v1-20260730.verification-v1.json
+    verification_sha256: 078109f7f2b13c830102dbe4dd6e361bea2910b4ee1299a1e530c8e21b6468e8
+    verification_status: PASS_INDEPENDENT_EXACT_FOUR_OUTCOME_BLIND_INCUMBENT_FOCAL_AND_PRIOR_TARGET_PEER_LEAVEOUT
+    artifact_basename: author_leaveout_prior_peer_base.parquet
+    artifact_sha256: 72dcda05d1b7911fbcc01e8441c3c8690569675ef907d5a3c61a43a211cccff4
+    artifact_schema_version: pivot_feedback_d0_certified_author_leaveout_prior_peer_base.v1
+    rows: 3256271
+  identity_affiliation:
+    root_basename: pivot-feedback-d0-certified-raw-authorship-identity-affiliation-v1-20260730
+    receipt_basename: raw_authorship_identity_affiliation.outputs.json
+    receipt_sha256: 70ab9b18293377dcf72b2b9b2938e91f0285d6e6ebc4c41182d7e6750b1218d4
+    receipt_schema_version: pivot_feedback_d0_certified_raw_authorship_identity_affiliation_outputs.v1
+    required_status: PASS_EXACT_FOUR_RAW_AUTHORSHIP_ORCID_SENSITIVITY_AND_WORK_TIME_INSTITUTION_PROXY
+    verification_basename: pivot-feedback-d0-certified-raw-authorship-identity-affiliation-v1-20260730.verification-v1.json
+    verification_sha256: 97a27c1f4f2534a83db6056fd4b8e863d1e5b987df3b118c260d04cdb792c9ae
+    verification_status: PASS_INDEPENDENT_EXACT_FOUR_RAW_AUTHORSHIP_ORCID_SENSITIVITY_AND_WORK_TIME_INSTITUTION_PROXY
+    artifact_basename: candidate_identity_affiliation_base.parquet
+    artifact_sha256: 54ba2e910b0b7f8670bf0af72cd7bd784c560f2da6bdc797af4f07d3b546f923
+    artifact_schema_version: pivot_feedback_d0_certified_candidate_identity_affiliation_base.v1
+    rows: 3256271
+
+join_contract:
+  exact_key_columns:
+    - certified_episode_index
+    - field_id
+    - topic_id
+    - entry_year
+    - author_numeric_id
+  require_unique_key_in_every_component: true
+  require_exact_bidirectional_key_equality: true
+  require_identity_affiliation_peer_counts_equal_leaveout_peer_counts: true
+  required_rows: 3256271
+  exact_episode_rows:
+    - [1, 17, 14430, 2003]
+    - [2, 17, 10579, 2012]
+    - [3, 27, 10151, 1993]
+    - [4, 27, 12421, 1953]
+
+registered_author_membership:
+  rule_id: EXACT_VERIFIED_AUTHOR_OPPORTUNITY_BASE_V1
+  unit: CURRENT_SNAPSHOT_OPENALEX_AUTHOR_TOKEN_X_CERTIFIED_EPISODE
+  rule: >-
+    Retain every row in the independently verified exact-four author-opportunity
+    base, whose upstream ABI already requires at least one eligible focal-field
+    work in t-3 through t-1.
+  upstream_structural_predicate:
+    column: portfolio_window_focal_field_work_count_all
+    operator: GREATER_THAN_OR_EQUAL_TO
+    value: 1
+  registered_measurement_member_for_every_retained_row: true
+  single_minimum_history_threshold_selected: false
+  threshold_specific_membership_flags_materialized: false
+  continuous_history_counts_retained: true
+  graph_team_cap_profiles_retained_nonranked: [10, 50, 100]
+  graph_team_cap_selected: false
+  all_team_history_profile_role: STRUCTURAL_MEMBERSHIP_AND_SENSITIVITY_ONLY
+  final_candidate_eligibility_established: false
+
+temporal_availability_contract:
+  PREDECISION_T_MINUS_1:
+    role: PREDECISION_MEASUREMENT
+    latest_allowed_work_year: ENTRY_YEAR_MINUS_ONE
+    primary_model_input_authorized_now: false
+  CURRENT_SNAPSHOT_SENSITIVITY:
+    role: SENSITIVITY_ONLY_NOT_HISTORICAL_OBSERVABILITY
+    primary_model_input_authorized_now: false
+  CURRENT_SNAPSHOT_WORK_TIME_PROXY:
+    role: SECONDARY_PROXY_WITH_EXPLICIT_MISSINGNESS
+    latest_allowed_underlying_shared_work_year: ENTRY_YEAR_MINUS_ONE
+    primary_model_input_authorized_now: false
+  IDENTIFIER_OPERATOR_LOCAL:
+    role: JOIN_KEY_PRIVATE_OPERATOR_LOCAL
+    primary_model_input_authorized_now: false
+  REGISTERED_MEMBERSHIP:
+    role: OUTCOME_BLIND_STRUCTURAL_MEMBERSHIP
+    primary_model_input_authorized_now: false
+  column_family_rules:
+    identity_keys:
+      availability: IDENTIFIER_OPERATOR_LOCAL
+    author_opportunity_and_history:
+      availability: PREDECISION_T_MINUS_1
+      retrospective_current_snapshot_topic_annotation: true
+    incumbent_attention_leaveout_and_prior_peer:
+      availability: PREDECISION_T_MINUS_1
+      prior_collaboration_window: T_MINUS_5_THROUGH_T_MINUS_1
+      retrospective_current_snapshot_topic_annotation: true
+    orcid_support_and_stability:
+      availability: CURRENT_SNAPSHOT_SENSITIVITY
+      historical_orcid_ownership_established: false
+      natural_person_identity_established: false
+    institution_comparability_and_same_affiliation:
+      availability: CURRENT_SNAPSHOT_WORK_TIME_PROXY
+      current_snapshot_institution_annotation: true
+      historical_affiliation_truth_established: false
+      missingness_explicit: true
+    registered_measurement_member:
+      availability: REGISTERED_MEMBERSHIP
+
+forbidden_inputs_and_outputs:
+  entry_year_target_works_read: false
+  post_entry_target_works_read: false
+  persistence_rows_read: false
+  realized_citation_rows_read: false
+  peer_visible_success_computed: false
+  entry_effect_size: false
+  persistence_effect_size: false
+  predictive_score: false
+  threshold_tuning: false
+  team_cap_selection: false
+  final_candidate_eligibility: false
+  production_pivot_classification: false
+  model_fitting: false
+  g4_rows_read: false
+  api_requests_created: false
+
+output_contract:
+  root_basename: pivot-feedback-d0-certified-predecision-author-measurement-v1-20260731
+  report_schema_version: pivot_feedback_d0_certified_predecision_author_measurement_report.v1
+  receipt_schema_version: pivot_feedback_d0_certified_predecision_author_measurement_outputs.v1
+  measurement_schema_version: pivot_feedback_d0_certified_predecision_author_measurement.v1
+  registry_schema_version: pivot_feedback_d0_column_availability_registry.v1
+  passing_status: PASS_EXACT_FOUR_OUTCOME_BLIND_AUTHOR_MEMBERSHIP_AND_CONSOLIDATED_PREDECISION_JOIN
+  output_directory_must_be_new: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  receipt_written_last: true
+  raw_numeric_ids_repository_forbidden: true
+  independent_temporal_verification_required: true
+  measurement_completeness_authorized_after_build_alone: false
+  production_pivot_classification_authorized: false
+  discovery_outcome_opening_authorized: false
+  model_fitting_authorized: false
+  g4_open: false
+  gpu_used: false
+
+claim_boundary: >-
+  A pass registers the complete independently verified exact-four
+  author-opportunity base as an outcome-blind measurement population and joins
+  only already verified predecision, current-snapshot sensitivity, and
+  work-time affiliation-proxy components. It selects no minimum-history
+  threshold or graph cap, does not establish final candidate eligibility,
+  natural persons, historical ORCID or affiliation truth, visible success,
+  researcher pivots, entry or persistence outcomes, an association, a causal
+  mechanism, G0, G4, or a scientific effect.

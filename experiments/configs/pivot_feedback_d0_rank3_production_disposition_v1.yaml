@@ -1,0 +1,132 @@
+schema_version: pivot_feedback_d0_rank3_production_disposition_config.v1
+label: pivot_feedback_d0_rank3_production_disposition_v1
+mode: FREEZE_RANK3_CONTENT_FAIL_CUMULATIVE_SIX_DISPOSITIONS_FRONTIER_V4
+status: FROZEN_RANK3_PRODUCTION_CONTENT_FAIL_AND_FRONTIER_V4_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v20.yaml
+  sha256: f6400d3ce6d7e58798ca4ec066bce7cb1009cf1b6a168fb17c48e838dede0915
+  required_schema_version: pivot_feedback_gate_state.v20
+  required_status: VALID_MEDICINE_RANK3_INDEXING_FAIL_VERIFIED_PRODUCTION_DISPOSITION_AND_FRONTIER_V4_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  required_fields:
+    authorization.d0_rank3_production_content_disposition: AUTHORIZED
+    authorization.d0_cumulative_six_production_dispositions: AUTHORIZED
+    authorization.d0_adaptive_frontier_v4_regeneration: AUTHORIZED
+    authorization.d0_new_api_request_creation: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+frozen_inputs:
+  production_v2:
+    root_basename: pivot-feedback-d0-production-candidate-rule-v2-20260729
+    dispositions_basename: production_candidate_dispositions_v2.parquet
+    dispositions_sha256: 948edbb2309999ef0e849f6d6df64f869abe22eb659045d685ac5667f38e8f5f
+    disposition_rows: 5
+    frontier_basename: adaptive_candidate_frontier_v3.parquet
+    frontier_sha256: 66267452cb054e0370f08c638e2588e3d1d672c277bd23502e9f43a12ef461ba
+    frontier_rows: 51
+    receipt_basename: production_candidate_rule_v2.outputs.json
+    receipt_sha256: 42aed924e5747c935ef6193d60e922dba018e405b2b20519fa7bcbbd853b0a8e
+  rank3_dry_run:
+    root_basename: pivot-feedback-d0-t10543-rank3-local-routing-v1-20260729
+    candidate_basename: t10543_rank3_candidate_rule_v2_dry_run.parquet
+    candidate_sha256: 730f2d241926bc0f8a370c8b55ae814575db04f2d0a36e3dabace746060864b7
+    candidate_rows: 1
+    receipt_basename: t10543_rank3_local_routing.outputs.json
+    receipt_sha256: dba3621dc8acb1c48a22013b9909de372f2ffb8b2de97321610e2bd0593bdbb5
+    verification_basename: pivot-feedback-d0-t10543-rank3-local-routing-v1-20260729.verification-v1.json
+    verification_sha256: 2c85d6c7b4650dcedebd22e45ec6602172de2f149b62db497f32a95fef231555
+
+rank3_production_disposition:
+  field_id: 27
+  field_candidate_rank: 3
+  topic_id: 10543
+  entry_year: 1986
+  content_state: CONTENT_FAIL
+  disposition_reason: JOINT_SCORE_DROP_AND_SOURCE_CONCENTRATION_SHIFT
+  source_rule_state: WOULD_CONTENT_FAIL_INDEXING_ANOMALY
+  production_rule_version: candidate_rule_v2
+  human_review_used: false
+  api_labels_used_as_ground_truth: false
+
+frontier_v4:
+  fields:
+    17:
+      frontier_rows: 45
+      content_pass_rows: 2
+      content_fail_rows: 0
+      content_unresolved_rows: 0
+      not_evaluated_rows: 43
+      field_selection_certificate_issued: true
+      selected_candidate_ranks: [1, 45]
+    27:
+      frontier_rows: 6
+      content_pass_rows: 1
+      content_fail_rows: 3
+      content_unresolved_rows: 1
+      not_evaluated_rows: 1
+      field_selection_certificate_issued: false
+      required_next_candidate_rank: 4
+      required_next_topic_id: 12505
+      required_next_entry_year: 1993
+      required_next_subfield_id: 2730
+      later_compatible_frozen_pass_rank_under_rank_4_pass_branch: 6
+  total_frontier_rows: 51
+  total_content_pass_rows: 3
+  total_content_fail_rows: 3
+  total_content_unresolved_rows: 1
+  total_not_evaluated_rows: 44
+  field_certificates_issued: 1
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+
+targeted_successor:
+  field_id: 27
+  field_candidate_rank: 4
+  topic_id: 12505
+  topic_name: Peptidase Inhibition and Analysis
+  entry_year: 1993
+  subfield_id: 2730
+  rows_per_window: 32
+  total_rows: 96
+  windows:
+    0: publication_year <= 1986
+    1: 1987 <= publication_year <= 1989
+    2: 1990 <= publication_year <= 1992
+  existing_topic_card_may_be_reused: true
+
+output_contract:
+  root_basename: pivot-feedback-d0-rank3-production-disposition-v1-20260729
+  dispositions_basename: cumulative_production_candidate_dispositions_v3.parquet
+  frontier_basename: adaptive_candidate_frontier_v4.parquet
+  report_basename: RANK3_PRODUCTION_DISPOSITION_AND_FRONTIER_V4.md
+  receipt_basename: rank3_production_disposition.outputs.json
+  receipt_schema_version: pivot_feedback_d0_rank3_production_disposition_outputs.v1
+  status: PASS_RANK3_CONTENT_FAIL_FROZEN_FRONTIER_V4_RANK4_REQUIRED
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+  receipt_written_last: true
+
+authorization:
+  rank3_production_content_disposition: AUTHORIZED
+  cumulative_six_production_dispositions: AUTHORIZED
+  adaptive_frontier_v4_materialization: AUTHORIZED
+  rank4_targeted_sample_successor_contract: AUTHORIZED
+  rank4_targeted_sample_execution: NOT_AUTHORIZED_UNTIL_V21_GATE
+  new_title_extraction: NOT_AUTHORIZED
+  raw_title_scan: NOT_AUTHORIZED
+  new_api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+  global_selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This contract freezes the rank-3 CONTENT_FAIL disposition, materializes the
+  cumulative six production dispositions, and regenerates frontier v4. Rank 4
+  becomes the next required Medicine candidate, so no global certificate is
+  issued. No new title, API request, reselection, outcome, fit, G4, semantic
+  truth, or scientific effect is authorized.

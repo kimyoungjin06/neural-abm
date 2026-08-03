@@ -1,0 +1,94 @@
+schema_version: pivot_feedback_gate_state.v36
+label: pivot_feedback_gate_state_v36
+mode: ADDITIVE_VERIFIED_GLOBAL_SELECTION_CERTIFICATE_EXACT_RESELECTION_SUCCESSOR
+status: VALID_GLOBAL_SELECTION_CERTIFICATE_EXACT_DETERMINISTIC_RESELECTION_SUCCESSOR_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v35.yaml
+  sha256: 51e365284611a20504c31cd30df1d748a44688243e1ef6dd16bbc9e66d6c4619
+  required_schema_version: pivot_feedback_gate_state.v35
+  required_status: VALID_RANK5_POST_DIAGNOSTIC_CONTENT_PASS_PRODUCTION_AND_CERTIFICATES_AUTHORIZED
+  mutation_allowed: false
+
+verified_closeout:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_rank5_post_diagnostic_certificate_closeout_v1.yaml
+    sha256: c901ad8ce07d6ad8747d549b14fa65e9d69e096896193e5780d8685ea40bd3a5
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_rank5_post_diagnostic_certificate_closeout_v1.py
+    sha256: 64162785a37b4ebfd00f096cca012647540b458878ab752d2bab2851f5a7d67d
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_rank5_post_diagnostic_certificate_closeout_v1.py
+    sha256: 33a7a57d25a27d705c8e9effc822be56c9afac3538a6a725f7e7f037cbad8ebd
+  operator_local:
+    root_basename: pivot-feedback-d0-rank5-post-diagnostic-certificate-closeout-v1-20260730
+    dispositions_basename: cumulative_production_candidate_dispositions_v9.parquet
+    dispositions_sha256: 04d11b0bc6f84cefbbbd5f931bd53ceb9074e1f449a2b1b06bd76ac28d56ef48
+    frontier_basename: adaptive_candidate_frontier_v10.parquet
+    frontier_sha256: 2b3ed62142e509be3e3be743e20043fae8de068e24d88873af29b3f2e4a9c28d
+    certificate_basename: terminal_selection_certificate_status_v5.json
+    certificate_sha256: 4c19810ceaff4dba756541688ebbd52ae2cdb933404d9ff38ff5d247c1060073
+    receipt_basename: rank5_post_diagnostic_certificate_closeout.outputs.json
+    receipt_sha256: 7a37c840f37ac29040a1a40414c0e20402b68061b02bdffa9a54de6bdca1f4ba
+    receipt_status: PASS_RANK5_POST_DIAGNOSTIC_CONTENT_PASS_GLOBAL_CERTIFICATES_FROZEN
+    verification_basename: pivot-feedback-d0-rank5-post-diagnostic-certificate-closeout-v1-20260730.verification-v1.json
+    verification_sha256: 394e808c7a5e902a3ef23127b67af3793fb2c9e9f8bfaff2a6a94905616ea5e0
+    verification_status: PASS_INDEPENDENT_RANK5_POST_DIAGNOSTIC_CONTENT_PASS_GLOBAL_CERTIFICATES
+  certificates:
+    computer_science_selected_candidate_ranks: [1, 45]
+    medicine_selected_candidate_ranks: [5, 6]
+    field_certificates_issued: 2
+    global_selection_certificate_issued: true
+    deterministic_reselection_executed: false
+
+exact_reselection_scope:
+  source: VERIFIED_FRONTIER_V10_AND_TERMINAL_CERTIFICATE_V5
+  episodes:
+    - field_id: 17
+      field_candidate_rank: 1
+      topic_id: 14430
+      entry_year: 2003
+      subfield_id: 1710
+    - field_id: 17
+      field_candidate_rank: 45
+      topic_id: 10579
+      entry_year: 2012
+      subfield_id: 1705
+    - field_id: 27
+      field_candidate_rank: 5
+      topic_id: 10151
+      entry_year: 1993
+      subfield_id: 2721
+    - field_id: 27
+      field_candidate_rank: 6
+      topic_id: 12421
+      entry_year: 1953
+      subfield_id: 2712
+  episode_rows: 4
+  candidate_substitution: FORBIDDEN
+  content_reinterpretation: FORBIDDEN
+  outcome_access_during_reselection: FORBIDDEN
+  deterministic_reselection_executed: false
+
+authorization:
+  d0_global_selection_certificate: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_exact_four_episode_deterministic_reselection_successor: AUTHORIZED
+  d0_reselection_independent_verification: AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED_UNTIL_RESELECTION_INDEPENDENTLY_VERIFIED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_submission: NOT_AUTHORIZED
+  d0_human_review: NOT_RUN_BY_DESIGN
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The independently verified global certificate now authorizes only a
+  deterministic successor that materializes the exact four certified episodes:
+  Computer Science ranks 1/45 and Medicine ranks 5/6. This gate does not
+  execute reselection, substitute candidates, reinterpret content evidence,
+  rebuild the author-opportunity panel, classify pivots, open outcomes, fit a
+  model, open G4, or establish a scientific effect. The rank-5 evidence remains
+  explicitly retrospective and post-diagnostic.

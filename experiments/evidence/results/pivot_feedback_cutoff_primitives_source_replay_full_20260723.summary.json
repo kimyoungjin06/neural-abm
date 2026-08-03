@@ -1,0 +1,73 @@
+{
+  "schema_version": "pivot_feedback_cutoff_primitives_source_replay_full_summary.v1",
+  "status": "PASS_INDEPENDENT_FULL_SOURCE_PROJECTION_REPLAY_AND_CANONICAL_TIME_VERIFICATION_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS",
+  "scope": {
+    "full_scope": true,
+    "production_source_replay_pass": true,
+    "gpu_used": false,
+    "source_files": 493,
+    "source_bytes": 150062449219,
+    "source_content_rehashed_in_this_run": false
+  },
+  "source_accounting": {
+    "raw_rows": 492293207,
+    "quarantined_w_minus_1_rows": 1,
+    "retained_rows": 492293206,
+    "content_checkpoint_count_verified": 493,
+    "current_source_stat_exact_for_every_file": true,
+    "authors_count_minimum": 0,
+    "authors_count_maximum": 5000,
+    "is_retracted_null_rows": 1838440,
+    "primary_topic_hierarchy_null_rows": 138147959,
+    "work_type_count": 24
+  },
+  "row_level_verification": {
+    "partition_count": 4096,
+    "rows": 492293206,
+    "projected_field_count_including_work_id": 8,
+    "all_projected_values_and_null_masks_exact": true,
+    "source_projection_record_sha256": "9a8f9b13250ab8b11aecd19b0d67b2a1dba9d4395e1d6e63da79f50f8989abf3",
+    "output_projection_record_sha256": "9a8f9b13250ab8b11aecd19b0d67b2a1dba9d4395e1d6e63da79f50f8989abf3",
+    "partition_comparison_tree_sha256": "23dab2cd3d39aeb381e977a58ac181a8ba16e88a1af5f52f38fbeb93508b9f92",
+    "canonical_time_join_replayed": true,
+    "canonical_spine_artifacts_rehashed": 4096
+  },
+  "output_verification": {
+    "artifacts_rehashed": 4101,
+    "output_tree_unchanged": true,
+    "cutoff_output_receipt_sha256": "91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e",
+    "work_metadata_tree_sha256": "a37448b4df39c00e97b540b3ac7d06de6f2e9ce12186838120d59c820aa89d77"
+  },
+  "parent_bindings": {
+    "content_receipt_sha256": "082161a29bcd8fd79fd85e0bf6814a5c7950b97b847ea08056e17eebcd369a12",
+    "canonical_receipt_sha256": "2760b3aa5c5960d9356cc30339338418ff9000ab22e9c4b94caf82f6216f9aa1"
+  },
+  "provenance": {
+    "config_relative_path": "experiments/configs/pivot_feedback_cutoff_primitives_v0.yaml",
+    "config_sha256": "bdc1365d87a56d3571559ef21fdd56d21be570a8e712081d30748361f22bf764",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_cutoff_primitives_source_replay_v2.py",
+    "verifier_sha256": "b243bb8758a4b02a0397d493567229054bf2bb60db75f97cf3504ed2820fe1fc",
+    "task_fingerprint_sha256": "c4971576da2173d6389144b8b1abdba7cceb5926a6baa486557afed892a547fc",
+    "result_fingerprint_sha256": "27234aeba68fa9baaf32c6789e0388ec09753b3f2614f63d00942caea98164ae",
+    "operator_local_report_basename": "pivot-feedback-cutoff-primitives-source-replay-v2-full-20260723.verification.json",
+    "operator_local_report_bytes": 4974,
+    "operator_local_report_sha256": "889f45167345187b520100a90fd5434feca1cda2b1137e44061c3d13cfedaefc"
+  },
+  "execution": {
+    "elapsed_seconds": 850.7263312491123,
+    "workload_class": "CPU_IO_HDD_SOURCE_TO_SSD_SPOOL_AND_FULL_ROW_COMPARE",
+    "scratch_removed_after_success": true
+  },
+  "gate_status": {
+    "cutoff_primitives_source_projection_replay": "PASS",
+    "author_entity_validity": "UNRESOLVED_CURRENT_SNAPSHOT_TOKEN_ONLY",
+    "historical_topic_observability": "UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT",
+    "historical_citation_observation_time": "UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT",
+    "final_cutoff_panel": "PENDING_G0_RESOLVED_SUCCESSOR",
+    "g_minus_1_data_readiness": "PENDING",
+    "g0_measurement_freeze": "PENDING",
+    "empirical_g1_signature": "NOT_RUN",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This pass independently replays the exact eight-column current-snapshot main-work projection and compares every retained value and null mask with every published cutoff-metadata row while revalidating canonical time and read-only output integrity. The 493 current source files are bound to the content-freeze SHA checkpoints through exact unchanged device, inode, mode, size, mtime, and ctime identities; their full bytes were not rehashed again in this run. The pass does not establish natural-person identity, historical topic or citation observability, candidate eligibility, a final analytic panel, G-1, G0, empirical G1, an NABM effect, or a scientific effect."
+}

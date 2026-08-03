@@ -1,0 +1,529 @@
+{
+  "schema_version": "pivot_feedback_g0_measurement_proxy_discovery_output.v1",
+  "status": "PASS_FROZEN_MEASUREMENT_PROXY_RULE_APPLICATION_DISCOVERY_ONLY",
+  "input_status": "SYNTHETIC_CLOSED_FIXTURE",
+  "input_sha256": "cb743ada474346e7abdc730d26b44e9955e1207189d6537dc6f33827867e18be",
+  "contract_sha256": "2e4d90a9541cd9973b8a69bf5fb34f6f35c3d1570a12a4c46b37cac77cca6b5f",
+  "attention_surge_application": {
+    "rule_id": "ROBUST_INCUMBENT_ATTENTION_ACCELERATION_MAD_V1",
+    "group_count": 2,
+    "row_count": 12,
+    "mad_zero_group_count": 1,
+    "primary_surge_count": 1,
+    "groups": [
+      {
+        "field_id": 10,
+        "decision_year": 2012,
+        "topic_count": 7,
+        "median_acceleration_score": 0.074107972154,
+        "median_absolute_deviation": 0.068992871487,
+        "mad_zero_fail_closed": false,
+        "primary_surge_count": 1
+      },
+      {
+        "field_id": 20,
+        "decision_year": 2011,
+        "topic_count": 5,
+        "median_acceleration_score": 0.0,
+        "median_absolute_deviation": 0.0,
+        "mad_zero_fail_closed": true,
+        "primary_surge_count": 0
+      }
+    ],
+    "rows": [
+      {
+        "field_id": 10,
+        "topic_id": 1001,
+        "decision_year": 2012,
+        "recent_incumbent_attention_count": 11,
+        "reference_incumbent_attention_count": 10,
+        "acceleration_score": 0.074107972154,
+        "modified_z": 0.0,
+        "primary_surge": false,
+        "sensitivity_surge_z2_5": false,
+        "sensitivity_surge_z3_5": false
+      },
+      {
+        "field_id": 10,
+        "topic_id": 1002,
+        "decision_year": 2012,
+        "recent_incumbent_attention_count": 12,
+        "reference_incumbent_attention_count": 10,
+        "acceleration_score": 0.143100843641,
+        "modified_z": 0.674489750196,
+        "primary_surge": false,
+        "sensitivity_surge_z2_5": false,
+        "sensitivity_surge_z3_5": false
+      },
+      {
+        "field_id": 10,
+        "topic_id": 1003,
+        "decision_year": 2012,
+        "recent_incumbent_attention_count": 9,
+        "reference_incumbent_attention_count": 10,
+        "acceleration_score": -0.080042707674,
+        "modified_z": -1.5070115403,
+        "primary_surge": false,
+        "sensitivity_surge_z2_5": false,
+        "sensitivity_surge_z3_5": false
+      },
+      {
+        "field_id": 10,
+        "topic_id": 1004,
+        "decision_year": 2012,
+        "recent_incumbent_attention_count": 10,
+        "reference_incumbent_attention_count": 10,
+        "acceleration_score": 0.0,
+        "modified_z": -0.724496118921,
+        "primary_surge": false,
+        "sensitivity_surge_z2_5": false,
+        "sensitivity_surge_z3_5": false
+      },
+      {
+        "field_id": 10,
+        "topic_id": 1005,
+        "decision_year": 2012,
+        "recent_incumbent_attention_count": 11,
+        "reference_incumbent_attention_count": 10,
+        "acceleration_score": 0.074107972154,
+        "modified_z": 0.0,
+        "primary_surge": false,
+        "sensitivity_surge_z2_5": false,
+        "sensitivity_surge_z3_5": false
+      },
+      {
+        "field_id": 10,
+        "topic_id": 1006,
+        "decision_year": 2012,
+        "recent_incumbent_attention_count": 12,
+        "reference_incumbent_attention_count": 10,
+        "acceleration_score": 0.143100843641,
+        "modified_z": 0.674489750196,
+        "primary_surge": false,
+        "sensitivity_surge_z2_5": false,
+        "sensitivity_surge_z3_5": false
+      },
+      {
+        "field_id": 10,
+        "topic_id": 1007,
+        "decision_year": 2012,
+        "recent_incumbent_attention_count": 100,
+        "reference_incumbent_attention_count": 10,
+        "acceleration_score": 2.069779630768,
+        "modified_z": 19.5101327062,
+        "primary_surge": true,
+        "sensitivity_surge_z2_5": true,
+        "sensitivity_surge_z3_5": true
+      },
+      {
+        "field_id": 20,
+        "topic_id": 2001,
+        "decision_year": 2011,
+        "recent_incumbent_attention_count": 5,
+        "reference_incumbent_attention_count": 5,
+        "acceleration_score": 0.0,
+        "modified_z": null,
+        "primary_surge": false,
+        "sensitivity_surge_z2_5": false,
+        "sensitivity_surge_z3_5": false
+      },
+      {
+        "field_id": 20,
+        "topic_id": 2002,
+        "decision_year": 2011,
+        "recent_incumbent_attention_count": 5,
+        "reference_incumbent_attention_count": 5,
+        "acceleration_score": 0.0,
+        "modified_z": null,
+        "primary_surge": false,
+        "sensitivity_surge_z2_5": false,
+        "sensitivity_surge_z3_5": false
+      },
+      {
+        "field_id": 20,
+        "topic_id": 2003,
+        "decision_year": 2011,
+        "recent_incumbent_attention_count": 5,
+        "reference_incumbent_attention_count": 5,
+        "acceleration_score": 0.0,
+        "modified_z": null,
+        "primary_surge": false,
+        "sensitivity_surge_z2_5": false,
+        "sensitivity_surge_z3_5": false
+      },
+      {
+        "field_id": 20,
+        "topic_id": 2004,
+        "decision_year": 2011,
+        "recent_incumbent_attention_count": 5,
+        "reference_incumbent_attention_count": 5,
+        "acceleration_score": 0.0,
+        "modified_z": null,
+        "primary_surge": false,
+        "sensitivity_surge_z2_5": false,
+        "sensitivity_surge_z3_5": false
+      },
+      {
+        "field_id": 20,
+        "topic_id": 2005,
+        "decision_year": 2011,
+        "recent_incumbent_attention_count": 50,
+        "reference_incumbent_attention_count": 5,
+        "acceleration_score": 1.890850371872,
+        "modified_z": null,
+        "primary_surge": false,
+        "sensitivity_surge_z2_5": false,
+        "sensitivity_surge_z3_5": false
+      }
+    ]
+  },
+  "public_success_application": {
+    "rule_id": "FIELD_YEAR_TOP_DECILE_AGE3_CITATION_PROXY_INCLUSIVE_TIES_V1",
+    "group_count": 3,
+    "row_count": 39,
+    "unresolved_group_count": 1,
+    "inclusive_tie_inflation_total": 1,
+    "groups": [
+      {
+        "field_id": 10,
+        "publication_year": 2008,
+        "reference_cohort_count": 10,
+        "target_count": 1,
+        "citation_cutoff_age_3": 100,
+        "public_success_count": 1,
+        "inclusive_tie_inflation_count": 0,
+        "realized_public_success_fraction": 0.1,
+        "status": "CLASSIFIED_TOP_DECILE_ANCHORED_INCLUSIVE_TIES"
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "reference_cohort_count": 20,
+        "target_count": 2,
+        "citation_cutoff_age_3": 50,
+        "public_success_count": 3,
+        "inclusive_tie_inflation_count": 1,
+        "realized_public_success_fraction": 0.15,
+        "status": "CLASSIFIED_TOP_DECILE_ANCHORED_INCLUSIVE_TIES"
+      },
+      {
+        "field_id": 30,
+        "publication_year": 2009,
+        "reference_cohort_count": 9,
+        "target_count": null,
+        "citation_cutoff_age_3": null,
+        "public_success_count": null,
+        "inclusive_tie_inflation_count": null,
+        "realized_public_success_fraction": null,
+        "status": "UNRESOLVED_INSUFFICIENT_REFERENCE_COHORT"
+      }
+    ],
+    "rows": [
+      {
+        "field_id": 10,
+        "publication_year": 2008,
+        "work_id": 1,
+        "citation_count_age_3": 100,
+        "public_success_proxy": true
+      },
+      {
+        "field_id": 10,
+        "publication_year": 2008,
+        "work_id": 2,
+        "citation_count_age_3": 9,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 10,
+        "publication_year": 2008,
+        "work_id": 3,
+        "citation_count_age_3": 8,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 10,
+        "publication_year": 2008,
+        "work_id": 4,
+        "citation_count_age_3": 7,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 10,
+        "publication_year": 2008,
+        "work_id": 5,
+        "citation_count_age_3": 6,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 10,
+        "publication_year": 2008,
+        "work_id": 6,
+        "citation_count_age_3": 5,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 10,
+        "publication_year": 2008,
+        "work_id": 7,
+        "citation_count_age_3": 4,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 10,
+        "publication_year": 2008,
+        "work_id": 8,
+        "citation_count_age_3": 3,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 10,
+        "publication_year": 2008,
+        "work_id": 9,
+        "citation_count_age_3": 2,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 10,
+        "publication_year": 2008,
+        "work_id": 10,
+        "citation_count_age_3": 1,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 101,
+        "citation_count_age_3": 100,
+        "public_success_proxy": true
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 102,
+        "citation_count_age_3": 50,
+        "public_success_proxy": true
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 103,
+        "citation_count_age_3": 50,
+        "public_success_proxy": true
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 104,
+        "citation_count_age_3": 17,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 105,
+        "citation_count_age_3": 16,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 106,
+        "citation_count_age_3": 15,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 107,
+        "citation_count_age_3": 14,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 108,
+        "citation_count_age_3": 13,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 109,
+        "citation_count_age_3": 12,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 110,
+        "citation_count_age_3": 11,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 111,
+        "citation_count_age_3": 10,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 112,
+        "citation_count_age_3": 9,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 113,
+        "citation_count_age_3": 8,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 114,
+        "citation_count_age_3": 7,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 115,
+        "citation_count_age_3": 6,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 116,
+        "citation_count_age_3": 5,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 117,
+        "citation_count_age_3": 4,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 118,
+        "citation_count_age_3": 3,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 119,
+        "citation_count_age_3": 2,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 20,
+        "publication_year": 2007,
+        "work_id": 120,
+        "citation_count_age_3": 1,
+        "public_success_proxy": false
+      },
+      {
+        "field_id": 30,
+        "publication_year": 2009,
+        "work_id": 201,
+        "citation_count_age_3": 9,
+        "public_success_proxy": null
+      },
+      {
+        "field_id": 30,
+        "publication_year": 2009,
+        "work_id": 202,
+        "citation_count_age_3": 8,
+        "public_success_proxy": null
+      },
+      {
+        "field_id": 30,
+        "publication_year": 2009,
+        "work_id": 203,
+        "citation_count_age_3": 7,
+        "public_success_proxy": null
+      },
+      {
+        "field_id": 30,
+        "publication_year": 2009,
+        "work_id": 204,
+        "citation_count_age_3": 6,
+        "public_success_proxy": null
+      },
+      {
+        "field_id": 30,
+        "publication_year": 2009,
+        "work_id": 205,
+        "citation_count_age_3": 5,
+        "public_success_proxy": null
+      },
+      {
+        "field_id": 30,
+        "publication_year": 2009,
+        "work_id": 206,
+        "citation_count_age_3": 4,
+        "public_success_proxy": null
+      },
+      {
+        "field_id": 30,
+        "publication_year": 2009,
+        "work_id": 207,
+        "citation_count_age_3": 3,
+        "public_success_proxy": null
+      },
+      {
+        "field_id": 30,
+        "publication_year": 2009,
+        "work_id": 208,
+        "citation_count_age_3": 2,
+        "public_success_proxy": null
+      },
+      {
+        "field_id": 30,
+        "publication_year": 2009,
+        "work_id": 209,
+        "citation_count_age_3": 1,
+        "public_success_proxy": null
+      }
+    ]
+  },
+  "citation_maturation_lag_years": 3,
+  "negative_control_equivalence_policy": {
+    "estimand_scale": "AVERAGE_MARGINAL_BINARY_OUTCOME_PROBABILITY_DIFFERENCE",
+    "symmetric_practical_null": [
+      -0.01,
+      0.01
+    ],
+    "equivalence_test": "TWO_ONE_SIDED_TESTS",
+    "one_sided_alpha": 0.05,
+    "equivalent_confidence_interval": "TWO_SIDED_90_PERCENT",
+    "equivalence_control_ids": [
+      "lead_attention",
+      "same_peer_unrelated_topic_success",
+      "post_decision_future_citation_success",
+      "future_tie",
+      "matched_non_surge_topic"
+    ],
+    "true_minus_placebo_control_ids": [
+      "degree_preserving_shuffled_network",
+      "matched_non_neighbor"
+    ]
+  },
+  "access_accounting": {
+    "repository_contract_files_read": 1,
+    "explicit_input_files_read": 1,
+    "operator_directories_listed_or_scanned": 0,
+    "parquet_files_opened": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "claim_boundary": "This application classifies only explicit synthetic or discovery-only aggregates under frozen policy rules. Citation availability remains a current-snapshot bibliographic-time proxy, boundary ties may inflate the realized top-decile share, and MAD-zero groups fail closed. It does not establish historical observation, researcher visibility, an empirical effect, G0 passage, a holdout seal, a model result, or G4."
+}

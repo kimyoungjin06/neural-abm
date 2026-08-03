@@ -1,0 +1,91 @@
+schema_version: pivot_feedback_gate_state.v26
+label: pivot_feedback_gate_state_v26
+mode: ADDITIVE_RANK5_API_ONLY_CROSS_PROVIDER_EXCEPTION_AUTHORIZATION
+status: VALID_RANK5_25_ROW_CROSS_PROVIDER_EXCEPTION_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v25.yaml
+  sha256: 1811fd6a7eb1ad278827d24672f1b1686f44050cf664b6e2f7f4c5b852fbfa7e
+  required_schema_version: pivot_feedback_gate_state.v25
+  required_status: VALID_MEDICINE_RANK5_UNRESOLVED_VERIFIED_TERMINAL_FRONTIER_V6_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  mutation_allowed: false
+
+frozen_rank5_inputs:
+  sample:
+    root_basename: pivot-feedback-d0-t10151-rank5-targeted-title-sample-v1-20260729
+    basename: t10151_rank5_targeted_title_sample.parquet
+    sha256: 23c06acbf465ac85d3cfba431fd994a02cd73054f38d5baad25dce0fc568d0f2
+    rows: 96
+  local_routes:
+    root_basename: pivot-feedback-d0-t10151-rank5-local-routing-v1-20260729
+    basename: t10151_rank5_local_title_routes.csv
+    sha256: 3f6fdd3578f4fe6022c3e160ce4759d231ce05c41420b659258bb161ce47b126
+    rows: 96
+    recent_window_codes: [1, 2]
+    recent_rows: 64
+    recent_accept_rows: 27
+    recent_reject_rows: 12
+    recent_api_required_rows: 25
+    recent_opaque_rows: 0
+  terminal_disposition:
+    root_basename: pivot-feedback-d0-rank5-terminal-disposition-v1-20260729
+    receipt_basename: rank5_terminal_disposition.outputs.json
+    receipt_sha256: 5378029024826816b8260376deb55f980e4f36ef4255f1d136cdae7df9f0486f
+    receipt_status: PASS_RANK5_CONTENT_UNRESOLVED_TERMINAL_CERTIFICATE_BLOCK_FROZEN
+    verification_basename: pivot-feedback-d0-rank5-terminal-disposition-v1-20260729.verification-v1.json
+    verification_sha256: 9a54f760ff0ccc613c498801eb5a6e8b6c4711a52c3cfde2d476b54d0cb17d5e
+    verification_status: PASS_INDEPENDENT_RANK5_UNRESOLVED_TERMINAL_CERTIFICATE_BLOCK
+
+frozen_exception:
+  target_field_id: 27
+  target_field_candidate_rank: 5
+  target_topic_id: 10151
+  target_entry_year: 1993
+  target_topic_name: Hepatitis B Virus Infection
+  source_route: API_REQUIRED_AMBIGUOUS
+  source_window_codes: [1, 2]
+  exact_request_rows: 25
+  providers:
+    openai:
+      model: gpt-5-mini-2025-08-07
+      request_endpoint: /v1/responses
+    claude:
+      model: claude-haiku-4-5-20251001
+      request_endpoint: /v1/messages
+  provider_calls: 2
+  maximum_authorized_total_usd: 0.10
+  human_review: NOT_RUN_BY_DESIGN
+  consensus_accept: BOTH_PROVIDERS_ON_TOPIC_AND_HIGH
+  consensus_reject: BOTH_PROVIDERS_OFF_TOPIC_AND_HIGH
+  all_other_results: REMAIN_UNRESOLVED
+  single_provider_promotion: false
+  missing_or_invalid_response_action: FAIL_CLOSED_REMAIN_CONTENT_UNRESOLVED
+  local_rule_change_allowed: false
+  topic_card_change_allowed: false
+  outcome_fields_visible: false
+
+authorization:
+  d0_rank5_api_contract_creation: AUTHORIZED_EXACT_25_ROWS
+  d0_rank5_api_request_creation: AUTHORIZED_EXACT_25_ROWS_TWO_PROVIDER_CALLS
+  d0_rank5_paid_api_exception_submission: AUTHORIZED_MAXIMUM_TOTAL_USD_0_10
+  d0_rank5_api_result_reduction: AUTHORIZED_PRECOMMITTED_CONSENSUS_ONLY
+  d0_rank5_api_result_independent_verification: REQUIRED_BEFORE_DISPOSITION
+  d0_rank5_augmented_disposition: NOT_AUTHORIZED_UNTIL_API_RESULT_VERIFIED
+  d0_selection_certificate: NOT_AUTHORIZED_UNTIL_AUGMENTED_DISPOSITION
+  d0_deterministic_reselection: NOT_AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This additive successor authorizes one outcome-blind, title-only exception:
+  exactly 25 previously sampled recent rank-5 rows, two pinned-provider calls,
+  and at most USD 0.10. Only dual-HIGH agreement may augment the local accept
+  or reject counts; every disagreement, lower confidence, missing response, or
+  invalid response remains unresolved. Human review is not part of this path.
+  No disposition, certificate, reselection, outcome access, fitting, G4,
+  semantic truth, historical topic validation, or scientific effect is
+  authorized before independent result verification and a later gate.

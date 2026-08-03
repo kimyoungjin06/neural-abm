@@ -1,0 +1,880 @@
+schema_version: openalex_g1_citation_available_at_design.v2
+label: openalex_g1_citation_available_at_v1_temporal_v3_parent_only
+
+lifecycle:
+  design_status: IMPLEMENTED_SYNTHETICALLY_PRODUCTION_NOT_RUN
+  implementation_status: IMPLEMENTED_SYNTHETICALLY
+  production_status: PRODUCTION_NOT_RUN
+  executable: true
+  execution_script: scripts/audit_openalex_citation_available_at_v2.py
+  synthetic_fixture_only: true
+  production_execution_supported: false
+  production_source_access_supported: false
+  production_result_exists: false
+  pass_result_allowed_in_design_artifact: false
+  implementation_requires_new_review: false
+  production_authorization_requires_separate_implementation_review: true
+
+source:
+  root_env: OPENALEX_DERIVED_ROOT
+  root_id: openalex_works_20260330_repairreplay_20260410_190630
+  snapshot_date: "2026-03-30"
+  lineage_id: openalex_20260225_base_plus_20260330_update_repairreplay
+  historical_content_identity: UNVERIFIED
+
+required_parent_execution_order:
+  - current_content_baseline
+  - main_temporal_validity
+  - precommit_temporal_input_mode
+  - validate_mode_conditioned_temporal_input
+
+parents:
+  current_content_baseline:
+    receipt_schema_version: openalex_g1_content_freeze_outputs.v1
+    required_status: PASS_CURRENT_CONTENT_BASELINE_COMPONENT
+    required_run_state: COMPLETE
+    required_completion_contract: REQUIRE_COMPLETE_STATE_AND_VALID_OUTPUTS_MANIFEST
+    required_full_scope: true
+    required_receipt_basename: content_freeze_audit.outputs.json
+    required_plan_sha256: 97294fe1c1fa026f664ca239ebfa9fc6dce593c847a20eb62157e38312b6725e
+    required_task_fingerprint_sha256: f915cade4ce6581832c46957a2ad0a37ceabe2296099f0faeaac56ffa035693e
+    required_file_count: 21019
+    required_source_bytes: 988404537807
+    current_state: RUN_OR_RESULT_MUST_BE_VERIFIED_AT_IMPLEMENTATION_TIME
+    bind_content_tree_sha256: true
+    bind_result_fingerprint_sha256: true
+  main_temporal_validity:
+    parent_version_policy: TEMPORAL_V3_PARENT_ONLY_NO_V1_OR_V2_FALLBACK
+    receipt_schema_version: openalex_g1_main_temporal_validity_outputs.v3
+    required_plan_schema_version: openalex_g1_main_temporal_validity_plan.v3
+    required_checkpoint_schema_version: openalex_g1_main_temporal_validity_checkpoint.v3
+    required_report_schema_version: openalex_g1_main_temporal_validity_report.v3
+    required_state_schema_version: openalex_g1_main_temporal_validity_state.v3
+    required_status: PASS_CURRENT_SNAPSHOT_MAIN_TEMPORAL_FIELD_VALIDITY_V3_WITH_EXACT_UTC_MILLISECONDS_AND_NONBLOCKING_ORDER_PROFILE
+    required_full_scope: true
+    required_receipt_basename: main_temporal_validity_audit.outputs.json
+    required_config_path: experiments/configs/openalex_g1_main_temporal_validity_v2.yaml
+    required_config_sha256: 672940908090fedd0b562dd938ad4583f5e8238830fc1ff5b613be9618f033f7
+    required_tool_path: scripts/audit_openalex_main_temporal_validity_v3.py
+    required_tool_sha256: 76e25ffb2bb45977f70ac089db1011b4219d6215e546f16cbe11ce1efdb2cc1d
+    required_receipt_sha256: 2908087fc6c96f2aadfdfb08774ed8c3cd54dd38bd54d4e12b1831e7d863ddfe
+    required_report_sha256: de98be73fb0365672cec7ee770c40de090ae012d45a0422faebd34c0b9d19200
+    required_exact_task_fingerprint_sha256: 5d86a797481a14e95d08ecbe333bb207ff476bf7dc49886aec1db7b5b366001d
+    required_exact_result_fingerprint_sha256: a844c624e81567bf89536218b0c488144fe2730f93c53e72193e6cfe4931bfb5
+    required_exact_checkpoint_tree_sha256: 725cf22ce96eca153fa1c9542bd09bd628a4ea1687a2fee3e5610a8cded95392
+    required_exact_source_tree_sha256: da3fa570a5fb49a36668dffdee008c2fea4d4b6fd5a3f7f17873df78b603b2a0
+    inherited_policy: FROZEN_MAIN_TEMPORAL_POLICY_V3
+    current_state: FULL_TEMPORAL_V3_PASS_EVIDENCE_BOUND_SYNTHETICALLY_PRODUCTION_NOT_RUN
+    required_run_state: COMPLETE_PENDING_RECEIPT
+    required_completion_contract: RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+    require_completion_receipt_written_last: true
+    require_final_disk_validation: true
+    require_same_content_baseline_parent: true
+    require_complete_checkpoint_tree: true
+    require_exact_result_and_task_fingerprints: true
+    require_exact_receipt_artifact_set_and_hashes: true
+    exact_checkpoint_metric_keyset:
+      - raw_rows
+      - quarantined_w_minus_1_rows
+      - retained_rows
+      - null_id_rows
+      - grammar_valid_id_rows
+      - unexpected_malformed_id_rows
+      - w_zero_rows
+      - publication_both_null_rows
+      - publication_exactly_one_null_rows
+      - publication_both_nonnull_rows
+      - publication_date_parse_error_rows
+      - publication_year_invalid_rows
+      - publication_concordance_checked_rows
+      - publication_date_year_match_rows
+      - publication_date_year_mismatch_rows
+      - publication_pre_1900_rows
+      - publication_1900_before_snapshot_year_rows
+      - publication_snapshot_year_on_or_before_snapshot_rows
+      - publication_snapshot_year_after_snapshot_rows
+      - publication_post_snapshot_year_rows
+      - publication_year_null_rows
+      - publication_year_pre_1900_rows
+      - publication_year_snapshot_year_rows
+      - publication_year_post_snapshot_year_rows
+      - created_updated_both_null_rows
+      - created_updated_exactly_one_null_rows
+      - created_updated_both_nonnull_rows
+      - created_date_parse_error_rows
+      - updated_date_parse_error_rows
+      - created_updated_parsed_pair_rows
+      - created_lte_updated_rows
+      - created_gt_updated_rows
+      - created_after_snapshot_rows
+      - updated_after_snapshot_rows
+      - future_metadata_field_values
+    direct_reconstruction_recomputes_publication_metric_count: 24
+    created_updated_metric_count_inherited_not_recomputed: 11
+    row_level_temporal_parent_product_exists: false
+    direct_row_identity_claim_allowed: false
+    forbidden_prior_parent_sha256:
+      v1_receipt: f6eec88337fb8482400ad3a25c7b7b7099b1613d575e0c29c6c26575e8612780
+      v1_config: d208b45cc87de577726a8310a899eb66882a519bae29df5f7dbbf7833562b172
+      v1_tool: b4b39c016ba4c6867a3e08366f70f6125230c2a0a18c1e8c45d40826f373f563
+      v2_receipt: ec59f3c649baa4a6a5333daace92a5e46f6492fad62e4c1ed42a1702394425f4
+      v2_config: 11a668b8f2b10c83e2d36b3f5d2cd16f1e5f86b41ef64f58c79f10cabebc30e8
+      v2_tool: b86f2496bbf7258c4e981f9a7ad8b1618fdcdc34a7385de628b133e0082a89dc
+  work_source_membership_regression:
+    relative_path: experiments/evidence/results/openalex_g1_work_source_membership_20260717.summary.json
+    sha256: df626b897bcb53c1bbc3209dbfbec8f69b84361367e09e1a9ffdf39e293d7b83
+    schema_version: openalex_g1_work_source_membership_summary.v1
+    required_status: PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE
+    result_fingerprint_sha256: 8b7d0273a04eb7a231a9d8b466151c562ac80eac6557ff7444508cb174862242
+    historical_byte_identity_to_current_baseline_established: false
+    require_reproduce_anchors_on_current_bytes: true
+  canonical_work_time_spine:
+    design_status: IMPLEMENTED_SYNTHETICALLY_PRODUCTION_NOT_RUN
+    production_status: PRODUCTION_NOT_RUN
+    synthetic_executable: true
+    production_executable: false
+    synthetic_execution_script: scripts/audit_openalex_canonical_work_time_spine_v2.py
+    synthetic_execution_script_sha256: 6a2d1d87dd4a3e7d3c97056fabbe951a1528cfd62d8448acc74ae337f344b7b1
+    synthetic_status: PASS_SYNTHETIC_CANONICAL_WORK_TIME_SPINE_TEMPORAL_V3_PARENT_CONTRACT_ONLY
+    synthetic_contract_result_is_production_parent: false
+    production_result_exists: false
+    production_receipt_exists: false
+    production_receipt_binding_state: NOT_AVAILABLE_PRODUCTION_NOT_RUN
+    production_parent_eligible: false
+    reuse_mode_status: BLOCKED_CANONICAL_PRODUCTION_RECEIPT_NOT_AVAILABLE
+    design_config_path: experiments/configs/openalex_g1_canonical_work_time_spine_v1.yaml
+    design_config_sha256: 2caef77c8b3dc2ffcb0a35920c9e3527096ec3a9f31d20166eec3a3486f4196b
+    design_schema_version: openalex_g1_canonical_work_time_spine_design.v2
+    required_future_status: PASS_CURRENT_SNAPSHOT_CANONICAL_WORK_TIME_SPINE_COMPONENT_WITH_TEMPORAL_V3_PARENT
+    required_future_receipt_basename: work_time_spine_audit.outputs.json
+    future_production_receipt_schema_state: NOT_FROZEN_REQUIRES_NEW_VERSION
+    required_future_run_state: COMPLETE_PENDING_RECEIPT
+    required_future_completion_contract: RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+    required_future_rows: 492293206
+    required_future_partition_files: 4096
+    required_future_partition_bytes: BIND_EXACT_VALUE_FROM_VALIDATED_SPINE_RECEIPT
+    required_parent: main_temporal_validity
+    required_same_content_tree: true
+    require_same_temporal_result_fingerprint: true
+    require_exact_result_and_task_fingerprints: true
+    require_exact_receipt_artifact_set_and_hashes: true
+    require_spine_data_tree_sha256: true
+    require_all_493_main_tasks_bound_transitively: true
+    alternative_allowed: exact_temporal_reconstruction_from_current_source
+    alternative_requires_same_invariants: true
+
+mode_conditioned_parent_sets:
+  exact_temporal_reconstruction_from_current_source:
+    required_in_order:
+      - current_content_baseline
+      - main_temporal_validity
+      - work_source_membership_regression
+    canonical_work_time_spine_receipt_required: false
+    exact_reconstruction_from_493_current_main_tasks_required: true
+  canonical_work_time_spine_reuse:
+    required_in_order: []
+    canonical_work_time_spine_receipt_required: true
+    current_status: BLOCKED_CANONICAL_PRODUCTION_RECEIPT_NOT_AVAILABLE
+    executable: false
+    exact_reconstruction_from_current_main_source_allowed: false
+  parent_set_is_part_of_task_fingerprint: true
+  parent_substitution_on_resume_allowed: false
+
+cross_binding:
+  direct_reconstruction_source_task_count: 3537
+  direct_reconstruction_source_bytes: 187182118540
+  spine_reuse_source_task_count: 3044
+  spine_reuse_source_bytes: 37119669321
+  required_source_stat_keyset:
+    - device
+    - inode
+    - mode
+    - bytes
+    - mtime_ns
+    - ctime_ns
+  bind_every_scanned_source_task_to_content_plan: true
+  bind_main_task_set_directly_or_transitively_through_spine: true
+  verify_source_identity_before_and_after_each_file: true
+  require_parent_content_result_fingerprint_equality: true
+  require_temporal_embedded_content_commitment_equals_direct_content_receipt: true
+  require_spine_embedded_content_and_temporal_commitments_equal_direct_parents: true
+  require_mode_specific_parent_set_in_plan_report_receipt_and_state: true
+  require_mode_specific_input_tree_in_task_and_result_fingerprints: true
+  require_exact_parent_receipt_artifact_sets_and_hashes: true
+  current_baseline_only_not_historical_identity: true
+
+tables:
+  main:
+    name: openalex_works_20260330
+    expected_files: 493
+    expected_raw_rows: 492293207
+    expected_source_bytes: 150062449219
+    projected_columns:
+      - id
+      - publication_date
+      - publication_year
+      - created_date
+      - updated_date
+  referenced_works:
+    name: openalex_works_20260330__referenced_works
+    expected_files: 3044
+    expected_raw_rows: 3042536160
+    expected_source_bytes: 37119669321
+    projected_columns:
+      - id
+      - referenced_works
+
+mode_scope_contracts:
+  exact_temporal_reconstruction_from_current_source:
+    execution_abi: CITATION_DIRECT_RECONSTRUCTION_TEMPORAL_V3_V2
+    scanned_source_files: 3537
+    scanned_source_rows: 3534829367
+    scanned_source_bytes: 187182118540
+    scanned_source_gib_rounded_3dp: 174.327
+    scanned_main_source_files: 493
+    scanned_referenced_work_source_files: 3044
+    logical_bound_main_source_tasks: 493
+    logical_bound_referenced_work_source_tasks: 3044
+    logical_bound_source_tasks: 3537
+    canonical_spine_partition_files_consumed: 0
+    temporal_lookup_kind: EPHEMERAL_NONCANONICAL_DIRECT_MODE_INDEX
+  canonical_work_time_spine_reuse:
+    execution_abi: CITATION_CANONICAL_SPINE_REUSE_BLOCKED_V2
+    status: BLOCKED_CANONICAL_PRODUCTION_RECEIPT_NOT_AVAILABLE
+    executable: false
+    scanned_source_files: 3044
+    scanned_source_rows: 3042536160
+    scanned_source_bytes: 37119669321
+    scanned_source_gib_rounded_3dp: 34.571
+    scanned_main_source_files: 0
+    scanned_referenced_work_source_files: 3044
+    logical_bound_main_source_tasks: 493
+    logical_bound_referenced_work_source_tasks: 3044
+    logical_bound_source_tasks: 3537
+    canonical_spine_partition_files_consumed: 4096
+    canonical_spine_rows_consumed: 492293206
+    canonical_spine_partition_bytes_consumed: BIND_EXACT_VALUE_FROM_VALIDATED_SPINE_RECEIPT
+    canonical_spine_control_and_checkpoint_files: VALIDATE_EXACT_SET_FROM_SPINE_RECEIPT
+    minimum_physical_data_files_consumed: 7140
+    temporal_lookup_kind: VALIDATED_CANONICAL_SPINE_PARENT
+  execution_abi_is_part_of_task_fingerprint: true
+  abi_specific_checkpoints_interchangeable: false
+  gpu_used: false
+
+temporal_input_modes:
+  required_precommit_before_execution: true
+  mode_is_part_of_task_fingerprint: true
+  mode_change_on_resume_allowed: false
+  allowed_modes:
+    - exact_temporal_reconstruction_from_current_source
+  canonical_work_time_spine_reuse:
+    execution_abi: CITATION_CANONICAL_SPINE_REUSE_BLOCKED_V2
+    status: BLOCKED_CANONICAL_PRODUCTION_RECEIPT_NOT_AVAILABLE
+    executable: false
+    scanned_source_files: 3044
+    scanned_source_rows: 3042536160
+    scanned_source_bytes: 37119669321
+    require_all_referenced_work_files: true
+    require_complete_spine_receipt: true
+    required_spine_rows: 492293206
+    required_spine_partition_files: 4096
+    required_spine_partition_bytes: BIND_EXACT_VALUE_FROM_VALIDATED_SPINE_RECEIPT
+    required_spine_data_tree_sha256: true
+    citation_component_may_build_or_repair_canonical_spine: false
+    citation_component_validates_existing_spine_only: true
+    main_source_files_scanned_in_this_component: 0
+    bind_493_main_tasks_transitively_through_spine_receipt: true
+  exact_temporal_reconstruction_from_current_source:
+    execution_abi: CITATION_DIRECT_RECONSTRUCTION_TEMPORAL_V3_V2
+    scanned_source_files: 3537
+    scanned_source_rows: 3534829367
+    scanned_source_bytes: 187182118540
+    require_all_main_and_referenced_work_files: true
+    require_exact_temporal_parent_disposition_reconstruction: true
+    temporal_lookup_kind: EPHEMERAL_NONCANONICAL_DIRECT_MODE_INDEX
+    temporal_lookup_may_be_published_or_reused_as_canonical_spine: false
+    temporal_lookup_removed_after_successful_finalization: true
+    main_source_files_scanned_in_this_component: 493
+  modes_may_reach_same_bounded_component_status: false
+  checkpoints_interchangeable_between_modes: false
+
+canonical_spine_consumer_abi:
+  field_order:
+    - work_id_numeric
+    - publication_day
+    - publication_year
+    - temporal_disposition
+  fields:
+    work_id_numeric:
+      physical_type: uint64
+      nullable: false
+    publication_day:
+      physical_type: int32
+      nullable: true
+      null_only_for_disposition: BOTH_NULL_EXCLUDED
+    publication_year:
+      physical_type: uint16
+      nullable: true
+      null_only_for_disposition: BOTH_NULL_EXCLUDED
+    temporal_disposition:
+      physical_type: uint8
+      nullable: false
+  disposition_enum:
+    0: BOTH_NULL_EXCLUDED
+    1: VALID_PRE_1900_EXCLUDED
+    2: USABLE_1900_BEFORE_SNAPSHOT_YEAR
+    3: USABLE_SNAPSHOT_YEAR_ON_OR_BEFORE_SNAPSHOT
+    4: VALID_SNAPSHOT_YEAR_AFTER_SNAPSHOT_EXCLUDED
+    5: VALID_POST_SNAPSHOT_YEAR_EXCLUDED
+  usable_disposition_codes:
+    - 2
+    - 3
+  partition_contract:
+    algorithm: exact_numeric_modulo
+    partition_count: 4096
+    formula: work_id_numeric_mod_4096
+    filename_pattern: '^part-[0-9]{4}[.]parquet$'
+    exact_file_count: 4096
+    every_partition_file_required: true
+    within_partition_sort_key:
+      - work_id_numeric
+    require_strictly_increasing_work_id_within_partition: true
+    require_global_exactly_once_membership: true
+  require_exact_schema_sha256_from_receipt: true
+  require_exact_manifest_and_data_tree_sha256_from_receipt: true
+
+edge_direction:
+  source_column: id
+  source_role: citing_work
+  target_column: referenced_works
+  target_role: cited_work
+  directed_edge_notation: citing_work_to_cited_work
+  symmetrization_allowed: false
+  reversal_allowed: false
+
+identifier_policy:
+  work_pattern: '^https://openalex[.]org/W(0|[1-9][0-9]*)$'
+  source_must_join_exactly_one_retained_main_work: true
+  source_w_minus_1_expected_rows: 0
+  source_w_zero_expected_rows: 0
+  target_null_expected_rows: 0
+  target_malformed_expected_rows: 0
+  target_w_minus_1_expected_rows: 0
+  target_w_zero_expected_rows: 0
+  any_sentinel_or_grammar_drift_blocks_component: true
+  inherited_main_w_minus_1_disposition: FROZEN_QUARANTINE
+  inherited_main_w_zero_disposition: RETAIN_WARN_ENTITY_VALIDITY_UNRESOLVED
+
+accounting_anchors:
+  referenced_rows:
+    raw_rows: 3042536160
+    in_snapshot_target_rows: 2904520313
+    external_target_rows: 138015847
+    self_loop_rows: 1072993
+  distinct_target_ids:
+    all_valid_targets: 135996024
+    in_snapshot_targets: 112406279
+    external_targets: 23589745
+  invalid_target_rows:
+    null: 0
+    malformed: 0
+    w_minus_1: 0
+    w_zero: 0
+  duplicate_source_target_edges: NOT_MEASURED_REQUIRES_THIS_AUDIT
+  anchors_are_required_current_byte_regressions_not_new_result: true
+
+deduplication:
+  raw_pair_key:
+    - citing_work_id
+    - cited_work_id
+  graph_and_outcome_unit: exact_distinct_directed_pair
+  preserve_raw_multiplicity: true
+  duplicate_pair_counts_once_in_graph_and_outcomes: true
+  required_metrics:
+    - raw_pair_rows
+    - unique_pair_rows
+    - duplicate_pair_groups
+    - duplicate_pair_row_excess
+    - maximum_pair_multiplicity
+    - raw_self_loop_rows
+    - unique_self_loop_pairs
+    - duplicate_self_loop_row_excess
+    - unique_in_snapshot_target_pairs
+    - unique_external_target_pairs
+  exact_invariants:
+    - raw_pair_rows = sum_pair_multiplicity
+    - raw_pair_rows = unique_pair_rows + duplicate_pair_row_excess
+    - duplicate_pair_groups = count_pairs_with_multiplicity_greater_than_one
+    - in_snapshot_target_rows + external_target_rows = raw_pair_rows
+    - in_snapshot_target_ids + external_target_ids = all_valid_target_ids
+    - raw_self_loop_rows = sum_pair_multiplicity_over_unique_self_loop_pairs
+    - raw_self_loop_rows = unique_self_loop_pairs + duplicate_self_loop_row_excess
+    - in_snapshot_target_rows = sum_pair_multiplicity_over_unique_in_snapshot_target_pairs
+    - external_target_rows = sum_pair_multiplicity_over_unique_external_target_pairs
+    - unique_in_snapshot_target_pairs + unique_external_target_pairs = unique_pair_rows
+  raw_to_unique_bridge_required: true
+
+available_at_policy:
+  resolution: BIBLIOGRAPHIC_EVENT_TIME_CONVENTION
+  edge_available_at_field: citing_work_publication_date
+  cutoff_comparison: available_at_on_or_before_cutoff
+  annual_decision_cutoff: december_31_of_t_minus_1
+  source_date_must_inherit_main_temporal_usable_disposition: true
+  usable_temporal_disposition_codes:
+    - 2
+    - 3
+  available_at_is_null_when_source_temporal_unusable: true
+  target_chronology_primary_relation: cited_publication_date_lte_citing_publication_date
+  edge_first_observed_timestamp_present: false
+  openalex_observation_time_established: false
+  historical_openalex_graph_established: false
+  public_visibility_at_publication_independently_verified: false
+  created_date_or_updated_date_used_as_edge_timestamp: false
+  allowed_claim: retrospectively_publication_dated_current_snapshot_edge
+  forbidden_claims:
+    - edge_observed_by_openalex_at_citing_publication_date
+    - edge_visible_to_researchers_by_cutoff
+    - historical_openalex_graph_reconstructed
+
+exclusive_pair_bucket_policy:
+  classifier_resolution: TOTAL_FIRST_TRUE_PRECEDENCE_CLASSIFIER_V1
+  precedence:
+    - self_loop
+    - source_temporal_unusable
+    - target_external_open_world
+    - target_temporal_unusable
+    - negative_lag_target_after_source
+    - same_day
+    - positive_lag
+  bucket_count: 7
+  require_exactly_one_bucket_per_unique_pair: true
+  classifier_input_domain:
+    source_joins_exactly_one_retained_main_work: true
+    target_membership_is_exactly_one_of:
+      - in_snapshot
+      - external_open_world
+    temporal_usable_disposition_codes:
+      - 2
+      - 3
+  first_true_predicates:
+    self_loop: citing_work_id = cited_work_id
+    source_temporal_unusable: citing_temporal_disposition not in {2,3}
+    target_external_open_world: cited_target_membership = external_open_world
+    target_temporal_unusable: cited_temporal_disposition not in {2,3}
+    negative_lag_target_after_source: signed_lag_days < 0
+    same_day: signed_lag_days = 0
+    positive_lag: signed_lag_days > 0
+  signed_lag_days_definition: citing_publication_day - cited_publication_day
+  require_full_attribute_cross_tabs_in_addition_to_precedence_bucket: true
+  required_cross_tab_axes:
+    - primary_bucket_x_source_temporal_disposition
+    - primary_bucket_x_target_membership
+    - primary_bucket_x_target_temporal_disposition_or_external_na
+    - primary_bucket_x_self_loop_flag
+    - primary_bucket_x_signed_lag_class_or_na
+    - primary_bucket_x_pair_multiplicity_class
+  chronology_safe_primary_buckets:
+    - same_day
+    - positive_lag
+  primary_graph_excludes_self_loops: true
+  external_target_is_not_source_orphan: true
+  negative_lag_primary_disposition: exclude_and_measure
+  target_temporal_unusable_primary_disposition: exclude_and_measure
+  source_temporal_unusable_primary_disposition: exclude_and_measure
+  exact_invariants:
+    - unique_pair_rows = sum_all_seven_exclusive_pair_buckets
+    - chronology_safe_primary_pairs = same_day_pairs + positive_lag_pairs
+    - unique_self_loop_pairs = self_loop_bucket_pairs
+    - unique_external_target_pairs = target_external_bucket_pairs + external_pairs_hidden_by_earlier_precedence
+    - every_cross_tab_margin_equals_its_corresponding_primary_bucket_or_attribute_margin
+
+chronology_sensitivity:
+  signed_lag_days_definition: citing_publication_day - cited_publication_day
+  primary_negative_lag_tolerance_days: 0
+  primary_eligibility_predicate_after_common_prerequisites: signed_lag_days >= 0
+  supplemental_tolerance_days:
+    - 30
+    - 365
+  supplemental_eligibility_predicate_template: signed_lag_days >= -tolerance_days
+  annual_only_chronology_sensitivity: true
+  annual_only_eligibility_predicate_after_common_prerequisites: cited_publication_year <= citing_publication_year
+  common_prerequisites:
+    - exact_distinct_pair
+    - not_self_loop
+    - source_temporal_disposition_in_{2,3}
+    - target_in_snapshot
+    - target_temporal_disposition_in_{2,3}
+  sensitivity_may_replace_primary: false
+  negative_lag_is_automatically_proven_impossible_citation: false
+
+open_world_policy:
+  snapshot_external_target_category: target_external_open_world
+  external_target_is_orphan: false
+  external_target_publication_date_available: false
+  source_bibliographic_date_may_be_accounted: true
+  external_target_allowed_in_primary_chronology_safe_graph: false
+  external_target_allowed_in_fixed_horizon_outcome: false
+  missing_external_citing_works_measurable_from_this_snapshot: false
+  reconstructed_inbound_counts_are_total_citations: false
+
+maturation_contract:
+  status: PENDING_SEPARATE_HASHED_G0_POLICY
+  primary_horizon_years: null
+  horizon_may_be_selected_from_this_audit_result: false
+  required_future_freeze_fields:
+    - primary_horizon_years
+    - allowed_work_types
+    - same_day_inclusion
+    - leap_day_policy
+    - negative_lag_sensitivity
+    - field_normalization
+    - missing_target_policy
+  calendar_anniversary_rule: same_month_and_day_h_years_later
+  february_29_rule: clip_to_february_28_in_non_leap_target_year
+  proposed_interval: closed_target_publication_date_through_maturity_date
+  target_is_temporally_mature_in_snapshot_if: maturity_date_lte_snapshot_date
+  target_is_temporally_mature_for_decision_year_t_if: maturity_date_lte_december_31_of_t_minus_1
+  historical_edge_observation_available_by_decision_year_t: UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+  temporal_maturity_alone_establishes_historical_availability: false
+  feature_surface_name_if_later_authorized: retrospectively_backfilled_temporally_mature_citation_proxy_feature
+  g0_same_day_choice_may_change_primary_audit_bucket_definition: false
+  g0_same_day_choice_applies_to_future_label_policy_only: true
+  outcome_count_unit: distinct_chronology_safe_internal_citing_work
+  allowed_future_label_name: current_snapshot_internal_citing_work_fixed_horizon_count
+  total_citation_claim_allowed: false
+  historically_observed_citation_count_claim_allowed: false
+
+t_minus_1_parent_contract:
+  graph_kind: directed_citation_proxy_graph
+  cutoff_rule: citing_publication_date_lte_december_31_of_t_minus_1
+  require_exact_deduplication: true
+  require_chronology_safe_primary_bucket: true
+  graph_is_historical_openalex_snapshot: false
+  edge_observation_by_cutoff_is_established: false
+  edge_observation_by_cutoff_status: UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+  cutoff_only_establishes_bibliographic_time_eligibility: true
+  allowed_name: retrospectively_publication_dated_chronology_filtered_citation_proxy_graph
+  researcher_peer_exposure_requires_author_history: true
+  topic_or_field_stratification_requires_work_topic_relation: true
+  candidate_panel_materialization_allowed_by_this_component: false
+
+leakage_policy:
+  prohibited_projection_or_model_inputs:
+    - cited_by_count
+    - fwci
+    - citation_normalized_percentile__value
+    - citation_normalized_percentile__is_in_top_1_percent
+    - citation_normalized_percentile__is_in_top_10_percent
+    - current_author_summary_stats
+    - current_author_topics
+  counts_by_year:
+    core_parent_allowed: false
+    optional_role: DIAGNOSTIC_LABEL_ONLY_SEPARATE_CONTRACT
+    represented_year_start: 2012
+    represented_year_end: 2026
+    model_feature_allowed: false
+    missing_edge_imputation_allowed: false
+    horizon_selection_allowed: false
+    primary_inclusion_rule_change_allowed: false
+  current_cited_by_count_used: false
+  outcome_value_driven_field_or_candidate_selection_allowed: false
+  current_snapshot_edges_with_pre_cutoff_publication_dates_are_retrospective_backfill: true
+  retrospective_backfill_may_be_called_historically_observed: false
+  temporal_maturity_may_be_called_historical_feature_availability: false
+
+dependency_parallelism:
+  generic_citation_chronology_requires_work_topic_relation: false
+  generic_citation_chronology_requires_author_history: false
+  topic_or_field_stratified_outcome_requires_work_topic_relation: true
+  researcher_level_peer_exposure_requires_author_history: true
+  researcher_level_peer_exposure_requires_work_topic_relation: true
+  relation_and_citation_logically_parallel_after_required_parents: true
+  author_history_and_citation_logically_parallel_after_author_parents: true
+  heavy_source_scans_should_run_concurrently: false
+  operational_recommendation: sequential_heavy_io_to_avoid_source_disk_contention
+
+work_time_spine_recommendation:
+  status: BOUND_CANONICAL_V1_DESIGN_PRODUCTION_NOT_RUN
+  modify_temporal_v3: false
+  purpose: avoid_repeated_main_date_scan_and_parsing
+  minimum_columns:
+    - work_numeric_id
+    - publication_day
+    - publication_year
+    - temporal_disposition
+  required_rows: 492293206
+  require_one_to_one_retained_main_ids: true
+  require_temporal_parent_disposition_margin_equality: true
+  bind_same_content_tree_and_temporal_result: true
+  deterministic_numeric_partitioning: true
+  eliminate_citation_main_rescan: true
+  eliminate_author_main_rescan_with_time_columns_only: false
+  author_limitation_reason: author_history_also_requires_authors_count_and_primary_field
+  universal_work_spine_recommended_now: false
+  universal_spine_risk: broader_provenance_and_policy_coupling
+
+partition_plan:
+  algorithm: deterministic_numeric_radix_external_sort
+  sampling: false
+  collision_possible: false
+  work_partition_count: 4096
+  edge_partition_count: 4096
+  mode_specific_temporal_input_stage:
+    canonical_work_time_spine_reuse: BLOCKED_CANONICAL_PRODUCTION_RECEIPT_NOT_AVAILABLE
+    exact_temporal_reconstruction_from_current_source: build_ephemeral_noncanonical_direct_mode_time_index
+  citation_component_may_publish_canonical_spine: false
+  common_stages:
+    - scan_reference_rows_and_validate_exact_source_target_grammar
+    - partition_raw_directed_pairs_by_source_numeric_id
+    - join_source_temporal_disposition_and_repartition_by_target_numeric_id
+    - join_target_membership_and_temporal_disposition
+    - exact_sort_deduplicate_classify_and_emit_chronology_safe_events
+  checkpoint_unit: input_file_and_spool_segment
+  checkpoint_binds:
+    - task_fingerprint_sha256
+    - relative_path
+    - source_rich_identity
+    - projected_schema_sha256
+    - projected_payload_sha256
+    - spool_relative_path
+    - spool_segment_offset
+    - spool_segment_rows
+    - spool_segment_sha256
+  resume_policy: verify_parents_sources_and_completed_spool_segments_before_reuse
+
+resource_envelope:
+  workload_class: local_cpu_io_external_sort
+  spine_reuse_current_status: BLOCKED_CANONICAL_PRODUCTION_RECEIPT_NOT_AVAILABLE
+  spine_reuse_execution_allowed: false
+  direct_reconstruction_input_files: 3537
+  direct_reconstruction_projected_rows: 3534829367
+  direct_reconstruction_source_bytes: 187182118540
+  direct_reconstruction_source_gib_rounded_3dp: 174.327
+  spine_reuse_source_input_files: 3044
+  spine_reuse_projected_source_rows: 3042536160
+  spine_reuse_source_bytes: 37119669321
+  spine_reuse_source_gib_rounded_3dp: 34.571
+  spine_reuse_spine_partition_input_files: 4096
+  spine_reuse_spine_rows: 492293206
+  spine_reuse_spine_partition_bytes: BIND_EXACT_VALUE_FROM_VALIDATED_SPINE_RECEIPT
+  spine_reuse_minimum_physical_data_input_files: 7140
+  spine_reuse_requires_exact_spine_control_checkpoint_and_data_artifact_tree: true
+  spine_reuse_removed_main_scan_bytes: 150062449219
+  pair_ids_only_uncompressed_bytes: 48680578560
+  ram_gib_minimum_planning: 64
+  ram_gib_preferred_planning: 128
+  durable_output_gib_minimum_planning: 80
+  durable_output_gib_upper_planning: 160
+  temporary_ssd_gib_minimum: 300
+  temporary_ssd_gib_preferred: 500
+  require_live_preflight_before_full: true
+  forbid_hdd_competition_with_content_freeze: true
+  gpu_used: false
+
+pilot_and_full_rules:
+  max_files:
+    status: PARSER_SMOKE_ONLY_NONREPRESENTATIVE
+    promotion_allowed: false
+  isolated_part_file:
+    status: SCHEMA_OR_PIPELINE_SMOKE_ONLY
+    representative_scientific_pilot_allowed: false
+    promotion_allowed: false
+  deterministic_hash_bucket:
+    status: END_TO_END_DIAGNOSTIC_ONLY
+    require_all_inputs_for_precommitted_mode: true
+    selection_unit: exact_directed_pair_key_before_deduplication
+    canonical_key_bytes: uint64_citing_id_big_endian_then_uint64_cited_id_big_endian
+    hash_function: SHA256
+    bucket_integer: unsigned_big_endian_first_8_digest_bytes
+    bucket_formula: bucket_integer_mod_bucket_count
+    require_bucket_count_greater_than_one: true
+    require_zero_based_bucket_index_less_than_bucket_count: true
+    bucket_count_and_index_are_part_of_task_fingerprint: true
+    identical_pair_rows_always_select_together: true
+    all_source_and_spine_inputs_still_validated: true
+    global_coverage_claim_allowed: false
+    promotion_allowed: false
+  full:
+    explicit_authorization_required: true
+    require_all_inputs_for_precommitted_mode: true
+    direct_mode_required_source_files: 3537
+    canonical_reuse_current_status: BLOCKED_CANONICAL_PRODUCTION_RECEIPT_NOT_AVAILABLE
+    canonical_reuse_execution_allowed: false
+    spine_reuse_required_source_files: 3044
+    spine_reuse_requires_complete_spine_receipt: true
+    require_exact_mode_conditioned_parent_set: true
+    require_private_output_directory_mode: "0700"
+    require_output_file_mode: "0600"
+    require_exact_accounting_closure: true
+    require_complete_state_and_outputs_receipt: true
+    required_pre_receipt_state: COMPLETE_PENDING_RECEIPT
+    required_receipt_completion_contract: RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+    require_receipt_written_last_and_final_disk_revalidation: true
+    may_promote_only_component_scope: true
+
+planned_outputs:
+  control:
+    - audit_plan.json
+    - run_state.json
+    - citation_edge_chronology_audit.json
+    - citation_edge_chronology_audit.md
+    - citation_edge_chronology_audit.outputs.json
+  operator_local_data:
+    - deduplicated_edge_event_partitions
+    - chronology_safe_edge_partitions_by_cited_work
+    - duplicate_multiplicity_aggregates.parquet
+    - chronology_lag_aggregates.parquet
+    - open_world_target_coverage.parquet
+    - cutoff_and_maturation_coverage.parquet
+  temporary_mode_specific_data:
+    exact_temporal_reconstruction_from_current_source:
+      - ephemeral_noncanonical_direct_mode_time_index
+    canonical_work_time_spine_reuse: []
+  temporary_mode_specific_data_are_not_completion_outputs: true
+  canonical_work_time_spine_created_or_published_by_citation_component: false
+  production_outputs_created_by_this_design: false
+
+completion_contract:
+  future_receipt_schema_version: openalex_g1_citation_edge_chronology_outputs.v2
+  pre_receipt_state: COMPLETE_PENDING_RECEIPT
+  receipt_basename: citation_edge_chronology_audit.outputs.json
+  receipt_written_last: true
+  receipt_completion_contract: RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+  exact_receipt_artifact_set_required: true
+  final_validation_rehashes_all_control_checkpoint_and_data_artifacts: true
+  result_fingerprint_binds:
+    - execution_abi
+    - exact_mode_conditioned_parent_set_and_receipts
+    - content_result_fingerprint_sha256
+    - temporal_result_fingerprint_sha256
+    - optional_spine_result_and_data_tree_sha256
+    - mode_specific_task_and_input_tree_sha256
+    - checkpoint_and_spool_tree_sha256
+    - exact_accounting_and_bucket_closure
+    - gate_status
+    - claim_boundary
+  invalid_or_missing_receipt_never_means_complete: true
+
+synthetic_execution_contract:
+  fixture_schema_version: openalex_g1_citation_edge_chronology_synthetic_fixture.v2
+  plan_schema_version: openalex_g1_citation_edge_chronology_synthetic_plan.v2
+  checkpoint_schema_version: openalex_g1_citation_edge_chronology_synthetic_checkpoint.v2
+  report_schema_version: openalex_g1_citation_edge_chronology_synthetic_report.v2
+  receipt_schema_version: openalex_g1_citation_edge_chronology_synthetic_outputs.v2
+  receipt_completion_contract: SYNTHETIC_RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+  future_production_receipt_schema_satisfied: false
+  report_status: PASS_SYNTHETIC_CITATION_EDGE_CHRONOLOGY_TEMPORAL_V3_DIRECT_CONTRACT_ONLY
+  surface_kind: SYNTHETIC_FIXTURE_ONLY
+  production_status: PRODUCTION_NOT_RUN
+  full_component_status_allowed: false
+  production_input_access_allowed: false
+  production_planned_outputs_created: false
+  canonical_spine_partition_outputs_created: 0
+  hard_max_fixture_bytes: 1048576
+  hard_max_work_time_rows: 10000
+  hard_max_reference_pair_rows: 10000
+  work_time_publication_day_epoch: "1970-01-01"
+  work_time_day_year_exact_match_required: true
+  work_time_disposition_must_match_snapshot_classifier: true
+  cli_requires_execute_synthetic: true
+  allowed_temporal_input_modes:
+    - exact_temporal_reconstruction_from_current_source
+  canonical_reuse_status: BLOCKED_CANONICAL_PRODUCTION_RECEIPT_NOT_AVAILABLE
+  exact_receipt_artifacts:
+    - audit_plan.json
+    - run_state.json
+    - checkpoints/synthetic_accounting.json
+    - citation_edge_chronology_audit.json
+    - citation_edge_chronology_audit.md
+  terminal_reentry_validates_receipt_before_fixture_payload: true
+  terminal_reentry_rehashes_every_receipt_artifact: true
+  terminal_reentry_opens_source_payload: false
+  invalid_terminal_receipt_is_removed_before_other_publication_artifacts: true
+  finalization_failure_leaves_promotable_receipt: false
+
+release_privacy:
+  public_summary_allows_aggregates_and_checksums_only: true
+  detailed_work_ids_repository_allowed: false
+  detailed_work_ids_release_allowed: false
+  operator_local_detailed_outputs_mode: "0600"
+  operator_local_directory_mode: "0700"
+  local_artifact_tree_hash_required: true
+  release_inspector_must_reject_detailed_edge_outputs: true
+  release_forbidden_operator_local_basenames:
+    - ephemeral_noncanonical_direct_mode_time_index
+    - deduplicated_edge_event_partitions
+    - chronology_safe_edge_partitions_by_cited_work
+    - duplicate_multiplicity_aggregates.parquet
+    - chronology_lag_aggregates.parquet
+    - open_world_target_coverage.parquet
+    - cutoff_and_maturation_coverage.parquet
+
+future_success_contract:
+  full_component_status: PASS_CURRENT_SNAPSHOT_CITATION_EDGE_CHRONOLOGY_ACCOUNTING_WITH_TEMPORAL_V3_PARENT_AND_BIBLIOGRAPHIC_EVENT_TIME_CONVENTION_LIMITATION
+  pilot_status: PILOT_CITATION_EDGE_CHRONOLOGY_ONLY
+  blocked_status: BLOCKED_CITATION_EDGE_CHRONOLOGY_COMPONENT
+  required_full_gate_states:
+    citation_edge_accounting: PASS
+    exact_directed_pair_deduplication: PASS
+    bibliographic_available_at_convention: PASS_WITH_LIMITATION
+    openalex_first_observed_time: UNIDENTIFIABLE_FROM_CURRENT_SNAPSHOT
+    historical_graph_reconstruction: RETROSPECTIVE_PROXY_ONLY
+    current_content_baseline_component: PASS
+    main_temporal_validity_component: PASS
+    work_source_membership_regression: REPRODUCED_ON_CURRENT_BYTES
+    historical_content_identity: UNVERIFIED
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    external_target_chronology: UNRESOLVED_OPEN_WORLD
+    fixed_horizon_outcome_maturation: PENDING_SEPARATE_G0_POLICY
+    cutoff_aware_t_minus_1_researcher_graph: PENDING
+    author_entity_validity: PENDING
+    candidate_eligibility: PENDING
+    g_minus_1_data_readiness: PENDING
+    g0_measurement_freeze: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+    scientific_effect: NOT_ESTABLISHED
+
+downstream_blockers_after_component:
+  - hashed_fixed_horizon_and_work_type_policy
+  - external_or_archival_edge_observation_time_evidence_for_stronger_claims
+  - production_work_topic_relation_for_topic_or_field_stratification
+  - production_author_history_and_author_source_decision
+  - candidate_researcher_eligibility
+  - researcher_level_t_minus_1_graph_materialization
+  - g0_measurement_and_holdout_partition_freeze
+
+out_of_scope:
+  - openalex_edge_first_observation_time
+  - historical_snapshot_graph_reconstruction
+  - current_cited_by_count_as_feature_or_label_parent
+  - fixed_horizon_selection
+  - allowed_work_type_selection
+  - author_entity_resolution
+  - candidate_researcher_materialization
+  - topic_or_field_stratified_outcome_without_relation_parent
+  - researcher_peer_exposure_without_author_parent
+  - field_selection
+  - empirical_effect_estimation
+  - nabm_fitting
+
+claim_boundary: >-
+  This temporal-v3-parent-only IMPLEMENTED_SYNTHETICALLY_PRODUCTION_NOT_RUN
+  contract specifies a future
+  exact accounting and chronology audit of directed current-snapshot OpenAlex
+  referenced-work pairs. It defines
+  citing-work publication date as a BIBLIOGRAPHIC_EVENT_TIME_CONVENTION, not an
+  observed OpenAlex indexing timestamp. A future full component pass may
+  establish current-byte source accounting, exact directed-pair deduplication,
+  frozen chronology buckets, open-world target accounting, and a
+  retrospectively publication-dated citation proxy. It cannot establish when
+  OpenAlex first observed an edge, whether an edge was visible to a researcher
+  by a historical cutoff, a historical OpenAlex graph, total citation counts,
+  fixed-horizon maturation before a separate G0 freeze, author or candidate
+  validity, G-1, G0, empirical G1, an NABM effect, or any scientific effect.
+  The executable is restricted to closed synthetic fixtures and direct temporal
+  reconstruction. Canonical-spine reuse is
+  BLOCKED_CANONICAL_PRODUCTION_RECEIPT_NOT_AVAILABLE; the canonical synthetic
+  contract is not a production parent and no fake production receipt hash is
+  defined. No production run or result exists under this design artifact.

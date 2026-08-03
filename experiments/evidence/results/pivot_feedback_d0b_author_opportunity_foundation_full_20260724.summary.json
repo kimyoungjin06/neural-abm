@@ -1,0 +1,160 @@
+{
+  "authorization": {
+    "d0_discovery_outcome_opening": "NOT_AUTHORIZED",
+    "d0b_remaining_outcome_blind_measurements": "AUTHORIZED",
+    "final_panel_materialization": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "author_measurement": {
+    "author_episode_rows": 5849627,
+    "by_episode": [
+      {
+        "author_rows": 553419,
+        "entry_year": 2003,
+        "field_id": 17,
+        "incumbent_before_signal_window_rows": 182,
+        "observed_no_prior_target_topic_rows": 541917,
+        "portfolio_focal_work_events_all": 1179100,
+        "prior_target_topic_rows": 11502,
+        "topic_id": 14430
+      },
+      {
+        "author_rows": 1231799,
+        "entry_year": 2012,
+        "field_id": 17,
+        "incumbent_before_signal_window_rows": 130,
+        "observed_no_prior_target_topic_rows": 1222909,
+        "portfolio_focal_work_events_all": 2962281,
+        "prior_target_topic_rows": 8890,
+        "topic_id": 10579
+      },
+      {
+        "author_rows": 2805352,
+        "entry_year": 2007,
+        "field_id": 27,
+        "incumbent_before_signal_window_rows": 3368,
+        "observed_no_prior_target_topic_rows": 2797372,
+        "portfolio_focal_work_events_all": 7756859,
+        "prior_target_topic_rows": 7980,
+        "topic_id": 11361
+      },
+      {
+        "author_rows": 1259057,
+        "entry_year": 1991,
+        "field_id": 27,
+        "incumbent_before_signal_window_rows": 5449,
+        "observed_no_prior_target_topic_rows": 1246641,
+        "portfolio_focal_work_events_all": 2828469,
+        "prior_target_topic_rows": 12416,
+        "topic_id": 12505
+      }
+    ],
+    "candidate_definition": "AT_LEAST_ONE_FOCAL_FIELD_WORK_IN_T_MINUS_3_THROUGH_T_MINUS_1",
+    "final_candidate_eligibility_established": false,
+    "nonranked_team_cap_profiles": [
+      10,
+      50,
+      100,
+      "ALL"
+    ],
+    "team_cap_selected": false
+  },
+  "claim_boundary": "This compact summary records an independently replayed, outcome-blind D0-B pre-entry author-opportunity foundation for the four D0-A-frozen episodes. It establishes exact selected target-topic works through t-1 and a current-snapshot author-token measurement base for authors active in the focal field during t-3 through t-1 under four non-ranked team-cap profiles. It does not establish natural persons, final eligible candidates, historically observed topic classifications, incumbent-only leave-out attention, local-network or affiliation bridges, entry, persistence, an association, D0-B completion, D0 completion, G0, model fitting, G4, or a scientific effect.",
+  "execution": {
+    "builder_relative_path": "scripts/build_pivot_feedback_d0b_author_opportunity_foundation.py",
+    "builder_sha256": "09737edc18ce24be7ffc57db6ba870a68b0d4a76d881caf74fd60341d619f7ca",
+    "config_relative_path": "experiments/configs/pivot_feedback_d0b_author_opportunity_foundation_v1.yaml",
+    "config_sha256": "f6b4ec017807e4aac6449bb244925f7fd884d441b8069fc000ae26dbcfdc4e58",
+    "gpu_used": false,
+    "producer_runtime_seconds": 227.454701,
+    "verifier_relative_path": "scripts/verify_pivot_feedback_d0b_author_opportunity_foundation.py",
+    "verifier_sha256": "6aa148b4d82e970c10ed26e345dd927188f404be2e2aea8a3fe9976db3fc7bee",
+    "workers": 12,
+    "workload_class": "CPU_IO"
+  },
+  "label": "pivot_feedback_d0b_author_opportunity_foundation_full_20260724",
+  "output_binding": {
+    "artifact_count_including_receipt": 5,
+    "artifact_tree_sha256": "872bce5fb786f63fd79107eec51c657232df3ee710d09183df42b1c936c4c329",
+    "output_receipt_sha256": "2261e1aba8b3f4f8edea27301603a1ebb6d0931b424cbc5c0ed0a5d2cefef92c",
+    "output_root_basename": "pivot-feedback-d0b-author-opportunity-foundation-v1-full-20260724",
+    "producer_status": "PASS_D0B_OUTCOME_BLIND_PRE_ENTRY_AUTHOR_OPPORTUNITY_FOUNDATION",
+    "verification_report_basename": "pivot-feedback-d0b-author-opportunity-foundation-v1-full-20260724.verification-v1.json",
+    "verification_report_sha256": "6da5e48ffe84ab9d96fc4ba3268751598250c2029a39a3639cb575912f062a99",
+    "verification_status": "PASS_INDEPENDENT_D0B_OUTCOME_BLIND_PRE_ENTRY_AUTHOR_OPPORTUNITY_FOUNDATION_D0B_AND_D0_STILL_PARTIAL"
+  },
+  "scope": {
+    "d0_complete": false,
+    "d0b_author_foundation_complete": true,
+    "d0b_complete": false,
+    "entry_or_post_entry_target_works_read": false,
+    "final_candidate_eligibility_established": false,
+    "g4_rows_read": false,
+    "gpu_used": false,
+    "model_fitting_performed": false,
+    "persistence_rows_read": false,
+    "predictive_scores_computed": false,
+    "realized_citation_rows_read": false,
+    "scientific_effect": "NOT_ESTABLISHED",
+    "threshold_tuning_performed": false
+  },
+  "schema_version": "pivot_feedback_d0b_author_opportunity_foundation_summary.v1",
+  "selected_work_measurement": {
+    "by_episode": [
+      {
+        "entry_year": 2003,
+        "field_id": 17,
+        "incumbency_qualifying_work_rows": 2244,
+        "reference_window_work_rows": 689,
+        "selected_work_rows": 15508,
+        "signal_window_work_rows": 12575,
+        "topic_id": 14430
+      },
+      {
+        "entry_year": 2012,
+        "field_id": 17,
+        "incumbency_qualifying_work_rows": 618,
+        "reference_window_work_rows": 1998,
+        "selected_work_rows": 9280,
+        "signal_window_work_rows": 6664,
+        "topic_id": 10579
+      },
+      {
+        "entry_year": 2007,
+        "field_id": 27,
+        "incumbency_qualifying_work_rows": 7216,
+        "reference_window_work_rows": 1557,
+        "selected_work_rows": 31846,
+        "signal_window_work_rows": 23073,
+        "topic_id": 11361
+      },
+      {
+        "entry_year": 1991,
+        "field_id": 27,
+        "incumbency_qualifying_work_rows": 11771,
+        "reference_window_work_rows": 2137,
+        "selected_work_rows": 26931,
+        "signal_window_work_rows": 13023,
+        "topic_id": 12505
+      }
+    ],
+    "selected_predecision_work_rows": 83565
+  },
+  "source_replay": {
+    "author_event_artifacts_rehashed": 4096,
+    "author_event_rows_replayed": 779630258,
+    "author_output_row_groups_replayed": 16384,
+    "cutoff_work_artifacts_rehashed": 4096,
+    "cutoff_work_rows_replayed": 492293206,
+    "exact_author_output_match": true,
+    "exact_selected_work_output_match": true,
+    "forbidden_columns_absent": true,
+    "independent_aggregation_engine": "PYARROW_GROUP_BY_INDEPENDENT_OF_NUMPY_PRODUCER",
+    "producer_module_imported": false,
+    "source_rows_replayed_total": 1271923464
+  },
+  "status": "PASS_INDEPENDENT_D0B_AUTHOR_OPPORTUNITY_FOUNDATION_D0_AND_D0B_PARTIAL_REMAINING_MEASUREMENTS_ONLY_AUTHORIZED"
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": "pivot_feedback_d0_candidate_screen_scope_audit_summary.v1",
+  "status": "PASS_INDEPENDENT_ZERO_COST_CANDIDATE_SCREEN_SCOPE_AND_ROUTER_COVERAGE_AUDIT",
+  "date": "2026-07-29",
+  "repository_bindings": {
+    "config_relative_path": "experiments/configs/pivot_feedback_d0_candidate_screen_scope_audit_v1.yaml",
+    "config_sha256": "d8be03dccbd3f45cec6fcde7bcf02ddd1529d2d26175fdcf158554662d8b65c8",
+    "producer_relative_path": "scripts/build_pivot_feedback_d0_candidate_screen_scope_audit_v1.py",
+    "producer_sha256": "3fe63cddbdd116f5264559b60790cd19d260805c4d4dd8939b5ec7a5486ab705",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_d0_candidate_screen_scope_audit_v1.py",
+    "verifier_sha256": "0acd553c13e5e2e28646317918f0a9e01db6558f17cfe94551ab4e1717f824cc"
+  },
+  "operator_local_evidence": {
+    "root_basename": "pivot-feedback-d0-candidate-screen-scope-audit-v1-20260729",
+    "receipt_basename": "candidate_screen_scope_audit.outputs.json",
+    "receipt_sha256": "c8dcf7ac6f0fd4e5a8eeb06ff4e2a4af0792c98cd92a8e500b7f7d7aaf3cb856",
+    "artifact_tree_sha256": "c9e9ed3aae7c76939494fb8262667409d6cefdf8e4172cc975a1f8eee53163d8",
+    "verification_report_basename": "pivot-feedback-d0-candidate-screen-scope-audit-v1-20260729.verification-v1.json",
+    "verification_report_sha256": "83aef0e52b4a19157a24d5c3cdc87630a8afe73f76ff27734fd6fb01736bdd8d",
+    "verification_status": "PASS_INDEPENDENT_ZERO_COST_CANDIDATE_SCREEN_SCOPE_AND_ROUTER_COVERAGE_AUDIT"
+  },
+  "scope_closure": {
+    "selected_field_ids": [
+      17,
+      27
+    ],
+    "candidate_rows": 70277,
+    "distinct_candidate_topics": 994,
+    "candidate_window_rows": 421662,
+    "unique_candidate_topic_year_cells": 99433,
+    "unique_candidate_window_linked_work_rows": 22437851,
+    "candidate_window_linked_work_memberships": 102900039
+  },
+  "router_coverage": {
+    "frozen_topic_card_count": 4,
+    "card_covered_candidate_topics": 4,
+    "uncovered_candidate_topics": 990,
+    "card_covered_candidate_rows": 236,
+    "card_covered_candidate_window_rows": 1416,
+    "card_covered_unique_topic_year_cells": 362,
+    "card_covered_unique_linked_work_rows": 195708,
+    "card_covered_linked_work_memberships": 755882,
+    "full_router_topic_coverage_fraction": "0.004024",
+    "full_router_candidate_row_coverage_fraction": "0.003358",
+    "current_four_card_router_can_screen_complete_candidate_universe": false
+  },
+  "execution": {
+    "raw_openalex_main_table_read": false,
+    "titles_read": false,
+    "work_ids_materialized": false,
+    "network_accessed": false,
+    "credentials_accessed": false,
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000",
+    "outcomes_read": false
+  },
+  "decision": {
+    "complete_title_bearing_work_copy_should_run_next": false,
+    "reason": "FOUR_CARDS_COVER_ONLY_4_OF_994_TOPICS_AND_FULL_COPY_WOULD_PRECEDE_A_VALID_SCREENING_DESIGN",
+    "preferred_successor": "DETERMINISTIC_ADAPTIVE_CANDIDATE_FRONTIER_WITH_SELECTION_EQUIVALENCE_CERTIFICATE",
+    "adaptive_frontier_equivalence_proven": false
+  },
+  "boundaries": {
+    "counts_establish_content_validity": false,
+    "counts_establish_router_accuracy": false,
+    "complete_candidate_work_manifest_materialized": false,
+    "complete_candidate_universe_screened": false,
+    "topic_card_expansion_authorized": false,
+    "paid_api_submission_authorized": false,
+    "production_dispositions_authorized": false,
+    "deterministic_reselection_authorized": false,
+    "author_panel_rebuild_authorized": false,
+    "pivot_classification_authorized": false,
+    "outcomes_read": false,
+    "model_fitting_authorized": false,
+    "g4_open": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  }
+}

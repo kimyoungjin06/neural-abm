@@ -1,0 +1,2209 @@
+schema_version: openalex_g1_work_side_author_history_design.v1
+label: openalex_g1_work_side_author_history_v0
+
+lifecycle:
+  design_status: DESIGN_ONLY
+  production_status: PRODUCTION_NOT_RUN
+  executable: false
+  execution_script: null
+  synthetic_executable: false
+  production_executable: false
+  production_result_exists: false
+  synthetic_result_exists: false
+  pass_result_allowed_in_design_artifact: false
+  implementation_requires_new_review: true
+
+implementation_readiness:
+  synthetic_contract_status: READY_FOR_SEPARATE_SYNTHETIC_ONLY_IMPLEMENTATION
+  executable_created_by_this_tranche: false
+  result_created_by_this_tranche: false
+  production_output_abi: NOT_IMPLEMENTED_REQUIRES_SEPARATE_REVIEW
+  production_execution_authorized: false
+
+source:
+  root_env: OPENALEX_DERIVED_ROOT
+  root_id: openalex_works_20260330_repairreplay_20260410_190630
+  snapshot_date: "2026-03-30"
+  lineage_id: openalex_20260225_base_plus_20260330_update_repairreplay
+  historical_content_identity: UNVERIFIED
+
+required_parent_execution_order:
+  - current_content_baseline
+  - main_temporal_validity
+  - canonical_work_time_spine
+  - work_side_author_history
+
+parents:
+  current_content_baseline:
+    receipt_schema_version: openalex_g1_content_freeze_outputs.v1
+    required_status: PASS_CURRENT_CONTENT_BASELINE_COMPONENT
+    required_run_state: COMPLETE
+    required_full_scope: true
+    required_receipt_basename: content_freeze_audit.outputs.json
+    required_config_path: experiments/configs/openalex_g1_content_freeze_v0.yaml
+    required_config_sha256: 0340e9fd01e62d6d29b66245795a19100682847f94c5cb8afecc43e3d1a1c6e4
+    required_tool_path: scripts/audit_openalex_content_freeze.py
+    required_tool_sha256: 4a084f9f488af17fa199c9367d1948d1c129e6f1ad7af2dee529e2eed4da915f
+    required_plan_sha256: 97294fe1c1fa026f664ca239ebfa9fc6dce593c847a20eb62157e38312b6725e
+    required_task_fingerprint_sha256: f915cade4ce6581832c46957a2ad0a37ceabe2296099f0faeaac56ffa035693e
+    required_file_count: 21019
+    required_source_bytes: 988404537807
+    required_completion_contract: REQUIRE_COMPLETE_STATE_AND_VALID_OUTPUTS_MANIFEST
+    exact_receipt_keyset:
+      - schema_version
+      - status
+      - task_fingerprint_sha256
+      - plan_sha256
+      - result_fingerprint_sha256
+      - content_tree_sha256
+      - checkpoint_tree
+      - artifacts
+      - completion_contract
+      - run_state_bound_separately
+      - path_redacted
+    exact_receipt_artifact_paths:
+      - audit_plan.json
+      - content_freeze_audit.json
+      - content_freeze_audit.md
+    exact_receipt_artifact_count: 3
+    receipt_artifact_container: ordered_list_of_relative_path_bytes_sha256_records
+    run_state_bound_separately: true
+    current_state: RUN_OR_RESULT_MUST_BE_VERIFIED_AT_IMPLEMENTATION_TIME
+    bind_exact_source_task_set: true
+    bind_content_tree_sha256: true
+    bind_result_fingerprint_sha256: true
+    bind_checkpoint_tree_sha256: true
+    bind_rich_source_identity: true
+  main_temporal_validity:
+    receipt_schema_version: openalex_g1_main_temporal_validity_outputs.v1
+    required_plan_schema_version: openalex_g1_main_temporal_validity_plan.v1
+    required_checkpoint_schema_version: openalex_g1_main_temporal_validity_checkpoint.v1
+    required_report_schema_version: openalex_g1_main_temporal_validity_report.v1
+    required_state_schema_version: openalex_g1_main_temporal_validity_state.v1
+    required_status: PASS_CURRENT_SNAPSHOT_MAIN_TEMPORAL_VALIDITY_COMPONENT_WITH_FROZEN_EXCLUSIONS
+    required_state_status: COMPLETE_PENDING_RECEIPT
+    required_full_scope: true
+    required_receipt_basename: main_temporal_validity_audit.outputs.json
+    required_config_path: experiments/configs/openalex_g1_main_temporal_validity_v0.yaml
+    required_config_sha256: d208b45cc87de577726a8310a899eb66882a519bae29df5f7dbbf7833562b172
+    required_tool_path: scripts/audit_openalex_main_temporal_validity.py
+    required_tool_sha256: b4b39c016ba4c6867a3e08366f70f6125230c2a0a18c1e8c45d40826f373f563
+    required_completion_contract: RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+    required_full_task_count: 493
+    required_raw_rows: 492293207
+    required_source_bytes: 150062449219
+    exact_receipt_keyset:
+      - schema_version
+      - status
+      - result_fingerprint_sha256
+      - task_fingerprint_sha256
+      - artifacts
+      - completion_contract
+      - operator_paths_redacted
+    exact_fixed_receipt_artifact_paths:
+      - audit_plan.json
+      - run_state.json
+      - main_temporal_validity_audit.json
+      - main_temporal_validity_audit.md
+    checkpoint_artifact_directory: checkpoints/main
+    checkpoint_filename_derivation: sha256_utf8_relative_source_path
+    checkpoint_filename_pattern: '^[0-9a-f]{64}[.]json$'
+    exact_checkpoint_artifact_count: 493
+    exact_receipt_artifact_count: 497
+    require_every_receipt_artifact_key_path_bytes_and_sha256: true
+    current_state: IMPLEMENTED_SYNTHETICALLY_PRODUCTION_NOT_RUN
+    require_same_content_baseline_parent: true
+    row_level_dispositions_materialized: false
+  canonical_work_time_spine:
+    design_schema_version: openalex_g1_canonical_work_time_spine_design.v1
+    design_config_path: experiments/configs/openalex_g1_canonical_work_time_spine_v0.yaml
+    design_config_sha256: 192d78e3df094121e63922a6eaf20f57a57af41bc174c0fdbbcc347e3eaed385
+    synthetic_tool_path: scripts/audit_openalex_canonical_work_time_spine.py
+    synthetic_tool_sha256: 827bab5a6edcd9a574149203c68c77ae5178a8da210499b81f05a388ace5c0dc
+    required_future_receipt_schema_version: openalex_g1_canonical_work_time_spine_outputs.v1
+    required_future_status: PASS_CURRENT_SNAPSHOT_CANONICAL_WORK_TIME_SPINE_COMPONENT_WITH_INHERITED_TEMPORAL_EXCLUSIONS
+    required_future_state_status: COMPLETE_PENDING_RECEIPT
+    required_future_receipt_basename: work_time_spine_audit.outputs.json
+    required_future_completion_contract: RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+    required_full_scope: true
+    required_rows: 492293206
+    required_partition_count: 4096
+    required_receipt_artifact_count: 9184
+    exact_receipt_keyset:
+      - schema_version
+      - status
+      - task_fingerprint_sha256
+      - result_fingerprint_sha256
+      - scan_checkpoint_tree_sha256
+      - staging_shard_tree_sha256
+      - partition_checkpoint_tree_sha256
+      - spine_data_tree_sha256
+      - artifacts
+      - completion_contract
+      - operator_paths_redacted
+    require_spine_data_tree_sha256: true
+    require_result_fingerprint_sha256: true
+    require_same_content_and_temporal_commitments: true
+    partition_filename_pattern: '^part-[0-9]{4}[.]parquet$'
+    partition_formula: work_id_numeric % 4096
+    partition_sort_key: [work_id_numeric]
+    require_strictly_increasing_ids_within_partition: true
+    require_global_exactly_once_membership: true
+    require_every_receipt_artifact_key_path_bytes_and_sha256: true
+    required_row_schema:
+      - {name: work_id_numeric, type: uint64, nullable: false}
+      - {name: publication_day, type: int32, nullable: true}
+      - {name: publication_year, type: uint16, nullable: true}
+      - {name: temporal_disposition, type: uint8, nullable: false}
+    current_state: IMPLEMENTED_SYNTHETICALLY_PRODUCTION_NOT_RUN
+
+parent_cross_binding:
+  require_same_content_result_fingerprint_across_all_parents: true
+  require_same_content_tree_sha256_across_all_parents: true
+  require_spine_temporal_result_fingerprint_equals_direct_temporal_receipt: true
+  require_spine_main_task_set_equals_temporal_main_task_set: true
+  require_author_main_and_authorship_tasks_equal_content_receipt_subsets: true
+  require_all_parent_receipts_revalidated_at_finalization: true
+  production_parent_receipts_verified_by_this_design: false
+
+parallel_siblings:
+  work_topic_relation:
+    hard_parent_of_author_token_history: false
+    relation_to_core: parallel_sibling
+    joins_only_at:
+      - downstream_current_snapshot_field_coverage
+      - downstream_candidate_and_t_minus_1_gates
+    config_path: experiments/configs/openalex_g1_work_topic_relation_v0.yaml
+    config_sha256: 7e7d50f212e9738dfce5b437174cfecbfa76679e532a15e23d84ca88c5e0b7fc
+    tool_path: scripts/audit_openalex_work_topic_relation.py
+    tool_sha256: 5503ed01c80282fa118ae47f86901e6e5588f52e04c19a1c3646e86274622786
+    current_state: IMPLEMENTED_SYNTHETICALLY_PRODUCTION_NOT_RUN
+
+coverage_prerequisites:
+  work_source_membership:
+    relative_path: experiments/evidence/results/openalex_g1_work_source_membership_20260717.summary.json
+    sha256: df626b897bcb53c1bbc3209dbfbec8f69b84361367e09e1a9ffdf39e293d7b83
+    schema_version: openalex_g1_work_source_membership_summary.v1
+    required_status: PASS_WORK_SOURCE_MEMBERSHIP_AND_PROFILE_AUDIT_WITH_FROZEN_QUARANTINE
+    result_fingerprint_sha256: 8b7d0273a04eb7a231a9d8b466151c562ac80eac6557ff7444508cb174862242
+  taxonomy_reference:
+    relative_path: experiments/evidence/results/openalex_g1_field_taxonomy_reference_20260718.summary.json
+    sha256: f8a0d01ee5b04133c1472d4ed7c07f7a578343004c859645f174f1a0f6021f62
+    schema_version: openalex_g1_field_taxonomy_reference_report.v1
+    required_status: PASS_CURRENT_SNAPSHOT_TAXONOMY_REFERENCE_COMPONENT
+    result_fingerprint_sha256: 36209d119cc32802d0e7391b92425dcef931e9513841afa19e8be7b0bc06b30b
+    allowed_role: BOUNDED_CURRENT_SNAPSHOT_REGRESSION_AND_COVERAGE_ONLY
+    historical_field_truth_established: false
+
+tables:
+  main:
+    name: openalex_works_20260330
+    expected_files: 493
+    expected_raw_rows: 492293207
+    expected_source_bytes: 150062449219
+    projected_columns:
+      - id
+      - authors_count
+      - primary_topic__field__id
+    projected_types:
+      id: string
+      authors_count: int64
+      primary_topic__field__id: string
+    projected_physical_nullable:
+      id: true
+      authors_count: true
+      primary_topic__field__id: true
+  authorships:
+    name: openalex_works_20260330__authorships
+    expected_files: 1363
+    expected_raw_rows: 1361551038
+    expected_source_bytes: 103412497044
+    projected_columns:
+      - id
+      - authorships__author__id
+      - authorships__author__orcid
+      - authorships__raw_author_name
+      - authorships__author__display_name
+      - authorships__author_position
+    projected_types:
+      id: string
+      authorships__author__id: string
+      authorships__author__orcid: string
+      authorships__raw_author_name: string
+      authorships__author__display_name: string
+      authorships__author_position: string
+    projected_physical_nullable:
+      id: true
+      authorships__author__id: true
+      authorships__author__orcid: true
+      authorships__raw_author_name: true
+      authorships__author__display_name: true
+      authorships__author_position: true
+
+scope_totals:
+  expected_files: 1856
+  expected_raw_rows: 1853844245
+  expected_source_bytes: 253474946263
+  expected_source_gib_rounded_3dp: 236.067
+  gpu_used: false
+
+input_task_contract:
+  inventory_manifest_path: experiments/runs/20260716_openalex_g1_source_inventory/source_manifest.json
+  inventory_manifest_sha256: 6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46
+  inventory_schema_version: openalex_source_inventory.v1
+  deterministic_table_order: [main, authorships]
+  deterministic_file_order: lexical_relative_path
+  exact_main_task_count: 493
+  exact_authorship_task_count: 1363
+  exact_total_task_count: 1856
+  tasks_are_exact_subsets_of_content_baseline_plan: true
+  required_content_source_stat_fields:
+    - device
+    - inode
+    - mode
+    - bytes
+    - mtime_ns
+    - ctime_ns
+  required_current_rich_identity_fields:
+    - device
+    - inode
+    - mode
+    - uid
+    - gid
+    - links
+    - bytes
+    - mtime_ns
+    - ctime_ns
+  bind_projected_schema_sha256: true
+  bind_projected_payload_sha256: true
+  verify_source_identity_before_and_after_each_file: true
+  refuse_symlink_inputs: true
+  output_must_be_outside_source_and_repository: true
+
+identifier_and_value_validation:
+  work_id_pattern: '^https://openalex[.]org/W(0|[1-9][0-9]*)$'
+  frozen_w_minus_1_raw_value: https://openalex.org/W-1
+  w_minus_1_policy: exact_raw_value_quarantine_before_numeric_parse
+  w_minus_1_allowed_in_spine: false
+  w_zero_policy: retain_as_numeric_zero_with_entity_validity_unresolved
+  retained_main_work_ids_must_be_unique: true
+  author_id_pattern: '^https://openalex[.]org/A(0|[1-9][0-9]*)$'
+  author_id_null_allowed_and_not_history_usable: true
+  malformed_non_null_author_id_policy: block_component
+  a_zero_policy: retain_in_base_view_exclude_in_positive_id_view
+  numeric_suffix_type: uint64
+  numeric_overflow_policy: block_component
+  json_boolean_accepted_as_integer: false
+  authors_count_type: int64
+  authors_count_null_policy: block_component
+  authors_count_minimum_inclusive: 0
+  authors_count_maximum_inclusive: 4294967295
+  primary_field_null_allowed: true
+  primary_field_pattern: '^https://openalex[.]org/fields/([1-9]|1[0-9]|2[0-6])$'
+  primary_field_invalid_non_null_policy: block_descriptive_coverage_branch
+  primary_field_entity_or_past_observability_established: false
+
+identity_policy:
+  unit_name: current_snapshot_openalex_author_id_token
+  token_pattern: '^https://openalex[.]org/A(0|[1-9][0-9]*)$'
+  numeric_suffix_type: uint64
+  token_not_person: true
+  natural_person_entity_claim_allowed: false
+  author_master_referential_integrity_claim_allowed: false
+  token_reassignment_in_component: forbidden
+  name_or_orcid_used_to_reassign_tokens: false
+  a_zero:
+    grammar_valid_base_view: true
+    entity_validity: UNRESOLVED
+    require_positive_author_id_sensitivity: true
+  reconstruction_clock: current_snapshot_retrospective_work_history
+  historical_identity_availability_established: false
+  past_observable_token_linkage_claim_allowed: false
+
+incomplete_author_master:
+  source_kind: separate_20260330_delta_lineage
+  observed_delta_rows: 44099961
+  work_side_distinct_author_tokens: 113748578
+  maximum_theoretical_coverage_percent: 38.76968115
+  reported_decimal_places: 8
+  premise: every_delta_row_unique_and_each_overlaps_a_different_work_side_token
+  actual_overlap_bound: less_than_or_equal_to_theoretical_ceiling
+  allowed_role: LINKED_SUBSET_DIAGNOSTIC_ONLY_AFTER_SEPARATE_LINEAGE_CONTRACT
+  full_parent_role_allowed: false
+  author_entity_validation_allowed: false
+
+accounting_anchors:
+  main:
+    raw_rows: 492293207
+    frozen_w_minus_1_quarantine_rows: 1
+    retained_rows: 492293206
+    retained_w_zero_rows: 1
+  authorships:
+    raw_rows: 1361551038
+    frozen_w_minus_1_source_rows: 1
+    retained_rows: 1361551037
+    null_author_id_rows: 580116419
+    grammar_valid_non_null_author_id_rows: 781434618
+    malformed_non_null_author_id_rows: 0
+    distinct_grammar_valid_non_null_author_tokens: 113748578
+    non_null_orcid_rows: 458308219
+    null_orcid_rows: 903242818
+  work_classes:
+    complete: 263750998
+    partial: 2109042
+    none_usable: 177217069
+    zero_authorship_row: 49216097
+  declared_authors_count:
+    exact_matches_observed_raw_slots: 492293206
+    mismatches: 0
+
+work_class_policy:
+  zero_authorship_row: observed_raw_authorship_slots == 0
+  complete: observed_raw_authorship_slots > 0 and grammar_valid_author_slots == observed_raw_authorship_slots
+  partial: 0 < grammar_valid_author_slots < observed_raw_authorship_slots
+  none_usable: observed_raw_authorship_slots > 0 and grammar_valid_author_slots == 0
+  declared_authors_count_must_equal_observed_raw_authorship_slots: true
+  null_or_duplicate_author_tokens_still_count_as_raw_slots: true
+  invalid_or_unmatched_work_rows_block_component: true
+
+exact_invariants:
+  - retained_main_rows = raw_main_rows - frozen_w_minus_1_main_rows
+  - retained_authorship_rows = raw_authorship_rows - frozen_w_minus_1_authorship_rows
+  - retained_authorship_rows = null_author_id_rows + malformed_non_null_author_id_rows + grammar_valid_non_null_author_id_rows
+  - retained_authorship_rows = null_orcid_rows + non_null_orcid_rows
+  - retained_main_rows = complete_works + partial_works + none_usable_works + zero_authorship_row_works
+  - every_retained_authorship_row_joins_exactly_one_retained_main_work
+  - every_retained_main_authors_count_equals_observed_raw_authorship_slots
+  - grammar_valid_author_slot_rows = unique_author_work_pairs + duplicate_author_work_pair_row_excess
+  - history_usable_author_work_pairs = sum_author_year_unique_work_counts
+  - history_usable_author_work_pairs = sum_author_token_total_unique_work_counts
+  - history_usable_author_work_pairs = sum_team_band_unique_author_work_pairs
+
+temporal_reuse:
+  temporal_parent_policy: FROZEN_MAIN_TEMPORAL_POLICY_V1
+  only_row_level_source: canonical_work_time_spine
+  disposition_enum_resolution: FROZEN_WORK_TIME_SPINE_DISPOSITION_V1
+  snapshot_date: "2026-03-30"
+  history_usable_start_inclusive: "1900-01-01"
+  history_usable_end_inclusive: "2026-03-30"
+  usable_disposition_codes: [2, 3]
+  excluded_disposition_codes: [0, 1, 4, 5]
+  codes_are_unique_disjoint_and_exhaustive: true
+  publication_day_epoch: "1970-01-01"
+  source_publication_date_reparse_allowed: false
+  require_exact_spine_join_for_every_retained_main_work: true
+  mismatch_or_missing_spine_row_policy: block_component
+  require_exact_spine_disposition_margin_equality: true
+  outcome_maturation_established: false
+  citation_available_at_established: false
+
+pair_policy:
+  exact_key: [author_numeric_id, work_numeric_id]
+  publication_count_unit: distinct_author_numeric_id_work_numeric_id_pair
+  duplicate_pair_policy: count_one_publication_preserve_all_diagnostics
+  representative_row_selection: forbidden
+  preserve_across_duplicate_rows:
+    - raw_multiplicity
+    - exact_raw_orcid_set
+    - canonical_valid_orcid_set
+    - exact_raw_author_name_set
+    - exact_display_name_set
+    - normalized_raw_author_name_set
+    - normalized_display_name_set
+    - author_position_category_set
+    - exact_raw_position_set
+    - conflict_flags
+  conflict_flag_predicates:
+    raw_orcid_conflict: distinct_non_null_exact_raw_orcid_count > 1
+    canonical_orcid_conflict: distinct_valid_canonical_orcid_count > 1
+    raw_author_name_conflict: distinct_non_null_exact_raw_author_name_count > 1
+    display_name_conflict: distinct_non_null_exact_display_name_count > 1
+    normalized_raw_name_conflict: distinct_non_null_normalized_raw_author_name_count > 1
+    normalized_display_name_conflict: distinct_non_null_normalized_display_name_count > 1
+    position_category_conflict: distinct_non_null_position_category_count > 1
+    raw_position_conflict: distinct_non_null_exact_raw_position_lexeme_count > 1
+    position_conflict: position_category_conflict or raw_position_conflict
+  tagged_raw_set_encoding:
+    "null": {kind: "null"}
+    string: {kind: string, value: exact_utf8_string}
+  null_and_empty_set_semantics:
+    exact_raw_orcid_set: tagged_null_and_exact_string_values_with_null_distinct_from_empty
+    exact_raw_author_name_set: tagged_null_and_exact_string_values_with_null_distinct_from_empty
+    exact_display_name_set: tagged_null_and_exact_string_values_with_null_distinct_from_empty
+    normalized_raw_author_name_set: tagged_null_and_normalized_string_values_with_null_distinct_from_empty
+    normalized_display_name_set: tagged_null_and_normalized_string_values_with_null_distinct_from_empty
+    exact_raw_position_set: tagged_null_and_exact_string_values_with_null_distinct_from_empty
+    canonical_valid_orcid_set: valid_non_null_canonical_strings_only
+  team_size_source: validated_main_authors_count_equal_to_raw_authorship_slots
+
+authorship_order_and_position:
+  physical_row_order_semantic: false
+  physical_row_order_may_break_ties: false
+  position_source_column: authorships__author_position
+  categories: [first, middle, last, "null", unexpected_non_null]
+  category_set_sort_comparator: declared_category_order
+  category_set_sort_order: [first, middle, last, "null", unexpected_non_null]
+  category_set_duplicates_allowed: false
+  descriptive_only: true
+  used_for_identity_or_publication_count: false
+  middle_author_total_order_recoverable: false
+  unexpected_non_null_preserved_exactly: true
+  lexeme_classification:
+    first: exact_utf8_string_first_only
+    middle: exact_utf8_string_middle_only
+    last: exact_utf8_string_last_only
+    "null": json_null_only
+    unexpected_non_null: every_other_string_including_empty_case_variants_and_whitespace_variants
+  trimming_casefold_or_unicode_normalization_before_classification_allowed: false
+  raw_position_conflict_reported_separately_from_category_conflict: true
+
+diagnostic_population_contract:
+  primary_population: all_retained_grammar_valid_distinct_author_work_pairs
+  secondary_population: history_usable_distinct_author_work_pairs_with_temporal_disposition_2_or_3
+  compute_and_digest_both_populations_for:
+    - orcid_categories_and_cross_cardinalities
+    - exact_and_normalized_name_variation
+    - position_categories_and_raw_lexeme_conflicts
+  synthetic_public_report_exposes_for_each_population:
+    - distinct_pair_count
+    - opaque_canonical_aggregate_sha256
+  readable_category_or_cardinality_tables_in_synthetic_public_report: false
+  future_detailed_diagnostic_tables_are_operator_local_only: true
+  excluded_from_both_populations:
+    - null_author_id_slots
+    - malformed_author_id_slots
+  duplicate_rows_contribute_once_per_distinct_pair_after_unioning_tagged_sets: true
+  neither_population_establishes_author_entity_or_past_observability: true
+
+historical_observability_and_cutoff:
+  token_assignment_is_current_snapshot_retrospective_proxy: true
+  primary_field_is_current_snapshot_retrospective_annotation: true
+  token_or_field_past_observability_established: false
+  full_snapshot_summaries_role: AUDIT_ONLY_NOT_PAST_CUTOFF_FEATURES
+  decision_year_symbol: t
+  required_cutoff: publication_date_lte_december_31_of_t_minus_1
+  cutoff_formula: publication_day <= days_since_1970_01_01(date(t-1,12,31))
+  downstream_recompute_from_cutoff_eligible_unique_author_work_events: true
+  prohibit_post_cutoff_use_in:
+    - candidate_selection
+    - model_features
+    - t_minus_1_graphs
+    - exposure_construction
+  forbidden_past_observable_features:
+    - full_history_last_publication_year
+    - full_history_total_unique_work_count
+    - full_history_maximum_annual_unique_work_count
+    - full_history_span
+    - current_snapshot_orcid
+    - current_snapshot_name
+    - current_snapshot_primary_field
+
+history_metrics:
+  terminology: observed_author_token_publication_span_not_verified_career
+  canonical_unique_event_fields:
+    - author_numeric_id
+    - work_numeric_id
+    - publication_day
+    - publication_year
+    - temporal_disposition
+    - declared_authors_count
+    - declared_team_size_band
+    - primary_field_current_snapshot_or_null
+  per_author_year:
+    - unique_work_count
+    - team_band_unique_work_counts
+    - primary_field_unique_work_counts
+  per_author_token:
+    - first_usable_publication_year
+    - last_usable_publication_year
+    - active_year_count
+    - inclusive_span_years
+    - inactive_gap_years
+    - total_unique_work_count
+    - maximum_annual_unique_work_count
+  span_bands:
+    - "1"
+    - 2-5
+    - 6-10
+    - 11-20
+    - 21-40
+    - 41-60
+    - 61-80
+    - 81-100
+    - 101-127
+  required_constraints:
+    - first_usable_publication_year <= last_usable_publication_year
+    - 1 <= active_year_count <= inclusive_span_years <= 127
+    - maximum_annual_unique_work_count <= total_unique_work_count
+  full_snapshot_token_summaries_are_audit_only: true
+
+coverage:
+  dimensions:
+    - temporal_disposition
+    - publication_year
+    - primary_field_including_explicit_null
+    - authorship_work_class
+    - declared_team_size_band
+  field_use: descriptive_outcome_blind_coverage_only
+  exact_count_units:
+    - distinct_work_count
+    - raw_authorship_slot_count
+    - grammar_valid_author_slot_count
+    - distinct_author_work_pair_count
+  primary_field_unique_work_count_rule: count_each_distinct_author_work_pair_once_in_its_current_snapshot_field_or_explicit_null
+  final_field_selection_allowed: false
+  primary_field_past_observability_established: false
+  work_topic_relation_required_for_core_history: false
+  work_topic_relation_required_for_downstream_field_conditioned_gate: true
+
+sensitivity_policy:
+  consortium_team_size_bands:
+    - "1"
+    - "2"
+    - 3-5
+    - 6-10
+    - 11-50
+    - 51-100
+    - 101+
+  exact_team_cap_views:
+    - 10
+    - 50
+    - 100
+    - ALL
+  numeric_team_cap_inclusion_rule: declared_authors_count <= cap
+  all_team_cap_inclusion_rule: include_every_history_usable_unique_author_work_pair
+  annual_unique_work_bands:
+    - "1"
+    - 2-5
+    - 6-10
+    - 11-25
+    - 26-50
+    - 51-100
+    - 101-250
+    - 251-500
+    - 501-1000
+    - 1001+
+  hyper_prolific_thresholds_strictly_greater_than:
+    - 50
+    - 100
+    - 250
+    - 500
+    - 1000
+  required_team_cap_boundary_fixture_values: [10, 11, 50, 51, 100, 101]
+  required_hyper_threshold_boundary_fixture_values:
+    - 50
+    - 51
+    - 100
+    - 101
+    - 250
+    - 251
+    - 500
+    - 501
+    - 1000
+    - 1001
+  recompute_hyper_profile_within_each_team_cap_view: true
+  diagnostic_only_not_invalid_entity_label: true
+  threshold_driven_candidate_exclusion_allowed: false
+
+orcid_policy:
+  categories:
+    - "null"
+    - strict_canonical_url_valid_checksum
+    - recoverable_alternate_lexical_form_valid_checksum
+    - malformed_or_checksum_invalid
+  ascii_only: true
+  null_means_json_or_arrow_null_only: true
+  empty_string_is_malformed: true
+  outer_whitespace_trimming_allowed: false
+  percent_decoding_allowed: false
+  strict_canonical_url_regex: '^https://orcid[.]org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$'
+  recoverable_alternate_lexical_forms_in_order:
+    - '^http://orcid[.]org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9Xx]$'
+    - '^https://www[.]orcid[.]org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9Xx]$'
+    - '^http://www[.]orcid[.]org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9Xx]$'
+    - '^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9Xx]$'
+    - '^[0-9]{15}[0-9Xx]$'
+  canonical_output_regex: '^https://orcid[.]org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$'
+  canonicalization_steps:
+    - match_exactly_one_declared_lexical_form_without_trimming
+    - remove_only_the_matched_declared_prefix
+    - remove_hyphens
+    - uppercase_terminal_x
+    - require_exactly_16_ascii_characters
+    - insert_hyphens_4_4_4_4
+    - prepend_https_orcid_org
+    - validate_checksum
+  checksum:
+    resolution: ISO_7064_MOD_11_2
+    input: first_15_ascii_digits
+    recurrence: total = (total + digit) * 2
+    remainder: total % 11
+    check_value: (12 - remainder) % 11
+    check_character: decimal_digit_unless_10_then_uppercase_X
+  invalid_checksum_category: malformed_or_checksum_invalid
+  cross_cardinality_diagnostics:
+    - author_token_to_distinct_canonical_orcid
+    - canonical_orcid_to_distinct_author_token
+    - author_work_pair_to_distinct_canonical_orcid
+  split_merge_semantics: anomaly_proxy_not_ground_truth
+  past_observable_model_feature_allowed: false
+
+name_policy:
+  retain_exact_raw_string_accounting: true
+  null_and_empty_are_distinct: true
+  diagnostic_normalization_steps:
+    - unicode_nfkc
+    - unicode_casefold
+    - map_each_python_str_isspace_character_to_ascii_space
+    - collapse_ascii_space_runs
+    - strip_outer_ascii_space
+  normalization_runtime_fingerprint_fields:
+    - python_implementation
+    - python_version
+    - unicodedata_unidata_version
+  runtime_unicode_version_must_match_plan_and_resume: true
+  no_second_nfkc_after_casefold: true
+  exact_and_normalized_sets_sorted_by: unsigned_utf8_lexicographic
+  normalized_name_used_for_identity_reassignment: false
+  past_observable_model_feature_allowed: false
+
+partition_plan:
+  algorithm: deterministic_two_stage_exact_numeric_modulo_partition
+  sampling: false
+  collision_possible: false
+  work_partition_count: 4096
+  author_partition_count: 4096
+  work_partition_formula: work_id_numeric % 4096
+  author_partition_formula: author_id_numeric % 4096
+  deterministic_input_file_order: lexical_relative_path
+  work_stage_sort_key: [work_id_numeric, author_id_numeric]
+  author_stage_sort_key: [author_id_numeric, work_id_numeric]
+  aggregate_sort_key: [author_id_numeric, publication_year]
+  raw_string_set_sort: unsigned_utf8_lexicographic
+  hash_only_identity_or_deduplication_allowed: false
+  stages:
+    - scan_main_and_emit_work_metadata_by_work_numeric_id_partition
+    - scan_authorship_and_emit_core_slots_by_work_numeric_id_partition
+    - exact_work_partition_join_and_author_work_pair_deduplication
+    - repartition_joined_events_by_author_numeric_id_partition
+    - aggregate_author_year_and_author_token_histories
+    - exact_external_sort_for_orcid_and_name_cardinalities
+  checkpoint_unit: input_file_and_spool_segment
+  checkpoint_binds:
+    - task_fingerprint_sha256
+    - relative_path
+    - source_rich_identity
+    - projected_schema_sha256
+    - projected_payload_sha256
+    - spool_relative_path
+    - spool_segment_offset
+    - spool_segment_rows
+    - spool_segment_sha256
+  resume_policy: verify_source_and_completed_spool_segments_before_reuse
+
+resource_envelope:
+  workload_class: local_cpu_io_external_sort
+  declared_input_files: 1856
+  declared_input_rows: 1853844245
+  declared_source_bytes: 253474946263
+  declared_source_gib_rounded_3dp: 236.067
+  ram_gib_minimum_planning: 64
+  ram_gib_preferred_planning: 128
+  durable_output_gib_minimum_planning: 30
+  durable_output_gib_upper_planning: 80
+  temporary_ssd_gib_minimum: 250
+  temporary_ssd_gib_preferred: 400
+  runtime_hours_lower_planning: 4
+  runtime_hours_upper_planning: 12
+  require_live_preflight_before_full: true
+  forbid_hdd_competition_with_content_freeze: true
+  gpu_used: false
+
+pilot_and_full_rules:
+  max_files:
+    status: PARSER_SMOKE_ONLY_TRUNCATED_HISTORIES
+    promotion_allowed: false
+  author_hash_bucket:
+    status: TOKEN_HISTORY_PIPELINE_PILOT_ONLY
+    require_full_root_authorship_scan_for_complete_selected_token_histories: true
+    global_coverage_claim_allowed: false
+    promotion_allowed: false
+  incomplete_author_delta_join:
+    status: LINKED_SUBSET_DIAGNOSTIC_ONLY
+    promotion_allowed: false
+  full:
+    explicit_authorization_required: true
+    require_all_declared_files: true
+    require_all_parent_full_receipts: true
+    require_private_output_directory_mode: "0700"
+    require_output_file_mode: "0600"
+    require_separately_reviewed_complete_state_and_outputs_receipt: true
+    may_promote_only_component_scope: true
+
+synthetic_execution_contract:
+  readiness: READY_FOR_SEPARATE_IMPLEMENTATION
+  executable_exists_now: false
+  planned_script: scripts/audit_openalex_work_side_author_history.py
+  production_or_source_root_cli_allowed: false
+  exact_future_cli:
+    - --config
+    - --synthetic-fixture
+    - --out-dir
+    - --execute-synthetic
+    - --resume
+  config_trust_boundary:
+    accepted_config_mode: exact_audited_repository_config_only
+    exact_repository_relative_path: experiments/configs/openalex_g1_work_side_author_history_v0.yaml
+    duplicate_mapping_keys_rejected: true
+    yaml_aliases_merge_keys_and_custom_tags_rejected: true
+    future_tool_embeds_audited_config_sha256: true
+    supplied_config_sha256_must_equal_tool_embedded_sha256: true
+    config_path_and_bytes_verified_before_fixture_open: true
+    security_critical_values_are_code_constants_and_must_equal_config: true
+    security_critical_exact_values:
+      production_or_source_root_cli_allowed: false
+      production_input_access_allowed: false
+      hard_max_fixture_bytes: 1048576
+      hard_max_main_rows: 10000
+      hard_max_spine_rows: 10000
+      hard_max_authorship_rows: 20000
+      output_directory_mode: "0700"
+      output_file_mode: "0600"
+  fixture_schema_version: openalex_g1_work_side_author_history_synthetic_fixture.v1
+  fixture_exact_top_level_keys:
+    - schema_version
+    - surface_kind
+    - production_input_access_allowed
+    - root_id
+    - snapshot_date
+    - synthetic_parents
+    - main_rows
+    - spine_rows
+    - authorship_rows
+  fixture_exact_top_level_types:
+    schema_version: string
+    surface_kind: string
+    production_input_access_allowed: boolean
+    root_id: string
+    snapshot_date: string
+    synthetic_parents: object
+    main_rows: array_of_objects
+    spine_rows: array_of_objects
+    authorship_rows: array_of_objects
+  fixture_root_id_prefix: synthetic-
+  fixture_surface_kind: SYNTHETIC_FIXTURE_ONLY
+  fixture_production_input_access_allowed: false
+  fixture_snapshot_date_exact: "2026-03-30"
+  fixture_main_row_exact_keyset:
+    - id
+    - authors_count
+    - primary_topic__field__id
+  fixture_main_row_schema:
+    - {name: id, type: string, nullable: false}
+    - {name: authors_count, type: int64, nullable: false}
+    - {name: primary_topic__field__id, type: string, nullable: true}
+  fixture_spine_row_exact_keyset:
+    - work_id_numeric
+    - publication_day
+    - publication_year
+    - temporal_disposition
+  fixture_spine_row_schema:
+    - {name: work_id_numeric, type: uint64, nullable: false}
+    - {name: publication_day, type: int32, nullable: true}
+    - {name: publication_year, type: uint16, nullable: true}
+    - {name: temporal_disposition, type: uint8, nullable: false}
+  fixture_spine_semantic_validation:
+    temporal_disposition_exact_allowed_values: [0, 1, 2, 3, 4, 5]
+    publication_day_epoch: "1970-01-01"
+    publication_day_non_null_range: int32
+    publication_year_non_null_range: integer_1_through_9999
+    code_0_requires_both_publication_day_and_year_null: true
+    codes_1_through_5_require_both_publication_day_and_year_non_null: true
+    non_null_year_must_equal_year_derived_from_publication_day: true
+    disposition_predicates_in_evaluation_order:
+      - code_1_if_day_before_1900_01_01
+      - code_2_if_day_on_or_after_1900_01_01_and_derived_year_before_2026
+      - code_3_if_derived_year_2026_and_day_on_or_before_2026_03_30
+      - code_4_if_derived_year_2026_and_day_after_2026_03_30
+      - code_5_if_derived_year_after_2026
+    code_6_through_255_rejected_before_accounting: true
+    disposition_day_year_mismatch_rejected_before_accounting: true
+    fixture_spine_numeric_id_set_must_exactly_equal_retained_main_numeric_id_set: true
+    missing_duplicate_or_extra_spine_rows_rejected_before_accounting: true
+  fixture_authorship_row_exact_keyset:
+    - id
+    - authorships__author__id
+    - authorships__author__orcid
+    - authorships__raw_author_name
+    - authorships__author__display_name
+    - authorships__author_position
+  fixture_authorship_row_schema:
+    - {name: id, type: string, nullable: false}
+    - {name: authorships__author__id, type: string, nullable: true}
+    - {name: authorships__author__orcid, type: string, nullable: true}
+    - {name: authorships__raw_author_name, type: string, nullable: true}
+    - {name: authorships__author__display_name, type: string, nullable: true}
+    - {name: authorships__author_position, type: string, nullable: true}
+  fixture_row_objects_reject_missing_extra_or_duplicate_keys: true
+  fixture_scalar_validation:
+    json_boolean_never_accepted_as_integer: true
+    integer_ranges_are_checked_before_cast: true
+    all_strings_must_be_valid_utf8_without_lone_surrogates: true
+    snapshot_date_must_equal_fixture_snapshot_date_exact: true
+    digest_pattern: '^[0-9a-f]{64}$'
+    parent_rows_type: non_boolean_integer
+    parent_rows_minimum: 0
+    parent_rows_maximum: 10000
+  fixture_synthetic_parent_keyset:
+    - current_content_baseline
+    - main_temporal_validity
+    - canonical_work_time_spine
+  fixture_parent_common_commitments:
+    - synthetic_content_tree_sha256
+    - synthetic_content_result_fingerprint_sha256
+  fixture_temporal_spine_commitment:
+    - synthetic_temporal_result_fingerprint_sha256
+  production_parent_status_literals_in_fixture_allowed: false
+  fixture_synthetic_parent_payloads:
+    current_content_baseline:
+      exact_keyset:
+        - schema_version
+        - status
+        - synthetic_content_tree_sha256
+        - synthetic_content_result_fingerprint_sha256
+      allowed_schema_version: openalex_g1_work_side_author_history_synthetic_content_parent.v1
+      allowed_status: SYNTHETIC_CONTENT_BASELINE_PARENT_ONLY
+      exact_field_types:
+        schema_version: string
+        status: string
+        synthetic_content_tree_sha256: lowercase_64_hex_string
+        synthetic_content_result_fingerprint_sha256: lowercase_64_hex_string
+    main_temporal_validity:
+      exact_keyset:
+        - schema_version
+        - status
+        - synthetic_content_tree_sha256
+        - synthetic_content_result_fingerprint_sha256
+        - synthetic_temporal_result_fingerprint_sha256
+      allowed_schema_version: openalex_g1_work_side_author_history_synthetic_temporal_parent.v1
+      allowed_status: SYNTHETIC_MAIN_TEMPORAL_PARENT_ONLY
+      exact_field_types:
+        schema_version: string
+        status: string
+        synthetic_content_tree_sha256: lowercase_64_hex_string
+        synthetic_content_result_fingerprint_sha256: lowercase_64_hex_string
+        synthetic_temporal_result_fingerprint_sha256: lowercase_64_hex_string
+    canonical_work_time_spine:
+      exact_keyset:
+        - schema_version
+        - status
+        - synthetic_content_tree_sha256
+        - synthetic_content_result_fingerprint_sha256
+        - synthetic_temporal_result_fingerprint_sha256
+        - synthetic_spine_result_fingerprint_sha256
+        - synthetic_spine_data_tree_sha256
+        - rows
+      allowed_schema_version: openalex_g1_work_side_author_history_synthetic_spine_parent.v1
+      allowed_status: SYNTHETIC_CANONICAL_SPINE_PARENT_ONLY
+      exact_field_types:
+        schema_version: string
+        status: string
+        synthetic_content_tree_sha256: lowercase_64_hex_string
+        synthetic_content_result_fingerprint_sha256: lowercase_64_hex_string
+        synthetic_temporal_result_fingerprint_sha256: lowercase_64_hex_string
+        synthetic_spine_result_fingerprint_sha256: lowercase_64_hex_string
+        synthetic_spine_data_tree_sha256: lowercase_64_hex_string
+        rows: non_boolean_integer_0_through_10000
+  fixture_parent_cross_binding:
+    all_three_content_tree_sha256_equal: true
+    all_three_content_result_fingerprint_sha256_equal: true
+    temporal_and_spine_temporal_result_fingerprint_sha256_equal: true
+    spine_rows_equal_fixture_spine_row_count: true
+  plan_schema_version: openalex_g1_work_side_author_history_synthetic_plan.v1
+  checkpoint_schema_version: openalex_g1_work_side_author_history_synthetic_checkpoint.v1
+  state_schema_version: openalex_g1_work_side_author_history_synthetic_state.v1
+  report_schema_version: openalex_g1_work_side_author_history_synthetic_report.v1
+  receipt_schema_version: openalex_g1_work_side_author_history_synthetic_outputs.v1
+  execution_abi_literal: openalex_g1_work_side_author_history_synthetic_execution.v1
+  canonical_json_abi_literal: openalex_g1_work_side_author_history_canonical_json.v1
+  output_status_and_phase_literals:
+    audit_plan_status: SYNTHETIC_PLAN_FROZEN
+    checkpoint_status: COMPLETE_SYNTHETIC_ACCOUNTING_CHECKPOINT
+    report_and_receipt_success_status: PASS_SYNTHETIC_WORK_SIDE_AUTHOR_TOKEN_HISTORY_CONTRACT_ONLY
+    run_state_allowed_statuses:
+      - PLANNED_SYNTHETIC_AUTHOR_HISTORY
+      - RUNNING_SYNTHETIC_AUTHOR_HISTORY
+      - COMPLETE_PENDING_RECEIPT
+      - FINALIZATION_FAILED_NO_VALID_RECEIPT
+    run_state_allowed_phases:
+      - planned
+      - validating_fixture
+      - computing_accounting
+      - publishing_reports
+      - complete_pending_receipt
+      - finalization_failed
+    terminal_success_state_status: COMPLETE_PENDING_RECEIPT
+    terminal_failure_state_status: FINALIZATION_FAILED_NO_VALID_RECEIPT
+  output_json_schemas:
+    audit_plan:
+      exact_keyset:
+        - schema_version
+        - surface_kind
+        - status
+        - execution_abi
+        - task_fingerprint_sha256
+        - config_sha256
+        - tool_sha256
+        - fixture_sha256
+        - runtime_fingerprint
+        - parent_commitments
+        - row_counts
+        - output_paths_redacted
+      exact_field_types:
+        schema_version: string
+        surface_kind: string
+        status: string
+        execution_abi: string
+        task_fingerprint_sha256: lowercase_64_hex_string
+        config_sha256: lowercase_64_hex_string
+        tool_sha256: lowercase_64_hex_string
+        fixture_sha256: lowercase_64_hex_string
+        runtime_fingerprint: object
+        parent_commitments: object
+        row_counts: object
+        output_paths_redacted: boolean
+    run_state:
+      exact_keyset:
+        - schema_version
+        - surface_kind
+        - status
+        - task_fingerprint_sha256
+        - phase
+        - completed_row_counts
+        - error_redacted
+        - result_fingerprint_sha256
+        - updated_at_utc
+        - operator_paths_redacted
+      exact_field_types:
+        schema_version: string
+        surface_kind: string
+        status: string
+        task_fingerprint_sha256: lowercase_64_hex_string
+        phase: string
+        completed_row_counts: object
+        error_redacted: null_or_string
+        result_fingerprint_sha256: null_or_lowercase_64_hex_string
+        updated_at_utc: utc_rfc3339_string
+        operator_paths_redacted: boolean
+      completed_row_counts_schema_ref: output_nested_object_schemas.row_counts
+    synthetic_accounting_checkpoint:
+      exact_keyset:
+        - schema_version
+        - surface_kind
+        - status
+        - task_fingerprint_sha256
+        - metrics
+        - metrics_sha256
+        - checkpoint_sha256
+        - operator_paths_redacted
+      exact_field_types:
+        schema_version: string
+        surface_kind: string
+        status: string
+        task_fingerprint_sha256: lowercase_64_hex_string
+        metrics: object
+        metrics_sha256: lowercase_64_hex_string
+        checkpoint_sha256: lowercase_64_hex_string
+        operator_paths_redacted: boolean
+    author_history_report:
+      exact_keyset:
+        - schema_version
+        - surface_kind
+        - status
+        - production_status
+        - task_fingerprint_sha256
+        - result_fingerprint_sha256
+        - parents
+        - scope
+        - source_accounting
+        - work_and_slot_accounting
+        - author_id_accounting
+        - pair_accounting
+        - temporal_accounting
+        - history_accounting
+        - team_and_hyper_sensitivity
+        - orcid_name_and_position_diagnostics
+        - gate_status
+        - claim_boundary
+        - operator_paths_redacted
+      exact_field_types:
+        schema_version: string
+        surface_kind: string
+        status: string
+        production_status: string
+        task_fingerprint_sha256: lowercase_64_hex_string
+        result_fingerprint_sha256: lowercase_64_hex_string
+        parents: object
+        scope: object
+        source_accounting: object
+        work_and_slot_accounting: object
+        author_id_accounting: object
+        pair_accounting: object
+        temporal_accounting: object
+        history_accounting: object
+        team_and_hyper_sensitivity: object
+        orcid_name_and_position_diagnostics: object
+        gate_status: object
+        claim_boundary: string
+        operator_paths_redacted: boolean
+  output_nested_object_schemas:
+    runtime_fingerprint:
+      exact_keyset: [python_implementation, python_version, unicodedata_unidata_version, json_abi]
+      exact_field_types:
+        python_implementation: string
+        python_version: string
+        unicodedata_unidata_version: string
+        json_abi: string
+    parent_commitments:
+      exact_keyset:
+        - synthetic_content_tree_sha256
+        - synthetic_content_result_fingerprint_sha256
+        - synthetic_temporal_result_fingerprint_sha256
+        - synthetic_spine_result_fingerprint_sha256
+        - synthetic_spine_data_tree_sha256
+        - spine_rows
+      digest_values: lowercase_64_hex_strings
+      spine_rows: non_boolean_integer_0_through_10000
+    row_counts:
+      exact_keyset: [main_rows, spine_rows, authorship_rows]
+      exact_field_types:
+        main_rows: non_boolean_integer_0_through_10000
+        spine_rows: non_boolean_integer_0_through_10000
+        authorship_rows: non_boolean_integer_0_through_20000
+    scope:
+      exact_keyset:
+        - main_rows
+        - spine_rows
+        - authorship_rows
+        - gpu_used
+        - production_input_accessed
+        - scientific_effect_estimation_performed
+      exact_field_types:
+        main_rows: non_boolean_integer_0_through_10000
+        spine_rows: non_boolean_integer_0_through_10000
+        authorship_rows: non_boolean_integer_0_through_20000
+        gpu_used: boolean_false
+        production_input_accessed: boolean_false
+        scientific_effect_estimation_performed: boolean_false
+    source_accounting:
+      exact_keyset:
+        - main_rows
+        - spine_rows
+        - authorship_rows
+        - matched_main_spine_rows
+        - duplicate_main_rows
+        - duplicate_spine_rows
+        - matched_authorship_rows
+        - unmatched_authorship_rows
+      exact_field_types:
+        main_rows: non_boolean_nonnegative_integer
+        spine_rows: non_boolean_nonnegative_integer
+        authorship_rows: non_boolean_nonnegative_integer
+        matched_main_spine_rows: non_boolean_nonnegative_integer
+        duplicate_main_rows: non_boolean_nonnegative_integer
+        duplicate_spine_rows: non_boolean_nonnegative_integer
+        matched_authorship_rows: non_boolean_nonnegative_integer
+        unmatched_authorship_rows: non_boolean_nonnegative_integer
+      local_closure:
+        - main_rows_gte_matched_main_spine_rows
+        - spine_rows_gte_matched_main_spine_rows
+        - authorship_rows_gte_matched_authorship_rows
+    work_and_slot_accounting:
+      exact_keyset:
+        - retained_work_rows
+        - main_w_minus_1_rows
+        - authorship_w_minus_1_rows
+        - total_w_minus_1_rows
+        - w_zero_rows
+        - declared_slots
+        - observed_slots
+        - authors_count_mismatches
+        - complete_works
+        - partial_works
+        - none_usable_works
+        - zero_authorship_row_works
+      exact_field_types:
+        retained_work_rows: non_boolean_nonnegative_integer
+        main_w_minus_1_rows: non_boolean_nonnegative_integer
+        authorship_w_minus_1_rows: non_boolean_nonnegative_integer
+        total_w_minus_1_rows: non_boolean_nonnegative_integer
+        w_zero_rows: non_boolean_nonnegative_integer
+        declared_slots: non_boolean_nonnegative_integer
+        observed_slots: non_boolean_nonnegative_integer
+        authors_count_mismatches: non_boolean_nonnegative_integer
+        complete_works: non_boolean_nonnegative_integer
+        partial_works: non_boolean_nonnegative_integer
+        none_usable_works: non_boolean_nonnegative_integer
+        zero_authorship_row_works: non_boolean_nonnegative_integer
+      closure:
+        - total_w_minus_1_rows_equals_main_plus_authorship_w_minus_1_rows
+        - main_w_minus_1_rows_equals_fixture_main_exact_W_minus_1_rows
+        - authorship_w_minus_1_rows_equals_fixture_authorship_exact_W_minus_1_rows
+    author_id_accounting:
+      exact_keyset:
+        - null_author_slots
+        - malformed_author_slots
+        - grammar_valid_author_slots
+        - a_zero_slots
+        - positive_author_slots
+        - distinct_base_tokens
+        - distinct_positive_tokens
+      exact_field_types:
+        null_author_slots: non_boolean_nonnegative_integer
+        malformed_author_slots: non_boolean_nonnegative_integer
+        grammar_valid_author_slots: non_boolean_nonnegative_integer
+        a_zero_slots: non_boolean_nonnegative_integer
+        positive_author_slots: non_boolean_nonnegative_integer
+        distinct_base_tokens: non_boolean_nonnegative_integer
+        distinct_positive_tokens: non_boolean_nonnegative_integer
+    pair_accounting:
+      exact_keyset:
+        - grammar_valid_author_slots
+        - distinct_author_work_pairs
+        - duplicate_pair_row_excess
+        - position_category_conflict_pairs
+        - raw_position_conflict_pairs
+        - combined_position_conflict_pairs
+      exact_field_types:
+        grammar_valid_author_slots: non_boolean_nonnegative_integer
+        distinct_author_work_pairs: non_boolean_nonnegative_integer
+        duplicate_pair_row_excess: non_boolean_nonnegative_integer
+        position_category_conflict_pairs: non_boolean_nonnegative_integer
+        raw_position_conflict_pairs: non_boolean_nonnegative_integer
+        combined_position_conflict_pairs: non_boolean_nonnegative_integer
+    temporal_accounting:
+      exact_keyset:
+        - disposition_0_pairs
+        - disposition_1_pairs
+        - disposition_2_pairs
+        - disposition_3_pairs
+        - disposition_4_pairs
+        - disposition_5_pairs
+        - history_usable_pairs
+        - excluded_pairs
+      exact_field_types:
+        disposition_0_pairs: non_boolean_nonnegative_integer
+        disposition_1_pairs: non_boolean_nonnegative_integer
+        disposition_2_pairs: non_boolean_nonnegative_integer
+        disposition_3_pairs: non_boolean_nonnegative_integer
+        disposition_4_pairs: non_boolean_nonnegative_integer
+        disposition_5_pairs: non_boolean_nonnegative_integer
+        history_usable_pairs: non_boolean_nonnegative_integer
+        excluded_pairs: non_boolean_nonnegative_integer
+      closure:
+        - distinct_author_work_pairs_equals_sum_disposition_0_through_5_pairs
+        - history_usable_pairs_equals_disposition_2_pairs_plus_disposition_3_pairs
+        - excluded_pairs_equals_disposition_0_plus_1_plus_4_plus_5_pairs
+        - distinct_author_work_pairs_equals_history_usable_pairs_plus_excluded_pairs
+    history_accounting:
+      exact_keyset:
+        - base_view_tokens
+        - positive_view_tokens
+        - base_view_unique_pairs
+        - positive_view_unique_pairs
+        - base_view_per_year_aggregate_sha256
+        - positive_view_per_year_aggregate_sha256
+        - base_view_per_token_aggregate_sha256
+        - positive_view_per_token_aggregate_sha256
+      exact_field_types:
+        base_view_tokens: non_boolean_nonnegative_integer
+        positive_view_tokens: non_boolean_nonnegative_integer
+        base_view_unique_pairs: non_boolean_nonnegative_integer
+        positive_view_unique_pairs: non_boolean_nonnegative_integer
+        base_view_per_year_aggregate_sha256: lowercase_64_hex_string
+        positive_view_per_year_aggregate_sha256: lowercase_64_hex_string
+        base_view_per_token_aggregate_sha256: lowercase_64_hex_string
+        positive_view_per_token_aggregate_sha256: lowercase_64_hex_string
+      closure:
+        - positive_view_tokens_lte_base_view_tokens
+        - positive_view_unique_pairs_lte_base_view_unique_pairs
+    team_and_hyper_sensitivity:
+      exact_keyset:
+        - base_view_cap_pair_counts
+        - positive_author_id_view_cap_pair_counts
+        - base_view_cap_threshold_token_grid
+        - positive_author_id_view_cap_threshold_token_grid
+        - base_view_grid_sha256
+        - positive_author_id_view_grid_sha256
+      exact_field_types:
+        base_view_cap_pair_counts: team_cap_pair_counts_object
+        positive_author_id_view_cap_pair_counts: team_cap_pair_counts_object
+        base_view_cap_threshold_token_grid: team_cap_threshold_grid_object
+        positive_author_id_view_cap_threshold_token_grid: team_cap_threshold_grid_object
+        base_view_grid_sha256: lowercase_64_hex_string
+        positive_author_id_view_grid_sha256: lowercase_64_hex_string
+      closure:
+        - positive_author_id_cap_pair_count_lte_corresponding_base_pair_count_for_each_cap
+        - base_ALL_cap_pair_count_equals_base_view_unique_pairs
+        - positive_ALL_cap_pair_count_equals_positive_view_unique_pairs
+        - base_view_grid_sha256_equals_domain_hash_of_visible_base_view_grid_payload
+        - positive_view_grid_sha256_equals_domain_hash_of_visible_positive_view_grid_payload
+    team_cap_pair_counts:
+      exact_keyset: ["10", "50", "100", ALL]
+      exact_field_types:
+        "10": non_boolean_nonnegative_integer
+        "50": non_boolean_nonnegative_integer
+        "100": non_boolean_nonnegative_integer
+        ALL: non_boolean_nonnegative_integer
+      closure: cap_10_lte_cap_50_lte_cap_100_lte_cap_ALL
+    team_cap_threshold_grid:
+      views: [base, positive_author_id]
+      caps: ["10", "50", "100", ALL]
+      thresholds: [gt_50, gt_100, gt_250, gt_500, gt_1000]
+      exact_keyset:
+        - cap_10_gt_50
+        - cap_10_gt_100
+        - cap_10_gt_250
+        - cap_10_gt_500
+        - cap_10_gt_1000
+        - cap_50_gt_50
+        - cap_50_gt_100
+        - cap_50_gt_250
+        - cap_50_gt_500
+        - cap_50_gt_1000
+        - cap_100_gt_50
+        - cap_100_gt_100
+        - cap_100_gt_250
+        - cap_100_gt_500
+        - cap_100_gt_1000
+        - cap_ALL_gt_50
+        - cap_ALL_gt_100
+        - cap_ALL_gt_250
+        - cap_ALL_gt_500
+        - cap_ALL_gt_1000
+      value_type: non_boolean_nonnegative_integer
+      cell_semantics: distinct_author_tokens_whose_maximum_annual_unique_work_count_within_the_named_team_cap_view_is_strictly_greater_than_the_named_threshold
+      per_cap_threshold_closure: gt_1000_lte_gt_500_lte_gt_250_lte_gt_100_lte_gt_50
+      per_threshold_cap_closure: cap_10_lte_cap_50_lte_cap_100_lte_cap_ALL
+      positive_author_id_cell_lte_corresponding_base_cell: true
+    orcid_name_and_position_diagnostics:
+      exact_keyset:
+        - primary_population_pairs
+        - history_usable_population_pairs
+        - primary_population_aggregate_sha256
+        - history_usable_population_aggregate_sha256
+        - tagged_null_empty_semantics_applied
+      exact_field_types:
+        primary_population_pairs: non_boolean_nonnegative_integer
+        history_usable_population_pairs: non_boolean_nonnegative_integer
+        primary_population_aggregate_sha256: lowercase_64_hex_string
+        history_usable_population_aggregate_sha256: lowercase_64_hex_string
+        tagged_null_empty_semantics_applied: boolean_true
+    gate_status:
+      exact_keyset:
+        - synthetic_contract
+        - production_status
+        - production_parity_established
+        - author_entity_validity
+        - token_and_field_past_observability
+        - g_minus_1_data_readiness
+        - g0_measurement_freeze
+        - empirical_g1_signature
+        - pass_g1
+        - scientific_effect
+      exact_field_types:
+        synthetic_contract: exact_status_string
+        production_status: exact_status_string
+        production_parity_established: boolean_false
+        author_entity_validity: exact_status_string
+        token_and_field_past_observability: exact_status_string
+        g_minus_1_data_readiness: exact_status_string
+        g0_measurement_freeze: exact_status_string
+        empirical_g1_signature: exact_status_string
+        pass_g1: boolean_false
+        scientific_effect: exact_status_string
+      exact_values:
+        synthetic_contract: PASS_SYNTHETIC_WORK_SIDE_AUTHOR_TOKEN_HISTORY_CONTRACT_ONLY
+        production_status: PRODUCTION_NOT_RUN
+        production_parity_established: false
+        author_entity_validity: UNRESOLVED_WORK_SIDE_ONLY
+        token_and_field_past_observability: UNVERIFIED_CURRENT_SNAPSHOT_RETROSPECTIVE_PROXY
+        g_minus_1_data_readiness: PENDING
+        g0_measurement_freeze: PENDING
+        empirical_g1_signature: NOT_RUN
+        pass_g1: false
+        scientific_effect: NOT_ESTABLISHED
+    checkpoint_metrics_exact_keyset:
+      - source_accounting
+      - work_and_slot_accounting
+      - author_id_accounting
+      - pair_accounting
+      - temporal_accounting
+      - history_accounting
+      - team_and_hyper_sensitivity
+      - orcid_name_and_position_diagnostics
+      - gate_status
+    report_parents_exact_keyset:
+      - synthetic_content_tree_sha256
+      - synthetic_content_result_fingerprint_sha256
+      - synthetic_temporal_result_fingerprint_sha256
+      - synthetic_spine_result_fingerprint_sha256
+      - synthetic_spine_data_tree_sha256
+      - spine_rows
+    report_parents_schema_ref: output_nested_object_schemas.parent_commitments
+    report_parents_must_equal_plan_parent_commitments: true
+  aggregate_record_contracts:
+    framing: one_canonical_json_array_no_stream_delimiters
+    empty_population_payload: canonical_empty_json_array
+    duplicate_records_allowed: false
+    tagged_null_or_string_value:
+      exact_variants:
+        - {kind: "null"}
+        - {kind: string, value: utf8_string}
+      null_and_empty_string_are_distinct: true
+      sort_key: [kind_null_before_string, string_value_unsigned_utf8]
+    conflict_flags:
+      exact_keyset:
+        - raw_orcid_conflict
+        - canonical_orcid_conflict
+        - raw_author_name_conflict
+        - display_name_conflict
+        - normalized_raw_name_conflict
+        - normalized_display_name_conflict
+        - position_category_conflict
+        - raw_position_conflict
+        - position_conflict
+      value_type: boolean
+      combined_position_closure: position_conflict_equals_position_category_conflict_or_raw_position_conflict
+    deduplicated_author_work_diagnostic_pair:
+      exact_keyset:
+        - author_numeric_id
+        - work_numeric_id
+        - raw_multiplicity
+        - temporal_disposition
+        - history_usable
+        - exact_raw_orcid_set
+        - canonical_valid_orcid_set
+        - exact_raw_author_name_set
+        - exact_display_name_set
+        - normalized_raw_author_name_set
+        - normalized_display_name_set
+        - author_position_category_set
+        - exact_raw_position_set
+        - conflict_flags
+      exact_field_types:
+        author_numeric_id: uint64_non_boolean_integer
+        work_numeric_id: uint64_non_boolean_integer
+        raw_multiplicity: non_boolean_integer_minimum_1
+        temporal_disposition: non_boolean_integer_0_through_5
+        history_usable: boolean
+        exact_raw_orcid_set: sorted_unique_tagged_null_or_string_array
+        canonical_valid_orcid_set: sorted_unique_valid_canonical_orcid_string_array
+        exact_raw_author_name_set: sorted_unique_tagged_null_or_string_array
+        exact_display_name_set: sorted_unique_tagged_null_or_string_array
+        normalized_raw_author_name_set: sorted_unique_tagged_null_or_string_array
+        normalized_display_name_set: sorted_unique_tagged_null_or_string_array
+        author_position_category_set: sorted_unique_declared_category_string_array
+        exact_raw_position_set: sorted_unique_tagged_null_or_string_array
+        conflict_flags: exact_conflict_flags_object
+      record_sort_key: [author_numeric_id, work_numeric_id]
+      history_usable_closure: temporal_disposition_in_2_or_3
+      raw_multiplicity_closure: source_rows_collapsed_into_this_exact_pair
+      author_position_category_set_sort_comparator: declared_category_order
+      author_position_category_set_sort_order: [first, middle, last, "null", unexpected_non_null]
+    per_author_year_aggregate:
+      exact_keyset:
+        - author_numeric_id
+        - publication_year
+        - unique_work_count
+        - team_band_unique_work_counts
+        - primary_field_unique_work_counts
+      exact_field_types:
+        author_numeric_id: uint64_non_boolean_integer
+        publication_year: non_boolean_integer_1900_through_2026
+        unique_work_count: non_boolean_positive_integer
+        team_band_unique_work_counts: exact_team_band_count_object
+        primary_field_unique_work_counts: exact_primary_field_count_object
+      team_band_count_exact_keyset: ["1", "2", 3-5, 6-10, 11-50, 51-100, 101+]
+      primary_field_count_exact_keyset:
+        - "null"
+        - "1"
+        - "2"
+        - "3"
+        - "4"
+        - "5"
+        - "6"
+        - "7"
+        - "8"
+        - "9"
+        - "10"
+        - "11"
+        - "12"
+        - "13"
+        - "14"
+        - "15"
+        - "16"
+        - "17"
+        - "18"
+        - "19"
+        - "20"
+        - "21"
+        - "22"
+        - "23"
+        - "24"
+        - "25"
+        - "26"
+      nested_count_value_type: non_boolean_nonnegative_integer
+      count_closure: unique_work_count_equals_sum_team_band_counts_and_equals_sum_primary_field_counts
+      record_sort_key: [author_numeric_id, publication_year]
+    per_author_token_aggregate:
+      exact_keyset:
+        - author_numeric_id
+        - first_usable_publication_year
+        - last_usable_publication_year
+        - active_year_count
+        - inclusive_span_years
+        - inactive_gap_years
+        - total_unique_work_count
+        - maximum_annual_unique_work_count
+      exact_field_types:
+        author_numeric_id: uint64_non_boolean_integer
+        first_usable_publication_year: non_boolean_integer_1900_through_2026
+        last_usable_publication_year: non_boolean_integer_1900_through_2026
+        active_year_count: non_boolean_positive_integer
+        inclusive_span_years: non_boolean_positive_integer
+        inactive_gap_years: non_boolean_nonnegative_integer
+        total_unique_work_count: non_boolean_positive_integer
+        maximum_annual_unique_work_count: non_boolean_positive_integer
+      closure:
+        - first_year_lte_last_year
+        - inclusive_span_equals_last_minus_first_plus_one
+        - inactive_gap_equals_inclusive_span_minus_active_year_count
+        - maximum_annual_lte_total_unique_work_count
+      record_sort_key: [author_numeric_id]
+    team_cap_threshold_grid_payload:
+      exact_keyset: [view, cap_pair_counts, cap_threshold_token_grid]
+      exact_field_types:
+        view: enum_base_or_positive_author_id
+        cap_pair_counts: exact_team_cap_pair_counts_object
+        cap_threshold_token_grid: exact_team_cap_threshold_grid_object
+      object_key_order_is_canonical_json_order_not_semantic: true
+  canonical_hash_contract:
+    digest: sha256
+    digest_text_pattern: '^[0-9a-f]{64}$'
+    canonical_json_encoding: utf8
+    canonical_json_ensure_ascii: false
+    canonical_json_sort_object_keys_by: unicode_codepoint_ascending
+    canonical_json_separators: comma_and_colon_without_whitespace
+    canonical_json_allow_nan: false
+    canonical_json_trailing_newline: false
+    floating_point_values_allowed_in_hashed_payloads: false
+    domain_separator_encoding: utf8_domain_then_single_nul_byte_then_canonical_json_bytes
+    raw_file_sha256_inputs: [exact_config_bytes, exact_tool_bytes, exact_fixture_bytes, exact_artifact_bytes]
+    aggregate_digests:
+      primary_pair_diagnostics:
+        output_field: primary_population_aggregate_sha256
+        domain: openalex_g1_work_side_author_history.synthetic.primary_pair_diagnostics.v1
+        population: all_retained_grammar_valid_distinct_author_work_pairs
+        record_schema: deduplicated_author_work_diagnostic_pair
+        record_sort_key: [author_numeric_id, work_numeric_id]
+        framing: canonical_json_array
+      history_usable_pair_diagnostics:
+        output_field: history_usable_population_aggregate_sha256
+        domain: openalex_g1_work_side_author_history.synthetic.history_usable_pair_diagnostics.v1
+        population: temporal_disposition_2_or_3_distinct_author_work_pairs
+        record_schema: deduplicated_author_work_diagnostic_pair
+        record_sort_key: [author_numeric_id, work_numeric_id]
+        framing: canonical_json_array
+      base_view_per_year:
+        output_field: base_view_per_year_aggregate_sha256
+        domain: openalex_g1_work_side_author_history.synthetic.base_view_per_year.v1
+        population: history_usable_pairs_including_A0
+        record_schema: per_author_year_aggregate
+        record_sort_key: [author_numeric_id, publication_year]
+        framing: canonical_json_array
+      positive_view_per_year:
+        output_field: positive_view_per_year_aggregate_sha256
+        domain: openalex_g1_work_side_author_history.synthetic.positive_view_per_year.v1
+        population: history_usable_pairs_with_author_numeric_id_gt_0
+        record_schema: per_author_year_aggregate
+        record_sort_key: [author_numeric_id, publication_year]
+        framing: canonical_json_array
+      base_view_per_token:
+        output_field: base_view_per_token_aggregate_sha256
+        domain: openalex_g1_work_side_author_history.synthetic.base_view_per_token.v1
+        population: history_usable_pairs_including_A0
+        record_schema: per_author_token_aggregate
+        record_sort_key: [author_numeric_id]
+        framing: canonical_json_array
+      positive_view_per_token:
+        output_field: positive_view_per_token_aggregate_sha256
+        domain: openalex_g1_work_side_author_history.synthetic.positive_view_per_token.v1
+        population: history_usable_pairs_with_author_numeric_id_gt_0
+        record_schema: per_author_token_aggregate
+        record_sort_key: [author_numeric_id]
+        framing: canonical_json_array
+      base_view_team_hyper_grid:
+        output_field: base_view_grid_sha256
+        domain: openalex_g1_work_side_author_history.synthetic.base_view_team_hyper_grid.v1
+        population: history_usable_pairs_including_A0
+        record_schema: team_cap_threshold_grid_payload
+        exact_view_literal: base
+        framing: canonical_json_object
+      positive_view_team_hyper_grid:
+        output_field: positive_author_id_view_grid_sha256
+        domain: openalex_g1_work_side_author_history.synthetic.positive_view_team_hyper_grid.v1
+        population: history_usable_pairs_with_author_numeric_id_gt_0
+        record_schema: team_cap_threshold_grid_payload
+        exact_view_literal: positive_author_id
+        framing: canonical_json_object
+    all_aggregate_domains_unique: true
+    aggregate_digest_payload_is_exactly_domain_nul_canonical_payload: true
+    task_fingerprint:
+      domain: openalex_g1_work_side_author_history.synthetic.task.v1
+      exact_payload_keyset:
+        - execution_abi
+        - config_sha256
+        - tool_sha256
+        - fixture_sha256
+        - runtime_fingerprint
+        - parent_commitments
+        - row_counts
+    metrics_sha256:
+      domain: openalex_g1_work_side_author_history.synthetic.metrics.v1
+      payload: checkpoint_metrics_object_with_exact_declared_keyset
+    checkpoint_sha256:
+      domain: openalex_g1_work_side_author_history.synthetic.checkpoint.v1
+      payload: exact_checkpoint_object_with_checkpoint_sha256_field_removed
+    result_fingerprint:
+      domain: openalex_g1_work_side_author_history.synthetic.result.v1
+      exact_payload_keyset:
+        - task_fingerprint_sha256
+        - metrics_sha256
+        - parent_commitments
+        - row_counts
+        - gate_status
+        - claim_boundary
+  status: PASS_SYNTHETIC_WORK_SIDE_AUTHOR_TOKEN_HISTORY_CONTRACT_ONLY
+  surface_kind: SYNTHETIC_FIXTURE_ONLY
+  production_status: PRODUCTION_NOT_RUN
+  production_full_status_allowed: false
+  production_input_access_allowed: false
+  repository_config_production_root_metadata_is_nonexecuted_provenance_only: true
+  fixture_path_with_production_root_component_refused_before_open: true
+  fixture_root_id_equal_to_or_containing_production_root_id_refused_after_strict_parse_before_row_validation: true
+  fixture_root_id_is_not_available_before_payload_parse: true
+  strict_json_duplicate_keys_rejected: true
+  strict_json_nan_infinity_rejected: true
+  strict_json_lone_unicode_surrogates_rejected: true
+  hard_max_fixture_bytes: 1048576
+  hard_max_main_rows: 10000
+  hard_max_spine_rows: 10000
+  hard_max_authorship_rows: 20000
+  fixture_lstat_and_size_checked_before_payload_open: true
+  row_caps_checked_before_core_processing: true
+  synthetic_parent_commitments_use_nonproduction_statuses: true
+  core_logic_is_candidate_for_future_shared_production_implementation: true
+  production_parity_established: false
+  exact_receipt_artifacts:
+    - audit_plan.json
+    - run_state.json
+    - checkpoints/synthetic_accounting.json
+    - author_history_audit.json
+    - author_history_audit.md
+  exact_receipt_artifact_count: 5
+  receipt_basename: author_history_audit.outputs.json
+  exact_receipt_keyset:
+    - schema_version
+    - status
+    - result_fingerprint_sha256
+    - task_fingerprint_sha256
+    - artifacts
+    - completion_contract
+    - operator_paths_redacted
+  receipt_exact_field_types:
+    schema_version: string
+    status: string
+    result_fingerprint_sha256: lowercase_64_hex_string
+    task_fingerprint_sha256: lowercase_64_hex_string
+    artifacts: object
+    completion_contract: string
+    operator_paths_redacted: boolean
+  receipt_artifact_container: object_mapping_exact_five_relative_paths_to_records
+  receipt_artifact_mapping_exact_keyset:
+    - audit_plan.json
+    - run_state.json
+    - checkpoints/synthetic_accounting.json
+    - author_history_audit.json
+    - author_history_audit.md
+  receipt_artifact_record_exact_keyset:
+    - relative_path
+    - bytes
+    - sha256
+  receipt_artifact_record_exact_field_types:
+    relative_path: exact_declared_posix_relative_path_string
+    bytes: non_boolean_nonnegative_integer
+    sha256: lowercase_64_hex_string
+  receipt_artifact_record_closure:
+    mapping_key_equals_record_relative_path: true
+    record_bytes_equals_exact_published_payload_byte_length: true
+    record_sha256_equals_recomputed_exact_published_payload_sha256: true
+    every_exact_receipt_artifact_appears_once: true
+    extra_artifact_mapping_keys_allowed: false
+  pre_receipt_state: COMPLETE_PENDING_RECEIPT
+  receipt_completion_contract: SYNTHETIC_RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+  receipt_written_last: true
+  final_validation_rehashes_all_five_receipt_artifacts: true
+  result_fingerprint_direct_payload:
+    - task_fingerprint_sha256
+    - metrics_sha256
+    - parent_commitments
+    - row_counts
+    - gate_status
+    - claim_boundary
+  result_fingerprint_transitively_binds_through_task_and_metrics:
+    - execution_abi
+    - config_sha256
+    - tool_sha256
+    - runtime_unicode_fingerprint
+    - synthetic_parent_commitments
+    - fixture_sha256
+    - identifier_and_slot_accounting
+    - exact_pair_deduplication_and_conflict_sets
+    - temporal_disposition_accounting
+    - base_and_positive_author_id_views
+    - team_cap_and_hyper_prolific_sensitivity
+    - orcid_name_and_position_diagnostics
+  cross_artifact_semantic_binding_contract:
+    checkpoint_metrics_source: checkpoints/synthetic_accounting.json.metrics
+    report_metrics_target: author_history_audit.json
+    checkpoint_metrics_report_exact_object_equality_sections:
+      - source_accounting
+      - work_and_slot_accounting
+      - author_id_accounting
+      - pair_accounting
+      - temporal_accounting
+      - history_accounting
+      - team_and_hyper_sensitivity
+      - orcid_name_and_position_diagnostics
+      - gate_status
+    task_fingerprint_authoritative_source: audit_plan.json.task_fingerprint_sha256
+    task_fingerprint_must_recompute_from_audit_plan_exact_payload: true
+    task_fingerprint_exact_equality_targets:
+      - checkpoints/synthetic_accounting.json.task_fingerprint_sha256
+      - run_state.json.task_fingerprint_sha256
+      - author_history_audit.json.task_fingerprint_sha256
+      - author_history_audit.outputs.json.task_fingerprint_sha256
+    parent_commitments_authoritative_source: audit_plan.json.parent_commitments
+    parent_commitments_exact_equality_target: author_history_audit.json.parents
+    completed_row_counts_authoritative_source: audit_plan.json.row_counts
+    completed_row_count_projection_exact_keyset:
+      - main_rows
+      - spine_rows
+      - authorship_rows
+    successful_completion_row_count_projection_targets:
+      run_state.json.completed_row_counts: [main_rows, spine_rows, authorship_rows]
+      checkpoints/synthetic_accounting.json.metrics.source_accounting: [main_rows, spine_rows, authorship_rows]
+      author_history_audit.json.scope: [main_rows, spine_rows, authorship_rows]
+    metrics_sha256_must_recompute_from_exact_checkpoint_metrics: true
+    checkpoint_sha256_must_recompute_with_checkpoint_sha256_field_removed: true
+    config_pointer_namespace:
+      repository_config: experiments/configs/openalex_g1_work_side_author_history_v0.yaml
+      pointer_syntax: RFC6901
+    claim_boundary_authoritative_source: repository_config#/claim_boundary
+    report_claim_boundary_must_equal_authoritative_source: true
+    result_fingerprint_exact_source_paths:
+      task_fingerprint_sha256: audit_plan.json.task_fingerprint_sha256
+      metrics_sha256: checkpoints/synthetic_accounting.json.metrics_sha256
+      parent_commitments: audit_plan.json.parent_commitments
+      row_counts: audit_plan.json.row_counts
+      gate_status: checkpoints/synthetic_accounting.json.metrics.gate_status
+      claim_boundary: repository_config#/claim_boundary
+    result_fingerprint_must_recompute_from_exact_source_paths: true
+    result_fingerprint_exact_equality_targets:
+      - run_state.json.result_fingerprint_sha256
+      - author_history_audit.json.result_fingerprint_sha256
+      - author_history_audit.outputs.json.result_fingerprint_sha256
+    status_and_literal_cross_bindings:
+      report_status_equals_checkpoint_gate_synthetic_contract: true
+      receipt_status_equals_report_status: true
+      report_production_status_equals_checkpoint_gate_production_status: true
+      report_surface_kind_equals_synthetic_execution_surface_kind: true
+      report_operator_paths_redacted_is_true: true
+      receipt_completion_contract_equals_declared_literal: true
+    pre_complete_pending_receipt_validation:
+      exact_scope:
+        - plan_task_parents_and_row_counts
+        - checkpoint_metrics_and_self_hashes
+        - in_memory_report_nine_metric_sections_parents_scope_literals_and_claim_boundary
+        - recomputed_result_fingerprint
+      excludes_not_yet_published_terminal_state_and_receipt_targets: true
+    complete_pending_receipt_state_written_only_after_pre_complete_validation: true
+    post_complete_pre_receipt_validation:
+      reopens_plan_checkpoint_report_and_complete_state_from_disk: true
+      includes_terminal_state_task_completed_rows_and_result_targets: true
+      excludes_not_yet_published_receipt_targets: true
+    prospective_receipt_validation:
+      validates_in_memory_task_result_status_completion_contract_and_exact_artifact_map: true
+      rehashes_all_five_published_pre_receipt_artifacts: true
+      requires_post_complete_pre_receipt_validation_success: true
+    receipt_written_atomically_only_after_prospective_receipt_validation: true
+    final_disk_validation_after_receipt_write_rechecks_every_semantic_binding: true
+    valid_success_terminal_reentry_rechecks_every_semantic_binding_before_fixture_open: true
+    failed_state_resume_uses_failed_state_revalidation_contract: true
+    cross_binding_failure_routing:
+      validation_order:
+        - repository_config_plan_task_parents_and_checkpoint_self_hashes_first
+        - dependent_report_state_receipt_and_artifact_bindings_second
+      invalid_authoritative_config_plan_task_parent_or_checkpoint_route: pre_valid_checkpoint_failure_contract
+      valid_authoritative_sources_but_invalid_dependent_report_state_or_receipt_route: failure_invalidation_order
+      resumable_failed_state_may_be_written_only_when_authoritative_plan_and_checkpoint_remain_valid: true
+      mutation_tests_must_cover_each_edge_endpoint_and_expected_route: true
+    required_future_mutation_failure_test_edges:
+      - report_source_accounting_vs_checkpoint_metrics
+      - report_work_and_slot_accounting_vs_checkpoint_metrics
+      - report_author_id_accounting_vs_checkpoint_metrics
+      - report_pair_accounting_vs_checkpoint_metrics
+      - report_temporal_accounting_vs_checkpoint_metrics
+      - report_history_accounting_vs_checkpoint_metrics
+      - report_team_and_hyper_sensitivity_vs_checkpoint_metrics
+      - report_orcid_name_and_position_diagnostics_vs_checkpoint_metrics
+      - report_gate_status_vs_checkpoint_metrics
+      - plan_task_vs_checkpoint_task
+      - plan_task_vs_run_state_task
+      - plan_task_vs_report_task
+      - plan_task_vs_receipt_task
+      - plan_parents_vs_report_parents
+      - plan_rows_vs_checkpoint_source_projection
+      - plan_rows_vs_terminal_run_state_completed_rows
+      - plan_rows_vs_report_scope_projection
+      - recomputed_task_hash
+      - recomputed_metrics_hash
+      - recomputed_checkpoint_hash
+      - recomputed_result_hash
+      - result_vs_terminal_run_state
+      - result_vs_report
+      - result_vs_receipt
+      - report_claim_boundary_vs_config_claim_boundary
+      - report_status_vs_checkpoint_gate_status
+      - receipt_status_vs_report_status
+      - report_production_status_vs_checkpoint_gate_status
+      - each_of_five_receipt_artifact_byte_and_hash_records
+    future_runtime_mutation_tests_implemented_in_this_design_tranche: false
+    required_future_semantic_mutation_tests_recompute_local_self_hashes_and_receipt_artifact_hashes_before_expect_rejection: true
+  output_numeric_cross_section_closure_contract:
+    exact_equations:
+      - source_main_rows_equals_work_retained_work_rows_plus_main_w_minus_1_rows
+      - source_spine_rows_equals_source_matched_main_spine_rows
+      - source_matched_main_spine_rows_equals_work_retained_work_rows
+      - source_duplicate_main_rows_equals_zero
+      - source_duplicate_spine_rows_equals_zero
+      - source_authorship_rows_equals_source_matched_authorship_rows_plus_work_authorship_w_minus_1_rows
+      - source_matched_authorship_rows_equals_work_observed_slots
+      - source_unmatched_authorship_rows_equals_zero
+      - work_declared_slots_equals_work_observed_slots
+      - work_retained_work_rows_equals_complete_plus_partial_plus_none_usable_plus_zero_authorship_row_works
+      - work_observed_slots_equals_author_null_plus_malformed_plus_grammar_valid_slots
+      - pair_grammar_valid_author_slots_equals_author_grammar_valid_author_slots
+      - pair_grammar_valid_author_slots_equals_distinct_pairs_plus_duplicate_pair_row_excess
+      - temporal_distinct_pairs_equals_pair_distinct_author_work_pairs
+      - temporal_history_usable_pairs_equals_history_base_view_unique_pairs
+      - history_base_view_tokens_lte_author_distinct_base_tokens
+      - history_positive_view_tokens_lte_author_distinct_positive_tokens
+      - diagnostics_primary_population_pairs_equals_pair_distinct_author_work_pairs
+      - diagnostics_history_usable_population_pairs_equals_temporal_history_usable_pairs
+      - team_base_ALL_pairs_equals_history_base_view_unique_pairs
+      - team_positive_ALL_pairs_equals_history_positive_view_unique_pairs
+    all_equations_checked_before_report_publication_and_on_terminal_reentry: true
+    construction_time_hidden_record_closures:
+      - history_base_view_tokens_equals_base_per_token_aggregate_record_count
+      - history_positive_view_tokens_equals_positive_per_token_aggregate_record_count
+      - base_view_per_year_author_keyset_equals_base_view_per_token_author_keyset
+      - positive_view_per_year_author_keyset_equals_positive_view_per_token_author_keyset
+      - each_view_per_token_record_exactly_reduces_same_author_per_year_records
+      - positive_view_per_year_records_equal_base_view_per_year_records_filtered_by_author_numeric_id_gt_0
+      - positive_view_per_token_records_equal_base_view_per_token_records_filtered_by_author_numeric_id_gt_0
+      - each_positive_view_hidden_capped_record_array_equals_corresponding_base_view_hidden_capped_record_array_filtered_by_author_numeric_id_gt_0
+      - each_view_cap_pair_count_and_threshold_cell_exactly_reduces_corresponding_same_view_same_cap_hidden_capped_records
+    construction_time_hidden_cross_record_reduction_contract:
+      scope: CONSTRUCTION_TIME_ONLY_BEFORE_AGGREGATE_DIGEST_AND_METRICS_HASH
+      views: [base, positive_author_id]
+      author_key_field: author_numeric_id
+      per_view_hidden_record_key_uniqueness:
+        per_year: [author_numeric_id, publication_year]
+        per_token: [author_numeric_id]
+      per_view_author_keyset_equality:
+        base: base_view_per_year_author_keyset_equals_base_view_per_token_author_keyset
+        positive_author_id: positive_view_per_year_author_keyset_equals_positive_view_per_token_author_keyset
+      per_author_token_from_same_author_per_year_exact_reductions:
+        first_usable_publication_year: minimum_publication_year
+        last_usable_publication_year: maximum_publication_year
+        active_year_count: count_of_distinct_same_author_publication_years_equals_count_of_same_author_per_year_records
+        inclusive_span_years: maximum_year_minus_minimum_year_plus_one
+        inactive_gap_years: inclusive_span_years_minus_active_year_count
+        total_unique_work_count: sum_of_same_author_per_year_unique_work_count
+        maximum_annual_unique_work_count: maximum_of_same_author_per_year_unique_work_count
+      positive_author_id_exact_projection:
+        predicate: author_numeric_id > 0
+        preserves_declared_record_sort_order: true
+        exact_array_equalities:
+          - positive_view_per_year_equals_base_view_per_year_filtered_by_predicate
+          - positive_view_per_token_equals_base_view_per_token_filtered_by_predicate
+          - for_each_cap_positive_hidden_capped_pair_records_equal_base_hidden_capped_pair_records_filtered_by_predicate
+          - for_each_cap_positive_hidden_capped_per_year_records_equal_base_hidden_capped_per_year_records_filtered_by_predicate
+          - for_each_cap_positive_hidden_capped_per_token_records_equal_base_hidden_capped_per_token_records_filtered_by_predicate
+      team_cap_grid_from_corresponding_hidden_capped_records:
+        caps: [10, 50, 100, ALL]
+        thresholds: [50, 100, 250, 500, 1000]
+        numeric_cap_pair_filter: declared_authors_count <= cap
+        all_cap_pair_filter: include_every_same_view_history_usable_unique_author_work_pair
+        hidden_capped_pair_record_key: [author_numeric_id, work_numeric_id]
+        hidden_capped_pair_record_key_unique: true
+        cap_pair_count_reduction: exact_hidden_capped_pair_record_count
+        hidden_capped_per_year_reduction: group_same_cap_pairs_by_author_numeric_id_and_publication_year_then_count_unique_work_numeric_id
+        hidden_capped_per_token_reduction: apply_same_author_per_year_exact_reductions_within_same_cap
+        threshold_cell_reduction: count_distinct_same_cap_author_numeric_id_with_maximum_annual_unique_work_count_strictly_greater_than_threshold
+        no_cross_view_or_cross_cap_source_substitution_allowed: true
+      checked_while_hidden_arrays_are_in_memory: true
+      terminal_reentry_reopens_hidden_arrays: false
+      terminal_reentry_independent_cross_record_reduction_claim_allowed: false
+    hidden_record_closures_checked_before_aggregate_digest_and_metrics_hash: true
+    hidden_record_arrays_not_published_or_reopened_on_terminal_reentry: true
+    terminal_reentry_does_not_claim_independent_hidden_record_cardinality_recomputation: true
+  processing_order_and_fixture_byte_identity_contract:
+    same_exact_fixture_bytes_internal_traversal_order_chunking_and_successful_resume_result_fingerprint_equal: true
+    byte_permuted_fixture_with_same_logical_rows_aggregate_objects_and_metrics_sha256_equal: true
+    byte_permuted_fixture_fixture_sha256_task_fingerprint_and_result_fingerprint_must_differ: true
+    updated_at_receipt_bytes_and_artifact_hashes_need_not_match_clean_vs_resumed_run: true
+  task_fingerprint_exact_payload:
+    - execution_abi
+    - config_sha256
+    - tool_sha256
+    - fixture_sha256
+    - runtime_fingerprint
+    - parent_commitments
+    - row_counts
+  task_fingerprint_transitively_binds:
+    - runtime_unicode_fingerprint
+    - fixture_sha256
+    - exact_fixture_row_counts
+    - synthetic_parent_commitments
+    - partition_and_sort_contract
+  cutoff_contract_is_downstream_consumer_only: true
+  synthetic_cutoff_materialization_or_result_claim_allowed: false
+  report_required_sections:
+    - status
+    - scope
+    - parents
+    - source_accounting
+    - work_and_slot_accounting
+    - author_id_accounting
+    - pair_accounting
+    - temporal_accounting
+    - history_accounting
+    - team_and_hyper_sensitivity
+    - orcid_name_and_position_diagnostics
+    - gate_status
+    - task_fingerprint_sha256
+    - claim_boundary
+  markdown_render_contract:
+    source: validated_author_history_report_json_object
+    authority: NONAUTHORITATIVE_DERIVED_PRESENTATION_JSON_REPORT_IS_SEMANTIC_AUTHORITY
+    renderer_abi: openalex_g1_work_side_author_history_synthetic_markdown.v1
+    section_order: report_required_sections_order
+    utf8: true
+    final_newline_exactly_one: true
+    raw_fixture_paths_allowed: false
+    raw_author_work_name_or_orcid_values_allowed: false
+    aggregate_counts_statuses_and_sha256_only: true
+  terminal_reentry_validates_receipt_before_fixture_payload: true
+  terminal_reentry_rehashes_every_receipt_artifact: true
+  terminal_reentry_opens_fixture_payload: false
+  terminal_exact_published_file_set_required: true
+  exact_final_file_paths:
+    - audit_plan.json
+    - run_state.json
+    - checkpoints/synthetic_accounting.json
+    - author_history_audit.json
+    - author_history_audit.md
+    - author_history_audit.outputs.json
+  exact_final_directory_paths:
+    - checkpoints
+  undeclared_output_entries_rejected: true
+  resume_contract:
+    nonempty_output_requires_resume_flag: true
+    exact_existing_plan_required: true
+    verify_config_tool_runtime_fixture_and_parent_commitments: true
+    verify_checkpoint_schema_self_hash_task_and_metrics_hash: true
+    valid_terminal_receipt_is_terminal: true
+    terminal_validation_precedes_fixture_payload_open: true
+    valid_terminal_reentry_zero_mutation: true
+    zero_mutation_fields_for_every_existing_entry:
+      - bytes
+      - sha256
+      - inode
+      - mode
+      - mtime_ns
+      - ctime_ns
+    atime_is_not_part_of_zero_mutation_assertion: true
+    execution_mode_or_cap_override_allowed: false
+    failed_state_resume_requires_successful_full_revalidation_before_running: true
+    failed_state_resume_revalidation_exact_checks:
+      - exact_existing_plan
+      - config_tool_runtime_fixture_and_parent_commitments
+      - checkpoint_schema_self_hash_task_and_metrics_hash
+      - failure_state_tuple_and_receipt_absence
+      - output_types_modes_link_counts_and_exact_failed_entry_set
+    failed_state_exact_existing_file_paths:
+      - audit_plan.json
+      - run_state.json
+      - checkpoints/synthetic_accounting.json
+    failed_state_exact_existing_directory_paths:
+      - checkpoints
+    failed_state_forbidden_file_paths:
+      - author_history_audit.json
+      - author_history_audit.md
+      - author_history_audit.outputs.json
+    failed_state_temporary_files_must_be_absent: true
+    finalization_failed_state_requires_valid_resumable_checkpoint: true
+    successful_failed_state_resume_next_status: RUNNING_SYNTHETIC_AUTHOR_HISTORY
+    failed_resume_revalidation_status_remains: FINALIZATION_FAILED_NO_VALID_RECEIPT
+    failed_resume_revalidation_receipt_must_be_absent: true
+    direct_failed_state_to_complete_allowed: false
+    same_task_clean_and_successfully_resumed_result_fingerprint_must_equal: true
+  run_state_transition_contract:
+    allowed_transitions:
+      - PLANNED_SYNTHETIC_AUTHOR_HISTORY_to_RUNNING_SYNTHETIC_AUTHOR_HISTORY
+      - RUNNING_SYNTHETIC_AUTHOR_HISTORY_to_COMPLETE_PENDING_RECEIPT
+      - RUNNING_SYNTHETIC_AUTHOR_HISTORY_to_FINALIZATION_FAILED_NO_VALID_RECEIPT_on_finalization_failure_after_valid_checkpoint
+      - COMPLETE_PENDING_RECEIPT_to_FINALIZATION_FAILED_NO_VALID_RECEIPT_on_failed_receipt_publication_or_final_validation
+      - FINALIZATION_FAILED_NO_VALID_RECEIPT_to_RUNNING_SYNTHETIC_AUTHOR_HISTORY_only_after_successful_resume_revalidation
+    forbidden_transitions:
+      - FINALIZATION_FAILED_NO_VALID_RECEIPT_to_RUNNING_SYNTHETIC_AUTHOR_HISTORY_on_failed_resume_revalidation
+      - FINALIZATION_FAILED_NO_VALID_RECEIPT_to_COMPLETE_PENDING_RECEIPT_direct
+      - any_terminal_success_to_running_after_valid_receipt
+    allowed_status_phase_error_result_tuples:
+      - status: PLANNED_SYNTHETIC_AUTHOR_HISTORY
+        phases: [planned]
+        error_redacted: "null"
+        result_fingerprint_sha256: "null"
+      - status: RUNNING_SYNTHETIC_AUTHOR_HISTORY
+        phases: [validating_fixture, computing_accounting, publishing_reports]
+        error_redacted: "null"
+        result_fingerprint_sha256: "null"
+      - status: COMPLETE_PENDING_RECEIPT
+        phases: [complete_pending_receipt]
+        error_redacted: "null"
+        result_fingerprint_sha256: lowercase_64_hex_string
+      - status: FINALIZATION_FAILED_NO_VALID_RECEIPT
+        phases: [finalization_failed]
+        error_redacted: nonempty_redacted_string
+        result_fingerprint_sha256: "null"
+    completed_row_counts_always_exact_row_counts_schema: true
+  source_and_output_safety:
+    refuse_symlink_fixture_or_output_components: true
+    fixture_lstat_type_must_be_regular_file: true
+    fixture_link_count_must_equal_one: true
+    fixture_open_flags: "O_RDONLY|O_NOFOLLOW"
+    fixture_fstat_must_equal_preopen_lstat_identity: true
+    reject_fixture_output_same_resolved_path: true
+    reject_fixture_output_ancestor_or_descendant_overlap: true
+    reject_output_repository_ancestor_or_descendant_overlap: true
+    require_output_outside_repository: true
+    require_exclusive_output_directory_lock: true
+    published_lock_file_created: false
+    reject_shared_writable_output_ancestor: true
+    every_existing_and_published_output_file_link_count_must_equal_one: true
+    every_output_component_checked_with_lstat_without_following_links: true
+    atomic_publication_sequence:
+      - create_same_directory_temp_with_O_CREAT_O_EXCL_O_NOFOLLOW_and_mode_0600
+      - write_flush_and_fsync_temp
+      - verify_temp_regular_owner_mode_and_link_count_one
+      - os_replace_temp_to_final
+      - fsync_parent_directory
+    final_validation_rechecks_root_0700_and_all_directories_0700: true
+    final_validation_rechecks_all_files_0600_regular_owner_and_link_count_one: true
+  failure_invalidation_order:
+    - remove_authoritative_completion_receipt_first
+    - write_finalization_failed_state
+    - remove_final_report_and_markdown
+  pre_valid_checkpoint_failure_contract:
+    finalization_failed_status_allowed: false
+    receipt_report_markdown_allowed: false
+    remove_all_output_entries_and_fsync_root_before_nonzero_return: true
+    successful_cleanup_requires_empty_output_directory: true
+    cleanup_failure_is_nonterminal_operator_intervention_not_a_valid_receipt_state: true
+  failure_state_status: FINALIZATION_FAILED_NO_VALID_RECEIPT
+  failure_state_omits_result_fingerprint_sha256: true
+  finalization_failure_leaves_valid_receipt: false
+  cleanup_errors_aggregated_and_raised_not_swallowed: true
+  resumable_checkpoint_preserved_on_failure: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  synthetic_report_allows_aggregates_and_checksums_only: true
+  synthetic_report_raw_author_or_work_identifiers_allowed: false
+  required_future_test_matrix:
+    - strict_fixture_schema_and_hard_cap_rejection_before_core_processing
+    - parent_status_and_transitive_commitment_corruption
+    - w_minus_1_w_zero_a_zero_null_and_malformed_identifier_boundaries
+    - all_six_temporal_dispositions_and_spine_join_closure
+    - duplicate_pair_permutation_and_no_representative_row_selection
+    - position_orcid_and_name_conflict_set_conservation
+    - team_cap_and_hyper_threshold_boundary_cases_at_10_11_50_51_100_101_and_all_threshold_edges
+    - threshold_cross_cap_and_positive_base_all_pair_grid_closure_mutations
+    - same_fixture_bytes_processing_order_chunking_and_resume_result_fingerprint_equivalence
+    - byte_permuted_fixture_aggregate_and_metrics_equivalence_but_task_and_result_difference
+    - finalization_failure_successful_resume_transitions_through_running_and_matches_clean_result_fingerprint
+    - finalization_failure_failed_resume_revalidation_remains_failed_without_receipt
+    - finalization_failure_direct_to_complete_is_rejected
+    - every_cross_artifact_semantic_binding_edge_mutation_with_local_hashes_recomputed
+    - position_category_declared_order_multi_category_input_permutation_equivalence
+    - malformed_spine_code_6_through_255_day_year_disposition_and_extra_row_rejection
+    - per_year_per_token_and_all_eight_aggregate_domain_mutation_separation
+    - construction_time_same_author_reduction_swapped_author_positive_projection_and_cap_grid_mutation_rejection
+    - receipt_artifact_corruption_terminal_no_open_and_receipt_first_failure
+    - production_root_and_production_status_refusal
+
+production_output_contract:
+  status: NOT_IMPLEMENTED_REQUIRES_SEPARATE_REVIEW
+  production_executable: false
+  provisional_names_are_not_a_frozen_production_schema: true
+  control:
+    - audit_plan.json
+    - run_state.json
+    - author_history_audit.json
+    - author_history_audit.md
+    - author_history_audit.outputs.json
+  local_data:
+    - coverage_cube.parquet
+    - author_year_history.parquet
+    - author_token_history.parquet
+    - team_hyper_sensitivity_grid.parquet
+    - orcid_cardinality_aggregates.parquet
+    - name_variation_aggregates.parquet
+  production_outputs_created_by_this_design: false
+
+release_privacy:
+  public_summary_allows_aggregates_and_checksums_only: true
+  detailed_identity_outputs_repository_allowed: false
+  detailed_identity_outputs_release_allowed: false
+  prohibited_public_fields:
+    - raw_author_id
+    - raw_author_name
+    - author_display_name
+    - raw_orcid
+    - top_author_ranking
+  operator_local_detailed_outputs_mode: "0600"
+  operator_local_directory_mode: "0700"
+  forbidden_operator_local_basenames:
+    - coverage_cube.parquet
+    - author_year_history.parquet
+    - author_token_history.parquet
+    - team_hyper_sensitivity_grid.parquet
+    - orcid_cardinality_aggregates.parquet
+    - name_variation_aggregates.parquet
+  forbidden_operator_local_directory_basenames:
+    - author_history_staging
+    - author_history_checkpoints
+    - author_history_data
+  release_inspector_must_reject_prohibited_outputs: true
+  researcher_pivot_sdist_boundary: exact_path_and_content_sha256_allowlist
+  researcher_pivot_public_subtree_prefix: docs/case-studies/researcher-pivot/
+  researcher_pivot_public_exact_sha256:
+    docs/case-studies/researcher-pivot/README.md: 5752f8e1028e242b245fe7be1460fcb9c837ffd8e361051f2b9e3e5ca3fd25a8
+    docs/case-studies/researcher-pivot/data/learning_study_results.json: 98c97cac1a4d18b0e3fc0c087d63adc717b470374aae861f87696c7389d314b8
+    docs/case-studies/researcher-pivot/data/study_results.json: 3fb32d3cb46de548f2e21f21f9295ce469c58062ca444827b1ed97ea638ea521
+    docs/case-studies/researcher-pivot/figures/fig1_productive_pivot_distributions.png: e42c9ffff28a3987fc63fcfac1839556fdc42caad676079eb5736c56c583bc59
+    docs/case-studies/researcher-pivot/figures/fig2_pivot_composition.png: fb541bc189ef1fdf5ff0479ce2a27bde71394871a1ddc9745c15917abe0aba6e
+    docs/case-studies/researcher-pivot/figures/fig3_sensitivity.png: a17aa3663b06f58467652641443f3290f8b19f6e655ac05fd96828fdf28f674c
+    docs/case-studies/researcher-pivot/figures/fig4_readiness_trajectories.png: b9fc39aaa2a9ef2dd5afdb73f3576485767fe1e850e7ea8f13ef4711893a4089
+    docs/case-studies/researcher-pivot/figures/fig5_learning_failed_trajectories.png: 68ee22398060b117380a99609faabfc068f289ae459effc0595f2707b61fbb17
+    docs/case-studies/researcher-pivot/figures/fig6_learning_attention_weights.png: d06f49c6d09252a4b8fb029ce52715f36f16b61964a00f17f1b820a516ed148f
+  unmatched_researcher_pivot_subtree_member_policy: reject
+  matched_path_content_sha256_mismatch_policy: reject
+  non_regular_archive_member_under_researcher_pivot_subtree_policy: reject
+  raw_tar_member_contract:
+    exactly_one_top_level_sdist_root: true
+    absolute_paths_allowed: false
+    empty_dot_dotdot_or_repeated_separator_segments_allowed: false
+    backslash_allowed: false
+    nul_or_control_characters_allowed: false
+    canonical_posix_spelling_required: true
+    duplicate_raw_member_names_allowed: false
+    duplicate_root_stripped_member_names_allowed: false
+    non_regular_members_allowed: false
+  required_release_canary_rejections:
+    - coverage_cube.parquet.gz
+    - author_token_history.csv
+    - author_history_data.tar.zst
+    - renamed-author-records.parquet
+    - modified_bytes_at_an_allowlisted_path
+    - dotdot_path_alias
+    - backslash_path_alias
+    - duplicate_member_with_forbidden_payload
+    - symlink_or_hardlink_member
+    - unexpected_directory_member
+    - multiple_top_level_roots
+
+future_success_contract:
+  full_component_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+  pilot_status: PILOT_WORK_SIDE_AUTHOR_HISTORY_ONLY
+  blocked_status: BLOCKED_WORK_SIDE_AUTHOR_HISTORY_COMPONENT
+  required_full_gate_states:
+    work_side_author_history_accounting: PASS
+    current_content_baseline_component: PASS
+    main_temporal_validity_component: PASS
+    canonical_work_time_spine_component: PASS
+    historical_content_identity: UNVERIFIED
+    raw_source_id_validity: BLOCKED
+    w_zero_entity_validity: UNRESOLVED
+    a_zero_entity_validity: UNRESOLVED
+    author_master_coverage: BLOCKED_INCOMPLETE_MAX_38_76968115_PERCENT
+    author_entity_validity: UNRESOLVED_WORK_SIDE_ONLY
+    token_and_field_past_observability: UNVERIFIED_CURRENT_SNAPSHOT_RETROSPECTIVE_PROXY
+    split_merge_validity: UNRESOLVED_PROXY_DIAGNOSTICS_ONLY
+    orcid_validation: DIAGNOSTIC_NOT_GROUND_TRUTH
+    candidate_eligibility: PENDING
+    citation_available_at: PENDING_NOT_IN_THIS_COMPONENT
+    outcome_maturation: PENDING_NOT_IN_THIS_COMPONENT
+    g_minus_1_data_readiness: PENDING
+    g0_measurement_freeze: PENDING
+    empirical_g1_signature: NOT_RUN
+    pass_g1: false
+    scientific_effect: NOT_ESTABLISHED
+
+downstream_blockers_after_component:
+  - citation_edge_available_at_and_chronology
+  - fixed_horizon_outcome_maturation_and_right_censoring
+  - candidate_researcher_eligibility
+  - cutoff_aware_t_minus_1_graphs
+  - g0_measurement_and_partition_freeze
+  - external_or_same_snapshot_author_entity_validation_for_stronger_claims
+
+out_of_scope:
+  - natural_person_entity_resolution
+  - author_master_referential_integrity
+  - author_id_split_or_merge_correction
+  - candidate_researcher_materialization
+  - allowed_work_type_selection
+  - affiliation_or_institution_history
+  - citation_edge_available_at
+  - outcome_maturation
+  - field_selection
+  - empirical_effect_estimation
+  - nabm_fitting
+  - production_executable_implementation
+  - production_output_schema_and_writer_abi
+
+claim_boundary: >-
+  This DESIGN_ONLY contract freezes a future exact current-snapshot
+  token-linked retrospective publication-accounting component and a separate
+  synthetic-only implementation ABI. OpenAlex author IDs remain tokens, not
+  verified persons. The canonical work-time spine is the only row-level time
+  parent; work-topic relation is a parallel sibling. Neither token assignments,
+  names, ORCIDs, positions, nor primary-field annotations are established as
+  historically observable, and full-snapshot summaries are audit-only rather
+  than past-cutoff features. No executable or result exists in this tranche.
+  The contract cannot establish author entities, split/merge truth, candidate
+  eligibility, citation availability, outcome maturation, G-1, G0, empirical
+  G1, field selection, an NABM effect, or any scientific effect.

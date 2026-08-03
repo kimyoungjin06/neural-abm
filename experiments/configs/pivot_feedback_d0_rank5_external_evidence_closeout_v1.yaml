@@ -1,0 +1,135 @@
+schema_version: pivot_feedback_d0_rank5_external_evidence_closeout_config.v1
+label: pivot_feedback_d0_rank5_external_evidence_closeout_v1
+mode: RANK5_EXTERNAL_EVIDENCE_AUGMENTED_PRODUCTION_CLOSEOUT
+status: FROZEN_RANK5_EXTERNAL_EVIDENCE_UNRESOLVED_CLOSEOUT_AUTHORIZED
+
+repository_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v33.yaml
+  sha256: e5c8e3ed67d5211460c810e88f3aaf7045def82735535086411b7cac46c871b7
+  required_schema_version: pivot_feedback_gate_state.v33
+  required_status: VALID_RANK5_EXTERNAL_EVIDENCE_AUGMENTED_UNRESOLVED_PRODUCTION_CLOSEOUT_AUTHORIZED
+
+frozen_inputs:
+  prior_closeout:
+    root_basename: pivot-feedback-d0-rank5-local-abstract-closeout-v1-20260730
+    dispositions_basename: cumulative_production_candidate_dispositions_v7.parquet
+    dispositions_sha256: 43e420ab3bc7f35168f37d31dd31eaca47a5977b6d1cc97c3ace9f1172fd753f
+    frontier_basename: adaptive_candidate_frontier_v8.parquet
+    frontier_sha256: 995dafdf45a9231a8f9fed5db116d3ee8dbc3ff3bf23ed9b4d6ca13997239225
+    certificate_basename: terminal_selection_certificate_status_v3.json
+    certificate_sha256: 903dadb150e96a104b66192a158321c69e27d74fa173c04c44b9471ccfe1ebb9
+    receipt_basename: rank5_local_abstract_closeout.outputs.json
+    receipt_sha256: 3edc3d51a378cabc640268a29eb885dd5b89664df99a2a2a6cc1c9747379d392
+    receipt_status: PASS_RANK5_LOCAL_ABSTRACT_UNRESOLVED_TERMINAL_CLOSEOUT_FROZEN
+    verification_basename: pivot-feedback-d0-rank5-local-abstract-closeout-v1-20260730.verification-v1.json
+    verification_sha256: 8fe2b2c736484e229d68c6b2c3a26ba4ad62ec4bad61551432095c9a17098173
+    verification_status: PASS_INDEPENDENT_RANK5_LOCAL_ABSTRACT_UNRESOLVED_TERMINAL_CLOSEOUT
+    disposition_rows: 8
+    frontier_rows: 51
+  external_result:
+    root_basename: pivot-feedback-d0-t10151-rank5-external-cross-provider-v1-20260730
+    decisions_basename: rank5_external_cross_provider_decisions.csv
+    decisions_sha256: c15b1869b15cfbc4bc59699ed62c28e9f0536b864636215df5b0b8d0f0eeb70c
+    candidate_basename: rank5_external_augmented_candidate.json
+    candidate_sha256: aa7cacf5c31079ac5ec40b15b33202bf80cbb353625da088096f61bc29b16f2f
+    receipt_basename: external_cross_provider.outputs.json
+    receipt_sha256: 6bf158d3656981390f983287c0ed4e53b1f42dccced0023abb5e5bc8252ee19c
+    receipt_status: PASS_EXACT_11_EXTERNAL_EVIDENCE_CROSS_PROVIDER_PRESERVED_RESPONSES_FINALIZED
+    verification_basename: pivot-feedback-d0-t10151-rank5-external-cross-provider-v1-20260730.verification-v1.json
+    verification_sha256: d832da79cf95ad4728300e42ae08bc55ef7f129e604faabc5c7e1ddfb2e0e287
+    verification_status: PASS_INDEPENDENT_EXACT_11_EXTERNAL_CROSS_PROVIDER_RESULT_VERIFICATION
+    decision_rows: 11
+
+rank5_production_disposition:
+  field_id: 27
+  field_candidate_rank: 5
+  topic_id: 10151
+  entry_year: 1993
+  previous_accept_rows: 28
+  previous_reject_rows: 22
+  previous_unresolved_rows: 14
+  external_dual_high_accept_rows: 2
+  external_dual_high_reject_rows: 3
+  external_reviewed_unresolved_rows: 6
+  external_holdout_rows: 3
+  final_accept_rows: 30
+  final_reject_rows: 25
+  final_unresolved_rows: 9
+  recent_denominator_rows: 64
+  content_state: CONTENT_UNRESOLVED
+  disposition_reason: EXTERNAL_EVIDENCE_AUGMENTED_CONSERVATIVE_EVIDENCE_NOT_DECISIVE
+  production_rule_version: candidate_rule_v2_plus_local_and_external_evidence_dual_high_api_v3
+  source_replay_state: WOULD_CONTENT_UNRESOLVED
+  post_diagnostic_amendment_used: true
+  human_review_used: false
+  api_labels_used_as_ground_truth: false
+
+frontier_v9:
+  total_frontier_rows: 51
+  total_content_pass_rows: 3
+  total_content_fail_rows: 4
+  total_content_unresolved_rows: 1
+  total_not_evaluated_rows: 43
+  field_certificates_issued: 1
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  rank5_frontier_role: FROZEN_PRODUCTION_EXTERNAL_EVIDENCE_AUGMENTED_CONTENT_UNRESOLVED_BLOCKER
+  rank5_state_reason: EXTERNAL_EVIDENCE_AUGMENTED_CONSERVATIVE_EVIDENCE_NOT_DECISIVE
+  rank6_frontier_role: FROZEN_PRODUCTION_PASS_BLOCKED_BY_EXTERNAL_EVIDENCE_AUGMENTED_UNRESOLVED
+
+terminal_certificate_status:
+  schema_version: pivot_feedback_d0_terminal_selection_certificate_status.v4
+  status: BLOCKED_REQUIRED_RANK5_EXTERNAL_EVIDENCE_AUGMENTED_CONTENT_UNRESOLVED
+  authorized_resolution_path: NONE
+  computer_science_field_certificate_issued: true
+  computer_science_selected_candidate_ranks: [1, 45]
+  medicine_field_certificate_issued: false
+  medicine_blocking_candidate_rank: 5
+  medicine_blocking_topic_id: 10151
+  medicine_blocking_state: CONTENT_UNRESOLVED
+  medicine_blocking_counts:
+    accept: 30
+    reject: 25
+    unresolved: 9
+  medicine_blocking_evidence: LOCAL_AND_EXTERNAL_BIBLIOGRAPHIC_DUAL_HIGH_API
+  medicine_later_pass_rank: 6
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+  human_review: NOT_RUN_BY_DESIGN
+  resolution_requires_new_authorization: true
+
+api_cost:
+  prior_conservative_cumulative_upper_bound_usd: "0.0560885"
+  external_pair_estimated_actual_usd: "0.01450475"
+  cumulative_actual_plus_prior_upper_bound_usd: "0.07059325"
+  cumulative_authorized_cap_usd: "0.12"
+
+output_contract:
+  root_basename: pivot-feedback-d0-rank5-external-evidence-closeout-v1-20260730
+  dispositions_basename: cumulative_production_candidate_dispositions_v8.parquet
+  dispositions_schema_version: pivot_feedback_d0_production_candidate_dispositions.v8
+  frontier_basename: adaptive_candidate_frontier_v9.parquet
+  frontier_schema_version: pivot_feedback_d0_adaptive_candidate_frontier.v9
+  certificate_basename: terminal_selection_certificate_status_v4.json
+  report_basename: RANK5_EXTERNAL_EVIDENCE_CLOSEOUT.md
+  receipt_basename: rank5_external_evidence_closeout.outputs.json
+  root_mode: "0700"
+  artifact_mode: "0600"
+
+authorization:
+  production_disposition: AUTHORIZED_CONTENT_UNRESOLVED_ONLY
+  new_api_request: NOT_AUTHORIZED
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  production_pivot_classification: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This closeout records only the independently verified 30/25/9 conservative
+  rank-5 state, cumulative dispositions v8, frontier v9, and blocked certificate
+  status v4. External evidence and provider labels are not semantic ground
+  truth. No further provider call, human review, Medicine or global certificate,
+  reselection, pivot classification, outcome read, model fit, G4 opening, or
+  scientific-effect claim is authorized.

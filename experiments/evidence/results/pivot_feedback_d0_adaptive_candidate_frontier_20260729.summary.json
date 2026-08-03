@@ -1,0 +1,84 @@
+{
+  "schema_version": "pivot_feedback_d0_adaptive_candidate_frontier_summary.v1",
+  "status": "PASS_INDEPENDENT_ADAPTIVE_FRONTIER_STATE_MACHINE_EXHAUSTIVE_SMALL_FIXTURES_AND_INITIAL_STRUCTURE",
+  "date": "2026-07-29",
+  "repository_bindings": {
+    "config_relative_path": "experiments/configs/pivot_feedback_d0_adaptive_candidate_frontier_v1.yaml",
+    "config_sha256": "154b9f831ebe1549ea747afe701a00c90703e86fbe7966cd67cb51ae8787f72d",
+    "producer_relative_path": "scripts/build_pivot_feedback_d0_adaptive_candidate_frontier_v1.py",
+    "producer_sha256": "0a1f0eee17f73e1921244f179b0336250655b405a50803ae54c179e8cd2654d6",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_d0_adaptive_candidate_frontier_v1.py",
+    "verifier_sha256": "5381c5b8eb050952989a6a3aaef8db328c37a2c8d7d13077f6e176c1acbdbcdc"
+  },
+  "operator_local_evidence": {
+    "root_basename": "pivot-feedback-d0-adaptive-candidate-frontier-v1-20260729",
+    "receipt_basename": "adaptive_candidate_frontier.outputs.json",
+    "receipt_sha256": "c2bc2d76dabb8e6da72266961f1da30abd05aadfc8af5b4e1cd077b3df3b6df6",
+    "artifact_tree_sha256": "260c5544aaaa6e32b4bbf3dc90ffc254b275b33f00e3a28c7b5ff61386ca4f52",
+    "verification_report_basename": "pivot-feedback-d0-adaptive-candidate-frontier-v1-20260729.verification-v1.json",
+    "verification_report_sha256": "c6aceb6e665ad018dc99110c91be4f1826d35371b79196cd83178eba38f64717",
+    "verification_status": "PASS_INDEPENDENT_ADAPTIVE_FRONTIER_STATE_MACHINE_EXHAUSTIVE_SMALL_FIXTURES_AND_INITIAL_STRUCTURE"
+  },
+  "exhaustive_small_fixture_proof": {
+    "candidate_lengths": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "total_fixture_cases": 299584,
+    "eager_pair_cases": 118404,
+    "required_state_unresolved_mutation_cases": 331424,
+    "structurally_incompatible_not_evaluated_cases": 146832,
+    "lazy_pair_equals_eager_pair_for_every_eager_pair_case": true,
+    "every_required_state_unresolved_mutation_blocks": true,
+    "structurally_incompatible_not_evaluated_rows_cannot_change_pair": true,
+    "general_formal_proof_claimed": false
+  },
+  "initial_structural_frontier": {
+    "assumption": "FIELD_RANK_1_CONTENT_PASS_BRANCH_ONLY",
+    "assumption_is_content_disposition": false,
+    "frontier_rows": 51,
+    "structurally_incompatible_rows": 47,
+    "content_required_rows": 4,
+    "distinct_frontier_topics": 22,
+    "content_required_topic_ids": [
+      10579,
+      12421,
+      12505,
+      14430
+    ],
+    "every_content_required_topic_has_frozen_card": true,
+    "content_required_rows_resolved": 0,
+    "selection_certificate_issued": false
+  },
+  "execution": {
+    "raw_openalex_main_table_read": false,
+    "titles_read": false,
+    "work_ids_materialized": false,
+    "network_accessed": false,
+    "credentials_accessed": false,
+    "api_requests_created": 0,
+    "api_requests_submitted": 0,
+    "api_cost_usd": "0.000000",
+    "content_dispositions_created": false,
+    "deterministic_reselection_executed": false,
+    "outcomes_read": false
+  },
+  "boundaries": {
+    "complete_candidate_universe_screened": false,
+    "raw_title_scan_authorized": false,
+    "content_dispositions_authorized": false,
+    "paid_api_submission_authorized": false,
+    "selection_certificate_authorized": false,
+    "deterministic_reselection_authorized": false,
+    "author_panel_rebuild_authorized": false,
+    "pivot_classification_authorized": false,
+    "outcomes_read": false,
+    "model_fitting_authorized": false,
+    "g4_open": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "next_required_step": "FREEZE_CANDIDATE_CONTENT_DISPOSITION_AND_FRONTIER_TITLE_SAMPLING_RULES_WITHOUT_OUTCOMES"
+}

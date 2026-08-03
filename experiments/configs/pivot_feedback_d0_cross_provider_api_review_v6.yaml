@@ -1,0 +1,121 @@
+schema_version: pivot_feedback_d0_cross_provider_api_review_config.v6
+label: pivot_feedback_d0_cross_provider_api_review_v6
+mode: FAIL_CLOSED_VALIDATED_CROSS_PROVIDER_RESULTS_AND_BLINDED_HUMAN_QUEUE
+status: FROZEN_VALID_RESULT_REDUCTION_CONTRACT_HUMAN_REVIEW_PENDING
+
+contract_parent:
+  relative_path: experiments/configs/pivot_feedback_d0_cross_provider_api_review_v5.yaml
+  sha256: e7bdcd2227580fb8b805b0bf11d3fbed22c44778144cebd7528b3961a796baca
+  required_schema_version: pivot_feedback_d0_cross_provider_api_review_config.v5
+  mutation_allowed: false
+
+inputs:
+  v4_prepared_root_basename: pivot-feedback-d0-cross-provider-api-review-v4-prepared-20260729
+  api_request_key_sha256: 8ce1bdd353b1be226524fc5e64f1ae274557823bed77fa36d791856682471a11
+  human_calibration_key_sha256: d918d688301359e4533e9b3e5bd08d1bdf683dbaa99ed1465d2691635a574ed1
+  v4_execution_root_basename: pivot-feedback-d0-cross-provider-api-review-v4-execution-20260729
+  v4_submission_receipt_sha256: df2c8976e24c04cf44f13305dee64fda836f84d204ec7e7cd4465ef9464784d0
+  claude_batch_id: msgbatch_01DP8X2nv3AP6Locfmq1pnpU
+  claude_results_sha256: 7d2d763db63616ed1e4d65b4242f65197b03432034495ffafa7afea1f85eeafd
+  v5_prepared_root_basename: pivot-feedback-d0-cross-provider-api-review-v5-openai-retry-prepared-20260729
+  v5_preparation_receipt_sha256: b41245c65487747729af16c2037a241a872630a6f56b9e9b5a68c2b18c6b995a
+  v5_verification_report_sha256: 4a73bfd6a7872df59a68c64d6e313d7ed06b5d3d34985b73a5c70304675558a8
+  v5_execution_root_basename: pivot-feedback-d0-cross-provider-api-review-v5-openai-retry-execution-20260729
+  v5_submission_receipt_sha256: 4fbe8d8dd9285c5a3d818039908b14b212b741830147753a4da0c9475609c3cb
+  openai_batch_id: batch_6a698a4613dc819081bb2bbf766ba201
+  openai_retry_output_sha256: bf07aff117bf3d467bbb86a7b21ca1ff2f122f21036d9633de7da47d07c6feb2
+  terminal_snapshot_sha256: e629049e59b481aab81c348c053bb01993601b58243e95851f68685415e7c37a
+
+valid_response_contract:
+  expected_rows_per_provider: 384
+  expected_unique_custom_ids_per_provider: 384
+  openai_http_status: 200
+  openai_response_status: completed
+  claude_result_type: succeeded
+  allowed_labels:
+    - ON_TOPIC
+    - AMBIGUOUS
+    - OFF_TOPIC
+    - UNREVIEWABLE
+  allowed_confidences:
+    - HIGH
+    - MEDIUM
+    - LOW
+  exact_response_keys:
+    - confidence
+    - label
+    - rationale
+  require_nonempty_rationale: true
+
+cost_control:
+  currency: USD
+  openai_batch_price_per_million:
+    input: 0.125
+    output: 1.00
+  claude_haiku_4_5_batch_price_per_million:
+    input: 0.50
+    output: 2.50
+  v4_actual_total_cost_usd: 0.300103
+  cumulative_authorized_maximum_usd: 1.00
+
+human_queue_policy:
+  base_calibration_rows: 96
+  include_union_of:
+    - BASE_CALIBRATION
+    - LABEL_DISAGREEMENT
+    - EITHER_PROVIDER_NOT_ON_TOPIC
+    - EITHER_PROVIDER_NOT_HIGH_CONFIDENCE
+  reviewer_count: 2
+  blinded_packet_contains_api_outputs: false
+  packet_columns:
+    - review_item_id
+    - target_topic_name
+    - title
+    - language
+    - work_type
+    - reviewer_label
+    - reviewer_notes
+  allowed_human_labels:
+    - ON_TOPIC
+    - AMBIGUOUS
+    - OFF_TOPIC
+    - UNREVIEWABLE
+
+expected_reduction:
+  label_agreement_rows: 306
+  label_disagreement_rows: 78
+  api_escalation_rows: 187
+  base_calibration_rows: 96
+  calibration_escalation_overlap_rows: 50
+  blinded_human_queue_rows: 233
+  dual_high_confidence_on_topic_rows: 197
+
+output_contract:
+  root_basename: pivot-feedback-d0-cross-provider-api-review-v6-results-20260729
+  receipt_schema: pivot_feedback_d0_cross_provider_result_outputs.v6
+  verification_schema: pivot_feedback_d0_cross_provider_result_verification.v6
+  create_only: true
+  directory_mode: "0700"
+  file_mode: "0600"
+
+authorization:
+  accept_api_validity_for_triage: AUTHORIZED
+  auto_accept_dual_high_confidence_on_topic_for_api_screen: AUTHORIZED
+  human_calibration_completion: NOT_AUTHORIZED_UNTIL_TWO_PACKETS_RETURNED
+  final_human_adjudication: NOT_AUTHORIZED
+  d0_complete: NOT_AUTHORIZED
+  candidate_universe_screen_complete: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  g0: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  Both pinned API judges returned 384 transport-valid, complete, structured
+  title-only decisions. Their results may reduce and prioritize the human
+  workload, but they do not replace the frozen two-reviewer calibration.
+  Only rows on which both APIs say ON_TOPIC with HIGH confidence are
+  API-screen auto-accept candidates. Every other API row, plus the full frozen
+  calibration sample, enters blinded two-reviewer packets. Human review,
+  candidate-universe screening, D0, outcomes, G0, model fitting, G4, and any
+  scientific effect remain pending.

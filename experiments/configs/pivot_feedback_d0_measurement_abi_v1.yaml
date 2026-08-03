@@ -1,0 +1,244 @@
+schema_version: pivot_feedback_d0_measurement_abi.v1
+label: pivot_feedback_d0_measurement_abi_v1
+mode: OUTCOME_BLIND_AUTHOR_LINKED_SCHOLARLY_COMMUNICATION_ATTENTION_ABI
+status: FROZEN_OUTCOME_BLIND_MEASUREMENT_ABI_EPISODE_RESELECTION_AUTHORIZED
+
+repository_bindings:
+  gate_state:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v6.yaml
+    sha256: 069ae5a7cee34f4f848b1fb5026125c8c4371ebf751443c1b6a341217a902efb
+    required_schema_version: pivot_feedback_gate_state.v6
+    required_status: VALID_D0_MEASUREMENT_REVIEW_REQUIRED_LEAVEOUT_AND_OUTCOMES_FAIL_CLOSED
+    required_fields:
+      gate_state.D0.state: PARTIAL_MEASUREMENT_REVIEW_REQUIRED_AFTER_LINKAGE_AUDIT
+      gate_state.D0.complete: false
+      authorization.d0_measurement_abi_redesign: AUTHORIZED_OUTCOME_BLIND
+      authorization.d0_episode_reselection_successor: AUTHORIZED_AFTER_ABI_FREEZE
+      authorization.d0b_leaveout_network_bridge_build: PAUSED_PENDING_ABI_AND_RESELECTION
+      authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+      authorization.scientific_effect: NOT_ESTABLISHED
+  linkage_audit:
+    relative_path: experiments/evidence/results/pivot_feedback_d0b_selected_work_author_linkage_audit_full_20260724.summary.json
+    sha256: 98d1a43b0d23cc964a6cd6b76113b37bb401a2dfdda597184bec62617a8f5c62
+    required_schema_version: pivot_feedback_d0b_selected_work_author_linkage_audit_summary.v1
+    required_status: PASS_INDEPENDENT_D0B_LINKAGE_AUDIT_MEASUREMENT_REVIEW_REQUIRED_LEAVEOUT_BUILD_PAUSED
+    required_fields:
+      scope.measurement_review_required: true
+      scope.linkage_threshold_selected: false
+      scope.episode_exclusion_decision_made: false
+      scope.discovery_outcomes_read: false
+      scope.model_fitting_performed: false
+      linkage_accounting.selected_work_rows: 83565
+      linkage_accounting.linked_work_rows: 48245
+      critical_readout.episode_3_signal_zero_valid_author_token_work_rows: 21283
+
+normalized_inputs:
+  cutoff_work_metadata:
+    expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    rows: 492293206
+  author_history_events:
+    expected_root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    artifact_bytes: 5006392019
+    rows: 779630258
+  topic_taxonomy_projection:
+    expected_basename: b000000.parquet
+    sha256: 566facdbc02bf4a37783fe64db4c1d104d00b73e250999bd824d560083827ba5
+    rows: 4516
+    required_columns:
+      id: large_string
+      display_name: large_string
+      field__id: large_string
+      field__display_name: large_string
+      subfield__id: large_string
+      subfield__display_name: large_string
+    role: CURRENT_SNAPSHOT_TOPIC_TO_FAMILY_LABEL_PROJECTION
+    canonical_taxonomy_parent_sha256: 8b9f4e2f492eb6939e1dbb6a8187f06d4ea8fdebb9c1bafce017cd39e54401b4
+
+semantic_adjudication:
+  decision_date: "2026-07-24"
+  reference_url: https://developers.openalex.org/api-reference/work-types
+  reference_role: SEMANTIC_GUIDANCE_ONLY_FROZEN_RULE_BELOW_IS_THE_EXECUTABLE_CONTRACT
+  source_snapshot_vocabulary_is_older_than_current_reference: true
+  attention_construct: >-
+    Authored, content-bearing scholarly communication that can carry a
+    research contribution or synthesis and can be joined to the same valid
+    author-token universe used by incumbent and network measurements.
+  not_a_quality_filter: true
+  not_selected_from_entry_or_persistence_outcomes: true
+  not_selected_to_preserve_historical_episode_ids: true
+
+work_type_dictionary:
+  1: article
+  2: book
+  3: book-chapter
+  4: book-section
+  5: database
+  6: dataset
+  7: dissertation
+  8: editorial
+  9: erratum
+  10: grant
+  11: letter
+  12: libguides
+  13: other
+  14: paratext
+  15: peer-review
+  16: preprint
+  17: reference-entry
+  18: report
+  19: report-component
+  20: retraction
+  21: review
+  22: software
+  23: standard
+  24: supplementary-materials
+
+work_type_eligibility:
+  included:
+    article: ORIGINAL_OR_CITABLE_RESEARCH_COMMUNICATION
+    book: STANDALONE_SCHOLARLY_COMMUNICATION
+    book-chapter: CONTENT_BEARING_SCHOLARLY_CHAPTER
+    book-section: LEGACY_CONTENT_BEARING_SCHOLARLY_SECTION
+    dissertation: DEGREE_RESEARCH_DOCUMENT
+    preprint: RESEARCH_ARTICLE_COMMUNICATION
+    report: TECHNICAL_OR_WORKING_RESEARCH_COMMUNICATION
+    review: RESEARCH_SYNTHESIS_COMMUNICATION
+  excluded:
+    database: RESEARCH_INFRASTRUCTURE_OR_ARTIFACT_NOT_DOCUMENT_COMMUNICATION
+    dataset: RESEARCH_ARTIFACT_NOT_DOCUMENT_COMMUNICATION
+    editorial: COMMENTARY_OR_FRAMING_NOT_RESEARCH_CONTRIBUTION_OR_SYNTHESIS
+    erratum: CORRECTION_NOTICE
+    grant: FUNDING_RECORD
+    letter: RESPONSE_OR_READER_COMMENT
+    libguides: RESOURCE_GUIDE
+    other: CATCH_ALL_WITH_NON_SCHOLARLY_AND_CONTAINER_CONTENT
+    paratext: PACKAGING_OR_FRAMING_MATERIAL
+    peer-review: EVALUATION_OF_ONE_OTHER_WORK
+    reference-entry: REFERENCE_WORK_ENTRY_NOT_RESEARCH_CONTRIBUTION_OR_SYNTHESIS
+    report-component: COMPONENT_RECORD_NOT_COMPLETE_RESEARCH_COMMUNICATION
+    retraction: RETRACTION_NOTICE
+    software: RESEARCH_ARTIFACT_NOT_DOCUMENT_COMMUNICATION
+    standard: FORMAL_SPECIFICATION
+    supplementary-materials: DEPENDENT_SUPPORTING_MATERIAL
+  every_snapshot_type_must_have_exactly_one_disposition: true
+
+measurement_abi:
+  selected_field_ids: [17, 27]
+  selected_field_source: D0A_S0_STRUCTURAL_FIELD_SELECTION_UNCHANGED
+  field_reselection_under_work_abi: false
+  attention_unit: DISTINCT_ELIGIBLE_AUTHOR_LINKED_WORK_WITH_CURRENT_SNAPSHOT_PRIMARY_TOPIC
+  allowed_temporal_dispositions: [2, 3]
+  latest_attention_year: 2011
+  null_year: EXCLUDE
+  null_primary_topic_or_field: EXCLUDE
+  primary_topic_field_must_match_taxonomy: true
+  work_type_rule: INCLUDE_ONLY_WORK_TYPE_ELIGIBILITY_INCLUDED_KEYS
+  paratext_rule: EXCLUDE_IF_WORK_TYPE_PARATEXT_OR_IS_PARATEXT_TRUE
+  paratext_type_boolean_mismatch: LEGACY_SNAPSHOT_EXPECTED_REPORT_EXACT_CROSSWALK
+  paratext_type_boolean_crosswalk_audit:
+    full_cutoff_rows_mismatched: 2307929
+    selected_field_predecision_topic_rows_mismatched: 23342
+    selected_scope_type_paratext_boolean_false_rows: 20220
+    selected_scope_non_paratext_type_boolean_true_rows: 3122
+    source_inputs_only: true
+    author_linkage_or_outcomes_used: false
+  retraction_rule: EXCLUDE_IF_WORK_TYPE_RETRACTION_OR_IS_RETRACTED_TRUE
+  is_retracted_null_rule: RETAIN_IF_OTHERWISE_ELIGIBLE_AND_REPORT_EXPLICITLY
+  valid_author_linkage_rule: AT_LEAST_ONE_DISTINCT_CURRENT_SNAPSHOT_OPENALEX_AUTHOR_TOKEN_WORK_EVENT
+  author_event_year_field_and_disposition_must_match_work_metadata: true
+  duplicate_author_work_events: DEDUPLICATE_FOR_LINKAGE_PRESENCE_AND_REPORT
+  zero_valid_author_token_rule: EXCLUDE_FROM_PRIMARY_ATTENTION_RETAIN_IN_MISSINGNESS_ACCOUNTING
+  declared_authors_count_zero_rule: CANNOT_ENTER_PRIMARY_ATTENTION_WITHOUT_VALID_TOKEN
+  imputation: NONE
+  inverse_probability_weighting: NONE
+  global_linkage_coverage_factor: FORBIDDEN
+  team_cap_for_attention: NONE
+  missingness_profiles:
+    - field_topic_year
+    - field_year_work_type
+    - is_retracted_null
+    - declared_team_size
+
+episode_reselection:
+  entry_year_end_inclusive: 2012
+  baseline_offsets: [-6, -5, -4]
+  recent_offsets: [-3, -2, -1]
+  response_offsets_reserved_for_independence_only: [0, 1, 2]
+  require_baseline_positive: true
+  require_recent_greater_than_baseline: true
+  standardized_gain_exact_order:
+    numerator: SQUARED_RECENT_MINUS_BASELINE
+    denominator: BASELINE_PLUS_ONE
+    compare_by: INTEGER_CROSS_MULTIPLICATION
+  candidate_ranking:
+    - standardized_gain_exact_desc
+    - minimum_baseline_recent_count_desc
+    - absolute_gain_desc
+    - numeric_topic_id_asc
+    - entry_year_asc
+  pair_selection:
+    algorithm: BEST_CANDIDATE_THEN_BEST_COMPATIBLE_CANDIDATE
+    episodes_per_field: 2
+    require_distinct_subfield_ids: true
+    require_disjoint_baseline_signal_and_reserved_response_windows: true
+    minimum_entry_year_separation: 9
+  historical_episode_ids_are_not_selection_inputs: true
+  fail_if_two_field_four_episode_coverage_not_met: true
+
+forbidden_inputs_and_outputs:
+  entry_year_target_works_read: false
+  post_entry_target_works_read: false
+  persistence_rows_read: false
+  realized_citation_rows_read: false
+  entry_effect_size: false
+  persistence_effect_size: false
+  predictive_score: false
+  threshold_tuning: false
+  episode_id_preservation_objective: false
+  final_candidate_eligibility: false
+  leaveout_or_network_measurement: false
+  model_fitting: false
+  g4_rows_read: false
+
+output_contract:
+  abi_validation_status: PASS_D0_OUTCOME_BLIND_AUTHOR_LINKED_SCHOLARLY_COMMUNICATION_ABI_FROZEN
+  reselection_report_schema_version: pivot_feedback_d0_measurement_abi_reselection_report.v1
+  reselection_receipt_schema_version: pivot_feedback_d0_measurement_abi_reselection_outputs.v1
+  passing_reselection_status: PASS_D0_OUTCOME_BLIND_MEASUREMENT_ABI_TWO_FIELD_FOUR_EPISODE_RESELECTION
+  output_directory_must_be_new: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  receipt_written_last: true
+  input_roots_read_only: true
+  content_and_indexing_audit_required_after_reselection: true
+  d0_complete_after_reselection: false
+  leaveout_network_bridge_authorized_after_reselection_alone: false
+  discovery_outcome_opening_authorized: false
+  model_fitting_authorized: false
+  g4_open: false
+  gpu_used: false
+
+claim_boundary: >-
+  This ABI fixes, without entry or persistence outcomes, an authored
+  content-bearing scholarly-communication attention universe shared by field
+  attention and future author/network measurements. It excludes ineligible,
+  paratext, retraction-notice, currently marked retracted, and zero-valid-author
+  token works from primary attention while retaining explicit missingness
+  accounting. It does not establish historical topic truth, natural-person
+  identity, content coherence, absence of indexing discontinuities, valid
+  leave-outs, entry, persistence, an association, a causal mechanism, D0
+  completion, G0, model fitting, G4, or a scientific effect.

@@ -524,8 +524,8 @@
   ],
   "outcome_field": "productive_pivot_rate",
   "provenance": {
-    "git_revision": "41350a5fbab0b7c63d526d6b7b1187c6b4500385",
-    "git_worktree_dirty": false,
+    "git_revision": "10dd3e8fd1c7cc1f30088fcdbef510439e172917",
+    "git_worktree_dirty": true,
     "numpy": "2.4.4",
     "package_version": "0.1.0a6.dev0",
     "python": "3.14.0",
@@ -592,7 +592,7 @@
         "src/neural_abm/workflow_lite.py",
         "uv.lock"
       ],
-      "sha256": "5fa4057fe5cf8821d3bd4c547cb4aee3dd262445535269058c5d1ed7364d8c8a"
+      "sha256": "514e47e37732ea7da4967fedb27fc984604290e87b8aff5cabf3596a259cb467"
     }
   },
   "research_question": "under_which_environments_do_researcher_pivots_become_productive",

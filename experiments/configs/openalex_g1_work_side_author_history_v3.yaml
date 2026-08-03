@@ -1,0 +1,216 @@
+schema_version: openalex_g1_work_side_author_history_production_config.v3
+label: openalex_g1_work_side_author_history_v3_canonical_production_parent
+
+lifecycle:
+  implementation_status: PRODUCTION_CAPABLE_VERSIONED_SUCCESSOR
+  production_status_before_execution: PRODUCTION_NOT_RUN
+  execution_script: scripts/audit_openalex_work_side_author_history_v3.py
+  independent_verifier: scripts/verify_openalex_work_side_author_history_v3.py
+  full_execution_requires_explicit_authorization: true
+  pilot_is_permanently_nonpromotable: true
+  gpu_used: false
+
+frozen_predecessors:
+  preservation_policy: BYTE_EXACT_DO_NOT_REBIND_IN_PLACE
+  paths_and_sha256:
+    docs/case-studies/researcher-pivot/openalex-work-side-author-history-audit-design.md: 8614244ecdc33f7060505c99d86604b0972eeb3218f7f034f65d81cf93624213
+    docs/research/openalex-work-side-author-history-v1-audit-design.md: 167b2bd7668b93f1eb092790d826c837cf57381d9d9482ae372be1fd4c6a6aad
+    docs/research/openalex-work-side-author-history-v2-synthetic-validator.md: bc4d6c18167aba7274eeaa36714d304ed338e829d3d7a3d740e81fea9e22254a
+    experiments/configs/openalex_g1_work_side_author_history_v0.yaml: d909c597b04e45b92da664e7589c8abe4e29aae738401a4f961394c84f23111c
+    experiments/configs/openalex_g1_work_side_author_history_v1.yaml: 2904f47609fa8229897cbba8a14e00d6e2babd4f1696c1ca436c5dd17d1cdc66
+    experiments/configs/openalex_g1_work_side_author_history_v2.yaml: f0359f9b9ab7c2e5a51b1e760f94c70d51e544dc7f594d8e0512a9cc8ff216c2
+    scripts/verify_openalex_work_side_author_history_fixture_v2.py: 6a95a633b67604da803f7405ef5ddfd20986b00518b4ebf9bae07dbffb9661de
+    tests/fixtures/openalex_work_side_author_history_v2_minimal.json: e77556ac457424193dd33cc9760b00b36aaba06fd207bd8cc1b0fb356cf101ff
+    tests/test_openalex_work_side_author_history_design.py: cea9697e76825270e13253424dfcfb5c2f4fbeab7d08853e10564e1c16f33f73
+
+source:
+  root_env: OPENALEX_DERIVED_ROOT
+  root_id: openalex_works_20260330_repairreplay_20260410_190630
+  snapshot_date: "2026-03-30"
+  lineage_id: openalex_20260225_base_plus_20260330_update_repairreplay
+  historical_content_identity: UNVERIFIED
+  main_table: openalex_works_20260330
+  authorship_table: openalex_works_20260330__authorships
+  main:
+    files: 493
+    raw_rows: 492293207
+    source_bytes: 150062449219
+    projected_columns: [id, authors_count, primary_topic__field__id]
+    quarantined_w_minus_1_rows: 1
+    retained_rows: 492293206
+  authorship:
+    files: 1363
+    raw_rows: 1361551038
+    source_bytes: 103412497044
+    projected_columns: [id, authorships__author__id]
+    quarantined_w_minus_1_rows: 1
+    retained_rows: 1361551037
+    null_author_id_rows: 580116419
+    grammar_valid_non_null_author_id_rows: 781434618
+    malformed_non_null_author_id_rows: 0
+    distinct_grammar_valid_non_null_author_tokens: 113748578
+
+parents:
+  current_content_baseline:
+    receipt_schema_version: openalex_g1_content_freeze_outputs.v1
+    required_status: PASS_CURRENT_CONTENT_BASELINE_COMPONENT
+    receipt_sha256: 082161a29bcd8fd79fd85e0bf6814a5c7950b97b847ea08056e17eebcd369a12
+    task_fingerprint_sha256: f915cade4ce6581832c46957a2ad0a37ceabe2296099f0faeaac56ffa035693e
+    plan_sha256: 97294fe1c1fa026f664ca239ebfa9fc6dce593c847a20eb62157e38312b6725e
+    content_tree_sha256: 73bb8b0409c782ce5964d480ac6c6cecb04bab8c09df31999e581000b79ccff6
+  main_temporal_v3:
+    receipt_schema_version: openalex_g1_main_temporal_validity_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_MAIN_TEMPORAL_FIELD_VALIDITY_V3_WITH_EXACT_UTC_MILLISECONDS_AND_NONBLOCKING_ORDER_PROFILE
+    receipt_sha256: 2908087fc6c96f2aadfdfb08774ed8c3cd54dd38bd54d4e12b1831e7d863ddfe
+    task_fingerprint_sha256: 5d86a797481a14e95d08ecbe333bb207ff476bf7dc49886aec1db7b5b366001d
+    result_fingerprint_sha256: a844c624e81567bf89536218b0c488144fe2730f93c53e72193e6cfe4931bfb5
+  canonical_work_time_spine:
+    receipt_schema_version: openalex_g1_canonical_work_time_spine_production_outputs.v1
+    required_status: PASS_CURRENT_SNAPSHOT_CANONICAL_WORK_TIME_SPINE_COMPONENT_WITH_TEMPORAL_V3_PARENT
+    receipt_sha256: 2760b3aa5c5960d9356cc30339338418ff9000ab22e9c4b94caf82f6216f9aa1
+    task_fingerprint_sha256: 94cf717b7d986a3402b6e91a6c20ad5223f652d724899b1210bd94208bd703b0
+    result_fingerprint_sha256: 58492b9182d9b213c0616ce5d29d69bd82714167f57619885dc013dd0219144d
+    spine_data_tree_sha256: a5e14799ed8da2366c126219ba79e6b83b07ed605cb1270e17494f5cfb70975d
+    partition_count: 4096
+    artifact_count: 9185
+    config_path: experiments/configs/openalex_g1_canonical_work_time_spine_v2.yaml
+    config_sha256: 6e8b74ddd12cbef46c8d15d3560f0d54f470b5017685fc1bce2389250cde0484
+    runner_path: scripts/audit_openalex_canonical_work_time_spine_v3.py
+    runner_sha256: bf9ed534b2e9f9c2d6c9851be7fde298eb372d8a3cf5e17363ea6afe51cf1280
+    verifier_path: scripts/verify_openalex_canonical_work_time_spine_v1.py
+    verifier_sha256: 2cc47587ecd70bd1ae169f1f987828f024d6b8f7dd217e2e9b7964fabfcd5ede
+
+semantics:
+  unit: CURRENT_SNAPSHOT_OPENALEX_AUTHOR_ID_TOKEN_NOT_PERSON
+  publication_unit: DISTINCT_AUTHOR_NUMERIC_ID_WORK_NUMERIC_ID_PAIR
+  duplicate_pair_policy: COUNT_ONCE
+  temporal_row_source: RECEIPT_BOUND_CANONICAL_WORK_TIME_SPINE_ONLY
+  history_usable_dispositions: [2, 3]
+  source_publication_date_reparse_allowed: false
+  author_pattern: '^https://openalex[.]org/A(0|[1-9][0-9]*)$'
+  work_pattern: '^https://openalex[.]org/W(0|[1-9][0-9]*)$'
+  exact_w_minus_1: https://openalex.org/W-1
+  field_pattern: '^https://openalex[.]org/fields/(1[1-9]|2[0-9]|3[0-6])$'
+  field_id_domain: [11, 36]
+  field_id_count: 26
+  a_zero_entity_validity: UNRESOLVED
+  natural_person_entity_claim_allowed: false
+  historical_token_observability_established: false
+  current_primary_field_is_retrospective_annotation: true
+  team_caps: [10, 50, 100, ALL]
+  hyper_prolific_thresholds_strictly_greater_than: [50, 100, 250, 500, 1000]
+  threshold_driven_candidate_exclusion_allowed: false
+
+execution:
+  partition_count: 4096
+  work_partition_formula: work_id_numeric_mod_4096
+  author_partition_formula: author_id_numeric_mod_4096
+  deterministic_source_order: lexical_relative_path
+  closure_strategy: RECEIPT_BOUND_AUTHOR_WORK_EVENT_ARTIFACT
+  source_checkpoint_unit: one_projected_parquet_file
+  main_stage_record: little_endian_uint64_work_uint32_team_uint8_field
+  authorship_stage_record: little_endian_uint64_work_uint64_author_or_uint64_max_null
+  event_schema:
+    - [author_numeric_id, uint64, false]
+    - [work_numeric_id, uint64, false]
+    - [publication_year, uint16, false]
+    - [temporal_disposition, uint8, false]
+    - [declared_authors_count, uint32, false]
+    - [primary_field_id, uint8, false]
+  author_year_schema:
+    - [author_numeric_id, uint64, false]
+    - [publication_year, uint16, false]
+    - [unique_work_count_all, uint32, false]
+    - [unique_work_count_cap_10, uint32, false]
+    - [unique_work_count_cap_50, uint32, false]
+    - [unique_work_count_cap_100, uint32, false]
+  author_token_schema:
+    - [author_numeric_id, uint64, false]
+    - [first_usable_publication_year, uint16, false]
+    - [last_usable_publication_year, uint16, false]
+    - [active_year_count, uint16, false]
+    - [inclusive_span_years, uint16, false]
+    - [inactive_gap_years, uint16, false]
+    - [total_unique_work_count_all, uint32, false]
+    - [maximum_annual_unique_work_count_all, uint32, false]
+    - [total_unique_work_count_cap_10, uint32, false]
+    - [maximum_annual_unique_work_count_cap_10, uint32, false]
+    - [total_unique_work_count_cap_50, uint32, false]
+    - [maximum_annual_unique_work_count_cap_50, uint32, false]
+    - [total_unique_work_count_cap_100, uint32, false]
+    - [maximum_annual_unique_work_count_cap_100, uint32, false]
+  receipt_bound_private_artifacts:
+    - source scan checkpoints and projected staging
+    - canonical author-work event partitions
+    - author-year history partitions
+    - author-token history partitions
+    - per-work and per-author partition checkpoints
+  terminal_reentry:
+    rehash_every_receipt_artifact: true
+    revalidate_all_parent_receipts: true
+    reopen_event_and_history_partitions: true
+    verify_hidden_reductions: true
+
+scope:
+  full_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+  pilot_status: PILOT_WORK_SIDE_AUTHOR_HISTORY_ONLY
+  blocked_status: BLOCKED_WORK_SIDE_AUTHOR_HISTORY_COMPONENT
+  completion_contract: RECEIPT_WRITTEN_LAST_AND_FINAL_DISK_VALIDATED
+  pilot_promotion_allowed: false
+  full_component_may_establish_author_entities: false
+  full_component_may_establish_candidate_eligibility: false
+  full_component_may_establish_g_minus_1: false
+  full_component_may_establish_g0: false
+  full_component_may_establish_empirical_g1: false
+
+resource_envelope:
+  workload_class: LOCAL_CPU_HDD_TO_SSD_EXTERNAL_PARTITION
+  minimum_available_ram_bytes: 68719476736
+  minimum_free_disk_bytes: 274877906944
+  ram_reserve_bytes: 17179869184
+  disk_reserve_bytes: 68719476736
+  maximum_projected_batch_rows: 262144
+  maximum_open_spool_files: 4096
+  require_source_and_output_distinct_devices: true
+  require_fresh_atomic_output_probe: true
+  require_live_preflight_before_full: true
+  require_exclusive_heavy_source_scan: true
+  gpu_used: false
+
+privacy:
+  runtime_output_operator_local_only: true
+  public_summary_aggregates_and_hashes_only: true
+  raw_author_ids_allowed_in_repository: false
+  top_author_rankings_allowed: false
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+
+gate_state_after_component_pass:
+  author_history: PASS_BOUNDED_AUTHOR_TOKEN_ACCOUNTING_ONLY
+  author_entity_validity: UNRESOLVED_WORK_SIDE_TOKEN_ONLY
+  historical_content_identity: UNVERIFIED
+  raw_source_id_validity: BLOCKED
+  w_zero_entity_validity: UNRESOLVED
+  a_zero_entity_validity: UNRESOLVED
+  candidate_eligibility: PENDING
+  citation_chronology: PENDING_NOT_IN_THIS_COMPONENT
+  cutoff_panel: PENDING_NOT_IN_THIS_COMPONENT
+  outcome_blind_field_structure: PENDING_NOT_IN_THIS_COMPONENT
+  representative_discovery_pilot: PENDING_NOT_IN_THIS_COMPONENT
+  g_minus_1_data_readiness: PENDING
+  g0_measurement_freeze: PENDING
+  empirical_g1_signature: NOT_RUN
+  pass_g1: false
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  A full PASS from this version may establish only exact current-snapshot
+  OpenAlex author-ID-token to work accounting, receipt-bound usable publication
+  events, annual/token reductions, positive-author-ID sensitivity, team-cap
+  sensitivity, and hyper-prolific threshold diagnostics. Author IDs remain
+  tokens rather than verified persons. Token linkage and current primary-field
+  annotations are retrospective current-snapshot proxies, not established
+  past-observable features. The component does not establish author-master
+  completeness, split or merge truth, candidate eligibility, citation
+  chronology, maturation, cutoff panels, field selection, G-1, G0, empirical
+  G1, an NABM effect, or any scientific effect.

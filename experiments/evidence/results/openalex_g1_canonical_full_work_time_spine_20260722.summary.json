@@ -1,0 +1,103 @@
+{
+  "canonical_spine": {
+    "partition_checkpoint_tree_sha256": "be73742b070800eca6b04771e71b33c3bea9685e445a3f8792db5036be98634e",
+    "partition_count": 4096,
+    "scan_checkpoint_tree_sha256": "1fb58e0eb9773286751e5ca5545500e6fb7be62c9ff964e1bcc29977c0013766",
+    "source_tree_sha256": "b201376e677853f8dc996e93c56995f59a7b20499c9ac96faf0a71a2c5219985",
+    "spine_data_tree_sha256": "a5e14799ed8da2366c126219ba79e6b83b07ed605cb1270e17494f5cfb70975d",
+    "staging_shard_tree_sha256": "2b5c07cbd79bcfce75491767a599b6a6ec6942cff8f1d78181720f5b0a8123a4"
+  },
+  "claim_boundary": "This receipt-bound pass creates a deterministic current-snapshot row-level canonical work-time spine for the grammar-valid analysis view and binds it to the exact current-content and temporal-v3 parents. It does not establish historical content identity, raw source-ID validity, W0 entity validity, citation chronology or observation time, author or candidate validity, G-1 or G0, empirical G1, an NABM effect, or any scientific effect.",
+  "gate_status": {
+    "author_entity_validity": "PENDING",
+    "candidate_eligibility": "PENDING",
+    "canonical_work_time_spine_component": "PASS",
+    "citation_edge_chronology": "PENDING_NOT_IN_THIS_COMPONENT",
+    "current_content_baseline_component": "PASS",
+    "cutoff_aware_t_minus_1_researcher_graph": "PENDING",
+    "empirical_g1_signature": "NOT_RUN",
+    "g0_measurement_freeze": "PENDING",
+    "g_minus_1_data_readiness": "PENDING",
+    "historical_content_identity": "UNVERIFIED",
+    "main_temporal_validity_component": "PASS",
+    "pass_g1": false,
+    "raw_source_id_validity": "BLOCKED",
+    "row_level_spine_commitment": "CREATED_CURRENT_SNAPSHOT",
+    "w_zero_entity_validity": "UNRESOLVED"
+  },
+  "identifier_accounting": {
+    "distinct_numeric_ids": 492293206,
+    "duplicate_numeric_id_groups": 0,
+    "duplicate_numeric_row_excess": 0,
+    "global_uniqueness_verified": true,
+    "maximum_numeric_id": 7143276261,
+    "minimum_numeric_id": 0,
+    "quarantined_w_minus_1_rows": 1,
+    "raw_rows": 492293207,
+    "retained_rows": 492293206,
+    "w_zero_disposition_category": "USABLE_1900_BEFORE_SNAPSHOT_YEAR",
+    "w_zero_entity_validity": "UNRESOLVED",
+    "w_zero_rows": 1
+  },
+  "independent_verification": {
+    "artifact_count": 9185,
+    "output_tree_unchanged": true,
+    "parquet_validation": "full",
+    "partition_count": 4096,
+    "status": "PASS_READ_ONLY_INDEPENDENT_OUTPUT_VERIFICATION",
+    "verifier_sha256": "2cc47587ecd70bd1ae169f1f987828f024d6b8f7dd217e2e9b7964fabfcd5ede"
+  },
+  "parents": {
+    "content": {
+      "content_tree_sha256": "73bb8b0409c782ce5964d480ac6c6cecb04bab8c09df31999e581000b79ccff6",
+      "receipt_sha256": "082161a29bcd8fd79fd85e0bf6814a5c7950b97b847ea08056e17eebcd369a12",
+      "task_fingerprint_sha256": "f915cade4ce6581832c46957a2ad0a37ceabe2296099f0faeaac56ffa035693e"
+    },
+    "temporal": {
+      "receipt_sha256": "2908087fc6c96f2aadfdfb08774ed8c3cd54dd38bd54d4e12b1831e7d863ddfe",
+      "result_fingerprint_sha256": "a844c624e81567bf89536218b0c488144fe2730f93c53e72193e6cfe4931bfb5",
+      "task_fingerprint_sha256": "5d86a797481a14e95d08ecbe333bb207ff476bf7dc49886aec1db7b5b366001d"
+    }
+  },
+  "provenance": {
+    "config_sha256": "6e8b74ddd12cbef46c8d15d3560f0d54f470b5017685fc1bce2389250cde0484",
+    "output_receipt_artifact_count": 9185,
+    "output_receipt_artifacts_rehashed_exactly": 9185,
+    "output_receipt_artifacts_all_exact": true,
+    "output_receipt_sha256": "2760b3aa5c5960d9356cc30339338418ff9000ab22e9c4b94caf82f6216f9aa1",
+    "report_sha256": "1650faeb026fd3a5f82ec1f86452aa59cc911466a9fb14d918798c3007b3c051",
+    "result_fingerprint_sha256": "58492b9182d9b213c0616ce5d29d69bd82714167f57619885dc013dd0219144d",
+    "task_fingerprint_sha256": "94cf717b7d986a3402b6e91a6c20ad5223f652d724899b1210bd94208bd703b0",
+    "tool_sha256": "bf9ed534b2e9f9c2d6c9851be7fde298eb372d8a3cf5e17363ea6afe51cf1280",
+    "verifier_sha256": "2cc47587ecd70bd1ae169f1f987828f024d6b8f7dd217e2e9b7964fabfcd5ede"
+  },
+  "publication_accounting": {
+    "disposition_counts": {
+      "BOTH_NULL_EXCLUDED": 27565532,
+      "USABLE_1900_BEFORE_SNAPSHOT_YEAR": 446514060,
+      "USABLE_SNAPSHOT_YEAR_ON_OR_BEFORE_SNAPSHOT": 11509999,
+      "VALID_POST_SNAPSHOT_YEAR_EXCLUDED": 4010,
+      "VALID_PRE_1900_EXCLUDED": 6692869,
+      "VALID_SNAPSHOT_YEAR_AFTER_SNAPSHOT_EXCLUDED": 6736
+    },
+    "failure_metrics": {
+      "publication_date_parse_error_rows": 0,
+      "publication_date_year_mismatch_rows": 0,
+      "publication_exactly_one_null_rows": 0,
+      "publication_year_invalid_rows": 0
+    },
+    "publication_year_maximum": 2050,
+    "publication_year_minimum": 1000
+  },
+  "schema_version": "openalex_g1_canonical_work_time_spine_full_summary.v1",
+  "scope": {
+    "execution_scope": "FULL_CURRENT_SNAPSHOT_PRODUCTION",
+    "full_scope": true,
+    "gpu_used": false,
+    "production_component_pass": true,
+    "receipt_artifact_count": 9185,
+    "source_bytes": 150062449219,
+    "source_files": 493
+  },
+  "status": "PASS_CURRENT_SNAPSHOT_CANONICAL_WORK_TIME_SPINE_COMPONENT_WITH_TEMPORAL_V3_PARENT"
+}

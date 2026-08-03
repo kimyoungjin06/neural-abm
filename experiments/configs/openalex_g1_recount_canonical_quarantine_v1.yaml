@@ -1,0 +1,88 @@
+schema_version: openalex_g1_grammar_quarantine_recount_config.v1
+label: openalex_g1_grammar_valid_main_id_recount_with_frozen_quarantine_v1
+
+parent_inventory:
+  schema_version: openalex_source_inventory.v1
+  manifest_id: openalex_g1_source_inventory_v0
+  source_root_env: OPENALEX_DERIVED_ROOT
+  source_root_id: openalex_works_20260330_repairreplay_20260410_190630
+  inventory_fingerprint_sha256: 1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473
+
+parent_evidence:
+  blocked_zero_invalid_recount:
+    relative_path: experiments/evidence/results/openalex_g1_main_id_recount_20260716.blocked.summary.json
+    sha256: e394242ab125bc30edcbb2e5e4559692ff83612776ef2f8ec8c74ce453d14a53
+    raw_report_sha256: ceb318b378ba23a5418754f4e5c906d71f4c22ceb6e05c1f1c11cfd6f26e9483
+    status: BLOCKED
+
+tool_dependency:
+  relative_path: scripts/recount_openalex_g1.py
+  sha256: fb22a03e89b672ae3790e7cad03f1f99ebc04a8c2df543bfda42434de2a427a9
+
+main_id_recount:
+  table: openalex_works_20260330
+  column: id
+  grammar_prefix: "https://openalex.org/W"
+  expected_files: 493
+  expected_body_rows: 492293207
+  expected_null_rows: 0
+  expected_grammar_valid_rows: 492293206
+  expected_grammar_valid_distinct_ids: 492293206
+  expected_grammar_valid_duplicate_row_excess: 0
+  spool_dtype: uint64
+  batch_size: 262144
+  duplicate_scan_chunk_rows: 8388608
+  invalid_sample_limit: 20
+
+quarantine:
+  policy: exact_raw_value_and_location_allowlist.v1
+  require_no_unlisted_invalid: true
+  expected_rows: 1
+  entries:
+    - raw_value: "https://openalex.org/W-1"
+      expected_count: 1
+      expected_relative_path: openalex_works_20260330/part-384.parquet
+      expected_row_group: 13
+      expected_file_row: 428949
+      reason: upstream_placeholder_sentinel_not_grammar_valid_work_id
+
+zero_id_diagnostic:
+  warning_code: WARN_ZERO_ID_UNRESOLVED
+  retained_in_grammar_valid_spool: true
+  entity_validity: UNRESOLVED
+  api_404_is_exclusion_evidence: false
+  entry:
+    raw_value: "https://openalex.org/W0"
+    expected_count: 1
+    expected_relative_path: openalex_works_20260330/part-322.parquet
+    expected_row_group: 10
+    expected_file_row: 340597
+
+claim_boundary: >-
+  The untouched source has 492,293,207 body rows, including exactly one
+  predeclared malformed W-1 row. Exact distinct and duplicate results apply
+  only to the 492,293,206-row grammar-valid analysis view that excludes that
+  frozen malformed row. W0 remains in the view because it satisfies the
+  frozen decimal grammar; its entity validity is unresolved, and an API 404
+  alone is not exclusion evidence. This result does not establish canonical
+  or entity-valid OpenAlex identifiers, repaired source-key integrity, child
+  relation coverage, author validity, temporal or leakage safety, a
+  representative pilot, PASS_G1, or any empirical effect.
+  The frozen parent currently proves path, size, and mtime stability rather
+  than inventory-era byte identity; full-root content SHA-256 remains pending.
+
+pending_after_grammar_valid_main_id_recount:
+  - full_root_content_sha256_for_inventory_era_byte_identity
+  - propagate_w_minus_1_quarantine_through_child_source_and_target_audits
+  - w0_entity_validity_and_exclusion_sensitivity
+  - works_child_source_id_orphans
+  - referenced_target_work_coverage
+  - authorship_work_level_complete_partial_none_id_profiles
+  - authorship_missingness_by_lineage_year_field_team_size_and_eligibility
+  - publication_and_citation_date_consistency
+  - author_identity_split_merge_sensitivity
+  - field_coverage_and_right_censoring
+  - cutoff_aware_available_at_validation
+  - t_minus_1_graph_validation
+  - leakage_tests
+  - deterministic_pilot_representativeness

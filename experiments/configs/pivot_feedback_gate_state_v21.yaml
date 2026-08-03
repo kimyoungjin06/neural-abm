@@ -1,0 +1,142 @@
+schema_version: pivot_feedback_gate_state.v21
+label: pivot_feedback_gate_state_v21
+mode: ADDITIVE_RANK3_PRODUCTION_CLOSEOUT_EXACT_MEDICINE_RANK4_SAMPLE_AUTHORIZATION
+status: VALID_RANK3_CONTENT_FAIL_FRONTIER_V4_FROZEN_EXACT_MEDICINE_RANK4_SAMPLE_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v20.yaml
+  sha256: f6400d3ce6d7e58798ca4ec066bce7cb1009cf1b6a168fb17c48e838dede0915
+  required_schema_version: pivot_feedback_gate_state.v20
+  required_status: VALID_MEDICINE_RANK3_INDEXING_FAIL_VERIFIED_PRODUCTION_DISPOSITION_AND_FRONTIER_V4_AUTHORIZED_OUTCOMES_FAIL_CLOSED
+  mutation_allowed: false
+
+rank3_production_evidence:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_rank3_production_disposition_v1.yaml
+    sha256: 03d440d85065b13052079ca7a04f0849be249fe38ae3580e0c151b5a30facef5
+    required_schema_version: pivot_feedback_d0_rank3_production_disposition_config.v1
+    required_status: FROZEN_RANK3_PRODUCTION_CONTENT_FAIL_AND_FRONTIER_V4_AUTHORIZED
+    mutation_allowed: false
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_rank3_production_disposition_v1.py
+    sha256: 48a6c0e8ad42251e84f96574d222c7dcf59891140ade78def6cc1e197dc76ad4
+    mutation_allowed: false
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_rank3_production_disposition_v1.py
+    sha256: 8b6b5c6a69e2cd3ba19d42b2d4b0a84ac9eb950cbf2c7144a3673d8d54ac7c2d
+    mutation_allowed: false
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_rank3_production_disposition_20260729.summary.json
+    sha256: 363a59f9d75163a5f27bd6fdc97fd5201543726b2b33a6ae9e7b770f043707e6
+    required_schema_version: pivot_feedback_d0_rank3_production_disposition_summary.v1
+    required_status: PASS_INDEPENDENT_RANK3_CONTENT_FAIL_AND_FRONTIER_V4
+    mutation_allowed: false
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_rank3_production_disposition_20260729.summary.md
+    sha256: d9b43f43fe42a44530d547dbc6407bc34493e0432e81fce2a12226e11cf17c82
+    mutation_allowed: false
+  operator_local:
+    root_basename: pivot-feedback-d0-rank3-production-disposition-v1-20260729
+    receipt_basename: rank3_production_disposition.outputs.json
+    receipt_sha256: 2806404d3edf8ee1a30200efbb11dfdd766b6332f27b0fd4a511fda1e12398ae
+    receipt_status: PASS_RANK3_CONTENT_FAIL_FROZEN_FRONTIER_V4_RANK4_REQUIRED
+    verification_basename: pivot-feedback-d0-rank3-production-disposition-v1-20260729.verification-v1.json
+    verification_sha256: 5294ec882409334b3e61342c8dddd2b6af6626efd00a2c8dd45310906c3b7f85
+    verification_status: PASS_INDEPENDENT_RANK3_CONTENT_FAIL_AND_FRONTIER_V4
+
+production_result:
+  cumulative_production_dispositions: 6
+  content_pass_rows: 3
+  content_fail_rows: 3
+  computer_science_field_certificate_issued: true
+  medicine_required_candidate_rank: 4
+  medicine_required_topic_id: 12505
+  medicine_required_entry_year: 1993
+  medicine_required_content_state: CONTENT_UNRESOLVED
+  medicine_field_certificate_issued: false
+  global_selection_certificate_issued: false
+  deterministic_reselection_executed: false
+
+exact_rank4_sample_authorization:
+  field_id: 27
+  field_candidate_rank: 4
+  topic_id: 12505
+  topic_name: Peptidase Inhibition and Analysis
+  entry_year: 1993
+  sample_seed: pivot-feedback-d0-candidate-content-v1
+  rows_per_window: 32
+  total_rows: 96
+  windows:
+    0: {minimum_year: null, maximum_year: 1986}
+    1: {minimum_year: 1987, maximum_year: 1989}
+    2: {minimum_year: 1990, maximum_year: 1992}
+  normalized_work_metadata_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+  normalized_author_event_root_basename: openalex-g1-author-history-v3-full-20260722
+  current_snapshot_root_id: openalex_works_20260330_repairreplay_20260410_190630
+  deterministic_lowest_hash_selection_required: true
+  exact_selected_id_title_lookup_only: true
+  output_create_only: true
+  existing_topic_card_may_be_reused: true
+  local_routing_before_api_required: true
+  api_request_creation: NOT_AUTHORIZED
+  api_submission: NOT_AUTHORIZED
+
+gate_state:
+  D0:
+    state: PARTIAL_FRONTIER_V4_FROZEN_EXACT_RANK4_SAMPLE_AUTHORIZED
+    complete: false
+    completed_components:
+      - D0_PRODUCTION_CANDIDATE_RULE_V2
+      - D0_SIX_PRODUCTION_CANDIDATE_DISPOSITIONS
+      - D0_ADAPTIVE_FRONTIER_V4
+      - D0_COMPUTER_SCIENCE_FIELD_CERTIFICATE
+    blocked_components:
+      - MEDICINE_RANK4_CONTENT_DISPOSITION
+      - MEDICINE_FIELD_CERTIFICATE
+      - GLOBAL_SELECTION_CERTIFICATE
+      - DETERMINISTIC_EPISODE_RESELECTION_SUCCESSOR
+      - REBUILT_AUTHOR_OPPORTUNITY_PANEL
+      - PRODUCTION_RESEARCHER_PIVOT_CLASSIFICATION
+    authorizes:
+      - D0_EXACT_MEDICINE_RANK4_NORMALIZED_TARGET_SCAN
+      - D0_EXACT_MEDICINE_RANK4_96_ID_SAMPLE
+      - D0_EXACT_SELECTED_ID_CURRENT_SNAPSHOT_TITLE_LOOKUP
+      - D0_REUSE_T12505_CARD_AND_ZERO_COST_LOCAL_ROUTING
+  G0:
+    state: PENDING
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  d0_rank3_production_content_disposition: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_cumulative_six_production_dispositions: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_adaptive_frontier_v4: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_exact_rank4_normalized_candidate_scan: AUTHORIZED_READ_ONLY
+  d0_exact_rank4_96_id_sample: AUTHORIZED_CREATE_ONLY
+  d0_exact_rank4_selected_id_title_lookup: AUTHORIZED_READ_ONLY
+  d0_reuse_t12505_topic_card: AUTHORIZED
+  d0_rank4_local_routing: AUTHORIZED_ZERO_COST_ONLY
+  d0_general_raw_openalex_title_scan: NOT_AUTHORIZED
+  d0_full_candidate_title_copy: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_exception_submission: NOT_AUTHORIZED
+  d0_rank4_production_content_disposition: NOT_AUTHORIZED_UNTIL_LOCAL_ROUTING_VERIFIED
+  d0_global_selection_certificate: NOT_AUTHORIZED
+  d0_episode_reselection_successor: NOT_AUTHORIZED
+  d0_author_opportunity_panel_rebuild: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This additive successor freezes the rank-3 CONTENT_FAIL disposition, six
+  cumulative dispositions, and frontier v4, then authorizes only the exact
+  Medicine rank-4 normalized scan, deterministic 96-ID sample, selected-ID
+  title lookup, and zero-cost local routing. General raw scans, full title
+  copies, API requests, the rank-4 production disposition, certification,
+  reselection, outcomes, fitting, G4, semantic truth, and scientific effects
+  remain unauthorized or not established.

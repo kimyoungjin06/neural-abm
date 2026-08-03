@@ -1,0 +1,162 @@
+schema_version: pivot_feedback_s0_authorship_orcid_affiliation_config.v1
+label: pivot_feedback_s0_authorship_orcid_affiliation_v1
+mode: RECEIPT_BOUND_FULL_AUTHORSHIP_SOURCE_PROJECTION
+status_before_execution: AUTHORIZED_S0_REMAINING_COMPONENT
+
+gate_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v2.yaml
+  sha256: 4c465fff6ecc35a4f7b5c4cfdcbfc53cd8c909f5488d81ea71e5cb64f637f5f6
+  required_schema_version: pivot_feedback_gate_state.v2
+  required_status: VALID_G_MINUS_1A_PASS_S0_PARTIAL_D0_NOT_AUTHORIZED
+  required_fields:
+    authorization.s0_remaining_components: AUTHORIZED
+    authorization.d0_discovery_pilot: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.scientific_effect: NOT_ESTABLISHED
+
+s0_core_parent:
+  relative_path: experiments/evidence/results/pivot_feedback_s0_threshold_free_core_full_20260723.summary.json
+  sha256: a579c147391d2e720048701a465120e4b1885e4a15ccc79c4a2f2c02565be206
+  required_schema_version: pivot_feedback_s0_threshold_free_core_full_summary.v1
+  required_status: PASS_S0_THRESHOLD_FREE_CORE_FIELD_YEAR_INVENTORY_WITH_ORCID_AFFILIATION_AND_GRAPH_TOPOLOGY_PENDING
+  required_fields:
+    scope.core_component_pass: true
+    scope.s0_gate_pass: false
+    scope.d0_authorized: false
+    work_accounting.rows: 492293206
+    author_event_accounting.rows: 779630258
+    field_year_inventory.rows: 18544
+
+source:
+  expected_root_basename: openalex_works_20260330_repairreplay_20260410_190630
+  table: openalex_works_20260330__authorships
+  source_snapshot_date: "2026-03-30"
+  expected_files: 1363
+  expected_bytes: 103412497044
+  expected_raw_rows: 1361551038
+  expected_w_minus_1_rows: 1
+  expected_retained_rows: 1361551037
+  expected_nonnull_author_id_rows: 781434618
+  expected_null_author_id_rows: 580116420
+  expected_nonnull_orcid_rows: 458308219
+  projected_columns:
+    - id
+    - authorships__raw_affiliation_strings
+    - authorships__institutions
+    - authorships__author__id
+    - authorships__author__orcid
+  work_id_pattern: '^https://openalex[.]org/W(0|[1-9][0-9]*)$'
+  author_id_pattern: '^https://openalex[.]org/A(0|[1-9][0-9]*)$'
+  institution_id_pattern: '^https://openalex[.]org/I(0|[1-9][0-9]*)$'
+  exact_w_minus_1: https://openalex.org/W-1
+
+content_freeze_parent:
+  expected_root_basename: openalex-g1-content-freeze-20260719
+  receipt_basename: content_freeze_audit.outputs.json
+  receipt_sha256: 082161a29bcd8fd79fd85e0bf6814a5c7950b97b847ea08056e17eebcd369a12
+  receipt_schema_version: openalex_g1_content_freeze_outputs.v1
+  required_status: PASS_CURRENT_CONTENT_BASELINE_COMPONENT
+  task_fingerprint_sha256: f915cade4ce6581832c46957a2ad0a37ceabe2296099f0faeaac56ffa035693e
+  plan_sha256: 97294fe1c1fa026f664ca239ebfa9fc6dce593c847a20eb62157e38312b6725e
+  content_tree_sha256: 73bb8b0409c782ce5964d480ac6c6cecb04bab8c09df31999e581000b79ccff6
+  checkpoint_files: 21019
+  checkpoint_tree_sha256: e509867989cec9dfd398221ee5d7abd69dc73fa7330acf9302413184d786bfef
+  selected_source_content_rehashed_in_this_run: false
+  selected_source_current_exact_stat_required: true
+  selected_source_checkpoint_self_digest_required: true
+
+author_history_parent:
+  expected_root_basename: openalex-g1-author-history-v3-full-20260722
+  receipt_basename: author_history_audit.outputs.json
+  receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+  receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+  required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+  plan_basename: audit_plan.json
+  plan_sha256: 27eeb5e7aadc1da71c7f517f39d76150f8447aa623ac0c6fb82d47312e1fa3e2
+  plan_schema_version: openalex_g1_work_side_author_history_production_plan.v3
+  expected_authorship_tasks: 1363
+  expected_event_artifacts: 4096
+  expected_event_rows: 779630258
+
+cutoff_parent:
+  expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+  receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+  receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+  receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+  required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+  expected_work_artifacts: 4096
+  expected_work_rows: 492293206
+  work_metadata_tree_sha256: a37448b4df39c00e97b540b3ac7d06de6f2e9ce12186838120d59c820aa89d77
+
+orcid_contract:
+  accepted_form: '^https://orcid[.]org/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$'
+  checksum: ISO_7064_MOD_11_2
+  stable_token_rule: EXACTLY_ONE_DISTINCT_CHECKSUM_VALID_ORCID_PER_OPENALEX_AUTHOR_TOKEN
+  null_or_invalid_orcid_is_not_identity_evidence: true
+  natural_person_identity_claim_allowed: false
+  shared_orcid_across_tokens_is_diagnostic_not_ground_truth: true
+
+affiliation_contract:
+  raw_affiliation_present: AT_LEAST_ONE_NONEMPTY_RAW_AFFILIATION_STRING
+  institution_present: AT_LEAST_ONE_GRAMMAR_VALID_OPENALEX_INSTITUTION_ID
+  author_work_affiliation_row_requires_grammar_valid_author_id: true
+  distinct_institution_unit: CURRENT_SNAPSHOT_OPENALEX_INSTITUTION_ID_TOKEN
+  historical_affiliation_observability_established: false
+
+execution:
+  source_batch_rows: 262144
+  spool_partition_count: 256
+  work_cell_dense_lookup_dtype: uint32
+  work_cell_encoding: '((primary_field_id_or_0 + 1) << 16) | publication_year_or_0'
+  author_orcid_spool_dtype: [['author_numeric_id', '<u8'], ['orcid_code', '<u8']]
+  institution_spool_dtype: [['field_year_key', '<u4'], ['institution_numeric_id', '<u8']]
+  deterministic_source_order: lexical_relative_path
+  full_scope_requires_all_source_files: true
+  pilot_is_permanently_nonpromotable: true
+  output_directory_must_be_new: true
+  output_written_atomically: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  raw_ids_allowed_in_repository: false
+  gpu_used: false
+
+resource_envelope:
+  workload_class: LOCAL_CPU_HDD_TO_RAM_AND_SSD_EXTERNAL_PARTITION
+  minimum_available_memory_bytes: 137438953472
+  minimum_free_output_bytes: 137438953472
+  source_and_output_distinct_devices_required: true
+  exclusive_heavy_source_scan_required: true
+
+forbidden_metrics:
+  - eligible_author_count
+  - matured_entry_opportunity_count
+  - fixed_horizon_outcome_coverage
+  - independent_attention_shock_count
+  - entry_effect_size
+  - persistence_effect_size
+  - overshoot_timing_gap
+  - predictive_score
+  - selected_best_field
+  - selected_best_threshold
+  - g4_holdout_outcome
+
+output_contract:
+  report_schema_version: pivot_feedback_s0_authorship_orcid_affiliation_report.v1
+  field_year_schema_version: pivot_feedback_s0_authorship_orcid_affiliation_field_year.v1
+  full_status: PASS_S0_FULL_AUTHORSHIP_ORCID_AND_AFFILIATION_PROJECTION_WITH_TOKEN_AND_CURRENT_SNAPSHOT_LIMITATIONS
+  pilot_status: PILOT_S0_AUTHORSHIP_ORCID_AND_AFFILIATION_NONPROMOTABLE
+  blocked_status: BLOCKED_S0_AUTHORSHIP_ORCID_AND_AFFILIATION
+  component_may_complete_s0: false
+  component_may_authorize_d0: false
+  component_may_authorize_model_fitting: false
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  A full pass may establish exact current-snapshot authorship-row ORCID syntax
+  and checksum coverage, author-token to valid-ORCID multiplicity diagnostics,
+  field-year counts of stable-token events, nonempty raw affiliation presence,
+  grammar-valid institution presence, and distinct current-snapshot OpenAlex
+  institution tokens. It does not establish natural persons, ORCID ownership,
+  historical identity or affiliation observability, candidate eligibility,
+  distinct coauthor graph topology, S0 completion, D0 authorization, G0,
+  model fitting, empirical effects, causal effects, or a scientific effect.

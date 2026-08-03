@@ -1,0 +1,67 @@
+{
+  "schema_version": "openalex_g1_source_inventory_summary.v1",
+  "label": "openalex_g1_source_inventory_20260716",
+  "generated_at_utc": "2026-07-16T08:17:48.861124+00:00",
+  "status": "INVENTORY_ONLY",
+  "pass_metadata": false,
+  "pass_g1": false,
+  "source_root_id": "openalex_works_20260330_repairreplay_20260410_190630",
+  "source_snapshot_date": "2026-03-30",
+  "inventory_fingerprint_sha256": "1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473",
+  "stability_fingerprint_sha256": "a3bfb7f639d4131749c1522f00e5e977bae7abc1a62202790fd41279f8f0a0e5",
+  "raw_manifest_sha256": "6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46",
+  "tool_sha256": "d115657783bed7a7a51426c4546b0e273e9bca3e1a4c683245106dfc06033f10",
+  "config_sha256": "b4c4a9d3770dbfd979962a1372eb995f8458c0498acc1a7eae911fa84e495a63",
+  "execution": {
+    "audit_level": "parquet_footer_only",
+    "footer_workers": 8,
+    "elapsed_seconds": 15.25,
+    "max_rss_kib": 287248,
+    "content_sha256": false,
+    "path_redacted": true,
+    "dirty_worktree": true
+  },
+  "totals": {
+    "table_directories": 23,
+    "parquet_files": 21019,
+    "bytes": 988404537807,
+    "footer_rows": 20996232817,
+    "row_groups": 650939,
+    "footer_metadata_bytes": 808479308
+  },
+  "critical_observations": {
+    "main_work_rows": 492293207,
+    "main_work_id_footer_nulls": 0,
+    "authorship_rows": 1361551038,
+    "authorship_author_id_footer_nulls": 580116420,
+    "authorship_author_id_footer_null_fraction": 0.4260702711902306,
+    "mesh_rows": 1212666618,
+    "mesh_duplicate_rows_removed_by_historical_repair": 45,
+    "awards_canonical_schema_variants": 1,
+    "awards_physical_schema_order_variants": 2,
+    "abstract_exception_payload_is_primary_text": false
+  },
+  "checks": {
+    "blocks": 0,
+    "warnings": 3,
+    "pending_metadata_checks": 23
+  },
+  "warning_codes": [
+    "authorship_author_id_missingness_unresolved",
+    "awards_physical_column_order_drift",
+    "mesh_original_file_checksums_unavailable"
+  ],
+  "pending_full_scan_gates": [
+    "distinct_work_ids_and_duplicate_rows",
+    "works_child_join_coverage_and_orphans",
+    "authorship_author_id_eligibility_and_missingness",
+    "publication_and_citation_date_consistency",
+    "author_identity_split_merge_sensitivity",
+    "field_coverage_and_right_censoring",
+    "cutoff_aware_available_at_validation",
+    "t_minus_1_graph_validation",
+    "leakage_tests",
+    "deterministic_pilot_representativeness"
+  ],
+  "claim_boundary": "This footer-only inventory freezes a physical source profile. It does not establish distinct IDs, join coverage, author validity, temporal leakage safety, representative pilot status, empirical effects, or analysis readiness."
+}

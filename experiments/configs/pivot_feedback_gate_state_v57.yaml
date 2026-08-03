@@ -1,0 +1,127 @@
+schema_version: pivot_feedback_gate_state.v57
+label: pivot_feedback_gate_state_v57
+mode: ADDITIVE_METADATA_INPUT_RESOLUTION_LOGICAL_RESERVATION_NOT_BYTE_SEAL
+status: VALID_PRODUCTION_INPUT_RESOLUTION_NO_MATERIALIZED_G4_ARTIFACT_SET_NO_SEAL
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v56.yaml
+  sha256: 138bd1b22830ab5ac9f5940fcbd802058cd41be0f5f79853708dd1e2f6ce6696
+  required_schema_version: pivot_feedback_gate_state.v56
+  required_status: VALID_EXPLICIT_PREFLIGHT_TO_SEAL_CHAIN_CLOSED_FIXTURE_PRODUCTION_INPUTS_REQUIRED
+  mutation_allowed: false
+
+verified_production_input_resolution:
+  resolution_contract:
+    relative_path: experiments/configs/pivot_feedback_holdout_production_input_resolution_v1.yaml
+    sha256: 0abc726af2abcc58153488e0a50ac29b68f8e7840b0214ce3c2c7fd96fd160d9
+  validator:
+    relative_path: scripts/verify_pivot_feedback_holdout_production_input_resolution_v1.py
+    sha256: 9c1ee153fc9383c79cb9684b30642e1cd14f4a1de7ea973947d97ca564b8c411
+  research_note:
+    relative_path: docs/research/pivot-feedback-holdout-production-input-resolution-v1.md
+    sha256: 5a4a7a2439b238ca14636973ccad31224a07dba62b1bcff222cf896f856430dc
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_holdout_production_input_resolution_20260731.summary.json
+    sha256: ce2f018f35d9b383fe2f067f9c4c974f21fc754af80f07c04320edfeac29e267
+    required_schema_version: pivot_feedback_holdout_production_input_resolution_summary.v1
+    required_status: PASS_METADATA_ONLY_INPUT_RESOLUTION_NO_MATERIALIZED_G4_ARTIFACT_SET
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_holdout_production_input_resolution_20260731.summary.md
+    sha256: a5badbfbd095848085b2d892c87fc7a99c5e3da467e7130e20caa27201aaff2e
+  result:
+    logical_partition_reserved: true
+    byte_seal_created: false
+    g4_domain_selected: false
+    g4_field_selected: false
+    g4_artifact_set_materialized: false
+    available_d0_entry_year_maximum: 2012
+    requested_g4_entry_years: [2020, 2021, 2022]
+    source_root_bound: false
+    complete_artifact_list_bound: false
+    production_preflight_written: false
+    production_receipt_written: false
+    operator_directories_listed: 0
+    operator_paths_searched_or_scanned: 0
+    holdout_artifact_paths_enumerated: 0
+    holdout_artifact_bytes_hashed: 0
+    confirmatory_or_holdout_rows_read: 0
+
+input_resolution_decision:
+  status: COMPLETE_METADATA_ONLY
+  blocker_class: PREREQUISITE_ARTIFACT_NOT_MATERIALIZED_NOT_MISSING_USER_PATH
+  production_status: NOT_RUN_NO_MATERIALIZED_G4_ARTIFACT_SET
+  logical_partition_reservation_equals_byte_seal: false
+  existing_d0_artifact_substitution_valid: false
+  operator_path_request_is_sufficient_next_step: false
+  production_preflight_may_run_now: false
+  production_seal_may_run_now: false
+  next_workstream: G0_PRECOMMITMENT_SELECTION_AND_HOLDOUT_MATERIALIZATION_BEFORE_SEAL
+
+required_successor_order:
+  - COMPLETE_OUTCOME_BLIND_G0_PRECOMMITMENTS_AND_REQUIRED_SECTIONS
+  - FREEZE_OUTCOME_BLIND_FIELD_EPISODE_AND_ATOMIC_PARTITION_ASSIGNMENT
+  - MATERIALIZE_PRIVATE_G4_ARTIFACT_SET_WITHOUT_CONFIRMATORY_ANALYSIS
+  - BIND_PRIVATE_SOURCE_ROOT_AND_COMPLETE_EXPLICIT_ARTIFACT_LIST
+  - AUTHOR_OPERATOR_PREFLIGHT_FROM_EXPLICIT_LIST_ONLY
+  - CREATE_AND_INDEPENDENTLY_VERIFY_BYTE_SEAL
+  - BIND_VERIFIED_RECEIPT_IN_FINAL_G0_SUCCESSOR
+
+gate_state:
+  D0:
+    state: COMPLETE_CORE_ENTRY_AND_PERSISTENCE_MEASUREMENT_CALIBRATION_OPTIONAL_PEER_SUCCESS_DEFERRED
+    complete: true
+  G0:
+    state: NOT_READY_G4_ARTIFACT_SET_NOT_MATERIALIZED
+    complete: false
+    completed_components:
+      - G0_G_MINUS_1A_BINDING_RECONCILIATION
+      - G0_V2_BINDING_ONLY_SUCCESSOR
+      - HOLDOUT_ACCESS_SEAL_CONTRACT
+      - HOLDOUT_ACCESS_SEAL_CONTRACT_INDEPENDENT_VALIDATION
+      - HOLDOUT_ACCESS_SEAL_TOOLING_CLOSED_FIXTURE_VALIDATION
+      - HOLDOUT_ACCESS_SEAL_PREFLIGHT_TOOLING_CLOSED_FIXTURE_VALIDATION
+      - HOLDOUT_PRODUCTION_INPUT_METADATA_RESOLUTION
+    next_components:
+      - G0_OUTCOME_BLIND_PRECOMMITMENT_AND_REQUIRED_SECTION_COMPLETION
+      - G4_FIELD_EPISODE_AND_ATOMIC_PARTITION_ASSIGNMENT
+      - G4_PRIVATE_ARTIFACT_MATERIALIZATION
+      - HOLDOUT_ACCESS_SEAL_OPERATOR_PREFLIGHT
+      - HOLDOUT_ACCESS_SEAL_CREATION_AND_RECEIPT_ISSUANCE
+      - HOLDOUT_ACCESS_SEAL_RECEIPT_INDEPENDENT_VALIDATION
+    blocked_components:
+      - HOLDOUT_SEAL_OPENING
+      - G0_MEASUREMENT_FREEZE_SEAL
+      - CONFIRMATORY_OR_HOLDOUT_ACCESS
+      - MODEL_FITTING
+      - G4
+  G4:
+    state: LOGICALLY_RESERVED_NOT_BYTE_SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  holdout_access_seal_contract: COMPLETE_INDEPENDENTLY_VALIDATED
+  holdout_seal_creator_preflight_and_verifier: COMPLETE_CLOSED_FIXTURE_ONLY
+  production_input_metadata_resolution: COMPLETE_INDEPENDENTLY_VERIFIED
+  operator_path_search_or_scan: NOT_AUTHORIZED
+  implicit_artifact_discovery: NOT_AUTHORIZED
+  production_preflight: NOT_AUTHORIZED_PREREQUISITE_ARTIFACT_NOT_MATERIALIZED
+  production_seal_creation_or_receipt_issuance: NOT_AUTHORIZED_NO_VALID_PREFLIGHT
+  production_receipt_independent_verification: NOT_RUN_NO_PRODUCTION_RECEIPT
+  holdout_seal_opening: NOT_AUTHORIZED
+  confirmatory_or_holdout_row_read: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The production-input resolver independently confirms from bound repository
+  metadata that the G4 partition is logically reserved but no selected G4
+  domain, selected field, or materialized artifact set exists. The available
+  D0 entry source ends in 2012 and is not a substitute for the 2020-2022
+  domain- and author-cold package. No operator directory was listed or scanned,
+  no holdout path or byte was enumerated or hashed, and no production preflight,
+  byte seal, receipt, or independent receipt verification was run. This gate
+  does not open a holdout, pass G0, fit a model, open G4, assert causality, or
+  establish a scientific effect.

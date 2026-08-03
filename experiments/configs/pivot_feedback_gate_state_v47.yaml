@@ -1,0 +1,201 @@
+schema_version: pivot_feedback_gate_state.v47
+label: pivot_feedback_gate_state_v47
+mode: ADDITIVE_PRODUCTION_PERSISTENCE_SOURCE_INDEPENDENTLY_VERIFIED_DESCRIPTIVE_CALIBRATION_READOUT_AUTHORIZATION
+status: VALID_D0_PRODUCTION_PERSISTENCE_SOURCE_INDEPENDENTLY_VERIFIED_DESCRIPTIVE_CALIBRATION_READOUT_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v46.yaml
+  sha256: fa6646dac68eb89f3027ee6e43d031ad47a90c48b21458f03984b8a8ec35cbec
+  required_schema_version: pivot_feedback_gate_state.v46
+  required_status: VALID_D0_PERSISTENCE_OUTCOME_CONTRACT_INDEPENDENTLY_VALIDATED_PRODUCTION_SOURCE_BUILD_AUTHORIZED
+  required_fields:
+    persistence_contract_decision.status: COMPLETE_INDEPENDENTLY_VALIDATED
+    authorization.d0_production_post_entry_persistence_source_build: AUTHORIZED_EXACT_4301_NEW_TOPIC_ENTRY_T_PLUS_1_THROUGH_T_PLUS_3_ONLY
+    authorization.d0_discovery_outcome_analysis_or_interpretation: NOT_AUTHORIZED
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+verified_production_persistence_source:
+  config:
+    relative_path: experiments/configs/pivot_feedback_d0_persistence_source_build_v1.yaml
+    sha256: 2bfd8f7264beb593d29aa3cef0a34abee9587cd329672db92d0991ca545e1dbb
+    required_schema_version: pivot_feedback_d0_persistence_source_build_config.v1
+    required_status_before_execution: AUTHORIZED_BY_GATE_STATE_V46
+  producer:
+    relative_path: scripts/build_pivot_feedback_d0_persistence_source_v1.py
+    sha256: 2a01bce5b791377f5bd561c7d4f7bab2fe38973e7667e255e25c2a984eef79c8
+  verifier:
+    relative_path: scripts/verify_pivot_feedback_d0_persistence_source_v1.py
+    sha256: 297198647893bd07ef69824f099dae7cf72aa39001eff7b1f8d0659a7e70b49c
+  research_note:
+    relative_path: docs/research/pivot-feedback-d0-persistence-source-production-v1.md
+    sha256: 67dcef9ed99cbe6bad06990a88e8f6928008764872faf6f73ae91d5504510757
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_persistence_source_production_20260731.summary.json
+    sha256: bdb3356bfbde854305972448f0e5a45f889437f2e2f8f9702483a8cb0f357442
+    required_schema_version: pivot_feedback_d0_persistence_source_production_summary.v1
+    required_status: PASS_INDEPENDENT_EXACT_4301_THREE_YEAR_PERSISTENCE_SOURCE_ALL_ROW_REPLAY
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_persistence_source_production_20260731.summary.md
+    sha256: c3f6c4be4678c11c95824efb5f1e74b91f947074e82b451d9bab62a53b16810f
+  operator:
+    root_basename: pivot-feedback-d0-persistence-source-v1-full-20260731
+    receipt_basename: persistence_outcome_source.outputs.json
+    receipt_sha256: 3aa45f93e4cbf40c0e9543482ec3c6a908b6026b7f9d23b719c615c68180295a
+    receipt_schema_version: pivot_feedback_d0_persistence_outcome_source_outputs.v1
+    receipt_status: PASS_EXACT_4301_NEW_TOPIC_ENTRY_THREE_YEAR_PERSISTENCE_SOURCE
+    artifact_tree_sha256: 7866cf1e378e76d6c1193369c097815e2158cd50d728a2f17f722b7c0a9cfc5d
+    artifact_basename: persistence_outcome_source.parquet
+    artifact_sha256: 0d347a296dbe08960e8a0fd2d5aaf9ff0afa7c9f55b08b761258e9874ae7f6c5
+    artifact_rows: 4301
+    artifact_columns: 13
+    report_basename: persistence_outcome_source.json
+    report_sha256: 9cf1a3edb8066ce1e0846af04abb483936f04bf525a7699db13a00f3638a080d
+    markdown_basename: PERSISTENCE_OUTCOME_SOURCE.md
+    markdown_sha256: fc0eca4e33b4fb5d249a3612f7c7ce5ec363d7372c34b58c646e15e08ce9b559
+    verification_basename: pivot-feedback-d0-persistence-source-v1-full-20260731.verification-v1.json
+    verification_sha256: 071ca98ae1ff5b6599756ca89397c430333810ef6ee368b6173f76a6d6bfd74a
+    verification_schema_version: pivot_feedback_d0_persistence_outcome_source_verification.v1
+    verification_status: PASS_INDEPENDENT_EXACT_4301_THREE_YEAR_PERSISTENCE_SOURCE_ALL_ROW_REPLAY
+  result:
+    exact_denominator_state: NEW_TOPIC_ENTRY
+    source_classification_rows: 3256271
+    exact_denominator_rows: 4301
+    output_columns: 13
+    matured_persistence_rows: 1487
+    matured_no_persistence_rows: 2814
+    right_censored_rows: 0
+    qualifying_author_work_pairs: 3689
+    pair_rows_t_plus_1: 1315
+    pair_rows_t_plus_2: 1281
+    pair_rows_t_plus_3: 1093
+    work_partitions_rehashed_by_producer: 4096
+    author_event_partitions_rehashed_by_producer: 4096
+    work_partitions_rehashed_by_verifier: 4096
+    author_event_partitions_rehashed_by_verifier: 4096
+    denominator_rows_filtered: 0
+    denominator_rows_mutated: 0
+    output_value_mismatch_rows: 0
+    source_metadata_mismatch_rows: 0
+    confirmatory_entry_year_rows_read: 0
+    post_entry_offsets_read: [1, 2, 3]
+    api_requests_created: 0
+    association_or_effect_computed: false
+    g0_authorized_by_source_or_verifier_alone: false
+    model_fitting_authorized_by_source_or_verifier_alone: false
+    g4_open: false
+
+production_persistence_source_decision:
+  status: COMPLETE_INDEPENDENTLY_VERIFIED
+  exact_denominator_state: NEW_TOPIC_ENTRY
+  exact_denominator_rows: 4301
+  exact_outcome_window_offsets: [1, 2, 3]
+  exact_four_all_matured: true
+  persistence_positive_rows: 1487
+  persistence_negative_rows: 2814
+  current_snapshot_annotated_persistence_only: true
+  descriptive_population_accounting_allowed: true
+  adjusted_episode_comparison_established: false
+  exposure_association_established: false
+  causal_or_scientific_effect_established: false
+
+authorized_descriptive_calibration_readout_scope:
+  mode: EXISTING_VERIFIED_4301_ROW_ARTIFACT_ONLY_DESCRIPTIVE_MEASUREMENT_CALIBRATION
+  required_input:
+    root_basename: pivot-feedback-d0-persistence-source-v1-full-20260731
+    receipt_sha256: 3aa45f93e4cbf40c0e9543482ec3c6a908b6026b7f9d23b719c615c68180295a
+    artifact_sha256: 0d347a296dbe08960e8a0fd2d5aaf9ff0afa7c9f55b08b761258e9874ae7f6c5
+    verification_sha256: 071ca98ae1ff5b6599756ca89397c430333810ef6ee368b6173f76a6d6bfd74a
+    rows: 4301
+    columns: 13
+  permitted_grouping_keys:
+    - certified_episode_index
+    - field_id
+    - topic_id
+    - entry_year
+  permitted_descriptive_outputs:
+    - exact_rows
+    - matured_persistence_rows
+    - matured_no_persistence_rows
+    - right_censored_rows
+    - descriptive_persistence_rate
+    - target_topic_work_count_distribution
+    - first_observed_persistence_offset_distribution
+    - yearly_presence_pattern_distribution
+  readout_may_rehash_and_read_existing_verified_artifact: true
+  readout_may_recompute_every_derived_value: true
+  readout_may_join_raw_work_or_author_event_partitions: false
+  readout_may_join_exposure_peer_citation_impact_or_affiliation_data: false
+  readout_may_read_confirmatory_or_holdout_rows: false
+  readout_may_create_or_submit_api_requests: false
+  readout_may_compute_adjusted_comparisons_or_inferential_effects: false
+  readout_may_rank_or_select_fields_episodes_or_thresholds_by_outcome: false
+  readout_may_establish_final_candidate_eligibility: false
+  readout_may_freeze_g0: false
+  readout_may_fit_or_score_a_model: false
+  readout_may_open_g4: false
+  independent_all_row_derived_value_replay_required: true
+  successor_gate_required_before_d0_completion_or_g0: true
+
+gate_state:
+  D0:
+    state: PARTIAL_PRODUCTION_PERSISTENCE_SOURCE_COMPLETE_DESCRIPTIVE_CALIBRATION_READOUT_AUTHORIZED
+    complete: false
+    completed_components:
+      - D0_PREDECISION_MEASUREMENT_COMPLETENESS_DECISION
+      - D0_THRESHOLD_FREE_RESEARCHER_PIVOT_DEFINITION_V2
+      - D0_ENTRY_OUTCOME_SOURCE_AND_CLASSIFIER_CONTRACT
+      - D0_ENTRY_OUTCOME_SOURCE_BUILD_AND_INDEPENDENT_VERIFICATION
+      - D0_PRODUCTION_RESEARCHER_PIVOT_CLASSIFICATION_AND_INDEPENDENT_VERIFICATION
+      - D0_PERSISTENCE_OUTCOME_SOURCE_AND_DEFINITION_CONTRACT
+      - D0_PERSISTENCE_OUTCOME_CONTRACT_INDEPENDENT_VALIDATION
+      - D0_PRODUCTION_POST_ENTRY_PERSISTENCE_SOURCE_BUILD
+      - D0_PRODUCTION_POST_ENTRY_PERSISTENCE_SOURCE_INDEPENDENT_VERIFICATION
+    next_components:
+      - D0_DESCRIPTIVE_PERSISTENCE_CALIBRATION_READOUT
+      - D0_DESCRIPTIVE_PERSISTENCE_CALIBRATION_INDEPENDENT_REPLAY
+    deferred_optional_components:
+      - D0_PEER_VISIBLE_SUCCESS
+    blocked_components:
+      - D0_EXPOSURE_OUTCOME_ASSOCIATION_ANALYSIS
+      - D0_OUTCOME_BASED_FIELD_EPISODE_OR_THRESHOLD_SELECTION
+      - D0_FINAL_CANDIDATE_ELIGIBILITY
+      - G0_MEASUREMENT_FREEZE
+      - MODEL_FITTING
+      - G4
+  G0:
+    state: PENDING
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  d0_production_pivot_classification: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_persistence_outcome_source_and_definition_contract: COMPLETE_INDEPENDENTLY_VALIDATED
+  d0_production_post_entry_persistence_source_build: COMPLETE_INDEPENDENTLY_VERIFIED
+  d0_descriptive_persistence_calibration_readout: AUTHORIZED_EXISTING_VERIFIED_4301_ARTIFACT_ONLY
+  d0_discovery_outcome_opening: AUTHORIZED_DESCRIPTIVE_CALIBRATION_ONLY_NO_JOIN_NO_INFERENCE
+  d0_exposure_or_outcome_association_analysis: NOT_AUTHORIZED
+  d0_outcome_based_selection: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_submission: NOT_AUTHORIZED
+  final_candidate_eligibility: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The exact 4,301-row observable-history NEW_TOPIC_ENTRY persistence source is
+  complete and independently replayed from all 8,192 bound input partitions
+  with zero denominator, source-metadata, key, count, state, or boolean
+  mismatch. The values describe current-snapshot-annotated target-topic work
+  during t+1 through t+3. This successor authorizes only deterministic
+  descriptive calibration summaries from the already verified 13-column
+  artifact. It does not authorize new raw or API data, joins, adjusted
+  comparisons, inference, outcome-based selection, true researcher-topic
+  persistence, exposure association, causality, final eligibility, G0, model
+  fitting, G4, or a scientific effect.

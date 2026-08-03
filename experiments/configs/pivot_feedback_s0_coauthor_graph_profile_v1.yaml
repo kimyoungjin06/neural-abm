@@ -1,0 +1,155 @@
+schema_version: pivot_feedback_s0_coauthor_graph_profile_config.v1
+label: pivot_feedback_s0_coauthor_graph_profile_v1
+mode: RECEIPT_BOUND_EXACT_CURRENT_SNAPSHOT_FIELD_YEAR_COAUTHOR_GRAPH
+status_before_execution: AUTHORIZED_S0_REMAINING_COMPONENT
+
+gate_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v2.yaml
+  sha256: 4c465fff6ecc35a4f7b5c4cfdcbfc53cd8c909f5488d81ea71e5cb64f637f5f6
+  required_schema_version: pivot_feedback_gate_state.v2
+  required_status: VALID_G_MINUS_1A_PASS_S0_PARTIAL_D0_NOT_AUTHORIZED
+  required_fields:
+    authorization.s0_remaining_components: AUTHORIZED
+    authorization.d0_discovery_pilot: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.scientific_effect: NOT_ESTABLISHED
+
+s0_core_parent:
+  summary_relative_path: experiments/evidence/results/pivot_feedback_s0_threshold_free_core_full_20260723.summary.json
+  summary_sha256: a579c147391d2e720048701a465120e4b1885e4a15ccc79c4a2f2c02565be206
+  summary_schema_version: pivot_feedback_s0_threshold_free_core_full_summary.v1
+  required_status: PASS_S0_THRESHOLD_FREE_CORE_FIELD_YEAR_INVENTORY_WITH_ORCID_AFFILIATION_AND_GRAPH_TOPOLOGY_PENDING
+  expected_root_basename: pivot-feedback-s0-threshold-free-core-v1-full-20260723
+  receipt_basename: s0_core_inventory.outputs.json
+  receipt_sha256: 3dd563eafce498a2e975680064d7589b63710c2f92b75f16f2bea7a9da5a4405
+  receipt_schema_version: pivot_feedback_s0_threshold_free_core_inventory_outputs.v1
+  field_year_relative_path: field_year_core.parquet
+  field_year_sha256: 1b8c26720f51ce824c623a46dec324a89e71fb0da32f09ef07a87cea630364d0
+  field_year_schema_version: pivot_feedback_s0_field_year_core.v1
+  expected_field_year_rows: 18544
+  expected_field_count: 26
+  expected_null_year_cells: 26
+
+author_history_parent:
+  expected_root_basename: openalex-g1-author-history-v3-full-20260722
+  receipt_basename: author_history_audit.outputs.json
+  receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+  receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+  required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+  artifact_prefix: events/
+  expected_artifact_count: 4096
+  expected_rows: 779630258
+  expected_artifact_bytes: 5006392019
+  expected_artifact_tree_sha256: c1185838f56a402081364983b6d3ce182d5684cebf4f5f74b3081af55bed2329
+  expected_partition_formula: author_numeric_id_mod_4096
+  projected_columns:
+    - author_numeric_id
+    - work_numeric_id
+    - publication_year
+    - declared_authors_count
+    - primary_field_id
+
+graph_contract:
+  field_ids: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]
+  source_snapshot_date: "2026-03-30"
+  profiles:
+    - cap: 10
+      label: CAP_10
+    - cap: 50
+      label: CAP_50
+    - cap: 100
+      label: CAP_100
+  profiles_are_ranked_or_selected: false
+  all_profiles_must_be_reported: true
+  declared_all_team_profile:
+    state: DIAGNOSTIC_ONLY_NOT_EDGE_MATERIALIZED
+    classified_declared_pair_incidences: 47627187584
+    reason: HYPERAUTHORSHIP_ALL_PAIR_EXPANSION_IS_NOT_REQUIRED_BY_THE_VERSIONED_GRAPH_PROFILE
+  cap_10_classified_declared_pair_incidences: 1275177176
+  cap_50_classified_declared_pair_incidences: 2301207230
+  cap_100_classified_declared_pair_incidences: 3105390831
+  work_inclusion: CLASSIFIED_PRIMARY_FIELD_AND_DECLARED_AUTHORS_COUNT_AT_MOST_PROFILE_CAP
+  null_publication_year_cell_encoding: ZERO_ONLY_FOR_INTERNAL_BUCKETING_OUTPUT_REMAINS_NULL
+  node_universe: DISTINCT_OPENALEX_AUTHOR_TOKENS_ON_INCLUDED_WORKS_WITHIN_FIELD_YEAR
+  isolate_rule: INCLUDED_SINGLETON_OR_OTHER_EDGELESS_AUTHOR_TOKENS_ARE_COMPONENTS_OF_SIZE_ONE
+  edge_rule: DISTINCT_UNDIRECTED_AUTHOR_TOKEN_PAIR_COOCCURRING_ON_AT_LEAST_ONE_INCLUDED_WORK_WITHIN_FIELD_YEAR
+  self_loops_allowed: false
+  parallel_edges_allowed_after_reduction: false
+  nested_profile_rule: EDGE_OR_NODE_MINIMUM_DECLARED_TEAM_CAP_CATEGORY
+  author_entity_claim_allowed: false
+  historical_observability_established: false
+  degree_quantile_population: ALL_PROFILE_NODE_TOKENS_INCLUDING_ZERO_DEGREE_ISOLATES
+  degree_quantile_rule: SORTED_ORDER_STATISTIC_FLOOR_Q_TIMES_N_MINUS_1
+  degree_quantiles:
+    - {label: degree_min, numerator: 0, denominator: 100}
+    - {label: degree_p25, numerator: 25, denominator: 100}
+    - {label: degree_p50, numerator: 50, denominator: 100}
+    - {label: degree_p75, numerator: 75, denominator: 100}
+    - {label: degree_p90, numerator: 90, denominator: 100}
+    - {label: degree_p95, numerator: 95, denominator: 100}
+    - {label: degree_p99, numerator: 99, denominator: 100}
+    - {label: degree_max, numerator: 100, denominator: 100}
+  connected_component_rule: EXACT_UNDIRECTED_COMPONENTS_OVER_THE_PROFILE_NODE_UNIVERSE
+  largest_component_share_rule: largest_component_nodes_divided_by_graph_node_tokens
+
+execution:
+  engine: duckdb
+  required_duckdb_version: 1.5.5
+  scipy_connected_components_required: true
+  source_event_artifacts_rehashed_before_query: true
+  duckdb_threads: 32
+  duckdb_memory_limit: 700GB
+  duckdb_max_temp_directory_size: 1500GB
+  edge_output_partition_count: 256
+  compact_output_contains_raw_author_ids: false
+  exact_intermediate_node_and_edge_materialization_required: true
+  exact_intermediate_materialization_removed_before_completion: true
+  pilot_is_permanently_nonpromotable: true
+  output_directory_must_be_new: true
+  output_written_atomically: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  gpu_used: false
+
+resource_envelope:
+  workload_class: LOCAL_CPU_RAM_AND_NVME_EXTERNAL_HASH_JOIN_GRAPH_COMPONENTS
+  minimum_available_memory_bytes: 274877906944
+  minimum_free_output_bytes: 549755813888
+  source_and_output_same_nvme_allowed: true
+  exclusive_heavy_nvme_execution_required: true
+  exclusive_heavy_cpu_execution_required: true
+
+forbidden_metrics:
+  - eligible_author_count
+  - matured_entry_opportunity_count
+  - fixed_horizon_outcome_coverage
+  - independent_attention_shock_count
+  - entry_effect_size
+  - persistence_effect_size
+  - overshoot_timing_gap
+  - predictive_score
+  - selected_best_field
+  - selected_best_threshold
+  - g4_holdout_outcome
+
+output_contract:
+  report_schema_version: pivot_feedback_s0_coauthor_graph_profile_report.v1
+  field_year_schema_version: pivot_feedback_s0_coauthor_graph_field_year.v1
+  full_status: PASS_S0_EXACT_NONRANKED_COAUTHOR_GRAPH_PROFILES_WITH_CURRENT_SNAPSHOT_AUTHOR_TOKEN_LIMITATIONS
+  pilot_status: PILOT_S0_COAUTHOR_GRAPH_PROFILE_NONPROMOTABLE
+  blocked_status: BLOCKED_S0_COAUTHOR_GRAPH_PROFILE
+  component_may_complete_s0_by_itself: false
+  component_may_authorize_d0_by_itself: false
+  component_may_authorize_model_fitting: false
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  A full pass may establish exact current-snapshot OpenAlex author-token graph
+  nodes, distinct undirected edges, degree order statistics, connected
+  components, and largest-component support within every primary-field and
+  publication-year cell for all three predeclared, non-ranked declared-team
+  caps 10, 50, and 100. It does not establish natural persons, historically
+  observed collaboration, a preferred team cap, the unbounded hyperauthorship
+  graph, candidate eligibility, S0 completion by this component alone, D0,
+  G0, model fitting, empirical effects, causal effects, or a scientific
+  effect.

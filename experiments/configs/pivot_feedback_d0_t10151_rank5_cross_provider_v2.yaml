@@ -1,0 +1,94 @@
+schema_version: pivot_feedback_d0_t10151_rank5_cross_provider_config.v2
+label: pivot_feedback_d0_t10151_rank5_cross_provider_v2
+mode: OUTCOME_BLIND_TITLE_ONLY_DUAL_HIGH_CONSENSUS_TRANSPORT_SUCCESSOR
+status: FROZEN_RANK5_TRANSPORT_ONLY_SUCCESSOR_NOT_SUBMITTED
+
+gate_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v27.yaml
+  sha256: b7634b897a8d7fd375403f52255afd7720b78ff21230ff26cfa24852e167f16a
+  required_schema_version: pivot_feedback_gate_state.v27
+  required_status: VALID_RANK5_TRANSPORT_ONLY_SUCCESSOR_AUTHORIZED_CUMULATIVE_COST_FAIL_CLOSED
+  required_fields:
+    transport_only_successor.prompt_change_allowed: false
+    transport_only_successor.consensus_rule_change_allowed: false
+    transport_only_successor.model_change_allowed: false
+    transport_only_successor.additional_provider_calls_authorized: 2
+    transport_only_successor.retries_within_successor: 0
+    transport_only_successor.cumulative_attempt_cost_upper_bound_usd: 0.051106
+    transport_only_successor.cumulative_authorized_cap_usd: 0.10
+    authorization.d0_rank5_transport_successor_submission: AUTHORIZED_TWO_CALLS_NO_RETRY
+    authorization.d0_rank5_augmented_disposition: NOT_AUTHORIZED_UNTIL_SUCCESSOR_RESULT_VERIFIED
+    authorization.d0_discovery_outcome_opening: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+
+contract_parent:
+  relative_path: experiments/configs/pivot_feedback_d0_t10151_rank5_cross_provider_v1.yaml
+  sha256: 52bb266655ca4a408eee0ac13de0efcad2054ce34e2ff4c6c7c623afa518668d
+  required_schema_version: pivot_feedback_d0_t10151_rank5_cross_provider_config.v1
+  required_status: FROZEN_RANK5_25_ROW_CROSS_PROVIDER_CONTRACT_NOT_SUBMITTED
+  inherited_sections:
+    - source_inputs
+    - review_contract
+    - providers
+    - cost_control
+
+failed_attempt:
+  execution_root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v1-execution-20260730
+  failure_basename: execution_failure.outputs.json
+  failure_sha256: 68b17ba8857b9a70ef94e1fbb5d8a6cf12ddf62ac3c8d6d6a34ade7d5cfd4d76
+  usable_results: 0
+  prior_attempt_cost_accounting: CONSERVATIVE_OPENAI_FULL_UPPER_BOUND
+  prior_attempt_cost_upper_bound_usd: 0.010582
+
+transport_amendment:
+  provider: claude
+  reason: STRUCTURED_OUTPUT_ARRAY_CARDINALITY_KEYWORDS_UNSUPPORTED
+  remove_from_decisions_array_schema: [minItems, maxItems]
+  prompt_unchanged: true
+  request_rows_unchanged: true
+  openai_request_unchanged: true
+  exact_25_unique_response_rows_verified_after_call: true
+  semantic_contract_unchanged: true
+
+cost_control_successor:
+  successor_request_upper_bound_usd: 0.040524
+  prior_attempt_upper_bound_usd: 0.010582
+  cumulative_upper_bound_usd: 0.051106
+  cumulative_authorized_cap_usd: 0.10
+  refuse_before_submission_if_cumulative_upper_bound_exceeds_cap: true
+
+execution:
+  prepared_root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v2-prepared-20260730
+  execution_root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v2-execution-20260730
+  credential_env_path: /home/kimyoungjin06/Desktop/Workspace/1.2.8.TwinPaper/.env
+  openai_key_name: OPENAI_API_KEY
+  claude_key_name: CLAUDE_API_KEY
+  credential_values_persisted: false
+  retries: 0
+  timeout_seconds_per_provider: 180
+  request_artifacts_verified_before_submission: true
+  raw_responses_preserved: true
+  preserve_successful_response_if_peer_fails: true
+  artifact_mode: "0600"
+  receipt_written_last: true
+
+authorization:
+  prepare_exact_transport_successor: AUTHORIZED
+  verify_exact_transport_successor: REQUIRED
+  submit_exact_transport_successor: AUTHORIZED_AFTER_VERIFICATION_AND_CUMULATIVE_COST_PREFLIGHT
+  reduce_results: AUTHORIZED_PRECOMMITTED_RULE_ONLY
+  human_review: NOT_RUN_BY_DESIGN
+  augmented_rank5_disposition: NOT_AUTHORIZED_UNTIL_RESULT_VERIFIED_AND_SUCCESSOR_GATE
+  selection_certificate: NOT_AUTHORIZED
+  deterministic_reselection: NOT_AUTHORIZED
+  outcomes_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This successor inherits the v1 row set, prompt, fields, models, labels,
+  dual-HIGH consensus, and fail-closed rules. It removes only Claude's
+  unsupported minItems and maxItems schema keywords. Exact 25-item uniqueness
+  is still mandatory after the response. The first attempt contributes no
+  usable result and its conservative OpenAI upper cost is carried forward.

@@ -1,0 +1,97 @@
+{
+  "schema_version": "openalex_g1_sentinel_incidence_summary.v1",
+  "label": "openalex_g1_sentinel_incidence_20260716",
+  "generated_at_utc": "2026-07-16T09:58:42.209374+00:00",
+  "status": "COMPLETE_TARGETED_INCIDENCE_AUDIT",
+  "pass_g1": false,
+  "source": {
+    "source_root_id": "openalex_works_20260330_repairreplay_20260410_190630",
+    "parent_manifest_sha256": "6b5929a0155c033e818a816aad57095380a3907ab558c8d2cd58a89055f22b46",
+    "parent_inventory_fingerprint_sha256": "1bee200c61e746ee774715de2521550cb2c7a6f2bf08e0f8b06f43a39c9ec473",
+    "parent_stability_fingerprint_sha256": "a3bfb7f639d4131749c1522f00e5e977bae7abc1a62202790fd41279f8f0a0e5",
+    "parent_stable_after_audit": true
+  },
+  "provenance": {
+    "config_sha256": "0d7fc98d604258be7243725f60518fea478870d9b8c29d2cd58c5745fd6deb52",
+    "tool_sha256": "6f7cb43e435da997dca13bc256cee9e0ff2855227d3e5466f2090c207fcc9a30",
+    "raw_json_sha256": "6e8c125c17145f680ffa1dc4d699ec817f37c6e6c1656e55cb3c0995146d018d",
+    "raw_markdown_sha256": "ccf9e5702644c8248a1740331b7b503bb447c093967ac9023b123c39b1f498e8",
+    "result_fingerprint_sha256": "9a5447ac8ec6cbc2b679da104a7ecf67ff9835c4a71e73923602eda5b288a673",
+    "result_fingerprint_reproduced_by_independent_full_rerun": true,
+    "path_redacted": true
+  },
+  "scope": {
+    "kind": "targeted_incidence_only",
+    "source_id_tables": 23,
+    "source_id_files": 21019,
+    "work_target_table_columns": 2,
+    "work_target_files": 5538,
+    "scan_tasks": 26557,
+    "row_conservation_claimed": false,
+    "all_non_sentinel_identifiers_validated": false
+  },
+  "execution": {
+    "workers": 8,
+    "batch_size": 262144,
+    "elapsed_seconds": 14.126520422985777,
+    "predicate_pushdown_engine": "pyarrow.dataset.Scanner",
+    "predicate": "field.isin([W-1, W0])"
+  },
+  "source_id_totals": {
+    "w_minus_1": {
+      "value": "https://openalex.org/W-1",
+      "exact_row_count": 21,
+      "affected_file_count": 6
+    },
+    "w_zero": {
+      "value": "https://openalex.org/W0",
+      "exact_row_count": 6,
+      "affected_file_count": 6
+    }
+  },
+  "nonzero_source_tables": [
+    {
+      "table": "openalex_works_20260330",
+      "w_minus_1_rows": 1,
+      "w_zero_rows": 1
+    },
+    {
+      "table": "openalex_works_20260330__authorships",
+      "w_minus_1_rows": 1,
+      "w_zero_rows": 1
+    },
+    {
+      "table": "openalex_works_20260330__best_oa_location__source__host_organization_lineage",
+      "w_minus_1_rows": 1,
+      "w_zero_rows": 1
+    },
+    {
+      "table": "openalex_works_20260330__excepted__abstract_inverted_index",
+      "w_minus_1_rows": 1,
+      "w_zero_rows": 1
+    },
+    {
+      "table": "openalex_works_20260330__locations",
+      "w_minus_1_rows": 16,
+      "w_zero_rows": 1
+    },
+    {
+      "table": "openalex_works_20260330__primary_location__source__host_organization_lineage",
+      "w_minus_1_rows": 1,
+      "w_zero_rows": 1
+    }
+  ],
+  "work_target_totals": {
+    "columns": [
+      "openalex_works_20260330__referenced_works.referenced_works",
+      "openalex_works_20260330__related_works.related_works"
+    ],
+    "w_minus_1_rows": 0,
+    "w_zero_rows": 0
+  },
+  "interpretation": {
+    "w_minus_1": "quarantine_candidate_with_21_source_rows_across_six_tables_and_no_declared_work_target_edges",
+    "w_zero": "unresolved_diagnostic_retained_in_grammar_valid_view"
+  },
+  "claim_boundary": "This audit reports exact targeted W-1 and W0 incidence only in the frozen source-ID and declared work-target columns. It does not claim row conservation, apply a quarantine, validate every non-sentinel identifier, establish join coverage, establish PASS_G1, or establish any scientific effect."
+}

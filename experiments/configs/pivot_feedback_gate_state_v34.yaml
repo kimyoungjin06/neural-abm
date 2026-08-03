@@ -1,0 +1,58 @@
+schema_version: pivot_feedback_gate_state.v34
+label: pivot_feedback_gate_state_v34
+mode: ADDITIVE_RANK5_POST_DIAGNOSTIC_EXTERNAL_CONTROLLED_SUBJECT_RULE_REPLAY
+status: VALID_RANK5_POST_DIAGNOSTIC_ACCEPT_ONLY_EXTERNAL_RULE_REPLAY_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v33.yaml
+  sha256: e5c8e3ed67d5211460c810e88f3aaf7045def82735535086411b7cac46c871b7
+  required_schema_version: pivot_feedback_gate_state.v33
+  required_status: VALID_RANK5_EXTERNAL_EVIDENCE_AUGMENTED_UNRESOLVED_PRODUCTION_CLOSEOUT_AUTHORIZED
+  mutation_allowed: false
+
+diagnostic_basis:
+  field_id: 27
+  field_candidate_rank: 5
+  topic_id: 10151
+  unresolved_rows: 9
+  human_review: NOT_RUN_BY_DESIGN
+  external_provider_labels_are_ground_truth: false
+  rule_selected_after_examining_disagreements: true
+  out_of_sample_validation_claimed: false
+
+authorized_replay:
+  cohort: ALL_EXACT_NINE_EXTERNAL_EVIDENCE_UNRESOLVED_ROWS
+  rule_kind: DETERMINISTIC_ACCEPT_ONLY
+  title_requirement: EXPLICIT_HCV_HEPATITIS_C_OR_HEPACIVIRUS_MARKER
+  identity_requirement: EXACT_OPENALEX_TO_PUBMED_PMID_LINK_AND_NORMALIZED_TITLE_AGREEMENT
+  controlled_subject_requirement: PUBMED_HEPATITIS_C_OR_HEPACIVIRUS_MAJOR_TOPIC
+  negative_override: FORBIDDEN
+  absence_is_off_topic: false
+  expected_new_accept_rows: 2
+  expected_remaining_unresolved_rows: 7
+  expected_candidate_state: CONTENT_PASS
+
+authorization:
+  d0_rank5_external_controlled_subject_rule_replay: AUTHORIZED_EXACT_NINE_ONLY
+  d0_rank5_external_controlled_subject_replay_verification: AUTHORIZED
+  d0_rank5_production_disposition_update: NOT_AUTHORIZED_UNTIL_INDEPENDENT_REPLAY_VERIFICATION
+  d0_selection_certificate: NOT_AUTHORIZED_UNTIL_INDEPENDENT_REPLAY_VERIFICATION
+  d0_deterministic_reselection: NOT_AUTHORIZED
+  d0_new_api_request_creation: NOT_AUTHORIZED
+  d0_paid_api_submission: NOT_AUTHORIZED
+  d0_human_review: NOT_RUN_BY_DESIGN
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This additive gate authorizes only a deterministic accept-only replay over
+  all nine externally evidenced rank-5 rows that remained unresolved after the
+  cross-provider pass. The rule is explicitly post-diagnostic and
+  retrospective, is not an out-of-sample validation, treats neither provider
+  labels nor PubMed indexing as semantic ground truth, and cannot create
+  negative labels. Production disposition changes, certificates, deterministic
+  reselection, outcomes, fitting, G4, and scientific-effect claims remain
+  unauthorized until an independent replay verifier passes.

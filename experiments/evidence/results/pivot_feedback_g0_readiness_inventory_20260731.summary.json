@@ -1,0 +1,92 @@
+{
+  "schema_version": "pivot_feedback_g0_readiness_inventory_summary.v1",
+  "status": "PASS_METADATA_ONLY_G0_READINESS_INVENTORY_G0_NOT_READY",
+  "access_accounting": {
+    "repository_documents_read": 9,
+    "operator_json_metadata_files_read": 8,
+    "operator_parquet_files_opened": 0,
+    "production_row_level_files_opened": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "api_requests_created_or_submitted": 0,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "pending_overlay_replay": {
+    "g_minus_1_receipt_state": "PENDING_NULL_BINDING",
+    "holdout_access_seal_state": "PENDING_NULL_BINDING",
+    "pending_contract_sealable": false,
+    "original_unresolved_quantitative_choice_count": 19,
+    "original_unresolved_required_section_count": 15,
+    "pending_overlay_sha256": "2c2912506b96e1c7a09ba008bd15fb824a5b8e3545cf9c387cd3e0cb81044606"
+  },
+  "inventory_mapping_replay": {
+    "quantitative_choices_total": 19,
+    "quantitative_choices_resolved_by_d0": 2,
+    "quantitative_choices_still_unresolved": 17,
+    "resolved_choice_ids": [
+      "author_minimum_history_works",
+      "primary_pivot_thresholds"
+    ],
+    "resolved_successor_values": {
+      "author_minimum_history_works": "NONE",
+      "primary_pivot_thresholds": "FOCAL_GE_1_AND_PRE_ENTRY_EQ_0_WITH_FOUR_STATE_PRECEDENCE"
+    },
+    "required_sections_total": 15,
+    "required_sections_freeze_ready": 0,
+    "required_sections_partial": 10,
+    "required_sections_unresolved": 5,
+    "all_sections_not_freeze_ready": true
+  },
+  "readiness_decision": {
+    "status": "NOT_READY_FOR_G0_FREEZE",
+    "d0_core_complete": true,
+    "g0_freeze_ready": false,
+    "hard_blockers": [
+      "G_MINUS_1_RECEIPT_ABSENT",
+      "HOLDOUT_ACCESS_SEAL_RECEIPT_ABSENT",
+      "SEVENTEEN_QUANTITATIVE_CHOICES_UNRESOLVED",
+      "FIFTEEN_REQUIRED_SECTIONS_NOT_FREEZE_READY"
+    ],
+    "final_cutoff_panel_is_g0_prerequisite": false,
+    "final_cutoff_panel_owner": "G0_5"
+  },
+  "operator_metadata_closure": {
+    "entry_source": {
+      "receipt_sha256": "e56329675a51b1c1a2be1003df2e60fa3fdad1a93fce42a2102adc957284e060",
+      "verification_sha256": "20d2d668f24ce6c16cfb4adccb5758c8092c3d1feb91aa7f4ef3a73a634c2784"
+    },
+    "production_classification": {
+      "receipt_sha256": "b9b064842ee2b71db8974ff9bef74f7c4bb9aa06f7cf588aec34eacaa3a812de",
+      "verification_sha256": "86568ad1a3123e2daca911045dd988aecd9707009db31ce8a58cd28dcc67c845"
+    },
+    "persistence_source": {
+      "receipt_sha256": "3aa45f93e4cbf40c0e9543482ec3c6a908b6026b7f9d23b719c615c68180295a",
+      "verification_sha256": "071ca98ae1ff5b6599756ca89397c430333810ef6ee368b6173f76a6d6bfd74a"
+    },
+    "persistence_calibration": {
+      "receipt_sha256": "36c7b64a041070cef494cf731f18d53e42484e53fbdbd5aa2aa4ef7aeb53d722",
+      "verification_sha256": "45a4ab3199ebd8aa2eaafe3c1255cb5bd0c699af39e9227cd3995b77a1ca53e4"
+    }
+  },
+  "repository_artifacts": {
+    "inventory": {
+      "relative_path": "experiments/configs/pivot_feedback_g0_readiness_inventory_v1.yaml",
+      "sha256": "85e9f5c1ffa25a516261d5756074a3ab0ef7dd893c6a00adb081449d5b72419d"
+    },
+    "validator": {
+      "relative_path": "scripts/verify_pivot_feedback_g0_readiness_inventory_v1.py",
+      "sha256": "dcd0d9c62a27c33979a199a09a1a635f8a2290e5bd5c317d5a0f44f55b0e811e"
+    }
+  },
+  "authorization": {
+    "d0_core_entry_and_persistence_calibration": "COMPLETE_INDEPENDENTLY_VERIFIED",
+    "g0_successor_skeleton": "REQUIRES_SUCCESSOR_GATE",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "confirmatory_or_holdout_opening": "NOT_AUTHORIZED",
+    "outcome_based_selection": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "The metadata-only inventory independently validates nine repository documents and eight JSON receipt or verification files while opening zero Parquet files. D0 core calibration is complete, but G0 is not ready: only two of nineteen quantitative choices have D0-resolved successor values, all fifteen required sections remain not freeze-ready, and the G-1 and holdout-seal receipt bindings remain absent. No G0 seal, confirmatory access, outcome-based selection, model, G4 result, causality, or scientific effect is established."
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": "openalex_g1_main_temporal_validity_v2_parser_pilot_summary.v1",
+  "label": "openalex_g1_main_temporal_validity_v2_utc_ms_parser_pilot1_20260719",
+  "generated_at_utc": "2026-07-19T09:31:04Z",
+  "status": "BLOCKED_DIRTY_PARSER_PILOT_CREATED_UPDATED_REVERSALS",
+  "scope": {
+    "full_scope": false,
+    "pilot_only": true,
+    "selected_files": 1,
+    "selected_footer_rows": 1000000,
+    "gpu_used": false,
+    "full_prevalence_estimated": false,
+    "component_promoted": false
+  },
+  "parser_accounting": {
+    "retained_rows": 1000000,
+    "created_updated_parsed_pair_rows": 1000000,
+    "created_date_parse_error_rows": 0,
+    "updated_date_parse_error_rows": 0,
+    "created_updated_null_rows": 0,
+    "future_metadata_unexpected_rows": 0,
+    "publication_date_parse_error_rows": 0,
+    "publication_year_invalid_rows": 0,
+    "publication_date_year_mismatch_rows": 0,
+    "publication_pairwise_null_mismatch_rows": 0,
+    "all_accounting_contracts_passed": true
+  },
+  "ordering_profile": {
+    "created_gt_updated_rows": 3,
+    "created_gt_updated_unexpected_rows": 3,
+    "pilot_local_contract_clean": false,
+    "observations": [
+      {
+        "id": "https://openalex.org/W2410776720",
+        "relative_path": "openalex_works_20260330/part-0.parquet",
+        "row_group": 25,
+        "file_row": 844168,
+        "created_date": "2025-10-10T00:00:00.000Z",
+        "updated_date": "2025-08-28T14:23:35.770Z",
+        "created_minus_updated_ms": 3663384230
+      },
+      {
+        "id": "https://openalex.org/W3142421094",
+        "relative_path": "openalex_works_20260330/part-0.parquet",
+        "row_group": 25,
+        "file_row": 844170,
+        "created_date": "2025-10-10T00:00:00.000Z",
+        "updated_date": "2025-09-03T13:49:58.679Z",
+        "created_minus_updated_ms": 3147001321
+      },
+      {
+        "id": "https://openalex.org/W2793775362",
+        "relative_path": "openalex_works_20260330/part-0.parquet",
+        "row_group": 25,
+        "file_row": 844171,
+        "created_date": "2025-10-10T00:00:00.000Z",
+        "updated_date": "2025-09-08T15:44:56.852Z",
+        "created_minus_updated_ms": 2708103148
+      }
+    ]
+  },
+  "gate_status": {
+    "main_temporal_validity_component": "PILOT_ONLY_BLOCKED_FROM_PROMOTION",
+    "utc_millisecond_parser_local_contract": "PASS_ONE_FILE",
+    "created_updated_ordering_assumption": "UNRESOLVED_NOT_DOCUMENTED_AS_AN_OPENALEX_INVARIANT",
+    "full_v2_execution": "NOT_RUN",
+    "historical_content_identity": "UNVERIFIED",
+    "g_minus_1_data_readiness": "PENDING",
+    "g0_measurement_freeze": "PENDING",
+    "empirical_g1_signature": "NOT_RUN",
+    "pass_g1": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "provenance": {
+    "source_root_id": "openalex_works_20260330_repairreplay_20260410_190630",
+    "source_snapshot_date": "2026-03-30",
+    "config_sha256": "11a668b8f2b10c83e2d36b3f5d2cd16f1e5f86b41ef64f58c79f10cabebc30e8",
+    "tool_sha256": "b86f2496bbf7258c4e981f9a7ad8b1618fdcdc34a7385de628b133e0082a89dc",
+    "task_fingerprint_sha256": "c18e9d9f781a51d36bb4357bebb15829a92541daf82abdf5da26bb1da2c7f8b7",
+    "result_fingerprint_sha256": "4f3dc7a31e1e2a1d4b92a021edfb544d237ef93c148754d9ecdf5f20d366df16",
+    "checkpoint_tree_sha256": "8609c5d5ef7e9f0e65757185e9d7d38f39125bea5a1614884352b95a28d17b13",
+    "receipt_sha256": "ec59f3c649baa4a6a5333daace92a5e46f6492fad62e4c1ed42a1702394425f4",
+    "receipt_artifacts_rehashed_exactly": 5,
+    "receipt_artifacts_all_exact": true,
+    "path_redacted": true
+  },
+  "claim_boundary": "This nonpromotable one-file pilot establishes exact UTC-millisecond parsing and local accounting for 1,000,000 retained rows and records three created_date > updated_date observations. It does not estimate full-snapshot reversal prevalence, prove that the observations are source errors, justify an exception allowlist, establish the full temporal component, pass G-1 or G0, run empirical G1, or establish a scientific effect."
+}

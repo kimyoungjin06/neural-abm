@@ -1,0 +1,171 @@
+schema_version: pivot_feedback_gate_state.v51
+label: pivot_feedback_gate_state_v51
+mode: ADDITIVE_METADATA_ONLY_G0_CLOSURE_PLAN_VALIDATED_G_MINUS_1A_BINDING_RECONCILIATION_CONTRACT_AUTHORIZATION
+status: VALID_G0_CLOSURE_PLAN_COMPLETE_G0_NOT_READY_G_MINUS_1A_BINDING_CONTRACT_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v50.yaml
+  sha256: bfbba47a5fd2b76c84941bfa741a16e40f5bb8ce89b25b334685760e1e45f375
+  required_schema_version: pivot_feedback_gate_state.v50
+  required_status: VALID_G0_V1_SUCCESSOR_SKELETON_COMPLETE_G0_NOT_READY_CLOSURE_PLAN_AUTHORIZED
+  required_fields:
+    gate_state.D0.complete: true
+    gate_state.G0.complete: false
+    authorization.g0_prerequisite_closure_plan: AUTHORIZED_METADATA_ONLY_NO_EXECUTION
+    authorization.g0_measurement_freeze: NOT_AUTHORIZED
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+  mutation_allowed: false
+
+verified_g0_prerequisite_closure_plan:
+  plan:
+    relative_path: experiments/configs/pivot_feedback_g0_prerequisite_closure_plan_v1.yaml
+    sha256: 45db08ea9e51d861270c1be4b8ac675e56e30df7b57268f515fd665708b2c4fc
+    required_schema_version: pivot_feedback_g0_prerequisite_closure_plan.v1
+    required_status: PENDING_INDEPENDENT_VALIDATION_FOUR_WORKSTREAM_PLAN_NO_EXECUTION
+    required_fields:
+      lifecycle.g0_v1_skeleton_mutated: false
+      lifecycle.legacy_g_minus_1_promoted: false
+      lifecycle.unresolved_values_changed: false
+      lifecycle.required_sections_completed: false
+      lifecycle.pass_g0: false
+      workstream_dag.workstream_count: 4
+      workstream_dag.all_workstreams_currently_complete: false
+      access_accounting_contract.operator_parquet_files_opened: 0
+      access_accounting_contract.confirmatory_or_holdout_rows_read: 0
+      authorization.actual_g0_v2_binding_change: NOT_AUTHORIZED
+      authorization.g0_measurement_freeze: NOT_AUTHORIZED
+  validator:
+    relative_path: scripts/verify_pivot_feedback_g0_prerequisite_closure_plan_v1.py
+    sha256: be8c1a3d885c790e8778048662a2c51c29753271272ed0244f2d4bd25cc9b227
+  research_note:
+    relative_path: docs/research/pivot-feedback-g0-prerequisite-closure-plan-v1.md
+    sha256: 30dd152d200b46da045a481261e4302a8a242747f9153b1ac2a585e2169d06fa
+  summary_json:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_prerequisite_closure_plan_20260731.summary.json
+    sha256: 385460501e77e154f33de16b605fce333b692073afafacfa5453205ea6975a7a
+    required_schema_version: pivot_feedback_g0_prerequisite_closure_plan_summary.v1
+    required_status: PASS_METADATA_ONLY_G0_PREREQUISITE_CLOSURE_PLAN_FOUR_WORKSTREAMS_NO_EXECUTION
+  summary_markdown:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_prerequisite_closure_plan_20260731.summary.md
+    sha256: e40640545ed357290192f80f666ba22db40acb2ca6fa6beadde93134732948dc
+  result:
+    repository_documents_read: 9
+    operator_json_metadata_files_read: 0
+    operator_parquet_files_opened: 0
+    production_row_level_files_opened: 0
+    confirmatory_or_holdout_rows_read: 0
+    api_requests_created_or_submitted: 0
+    workstream_count: 4
+    workstream_dag_acyclic: true
+    passing_g_minus_1a_receipt_exists: true
+    g_minus_1_finding: CONTRACT_GENERATION_MISMATCH_NOT_EVIDENCE_ABSENCE
+    legacy_g_minus_1_remains_pending: true
+    holdout_contract_or_receipt_bound: false
+    quantitative_choice_package_count: 5
+    unresolved_quantitative_choice_count: 17
+    newly_resolved_value_count: 0
+    required_section_count: 15
+    freeze_ready_required_section_count: 0
+    actual_g0_v2_binding_change_authorized: false
+    pass_g0: false
+    model_fitted: false
+    g4_open: false
+
+closure_plan_decision:
+  status: COMPLETE_INDEPENDENTLY_VALIDATED
+  g0_freeze_ready: false
+  first_blocker_diagnosis: CONTRACT_GENERATION_MISMATCH_NOT_EVIDENCE_ABSENCE
+  first_blocker_available_evidence:
+    schema_version: pivot_feedback_g_minus_1a_receipt.v1
+    status: PASS_G_MINUS_1A_BOUNDED_PRIMITIVE_AND_SOURCE_FIDELITY_WITH_CURRENT_SNAPSHOT_PROXY_LIMITATIONS
+    sha256: 8383e1884c3679df225b743f775832f02e4d767ac5a6b047dbde8aacf9e12802
+  legacy_g_minus_1_status: G_MINUS_1_PENDING
+  legacy_g_minus_1_may_be_promoted: false
+  g0_v1_may_be_mutated: false
+  unresolved_choice_count: 17
+  not_freeze_ready_section_count: 15
+
+authorized_g_minus_1a_binding_reconciliation_contract_scope:
+  mode: VERSIONED_METADATA_ONLY_G_MINUS_1A_BINDING_RECONCILIATION_CONTRACT_NO_G0_V2_CHANGE
+  intended_relative_path: experiments/configs/pivot_feedback_g0_g_minus_1a_binding_reconciliation_v1.yaml
+  must_bind_g0_v1_skeleton_byte_for_byte: true
+  must_bind_closure_plan_byte_for_byte: true
+  must_bind_existing_g_minus_1a_receipt_config_and_verifier: true
+  must_use_exact_g_minus_1a_schema_and_status_without_relabeling: true
+  must_preserve_current_snapshot_proxy_and_author_token_caveats: true
+  must_record_legacy_g_minus_1_as_not_passed: true
+  must_keep_final_cutoff_panel_owned_by_g0_5: true
+  may_define_future_versioned_g0_successor_binding: true
+  may_mutate_g0_v1: false
+  may_write_or_modify_g0_v2: false
+  may_promote_legacy_g_minus_1: false
+  may_reissue_g_minus_1a_receipt: false
+  may_write_holdout_seal_contract_or_receipt: false
+  may_resolve_quantitative_choices: false
+  may_complete_required_sections: false
+  may_read_operator_parquet_or_row_level_data: false
+  may_read_confirmatory_or_holdout_rows: false
+  may_create_or_submit_api_requests: false
+  may_seal_or_pass_g0: false
+  may_fit_or_score_a_model: false
+  may_open_g4: false
+  independent_validation_required: true
+  successor_gate_required_before_any_g0_v2_change: true
+
+gate_state:
+  D0:
+    state: COMPLETE_CORE_ENTRY_AND_PERSISTENCE_MEASUREMENT_CALIBRATION_OPTIONAL_PEER_SUCCESS_DEFERRED
+    complete: true
+  G0:
+    state: NOT_READY_CLOSURE_PLAN_VALIDATED_G_MINUS_1A_BINDING_CONTRACT_AUTHORIZED
+    complete: false
+    completed_components:
+      - G0_READINESS_AND_GAP_INVENTORY
+      - G0_VERSIONED_MEASUREMENT_FREEZE_SUCCESSOR_SKELETON
+      - G0_PREREQUISITE_CLOSURE_PLAN
+      - G0_PREREQUISITE_CLOSURE_PLAN_INDEPENDENT_VALIDATION
+    next_components:
+      - G0_G_MINUS_1A_BINDING_RECONCILIATION_CONTRACT
+      - G0_G_MINUS_1A_BINDING_RECONCILIATION_INDEPENDENT_VALIDATION
+    blocked_components:
+      - ACTUAL_G0_V2_BINDING_CHANGE
+      - HOLDOUT_ACCESS_SEAL_CONTRACT_AND_RECEIPT
+      - G0_QUANTITATIVE_CHOICE_COMPLETION
+      - G0_REQUIRED_SECTION_COMPLETION
+      - G0_MEASUREMENT_FREEZE_SEAL
+      - CONFIRMATORY_OR_HOLDOUT_ACCESS
+      - MODEL_FITTING
+      - G4
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+
+authorization:
+  d0_core_entry_and_persistence_calibration: COMPLETE_INDEPENDENTLY_VERIFIED
+  g0_versioned_freeze_successor_skeleton: COMPLETE_INDEPENDENTLY_VALIDATED
+  g0_prerequisite_closure_plan: COMPLETE_INDEPENDENTLY_VALIDATED
+  g_minus_1a_binding_reconciliation_contract: AUTHORIZED_METADATA_ONLY_NO_G0_V2_CHANGE
+  actual_g0_v2_binding_change: NOT_AUTHORIZED
+  legacy_g_minus_1_promotion: NOT_AUTHORIZED
+  holdout_access_seal_contract_or_receipt: NOT_AUTHORIZED
+  g0_quantitative_choice_resolution_beyond_d0: NOT_AUTHORIZED
+  g0_required_section_completion: NOT_AUTHORIZED
+  confirmatory_or_holdout_opening: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  The metadata-only prerequisite closure plan is independently valid and
+  identifies the first blocker as a contract-generation mismatch, not missing
+  evidence. An exact passing G-1A receipt exists, while immutable G0 v1 expects
+  a legacy G-1 schema; legacy G-1 remains pending and is not promoted. This
+  gate authorizes only a versioned metadata-only binding-reconciliation
+  contract that preserves the G-1A receipt's bounded semantics. It does not
+  authorize editing G0 v1 or G0 v2, relabeling the receipt, resolving another
+  value, completing a section, creating or opening a holdout seal, opening
+  confirmatory data, sealing G0, fitting a model, opening G4, asserting
+  causality, or establishing a scientific effect.

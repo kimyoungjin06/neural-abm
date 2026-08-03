@@ -1,0 +1,137 @@
+schema_version: pivot_feedback_gate_state.v30
+label: pivot_feedback_gate_state_v30
+mode: ADDITIVE_RANK5_LOCAL_OPENALEX_ABSTRACT_RECOVERY_AND_FIVE_ROW_API_AUTHORIZATION
+status: VALID_RANK5_LOCAL_ABSTRACT_RECOVERY_AND_FIVE_ROW_DUAL_HIGH_REVIEW_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v29.yaml
+  sha256: 36ee367613fd6cd2213cbf80f40b6286cf3ffbeb01f1b7ebb301d4de2d7af5e8
+  required_schema_version: pivot_feedback_gate_state.v29
+  required_status: VALID_RANK5_HCV_API_AUGMENTED_UNRESOLVED_PRODUCTION_CLOSEOUT_AUTHORIZED
+  mutation_allowed: false
+
+terminal_parent_evidence:
+  operator_local:
+    root_basename: pivot-feedback-d0-rank5-api-augmented-closeout-v1-20260730
+    receipt_basename: rank5_api_augmented_closeout.outputs.json
+    receipt_sha256: 9c3d07f8769a317f153f6c90e92d2c75edd13cc9d1bb6b09369f10d0fefd0ad9
+    receipt_status: PASS_RANK5_API_AUGMENTED_UNRESOLVED_TERMINAL_CLOSEOUT_FROZEN
+    verification_basename: pivot-feedback-d0-rank5-api-augmented-closeout-v1-20260730.verification-v1.json
+    verification_sha256: 31fc8758c60c6bdbb361fa53d0955629e401b901b9bc3702499d2ed261a3b70e
+    verification_status: PASS_INDEPENDENT_RANK5_API_AUGMENTED_UNRESOLVED_TERMINAL_CLOSEOUT
+  rank5_state:
+    augmented_accept_rows: 27
+    augmented_reject_rows: 21
+    augmented_unresolved_rows: 16
+    content_state: CONTENT_UNRESOLVED
+    medicine_field_certificate_issued: false
+    global_selection_certificate_issued: false
+
+frozen_unresolved_input:
+  root_basename: pivot-feedback-d0-t10151-rank5-cross-provider-v3-results-20260730
+  decisions_basename: rank5_cross_provider_decisions.csv
+  decisions_sha256: 0c136465cb5602a34d2367c988683967c68eb4726b92973b898f56f9a48b82b9
+  decisions_rows: 25
+  selected_route: API_REMAINS_UNRESOLVED
+  selected_rows: 16
+  sorted_openalex_ids_sha256: 9c9f8bd705ead4a68dcd59ac141557158384bbcde49189ae351d25ab2d036633
+  mutation_allowed: false
+
+local_abstract_source:
+  root_env: OPENALEX_DERIVED_ROOT
+  required_root_id: openalex_works_20260330_repairreplay_20260410_190630
+  table_directory: openalex_works_20260330__excepted__abstract_inverted_index
+  expected_parquet_files: 493
+  expected_footer_rows: 492293207
+  required_columns: [id, value]
+  payload_semantics: OPENALEX_ABSTRACT_INVERTED_INDEX_JSON
+  reconstruct_with:
+    relative_path: ../1.1.1.KISTI_DB_Manager/KISTI_DB_Manager/openalex_abstract.py
+    function: reconstruct_abstract_text
+  read_scope:
+    full_scan_columns: [id]
+    selected_row_group_columns: [id, value]
+    allowed_ids: EXACT_FROZEN_16_ONLY
+    full_value_column_scan: false
+
+abstract_eligibility_contract:
+  freeze_note: >-
+    Exploratory operator inspection established that six rows contain
+    reconstructable text. This successor is therefore not content-blind. It
+    freezes a generic mechanical eligibility rule before provider inference
+    and does not create any semantic label from the exploratory previews.
+  reconstructable_required: true
+  minimum_whitespace_words: 20
+  maximum_position_collisions: 0
+  expected_source_rows_found: 16
+  expected_reconstructable_rows: 6
+  expected_eligible_review_rows: 5
+  expected_missing_rows: 10
+  expected_fragment_rows: 1
+  ineligible_result: REMAIN_UNRESOLVED
+  local_semantic_labeling: NOT_AUTHORIZED
+
+abstract_review_contract:
+  target_topic_name: Hepatitis C virus research
+  target_definition: >-
+    A work is on topic when its abstract shows that the objective, population,
+    exposure, intervention, diagnostic test, analysis, or primary findings
+    substantively concern hepatitis C, HCV, hepacivirus, or historically
+    specific non-A/non-B hepatitis. HCV may be one of several explicitly
+    measured primary infections. A work is off topic when the abstract
+    substantively concerns another condition and contains no such hepatitis-C
+    role, or mentions it only incidentally or as background.
+  exact_review_rows: 5
+  visible_fields: [item_id, target_topic_name, target_definition, title, language, work_type, abstract]
+  forbidden_fields:
+    - openalex_id
+    - publication_year
+    - source_name
+    - primary_topic_name
+    - primary_topic_score
+    - author
+    - citation
+    - outcomes
+    - field_candidate_rank
+  labels: [ON_TOPIC, AMBIGUOUS, OFF_TOPIC, UNREVIEWABLE]
+  confidence_levels: [HIGH, MEDIUM, LOW]
+  consensus_accept: BOTH_LABEL_ON_TOPIC_AND_CONFIDENCE_HIGH
+  consensus_reject: BOTH_LABEL_OFF_TOPIC_AND_CONFIDENCE_HIGH
+  all_other_results: REMAIN_UNRESOLVED
+  provider_calls: 2
+  retries: 0
+  human_review: NOT_RUN_BY_DESIGN
+  provider_labels_are_ground_truth: false
+
+cost_control:
+  prior_conservative_cumulative_upper_bound_usd: 0.048650
+  abstract_pair_upper_bound_usd: 0.040000
+  projected_cumulative_upper_bound_usd: 0.088650
+  cumulative_authorized_cap_usd: 0.10
+  refuse_if_projected_or_preflight_upper_bound_exceeds_cap: true
+
+authorization:
+  d0_rank5_exact_local_abstract_id_scan: AUTHORIZED_READ_ONLY
+  d0_rank5_selected_local_abstract_value_read: AUTHORIZED_EXACT_16_ONLY
+  d0_rank5_local_abstract_recovery_artifact: AUTHORIZED_OPERATOR_LOCAL_ONLY
+  d0_rank5_local_abstract_independent_verification: REQUIRED
+  d0_rank5_eligible_abstract_request_creation: AUTHORIZED_EXACT_5_ONLY_AFTER_VERIFICATION
+  d0_rank5_eligible_abstract_paid_api_submission: AUTHORIZED_TWO_CALLS_NO_RETRY
+  d0_rank5_abstract_result_reduction: AUTHORIZED_PRECOMMITTED_DUAL_HIGH_ONLY
+  d0_rank5_production_disposition: NOT_AUTHORIZED_UNTIL_RESULT_INDEPENDENTLY_VERIFIED_AND_SUCCESSOR_GATE
+  d0_selection_certificate: NOT_AUTHORIZED
+  d0_deterministic_reselection: NOT_AUTHORIZED
+  d0_production_pivot_classification: NOT_AUTHORIZED
+  d0_discovery_outcome_opening: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This additive successor authorizes only exact recovery of the sixteen
+  previously unresolved OpenAlex abstract payloads and one two-provider review
+  of the five mechanically eligible abstracts. It acknowledges prior
+  exploratory content exposure, creates no local semantic labels, treats
+  provider labels as bounded evidence rather than ground truth, and leaves all
+  production, certificate, reselection, outcome, fitting, G4, and scientific
+  claims closed until independent result verification and a successor gate.

@@ -1,0 +1,154 @@
+schema_version: pivot_feedback_gate_state.v4
+label: pivot_feedback_gate_state_v4
+mode: ADDITIVE_D0A_STRUCTURAL_FREEZE_GATE_LEDGER
+status: VALID_G_MINUS_1A_AND_S0_PASS_D0A_STRUCTURAL_FREEZE_D0B_AUTHORIZED
+
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v3.yaml
+  sha256: f817774145e86f03328d525e890f751e058fd161a1f285b61e235f3d869d3d4d
+  required_schema_version: pivot_feedback_gate_state.v3
+  required_status: VALID_G_MINUS_1A_AND_S0_PASS_D0_DISCOVERY_ONLY_AUTHORIZED
+  required_fields:
+    gate_state.S0.complete: true
+    gate_state.D0.state: AUTHORIZED_NOT_RUN
+    authorization.d0_discovery_pilot: AUTHORIZED_DISCOVERY_ONLY_ENTRY_YEAR_AT_MOST_2012
+    authorization.model_fitting: NOT_AUTHORIZED
+    authorization.g4_open: NOT_AUTHORIZED
+    authorization.scientific_effect: NOT_ESTABLISHED
+  mutation_allowed: false
+
+execution_evidence:
+  d0a_structural_freeze:
+    relative_path: experiments/evidence/results/pivot_feedback_d0a_structural_pilot_freeze_full_20260724.summary.json
+    sha256: 7943ecf2b227adee07e7d35efed183b90d2bfc5f4bd8edc4f4ec751f29996db9
+    required_schema_version: pivot_feedback_d0a_structural_pilot_freeze_summary.v1
+    required_status: PASS_INDEPENDENT_D0A_STRUCTURAL_FREEZE_D0_PARTIAL_D0B_ONLY_AUTHORIZED
+    required_fields:
+      scope.d0a_structural_freeze_complete: true
+      scope.d0_complete: false
+      scope.entry_year_end_inclusive: 2012
+      scope.pilot_fields: 2
+      scope.pilot_episodes: 4
+      scope.outcomes_read: false
+      scope.author_entry_rows_read: false
+      scope.persistence_rows_read: false
+      scope.citations_realized_read: false
+      scope.predictive_scores_computed: false
+      scope.threshold_tuning_performed: false
+      scope.model_fitting_performed: false
+      scope.g4_rows_read: false
+      scope.gpu_used: false
+      scope.scientific_effect: NOT_ESTABLISHED
+      source_replay.source_work_artifacts_rehashed: 4096
+      source_replay.source_work_rows_replayed: 492293206
+      source_replay.taxonomy_missing_topic_field_pairs: 0
+      source_replay.taxonomy_field_mismatch_topic_field_pairs: 0
+      authorization.d0b_outcome_blind_author_panel: AUTHORIZED
+      authorization.d0_discovery_outcome_opening: NOT_YET_AUTHORIZED
+      authorization.g0_measurement_freeze: NOT_AUTHORIZED
+      authorization.model_fitting: NOT_AUTHORIZED
+      authorization.g4_open: NOT_AUTHORIZED
+      authorization.scientific_effect: NOT_ESTABLISHED
+
+gate_state:
+  G_MINUS_1A:
+    state: PASS_BOUNDED
+    complete: true
+    authorizes: [S0]
+  S0:
+    state: PASS_THRESHOLD_FREE_INVENTORY
+    complete: true
+    authorizes: [D0]
+  D0:
+    state: PARTIAL_D0A_STRUCTURAL_FREEZE_PASS
+    complete: false
+    requires: [S0]
+    entry_year_end: 2012
+    completed_components: [D0A_OUTCOME_BLIND_FIELD_AND_EPISODE_FREEZE]
+    authorizes: [D0B_OUTCOME_BLIND_AUTHOR_PANEL]
+  G0:
+    state: PENDING
+    complete: false
+  G0_5:
+    state: NOT_RUN
+    complete: false
+  G1:
+    state: NOT_RUN
+    complete: false
+  G2:
+    state: NOT_RUN
+    complete: false
+  G3:
+    state: NOT_RUN
+    complete: false
+  G4:
+    state: SEALED_NOT_OPENED
+    complete: false
+  G5:
+    state: NOT_RUN_OPTIONAL
+    complete: false
+
+authorization:
+  d0a_structural_freeze: COMPLETE
+  d0b_outcome_blind_author_panel: AUTHORIZED_ENTRY_YEAR_AT_MOST_2012
+  d0_discovery_outcome_opening: NOT_YET_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  final_panel_materialization: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+frozen_d0a_selection:
+  field_ids: [17, 27]
+  fields:
+    - field_id: 17
+      field_name: Computer Science
+      domain_id: physical_sciences
+      episode_topic_years:
+        - {topic_id: 14430, entry_year: 2003, subfield_id: 1710}
+        - {topic_id: 10579, entry_year: 2012, subfield_id: 1705}
+    - field_id: 27
+      field_name: Medicine
+      domain_id: health_sciences
+      episode_topic_years:
+        - {topic_id: 11361, entry_year: 2007, subfield_id: 2740}
+        - {topic_id: 12505, entry_year: 1991, subfield_id: 2730}
+  selection_by_effect_size: false
+  current_snapshot_topic_family_proxy: true
+  final_g0_selection: false
+
+next_required_implementation:
+  gate: D0B
+  role: OUTCOME_BLIND_AUTHOR_OPPORTUNITY_AND_LEAVEOUT_MEASUREMENT_PANEL
+  entry_year_end: 2012
+  allowed_fields: [17, 27]
+  allowed_episode_topic_years:
+    - [17, 14430, 2003]
+    - [17, 10579, 2012]
+    - [27, 11361, 2007]
+    - [27, 12505, 1991]
+  required_measurement_boundaries:
+    - current_snapshot_topic_family_content_coherence_audit
+    - pre_event_indexing_discontinuity_diagnostic
+    - incumbent_membership_frozen_before_signal_window
+    - incumbent_attention_available_by_t_minus_1
+    - focal_author_leaveout
+    - registered_local_network_leaveout
+    - prior_peer_activity_available_by_t_minus_1
+    - recent_collaboration_existing_by_t_minus_1
+    - same_affiliation_existing_by_t_minus_1
+  entry_or_persistence_outcomes_may_be_opened: false
+  final_field_choice_by_effect_size_allowed: false
+  confirmatory_year_changes_allowed: false
+  workload_class: CPU_IO
+  gpu_required: false
+
+claim_boundary: >-
+  This additive ledger preserves the S0-complete v3 ledger and records an
+  independently replayed D0-A structural freeze of two pre-2013 pilot fields
+  and four provisional attention episodes. It authorizes only D0-B
+  outcome-blind author-opportunity and leave-out measurement construction on
+  those frozen fields and episodes. D0 remains incomplete; discovery outcome
+  opening, G0 measurement freeze, final-panel materialization, model fitting,
+  G4 opening, empirical signatures, causal effects, and scientific effects
+  remain not authorized, pending, sealed, not run, or not established.

@@ -1,0 +1,57 @@
+{
+  "schema_version": "pivot_feedback_holdout_seal_tooling_closed_fixture_summary.v1",
+  "status": "PASS_CLOSED_FIXTURE_HOLDOUT_SEAL_TOOLING_PRODUCTION_NOT_RUN",
+  "tooling": {
+    "creator_relative_path": "scripts/create_pivot_feedback_holdout_access_seal_v1.py",
+    "creator_sha256": "e65d8fa3a3c85d6f1c87564dab586fcda0ed163cf4455426caff7e773140cf76",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_holdout_access_seal_receipt_v1.py",
+    "verifier_sha256": "f42563e6852e4624938dcc70ccd7da7d847c8d7528c01ca9aa51833d568aa2c5",
+    "row_data_libraries_imported": [],
+    "creator_is_create_only": true,
+    "verifier_is_read_only": true
+  },
+  "closed_fixture": {
+    "artifact_count": 2,
+    "artifact_bytes_total": 39,
+    "manifest_finalized": true,
+    "receipt_written_last": true,
+    "independent_rehash_passed": true,
+    "operator_parquet_files_parsed": 0,
+    "confirmatory_or_holdout_rows_read": 0,
+    "test_count": 10
+  },
+  "fail_closed_checks": {
+    "hash_drift_rejected": true,
+    "symlinked_input_rejected": true,
+    "unsorted_allowlist_rejected": true,
+    "duplicate_allowlist_path_rejected": true,
+    "second_creation_attempt_rejected": true,
+    "receipt_timestamp_before_seal_rejected": true,
+    "tampered_sealed_artifact_rejected": true,
+    "unexpected_sealed_tree_member_rejected": true,
+    "opened_receipt_claim_rejected": true
+  },
+  "production_state": {
+    "operator_preflight_present": false,
+    "production_artifact_paths_enumerated": 0,
+    "production_artifact_bytes_hashed": 0,
+    "production_manifest_written": false,
+    "production_seal_created": false,
+    "production_receipt_written": false,
+    "production_independent_verification_run": false,
+    "confirmatory_or_holdout_rows_read": 0,
+    "pass_g0": false,
+    "model_fitted": false,
+    "g4_open": false
+  },
+  "authorization": {
+    "operator_preflight_authoring": "AUTHORIZED_EXACT_V54_CONTRACT_ONLY",
+    "production_seal_creation": "CONDITIONAL_NOT_RUN_MISSING_OPERATOR_PREFLIGHT",
+    "seal_opening": "NOT_AUTHORIZED",
+    "g0_measurement_freeze": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "The creator and independent verifier pass only a closed synthetic fixture and fail-closed mutation tests. No production preflight was supplied, no production path or byte was enumerated or hashed, and no production manifest, seal, receipt, or verification result exists. The tooling result does not pass G0, authorize seal opening or model fitting, open G4, or establish a scientific effect."
+}

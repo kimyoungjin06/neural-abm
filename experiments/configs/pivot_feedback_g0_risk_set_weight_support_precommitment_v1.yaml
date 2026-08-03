@@ -1,0 +1,312 @@
+schema_version: pivot_feedback_g0_risk_set_weight_support_precommitment.v1
+label: pivot_feedback_g0_risk_set_weight_support_precommitment_v1
+mode: OUTCOME_BLIND_RISK_SET_WEIGHT_SUPPORT_RULE_FREEZE_FIXTURE_ONLY
+status: FROZEN_SIX_RISK_SET_WEIGHT_SUPPORT_CHOICES_PENDING_INDEPENDENT_VALIDATION_NO_G0_PROMOTION
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_gate_state_v59.yaml
+  sha256: 32e061d10d9b06d5962848ec9d8819f8a98609e2a09b72ffcaaf182cc989a141
+  required_schema_version: pivot_feedback_gate_state.v59
+  required_status: VALID_G0_V3_SIX_RESOLVED_THIRTEEN_PENDING_NEXT_SIX_CHOICE_PRECOMMITMENT_AUTHORIZED
+  mutation_allowed: false
+
+bound_design_sources:
+  g0_v3:
+    relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v3.yaml
+    sha256: 0d15a1a7df535dbbc7e50ca0c3bb386da9a704cd051fb829d275b6d5a776a8fe
+    required_schema_version: pivot_feedback_g0_measurement_freeze.v4
+    required_status: PENDING_G0_V3_SIX_RESOLVED_THIRTEEN_CHOICES_AND_FIFTEEN_SECTIONS_NO_SEAL
+    mutation_allowed: false
+  prerequisite_closure_plan:
+    relative_path: experiments/configs/pivot_feedback_g0_prerequisite_closure_plan_v1.yaml
+    sha256: 45db08ea9e51d861270c1be4b8ac675e56e30df7b57268f515fd665708b2c4fc
+    required_schema_version: pivot_feedback_g0_prerequisite_closure_plan.v1
+    mutation_allowed: false
+  readiness_inventory:
+    relative_path: experiments/configs/pivot_feedback_g0_readiness_inventory_v1.yaml
+    sha256: 85e9f5c1ffa25a516261d5756074a3ab0ef7dd893c6a00adb081449d5b72419d
+    required_schema_version: pivot_feedback_g0_readiness_inventory.v1
+    mutation_allowed: false
+  peer_mechanism_registry:
+    relative_path: experiments/configs/pivot_feedback_peer_mechanism_registry_v0.yaml
+    sha256: 99eeb68b632f9f9a250f50320cfc7a293e3595de81984419d1528e2ee12aa6f8
+    required_schema_version: pivot_feedback_peer_mechanism_registry.v1
+    required_status: PENDING_G0_MEASUREMENT_FREEZE
+    mutation_allowed: false
+  predecision_measurement_config:
+    relative_path: experiments/configs/pivot_feedback_d0_certified_predecision_author_measurement_v1.yaml
+    sha256: 410dbf7b2c23aa178e552148bfba3619b888f9d0213a97ae825d2606bced29e9
+    required_schema_version: pivot_feedback_d0_certified_predecision_author_measurement_config.v1
+    mutation_allowed: false
+  predecision_measurement_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_d0_certified_predecision_author_measurement_20260731.summary.json
+    sha256: a9ecd79274139e5b9a375276eacdc51703fd561cabe38f8e8ce4356c3c7c311f
+    required_schema_version: pivot_feedback_d0_certified_predecision_author_measurement_summary.v1
+    required_status: PASS_INDEPENDENT_EXACT_FOUR_AUTHOR_MEMBERSHIP_CONSOLIDATED_TEMPORAL_LEAKAGE_AUDIT
+    required_author_episode_rows: 3256271
+    mutation_allowed: false
+  empirical_protocol:
+    relative_path: docs/case-studies/researcher-pivot/pivot-feedback-empirical-nabm-protocol.md
+    sha256: 731e39dec4c7be5c29a0f0404b48992ad0caef152062d1d1d7876acc07064746
+    mutation_allowed: false
+  peer_identification_design:
+    relative_path: docs/research/peer-exposure-identification-design.md
+    sha256: 342a79219fd5d79f64fa2b866863b63d012836e9c5d7bf75faaa61c630e4f2ef
+    mutation_allowed: false
+
+scope:
+  choice_ids:
+    - negative_sampling_ratio
+    - inverse_probability_weight_truncation
+    - minimum_cohort_size
+    - small_cell_suppression_threshold
+    - capacity_cell_support_threshold
+    - collinearity_threshold
+  choice_count: 6
+  analysis_opportunity_unit: CURRENT_SNAPSHOT_OPENALEX_AUTHOR_TOKEN_X_CERTIFIED_EPISODE_X_DECISION_YEAR
+  threshold_selection_uses_confirmatory_or_holdout_outcomes: false
+  threshold_selection_uses_g4_field_identity: false
+  threshold_selection_uses_model_performance: false
+  rule_freeze_is_not_production_application: true
+  rule_freeze_is_not_g0_promotion: true
+
+precommitment_choices:
+  negative_sampling_ratio:
+    resolution_status: FROZEN_OUTCOME_BLIND_POLICY_RULE
+    rule_id: STRATIFIED_RISK_SET_TEN_CONTROLS_PER_CASE_V1
+    ratio_controls_per_case: 10
+    case_rule: RETAIN_EVERY_ELIGIBLE_ENTRY_CASE
+    control_rule: SAMPLE_WITHOUT_REPLACEMENT_FROM_SAME_EXACT_RISK_SET
+    exact_risk_set_stratum:
+      - analysis_partition_id
+      - primary_field_id
+      - certified_episode_id
+      - decision_year
+    case_excluded_from_control_pool: true
+    eligible_control_may_be_sampled_in_multiple_decision_years: true
+    duplicate_control_within_exact_risk_set_allowed: false
+    controls_when_pool_below_target: RETAIN_ALL_ELIGIBLE_CONTROLS
+    target_control_count: MINIMUM_OF_ELIGIBLE_CONTROL_COUNT_AND_TEN_TIMES_CASE_COUNT
+    deterministic_priority: SHA256_COMPONENT_SEED_STRATUM_ID_STABLE_OPPORTUNITY_ID_ASCENDING
+    component_seed: 20260718
+    stable_opportunity_id_required: true
+    inclusion_probability: SELECTED_CONTROL_COUNT_DIVIDED_BY_ELIGIBLE_CONTROL_COUNT_WITHIN_EXACT_RISK_SET
+    case_inclusion_probability: 1.0
+    raw_sampling_weight: INVERSE_INCLUSION_PROBABILITY
+    zero_case_stratum_action: EXCLUDE_FROM_CASE_CONTROL_ANALYSIS_AND_REPORT
+    zero_control_stratum_action: FAIL_SUPPORT_GATE
+    ratio_may_be_reduced_for_compute_after_freeze: false
+    full_risk_set_sensitivity_required: true
+    claim_role: COMPUTE_REDUCTION_POLICY_NOT_EFFICIENCY_OR_POWER_GUARANTEE
+
+  inverse_probability_weight_truncation:
+    resolution_status: FROZEN_OUTCOME_BLIND_POLICY_RULE
+    rule_id: STABILIZED_IPW_NEAREST_RANK_P01_P99_WINSORIZATION_V1
+    input_weight: POSITIVE_FINITE_COMBINED_STABILIZED_ANALYTIC_WEIGHT
+    grouping_unit:
+      - analysis_partition_id
+      - primary_field_id
+    lower_percentile: 0.01
+    upper_percentile: 0.99
+    percentile_algorithm: NEAREST_RANK_ONE_BASED_CEILING_P_TIMES_N
+    lower_action: RAISE_TO_LOWER_PERCENTILE
+    upper_action: LOWER_TO_UPPER_PERCENTILE
+    post_winsorization_normalization: DIVIDE_BY_GROUP_ARITHMETIC_MEAN_TO_MEAN_ONE
+    zero_negative_missing_or_nonfinite_weight_action: FAIL_CLOSED
+    raw_untruncated_weight_sensitivity_required: true
+    raw_and_truncated_weight_range_required: true
+    raw_and_truncated_kish_effective_sample_size_required: true
+    balance_diagnostics_required: true
+    percentile_cutoffs_may_be_retuned_after_outcome_inspection: false
+    estimand_change_due_to_truncation_must_be_acknowledged: true
+    claim_role: BIAS_VARIANCE_STABILITY_POLICY_NOT_CAUSAL_IDENTIFICATION
+
+  minimum_cohort_size:
+    resolution_status: FROZEN_OUTCOME_BLIND_POLICY_FLOOR
+    rule_id: FIELD_EPISODE_PARTITION_MINIMUM_500_WITH_100_PER_OUTCOME_CLASS_V1
+    unit:
+      - analysis_partition_id
+      - primary_field_id
+      - certified_episode_id
+    evaluated_on: FULL_ELIGIBLE_RISK_SET_BEFORE_NEGATIVE_SAMPLING
+    minimum_total_opportunity_rows: 500
+    minimum_entry_events: 100
+    minimum_non_entry_opportunities: 100
+    all_three_conditions_required: true
+    pooling_across_fields_to_rescue_failure_allowed: false
+    pooling_across_partitions_to_rescue_failure_allowed: false
+    pooling_across_certified_episodes_to_rescue_failure_allowed: false
+    failed_unit_action: EXCLUDE_UNIT_AND_FAIL_REGISTERED_COVERAGE_REQUIREMENT
+    model_specific_sample_size_calculation_still_required: true
+    floor_substitutes_for_model_specific_calculation: false
+    outcome_rate_tuning_allowed: false
+    claim_role: MINIMUM_SCREEN_NOT_POWER_OR_PRECISION_GUARANTEE
+
+  small_cell_suppression_threshold:
+    resolution_status: FROZEN_PRIVACY_AND_STABILITY_POLICY
+    rule_id: SUPPRESS_COUNTS_ONE_THROUGH_TEN_AND_DERIVABLE_COMPLEMENTS_V1
+    count_unit: DISTINCT_ANALYSIS_OPPORTUNITY_OR_DISTINCT_AUTHOR_TOKEN_AS_LABELED
+    suppressed_inclusive_lower: 1
+    suppressed_inclusive_upper: 10
+    minimum_directly_reportable_nonzero_count: 11
+    exact_zero_reporting: ALLOWED_ONLY_WHEN_NOT_DERIVED_FROM_A_SUPPRESSED_COMPLEMENT
+    percentage_or_rate_with_suppressed_denominator_or_numerator: SUPPRESS
+    complementary_secondary_suppression_required: true
+    differencing_that_recovers_suppressed_count_allowed: false
+    internal_modeling_retention_based_on_reporting_rule_alone: ALLOWED_IF_SEPARATE_SUPPORT_GATES_PASS
+    threshold_may_be_relaxed_for_table_completeness: false
+    claim_role: CONSERVATIVE_ANALOGOUS_DISCLOSURE_POLICY_NOT_CMS_APPLICABILITY_CLAIM
+
+  capacity_cell_support_threshold:
+    resolution_status: FROZEN_OUTCOME_BLIND_POLICY_RULE
+    rule_id: FOUR_SIGNAL_CAPACITY_CELLS_MIN_50_TOTAL_11_PER_OUTCOME_CLASS_V1
+    cell_definition: PEER_VISIBLE_SUCCESS_PROXY_BINARY_X_CAPACITY_BRIDGE_BINARY
+    required_cells: [NEITHER, PUBLIC_SUCCESS_ONLY, CAPACITY_BRIDGE_ONLY, BOTH]
+    unit:
+      - analysis_partition_id
+      - primary_field_id
+      - certified_episode_id
+    evaluated_before_separate_channel_model: true
+    minimum_total_opportunities_per_cell: 50
+    minimum_entry_events_per_cell: 11
+    minimum_non_entry_opportunities_per_cell: 11
+    all_four_cells_must_pass_all_three_conditions: true
+    small_cell_suppression_consistent: true
+    pool_fields_to_rescue_cell_allowed: false
+    pool_partitions_to_rescue_cell_allowed: false
+    failed_action: COLLAPSE_TO_ANY_PEER_SIGNAL_OR_CAPACITY_AND_FORFEIT_SEPARATE_CHANNEL_CLAIM
+    selective_variable_deletion_after_failure_allowed: false
+    claim_role: CHANNEL_SEPARABILITY_FLOOR_NOT_EFFECT_OR_POWER_GUARANTEE
+
+  collinearity_threshold:
+    resolution_status: FROZEN_OUTCOME_BLIND_POLICY_RULE
+    rule_id: CENTERED_WEIGHTED_EXPOSURE_BLOCK_VIF_STRICTLY_BELOW_FIVE_V1
+    design_columns:
+      - peer_visible_success_proxy
+      - capacity_bridge
+      - peer_visible_success_proxy_x_capacity_bridge
+    intercept_in_auxiliary_regressions: true
+    weights: FINAL_REGISTERED_ANALYTIC_WEIGHTS
+    grouping_unit:
+      - analysis_partition_id
+      - primary_field_id
+      - certified_episode_id
+    diagnostic: CENTERED_WEIGHTED_VARIANCE_INFLATION_FACTOR
+    vif_definition: ONE_DIVIDED_BY_ONE_MINUS_WEIGHTED_AUXILIARY_R_SQUARED
+    pass_rule: EVERY_COLUMN_VIF_STRICTLY_LESS_THAN_5
+    threshold: 5.0
+    threshold_boundary_counts_as_pass: false
+    exact_or_numerical_rank_deficiency_action: FAIL_SEPARATE_CHANNEL_GATE
+    zero_weighted_variance_action: FAIL_SEPARATE_CHANNEL_GATE
+    missing_or_nonfinite_vif_action: FAIL_SEPARATE_CHANNEL_GATE
+    failed_action: COLLAPSE_TO_ANY_PEER_SIGNAL_OR_CAPACITY_AND_FORFEIT_SEPARATE_CHANNEL_CLAIM
+    automatic_single_variable_deletion_allowed: false
+    sample_size_and_interval_precision_must_also_be_considered: true
+    claim_role: CONSERVATIVE_CHANNEL_STABILITY_POLICY_NOT_UNIVERSAL_VIF_TRUTH
+
+methodological_rationale:
+  references:
+    - reference_id: BERTKE_ET_AL_2013_NESTED_CASE_CONTROL
+      doi: 10.1515/em-2013-0007
+      role: MORE_THAN_FOUR_CONTROLS_CAN_IMPROVE_EFFICIENCY_IN_RARE_OR_SKEWED_SETTINGS_NOT_TEN_CONTROL_MANDATE
+    - reference_id: COLE_HERNAN_2008_IPW
+      doi: 10.1093/aje/kwn164
+      role: POSITIVITY_WEIGHT_DISTRIBUTION_AND_BIAS_VARIANCE_DIAGNOSTIC_RATIONALE_NOT_P01_P99_MANDATE
+    - reference_id: RILEY_ET_AL_2019_SAMPLE_SIZE
+      doi: 10.1002/sim.7992
+      role: MODEL_SPECIFIC_SAMPLE_SIZE_REQUIREMENT_NOT_FIXED_500_OR_100_MANDATE
+    - reference_id: CMS_RIF_CELL_SUPPRESSION_POLICY
+      url: https://resdac.org/sites/default/files/2026-05/Instructions-RIF-Application-Amendment-Requests.pdf
+      checked_date: 2026-07-31
+      role: ANALOGOUS_ONE_THROUGH_TEN_DISCLOSURE_FLOOR_NOT_CMS_JURISDICTION_OVER_OPENALEX
+    - reference_id: OBRIEN_2007_VIF_CAUTION
+      doi: 10.1007/s11135-006-9018-6
+      role: VIF_CONTEXT_AND_RULE_OF_THUMB_CAUTION_NOT_FIVE_MANDATE
+  policy_value_boundary:
+    literature_mandates_ten_controls_per_case: false
+    literature_mandates_p01_p99_winsorization: false
+    literature_mandates_500_TOTAL_OR_100_PER_CLASS: false
+    cms_policy_governs_this_openalex_study: false
+    literature_mandates_50_TOTAL_AND_11_PER_CAPACITY_CELL_CLASS: false
+    literature_mandates_vif_five: false
+    values_are_precommitted_design_policy_not_empirical_truth: true
+
+application_contract:
+  intended_tool_relative_path: scripts/apply_pivot_feedback_g0_risk_set_weight_support_precommitment_v1.py
+  input_schema_version: pivot_feedback_g0_risk_set_weight_support_discovery_input.v1
+  output_schema_version: pivot_feedback_g0_risk_set_weight_support_discovery_output.v1
+  permitted_input_statuses:
+    - SYNTHETIC_CLOSED_FIXTURE
+    - DISCOVERY_ONLY_AGGREGATED_OR_EXPLICIT_RISK_SET_NO_CONFIRMATORY_ROWS
+  input_may_contain_confirmatory_or_holdout_rows: false
+  input_may_contain_post_2012_decision_year: false
+  input_may_contain_model_scores_or_g4_labels: false
+  exact_input_lists_required:
+    - sampling_strata
+    - weight_groups
+    - cohort_groups
+    - report_cells
+    - capacity_tables
+  output_float_round_decimal_places: 12
+  output_must_report_sampling_inclusion_probabilities: true
+  output_must_report_raw_and_truncated_weight_ess: true
+  output_must_report_every_support_failure: true
+  output_must_report_every_exposure_block_vif: true
+  production_application_requires_successor_gate: true
+
+fixture_contract:
+  input_relative_path: tests/fixtures/pivot_feedback_g0_risk_set_weight_support_discovery_v1.input.json
+  expected_output_relative_path: tests/fixtures/pivot_feedback_g0_risk_set_weight_support_discovery_v1.expected.json
+  synthetic_only: true
+  may_promote_to_production_evidence: false
+  must_cover:
+    - TEN_CONTROLS_PER_CASE_WITH_DETERMINISTIC_DOWNSAMPLING
+    - RETAIN_ALL_CONTROLS_BELOW_TARGET
+    - P01_P99_WINSORIZATION_AND_MEAN_ONE_NORMALIZATION
+    - COHORT_PASS_AND_EACH_MINIMUM_FAILURE
+    - ZERO_ONE_TEN_ELEVEN_REPORTING_BOUNDARIES
+    - FOUR_CAPACITY_CELLS_PASS
+    - CAPACITY_EVENT_SUPPORT_FAIL_COLLAPSE
+    - VIF_FAIL_COLLAPSE_DESPITE_COUNT_SUPPORT
+
+lifecycle:
+  contract_frozen: true
+  independently_validated: false
+  fixture_application_run: false
+  discovery_production_application_run: false
+  g0_v3_changed: false
+  unresolved_g0_choice_count_before: 13
+  resolved_choice_count_in_this_contract: 6
+  unresolved_g0_choice_count_after_future_binding: 7
+  required_sections_completed: false
+  g4_artifact_set_materialized: false
+  holdout_preflight_written: false
+  holdout_seal_created: false
+  confirmatory_or_holdout_rows_read: 0
+  model_fitted: false
+  g4_open: false
+
+authorization:
+  contract_authoring: AUTHORIZED_OUTCOME_BLIND
+  fixture_application_and_validation: AUTHORIZED_SYNTHETIC_ONLY
+  discovery_production_application: REQUIRES_SUCCESSOR_GATE
+  g0_successor_binding: REQUIRES_INDEPENDENT_VALIDATION_AND_SUCCESSOR_GATE
+  threshold_relaxation_after_coverage_or_outcome_inspection: NOT_AUTHORIZED
+  confirmatory_or_holdout_access: NOT_AUTHORIZED
+  outcome_based_selection: NOT_AUTHORIZED
+  g0_measurement_freeze: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This outcome-blind contract precommits six risk-set, weighting, support,
+  suppression, and collinearity choices plus a synthetic fixture interface.
+  Ten controls per case, P01-P99 winsorization, the cohort and cell floors, and
+  VIF five are explicit conservative design policies, not literature-mandated
+  truths, power guarantees, or empirical effects. The one-through-ten
+  suppression rule is used by analogy and does not assert that CMS policy
+  governs OpenAlex. No discovery production input is opened, G0 v3 is not
+  changed, the remaining seven quantitative choices and all required sections
+  remain unresolved, and no holdout artifact, seal, model, G4 result,
+  causality, or scientific effect is established.

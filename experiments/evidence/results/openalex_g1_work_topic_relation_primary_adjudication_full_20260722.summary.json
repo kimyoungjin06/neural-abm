@@ -1,0 +1,84 @@
+{
+  "adjudication": {
+    "adjudicated_group_count": 2,
+    "canonical_decisions": [
+      {
+        "canonical_score": 0.0806,
+        "rule": "SELECT_EXACT_FROZEN_MAIN_PRIMARY_SCORE",
+        "topic_numeric_id": 13112,
+        "work_numeric_id": 5401631
+      },
+      {
+        "canonical_score": 0.7347,
+        "rule": "SELECT_EXACT_FROZEN_MAIN_PRIMARY_SCORE",
+        "topic_numeric_id": 10455,
+        "work_numeric_id": 26888826
+      }
+    ],
+    "parent_conflict_group_count": 2,
+    "sidecar_sha256": "0770b82260d32c8cb952664e7a73e29acbe0a50f91b4118fc26ab47527fe3c91",
+    "unexpected_group_count": 0,
+    "unresolved_group_count": 0
+  },
+  "canonical_relation": {
+    "bytes": 14856988528,
+    "duplicate_edge_groups": 714,
+    "duplicate_row_excess": 763,
+    "raw_topic_rows": 928562546,
+    "rows": 928561783,
+    "score_conflict_edge_groups": 2,
+    "sha256": "617a508c458ae664689745e8bcf9de0b9b416f1a2bb961a406b96cf74f43873d",
+    "status": "PROMOTED_PRIMARY_EXACT_SCORE_ADJUDICATED_SET_VIEW"
+  },
+  "claim_boundary": "This receipt-bound successor establishes current-snapshot work-topic membership and canonical score selection under one narrow policy: same-score duplicate rows collapse, while a different-score duplicate is resolved only when the frozen main row's exact primary-topic ID and score select a child score for that edge. It does not alter or reclassify raw OpenAlex data, validate raw source IDs or W0 entity semantics, establish publication or edge-time validity, validate authors or candidates, pass G-1 or G0, run empirical G1, learn an NABM parameter, or establish a scientific effect.",
+  "gate_status": {
+    "canonical_work_topic_relation": "PASS",
+    "empirical_g1_signature": "NOT_RUN",
+    "g0_measurement_freeze": "PENDING",
+    "g_minus_1_data_readiness": "PENDING",
+    "parent_content_identity": "UNVERIFIED",
+    "pass_g1": false,
+    "primary_exact_score_adjudication": "PASS",
+    "primary_topic_child_inclusion": "PASS",
+    "raw_source_id_validity": "BLOCKED",
+    "raw_work_topic_edge_uniqueness": "FAIL_DUPLICATES_PRESENT",
+    "w_zero_entity_validity": "UNRESOLVED",
+    "work_topic_relation_component": "PASS"
+  },
+  "independent_verification": {
+    "canonical_relation_payload_all_exact": true,
+    "parent_sorted_event_all_groups_replayed": true,
+    "source_primary_rows_replayed": 2,
+    "status": "PASS_FULL_READ_ONLY_INDEPENDENT_PRIMARY_ADJUDICATION_VERIFICATION",
+    "verifier_sha256": "958627d61c3f309710a28fbd2de1277d3c3555795a4278bd39463802266e327a"
+  },
+  "parent": {
+    "all_receipt_artifacts_rehashed": true,
+    "blocked_status": "BLOCKED_WORK_TOPIC_RELATION_COMPONENT",
+    "receipt_artifact_count": 1430,
+    "receipt_sha256": "7cf91e50a3934f783d278ae47b3764ec650b7d36c3625bfc4564da405a551507",
+    "result_fingerprint_sha256": "ce13bc8aa2e07578c84c1f540d2f21f7e46b18189ddda12c963a2ccc154db6d5",
+    "sorted_event_sha256": "b714008803b49dca0e6c4d5f273aa458a20549b415185721b255492f99768623"
+  },
+  "provenance": {
+    "config_sha256": "4bdc6caee203450b367f1e7621c4785373063edce93318e295aff5fd49752165",
+    "output_receipt_artifact_count": 6,
+    "output_receipt_artifacts_rehashed_exactly": 6,
+    "output_receipt_artifacts_all_exact": true,
+    "output_receipt_sha256": "124ee59348a4f3c73cac8e0d567f764a57cf8ba6700c02ffa05a276e05562b5d",
+    "report_sha256": "1cb22a9945f476fdc2da3b2a94bd025b33b27967a517c16b3d8317b352bc624b",
+    "result_fingerprint_sha256": "aae2909cd85313f47549ebf20c5f8d29c32aa22972eb46a6b6d076a64fb8dff1",
+    "sidecar_sha256": "0770b82260d32c8cb952664e7a73e29acbe0a50f91b4118fc26ab47527fe3c91",
+    "tool_sha256": "bf9f0af96d6af19b4732b40e59e070e9cc3b9232fd556b099cd50ea8b11b9d62",
+    "verifier_sha256": "958627d61c3f309710a28fbd2de1277d3c3555795a4278bd39463802266e327a"
+  },
+  "schema_version": "openalex_g1_work_topic_relation_primary_adjudication_full_summary.v1",
+  "scope": {
+    "component_pass": true,
+    "full_scope": true,
+    "gpu_used": false,
+    "raw_rows_mutated": false,
+    "topic_classification_rerun": false
+  },
+  "status": "PASS_CURRENT_SNAPSHOT_WORK_TOPIC_RELATION_COMPONENT_WITH_PRIMARY_EXACT_SCORE_ADJUDICATION"
+}
