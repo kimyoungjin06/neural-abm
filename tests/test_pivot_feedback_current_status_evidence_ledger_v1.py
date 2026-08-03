@@ -195,11 +195,12 @@ def test_all_local_ledger_links_resolve() -> None:
 def test_claim_matrix_routes_operational_status_to_additive_ledger() -> None:
     protocol = PROTOCOL_PATH.read_text(encoding="utf-8")
     claim_matrix = (ROOT / "paper/claim-matrix.md").read_text(encoding="utf-8")
+    normalized_claim_matrix = " ".join(claim_matrix.split())
 
-    assert "pivot-feedback-current-status-evidence-ledger-v1.md" in claim_matrix
-    assert "pivot_feedback_gate_state_v61.yaml" in claim_matrix
-    assert "twelve resolved" in claim_matrix.lower()
-    assert "seven unresolved" in claim_matrix.lower()
+    assert "pivot-feedback-current-status-evidence-ledger-v2.md" in claim_matrix
+    assert "pivot_feedback_current_state_v1.yaml" in claim_matrix
+    assert "complete thirteen-choice pre-G1 registry" in normalized_claim_matrix
+    assert "six G2/G3 choices" in normalized_claim_matrix
     assert "empirical G1 is `NOT_RUN`" in claim_matrix
     assert "no baseline or NABM model has run" in claim_matrix
     assert "protocol v0.4 byte is retained" in claim_matrix

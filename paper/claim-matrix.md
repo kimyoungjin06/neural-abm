@@ -17,9 +17,9 @@ their evidence is upgraded.
 
 The document date above records the original manuscript-matrix checkpoint.
 Current pivot-feedback status is consolidated in the
-[`current-status and evidence ledger v1`](../docs/research/pivot-feedback-current-status-evidence-ledger-v1.md),
+[`current-status and evidence ledger v2`](../docs/research/pivot-feedback-current-status-evidence-ledger-v2.md),
 with machine-readable authority in
-[`pivot_feedback_gate_state_v61.yaml`](../experiments/configs/pivot_feedback_gate_state_v61.yaml).
+[`pivot_feedback_current_state_v1.yaml`](../experiments/configs/pivot_feedback_current_state_v1.yaml).
 The protocol v0.4 byte is retained because multiple immutable contracts bind
 its hash; the ledger is the additive operational update rather than an in-place
 protocol mutation.
@@ -39,9 +39,11 @@ The current operational boundary is:
   observable-history classification, including 4,301 `NEW_TOPIC_ENTRY` rows;
 - the 4,301-row three-year persistence source and aggregate descriptive
   readout are independently replayed, but are not adjusted comparisons;
-- G0 v4 has twelve resolved policy choices, seven unresolved quantitative
-  choices, zero of fifteen freeze-ready required sections, and no holdout
-  receipt; and
+- the active F phase has a complete thirteen-choice pre-G1 registry and a
+  separately replayed thirteen-section outcome-blind freeze component, but no
+  atomic F promotion, final-panel-conformance receipt, or holdout receipt; six
+  G2/G3 choices and two G2/G3 sections are deferred to their registered later
+  entry boundaries; and
 - empirical G1 is `NOT_RUN`, no baseline or NABM model has run, and G4 is
   logically reserved but neither byte-sealed nor opened.
 
