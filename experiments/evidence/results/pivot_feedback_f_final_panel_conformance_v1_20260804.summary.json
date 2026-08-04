@@ -1,0 +1,121 @@
+{
+  "schema_version": "pivot_feedback_f_final_panel_conformance_summary.v1",
+  "status": "BLOCKED_FINAL_PANEL_LEAVEOUT_REPLAY_INSUFFICIENT_SHOCK_FAMILY_SUPPORT_NO_F_PASS",
+  "production_artifact": {
+    "root_basename": "pivot-feedback-f-final-panel-conformance-v1-20260804",
+    "output_receipt_basename": "final_panel_conformance.outputs.json",
+    "output_receipt_sha256": "28fcba8c46b7c89e6445830b3b7d4607f7dd00c96f51317e460dacb57e95e59f",
+    "artifact_tree_sha256": "0e6f9bd9a817388921eeb654c1e4838ab6472293e2fefb9cd8193544b8637a1f",
+    "artifact_count_excluding_receipt": 4,
+    "receipt_written_last_by_mtime_ns": true
+  },
+  "bound_implementation": {
+    "config_relative_path": "experiments/configs/pivot_feedback_f_final_panel_conformance_v1.yaml",
+    "config_sha256": "ae107652d6b98a4420706dc1b1e2e6f508d08c87fe4332c8fdb3fcdbb9539b33",
+    "builder_relative_path": "scripts/build_pivot_feedback_f_final_panel_conformance_v1.py",
+    "builder_sha256": "6466ca774e0d455ce8c73e6f541547b658c63d2a3bf049c17aa076c7d27def19",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_f_final_panel_conformance_v1.py",
+    "verifier_sha256": "8b39ad96354bef21d807380178817f3c38fa3c33e9c2b9d0df327a3e925f3331"
+  },
+  "source_and_replay_accounting": {
+    "aggregate_screen_episode_attempt_rows": 194,
+    "target_event_rows": 7235450,
+    "modern_predecision_event_rows": 312076434,
+    "risk_opportunity_rows": 647855727,
+    "prior_focal_work_relations": 6520252568,
+    "prior_target_active_peer_relations": 671789654,
+    "network_excluded_attention_work_incidences": 17550448,
+    "focal_excluded_attention_work_incidences": 0,
+    "maximum_declared_team_size": 5000,
+    "prior_focal_work_relations_above_team_size_100": 152721776,
+    "team_cap_applied": false,
+    "elapsed_seconds": 5125.956339309982
+  },
+  "support_replay": {
+    "minimum_total_opportunity_rows": 500,
+    "episodes_passing_label_independent_support": 194,
+    "episodes_failing_label_independent_support": 0,
+    "label_dependent_support_status": "DEFERRED_UNTIL_POST_F_AUTHORIZED_LABEL_MATERIALIZATION",
+    "label_dependent_support_may_block_f": false,
+    "case_control_sampling_applied": false,
+    "outcome_conditioned_support_evaluated": false
+  },
+  "slot_reconciliation": [
+    {
+      "slot_id": "g1_domain_slot_01",
+      "initial_selected_field_id": 17,
+      "aggregate_screen_attempted_field_ids": [17],
+      "final_selected_field_id": null,
+      "risk_opportunity_rows": 51983930,
+      "leaveout_surge_episode_count": 2,
+      "leaveout_conformed_subfield_family_count": 1,
+      "minimum_required_subfield_family_count": 3,
+      "status": "BLOCKED_FEWER_THAN_THREE_LEAVEOUT_SURGE_SUBFIELD_FAMILIES"
+    },
+    {
+      "slot_id": "g1_domain_slot_02",
+      "initial_selected_field_id": 32,
+      "aggregate_screen_attempted_field_ids": [32],
+      "final_selected_field_id": null,
+      "risk_opportunity_rows": 12840438,
+      "leaveout_surge_episode_count": 1,
+      "leaveout_conformed_subfield_family_count": 1,
+      "minimum_required_subfield_family_count": 3,
+      "status": "BLOCKED_FEWER_THAN_THREE_LEAVEOUT_SURGE_SUBFIELD_FAMILIES"
+    },
+    {
+      "slot_id": "g1_domain_slot_03",
+      "initial_selected_field_id": 11,
+      "aggregate_screen_attempted_field_ids": [11],
+      "final_selected_field_id": null,
+      "risk_opportunity_rows": 56881675,
+      "leaveout_surge_episode_count": 2,
+      "leaveout_conformed_subfield_family_count": 2,
+      "minimum_required_subfield_family_count": 3,
+      "status": "BLOCKED_FEWER_THAN_THREE_LEAVEOUT_SURGE_SUBFIELD_FAMILIES"
+    },
+    {
+      "slot_id": "g4_domain_author_cold_slot",
+      "initial_selected_field_id": 36,
+      "aggregate_screen_attempted_field_ids": [36, 27],
+      "final_selected_field_id": 27,
+      "risk_opportunity_rows": 526149684,
+      "leaveout_surge_episode_count": 14,
+      "leaveout_conformed_subfield_family_count": 6,
+      "minimum_required_subfield_family_count": 3,
+      "status": "PASS_LEAVEOUT_SHOCK_FAMILY_SUPPORT"
+    }
+  ],
+  "independent_verification": {
+    "status": "PASS_INDEPENDENT_BLOCKED_FINAL_PANEL_LEAVEOUT_REPLAY_NO_F_PASS",
+    "verification_path": "/ssd/pivot-feedback-f-final-panel-conformance-v1-20260804.verification.json",
+    "verification_sha256": "def137ea644f3fb20217acc5952869d040f543a72a1d039b255de63489666c52",
+    "artifacts_rehashed_including_receipt": 5,
+    "episode_rows_verified": 194,
+    "slot_rows_verified": 4,
+    "assignment_and_reserve_order_replayed": true,
+    "row_algebra_and_leaveout_monotonicity_verified": true
+  },
+  "fail_closed_state": {
+    "final_panel_conformance_complete": false,
+    "holdout_byte_seal_complete": false,
+    "entry_or_persistence_labels_read": false,
+    "raw_author_or_work_ids_emitted": false,
+    "model_fitted": false,
+    "pass_f": false,
+    "pass_g0": false,
+    "g4_open": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "authorization": {
+    "next": "OUTCOME_BLIND_DEFINITION_AND_THEORY_AUDIT",
+    "reserve_reselection_outside_frozen_order": "NOT_AUTHORIZED",
+    "threshold_relaxation": "NOT_AUTHORIZED",
+    "operator_only_holdout_materialization": "NOT_AUTHORIZED",
+    "confirmatory_analytic_read": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED"
+  },
+  "interpretation": "Label-independent risk-set size is ample, but the registered all-linked-authors pre-signal incumbent profile plus focal/preexisting-target-active-peer leaveouts leaves fewer than three independent surge subfield families in every G1 slot. G4 alone recovers through frozen reserve field 27. This is a measurement-definition and observation-universe failure, not an outcome-effect result and not evidence for or against the scientific hypothesis.",
+  "claim_boundary": "This outcome-blind replay establishes only that the frozen final-panel construction is computationally executable and that its G1 shock-family structural conformance fails under the registered primary work-level incumbent exclusion. It does not compute entry or persistence labels, inspect a confirmatory or G4 effect, establish absence of a substantive feedback mechanism, fit a model, pass F or G0, establish transport or causality, or establish a scientific effect."
+}

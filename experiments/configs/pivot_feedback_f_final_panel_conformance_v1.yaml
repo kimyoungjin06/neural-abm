@@ -1,0 +1,186 @@
+schema_version: pivot_feedback_f_final_panel_conformance.v1
+label: pivot_feedback_f_final_panel_conformance_v1
+mode: F_PHASE_OUTCOME_BLIND_FINAL_PANEL_LEAVEOUT_AND_SUPPORT_COMPONENT_NOT_A_GATE
+status: FROZEN_FINAL_PANEL_CONFORMANCE_PENDING_PRODUCTION_EXECUTION_NO_F_PASS
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_current_state_v1.yaml
+  sha256: 52c262455b87a1e89fd28b370408fc9c697b26c7ca9e2cb15de59fd27d3ac0bd
+  required_schema_version: pivot_feedback_current_state.v1
+  required_status: ACTIVE_F_PHASE_PRE_G1_REGISTRY_BOUND_THIRTEEN_SECTIONS_PANEL_AND_SEAL_PENDING
+  mutation_allowed: false
+
+bound_design_sources:
+  scientific_sections:
+    relative_path: experiments/configs/pivot_feedback_f_pre_g1_scientific_sections_v1.yaml
+    sha256: cc58a651667b7cecb4cc61d96b6700aa665f1121c7c0b0a254368fb0299041dd
+    required_schema_version: pivot_feedback_f_pre_g1_scientific_sections.v1
+    mutation_allowed: false
+  risk_weight_support_policy:
+    relative_path: experiments/configs/pivot_feedback_g0_risk_set_weight_support_precommitment_v1.yaml
+    sha256: 8f38863eba1880ee375d982cbb2ac094d3ae64028ee651e92b59f13d0189f26e
+    required_schema_version: pivot_feedback_g0_risk_set_weight_support_precommitment.v1
+    mutation_allowed: false
+  field_episode_assignment_config:
+    relative_path: experiments/configs/pivot_feedback_f_field_episode_assignment_v1.yaml
+    sha256: 4a48c46483d3711bffe1d8c13805b4aec6f8aa25d4198dc30372a5da22d0f68b
+    required_schema_version: pivot_feedback_f_field_episode_assignment.v1
+    mutation_allowed: false
+  field_episode_assignment_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_f_field_episode_assignment_v1_20260803.summary.json
+    sha256: 1b09be6348e08b551011051b2c4f1377db285985dfac0e9a9a5d5f18e2a8fa08
+    required_schema_version: pivot_feedback_f_field_episode_assignment_summary.v1
+    required_status: PASS_OUTCOME_BLIND_FIELD_AND_EPISODE_ASSIGNMENT_COMPONENT_FINAL_PANEL_AND_SEAL_PENDING
+    mutation_allowed: false
+
+verified_assignment_parent:
+  expected_root_basename: pivot-feedback-f-field-episode-assignment-v1-20260803
+  receipt_basename: field_episode_assignment.outputs.json
+  receipt_sha256: 19550868b92a97c178917f6b0629e73a354cdce7508df880c94eacb782edfdc4
+  receipt_schema_version: pivot_feedback_f_field_episode_assignment_outputs.v1
+  required_status: PASS_OUTCOME_BLIND_FIELD_AND_EPISODE_ASSIGNMENT_COMPONENT_FINAL_PANEL_AND_SEAL_PENDING
+  candidate_basename: attention_shock_candidates.parquet
+  candidate_sha256: a06481cbfec94051eb5380399a9c6e7b59ab6f4bcdcaf79923f39fa0c300a34e
+  candidate_schema_version: pivot_feedback_f_attention_shock_candidate.v1
+  candidate_rows: 1744
+  initially_retained_candidate_rows: 107
+  slot_basename: slot_assignment.parquet
+  slot_sha256: e3408448639ca867be98e8e9e4698eda58e2b5d53747a9d01b402f530b83c4fe
+  slot_schema_version: pivot_feedback_f_slot_assignment.v1
+  slot_rows: 4
+  verification_path: /ssd/pivot-feedback-f-field-episode-assignment-v1-20260803.verification.json
+  verification_sha256: 163842e1c090e4331ebd2770d5ff1898269088c92a7f1b044f322839a773a478
+  verification_status: PASS_INDEPENDENT_OUTCOME_BLIND_FIELD_AND_EPISODE_ASSIGNMENT_FINAL_PANEL_AND_SEAL_PENDING
+
+normalized_inputs:
+  cutoff_work_metadata:
+    expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    rows: 492293206
+  author_history_events:
+    expected_root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    rows: 779630258
+
+panel_contract:
+  episode_source: FROZEN_SLOT_FIELD_ORDER_WITH_AGGREGATE_SCREENED_RESERVE_RECONCILIATION
+  field_attempt_order: NOMINAL_PRIMARY_THEN_DOMAIN_RANK_TWO_THEN_DOMAIN_RANK_THREE
+  field_attempt_requires_aggregate_subfield_families: 3
+  final_slot_field_requires_leaveout_surge_subfield_families: 3
+  analysis_unit: CURRENT_SNAPSHOT_OPENALEX_AUTHOR_TOKEN_X_RETAINED_TOPIC_X_DECISION_YEAR
+  eligible_opportunity:
+    predecision_focal_field_activity_offsets: [-3, -2, -1]
+    pre_entry_target_topic_work_count: 0
+    minimum_history_beyond_activity: NONE
+  eligible_work_type_codes: [1, 2, 3, 4, 7, 16, 18, 21]
+  allowed_temporal_dispositions: [2, 3]
+  team_cap: NONE
+  reference_offsets: [-6, -5, -4]
+  recent_offsets: [-3, -2, -1]
+  prior_collaboration_offsets: [-5, -4, -3, -2, -1]
+  incumbent_rule: AUTHOR_FIRST_EXACT_TARGET_TOPIC_WORK_STRICTLY_BEFORE_T_MINUS_6
+  attention_work_rule: EVERY_LINKED_AUTHOR_IS_PRE_SIGNAL_INCUMBENT
+  attention_work_rule_derivation: REQUIRED_TO_EXCLUDE_SAME_WINDOW_NEW_ENTRANT_PUBLICATIONS
+  focal_leaveout_rule: EXCLUDE_ATTENTION_WORK_IF_AUTHORED_BY_FOCAL_AUTHOR
+  qualifying_peer_rule: PREEXISTING_COLLABORATOR_WITH_EXACT_TARGET_TOPIC_WORK_BY_T_MINUS_1
+  network_leaveout_rule: EXCLUDE_ATTENTION_WORK_IF_AUTHORED_BY_FOCAL_OR_ANY_QUALIFYING_PEER
+  graph_materialization: TARGET_ACTIVE_PEER_SEMIJOIN_WITHOUT_UNBOUNDED_ALL_PAIR_GRAPH
+  aggregate_screen_normalization:
+    location_and_scale: REUSE_BOUND_FIELD_YEAR_MEDIAN_AND_MAD_FROM_AGGREGATE_SCREEN
+    reason: FINAL_PANEL_REPLAYS_ONLY_PRESELECTED_CANDIDATES_AND_DOES_NOT_RESELECT_FIELDS_OR_EPISODES
+    modified_z_multiplier: 0.6744897501960817
+    threshold_inclusive: 3.0
+    threshold_relaxation: false
+  output_contains_raw_author_or_work_ids: false
+
+support_replay:
+  label_independent:
+    unit: ANALYSIS_PARTITION_X_FIELD_X_EPISODE
+    minimum_total_opportunity_rows: 500
+    zero_opportunity_action: FAIL_CLOSED
+    below_minimum_total_action: FAIL_FINAL_PANEL_CONFORMANCE
+  label_dependent:
+    minimum_entry_events: 100
+    minimum_non_entry_opportunities: 100
+    capacity_cell_minimum_total: 50
+    capacity_cell_minimum_entry_events: 11
+    capacity_cell_minimum_non_entry_opportunities: 11
+    status_during_f: DEFERRED_UNTIL_POST_F_AUTHORIZED_LABEL_MATERIALIZATION
+    may_block_f: false
+    reason: FIRST_CONFIRMATORY_READ_IS_AUTHORIZED_ONLY_AFTER_F_AND_CANNOT_BE_A_CIRCULAR_F_PREREQUISITE
+    failure_action_at_g1: APPLY_FROZEN_FAIL_CLOSED_OR_CHANNEL_COLLAPSE_RULES
+  negative_sampling_and_weights:
+    status_during_f: RECIPE_BOUND_NOT_APPLIED_WITHOUT_CASE_LABELS
+    cases_retained: ALL
+    controls_per_case: 10
+    deterministic_seed: 20260718
+    application_boundary: POST_F_AUTHORIZED_G1_RISK_SET
+
+g4_boundary:
+  g4_predecision_metadata_processed_operator_only: true
+  g4_entry_or_persistence_labels_read: false
+  g4_realized_citation_effect_read: false
+  g4_raw_ids_emitted: false
+  g4_analytic_open: false
+
+output_contract:
+  root_basename: pivot-feedback-f-final-panel-conformance-v1-20260804
+  report_schema_version: pivot_feedback_f_final_panel_conformance_report.v1
+  receipt_schema_version: pivot_feedback_f_final_panel_conformance_outputs.v1
+  episode_table_schema_version: pivot_feedback_f_final_panel_episode_conformance.v1
+  slot_table_schema_version: pivot_feedback_f_final_panel_slot_support.v1
+  passing_status: PASS_OUTCOME_BLIND_FINAL_PANEL_LEAVEOUT_AND_LABEL_INDEPENDENT_SUPPORT_CONFORMANCE_SEAL_PENDING
+  blocking_status: BLOCKED_FINAL_PANEL_LEAVEOUT_REPLAY_INSUFFICIENT_SHOCK_FAMILY_SUPPORT_NO_F_PASS
+  output_directory_must_be_new: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  receipt_written_last: true
+  independent_verification_required: true
+
+completion_accounting:
+  this_component_is_new_gate: false
+  this_component_alone_may_pass_f: false
+  label_dependent_support_is_not_f_prerequisite: true
+  holdout_byte_seal_after_conformance: PENDING
+  confirmatory_entry_or_persistence_labels_read: 0
+  model_fitted: false
+  g4_open: false
+  pass_f: false
+  pass_g0: false
+
+authorization_after_pass:
+  atomic_partition_assignment: AUTHORIZED_NEXT
+  operator_only_private_holdout_materialization: AUTHORIZED_NEXT
+  holdout_preflight_and_byte_seal_last: AUTHORIZED_NEXT
+  confirmatory_analytic_read: NOT_AUTHORIZED_BEFORE_ATOMIC_F_PASS_SUCCESSOR
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+authorization_after_block:
+  outcome_blind_definition_and_theory_audit: AUTHORIZED_NEXT
+  reserve_reselection_outside_frozen_order: NOT_AUTHORIZED
+  threshold_relaxation: NOT_AUTHORIZED
+  operator_only_private_holdout_materialization: NOT_AUTHORIZED
+  confirmatory_analytic_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This outcome-blind F component replays all aggregate-screen-eligible fields
+  in each frozen primary/reserve order as author-token opportunities with exact predecision focal-author and
+  preexisting-target-active-peer leaveouts, and checks only label-independent
+  support. It does not compute entry or persistence labels, apply case-control
+  sampling or outcome-conditioned support, inspect a confirmatory or G4 effect,
+  emit raw identifiers, fit a model, pass F or G0, establish transport or
+  causality, or establish a scientific effect. Outcome-conditioned support is
+  a frozen G1 runtime prerequisite and is not used as a circular F gate.
