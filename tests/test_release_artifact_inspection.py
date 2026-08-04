@@ -1397,6 +1397,25 @@ def test_release_inspector_rejects_f_aligned_final_panel_repository_paths() -> N
     assert forbidden == sorted(repository_paths)
 
 
+def test_release_inspector_rejects_f_atomic_partition_repository_paths() -> None:
+    inspector = runpy.run_path(str(INSPECT_SCRIPT))
+    repository_paths = {
+        "experiments/configs/pivot_feedback_f_atomic_partition_assignment_v1.yaml",
+        "docs/research/pivot-feedback-current-status-evidence-ledger-v8.md",
+        "experiments/evidence/results/pivot_feedback_f_atomic_partition_assignment_v1_20260804.summary.json",
+        "experiments/evidence/results/pivot_feedback_f_atomic_partition_assignment_v1_20260804.summary.md",
+        "scripts/build_pivot_feedback_f_atomic_partition_assignment_v1.py",
+        "scripts/verify_pivot_feedback_f_atomic_partition_assignment_v1.py",
+    }
+    assert repository_paths <= inspector[
+        "PIVOT_CERTIFIED_D0_MEASUREMENT_REPOSITORY_ONLY_PATHS"
+    ]
+
+    forbidden = inspector["_forbidden_sdist_files"]({"README.md", *repository_paths})
+
+    assert forbidden == sorted(repository_paths)
+
+
 def test_release_inspector_rejects_g0_measurement_precommitment_paths() -> None:
     inspector = runpy.run_path(str(INSPECT_SCRIPT))
     repository_paths = {

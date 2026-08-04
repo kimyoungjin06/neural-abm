@@ -1,0 +1,124 @@
+{
+  "schema_version": "pivot_feedback_f_atomic_partition_assignment_summary.v1",
+  "status": "PASS_OUTCOME_BLIND_ATOMIC_EPISODE_FAMILY_PARTITION_ASSIGNMENT_PRIVATE_HOLDOUT_MATERIALIZATION_AUTHORIZED_NO_F_PASS",
+  "production_artifact": {
+    "root": "/ssd/pivot-feedback-f-atomic-partition-assignment-v1-20260804",
+    "output_receipt_basename": "atomic_partition_assignment.outputs.json",
+    "output_receipt_sha256": "0ddd5ec51d924167b332a2f756b5310c25454e2ad44db5d86859276814c4f2b4",
+    "artifact_tree_sha256": "3ee462cd3b9b77850f2448bb3f17d989a34eb2960a6990b7b86fdb9058795aef",
+    "episode_basename": "atomic_episode_partition_assignment.parquet",
+    "episode_sha256": "169f0bd4bedaf4f34b3dec53214f1393587c6dcc26e0dac7eae60d589e91a17e",
+    "episode_rows": 65,
+    "family_basename": "atomic_family_partition_assignment.parquet",
+    "family_sha256": "4f0444b52a8190ed9e2466e39d235c47a993f67aedf049e7227f9c39393b7158",
+    "family_rows": 29,
+    "partition_basename": "atomic_partition_summary.parquet",
+    "partition_sha256": "0192fecb2c81fe04ad1b2d8d98a6d54ed8039ae851911d247b5e9539905fc768",
+    "partition_rows": 4,
+    "report_basename": "atomic_partition_assignment.json",
+    "report_sha256": "aca2e39f947431890749ef7c734fa21a35c1dccf8e3dbac8f5c886e30306f840"
+  },
+  "repository_bindings": {
+    "config_relative_path": "experiments/configs/pivot_feedback_f_atomic_partition_assignment_v1.yaml",
+    "config_sha256": "d9623fc90af17702fd5938692eb4a5bf9a72818985f8575c8cd7d85d83d35f04",
+    "builder_relative_path": "scripts/build_pivot_feedback_f_atomic_partition_assignment_v1.py",
+    "builder_sha256": "d16773316aa48b2908789c3590c900136844c7b73e5feb470a998c246e5541fb",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_f_atomic_partition_assignment_v1.py",
+    "verifier_sha256": "eb25a0d3527d78032fea6cdebd86afe8b6e628fe92b1cebdf417c4a97b1bfaf5"
+  },
+  "verified_parent": {
+    "root": "/ssd/pivot-feedback-f-aligned-final-panel-conformance-v1-20260804",
+    "receipt_sha256": "222888f538652593c1a26fddf6eb25dca37a2edecd71afe744fa63ac4e695505",
+    "episode_sha256": "121c7b1fd17f9dc9294233806a637b31a68750305817610083a80e54bf2fdc15",
+    "verification_sha256": "b6e50be6c77f1aaf2af23068e1377f46294739d10c5d55be9ce5c6a0950644cb",
+    "episode_rows": 65,
+    "slot_rows": 4
+  },
+  "independent_verification": {
+    "path": "/ssd/pivot-feedback-f-atomic-partition-assignment-v1-20260804.verification.json",
+    "verification_sha256": "c492a99f411f30f8324b778df42aaa38080c3da114983f155cf951a302e88513",
+    "status": "PASS_INDEPENDENT_OUTCOME_BLIND_ATOMIC_EPISODE_FAMILY_PARTITION_ASSIGNMENT_NO_F_PASS",
+    "episode_rows_verified": 65,
+    "family_rows_verified": 29,
+    "partition_rows_verified": 4,
+    "whole_episode_and_family_atomicity_verified": true,
+    "g1_g4_family_disjointness_verified": true,
+    "raw_id_columns_absent": true
+  },
+  "partition_assignment": [
+    {
+      "partition_id": "discovery_calibration",
+      "entry_years": "through_2012",
+      "assigned_episode_count": 0,
+      "assigned_family_count": 0,
+      "sealed": false,
+      "status": "REGISTERED_EMPTY_IN_FROZEN_FINAL_SHOCK_PANEL"
+    },
+    {
+      "partition_id": "g1_empirical_replication",
+      "entry_years": "2013_2016",
+      "assigned_episode_count": 28,
+      "assigned_family_count": 13,
+      "sealed": false,
+      "status": "ASSIGNED_FROM_VERIFIED_FINAL_PANEL"
+    },
+    {
+      "partition_id": "model_selection",
+      "entry_years": "2017_2019",
+      "assigned_episode_count": 0,
+      "assigned_family_count": 0,
+      "sealed": false,
+      "status": "REGISTERED_EMPTY_IN_FROZEN_FINAL_SHOCK_PANEL_ROW_LEVEL_FOLDS_DEFERRED"
+    },
+    {
+      "partition_id": "g4_temporal_holdout",
+      "entry_years": "2020_2022",
+      "followup_through_year": 2025,
+      "assigned_episode_count": 37,
+      "assigned_family_count": 16,
+      "sealed": true,
+      "operator_only": true,
+      "author_cold": true,
+      "status": "ASSIGNED_FROM_VERIFIED_FINAL_PANEL_ROW_LEVEL_ENFORCEMENT_PENDING"
+    }
+  ],
+  "atomicity_accounting": {
+    "response_cohort_offsets": [0, 1, 2],
+    "response_boundary_crossing_episode_rows": 39,
+    "crossing_action": "ASSIGN_WHOLE_EPISODE_BY_REGISTERED_EVENT_YEAR_OR_EXCLUDE",
+    "split_episodes": 0,
+    "split_families": 0,
+    "g1_g4_cross_partition_families": 0
+  },
+  "interpretation": {
+    "empty_model_selection_shock_cell_is_failure": false,
+    "empty_model_selection_reason": "NO_SELECTED_SHOCK_EPISODE_WAS_REGISTERED_IN_2017_2019_AND_NONE_WAS_FABRICATED",
+    "model_selection_fold_recipe_bound": true,
+    "row_level_model_selection_fold_assignment_complete": false,
+    "g4_author_cold_rule_bound": true,
+    "row_level_g4_author_cold_enforcement_complete": false,
+    "private_holdout_materialization_complete": false
+  },
+  "authorization": {
+    "operator_only_private_holdout_materialization": "AUTHORIZED_NEXT",
+    "row_level_g4_author_cold_enforcement": "REQUIRED_DURING_MATERIALIZATION",
+    "explicit_file_list_preflight": "NOT_AUTHORIZED_BEFORE_MATERIALIZATION_SUCCESSOR",
+    "byte_seal_creation": "NOT_AUTHORIZED_BEFORE_PREFLIGHT_SUCCESSOR",
+    "confirmatory_analytic_read": "NOT_AUTHORIZED_BEFORE_F_PASS_SUCCESSOR",
+    "model_selection_score_read": "NOT_AUTHORIZED_BEFORE_E_PASS_AND_PRE_G2_LOCK",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED"
+  },
+  "fail_closed_state": {
+    "atomic_episode_family_partition_assignment_complete": true,
+    "author_token_membership_rows_read": 0,
+    "holdout_paths_enumerated": 0,
+    "holdout_bytes_hashed": 0,
+    "confirmatory_entry_or_persistence_labels_read": 0,
+    "model_score_read": false,
+    "model_fitted": false,
+    "g4_open": false,
+    "pass_f": false,
+    "pass_g0": false
+  }
+}
