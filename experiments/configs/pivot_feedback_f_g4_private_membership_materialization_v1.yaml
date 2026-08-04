@@ -1,0 +1,189 @@
+schema_version: pivot_feedback_f_g4_private_membership_materialization.v1
+label: pivot_feedback_f_g4_private_membership_materialization_v1
+mode: F_PHASE_OPERATOR_ONLY_G4_PREDECISION_MEMBERSHIP_AND_AUTHOR_COLD_GUARD_NO_OUTCOME_READ
+status: FROZEN_G4_PRIVATE_MEMBERSHIP_MATERIALIZATION_PENDING_PRODUCTION_NO_F_PASS
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_f_atomic_partition_assignment_v1.yaml
+  sha256: d9623fc90af17702fd5938692eb4a5bf9a72818985f8575c8cd7d85d83d35f04
+  required_schema_version: pivot_feedback_f_atomic_partition_assignment.v1
+  required_authorization: operator_only_private_holdout_materialization
+  required_value: AUTHORIZED_NEXT
+  mutation_allowed: false
+
+bound_design_sources:
+  atomic_partition_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_f_atomic_partition_assignment_v1_20260804.summary.json
+    sha256: a1c57c541dd7f7a6042e524d6340da2bcd1246eb48021958bb60ddd72e313b0d
+    required_schema_version: pivot_feedback_f_atomic_partition_assignment_summary.v1
+    required_status: PASS_OUTCOME_BLIND_ATOMIC_EPISODE_FAMILY_PARTITION_ASSIGNMENT_PRIVATE_HOLDOUT_MATERIALIZATION_AUTHORIZED_NO_F_PASS
+    mutation_allowed: false
+  scientific_sections:
+    relative_path: experiments/configs/pivot_feedback_f_pre_g1_scientific_sections_v1.yaml
+    sha256: cc58a651667b7cecb4cc61d96b6700aa665f1121c7c0b0a254368fb0299041dd
+    required_schema_version: pivot_feedback_f_pre_g1_scientific_sections.v1
+    required_section: partition_and_atomic_fold_resolution
+    mutation_allowed: false
+
+verified_atomic_partition_parent:
+  expected_root_basename: pivot-feedback-f-atomic-partition-assignment-v1-20260804
+  receipt_basename: atomic_partition_assignment.outputs.json
+  receipt_sha256: 0ddd5ec51d924167b332a2f756b5310c25454e2ad44db5d86859276814c4f2b4
+  receipt_schema_version: pivot_feedback_f_atomic_partition_assignment_outputs.v1
+  required_status: PASS_OUTCOME_BLIND_ATOMIC_EPISODE_FAMILY_PARTITION_ASSIGNMENT_PRIVATE_HOLDOUT_MATERIALIZATION_AUTHORIZED_NO_F_PASS
+  episode_basename: atomic_episode_partition_assignment.parquet
+  episode_sha256: 169f0bd4bedaf4f34b3dec53214f1393587c6dcc26e0dac7eae60d589e91a17e
+  episode_schema_version: pivot_feedback_f_atomic_episode_partition_assignment.v1
+  episode_rows: 65
+  family_basename: atomic_family_partition_assignment.parquet
+  family_sha256: 4f0444b52a8190ed9e2466e39d235c47a993f67aedf049e7227f9c39393b7158
+  family_schema_version: pivot_feedback_f_atomic_family_partition_assignment.v1
+  family_rows: 29
+  partition_basename: atomic_partition_summary.parquet
+  partition_sha256: 0192fecb2c81fe04ad1b2d8d98a6d54ed8039ae851911d247b5e9539905fc768
+  partition_schema_version: pivot_feedback_f_atomic_partition_summary.v1
+  partition_rows: 4
+  verification_path: /ssd/pivot-feedback-f-atomic-partition-assignment-v1-20260804.verification.json
+  verification_sha256: c492a99f411f30f8324b778df42aaa38080c3da114983f155cf951a302e88513
+  verification_status: PASS_INDEPENDENT_OUTCOME_BLIND_ATOMIC_EPISODE_FAMILY_PARTITION_ASSIGNMENT_NO_F_PASS
+
+verified_final_panel_parent:
+  expected_root_basename: pivot-feedback-f-aligned-final-panel-conformance-v1-20260804
+  receipt_basename: aligned_final_panel_conformance.outputs.json
+  receipt_sha256: 222888f538652593c1a26fddf6eb25dca37a2edecd71afe744fa63ac4e695505
+  receipt_schema_version: pivot_feedback_f_aligned_final_panel_conformance_outputs.v1
+  required_status: PASS_OUTCOME_BLIND_ALIGNED_FINAL_PANEL_LEAVEOUT_AND_SUPPORT_CONFORMANCE_ATOMIC_PARTITION_AUTHORIZED_NO_F_PASS
+  episode_basename: aligned_final_panel_episode_conformance.parquet
+  episode_sha256: 121c7b1fd17f9dc9294233806a637b31a68750305817610083a80e54bf2fdc15
+  episode_schema_version: pivot_feedback_f_aligned_final_panel_episode_conformance.v1
+  episode_rows: 65
+  slot_basename: aligned_final_panel_slot_support.parquet
+  slot_sha256: f525b9308fe62659efaa8b2b32aa1cf70b05ad6468de03da620fd7df944ea52c
+  slot_schema_version: pivot_feedback_f_aligned_final_panel_slot_support.v1
+  slot_rows: 4
+
+normalized_inputs:
+  cutoff_work_metadata:
+    expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    rows: 492293206
+  author_history_events:
+    expected_root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    rows: 779630258
+
+private_membership_contract:
+  partition_id: g4_temporal_holdout
+  field_id: 27
+  entry_years: [2020, 2021, 2022]
+  episode_count: 37
+  family_count: 16
+  expected_risk_opportunity_rows: 217839267
+  analysis_unit: CURRENT_SNAPSHOT_OPENALEX_AUTHOR_TOKEN_X_G4_EPISODE
+  eligible_opportunity:
+    predecision_focal_field_activity_offsets: [-3, -2, -1]
+    pre_entry_exact_target_topic_work_count: 0
+  eligible_work_type_codes: [1, 2, 3, 4, 7, 16, 18, 21]
+  allowed_temporal_dispositions: [2, 3]
+  reference_offsets: [-6, -5, -4]
+  recent_offsets: [-3, -2, -1]
+  prior_collaboration_offsets: [-5, -4, -3, -2, -1]
+  incumbent_rule: AUTHOR_FIRST_EXACT_TARGET_TOPIC_WORK_STRICTLY_BEFORE_T_MINUS_6
+  attention_work_rule: EVERY_LINKED_AUTHOR_IS_PRE_SIGNAL_INCUMBENT
+  qualifying_peer_rule: PREEXISTING_COLLABORATOR_WITH_EXACT_TARGET_TOPIC_WORK_BY_T_MINUS_1
+  network_leaveout_rule: EXCLUDE_ATTENTION_WORK_IF_AUTHORED_BY_FOCAL_OR_ANY_QUALIFYING_PEER
+  graph_materialization: TARGET_ACTIVE_PEER_SEMIJOIN_WITHOUT_UNBOUNDED_ALL_PAIR_GRAPH
+  team_cap: NONE
+  raw_author_tokens_private: true
+  raw_work_ids_emitted: false
+  entry_or_persistence_labels_emitted: false
+  postdecision_target_events_emitted: false
+  realized_citation_effects_emitted: false
+  model_scores_emitted: false
+
+author_cold_guard_contract:
+  guard_unit: DISTINCT_G4_RISK_OPPORTUNITY_AUTHOR_TOKEN
+  exact_projection_of_private_risk_rows: true
+  duplicate_author_tokens_forbidden: true
+  exclude_from_discovery_rows: true
+  exclude_from_g1_fit_rows: true
+  exclude_from_model_selection_rows: true
+  guard_materialization_required_in_same_atomic_output: true
+  future_earlier_row_builds_must_anti_join_guard: true
+  earlier_row_filter_application_status: PENDING_FUTURE_ROW_MATERIALIZATION
+  natural_person_identity_claim: FORBIDDEN_CURRENT_SNAPSHOT_AUTHOR_TOKEN_ONLY
+
+resource_preflight:
+  minimum_available_disk_bytes: 274877906944
+  minimum_available_memory_bytes: 137438953472
+  minimum_nofile_soft_limit: 65536
+  scratch_and_output_same_filesystem: true
+  source_rows_may_not_open_before_preflight_pass: true
+
+output_contract:
+  root_basename: pivot-feedback-f-g4-private-membership-v1-20260804
+  report_schema_version: pivot_feedback_f_g4_private_membership_materialization_report.v1
+  receipt_schema_version: pivot_feedback_f_g4_private_membership_materialization_outputs.v1
+  risk_schema_version: pivot_feedback_f_g4_private_risk_measurement.v1
+  guard_schema_version: pivot_feedback_f_g4_author_cold_guard.v1
+  episode_schema_version: pivot_feedback_f_g4_private_episode_manifest.v1
+  passing_status: PASS_OPERATOR_ONLY_G4_PREDECISION_MEMBERSHIP_AND_AUTHOR_COLD_GUARD_REMAINING_PRIVATE_PACKAGE_PENDING_NO_F_PASS
+  output_directory_must_be_new: true
+  output_directory_mode: "0700"
+  nested_directory_mode: "0700"
+  output_file_mode: "0600"
+  risk_file_count: 37
+  raw_author_tokens_repository_forbidden: true
+  receipt_written_last: true
+  independent_verification_required: true
+
+completion_accounting:
+  this_component_is_new_gate: false
+  this_component_alone_may_pass_f: false
+  g4_private_predecision_membership_complete: false
+  g4_author_cold_guard_complete: false
+  earlier_partition_guard_application_complete: false
+  complete_private_g4_artifact_set: false
+  entry_or_persistence_labels_materialized: false
+  postdecision_target_source_materialized: false
+  holdout_preflight_complete: false
+  holdout_byte_seal_complete: false
+  confirmatory_or_holdout_outcome_rows_read: 0
+  model_fitted: false
+  g4_open: false
+  pass_f: false
+  pass_g0: false
+
+authorization_after_pass:
+  remaining_private_predecision_feature_and_postdecision_source_materialization: AUTHORIZED_NEXT
+  future_earlier_partition_anti_join_application: REQUIRED_WHEN_ROWS_ARE_MATERIALIZED
+  explicit_file_list_preflight: NOT_AUTHORIZED_INCOMPLETE_PRIVATE_G4_ARTIFACT_SET
+  byte_seal_creation: NOT_AUTHORIZED_WITHOUT_PREFLIGHT
+  confirmatory_analytic_read: NOT_AUTHORIZED_BEFORE_F_PASS_SUCCESSOR
+  model_selection_score_read: NOT_AUTHORIZED_BEFORE_E_PASS_AND_PRE_G2_LOCK
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This operator-only component materializes the exact row-level predecision
+  risk and network-leaveout measurement for the 37 field-27 G4 episodes and an
+  exact distinct author-token cold-exclusion guard. It writes raw author tokens
+  only under a private mode-0700 output and emits no raw work IDs, entry or
+  persistence labels, postdecision target events, realized citation effects,
+  or model scores. The guard is ready for mandatory anti-join application when
+  earlier analytic rows are later materialized, but no such earlier row set
+  currently exists. This component is a real membership foundation, not the
+  complete private G4 scoring package: preflight and byte sealing remain
+  unauthorized, F and G0 do not pass, G4 stays unopened, and no association,
+  null, prediction, transport result, causality, or scientific effect is
+  established.
