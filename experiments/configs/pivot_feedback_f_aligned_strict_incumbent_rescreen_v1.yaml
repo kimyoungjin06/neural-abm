@@ -1,0 +1,174 @@
+schema_version: pivot_feedback_f_aligned_strict_incumbent_rescreen.v1
+label: pivot_feedback_f_aligned_strict_incumbent_rescreen_v1
+mode: F_PHASE_OUTCOME_BLIND_ALIGNED_ALL_TOPIC_PRIMARY_RESCREEN_COMPONENT_NOT_A_GATE
+status: FROZEN_ALIGNED_STRICT_INCUMBENT_RESCREEN_PENDING_PRODUCTION_NO_F_PASS
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_f_definition_theory_audit_v1.yaml
+  sha256: 644a4f06965884aad96947033a0824f02d6cab064a5727a2608653e909ab51a4
+  required_schema_version: pivot_feedback_f_definition_theory_audit.v1
+  required_authorization: strict_incumbent_aligned_all_topic_rescreen
+  required_value: AUTHORIZED_NEXT
+  mutation_allowed: false
+
+verified_audit_parent:
+  expected_root_basename: pivot-feedback-f-definition-theory-audit-v1-20260804
+  receipt_basename: definition_theory_audit.outputs.json
+  receipt_sha256: c57a7c2909d9ac8fd2c57bb4ca4f8f9b0c848ce3685965fbbc9afc612635af27
+  receipt_schema_version: pivot_feedback_f_definition_theory_audit_outputs.v1
+  required_status: PASS_OUTCOME_BLIND_DEFINITION_THEORY_AUDIT_ALIGNED_PRIMARY_RESCREEN_AUTHORIZED_NO_F_PASS
+  verification_path: /ssd/pivot-feedback-f-definition-theory-audit-v1-20260804.verification.json
+  verification_sha256: 57df13dd47280175a25c80920aaa851f0c3f48fd1ebda497cf3b7df6d7569939
+  verification_status: PASS_INDEPENDENT_DEFINITION_THEORY_AUDIT_RAW_COMPOSITION_REPLAY_NO_F_PASS
+
+frozen_assignment_parent:
+  expected_root_basename: pivot-feedback-f-field-episode-assignment-v1-20260803
+  receipt_basename: field_episode_assignment.outputs.json
+  receipt_sha256: 19550868b92a97c178917f6b0629e73a354cdce7508df880c94eacb782edfdc4
+  receipt_schema_version: pivot_feedback_f_field_episode_assignment_outputs.v1
+  required_status: PASS_OUTCOME_BLIND_FIELD_AND_EPISODE_ASSIGNMENT_COMPONENT_FINAL_PANEL_AND_SEAL_PENDING
+  slot_basename: slot_assignment.parquet
+  slot_sha256: e3408448639ca867be98e8e9e4698eda58e2b5d53747a9d01b402f530b83c4fe
+  slot_schema_version: pivot_feedback_f_slot_assignment.v1
+  slot_rows: 4
+  candidate_basename: attention_shock_candidates.parquet
+  candidate_sha256: a06481cbfec94051eb5380399a9c6e7b59ab6f4bcdcaf79923f39fa0c300a34e
+  candidate_schema_version: pivot_feedback_f_attention_shock_candidate.v1
+  candidate_rows: 1744
+
+predecessor_episode_closure:
+  path: /ssd/pivot-feedback-f-final-panel-conformance-v1-20260804/final_panel_episode_conformance.parquet
+  sha256: 333c9b27f4dd187e5506ba935f502739d4cc8ae3471cce12a9f7de36a4c9eb38
+  schema_version: pivot_feedback_f_final_panel_episode_conformance.v1
+  rows: 194
+
+normalized_inputs:
+  cutoff_work_metadata:
+    expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    rows: 492293206
+  author_history_events:
+    expected_root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    artifact_bytes: 5006392019
+    rows: 779630258
+  taxonomy_recovery:
+    expected_basename: work_openalex_taxonomy_primary.parquet
+    sha256: ba6b56546ce995a036ffaaf2b99334120be2baf50e30ae8d7fd7ed309e74bb9d
+    rows: 58904845
+    schema_version_column: science_atlas_openalex_work_taxonomy_v0
+    package_version: science_atlas_openalex_work_taxonomy_v0_20260526
+    taxonomy_source: openalex_20260330_primary_topic_projection
+    distinct_topic_rows: 4516
+    distinct_field_rows: 26
+    distinct_subfield_rows: 252
+    manifest_path: /home/kimyoungjin06/Desktop/SSD/science-atlas-runtime-20260719/science_atlas_openalex_work_taxonomy_v0_20260526/MANIFEST.json
+    manifest_sha256: 8dc7f74cad4880e5aa040eb72c2ca811e1ccbb9484cd7f4c4b52c40ad1ec566f
+    recovery_rule: ACCEPT_ONLY_WITH_EXACT_CLOSURE_AGAINST_ALL_FROZEN_AGGREGATE_AND_D0_MAPPING_OVERLAPS
+  d0_taxonomy_overlap:
+    path: /home/kimyoungjin06/Desktop/SSD/pivot-feedback-d0-measurement-abi-reselection-v1-full-20260724/author_linked_topic_year_attention.parquet
+    sha256: 1804e421e02693891fb0b72e3b7da493945e1f9f36666cd6c2b44b6d2ae40f49
+    rows: 106951
+    schema_version: pivot_feedback_d0_measurement_abi_topic_year_attention.v1
+
+frozen_field_attempts:
+  source: VERIFIED_SLOT_ASSIGNMENT_NOMINAL_PRIMARY_THEN_TWO_RESERVES
+  periods:
+    g1_empirical_replication: {decision_year_start: 2013, decision_year_end: 2016}
+    g4_temporal_holdout: {decision_year_start: 2020, decision_year_end: 2022}
+  expected:
+    - {slot_id: g1_domain_slot_01, temporal_partition_id: g1_empirical_replication, field_order: [25, 17, 16]}
+    - {slot_id: g1_domain_slot_02, temporal_partition_id: g1_empirical_replication, field_order: [32, 18, 20]}
+    - {slot_id: g1_domain_slot_03, temporal_partition_id: g1_empirical_replication, field_order: [28, 11, 24]}
+    - {slot_id: g4_domain_author_cold_slot, temporal_partition_id: g4_temporal_holdout, field_order: [36, 29, 27]}
+  field_outside_frozen_order: FORBIDDEN
+
+primary_rescreen:
+  estimand_id: CLOSED_PRE_SIGNAL_INCUMBENT_TEAM_ATTENTION_V1
+  attention_unit: DISTINCT_ELIGIBLE_AUTHOR_LINKED_WORK
+  incumbent_rule: AUTHOR_FIRST_EXACT_TARGET_TOPIC_WORK_STRICTLY_BEFORE_T_MINUS_6
+  primary_work_inclusion: EVERY_LINKED_AUTHOR_IS_PRE_SIGNAL_INCUMBENT
+  candidate_universe: ALL_ELIGIBLE_AUTHOR_LINKED_PRIMARY_TOPICS_IN_EACH_BOUND_FIELD_X_DECISION_YEAR
+  field_ids_from_frozen_attempts_only: true
+  eligible_work_type_codes: [1, 2, 3, 4, 7, 16, 18, 21]
+  allowed_temporal_dispositions: [2, 3]
+  earliest_window_year: 2007
+  latest_predecision_year: 2021
+  reference_offsets: [-6, -5, -4]
+  recent_offsets: [-3, -2, -1]
+  positive_reference_required_for_normalization_universe: true
+  acceleration: LOG1P_RECENT_ANNUAL_MEAN_MINUS_LOG1P_REFERENCE_ANNUAL_MEAN
+  normalization_group: SAME_STRICT_PRIMARY_WORK_UNIVERSE_X_PRIMARY_FIELD_X_DECISION_YEAR_ACROSS_ALL_ELIGIBLE_TOPICS
+  modified_z_multiplier: 0.6744897501960817
+  modified_z_threshold_inclusive: 3.0
+  candidate_requires_recent_greater_than_reference: true
+  candidate_requires_positive_acceleration: true
+  mad_zero_or_nonfinite_action: NO_SURGE_EXCLUDE_AND_REPORT
+  minimum_distinct_current_snapshot_subfield_families: 3
+  field_selection: FIRST_FIELD_IN_FROZEN_ORDER_WITH_AT_LEAST_MINIMUM_FAMILIES
+  aggregate_count_or_normalization_reuse: FORBIDDEN
+  threshold_relaxation: false
+
+output_contract:
+  root_basename: pivot-feedback-f-aligned-strict-incumbent-rescreen-v1-20260804
+  report_schema_version: pivot_feedback_f_aligned_strict_incumbent_rescreen_report.v1
+  receipt_schema_version: pivot_feedback_f_aligned_strict_incumbent_rescreen_outputs.v1
+  surface_schema_version: pivot_feedback_f_aligned_strict_incumbent_surface.v1
+  candidate_schema_version: pivot_feedback_f_aligned_strict_incumbent_candidate.v1
+  attempt_schema_version: pivot_feedback_f_aligned_strict_incumbent_field_attempt.v1
+  slot_schema_version: pivot_feedback_f_aligned_strict_incumbent_slot_assignment.v1
+  closure_schema_version: pivot_feedback_f_aligned_strict_incumbent_predecessor_closure.v1
+  passing_status: PASS_OUTCOME_BLIND_STRICT_INCUMBENT_ALIGNED_ALL_TOPIC_RESCREEN_FINAL_LEAVEOUT_REPLAY_AUTHORIZED_NO_F_PASS
+  blocking_status: BLOCKED_STRICT_INCUMBENT_ALIGNED_RESCREEN_INSUFFICIENT_FROZEN_SLOT_FAMILY_SUPPORT_NO_F_PASS
+  output_directory_must_be_new: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  raw_author_or_work_ids_forbidden: true
+  receipt_written_last: true
+  independent_verification_required: true
+
+completion_accounting:
+  confirmatory_entry_or_persistence_labels_read: 0
+  realized_citation_effect_read: false
+  holdout_byte_seal_complete: false
+  model_fitted: false
+  g4_analytic_open: false
+  pass_f: false
+  pass_g0: false
+
+authorization_after_pass:
+  aligned_strict_incumbent_final_panel_leaveout_replay: AUTHORIZED_NEXT
+  atomic_partition_assignment: NOT_AUTHORIZED_BEFORE_FINAL_PANEL_CONFORMANCE
+  operator_only_private_holdout_materialization: NOT_AUTHORIZED
+  confirmatory_analytic_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+authorization_after_block:
+  definition_family_or_threshold_relaxation: NOT_AUTHORIZED
+  field_outside_frozen_order: NOT_AUTHORIZED
+  confirmatory_analytic_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This outcome-blind successor recomputes the closed pre-signal incumbent-team
+  attention construct across every eligible topic in each frozen field and
+  decision-year attempt, standardizes it only within that same strict universe,
+  applies the unchanged z>=3, positive-growth, and three-current-snapshot-family
+  rules, and selects only the first conforming field in each frozen order. It
+  may authorize a new outcome-blind final-panel leaveout replay, but it does not
+  reuse aggregate normalization, substitute a looser attention definition,
+  inspect entry, persistence, realized citation effects, model scores, or G4
+  outcomes, pass F or G0, or establish a null, association, prediction,
+  transport, causality, or scientific effect.
