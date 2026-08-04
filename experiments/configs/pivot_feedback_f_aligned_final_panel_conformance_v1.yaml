@@ -1,0 +1,202 @@
+schema_version: pivot_feedback_f_aligned_final_panel_conformance.v1
+label: pivot_feedback_f_aligned_final_panel_conformance_v1
+mode: F_PHASE_OUTCOME_BLIND_ALIGNED_FINAL_PANEL_LEAVEOUT_AND_SUPPORT_COMPONENT_NOT_A_GATE
+status: FROZEN_ALIGNED_FINAL_PANEL_CONFORMANCE_PENDING_PRODUCTION_NO_F_PASS
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_f_aligned_strict_incumbent_rescreen_v1.yaml
+  sha256: 795f625dac2400b892c7c5139b0b99641ec65529c29566b66b3273bc952175ee
+  required_schema_version: pivot_feedback_f_aligned_strict_incumbent_rescreen.v1
+  required_authorization: aligned_strict_incumbent_final_panel_leaveout_replay
+  required_value: AUTHORIZED_NEXT
+  mutation_allowed: false
+
+bound_design_sources:
+  aligned_rescreen_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_f_aligned_strict_incumbent_rescreen_v1_20260804.summary.json
+    sha256: 069809550073b05ce3dcf58a559e3ed3e24a1563f951f190f6643b95219a4ed3
+    required_schema_version: pivot_feedback_f_aligned_strict_incumbent_rescreen_summary.v1
+    required_status: PASS_OUTCOME_BLIND_STRICT_INCUMBENT_ALIGNED_ALL_TOPIC_RESCREEN_FINAL_LEAVEOUT_REPLAY_AUTHORIZED_NO_F_PASS
+    mutation_allowed: false
+  scientific_sections:
+    relative_path: experiments/configs/pivot_feedback_f_pre_g1_scientific_sections_v1.yaml
+    sha256: cc58a651667b7cecb4cc61d96b6700aa665f1121c7c0b0a254368fb0299041dd
+    required_schema_version: pivot_feedback_f_pre_g1_scientific_sections.v1
+    mutation_allowed: false
+  risk_weight_support_policy:
+    relative_path: experiments/configs/pivot_feedback_g0_risk_set_weight_support_precommitment_v1.yaml
+    sha256: 8f38863eba1880ee375d982cbb2ac094d3ae64028ee651e92b59f13d0189f26e
+    required_schema_version: pivot_feedback_g0_risk_set_weight_support_precommitment.v1
+    mutation_allowed: false
+  predecessor_final_panel_method:
+    relative_path: experiments/configs/pivot_feedback_f_final_panel_conformance_v1.yaml
+    sha256: ae107652d6b98a4420706dc1b1e2e6f508d08c87fe4332c8fdb3fcdbb9539b33
+    required_schema_version: pivot_feedback_f_final_panel_conformance.v1
+    mutation_allowed: false
+    reused_sections:
+      - RISK_OPPORTUNITY_DEFINITION
+      - FOCAL_AND_PREEXISTING_PEER_LEAVEOUT
+      - LABEL_INDEPENDENT_SUPPORT
+    superseded_sections:
+      - AGGREGATE_SCREEN_EPISODE_SOURCE
+      - AGGREGATE_FIELD_YEAR_MEDIAN_MAD
+      - AGGREGATE_SCREEN_RESERVE_RECONCILIATION
+
+runtime_helper:
+  relative_path: scripts/build_pivot_feedback_f_final_panel_conformance_v1.py
+  sha256: 6466ca774e0d455ce8c73e6f541547b658c63d2a3bf049c17aa076c7d27def19
+  role: REUSE_ONLY_RAW_OUTCOME_BLIND_RISK_AND_LEAVEOUT_SQL_REPLAY
+  mutation_allowed: false
+
+verified_aligned_rescreen_parent:
+  expected_root_basename: pivot-feedback-f-aligned-strict-incumbent-rescreen-v1-20260804
+  receipt_basename: aligned_strict_incumbent_rescreen.outputs.json
+  receipt_sha256: f68ce5b7a9708a166da1b5f6a10fc2a0ca4e1eaa316b82babbdaf8183870f9c3
+  receipt_schema_version: pivot_feedback_f_aligned_strict_incumbent_rescreen_outputs.v1
+  required_status: PASS_OUTCOME_BLIND_STRICT_INCUMBENT_ALIGNED_ALL_TOPIC_RESCREEN_FINAL_LEAVEOUT_REPLAY_AUTHORIZED_NO_F_PASS
+  candidate_basename: aligned_strict_candidates.parquet
+  candidate_sha256: 812628d717f230c8b3cdb6834c4d48c084f4727dd04e6b61c593e22fbc62c136
+  candidate_schema_version: pivot_feedback_f_aligned_strict_incumbent_candidate.v1
+  candidate_rows: 99
+  retained_candidate_rows: 65
+  slot_basename: aligned_slot_assignment.parquet
+  slot_sha256: 46526381143f1bde6fc0c04dd94eed5647a3449c12d44c66b2346a989f9c9e85
+  slot_schema_version: pivot_feedback_f_aligned_strict_incumbent_slot_assignment.v1
+  slot_rows: 4
+  verification_path: /ssd/pivot-feedback-f-aligned-strict-incumbent-rescreen-v1-20260804.verification.json
+  verification_sha256: 0781dae7e255c7d15d173ee66a571338a48413b9a8a73ef0a2521826a18319fa
+  verification_status: PASS_INDEPENDENT_STRICT_INCUMBENT_ALIGNED_ALL_TOPIC_RESCREEN_NO_F_PASS
+
+normalized_inputs:
+  cutoff_work_metadata:
+    expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    rows: 492293206
+  author_history_events:
+    expected_root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    artifact_bytes: 5006392019
+    rows: 779630258
+
+panel_contract:
+  episode_source: RETAINED_ALIGNED_STRICT_INCUMBENT_CANDIDATES_ONLY
+  selected_fields_fixed_by_verified_aligned_rescreen: [16, 32, 11, 27]
+  selected_field_replacement_during_leaveout: FORBIDDEN
+  later_reserve_fallback_after_aligned_selection: FORBIDDEN
+  analysis_unit: CURRENT_SNAPSHOT_OPENALEX_AUTHOR_TOKEN_X_RETAINED_TOPIC_X_DECISION_YEAR
+  eligible_opportunity:
+    predecision_focal_field_activity_offsets: [-3, -2, -1]
+    pre_entry_target_topic_work_count: 0
+    minimum_history_beyond_activity: NONE
+  eligible_work_type_codes: [1, 2, 3, 4, 7, 16, 18, 21]
+  allowed_temporal_dispositions: [2, 3]
+  team_cap: NONE
+  reference_offsets: [-6, -5, -4]
+  recent_offsets: [-3, -2, -1]
+  prior_collaboration_offsets: [-5, -4, -3, -2, -1]
+  incumbent_rule: AUTHOR_FIRST_EXACT_TARGET_TOPIC_WORK_STRICTLY_BEFORE_T_MINUS_6
+  attention_work_rule: EVERY_LINKED_AUTHOR_IS_PRE_SIGNAL_INCUMBENT
+  focal_leaveout_rule: EXCLUDE_ATTENTION_WORK_IF_AUTHORED_BY_FOCAL_AUTHOR
+  qualifying_peer_rule: PREEXISTING_COLLABORATOR_WITH_EXACT_TARGET_TOPIC_WORK_BY_T_MINUS_1
+  network_leaveout_rule: EXCLUDE_ATTENTION_WORK_IF_AUTHORED_BY_FOCAL_OR_ANY_QUALIFYING_PEER
+  graph_materialization: TARGET_ACTIVE_PEER_SEMIJOIN_WITHOUT_UNBOUNDED_ALL_PAIR_GRAPH
+  aligned_screen_normalization:
+    location_and_scale: REUSE_BOUND_STRICT_INCUMBENT_FIELD_YEAR_MEDIAN_AND_MAD
+    reason: EPISODES_WERE_PRESELECTED_FROM_THE_SAME_ALL_TOPIC_STRICT_INCUMBENT_UNIVERSE
+    aggregate_location_or_scale_reuse: FORBIDDEN
+    modified_z_multiplier: 0.6744897501960817
+    threshold_inclusive: 3.0
+    threshold_relaxation: false
+  final_slot_requires_leaveout_surge_subfield_families: 3
+  output_contains_raw_author_or_work_ids: false
+
+support_replay:
+  label_independent:
+    unit: ANALYSIS_PARTITION_X_FIELD_X_EPISODE
+    minimum_total_opportunity_rows: 500
+    zero_opportunity_action: FAIL_CLOSED
+    below_minimum_total_action: FAIL_FINAL_PANEL_CONFORMANCE
+    every_episode_must_pass: true
+  label_dependent:
+    minimum_entry_events: 100
+    minimum_non_entry_opportunities: 100
+    capacity_cell_minimum_total: 50
+    capacity_cell_minimum_entry_events: 11
+    capacity_cell_minimum_non_entry_opportunities: 11
+    status_during_f: DEFERRED_UNTIL_POST_F_AUTHORIZED_LABEL_MATERIALIZATION
+    may_block_f: false
+    reason: FIRST_CONFIRMATORY_READ_IS_AUTHORIZED_ONLY_AFTER_F_AND_CANNOT_BE_A_CIRCULAR_F_PREREQUISITE
+  negative_sampling_and_weights:
+    status_during_f: RECIPE_BOUND_NOT_APPLIED_WITHOUT_CASE_LABELS
+    cases_retained: ALL
+    controls_per_case: 10
+    deterministic_seed: 20260718
+    application_boundary: POST_F_AUTHORIZED_G1_RISK_SET
+
+g4_boundary:
+  g4_predecision_metadata_processed_operator_only: true
+  g4_entry_or_persistence_labels_read: false
+  g4_realized_citation_effect_read: false
+  g4_raw_ids_emitted: false
+  g4_analytic_open: false
+
+output_contract:
+  root_basename: pivot-feedback-f-aligned-final-panel-conformance-v1-20260804
+  report_schema_version: pivot_feedback_f_aligned_final_panel_conformance_report.v1
+  receipt_schema_version: pivot_feedback_f_aligned_final_panel_conformance_outputs.v1
+  episode_schema_version: pivot_feedback_f_aligned_final_panel_episode_conformance.v1
+  slot_schema_version: pivot_feedback_f_aligned_final_panel_slot_support.v1
+  passing_status: PASS_OUTCOME_BLIND_ALIGNED_FINAL_PANEL_LEAVEOUT_AND_SUPPORT_CONFORMANCE_ATOMIC_PARTITION_AUTHORIZED_NO_F_PASS
+  blocking_status: BLOCKED_ALIGNED_FINAL_PANEL_LEAVEOUT_OR_SUPPORT_CONFORMANCE_NO_F_PASS
+  output_directory_must_be_new: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  raw_author_or_work_ids_forbidden: true
+  receipt_written_last: true
+  independent_verification_required: true
+
+completion_accounting:
+  this_component_is_new_gate: false
+  this_component_alone_may_pass_f: false
+  label_dependent_support_is_not_f_prerequisite: true
+  holdout_byte_seal_complete: false
+  confirmatory_entry_or_persistence_labels_read: 0
+  model_fitted: false
+  g4_open: false
+  pass_f: false
+  pass_g0: false
+
+authorization_after_pass:
+  atomic_partition_assignment: AUTHORIZED_NEXT
+  operator_only_private_holdout_materialization: NOT_AUTHORIZED_BEFORE_ATOMIC_PARTITION_SUCCESSOR
+  confirmatory_analytic_read: NOT_AUTHORIZED_BEFORE_ATOMIC_F_PASS_SUCCESSOR
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+authorization_after_block:
+  outcome_blind_conformance_diagnosis: AUTHORIZED_NEXT
+  definition_family_or_threshold_relaxation: NOT_AUTHORIZED
+  selected_field_replacement: NOT_AUTHORIZED
+  confirmatory_analytic_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This outcome-blind component replays focal and preexisting-peer leaveout for
+  the 65 candidates selected by the verified all-topic strict-incumbent screen,
+  retains the aligned field-year normalization and unchanged support and
+  three-family rules, and does not replace a selected field. It may authorize
+  atomic partition assignment if every selected slot conforms, but it does not
+  inspect entry, persistence, realized citation effects, model scores, private
+  holdout bytes, or G4 outcomes; pass F or G0; or establish a null,
+  association, prediction, transport, causality, or scientific effect.

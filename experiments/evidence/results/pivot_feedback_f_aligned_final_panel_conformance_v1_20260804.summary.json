@@ -1,0 +1,129 @@
+{
+  "schema_version": "pivot_feedback_f_aligned_final_panel_conformance_summary.v1",
+  "status": "PASS_OUTCOME_BLIND_ALIGNED_FINAL_PANEL_LEAVEOUT_AND_SUPPORT_CONFORMANCE_ATOMIC_PARTITION_AUTHORIZED_NO_F_PASS",
+  "production_artifact": {
+    "root": "/ssd/pivot-feedback-f-aligned-final-panel-conformance-v1-20260804",
+    "output_receipt_basename": "aligned_final_panel_conformance.outputs.json",
+    "output_receipt_sha256": "222888f538652593c1a26fddf6eb25dca37a2edecd71afe744fa63ac4e695505",
+    "artifact_tree_sha256": "07699709acdfb147a05d1e34222a4474b0ffbaf748f5113ed88db429349580e2",
+    "episode_basename": "aligned_final_panel_episode_conformance.parquet",
+    "episode_sha256": "121c7b1fd17f9dc9294233806a637b31a68750305817610083a80e54bf2fdc15",
+    "episode_rows": 65,
+    "slot_basename": "aligned_final_panel_slot_support.parquet",
+    "slot_sha256": "f525b9308fe62659efaa8b2b32aa1cf70b05ad6468de03da620fd7df944ea52c",
+    "slot_rows": 4,
+    "report_basename": "aligned_final_panel_conformance.json",
+    "report_sha256": "1fa9986c519bd87ce15e08c9d08c018f2d7029841ff503c56f739a0beeae4653"
+  },
+  "repository_bindings": {
+    "config_relative_path": "experiments/configs/pivot_feedback_f_aligned_final_panel_conformance_v1.yaml",
+    "config_sha256": "69f44a676adc7a503ea40baadbf869986993169955a86ed9ec8aab86cdd9ee62",
+    "builder_relative_path": "scripts/build_pivot_feedback_f_aligned_final_panel_conformance_v1.py",
+    "builder_sha256": "29e5585dac3841d4290a4676417eb2caed02bed487caf8ad9cb9e4ea5dd3b4bb",
+    "runtime_helper_relative_path": "scripts/build_pivot_feedback_f_final_panel_conformance_v1.py",
+    "runtime_helper_sha256": "6466ca774e0d455ce8c73e6f541547b658c63d2a3bf049c17aa076c7d27def19",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_f_aligned_final_panel_conformance_v1.py",
+    "verifier_sha256": "5ecc32b0bed12ec7d09f411fe2a4cfed623402d9d27be1d8910a61216b3cdafa"
+  },
+  "independent_verification": {
+    "path": "/ssd/pivot-feedback-f-aligned-final-panel-conformance-v1-20260804.verification.json",
+    "verification_sha256": "b6e50be6c77f1aaf2af23068e1377f46294739d10c5d55be9ce5c6a0950644cb",
+    "status": "PASS_INDEPENDENT_ALIGNED_FINAL_PANEL_LEAVEOUT_AND_SUPPORT_CONFORMANCE_NO_F_PASS",
+    "episode_rows_verified": 65,
+    "slot_rows_verified": 4,
+    "aligned_count_closure_rows": 65,
+    "raw_id_columns_absent": true
+  },
+  "replay_accounting": {
+    "target_event_rows": 3305928,
+    "modern_event_rows": 312076434,
+    "risk_opportunity_rows": 247970614,
+    "risk_with_prior_target_active_peer_rows": 40753340,
+    "risk_with_prior_target_active_peer_share": 0.16434745771932477,
+    "prior_target_active_peer_relation_count": 271977199,
+    "prior_focal_work_relations": 2460445487,
+    "maximum_declared_team_size": 5000,
+    "prior_focal_work_relations_above_team_size_100": 50932406,
+    "network_excluded_attention_work_incidences": 2229480,
+    "focal_excluded_attention_work_incidences": 0,
+    "network_leaveout_surge_opportunity_rows": 247963432,
+    "network_leaveout_surge_survival_share": 0.9999710368906858,
+    "non_surge_risk_rows": 7182,
+    "episodes_with_non_surge_risk_rows": 19,
+    "episodes_with_any_leaveout_count_change": 65,
+    "episodes_with_median_leaveout_count_change": 0,
+    "team_cap_applied": false
+  },
+  "slot_support": [
+    {
+      "slot_id": "g1_domain_slot_01",
+      "aligned_selected_field_id": 16,
+      "aligned_candidate_episode_count": 8,
+      "aligned_subfield_family_count": 3,
+      "risk_opportunity_count": 4118455,
+      "leaveout_surge_episode_count": 8,
+      "leaveout_conformed_subfield_family_count": 3,
+      "all_episodes_pass_label_independent_support": true,
+      "final_panel_slot_pass": true
+    },
+    {
+      "slot_id": "g1_domain_slot_02",
+      "aligned_selected_field_id": 32,
+      "aligned_candidate_episode_count": 3,
+      "aligned_subfield_family_count": 3,
+      "risk_opportunity_count": 2064365,
+      "leaveout_surge_episode_count": 3,
+      "leaveout_conformed_subfield_family_count": 3,
+      "all_episodes_pass_label_independent_support": true,
+      "final_panel_slot_pass": true
+    },
+    {
+      "slot_id": "g1_domain_slot_03",
+      "aligned_selected_field_id": 11,
+      "aligned_candidate_episode_count": 17,
+      "aligned_subfield_family_count": 7,
+      "risk_opportunity_count": 23948527,
+      "leaveout_surge_episode_count": 17,
+      "leaveout_conformed_subfield_family_count": 7,
+      "all_episodes_pass_label_independent_support": true,
+      "final_panel_slot_pass": true
+    },
+    {
+      "slot_id": "g4_domain_author_cold_slot",
+      "aligned_selected_field_id": 27,
+      "aligned_candidate_episode_count": 37,
+      "aligned_subfield_family_count": 16,
+      "risk_opportunity_count": 217839267,
+      "leaveout_surge_episode_count": 37,
+      "leaveout_conformed_subfield_family_count": 16,
+      "all_episodes_pass_label_independent_support": true,
+      "final_panel_slot_pass": true
+    }
+  ],
+  "interpretation": {
+    "focal_leaveout_role": "ZERO_BY_RISK_SET_ANTI_TARGET_DEFINITION",
+    "peer_leaveout_executed": true,
+    "peer_leaveout_changed_some_counts_in_every_episode": true,
+    "peer_leaveout_changed_episode_median_counts": false,
+    "all_aligned_candidate_episodes_retained_at_least_one_surge_opportunity": true,
+    "selected_field_replaced": false,
+    "aggregate_normalization_reused": false
+  },
+  "authorization": {
+    "atomic_partition_assignment": "AUTHORIZED_NEXT",
+    "operator_only_private_holdout_materialization": "NOT_AUTHORIZED_BEFORE_ATOMIC_PARTITION_SUCCESSOR",
+    "confirmatory_analytic_read": "NOT_AUTHORIZED_BEFORE_ATOMIC_F_PASS_SUCCESSOR",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED"
+  },
+  "fail_closed_state": {
+    "final_panel_conformance_complete": true,
+    "atomic_partition_assignment_complete": false,
+    "holdout_byte_seal_complete": false,
+    "confirmatory_entry_or_persistence_labels_read": 0,
+    "model_fitted": false,
+    "g4_open": false,
+    "pass_f": false,
+    "pass_g0": false
+  }
+}
