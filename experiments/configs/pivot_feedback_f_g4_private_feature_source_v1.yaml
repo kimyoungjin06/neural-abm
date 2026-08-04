@@ -1,0 +1,241 @@
+schema_version: pivot_feedback_f_g4_private_feature_source.v1
+label: pivot_feedback_f_g4_private_feature_source_v1
+mode: F_PHASE_OPERATOR_ONLY_COMPLETE_G4_FEATURE_AND_POSTDECISION_SOURCE_NO_LABEL_OR_ANALYTIC_OPEN
+status: FROZEN_G4_PRIVATE_FEATURE_SOURCE_PENDING_PRODUCTION_NO_F_PASS
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_f_g4_private_membership_materialization_v1.yaml
+  sha256: b7fe25e6d8cb4dd74c39bea3e6c1f501e2669efd9bbb857f2233b493c560198b
+  required_schema_version: pivot_feedback_f_g4_private_membership_materialization.v1
+  required_authorization: remaining_private_predecision_feature_and_postdecision_source_materialization
+  required_value: AUTHORIZED_NEXT
+  mutation_allowed: false
+
+bound_design_sources:
+  membership_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_f_g4_private_membership_materialization_v1_20260804.summary.json
+    sha256: 5f733120ec6366be018df254279acd5c378fd85aeadcdd2e9d2f517433edabb4
+    required_schema_version: pivot_feedback_f_g4_private_membership_materialization_summary.v1
+    required_status: PASS_OPERATOR_ONLY_G4_PREDECISION_MEMBERSHIP_AND_AUTHOR_COLD_GUARD_REMAINING_PRIVATE_PACKAGE_PENDING_NO_F_PASS
+    mutation_allowed: false
+  scientific_sections:
+    relative_path: experiments/configs/pivot_feedback_f_pre_g1_scientific_sections_v1.yaml
+    sha256: cc58a651667b7cecb4cc61d96b6700aa665f1121c7c0b0a254368fb0299041dd
+    required_schema_version: pivot_feedback_f_pre_g1_scientific_sections.v1
+    required_sections:
+      - population_and_author_eligibility
+      - pivot_and_robustness_definitions
+      - temporal_availability_and_maturation
+      - peer_exposure_and_source_assignment
+      - capacity_bridge_and_entry_mode
+      - estimators_and_uncertainty
+    mutation_allowed: false
+  measurement_proxy:
+    relative_path: experiments/configs/pivot_feedback_g0_measurement_proxy_precommitment_v1.yaml
+    sha256: 2e4d90a9541cd9973b8a69bf5fb34f6f35c3d1570a12a4c46b37cac77cca6b5f
+    required_schema_version: pivot_feedback_g0_measurement_proxy_precommitment.v1
+    required_public_success_rule: FIELD_YEAR_TOP_DECILE_AGE3_CITATION_PROXY_INCLUSIVE_TIES_V1
+    mutation_allowed: false
+
+verified_private_membership_parent:
+  expected_root_basename: pivot-feedback-f-g4-private-membership-v1-20260804
+  receipt_basename: g4_private_membership_materialization.outputs.json
+  receipt_sha256: a5416ed0377124d3c6fa6e985e9e200c11193b3d40962f2d8b400bed533cba1d
+  receipt_schema_version: pivot_feedback_f_g4_private_membership_materialization_outputs.v1
+  required_status: PASS_OPERATOR_ONLY_G4_PREDECISION_MEMBERSHIP_AND_AUTHOR_COLD_GUARD_REMAINING_PRIVATE_PACKAGE_PENDING_NO_F_PASS
+  artifact_tree_sha256: f2ebfd65649279585d9980ab84301cd711b9d7078e11be800e7c69f3d4fb4f0e
+  risk_prefix: private/g4_risk_measurement/
+  risk_schema_version: pivot_feedback_f_g4_private_risk_measurement.v1
+  risk_file_count: 37
+  risk_rows: 217839267
+  author_cold_guard_basename: private/g4_author_cold_guard.parquet
+  author_cold_guard_sha256: 90f79d46dd16e83088a258aeafd795541d918e4afb1915feadd5648523b5ca3a
+  author_cold_guard_schema_version: pivot_feedback_f_g4_author_cold_guard.v1
+  author_cold_guard_rows: 8174698
+  episode_manifest_basename: private/g4_episode_manifest.parquet
+  episode_manifest_sha256: 33b7dc9895ba1dd1ca2bc22de85d4a7033d36a205413d1505afa5038505d6900
+  episode_manifest_schema_version: pivot_feedback_f_g4_private_episode_manifest.v1
+  episode_manifest_rows: 37
+  verification_path: /ssd/pivot-feedback-f-g4-private-membership-v1-20260804.verification.json
+  verification_sha256: fe459bcb4a1219532705730cc56be682419b4e6820061949fad0d338ed6adfe8
+  verification_status: PASS_INDEPENDENT_PRIVATE_G4_PREDECISION_MEMBERSHIP_AUTHOR_COLD_GUARD_NO_OUTCOME_READ_NO_F_PASS
+
+normalized_inputs:
+  cutoff_work_metadata:
+    expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    rows: 492293206
+  author_history_events:
+    expected_root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events/
+    artifact_count: 4096
+    rows: 779630258
+  citation_chronology:
+    expected_root_basename: openalex-g1-citation-chronology-v3-full-20260722
+    receipt_basename: citation_edge_chronology_audit.outputs.json
+    receipt_sha256: fbe753c84ceb3858a06c627f318eb756e997f73577498b06a5e88f72cacabe76
+    receipt_schema_version: openalex_g1_citation_edge_chronology_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_CITATION_EDGE_CHRONOLOGY_ACCOUNTING_WITH_CANONICAL_TEMPORAL_V3_PARENT_AND_BIBLIOGRAPHIC_EVENT_TIME_CONVENTION_LIMITATION
+    artifact_prefix: chronology_safe_edges_by_cited_work/
+    artifact_count: 4096
+    rows: 2858679472
+    artifact_bytes: 22721388007
+  topic_taxonomy_projection:
+    expected_basename: b000000.parquet
+    sha256: 566facdbc02bf4a37783fe64db4c1d104d00b73e250999bd824d560083827ba5
+    rows: 4516
+    required_columns: [id, display_name, field__id, field__display_name, subfield__id, subfield__display_name]
+    current_snapshot_projection: true
+
+feature_contract:
+  partition_id: g4_temporal_holdout
+  field_id: 27
+  decision_years: [2020, 2021, 2022]
+  episode_count: 37
+  feature_rows: 217839267
+  contributing_peer_relation_rows: 267491648
+  eligible_work_type_codes: [1, 2, 3, 4, 7, 16, 18, 21]
+  allowed_temporal_dispositions: [2, 3]
+  history_cutoff: END_OF_T_MINUS_1
+  portfolio_offsets: [-3, -2, -1]
+  collaboration_offsets: [-5, -4, -3, -2, -1]
+  capacity_bridge_offsets: [-3, -2, -1]
+  pre_entry_target_topic_work_count_required: 0
+  primary_feature_columns:
+    - PRE_ENTRY_ELIGIBLE_WORK_COUNT
+    - PRE_ENTRY_FOCAL_FIELD_WORK_COUNT
+    - PORTFOLIO_3Y_ELIGIBLE_WORK_COUNT
+    - PORTFOLIO_3Y_FOCAL_FIELD_WORK_COUNT
+    - TRAILING_3Y_TARGET_TOPIC_WORK_COUNT
+    - TRAILING_3Y_TARGET_SUBFIELD_WORK_COUNT
+    - CAREER_AGE_YEARS
+    - PREDECISION_NETWORK_DEGREE
+    - NETWORK_LEAVEOUT_ATTENTION_COUNTS_AND_SURGE
+    - PRIOR_TARGET_ACTIVE_PEER_COUNT
+    - CAPACITY_BRIDGE_PEER_COUNT
+    - PEER_VISIBLE_SUCCESS_COUNT
+  relation_source_columns:
+    - EPISODE_AND_FOCAL_AUTHOR_TOKEN
+    - CONTRIBUTING_PEER_AUTHOR_TOKEN
+    - FIRST_AND_LAST_SHARED_WORK_YEAR
+    - DISTINCT_SHARED_ELIGIBLE_WORK_COUNT
+    - CAPACITY_BRIDGE_FLAG
+    - PEER_VISIBLE_SUCCESS_FLAG
+    - EARLIEST_SUCCESS_AVAILABLE_YEAR
+    - CANONICAL_SUCCESS_SOURCE_WORK_TOKEN
+  matched_non_neighbor_inputs_available_from_feature_population: true
+  contributing_peer_source_required_for_future_entry_mode: true
+  raw_author_and_work_tokens_private: true
+
+public_success_contract:
+  rule_id: FIELD_YEAR_TOP_DECILE_AGE3_CITATION_PROXY_INCLUSIVE_TIES_V1
+  reference_cohort: PRIMARY_FIELD_ID_X_PUBLICATION_YEAR
+  reference_field_id: 27
+  maximum_matured_publication_year: 2018
+  expected_reference_work_rows: 30198415
+  citation_horizon_years: 3
+  citation_count_definition: DISTINCT_CITING_WORKS_AVAILABLE_BY_END_OF_PUBLICATION_YEAR_PLUS_3
+  citation_available_at_proxy: CITING_WORK_PUBLICATION_DATE
+  target_fraction: 0.10
+  target_count_rule: CEILING_REFERENCE_COHORT_COUNT_TIMES_TARGET_FRACTION
+  cutoff_rule: DESCENDING_CITATION_COUNT_AT_TARGET_COUNT_POSITION
+  boundary_tie_rule: INCLUDE_ALL_WORKS_AT_OR_ABOVE_CUTOFF
+  minimum_reference_cohort: 10
+  historical_platform_observation_time_established: false
+  researcher_visibility_established: false
+  output_work_source_private: true
+
+postdecision_source_contract:
+  permitted_offsets: [0, 1, 2, 3]
+  maximum_calendar_year: 2025
+  exact_primary_topic_and_field_match_required: true
+  aggregation_source: DISTINCT_AUTHOR_WORK_PAIR
+  full_target_work_byline_source_required: true
+  first_entry_mode_derivation_deferred_until_authorized_open: true
+  entry_label_materialized: false
+  persistence_label_materialized: false
+  outcome_state_materialized: false
+  descriptive_rate_computed: false
+  model_score_computed: false
+  raw_work_tokens_private: true
+
+resource_preflight:
+  minimum_available_disk_bytes: 1099511627776
+  minimum_available_memory_bytes: 274877906944
+  minimum_nofile_soft_limit: 65536
+  source_rows_may_not_open_before_preflight_pass: true
+
+output_contract:
+  root_basename: pivot-feedback-f-g4-private-feature-source-v1-20260804
+  report_schema_version: pivot_feedback_f_g4_private_feature_source_report.v1
+  receipt_schema_version: pivot_feedback_f_g4_private_feature_source_outputs.v1
+  feature_schema_version: pivot_feedback_f_g4_private_predecision_feature.v1
+  relation_schema_version: pivot_feedback_f_g4_private_contributing_peer_source.v1
+  success_work_schema_version: pivot_feedback_f_g4_private_public_success_work_source.v1
+  postdecision_schema_version: pivot_feedback_f_g4_private_postdecision_target_event_source.v1
+  byline_schema_version: pivot_feedback_f_g4_private_postdecision_target_work_byline_source.v1
+  guard_schema_version: pivot_feedback_f_g4_author_cold_guard.v1
+  episode_schema_version: pivot_feedback_f_g4_private_feature_source_episode_manifest.v1
+  passing_status: PASS_OPERATOR_ONLY_COMPLETE_G4_FEATURE_AND_POSTDECISION_SOURCE_NO_LABEL_NO_ANALYTIC_OPEN_NO_F_PASS
+  output_directory_must_be_new: true
+  output_directory_mode: "0700"
+  nested_directory_mode: "0700"
+  output_file_mode: "0600"
+  feature_file_count: 37
+  relation_file_count: 37
+  postdecision_file_count: 37
+  byline_file_count: 37
+  raw_author_and_work_tokens_repository_forbidden: true
+  receipt_written_last: true
+  independent_verification_required: true
+
+completion_accounting:
+  this_component_is_new_gate: false
+  this_component_alone_may_pass_f: false
+  g4_private_predecision_membership_complete: true
+  g4_author_cold_guard_complete: true
+  g4_private_predecision_features_complete: false
+  g4_postdecision_target_source_complete: false
+  complete_private_g4_artifact_set: false
+  earlier_partition_guard_application_complete: false
+  entry_or_persistence_labels_materialized: false
+  holdout_preflight_complete: false
+  holdout_byte_seal_complete: false
+  confirmatory_or_holdout_analytic_rows_read: 0
+  model_score_read: false
+  model_fitted: false
+  g4_open: false
+  pass_f: false
+  pass_g0: false
+
+authorization_after_pass:
+  private_source_root_and_complete_explicit_artifact_list_binding: AUTHORIZED_NEXT
+  future_earlier_partition_anti_join_application: REQUIRED_WHEN_ROWS_ARE_MATERIALIZED
+  explicit_file_list_preflight: NOT_AUTHORIZED_BEFORE_SEPARATE_ROOT_AND_LIST_BINDING
+  byte_seal_creation: NOT_AUTHORIZED_WITHOUT_PREFLIGHT
+  label_derivation_or_analytic_read: NOT_AUTHORIZED_BEFORE_F_PASS_SUCCESSOR
+  model_selection_score_read: NOT_AUTHORIZED_BEFORE_E_PASS_AND_PRE_G2_LOCK
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This operator-only successor may materialize the registered predecision
+  author-history, attention, network, capacity, and bibliographic
+  visible-success proxy features plus private target-topic author-work and
+  byline source rows at t through t+3. Citation availability is a current-
+  snapshot bibliographic event-time proxy, not historical OpenAlex observation
+  or researcher visibility. Raw author and work tokens remain private. No entry
+  or persistence label, descriptive outcome rate, association, model score,
+  fitted model, transport result, causal mechanism, or scientific effect may
+  be produced. Even after a passing materialization, a separate successor must
+  bind the exact private root and complete file list before preflight; F and G0
+  remain false and G4 remains unopened.
