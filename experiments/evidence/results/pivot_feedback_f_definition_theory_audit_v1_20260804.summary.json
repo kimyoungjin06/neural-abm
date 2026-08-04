@@ -1,0 +1,99 @@
+{
+  "schema_version": "pivot_feedback_f_definition_theory_audit_summary.v1",
+  "status": "PASS_OUTCOME_BLIND_DEFINITION_THEORY_AUDIT_ALIGNED_PRIMARY_RESCREEN_AUTHORIZED_NO_F_PASS",
+  "production_artifact": {
+    "root": "/ssd/pivot-feedback-f-definition-theory-audit-v1-20260804",
+    "output_receipt_basename": "definition_theory_audit.outputs.json",
+    "output_receipt_sha256": "c57a7c2909d9ac8fd2c57bb4ca4f8f9b0c848ce3685965fbbc9afc612635af27",
+    "artifact_tree_sha256": "cb0b2ee390d3583804bad2d28922ca925088aad82e35d5f964abda57f1c50c8f",
+    "composition_basename": "episode_work_composition.parquet",
+    "composition_sha256": "afae3d9788de8080bfda6363a12ec928b253037fdf6a4c1a23423e0a1c706b31",
+    "composition_rows": 388,
+    "report_basename": "definition_theory_audit.json",
+    "report_sha256": "ec8ad383c73f20c69253709da817559882ecab022260cc95537aab7d25c2c507"
+  },
+  "repository_bindings": {
+    "config_relative_path": "experiments/configs/pivot_feedback_f_definition_theory_audit_v1.yaml",
+    "config_sha256": "644a4f06965884aad96947033a0824f02d6cab064a5727a2608653e909ab51a4",
+    "builder_relative_path": "scripts/build_pivot_feedback_f_definition_theory_audit_v1.py",
+    "builder_sha256": "01fbc267d65f7a3b38e8e1eedf53cd154db7af8e9203ed7e0e0fd37ae480bbbb",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_f_definition_theory_audit_v1.py",
+    "verifier_sha256": "5e6cc0d07709f722967f65f9a7ce907b6f771e7b0b32eefdc30acab512971b8b"
+  },
+  "independent_verification": {
+    "path": "/ssd/pivot-feedback-f-definition-theory-audit-v1-20260804.verification.json",
+    "verification_sha256": "57df13dd47280175a25c80920aaa851f0c3f48fd1ebda497cf3b7df6d7569939",
+    "status": "PASS_INDEPENDENT_DEFINITION_THEORY_AUDIT_RAW_COMPOSITION_REPLAY_NO_F_PASS",
+    "raw_source_composition_replay_match": true,
+    "composition_rows_replayed": 388
+  },
+  "work_composition": {
+    "reference": {
+      "aggregate_author_linked_work_count": 494218,
+      "all_pre_signal_incumbent_work_count": 39507,
+      "mixed_incumbent_new_work_count": 139434,
+      "no_pre_signal_incumbent_work_count": 315277,
+      "all_pre_signal_incumbent_work_share": 0.07993840774718848
+    },
+    "recent": {
+      "aggregate_author_linked_work_count": 1141266,
+      "all_pre_signal_incumbent_work_count": 31221,
+      "mixed_incumbent_new_work_count": 243767,
+      "no_pre_signal_incumbent_work_count": 866278,
+      "all_pre_signal_incumbent_work_share": 0.02735646203426721
+    }
+  },
+  "net_growth_decomposition": {
+    "aggregate_recent_minus_reference": 647048,
+    "all_pre_signal_incumbent_recent_minus_reference": -8286,
+    "mixed_incumbent_new_recent_minus_reference": 104333,
+    "no_pre_signal_incumbent_recent_minus_reference": 551001,
+    "no_pre_signal_incumbent_share_of_net_aggregate_growth": 0.8515612442971774
+  },
+  "stage_decomposition": {
+    "aggregate_screen_episode_count": 194,
+    "strict_recent_not_greater_episode_count": 143,
+    "strict_recent_greater_episode_count": 51,
+    "strict_with_aggregate_normalization_surge_episode_count": 15,
+    "network_leaveout_surge_episode_count": 19,
+    "peer_leaveout_created_episode_count": 4,
+    "peer_leaveout_killed_episode_count": 0,
+    "focal_leaveout_incidence_count": 0,
+    "episodes_with_changed_network_leaveout_median": 0
+  },
+  "theory_decision": {
+    "primary_estimand_id": "CLOSED_PRE_SIGNAL_INCUMBENT_TEAM_ATTENTION_V1",
+    "primary_work_inclusion": "EVERY_LINKED_AUTHOR_IS_PRE_SIGNAL_INCUMBENT",
+    "mixed_team_primary_action": "EXCLUDE_FROM_PRIMARY",
+    "aggregate_median_mad_reuse": "FORBIDDEN",
+    "aligned_all_topic_rescreen_required": true,
+    "minimum_distinct_current_snapshot_subfield_families": 3,
+    "threshold_inclusive": 3.0,
+    "threshold_relaxation": false,
+    "report_only_sensitivities": [
+      "ANY_PRE_SIGNAL_INCUMBENT_WORK",
+      "FRACTIONAL_PRE_SIGNAL_INCUMBENT_AUTHOR_SHARE"
+    ]
+  },
+  "authorization": {
+    "strict_incumbent_aligned_all_topic_rescreen": "AUTHORIZED_NEXT",
+    "aggregate_screen_reuse_as_primary": "NOT_AUTHORIZED",
+    "any_incumbent_primary_substitution": "NOT_AUTHORIZED",
+    "fractional_primary_substitution": "NOT_AUTHORIZED",
+    "threshold_relaxation": "NOT_AUTHORIZED",
+    "field_outside_frozen_order": "NOT_AUTHORIZED",
+    "operator_only_private_holdout_materialization": "NOT_AUTHORIZED",
+    "confirmatory_analytic_read": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED"
+  },
+  "fail_closed_state": {
+    "definition_theory_audit_complete": true,
+    "holdout_byte_seal_complete": false,
+    "confirmatory_entry_or_persistence_labels_read": 0,
+    "model_fitted": false,
+    "g4_open": false,
+    "pass_f": false,
+    "pass_g0": false
+  }
+}

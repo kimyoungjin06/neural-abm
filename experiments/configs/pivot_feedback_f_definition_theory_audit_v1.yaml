@@ -1,0 +1,175 @@
+schema_version: pivot_feedback_f_definition_theory_audit.v1
+label: pivot_feedback_f_definition_theory_audit_v1
+mode: POST_BLOCK_STRUCTURAL_DIAGNOSTIC_OUTCOME_BLIND_NO_CONFIRMATORY_READ
+status: FROZEN_DEFINITION_THEORY_AUDIT_PENDING_PRODUCTION_REPLAY_NO_F_PASS
+
+authorization_parent:
+  relative_path: experiments/configs/pivot_feedback_f_final_panel_conformance_v1.yaml
+  sha256: ae107652d6b98a4420706dc1b1e2e6f508d08c87fe4332c8fdb3fcdbb9539b33
+  required_schema_version: pivot_feedback_f_final_panel_conformance.v1
+  mutation_allowed: false
+  blocked_branch_authorization: outcome_blind_definition_and_theory_audit
+  required_value: AUTHORIZED_NEXT
+
+scientific_parent:
+  relative_path: experiments/configs/pivot_feedback_f_pre_g1_scientific_sections_v1.yaml
+  sha256: cc58a651667b7cecb4cc61d96b6700aa665f1121c7c0b0a254368fb0299041dd
+  required_schema_version: pivot_feedback_f_pre_g1_scientific_sections.v1
+  required_status: FROZEN_THIRTEEN_PRE_G1_SECTIONS_PENDING_INDEPENDENT_VALIDATION_NO_F_PASS
+  mutation_allowed: false
+
+blocked_replay_parent:
+  expected_root_basename: pivot-feedback-f-final-panel-conformance-v1-20260804
+  receipt_basename: final_panel_conformance.outputs.json
+  receipt_sha256: 28fcba8c46b7c89e6445830b3b7d4607f7dd00c96f51317e460dacb57e95e59f
+  receipt_schema_version: pivot_feedback_f_final_panel_conformance_outputs.v1
+  required_status: BLOCKED_FINAL_PANEL_LEAVEOUT_REPLAY_INSUFFICIENT_SHOCK_FAMILY_SUPPORT_NO_F_PASS
+  episode_basename: final_panel_episode_conformance.parquet
+  episode_sha256: 333c9b27f4dd187e5506ba935f502739d4cc8ae3471cce12a9f7de36a4c9eb38
+  episode_schema_version: pivot_feedback_f_final_panel_episode_conformance.v1
+  episode_rows: 194
+  verification_path: /ssd/pivot-feedback-f-final-panel-conformance-v1-20260804.verification.json
+  verification_sha256: def137ea644f3fb20217acc5952869d040f543a72a1d039b255de63489666c52
+  verification_status: PASS_INDEPENDENT_BLOCKED_FINAL_PANEL_LEAVEOUT_REPLAY_NO_F_PASS
+
+aggregate_assignment_parent:
+  expected_root_basename: pivot-feedback-f-field-episode-assignment-v1-20260803
+  receipt_basename: field_episode_assignment.outputs.json
+  receipt_sha256: 19550868b92a97c178917f6b0629e73a354cdce7508df880c94eacb782edfdc4
+  candidate_basename: attention_shock_candidates.parquet
+  candidate_sha256: a06481cbfec94051eb5380399a9c6e7b59ab6f4bcdcaf79923f39fa0c300a34e
+  candidate_schema_version: pivot_feedback_f_attention_shock_candidate.v1
+  candidate_rows: 1744
+
+normalized_inputs:
+  cutoff_work_metadata:
+    expected_root_basename: pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    artifact_prefix: work_metadata/
+    artifact_count: 4096
+    rows: 492293206
+  author_history_events:
+    expected_root_basename: openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    artifact_prefix: events/
+    artifact_count: 4096
+    rows: 779630258
+
+audit_questions:
+  - DOES_AGGREGATE_GROWTH_SURVIVE_THE_REGISTERED_PRE_SIGNAL_INCUMBENT_WORK_UNIVERSE
+  - IS_LOSS_CONCENTRATED_IN_MIXED_TEAMS_OR_WORKS_WITH_NO_PRE_SIGNAL_INCUMBENT
+  - DOES_FOCAL_OR_PREEXISTING_PEER_LEAVEOUT_CAUSE_THE_PANEL_BLOCK
+  - DOES_THE_FINAL_REPLAY_STANDARDIZE_THE_PRIMARY_CONSTRUCT_IN_ITS_OWN_FIELD_YEAR_UNIVERSE
+  - IS_THE_THREE_FAMILY_REQUIREMENT_THE_BINDING_SOURCE_OF_OVERCONSTRAINT
+
+primary_estimand_decision:
+  estimand_id: CLOSED_PRE_SIGNAL_INCUMBENT_TEAM_ATTENTION_V1
+  attention_unit: DISTINCT_ELIGIBLE_AUTHOR_LINKED_WORK
+  incumbent_rule: AUTHOR_FIRST_EXACT_TARGET_TOPIC_WORK_STRICTLY_BEFORE_T_MINUS_6
+  primary_work_inclusion: EVERY_LINKED_AUTHOR_IS_PRE_SIGNAL_INCUMBENT
+  mixed_incumbent_new_team_action: EXCLUDE_FROM_PRIMARY
+  no_pre_signal_incumbent_team_action: EXCLUDE_FROM_PRIMARY
+  no_linked_author_action: OUTSIDE_AUTHOR_LINKED_ATTENTION_UNIVERSE
+  rationale:
+    - WORK_IS_THE_FROZEN_ATTENTION_UNIT_AND_CANNOT_BE_PARTIALLY_ATTRIBUTED_WITHOUT_A_NEW_ESTIMAND
+    - ANY_INCUMBENT_INCLUSION_WOULD_COUNT_RESPONSE_ENTRANT_PRODUCTION_AS_PRIMARY_ATTENTION
+    - CHANGING_TO_ANY_INCUMBENT_AFTER_THE_BLOCK_WOULD_BE_RESULT_CONTINGENT_RELAXATION
+  interpretation: OUTPUT_PRODUCED_ONLY_BY_TEAMS_ALREADY_ACTIVE_IN_THE_EXACT_TOPIC_BEFORE_THE_REFERENCE_WINDOW
+  does_not_represent:
+    - ALL_FIELD_ATTENTION
+    - ALL_ATTENTION_VISIBLE_TO_A_FOCAL_AUTHOR
+    - INCUMBENT_INVOLVEMENT_IN_MIXED_TEAMS
+    - CAUSAL_OR_EXOGENOUS_ATTENTION
+
+aligned_primary_replay:
+  required: true
+  candidate_universe: ALL_ELIGIBLE_AUTHOR_LINKED_PRIMARY_TOPICS_IN_EACH_BOUND_FIELD_X_DECISION_YEAR
+  work_universe: SAME_AS_PRIMARY_ESTIMAND
+  reference_offsets: [-6, -5, -4]
+  recent_offsets: [-3, -2, -1]
+  acceleration: LOG1P_RECENT_ANNUAL_MEAN_MINUS_LOG1P_REFERENCE_ANNUAL_MEAN
+  normalization_group: SAME_PRIMARY_WORK_UNIVERSE_X_PRIMARY_FIELD_X_DECISION_YEAR_ACROSS_ALL_ELIGIBLE_TOPICS
+  aggregate_median_mad_reuse: FORBIDDEN
+  preselected_candidate_only_normalization: FORBIDDEN
+  modified_z_multiplier: 0.6744897501960817
+  threshold_inclusive: 3.0
+  raw_acceleration_must_be_positive: true
+  recent_count_must_exceed_reference_count: true
+  mad_zero_or_nonfinite_action: NO_SURGE_EXCLUDE_AND_REPORT
+  field_attempt_order: PRESERVE_FROZEN_NOMINAL_PRIMARY_THEN_DOMAIN_RANK_TWO_THEN_DOMAIN_RANK_THREE
+  field_outside_frozen_order: FORBIDDEN
+  minimum_distinct_current_snapshot_subfield_families: 3
+  threshold_relaxation: false
+  episode_or_field_reuse_from_aggregate_screen: FORBIDDEN_EXCEPT_DESCRIPTIVE_PROVENANCE
+
+precommitted_definition_sensitivities:
+  role: REPORT_ONLY_CANNOT_SELECT_PRIMARY_PANEL_OR_RESCUE_F
+  definitions:
+    - id: ANY_PRE_SIGNAL_INCUMBENT_WORK
+      work_value: ONE_IF_AT_LEAST_ONE_LINKED_AUTHOR_IS_PRE_SIGNAL_INCUMBENT
+      purpose: MIXED_TEAM_INVOLVEMENT_DIAGNOSTIC
+    - id: FRACTIONAL_PRE_SIGNAL_INCUMBENT_AUTHOR_SHARE
+      work_value: PRE_SIGNAL_INCUMBENT_LINKED_AUTHORS_DIVIDED_BY_ALL_LINKED_AUTHORS
+      purpose: ATTRIBUTION_SENSITIVITY_FOR_MIXED_TEAMS
+  common_requirements:
+    - COMPUTE_ACROSS_ALL_ELIGIBLE_TOPICS_BEFORE_ANY_SENSITIVITY_PANEL_SUMMARY
+    - NORMALIZE_EACH_DEFINITION_IN_ITS_OWN_FIELD_X_DECISION_YEAR_UNIVERSE
+    - PRESERVE_Z_3_PRIMARY_THRESHOLD_AND_REPORT_ONLY_2_5_AND_3_5_SURFACES
+    - NEVER_REPLACE_OR_RESCUE_THE_PRIMARY_CLOSED_TEAM_ESTIMAND
+
+diagnostic_classification:
+  aggregate_vs_primary_universe_mismatch: EXPECTED_TO_BE_QUANTIFIED
+  mixed_team_loss: EXPECTED_TO_BE_QUANTIFIED
+  no_incumbent_team_loss: EXPECTED_TO_BE_QUANTIFIED
+  focal_leaveout_role: CONSISTENCY_SAFEGUARD_EXPECTED_ZERO_BY_RISK_DEFINITION
+  peer_leaveout_role: EMPIRICAL_DIAGNOSTIC_NOT_ASSUMED_BLOCKER
+  family_gate_role: RETAIN_AS_INDEPENDENCE_REQUIREMENT
+  current_snapshot_topic_and_author_tokens: RETAIN_PROXY_LIMITATIONS
+
+output_contract:
+  root_basename: pivot-feedback-f-definition-theory-audit-v1-20260804
+  report_schema_version: pivot_feedback_f_definition_theory_audit_report.v1
+  receipt_schema_version: pivot_feedback_f_definition_theory_audit_outputs.v1
+  composition_schema_version: pivot_feedback_f_definition_work_composition.v1
+  status: PASS_OUTCOME_BLIND_DEFINITION_THEORY_AUDIT_ALIGNED_PRIMARY_RESCREEN_AUTHORIZED_NO_F_PASS
+  output_directory_must_be_new: true
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  receipt_written_last: true
+  independent_verification_required: true
+  raw_author_or_work_ids_forbidden: true
+
+completion_accounting:
+  structural_result_already_observed: true
+  confirmatory_entry_or_persistence_labels_read: 0
+  realized_citation_effect_read: false
+  model_fitted: false
+  holdout_byte_seal_complete: false
+  g4_analytic_open: false
+  pass_f: false
+  pass_g0: false
+
+authorization_after_verified_audit:
+  strict_incumbent_aligned_all_topic_rescreen: AUTHORIZED_NEXT
+  aggregate_screen_reuse_as_primary: NOT_AUTHORIZED
+  any_incumbent_primary_substitution: NOT_AUTHORIZED
+  fractional_primary_substitution: NOT_AUTHORIZED
+  threshold_relaxation: NOT_AUTHORIZED
+  field_outside_frozen_order: NOT_AUTHORIZED
+  operator_only_private_holdout_materialization: NOT_AUTHORIZED
+  confirmatory_analytic_read: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This post-block but outcome-blind audit decomposes the already observed
+  aggregate-to-closed-incumbent work-universe loss, keeps the conservative
+  closed-team primary estimand, and repairs only the future screening and
+  normalization universe by requiring an all-topic aligned replay. It may
+  describe current-snapshot author-token and topic composition, but it does
+  not inspect entry, persistence, realized citation effects, model scores, or
+  G4 outcomes; relax a threshold; choose a field outside the frozen order;
+  pass F or G0; or establish a null, association, prediction, transport,
+  causality, or scientific effect.
