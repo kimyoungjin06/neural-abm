@@ -1,0 +1,105 @@
+{
+  "schema_version": "pivot_feedback_f_g4_private_root_artifact_binding_summary.v1",
+  "status": "PASS_OPERATOR_ONLY_EXACT_PRIVATE_G4_ROOT_AND_COMPLETE_153_ARTIFACT_LIST_BOUND_NO_PREFLIGHT_NO_F_PASS",
+  "binding_artifact": {
+    "path": "/ssd/pivot-feedback-f-g4-private-feature-source-v1-20260804.root-artifact-binding-v1.json",
+    "sha256": "bd2417a567e9ab7cdcb56f5b17c435341d7778c3945e08b1ff19cb803951f3fc",
+    "bytes": 45547,
+    "mode": "0400",
+    "schema_version": "pivot_feedback_f_g4_private_root_artifact_binding_output.v1",
+    "bound_at_utc": "2026-08-05T01:40:30.447037Z"
+  },
+  "source_root_binding": {
+    "resolved_absolute_path": "/ssd/pivot-feedback-f-g4-private-feature-source-v1-20260804",
+    "basename": "pivot-feedback-f-g4-private-feature-source-v1-20260804",
+    "resolved_path_sha256": "b77a162fd88dc4289d0715fd95e35b64d0489f7b1d7c7e9ca456d9d182c0cc37",
+    "device": 66305,
+    "inode": 42467329,
+    "mode": "0700",
+    "directory_count_including_root": 6,
+    "regular_file_count_including_receipt": 154,
+    "symlink_count": 0,
+    "exact_private_source_root_bound": true
+  },
+  "explicit_artifact_list": {
+    "list_source": "PRODUCTION_RECEIPT_ARTIFACT_ARRAY_EXACT_PROJECTION",
+    "artifact_count": 153,
+    "artifact_bytes_total": 3067046872,
+    "artifact_tree_sha256": "62d6978c776c32464c4c862df12a52a580a6066dda45d4fb0dfe75910a562084",
+    "sorted_and_unique": true,
+    "exact_receipt_projection": true,
+    "actual_tree_closure_to_list_plus_receipt": true,
+    "listed_paths_regular_and_size_matched": true,
+    "expected_sha_values_inherited_without_refresh": true,
+    "complete_explicit_artifact_list_bound": true
+  },
+  "production_evidence": {
+    "receipt_basename": "g4_private_feature_source_materialization.outputs.json",
+    "receipt_sha256": "9c5a8da1f64adc721e5e567de601b232db9221128e77da08a3c6e13ab311d79d",
+    "source_verification_path": "/ssd/pivot-feedback-f-g4-private-feature-source-v1-20260804.verification.json",
+    "source_verification_sha256": "f5842239c2cf1b8388ef9eae75b580dc960e68f514686f57e968ed0bba325e3e",
+    "source_verification_status": "PASS_INDEPENDENT_COMPLETE_PRIVATE_G4_FEATURE_AND_POSTDECISION_SOURCE_NO_LABEL_NO_ANALYTIC_OPEN_NO_F_PASS"
+  },
+  "repository_bindings": {
+    "config_relative_path": "experiments/configs/pivot_feedback_f_g4_private_root_artifact_binding_v1.yaml",
+    "config_sha256": "94e7d814cdd52d3a4b11129e45f5f12b1f32d982ce38a1e101d9240479950363",
+    "builder_relative_path": "scripts/bind_pivot_feedback_f_g4_private_root_artifact_list_v1.py",
+    "builder_sha256": "66e06a1e8dcd7ec1b9a6f0411cbe7710f65345c67679f563157148782c6da142",
+    "verifier_relative_path": "scripts/verify_pivot_feedback_f_g4_private_root_artifact_binding_v1.py",
+    "verifier_sha256": "a4129215958c94a95d1ca4901b217b85e54493ef23b8a0a5346d5105a448a0ed",
+    "authorization_parent_relative_path": "experiments/evidence/results/pivot_feedback_f_g4_private_feature_source_v1_20260805.summary.json",
+    "authorization_parent_sha256": "7e95a3e58a1bad400359beef612b6a860e158f2e5783fc3540af444851aa1a41",
+    "production_contract_relative_path": "experiments/configs/pivot_feedback_f_g4_private_feature_source_v1.yaml",
+    "production_contract_sha256": "7acc0e34b7c5f76c998d92a830b327728c3e3aa6779bec0d1ecdfbd93132ecbe"
+  },
+  "independent_verification": {
+    "path": "/ssd/pivot-feedback-f-g4-private-feature-source-v1-20260804.root-artifact-binding-v1.verification.json",
+    "sha256": "10cdb5e855221266ea90e2161bcbc8f3056c8584faf6ecc07e43a03dc092188b",
+    "bytes": 2512,
+    "mode": "0400",
+    "schema_version": "pivot_feedback_f_g4_private_root_artifact_binding_verification.v1",
+    "status": "PASS_INDEPENDENT_EXACT_PRIVATE_G4_ROOT_AND_COMPLETE_153_ARTIFACT_LIST_BOUND_NO_PREFLIGHT_NO_F_PASS",
+    "source_root_identity_verified": true,
+    "explicit_list_exact_receipt_projection_verified": true,
+    "actual_tree_closure_verified": true,
+    "listed_paths_regular_and_size_matched_verified": true,
+    "source_tree_modes_verified": true,
+    "source_tree_symlinks_absent": true
+  },
+  "access_accounting": {
+    "source_tree_paths_enumerated": 154,
+    "source_artifact_metadata_entries_checked": 153,
+    "source_artifact_content_files_opened": 0,
+    "source_artifact_bytes_hashed": 0,
+    "operator_parquet_files_opened": 0,
+    "confirmatory_or_holdout_analytic_rows_read": 0,
+    "preflight_written": false,
+    "byte_seal_created": false
+  },
+  "authorization": {
+    "explicit_file_list_preflight": "AUTHORIZED_NEXT_FROM_BOUND_ROOT_AND_LIST_ONLY",
+    "preflight_must_rehash_every_bound_artifact_byte": true,
+    "future_earlier_partition_anti_join_application": "REQUIRED_WHEN_ROWS_ARE_MATERIALIZED",
+    "byte_seal_creation": "NOT_AUTHORIZED_WITHOUT_SUCCESSFUL_PREFLIGHT",
+    "label_derivation_or_analytic_read": "NOT_AUTHORIZED_BEFORE_F_PASS_SUCCESSOR",
+    "model_selection_score_read": "NOT_AUTHORIZED_BEFORE_E_PASS_AND_PRE_G2_LOCK",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED"
+  },
+  "fail_closed_state": {
+    "this_component_is_new_gate": false,
+    "exact_private_source_root_bound": true,
+    "complete_explicit_artifact_list_bound": true,
+    "complete_private_g4_artifact_set": true,
+    "earlier_partition_guard_application_complete": false,
+    "holdout_preflight_complete": false,
+    "holdout_byte_seal_complete": false,
+    "entry_or_persistence_labels_materialized": false,
+    "confirmatory_or_holdout_analytic_rows_read": 0,
+    "model_score_read": false,
+    "model_fitted": false,
+    "g4_open": false,
+    "pass_f": false,
+    "pass_g0": false
+  }
+}

@@ -1,0 +1,122 @@
+schema_version: pivot_feedback_f_g4_private_root_artifact_binding.v1
+label: pivot_feedback_f_g4_private_root_artifact_binding_v1
+mode: F_PHASE_OPERATOR_ONLY_EXACT_PRIVATE_ROOT_AND_COMPLETE_EXPLICIT_ARTIFACT_LIST_NO_PREFLIGHT
+status: FROZEN_EXACT_PRIVATE_G4_ROOT_AND_153_ARTIFACT_LIST_PENDING_BINDING_NO_F_PASS
+
+authorization_parent:
+  relative_path: experiments/evidence/results/pivot_feedback_f_g4_private_feature_source_v1_20260805.summary.json
+  sha256: 7e95a3e58a1bad400359beef612b6a860e158f2e5783fc3540af444851aa1a41
+  required_schema_version: pivot_feedback_f_g4_private_feature_source_summary.v1
+  required_status: PASS_OPERATOR_ONLY_COMPLETE_G4_FEATURE_AND_POSTDECISION_SOURCE_NO_LABEL_NO_ANALYTIC_OPEN_NO_F_PASS
+  required_authorization: private_source_root_and_complete_explicit_artifact_list_binding
+  required_value: AUTHORIZED_NEXT
+  mutation_allowed: false
+
+bound_private_source_package:
+  production_contract:
+    relative_path: experiments/configs/pivot_feedback_f_g4_private_feature_source_v1.yaml
+    sha256: 7acc0e34b7c5f76c998d92a830b327728c3e3aa6779bec0d1ecdfbd93132ecbe
+    required_schema_version: pivot_feedback_f_g4_private_feature_source.v1
+    mutation_allowed: false
+  exact_source_root:
+    absolute_path: /ssd/pivot-feedback-f-g4-private-feature-source-v1-20260804
+    basename: pivot-feedback-f-g4-private-feature-source-v1-20260804
+    resolved_path_sha256: b77a162fd88dc4289d0715fd95e35b64d0489f7b1d7c7e9ca456d9d182c0cc37
+    root_must_not_be_symlink: true
+    directory_mode: "0700"
+    file_mode: "0600"
+    expected_directory_count_including_root: 6
+    expected_regular_file_count_including_receipt: 154
+    expected_symlink_count: 0
+  production_receipt:
+    basename: g4_private_feature_source_materialization.outputs.json
+    sha256: 9c5a8da1f64adc721e5e567de601b232db9221128e77da08a3c6e13ab311d79d
+    required_schema_version: pivot_feedback_f_g4_private_feature_source_outputs.v1
+    required_status: PASS_OPERATOR_ONLY_COMPLETE_G4_FEATURE_AND_POSTDECISION_SOURCE_NO_LABEL_NO_ANALYTIC_OPEN_NO_F_PASS
+    artifact_count: 153
+    artifact_bytes_total: 3067046872
+    artifact_tree_sha256: 62d6978c776c32464c4c862df12a52a580a6066dda45d4fb0dfe75910a562084
+    receipt_is_control_metadata_excluded_from_explicit_source_artifact_list: true
+  independent_source_verification:
+    absolute_path: /ssd/pivot-feedback-f-g4-private-feature-source-v1-20260804.verification.json
+    sha256: f5842239c2cf1b8388ef9eae75b580dc960e68f514686f57e968ed0bba325e3e
+    required_schema_version: pivot_feedback_f_g4_private_feature_source_verification.v1
+    required_status: PASS_INDEPENDENT_COMPLETE_PRIVATE_G4_FEATURE_AND_POSTDECISION_SOURCE_NO_LABEL_NO_ANALYTIC_OPEN_NO_F_PASS
+    required_output_receipt_sha256: 9c5a8da1f64adc721e5e567de601b232db9221128e77da08a3c6e13ab311d79d
+    required_artifact_count: 153
+    required_source_replay_all_materialized_columns_verified: true
+    required_confirmatory_or_holdout_analytic_rows_read: 0
+    required_pass_f: false
+    required_pass_g0: false
+    required_g4_open: false
+
+explicit_binding_contract:
+  list_source: PRODUCTION_RECEIPT_ARTIFACT_ARRAY_EXACT_PROJECTION
+  required_entry_fields:
+    - canonical_relative_path
+    - expected_byte_size
+    - expected_sha256
+    - expected_rows
+  canonical_relative_paths_required: true
+  sorted_lexicographically: true
+  duplicate_paths_forbidden: true
+  regular_files_only: true
+  symlinks_forbidden: true
+  actual_tree_closure_required: true
+  only_tree_control_file_excluded_from_list: g4_private_feature_source_materialization.outputs.json
+  artifact_count: 153
+  artifact_bytes_total: 3067046872
+  expected_sha_values_must_be_copied_without_refresh_from_verified_receipt: true
+  source_artifact_byte_hashing_in_this_component: false
+  parquet_or_row_parser_in_this_component: false
+  preflight_written_in_this_component: false
+  byte_seal_written_in_this_component: false
+  source_root_mutation_allowed: false
+
+output_contract:
+  binding_basename: pivot-feedback-f-g4-private-feature-source-v1-20260804.root-artifact-binding-v1.json
+  binding_schema_version: pivot_feedback_f_g4_private_root_artifact_binding_output.v1
+  passing_status: PASS_OPERATOR_ONLY_EXACT_PRIVATE_G4_ROOT_AND_COMPLETE_153_ARTIFACT_LIST_BOUND_NO_PREFLIGHT_NO_F_PASS
+  verification_basename: pivot-feedback-f-g4-private-feature-source-v1-20260804.root-artifact-binding-v1.verification.json
+  verification_schema_version: pivot_feedback_f_g4_private_root_artifact_binding_verification.v1
+  verification_passing_status: PASS_INDEPENDENT_EXACT_PRIVATE_G4_ROOT_AND_COMPLETE_153_ARTIFACT_LIST_BOUND_NO_PREFLIGHT_NO_F_PASS
+  output_must_be_outside_source_root: true
+  output_must_be_new: true
+  output_file_mode: "0400"
+  independent_verification_required: true
+
+completion_accounting:
+  this_component_is_new_gate: false
+  exact_private_source_root_bound: false
+  complete_explicit_artifact_list_bound: false
+  complete_private_g4_artifact_set: true
+  earlier_partition_guard_application_complete: false
+  holdout_preflight_complete: false
+  holdout_byte_seal_complete: false
+  entry_or_persistence_labels_materialized: false
+  confirmatory_or_holdout_analytic_rows_read: 0
+  model_score_read: false
+  model_fitted: false
+  g4_open: false
+  pass_f: false
+  pass_g0: false
+
+authorization_after_pass:
+  explicit_file_list_preflight: AUTHORIZED_NEXT_FROM_BOUND_ROOT_AND_LIST_ONLY
+  preflight_must_rehash_every_bound_artifact_byte: true
+  future_earlier_partition_anti_join_application: REQUIRED_WHEN_ROWS_ARE_MATERIALIZED
+  byte_seal_creation: NOT_AUTHORIZED_WITHOUT_SUCCESSFUL_PREFLIGHT
+  label_derivation_or_analytic_read: NOT_AUTHORIZED_BEFORE_F_PASS_SUCCESSOR
+  model_selection_score_read: NOT_AUTHORIZED_BEFORE_E_PASS_AND_PRE_G2_LOCK
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This operator-only successor binds one exact private source root and the
+  complete 153-entry artifact list projected from the independently verified
+  production receipt. It may enumerate paths and inspect filesystem metadata
+  only to prove tree closure. It may not open or hash source-artifact content,
+  parse Parquet or rows, refresh expected artifact digests, write a preflight,
+  create a byte seal, derive labels, read analytic outcomes, fit a model, pass
+  F or G0, or open G4. A separate explicit-list preflight successor must
+  independently rehash every bound artifact byte before any seal action.
