@@ -1,0 +1,71 @@
+{
+  "authority": {
+    "parent_sha256": "0e16e844a8a7ce8b3321eff47c3763f45582b4eef8f039dc6e18dc092bf94380",
+    "relative_path": "experiments/configs/pivot_feedback_current_state_v4.yaml",
+    "sha256": "4c10f6aa579e129715fab088d669a77ac9c7884ef9ed9f912f6acd2686f8efda"
+  },
+  "authorization": {
+    "causal_claim": "NOT_AUTHORIZED",
+    "confirmatory_analytic_access": "NOT_AUTHORIZED_FOR_CURRENT_CONFIRMATORY_COHORT_AFTER_TERMINAL_SUPPORT_FAILURE",
+    "confirmatory_or_holdout_analytic_access": "NOT_AUTHORIZED_AFTER_TERMINAL_E_SUPPORT_FAILURE",
+    "disjoint_g1_successor": "REQUIRES_NEW_OUTCOME_BLIND_PREAUTHORIZATION_AND_FRESH_FREEZE",
+    "e_g1_execution": "TERMINAL_BLOCKED_FROZEN_COHORT_SUPPORT_NO_ROUTE_PROMOTION",
+    "f_phase_closure": "COMPLETE_ATOMIC_FOUR_RECEIPT_CONJUNCTION",
+    "g2_or_g3_choice_resolution": "NOT_AUTHORIZED_E_NOT_PASSED",
+    "g4_open": "NOT_AUTHORIZED",
+    "holdout_analytic_access": "NOT_AUTHORIZED_BEFORE_M_RESOLVED_AND_SCORING_CONTRACT_LOCKED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "outcome_based_threshold_selection": "NOT_AUTHORIZED",
+    "pass_f_without_all_receipts": "NOT_AUTHORIZED",
+    "pass_g0_without_all_receipts": "NOT_AUTHORIZED",
+    "same_cohort_g1_retry": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "scope_or_threshold_relaxation_on_read_cohort": "NOT_AUTHORIZED",
+    "six_phase_active_routing": "ACTIVE"
+  },
+  "bound_tooling": {
+    "builder_relative_path": "scripts/build_pivot_feedback_current_state_v4.py",
+    "builder_sha256": "09b9285db484ee4e01f6010bdc7c3bea3fa64bfa4bcb17cf64212c1489e0ba17",
+    "independent_verifier_relative_path": "scripts/verify_pivot_feedback_current_state_v4.py",
+    "independent_verifier_sha256": "ffe16a23be60f61656f6382006c80b4816e3837ab9846956a966a44598af34ca"
+  },
+  "claim_boundary": "This additive authority records the exact guard-only exception, the independently verified guard-first materialization of 72,715,221 G1 confirmatory label rows, and the terminal failure of two frozen episode support units before sampling or estimation. It changes no scope or threshold, reads no holdout outcome, opens no seal, fits no estimator or model, does not pass E or G1, and establishes no association, null, prediction, mechanism, transport, causal effect, or scientific effect.",
+  "execution_result_replay": {
+    "block_id": "G1_FROZEN_EPISODE_COHORT_SUPPORT_FLOOR_FAILED_AFTER_GUARD_FIRST_MATERIALIZATION",
+    "entry_rows": 17411,
+    "estimators_run": 0,
+    "execution_summary_sha256": "f6d55daac53506db8e5cd198dbb280868a51e56af52e85f100a766f447552178",
+    "guard_only_exception_verified": true,
+    "guarded_risk_rows": 72715221,
+    "holdout_outcome_rows_read": 0,
+    "other_private_g4_files_read": 0,
+    "seal_opened": false,
+    "support_failed_episode_ids": [
+      11,
+      25
+    ],
+    "support_failed_unit_count": 2,
+    "terminal_status": "BLOCKED_E_G1_INPUT_SUPPORT_OR_ESTIMATOR_FAILURE_NO_ROUTE_PROMOTION"
+  },
+  "lifecycle_replay": {
+    "confirmatory_or_holdout_rows_read": 72715221,
+    "empirical_g1_status": "BLOCKED",
+    "g4_open": false,
+    "holdout_seal_opened": false,
+    "model_fitted": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "routing_replay": {
+    "E_complete": false,
+    "E_state": "TERMINAL_BLOCKED_FROZEN_COHORT_SUPPORT_AFTER_GUARD_FIRST_LABEL_MATERIALIZATION",
+    "H_state": "BYTE_SEALED_UNOPENED",
+    "M_state": "NOT_RUN",
+    "active_phase": "E",
+    "pass_e": false,
+    "pass_f": true,
+    "pass_g0_compatibility": true,
+    "pass_g1": false
+  },
+  "schema_version": "pivot_feedback_current_state_v4_summary.v1",
+  "status": "PASS_ACTIVE_E_TERMINAL_BLOCKED_FROZEN_COHORT_SUPPORT_AFTER_GUARD_FIRST_CONFIRMATORY_MATERIALIZATION_NO_ESTIMATION"
+}

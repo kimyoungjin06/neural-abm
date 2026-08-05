@@ -1,0 +1,136 @@
+schema_version: pivot_feedback_e_g1_guarded_risk_label_source.v1
+label: pivot_feedback_e_g1_guarded_risk_label_source_v1
+mode: RESUMED_E_G1_GUARD_FIRST_RISK_AND_LABEL_MATERIALIZATION
+status_before_execution: AUTHORIZED_FROM_INDEPENDENT_GUARD_ONLY_EXCEPTION_PASS
+
+authorization_parent:
+  relative_path: experiments/evidence/results/pivot_feedback_e_g1_guard_only_exception_v1_20260805.summary.json
+  sha256: 7d284482b21fe6f0919ac677db5198611cdbdc3840e157d1c9933de5ad4f86d6
+  required_schema_version: pivot_feedback_e_g1_guard_only_exception_summary.v1
+  required_status: PASS_INDEPENDENT_EXACT_GUARD_ONLY_EXCEPTION_G1_RESUME_AUTHORIZED
+
+frozen_scope_parent:
+  relative_path: experiments/configs/pivot_feedback_e_g1_execution_input_preflight_v1.yaml
+  sha256: 9611bdaa1e0144540d82834f743fbf51cc733ef9492771ed9d37f66ec75bf4d2
+  required_schema_version: pivot_feedback_e_g1_execution_input_preflight.v1
+  required_status: E_G1_EXECUTION_INPUT_PREFLIGHT_COMPLETE_PENDING_INDEPENDENT_VALIDATION_NO_G1_RUN
+
+verified_parents:
+  aligned_final_panel:
+    root: /ssd/pivot-feedback-f-aligned-final-panel-conformance-v1-20260804
+    receipt_basename: aligned_final_panel_conformance.outputs.json
+    receipt_sha256: 222888f538652593c1a26fddf6eb25dca37a2edecd71afe744fa63ac4e695505
+    receipt_schema_version: pivot_feedback_f_aligned_final_panel_conformance_outputs.v1
+    required_status: PASS_OUTCOME_BLIND_ALIGNED_FINAL_PANEL_LEAVEOUT_AND_SUPPORT_CONFORMANCE_ATOMIC_PARTITION_AUTHORIZED_NO_F_PASS
+    episode_basename: aligned_final_panel_episode_conformance.parquet
+    episode_sha256: 121c7b1fd17f9dc9294233806a637b31a68750305817610083a80e54bf2fdc15
+    episode_schema_version: pivot_feedback_f_aligned_final_panel_episode_conformance.v1
+    episode_rows: 65
+  atomic_partition:
+    root: /ssd/pivot-feedback-f-atomic-partition-assignment-v1-20260804
+    receipt_basename: atomic_partition_assignment.outputs.json
+    receipt_sha256: 0ddd5ec51d924167b332a2f756b5310c25454e2ad44db5d86859276814c4f2b4
+    receipt_schema_version: pivot_feedback_f_atomic_partition_assignment_outputs.v1
+    required_status: PASS_OUTCOME_BLIND_ATOMIC_EPISODE_FAMILY_PARTITION_ASSIGNMENT_PRIVATE_HOLDOUT_MATERIALIZATION_AUTHORIZED_NO_F_PASS
+    episode_basename: atomic_episode_partition_assignment.parquet
+    episode_sha256: 169f0bd4bedaf4f34b3dec53214f1393587c6dcc26e0dac7eae60d589e91a17e
+    episode_schema_version: pivot_feedback_f_atomic_episode_partition_assignment.v1
+    episode_rows: 65
+
+exact_inputs:
+  normalized_work_metadata:
+    root: /ssd/pivot-feedback-cutoff-primitives-v0-full-20260723
+    receipt_basename: pivot_feedback_cutoff_panel.outputs.json
+    receipt_sha256: 91e3f689e574d524eabbe7daa58f5e678da37f851ba9b7af0561dab57b70846e
+    receipt_schema_version: pivot_feedback_cutoff_primitives_outputs.v1
+    required_status: PASS_NORMALIZED_CURRENT_SNAPSHOT_CUTOFF_PRIMITIVES_WITH_RETROSPECTIVE_TOPIC_AND_CITATION_PROXY_LIMITATIONS
+    artifact_prefix: work_metadata
+    artifact_count: 4096
+  author_history_events:
+    root: /ssd/openalex-g1-author-history-v3-full-20260722
+    receipt_basename: author_history_audit.outputs.json
+    receipt_sha256: 7b3613eaac6900f376a999a551f15e20dd184de2b4dc6758a60d93f3eedb51a8
+    receipt_schema_version: openalex_g1_work_side_author_history_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_WORK_SIDE_AUTHOR_TOKEN_LINKED_RETROSPECTIVE_HISTORY_ACCOUNTING_AND_SENSITIVITY_COMPONENT_AUTHOR_ENTITY_AND_PAST_OBSERVABILITY_UNVERIFIED
+    artifact_prefix: events
+    artifact_count: 4096
+  topic_taxonomy:
+    path: /hdd/raid_backup_20260624/data/OpenAlex/parquet_exports/openalex_nonworks_20260330_delta_20260417_100128/openalex_topics_20260330_delta/openalex_topics_20260330_delta/b000000.parquet
+    sha256: 566facdbc02bf4a37783fe64db4c1d104d00b73e250999bd824d560083827ba5
+    rows: 4516
+  author_cold_guard:
+    path: /ssd/pivot-feedback-f-g4-private-membership-v1-20260804/private/g4_author_cold_guard.parquet
+    sha256: 90f79d46dd16e83088a258aeafd795541d918e4afb1915feadd5648523b5ca3a
+    rows: 8174698
+    schema_version: pivot_feedback_f_g4_author_cold_guard.v1
+
+registered_scope:
+  partition_id: g1_empirical_replication
+  field_ids_in_registered_slot_order: [16, 32, 11]
+  shock_year_start: 2013
+  shock_year_end: 2016
+  episode_count: 28
+  family_count: 13
+  response_cohort_offsets: [0, 1, 2]
+  response_cohort_count: 84
+  minimum_source_year: 2010
+  maximum_followup_year: 2021
+
+label_contract:
+  risk_activity_window_offsets: [-3, -2, -1]
+  pre_entry_target_topic_count: 0
+  entry_window_offset: 0
+  persistence_window_offsets: [1, 2, 3]
+  alternative_pivot_trailing_subfield_offsets: [-3, -2, -1]
+  non_entry_persistence_value: null
+  outcome_imputation: NONE
+  guard_anti_join_before_label_logic: true
+
+support_contract:
+  aggregation_unit: ANALYSIS_PARTITION_X_FIELD_X_EPISODE_ACROSS_RESPONSE_COHORTS
+  minimum_total: 500
+  minimum_entry_events: 100
+  minimum_non_entry_opportunities: 100
+  pooling_to_rescue_failure: false
+
+execution:
+  threads: 32
+  memory_limit_gb: 256
+  minimum_available_memory_bytes: 137438953472
+  minimum_available_disk_bytes: 274877906944
+  output_root: /ssd/pivot-feedback-e-g1-guarded-risk-label-source-v1-20260805
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  output_must_be_new: true
+  receipt_written_last: true
+
+output_contract:
+  cohort_directory: private/g1_guarded_risk_labels
+  cohort_file_count: 84
+  cohort_schema_version: pivot_feedback_e_g1_guarded_risk_labels.v1
+  manifest_basename: g1_guarded_cohort_manifest.parquet
+  manifest_schema_version: pivot_feedback_e_g1_guarded_cohort_manifest.v1
+  report_basename: g1_guarded_risk_label_source.json
+  report_schema_version: pivot_feedback_e_g1_guarded_risk_label_source_report.v1
+  receipt_basename: g1_guarded_risk_label_source.outputs.json
+  receipt_schema_version: pivot_feedback_e_g1_guarded_risk_label_source_outputs.v1
+  passing_status: PASS_G1_GUARD_FIRST_RISK_AND_LABEL_SOURCE_MATERIALIZED_ESTIMATION_NOT_RUN
+
+authorization_after_pass:
+  predecision_feature_and_control_materialization: AUTHORIZED_NEXT_EXACT_G1_ROWS
+  registered_sampling_weighting_and_estimation: NOT_AUTHORIZED_UNTIL_COMPLETE_FEATURE_CONTROL_SOURCE
+  scope_or_threshold_change: NOT_AUTHORIZED
+  other_private_g4_artifact_access: NOT_AUTHORIZED
+  holdout_seal_open: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  model_selection_score_read: NOT_AUTHORIZED
+  predictive_or_nabm_model_fitting: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This resumed execution component applies the exact approved author-cold guard
+  before materializing registered G1 risk rows and entry, persistence, one-off,
+  and alternative-pivot labels for the 84 frozen response cohorts. It does not
+  estimate an association or null, decide a hypothesis or negative control,
+  access another private G4 artifact, open the seal, read model-selection scores,
+  fit a model, establish transport or causality, or establish a scientific effect.

@@ -1,0 +1,119 @@
+schema_version: pivot_feedback_e_g1_guard_only_exception.v1
+label: pivot_feedback_e_g1_guard_only_exception_v1
+mode: EXPLICIT_USER_AUTHORIZED_OPERATOR_ONLY_G1_AUTHOR_COLD_ANTI_JOIN_EXCEPTION
+status: AUTHORIZED_EXACT_GUARD_ONLY_EXCEPTION_PENDING_INDEPENDENT_VERIFICATION
+authorized_at_local_date: "2026-08-05"
+authorization_basis: EXPLICIT_USER_APPROVAL_GUARD_ONLY_EXCEPTION
+
+blocked_state_parent:
+  authority:
+    relative_path: experiments/configs/pivot_feedback_current_state_v3.yaml
+    sha256: 0e16e844a8a7ce8b3321eff47c3763f45582b4eef8f039dc6e18dc092bf94380
+    required_schema_version: pivot_feedback_current_state.v3
+    required_status: ACTIVE_E_PHASE_BLOCKED_INPUT_AUTHORIZATION_CONFLICT_G1_NOT_RUN_HOLDOUT_SEALED_UNOPENED
+    mutation_allowed: false
+  authority_verification:
+    relative_path: experiments/evidence/results/pivot_feedback_current_state_v3_20260805.summary.json
+    sha256: 10c950d2516b3f1e9ea7e61af4c9018f8e4e27a2eeffb82371387e1b3359ba21
+    required_schema_version: pivot_feedback_current_state_v3_summary.v1
+    required_status: PASS_ACTIVE_E_TERMINAL_BLOCKED_INPUT_AUTHORIZATION_CONFLICT_NO_CONFIRMATORY_READ
+    mutation_allowed: false
+  blocked_execution_verification:
+    relative_path: experiments/evidence/results/pivot_feedback_e_g1_execution_v1_20260805.summary.json
+    sha256: 75855d8bc688c1c5001f2c19c25cd6c8a99c62355beb975e6cf1c3df425e6e5c
+    required_schema_version: pivot_feedback_e_g1_execution_summary.v1
+    required_status: PASS_INDEPENDENT_VERIFICATION_OF_TERMINAL_BLOCKED_E_G1_NO_CONFIRMATORY_READ
+    required_block_id: G1_AUTHOR_COLD_GUARD_REQUIRED_BUT_PRIVATE_G4_ACCESS_FORBIDDEN
+    mutation_allowed: false
+
+guard_provenance:
+  verification_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_f_g4_private_membership_materialization_v1_20260804.summary.json
+    sha256: 5f733120ec6366be018df254279acd5c378fd85aeadcdd2e9d2f517433edabb4
+    required_schema_version: pivot_feedback_f_g4_private_membership_materialization_summary.v1
+    required_status: PASS_OPERATOR_ONLY_G4_PREDECISION_MEMBERSHIP_AND_AUTHOR_COLD_GUARD_REMAINING_PRIVATE_PACKAGE_PENDING_NO_F_PASS
+    mutation_allowed: false
+  exact_source:
+    path: /ssd/pivot-feedback-f-g4-private-membership-v1-20260804/private/g4_author_cold_guard.parquet
+    source_root_basename: pivot-feedback-f-g4-private-membership-v1-20260804
+    relative_path: private/g4_author_cold_guard.parquet
+    sha256: 90f79d46dd16e83088a258aeafd795541d918e4afb1915feadd5648523b5ca3a
+    bytes: 24368575
+    rows: 8174698
+    row_groups: 33
+    schema_version: pivot_feedback_f_g4_author_cold_guard.v1
+    exact_columns:
+      - author_numeric_id
+      - first_g4_decision_year
+      - last_g4_decision_year
+      - g4_episode_count
+      - exclude_from_discovery
+      - exclude_from_g1
+      - exclude_from_model_selection
+    required_projection_columns: [author_numeric_id, exclude_from_g1]
+    required_exclude_from_g1_value: true
+    file_mode: "0600"
+    sealed_root_file: false
+
+allowed_operations:
+  - REHASH_EXACT_SOURCE_FILE
+  - READ_EXACT_PARQUET_FOOTER_AND_SCHEMA
+  - PROJECT_AUTHOR_NUMERIC_ID_AND_EXCLUDE_FROM_G1_ONLY
+  - ASSERT_EVERY_PROJECTED_EXCLUDE_FROM_G1_VALUE_TRUE
+  - ANTI_JOIN_BEFORE_ANY_G1_LABEL_CONTROL_OR_ESTIMATOR_LOGIC
+  - RECORD_PRE_GUARD_POST_GUARD_AND_EXCLUDED_ROW_COUNTS
+  - INDEPENDENTLY_VERIFY_ANTI_JOIN_ZERO_OVERLAP
+
+forbidden_operations:
+  sealed_private_root_access: true
+  g4_risk_membership_access_except_exact_guard: true
+  g4_feature_or_peer_relation_access: true
+  g4_postdecision_or_byline_access: true
+  g4_public_success_source_access: true
+  g4_episode_or_family_manifest_access: true
+  reconstruct_guard_from_g4_field_or_year: true
+  emit_guard_author_ids_to_repository_or_aggregate_report: true
+  use_guard_membership_as_feature_or_outcome: true
+  change_registered_g1_scope_threshold_control_estimand_or_decision_rule: true
+  holdout_seal_open: true
+  g4_analytic_open: true
+
+execution_semantics:
+  guard_role: ROW_EXCLUSION_ONLY_NOT_FEATURE_NOT_OUTCOME_NOT_ESTIMAND
+  anti_join_order: BEFORE_LABEL_CONTROL_SAMPLING_WEIGHT_OR_ESTIMATOR_LOGIC
+  output_may_contain_guard_membership_indicator: false
+  output_may_contain_excluded_guard_author_ids: false
+  source_file_mutation_allowed: false
+  original_holdout_seal_state_after_use: BYTE_SEALED_UNOPENED
+  g4_open_after_use: false
+  registered_scope_unchanged: true
+  scientific_rule_changed: false
+  blocked_condition_resolved_if_independent_verification_passes: true
+
+authorization_after_independent_pass:
+  exact_guard_only_read: AUTHORIZED_FOR_G1_ROW_ANTI_JOIN_ONLY
+  e_g1_execution_resume: AUTHORIZED_EXACT_PARENT_V1_PLUS_V2_SCOPE
+  confirmatory_analytic_access: AUTHORIZED_ONLY_IN_RESUMED_EXECUTION_AFTER_GUARD_ANTI_JOIN
+  sealed_private_root_access: NOT_AUTHORIZED
+  all_other_private_g4_artifact_access: NOT_AUTHORIZED
+  holdout_seal_open: NOT_AUTHORIZED
+  g4_analytic_open: NOT_AUTHORIZED
+  model_selection_score_read: NOT_AUTHORIZED
+  predictive_or_nabm_model_fitting: NOT_AUTHORIZED
+  causal_claim: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+validation_contract:
+  verifier_relative_path: scripts/verify_pivot_feedback_e_g1_guard_only_exception_v1.py
+  summary_json_relative_path: experiments/evidence/results/pivot_feedback_e_g1_guard_only_exception_v1_20260805.summary.json
+  summary_markdown_relative_path: experiments/evidence/results/pivot_feedback_e_g1_guard_only_exception_v1_20260805.summary.md
+  confirmatory_or_holdout_outcome_rows_may_be_read: false
+  exact_guard_rows_may_be_read_for_exclude_flag_validation: true
+
+claim_boundary: >-
+  This explicit exception authorizes one exact non-sealed source file solely as
+  an operator-only exclusion set before any G1 label, control, sampling,
+  weighting, or estimator logic. It does not authorize the sealed private root,
+  any other G4 artifact, G4 field/year reconstruction, use of guard membership
+  as a feature or outcome, a scope or rule change, a holdout or G4 analytic open,
+  model selection, model fitting, causality, or any scientific effect.

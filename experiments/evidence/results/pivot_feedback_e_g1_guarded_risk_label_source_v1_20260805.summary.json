@@ -1,0 +1,312 @@
+{
+  "access_boundary": {
+    "confirmatory_rows_materialized": 72715221,
+    "estimators_run": 0,
+    "g4_open": false,
+    "holdout_outcome_rows_read": 0,
+    "model_selection_scores_read": 0,
+    "other_private_g4_files_read": 0,
+    "seal_open_events": 0
+  },
+  "authorization": {
+    "g4_open": "NOT_AUTHORIZED",
+    "holdout_seal_open": "NOT_AUTHORIZED",
+    "model_selection_score_read": "NOT_AUTHORIZED",
+    "other_private_g4_artifact_access": "NOT_AUTHORIZED",
+    "predecision_feature_and_control_materialization": "AUTHORIZED_NEXT_EXACT_G1_ROWS",
+    "predictive_or_nabm_model_fitting": "NOT_AUTHORIZED",
+    "registered_sampling_weighting_and_estimation": "NOT_AUTHORIZED_UNTIL_COMPLETE_FEATURE_CONTROL_SOURCE",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "scope_or_threshold_change": "NOT_AUTHORIZED"
+  },
+  "claim_boundary": "This resumed execution component applies the exact approved author-cold guard before materializing registered G1 risk rows and entry, persistence, one-off, and alternative-pivot labels for the 84 frozen response cohorts. It does not estimate an association or null, decide a hypothesis or negative control, access another private G4 artifact, open the seal, read model-selection scores, fit a model, establish transport or causality, or establish a scientific effect.",
+  "guard_replay": {
+    "anti_join_before_label_logic_contract_bound": true,
+    "guard_membership_indicator_emitted": false,
+    "guard_rows": 8174698,
+    "guard_sha256": "90f79d46dd16e83088a258aeafd795541d918e4afb1915feadd5648523b5ca3a",
+    "materialized_guard_overlap_rows": 0
+  },
+  "independent_row_replay": {
+    "alternative_pivot_entry_rows": 10086,
+    "entry_rows": 17411,
+    "guard_excluded_rows": 22677450,
+    "guarded_risk_rows": 72715221,
+    "non_entry_rows": 72697810,
+    "one_off_entry_rows": 14227,
+    "persistence_rows": 3184,
+    "pre_guard_risk_rows": 95392671
+  },
+  "label_replay": {
+    "author_order_or_duplicate_rows": 0,
+    "cohort_constant_mismatches": 0,
+    "cohort_files_replayed": 84,
+    "label_logic_mismatches": 0,
+    "outcome_imputation": "NONE"
+  },
+  "production_artifact": {
+    "artifact_count_excluding_receipt": 86,
+    "cohort_file_count": 84,
+    "manifest_sha256": "a825c6d9a6231f7bb55e0ea4ef0ff1c58cd746b7ca4f51d84bf24ef38e5ad5f5",
+    "receipt_sha256": "f1f373574ccc550840e902ae3f6de7c9a0a704a7e7e6178fabfd73e18039b8b7",
+    "report_sha256": "7263b3b8ab3d624670881405d8c3f5917940217549e3f241616e0a9cd6fb6cfe",
+    "root": "/ssd/pivot-feedback-e-g1-guarded-risk-label-source-v1-20260805"
+  },
+  "registered_execution_disposition": {
+    "blocking_condition": "FROZEN_EPISODE_COHORT_SUPPORT_FLOOR_FAILED",
+    "failed_unit_action": "EXCLUDE_UNIT_AND_FAIL_REGISTERED_COVERAGE_REQUIREMENT",
+    "failed_unit_count": 2,
+    "failed_units": [
+      {
+        "entries": 58,
+        "entry_shortfall_from_frozen_floor": 42,
+        "episode_id": 11,
+        "failure_reason": "ENTRY_EVENTS_BELOW_100",
+        "nonentries": 1673102,
+        "primary_field_id": 32,
+        "shock_year": 2015,
+        "topic_id": 14085,
+        "total": 1673160
+      },
+      {
+        "entries": 28,
+        "entry_shortfall_from_frozen_floor": 72,
+        "episode_id": 25,
+        "failure_reason": "ENTRY_EVENTS_BELOW_100",
+        "nonentries": 3624884,
+        "primary_field_id": 11,
+        "shock_year": 2015,
+        "topic_id": 14195,
+        "total": 3624912
+      }
+    ],
+    "frozen_policy_rule_id": "FIELD_EPISODE_PARTITION_MINIMUM_500_WITH_100_PER_OUTCOME_CLASS_V1",
+    "pass_e": false,
+    "pass_g1": false,
+    "pooling_or_threshold_relaxation_authorized": false,
+    "predecision_feature_and_control_materialization": "NOT_RUN_UNNECESSARY_AFTER_TERMINAL_SUPPORT_FAILURE",
+    "registered_sampling_weighting_and_estimation": "NOT_RUN_BLOCKED_BY_SUPPORT",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "terminal_status": "BLOCKED_E_G1_INPUT_SUPPORT_OR_ESTIMATOR_FAILURE_NO_ROUTE_PROMOTION"
+  },
+  "repository_artifacts": {
+    "builder": {
+      "relative_path": "scripts/build_pivot_feedback_e_g1_guarded_risk_label_source_v1.py",
+      "sha256": "d46e69933d4a257828ac764b313ceccd848a8f62ed5c9879f0c8c138fc9b8aae"
+    },
+    "config": {
+      "relative_path": "experiments/configs/pivot_feedback_e_g1_guarded_risk_label_source_v1.yaml",
+      "sha256": "c32d355b2c2a94d9891725d5e373b568d06d4de54d9c2ed6d18edef9568bf7b8"
+    },
+    "independent_verifier": {
+      "relative_path": "scripts/verify_pivot_feedback_e_g1_guarded_risk_label_source_v1.py",
+      "sha256": "4ff9e0186ec1e91479d320358052e60b5af4a8610b22715a6cabdac26106a1a8"
+    }
+  },
+  "schema_version": "pivot_feedback_e_g1_guarded_risk_label_source_summary.v1",
+  "status": "PASS_INDEPENDENT_G1_GUARD_FIRST_RISK_AND_LABEL_SOURCE_ROW_REPLAY_ESTIMATION_NOT_RUN",
+  "support_replay": {
+    "episode_count": 28,
+    "episodes": [
+      {
+        "entries": 794,
+        "episode_id": 1,
+        "nonentries": 1094678,
+        "support_pass": true,
+        "total": 1095472
+      },
+      {
+        "entries": 848,
+        "episode_id": 2,
+        "nonentries": 1094944,
+        "support_pass": true,
+        "total": 1095792
+      },
+      {
+        "entries": 510,
+        "episode_id": 3,
+        "nonentries": 1093500,
+        "support_pass": true,
+        "total": 1094010
+      },
+      {
+        "entries": 505,
+        "episode_id": 4,
+        "nonentries": 1099196,
+        "support_pass": true,
+        "total": 1099701
+      },
+      {
+        "entries": 852,
+        "episode_id": 5,
+        "nonentries": 1120424,
+        "support_pass": true,
+        "total": 1121276
+      },
+      {
+        "entries": 724,
+        "episode_id": 6,
+        "nonentries": 1121569,
+        "support_pass": true,
+        "total": 1122293
+      },
+      {
+        "entries": 636,
+        "episode_id": 7,
+        "nonentries": 1137526,
+        "support_pass": true,
+        "total": 1138162
+      },
+      {
+        "entries": 594,
+        "episode_id": 8,
+        "nonentries": 1136519,
+        "support_pass": true,
+        "total": 1137113
+      },
+      {
+        "entries": 122,
+        "episode_id": 9,
+        "nonentries": 1466841,
+        "support_pass": true,
+        "total": 1466963
+      },
+      {
+        "entries": 274,
+        "episode_id": 10,
+        "nonentries": 1571357,
+        "support_pass": true,
+        "total": 1571631
+      },
+      {
+        "entries": 58,
+        "episode_id": 11,
+        "nonentries": 1673102,
+        "support_pass": false,
+        "total": 1673160
+      },
+      {
+        "entries": 686,
+        "episode_id": 12,
+        "nonentries": 3222360,
+        "support_pass": true,
+        "total": 3223046
+      },
+      {
+        "entries": 495,
+        "episode_id": 13,
+        "nonentries": 3223693,
+        "support_pass": true,
+        "total": 3224188
+      },
+      {
+        "entries": 791,
+        "episode_id": 14,
+        "nonentries": 3214272,
+        "support_pass": true,
+        "total": 3215063
+      },
+      {
+        "entries": 1560,
+        "episode_id": 15,
+        "nonentries": 3197644,
+        "support_pass": true,
+        "total": 3199204
+      },
+      {
+        "entries": 1247,
+        "episode_id": 16,
+        "nonentries": 3194315,
+        "support_pass": true,
+        "total": 3195562
+      },
+      {
+        "entries": 940,
+        "episode_id": 17,
+        "nonentries": 3411382,
+        "support_pass": true,
+        "total": 3412322
+      },
+      {
+        "entries": 370,
+        "episode_id": 18,
+        "nonentries": 3420285,
+        "support_pass": true,
+        "total": 3420655
+      },
+      {
+        "entries": 433,
+        "episode_id": 19,
+        "nonentries": 3423521,
+        "support_pass": true,
+        "total": 3423954
+      },
+      {
+        "entries": 1230,
+        "episode_id": 20,
+        "nonentries": 3393375,
+        "support_pass": true,
+        "total": 3394605
+      },
+      {
+        "entries": 318,
+        "episode_id": 21,
+        "nonentries": 3618535,
+        "support_pass": true,
+        "total": 3618853
+      },
+      {
+        "entries": 969,
+        "episode_id": 22,
+        "nonentries": 3603094,
+        "support_pass": true,
+        "total": 3604063
+      },
+      {
+        "entries": 100,
+        "episode_id": 23,
+        "nonentries": 3622457,
+        "support_pass": true,
+        "total": 3622557
+      },
+      {
+        "entries": 530,
+        "episode_id": 24,
+        "nonentries": 3614446,
+        "support_pass": true,
+        "total": 3614976
+      },
+      {
+        "entries": 28,
+        "episode_id": 25,
+        "nonentries": 3624884,
+        "support_pass": false,
+        "total": 3624912
+      },
+      {
+        "entries": 1545,
+        "episode_id": 26,
+        "nonentries": 3757545,
+        "support_pass": true,
+        "total": 3759090
+      },
+      {
+        "entries": 104,
+        "episode_id": 27,
+        "nonentries": 3772767,
+        "support_pass": true,
+        "total": 3772871
+      },
+      {
+        "entries": 148,
+        "episode_id": 28,
+        "nonentries": 3773579,
+        "support_pass": true,
+        "total": 3773727
+      }
+    ],
+    "fail_count": 2,
+    "pass_count": 26,
+    "pooling_to_rescue_failure": false
+  }
+}

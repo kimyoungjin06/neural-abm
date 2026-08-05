@@ -1,0 +1,50 @@
+{
+  "access_accounting": {
+    "confirmatory_rows_read": 0,
+    "g4_open": false,
+    "guard_rows_read_for_exclude_flag_validation": 8174698,
+    "holdout_outcome_rows_read": 0,
+    "other_private_g4_files_read": 0,
+    "seal_open_events": 0,
+    "sealed_private_root_files_read": 0
+  },
+  "authority": {
+    "relative_path": "experiments/configs/pivot_feedback_e_g1_guard_only_exception_v1.yaml",
+    "sha256": "c9827e04af658b5004e86524aec964e620dd7216848d95d736df20cee0841842"
+  },
+  "authorization": {
+    "all_other_private_g4_artifact_access": "NOT_AUTHORIZED",
+    "causal_claim": "NOT_AUTHORIZED",
+    "confirmatory_analytic_access": "AUTHORIZED_ONLY_IN_RESUMED_EXECUTION_AFTER_GUARD_ANTI_JOIN",
+    "e_g1_execution_resume": "AUTHORIZED_EXACT_PARENT_V1_PLUS_V2_SCOPE",
+    "exact_guard_only_read": "AUTHORIZED_FOR_G1_ROW_ANTI_JOIN_ONLY",
+    "g4_analytic_open": "NOT_AUTHORIZED",
+    "holdout_seal_open": "NOT_AUTHORIZED",
+    "model_selection_score_read": "NOT_AUTHORIZED",
+    "predictive_or_nabm_model_fitting": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "sealed_private_root_access": "NOT_AUTHORIZED"
+  },
+  "claim_boundary": "This explicit exception authorizes one exact non-sealed source file solely as an operator-only exclusion set before any G1 label, control, sampling, weighting, or estimator logic. It does not authorize the sealed private root, any other G4 artifact, G4 field/year reconstruction, use of guard membership as a feature or outcome, a scope or rule change, a holdout or G4 analytic open, model selection, model fitting, causality, or any scientific effect.",
+  "guard_replay": {
+    "bytes": 24368575,
+    "non_true_exclude_from_g1_rows": 0,
+    "path": "/ssd/pivot-feedback-f-g4-private-membership-v1-20260804/private/g4_author_cold_guard.parquet",
+    "projected_columns": [
+      "author_numeric_id",
+      "exclude_from_g1"
+    ],
+    "row_groups": 33,
+    "rows": 8174698,
+    "schema_version": "pivot_feedback_f_g4_author_cold_guard.v1",
+    "sha256": "90f79d46dd16e83088a258aeafd795541d918e4afb1915feadd5648523b5ca3a",
+    "source_is_outside_sealed_private_root": true
+  },
+  "resolved_block": {
+    "block_id": "G1_AUTHOR_COLD_GUARD_REQUIRED_BUT_PRIVATE_G4_ACCESS_FORBIDDEN",
+    "resolved_only_for_exact_guard_anti_join": true,
+    "scope_or_scientific_rule_changed": false
+  },
+  "schema_version": "pivot_feedback_e_g1_guard_only_exception_summary.v1",
+  "status": "PASS_INDEPENDENT_EXACT_GUARD_ONLY_EXCEPTION_G1_RESUME_AUTHORIZED"
+}
