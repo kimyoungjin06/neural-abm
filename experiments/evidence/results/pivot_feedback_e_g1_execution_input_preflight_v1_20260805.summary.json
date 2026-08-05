@@ -1,0 +1,134 @@
+{
+  "access_accounting": {
+    "analytic_artifact_bytes_read": 0,
+    "analytic_parquet_or_row_level_files_opened": 0,
+    "confirmatory_rows_read": 0,
+    "entry_or_persistence_labels_materialized": 0,
+    "estimators_run": 0,
+    "g4_open": false,
+    "holdout_rows_read": 0,
+    "model_selection_scores_read": 0,
+    "negative_control_values_materialized": 0,
+    "operator_metadata_receipts_read": 4,
+    "operator_roots_checked": 4,
+    "predictive_or_nabm_models_fitted": 0,
+    "repository_json_documents_read": 5,
+    "repository_yaml_documents_read": 3,
+    "seal_open_events": 0
+  },
+  "active_authority_replay": {
+    "active_phase": "E",
+    "current_state_sha256": "ca431afb63da4cf2e09d0563c0509e3685efac29dc8679df0f9cc7f1ae7851ab",
+    "empirical_g1_status": "NOT_RUN",
+    "holdout_seal_opened": false,
+    "pass_f": true,
+    "pass_g0_compatibility": true,
+    "phase_state": "READY_NOT_RUN"
+  },
+  "authorization": {
+    "causal_claim": "NOT_AUTHORIZED",
+    "confirmatory_analytic_access": "AUTHORIZED_ONLY_DURING_SEPARATE_EXECUTION_SUCCESSOR_FOR_BOUND_G1_SCOPE",
+    "exact_g1_execution_successor": "AUTHORIZED_NEXT_FROM_INDEPENDENTLY_VERIFIED_PREFLIGHT",
+    "g4_artifact_access": "NOT_AUTHORIZED",
+    "g4_seal_open": "NOT_AUTHORIZED",
+    "model_selection_score_read": "NOT_AUTHORIZED",
+    "predictive_or_nabm_model_fitting": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "scope_or_threshold_change_after_confirmatory_access": "NOT_AUTHORIZED"
+  },
+  "claim_boundary": "The independent metadata replay verifies the exact frozen G1 scope, receipt-bound non-holdout inputs, label and negative-control rules, estimand and decision rules, and seven output schemas. No analytic artifact or row was opened, no label, control, estimate, or G1 result was produced, no model-selection score was read, no predictive or NABM model was fitted, no private G4 artifact was included, the seal remains unopened, and no scientific effect is established.",
+  "exact_input_inventory_replay": {
+    "aligned_final_panel_metadata": {
+      "artifact_bytes": 23905,
+      "artifact_count": 2,
+      "inventory_sha256": "39f24f0c13008c8a5bd3db7ce90baf851cd4ae8b67fe43a3690cc44bb618fc3b"
+    },
+    "atomic_partition_metadata": {
+      "artifact_bytes": 15943,
+      "artifact_count": 3,
+      "inventory_sha256": "5e604a3fec4de609bc060c4baa1ac565ad70a0c972f489b7a8eea9e73502ccb7"
+    },
+    "author_history_events": {
+      "artifact_bytes": 5006392019,
+      "artifact_count": 4096,
+      "inventory_sha256": "59cfe5d5b235f26d4a2b8ad78f5679c15d341ac0778f92d3beb30929cb17aa4c"
+    },
+    "normalized_work_metadata": {
+      "artifact_bytes": 4120921809,
+      "artifact_count": 4096,
+      "inventory_sha256": "68d57f5425d56a5e008694fdcb6a36521ba977a3fbabb5935c3ad023abcaa5e9"
+    }
+  },
+  "fail_closed_state": {
+    "confirmatory_rows_read": 0,
+    "empirical_g1_status": "NOT_RUN",
+    "estimators_run": 0,
+    "g1_execution_run": false,
+    "g4_open": false,
+    "holdout_rows_read": 0,
+    "holdout_seal_opened": false,
+    "labels_materialized": 0,
+    "model_selection_scores_read": 0,
+    "negative_controls_materialized": 0,
+    "pass_e": false,
+    "pass_g1": false,
+    "predictive_or_nabm_models_fitted": 0,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "independent_preflight": {
+    "complete": true,
+    "non_holdout_inventory_fingerprints_exact": true,
+    "operator_receipt_hashes_exact": true,
+    "receipt_artifact_arrays_replayed_from_metadata": true,
+    "repository_bindings_exact": true,
+    "scope_and_output_contract_exact": true,
+    "this_is_new_scientific_gate": false
+  },
+  "registered_scope_replay": {
+    "entry_years": [
+      2013,
+      2016
+    ],
+    "episode_count": 28,
+    "family_count": 13,
+    "field_count": 3,
+    "field_ids_in_registered_slot_order": [
+      16,
+      32,
+      11
+    ],
+    "g1_g4_cross_partition_families": 0,
+    "g4_field_excluded": true,
+    "g4_private_artifacts_included": false,
+    "partition_id": "g1_empirical_replication"
+  },
+  "repository_artifacts": {
+    "builder": {
+      "relative_path": "scripts/build_pivot_feedback_e_g1_execution_input_preflight_v1.py",
+      "sha256": "a11f39a19affe34af6847d70f8960d08490bd63e9f974b588e9a0e5adf16a752"
+    },
+    "independent_verifier": {
+      "relative_path": "scripts/verify_pivot_feedback_e_g1_execution_input_preflight_v1.py",
+      "sha256": "225a8e977177da2d16c8ea175e97707830e78116c986bd4a0aaed21bea777095"
+    },
+    "preflight_contract": {
+      "relative_path": "experiments/configs/pivot_feedback_e_g1_execution_input_preflight_v1.yaml",
+      "sha256": "9611bdaa1e0144540d82834f743fbf51cc733ef9492771ed9d37f66ec75bf4d2"
+    }
+  },
+  "schema_version": "pivot_feedback_e_g1_execution_input_preflight_summary.v1",
+  "scientific_contract_replay": {
+    "estimator_and_uncertainty_rule_bound": true,
+    "frozen_section_count": 13,
+    "h3_primary_and_replication_rule_bound": true,
+    "hierarchical_multiplicity_rule_bound": true,
+    "label_materialization_rule_bound": true,
+    "negative_control_count": 7,
+    "negative_control_rules_bound": true,
+    "output_artifact_schema_count": 7,
+    "replication_margin_cohort_years": -1.0,
+    "risk_sampling_and_weight_rule_bound": true,
+    "strict_replication_boundary": true
+  },
+  "status": "PASS_INDEPENDENT_E_G1_EXECUTION_INPUT_PREFLIGHT_EXACT_NON_HOLDOUT_SCOPE_NO_G1_RUN"
+}
