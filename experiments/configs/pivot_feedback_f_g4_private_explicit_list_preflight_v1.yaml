@@ -1,0 +1,163 @@
+schema_version: pivot_feedback_f_g4_private_explicit_list_preflight.v1
+label: pivot_feedback_f_g4_private_explicit_list_preflight_v1
+mode: F_PHASE_OPERATOR_ONLY_BOUND_EXPLICIT_LIST_FULL_BYTE_PREFLIGHT_NO_SEAL
+status: FROZEN_BOUND_153_ARTIFACT_FULL_BYTE_PREFLIGHT_PENDING_EXECUTION_NO_F_PASS
+
+authorization_parent:
+  relative_path: experiments/evidence/results/pivot_feedback_f_g4_private_root_artifact_binding_v1_20260805.summary.json
+  sha256: a0a3ac2bee595dec04aadc360b17427b4718f42ea374611ec8a200a49ebd6924
+  required_schema_version: pivot_feedback_f_g4_private_root_artifact_binding_summary.v1
+  required_status: PASS_OPERATOR_ONLY_EXACT_PRIVATE_G4_ROOT_AND_COMPLETE_153_ARTIFACT_LIST_BOUND_NO_PREFLIGHT_NO_F_PASS
+  required_authorization: explicit_file_list_preflight
+  required_value: AUTHORIZED_NEXT_FROM_BOUND_ROOT_AND_LIST_ONLY
+  mutation_allowed: false
+
+bound_root_and_list:
+  contract:
+    relative_path: experiments/configs/pivot_feedback_f_g4_private_root_artifact_binding_v1.yaml
+    sha256: 94e7d814cdd52d3a4b11129e45f5f12b1f32d982ce38a1e101d9240479950363
+    required_schema_version: pivot_feedback_f_g4_private_root_artifact_binding.v1
+    mutation_allowed: false
+  binding:
+    absolute_path: /ssd/pivot-feedback-f-g4-private-feature-source-v1-20260804.root-artifact-binding-v1.json
+    sha256: bd2417a567e9ab7cdcb56f5b17c435341d7778c3945e08b1ff19cb803951f3fc
+    required_schema_version: pivot_feedback_f_g4_private_root_artifact_binding_output.v1
+    required_status: PASS_OPERATOR_ONLY_EXACT_PRIVATE_G4_ROOT_AND_COMPLETE_153_ARTIFACT_LIST_BOUND_NO_PREFLIGHT_NO_F_PASS
+    required_mode: "0400"
+    artifact_count: 153
+    artifact_bytes_total: 3067046872
+    artifact_tree_sha256: 62d6978c776c32464c4c862df12a52a580a6066dda45d4fb0dfe75910a562084
+  independent_binding_verification:
+    absolute_path: /ssd/pivot-feedback-f-g4-private-feature-source-v1-20260804.root-artifact-binding-v1.verification.json
+    sha256: 10cdb5e855221266ea90e2161bcbc8f3056c8584faf6ecc07e43a03dc092188b
+    required_schema_version: pivot_feedback_f_g4_private_root_artifact_binding_verification.v1
+    required_status: PASS_INDEPENDENT_EXACT_PRIVATE_G4_ROOT_AND_COMPLETE_153_ARTIFACT_LIST_BOUND_NO_PREFLIGHT_NO_F_PASS
+    required_mode: "0400"
+    required_artifact_count: 153
+    required_source_artifact_bytes_hashed: 0
+    required_holdout_preflight_complete: false
+    required_pass_f: false
+    required_pass_g0: false
+    required_g4_open: false
+  exact_source_root:
+    absolute_path: /ssd/pivot-feedback-f-g4-private-feature-source-v1-20260804
+    basename: pivot-feedback-f-g4-private-feature-source-v1-20260804
+    resolved_path_sha256: b77a162fd88dc4289d0715fd95e35b64d0489f7b1d7c7e9ca456d9d182c0cc37
+    device: 66305
+    inode: 42467329
+    mode: "0700"
+    root_must_not_be_symlink: true
+
+seal_creator_compatibility:
+  output_schema_version: pivot_feedback_holdout_access_seal_preflight.v1
+  output_status: PASS_EXPLICIT_ALLOWLIST_HASHES_BOUND_ZERO_PRIOR_OPEN_EVENTS
+  component_schema_version: pivot_feedback_f_g4_private_explicit_list_preflight_output.v1
+  component_status: PASS_OPERATOR_ONLY_BOUND_153_ARTIFACT_BYTES_REHASHED_NO_SEAL_NO_F_PASS
+  partition_contract:
+    partition_id: g4_temporal_holdout
+    entry_start_year: 2020
+    entry_end_year: 2022
+    entry_years: [2020, 2021, 2022]
+    outcome_followup_through_year: 2025
+    temporal_holdout: true
+    domain_cold: true
+    author_cold: true
+    outcome_blind_definition: true
+  repository_bindings:
+    authorization_gate:
+      relative_path: experiments/configs/pivot_feedback_gate_state_v54.yaml
+      sha256: 243145fadeee3586a141dcd5e9b0d34af1d87042b4586f3613bc3ea8d30768c8
+      required_schema_version: pivot_feedback_gate_state.v54
+      required_status: VALID_HOLDOUT_SEAL_CONTRACT_COMPLETE_G0_NOT_READY_SEAL_CREATION_ONLY_AUTHORIZED
+    contract:
+      relative_path: experiments/configs/pivot_feedback_holdout_access_seal_v1.yaml
+      sha256: 16054264f703b03726edddc041255de10a541b9339d25f9e8ec8cab302d57568
+      required_schema_version: pivot_feedback_holdout_access_seal_contract.v1
+      required_status: PENDING_INDEPENDENT_VALIDATION_FUTURE_SEAL_CREATION_ONLY
+    g0_v2:
+      relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v2.yaml
+      sha256: a2cb0cbf444a7c128eecc40a815b80d5fe86f617a36849330612491b03934eb3
+      required_schema_version: pivot_feedback_g0_measurement_freeze.v3
+      required_status: PENDING_G0_V2_G_MINUS_1A_BOUND_THREE_BLOCKERS_NO_SEAL
+    prerequisite_closure_plan:
+      relative_path: experiments/configs/pivot_feedback_g0_prerequisite_closure_plan_v1.yaml
+      sha256: 45db08ea9e51d861270c1be4b8ac675e56e30df7b57268f515fd665708b2c4fc
+      required_schema_version: pivot_feedback_g0_prerequisite_closure_plan.v1
+      required_status: PENDING_INDEPENDENT_VALIDATION_FOUR_WORKSTREAM_PLAN_NO_EXECUTION
+  consumer_scripts:
+    seal_creator:
+      relative_path: scripts/create_pivot_feedback_holdout_access_seal_v1.py
+      sha256: e65d8fa3a3c85d6f1c87564dab586fcda0ed163cf4455426caff7e773140cf76
+    independent_seal_verifier:
+      relative_path: scripts/verify_pivot_feedback_holdout_access_seal_receipt_v1.py
+      sha256: f42563e6852e4624938dcc70ccd7da7d847c8d7528c01ca9aa51833d568aa2c5
+
+preflight_execution_contract:
+  artifact_list_source: BOUND_ROOT_ARTIFACT_BINDING_EXACT_153_ENTRY_PROJECTION
+  implicit_artifact_discovery_forbidden: true
+  wildcards_forbidden: true
+  directories_as_artifacts_forbidden: true
+  duplicate_and_noncanonical_paths_forbidden: true
+  symlinks_and_nonregular_files_forbidden: true
+  no_follow_file_open_required: true
+  before_after_device_inode_size_mtime_check_required: true
+  every_bound_artifact_byte_must_be_hashed: true
+  computed_size_must_equal_bound_expected_size: true
+  computed_sha256_must_equal_bound_expected_sha256: true
+  row_or_parquet_parser_forbidden: true
+  prior_open_event_count: 0
+  confirmatory_or_holdout_analytic_rows_read: 0
+  artifact_count: 153
+  artifact_bytes_total: 3067046872
+  output_must_be_create_only: true
+  output_must_be_outside_source_root: true
+  output_file_mode: "0400"
+  independent_full_byte_verification_required: true
+
+output_contract:
+  operator_control_root: /ssd/pivot-feedback-f-g4-private-operator-control-v1
+  operator_control_directory_mode: "0700"
+  preflight_basename: pivot_feedback_holdout_access_seal_preflight_v1.json
+  verification_basename: pivot_feedback_f_g4_private_explicit_list_preflight_v1.verification.json
+  verification_schema_version: pivot_feedback_f_g4_private_explicit_list_preflight_verification.v1
+  verification_status: PASS_INDEPENDENT_BOUND_153_ARTIFACT_BYTES_REHASHED_PREFLIGHT_NO_SEAL_NO_F_PASS
+  output_file_mode: "0400"
+
+completion_accounting:
+  this_component_is_new_gate: false
+  exact_private_source_root_bound: true
+  complete_explicit_artifact_list_bound: true
+  holdout_preflight_complete: false
+  independent_preflight_verification_complete: false
+  holdout_byte_seal_complete: false
+  entry_or_persistence_labels_materialized: false
+  confirmatory_or_holdout_analytic_rows_read: 0
+  model_score_read: false
+  model_fitted: false
+  g4_open: false
+  pass_f: false
+  pass_g0: false
+
+authorization_after_preflight_pass:
+  independent_preflight_verification: AUTHORIZED_AND_REQUIRED_NEXT
+  byte_seal_creation: NOT_AUTHORIZED_UNTIL_INDEPENDENT_PREFLIGHT_VERIFICATION
+  label_derivation_or_analytic_read: NOT_AUTHORIZED_BEFORE_F_PASS_SUCCESSOR
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+authorization_after_independent_verification_pass:
+  byte_seal_creation: AUTHORIZED_NEXT_FROM_EXACT_VERIFIED_PREFLIGHT_ONLY
+  seal_opening: NOT_AUTHORIZED
+  label_derivation_or_analytic_read: NOT_AUTHORIZED_BEFORE_F_PASS_SUCCESSOR
+  model_selection_score_read: NOT_AUTHORIZED_BEFORE_E_PASS_AND_PRE_G2_LOCK
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+
+claim_boundary: >-
+  This operator-only successor consumes only the exact bound private root and
+  153-entry list, opens each listed regular file with no-follow semantics, and
+  hashes every byte to verify current size and SHA-256 identity. It does not
+  discover additional artifacts, parse Parquet or rows, derive labels, read
+  analytic outcomes, create or open a seal, fit a model, pass F or G0, or open
+  G4. Independent full-byte preflight verification is required before the
+  byte-seal creation successor is authorized.

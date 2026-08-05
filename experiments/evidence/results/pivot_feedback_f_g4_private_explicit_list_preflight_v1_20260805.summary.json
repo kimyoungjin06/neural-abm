@@ -1,0 +1,98 @@
+{
+  "schema_version": "pivot_feedback_f_g4_private_explicit_list_preflight_summary.v1",
+  "status": "PASS_OPERATOR_ONLY_AND_INDEPENDENT_BOUND_153_ARTIFACT_BYTES_REHASHED_PREFLIGHT_NO_SEAL_NO_F_PASS",
+  "production_preflight": {
+    "path": "/ssd/pivot-feedback-f-g4-private-operator-control-v1/pivot_feedback_holdout_access_seal_preflight_v1.json",
+    "sha256": "ba70eb0b8fb84ffbfec9e8f94b35daa444b3dc579d45fae794a4961d960f8148",
+    "bytes": 42222,
+    "mode": "0400",
+    "schema_version": "pivot_feedback_holdout_access_seal_preflight.v1",
+    "status": "PASS_EXPLICIT_ALLOWLIST_HASHES_BOUND_ZERO_PRIOR_OPEN_EVENTS",
+    "component_schema_version": "pivot_feedback_f_g4_private_explicit_list_preflight_output.v1",
+    "component_status": "PASS_OPERATOR_ONLY_BOUND_153_ARTIFACT_BYTES_REHASHED_NO_SEAL_NO_F_PASS",
+    "authorized_at_utc": "2026-08-05T02:11:49.364296Z",
+    "preflight_fingerprint_sha256": "70ada641f274c03c370aafbfef1e51b2c4bcc68e9209ee834281c275a5cdf681"
+  },
+  "operator_control_root": {
+    "path": "/ssd/pivot-feedback-f-g4-private-operator-control-v1",
+    "mode": "0700",
+    "outside_private_source_root": true
+  },
+  "bound_input": {
+    "source_root": "/ssd/pivot-feedback-f-g4-private-feature-source-v1-20260804",
+    "source_root_resolved_path_sha256": "b77a162fd88dc4289d0715fd95e35b64d0489f7b1d7c7e9ca456d9d182c0cc37",
+    "source_root_device": 66305,
+    "source_root_inode": 42467329,
+    "root_list_binding_sha256": "bd2417a567e9ab7cdcb56f5b17c435341d7778c3945e08b1ff19cb803951f3fc",
+    "root_list_binding_verification_sha256": "10cdb5e855221266ea90e2161bcbc8f3056c8584faf6ecc07e43a03dc092188b",
+    "artifact_count": 153,
+    "artifact_bytes_total": 3067046872,
+    "artifact_tree_sha256": "62d6978c776c32464c4c862df12a52a580a6066dda45d4fb0dfe75910a562084",
+    "explicit_list_exact_bound_projection": true
+  },
+  "production_execution": {
+    "bound_artifact_paths_consumed": 153,
+    "source_artifact_content_files_opened": 153,
+    "source_artifact_bytes_hashed": 3067046872,
+    "all_computed_sizes_and_hashes_match_binding": true,
+    "artifact_changed_during_hash_count": 0,
+    "implicit_artifact_discovery_performed": false,
+    "operator_parquet_files_parsed": 0,
+    "confirmatory_or_holdout_analytic_rows_read": 0,
+    "preflight_written": true,
+    "byte_seal_created": false
+  },
+  "independent_verification": {
+    "path": "/ssd/pivot-feedback-f-g4-private-operator-control-v1/pivot_feedback_f_g4_private_explicit_list_preflight_v1.verification.json",
+    "sha256": "3166b4df6c9f0689971376be5f2ea7be740809cb05c3e17520f0e8c215fc6874",
+    "bytes": 2339,
+    "mode": "0400",
+    "schema_version": "pivot_feedback_f_g4_private_explicit_list_preflight_verification.v1",
+    "status": "PASS_INDEPENDENT_BOUND_153_ARTIFACT_BYTES_REHASHED_PREFLIGHT_NO_SEAL_NO_F_PASS",
+    "artifact_count_verified": 153,
+    "artifact_bytes_total_verified": 3067046872,
+    "source_artifact_content_files_opened": 153,
+    "source_artifact_bytes_hashed": 3067046872,
+    "artifact_size_mismatch_count": 0,
+    "artifact_sha256_mismatch_count": 0,
+    "artifact_changed_during_hash_count": 0,
+    "operator_parquet_files_parsed": 0,
+    "confirmatory_or_holdout_analytic_rows_read": 0,
+    "seal_creator_preflight_schema_compatible": true
+  },
+  "repository_bindings": {
+    "config_relative_path": "experiments/configs/pivot_feedback_f_g4_private_explicit_list_preflight_v1.yaml",
+    "config_sha256": "cab1642fe3e5691a7ef54c01573c29b2e917abf36d8251daa929f5de927225ae",
+    "preflight_author_relative_path": "scripts/prepare_pivot_feedback_f_g4_private_explicit_list_preflight_v1.py",
+    "preflight_author_sha256": "07cfd4eafd75db53dae52d9c26ea7cc7342ce2b0192d5d3d9fa49234fccde9c0",
+    "independent_verifier_relative_path": "scripts/verify_pivot_feedback_f_g4_private_explicit_list_preflight_v1.py",
+    "independent_verifier_sha256": "af591a470fe02a519b704a52ce8bc8565c85cc6d3e5c6d7314abfd14e443bae9",
+    "authorization_parent_relative_path": "experiments/evidence/results/pivot_feedback_f_g4_private_root_artifact_binding_v1_20260805.summary.json",
+    "authorization_parent_sha256": "a0a3ac2bee595dec04aadc360b17427b4718f42ea374611ec8a200a49ebd6924",
+    "seal_creator_relative_path": "scripts/create_pivot_feedback_holdout_access_seal_v1.py",
+    "seal_creator_sha256": "e65d8fa3a3c85d6f1c87564dab586fcda0ed163cf4455426caff7e773140cf76"
+  },
+  "authorization": {
+    "byte_seal_creation": "AUTHORIZED_NEXT_FROM_EXACT_VERIFIED_PREFLIGHT_ONLY",
+    "seal_opening": "NOT_AUTHORIZED",
+    "label_derivation_or_analytic_read": "NOT_AUTHORIZED_BEFORE_F_PASS_SUCCESSOR",
+    "model_selection_score_read": "NOT_AUTHORIZED_BEFORE_E_PASS_AND_PRE_G2_LOCK",
+    "model_fitting": "NOT_AUTHORIZED",
+    "g4_open": "NOT_AUTHORIZED"
+  },
+  "fail_closed_state": {
+    "this_component_is_new_gate": false,
+    "exact_private_source_root_bound": true,
+    "complete_explicit_artifact_list_bound": true,
+    "holdout_preflight_complete": true,
+    "independent_preflight_verification_complete": true,
+    "holdout_byte_seal_complete": false,
+    "entry_or_persistence_labels_materialized": false,
+    "confirmatory_or_holdout_analytic_rows_read": 0,
+    "model_score_read": false,
+    "model_fitted": false,
+    "g4_open": false,
+    "pass_f": false,
+    "pass_g0": false
+  }
+}
