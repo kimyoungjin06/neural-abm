@@ -1,0 +1,61 @@
+{
+  "authority": {
+    "parent_sha256": "ca431afb63da4cf2e09d0563c0509e3685efac29dc8679df0f9cc7f1ae7851ab",
+    "relative_path": "experiments/configs/pivot_feedback_current_state_v3.yaml",
+    "sha256": "0e16e844a8a7ce8b3321eff47c3763f45582b4eef8f039dc6e18dc092bf94380"
+  },
+  "authorization": {
+    "causal_claim": "NOT_AUTHORIZED",
+    "confirmatory_analytic_access": "NOT_AUTHORIZED_UNTIL_NEW_EXPLICIT_CONFLICT_RESOLUTION_AUTHORITY",
+    "confirmatory_or_holdout_analytic_access": "NOT_AUTHORIZED_WHILE_E_INPUT_AUTHORIZATION_CONFLICT_PERSISTS",
+    "e_g1_execution": "BLOCKED_REQUIRES_NEW_EXPLICIT_CONFLICT_RESOLUTION_AUTHORITY",
+    "f_phase_closure": "COMPLETE_ATOMIC_FOUR_RECEIPT_CONJUNCTION",
+    "g2_or_g3_choice_resolution": "NOT_AUTHORIZED_E_NOT_PASSED",
+    "g4_open": "NOT_AUTHORIZED",
+    "holdout_analytic_access": "NOT_AUTHORIZED_BEFORE_M_RESOLVED_AND_SCORING_CONTRACT_LOCKED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "outcome_based_threshold_selection": "NOT_AUTHORIZED",
+    "pass_f_without_all_receipts": "NOT_AUTHORIZED",
+    "pass_g0_without_all_receipts": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "six_phase_active_routing": "ACTIVE"
+  },
+  "bound_tooling": {
+    "builder_relative_path": "scripts/build_pivot_feedback_current_state_v3.py",
+    "builder_sha256": "6aef82193f4ad86c4c06fd0a9df2bf82a1031b8874df994d303dac30b3474c95",
+    "independent_verifier_relative_path": "scripts/verify_pivot_feedback_current_state_v3.py",
+    "independent_verifier_sha256": "af07e20d52c77718587528ab001b1d44f004e122a119b67cd7a28e33dda7dc3f"
+  },
+  "claim_boundary": "This additive authority records the independently verified terminal BLOCKED E/G1 execution attempt caused by the frozen author-cold requirement and the simultaneous prohibition on private G4 access. It preserves F and G0 compatibility, reads no confirmatory or holdout row, opens no seal, fits no model, does not pass E or G1, and establishes no scientific effect.",
+  "execution_result_replay": {
+    "block_id": "G1_AUTHOR_COLD_GUARD_REQUIRED_BUT_PRIVATE_G4_ACCESS_FORBIDDEN",
+    "confirmatory_rows_read": 0,
+    "execution_summary_sha256": "75855d8bc688c1c5001f2c19c25cd6c8a99c62355beb975e6cf1c3df425e6e5c",
+    "holdout_rows_read": 0,
+    "independent_execution_verification_pass": true,
+    "private_g4_artifacts_read": 0,
+    "seal_opened": false,
+    "terminal_status": "BLOCKED_E_G1_INPUT_SUPPORT_OR_ESTIMATOR_FAILURE_NO_ROUTE_PROMOTION"
+  },
+  "lifecycle_replay": {
+    "confirmatory_or_holdout_rows_read": 0,
+    "empirical_g1_status": "BLOCKED",
+    "g4_open": false,
+    "holdout_seal_opened": false,
+    "model_fitted": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "routing_replay": {
+    "E_complete": false,
+    "E_state": "BLOCKED_INPUT_AUTHORIZATION_CONFLICT_NO_CONFIRMATORY_READ",
+    "H_state": "BYTE_SEALED_UNOPENED",
+    "M_state": "NOT_RUN",
+    "active_phase": "E",
+    "pass_e": false,
+    "pass_f": true,
+    "pass_g0_compatibility": true,
+    "pass_g1": false
+  },
+  "schema_version": "pivot_feedback_current_state_v3_summary.v1",
+  "status": "PASS_ACTIVE_E_TERMINAL_BLOCKED_INPUT_AUTHORIZATION_CONFLICT_NO_CONFIRMATORY_READ"
+}

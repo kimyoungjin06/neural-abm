@@ -1,0 +1,84 @@
+{
+  "access_accounting": {
+    "bootstrap_refits_run": 0,
+    "confirmatory_rows_read": 0,
+    "estimators_run": 0,
+    "g4_open": false,
+    "holdout_rows_read": 0,
+    "labels_materialized": 0,
+    "model_selection_scores_read": 0,
+    "operator_private_g4_artifacts_read": 0,
+    "repository_metadata_documents_read": 7,
+    "seal_open_events": 0
+  },
+  "authorization": {
+    "causal_claim": "NOT_AUTHORIZED",
+    "confirmatory_analytic_access": "NOT_AUTHORIZED_UNTIL_CONFLICT_RESOLVED_BY_NEW_EXPLICIT_AUTHORITY",
+    "empirical_g1_status": "BLOCKED",
+    "g4_artifact_access": "NOT_AUTHORIZED_BY_THIS_EXECUTION_ATTEMPT",
+    "g4_seal_open": "NOT_AUTHORIZED_BY_THIS_EXECUTION_ATTEMPT",
+    "model_selection_score_read": "NOT_AUTHORIZED",
+    "pass_e": false,
+    "pass_g1": false,
+    "predictive_or_nabm_model_fitting": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "scope_or_threshold_change": "NOT_AUTHORIZED"
+  },
+  "blocking_condition_replay": {
+    "block_id": "G1_AUTHOR_COLD_GUARD_REQUIRED_BUT_PRIVATE_G4_ACCESS_FORBIDDEN",
+    "exact_guard_application_pending": true,
+    "frozen_g4_author_cold_anti_join_required": true,
+    "g4_field_or_year_reconstruction_authorized": false,
+    "g4_seal_open_authorized": false,
+    "private_g4_artifact_access_authorized": false,
+    "resolution_requires_new_explicit_authority": true,
+    "safe_compliant_execution_exists": false
+  },
+  "bound_implementation": {
+    "config_relative_path": "experiments/configs/pivot_feedback_e_g1_execution_v1.yaml",
+    "config_sha256": "1881f70ff9f59c26c2c76f79fbb039bae0a256669935d91a93585845a546a6d2",
+    "executor_relative_path": "scripts/execute_pivot_feedback_e_g1_v1.py",
+    "executor_sha256": "5f5a4a251095ca3ca92c281987456b370342e76c1dea3d9d2ae629f515c1a6f9",
+    "independent_verifier_relative_path": "scripts/verify_pivot_feedback_e_g1_execution_v1.py",
+    "independent_verifier_sha256": "821384a488475ccc26bf359380a7c17edbb6dd2cac1457f552604d47648ea92a"
+  },
+  "claim_boundary": "This execution attempt terminates before the first confirmatory read because the frozen design requires the exact G4 author-cold guard to be anti-joined from G1 fit rows while the active E authority forbids every private G4 artifact and seal access and forbids reconstructing the guard from G4 field or year data. It does not inspect G1 or G4 outcomes, estimate an association, establish a null, change the registered science, open the seal, fit a model, establish transport or causality, or establish a scientific effect.",
+  "production_artifact": {
+    "artifact_count_excluding_receipt": 7,
+    "artifact_tree_sha256": "c4bf84b99bb809eb229eb31b61d1ee5331fdf692edab147ba31fdaf855a68fb8",
+    "receipt_sha256": "64dd030932dbac6526eb546144fc9dfb391585aeba071187e02387f10264c926",
+    "receipt_written_last_by_mtime_ns": true,
+    "root": "/ssd/pivot-feedback-e-g1-execution-v1-20260805",
+    "root_basename": "pivot-feedback-e-g1-execution-v1-20260805"
+  },
+  "registered_scope_replay": {
+    "entry_years": [
+      2013,
+      2016
+    ],
+    "episode_count": 28,
+    "family_count": 13,
+    "field_ids_in_registered_slot_order": [
+      16,
+      32,
+      11
+    ],
+    "partition_id": "g1_empirical_replication",
+    "scope_changed": false
+  },
+  "schema_version": "pivot_feedback_e_g1_execution_summary.v1",
+  "status": "PASS_INDEPENDENT_VERIFICATION_OF_TERMINAL_BLOCKED_E_G1_NO_CONFIRMATORY_READ",
+  "terminal_state": {
+    "confirmatory_rows_read": 0,
+    "empirical_g1_status": "BLOCKED",
+    "estimators_run": 0,
+    "g4_open": false,
+    "holdout_rows_read": 0,
+    "holdout_seal_opened": false,
+    "labels_materialized": 0,
+    "model_selection_scores_read": 0,
+    "pass_e": false,
+    "pass_g1": false,
+    "scientific_effect": "NOT_ESTABLISHED"
+  }
+}

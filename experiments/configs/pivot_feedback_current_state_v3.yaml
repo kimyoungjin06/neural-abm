@@ -1,0 +1,397 @@
+schema_version: pivot_feedback_current_state.v3
+label: pivot_feedback_current_state_v3
+mode: ACTIVE_SIX_PHASE_E_G1_TERMINAL_BLOCKED_FAIL_CLOSED_NO_CONFIRMATORY_READ
+status: ACTIVE_E_PHASE_BLOCKED_INPUT_AUTHORIZATION_CONFLICT_G1_NOT_RUN_HOLDOUT_SEALED_UNOPENED
+authority_transition:
+  previous_authority:
+    relative_path: experiments/configs/pivot_feedback_gate_state_v61.yaml
+    sha256: 253c661fd529feb0d70733174197be449dfd27403b5881c6510bd7c8257c2715
+    required_schema_version: pivot_feedback_gate_state.v61
+    required_status: VALID_G0_V4_TWELVE_RESOLVED_SEVEN_PENDING_G1_TOLERANCE_PRECOMMITMENT_AUTHORIZED
+    mutation_allowed: false
+  shadow_design:
+    relative_path: experiments/configs/pivot_feedback_governance_compaction_v1.yaml
+    sha256: 4c2562be842ec30b3fafee5320e88f5949b28fcd89e6091b34e5e43dcdd4c4ee
+    required_schema_version: pivot_feedback_governance_compaction.v1
+    mutation_allowed: false
+  semantic_equivalence_receipt:
+    relative_path: experiments/evidence/results/pivot_feedback_governance_compaction_v1_20260803.summary.json
+    sha256: e03c07949195c556ba566e759a2a88f4d8a4d8373af4b515505a975f141c2296
+    required_schema_version: pivot_feedback_governance_compaction_summary.v1
+    required_status: PASS_SHADOW_SIX_PHASE_SEMANTIC_EQUIVALENCE_NO_AUTHORITY_CHANGE
+    mutation_allowed: false
+  activation_basis: EXPLICIT_USER_APPROVAL_2026_08_03
+  activation_scope: ADMINISTRATIVE_ROUTING_AND_F_PHASE_CLOSURE_ONLY
+  previous_authority_remains_immutable_provenance: true
+  legacy_gate_files_remain_immutable_provenance: true
+  active_routing_uses_this_authority: true
+  delete_or_rewrite_legacy_files: false
+bound_freeze_inputs:
+  g0_v4:
+    relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v4.yaml
+    sha256: cd49a31ab67e7a66d038b3198493df8b3a309aa14ee9de80410557a194581ce4
+    required_schema_version: pivot_feedback_g0_measurement_freeze.v5
+    required_status: PENDING_G0_V4_TWELVE_RESOLVED_SEVEN_CHOICES_AND_FIFTEEN_SECTIONS_NO_SEAL
+    mutation_allowed: false
+  g1_tolerance_contract:
+    relative_path: experiments/configs/pivot_feedback_g0_g1_replication_tolerance_precommitment_v1.yaml
+    sha256: 1bcf91d197a9b927286d43f3505528f3f3f7fb022ffd4fe89d95cb24c041184d
+    required_schema_version: pivot_feedback_g0_g1_replication_tolerance_precommitment.v1
+    required_status: FROZEN_SINGLE_G1_REPLICATION_TOLERANCE_PENDING_INDEPENDENT_VALIDATION_NO_G0_PROMOTION
+    mutation_allowed: false
+  g1_tolerance_validation_receipt:
+    relative_path: experiments/evidence/results/pivot_feedback_g0_g1_replication_tolerance_precommitment_20260803.summary.json
+    sha256: 72b653528d9cf5c8f1dd823f304934b48ac21a0dd4a50011ac3d02ef9079edb3
+    required_schema_version: pivot_feedback_g0_g1_replication_tolerance_precommitment_summary.v1
+    required_status: PASS_ONE_OUTCOME_BLIND_G1_REPLICATION_TOLERANCE_AND_CLOSED_FIXTURE
+    mutation_allowed: false
+active_routing:
+  phase_order:
+  - D
+  - C
+  - F
+  - E
+  - M
+  - H
+  active_phase: E
+  phases:
+  - phase_id: D
+    legacy_gate_ids:
+    - G_MINUS_1A
+    - S0
+    requires: []
+    state: COMPLETE_BOUNDED_SOURCE_AND_STRUCTURE_ONLY
+    complete: true
+    may_read_discovery_outcomes: false
+    may_read_confirmatory_or_holdout_rows: false
+    may_fit_model: false
+    transition_receipts_required:
+    - BOUNDED_SOURCE_PRIMITIVE_FIDELITY
+    - THRESHOLD_FREE_FIELD_AUTHOR_GRAPH_AFFILIATION_INVENTORY
+    claim_ceiling: SOURCE_AND_STRUCTURE_READINESS_NOT_NATURAL_PERSON_IDENTITY_OR_EFFECT
+  - phase_id: C
+    legacy_gate_ids:
+    - D0
+    requires:
+    - D
+    state: COMPLETE_DISCOVERY_ONLY_ENTRY_AND_PERSISTENCE_MEASUREMENT
+    complete: true
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_or_holdout_rows: false
+    may_fit_model: false
+    transition_receipts_required:
+    - DISCOVERY_EPISODE_SELECTION
+    - PREDECISION_MEASUREMENT_REPLAY
+    - ENTRY_CLASSIFICATION_REPLAY
+    - DESCRIPTIVE_PERSISTENCE_REPLAY
+    claim_ceiling: DISCOVERY_MEASUREMENT_AND_DESCRIPTION_NOT_ASSOCIATION_CAUSALITY_OR_TRANSPORT
+  - phase_id: F
+    legacy_gate_ids:
+    - G0
+    - G0_5
+    requires:
+    - C
+    state: COMPLETE_FREEZE_PANEL_CONFORMANCE_AND_BYTE_SEAL
+    complete: true
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_or_holdout_rows: false
+    may_fit_model: false
+    transition_receipts_required:
+    - PRE_G1_DECISION_REGISTRY_COMPLETE
+    - THIRTEEN_PRE_G1_REQUIRED_SECTIONS_COMPLETE
+    - OUTCOME_BLIND_FINAL_PANEL_CONFORMANCE
+    - ATOMIC_PARTITION_AND_HOLDOUT_BYTE_SEAL
+    claim_ceiling: FREEZE_AND_SEAL_ONLY_NOT_EMPIRICAL_SIGNATURE_OR_EFFECT
+  - phase_id: E
+    legacy_gate_ids:
+    - G1
+    requires:
+    - F
+    state: BLOCKED_INPUT_AUTHORIZATION_CONFLICT_NO_CONFIRMATORY_READ
+    complete: false
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_or_holdout_rows: false
+    may_fit_model: false
+    transition_receipts_required:
+    - H3_PRIMARY_AND_REPLICATION_DECISION
+    - REGISTERED_NEGATIVE_CONTROL_DECISIONS
+    - FIELD_AND_ALTERNATIVE_PIVOT_STABILITY
+    claim_ceiling: BOUNDED_OBSERVATIONAL_SIGNATURE_NOT_CAUSALITY_NABM_NECESSITY_OR_HOLDOUT_TRANSPORT
+  - phase_id: M
+    legacy_gate_ids:
+    - G2
+    - G3
+    requires:
+    - E
+    state: NOT_RUN
+    complete: false
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_or_holdout_rows: true
+    may_fit_model: true
+    transition_receipts_required:
+    - PRE_G2_PREDICTIVE_DECISION_REGISTRY_COMPLETE
+    - BASELINE_LADDER_MODEL_SELECTION_COMPLETE
+    - PRE_G3_SIMULATION_BUDGET_REGISTRY_COMPLETE_IF_NABM_REQUIRED
+    - CONDITIONAL_SIMULATION_GATE_RESOLVED
+    claim_ceiling: PREDICTIVE_OR_GENERATIVE_ADEQUACY_NOT_UNIQUE_MECHANISM_CAUSALITY_OR_HOLDOUT_TRANSPORT
+  - phase_id: H
+    legacy_gate_ids:
+    - G4
+    requires:
+    - M
+    state: BYTE_SEALED_UNOPENED
+    complete: false
+    may_read_discovery_outcomes: true
+    may_read_confirmatory_or_holdout_rows: false
+    may_fit_model: false
+    transition_receipts_required:
+    - MODEL_AND_SCORING_CONTRACT_BYTE_LOCK
+    - SEALED_ARTIFACT_MANIFEST_VERIFICATION
+    - HOLDOUT_OPEN_RECEIPT_WRITTEN_LAST
+    - DOMAIN_AUTHOR_COLD_RESULT_REPLAY
+    claim_ceiling: BOUNDED_NONCAUSAL_TRANSPORT_IF_PASSED_NOT_POLICY_EFFECT
+  optional_causal_lane:
+    legacy_gate_ids:
+    - G5
+    requires:
+    - H
+    state: NOT_RUN
+    mandatory_for_bounded_noncausal_paper: false
+    claim_ceiling: DESIGN_SPECIFIC_CAUSAL_CLAIM_ONLY_IF_EXTERNAL_IDENTIFICATION_PASSES
+staged_decision_registry:
+  before_e_confirmatory_access:
+    owner_phase: F
+    state: COMPLETE_OUTCOME_BLIND_HASH_BOUND
+    choice_ids:
+    - author_minimum_history_works
+    - primary_pivot_thresholds
+    - attention_surge_threshold
+    - public_success_threshold
+    - citation_maturation_lag_years
+    - negative_control_equivalence_margins
+    - negative_sampling_ratio
+    - inverse_probability_weight_truncation
+    - minimum_cohort_size
+    - small_cell_suppression_threshold
+    - capacity_cell_support_threshold
+    - collinearity_threshold
+    - g1_replication_tolerance
+    choice_count: 13
+    g0_v4_bound_choice_count: 12
+    g1_tolerance_bound_choice_count: 1
+    may_use_g1_or_holdout_outcomes: false
+  before_m_g2_model_score_access:
+    owner_phase: M
+    state: DEFERRED_UNRESOLVED_BLOCKS_M_ONLY
+    choice_ids:
+    - g2_score_margin
+    - g2_maximum_calibration_degradation
+    - g2_macro_trajectory_tolerance
+    choice_count: 3
+    may_depend_on_g1_effect_magnitude: false
+    may_use_g2_model_scores_or_holdout_outcomes: false
+  before_m_g3_simulation_execution:
+    owner_phase: M
+    state: DEFERRED_UNRESOLVED_BLOCKS_G3_ONLY
+    choice_ids:
+    - simulation_draws_or_mcse_stopping_rule
+    - parameter_budget
+    - tuning_budget
+    choice_count: 3
+    may_use_g3_simulation_results_or_holdout_outcomes: false
+staged_section_registry:
+  before_e_confirmatory_access:
+    owner_phase: F
+    state: COMPLETE_OUTCOME_BLIND_HASH_BOUND
+    section_ids:
+    - population_and_author_eligibility
+    - pivot_and_robustness_definitions
+    - topic_attention_and_surge
+    - temporal_availability_and_maturation
+    - peer_exposure_and_source_assignment
+    - capacity_bridge_and_entry_mode
+    - risk_set_sampling_and_weights
+    - outcome_horizons_and_h3_timing
+    - negative_control_decision_gates
+    - minimum_support_and_suppression
+    - partition_and_atomic_fold_resolution
+    - estimators_and_uncertainty
+    - hierarchical_multiplicity
+    section_count: 13
+    freeze_ready_section_count: 13
+  before_m_g2_model_score_access:
+    owner_phase: M
+    state: DEFERRED_BLOCKS_M_ONLY
+    section_ids:
+    - g2_predictive_gate
+    section_count: 1
+  before_m_g3_simulation_execution:
+    owner_phase: M
+    state: DEFERRED_BLOCKS_G3_ONLY
+    section_ids:
+    - g3_simulation_gate
+    section_count: 1
+f_phase_closure:
+  completed_receipts:
+  - PRE_G1_DECISION_REGISTRY_COMPLETE
+  - THIRTEEN_PRE_G1_REQUIRED_SECTIONS_COMPLETE
+  - OUTCOME_BLIND_FINAL_PANEL_CONFORMANCE
+  - ATOMIC_PARTITION_AND_HOLDOUT_BYTE_SEAL
+  pending_receipts: []
+  completion_is_one_atomic_milestone: true
+  intermediate_receipts_may_record_provenance_but_are_not_new_gates: true
+  authorized_actions:
+  - COMPLETE_THIRTEEN_PRE_G1_SECTIONS_OUTCOME_BLIND
+  - BUILD_AND_VERIFY_FINAL_PANEL_CONFORMANCE
+  - ASSIGN_ATOMIC_PARTITIONS_WITHOUT_CONFIRMATORY_ANALYTIC_READ
+  - MATERIALIZE_PRIVATE_HOLDOUT_ARTIFACTS_OPERATOR_ONLY
+  - RUN_HOLDOUT_PREFLIGHT_AND_WRITE_BYTE_SEAL_LAST
+  operator_only_holdout_materialization_is_not_holdout_open: true
+  first_confirmatory_read_requires_f_pass: true
+  pass_f_now: true
+  pass_g0_now: true
+  state: COMPLETE_ATOMIC_FOUR_RECEIPT_CONJUNCTION
+  closed_at_utc: '2026-08-05T05:03:08.858708Z'
+  all_receipt_hashes_bound: true
+  closure_is_new_scientific_gate: false
+  confirmatory_or_holdout_rows_read: 0
+irreversible_boundaries:
+  first_confirmatory_read: F_PASSED_WITH_PANEL_CONFORMANCE_AND_HOLDOUT_SEAL
+  first_model_selection_score_read: E_PASSED_AND_PRE_G2_REGISTRY_LOCKED
+  first_holdout_open: M_RESOLVED_AND_MODEL_SCORING_CONTRACT_LOCKED
+  claim_promotion: CLAIM_SPECIFIC_RECEIPTS_AND_CEILING_CHECKED
+  all_fail_closed: true
+lifecycle:
+  authority_active: true
+  parallel_read_replay_complete: true
+  g1_tolerance_bound_into_pre_g1_registry: true
+  later_stage_choice_count_deferred: 6
+  later_stage_section_count_deferred: 2
+  pre_g1_pending_choice_count: 0
+  pre_g1_pending_section_count: 0
+  final_panel_conformance_run: true
+  holdout_receipt_bound: true
+  pass_f: true
+  pass_g0: true
+  discovery_rows_read_by_transition: 0
+  confirmatory_or_holdout_rows_read: 0
+  empirical_g1_status: BLOCKED
+  model_fitted: false
+  g4_open: false
+  scientific_effect: NOT_ESTABLISHED
+  atomic_partition_assignment_complete: true
+  holdout_seal_independently_verified: true
+  holdout_seal_opened: false
+  f_phase_closed_at_utc: '2026-08-05T05:03:08.858708Z'
+authorization:
+  six_phase_active_routing: ACTIVE
+  f_phase_closure: COMPLETE_ATOMIC_FOUR_RECEIPT_CONJUNCTION
+  e_g1_execution: BLOCKED_REQUIRES_NEW_EXPLICIT_CONFLICT_RESOLUTION_AUTHORITY
+  confirmatory_or_holdout_analytic_access: NOT_AUTHORIZED_WHILE_E_INPUT_AUTHORIZATION_CONFLICT_PERSISTS
+  confirmatory_analytic_access: NOT_AUTHORIZED_UNTIL_NEW_EXPLICIT_CONFLICT_RESOLUTION_AUTHORITY
+  holdout_analytic_access: NOT_AUTHORIZED_BEFORE_M_RESOLVED_AND_SCORING_CONTRACT_LOCKED
+  g2_or_g3_choice_resolution: NOT_AUTHORIZED_E_NOT_PASSED
+  outcome_based_threshold_selection: NOT_AUTHORIZED
+  pass_f_without_all_receipts: NOT_AUTHORIZED
+  pass_g0_without_all_receipts: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  g4_open: NOT_AUTHORIZED
+  causal_claim: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+validation_contract:
+  verifier_relative_path: scripts/verify_pivot_feedback_current_state_v3.py
+  summary_json_relative_path: experiments/evidence/results/pivot_feedback_current_state_v3_20260805.summary.json
+  summary_markdown_relative_path: experiments/evidence/results/pivot_feedback_current_state_v3_20260805.summary.md
+  repository_metadata_only: true
+  operator_or_row_level_files_may_be_read: false
+  confirmatory_or_holdout_rows_may_be_read: false
+  seal_may_be_opened: false
+  model_may_be_fitted: false
+claim_boundary: This additive authority records the independently verified terminal
+  BLOCKED E/G1 execution attempt caused by the frozen author-cold requirement and
+  the simultaneous prohibition on private G4 access. It preserves F and G0 compatibility,
+  reads no confirmatory or holdout row, opens no seal, fits no model, does not pass
+  E or G1, and establishes no scientific effect.
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_current_state_v2.yaml
+  sha256: ca431afb63da4cf2e09d0563c0509e3685efac29dc8679df0f9cc7f1ae7851ab
+  required_schema_version: pivot_feedback_current_state.v2
+  required_status: ACTIVE_E_PHASE_F_ATOMICALLY_CLOSED_G0_COMPATIBILITY_PASS_HOLDOUT_SEALED_UNOPENED
+  mutation_allowed: false
+closure_tooling:
+  builder:
+    relative_path: scripts/build_pivot_feedback_current_state_v2.py
+    sha256: 16e0b5c8f84201196350c711fbccd97c48efdf79490c0db509018b622861d465
+  independent_verifier:
+    relative_path: scripts/verify_pivot_feedback_current_state_v2.py
+    sha256: 11570a6597e0a5aac0fb73361d71ee00397689ac1b0ccda1457628aaefdc0ebb
+f_phase_transition_receipt_bindings:
+  pre_g1_decision_registry:
+    relative_path: experiments/evidence/results/pivot_feedback_current_state_v1_20260803.summary.json
+    sha256: e58cd56086bfc919d76241c194d1b9d96051b969c5c00ced0e73f925757d32ce
+    schema_version: pivot_feedback_current_state_summary.v1
+    status: PASS_ACTIVE_SIX_PHASE_AUTHORITY_F_IN_PROGRESS_FAIL_CLOSED
+    mutation_allowed: false
+  thirteen_pre_g1_required_sections:
+    relative_path: experiments/evidence/results/pivot_feedback_f_pre_g1_scientific_sections_v1_20260803.summary.json
+    sha256: c0c7da0d7eb26a510b02a20fd4c85b371cc05aad0603d893dc9d7e45c1a8b2ee
+    schema_version: pivot_feedback_f_pre_g1_scientific_sections_summary.v1
+    status: PASS_THIRTEEN_PRE_G1_SCIENTIFIC_SECTIONS_FROZEN_NO_F_PASS
+    mutation_allowed: false
+  outcome_blind_final_panel_conformance:
+    relative_path: experiments/evidence/results/pivot_feedback_f_aligned_final_panel_conformance_v1_20260804.summary.json
+    sha256: e18f0e954e109baf953b161eb1321d8be4a584ee6f4fc383989b8aa3fb2bc35e
+    schema_version: pivot_feedback_f_aligned_final_panel_conformance_summary.v1
+    status: PASS_OUTCOME_BLIND_ALIGNED_FINAL_PANEL_LEAVEOUT_AND_SUPPORT_CONFORMANCE_ATOMIC_PARTITION_AUTHORIZED_NO_F_PASS
+    mutation_allowed: false
+  atomic_partition_assignment:
+    relative_path: experiments/evidence/results/pivot_feedback_f_atomic_partition_assignment_v1_20260804.summary.json
+    sha256: a1c57c541dd7f7a6042e524d6340da2bcd1246eb48021958bb60ddd72e313b0d
+    schema_version: pivot_feedback_f_atomic_partition_assignment_summary.v1
+    status: PASS_OUTCOME_BLIND_ATOMIC_EPISODE_FAMILY_PARTITION_ASSIGNMENT_PRIVATE_HOLDOUT_MATERIALIZATION_AUTHORIZED_NO_F_PASS
+    mutation_allowed: false
+  holdout_byte_seal:
+    relative_path: experiments/evidence/results/pivot_feedback_holdout_access_seal_receipt_verification_v1_20260805.summary.json
+    sha256: b881c113b9c6f07b7a9e143beecbaa693b94ddb5e82a032186bbffa7ff3c239d
+    schema_version: pivot_feedback_holdout_access_seal_receipt_verification_summary.v1
+    status: PASS_PRODUCTION_PRIVATE_G4_BYTE_SEAL_RECEIPT_INDEPENDENTLY_VERIFIED_UNOPENED_NO_F_PASS
+    mutation_allowed: false
+e_phase_execution_attempt:
+  state: TERMINAL_BLOCKED_NO_ROUTE_PROMOTION
+  attempt_count: 1
+  terminal_status: BLOCKED_E_G1_INPUT_SUPPORT_OR_ESTIMATOR_FAILURE_NO_ROUTE_PROMOTION
+  block_id: G1_AUTHOR_COLD_GUARD_REQUIRED_BUT_PRIVATE_G4_ACCESS_FORBIDDEN
+  execution_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_e_g1_execution_v1_20260805.summary.json
+    sha256: 75855d8bc688c1c5001f2c19c25cd6c8a99c62355beb975e6cf1c3df425e6e5c
+    required_schema_version: pivot_feedback_e_g1_execution_summary.v1
+    required_status: PASS_INDEPENDENT_VERIFICATION_OF_TERMINAL_BLOCKED_E_G1_NO_CONFIRMATORY_READ
+    mutation_allowed: false
+  registered_scope:
+    entry_years:
+    - 2013
+    - 2016
+    episode_count: 28
+    family_count: 13
+    field_ids_in_registered_slot_order:
+    - 16
+    - 32
+    - 11
+    partition_id: g1_empirical_replication
+    scope_changed: false
+  confirmatory_rows_read: 0
+  holdout_rows_read: 0
+  labels_materialized: 0
+  estimators_run: 0
+  private_g4_artifacts_read: 0
+  holdout_seal_opened: false
+  g4_open: false
+  scope_or_threshold_changed: false
+  resolution_requires_new_explicit_authority: true
+state_tooling:
+  builder:
+    relative_path: scripts/build_pivot_feedback_current_state_v3.py
+    sha256: 6aef82193f4ad86c4c06fd0a9df2bf82a1031b8874df994d303dac30b3474c95
+  independent_verifier:
+    relative_path: scripts/verify_pivot_feedback_current_state_v3.py
+    sha256_required_in_independent_summary: true

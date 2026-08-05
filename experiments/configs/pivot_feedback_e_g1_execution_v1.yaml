@@ -1,0 +1,103 @@
+schema_version: pivot_feedback_e_g1_execution.v1
+label: pivot_feedback_e_g1_execution_v1
+mode: EXACT_G1_EXECUTION_ATTEMPT_FAIL_CLOSED_ON_FROZEN_AUTHORIZATION_CONFLICT
+status_before_execution: AUTHORIZED_FROM_PARENT_V1_PLUS_INDEPENDENT_V2_PASS
+
+execution_authority:
+  preflight_v1:
+    relative_path: experiments/configs/pivot_feedback_e_g1_execution_input_preflight_v1.yaml
+    sha256: 9611bdaa1e0144540d82834f743fbf51cc733ef9492771ed9d37f66ec75bf4d2
+    required_schema_version: pivot_feedback_e_g1_execution_input_preflight.v1
+    required_status: E_G1_EXECUTION_INPUT_PREFLIGHT_COMPLETE_PENDING_INDEPENDENT_VALIDATION_NO_G1_RUN
+  preflight_v1_verification:
+    relative_path: experiments/evidence/results/pivot_feedback_e_g1_execution_input_preflight_v1_20260805.summary.json
+    sha256: b44386823c4335aee1e8423ca9ce1d46af51884e69a4e7986e088397556450e1
+    required_schema_version: pivot_feedback_e_g1_execution_input_preflight_summary.v1
+    required_status: PASS_INDEPENDENT_E_G1_EXECUTION_INPUT_PREFLIGHT_EXACT_NON_HOLDOUT_SCOPE_NO_G1_RUN
+  preflight_v2:
+    relative_path: experiments/configs/pivot_feedback_e_g1_execution_input_preflight_v2.yaml
+    sha256: 7bd2853e2b749185058b2d6937472ff86f7cba519a42209decef1ef643b95740
+    required_schema_version: pivot_feedback_e_g1_execution_input_preflight.v2
+    required_status: E_G1_EXECUTION_INPUT_PREFLIGHT_V2_COMPLETENESS_PENDING_INDEPENDENT_VALIDATION_NO_G1_RUN
+  preflight_v2_verification:
+    relative_path: experiments/evidence/results/pivot_feedback_e_g1_execution_input_preflight_v2_20260805.summary.json
+    sha256: 02151cc4febab68fe6dc40e851de783f1adcaee99d65ebf6013532658786fcb3
+    required_schema_version: pivot_feedback_e_g1_execution_input_preflight_v2_summary.v1
+    required_status: PASS_INDEPENDENT_E_G1_EXECUTION_INPUT_PREFLIGHT_V2_COMPLETE_NO_G1_RUN
+
+conflict_evidence:
+  frozen_scientific_sections:
+    relative_path: experiments/configs/pivot_feedback_f_pre_g1_scientific_sections_v1.yaml
+    sha256: cc58a651667b7cecb4cc61d96b6700aa665f1121c7c0b0a254368fb0299041dd
+    required_schema_version: pivot_feedback_f_pre_g1_scientific_sections.v1
+    required_status: FROZEN_THIRTEEN_PRE_G1_SECTIONS_PENDING_INDEPENDENT_VALIDATION_NO_F_PASS
+    required_field: sections.partition_and_atomic_fold_resolution.atomicity.g4_authors_removed_from_all_earlier_fit_or_selection_rows
+    required_value: true
+  author_cold_guard_summary:
+    relative_path: experiments/evidence/results/pivot_feedback_f_g4_private_membership_materialization_v1_20260804.summary.json
+    sha256: 5f733120ec6366be018df254279acd5c378fd85aeadcdd2e9d2f517433edabb4
+    required_schema_version: pivot_feedback_f_g4_private_membership_materialization_summary.v1
+    required_status: PASS_OPERATOR_ONLY_G4_PREDECISION_MEMBERSHIP_AND_AUTHOR_COLD_GUARD_REMAINING_PRIVATE_PACKAGE_PENDING_NO_F_PASS
+    required_guard_rows: 8174698
+    required_exclude_from_g1: true
+    required_earlier_partition_guard_application_complete: false
+  active_state:
+    relative_path: experiments/configs/pivot_feedback_current_state_v2.yaml
+    sha256: ca431afb63da4cf2e09d0563c0509e3685efac29dc8679df0f9cc7f1ae7851ab
+    required_schema_version: pivot_feedback_current_state.v2
+    required_status: ACTIVE_E_PHASE_F_ATOMICALLY_CLOSED_G0_COMPATIBILITY_PASS_HOLDOUT_SEALED_UNOPENED
+
+registered_scope:
+  partition_id: g1_empirical_replication
+  entry_years: [2013, 2016]
+  field_ids_in_registered_slot_order: [16, 32, 11]
+  episode_count: 28
+  family_count: 13
+
+blocking_condition:
+  block_id: G1_AUTHOR_COLD_GUARD_REQUIRED_BUT_PRIVATE_G4_ACCESS_FORBIDDEN
+  required_row_operation: ANTI_JOIN_G1_FIT_ROWS_AGAINST_EXACT_G4_AUTHOR_COLD_GUARD
+  frozen_guard_application_required: true
+  exact_guard_application_pending: true
+  preflight_v1_private_g4_artifact_is_execution_input: false
+  preflight_v1_g4_artifact_access: NOT_AUTHORIZED
+  preflight_v1_g4_seal_open: NOT_AUTHORIZED
+  preflight_v2_private_g4_holdout_included: false
+  reconstruct_guard_from_g4_field_or_year_allowed: false
+  safe_compliant_execution_exists: false
+  resolution_requires_new_authority: true
+  confirmatory_access_before_resolution: FORBIDDEN_FAIL_CLOSED
+  terminal_status: BLOCKED_E_G1_INPUT_SUPPORT_OR_ESTIMATOR_FAILURE_NO_ROUTE_PROMOTION
+
+output_contract:
+  root_basename: pivot-feedback-e-g1-execution-v1-20260805
+  output_directory_mode: "0700"
+  output_file_mode: "0600"
+  report_schema_version: pivot_feedback_e_g1_execution_report.v1
+  receipt_schema_version: pivot_feedback_e_g1_execution_outputs.v1
+  sensitivity_schema_version: pivot_feedback_e_g1_identity_affiliation_sensitivities.v1
+  artifact_count_excluding_receipt: 7
+  receipt_written_last: true
+  repository_summary_contains_raw_ids: false
+
+authorization_after_terminal_block:
+  empirical_g1_status: BLOCKED
+  pass_e: false
+  pass_g1: false
+  confirmatory_analytic_access: NOT_AUTHORIZED_UNTIL_CONFLICT_RESOLVED_BY_NEW_EXPLICIT_AUTHORITY
+  scope_or_threshold_change: NOT_AUTHORIZED
+  g4_artifact_access: NOT_AUTHORIZED_BY_THIS_EXECUTION_ATTEMPT
+  g4_seal_open: NOT_AUTHORIZED_BY_THIS_EXECUTION_ATTEMPT
+  model_selection_score_read: NOT_AUTHORIZED
+  predictive_or_nabm_model_fitting: NOT_AUTHORIZED
+  causal_claim: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This execution attempt terminates before the first confirmatory read because
+  the frozen design requires the exact G4 author-cold guard to be anti-joined
+  from G1 fit rows while the active E authority forbids every private G4
+  artifact and seal access and forbids reconstructing the guard from G4 field
+  or year data. It does not inspect G1 or G4 outcomes, estimate an association,
+  establish a null, change the registered science, open the seal, fit a model,
+  establish transport or causality, or establish a scientific effect.
