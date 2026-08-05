@@ -1,0 +1,196 @@
+schema_version: pivot_feedback_e_g1_execution_input_preflight.v2
+label: pivot_feedback_e_g1_execution_input_preflight_v2
+mode: ADDITIVE_PRE_FIRST_READ_G1_INPUT_COMPLETENESS_CORRECTION_NO_ANALYTIC_READ
+status: E_G1_EXECUTION_INPUT_PREFLIGHT_V2_COMPLETENESS_PENDING_INDEPENDENT_VALIDATION_NO_G1_RUN
+created_at_utc: '2026-08-05T06:03:54.358900Z'
+additive_parent:
+  relative_path: experiments/configs/pivot_feedback_e_g1_execution_input_preflight_v1.yaml
+  sha256: 9611bdaa1e0144540d82834f743fbf51cc733ef9492771ed9d37f66ec75bf4d2
+  required_schema_version: pivot_feedback_e_g1_execution_input_preflight.v1
+  mutation_allowed: false
+  required_status: E_G1_EXECUTION_INPUT_PREFLIGHT_COMPLETE_PENDING_INDEPENDENT_VALIDATION_NO_G1_RUN
+  parent_independent_verification:
+    relative_path: experiments/evidence/results/pivot_feedback_e_g1_execution_input_preflight_v1_20260805.summary.json
+    sha256: b44386823c4335aee1e8423ca9ce1d46af51884e69a4e7986e088397556450e1
+    required_schema_version: pivot_feedback_e_g1_execution_input_preflight_summary.v1
+    mutation_allowed: false
+    required_status: PASS_INDEPENDENT_E_G1_EXECUTION_INPUT_PREFLIGHT_EXACT_NON_HOLDOUT_SCOPE_NO_G1_RUN
+  parent_remains_immutable_provenance: true
+  parent_execution_authorization_superseded_by_complete_conjunction: true
+completeness_diagnosis:
+  detected_before_first_confirmatory_read: true
+  confirmatory_rows_read_before_detection: 0
+  holdout_rows_read_before_detection: 0
+  omitted_required_input_roles:
+  - AGE3_CITATION_AVAILABILITY_AND_FUTURE_CITATION_NEGATIVE_CONTROL
+  - FULL_TOPIC_TO_SUBFIELD_ALTERNATIVE_PIVOT_AND_UNRELATED_TOPIC_CONTROL
+  - REQUIRED_ORCID_LINKED_AND_AFFILIATION_SENSITIVITIES
+  scientific_rule_or_threshold_changed: false
+  registered_scope_changed: false
+  output_extension_required: IDENTITY_AND_AFFILIATION_SENSITIVITY_ARTIFACT
+  this_correction_is_new_scientific_gate: false
+added_repository_bindings:
+  field_episode_taxonomy_contract:
+    relative_path: experiments/configs/pivot_feedback_f_field_episode_assignment_v1.yaml
+    sha256: 4a48c46483d3711bffe1d8c13805b4aec6f8aa25d4198dc30372a5da22d0f68b
+    required_schema_version: pivot_feedback_f_field_episode_assignment.v1
+    mutation_allowed: false
+    required_status: FROZEN_FIELD_EPISODE_ASSIGNMENT_PENDING_PRODUCTION_EXECUTION_NO_F_PASS
+  field_episode_taxonomy_verification:
+    relative_path: experiments/evidence/results/pivot_feedback_f_field_episode_assignment_v1_20260803.summary.json
+    sha256: 1b09be6348e08b551011051b2c4f1377db285985dfac0e9a9a5d5f18e2a8fa08
+    required_schema_version: pivot_feedback_f_field_episode_assignment_summary.v1
+    mutation_allowed: false
+    required_status: PASS_OUTCOME_BLIND_FIELD_AND_EPISODE_ASSIGNMENT_COMPONENT_FINAL_PANEL_AND_SEAL_PENDING
+  s0_orcid_affiliation_contract:
+    relative_path: experiments/configs/pivot_feedback_s0_authorship_orcid_affiliation_v1.yaml
+    sha256: a792355ab2afec5ecef7cdc10cc97a4721ed744e620a795ec7ddefbef0a30636
+    required_schema_version: pivot_feedback_s0_authorship_orcid_affiliation_config.v1
+    mutation_allowed: false
+  s0_orcid_affiliation_verification:
+    relative_path: experiments/evidence/results/pivot_feedback_s0_authorship_orcid_affiliation_full_20260724.summary.json
+    sha256: 53547820a617fbd3e222e46214d2a5eb14570ff5370e03ea12015298b6afd78a
+    required_schema_version: pivot_feedback_s0_authorship_orcid_affiliation_full_summary.v1
+    mutation_allowed: false
+    required_status: PASS_S0_FULL_AUTHORSHIP_ORCID_AND_AFFILIATION_PROJECTION_WITH_TOKEN_AND_CURRENT_SNAPSHOT_LIMITATIONS
+added_exact_non_holdout_inputs:
+  citation_chronology:
+    root: /ssd/openalex-g1-citation-chronology-v3-full-20260722
+    root_basename: openalex-g1-citation-chronology-v3-full-20260722
+    receipt_basename: citation_edge_chronology_audit.outputs.json
+    receipt_sha256: fbe753c84ceb3858a06c627f318eb756e997f73577498b06a5e88f72cacabe76
+    receipt_schema_version: openalex_g1_citation_edge_chronology_outputs.v3
+    required_status: PASS_CURRENT_SNAPSHOT_CITATION_EDGE_CHRONOLOGY_ACCOUNTING_WITH_CANONICAL_TEMPORAL_V3_PARENT_AND_BIBLIOGRAPHIC_EVENT_TIME_CONVENTION_LIMITATION
+    receipt_artifact_tree_sha256: 2c26cd80990a270b1fb1fd5780f1eab253a29f2c4f5f9e01ee878f630e13184d
+    selector:
+      kind: RELATIVE_PATH_PREFIX
+      value: chronology_safe_edges_by_cited_work/
+    selected_artifact_count: 4096
+    selected_artifact_bytes: 22721388007
+    selected_artifact_inventory_sha256: afac933e0fb067d4b69486b8f038cf1cd5fc3d3d1de04fa13f33b165d8dfc98b
+    inventory_canonicalization: SORT_RELATIVE_PATH_JSON_SORT_KEYS_COMPACT_UTF8
+    first_relative_path: chronology_safe_edges_by_cited_work/part-0000.parquet
+    last_relative_path: chronology_safe_edges_by_cited_work/part-4095.parquet
+    analytic_artifact_files_opened_during_preflight: 0
+    analytic_artifact_bytes_read_during_preflight: 0
+    mutation_allowed: false
+  topic_taxonomy_projection:
+    path: /hdd/raid_backup_20260624/data/OpenAlex/parquet_exports/openalex_nonworks_20260330_delta_20260417_100128/openalex_topics_20260330_delta/openalex_topics_20260330_delta/b000000.parquet
+    basename: b000000.parquet
+    sha256: 566facdbc02bf4a37783fe64db4c1d104d00b73e250999bd824d560083827ba5
+    bytes: 1194401
+    rows: 4516
+    required_columns:
+    - id
+    - display_name
+    - field__id
+    - field__display_name
+    - subfield__id
+    - subfield__display_name
+    current_snapshot_projection: true
+    analytic_outcome_rows_read_during_preflight: 0
+    mutation_allowed: false
+  raw_authorship_orcid_affiliation:
+    root: /hdd/raid_backup_20260624/data/OpenAlex/parquet_exports/openalex_works_20260330_repairreplay_20260410_190630/openalex_works_20260330__authorships
+    root_basename: openalex_works_20260330_repairreplay_20260410_190630
+    table_basename: openalex_works_20260330__authorships
+    file_glob: '*.parquet'
+    selected_file_count: 1363
+    selected_file_bytes: 103412497044
+    path_size_inventory_sha256: 5ca11e55066c14751a0fd2dc3d8631ef75621109026e8b5fb7250f6ebdaf90a9
+    path_size_inventory_canonicalization: LEXICAL_BASENAME_JSON_SORT_KEYS_COMPACT_UTF8
+    content_freeze_receipt: /ssd/openalex-g1-content-freeze-20260719/content_freeze_audit.outputs.json
+    content_freeze_receipt_sha256: 082161a29bcd8fd79fd85e0bf6814a5c7950b97b847ea08056e17eebcd369a12
+    content_tree_sha256: 73bb8b0409c782ce5964d480ac6c6cecb04bab8c09df31999e581000b79ccff6
+    checkpoint_tree_sha256: e509867989cec9dfd398221ee5d7abd69dc73fa7330acf9302413184d786bfef
+    every_selected_source_file_current_exact_stat_verified: true
+    first_relative_path: base-1.parquet
+    last_relative_path: repair-0.parquet
+    source_parquet_files_opened_during_preflight: 0
+    source_rows_read_during_preflight: 0
+    mutation_allowed: false
+effective_execution_input_contract:
+  requires_parent_v1_and_this_v2: true
+  effective_input_group_count: 7
+  input_group_ids:
+  - normalized_work_metadata
+  - author_history_events
+  - aligned_final_panel_metadata
+  - atomic_partition_metadata
+  - citation_chronology
+  - topic_taxonomy_projection
+  - raw_authorship_orcid_affiliation
+  private_g4_holdout_included: false
+  g4_field_or_year_included: false
+  all_required_primary_and_mandatory_sensitivity_sources_bound: true
+execution_output_contract_extension:
+  effective_output_artifact_schema_count: 8
+  added_artifact:
+    relative_path: g1_identity_affiliation_sensitivities.parquet
+    schema_version: pivot_feedback_e_g1_identity_affiliation_sensitivities.v1
+    confidentiality: AGGREGATE_SUPPRESSION_REQUIRED
+    exact_columns:
+    - sensitivity_id
+    - population_filter
+    - primary_field_id
+    - hypothesis_id
+    - point_estimate
+    - interval_lower
+    - interval_upper
+    - effective_sample_size
+    - missing_proxy_category_included
+    - registered_decision_impact
+    - status
+    - limitation
+  orcid_linked_is_required_sensitivity_not_primary_replacement: true
+  affiliation_is_current_snapshot_proxy_not_historical_truth: true
+  raw_authorship_identifiers_operator_private: true
+preflight_access_accounting:
+  parent_repository_yaml_documents_read: 1
+  repository_json_documents_read: 3
+  additional_repository_yaml_documents_read: 2
+  operator_metadata_receipts_read: 2
+  taxonomy_reference_parquet_footers_read: 1
+  raw_source_file_stats_read: 1363
+  analytic_parquet_or_row_level_files_opened: 0
+  confirmatory_rows_read: 0
+  holdout_rows_read: 0
+  labels_materialized: 0
+  estimators_run: 0
+  model_selection_scores_read: 0
+  seal_open_events: 0
+  g4_open: false
+lifecycle:
+  complete_input_contract_authored: true
+  independent_v2_verification_complete: false
+  g1_execution_run: false
+  empirical_g1_status: NOT_RUN
+  pass_e: false
+  pass_g1: false
+  holdout_seal_opened: false
+  g4_open: false
+  scientific_effect: NOT_ESTABLISHED
+authorization:
+  exact_g1_execution_successor: AUTHORIZED_ONLY_AFTER_INDEPENDENT_V2_COMPLETENESS_PASS
+  confirmatory_analytic_access: AUTHORIZED_ONLY_DURING_SEPARATE_EXECUTION_SUCCESSOR_FOR_PARENT_V1_PLUS_V2_BOUND_SCOPE
+  v1_alone_for_execution: NOT_AUTHORIZED_AFTER_PRE_READ_COMPLETENESS_DIAGNOSIS
+  scope_or_threshold_change: NOT_AUTHORIZED
+  g4_artifact_access: NOT_AUTHORIZED
+  g4_seal_open: NOT_AUTHORIZED
+  model_selection_score_read: NOT_AUTHORIZED
+  predictive_or_nabm_model_fitting: NOT_AUTHORIZED
+  causal_claim: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+validation_contract:
+  verifier_relative_path: scripts/verify_pivot_feedback_e_g1_execution_input_preflight_v2.py
+  summary_json_relative_path: experiments/evidence/results/pivot_feedback_e_g1_execution_input_preflight_v2_20260805.summary.json
+  summary_markdown_relative_path: experiments/evidence/results/pivot_feedback_e_g1_execution_input_preflight_v2_20260805.summary.md
+  analytic_or_confirmatory_rows_may_be_read: false
+  source_file_content_may_be_read_except_taxonomy_reference_footer: false
+claim_boundary: This additive pre-read correction binds the citation chronology, full
+  topic taxonomy, and raw authorship ORCID/affiliation source required by already-frozen
+  primary and mandatory sensitivity rules. It changes no field, episode, year, threshold,
+  control, estimand, or decision rule; reads no analytic, confirmatory, or holdout
+  row; produces no G1 result; includes no private G4 artifact; opens no seal; and
+  establishes no association, null, prediction, transport, causality, or scientific
+  effect.
