@@ -1492,6 +1492,23 @@ def test_release_inspector_rejects_f_g4_private_preflight_repository_paths() -> 
     assert forbidden == sorted(repository_paths)
 
 
+def test_release_inspector_rejects_f_g4_private_seal_repository_paths() -> None:
+    inspector = runpy.run_path(str(INSPECT_SCRIPT))
+    repository_paths = {
+        "docs/research/pivot-feedback-current-status-evidence-ledger-v13.md",
+        "experiments/evidence/results/pivot_feedback_holdout_access_seal_receipt_v1.summary.json",
+        "experiments/evidence/results/pivot_feedback_holdout_access_seal_receipt_verification_v1_20260805.summary.json",
+        "experiments/evidence/results/pivot_feedback_holdout_access_seal_receipt_verification_v1_20260805.summary.md",
+    }
+    assert repository_paths <= inspector[
+        "PIVOT_CERTIFIED_D0_MEASUREMENT_REPOSITORY_ONLY_PATHS"
+    ]
+
+    forbidden = inspector["_forbidden_sdist_files"]({"README.md", *repository_paths})
+
+    assert forbidden == sorted(repository_paths)
+
+
 def test_release_inspector_rejects_g0_measurement_precommitment_paths() -> None:
     inspector = runpy.run_path(str(INSPECT_SCRIPT))
     repository_paths = {
