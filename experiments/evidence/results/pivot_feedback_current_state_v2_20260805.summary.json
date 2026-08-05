@@ -1,0 +1,111 @@
+{
+  "access_accounting": {
+    "confirmatory_or_holdout_rows_read": 0,
+    "discovery_rows_read": 0,
+    "g4_open": false,
+    "model_fitted": false,
+    "operator_or_row_level_files_read": 0,
+    "repository_json_documents_read": 5,
+    "repository_yaml_documents_read": 2,
+    "seal_open_events": 0
+  },
+  "active_routing_replay": {
+    "E_state": "READY_NOT_RUN",
+    "F_state": "COMPLETE_FREEZE_PANEL_CONFORMANCE_AND_BYTE_SEAL",
+    "H_state": "BYTE_SEALED_UNOPENED",
+    "active_phase": "E",
+    "complete_phases": [
+      "D",
+      "C",
+      "F"
+    ],
+    "incomplete_phases": [
+      "E",
+      "M",
+      "H"
+    ],
+    "phase_order": [
+      "D",
+      "C",
+      "F",
+      "E",
+      "M",
+      "H"
+    ]
+  },
+  "authority_transition_replay": {
+    "changed_scientific_stage": "F_TO_E_READY",
+    "legacy_G0_G0_5_compatibility_pass": true,
+    "predecessor_immutable": true,
+    "predecessor_schema_version": "pivot_feedback_current_state.v1",
+    "predecessor_sha256": "52c262455b87a1e89fd28b370408fc9c697b26c7ca9e2cb15de59fd27d3ac0bd"
+  },
+  "authorization": {
+    "causal_claim": "NOT_AUTHORIZED",
+    "confirmatory_analytic_access": "AUTHORIZED_ONLY_IN_SEPARATE_E_EXECUTION_SUCCESSOR",
+    "confirmatory_or_holdout_analytic_access": "NOT_AUTHORIZED_BY_THIS_CLOSURE_ARTIFACT",
+    "e_g1_execution": "AUTHORIZED_NEXT_EXACT_REGISTERED_SCOPE_REQUIRES_SEPARATE_EXECUTION_ARTIFACT",
+    "f_phase_closure": "COMPLETE_ATOMIC_FOUR_RECEIPT_CONJUNCTION",
+    "g2_or_g3_choice_resolution": "NOT_AUTHORIZED_UNTIL_REGISTERED_ENTRY_BOUNDARY",
+    "g4_open": "NOT_AUTHORIZED",
+    "holdout_analytic_access": "NOT_AUTHORIZED_BEFORE_M_RESOLVED_AND_SCORING_CONTRACT_LOCKED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "outcome_based_threshold_selection": "NOT_AUTHORIZED",
+    "pass_f_without_all_receipts": "NOT_AUTHORIZED",
+    "pass_g0_without_all_receipts": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "six_phase_active_routing": "ACTIVE"
+  },
+  "claim_boundary": "All four exact F transition receipts independently close the freeze milestone and its legacy G0/G0.5 compatibility state. Routing is E-ready, but G1 has not run and this closure reads no confirmatory or holdout row, opens no seal, reads no model score, fits no model, opens no G4 holdout, and establishes no causality or scientific effect.",
+  "f_closure_replay": {
+    "completed_receipt_count": 4,
+    "micro_gate_added": false,
+    "one_atomic_completion_milestone": true,
+    "pass_f": true,
+    "pass_g0_compatibility": true,
+    "pending_receipt_count": 0
+  },
+  "f_transition_receipt_replay": {
+    "all_hashes_exact": true,
+    "all_statuses_pass": true,
+    "atomic_partition_count": 4,
+    "confirmatory_or_holdout_rows_read": 0,
+    "final_panel_episode_count": 65,
+    "holdout_seal_independently_verified": true,
+    "pre_g1_choice_count": 13,
+    "pre_g1_section_count": 13,
+    "receipt_count": 4,
+    "receipt_ids": [
+      "PRE_G1_DECISION_REGISTRY_COMPLETE",
+      "THIRTEEN_PRE_G1_REQUIRED_SECTIONS_COMPLETE",
+      "OUTCOME_BLIND_FINAL_PANEL_CONFORMANCE",
+      "ATOMIC_PARTITION_AND_HOLDOUT_BYTE_SEAL"
+    ],
+    "seal_opened": false
+  },
+  "fail_closed_replay": {
+    "confirmatory_or_holdout_rows_read": 0,
+    "empirical_g1_status": "NOT_RUN",
+    "g4_open": false,
+    "model_fitted": false,
+    "model_score_read": false,
+    "scientific_effect": "NOT_ESTABLISHED",
+    "seal_opened": false
+  },
+  "repository_artifacts": {
+    "active_authority": {
+      "relative_path": "experiments/configs/pivot_feedback_current_state_v2.yaml",
+      "sha256": "ca431afb63da4cf2e09d0563c0509e3685efac29dc8679df0f9cc7f1ae7851ab"
+    },
+    "builder": {
+      "relative_path": "scripts/build_pivot_feedback_current_state_v2.py",
+      "sha256": "16e0b5c8f84201196350c711fbccd97c48efdf79490c0db509018b622861d465"
+    },
+    "independent_verifier": {
+      "relative_path": "scripts/verify_pivot_feedback_current_state_v2.py",
+      "sha256": "11570a6597e0a5aac0fb73361d71ee00397689ac1b0ccda1457628aaefdc0ebb"
+    }
+  },
+  "schema_version": "pivot_feedback_current_state_v2_summary.v1",
+  "status": "PASS_ATOMIC_F_CLOSURE_G0_COMPATIBILITY_PASS_E_ENTRY_READY_FAIL_CLOSED"
+}

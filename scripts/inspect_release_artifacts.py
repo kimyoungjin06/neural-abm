@@ -597,6 +597,7 @@ PIVOT_RANK5_LOCAL_ABSTRACT_REPOSITORY_ONLY_PATHS = {
 }
 PIVOT_CERTIFIED_D0_MEASUREMENT_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_feedback_current_state_v1.yaml",
+    "experiments/configs/pivot_feedback_current_state_v2.yaml",
     "experiments/configs/pivot_feedback_f_atomic_partition_assignment_v1.yaml",
     "experiments/configs/pivot_feedback_f_g4_private_membership_materialization_v1.yaml",
     "experiments/configs/pivot_feedback_f_g4_private_feature_source_v1.yaml",
@@ -686,6 +687,7 @@ PIVOT_CERTIFIED_D0_MEASUREMENT_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-feedback-current-status-evidence-ledger-v11.md",
     "docs/research/pivot-feedback-current-status-evidence-ledger-v12.md",
     "docs/research/pivot-feedback-current-status-evidence-ledger-v13.md",
+    "docs/research/pivot-feedback-current-status-evidence-ledger-v14.md",
     "docs/research/pivot-feedback-g0-prerequisite-closure-plan-v1.md",
     "docs/research/pivot-feedback-holdout-access-seal-contract-v1.md",
     "docs/research/pivot-feedback-holdout-seal-tooling-v1.md",
@@ -733,6 +735,8 @@ PIVOT_CERTIFIED_D0_MEASUREMENT_REPOSITORY_ONLY_PATHS = {
     "experiments/evidence/results/pivot_feedback_governance_compaction_v1_20260803.summary.md",
     "experiments/evidence/results/pivot_feedback_current_state_v1_20260803.summary.json",
     "experiments/evidence/results/pivot_feedback_current_state_v1_20260803.summary.md",
+    "experiments/evidence/results/pivot_feedback_current_state_v2_20260805.summary.json",
+    "experiments/evidence/results/pivot_feedback_current_state_v2_20260805.summary.md",
     "experiments/evidence/results/pivot_feedback_f_field_episode_assignment_v1_20260803.summary.json",
     "experiments/evidence/results/pivot_feedback_f_field_episode_assignment_v1_20260803.summary.md",
     "experiments/evidence/results/pivot_feedback_f_atomic_partition_assignment_v1_20260804.summary.json",
@@ -762,6 +766,8 @@ PIVOT_CERTIFIED_D0_MEASUREMENT_REPOSITORY_ONLY_PATHS = {
     "scripts/verify_pivot_feedback_g0_g1_replication_tolerance_precommitment_v1.py",
     "scripts/verify_pivot_feedback_governance_compaction_v1.py",
     "scripts/verify_pivot_feedback_current_state_v1.py",
+    "scripts/build_pivot_feedback_current_state_v2.py",
+    "scripts/verify_pivot_feedback_current_state_v2.py",
     "scripts/verify_pivot_feedback_f_pre_g1_scientific_sections_v1.py",
     "tests/fixtures/pivot_feedback_g0_g1_replication_tolerance_v1.expected.json",
     "tests/fixtures/pivot_feedback_g0_g1_replication_tolerance_v1.input.json",
