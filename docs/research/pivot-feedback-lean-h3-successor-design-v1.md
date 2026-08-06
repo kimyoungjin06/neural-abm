@@ -105,6 +105,26 @@ it would not identify a feedback mechanism. The synthetic exercise does not
 authorize source-row decoding or confirmatory execution and establishes no
 scientific effect.
 
+### Blind challenge precommit
+
+The next synthetic step is frozen in
+[`pivot_feedback_lean_h3_blind_challenge_v1.yaml`](../../experiments/configs/pivot_feedback_lean_h3_blind_challenge_v1.yaml).
+It is a single-operator procedural blind, not an independent-team blind. Code
+and one admissibility rubric must be committed before a fresh 256-bit challenge
+seed or any panel is created. The estimator may read only opaque panel rows and
+the public generation receipt; generator family, truth, feedback status, and
+seed remain private until the blind estimation receipt exists.
+
+The challenge retains the raw estimator as an unselected incumbent and the
+kernel estimator only as a negative comparator. Hierarchical partial pooling is
+not sufficiently defined and is therefore forbidden in this round rather than
+introduced after seeing results. All seven criteria must pass without
+post-unblinding threshold changes: valid rate, meaningful-positive detection,
+nonpositive false positives, overall and worst-family interval coverage, sign
+reversal, and nonidentifiable-case passing. A passing estimator becomes only
+eligible for a later freeze; it is not automatically selected, and no support
+rule is selected by this exercise.
+
 ## What the completed route established
 
 The completed route established a reproducible measurement and partition

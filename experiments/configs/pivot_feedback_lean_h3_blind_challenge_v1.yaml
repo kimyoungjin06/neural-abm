@@ -1,0 +1,116 @@
+schema_version: pivot_feedback_lean_h3_blind_challenge.v1
+label: pivot_feedback_lean_h3_blind_challenge_v1
+mode: SYNTHETIC_ONLY_GENERATOR_HELD_OUT_PROCEDURAL_BLIND_ESTIMATOR_CHALLENGE
+status: PRECOMMITTED_NO_CHALLENGE_SEED_NO_PANEL_NO_RESULT
+
+source_result_space:
+  config:
+    relative_path: experiments/configs/pivot_feedback_lean_h3_result_space_v1.yaml
+    sha256: b3d0b18e88b1585ed54b6ec3de1deae6f6e5acba04b1dbb5b7e3125da6ba00aa
+  estimator_source:
+    relative_path: scripts/simulate_pivot_feedback_lean_h3_result_space_v1.py
+    sha256: 206334c43924d1b14956ce169cfcb3ba6e05bb99d47b3e907be2225735811bc2
+  disposition:
+    raw_earliest_argmax: RETAINED_INCUMBENT_NOT_SELECTED
+    kernel_earliest_argmax: NEGATIVE_COMPARATOR_NOT_ADMISSIBLE_AS_V1_PRIMARY
+    hierarchical_partial_pooling: DEFERRED_NOT_DEFINED_NOT_PERMITTED_IN_THIS_CHALLENGE
+
+scientific_object:
+  question: >-
+    Do the two frozen earliest-peak estimators retain acceptable operating
+    characteristics under source-independent generator families not used in
+    their v1 result-space development?
+  estimand: FIELD_BALANCED_MEAN_OF_EPISODE_EARLIEST_OBSERVABLE_PEAK_GAPS
+  episode_value: ENTRY_EARLIEST_PEAK_K_MINUS_PERSISTENCE_EARLIEST_PEAK_K
+  event_time_grid: [-2, -1, 0, 1, 2]
+  claim_role: PROCEDURAL_BLIND_SYNTHETIC_ESTIMATOR_ADMISSIBILITY_ONLY
+
+blindness:
+  level: SINGLE_OPERATOR_PROCEDURAL_BLIND_NOT_INDEPENDENT_TEAM_BLIND
+  freeze_order:
+    - COMMIT_CONFIG_GENERATOR_ESTIMATOR_EVALUATOR_VERIFIER_AND_TESTS
+    - GENERATE_FRESH_SECRET_SEED_AFTER_PRECOMMIT
+    - MATERIALIZE_OPAQUE_CHALLENGE_PANELS_AND_PRIVATE_LABEL_COMMITMENT
+    - RUN_ESTIMATOR_WITH_PANEL_AND_PUBLIC_RECEIPT_ONLY
+    - WRITE_ESTIMATION_RECEIPT_BEFORE_PRIVATE_LABEL_ACCESS
+    - UNBLIND_ONCE_AND_APPLY_FROZEN_RUBRIC
+    - INDEPENDENTLY_REPLAY_HASHES_METRICS_AND_DISPOSITION
+  estimator_visible_files:
+    - challenge_panels.jsonl
+    - generation_receipt.json
+  estimator_forbidden_file: private_labels.json
+  challenge_seed_policy: FRESH_256_BIT_OS_RANDOM_WRITTEN_ONLY_TO_PRIVATE_LABELS
+  challenge_ids: OPAQUE_AFTER_RANDOM_SCENARIO_ORDER
+  post_unblind_retuning: FORBIDDEN
+
+design:
+  field_count: 4
+  episodes_per_field: 8
+  minimum_supported_episodes_per_field: 4
+  minimum_finite_event_times_per_curve: 3
+  estimators:
+    - raw_earliest_argmax
+    - kernel_earliest_argmax
+  kernel_weights: [0.25, 0.50, 0.25]
+  bootstrap_seed: 202608061
+  decision_rule:
+    minimum_point_gap_cohort_years: 1.0
+    one_sided_lower_bound_strictly_greater_than: 0.0
+  profiles:
+    smoke:
+      scenarios_per_family: 1
+      replicates_per_scenario: 4
+      bootstrap_replicates: 31
+    assessment:
+      scenarios_per_family: 8
+      replicates_per_scenario: 64
+      bootstrap_replicates: 199
+
+held_out_generator_families:
+  - asymmetric_peak_and_tail
+  - plateau_and_near_tie
+  - staggered_field_mixture
+  - correlated_episode_shift
+  - informative_time_missingness
+  - rounded_heaped_measurement
+  - monotone_boundary_process
+  - no_feedback_observational_mimic
+
+admissibility_rubric:
+  semantics: ALL_CRITERIA_REQUIRED_PER_ESTIMATOR_NO_POST_UNBLIND_THRESHOLD_CHANGE
+  minimum_valid_rate: 0.98
+  minimum_meaningful_positive_detection_rate: 0.80
+  maximum_nonpositive_directional_false_positive_rate: 0.05
+  minimum_identifiable_two_sided_coverage: 0.90
+  minimum_worst_family_identifiable_two_sided_coverage: 0.80
+  maximum_identifiable_sign_reversal_rate: 0.05
+  maximum_nonidentifiable_pass_rate: 0.05
+  meaningful_positive_truth_floor: 1.0
+  mechanism_overreach:
+    role: REPORTED_INTERPRETATION_RISK_NOT_ESTIMATOR_ADMISSIBILITY_CRITERION
+    reason: >-
+      The estimator targets an observable timing gap and cannot identify the
+      generating mechanism from that gap alone.
+  outcome:
+    passing_estimator: ELIGIBLE_FOR_LATER_FREEZE_NOT_AUTOMATICALLY_SELECTED
+    no_passing_estimator: BLOCKED_NO_ESTIMATOR_FREEZE_NO_SUPPORT_RULE_SELECTION
+
+authorization:
+  synthetic_generation: AUTHORIZED_AFTER_CODE_PRECOMMIT
+  blind_synthetic_estimation: AUTHORIZED_AFTER_GENERATION_RECEIPT
+  one_time_unblinding: AUTHORIZED_AFTER_ESTIMATION_RECEIPT
+  source_or_empirical_row_read: FORBIDDEN
+  current_g1_row_read: FORBIDDEN
+  model_selection_row_read: FORBIDDEN
+  holdout_or_private_g4_read: FORBIDDEN
+  empirical_parameter_calibration: FORBIDDEN
+  confirmatory_execution: FORBIDDEN
+  estimator_selected: "NO"
+  support_rule_selected: "NO"
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This contract evaluates frozen estimators on source-independent synthetic
+  panels under a single-operator procedural blind. It is not an independent-team
+  blind, empirical H3, support validation, a feedback-mechanism test, a causal
+  test, predictive validation, NABM validation, or a scientific effect.
