@@ -779,6 +779,8 @@ PIVOT_CERTIFIED_D0_MEASUREMENT_REPOSITORY_ONLY_PATHS = {
     "experiments/evidence/results/pivot_feedback_lean_h3_result_space_v1_20260806.summary.md",
     "experiments/evidence/results/pivot_feedback_lean_h3_blind_challenge_v1_20260806.summary.json",
     "experiments/evidence/results/pivot_feedback_lean_h3_blind_challenge_v1_20260806.summary.md",
+    "experiments/evidence/results/pivot_feedback_lean_h3_peak_set_development_v1_20260806.summary.json",
+    "experiments/evidence/results/pivot_feedback_lean_h3_peak_set_development_v1_20260806.summary.md",
     "experiments/evidence/results/pivot_feedback_e_g1_execution_v1_20260805.summary.json",
     "experiments/evidence/results/pivot_feedback_e_g1_execution_v1_20260805.summary.md",
     "experiments/evidence/results/pivot_feedback_e_g1_execution_input_preflight_v1_20260805.summary.json",

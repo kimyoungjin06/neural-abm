@@ -1,0 +1,179 @@
+{
+  "schema_version": "pivot_feedback_lean_h3_peak_set_development_summary.v1",
+  "status": "COMPLETE_OPENED_DISCOVERY_DIAGNOSTIC_CONDITIONAL_CALIBRATION_LOW_UNEVEN_VALIDITY_NO_SELECTION",
+  "completed_at_utc": "2026-08-06T10:19:53Z",
+  "scope": "OPENED_SYNTHETIC_DISCOVERY_DIAGNOSTIC_NOT_ADMISSIBILITY_OR_BLIND_CONFIRMATION",
+  "precommit": {
+    "git_commit": "ea9bac8e3a94cba190e23c2a8055b5873105ada1",
+    "semantics": "CANDIDATE_CONFIG_DEVELOPER_VERIFIER_FIXTURES_AND_RELEASE_BOUNDARY_COMMITTED_BEFORE_OPENED_DIAGNOSTIC_ESTIMATION"
+  },
+  "canonical_execution": {
+    "artifact_root": "/ssd/pivot-feedback-lean-h3-peak-set-development-v1-opened-diagnostic-20260806",
+    "profile": "opened_diagnostic",
+    "posterior_draws_per_panel": 999,
+    "generator_families": 8,
+    "panel_rows": 4096,
+    "candidate_estimate_rows": 4096,
+    "valid_panel_rows": 1156,
+    "candidate_estimation_completed_at_utc": "2026-08-06T10:19:15Z",
+    "diagnostic_completed_at_utc": "2026-08-06T10:19:41Z",
+    "private_label_files_opened_by_estimator": 0
+  },
+  "independent_replay": {
+    "path": "/ssd/pivot-feedback-lean-h3-peak-set-development-v1-opened-diagnostic-20260806.verification-v1.json",
+    "status": "PASS_INDEPENDENT_OPENED_DIAGNOSTIC_BINDING_AND_METRIC_REPLAY_NO_SELECTION",
+    "verified_at_utc": "2026-08-06T10:19:53Z",
+    "scope": "ARTIFACT_BINDINGS_SOURCE_HASHES_LABEL_CARDINALITY_AND_DESCRIPTIVE_METRICS_NOT_POSTERIOR_DRAW_REPLAY"
+  },
+  "immutable_bindings": {
+    "config_sha256": "bbc9ae32c685359e55cbe48f10c8816284b08a5d1717682ce89186f88dc40f0e",
+    "developer_sha256": "ec4206d38dfdce42c3911a1a9d9e500fb929bb51bd1a3bf9fc7261cfccb31bf7",
+    "verifier_sha256": "f7450452e4e838c90e59419ff40a6d08077a1913311f18956949f01514b40dad",
+    "source_panels_sha256": "1103a99e6fad7b15881972b86d205370effd28b5c0f0ec2b049f06f5b9467c59",
+    "opened_private_labels_sha256": "984c8fe36cc5f540fe4fa9bcdf4bd7f7337515e21fdd686989affa0f510dd37c",
+    "candidate_estimates_sha256": "e111344b97e892ba9339392b07285a1c4a170af065390c4b4d5d0350032fdde4",
+    "estimation_receipt_sha256": "4fa737d8cb378ee8d5aec181348cb17baf571b9e55ec920163b22ef7e3cfb5c3",
+    "diagnostic_report_sha256": "28c9a348e133bed177a48a0ea3c7051543cf22b05c0fca8c4350b63a0370e514",
+    "diagnostic_receipt_sha256": "797b4cb41f52c39dddfbc88d66fa032c28ab1516b4ca8af5def0c0dea8b2dc9f",
+    "verification_sha256": "b5dd9ffb842a9f9d796856fd53b118de02494424c55be28436073c86fa42ae9b"
+  },
+  "candidate_contract": {
+    "name": "jeffreys_peak_set_field_balanced_v1",
+    "estimand": "FIELD_BALANCED_MEAN_OF_EPISODE_POSTERIOR_PEAK_GAPS",
+    "peak_set_credible_mass": 0.9,
+    "minimum_modal_peak_probability": 0.6,
+    "maximum_peak_set_grid_span": 1,
+    "boundary_modal_peak_action": "INVALID",
+    "missing_registered_denominator_action": "INVALID",
+    "minimum_valid_episodes_per_field": 4,
+    "field_count": 4,
+    "episodes_per_field": 8,
+    "limitations": [
+      "SYNTHETIC_BINOMIAL_LIKELIHOOD_NOT_EMPIRICAL_LIKELIHOOD",
+      "EMPIRICAL_OVERDISPERSION_UNRESOLVED",
+      "REPEATED_AUTHOR_DEPENDENCE_UNRESOLVED",
+      "CLUSTER_STRUCTURE_UNRESOLVED"
+    ]
+  },
+  "diagnostic_metrics": {
+    "identifiable_valid_rate": 0.4234375,
+    "nonidentifiable_invalid_rate": 0.953125,
+    "meaningful_positive_detection_rate_among_valid": 0.9376026272577996,
+    "nonpositive_false_positive_rate_among_valid": 0.0,
+    "identifiable_two_sided_coverage_among_valid": 0.9723247232472325,
+    "identifiable_sign_reversal_rate_among_valid": 0.007759456838021339,
+    "mechanism_overreach_pass_rate_among_valid": 0.4363817097415507,
+    "key_counts": {
+      "identifiable_valid": 1084,
+      "identifiable_total": 2560,
+      "nonidentifiable_invalid": 1464,
+      "nonidentifiable_total": 1536,
+      "meaningful_positive_detected": 571,
+      "meaningful_positive_valid": 609,
+      "nonpositive_false_positive": 0,
+      "nonpositive_valid": 359,
+      "identifiable_interval_covered": 1054,
+      "identifiable_valid_for_coverage": 1084,
+      "identifiable_sign_reversal": 8,
+      "identifiable_signed_valid": 1031,
+      "no_feedback_passed": 439,
+      "no_feedback_valid": 1006
+    },
+    "invalid_reason_episode_or_panel_counts": {
+      "BOUNDARY_MODAL_PEAK": 63898,
+      "DIFFUSE_PEAK_PROBABILITY": 40718,
+      "INSUFFICIENT_VALID_EPISODES_PER_FIELD": 2940,
+      "MISSING_REGISTERED_TIME": 17931,
+      "NONCONTIGUOUS_PEAK_SET": 15068,
+      "WIDE_PEAK_SET": 32663
+    }
+  },
+  "family_findings": {
+    "asymmetric_peak_and_tail": {
+      "identifiable_valid_rate": 0.498046875,
+      "conditional_coverage": 0.9176470588235294,
+      "interpretation": "CONDITIONAL_COVERAGE_REPAIRED_ONLY_AFTER_EXCLUDING_ABOUT_HALF_NOT_DIRECTLY_COMPARABLE_TO_RAW"
+    },
+    "correlated_episode_shift": {
+      "identifiable_valid_rate": 0.28125,
+      "conditional_coverage": 0.9513888888888888,
+      "interpretation": "CONDITIONAL_CALIBRATION_WITH_NARROW_APPLICABILITY"
+    },
+    "informative_time_missingness": {
+      "nonidentifiable_invalid_rate": 1.0,
+      "interpretation": "REGISTERED_MISSINGNESS_FAILS_CLOSED_AS_INTENDED"
+    },
+    "monotone_boundary_process": {
+      "nonidentifiable_invalid_rate": 1.0,
+      "interpretation": "BOUNDARY_PROCESS_FAILS_CLOSED_AS_INTENDED"
+    },
+    "plateau_and_near_tie": {
+      "nonidentifiable_invalid_rate": 0.859375,
+      "nonidentifiable_valid_rows": 72,
+      "positive_decisions_among_valid": 0,
+      "interpretation": "NO_POSITIVE_DECISION_BUT_STRUCTURAL_NEAR_TIE_INVALIDATION_REMAINS_INCOMPLETE"
+    },
+    "no_feedback_observational_mimic": {
+      "identifiable_valid_rate": 0.833984375,
+      "conditional_coverage": 1.0,
+      "pass_rate_among_valid": 0.8782201405152225,
+      "interpretation": "TIMING_ESTIMAND_CANNOT_IDENTIFY_FEEDBACK_MECHANISM"
+    },
+    "rounded_heaped_measurement": {
+      "identifiable_valid_rate": 0.5,
+      "conditional_coverage": 0.99609375,
+      "interpretation": "CONDITIONAL_CALIBRATION_AFTER_HALF_THE_PANELS_FAIL_CLOSED"
+    },
+    "staggered_field_mixture": {
+      "identifiable_valid_rate": 0.00390625,
+      "valid_rows": 2,
+      "conditional_coverage": 0.5,
+      "interpretation": "FIELD_HETEROGENEITY_IS_NOT_RESOLVED_BY_FIELD_BALANCED_SCALAR_AGGREGATION"
+    }
+  },
+  "comparison_to_frozen_v1": {
+    "role": "CONTEXT_ONLY_NOT_A_SECOND_ADMISSIBILITY_RUBRIC",
+    "raw_overall_coverage": 0.81328125,
+    "raw_asymmetric_coverage": 0.53515625,
+    "raw_valid_rate": 1.0,
+    "candidate_conditional_overall_coverage": 0.9723247232472325,
+    "candidate_conditional_asymmetric_coverage": 0.9176470588235294,
+    "candidate_identifiable_valid_rate": 0.4234375,
+    "interpretation": "THE_CANDIDATE_TRADES_UNIVERSAL_FORCED_ESTIMATION_FOR_HIGHER_CONDITIONAL_CALIBRATION_AND_IS_NOT_DIRECTLY_ADJUDICABLE_AGAINST_V1"
+  },
+  "methodological_interpretation": {
+    "main_result": "WITHIN_EPISODE_PEAK_UNCERTAINTY_AND_FAIL_CLOSED_RULES_IMPROVE_CONDITIONAL_CALIBRATION_BUT_CREATE_LOW_STRONGLY_FAMILY_DEPENDENT_APPLICABILITY",
+    "gate_proportionality": "NO_NEW_PASS_FAIL_GATE_WAS_APPLIED_THE_LOW_VALIDITY_IS_AN_ESTIMATOR_OUTPUT_NOT_A_GOVERNANCE_FAILURE",
+    "unresolved_targets": [
+      "PRACTICAL_PEAK_CONTRAST_OR_EQUIVALENCE_RULE_FOR_NEAR_TIES",
+      "FIELD_VECTOR_OR_PARTIAL_IDENTIFICATION_FOR_STAGGERED_HETEROGENEITY",
+      "EMPIRICALLY_JUSTIFIED_DEPENDENCE_AND_OVERDISPERSION_MODEL"
+    ]
+  },
+  "disposition": {
+    "candidate_admissibility": "NOT_EVALUATED",
+    "eligible_for_later_freeze": "NOT_EVALUATED",
+    "estimator_selected": "NO",
+    "support_rule_selected": "NO",
+    "retuning_this_candidate_on_opened_challenge": "FORBIDDEN",
+    "opened_challenge_future_role": "DISCOVERY_DIAGNOSTIC_ONLY_NOT_REUSABLE_AS_BLIND_CONFIRMATION",
+    "fresh_blind_promotion": "NOT_YET_RECOMMENDED_BEFORE_PROSPECTIVE_RESOLUTION_OF_NEAR_TIE_AND_FIELD_HETEROGENEITY",
+    "future_blind_requirement": "SEPARATE_PRECOMMIT_AND_DISJOINT_GENERATOR"
+  },
+  "access_accounting": {
+    "source_or_empirical_rows_read": 0,
+    "current_g1_rows_read": 0,
+    "model_selection_rows_read": 0,
+    "holdout_or_private_g4_rows_read": 0,
+    "seal_open_events": 0,
+    "models_fitted_to_empirical_data": 0
+  },
+  "authorization": {
+    "empirical_row_access": "FORBIDDEN_NOT_RUN",
+    "confirmatory_execution": "FORBIDDEN_NOT_RUN",
+    "estimator_selected": "NO",
+    "support_rule_selected": "NO",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This opened synthetic discovery diagnostic shows conditional calibration and fail-closed behavior of one precommitted peak-set candidate. It is not blind confirmation, does not establish admissibility or superiority, does not select an estimator or support rule, does not authorize empirical access, and does not establish H3, feedback, causality, prediction, NABM necessity, or a scientific effect."
+}

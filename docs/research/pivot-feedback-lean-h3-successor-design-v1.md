@@ -175,6 +175,34 @@ fresh, disjoint generator and a separate precommit remain necessary for any
 future blind promotion. Empirical rows, confirmatory execution, and scientific
 effect claims remain forbidden.
 
+### Peak-set opened diagnostic result
+
+The candidate was committed at `ea9bac8` before its estimates were produced.
+The completed descriptive result and independent metric replay are recorded in
+[`pivot_feedback_lean_h3_peak_set_development_v1_20260806.summary.md`](../../experiments/evidence/results/pivot_feedback_lean_h3_peak_set_development_v1_20260806.summary.md).
+The estimator wrote 4,096 estimates before reading any private label file.
+
+Among identifiable panels, 1,084 of 2,560 (`0.4234`) were valid. Conditional on
+that restricted set, 95% interval coverage was `0.9723`, meaningful-positive
+detection was `0.9376`, the nonpositive false-positive rate was `0`, and sign
+reversal was `0.0078`. This is promising conditional calibration, not a direct
+win over the raw estimator: raw estimated every panel, while the peak-set
+candidate excluded 57.66% of identifiable panels.
+
+Missing-time and monotone-boundary cases all failed closed. Plateau/near-tie
+cases were only partly resolved: 440 of 512 were invalid, while 72 remained
+valid but made no positive decision. Staggered field mixtures were almost
+entirely invalid (2 of 512 valid), showing that a scalar field-balanced mean
+does not resolve heterogeneous field timing. Meanwhile, 375 of 427 valid
+no-feedback mimics passed, reinforcing that the observable timing estimand
+cannot identify feedback.
+
+No new pass/fail gate was applied, and the candidate was neither adjudicated
+nor selected. Its low, family-dependent validity is an estimator result rather
+than a governance failure. Before a fresh blind challenge, the next prospective
+design must address practical near-tie equivalence and field-vector or partial
+identification without retuning this candidate on the opened challenge.
+
 ## What the completed route established
 
 The completed route established a reproducible measurement and partition
