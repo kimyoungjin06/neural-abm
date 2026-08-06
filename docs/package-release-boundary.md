@@ -323,6 +323,16 @@ authorizes only complete title-bearing candidate-work manifest construction
 and local routing. Paid API submission, production dispositions, episode
 reselection, pivot classification, outcomes, fitting, and G4 remain closed.
 
+The lean H3 synthetic result-space model, procedural blind challenge, and
+uncertainty-aware peak-set development candidate remain repository-only too.
+Their configs, compact summaries, research note, producers, estimators,
+evaluators, and independent verifiers are forbidden from the sdist. Full
+synthetic panels, private labels, estimates, diagnostic reports, receipts, and
+verification outputs remain operator-local. The opened challenge is
+discovery-only: it cannot provide fresh blind confirmation, estimator or
+support selection, empirical row access, confirmatory execution, or a
+scientific-effect claim.
+
 The later candidate-screen scope correction and adaptive-frontier proof follow
 the same repository-only boundary. Their v13/v14 ledgers, configs, compact
 summaries, research notes, producers, and independent verifiers are forbidden

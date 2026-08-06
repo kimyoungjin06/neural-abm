@@ -1,0 +1,101 @@
+schema_version: pivot_feedback_lean_h3_peak_set_development.v1
+label: pivot_feedback_lean_h3_peak_set_development_v1
+mode: SYNTHETIC_ONLY_OPENED_CHALLENGE_DISCOVERY_DIAGNOSTIC_NOT_ADMISSIBILITY
+status: AUTHORIZED_DEVELOPMENT_ONLY_NO_ESTIMATOR_OR_SUPPORT_SELECTION
+
+source_diagnostic:
+  role: OPENED_DISCOVERY_ONLY_NOT_REUSABLE_AS_BLIND_CONFIRMATION
+  root: /ssd/pivot-feedback-lean-h3-blind-challenge-v1-assessment-20260806
+  precommit_git_commit: 5b5f7efd2e9264fe4b9db566b123ffb2a1dda210
+  challenge_panels_sha256: 1103a99e6fad7b15881972b86d205370effd28b5c0f0ec2b049f06f5b9467c59
+  private_labels_sha256: 984c8fe36cc5f540fe4fa9bcdf4bd7f7337515e21fdd686989affa0f510dd37c
+  frozen_blind_estimates_sha256: 03bebed3fb7907dbdb9af9d49cafc26a01a405f931a23569dabf60a5721f08ff
+  frozen_unblinded_report_sha256: 8aecb130713ed921408f46ef8c8087db3e7745bc3d1d94aef34db13801ced9f0
+
+scientific_object:
+  question: >-
+    Can an uncertainty-aware peak-set estimator represent within-episode peak
+    location uncertainty and fail closed on structurally nonidentifiable curves?
+  estimand: FIELD_BALANCED_MEAN_OF_EPISODE_POSTERIOR_PEAK_GAPS
+  episode_value: ENTRY_PEAK_LOCATION_DRAW_MINUS_PERSISTENCE_PEAK_LOCATION_DRAW
+  event_time_grid: [-2, -1, 0, 1, 2]
+  claim_role: DEVELOPMENT_DIAGNOSTIC_ONLY
+
+candidate:
+  name: jeffreys_peak_set_field_balanced_v1
+  binomial_rate_model:
+    prior_alpha: 0.5
+    prior_beta: 0.5
+    limitation: >-
+      This is a synthetic development likelihood. Empirical overdispersion,
+      repeated-author dependence, and cluster structure remain unresolved.
+  posterior_peak:
+    earliest_argmax_within_draw: true
+    peak_set_credible_mass: 0.90
+    minimum_modal_peak_probability: 0.60
+    maximum_peak_set_grid_span: 1
+    require_contiguous_peak_set: true
+    boundary_modal_peak_action: INVALID
+    any_registered_time_denominator_zero_action: INVALID
+  aggregation:
+    field_count: 4
+    episodes_per_field: 8
+    minimum_valid_episodes_per_field: 4
+    within_episode_uncertainty: POSTERIOR_PEAK_LOCATION_DRAWS
+    between_episode_uncertainty: FIELD_STRATIFIED_EPISODE_RESAMPLING
+    point_estimate: FIELD_BALANCED_MEAN_OF_EPISODE_POSTERIOR_MEAN_GAPS
+    interval: TWO_SIDED_0_025_0_975_OF_COMBINED_DRAWS
+  decision_rule:
+    minimum_point_gap_cohort_years: 1.0
+    one_sided_lower_bound_strictly_greater_than: 0.0
+  deterministic_seed: 202608062
+  profiles:
+    fixture:
+      posterior_draws: 199
+    opened_diagnostic:
+      posterior_draws: 999
+
+invalid_reasons:
+  - MISSING_REGISTERED_TIME
+  - BOUNDARY_MODAL_PEAK
+  - DIFFUSE_PEAK_PROBABILITY
+  - WIDE_PEAK_SET
+  - NONCONTIGUOUS_PEAK_SET
+  - INSUFFICIENT_VALID_EPISODES_PER_FIELD
+
+diagnostic_reporting:
+  role: DESCRIPTIVE_COMPARISON_NO_PASS_FAIL_NO_ELIGIBILITY
+  metrics:
+    - identifiable_valid_rate
+    - nonidentifiable_invalid_rate
+    - meaningful_positive_detection_rate_among_valid
+    - nonpositive_false_positive_rate_among_valid
+    - identifiable_two_sided_coverage_among_valid
+    - identifiable_sign_reversal_rate_among_valid
+    - mechanism_overreach_pass_rate_among_valid
+    - invalid_reason_counts
+  raw_kernel_reference: FROZEN_V1_RESULTS_CONTEXT_ONLY_NOT_REJUDGED
+  threshold_or_rule_change_after_diagnostic: FORBIDDEN_FOR_THIS_CANDIDATE_VERSION
+  estimator_selection: FORBIDDEN
+  support_rule_selection: FORBIDDEN
+  fresh_blind_promotion: REQUIRED_SEPARATE_PRECOMMIT_AND_DISJOINT_GENERATOR
+
+authorization:
+  opened_synthetic_panel_read: AUTHORIZED_DISCOVERY_ONLY
+  opened_synthetic_private_label_read_for_diagnostic: AUTHORIZED_AFTER_CANDIDATE_ESTIMATES
+  source_or_empirical_row_read: FORBIDDEN
+  current_g1_row_read: FORBIDDEN
+  model_selection_row_read: FORBIDDEN
+  holdout_or_private_g4_read: FORBIDDEN
+  empirical_parameter_calibration: FORBIDDEN
+  confirmatory_execution: FORBIDDEN
+  estimator_selected: "NO"
+  support_rule_selected: "NO"
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This development contract may diagnose a new estimator on an already-opened,
+  source-independent synthetic challenge. It cannot convert that opened
+  challenge into blind evidence, select or freeze an estimator or support rule,
+  authorize empirical access, establish H3, identify feedback, or establish a
+  scientific effect.

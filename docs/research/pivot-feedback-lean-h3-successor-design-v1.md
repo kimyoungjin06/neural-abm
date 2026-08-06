@@ -149,6 +149,32 @@ propagate within-episode peak-location uncertainty and explicitly return
 candidate must be committed before a fresh, disjoint synthetic blind challenge.
 Empirical row access and confirmatory execution remain unauthorized.
 
+### Peak-set development precommit
+
+The development-only candidate is frozen in
+[`pivot_feedback_lean_h3_peak_set_development_v1.yaml`](../../experiments/configs/pivot_feedback_lean_h3_peak_set_development_v1.yaml).
+It uses Jeffreys-binomial rate draws to form episode-level posterior entry and
+persistence peak distributions, then estimates the field-balanced mean of their
+draw-wise peak-location gaps. The interval propagates both posterior
+peak-location uncertainty and field-stratified episode resampling. This
+synthetic likelihood is not yet an empirical likelihood: overdispersion,
+repeated-author dependence, and cluster structure remain unresolved.
+
+The candidate fails closed when a registered denominator is zero, a modal peak
+is on the event-time boundary, its modal probability is below `0.60`, or its
+90% peak set is noncontiguous or spans more than one grid step. Each field must
+retain at least four of eight valid episodes. These rules and the diagnostic
+draw count are fixed before reading the opened labels through the new
+candidate.
+
+The prior challenge can now be used only as an opened discovery diagnostic.
+Candidate estimates must be written before its private labels are read, and the
+subsequent comparison is descriptive: it has no pass/fail threshold, cannot
+establish admissibility, and cannot select an estimator or support rule. A
+fresh, disjoint generator and a separate precommit remain necessary for any
+future blind promotion. Empirical rows, confirmatory execution, and scientific
+effect claims remain forbidden.
+
 ## What the completed route established
 
 The completed route established a reproducible measurement and partition
