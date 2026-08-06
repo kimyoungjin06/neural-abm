@@ -2,7 +2,7 @@
 
 Date: 2026-08-06
 
-Status: `DRAFT_SOURCE_CANDIDATE_MANIFEST_BOUND_NO_DATA_DOWNLOAD_NOT_AUTHORITY`
+Status: `DRAFT_SOURCE_FOOTER_PREFLIGHT_BOUND_NO_DATA_DOWNLOAD_NOT_AUTHORITY`
 
 ## Decision
 
@@ -29,10 +29,17 @@ any current or future outcome row.
 The 2026-06-26 free public OpenAlex Parquet manifests are now captured as a
 newer source candidate. The compact receipt is
 [`pivot_feedback_lean_h3_openalex_source_intake_v1_20260806.summary.md`](../../experiments/evidence/results/pivot_feedback_lean_h3_openalex_source_intake_v1_20260806.summary.md).
-This establishes only manifest identity and a preliminary dependency/storage
-inventory. No source data file or record has been downloaded or read, and
-schema compatibility, H3 maturity, disjoint cohort eligibility, and precision
-remain unresolved.
+This establishes manifest identity and a preliminary dependency/storage
+inventory. A subsequent representative footer-only preflight is recorded in
+[`pivot_feedback_lean_h3_openalex_footer_preflight_v1_20260806.summary.md`](../../experiments/evidence/results/pivot_feedback_lean_h3_openalex_footer_preflight_v1_20260806.summary.md).
+The sampled earliest, latest, and smallest Works files share one schema with
+the required author, date, and topic primitives. Consequently, the initial
+transfer is narrowed to Works plus Topics/Subfields/Fields; Authors is deferred
+from the lean H3 core. Six Parquet files were opened through random access for
+footer metadata only. No row value was decoded and no data file was persisted
+locally; internal S3 range/cache transfer bytes were not independently metered.
+Full-file schema unanimity, H3 maturity, disjoint cohort
+eligibility, and precision remain unresolved.
 
 ## What the completed route established
 
