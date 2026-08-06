@@ -1,0 +1,88 @@
+{
+  "schema_version": "pivot_feedback_lean_h3_openalex_full_core_transfer_authorization.v1",
+  "status": "AUTHORIZED_EXACT_MANIFEST_FULL_CORE_TRANSFER_OPERATIONAL_ONLY_NO_ROW_DECODE",
+  "authorized_at_utc": "2026-08-06T04:39:39Z",
+  "mode": "SOURCE_BYTE_TRANSFER_ONLY_NOT_SCIENTIFIC_GATE_NOT_CONFIRMATORY_EXECUTION",
+  "human_authorization": {
+    "explicit_proceed_after_live_capacity_recheck": true,
+    "authorization_scope": "START_EXACT_MANIFEST_WORKS_PLUS_TAXONOMY_TRANSFER_WITH_FAIL_CLOSED_CAPACITY_AND_RESUME_CONTROLS"
+  },
+  "source_bindings": {
+    "source_intake_summary": {
+      "relative_path": "experiments/evidence/results/pivot_feedback_lean_h3_openalex_source_intake_v1_20260806.summary.json",
+      "sha256": "9c6def04d23755b8d35ae6ce90be282c45f6938afd39df4287545151af8c7946"
+    },
+    "footer_preflight_summary": {
+      "relative_path": "experiments/evidence/results/pivot_feedback_lean_h3_openalex_footer_preflight_v1_20260806.summary.json",
+      "sha256": "51787c153673a5f74f419268b02f52ffda5222e89a1e14aada7891b3f07cc246"
+    },
+    "taxonomy_dry_run_verification": {
+      "relative_path": "experiments/evidence/results/pivot_feedback_lean_h3_openalex_taxonomy_dry_run_v1_20260806.summary.json",
+      "sha256": "a7770295df4e484c67b91610b77eec612967c8e1ceb5c43d452f8623846e66de"
+    },
+    "taxonomy_dry_run_downloader": {
+      "relative_path": "scripts/download_pivot_feedback_lean_h3_openalex_v1.py",
+      "sha256": "20fbcdd971691597f452473a735fbd85944c18cc425f926ccd4bcf54c58a3ece"
+    },
+    "captured_manifest_root": "/ssd/pivot-feedback-lean-h3-openalex-source-intake-v1-20260806",
+    "captured_manifest_date": "2026-06-26",
+    "entity_manifest_sha256": {
+      "works": "4b5142cb47f22fb5f6e91fc330ed800e355e8bb9421b10d812394780b9a1443d",
+      "topics": "232e920b3d30cbb3b11a148aec4ab1de996e6784f09e41db420c08f8644b9750",
+      "subfields": "87ea7ee00da8a04d6e15fc27c6e92128d0d63cc00e2506a300c3380fa1a7b034",
+      "fields": "3cd32e7078f9dac6be279288af58bb77f7dd55b14143fc5bd959e912bff226d3"
+    }
+  },
+  "transfer_scope": {
+    "entities": [
+      "works",
+      "topics",
+      "subfields",
+      "fields"
+    ],
+    "exact_manifest_file_count": 2454,
+    "exact_manifest_content_length_bytes": 724973106144,
+    "authors_entity_included": false,
+    "mutable_prefix_sync_allowed": false,
+    "exact_captured_urls_required": true,
+    "output_root": "/ssd/pivot-feedback-lean-h3-openalex-full-core-v1-20260806"
+  },
+  "capacity_contract": {
+    "observed_at_utc": "2026-08-06T04:39:39Z",
+    "ssd_available_bytes": 3023751188480,
+    "ten_second_available_byte_delta": 0,
+    "conflicting_local_map_process_active": false,
+    "raw_source_cap_bytes": 724973106144,
+    "working_transformed_and_replay_cap_bytes": 1087459659216,
+    "total_reserved_budget_bytes": 1812432765360,
+    "observed_margin_after_total_reserve_bytes": 1211318423120,
+    "prestart_rule": "AVAILABLE_BYTES_GTE_TOTAL_RESERVED_BUDGET_BYTES",
+    "runtime_rule": "AVAILABLE_BYTES_GTE_REMAINING_SOURCE_BYTES_PLUS_WORKING_TRANSFORMED_AND_REPLAY_CAP_BYTES",
+    "runtime_failure_action": "STOP_FAIL_CLOSED_WITH_RESUMABLE_STATE_NO_FILE_DELETION"
+  },
+  "execution_contract": {
+    "segment_bytes": 268435456,
+    "parallel_file_count": 1,
+    "initial_canary_new_byte_cap": 67108864,
+    "initial_canary_must_intentionally_pause": true,
+    "initial_canary_must_include_works_bytes": true,
+    "resume_requires_remote_content_length_etag_last_modified_and_version_identity": true,
+    "partial_checkpoint_requires_segment_sha256": true,
+    "complete_file_requires_local_sha256": true,
+    "terminal_receipt_written_last": true,
+    "background_restart_after_verified_canary": "AUTHORIZED",
+    "source_row_value_decode": "FORBIDDEN",
+    "parquet_row_group_read": "FORBIDDEN"
+  },
+  "authorization": {
+    "full_core_source_byte_transfer": "AUTHORIZED",
+    "authors_transfer": "NOT_AUTHORIZED",
+    "source_row_decode": "NOT_AUTHORIZED",
+    "current_g1_or_model_selection_row_access": "NOT_AUTHORIZED",
+    "current_g4_or_holdout_access": "NOT_AUTHORIZED",
+    "confirmatory_successor_execution": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This authorization permits only the exact captured Works plus Topics/Subfields/Fields source-byte transfer with capacity, identity, resume, and local-hash controls. It does not authorize Authors, source-row decoding, historical completeness claims, H3 maturity claims, cohort selection, estimator execution, an association, null, prediction, mechanism, causal effect, or scientific effect."
+}

@@ -2,7 +2,7 @@
 
 Date: 2026-08-06
 
-Status: `DRAFT_SOURCE_TAXONOMY_DRY_RUN_VERIFIED_WORKS_NOT_DOWNLOADED_NOT_AUTHORITY`
+Status: `DRAFT_SOURCE_FULL_CORE_TRANSFER_CANARY_VERIFIED_DOWNLOAD_NOT_COMPLETE_NOT_AUTHORITY`
 
 ## Decision
 
@@ -51,6 +51,20 @@ redownloading the completed prefix. All 2,783,017 taxonomy bytes were bound by
 local SHA-256, and local footer row totals matched the manifests. No row value
 was decoded. The CLI remains limited to the taxonomy dry-run and has no
 authorized Works or full-core transfer scope.
+
+## Full-core transfer update
+
+After storage capacity recovered and remained stable, the exact-manifest Works
+plus taxonomy transfer was separately authorized. Its independent canary
+receipt is
+[`pivot_feedback_lean_h3_openalex_full_core_canary_v1_20260806.summary.md`](../../experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_canary_v1_20260806.summary.md).
+The canary closed at exactly 67,108,864 cumulative bytes, including 64,325,847
+Works bytes, with 208 complete files and one verified partial prefix. A DNS
+interruption exposed and led to correction of an invocation-local byte-cap
+error before background continuation. Independent replay rehashed all 209
+prefixes and matched 208 complete-file footers to their manifest counts. The
+full 724,973,106,144-byte transfer is not yet complete, and no row value was
+decoded.
 
 ## What the completed route established
 

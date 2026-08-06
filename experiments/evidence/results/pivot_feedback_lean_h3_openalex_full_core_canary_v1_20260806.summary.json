@@ -1,0 +1,65 @@
+{
+  "access_accounting": {
+    "complete_parquet_footers_opened": 208,
+    "current_g1_label_rows_read": 0,
+    "g4_open": false,
+    "holdout_or_private_g4_rows_read": 0,
+    "model_selection_rows_read": 0,
+    "models_fitted": 0,
+    "seal_open_events": 0,
+    "source_prefix_files_hashed": 209,
+    "source_row_values_decoded": 0
+  },
+  "authorization": {
+    "background_full_core_transfer_resume": "AUTHORIZED_NEXT",
+    "confirmatory_successor_execution": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "source_row_decode": "NOT_AUTHORIZED"
+  },
+  "bindings": {
+    "authorization_sha256": "b9b1519587e16c20632871601db5e04419f038be41d043c5fe2100057b92c817",
+    "canary_receipt_sha256": "450630c2212f936be2ada9b3f8252a52fe077773152f8671586e8d07ca12207f",
+    "download_plan_sha256": "182d1d4e679c4e7a01811822e0384c06e84795b48f175f65a6f20baa560c9031",
+    "downloader_sha256": "009221e32193e99dd00fdceefe3db6829bc9d0ec7b4f99b0427a2aa259a1394d",
+    "initial_attempt_downloader_sha256": "bab9e2fc78f16be766080494eac27e6ba5bb6c21611b495bff7fbf422e48f1c8",
+    "paused_state_sha256": "270e449eba613219b03adfdc3727b4807e6ec445d7f4cc3c47a7bb1fbba6f4d3",
+    "source_receipt_sha256": "9c6def04d23755b8d35ae6ce90be282c45f6938afd39df4287545151af8c7946"
+  },
+  "canary_replay": {
+    "canary_bytes": 67108864,
+    "canary_complete_files": 208,
+    "canary_partial_files": 1,
+    "canary_prefix_count": 209,
+    "canary_works_bytes": 64325847,
+    "capacity_margin_bytes": 1211315301968,
+    "complete_file_footer_rows": 24814,
+    "entity_prefix_bytes": {
+      "fields": 19238,
+      "subfields": 174417,
+      "topics": 2589362,
+      "works": 64325847
+    },
+    "entity_prefix_counts": {
+      "fields": 1,
+      "subfields": 1,
+      "topics": 6,
+      "works": 201
+    },
+    "live_state_relation": "PAUSED_STATE_STILL_CURRENT",
+    "partial_prefix": {
+      "canary_bytes": 11730808,
+      "canary_status": "PENDING",
+      "entity": "works",
+      "prefix_sha256": "4049eaabf629c98b4801f152f381db323465764a98aeb8107572808e2849b368",
+      "relative_path": "data/parquet/works/updated_date=2025-07-23/part_0000.parquet"
+    },
+    "prefix_inventory_sha256": "92b4660a2e56969b575d7d94dfc797393ce17c03ba5453ec55541ce44521ca4a",
+    "total_plan_bytes": 724973106144,
+    "total_plan_files": 2454
+  },
+  "claim_boundary": "This canary receipt establishes only exact-manifest range transfer, partial checkpointing, and capacity enforcement through the first authorized Works bytes. It is not full download completion, row decoding, historical completeness, H3 maturity, cohort eligibility, an association, null, mechanism, causal effect, or scientific effect.",
+  "mode": "INDEPENDENT_EXACT_MANIFEST_PREFIX_HASH_AND_COMPLETE_FILE_FOOTER_REPLAY_NO_ROW_DECODE",
+  "schema_version": "pivot_feedback_lean_h3_openalex_full_core_canary_verification_summary.v1",
+  "status": "PASS_INDEPENDENT_FULL_CORE_CANARY_MANIFEST_PREFIX_FOOTER_AND_CAPACITY_CLOSURE_NO_ROW_DECODE",
+  "verified_at_utc": "2026-08-06T04:56:02Z"
+}

@@ -1622,6 +1622,7 @@ def test_release_inspector_rejects_disjoint_successor_routing_closure_paths() ->
     inspector = runpy.run_path(str(INSPECT_SCRIPT))
     repository_paths = {
         "experiments/configs/pivot_feedback_e_g1_disjoint_successor_availability_v1.yaml",
+        "experiments/configs/pivot_feedback_lean_h3_openalex_full_core_transfer_authorization_v1.json",
         "docs/research/pivot-feedback-current-status-evidence-ledger-v19.md",
         "docs/research/pivot-feedback-lean-h3-successor-design-v1.md",
         "experiments/evidence/results/pivot_feedback_e_g1_disjoint_successor_availability_v1_20260806.summary.json",
@@ -1632,9 +1633,13 @@ def test_release_inspector_rejects_disjoint_successor_routing_closure_paths() ->
         "experiments/evidence/results/pivot_feedback_lean_h3_openalex_footer_preflight_v1_20260806.summary.md",
         "experiments/evidence/results/pivot_feedback_lean_h3_openalex_taxonomy_dry_run_v1_20260806.summary.json",
         "experiments/evidence/results/pivot_feedback_lean_h3_openalex_taxonomy_dry_run_v1_20260806.summary.md",
+        "experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_canary_v1_20260806.summary.json",
+        "experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_canary_v1_20260806.summary.md",
         "scripts/inspect_pivot_feedback_lean_h3_openalex_footer_preflight_v1.py",
         "scripts/download_pivot_feedback_lean_h3_openalex_v1.py",
         "scripts/verify_pivot_feedback_lean_h3_openalex_taxonomy_dry_run_v1.py",
+        "scripts/download_pivot_feedback_lean_h3_openalex_full_core_v1.py",
+        "scripts/verify_pivot_feedback_lean_h3_openalex_full_core_canary_v1.py",
         "scripts/verify_pivot_feedback_e_g1_disjoint_successor_availability_v1.py",
     }
     assert repository_paths <= inspector[
