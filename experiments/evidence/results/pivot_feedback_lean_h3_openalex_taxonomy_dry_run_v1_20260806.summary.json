@@ -1,0 +1,140 @@
+{
+  "access_accounting": {
+    "current_g1_label_rows_read": 0,
+    "g4_open": false,
+    "holdout_or_private_g4_rows_read": 0,
+    "local_parquet_footer_files_opened": 8,
+    "local_parquet_row_values_decoded": 0,
+    "model_selection_rows_read": 0,
+    "models_fitted": 0,
+    "seal_open_events": 0,
+    "source_row_values_decoded": 0,
+    "taxonomy_source_bytes_materialized_locally": 2783017,
+    "taxonomy_source_files_materialized_locally": 8,
+    "works_source_bytes_materialized_locally": 0,
+    "works_source_files_materialized_locally": 0
+  },
+  "authorization": {
+    "confirmatory_successor_execution": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "source_row_decode": "NOT_AUTHORIZED",
+    "taxonomy_dry_run": "COMPLETE",
+    "works_or_full_core_transfer": "NOT_AUTHORIZED_BY_THIS_RECEIPT"
+  },
+  "bindings": {
+    "download_plan_sha256": "33a25c5a237011484b5b72d937243b29c0bca1415291811dce8bbf7a0a886103",
+    "download_receipt_sha256": "839715c7bf20048815781914bea852ca5b6bdac8ab4fb162dcc4569ba5048c37",
+    "download_script_sha256": "20fbcdd971691597f452473a735fbd85944c18cc425f926ccd4bcf54c58a3ece",
+    "download_state_sha256": "b0a9387fec1842c6909567c82d1fd557aa200c36c82abeed806a27d509a69616",
+    "footer_preflight_sha256": "51787c153673a5f74f419268b02f52ffda5222e89a1e14aada7891b3f07cc246",
+    "source_receipt_sha256": "9c6def04d23755b8d35ae6ce90be282c45f6938afd39df4287545151af8c7946"
+  },
+  "claim_boundary": "This receipt establishes only exact-manifest selection, HTTP range resume, content-length closure, and local SHA-256 inventory for the eight taxonomy dry-run files. It does not authorize or establish the 724.97 GB Works transfer, row decoding, historical completeness, H3 maturity, eligible cohorts, precision, an association, null, mechanism, causal effect, or scientific effect.",
+  "download_replay": {
+    "bytes": 2783017,
+    "entity_footer_rows": {
+      "fields": 26,
+      "subfields": 252,
+      "topics": 4516
+    },
+    "entity_schema_sha256": {
+      "fields": [
+        "f9a62168ba7f8ff1e4c325fe2f7146aa3bd79b970e64e7b670b1b82d28e6b479"
+      ],
+      "subfields": [
+        "f96cf56f39294984407b003e6123389f67f41f4e886efe5daa2c2362dbd95e5d"
+      ],
+      "topics": [
+        "cc4c5fc36782b5a9577b5dc93d1829ca10c3ecde120c588ae8af6c1ef659178a"
+      ]
+    },
+    "file_count": 8,
+    "inventory": [
+      {
+        "bytes": 19238,
+        "entity": "fields",
+        "footer_row_groups": 1,
+        "footer_rows": 26,
+        "relative_path": "data/parquet/fields/updated_date=2026-06-26/part_0000.parquet",
+        "schema_sha256": "f9a62168ba7f8ff1e4c325fe2f7146aa3bd79b970e64e7b670b1b82d28e6b479",
+        "sha256": "d3c542d23f8bc3bcb061caa32ccf224f5ba519c85c2029dfe7d28f19394c0a72"
+      },
+      {
+        "bytes": 174417,
+        "entity": "subfields",
+        "footer_row_groups": 1,
+        "footer_rows": 252,
+        "relative_path": "data/parquet/subfields/updated_date=2026-06-26/part_0000.parquet",
+        "schema_sha256": "f96cf56f39294984407b003e6123389f67f41f4e886efe5daa2c2362dbd95e5d",
+        "sha256": "78dd6951d15d205ead2ef87baf88b726fc4d111508455a8069d5c4ecb4208320"
+      },
+      {
+        "bytes": 18623,
+        "entity": "topics",
+        "footer_row_groups": 1,
+        "footer_rows": 1,
+        "relative_path": "data/parquet/topics/updated_date=2026-06-18/part_0000.parquet",
+        "schema_sha256": "cc4c5fc36782b5a9577b5dc93d1829ca10c3ecde120c588ae8af6c1ef659178a",
+        "sha256": "7ffecb86cff38f027bee3768ea50cb8392c44d1738c59cbbb82786042b28ad06"
+      },
+      {
+        "bytes": 12315,
+        "entity": "topics",
+        "footer_row_groups": 1,
+        "footer_rows": 1,
+        "relative_path": "data/parquet/topics/updated_date=2026-06-20/part_0000.parquet",
+        "schema_sha256": "cc4c5fc36782b5a9577b5dc93d1829ca10c3ecde120c588ae8af6c1ef659178a",
+        "sha256": "da4cc4710ab68c798d37454686185c3b0385847ac34dc03ec7c3a0099e65577e"
+      },
+      {
+        "bytes": 12663,
+        "entity": "topics",
+        "footer_row_groups": 1,
+        "footer_rows": 1,
+        "relative_path": "data/parquet/topics/updated_date=2026-06-21/part_0000.parquet",
+        "schema_sha256": "cc4c5fc36782b5a9577b5dc93d1829ca10c3ecde120c588ae8af6c1ef659178a",
+        "sha256": "00173b83475c17b7424c05360d16bbed4e4862e56f0545caefea331f2028b577"
+      },
+      {
+        "bytes": 14229,
+        "entity": "topics",
+        "footer_row_groups": 1,
+        "footer_rows": 1,
+        "relative_path": "data/parquet/topics/updated_date=2026-06-24/part_0000.parquet",
+        "schema_sha256": "cc4c5fc36782b5a9577b5dc93d1829ca10c3ecde120c588ae8af6c1ef659178a",
+        "sha256": "25f2425e7dc367d465ca754defac8b1ae6bbeffc276f69d4152298a797313d2a"
+      },
+      {
+        "bytes": 56006,
+        "entity": "topics",
+        "footer_row_groups": 1,
+        "footer_rows": 30,
+        "relative_path": "data/parquet/topics/updated_date=2026-06-25/part_0000.parquet",
+        "schema_sha256": "cc4c5fc36782b5a9577b5dc93d1829ca10c3ecde120c588ae8af6c1ef659178a",
+        "sha256": "5c8610b55f30c1aa7ae55a7c7842b8fff83d3441cd323d6ec03012042217017a"
+      },
+      {
+        "bytes": 2475526,
+        "entity": "topics",
+        "footer_row_groups": 1,
+        "footer_rows": 4482,
+        "relative_path": "data/parquet/topics/updated_date=2026-06-26/part_0000.parquet",
+        "schema_sha256": "cc4c5fc36782b5a9577b5dc93d1829ca10c3ecde120c588ae8af6c1ef659178a",
+        "sha256": "490939b9422ed5a0ffd2fa4fee270e5ef93492a4b64453b855f2b755b3f3cc97"
+      }
+    ],
+    "scope": "TOPICS_SUBFIELDS_FIELDS_ONLY"
+  },
+  "mode": "INDEPENDENT_LOCAL_BYTE_HASH_AND_PARQUET_FOOTER_REPLAY_NO_ROW_DECODE_NOT_SCIENTIFIC_GATE",
+  "resume_replay": {
+    "http_head_requests": 9,
+    "http_range_requests": 9,
+    "intentional_pause_count": 1,
+    "remote_bytes_transferred": 2783017,
+    "resumed_partial_file_count": 1,
+    "run_count": 2
+  },
+  "schema_version": "pivot_feedback_lean_h3_openalex_taxonomy_dry_run_verification_summary.v1",
+  "status": "PASS_INDEPENDENT_TAXONOMY_RANGE_RESUME_HASH_AND_FOOTER_CLOSURE_NO_ROW_DECODE",
+  "verified_at_utc": "2026-08-06T03:00:36Z"
+}

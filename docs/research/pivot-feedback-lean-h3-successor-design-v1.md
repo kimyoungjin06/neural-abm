@@ -2,7 +2,7 @@
 
 Date: 2026-08-06
 
-Status: `DRAFT_SOURCE_FOOTER_PREFLIGHT_BOUND_NO_DATA_DOWNLOAD_NOT_AUTHORITY`
+Status: `DRAFT_SOURCE_TAXONOMY_DRY_RUN_VERIFIED_WORKS_NOT_DOWNLOADED_NOT_AUTHORITY`
 
 ## Decision
 
@@ -40,6 +40,17 @@ footer metadata only. No row value was decoded and no data file was persisted
 locally; internal S3 range/cache transfer bytes were not independently metered.
 Full-file schema unanimity, H3 maturity, disjoint cohort
 eligibility, and precision remain unresolved.
+
+## Downloader dry-run update
+
+The manifest-driven downloader was exercised only on the eight captured
+Topics/Subfields/Fields files. The independent receipt is
+[`pivot_feedback_lean_h3_openalex_taxonomy_dry_run_v1_20260806.summary.md`](../../experiments/evidence/results/pivot_feedback_lean_h3_openalex_taxonomy_dry_run_v1_20260806.summary.md).
+An intentional 4,096-byte interruption was checkpointed and resumed without
+redownloading the completed prefix. All 2,783,017 taxonomy bytes were bound by
+local SHA-256, and local footer row totals matched the manifests. No row value
+was decoded. The CLI remains limited to the taxonomy dry-run and has no
+authorized Works or full-core transfer scope.
 
 ## What the completed route established
 
