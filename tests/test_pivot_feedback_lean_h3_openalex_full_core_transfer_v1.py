@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from pathlib import Path
 import runpy
 from types import SimpleNamespace
@@ -18,6 +19,10 @@ VERIFIER = ROOT / "scripts/verify_pivot_feedback_lean_h3_openalex_full_core_cana
 CANARY_SUMMARY = ROOT / (
     "experiments/evidence/results/"
     "pivot_feedback_lean_h3_openalex_full_core_canary_v1_20260806.summary.json"
+)
+LAUNCH_SUMMARY = ROOT / (
+    "experiments/evidence/results/"
+    "pivot_feedback_lean_h3_openalex_full_core_launch_v1_20260806.summary.json"
 )
 
 
@@ -165,3 +170,20 @@ def test_canary_verifier_uses_footer_metadata_without_row_decode() -> None:
     assert "pq.ParquetFile(" in source
     for forbidden in ("pq.read_table(", ".read_row_group(", ".iter_batches("):
         assert forbidden not in source
+
+
+def test_launch_summary_binds_running_transfer_without_expanding_authority() -> None:
+    summary = json.loads(LAUNCH_SUMMARY.read_text(encoding="utf-8"))
+    assert summary["status"] == (
+        "PASS_COMMITTED_FULL_CORE_TRANSFER_LAUNCH_RUNNING_AT_OBSERVATION_NO_ROW_DECODE"
+    )
+    downloader_sha256 = hashlib.sha256(DOWNLOADER.read_bytes()).hexdigest()
+    assert summary["canonical_launch"]["downloader_sha256"] == downloader_sha256
+    progress = summary["progress_snapshot"]
+    assert progress["state_status"] == "RUNNING"
+    assert progress["materialized_source_bytes_at_observation"] > 67_108_864
+    assert progress["complete_files_at_observation"] < progress["total_manifest_files"]
+    assert summary["capacity_snapshot"]["margin_bytes"] >= 0
+    assert summary["access_accounting"]["source_row_values_decoded"] == 0
+    assert summary["authorization"]["source_row_decode"] == "NOT_AUTHORIZED"
+    assert summary["authorization"]["confirmatory_successor_execution"] == "NOT_AUTHORIZED"

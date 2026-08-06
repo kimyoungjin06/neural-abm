@@ -2,7 +2,7 @@
 
 Date: 2026-08-06
 
-Status: `DRAFT_SOURCE_FULL_CORE_TRANSFER_CANARY_VERIFIED_DOWNLOAD_NOT_COMPLETE_NOT_AUTHORITY`
+Status: `DRAFT_SOURCE_FULL_CORE_TRANSFER_RUNNING_NOT_COMPLETE_NOT_AUTHORITY`
 
 ## Decision
 
@@ -65,6 +65,14 @@ error before background continuation. Independent replay rehashed all 209
 prefixes and matched 208 complete-file footers to their manifest counts. The
 full 724,973,106,144-byte transfer is not yet complete, and no row value was
 decoded.
+
+The committed background launch and its first active progress observation are
+recorded in
+[`pivot_feedback_lean_h3_openalex_full_core_launch_v1_20260806.summary.md`](../../experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_launch_v1_20260806.summary.md).
+At that observation the state was `RUNNING`, at least 1,140,200,344 source bytes
+and 222 complete files were materialized, and the capacity margin remained
+1,211,315,095,957 bytes. This is an operational transfer state, not download
+completion or authority to decode rows or execute the successor.
 
 ## What the completed route established
 

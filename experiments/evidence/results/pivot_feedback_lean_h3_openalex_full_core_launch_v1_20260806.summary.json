@@ -1,0 +1,77 @@
+{
+  "schema_version": "pivot_feedback_lean_h3_openalex_full_core_launch_summary.v1",
+  "status": "PASS_COMMITTED_FULL_CORE_TRANSFER_LAUNCH_RUNNING_AT_OBSERVATION_NO_ROW_DECODE",
+  "observed_at_utc": "2026-08-06T05:13:36Z",
+  "observation_semantics": "POINT_IN_TIME_MINIMUM_PROGRESS_NOT_TRANSFER_COMPLETION",
+  "scope": "WORKS_TOPICS_SUBFIELDS_FIELDS_EXACT_MANIFEST_SOURCE_BYTE_TRANSFER_ONLY",
+  "canonical_launch": {
+    "git_commit": "347bde998f6c76b7ccd264683288fdfd13b3fdd1",
+    "downloader_sha256": "7c16af6e38569889969f7528dbbd2cb1bccef87ab407fc5ae4cd23bd62f59e5f",
+    "systemd_unit": "pivot-feedback-lean-h3-openalex-full-core-v1.service",
+    "invocation_id": "3572b87997a44524b92edd1360d9acd8",
+    "started_at_kst": "2026-08-06T14:12:59+09:00",
+    "active_state_at_observation": "active",
+    "sub_state_at_observation": "running",
+    "restart_policy": "on-failure",
+    "restart_delay_seconds": 30
+  },
+  "controlled_restart": {
+    "prior_invocation_id": "eaa9b7db2dd04ada83527e1ee73456d6",
+    "reason": "CORRECT_STALE_TOP_LEVEL_STATE_TO_PERSIST_RUNNING_BEFORE_NETWORK_LOOP",
+    "stop_boundary_source_bytes": 1079675758,
+    "stop_boundary_complete_files": 213,
+    "stop_boundary_partial_files": 0,
+    "remote_recovery_validation_bytes_after_restart": 0,
+    "recovered_uncheckpointed_tail_count_after_restart": 0
+  },
+  "immutable_bindings": {
+    "authorization_sha256": "b9b1519587e16c20632871601db5e04419f038be41d043c5fe2100057b92c817",
+    "download_plan_sha256": "182d1d4e679c4e7a01811822e0384c06e84795b48f175f65a6f20baa560c9031",
+    "canary_receipt_sha256": "450630c2212f936be2ada9b3f8252a52fe077773152f8671586e8d07ca12207f",
+    "canary_summary_sha256": "35b81dd43feacae8399e49c6f60f49df1084dde4bad482ce11e76d8faf413bf6",
+    "canary_downloader_sha256": "009221e32193e99dd00fdceefe3db6829bc9d0ec7b4f99b0427a2aa259a1394d"
+  },
+  "progress_snapshot": {
+    "state_status": "RUNNING",
+    "run_count": 4,
+    "total_manifest_files": 2454,
+    "complete_files_at_observation": 222,
+    "total_manifest_source_bytes": 724973106144,
+    "materialized_source_bytes_at_observation": 1140200344,
+    "remaining_source_bytes_upper_bound_at_observation": 723832905800,
+    "http_head_requests": 223,
+    "http_range_requests": 225,
+    "intentional_canary_pause_count": 1
+  },
+  "capacity_snapshot": {
+    "available_bytes_before_latest_segment": 3022607728640,
+    "downloaded_bytes_before_latest_segment": 1140132677,
+    "remaining_source_bytes_before_latest_segment": 723832973467,
+    "working_reserve_bytes": 1087459659216,
+    "required_available_bytes": 1811292632683,
+    "margin_bytes": 1211315095957,
+    "minimum_observed_margin_bytes": 1211315095957
+  },
+  "verification": {
+    "full_repository_regression_before_observability_patch": "PASS_3244_TESTS",
+    "targeted_transfer_and_release_boundary_after_observability_patch": "PASS_45_TESTS",
+    "ruff_after_observability_patch": "PASS",
+    "release_artifact_inspection_before_observability_patch": "PASS"
+  },
+  "access_accounting": {
+    "source_row_values_decoded": 0,
+    "current_g1_label_rows_read": 0,
+    "model_selection_rows_read": 0,
+    "holdout_or_private_g4_rows_read": 0,
+    "seal_open_events": 0,
+    "g4_open": false,
+    "models_fitted": 0
+  },
+  "authorization": {
+    "full_core_source_byte_transfer": "RUNNING",
+    "source_row_decode": "NOT_AUTHORIZED",
+    "confirmatory_successor_execution": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This point-in-time receipt establishes only that the committed exact-manifest byte-transfer process was active and had advanced beyond the verified canary while preserving the capacity invariant. It is not transfer completion, row decoding, historical completeness, H3 maturity, cohort eligibility, an association, a null, a mechanism, a causal effect, or a scientific effect."
+}

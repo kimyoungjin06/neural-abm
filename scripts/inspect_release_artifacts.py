@@ -770,6 +770,8 @@ PIVOT_CERTIFIED_D0_MEASUREMENT_REPOSITORY_ONLY_PATHS = {
     "experiments/evidence/results/pivot_feedback_lean_h3_openalex_taxonomy_dry_run_v1_20260806.summary.md",
     "experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_canary_v1_20260806.summary.json",
     "experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_canary_v1_20260806.summary.md",
+    "experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_launch_v1_20260806.summary.json",
+    "experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_launch_v1_20260806.summary.md",
     "experiments/evidence/results/pivot_feedback_e_g1_execution_v1_20260805.summary.json",
     "experiments/evidence/results/pivot_feedback_e_g1_execution_v1_20260805.summary.md",
     "experiments/evidence/results/pivot_feedback_e_g1_execution_input_preflight_v1_20260805.summary.json",
