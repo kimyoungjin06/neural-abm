@@ -125,6 +125,30 @@ reversal, and nonidentifiable-case passing. A passing estimator becomes only
 eligible for a later freeze; it is not automatically selected, and no support
 rule is selected by this exercise.
 
+### Blind challenge result
+
+The precommit was fixed at `5b5f7ef` before the assessment seed or any panel
+existed. The completed, independently replayed result is
+[`pivot_feedback_lean_h3_blind_challenge_v1_20260806.summary.md`](../../experiments/evidence/results/pivot_feedback_lean_h3_blind_challenge_v1_20260806.summary.md).
+Neither frozen estimator was admissible. Raw retained strong directional
+behavior but failed overall interval coverage, worst-family interval coverage,
+and nonidentifiable-case passing. Kernel failed those criteria and sign
+reversal. No estimator or support rule was selected.
+
+This is a substantive estimator failure rather than a near-threshold governance
+artifact. Raw coverage was `0.8133` overall and `0.5352` in the asymmetric
+peak-and-tail family, against frozen floors of `0.90` and `0.80`. It also passed
+`0.0833` of registered nonidentifiable panels against a `0.05` ceiling. The
+opened challenge is now discovery-only and may not be reused as blind
+confirmation.
+
+The next methodological object is not a lower support floor or a post-hoc
+hierarchical rescue. It is an uncertainty-aware peak-set estimator that can
+propagate within-episode peak-location uncertainty and explicitly return
+`INVALID` for ties, flatness, boundaries, or informative missingness. Any such
+candidate must be committed before a fresh, disjoint synthetic blind challenge.
+Empirical row access and confirmatory execution remain unauthorized.
+
 ## What the completed route established
 
 The completed route established a reproducible measurement and partition

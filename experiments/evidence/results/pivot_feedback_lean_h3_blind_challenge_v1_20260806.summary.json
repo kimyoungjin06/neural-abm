@@ -1,0 +1,179 @@
+{
+  "schema_version": "pivot_feedback_lean_h3_blind_challenge_summary.v1",
+  "status": "BLOCKED_BLIND_CHALLENGE_NO_ESTIMATOR_ADMISSIBLE_NO_FREEZE",
+  "completed_at_utc": "2026-08-06T09:31:40Z",
+  "scope": "SOURCE_INDEPENDENT_SINGLE_OPERATOR_PROCEDURAL_BLIND_SYNTHETIC_ESTIMATOR_ADMISSIBILITY",
+  "precommit": {
+    "git_commit": "5b5f7efd2e9264fe4b9db566b123ffb2a1dda210",
+    "semantics": "CONFIG_GENERATOR_ESTIMATOR_EVALUATOR_VERIFIER_AND_TESTS_COMMITTED_BEFORE_ASSESSMENT_SEED_OR_PANEL"
+  },
+  "canonical_execution": {
+    "artifact_root": "/ssd/pivot-feedback-lean-h3-blind-challenge-v1-assessment-20260806",
+    "profile": "assessment",
+    "seed_hex_revealed_after_blind_estimation": "5d56e995d1f268828105e7b922b9d07dfe2ef17500200537c80993770777fb06",
+    "generator_families": 8,
+    "challenge_scenarios": 64,
+    "panel_rows": 4096,
+    "estimate_rows": 8192,
+    "generation_completed_at_utc": "2026-08-06T09:29:31Z",
+    "blind_estimation_completed_at_utc": "2026-08-06T09:31:20Z",
+    "unblinding_completed_at_utc": "2026-08-06T09:31:34Z",
+    "private_label_files_opened_by_estimator": 0
+  },
+  "independent_replay": {
+    "path": "/ssd/pivot-feedback-lean-h3-blind-challenge-v1-assessment-20260806.verification-v1.json",
+    "status": "PASS_INDEPENDENT_BLIND_BINDING_AND_ADJUDICATION_REPLAY_SYNTHETIC_ONLY",
+    "verified_at_utc": "2026-08-06T09:31:40Z",
+    "scope": "ARTIFACT_BINDINGS_PANEL_BLINDNESS_FIELDS_METRICS_AND_FROZEN_RUBRIC_NOT_PANEL_REGENERATION"
+  },
+  "immutable_bindings": {
+    "config_sha256": "fea34d3656a709c20fcab785a4670812a2b370d8eec9a60acdb78d718d88bb2f",
+    "generator_sha256": "677d35b8e4acf74b638a2ba7a1f4ac7cb7bd674cb071e89cb2cec54e6b66df78",
+    "estimator_sha256": "649220a1e3f7f644cec2a208c6d4591fe604bbbf5484ec0fd6509787202181fd",
+    "evaluator_sha256": "39b865e5a9ac843ea38ae0a629d1b16d4cc809e20abb219af9c335b944b60f34",
+    "verifier_sha256": "82f85a634f9df7ffb12fef9f3a98c7af8e16ab8b40d212d61e45c25be3a713af",
+    "challenge_panels_sha256": "1103a99e6fad7b15881972b86d205370effd28b5c0f0ec2b049f06f5b9467c59",
+    "private_labels_sha256": "984c8fe36cc5f540fe4fa9bcdf4bd7f7337515e21fdd686989affa0f510dd37c",
+    "generation_receipt_sha256": "9517bd5b200d69bb4ff699e63e366ff3c9896e573c7a46f0a2096416f7c07d5e",
+    "blind_estimates_sha256": "03bebed3fb7907dbdb9af9d49cafc26a01a405f931a23569dabf60a5721f08ff",
+    "blind_estimation_receipt_sha256": "7af1541611907cb40d92163591709a786033f588117a51c67b9060f43e07cd54",
+    "unblinded_report_sha256": "8aecb130713ed921408f46ef8c8087db3e7745bc3d1d94aef34db13801ced9f0",
+    "unblinding_receipt_sha256": "9522b2a7879069f1f98b6a3130d7efaf54cbdcac79bc0074a39e087bed0df0a4",
+    "verification_sha256": "f9a29e53aa837820055b38835e69f3509da5eac11154a403ae81a112554419ae"
+  },
+  "frozen_thresholds": {
+    "minimum_valid_rate": 0.98,
+    "minimum_meaningful_positive_detection_rate": 0.8,
+    "maximum_nonpositive_directional_false_positive_rate": 0.05,
+    "minimum_identifiable_two_sided_coverage": 0.9,
+    "minimum_worst_family_identifiable_two_sided_coverage": 0.8,
+    "maximum_identifiable_sign_reversal_rate": 0.05,
+    "maximum_nonidentifiable_pass_rate": 0.05
+  },
+  "estimator_results": {
+    "raw_earliest_argmax": {
+      "admissible": false,
+      "passed_criteria": [
+        "valid_rate",
+        "meaningful_positive_detection_rate",
+        "nonpositive_directional_false_positive_rate",
+        "identifiable_sign_reversal_rate"
+      ],
+      "failed_criteria": [
+        "identifiable_two_sided_coverage",
+        "worst_family_identifiable_two_sided_coverage",
+        "nonidentifiable_pass_rate"
+      ],
+      "valid_rate": 1.0,
+      "meaningful_positive_detection_rate": 0.9620253164556962,
+      "nonpositive_directional_false_positive_rate": 0.0,
+      "identifiable_two_sided_coverage": 0.81328125,
+      "worst_family_identifiable_two_sided_coverage": 0.53515625,
+      "worst_family": "asymmetric_peak_and_tail",
+      "identifiable_sign_reversal_rate": 0.022286421791167972,
+      "nonidentifiable_pass_rate": 0.08333333333333333,
+      "mechanism_overreach_pass_rate": 0.2542067307692308,
+      "key_counts": {
+        "meaningful_positive_detected": 1216,
+        "meaningful_positive_total": 1264,
+        "nonpositive_false_positive": 0,
+        "nonpositive_total": 802,
+        "identifiable_interval_covered": 2082,
+        "identifiable_interval_total": 2560,
+        "identifiable_sign_reversal": 54,
+        "identifiable_signed_total": 2423,
+        "nonidentifiable_passed": 128,
+        "nonidentifiable_total": 1536
+      }
+    },
+    "kernel_earliest_argmax": {
+      "admissible": false,
+      "passed_criteria": [
+        "valid_rate",
+        "meaningful_positive_detection_rate",
+        "nonpositive_directional_false_positive_rate"
+      ],
+      "failed_criteria": [
+        "identifiable_two_sided_coverage",
+        "worst_family_identifiable_two_sided_coverage",
+        "identifiable_sign_reversal_rate",
+        "nonidentifiable_pass_rate"
+      ],
+      "valid_rate": 1.0,
+      "meaningful_positive_detection_rate": 0.9501582278481012,
+      "nonpositive_directional_false_positive_rate": 0.006234413965087282,
+      "identifiable_two_sided_coverage": 0.53203125,
+      "worst_family_identifiable_two_sided_coverage": 0.24609375,
+      "worst_family": "asymmetric_peak_and_tail",
+      "identifiable_sign_reversal_rate": 0.06314486174164259,
+      "nonidentifiable_pass_rate": 0.08138020833333333,
+      "mechanism_overreach_pass_rate": 0.23768028846153846,
+      "key_counts": {
+        "meaningful_positive_detected": 1201,
+        "meaningful_positive_total": 1264,
+        "nonpositive_false_positive": 5,
+        "nonpositive_total": 802,
+        "identifiable_interval_covered": 1362,
+        "identifiable_interval_total": 2560,
+        "identifiable_sign_reversal": 153,
+        "identifiable_signed_total": 2423,
+        "nonidentifiable_passed": 125,
+        "nonidentifiable_total": 1536
+      }
+    }
+  },
+  "post_unblind_descriptive_diagnostics": {
+    "role": "EXPLANATORY_NOT_A_SECOND_ADMISSIBILITY_RUBRIC",
+    "raw_asymmetric_peak_and_tail": {
+      "mean_bias": 0.198486328125,
+      "mean_absolute_error": 0.2022705078125,
+      "coverage": 0.53515625
+    },
+    "kernel_asymmetric_peak_and_tail": {
+      "mean_bias": 0.75982666015625,
+      "mean_absolute_error": 0.75982666015625,
+      "coverage": 0.24609375
+    },
+    "raw_nonidentifiable_localization": {
+      "informative_time_missingness_pass_rate": 0.125,
+      "plateau_and_near_tie_pass_rate": 0.125,
+      "monotone_boundary_process_pass_rate": 0.0
+    },
+    "interpretation": "The raw estimator preserved useful directional discrimination but its episode-resampling interval did not represent peak-location uncertainty under asymmetric curves, and it lacked an explicit fail-closed rule for plateau and informative-missingness nonidentifiability. Kernel smoothing amplified asymmetric positive bias and did not repair nonidentifiability."
+  },
+  "gate_proportionality": {
+    "conclusion": "FAILURE_IS_SUBSTANTIVE_NOT_A_NEAR_THRESHOLD_GOVERNANCE_ARTIFACT",
+    "evidence": {
+      "raw_overall_coverage_shortfall": 0.08671875,
+      "raw_worst_family_coverage_shortfall": 0.26484375,
+      "raw_nonidentifiable_pass_excess": 0.033333333333333326,
+      "raw_failed_criteria_count": 3,
+      "kernel_failed_criteria_count": 4
+    }
+  },
+  "disposition": {
+    "eligible_for_later_freeze": [],
+    "estimator_selected": "NO",
+    "support_rule_selected": "NO",
+    "post_unblind_retuning_on_this_challenge": "FORBIDDEN",
+    "opened_challenge_future_role": "DISCOVERY_DIAGNOSTIC_ONLY_NOT_REUSABLE_AS_BLIND_CONFIRMATION",
+    "next_methodological_target": "UNCERTAINTY_AWARE_PEAK_SET_ESTIMATOR_WITH_EXPLICIT_TIE_FLATNESS_AND_MISSINGNESS_NONIDENTIFIABILITY",
+    "next_assessment_requirement": "FRESH_PRECOMMITTED_ESTIMATOR_AND_DISJOINT_SYNTHETIC_BLIND_CHALLENGE"
+  },
+  "access_accounting": {
+    "source_or_empirical_rows_read": 0,
+    "current_g1_rows_read": 0,
+    "model_selection_rows_read": 0,
+    "holdout_or_private_g4_rows_read": 0,
+    "seal_open_events": 0,
+    "models_fitted_to_empirical_data": 0
+  },
+  "authorization": {
+    "empirical_row_access": "FORBIDDEN_NOT_RUN",
+    "confirmatory_execution": "FORBIDDEN_NOT_RUN",
+    "estimator_selected": "NO",
+    "support_rule_selected": "NO",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This single-operator procedural blind establishes that neither frozen earliest-argmax estimator met the synthetic admissibility rubric. It does not establish empirical H3, a null or association, support sufficiency, a feedback mechanism, a causal effect, predictive validity, NABM necessity, or a scientific effect."
+}

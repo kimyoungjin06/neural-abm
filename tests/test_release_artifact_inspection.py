@@ -1681,6 +1681,8 @@ def test_release_inspector_rejects_lean_h3_blind_challenge_paths() -> None:
         "scripts/estimate_pivot_feedback_lean_h3_blind_challenge_v1.py",
         "scripts/evaluate_pivot_feedback_lean_h3_blind_challenge_v1.py",
         "scripts/verify_pivot_feedback_lean_h3_blind_challenge_v1.py",
+        "experiments/evidence/results/pivot_feedback_lean_h3_blind_challenge_v1_20260806.summary.json",
+        "experiments/evidence/results/pivot_feedback_lean_h3_blind_challenge_v1_20260806.summary.md",
     }
     assert repository_paths <= inspector[
         "PIVOT_CERTIFIED_D0_MEASUREMENT_REPOSITORY_ONLY_PATHS"
