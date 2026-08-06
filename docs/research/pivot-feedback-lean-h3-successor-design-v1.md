@@ -2,7 +2,7 @@
 
 Date: 2026-08-06
 
-Status: `DRAFT_PRE_SOURCE_NO_ROW_ACCESS_NOT_AUTHORITY`
+Status: `DRAFT_SOURCE_CANDIDATE_MANIFEST_BOUND_NO_DATA_DOWNLOAD_NOT_AUTHORITY`
 
 ## Decision
 
@@ -23,6 +23,16 @@ confirmatory stage.
 This document is a scientific design brief. It is not an executable
 preregistration, a new gate, an active-state successor, or permission to read
 any current or future outcome row.
+
+## Source-intake update
+
+The 2026-06-26 free public OpenAlex Parquet manifests are now captured as a
+newer source candidate. The compact receipt is
+[`pivot_feedback_lean_h3_openalex_source_intake_v1_20260806.summary.md`](../../experiments/evidence/results/pivot_feedback_lean_h3_openalex_source_intake_v1_20260806.summary.md).
+This establishes only manifest identity and a preliminary dependency/storage
+inventory. No source data file or record has been downloaded or read, and
+schema compatibility, H3 maturity, disjoint cohort eligibility, and precision
+remain unresolved.
 
 ## What the completed route established
 
@@ -139,8 +149,10 @@ these choices.
 
 ## Current boundary
 
-Until a new source receipt exists, the only permitted work is source-level
-metadata inventory and refinement of this outcome-free design. Current G1
-labels, current model-selection rows, private or holdout G4 artifacts, model
-fitting, threshold changes, scope rescue, and scientific claim promotion
-remain unauthorized. Current state v4 and `g4_open=false` are unchanged.
+A manifest-level candidate receipt now exists, but the immutable source intake
+milestone is not complete. The only permitted next work is no-row or
+footer-only schema/dependency preflight, a transfer/storage budget, and
+refinement of this outcome-free design. Current G1 labels, current
+model-selection rows, private or holdout G4 artifacts, model fitting, threshold
+changes, scope rescue, and scientific claim promotion remain unauthorized.
+Current state v4 and `g4_open=false` are unchanged.

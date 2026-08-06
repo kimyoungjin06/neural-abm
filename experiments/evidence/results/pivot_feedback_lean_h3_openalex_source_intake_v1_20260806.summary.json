@@ -1,0 +1,176 @@
+{
+  "schema_version": "pivot_feedback_lean_h3_openalex_source_intake_summary.v1",
+  "status": "PASS_MANIFEST_ONLY_NEWER_PUBLIC_SNAPSHOT_CANDIDATE_BOUND_NO_DATA_DOWNLOAD_NO_ROW_ACCESS",
+  "captured_at_utc": "2026-08-06T02:07:41Z",
+  "mode": "SOURCE_LEVEL_METADATA_INTAKE_NOT_SCIENTIFIC_GATE_NOT_EXECUTION_AUTHORITY",
+  "snapshot_candidate": {
+    "provider": "OpenAlex",
+    "distribution": "FREE_PUBLIC_QUARTERLY_SNAPSHOT",
+    "format": "parquet",
+    "manifest_date": "2026-06-26",
+    "newer_than_current_lineage_snapshot_date": "2026-03-30",
+    "newer_candidate": true,
+    "combined_manifest_url": "https://openalex.s3.amazonaws.com/data/parquet/manifest.json",
+    "combined_manifest_etag": "83569df5a65f5741ed09823d94a06c7c",
+    "combined_manifest_last_modified": "2026-06-27T03:07:02Z",
+    "entity_count": 21,
+    "aggregate_record_count_across_entities": 649096577,
+    "aggregate_content_length_bytes": 783555949110,
+    "mutable_url_warning": "THE_CAPTURED_LOCAL_MANIFEST_BYTES_AND_SHA256_DEFINE_THIS_CANDIDATE_NOT_THE_FUTURE_CONTENT_OF_THE_LIVE_URL"
+  },
+  "captured_manifest_root": "/ssd/pivot-feedback-lean-h3-openalex-source-intake-v1-20260806",
+  "captured_manifest_root_mode": "0700",
+  "captured_manifests": [
+    {
+      "label": "combined",
+      "url": "https://openalex.s3.amazonaws.com/data/parquet/manifest.json",
+      "relative_path": "combined.manifest.json",
+      "bytes": 1158613,
+      "sha256": "10c1785b4a6f9757823fc6dd005a052716e2c510ea751659cab4bcfba4c35e2a",
+      "etag": "83569df5a65f5741ed09823d94a06c7c",
+      "file_mode": "0600"
+    },
+    {
+      "label": "works",
+      "url": "https://openalex.s3.amazonaws.com/data/parquet/works/manifest.json",
+      "relative_path": "works.manifest.json",
+      "bytes": 477208,
+      "sha256": "4b5142cb47f22fb5f6e91fc330ed800e355e8bb9421b10d812394780b9a1443d",
+      "etag": "9edf1873de62a74e25ff3d41e0124bbd",
+      "file_mode": "0600"
+    },
+    {
+      "label": "authors",
+      "url": "https://openalex.s3.amazonaws.com/data/parquet/authors/manifest.json",
+      "relative_path": "authors.manifest.json",
+      "bytes": 380222,
+      "sha256": "d39a9bad9bedbd55ee973ce6567e9cddc22a19532813600222b5596944a689df",
+      "etag": "9ec1079128354753f43e4c18b3c7d61e",
+      "file_mode": "0600"
+    },
+    {
+      "label": "topics",
+      "url": "https://openalex.s3.amazonaws.com/data/parquet/topics/manifest.json",
+      "relative_path": "topics.manifest.json",
+      "bytes": 1275,
+      "sha256": "232e920b3d30cbb3b11a148aec4ab1de996e6784f09e41db420c08f8644b9750",
+      "etag": "9ef751564c397c48ca3f4ab625307aa3",
+      "file_mode": "0600"
+    },
+    {
+      "label": "subfields",
+      "url": "https://openalex.s3.amazonaws.com/data/parquet/subfields/manifest.json",
+      "relative_path": "subfields.manifest.json",
+      "bytes": 336,
+      "sha256": "87ea7ee00da8a04d6e15fc27c6e92128d0d63cc00e2506a300c3380fa1a7b034",
+      "etag": "2f55e6334540a4427937098b892c8434",
+      "file_mode": "0600"
+    },
+    {
+      "label": "fields",
+      "url": "https://openalex.s3.amazonaws.com/data/parquet/fields/manifest.json",
+      "relative_path": "fields.manifest.json",
+      "bytes": 326,
+      "sha256": "3cd32e7078f9dac6be279288af58bb77f7dd55b14143fc5bd959e912bff226d3",
+      "etag": "99f60e263da9f2a0b63012bde7624b4f",
+      "file_mode": "0600"
+    }
+  ],
+  "immediate_stability_check": {
+    "manifest_count": 6,
+    "all_first_capture_bytes_equal_immediate_refetch": true,
+    "comparison_method": "BYTE_FOR_BYTE_CMP",
+    "source_data_files_read": 0,
+    "source_records_read": 0
+  },
+  "entity_inventory": {
+    "works": {
+      "role": "CORE_REQUIRED_FOR_H3",
+      "record_count": 510372821,
+      "content_length_bytes": 724970323127,
+      "file_count": 2446,
+      "minimum_updated_date": "2016-06-24",
+      "maximum_updated_date": "2026-06-26"
+    },
+    "authors": {
+      "role": "CONDITIONAL_IDENTITY_AND_ORCID_SENSITIVITY_NOT_YET_CORE",
+      "record_count": 119129660,
+      "content_length_bytes": 52769910496,
+      "file_count": 1961,
+      "minimum_updated_date": "2016-06-24",
+      "maximum_updated_date": "2026-06-26"
+    },
+    "topics": {
+      "role": "CORE_REQUIRED_TAXONOMY_BINDING",
+      "record_count": 4516,
+      "content_length_bytes": 2589362,
+      "file_count": 6,
+      "minimum_updated_date": "2026-06-18",
+      "maximum_updated_date": "2026-06-26"
+    },
+    "subfields": {
+      "role": "CORE_REQUIRED_TAXONOMY_BINDING",
+      "record_count": 252,
+      "content_length_bytes": 174417,
+      "file_count": 1,
+      "minimum_updated_date": "2026-06-26",
+      "maximum_updated_date": "2026-06-26"
+    },
+    "fields": {
+      "role": "CORE_REQUIRED_TAXONOMY_BINDING",
+      "record_count": 26,
+      "content_length_bytes": 19238,
+      "file_count": 1,
+      "minimum_updated_date": "2026-06-26",
+      "maximum_updated_date": "2026-06-26"
+    },
+    "all_other_entities": {
+      "role": "DEFERRED_NOT_REQUIRED_BY_CURRENT_LEAN_H3_DESIGN_UNLESS_SCHEMA_PREFLIGHT_PROVES_A_DEPENDENCY"
+    }
+  },
+  "download_capacity_preflight": {
+    "ssd_available_bytes_at_capture": 3023754072064,
+    "works_plus_taxonomy_manifest_content_length_bytes": 724973106144,
+    "works_authors_plus_taxonomy_manifest_content_length_bytes": 777743016640,
+    "all_parquet_entities_manifest_content_length_bytes": 783555949110,
+    "raw_download_fits_observed_ssd_capacity": true,
+    "transformation_and_replay_headroom_established": false,
+    "aws_cli_available": false,
+    "download_started": false
+  },
+  "unresolved_before_download": {
+    "works_parquet_schema_compatibility": "NOT_RUN_NO_DATA_FILE_READ",
+    "whether_authors_entity_is_mandatory": "PENDING_SCHEMA_AND_IDENTITY_SENSITIVITY_DESIGN",
+    "exact_download_prefixes": "PENDING_DEPENDENCY_PREFLIGHT",
+    "transfer_and_resume_tool": "PENDING_AWS_CLI_OR_MANIFEST_DRIVEN_DOWNLOADER",
+    "local_transformation_storage_budget": "PENDING",
+    "snapshot_year_completeness_and_h3_horizon_maturity": "NOT_ESTABLISHED_BY_MANIFEST",
+    "disjoint_discovery_and_confirmatory_cohorts": "NOT_SELECTED",
+    "estimand_specific_precision_rule": "NOT_FROZEN"
+  },
+  "authorization": {
+    "manifest_candidate_binding": "COMPLETE",
+    "schema_metadata_preflight": "AUTHORIZED_NEXT_WITHOUT_SOURCE_ROW_READ_WHERE_POSSIBLE",
+    "download_plan_and_storage_budget": "AUTHORIZED_NEXT",
+    "source_data_download": "NOT_AUTHORIZED_BY_THIS_RECEIPT",
+    "source_record_read": "NOT_AUTHORIZED_BY_THIS_RECEIPT",
+    "current_g1_or_model_selection_row_access": "NOT_AUTHORIZED",
+    "current_g4_or_holdout_access": "NOT_AUTHORIZED",
+    "confirmatory_successor_execution": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "access_accounting": {
+    "remote_manifest_files_read": 6,
+    "remote_manifest_immediate_refetches": 6,
+    "remote_source_data_files_read": 0,
+    "remote_source_records_read": 0,
+    "current_g1_label_rows_read": 0,
+    "model_selection_rows_read": 0,
+    "holdout_or_private_g4_rows_read": 0,
+    "seal_open_events": 0,
+    "g4_open": false,
+    "models_fitted": 0
+  },
+  "claim_boundary": "This receipt binds only a manifest-level OpenAlex 2026-06-26 public Parquet snapshot candidate that is newer than the current lineage source and records a preliminary lean-H3 entity dependency and storage preflight. It does not establish Parquet schema compatibility, historical completeness, H3 horizon maturity, disjoint cohort eligibility, estimator support, source-data byte identity, download completion, an executable preregistration, an association, null, prediction, mechanism, transport result, causal effect, or scientific effect."
+}
