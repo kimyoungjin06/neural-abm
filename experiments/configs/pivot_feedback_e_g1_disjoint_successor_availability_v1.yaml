@@ -1,0 +1,165 @@
+schema_version: pivot_feedback_e_g1_disjoint_successor_availability.v1
+label: pivot_feedback_e_g1_disjoint_successor_availability_v1
+mode: POST_TERMINAL_METADATA_ONLY_ROUTING_CLOSURE_NOT_NEW_GATE_NO_AUTHORITY_CHANGE
+status: BLOCKED_NO_CURRENT_REGISTERED_DISJOINT_SUCCESSOR_COHORT_NEW_SOURCE_REQUIRED
+authored_at_local_date: "2026-08-06"
+
+active_state_parent:
+  authority:
+    relative_path: experiments/configs/pivot_feedback_current_state_v4.yaml
+    sha256: 4c10f6aa579e129715fab088d669a77ac9c7884ef9ed9f912f6acd2686f8efda
+    required_schema_version: pivot_feedback_current_state.v4
+    required_status: ACTIVE_E_PHASE_TERMINAL_BLOCKED_FROZEN_COHORT_SUPPORT_AFTER_GUARD_FIRST_CONFIRMATORY_LABEL_MATERIALIZATION_NO_ESTIMATION_HOLDOUT_SEALED_UNOPENED
+    mutation_allowed: false
+  independent_verification:
+    relative_path: experiments/evidence/results/pivot_feedback_current_state_v4_20260805.summary.json
+    sha256: f47e7f5c8ab92aa9b728291d0d6050148b4e7fbd4b92f9f70cdfdf34913e8b34
+    required_schema_version: pivot_feedback_current_state_v4_summary.v1
+    required_status: PASS_ACTIVE_E_TERMINAL_BLOCKED_FROZEN_COHORT_SUPPORT_AFTER_GUARD_FIRST_CONFIRMATORY_MATERIALIZATION_NO_ESTIMATION
+    mutation_allowed: false
+  terminal_execution_verification:
+    relative_path: experiments/evidence/results/pivot_feedback_e_g1_guarded_risk_label_source_v1_20260805.summary.json
+    sha256: f6d55daac53506db8e5cd198dbb280868a51e56af52e85f100a766f447552178
+    required_schema_version: pivot_feedback_e_g1_guarded_risk_label_source_summary.v1
+    required_status: PASS_INDEPENDENT_G1_GUARD_FIRST_RISK_AND_LABEL_SOURCE_ROW_REPLAY_ESTIMATION_NOT_RUN
+    mutation_allowed: false
+
+frozen_partition_sources:
+  atomic_partition_contract:
+    relative_path: experiments/configs/pivot_feedback_f_atomic_partition_assignment_v1.yaml
+    sha256: d9623fc90af17702fd5938692eb4a5bf9a72818985f8575c8cd7d85d83d35f04
+    required_schema_version: pivot_feedback_f_atomic_partition_assignment.v1
+    required_status: FROZEN_ATOMIC_PARTITION_ASSIGNMENT_PENDING_PRODUCTION_NO_F_PASS
+    mutation_allowed: false
+  atomic_partition_verification:
+    relative_path: experiments/evidence/results/pivot_feedback_f_atomic_partition_assignment_v1_20260804.summary.json
+    sha256: a1c57c541dd7f7a6042e524d6340da2bcd1246eb48021958bb60ddd72e313b0d
+    required_schema_version: pivot_feedback_f_atomic_partition_assignment_summary.v1
+    required_status: PASS_OUTCOME_BLIND_ATOMIC_EPISODE_FAMILY_PARTITION_ASSIGNMENT_PRIVATE_HOLDOUT_MATERIALIZATION_AUTHORIZED_NO_F_PASS
+    mutation_allowed: false
+  field_episode_contract:
+    relative_path: experiments/configs/pivot_feedback_f_field_episode_assignment_v1.yaml
+    sha256: 4a48c46483d3711bffe1d8c13805b4aec6f8aa25d4198dc30372a5da22d0f68b
+    required_schema_version: pivot_feedback_f_field_episode_assignment.v1
+    required_status: FROZEN_FIELD_EPISODE_ASSIGNMENT_PENDING_PRODUCTION_EXECUTION_NO_F_PASS
+    mutation_allowed: false
+  field_episode_verification:
+    relative_path: experiments/evidence/results/pivot_feedback_f_field_episode_assignment_v1_20260803.summary.json
+    sha256: 1b09be6348e08b551011051b2c4f1377db285985dfac0e9a9a5d5f18e2a8fa08
+    required_schema_version: pivot_feedback_f_field_episode_assignment_summary.v1
+    required_status: PASS_OUTCOME_BLIND_FIELD_AND_EPISODE_ASSIGNMENT_COMPONENT_FINAL_PANEL_AND_SEAL_PENDING
+    mutation_allowed: false
+  atomic_episode_assignment:
+    path: /ssd/pivot-feedback-f-atomic-partition-assignment-v1-20260804/atomic_episode_partition_assignment.parquet
+    sha256: 169f0bd4bedaf4f34b3dec53214f1393587c6dcc26e0dac7eae60d589e91a17e
+    bytes: 6124
+    rows: 65
+    schema_version: pivot_feedback_f_atomic_episode_partition_assignment.v1
+    file_mode: "0600"
+    metadata_columns_read:
+      - episode_id
+      - registered_partition_id
+      - partition_role
+      - field_id
+      - decision_year
+      - sealed
+      - operator_only
+      - author_cold
+
+partition_replay:
+  discovery_calibration:
+    entry_years: [null, 2012]
+    final_panel_episode_count: 0
+    role: PRE_CUTOFF_SUPPORT_NOT_FINAL_SHOCK_PANEL
+    successor_available: false
+    reason: ALREADY_USED_CALIBRATION_ROLE_AND_NOT_FINAL_CONFIRMATORY_PANEL
+  g1_empirical_replication:
+    entry_years: [2013, 2016]
+    final_panel_episode_count: 28
+    role: OPENED_CONFIRMATORY_TERMINAL_SUPPORT_BLOCKED
+    successor_available: false
+    reason: CONFIRMATORY_LABELS_ALREADY_MATERIALIZED_SAME_COHORT_RETRY_FORBIDDEN
+  model_selection:
+    entry_years: [2017, 2019]
+    final_panel_episode_count: 0
+    role: OPEN_ONLY_AFTER_E
+    successor_available: false
+    reason: ZERO_FROZEN_EPISODES_AND_E_DID_NOT_PASS_PARTITION_ROLE_CHANGE_FORBIDDEN
+  g4_temporal_holdout:
+    entry_years: [2020, 2022]
+    final_panel_episode_count: 37
+    role: OPERATOR_ONLY_SEALED_AUTHOR_COLD
+    successor_available: false
+    reason: SEALED_HOLDOUT_OPEN_NOT_AUTHORIZED
+
+forbidden_recovery_routes:
+  same_g1_rows_or_episodes: true
+  lower_support_threshold_on_opened_cohort: true
+  pool_or_drop_failed_g1_episodes_to_retain_registered_claim: true
+  activate_reserve_field_after_outcome_read: true
+  reselect_or_fabricate_2017_2019_episode: true
+  repurpose_model_selection_partition_as_g1: true
+  open_or_relabel_g4_holdout: true
+  use_model_selection_score_or_fit_model: true
+  infer_scientific_null_or_effect_from_support_failure: true
+
+disjoint_successor_requirements:
+  study_identity: NEW_SUCCESSOR_NOT_CURRENT_G1_RETRY_OR_ROUTE_PROMOTION
+  current_lineage_episode_reuse: FORBIDDEN
+  current_g1_confirmatory_row_reuse: FORBIDDEN
+  current_g1_support_counts_may_select_new_scope: false
+  source_identity: NEW_IMMUTABLE_SNAPSHOT_OR_EXTERNAL_DATASET_NOT_CURRENT_REGISTERED_PARTITION
+  outcome_maturity: COMPLETE_FOR_EVERY_PREAUTHORIZED_PRIMARY_AND_SENSITIVITY_HORIZON
+  source_receipt_before_row_access: REQUIRED
+  claim_and_estimand_freeze_before_outcome_labels: REQUIRED
+  structural_field_and_episode_rule_before_outcome_labels: REQUIRED
+  support_and_failure_action_before_outcome_labels: REQUIRED
+  author_overlap_policy_before_outcome_labels: REQUIRED
+  guard_first_if_g4_author_cold_boundary_still_applies: REQUIRED
+  disjointness_verification_before_outcome_labels: REQUIRED
+  holdout_seal_state: BYTE_SEALED_UNOPENED
+  g4_open: false
+
+availability_disposition:
+  current_registered_disjoint_episode_count: 0
+  current_registered_disjoint_family_count: 0
+  current_registered_disjoint_cohort_available: false
+  external_or_future_source_identity_bound: false
+  successor_execution_authorized: false
+  terminal_status: BLOCKED_NO_CURRENT_REGISTERED_DISJOINT_SUCCESSOR_COHORT_NEW_SOURCE_REQUIRED
+  this_is_new_scientific_gate: false
+  this_changes_current_state_v4: false
+  current_g1_terminal_status_preserved: BLOCKED_E_G1_INPUT_SUPPORT_OR_ESTIMATOR_FAILURE_NO_ROUTE_PROMOTION
+
+authorization_after_independent_pass:
+  metadata_only_new_source_discovery_and_inventory: AUTHORIZED_NEXT
+  draft_new_study_claim_estimand_and_disjointness_contract: AUTHORIZED_NEXT_WITHOUT_OUTCOME_READ
+  bind_new_immutable_source_receipt: AUTHORIZED_ONLY_WHEN_SOURCE_EXISTS
+  current_g1_row_access: NOT_AUTHORIZED
+  model_selection_partition_access: NOT_AUTHORIZED_E_NOT_PASSED
+  holdout_or_g4_access: NOT_AUTHORIZED
+  same_cohort_retry_or_threshold_change: NOT_AUTHORIZED
+  new_successor_row_access: NOT_AUTHORIZED_UNTIL_FRESH_FREEZE_AND_INDEPENDENT_PREFLIGHT
+  model_fitting: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+
+validation_contract:
+  verifier_relative_path: scripts/verify_pivot_feedback_e_g1_disjoint_successor_availability_v1.py
+  summary_json_relative_path: experiments/evidence/results/pivot_feedback_e_g1_disjoint_successor_availability_v1_20260806.summary.json
+  summary_markdown_relative_path: experiments/evidence/results/pivot_feedback_e_g1_disjoint_successor_availability_v1_20260806.summary.md
+  repository_and_open_partition_metadata_only: true
+  current_g1_label_files_may_be_read: false
+  model_selection_rows_may_be_read: false
+  holdout_or_private_g4_files_may_be_read: false
+  seal_may_be_opened: false
+  model_may_be_fitted: false
+
+claim_boundary: >-
+  This routing closure establishes only that the current frozen lineage contains
+  no registered, unopened, disjoint successor episode cohort: discovery is not
+  a final panel, G1 is already opened and terminal, model selection has zero
+  frozen episodes and remains closed because E did not pass, and G4 remains
+  sealed. It does not choose a successor from observed support, authorize a
+  current partition reuse, open any analytic or holdout row, change current
+  state v4, fit a model, or establish an association, null, prediction,
+  mechanism, transport, causal effect, or scientific effect.

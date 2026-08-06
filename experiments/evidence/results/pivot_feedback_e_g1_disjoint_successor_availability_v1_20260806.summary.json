@@ -1,0 +1,140 @@
+{
+  "access_accounting": {
+    "current_g1_label_rows_read": 0,
+    "g4_open": false,
+    "holdout_or_private_g4_rows_read": 0,
+    "model_selection_rows_read": 0,
+    "models_fitted": 0,
+    "open_partition_metadata_rows_read": 65,
+    "repository_documents_read": 7,
+    "seal_open_events": 0
+  },
+  "authority": {
+    "current_state_v4_sha256": "4c10f6aa579e129715fab088d669a77ac9c7884ef9ed9f912f6acd2686f8efda",
+    "relative_path": "experiments/configs/pivot_feedback_e_g1_disjoint_successor_availability_v1.yaml",
+    "sha256": "ba68d3fda3a71f090122cb6f651f7ac13499b8357856b068ddc5fa051c5fe6e5",
+    "terminal_execution_summary_sha256": "f6d55daac53506db8e5cd198dbb280868a51e56af52e85f100a766f447552178"
+  },
+  "authorization": {
+    "bind_new_immutable_source_receipt": "AUTHORIZED_ONLY_WHEN_SOURCE_EXISTS",
+    "current_g1_row_access": "NOT_AUTHORIZED",
+    "draft_new_study_claim_estimand_and_disjointness_contract": "AUTHORIZED_NEXT_WITHOUT_OUTCOME_READ",
+    "holdout_or_g4_access": "NOT_AUTHORIZED",
+    "metadata_only_new_source_discovery_and_inventory": "AUTHORIZED_NEXT",
+    "model_fitting": "NOT_AUTHORIZED",
+    "model_selection_partition_access": "NOT_AUTHORIZED_E_NOT_PASSED",
+    "new_successor_row_access": "NOT_AUTHORIZED_UNTIL_FRESH_FREEZE_AND_INDEPENDENT_PREFLIGHT",
+    "same_cohort_retry_or_threshold_change": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "availability_disposition": {
+    "current_g1_terminal_status_preserved": "BLOCKED_E_G1_INPUT_SUPPORT_OR_ESTIMATOR_FAILURE_NO_ROUTE_PROMOTION",
+    "current_registered_disjoint_cohort_available": false,
+    "current_registered_disjoint_episode_count": 0,
+    "current_registered_disjoint_family_count": 0,
+    "external_or_future_source_identity_bound": false,
+    "successor_execution_authorized": false,
+    "terminal_status": "BLOCKED_NO_CURRENT_REGISTERED_DISJOINT_SUCCESSOR_COHORT_NEW_SOURCE_REQUIRED",
+    "this_changes_current_state_v4": false,
+    "this_is_new_scientific_gate": false
+  },
+  "claim_boundary": "This routing closure establishes only that the current frozen lineage contains no registered, unopened, disjoint successor episode cohort: discovery is not a final panel, G1 is already opened and terminal, model selection has zero frozen episodes and remains closed because E did not pass, and G4 remains sealed. It does not choose a successor from observed support, authorize a current partition reuse, open any analytic or holdout row, change current state v4, fit a model, or establish an association, null, prediction, mechanism, transport, causal effect, or scientific effect.",
+  "next_executable_prerequisite": {
+    "metadata_only_source_discovery_and_inventory": "AUTHORIZED_NEXT",
+    "same_cohort_or_current_partition_reuse": "NOT_AUTHORIZED",
+    "status": "NEW_IMMUTABLE_MATURED_SOURCE_OR_EXTERNAL_DATASET_REQUIRED",
+    "successor_row_access": "NOT_AUTHORIZED_UNTIL_FRESH_FREEZE_AND_INDEPENDENT_PREFLIGHT"
+  },
+  "partition_metadata_replay": {
+    "atomic_episode_assignment_sha256": "169f0bd4bedaf4f34b3dec53214f1393587c6dcc26e0dac7eae60d589e91a17e",
+    "atomic_episode_rows_read": 65,
+    "current_registered_disjoint_episode_count": 0,
+    "decision_years": {
+      "discovery_calibration": [],
+      "g1_empirical_replication": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "g4_temporal_holdout": [
+        2020,
+        2021,
+        2022
+      ],
+      "model_selection": []
+    },
+    "episode_counts": {
+      "discovery_calibration": 0,
+      "g1_empirical_replication": 28,
+      "g4_temporal_holdout": 37,
+      "model_selection": 0
+    },
+    "field_ids": {
+      "discovery_calibration": [],
+      "g1_empirical_replication": [
+        11,
+        16,
+        32
+      ],
+      "g4_temporal_holdout": [
+        27
+      ],
+      "model_selection": []
+    },
+    "projected_metadata_columns": [
+      "episode_id",
+      "registered_partition_id",
+      "partition_role",
+      "field_id",
+      "decision_year",
+      "sealed",
+      "operator_only",
+      "author_cold"
+    ]
+  },
+  "route_replay": {
+    "discovery_calibration": {
+      "entry_years": [
+        null,
+        2012
+      ],
+      "final_panel_episode_count": 0,
+      "reason": "ALREADY_USED_CALIBRATION_ROLE_AND_NOT_FINAL_CONFIRMATORY_PANEL",
+      "role": "PRE_CUTOFF_SUPPORT_NOT_FINAL_SHOCK_PANEL",
+      "successor_available": false
+    },
+    "g1_empirical_replication": {
+      "entry_years": [
+        2013,
+        2016
+      ],
+      "final_panel_episode_count": 28,
+      "reason": "CONFIRMATORY_LABELS_ALREADY_MATERIALIZED_SAME_COHORT_RETRY_FORBIDDEN",
+      "role": "OPENED_CONFIRMATORY_TERMINAL_SUPPORT_BLOCKED",
+      "successor_available": false
+    },
+    "g4_temporal_holdout": {
+      "entry_years": [
+        2020,
+        2022
+      ],
+      "final_panel_episode_count": 37,
+      "reason": "SEALED_HOLDOUT_OPEN_NOT_AUTHORIZED",
+      "role": "OPERATOR_ONLY_SEALED_AUTHOR_COLD",
+      "successor_available": false
+    },
+    "model_selection": {
+      "entry_years": [
+        2017,
+        2019
+      ],
+      "final_panel_episode_count": 0,
+      "reason": "ZERO_FROZEN_EPISODES_AND_E_DID_NOT_PASS_PARTITION_ROLE_CHANGE_FORBIDDEN",
+      "role": "OPEN_ONLY_AFTER_E",
+      "successor_available": false
+    }
+  },
+  "schema_version": "pivot_feedback_e_g1_disjoint_successor_availability_summary.v1",
+  "status": "PASS_INDEPENDENT_NO_CURRENT_REGISTERED_DISJOINT_SUCCESSOR_COHORT_NEW_SOURCE_REQUIRED_NO_AUTHORITY_CHANGE"
+}
