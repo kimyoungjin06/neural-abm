@@ -1,0 +1,131 @@
+{
+  "schema_version": "pivot_feedback_lean_h3_result_space_summary.v1",
+  "status": "PASS_INDEPENDENT_SYNTHETIC_RESULT_SPACE_COUNTEREXAMPLES_FOUND_KERNEL_NOT_ADMISSIBLE_RAW_NOT_YET_SELECTED_NO_EMPIRICAL_ROWS",
+  "completed_at_utc": "2026-08-06T06:21:37Z",
+  "scope": "SOURCE_INDEPENDENT_SYNTHETIC_PROSPECTIVE_H3_ESTIMATOR_AND_INTERPRETATION_STRESS_TEST",
+  "canonical_execution": {
+    "artifact_root": "/ssd/pivot-feedback-lean-h3-result-space-v1-design-pilot-corrected-20260806",
+    "profile": "design_pilot",
+    "canonical_scenarios": 9,
+    "adversarial_scenarios": 96,
+    "total_scenarios": 105,
+    "canonical_replicates": 128,
+    "adversarial_replicates": 24,
+    "bootstrap_replicates": 199,
+    "replicate_estimate_rows": 6912,
+    "counterexample_rows_total": 4012,
+    "counterexample_rows_retained": 200
+  },
+  "independent_replay": {
+    "path": "/ssd/pivot-feedback-lean-h3-result-space-v1-design-pilot-corrected-20260806.verification-v1.json",
+    "status": "PASS_INDEPENDENT_AGGREGATE_FLAG_AND_COUNTEREXAMPLE_REPLAY_SYNTHETIC_ONLY",
+    "verified_at_utc": "2026-08-06T06:21:37Z",
+    "scope": "STORED_AGGREGATES_FLAGS_AND_COUNTEREXAMPLE_RANKING_NOT_PANEL_REGENERATION"
+  },
+  "immutable_bindings": {
+    "config_sha256": "b3d0b18e88b1585ed54b6ec3de1deae6f6e5acba04b1dbb5b7e3125da6ba00aa",
+    "producer_sha256": "206334c43924d1b14956ce169cfcb3ba6e05bb99d47b3e907be2225735811bc2",
+    "verifier_sha256": "881fe5ff76270750b4ef675e90894fcde3f6be05e576e83453f862347a3f46b6",
+    "receipt_sha256": "dfe734ae74b14181e23b5485c66c208b028a3e7b11483f22a46007a17c94f20c",
+    "scenario_manifest_sha256": "9a70bad803d01e909afeb80b15c02aaf22104dd28ab4feeede730e705f931cfa",
+    "replicate_estimates_sha256": "c1f2419acece88b1236ede6ed249d80c1d9dc8c8b749aa44343966131158654f",
+    "counterexamples_sha256": "40341b85082050dd6defcba01510c58abe1a824285accefb61b96c408eca474b",
+    "report_sha256": "e18e1e7d317c515eacfd8fbcee5cf2b194b73d06805f4975d3de2be594a4e8d8",
+    "verification_sha256": "bfd43ae94066623a9307fe04a69eb3100c07cd5f60464d61994d8a954f974f84"
+  },
+  "replayed_flag_counts": {
+    "aggregation_paradox": 706,
+    "confident_wrong_interval": 1085,
+    "delayed_feedback_false_negative": 0,
+    "directional_false_positive": 128,
+    "estimator_disagreement": 958,
+    "mechanism_overreach_risk": 2360,
+    "nonidentifiable_truth_pass": 1070,
+    "sign_reversal": 103
+  },
+  "canonical_findings": {
+    "sharp_positive_raw": {
+      "truth_delta": 1.0,
+      "pass_rate": 1.0,
+      "mean_bias": 0.0,
+      "two_sided_coverage": 1.0
+    },
+    "synchronous_null_raw": {
+      "truth_delta": 0.0,
+      "pass_rate": 0.0,
+      "mean_bias": 0.0,
+      "two_sided_coverage": 1.0
+    },
+    "broad_positive_raw": {
+      "truth_delta": 2.0,
+      "pass_rate": 1.0,
+      "mean_bias": 0.05034722222222211,
+      "two_sided_coverage": 0.9609375,
+      "confident_wrong_interval_rate": 0.0390625
+    },
+    "broad_positive_kernel": {
+      "truth_delta": 2.0,
+      "pass_rate": 1.0,
+      "mean_bias": 0.47786458333333337,
+      "two_sided_coverage": 0.0390625,
+      "confident_wrong_interval_rate": 0.9609375
+    },
+    "bimodal_recruitment_raw": {
+      "truth_delta": 0.0,
+      "pass_rate": 0.0,
+      "mean_bias": 0.29730902777777773,
+      "two_sided_coverage": 0.6015625,
+      "aggregation_paradox_rate": 0.9921875
+    },
+    "bimodal_recruitment_kernel": {
+      "truth_delta": 0.0,
+      "pass_rate": 1.0,
+      "mean_bias": 1.7109375,
+      "two_sided_coverage": 0.0,
+      "directional_false_positive_rate": 1.0,
+      "confident_wrong_interval_rate": 1.0,
+      "estimator_disagreement_rate": 1.0
+    },
+    "selection_mimic_raw": {
+      "feedback_present": false,
+      "observable_truth_delta": 1.0,
+      "pass_rate": 0.9609375,
+      "mechanism_overreach_risk_rate": 0.9609375
+    },
+    "measurement_mimic_raw": {
+      "feedback_present": false,
+      "observable_truth_delta": 1.0,
+      "pass_rate": 1.0,
+      "mechanism_overreach_risk_rate": 1.0
+    }
+  },
+  "design_disposition": {
+    "kernel_earliest_argmax": "NOT_ADMISSIBLE_AS_V1_PRIMARY",
+    "raw_earliest_argmax": "RETAINED_CANDIDATE_NOT_SELECTED",
+    "support_rule": "NOT_SELECTED",
+    "hierarchical_partial_pooling": "DEFERRED",
+    "synthetic_blind_challenge": "NEXT_BEFORE_ANY_ESTIMATOR_FREEZE",
+    "agent_based_generator": "DEFERRED"
+  },
+  "superseded_diagnostic_execution": {
+    "artifact_root": "/ssd/pivot-feedback-lean-h3-result-space-v1-design-pilot-20260806",
+    "status": "SUPERSEDED_DIAGNOSTIC_FLAG_SEMANTICS_ONLY_DO_NOT_CITE",
+    "reason": "The first delayed-feedback false-negative flag treated every positive truth gap as meaningful instead of applying the registered minimum point gap of 1.0. The corrected execution changed flag semantics and rankings, not the generated scenario manifest or replicate estimates."
+  },
+  "access_accounting": {
+    "source_or_empirical_rows_read": 0,
+    "current_g1_rows_read": 0,
+    "model_selection_rows_read": 0,
+    "holdout_or_private_g4_rows_read": 0,
+    "seal_open_events": 0,
+    "models_fitted_to_empirical_data": 0
+  },
+  "authorization": {
+    "empirical_row_access": "FORBIDDEN_NOT_RUN",
+    "confirmatory_execution": "FORBIDDEN_NOT_RUN",
+    "estimator_selected": "NO",
+    "support_rule_selected": "NO",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "The synthetic study shows that the registered observational timing pattern can be recovered under delayed feedback but can also be produced by selective composition, measurement shift, and recruitment mixtures without delayed feedback. It validates a prospective counterexample map, not empirical H3, a feedback mechanism, a causal effect, predictive performance, NABM necessity, or a scientific effect."
+}

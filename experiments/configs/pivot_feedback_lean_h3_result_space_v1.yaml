@@ -1,0 +1,241 @@
+schema_version: pivot_feedback_lean_h3_result_space.v1
+label: pivot_feedback_lean_h3_result_space_v1
+mode: SYNTHETIC_ONLY_PROSPECTIVE_ESTIMATOR_AND_INTERPRETATION_STRESS_TEST
+status: AUTHORIZED_SYNTHETIC_ONLY_NO_EMPIRICAL_ROW_ACCESS_NO_SCIENTIFIC_CLAIM
+
+scientific_object:
+  question: >-
+    Under what synthetic data-generating and observation processes can an
+    entry-peak minus persistence-peak timing gap be recovered, missed,
+    reversed, or mimicked without delayed feedback?
+  estimand: FIELD_BALANCED_MEAN_OF_EPISODE_EARLIEST_PEAK_GAPS
+  episode_value: ENTRY_EARLIEST_PEAK_K_MINUS_PERSISTENCE_EARLIEST_PEAK_K
+  event_time_grid: [-2, -1, 0, 1, 2]
+  claim_role: PROSPECTIVE_DESIGN_VALIDATION_ONLY
+
+authorization:
+  synthetic_generation: AUTHORIZED
+  estimator_operating_characteristics: AUTHORIZED
+  counterexample_search: AUTHORIZED
+  source_or_empirical_row_read: FORBIDDEN
+  current_g1_row_read: FORBIDDEN
+  model_selection_row_read: FORBIDDEN
+  holdout_or_private_g4_read: FORBIDDEN
+  empirical_parameter_calibration: FORBIDDEN
+  confirmatory_execution: FORBIDDEN
+  scientific_effect: NOT_ESTABLISHED
+
+design:
+  field_count: 3
+  episodes_per_field: 6
+  minimum_supported_episodes_per_field: 3
+  minimum_finite_event_times_per_curve: 3
+  base_seed: 20260806
+  estimators:
+    - raw_earliest_argmax
+    - kernel_earliest_argmax
+  kernel_weights: [0.25, 0.50, 0.25]
+  decision_rule:
+    minimum_point_gap_cohort_years: 1.0
+    one_sided_lower_bound_strictly_greater_than: 0.0
+  profiles:
+    smoke:
+      canonical_replicates: 8
+      adversarial_scenarios: 8
+      adversarial_replicates: 4
+      bootstrap_replicates: 31
+    design_pilot:
+      canonical_replicates: 128
+      adversarial_scenarios: 96
+      adversarial_replicates: 24
+      bootstrap_replicates: 199
+
+mechanism_families:
+  - delayed_feedback
+  - synchronous_opportunity
+  - fast_correction
+  - selective_composition
+  - capacity_depletion
+  - recruitment_mixture
+  - measurement_artifact
+
+canonical_scenarios:
+  - scenario_id: delayed_gap_plus_one_sharp
+    mechanism_family: delayed_feedback
+    feedback_present: true
+    truth_identifiable: true
+    entry_peak: 1.0
+    persistence_peak: 0.0
+    entry_shape: sharp
+    persistence_shape: sharp
+    opportunity_level: 5000
+    base_entry_probability: 0.010
+    entry_amplitude: 0.060
+    base_persistence_probability: 0.20
+    persistence_amplitude: 0.45
+    episode_peak_sd: 0.00
+
+  - scenario_id: delayed_gap_plus_two_broad
+    mechanism_family: delayed_feedback
+    feedback_present: true
+    truth_identifiable: true
+    entry_peak: 1.0
+    persistence_peak: -1.0
+    entry_shape: broad
+    persistence_shape: broad
+    opportunity_level: 5000
+    base_entry_probability: 0.010
+    entry_amplitude: 0.050
+    base_persistence_probability: 0.20
+    persistence_amplitude: 0.40
+    episode_peak_sd: 0.15
+
+  - scenario_id: synchronous_null
+    mechanism_family: synchronous_opportunity
+    feedback_present: false
+    truth_identifiable: true
+    entry_peak: 0.0
+    persistence_peak: 0.0
+    entry_shape: sharp
+    persistence_shape: sharp
+    opportunity_level: 5000
+    base_entry_probability: 0.010
+    entry_amplitude: 0.060
+    base_persistence_probability: 0.20
+    persistence_amplitude: 0.45
+    episode_peak_sd: 0.00
+
+  - scenario_id: fast_correction_negative
+    mechanism_family: fast_correction
+    feedback_present: false
+    truth_identifiable: true
+    entry_peak: -1.0
+    persistence_peak: 0.0
+    entry_shape: sharp
+    persistence_shape: sharp
+    opportunity_level: 5000
+    base_entry_probability: 0.010
+    entry_amplitude: 0.060
+    base_persistence_probability: 0.20
+    persistence_amplitude: 0.45
+    episode_peak_sd: 0.00
+
+  - scenario_id: flat_unidentified
+    mechanism_family: synchronous_opportunity
+    feedback_present: false
+    truth_identifiable: false
+    entry_peak: 0.0
+    persistence_peak: 0.0
+    entry_shape: flat
+    persistence_shape: flat
+    opportunity_level: 5000
+    base_entry_probability: 0.025
+    entry_amplitude: 0.000
+    base_persistence_probability: 0.40
+    persistence_amplitude: 0.000
+    episode_peak_sd: 0.00
+
+  - scenario_id: selection_mimics_positive_gap
+    mechanism_family: selective_composition
+    feedback_present: false
+    truth_identifiable: true
+    entry_peak: 1.0
+    persistence_peak: 0.0
+    entry_shape: broad
+    persistence_shape: sharp
+    opportunity_level: 5000
+    base_entry_probability: 0.010
+    entry_amplitude: 0.055
+    base_persistence_probability: 0.20
+    persistence_amplitude: 0.40
+    episode_peak_sd: 0.10
+
+  - scenario_id: measurement_shift_mimics_positive_gap
+    mechanism_family: measurement_artifact
+    feedback_present: false
+    truth_identifiable: true
+    entry_peak: 0.0
+    persistence_peak: 0.0
+    observed_entry_shift: 1.0
+    entry_shape: sharp
+    persistence_shape: sharp
+    opportunity_level: 5000
+    base_entry_probability: 0.010
+    entry_amplitude: 0.060
+    base_persistence_probability: 0.20
+    persistence_amplitude: 0.45
+    episode_peak_sd: 0.00
+
+  - scenario_id: field_direction_reversal
+    mechanism_family: delayed_feedback
+    feedback_present: true
+    truth_identifiable: true
+    entry_peak: 1.0
+    persistence_peak: 0.0
+    field_entry_peak_offsets: [-2.0, 0.0, 1.0]
+    entry_shape: sharp
+    persistence_shape: sharp
+    opportunity_level: 5000
+    base_entry_probability: 0.010
+    entry_amplitude: 0.060
+    base_persistence_probability: 0.20
+    persistence_amplitude: 0.45
+    episode_peak_sd: 0.00
+
+  - scenario_id: recruitment_bimodal
+    mechanism_family: recruitment_mixture
+    feedback_present: false
+    truth_identifiable: true
+    entry_peak: 0.0
+    persistence_peak: 0.0
+    entry_shape: bimodal
+    persistence_shape: broad
+    secondary_peak_offset: 2.0
+    secondary_peak_weight: 0.90
+    opportunity_level: 5000
+    base_entry_probability: 0.010
+    entry_amplitude: 0.050
+    base_persistence_probability: 0.20
+    persistence_amplitude: 0.40
+    episode_peak_sd: 0.10
+
+adversarial_search:
+  sampling: DETERMINISTIC_RANDOM_PARAMETER_SEARCH
+  opportunity_level_range: [250, 10000]
+  base_entry_probability_range: [0.001, 0.050]
+  entry_amplitude_range: [0.005, 0.120]
+  base_persistence_probability_range: [0.10, 0.60]
+  persistence_amplitude_range: [0.05, 0.55]
+  peak_width_range: [0.40, 1.80]
+  episode_peak_sd_range: [0.00, 0.75]
+  label_sensitivity_range: [0.85, 1.00]
+  label_specificity_range: [0.95, 1.00]
+  persistence_censoring_range: [0.00, 0.35]
+  shape_levels: [sharp, broad, flat, bimodal]
+  field_offset_patterns:
+    - [0.0, 0.0, 0.0]
+    - [-1.0, 0.0, 1.0]
+    - [-2.0, 0.0, 2.0]
+    - [0.0, 0.0, 1.0]
+
+counterexample_flags:
+  - directional_false_positive
+  - delayed_feedback_false_negative
+  - sign_reversal
+  - confident_wrong_interval
+  - nonidentifiable_truth_pass
+  - mechanism_overreach_risk
+  - aggregation_paradox
+  - estimator_disagreement
+
+deferred:
+  hierarchical_partial_pooling: DEFERRED_UNTIL_RAW_AND_SMOOTHED_COUNTEREXAMPLE_AUDIT
+  synthetic_blind_challenge: DEFERRED_UNTIL_GENERATOR_AND_ESTIMATOR_V1_PASS
+  agent_based_generator: DEFERRED_UNTIL_OBSERVATIONAL_EQUIVALENCE_MAP_EXISTS
+
+claim_boundary: >-
+  This contract authorizes only source-independent synthetic generation,
+  estimator calibration, and counterexample discovery. It may not read or
+  calibrate to OpenAlex, current G1, model-selection, holdout, or private G4
+  rows. A simulated timing gap is not an empirical result, a mechanism, a
+  causal effect, predictive validation, NABM necessity, or a scientific effect.

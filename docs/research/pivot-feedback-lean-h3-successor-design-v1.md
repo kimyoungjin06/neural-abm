@@ -74,6 +74,37 @@ and 222 complete files were materialized, and the capacity margin remained
 1,211,315,095,957 bytes. This is an operational transfer state, not download
 completion or authority to decode rows or execute the successor.
 
+## Prospective result-space update
+
+While source transfer remains operationally separate, the outcome-free
+prospective result space was implemented and independently replayed. The compact
+receipt is
+[`pivot_feedback_lean_h3_result_space_v1_20260806.summary.md`](../../experiments/evidence/results/pivot_feedback_lean_h3_result_space_v1_20260806.summary.md).
+It used no empirical, current G1, model-selection, holdout, or private G4 row.
+
+The exercise did not merely confirm the preferred positive pattern. It included
+positive, null, negative, unidentified, compositional, measurement, and
+recruitment-mixture cases plus a deterministic adversarial parameter search.
+The raw and kernel earliest-peak estimators agreed on the easiest cases, but the
+kernel estimator failed sharply on broad and bimodal curves. In the canonical
+bimodal recruitment case it passed all 128 repetitions despite an observable
+truth gap of zero. The raw estimator avoided that false-positive decision but
+still showed weak coverage and near-universal aggregation-paradox flags in the
+same case.
+
+Accordingly, the kernel estimator is not admissible as the v1 primary. The raw
+estimator is retained only as an unselected candidate, and no support rule is
+selected. The next outcome-free design milestone is a generator-held-out blind
+synthetic challenge. A hierarchical candidate may be preregistered for that
+comparison, but cannot be introduced as a post-hoc rescue.
+
+Most importantly, selective composition and measurement shift each reproduced
+the positive observable timing pattern without delayed feedback. Even a future
+precise empirical H3 estimate would therefore remain a bounded timing result;
+it would not identify a feedback mechanism. The synthetic exercise does not
+authorize source-row decoding or confirmatory execution and establishes no
+scientific effect.
+
 ## What the completed route established
 
 The completed route established a reproducible measurement and partition
