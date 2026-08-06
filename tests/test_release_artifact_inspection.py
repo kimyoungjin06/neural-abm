@@ -1623,6 +1623,7 @@ def test_release_inspector_rejects_disjoint_successor_routing_closure_paths() ->
     repository_paths = {
         "experiments/configs/pivot_feedback_e_g1_disjoint_successor_availability_v1.yaml",
         "docs/research/pivot-feedback-current-status-evidence-ledger-v19.md",
+        "docs/research/pivot-feedback-lean-h3-successor-design-v1.md",
         "experiments/evidence/results/pivot_feedback_e_g1_disjoint_successor_availability_v1_20260806.summary.json",
         "experiments/evidence/results/pivot_feedback_e_g1_disjoint_successor_availability_v1_20260806.summary.md",
         "scripts/verify_pivot_feedback_e_g1_disjoint_successor_availability_v1.py",

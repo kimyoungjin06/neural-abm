@@ -701,6 +701,7 @@ PIVOT_CERTIFIED_D0_MEASUREMENT_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-feedback-current-status-evidence-ledger-v17.md",
     "docs/research/pivot-feedback-current-status-evidence-ledger-v18.md",
     "docs/research/pivot-feedback-current-status-evidence-ledger-v19.md",
+    "docs/research/pivot-feedback-lean-h3-successor-design-v1.md",
     "docs/research/pivot-feedback-g0-prerequisite-closure-plan-v1.md",
     "docs/research/pivot-feedback-holdout-access-seal-contract-v1.md",
     "docs/research/pivot-feedback-holdout-seal-tooling-v1.md",
