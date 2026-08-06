@@ -21,8 +21,7 @@ AUTHORIZATION = ROOT / (
     "pivot_feedback_lean_h3_openalex_full_core_transfer_authorization_v1.json"
 )
 AUTHORIZATION_SHA256 = "b9b1519587e16c20632871601db5e04419f038be41d043c5fe2100057b92c817"
-DOWNLOADER = ROOT / "scripts/download_pivot_feedback_lean_h3_openalex_full_core_v1.py"
-DOWNLOADER_SHA256 = "009221e32193e99dd00fdceefe3db6829bc9d0ec7b4f99b0427a2aa259a1394d"
+CANARY_DOWNLOADER_SHA256 = "009221e32193e99dd00fdceefe3db6829bc9d0ec7b4f99b0427a2aa259a1394d"
 INITIAL_ATTEMPT_SHA256 = "bab9e2fc78f16be766080494eac27e6ba5bb6c21611b495bff7fbf422e48f1c8"
 SOURCE_RECEIPT = ROOT / (
     "experiments/evidence/results/"
@@ -108,7 +107,6 @@ def _manifest_inventory(source_receipt: Mapping[str, Any]) -> dict[str, dict[str
 def verify() -> dict[str, Any]:
     for path, expected_hash, label in (
         (AUTHORIZATION, AUTHORIZATION_SHA256, "authorization"),
-        (DOWNLOADER, DOWNLOADER_SHA256, "downloader"),
         (SOURCE_RECEIPT, SOURCE_RECEIPT_SHA256, "source receipt"),
     ):
         require(path.is_file() and not path.is_symlink(), f"invalid {label}")
@@ -146,7 +144,10 @@ def verify() -> dict[str, Any]:
     require(canary["paused_state_sha256"] == PAUSED_STATE_SHA256, "canary paused-state drift")
     lineage = canary["downloader_lineage"]
     require(lineage["initial_dns_interrupted_attempt_sha256"] == INITIAL_ATTEMPT_SHA256, "initial attempt lineage drift")
-    require(lineage["verified_cumulative_cap_resume_sha256"] == DOWNLOADER_SHA256, "resumed downloader lineage drift")
+    require(
+        lineage["verified_cumulative_cap_resume_sha256"] == CANARY_DOWNLOADER_SHA256,
+        "resumed downloader lineage drift",
+    )
     require(lineage["initial_interrupted_bytes"] == 12_576_018, "initial interrupted byte drift")
     require(lineage["initial_interrupted_complete_files"] == 70, "initial interrupted file drift")
     require(canary["new_bytes_transferred"] == EXPECTED_CANARY_BYTES, "canary cumulative cap drift")
@@ -218,7 +219,7 @@ def verify() -> dict[str, Any]:
         "mode": "INDEPENDENT_EXACT_MANIFEST_PREFIX_HASH_AND_COMPLETE_FILE_FOOTER_REPLAY_NO_ROW_DECODE",
         "bindings": {
             "authorization_sha256": AUTHORIZATION_SHA256,
-            "downloader_sha256": DOWNLOADER_SHA256,
+            "downloader_sha256": CANARY_DOWNLOADER_SHA256,
             "initial_attempt_downloader_sha256": INITIAL_ATTEMPT_SHA256,
             "source_receipt_sha256": SOURCE_RECEIPT_SHA256,
             "download_plan_sha256": PLAN_SHA256,

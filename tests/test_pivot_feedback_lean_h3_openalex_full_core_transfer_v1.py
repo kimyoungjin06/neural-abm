@@ -110,6 +110,15 @@ def test_full_core_downloader_contains_no_row_decode_surface() -> None:
     assert 'OUTPUT_ROOT = Path("/ssd/pivot-feedback-lean-h3-openalex-full-core-v1-20260806")' in source
 
 
+def test_full_core_resume_persists_running_status_before_network_loop() -> None:
+    source = DOWNLOADER.read_text(encoding="utf-8")
+    transition = 'state["status"] = "RUNNING"\n        dry._atomic_write_json(state_path, state)'
+    network_loop = 'for relative, item in plan_by_path.items():'
+    assert transition in source
+    transition_offset = source.index(transition)
+    assert transition_offset < source.index(network_loop, transition_offset)
+
+
 def test_independent_canary_summary_closes_cumulative_cap_and_works_prefix() -> None:
     summary = json.loads(CANARY_SUMMARY.read_text(encoding="utf-8"))
     assert summary["status"] == (

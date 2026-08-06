@@ -553,6 +553,8 @@ def run_full_core(*, auto_resume: bool, max_new_bytes: int | None) -> dict[str, 
         else:
             run_budget = max_new_bytes
         state["run_count"] = int(state["run_count"]) + 1
+        state["status"] = "RUNNING"
+        dry._atomic_write_json(state_path, state)
         plan_by_path = {str(item["relative_path"]): item for item in plan["files"]}
         for relative, item in plan_by_path.items():
             entry = state["files"][relative]
