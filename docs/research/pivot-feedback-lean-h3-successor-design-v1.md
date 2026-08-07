@@ -203,6 +203,37 @@ than a governance failure. Before a fresh blind challenge, the next prospective
 design must address practical near-tie equivalence and field-vector or partial
 identification without retuning this candidate on the opened challenge.
 
+### Set-identified prospective design v2
+
+The next definition family is frozen for analytic fixtures only in
+[`pivot_feedback_lean_h3_set_identified_prospectus_v2.yaml`](../../experiments/configs/pivot_feedback_lean_h3_set_identified_prospectus_v2.yaml).
+It does not replay any opened challenge panel. Its one-percentage-point
+probability margin is anchored to the already outcome-blind G0 v4 practical
+null, not chosen from peak-set diagnostic metrics. That reuse is provisional:
+the margin is dimensionally compatible with binary probabilities but is not a
+literature-mandated or empirically validated peak-location threshold.
+
+For an analytic curve, every registered time within the inclusive margin of
+the maximum belongs to its practical peak set. An adjacent near tie therefore
+becomes a set-valued peak instead of an earliest-argmax tie-break or an automatic
+discard. Entry and persistence sets induce an episode gap set; its lower and
+upper bounds are averaged within each field. The four field intervals are the
+primary estimand vector, while their field-balanced interval hull is only a
+secondary summary. No binary pass/fail decision is permitted.
+
+Missing registered times, practically flat curves, and peak sets touching the
+event-window boundary remain invalid. A noncontiguous interior peak set is
+preserved and labeled multimodal rather than collapsed to one time. Field
+heterogeneity is likewise retained: a vector such as `[-1, 0, 1, 2]` may have a
+scalar average of `0.5`, but it remains mixed and receives no global positive
+decision.
+
+This is definition conformance, not a stochastic estimator. Posterior peak-set
+construction, simultaneous uncertainty, and empirical dependence or
+overdispersion remain pending a separate precommit. Until those are specified,
+the opened challenge, fresh blind generation, empirical rows, and confirmatory
+execution remain forbidden.
+
 ## What the completed route established
 
 The completed route established a reproducible measurement and partition

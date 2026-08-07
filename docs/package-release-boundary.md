@@ -325,6 +325,9 @@ reselection, pivot classification, outcomes, fitting, and G4 remain closed.
 
 The lean H3 synthetic result-space model, procedural blind challenge, and
 uncertainty-aware peak-set development candidate remain repository-only too.
+The subsequent set-identified analytic prospectus and its closed fixtures are
+inside the same boundary and are definition-conformance artifacts, not a
+package estimator or empirical result.
 Their configs, compact summaries, research note, producers, estimators,
 evaluators, and independent verifiers are forbidden from the sdist. Full
 synthetic panels, private labels, estimates, diagnostic reports, receipts, and

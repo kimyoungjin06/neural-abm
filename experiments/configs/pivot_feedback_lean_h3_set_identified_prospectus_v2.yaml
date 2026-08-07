@@ -1,0 +1,189 @@
+schema_version: pivot_feedback_lean_h3_set_identified_prospectus.v2
+label: pivot_feedback_lean_h3_set_identified_prospectus_v2
+mode: ANALYTIC_FIXTURE_ONLY_PROSPECTIVE_DEFINITION_NO_OPENED_PANEL_REPLAY
+status: AUTHORIZED_PROSPECTUS_ONLY_NO_CANDIDATE_SELECTION_NO_BLIND_PROMOTION
+
+source_anchors:
+  opened_peak_set_diagnostic:
+    relative_path: experiments/evidence/results/pivot_feedback_lean_h3_peak_set_development_v1_20260806.summary.json
+    sha256: 2dfde6a1e3b06272895e6d93e2e98bd680cb311cb88730306e15d98d5eb60559
+    permitted_role: FAILURE_MODE_NAMES_AND_CLAIM_BOUNDARIES_ONLY
+    forbidden_role: METRIC_DRIVEN_PARAMETER_OR_THRESHOLD_SELECTION
+  predecessor_candidate:
+    relative_path: experiments/configs/pivot_feedback_lean_h3_peak_set_development_v1.yaml
+    sha256: bbc9ae32c685359e55cbe48f10c8816284b08a5d1717682ce89186f88dc40f0e
+    disposition: NOT_EVALUATED_NOT_SELECTED_NO_RETUNING
+  outcome_blind_practical_null_anchor:
+    relative_path: experiments/configs/pivot_feedback_g0_measurement_freeze_v4.yaml
+    sha256: cd49a31ab67e7a66d038b3198493df8b3a309aa14ee9de80410557a194581ce4
+    original_estimand_scale: AVERAGE_MARGINAL_BINARY_OUTCOME_PROBABILITY_DIFFERENCE
+    original_symmetric_practical_null: [-0.01, 0.01]
+    selected_from_observed_outcomes: false
+    reuse_status: >-
+      PROVISIONAL_DIMENSIONALLY_COMPATIBLE_ABSOLUTE_BINARY_PROBABILITY_ANCHOR
+      NOT_LITERATURE_MANDATED_NOT_EMPIRICALLY_VALIDATED_FOR_PEAK_LOCATION
+
+scientific_object:
+  question: >-
+    Can a set-valued peak definition preserve practical near-ties and field
+    heterogeneity without forcing a scalar peak or treating every tie as a
+    terminal invalid result?
+  primary_estimand: FOUR_FIELD_VECTOR_OF_MEAN_EPISODE_PEAK_GAP_SETS
+  secondary_summary: FIELD_BALANCED_INTERVAL_HULL_REPORTED_WITH_VECTOR
+  episode_gap_set: ENTRY_PRACTICAL_PEAK_SET_MINUS_PERSISTENCE_PRACTICAL_PEAK_SET
+  event_time_grid: [-2, -1, 0, 1, 2]
+  claim_role: PROSPECTIVE_ANALYTIC_DEFINITION_ONLY
+
+candidate_family:
+  name: practical_equivalence_set_field_vector_v2
+  curve_peak_set:
+    analytic_fixture_rule: >-
+      INCLUDE_EVERY_REGISTERED_TIME_WITH_PROBABILITY_WITHIN_THE_INCLUSIVE
+      ABSOLUTE_MARGIN_OF_THE_MAXIMUM
+    inclusive_absolute_probability_margin: 0.01
+    margin_source: OUTCOME_BLIND_G0_V4_ONE_PERCENTAGE_POINT_PRACTICAL_NULL_ANCHOR
+    missing_registered_time_action: INVALID
+    practically_flat_curve_action: INVALID
+    boundary_including_peak_set_action: INVALID_CENSORED_BY_EVENT_WINDOW
+    contiguous_interior_near_tie_action: SET_IDENTIFIED
+    noncontiguous_interior_peak_set_action: SET_IDENTIFIED_MULTIMODAL_NO_SCALAR_PEAK
+    earliest_argmax_tie_break: FORBIDDEN
+  stochastic_successor_not_implemented:
+    posterior_peak_set_rule: PENDING_SEPARATE_PRECOMMIT
+    simultaneous_uncertainty_rule: PENDING_SEPARATE_PRECOMMIT
+    dependence_and_overdispersion_model: PENDING_EMPIRICAL_SCALE_AUDIT
+    opened_challenge_parameter_tuning: FORBIDDEN
+  aggregation:
+    field_count: 4
+    episodes_per_field: 8
+    minimum_valid_episodes_per_field: 4
+    preserve_field_vector: true
+    episode_gap_lower: MIN_ENTRY_PEAK_MINUS_MAX_PERSISTENCE_PEAK
+    episode_gap_upper: MAX_ENTRY_PEAK_MINUS_MIN_PERSISTENCE_PEAK
+    field_interval: MEAN_OF_VALID_EPISODE_LOWERS_AND_UPPERS
+    field_balanced_interval_hull: MEAN_OF_FOUR_FIELD_LOWERS_AND_UPPERS
+    scalar_peak_gap_required: false
+    binary_pass_fail_decision: FORBIDDEN
+  descriptive_direction_state:
+    meaningful_positive_floor_cohort_years: 1.0
+    unanimous_meaningful_positive: EVERY_FIELD_LOWER_AT_LEAST_FLOOR
+    unanimous_nonpositive: EVERY_FIELD_UPPER_AT_MOST_ZERO
+    otherwise: MIXED_OR_PARTIALLY_IDENTIFIED_NO_BINARY_DECISION
+
+analytic_fixtures:
+  - fixture_id: clear_consistent_point
+    role: SINGLETON_PEAKS_AND_CONSISTENT_FIELD_VECTOR
+    fields:
+      - {field_id: 0, entry: [0.01, 0.03, 0.10, 0.02, 0.01], persistence: [0.10, 0.60, 0.15, 0.08, 0.04]}
+      - {field_id: 1, entry: [0.01, 0.03, 0.10, 0.02, 0.01], persistence: [0.10, 0.60, 0.15, 0.08, 0.04]}
+      - {field_id: 2, entry: [0.01, 0.03, 0.10, 0.02, 0.01], persistence: [0.10, 0.60, 0.15, 0.08, 0.04]}
+      - {field_id: 3, entry: [0.01, 0.03, 0.10, 0.02, 0.01], persistence: [0.10, 0.60, 0.15, 0.08, 0.04]}
+    expected:
+      panel_valid: true
+      identification_state: POINT_IDENTIFIED_FIELD_VECTOR
+      field_intervals: [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0]]
+      field_balanced_interval_hull: [1.0, 1.0]
+      direction_state: UNANIMOUS_MEANINGFUL_POSITIVE
+  - fixture_id: adjacent_practical_near_tie
+    role: INTERIOR_NEAR_TIE_PRESERVED_AS_SET_NOT_FORCED_OR_DROPPED
+    fields:
+      - {field_id: 0, entry: [0.01, 0.03, 0.10, 0.095, 0.01], persistence: [0.10, 0.60, 0.15, 0.08, 0.04]}
+      - {field_id: 1, entry: [0.01, 0.03, 0.10, 0.095, 0.01], persistence: [0.10, 0.60, 0.15, 0.08, 0.04]}
+      - {field_id: 2, entry: [0.01, 0.03, 0.10, 0.095, 0.01], persistence: [0.10, 0.60, 0.15, 0.08, 0.04]}
+      - {field_id: 3, entry: [0.01, 0.03, 0.10, 0.095, 0.01], persistence: [0.10, 0.60, 0.15, 0.08, 0.04]}
+    expected:
+      panel_valid: true
+      identification_state: SET_IDENTIFIED_FIELD_VECTOR
+      field_intervals: [[1.0, 2.0], [1.0, 2.0], [1.0, 2.0], [1.0, 2.0]]
+      field_balanced_interval_hull: [1.0, 2.0]
+      direction_state: UNANIMOUS_MEANINGFUL_POSITIVE
+  - fixture_id: staggered_field_vector
+    role: FIELD_HETEROGENEITY_PRESERVED_WITHOUT_SCALAR_DECISION
+    fields:
+      - {field_id: 0, entry: [0.02, 0.10, 0.03, 0.02, 0.01], persistence: [0.10, 0.20, 0.60, 0.15, 0.05]}
+      - {field_id: 1, entry: [0.01, 0.03, 0.10, 0.02, 0.01], persistence: [0.10, 0.20, 0.60, 0.15, 0.05]}
+      - {field_id: 2, entry: [0.01, 0.03, 0.10, 0.02, 0.01], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 3, entry: [0.01, 0.02, 0.03, 0.10, 0.01], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+    expected:
+      panel_valid: true
+      identification_state: POINT_IDENTIFIED_FIELD_VECTOR
+      field_intervals: [[-1.0, -1.0], [0.0, 0.0], [1.0, 1.0], [2.0, 2.0]]
+      field_balanced_interval_hull: [0.5, 0.5]
+      direction_state: MIXED_OR_PARTIALLY_IDENTIFIED_NO_BINARY_DECISION
+  - fixture_id: noncontiguous_interior_multimodal
+    role: MULTIMODAL_SET_PRESERVED_WITHOUT_EARLIEST_TIE_BREAK
+    fields:
+      - {field_id: 0, entry: [0.01, 0.10, 0.02, 0.095, 0.01], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 1, entry: [0.01, 0.10, 0.02, 0.095, 0.01], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 2, entry: [0.01, 0.10, 0.02, 0.095, 0.01], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 3, entry: [0.01, 0.10, 0.02, 0.095, 0.01], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+    expected:
+      panel_valid: true
+      identification_state: SET_IDENTIFIED_MULTIMODAL_FIELD_VECTOR
+      field_intervals: [[0.0, 2.0], [0.0, 2.0], [0.0, 2.0], [0.0, 2.0]]
+      field_balanced_interval_hull: [0.0, 2.0]
+      direction_state: MIXED_OR_PARTIALLY_IDENTIFIED_NO_BINARY_DECISION
+  - fixture_id: boundary_censored
+    role: WINDOW_BOUNDARY_REMAINS_INVALID
+    fields:
+      - {field_id: 0, entry: [0.01, 0.02, 0.03, 0.05, 0.10], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 1, entry: [0.01, 0.02, 0.03, 0.05, 0.10], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 2, entry: [0.01, 0.02, 0.03, 0.05, 0.10], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 3, entry: [0.01, 0.02, 0.03, 0.05, 0.10], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+    expected:
+      panel_valid: false
+      invalid_reason: BOUNDARY_EQUIVALENT_PEAK_SET
+  - fixture_id: missing_registered_time
+    role: INFORMATIVE_MISSINGNESS_REMAINS_INVALID
+    fields:
+      - {field_id: 0, entry: [0.01, 0.03, null, 0.02, 0.01], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 1, entry: [0.01, 0.03, null, 0.02, 0.01], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 2, entry: [0.01, 0.03, null, 0.02, 0.01], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 3, entry: [0.01, 0.03, null, 0.02, 0.01], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+    expected:
+      panel_valid: false
+      invalid_reason: MISSING_REGISTERED_TIME
+  - fixture_id: practically_flat
+    role: FLAT_CURVE_REMAINS_INVALID
+    fields:
+      - {field_id: 0, entry: [0.050, 0.052, 0.055, 0.051, 0.050], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 1, entry: [0.050, 0.052, 0.055, 0.051, 0.050], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 2, entry: [0.050, 0.052, 0.055, 0.051, 0.050], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+      - {field_id: 3, entry: [0.050, 0.052, 0.055, 0.051, 0.050], persistence: [0.10, 0.60, 0.20, 0.08, 0.04]}
+    expected:
+      panel_valid: false
+      invalid_reason: PRACTICALLY_FLAT_CURVE
+
+fixture_adjudication:
+  semantics: EXACT_EXPECTED_STATE_REPLAY_NO_PERFORMANCE_METRIC_NO_SELECTION
+  all_fixtures_must_match: true
+  passing_role: DEFINITION_IMPLEMENTATION_CONFORMANCE_ONLY
+  candidate_admissibility: NOT_EVALUATED
+  fresh_blind_authorized: false
+
+authorization:
+  analytic_fixture_read: AUTHORIZED
+  analytic_fixture_execution: AUTHORIZED
+  opened_challenge_panel_replay: FORBIDDEN
+  opened_challenge_private_label_read: FORBIDDEN
+  source_or_empirical_row_read: FORBIDDEN
+  current_g1_row_read: FORBIDDEN
+  model_selection_row_read: FORBIDDEN
+  holdout_or_private_g4_read: FORBIDDEN
+  empirical_parameter_calibration: FORBIDDEN
+  stochastic_candidate_implementation: FORBIDDEN_PENDING_SEPARATE_PRECOMMIT
+  fresh_blind_generation: FORBIDDEN_PENDING_STOCHASTIC_CANDIDATE
+  confirmatory_execution: FORBIDDEN
+  candidate_selected: "NO"
+  estimator_selected: "NO"
+  support_rule_selected: "NO"
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This prospectus defines set-valued peak and field-vector interval semantics
+  on closed analytic fixtures. It does not validate the one-percentage-point
+  anchor for peak location, implement posterior uncertainty, replay the opened
+  challenge, establish estimator admissibility or superiority, select an
+  estimator or support rule, authorize a fresh blind or empirical access, or
+  establish H3, feedback, causality, prediction, NABM necessity, or a
+  scientific effect.
