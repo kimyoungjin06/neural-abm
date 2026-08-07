@@ -136,6 +136,15 @@ NABM model comparison and authorizes no package API change, empirical access,
 or model selection. Only a later executable, reproduced case-study successor
 may propose a deliberate refresh of the hash-pinned public subtree.
 
+The first delayed-feedback executable remains repository-only as well. Its
+Pivot-owned event queue separates privately realized outcomes from publicly
+available messages and varies success/failure visibility without changing
+`neural_abm.api`, `api_lite`, or the generic lifecycle core. The precommitted
+contract, runner, tests, and generated phase-map evidence are development
+artifacts, not packaged examples or empirical claims. Promotion requires a
+separate public-surface decision after reproduction and comparison with fair
+simpler models.
+
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy
 reference auditor live at

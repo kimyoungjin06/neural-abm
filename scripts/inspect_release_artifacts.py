@@ -135,6 +135,12 @@ PIVOT_NABM_BRIDGE_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-nabm-case-study-bridge-v1.md",
     "experiments/configs/pivot_nabm_case_study_bridge_v1.yaml",
 }
+PIVOT_DELAYED_FEEDBACK_PROTOTYPE_REPOSITORY_ONLY_PATHS = {
+    "docs/research/pivot-delayed-feedback-learning-prototype-v1.md",
+    "experiments/configs/pivot_delayed_feedback_learning_prototype_v1.yaml",
+    "scripts/prototype_pivot_delayed_feedback_learning_v1.py",
+    "tests/test_pivot_delayed_feedback_learning_prototype_v1.py",
+}
 PIVOT_GATE_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_feedback_g0_measurement_freeze_v0.yaml",
     "experiments/configs/pivot_feedback_g_minus_1_readiness_v0.yaml",
@@ -1191,6 +1197,7 @@ FORBIDDEN_SDIST_PATHS = {
     *CROSS_FIELD_REPOSITORY_ONLY_PATHS,
     *PEER_MECHANISM_REPOSITORY_ONLY_PATHS,
     *PIVOT_NABM_BRIDGE_REPOSITORY_ONLY_PATHS,
+    *PIVOT_DELAYED_FEEDBACK_PROTOTYPE_REPOSITORY_ONLY_PATHS,
     *PIVOT_GATE_REPOSITORY_ONLY_PATHS,
     *CONTENT_FREEZE_REPOSITORY_ONLY_PATHS,
     *MAIN_TEMPORAL_VALIDITY_REPOSITORY_ONLY_PATHS,

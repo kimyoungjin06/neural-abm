@@ -1,0 +1,168 @@
+schema_version: pivot_delayed_feedback_learning_prototype.v1
+label: pivot_delayed_feedback_learning_prototype_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+
+purpose:
+  primary_goal: COMPLETE_AND_IMPROVE_NABM_THROUGH_A_FLAGSHIP_PIVOT_CASE
+  question: >-
+    Does delaying or suppressing publicly available failure evidence create a
+    nontrivial phase map across frozen, imitative, and cautionary learning?
+  evidence_role: SYNTHETIC_DOMAIN_PROTOTYPE_NOT_EMPIRICAL_CONFIRMATION
+
+source_bindings:
+  - path: examples/research_pivot_study.py
+    sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+    role: FIXED_RULE_POPULATION_NETWORK_AND_SCENARIO_PREDECESSOR
+  - path: examples/research_pivot_learning_study.py
+    sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+    role: IMMEDIATE_VISIBILITY_LEARNING_PREDECESSOR
+  - path: experiments/configs/pivot_nabm_case_study_bridge_v1.yaml
+    sha256: d6e3c19e71ecb75d180d05580b66e16b63ea84aa5f390128229dbc57c9cb898b
+    role: AUTHORIZING_DESIGN_BRIDGE
+  - path: docs/research/pivot-nabm-case-study-bridge-v1.md
+    sha256: 383209f62bb21adad651b1df5d056a91c5a075e8638b7e12c64c62dd43df7dd9
+    role: HUMAN_READABLE_DESIGN_BRIDGE
+  - path: src/neural_abm/api.py
+    sha256: 83005b43023d29640d96a8929aaab5e5c552542c7c9d797c288e5820a7061898
+    role: UNCHANGED_GENERIC_TORCH_API
+  - path: src/neural_abm/api_lite.py
+    sha256: 7d77be9d6f138f1fa443145face117f70b98b790e7fd96b4581354e7d78ae81e
+    role: UNCHANGED_GENERIC_LIGHTWEIGHT_API
+  - path: src/neural_abm/unit_core.py
+    sha256: d399a6fc29f1b2efd3a648f48c79d7f8cab927e704974223ffabf861333ff4da
+    role: UNCHANGED_GENERIC_LIFECYCLE_CORE
+
+scenario:
+  name: hot_field_hype
+  reason: >-
+    The tracked predecessor already exhibits frequent unproductive entry and
+    self-reinforcing learning here, so outcome visibility is a focused stress
+    test rather than a broad scenario search.
+
+learning_arms:
+  - frozen
+  - imitative
+  - cautionary
+
+visibility_semantics:
+  realization_owner: PIVOT_COMMIT_ADAPTER_PRIVATE_STATE
+  public_availability_owner: PIVOT_DOMAIN_EVENT_QUEUE
+  receipt_or_belief_interpretation: FORBIDDEN
+  timing_rule: >-
+    An outcome realized in simulation step s with configured delay d first
+    becomes publicly learnable in step s + 1 + d. Delay zero exactly nests the
+    predecessor's next-step visibility.
+  visibility_randomness: >-
+    One component-keyed uniform variate per replicate, agent, realization
+    step, and outcome type; it excludes regime and learning-arm identifiers.
+
+visibility_regimes:
+  - id: immediate
+    success_delay_steps: 0
+    failure_delay_steps: 0
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+  - id: symmetric_lag_2
+    success_delay_steps: 2
+    failure_delay_steps: 2
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+  - id: failure_lag_2
+    success_delay_steps: 0
+    failure_delay_steps: 2
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+  - id: failure_lag_4
+    success_delay_steps: 0
+    failure_delay_steps: 4
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+  - id: selective_failure_lag_4
+    success_delay_steps: 0
+    failure_delay_steps: 4
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 0.5
+
+profiles:
+  smoke:
+    agent_count: 30
+    steps: 8
+    burn_in_steps: 2
+    replicates: 2
+    base_seed: 20260807
+  development:
+    agent_count: 80
+    steps: 14
+    burn_in_steps: 2
+    replicates: 16
+    base_seed: 20260807
+
+inherited_learning_parameters:
+  neighbor_count: 4
+  within_stage_probability: 0.6
+  learning_rate: 1.5
+  prior_anchor: 0.25
+  local_alpha: 0.45
+  local_noise_scale: 0.02
+  social_alpha: 0.40
+  peer_similarity_threshold: 0.68
+  pivot_threshold: 0.34
+  productive_threshold: 0.40
+
+reporting:
+  primary_surface: VISIBILITY_REGIME_BY_LEARNING_ARM_PHASE_MAP
+  final_metrics:
+    - pivot_rate
+    - productive_pivot_rate
+    - failed_pivot_rate
+    - productive_share_of_pivots
+  process_metrics:
+    - private_success_and_failure_realizations
+    - public_success_and_failure_releases
+    - eligible_but_horizon_censored_messages
+    - permanently_unavailable_messages
+    - realized_and_public_release_trajectories
+  paired_comparisons:
+    - EACH_DELAY_REGIME_MINUS_IMMEDIATE_WITHIN_ARM_AND_REPLICATE
+    - EACH_LEARNING_ARM_MINUS_FROZEN_WITHIN_REGIME_AND_REPLICATE
+  peak_rule: NO_SINGLE_ARGMAX_OR_PEAK_CLASSIFICATION_IN_V1
+  decision_thresholds: NONE_DESCRIPTIVE_ONLY
+  raw_replicates_retained: true
+
+registered_result_space:
+  - DELAY_AMPLIFIES_IMITATIVE_LOCK_IN
+  - DELAY_REDUCES_IMITATIVE_ENTRY
+  - CAUTIONARY_CORRECTION_WITH_PRODUCTIVE_EXPLORATION_COST
+  - SYMMETRIC_DELAY_DIFFERS_FROM_ASYMMETRIC_DELAY
+  - SELECTIVE_FAILURE_VISIBILITY_DIFFERS_FROM_DELAY_ALONE
+  - OBSERVATIONAL_EQUIVALENCE_ACROSS_VISIBILITY_MECHANISMS
+  - NO_NONTRIVIAL_PHASE_BEHAVIOR
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+    - docs/research/pivot-delayed-feedback-learning-prototype-v1.md
+    - docs/package-release-boundary.md
+    - experiments/configs/pivot_delayed_feedback_learning_prototype_v1.yaml
+    - scripts/prototype_pivot_delayed_feedback_learning_v1.py
+    - scripts/inspect_release_artifacts.py
+    - tests/test_pivot_delayed_feedback_learning_prototype_v1.py
+    - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+
+outputs:
+  - replicates.jsonl
+  - phase_map.json
+  - phase_map.md
+  - receipt.json
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  empirical_fit: NOT_RUN
+  model_selection: NOT_RUN
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED
