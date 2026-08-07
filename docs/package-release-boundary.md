@@ -130,6 +130,12 @@ OpenAlex gate state is reported in the root README and repository-only compact
 evidence; changing the pinned subtree requires a deliberate public-surface and
 downstream-attestation provenance refresh.
 
+The Pivot-to-NABM flagship bridge is repository-only while it remains a design
+contract. It repositions empirical timing work as one constraint on a future
+NABM model comparison and authorizes no package API change, empirical access,
+or model selection. Only a later executable, reproduced case-study successor
+may propose a deliberate refresh of the hash-pinned public subtree.
+
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy
 reference auditor live at

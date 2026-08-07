@@ -215,6 +215,10 @@ def test_release_artifact_inspection_builds_and_reports_package_boundary() -> No
         "docs/research/peer-exposure-identification-design.md",
         "experiments/configs/pivot_feedback_peer_mechanism_registry_v0.yaml",
     }
+    assert inspector["PIVOT_NABM_BRIDGE_REPOSITORY_ONLY_PATHS"] == {
+        "docs/research/pivot-nabm-case-study-bridge-v1.md",
+        "experiments/configs/pivot_nabm_case_study_bridge_v1.yaml",
+    }
     assert inspector["PIVOT_GATE_REPOSITORY_ONLY_PATHS"] == {
         "experiments/configs/pivot_feedback_g0_measurement_freeze_v0.yaml",
         "experiments/configs/pivot_feedback_g_minus_1_readiness_v0.yaml",
@@ -1744,6 +1748,19 @@ def test_release_inspector_rejects_lean_h3_stochastic_set_development_paths() ->
     assert repository_paths <= inspector[
         "PIVOT_CERTIFIED_D0_MEASUREMENT_REPOSITORY_ONLY_PATHS"
     ]
+
+    forbidden = inspector["_forbidden_sdist_files"]({"README.md", *repository_paths})
+
+    assert forbidden == sorted(repository_paths)
+
+
+def test_release_inspector_rejects_pivot_nabm_bridge_paths() -> None:
+    inspector = runpy.run_path(str(INSPECT_SCRIPT))
+    repository_paths = {
+        "docs/research/pivot-nabm-case-study-bridge-v1.md",
+        "experiments/configs/pivot_nabm_case_study_bridge_v1.yaml",
+    }
+    assert repository_paths == inspector["PIVOT_NABM_BRIDGE_REPOSITORY_ONLY_PATHS"]
 
     forbidden = inspector["_forbidden_sdist_files"]({"README.md", *repository_paths})
 

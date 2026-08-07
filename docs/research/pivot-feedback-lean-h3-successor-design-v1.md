@@ -24,6 +24,20 @@ This document is a scientific design brief. It is not an executable
 preregistration, a new gate, an active-state successor, or permission to read
 any current or future outcome row.
 
+## Position within the NABM project
+
+Lean H3 is not the top-level project goal. The primary goal is to complete and
+improve NABM, while Pivot supplies a flagship case that exposes framework gaps
+and tests whether adaptive neural social learning adds anything beyond fair
+simpler models. H3 contributes one bounded, set-valued empirical timing target
+to that case.
+
+The governing bridge is
+[`pivot-nabm-case-study-bridge-v1.md`](pivot-nabm-case-study-bridge-v1.md).
+Estimator work should continue only when it supplies a named case-study target,
+applicability boundary, or baseline input. A positive H3 timing result would
+not by itself identify feedback or establish NABM necessity.
+
 ## Source-intake update
 
 The 2026-06-26 free public OpenAlex Parquet manifests are now captured as a

@@ -1,0 +1,263 @@
+schema_version: pivot_nabm_case_study_bridge.v1
+label: pivot_nabm_case_study_bridge_v1
+status: DESIGN_BRIDGE_ONLY_NO_EXECUTION_NO_MODEL_SELECTION
+
+project_hierarchy:
+  primary_goal: COMPLETE_AND_IMPROVE_NABM_AS_A_REUSABLE_INSPECTABLE_ADAPTIVE_ABM_FRAMEWORK
+  pivot_role: FLAGSHIP_CASE_STUDY_AND_FRAMEWORK_STRESS_TEST
+  empirical_role: CONSTRAIN_SIMULATION_OBSERVABLES_AND_EXTERNAL_PLAUSIBILITY
+  lean_h3_role: ONE_SET_VALUED_EMPIRICAL_TIMING_TARGET_NOT_THE_PROJECT_GOAL
+  governing_question: >-
+    Can NABM represent and distinguish productive exploration, hype-driven
+    overshoot, delayed correction, and learning trade-offs in researcher
+    pivots more usefully than fair simpler baselines?
+
+source_bindings:
+  - path: examples/research_pivot_study.py
+    sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+    role: FIXED_RULE_STYLIZED_PREDECESSOR
+  - path: examples/research_pivot_learning_study.py
+    sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+    role: IMMEDIATE_VISIBILITY_LEARNING_PREDECESSOR
+  - path: docs/case-studies/researcher-pivot/data/study_results.json
+    sha256: 3fb32d3cb46de548f2e21f21f9295ce469c58062ca444827b1ed97ea638ea521
+    role: TRACKED_STUDY_1_RESULT_SNAPSHOT
+  - path: docs/case-studies/researcher-pivot/data/learning_study_results.json
+    sha256: 98c97cac1a4d18b0e3fc0c087d63adc717b470374aae861f87696c7389d314b8
+    role: TRACKED_STUDY_2_RESULT_SNAPSHOT
+  - path: docs/case-studies/researcher-pivot/pivot-feedback-empirical-nabm-protocol.md
+    sha256: 731e39dec4c7be5c29a0f0404b48992ad0caef152062d1d1d7876acc07064746
+    role: PROSPECTIVE_EMPIRICAL_AND_BASELINE_LADDER_CONTEXT
+  - path: experiments/evidence/results/pivot_feedback_lean_h3_stochastic_set_development_v3_20260807.summary.json
+    sha256: 4b435bf0ea4b10da8f99ec2ce461d7409773945f668949f5254c9a5a91bd6ffd
+    role: SET_VALUED_MEASUREMENT_FAILURE_CONTEXT
+  - path: docs/toy-models/capability-matrix.md
+    sha256: d933f9958fa217bdb4c5e9e4eef5aaa311da8fb4b5ba5f3dd2e682171223ccd7
+    role: CURRENT_NABM_CAPABILITY_AND_EXTRACTION_BOUNDARY
+
+existing_case_value:
+  retained_findings:
+    - GRANTS_AND_HYPE_CAN_HAVE_SIMILAR_PRODUCTIVE_MEANS_WITH_DIFFERENT_FAILURE_COSTS
+    - SOCIAL_MIXING_CAN_SUPPRESS_OR_AMPLIFY_PIVOTS_BY_ENVIRONMENT
+    - IMITATIVE_OUTCOME_LEARNING_CAN_CREATE_SELF_REINFORCEMENT
+    - CAUTIONARY_LEARNING_CAN_REDUCE_FAILURES_WHILE_SUPPRESSING_PRODUCTIVE_EXPLORATION
+  current_status: HAND_SET_STYLIZED_MECHANISM_PREDECESSOR
+  promotion_target: EMPIRICALLY_CONSTRAINED_NABM_FLAGSHIP_CASE_STUDY
+
+central_case:
+  phenomenon: DELAYED_SELECTIVELY_VISIBLE_PIVOT_OUTCOMES_AND_ADAPTIVE_ENTRY
+  narrative_question: >-
+    When attention and early success are visible before failure, when does
+    social learning support productive exploration, and when does it create
+    overshoot, lock-in, or delayed correction?
+  domain_states:
+    - NOT_YET_PIVOTED
+    - ACTIVE_IN_TARGET
+    - PERSISTING_PRODUCTIVELY
+    - FAILED_OR_EXITED
+    - RETURNED_OR_REDIRECTED
+  observation_process:
+    success_visibility: DELAYED_AND_SELECTIVE
+    failure_visibility: LONGER_DELAY_AND_SELECTIVE
+    private_outcome_state_distinct_from_public_message: true
+    empirical_proxy_not_literal_receipt_or_belief: true
+
+empirical_to_simulation_map:
+  - empirical_object: ATTENTION_SURGE_EPISODE_CLOCK
+    simulation_observable: EXOGENOUS_OR_ENDOGENOUS_ATTENTION_SHOCK_TIME
+    nabm_owner: PIVOT_ENVIRONMENT
+    comparison_role: ALIGN_EVENT_TIME_ONLY
+  - empirical_object: TOPIC_ENTRY_INCIDENCE_CURVE_AND_PRACTICAL_PEAK_SET
+    simulation_observable: FIRST_TARGET_ENTRY_INCIDENCE_BY_EVENT_TIME
+    nabm_owner: DOMAIN_COMMIT_AND_OBSERVATION_ADAPTER
+    comparison_role: SET_VALUED_TIMING_TARGET
+  - empirical_object: LATER_COHORT_PERSISTENCE_CURVE_AND_DECLINE_TIMING
+    simulation_observable: COHORT_PRODUCTIVE_PERSISTENCE_OR_EXIT_BY_ENTRY_TIME
+    nabm_owner: DELAYED_OUTCOME_STATE_MACHINE
+    comparison_role: SET_VALUED_TIMING_TARGET
+  - empirical_object: PUBLIC_AVAILABILITY_PROXY
+    simulation_observable: TIME_ELIGIBLE_OUTCOME_MESSAGE_RELEASE
+    nabm_owner: DOMAIN_EVENT_QUEUE_AND_TYPED_SOCIAL_CHANNEL
+    comparison_role: AVAILABILITY_NOT_RECEIPT_OR_BELIEF
+  - empirical_object: PRE_ENTRY_CAPACITY_AND_BRIDGE_PROXIES
+    simulation_observable: RESOURCE_SKILL_NETWORK_AND_BRIDGE_AGENT_STATE
+    nabm_owner: AGENT_OBSERVATION_AND_LOCAL_POLICY
+    comparison_role: HETEROGENEITY_AND_BASELINE_CONTROL
+  - empirical_object: FOUR_FIELD_SET_VALUED_TIMING_VECTOR
+    simulation_observable: DOMAIN_STRATIFIED_SIMULATED_TIMING_SET_VECTOR
+    nabm_owner: CASE_STUDY_EVIDENCE_ADAPTER
+    comparison_role: PRIMARY_EMPIRICAL_ALIGNMENT_NO_SCALAR_REPLACEMENT
+  - empirical_object: MISSING_OR_ZERO_DENOMINATOR_CELLS
+    simulation_observable: EXPLICIT_NOT_APPLICABLE_OR_UNIDENTIFIED_OUTPUT
+    nabm_owner: CASE_STUDY_EVIDENCE_ADAPTER
+    comparison_role: NO_IMPUTATION_RESCUE
+
+nabm_capability_inventory:
+  available_now:
+    - NABM_AGENT_OBSERVE_PREDICT_LOCAL_UPDATE_SOCIAL_MESSAGE_LIFECYCLE
+    - TYPED_BOUNDED_SCALAR_AND_DISTRIBUTION_SOCIAL_EXCHANGE
+    - DOMAIN_OWNED_COMMIT_ADAPTERS
+    - PER_AGENT_TORCH_POLICY_UPDATES_AND_WEIGHT_DIAGNOSTICS
+    - REPLICATED_SCENARIO_ORCHESTRATION_WITH_PAIRED_RANDOMNESS
+    - AGGREGATE_AND_MICRO_AUDIT_ARTIFACTS
+  flagship_required_next:
+    - capability: DELAYED_SELECTIVE_OUTCOME_EVENT_QUEUE
+      current_gap: PIVOT_OUTCOMES_ARE_IMMEDIATELY_VISIBLE
+      first_owner: PIVOT_DOMAIN_ADAPTER
+      extraction_rule: EXTRACT_ONLY_AFTER_A_SECOND_MODEL_FAMILY_NEEDS_THE_SAME_LIFECYCLE
+    - capability: PRIVATE_STATE_PUBLIC_MESSAGE_SEPARATION
+      current_gap: REALIZED_OUTCOME_AND_BROADCAST_OUTCOME_ARE_NOT_SEPARATE
+      first_owner: PIVOT_OBSERVATION_ADAPTER
+      extraction_rule: CANDIDATE_FOR_REUSABLE_OBSERVATION_CONTRACT_AFTER_CASE_VALIDATION
+    - capability: MULTI_CHANNEL_ATTENTION_SUCCESS_AND_FAILURE_MESSAGES
+      current_gap: PIVOT_STUDY_MIXES_ONE_READINESS_CHANNEL
+      first_owner: PIVOT_CASE_ORCHESTRATOR_USING_TYPED_CHANNELS
+      extraction_rule: GENERALIZE_ONLY_WITH_TOY10_OR_ANOTHER_DOMAIN_PARITY_CONSUMER
+    - capability: NONABSORBING_PIVOT_PERSISTENCE_EXIT_AND_RETURN_STATE_MACHINE
+      current_gap: CURRENT_PIVOT_IS_ONE_TIME_AND_ABSORBING
+      first_owner: PIVOT_DOMAIN_MODEL
+      extraction_rule: KEEP_DOMAIN_SEMANTICS_OUTSIDE_NABM_UNIT
+    - capability: EMPIRICAL_SET_VALUED_OBSERVATION_ADAPTER
+      current_gap: NO_COMMON_SIMULATION_TO_EMPIRICAL_TIMING_SET_CONTRACT
+      first_owner: CASE_STUDY_EVIDENCE_LAYER
+      extraction_rule: REUSE_NUMERICAL_ENVELOPE_NOT_SCIENTIFIC_JUDGMENT
+    - capability: FAIR_BASELINE_LADDER_ORCHESTRATION
+      current_gap: EXISTING_STUDIES_COMPARE_ARMS_BUT_NOT_FULL_MODEL_CLASSES
+      first_owner: CASE_STUDY_RUNNER
+      extraction_rule: SAME_INPUTS_RANDOMNESS_BUDGET_AND_SCORING_FOR_EVERY_MODEL
+  deferred_unless_diagnostic_requires:
+    - GENERIC_DYNAMIC_TOPOLOGY_POLICY
+    - NONBINARY_TENSOR_ACCELERATION
+    - LEARNED_EDGE_MIXER
+    - FRAMEWORK_OWNED_SCIENTIFIC_SUCCESS_CRITERION
+
+model_ladder:
+  common_inputs:
+    - IDENTICAL_AGENT_POPULATION_OR_EMPIRICAL_RISK_SET
+    - IDENTICAL_ATTENTION_AND_OUTCOME_AVAILABILITY_PROCESS
+    - IDENTICAL_TOPOLOGY_AND_RANDOMNESS_BY_REPLICATE
+    - IDENTICAL_TRAIN_VALIDATION_AND_HOLDOUT_ASSIGNMENTS
+    - IDENTICAL_SCORING_ROWS_AND_COMPUTE_BUDGET_RULE
+  models:
+    - id: B1_FIXED_STATISTICAL
+      role: NON_AGENT_TIMING_OR_HAZARD_BASELINE
+      neural: false
+      adaptive: false
+      social: false
+    - id: B2_FIXED_RULE_ABM
+      role: CURRENT_STUDY_1_STYLE_AGENT_BASELINE
+      neural: false
+      adaptive: false
+      social: true
+    - id: B3_EXPLICIT_ADAPTIVE_BASELINE
+      role: INTERPRETABLE_BAYESIAN_BANDIT_OR_DELTA_RULE
+      neural: false
+      adaptive: true
+      social: true
+    - id: B4_NABM_LOCAL_ONLY
+      role: NEURAL_LOCAL_LEARNING_WITHOUT_SOCIAL_OUTCOME_EXCHANGE
+      neural: true
+      adaptive: true
+      social: false
+    - id: B5_NABM_IMITATIVE
+      role: NEURAL_SOCIAL_LEARNING_FROM_VISIBLE_SUCCESS_AND_FAILURE
+      neural: true
+      adaptive: true
+      social: true
+    - id: B6_NABM_CAUTIONARY_OR_MIXED
+      role: ASYMMETRIC_OR_HETEROGENEOUS_NEURAL_SOCIAL_LEARNING
+      neural: true
+      adaptive: true
+      social: true
+  decision_rule: >-
+    If simpler models match the disjoint predictive and generative targets,
+    prefer the simpler scientific model while retaining only independently
+    useful NABM engineering improvements.
+
+registered_result_space:
+  all_are_reportable: true
+  families:
+    - PRODUCTIVE_SUPPORT_WITHOUT_MASS_OVERSHOOT
+    - HYPE_DRIVEN_ENTRY_OVERSHOOT_AND_DELAYED_FAILURE
+    - IMITATIVE_LOCK_IN_OR_SELF_REINFORCEMENT
+    - CAUTIONARY_CORRECTION_WITH_EXPLORATION_COST
+    - SOCIAL_MIXING_REGIME_REVERSAL
+    - OBSERVATIONAL_EQUIFINALITY_ACROSS_DISTINCT_MECHANISMS
+    - NABM_PREDICTIVE_GAIN_WITH_UNSTABLE_INTERVENTION_RANKING
+    - NO_NABM_GAIN_SIMPLER_MODEL_PREFERRED
+    - NO_EMPIRICAL_TIMING_SIGNATURE_CASE_REMAINS_STYLIZED
+
+evaluation_axes:
+  framework:
+    - REUSABLE_LIFECYCLE_OR_TYPED_EXCHANGE_IMPROVEMENT
+    - DOMAIN_SEMANTICS_REMAIN_OUTSIDE_GENERIC_UNIT
+    - DETERMINISTIC_REPLICATION_AND_ARTIFACT_AUDITABILITY
+    - AT_LEAST_ONE_ABLATION_ATTRIBUTES_BEHAVIOR_TO_A_NABM_CAPABILITY
+  case_study:
+    - ENTRY_PERSISTENCE_AND_FAILURE_TRAJECTORY_FIDELITY
+    - SET_VALUED_TIMING_CONTAINMENT_WITH_APPLICABILITY_DENOMINATORS
+    - PRODUCTIVE_AND_FAILED_PIVOT_COMPOSITION
+    - DELAY_BY_LEARNING_RULE_PHASE_BEHAVIOR
+    - DISJOINT_TEMPORAL_AND_DOMAIN_GENERALIZATION
+    - BASELINE_LADDER_COMPARISON
+  thresholds: NOT_SET_BY_THIS_BRIDGE
+  scientific_selection: NOT_EVALUATED
+  neural_necessity: NOT_EVALUATED
+
+flagship_outputs:
+  - OBSERVED_AND_SIMULATED_ENTRY_PERSISTENCE_CURVES_WITH_PRACTICAL_PEAK_SETS
+  - VISIBILITY_DELAY_BY_SOCIAL_LEARNING_PHASE_MAP
+  - SUPPORT_BY_ATTENTION_PRODUCTIVE_AND_FAILED_PIVOT_MAP
+  - IMITATIVE_CAUTIONARY_AND_MIXED_POLICY_TRAJECTORIES
+  - FAIR_BASELINE_LADDER_DISJOINT_SCORECARD
+  - NABM_CAPABILITY_ABLATION_AND_FRAMEWORK_CHANGE_LEDGER
+  - NEGATIVE_AND_EQUIFINAL_RESULT_INTERPRETATION
+
+workstreams:
+  nabm_framework:
+    priority: PRIMARY
+    output: REUSABLE_CAPABILITY_OR_EXPLICIT_DOMAIN_ONLY_NON_EXTRACTION_DECISION
+  pivot_case_study:
+    priority: PRIMARY_STRESS_TEST
+    output: REPRODUCIBLE_FLAGSHIP_NARRATIVE_AND_COUNTERFACTUALS
+  empirical_measurement:
+    priority: SUPPORTING_CONSTRAINT
+    output: SET_VALUED_TARGETS_APPLICABILITY_AND_UNCERTAINTY_NOT_MECHANISM_LABELS
+  convergence_rule: >-
+    No empirical measurement task should continue merely because it has a next
+    gate; it must supply a named case-study target, applicability boundary, or
+    baseline input. No framework feature should be generalized from Pivot
+    unless another model family needs the same semantics.
+
+next_build:
+  name: PIVOT_DELAYED_FEEDBACK_LEARNING_PROTOTYPE_V1
+  scope:
+    - DOMAIN_OWNED_SUCCESS_AND_FAILURE_VISIBILITY_DELAYS
+    - SEPARATE_PRIVATE_OUTCOME_AND_PUBLIC_MESSAGE_STATE
+    - FIXED_IMITATIVE_AND_CAUTIONARY_POLICY_ARMS
+    - IMMEDIATE_VISIBILITY_PREDECESSOR_AS_NESTED_BASELINE
+    - NO_EMPIRICAL_FIT
+  purpose: >-
+    Establish whether delayed selective visibility creates a nontrivial
+    overshoot and correction phase map through the existing NABM lifecycle
+    before changing the generic unit API.
+  additional_governance_gate_required: false
+  separate_precommit_before_result_interpretation: true
+
+authorization:
+  bridge_documentation: AUTHORIZED
+  synthetic_domain_prototype: AUTHORIZED_AFTER_SEPARATE_PRECOMMIT
+  generic_nabm_api_change: NOT_AUTHORIZED_BY_THIS_BRIDGE
+  empirical_row_access: FORBIDDEN_NOT_RUN
+  opened_challenge_reuse: FORBIDDEN_NOT_RUN
+  fresh_blind_generation: FORBIDDEN_NOT_RUN
+  model_selection: FORBIDDEN_NOT_RUN
+  holdout_opening: FORBIDDEN_NOT_RUN
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This bridge repositions Pivot as a flagship stress test for improving NABM.
+  It maps existing stylized and empirical-design artifacts into a future model
+  comparison without fitting a model, selecting a mechanism, reading empirical
+  outcomes, opening a holdout, establishing neural necessity, or making a
+  scientific effect claim.
