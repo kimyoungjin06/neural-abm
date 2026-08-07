@@ -1,0 +1,265 @@
+{
+  "schema_version": "pivot_persistence_exit_result.v1",
+  "label": "pivot_persistence_exit_prototype_v1_20260807",
+  "status": "DESCRIPTIVE_SYNTHETIC_RESULT_REPRODUCED",
+  "precommit": {
+    "commit_sha": "4347d5390742ad1a3fc9b62a62de025d8b7962b2",
+    "contract_path": "experiments/configs/pivot_persistence_exit_prototype_v1.yaml",
+    "contract_sha256": "cdce968ac3d0d22c4390ab5840b580ab0ac5bdaeffe23338571f1df3bc2e8831"
+  },
+  "execution": {
+    "profile": "development",
+    "scenario": "hot_field_hype",
+    "agent_count": 80,
+    "steps": 18,
+    "replicates": 16,
+    "state_models": 2,
+    "visibility_regimes": 4,
+    "learning_arms": 3,
+    "raw_row_count": 384,
+    "first_run": {
+      "output_dir": "/ssd/pivot_persistence_exit_v1_4347d53_development",
+      "receipt_sha256": "a98b17e36a34d9d0fef6f08c6618d663885dcbd750c2891fe1bea9d6fd2c8e37"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_persistence_exit_v1_4347d53_reproduction",
+      "receipt_sha256": "a98b17e36a34d9d0fef6f08c6618d663885dcbd750c2891fe1bea9d6fd2c8e37",
+      "all_four_artifacts_byte_identical": true
+    },
+    "artifact_sha256": {
+      "replicates.jsonl": "e840742af7a311ac2ddf4fa5fbe46598c977e182d0af52d6069931e60af87941",
+      "persistence_map.json": "2bad8a84d3f2c84e8563eaf4010236f9c52256d56b0e86f7d39a33a8b4b49115",
+      "persistence_map.md": "46f69a277d6725955caf8f580ec991856f417345fe0b227957b2873181b552d5",
+      "receipt.json": "a98b17e36a34d9d0fef6f08c6618d663885dcbd750c2891fe1bea9d6fd2c8e37"
+    }
+  },
+  "validation": {
+    "receipt_status": "COMPLETE",
+    "artifact_hash_issues": [],
+    "cell_count": 24,
+    "replicates_per_cell": 16,
+    "entry_invariance": {
+      "status": "PASS",
+      "paired_rows_checked": 192,
+      "maximum_final_absolute_difference": 0.0,
+      "maximum_trajectory_absolute_difference": 0.0
+    },
+    "frozen_persistence_identical_across_visibility_regimes": true,
+    "generic_nabm_api_hash_bindings_held": true
+  },
+  "persistence_cell_means": [
+    {
+      "regime": "immediate",
+      "arm": "frozen",
+      "cumulative_entry_rate": 0.80703125,
+      "active_rate": 0.30390625,
+      "active_productive_rate": 0.2421875,
+      "active_failed_rate": 0.06171875,
+      "exited_failed_rate": 0.503125,
+      "productive_share_of_active": 0.7992061
+    },
+    {
+      "regime": "immediate",
+      "arm": "imitative",
+      "cumulative_entry_rate": 0.7984375,
+      "active_rate": 0.378125,
+      "active_productive_rate": 0.25234375,
+      "active_failed_rate": 0.12578125,
+      "exited_failed_rate": 0.4203125,
+      "productive_share_of_active": 0.67110588
+    },
+    {
+      "regime": "immediate",
+      "arm": "cautionary",
+      "cumulative_entry_rate": 0.61015625,
+      "active_rate": 0.19140625,
+      "active_productive_rate": 0.18671875,
+      "active_failed_rate": 0.0046875,
+      "exited_failed_rate": 0.41875,
+      "productive_share_of_active": 0.97981655
+    },
+    {
+      "regime": "failure_lag_2",
+      "arm": "frozen",
+      "cumulative_entry_rate": 0.80703125,
+      "active_rate": 0.30390625,
+      "active_productive_rate": 0.2421875,
+      "active_failed_rate": 0.06171875,
+      "exited_failed_rate": 0.503125,
+      "productive_share_of_active": 0.7992061
+    },
+    {
+      "regime": "failure_lag_2",
+      "arm": "imitative",
+      "cumulative_entry_rate": 0.93359375,
+      "active_rate": 0.284375,
+      "active_productive_rate": 0.2734375,
+      "active_failed_rate": 0.0109375,
+      "exited_failed_rate": 0.64921875,
+      "productive_share_of_active": 0.96256337
+    },
+    {
+      "regime": "failure_lag_2",
+      "arm": "cautionary",
+      "cumulative_entry_rate": 0.70078125,
+      "active_rate": 0.21171875,
+      "active_productive_rate": 0.20859375,
+      "active_failed_rate": 0.003125,
+      "exited_failed_rate": 0.4890625,
+      "productive_share_of_active": 0.98786977
+    },
+    {
+      "regime": "failure_lag_4",
+      "arm": "frozen",
+      "cumulative_entry_rate": 0.80703125,
+      "active_rate": 0.30390625,
+      "active_productive_rate": 0.2421875,
+      "active_failed_rate": 0.06171875,
+      "exited_failed_rate": 0.503125,
+      "productive_share_of_active": 0.7992061
+    },
+    {
+      "regime": "failure_lag_4",
+      "arm": "imitative",
+      "cumulative_entry_rate": 0.96015625,
+      "active_rate": 0.28515625,
+      "active_productive_rate": 0.27578125,
+      "active_failed_rate": 0.009375,
+      "exited_failed_rate": 0.675,
+      "productive_share_of_active": 0.96726585
+    },
+    {
+      "regime": "failure_lag_4",
+      "arm": "cautionary",
+      "cumulative_entry_rate": 0.74609375,
+      "active_rate": 0.22421875,
+      "active_productive_rate": 0.221875,
+      "active_failed_rate": 0.00234375,
+      "exited_failed_rate": 0.521875,
+      "productive_share_of_active": 0.99102871
+    },
+    {
+      "regime": "selective_failure_lag_4",
+      "arm": "frozen",
+      "cumulative_entry_rate": 0.80703125,
+      "active_rate": 0.30390625,
+      "active_productive_rate": 0.2421875,
+      "active_failed_rate": 0.06171875,
+      "exited_failed_rate": 0.503125,
+      "productive_share_of_active": 0.7992061
+    },
+    {
+      "regime": "selective_failure_lag_4",
+      "arm": "imitative",
+      "cumulative_entry_rate": 0.9609375,
+      "active_rate": 0.37890625,
+      "active_productive_rate": 0.27578125,
+      "active_failed_rate": 0.103125,
+      "exited_failed_rate": 0.58203125,
+      "productive_share_of_active": 0.73218059
+    },
+    {
+      "regime": "selective_failure_lag_4",
+      "arm": "cautionary",
+      "cumulative_entry_rate": 0.75859375,
+      "active_rate": 0.2421875,
+      "active_productive_rate": 0.2265625,
+      "active_failed_rate": 0.015625,
+      "exited_failed_rate": 0.51640625,
+      "productive_share_of_active": 0.9416821
+    }
+  ],
+  "key_paired_contrasts": {
+    "failure_lag_4_minus_immediate_imitative": {
+      "cumulative_entry_rate": 0.16171875,
+      "active_rate": -0.09296875,
+      "active_failed_rate": -0.11640625,
+      "exited_failed_rate": 0.2546875,
+      "productive_share_of_active": 0.29615997,
+      "active_failed_negative_replicates": 16
+    },
+    "selective_failure_lag_4_minus_full_failure_lag_4_imitative": {
+      "cumulative_entry_rate": 0.00078125,
+      "active_rate": 0.09375,
+      "active_failed_rate": 0.09375,
+      "exited_failed_rate": -0.09296875,
+      "productive_share_of_active": -0.23508526,
+      "final_attention_weight": 0.07390919
+    },
+    "selective_failure_lag_4_minus_immediate_imitative": {
+      "cumulative_entry_rate": 0.1625,
+      "active_rate": 0.00078125,
+      "active_failed_rate": -0.02265625,
+      "exited_failed_rate": 0.16171875,
+      "productive_share_of_active": 0.06107471
+    },
+    "immediate_cautionary_minus_frozen": {
+      "cumulative_entry_rate": -0.196875,
+      "active_productive_rate": -0.05546875,
+      "active_failed_rate": -0.05703125,
+      "productive_share_of_active": 0.18061045
+    }
+  },
+  "mechanism_readout": {
+    "failure_lag_4_imitative": {
+      "entry_rate_step_7": 0.959375,
+      "active_failed_rate_step_7": 0.44609375,
+      "first_large_failure_release_step": 8,
+      "mean_failure_releases_at_step_8": 33.6875,
+      "mean_failed_exits_at_step_8": 29.4375,
+      "final_active_failed_rate": 0.009375,
+      "final_attention_weight": 0.76744967
+    },
+    "selective_failure_lag_4_imitative": {
+      "mean_failure_releases_at_step_8": 15.6875,
+      "mean_failed_exits_at_step_8": 19.4375,
+      "final_active_failed_rate": 0.103125,
+      "final_attention_weight": 0.84135886
+    },
+    "interpretation": [
+      "Complete failure delay creates an early imitative overshoot followed by a large delayed correction and failed-exit purge; it does not leave the largest final failed stock at an 18-step horizon.",
+      "Selective nonavailability prevents the delayed correction from fully catching up, leaving materially more active failed pivots and a higher learned attention weight than delay alone.",
+      "Four-step delay has more cumulative entry and exit than immediate visibility but a higher productive share among final active agents; survivor composition therefore reverses the apparent system ranking.",
+      "Immediate and selective four-step imitative regimes have nearly identical final active rates but very different cumulative entry, exit, policy state, and composition, demonstrating stock-level observational equivalence across distinct paths.",
+      "Cautionary learning nearly removes active failed stock when all failures eventually become public, but continues to suppress productive entry relative to frozen learning."
+    ]
+  },
+  "registered_result_disposition": {
+    "LATE_FAILURE_EVIDENCE_REDUCES_ACTIVE_FAILED_STOCK": "OBSERVED_AFTER_OVERSHOOT_AND_PURGE_WITH_FULL_VISIBILITY",
+    "DELAY_POSTPONES_EXIT_WITHOUT_CHANGING_CUMULATIVE_ENTRY": "ENTRY_IS_INVARIANT_BETWEEN_STATE_MODELS_BUT_CHANGES_ACROSS_VISIBILITY_REGIMES",
+    "SELECTIVE_VISIBILITY_PRESERVES_FAILED_ACTIVITY": "OBSERVED",
+    "POLICY_DIVERGENCE_BECOMES_OBSERVABLE_IN_PERSISTENCE": "OBSERVED",
+    "PRODUCTIVE_EXPLORATION_COST_PERSISTS": "OBSERVED_FOR_CAUTIONARY_LEARNING",
+    "NONABSORBING_ENDPOINT_ADDS_NO_INFORMATION": "NOT_OBSERVED",
+    "CONTINUATION_RULE_DOMINATES_LEARNING_DIFFERENCES": "PARTIAL_STRUCTURAL_EXIT_IS_LARGE_BUT_LEARNING_REORDERS_FAILED_PERSISTENCE"
+  },
+  "case_study_assessment": {
+    "interesting_nontrivial_case": true,
+    "central_result": "DELAY_AND_MISSINGNESS_CAN_LOOK_EQUIVALENT_IN_FINAL_STOCK_WHILE_REVERSING_ENTRY_EXIT_AND_SURVIVOR_COMPOSITION",
+    "required_observation_vector": [
+      "CUMULATIVE_ENTRY",
+      "ACTIVE_PRODUCTIVE_STOCK",
+      "ACTIVE_FAILED_STOCK",
+      "FAILED_EXIT_FLOW",
+      "COHORT_PERSISTENCE",
+      "LEARNED_POLICY_STATE"
+    ],
+    "single_final_stock_is_insufficient": true
+  },
+  "framework_assessment": {
+    "domain_owned_state_adapter_added_information": true,
+    "generic_extraction_decision": "DEFER_NO_SECOND_MODEL_FAMILY_YET",
+    "next_case_target": "FAIR_EXPLICIT_NONNEURAL_ADAPTIVE_BASELINE_ON_THE_SAME_PERSISTENCE_TARGETS",
+    "reason": "The case now has a nontrivial, reproducible mechanism surface and an exact absorbing ablation. The next scientific question is whether neural learning is needed, not whether another Pivot state should be added."
+  },
+  "boundaries": {
+    "evidence_type": "SYNTHETIC_DESCRIPTIVE_MODEL_BEHAVIOR",
+    "empirical_rows_read": 0,
+    "empirical_fit": "NOT_RUN",
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "package_promotion": "NOT_AUTHORIZED"
+  }
+}
