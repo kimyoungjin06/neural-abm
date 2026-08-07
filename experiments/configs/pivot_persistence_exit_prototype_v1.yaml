@@ -1,0 +1,180 @@
+schema_version: pivot_persistence_exit_prototype.v1
+label: pivot_persistence_exit_prototype_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+
+purpose:
+  primary_goal: IMPROVE_NABM_THROUGH_A_NONABSORBING_PIVOT_FLAGSHIP_CASE
+  question: >-
+    When delayed public failure evidence changes an agent's learned policy,
+    can that correction change persistence and exit even after entry has
+    already saturated?
+  evidence_role: SYNTHETIC_DOMAIN_PROTOTYPE_NOT_EMPIRICAL_CONFIRMATION
+
+source_bindings:
+  - path: scripts/prototype_pivot_delayed_feedback_learning_v1.py
+    sha256: 9555b0968293ec89620ff461e7c449fee098a7eb8809be2b936812b521358515
+    role: DELAYED_VISIBILITY_PREDECESSOR
+  - path: experiments/configs/pivot_delayed_feedback_learning_prototype_v1.yaml
+    sha256: e58e3840cd6afff87bde5715ee5d36be0f60ff60063eabe87d3818ec5af3c511
+    role: PREDECESSOR_CONTRACT
+  - path: experiments/evidence/results/pivot_delayed_feedback_learning_prototype_v1_20260807.summary.json
+    sha256: 444b21372ca7e9b725fd1f50f21645cbe95ee5c7f055b5eed9f79983a79e5194
+    role: ABSORBING_ENDPOINT_LIMITATION_EVIDENCE
+  - path: examples/research_pivot_learning_study.py
+    sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+    role: LEARNING_POLICY_AND_ENTRY_PREDECESSOR
+  - path: src/neural_abm/api.py
+    sha256: 83005b43023d29640d96a8929aaab5e5c552542c7c9d797c288e5820a7061898
+    role: UNCHANGED_GENERIC_TORCH_API
+  - path: src/neural_abm/unit_core.py
+    sha256: d399a6fc29f1b2efd3a648f48c79d7f8cab927e704974223ffabf861333ff4da
+    role: UNCHANGED_GENERIC_LIFECYCLE_CORE
+
+scenario:
+  name: hot_field_hype
+  reason: HOLD_THE_PREDECESSOR_STRESS_SCENARIO_FIXED
+
+state_models:
+  - id: absorbing_entry
+    role: EXACT_DELAYED_FEEDBACK_PREDECESSOR
+  - id: persistence_exit_v1
+    role: DOMAIN_OWNED_NONABSORBING_OBSERVATION_EXTENSION
+
+domain_states:
+  - NOT_YET_ENTERED
+  - ACTIVE_PRODUCTIVE
+  - ACTIVE_FAILED
+  - EXITED_OR_REDIRECTED
+
+transition_contract:
+  entry_rule: EXACT_PREDECESSOR_PIVOT_THRESHOLD_AND_COMMIT_ORDER
+  private_outcome_rule: EXACT_PREDECESSOR_PRODUCTIVE_FIT_AT_ENTRY
+  public_outcome_queue: EXACT_PREDECESSOR_DELAY_AND_VISIBILITY_RULE
+  productive_persistence: REMAINS_ACTIVE_IN_V1
+  failed_minimum_active_steps: 2
+  failed_continuation_score:
+    productive_fit_weight: 0.5
+    current_policy_output_weight: 0.5
+    exit_below: 0.4
+  reentry_after_exit: false
+  network_membership_after_exit: HELD_FIXED_FOR_NESTED_COMPARISON
+  readiness_broadcast_after_entry: HELD_AS_IN_ABSORBING_PREDECESSOR
+  rationale: >-
+    Only the observation endpoint changes. Entry, learning, readiness mixing,
+    topology, and public-message availability remain nested so cumulative
+    entry must be exactly identical between state models for every paired run.
+
+learning_arms:
+  - frozen
+  - imitative
+  - cautionary
+
+visibility_regimes:
+  - id: immediate
+    success_delay_steps: 0
+    failure_delay_steps: 0
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+  - id: failure_lag_2
+    success_delay_steps: 0
+    failure_delay_steps: 2
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+  - id: failure_lag_4
+    success_delay_steps: 0
+    failure_delay_steps: 4
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+  - id: selective_failure_lag_4
+    success_delay_steps: 0
+    failure_delay_steps: 4
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 0.5
+
+profiles:
+  smoke:
+    agent_count: 24
+    steps: 10
+    burn_in_steps: 2
+    replicates: 2
+    base_seed: 20260807
+  development:
+    agent_count: 80
+    steps: 18
+    burn_in_steps: 2
+    replicates: 16
+    base_seed: 20260807
+
+inherited_learning_parameters:
+  neighbor_count: 4
+  within_stage_probability: 0.6
+  learning_rate: 1.5
+  prior_anchor: 0.25
+  local_alpha: 0.45
+  local_noise_scale: 0.02
+  social_alpha: 0.40
+  peer_similarity_threshold: 0.68
+  pivot_threshold: 0.34
+  productive_threshold: 0.40
+
+reporting:
+  primary_surface: STATE_MODEL_BY_VISIBILITY_BY_LEARNING_PERSISTENCE_MAP
+  entry_invariance:
+    - FINAL_CUMULATIVE_ENTRY_RATE_EXACTLY_EQUAL_BETWEEN_STATE_MODELS
+    - CUMULATIVE_ENTRY_TRAJECTORY_EXACTLY_EQUAL_BETWEEN_STATE_MODELS
+  final_metrics:
+    - cumulative_entry_rate
+    - active_rate
+    - active_productive_rate
+    - active_failed_rate
+    - exited_failed_rate
+    - productive_share_of_active
+  process_metrics:
+    - active_stock_trajectory
+    - failed_exit_trajectory
+    - policy_attention_weight_trajectory
+    - public_success_and_failure_release_trajectory
+  paired_comparisons:
+    - PERSISTENCE_EXIT_MINUS_ABSORBING_WITHIN_VISIBILITY_ARM_AND_REPLICATE
+    - EACH_DELAY_MINUS_IMMEDIATE_WITHIN_STATE_MODEL_ARM_AND_REPLICATE
+    - EACH_LEARNING_ARM_MINUS_FROZEN_WITHIN_STATE_MODEL_REGIME_AND_REPLICATE
+  decision_thresholds: NONE_DESCRIPTIVE_ONLY
+  peak_rule: NO_SINGLE_ARGMAX_OR_PHASE_CLASSIFICATION_IN_V1
+
+registered_result_space:
+  - LATE_FAILURE_EVIDENCE_REDUCES_ACTIVE_FAILED_STOCK
+  - DELAY_POSTPONES_EXIT_WITHOUT_CHANGING_CUMULATIVE_ENTRY
+  - SELECTIVE_VISIBILITY_PRESERVES_FAILED_ACTIVITY
+  - POLICY_DIVERGENCE_BECOMES_OBSERVABLE_IN_PERSISTENCE
+  - PRODUCTIVE_EXPLORATION_COST_PERSISTS
+  - NONABSORBING_ENDPOINT_ADDS_NO_INFORMATION
+  - CONTINUATION_RULE_DOMINATES_LEARNING_DIFFERENCES
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+    - docs/research/pivot-persistence-exit-prototype-v1.md
+    - docs/package-release-boundary.md
+    - experiments/configs/pivot_persistence_exit_prototype_v1.yaml
+    - scripts/prototype_pivot_persistence_exit_v1.py
+    - scripts/inspect_release_artifacts.py
+    - tests/test_pivot_persistence_exit_prototype_v1.py
+    - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+
+outputs:
+  - replicates.jsonl
+  - persistence_map.json
+  - persistence_map.md
+  - receipt.json
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  empirical_fit: NOT_RUN
+  model_selection: NOT_RUN
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED

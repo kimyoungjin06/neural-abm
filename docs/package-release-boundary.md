@@ -145,6 +145,13 @@ artifacts, not packaged examples or empirical claims. Promotion requires a
 separate public-surface decision after reproduction and comparison with fair
 simpler models.
 
+The nested persistence-and-exit successor also remains repository-only. It
+holds entry, learning, topology, and public availability exactly fixed while a
+Pivot-owned state adapter observes active productive, active failed, and
+exited states. Persistence and exit are domain meanings rather than generic
+unit semantics. Its precommit, runner, tests, and evidence cannot enter the
+package without a later API and public-case promotion decision.
+
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy
 reference auditor live at
