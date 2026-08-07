@@ -287,6 +287,30 @@ overdispersion. Those remain an explicit empirical-scale boundary. This
 development run is descriptive with no performance thresholds, candidate
 selection, or fresh-blind authorization.
 
+### Stochastic set-development v3 result
+
+The completed public diagnostic is recorded in
+[`pivot_feedback_lean_h3_stochastic_set_development_v3_20260807.summary.md`](../../experiments/evidence/results/pivot_feedback_lean_h3_stochastic_set_development_v3_20260807.summary.md).
+The scale-invariant membership rule recovered clear point and field-vector
+geometry, but the primary interval result was not calibrated: 191 of 208
+truth-valid rows were estimator-valid, and only 111 of those 191 field-vector
+intervals contained the truth (`58.1%`). Exact ties, near-margin contrasts,
+adjacent sets, and multimodal sets had zero interval containment despite high
+validity and nearly perfect state labels.
+
+Flat, boundary, and missing cases failed closed as intended. The registered
+beta-binomial probability perturbation was more revealing: all 16 truth rows
+were valid and all 16 estimator rows were invalid, dominated by zero entry
+denominators. The working binomial likelihood therefore has no demonstrated
+robustness to that stress.
+
+This is a methodological failure diagnosis, not a failed governance gate. No
+performance threshold or admissibility rule was applied. A successor must use
+a joint posterior peak- or gap-set construction and either model the registered
+overdispersion stress or define a prospective support domain. Because the
+successor will be informed by v3, it must use a new disjoint public stress grid;
+no extra review gate or fresh blind is authorized now.
+
 ## What the completed route established
 
 The completed route established a reproducible measurement and partition

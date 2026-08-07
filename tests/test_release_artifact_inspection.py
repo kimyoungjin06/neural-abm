@@ -1736,6 +1736,8 @@ def test_release_inspector_rejects_lean_h3_stochastic_set_development_paths() ->
     repository_paths = {
         "experiments/configs/pivot_feedback_lean_h3_stochastic_set_development_v3.yaml",
         "docs/research/pivot-feedback-lean-h3-successor-design-v1.md",
+        "experiments/evidence/results/pivot_feedback_lean_h3_stochastic_set_development_v3_20260807.summary.json",
+        "experiments/evidence/results/pivot_feedback_lean_h3_stochastic_set_development_v3_20260807.summary.md",
         "scripts/develop_pivot_feedback_lean_h3_stochastic_set_v3.py",
         "scripts/verify_pivot_feedback_lean_h3_stochastic_set_v3.py",
     }

@@ -1,0 +1,179 @@
+{
+  "schema_version": "pivot_feedback_lean_h3_stochastic_set_development_summary.v3",
+  "status": "COMPLETE_PUBLIC_NONBLIND_STOCHASTIC_DEVELOPMENT_SET_UNDERCOVERAGE_OVERDISPERSION_FAILURE_NO_SELECTION",
+  "completed_at_utc": "2026-08-07T02:35:51Z",
+  "scope": "PUBLIC_NONBLIND_DISJOINT_SYNTHETIC_DEVELOPMENT_DIAGNOSTIC_ONLY",
+  "precommit": {
+    "git_commit": "730a6d9f03c77f2eb2b471dd2ee17acf8067959c",
+    "semantics": "CONFIG_GENERATOR_ESTIMATOR_EVALUATOR_VERIFIER_TESTS_DOCUMENTATION_AND_RELEASE_BOUNDARY_COMMITTED_BEFORE_PUBLIC_GENERATION"
+  },
+  "canonical_execution": {
+    "artifact_root": "/ssd/pivot-feedback-lean-h3-stochastic-set-v3-development-20260807",
+    "verification_path": "/ssd/pivot-feedback-lean-h3-stochastic-set-v3-development-20260807.verification.json",
+    "profile": "development",
+    "scenario_count": 16,
+    "replicates_per_scenario": 16,
+    "posterior_draws_per_episode_curve": 399,
+    "panel_rows": 256,
+    "truth_rows": 256,
+    "estimate_rows": 256,
+    "generation_completed_at_utc": "2026-08-07T02:35:25Z",
+    "estimation_completed_at_utc": "2026-08-07T02:35:35Z",
+    "evaluation_completed_at_utc": "2026-08-07T02:35:43Z",
+    "truth_files_read_by_estimator": 0
+  },
+  "independent_replay": {
+    "status": "PASS_INDEPENDENT_PUBLIC_DEVELOPMENT_BINDING_AND_METRIC_REPLAY",
+    "verified_at_utc": "2026-08-07T02:35:51Z",
+    "scope": "ARTIFACT_BINDINGS_ACCESS_ACCOUNTING_CARDINALITY_AND_DESCRIPTIVE_METRIC_REPLAY_NOT_POSTERIOR_DRAW_REPLAY"
+  },
+  "immutable_bindings": {
+    "config_sha256": "ebf170fb5288b754e71f5d98001003e2e0992e30490dc7e5b1f4959e1cd3930b",
+    "developer_sha256": "3ef69b137bf0345e7c536ca6ccb269ddbb8e5518527f38d45c4b7100b4f55034",
+    "verifier_sha256": "997d7c0f16963f6056909d4da062884e3b76e54b38ac28e26e9101e007502af4",
+    "public_panels_sha256": "5ee5d9f4b8dae7accbe3e4a8b8b3281d030a8952900b4db83df9947823fe7b31",
+    "public_truth_sha256": "78ed10c1f53cb774a3953e577206c1318c455463f7b2162029dda963ce69b12b",
+    "generation_receipt_sha256": "71ee69abf57d561ce1c380b056d6a11fcf48c8255f8c93938c1165660565b3b8",
+    "candidate_estimates_sha256": "2b13f020f8abb2a613006aa607f1373029991c025a1bee3c2012ca1548267db4",
+    "estimation_receipt_sha256": "38ad5c91fb4b44fa47c7c121ddd4fc73367ff224a6be38f4735f497e70172c01",
+    "development_report_sha256": "ecaf85f3b3dc08fea1f9fb5fa6d418437889370918a4b9806a734efaec285e78",
+    "evaluation_receipt_sha256": "142eb4438a3655e61aa72a9ea73f8d5658e269f1cff1ac4d9cab699aca4d5d94",
+    "verification_sha256": "314e59d4f9370685b35e208fb300a5aa6d27a78f1a4775ba2b6477fce61baad7"
+  },
+  "candidate_contract": {
+    "name": "jeffreys_normalized_regret_field_vector_v3",
+    "peak_membership_rule": "POSTERIOR_MARGINAL_TIME_INCLUSION_PROBABILITY_AT_LEAST_0_90_WITH_NORMALIZED_REGRET_AT_MOST_0_10",
+    "practically_flat_floor": 0.01,
+    "primary_estimand": "FOUR_FIELD_VECTOR_OF_MEAN_EPISODE_PRACTICAL_PEAK_GAP_INTERVALS",
+    "scale_audit": {
+      "absolute_peak_membership_margin_invariant": false,
+      "normalized_regret_membership_rule_invariant": true,
+      "interpretation": "ONLY_PEAK_MEMBERSHIP_IS_SCALE_INVARIANT_THE_ABSOLUTE_PRACTICAL_FLAT_SCREEN_REMAINS_SCALE_DEPENDENT"
+    },
+    "working_likelihood": "INDEPENDENT_JEFFREYS_BINOMIAL_BY_REGISTERED_TIME",
+    "dependence_boundary": "REPEATED_AUTHOR_DEPENDENCE_AND_EMPIRICAL_OVERDISPERSION_UNRESOLVED"
+  },
+  "descriptive_metrics": {
+    "truth_valid_estimator_valid_rate": 0.9182692307692307,
+    "truth_invalid_estimator_invalid_rate": 1.0,
+    "field_vector_interval_containment_among_jointly_valid": 0.581151832460733,
+    "identification_state_match_among_jointly_valid": 0.9947643979057592,
+    "direction_state_match_among_jointly_valid": 1.0,
+    "denominators": {
+      "all_rows": 256,
+      "truth_valid": 208,
+      "truth_invalid": 48,
+      "jointly_valid": 191
+    },
+    "invalid_reason_episode_or_field_counts": {
+      "BOUNDARY_POSTERIOR_PEAK_SET": 546,
+      "INSUFFICIENT_VALID_EPISODES_PER_FIELD": 241,
+      "MISSING_REGISTERED_DENOMINATOR": 871,
+      "POSTERIOR_PRACTICALLY_FLAT_CURVE": 313,
+      "UNRESOLVED_POSTERIOR_PEAK_SET": 245
+    }
+  },
+  "scenario_findings": {
+    "clear_point_and_field_vector_cases": {
+      "scenarios": [
+        "scale_high_entry_low_persistence",
+        "scale_high_support",
+        "scale_low_entry_high_persistence",
+        "geometry_all_positive",
+        "geometry_mixed_field_vector"
+      ],
+      "field_vector_interval_containment_among_jointly_valid": 1.0,
+      "interpretation": "CLEAR_POINT_GEOMETRY_WAS_RECOVERED_WHEN_SUPPORT_WAS_NOT_PATHOLOGICAL"
+    },
+    "low_entry_low_support": {
+      "truth_valid": 16,
+      "estimator_valid": 15,
+      "truth_valid_estimator_valid_rate": 0.9375,
+      "field_vector_interval_containment_among_jointly_valid": 1.0,
+      "interpretation": "ONE_PANEL_FAILED_CLOSED_AND_MANY_EPISODES_WERE_UNRESOLVED_BUT_VALID_PANEL_INTERVALS_CONTAINED_TRUTH"
+    },
+    "near_tie_threshold_region": {
+      "scenarios": [
+        "contrast_exact_tie",
+        "contrast_regret_05",
+        "contrast_regret_10"
+      ],
+      "truth_valid_estimator_valid_rate": 1.0,
+      "field_vector_interval_containment_among_jointly_valid": 0.0,
+      "interpretation": "MARGINAL_0_90_TIME_INCLUSION_SYSTEMATICALLY_NARROWED_TRUE_SET_VALUED_INTERVALS"
+    },
+    "outside_margin_contrast": {
+      "scenario": "contrast_regret_20",
+      "field_vector_interval_containment_among_jointly_valid": 1.0,
+      "interpretation": "CLEAR_SEPARATION_OUTSIDE_THE_0_10_REGRET_MARGIN_RETURNED_POINT_GEOMETRY"
+    },
+    "set_geometry": {
+      "adjacent_set_containment": 0.0,
+      "multimodal_set_containment": 0.0,
+      "point_geometry_containment": 1.0,
+      "interpretation": "SET_STATE_LABELS_WERE_USUALLY_CORRECT_BUT_THE_INTERVAL_BOUNDS_DID_NOT_PRESERVE_THE_FULL_TRUTH_SET"
+    },
+    "structural_invalidity": {
+      "flat_truth_invalid_estimator_invalid_rate": 1.0,
+      "boundary_truth_invalid_estimator_invalid_rate": 1.0,
+      "missing_truth_invalid_estimator_invalid_rate": 1.0,
+      "interpretation": "REGISTERED_FLAT_BOUNDARY_AND_MISSING_CASES_FAILED_CLOSED_AS_DESIGNED"
+    },
+    "beta_binomial_probability_perturbation": {
+      "truth_valid": 16,
+      "estimator_valid": 0,
+      "truth_valid_estimator_valid_rate": 0.0,
+      "dominant_invalid_reason_counts": {
+        "MISSING_REGISTERED_DENOMINATOR": 358,
+        "UNRESOLVED_POSTERIOR_PEAK_SET": 67,
+        "BOUNDARY_POSTERIOR_PEAK_SET": 33
+      },
+      "interpretation": "THE_AGGRESSIVE_LOW_PROBABILITY_BETA_PERTURBATION_CREATED_ZERO_ENTRY_DENOMINATORS_AND_EXPOSED_NO_ROBUST_HIERARCHICAL_OR_OVERDISPERSION_MODEL"
+    }
+  },
+  "methodological_interpretation": {
+    "main_result": "THE_V3_WORKING_ESTIMATOR_RECOVERS_CLEAR_POINT_AND_DIRECTION_GEOMETRY_BUT_DOES_NOT_PRESERVE_SET_UNCERTAINTY_NEAR_THE_PRACTICAL_MARGIN_AND_IS_NOT_APPLICABLE_UNDER_THE_REGISTERED_BETA_BINOMIAL_STRESS",
+    "why_near_ties_fail": "A_MARGINAL_0_90_TIME_INCLUSION_CUTOFF_IS_NOT_A_SIMULTANEOUS_CREDIBLE_SET_FOR_THE_GAP_INTERVAL_AND_EXCLUDES_THRESHOLD_ADJACENT_TIMES_OFTEN_ENOUGH_TO_NARROW_FIELD_MEANS",
+    "why_direction_match_is_not_decisive": "DIRECTION_MATCH_IS_CONDITIONAL_ON_191_JOINTLY_VALID_ROWS_AND_CAN_REMAIN_CORRECT_WHILE_SET_BOUNDS_UNDERCOVER",
+    "gate_proportionality": "NO_PERFORMANCE_THRESHOLD_OR_ADMISSIBILITY_GATE_WAS_APPLIED_THE_FAILURES_ARE_DESCRIPTIVE_ESTIMATOR_OUTPUTS",
+    "novelty_value": "THE_DISJOINT_GRID_REVEALED_TWO_FAILURE_MODES_NOT_VISIBLE_IN_CLOSED_ANALYTIC_FIXTURES"
+  },
+  "next_methodological_step": {
+    "status": "REDESIGN_REQUIRED_ON_PUBLIC_DEVELOPMENT_BEFORE_ANY_FRESH_BLIND",
+    "required_objects": [
+      "JOINT_POSTERIOR_PEAK_OR_GAP_SET_WITH_AN_EXPLICIT_SIMULTANEOUS_UNCERTAINTY_SEMANTIC",
+      "SEPARATE_REPORTING_OF_SET_CONTAINMENT_APPLICABILITY_AND_DIRECTION_WITH_DENOMINATORS",
+      "HIERARCHICAL_OR_BETA_BINOMIAL_WORKING_MODEL_OR_AN_EXPLICIT_MINIMUM_SUPPORT_DOMAIN",
+      "NEW_DISJOINT_PUBLIC_STRESS_GRID_AFTER_V3_INFORMED_REDESIGN"
+    ],
+    "opened_challenge_reuse": "FORBIDDEN_FOR_RETUNING_OR_CONFIRMATION",
+    "fresh_blind_authorized": false,
+    "additional_governance_review_required_now": false
+  },
+  "disposition": {
+    "candidate_admissibility": "NOT_EVALUATED",
+    "candidate_selected": "NO",
+    "estimator_selected": "NO",
+    "support_rule_selected": "NO",
+    "v3_grid_future_role": "PUBLIC_DEVELOPMENT_DIAGNOSTIC_NOT_DISJOINT_VALIDATION_FOR_A_V3_INFORMED_SUCCESSOR",
+    "fresh_blind_authorized": false
+  },
+  "access_accounting": {
+    "opened_challenge_panel_rows_read": 0,
+    "opened_challenge_private_label_rows_read": 0,
+    "source_or_empirical_rows_read": 0,
+    "current_g1_rows_read": 0,
+    "model_selection_rows_read": 0,
+    "holdout_or_private_g4_rows_read": 0,
+    "models_fitted_to_empirical_data": 0
+  },
+  "authorization": {
+    "v3_informed_public_successor_design": "AUTHORIZED_WITH_SEPARATE_PRECOMMIT",
+    "opened_challenge_replay": "FORBIDDEN_NOT_RUN",
+    "fresh_blind_generation": "FORBIDDEN_NOT_RUN",
+    "empirical_row_access": "FORBIDDEN_NOT_RUN",
+    "confirmatory_execution": "FORBIDDEN_NOT_RUN",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This public nonblind synthetic development diagnostic shows operating characteristics and failure modes of one precommitted working estimator on a disjoint public grid. It is not admissibility or superiority evidence, does not select an estimator or support rule, does not validate empirical dependence, does not authorize a fresh blind or empirical access, and does not establish H3, feedback, causality, prediction, NABM necessity, or a scientific effect."
+}
