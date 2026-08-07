@@ -1,0 +1,296 @@
+{
+  "schema_version": "pivot_adaptive_baseline_result.v1",
+  "label": "pivot_adaptive_baseline_ladder_v1_20260807",
+  "status": "DESCRIPTIVE_SYNTHETIC_MODEL_COMPARISON_REPRODUCED",
+  "precommit": {
+    "commit_sha": "bae8d48b0f0d97d433b9cdcb2b7708f290fb64a0",
+    "contract_path": "experiments/configs/pivot_adaptive_baseline_ladder_v1.yaml",
+    "contract_sha256": "413a4bc1d8ecdb69be3b4c8adb7138f83527e134deeb97249914048557468758"
+  },
+  "execution": {
+    "profile": "development",
+    "scenario": "hot_field_hype",
+    "agent_count": 80,
+    "steps": 18,
+    "replicates": 16,
+    "model_count": 5,
+    "visibility_regimes": 4,
+    "raw_row_count": 320,
+    "first_run": {
+      "output_dir": "/ssd/pivot_adaptive_baseline_ladder_v1_bae8d48_development",
+      "receipt_sha256": "100b0152988baf107ca471e9844cb3fd1854b40cad07d5f8e8a8126100603b46"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_adaptive_baseline_ladder_v1_bae8d48_reproduction",
+      "receipt_sha256": "100b0152988baf107ca471e9844cb3fd1854b40cad07d5f8e8a8126100603b46",
+      "all_four_artifacts_byte_identical": true
+    },
+    "artifact_sha256": {
+      "replicates.jsonl": "100692be7db667521199b29290002256ec3fc61ca9a6c6de0eed89803921bfef",
+      "model_scorecard.json": "b7d807ecd63495584f353f95a937dbc8f0afc9f63cbd4a794fca614b9e68e87e",
+      "model_scorecard.md": "64dbdad4c886c2b924a4653dafb58be0d1faf216a4ebc99f2ac30a566fdd05ae",
+      "receipt.json": "100b0152988baf107ca471e9844cb3fd1854b40cad07d5f8e8a8126100603b46"
+    }
+  },
+  "validation": {
+    "receipt_status": "COMPLETE",
+    "artifact_hash_issues": [],
+    "cell_count": 20,
+    "replicates_per_cell": 16,
+    "fixed_and_neural_models_exactly_nested_predecessors": true,
+    "fixed_rule_identical_across_visibility_regimes": true,
+    "delta_rule_adaptive_state_count_per_agent": 1,
+    "delta_rule_gradient_based": false,
+    "generic_nabm_api_hash_bindings_held": true
+  },
+  "selected_cell_means": [
+    {
+      "regime": "immediate",
+      "model_id": "fixed_rule",
+      "cumulative_entry_rate": 0.80703125,
+      "active_rate": 0.30390625,
+      "active_productive_rate": 0.2421875,
+      "active_failed_rate": 0.06171875,
+      "exited_failed_rate": 0.503125,
+      "productive_share_of_active": 0.7992061
+    },
+    {
+      "regime": "immediate",
+      "model_id": "delta_imitative",
+      "cumulative_entry_rate": 0.82734375,
+      "active_rate": 0.346875,
+      "active_productive_rate": 0.2578125,
+      "active_failed_rate": 0.0890625,
+      "exited_failed_rate": 0.48046875,
+      "productive_share_of_active": 0.74805295
+    },
+    {
+      "regime": "immediate",
+      "model_id": "neural_imitative",
+      "cumulative_entry_rate": 0.7984375,
+      "active_rate": 0.378125,
+      "active_productive_rate": 0.25234375,
+      "active_failed_rate": 0.12578125,
+      "exited_failed_rate": 0.4203125,
+      "productive_share_of_active": 0.67110588
+    },
+    {
+      "regime": "failure_lag_4",
+      "model_id": "delta_imitative",
+      "cumulative_entry_rate": 0.94609375,
+      "active_rate": 0.28515625,
+      "active_productive_rate": 0.2734375,
+      "active_failed_rate": 0.01171875,
+      "exited_failed_rate": 0.6609375,
+      "productive_share_of_active": 0.95931485
+    },
+    {
+      "regime": "failure_lag_4",
+      "model_id": "neural_imitative",
+      "cumulative_entry_rate": 0.96015625,
+      "active_rate": 0.28515625,
+      "active_productive_rate": 0.27578125,
+      "active_failed_rate": 0.009375,
+      "exited_failed_rate": 0.675,
+      "productive_share_of_active": 0.96726585
+    },
+    {
+      "regime": "selective_failure_lag_4",
+      "model_id": "delta_imitative",
+      "cumulative_entry_rate": 0.94921875,
+      "active_rate": 0.3671875,
+      "active_productive_rate": 0.2734375,
+      "active_failed_rate": 0.09375,
+      "exited_failed_rate": 0.58203125,
+      "productive_share_of_active": 0.75043032
+    },
+    {
+      "regime": "selective_failure_lag_4",
+      "model_id": "neural_imitative",
+      "cumulative_entry_rate": 0.9609375,
+      "active_rate": 0.37890625,
+      "active_productive_rate": 0.27578125,
+      "active_failed_rate": 0.103125,
+      "exited_failed_rate": 0.58203125,
+      "productive_share_of_active": 0.73218059
+    },
+    {
+      "regime": "immediate",
+      "model_id": "delta_cautionary",
+      "cumulative_entry_rate": 0.6109375,
+      "active_rate": 0.1921875,
+      "active_productive_rate": 0.1875,
+      "active_failed_rate": 0.0046875,
+      "exited_failed_rate": 0.41875,
+      "productive_share_of_active": 0.97981655
+    },
+    {
+      "regime": "immediate",
+      "model_id": "neural_cautionary",
+      "cumulative_entry_rate": 0.61015625,
+      "active_rate": 0.19140625,
+      "active_productive_rate": 0.18671875,
+      "active_failed_rate": 0.0046875,
+      "exited_failed_rate": 0.41875,
+      "productive_share_of_active": 0.97981655
+    },
+    {
+      "regime": "failure_lag_4",
+      "model_id": "delta_cautionary",
+      "cumulative_entry_rate": 0.74609375,
+      "active_rate": 0.22421875,
+      "active_productive_rate": 0.221875,
+      "active_failed_rate": 0.00234375,
+      "exited_failed_rate": 0.521875,
+      "productive_share_of_active": 0.99102871
+    },
+    {
+      "regime": "failure_lag_4",
+      "model_id": "neural_cautionary",
+      "cumulative_entry_rate": 0.74609375,
+      "active_rate": 0.22421875,
+      "active_productive_rate": 0.221875,
+      "active_failed_rate": 0.00234375,
+      "exited_failed_rate": 0.521875,
+      "productive_share_of_active": 0.99102871
+    }
+  ],
+  "delta_neural_distance_means": [
+    {
+      "regime": "immediate",
+      "evidence_mode": "imitative",
+      "final_vector_mae": 0.04016826,
+      "trajectory_rmse": 0.03241896
+    },
+    {
+      "regime": "failure_lag_2",
+      "evidence_mode": "imitative",
+      "final_vector_mae": 0.00589067,
+      "trajectory_rmse": 0.01012918
+    },
+    {
+      "regime": "failure_lag_4",
+      "evidence_mode": "imitative",
+      "final_vector_mae": 0.00783558,
+      "trajectory_rmse": 0.01491412
+    },
+    {
+      "regime": "selective_failure_lag_4",
+      "evidence_mode": "imitative",
+      "final_vector_mae": 0.01388779,
+      "trajectory_rmse": 0.01630929
+    },
+    {
+      "regime": "immediate",
+      "evidence_mode": "cautionary",
+      "final_vector_mae": 0.00039062,
+      "trajectory_rmse": 0.00070957
+    },
+    {
+      "regime": "failure_lag_2",
+      "evidence_mode": "cautionary",
+      "final_vector_mae": 0.0,
+      "trajectory_rmse": 0.0
+    },
+    {
+      "regime": "failure_lag_4",
+      "evidence_mode": "cautionary",
+      "final_vector_mae": 0.0,
+      "trajectory_rmse": 0.0
+    },
+    {
+      "regime": "selective_failure_lag_4",
+      "evidence_mode": "cautionary",
+      "final_vector_mae": 0.002985,
+      "trajectory_rmse": 0.00121751
+    }
+  ],
+  "registered_contrasts": {
+    "failure_lag_4_minus_immediate_imitative": {
+      "delta": {
+        "cumulative_entry_rate": 0.11875,
+        "active_failed_rate": -0.07734375,
+        "exited_failed_rate": 0.18046875,
+        "entry_positive_replicates": 16,
+        "active_failed_negative_replicates": 16
+      },
+      "neural": {
+        "cumulative_entry_rate": 0.16171875,
+        "active_failed_rate": -0.11640625,
+        "exited_failed_rate": 0.2546875,
+        "entry_positive_replicates": 16,
+        "active_failed_negative_replicates": 16
+      }
+    },
+    "selective_minus_full_failure_lag_4_imitative": {
+      "delta": {
+        "cumulative_entry_rate": 0.003125,
+        "active_rate": 0.08203125,
+        "active_failed_rate": 0.08203125,
+        "exited_failed_rate": -0.07890625,
+        "productive_share_of_active": -0.20888453
+      },
+      "neural": {
+        "cumulative_entry_rate": 0.00078125,
+        "active_rate": 0.09375,
+        "active_failed_rate": 0.09375,
+        "exited_failed_rate": -0.09296875,
+        "productive_share_of_active": -0.23508526
+      }
+    },
+    "delta_minus_neural_immediate_imitative": {
+      "cumulative_entry_rate": 0.02890625,
+      "active_rate": -0.03125,
+      "active_failed_rate": -0.03671875,
+      "exited_failed_rate": 0.06015625,
+      "productive_share_of_active": 0.07694707
+    }
+  },
+  "mechanism_readout": {
+    "common_surface": [
+      "Both delta and neural imitative rules produce more cumulative entry, more failed exit, and less final active failed stock under complete four-step delay than under immediate visibility in all paired replicates.",
+      "Both delta and neural imitative rules leave materially more active failed stock when half of delayed failures are permanently unavailable than when all delayed failures eventually arrive.",
+      "Both cautionary rules reproduce the exploration-versus-failure trade-off relative to the fixed rule."
+    ],
+    "neural_specific_difference": [
+      "The neural imitative rule amplifies the four-step overshoot and purge beyond the scalar delta rule by about 0.043 cumulative entry and 0.074 failed exit relative to each model's immediate regime.",
+      "Under immediate visibility, neural imitation retains more active failed stock and fewer exits than delta imitation, producing the largest delta-neural distance in the ladder.",
+      "Feature-specific neural weights therefore change magnitude and some immediate-regime composition, but are not required for the registered qualitative delayed-feedback surface."
+    ],
+    "cautionary_equivalence": "Delta and neural cautionary final vectors and registered trajectories are exactly identical under full two-step and four-step failure delay."
+  },
+  "registered_result_disposition": {
+    "DELTA_RULE_REPRODUCES_NEURAL_PHASE_DIRECTIONS": "OBSERVED",
+    "DELTA_RULE_MATCHES_FINAL_STOCK_BUT_NOT_FLOWS": "PARTIAL_CLOSE_ON_DELAYED_STOCKS_AND_TRAJECTORIES_BUT_DISTINCT_UNDER_IMMEDIATE_IMITATION",
+    "DELTA_RULE_AND_NEURAL_RULE_DIVERGE_BY_VISIBILITY": "OBSERVED_LARGEST_DIVERGENCE_UNDER_IMMEDIATE_IMITATION",
+    "CAUTIONARY_TRADEOFF_DOES_NOT_REQUIRE_NEURAL_WEIGHTS": "OBSERVED",
+    "FEATURE_SPECIFIC_NEURAL_POLICY_ADDS_DISTINCT_BEHAVIOR": "OBSERVED_AS_MAGNITUDE_AND_IMMEDIATE_COMPOSITION_DIFFERENCE",
+    "FIXED_RULE_REMAINS_SUFFICIENT_FOR_THE_REGISTERED_SURFACE": "NOT_OBSERVED_FIXED_RULE_IS_VISIBILITY_INVARIANT",
+    "NO_MODEL_FAMILY_IS_CLOSE_ACROSS_ALL_TARGETS": "UNRESOLVED_NO_DISTANCE_THRESHOLD"
+  },
+  "scientific_assessment": {
+    "neural_necessity_on_current_synthetic_surface": "NOT_SUPPORTED",
+    "simpler_adaptive_rule_reproduces_core_surface": true,
+    "neural_policy_is_behaviorally_identical_to_delta_everywhere": false,
+    "model_selected": "NO",
+    "reason": "A one-state delta rule reproduces the core delayed overshoot, purge, selective-missingness residue, and cautionary trade-off. Neural feature weights alter some magnitudes and immediate imitation, but no empirical or held-out predictive target determines whether those differences are useful."
+  },
+  "framework_assessment": {
+    "generic_api_change_needed": false,
+    "delta_baseline_should_remain_case_owned": true,
+    "next_case_target": "PRECOMMITTED_DISJOINT_SCENARIO_OR_EMPIRICAL_PREDICTIVE_GENERALIZATION_SCORECARD",
+    "next_decision_rule": "PREFER_THE_SIMPLER_ADAPTIVE_RULE_IF_NEURAL_DIFFERENCES_DO_NOT_IMPROVE_DISJOINT_TARGETS",
+    "no_more_in_sample_synthetic_tuning": true
+  },
+  "boundaries": {
+    "evidence_type": "SYNTHETIC_DESCRIPTIVE_MODEL_COMPARISON",
+    "empirical_rows_read": 0,
+    "empirical_fit": "NOT_RUN",
+    "predictive_validation": "NOT_RUN",
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "package_promotion": "NOT_AUTHORIZED"
+  }
+}
