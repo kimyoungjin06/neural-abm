@@ -1717,6 +1717,8 @@ def test_release_inspector_rejects_lean_h3_set_identified_prospectus_paths() -> 
     repository_paths = {
         "experiments/configs/pivot_feedback_lean_h3_set_identified_prospectus_v2.yaml",
         "docs/research/pivot-feedback-lean-h3-successor-design-v1.md",
+        "experiments/evidence/results/pivot_feedback_lean_h3_set_identified_prospectus_v2_20260807.summary.json",
+        "experiments/evidence/results/pivot_feedback_lean_h3_set_identified_prospectus_v2_20260807.summary.md",
         "scripts/prototype_pivot_feedback_lean_h3_set_identified_v2.py",
         "scripts/verify_pivot_feedback_lean_h3_set_identified_v2.py",
     }

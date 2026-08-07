@@ -234,6 +234,28 @@ overdispersion remain pending a separate precommit. Until those are specified,
 the opened challenge, fresh blind generation, empirical rows, and confirmatory
 execution remain forbidden.
 
+### Set-identified analytic fixture result
+
+The definition family was committed at `9747e5b` before its canonical result
+was written. All seven expected states and artifact bindings were independently
+replayed; the compact result is
+[`pivot_feedback_lean_h3_set_identified_prospectus_v2_20260807.summary.md`](../../experiments/evidence/results/pivot_feedback_lean_h3_set_identified_prospectus_v2_20260807.summary.md).
+
+The fixture replay confirms a useful change in result geometry. An adjacent
+near tie becomes four field intervals of `[1, 2]`; an interior multimodal peak
+becomes `[0, 2]`. Neither is forced to an earliest peak. The staggered case
+retains the vector `[-1, 0, 1, 2]` and therefore remains mixed even though its
+field-balanced scalar average is `0.5`. Missingness, practical flatness, and
+boundary censoring remain invalid.
+
+This fixture `PASS` means only that code matches the analytic definition. It
+does not validate the `0.01` margin or stochastic operating characteristics,
+and it creates no admissibility gate. The next authorized design object is a
+separate stochastic precommit containing a scale audit, posterior simultaneous
+uncertainty, an explicit dependence boundary, and a disjoint nonblind
+development generator. A fresh held-out blind remains forbidden until that
+candidate is frozen.
+
 ## What the completed route established
 
 The completed route established a reproducible measurement and partition

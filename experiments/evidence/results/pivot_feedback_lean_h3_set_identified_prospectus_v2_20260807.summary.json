@@ -1,0 +1,120 @@
+{
+  "schema_version": "pivot_feedback_lean_h3_set_identified_prospectus_summary.v2",
+  "status": "COMPLETE_SET_IDENTIFIED_ANALYTIC_CONFORMANCE_NO_STOCHASTIC_CANDIDATE_NO_SELECTION",
+  "completed_at_utc": "2026-08-07T02:03:08Z",
+  "scope": "CLOSED_ANALYTIC_FIXTURE_DEFINITION_CONFORMANCE_ONLY",
+  "precommit": {
+    "git_commit": "9747e5b77157af24838f4f79596832050c5d689d",
+    "semantics": "CONFIG_PROTOTYPE_VERIFIER_FIXTURES_TESTS_DOCUMENTATION_AND_RELEASE_BOUNDARY_COMMITTED_BEFORE_CANONICAL_FIXTURE_RESULT"
+  },
+  "canonical_execution": {
+    "result_path": "/ssd/pivot-feedback-lean-h3-set-identified-v2-analytic-fixtures-20260807.json",
+    "verification_path": "/ssd/pivot-feedback-lean-h3-set-identified-v2-analytic-fixtures-20260807.verification.json",
+    "analytic_fixture_count": 7,
+    "conformant_fixture_count": 7,
+    "valid_fixture_count": 4,
+    "invalid_fixture_count": 3,
+    "point_identified_fixture_count": 2,
+    "set_identified_fixture_count": 2
+  },
+  "immutable_bindings": {
+    "config_sha256": "545d3624f5b62f761da9c7e1c85891128f5c07d529b83ea76baee1dfc0fa5c78",
+    "producer_sha256": "b52aa89d335bbf86a3efb0f2b85e540f6bb971619c462e860c4a796652eb4118",
+    "verifier_sha256": "1e5f2fbdd48a381bcb5a6269720589348d8e14317aa9a2f4c7825e86615975d7",
+    "result_sha256": "4e5653e1aa6ce838fc822d9f53c7277daac8c16018db3a4e3bcc5ab5038ba0ed",
+    "verification_sha256": "62942dcf434264bc4286aea3855dfd08b534ed15359d220129a66c15870d4a8a"
+  },
+  "independent_replay": {
+    "status": "PASS_INDEPENDENT_ANALYTIC_FIXTURE_ORACLE_REPLAY_NO_SELECTION",
+    "verified_at_utc": "2026-08-07T02:03:08Z",
+    "scope": "CONFIG_BINDING_PRODUCER_BINDING_AND_EXPECTED_STATE_ORACLE_REPLAY"
+  },
+  "definition_family": {
+    "name": "practical_equivalence_set_field_vector_v2",
+    "primary_estimand": "FOUR_FIELD_VECTOR_OF_MEAN_EPISODE_PEAK_GAP_SETS",
+    "secondary_summary": "FIELD_BALANCED_INTERVAL_HULL_REPORTED_WITH_VECTOR",
+    "inclusive_absolute_probability_margin": 0.01,
+    "margin_role": "PROVISIONAL_OUTCOME_BLIND_G0_V4_ANCHOR_NOT_VALIDATED_FOR_PEAK_LOCATION",
+    "near_tie_action": "PRESERVE_AS_SET",
+    "multimodal_action": "PRESERVE_AS_SET_NO_SCALAR_PEAK",
+    "missing_flat_boundary_action": "INVALID",
+    "binary_pass_fail_decision": "FORBIDDEN"
+  },
+  "fixture_findings": {
+    "clear_consistent_point": {
+      "field_intervals": [[1.0, 1.0], [1.0, 1.0], [1.0, 1.0], [1.0, 1.0]],
+      "identification_state": "POINT_IDENTIFIED_FIELD_VECTOR",
+      "direction_state": "UNANIMOUS_MEANINGFUL_POSITIVE"
+    },
+    "adjacent_practical_near_tie": {
+      "field_intervals": [[1.0, 2.0], [1.0, 2.0], [1.0, 2.0], [1.0, 2.0]],
+      "identification_state": "SET_IDENTIFIED_FIELD_VECTOR",
+      "interpretation": "NEAR_TIE_RETAINED_WITHOUT_EARLIEST_ARGMAX_OR_TERMINAL_INVALID"
+    },
+    "staggered_field_vector": {
+      "field_intervals": [[-1.0, -1.0], [0.0, 0.0], [1.0, 1.0], [2.0, 2.0]],
+      "field_balanced_interval_hull": [0.5, 0.5],
+      "direction_state": "MIXED_OR_PARTIALLY_IDENTIFIED_NO_BINARY_DECISION",
+      "interpretation": "SCALAR_AVERAGE_MASKS_DIRECTIONALLY_MIXED_FIELD_STRUCTURE"
+    },
+    "noncontiguous_interior_multimodal": {
+      "field_intervals": [[0.0, 2.0], [0.0, 2.0], [0.0, 2.0], [0.0, 2.0]],
+      "identification_state": "SET_IDENTIFIED_MULTIMODAL_FIELD_VECTOR",
+      "interpretation": "MULTIMODALITY_RETAINED_WITHOUT_EARLIEST_TIE_BREAK"
+    },
+    "boundary_censored": {"state": "INVALID", "reason": "BOUNDARY_EQUIVALENT_PEAK_SET"},
+    "missing_registered_time": {"state": "INVALID", "reason": "MISSING_REGISTERED_TIME"},
+    "practically_flat": {"state": "INVALID", "reason": "PRACTICALLY_FLAT_CURVE"}
+  },
+  "scientific_interpretation": {
+    "main_result": "THE_DEFINITION_CAN_PRESERVE_NEAR_TIES_MULTIMODALITY_AND_FIELD_HETEROGENEITY_WITHOUT_FORCED_SCALARIZATION",
+    "gate_proportionality": "NO_ADMISSIBILITY_GATE_OR_PERFORMANCE_THRESHOLD_WAS_CREATED_FIXTURE_PASS_MEANS_IMPLEMENTATION_CONFORMANCE_ONLY",
+    "important_limit": "ANALYTIC_FIXTURES_CANNOT_VALIDATE_THE_MARGIN_OR_STOCHASTIC_OPERATING_CHARACTERISTICS"
+  },
+  "next_gate": {
+    "status": "PENDING_SEPARATE_PRECOMMIT_BEFORE_ANY_STOCHASTIC_OR_OPENED_PANEL_RUN",
+    "required_objects": [
+      "ENTRY_AND_PERSISTENCE_MARGIN_SCALE_AUDIT_INDEPENDENT_OF_OPENED_RESULTS",
+      "POSTERIOR_PRACTICAL_PEAK_SET_WITH_SIMULTANEOUS_UNCERTAINTY",
+      "DEPENDENCE_AND_OVERDISPERSION_MODEL_OR_EXPLICIT_UNRESOLVED_BOUNDARY",
+      "DISJOINT_NONBLIND_DEVELOPMENT_GENERATOR_NOT_CALIBRATED_TO_OPENED_METRICS",
+      "FRESH_HELD_OUT_BLIND_GENERATOR_ONLY_AFTER_STOCHASTIC_CANDIDATE_FREEZE"
+    ],
+    "development_generator_axes": [
+      "PROBABILITY_SCALE_AND_DENOMINATOR_SUPPORT",
+      "PEAK_CONTRAST_RELATIVE_TO_THE_PROVISIONAL_MARGIN",
+      "CONTIGUOUS_AND_MULTIMODAL_PEAK_SET_GEOMETRY",
+      "CONCORDANT_MIXED_AND_PARTIALLY_OBSERVED_FIELD_VECTORS"
+    ],
+    "opened_challenge_reuse": "FORBIDDEN_FOR_PARAMETER_SELECTION_OR_BLIND_CONFIRMATION",
+    "fresh_blind_authorized": false
+  },
+  "disposition": {
+    "definition_conformance": "PASS",
+    "margin_validated_for_peak_location": false,
+    "stochastic_candidate_implemented": false,
+    "candidate_admissibility": "NOT_EVALUATED",
+    "candidate_selected": "NO",
+    "estimator_selected": "NO",
+    "support_rule_selected": "NO",
+    "fresh_blind_authorized": false
+  },
+  "access_accounting": {
+    "opened_challenge_panel_rows_read": 0,
+    "opened_challenge_private_label_rows_read": 0,
+    "source_or_empirical_rows_read": 0,
+    "current_g1_rows_read": 0,
+    "model_selection_rows_read": 0,
+    "holdout_or_private_g4_rows_read": 0,
+    "models_fitted_to_empirical_data": 0
+  },
+  "authorization": {
+    "opened_challenge_replay": "FORBIDDEN_NOT_RUN",
+    "stochastic_candidate_implementation": "PENDING_SEPARATE_PRECOMMIT",
+    "fresh_blind_generation": "FORBIDDEN_NOT_RUN",
+    "empirical_row_access": "FORBIDDEN_NOT_RUN",
+    "confirmatory_execution": "FORBIDDEN_NOT_RUN",
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "claim_boundary": "This result establishes only that one set-valued peak and field-vector definition matches seven closed analytic fixture oracles. It does not validate the practical margin, implement or validate a stochastic estimator, establish admissibility or superiority, select an estimator or support rule, authorize a fresh blind or empirical access, or establish H3, feedback, causality, prediction, NABM necessity, or a scientific effect."
+}
