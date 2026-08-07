@@ -147,6 +147,12 @@ PIVOT_PERSISTENCE_EXIT_PROTOTYPE_REPOSITORY_ONLY_PATHS = {
     "scripts/prototype_pivot_persistence_exit_v1.py",
     "tests/test_pivot_persistence_exit_prototype_v1.py",
 }
+PIVOT_ADAPTIVE_BASELINE_LADDER_REPOSITORY_ONLY_PATHS = {
+    "docs/research/pivot-adaptive-baseline-ladder-v1.md",
+    "experiments/configs/pivot_adaptive_baseline_ladder_v1.yaml",
+    "scripts/prototype_pivot_adaptive_baseline_ladder_v1.py",
+    "tests/test_pivot_adaptive_baseline_ladder_v1.py",
+}
 PIVOT_GATE_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_feedback_g0_measurement_freeze_v0.yaml",
     "experiments/configs/pivot_feedback_g_minus_1_readiness_v0.yaml",
@@ -1205,6 +1211,7 @@ FORBIDDEN_SDIST_PATHS = {
     *PIVOT_NABM_BRIDGE_REPOSITORY_ONLY_PATHS,
     *PIVOT_DELAYED_FEEDBACK_PROTOTYPE_REPOSITORY_ONLY_PATHS,
     *PIVOT_PERSISTENCE_EXIT_PROTOTYPE_REPOSITORY_ONLY_PATHS,
+    *PIVOT_ADAPTIVE_BASELINE_LADDER_REPOSITORY_ONLY_PATHS,
     *PIVOT_GATE_REPOSITORY_ONLY_PATHS,
     *CONTENT_FREEZE_REPOSITORY_ONLY_PATHS,
     *MAIN_TEMPORAL_VALIDITY_REPOSITORY_ONLY_PATHS,

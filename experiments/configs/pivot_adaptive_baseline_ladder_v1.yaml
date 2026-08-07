@@ -1,0 +1,194 @@
+schema_version: pivot_adaptive_baseline_ladder.v1
+label: pivot_adaptive_baseline_ladder_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+
+purpose:
+  primary_goal: TEST_WHETHER_THE_PIVOT_FLAGSHIP_SURFACE_REQUIRES_NEURAL_LEARNING
+  question: >-
+    Can a one-state explicit nonneural delta rule reproduce the entry,
+    persistence, exit, and visibility-response patterns produced by the
+    neural logistic policy under exactly the same synthetic environment?
+  evidence_role: FAIR_SYNTHETIC_MODEL_LADDER_NOT_EMPIRICAL_SELECTION
+
+source_bindings:
+  - path: scripts/prototype_pivot_persistence_exit_v1.py
+    sha256: e8c604ac33f34cc58496723c2adff8e4d30c05182ee40cad114d961be3b17991
+    role: COMMON_PERSISTENCE_ENVIRONMENT_AND_STATE_ADAPTER
+  - path: experiments/configs/pivot_persistence_exit_prototype_v1.yaml
+    sha256: d986ffb2efbc23555980616c531d1a8255e841c3ee0d418eb9277343e3c7f409
+    role: COMMON_TRANSITION_AND_VISIBILITY_CONTRACT
+  - path: experiments/evidence/results/pivot_persistence_exit_prototype_v1_20260807.summary.json
+    sha256: 400a5b8bacbec3f0ead16c8969f2988b5d49cc20392e16867f82b1d4ee12b482
+    role: REGISTERED_FLAGSHIP_BEHAVIOR_SURFACE
+  - path: examples/research_pivot_learning_study.py
+    sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+    role: FIXED_AND_NEURAL_POLICY_PREDECESSOR
+  - path: src/neural_abm/api.py
+    sha256: 83005b43023d29640d96a8929aaab5e5c552542c7c9d797c288e5820a7061898
+    role: UNCHANGED_GENERIC_TORCH_API
+  - path: src/neural_abm/unit_core.py
+    sha256: d399a6fc29f1b2efd3a648f48c79d7f8cab927e704974223ffabf861333ff4da
+    role: UNCHANGED_GENERIC_LIFECYCLE_CORE
+
+common_environment:
+  scenario: hot_field_hype
+  state_model: persistence_exit_v1
+  population_network_randomness: IDENTICAL_BY_REPLICATE
+  entry_rule: EXACT_PERSISTENCE_PREDECESSOR
+  visibility_queue: EXACT_PERSISTENCE_PREDECESSOR
+  continuation_and_exit_rule: EXACT_PERSISTENCE_PREDECESSOR
+  social_readiness_channel: IDENTICAL
+  local_noise: IDENTICAL_BY_AGENT_STEP
+
+model_ladder:
+  - id: fixed_rule
+    family: FIXED_RULE_ABM
+    evidence_mode: none
+    adaptive_state_count: 0
+    gradient_based: false
+  - id: delta_imitative
+    family: EXPLICIT_NONNEURAL_ADAPTIVE_ABM
+    evidence_mode: all_neighbor_outcomes
+    adaptive_state_count: 1
+    gradient_based: false
+  - id: delta_cautionary
+    family: EXPLICIT_NONNEURAL_ADAPTIVE_ABM
+    evidence_mode: failed_neighbor_outcomes_only
+    adaptive_state_count: 1
+    gradient_based: false
+  - id: neural_imitative
+    family: NEURAL_LOGISTIC_ADAPTIVE_ABM
+    evidence_mode: all_neighbor_outcomes
+    adaptive_state_count: 10
+    gradient_based: true
+  - id: neural_cautionary
+    family: NEURAL_LOGISTIC_ADAPTIVE_ABM
+    evidence_mode: failed_neighbor_outcomes_only
+    adaptive_state_count: 10
+    gradient_based: true
+
+delta_rule:
+  initial_belief: EXACT_FROZEN_LOGISTIC_POLICY_OUTPUT_PER_AGENT
+  update_batch: PUBLIC_NEIGHBOR_EVENTS_AVAILABLE_IN_THE_CURRENT_STEP
+  excludes_self_outcome: true
+  evidence_target:
+    imitative: MEAN_ZERO_ONE_PRODUCTIVITY_LABEL_IN_BATCH
+    cautionary: ZERO_AFTER_FILTERING_TO_FAILED_EVENTS
+  equation: >-
+    b_next = clip(b + eta * (target - b) + anchor * (b0 - b),
+    0, 1)
+  eta: 0.5
+  prior_anchor: 0.25
+  no_evidence_update: NONE
+  feature_specific_weights: false
+  backpropagation: false
+
+visibility_regimes:
+  - id: immediate
+    success_delay_steps: 0
+    failure_delay_steps: 0
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+  - id: failure_lag_2
+    success_delay_steps: 0
+    failure_delay_steps: 2
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+  - id: failure_lag_4
+    success_delay_steps: 0
+    failure_delay_steps: 4
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+  - id: selective_failure_lag_4
+    success_delay_steps: 0
+    failure_delay_steps: 4
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 0.5
+
+profiles:
+  smoke:
+    agent_count: 24
+    steps: 12
+    burn_in_steps: 2
+    replicates: 2
+    base_seed: 20260807
+  development:
+    agent_count: 80
+    steps: 18
+    burn_in_steps: 2
+    replicates: 16
+    base_seed: 20260807
+
+inherited_learning_parameters:
+  neighbor_count: 4
+  within_stage_probability: 0.6
+  learning_rate: 1.5
+  prior_anchor: 0.25
+  local_alpha: 0.45
+  local_noise_scale: 0.02
+  social_alpha: 0.40
+  peer_similarity_threshold: 0.68
+  pivot_threshold: 0.34
+  productive_threshold: 0.40
+
+common_target_vector:
+  final:
+    - cumulative_entry_rate
+    - active_rate
+    - active_productive_rate
+    - active_failed_rate
+    - exited_failed_rate
+    - productive_share_of_active
+  trajectories:
+    - cumulative_entry_rate_trajectory
+    - active_productive_rate_trajectory
+    - active_failed_rate_trajectory
+    - exited_failed_rate_trajectory
+  comparisons:
+    - EACH_ADAPTIVE_MODEL_MINUS_FIXED_WITHIN_REGIME_AND_REPLICATE
+    - DELTA_MINUS_NEURAL_WITHIN_EVIDENCE_MODE_REGIME_AND_REPLICATE
+    - EACH_DELAY_MINUS_IMMEDIATE_WITHIN_MODEL_AND_REPLICATE
+  distance_reports:
+    - MEAN_ABSOLUTE_FINAL_VECTOR_DISTANCE_DELTA_TO_NEURAL
+    - TRAJECTORY_ROOT_MEAN_SQUARED_DISTANCE_DELTA_TO_NEURAL
+  decision_thresholds: NONE_DESCRIPTIVE_ONLY
+  model_selection: FORBIDDEN
+
+registered_result_space:
+  - DELTA_RULE_REPRODUCES_NEURAL_PHASE_DIRECTIONS
+  - DELTA_RULE_MATCHES_FINAL_STOCK_BUT_NOT_FLOWS
+  - DELTA_RULE_AND_NEURAL_RULE_DIVERGE_BY_VISIBILITY
+  - CAUTIONARY_TRADEOFF_DOES_NOT_REQUIRE_NEURAL_WEIGHTS
+  - FEATURE_SPECIFIC_NEURAL_POLICY_ADDS_DISTINCT_BEHAVIOR
+  - FIXED_RULE_REMAINS_SUFFICIENT_FOR_THE_REGISTERED_SURFACE
+  - NO_MODEL_FAMILY_IS_CLOSE_ACROSS_ALL_TARGETS
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+    - docs/research/pivot-adaptive-baseline-ladder-v1.md
+    - docs/package-release-boundary.md
+    - experiments/configs/pivot_adaptive_baseline_ladder_v1.yaml
+    - scripts/prototype_pivot_adaptive_baseline_ladder_v1.py
+    - scripts/inspect_release_artifacts.py
+    - tests/test_pivot_adaptive_baseline_ladder_v1.py
+    - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+
+outputs:
+  - replicates.jsonl
+  - model_scorecard.json
+  - model_scorecard.md
+  - receipt.json
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  empirical_fit: NOT_RUN
+  predictive_validation: NOT_RUN
+  model_selected: "NO"
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED

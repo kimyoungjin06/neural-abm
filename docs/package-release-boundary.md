@@ -152,6 +152,13 @@ exited states. Persistence and exit are domain meanings rather than generic
 unit semantics. Its precommit, runner, tests, and evidence cannot enter the
 package without a later API and public-case promotion decision.
 
+The fixed-versus-delta-versus-neural adaptive baseline ladder remains on the
+same repository-only surface. Its explicit scalar delta rule and common-target
+scorecard test case-level neural necessity without changing package policy
+classes or selecting a model. The contract, runner, tests, and evidence are
+excluded until empirical or held-out predictive validation justifies a
+separate public-case decision.
+
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy
 reference auditor live at
