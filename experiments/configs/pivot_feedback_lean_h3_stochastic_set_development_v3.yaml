@@ -1,0 +1,178 @@
+schema_version: pivot_feedback_lean_h3_stochastic_set_development.v3
+label: pivot_feedback_lean_h3_stochastic_set_development_v3
+mode: PUBLIC_NONBLIND_DISJOINT_SYNTHETIC_DEVELOPMENT_NO_OPENED_CHALLENGE
+status: PRECOMMIT_REQUIRED_NO_GENERATION_NO_RESULT_NO_SELECTION
+
+predecessor:
+  summary_relative_path: experiments/evidence/results/pivot_feedback_lean_h3_set_identified_prospectus_v2_20260807.summary.json
+  summary_sha256: 1f01f1744b82c0a3786a3185ce2b63b929b4c1d095855f179cee3acc30cbe6ca
+  disposition: ANALYTIC_DEFINITION_CONFORMANCE_ONLY_NO_STOCHASTIC_CANDIDATE
+
+scientific_object:
+  question: >-
+    Can a scale-invariant posterior practical-peak set recover set-valued field
+    timing geometry under finite counts without using the opened challenge?
+  primary_estimand: FOUR_FIELD_VECTOR_OF_MEAN_EPISODE_PRACTICAL_PEAK_GAP_INTERVALS
+  secondary_summary: FIELD_BALANCED_INTERVAL_HULL_REPORTED_WITH_VECTOR
+  event_time_grid: [-2, -1, 0, 1, 2]
+  claim_role: NONBLIND_SYNTHETIC_STOCHASTIC_DEVELOPMENT_ONLY
+
+scale_audit:
+  selection_criterion: POSITIVE_AFFINE_RATE_TRANSFORMATION_INVARIANCE
+  criterion_fixed_without_opened_metrics: true
+  rejected_rule:
+    name: absolute_probability_peak_membership_margin
+    margin: 0.01
+    reason: PEAK_SET_CHANGES_UNDER_POSITIVE_AFFINE_RESCALE
+  retained_rule:
+    name: normalized_prominence_regret
+    formula: (DRAW_MAX_PROBABILITY_MINUS_DRAW_TIME_PROBABILITY)/DRAW_PROMINENCE
+    inclusive_regret_margin: 0.10
+    reason: DIMENSIONLESS_AND_POSITIVE_AFFINE_INVARIANT
+    policy_status: PROSPECTIVE_DESIGN_CHOICE_NOT_LITERATURE_MANDATED
+  retained_absolute_rule:
+    role: PRACTICALLY_FLAT_CURVE_FLOOR_ONLY
+    inclusive_probability_prominence_floor: 0.01
+    source: OUTCOME_BLIND_G0_V4_ONE_PERCENTAGE_POINT_PRACTICAL_NULL_ANCHOR
+    transfer_status: PROVISIONAL_NOT_EMPIRICALLY_VALIDATED_FOR_PEAK_LOCATION
+  analytic_fixture:
+    base_curve: [0.01, 0.02, 0.10, 0.095, 0.01]
+    affine_scale: 4.0
+    affine_shift: 0.0
+    expected_absolute_rule_invariant: false
+    expected_normalized_rule_invariant: true
+
+stochastic_candidate:
+  name: jeffreys_normalized_regret_field_vector_v3
+  within_episode_working_likelihood:
+    model: INDEPENDENT_JEFFREYS_BINOMIAL_BY_REGISTERED_TIME
+    prior_alpha: 0.5
+    prior_beta: 0.5
+    role: SYNTHETIC_DEVELOPMENT_WORKING_LIKELIHOOD_ONLY
+  posterior_peak_set:
+    joint_probability_draws_across_five_registered_times: true
+    normalized_regret_margin: 0.10
+    minimum_time_inclusion_probability: 0.90
+    practically_flat_prominence_floor: 0.01
+    minimum_flat_posterior_probability_for_invalid: 0.90
+    empty_peak_set_action: INVALID_UNRESOLVED_POSTERIOR_PEAK_SET
+    boundary_including_peak_set_action: INVALID_CENSORED_BY_EVENT_WINDOW
+    missing_registered_denominator_action: INVALID
+    contiguous_interior_set_action: SET_IDENTIFIED
+    noncontiguous_interior_set_action: SET_IDENTIFIED_MULTIMODAL
+    earliest_argmax_tie_break: FORBIDDEN
+  field_aggregation:
+    field_count: 4
+    episodes_per_field: 8
+    minimum_valid_episodes_per_field: 4
+    preserve_field_vector: true
+    field_interval: MEAN_OF_VALID_EPISODE_GAP_LOWERS_AND_UPPERS
+    field_balanced_interval_hull: SECONDARY_MEAN_OF_FOUR_FIELD_BOUNDS
+    binary_pass_fail_decision: FORBIDDEN
+  descriptive_direction_state:
+    meaningful_positive_floor_cohort_years: 1.0
+    unanimous_meaningful_positive: EVERY_FIELD_LOWER_AT_LEAST_FLOOR
+    unanimous_nonpositive: EVERY_FIELD_UPPER_AT_MOST_ZERO
+    otherwise: MIXED_OR_PARTIALLY_IDENTIFIED_NO_BINARY_DECISION
+
+dependence_boundary:
+  between_episode: FIELD_VECTOR_PRESERVED_NO_CROSS_FIELD_POOLING
+  generator_overdispersion_axis: BETA_BINOMIAL_EPISODE_TIME_PROBABILITY_PERTURBATION
+  estimator_overdispersion_model: NOT_IMPLEMENTED_WORKING_BINOMIAL_ONLY
+  repeated_author_dependence: UNRESOLVED_REQUIRES_EMPIRICAL_CLUSTER_IDENTITY_SCALE_AUDIT
+  empirical_validity_claim: FORBIDDEN
+  fresh_blind_promotion_if_material_miscalibration: FORBIDDEN
+
+public_development_generator:
+  relation_to_opened_challenge: >-
+    NEW_PUBLIC_TEMPLATE_GRID_NO_IMPORTED_SCENARIO_PARAMETERS_NO_OPENED_METRIC
+    CALIBRATION_NO_PRIVATE_LABELS_NO_BLIND_ROLE
+  deterministic_seed: 202608073
+  field_count: 4
+  episodes_per_field: 8
+  curve_templates:
+    e_m1_low: [0.005, 0.055, 0.015, 0.010, 0.005]
+    e_0_low: [0.005, 0.015, 0.055, 0.015, 0.005]
+    e_1_low: [0.005, 0.010, 0.015, 0.055, 0.005]
+    e_0_high: [0.10, 0.20, 0.60, 0.20, 0.10]
+    e_tie_01: [0.005, 0.015, 0.055, 0.055, 0.005]
+    e_regret_05: [0.005, 0.015, 0.055, 0.0525, 0.005]
+    e_regret_10: [0.005, 0.015, 0.055, 0.050, 0.005]
+    e_regret_20: [0.005, 0.015, 0.055, 0.045, 0.005]
+    e_multimodal: [0.005, 0.055, 0.010, 0.0525, 0.005]
+    e_flat: [0.050, 0.052, 0.055, 0.051, 0.050]
+    e_boundary: [0.005, 0.010, 0.015, 0.025, 0.055]
+    p_m1_low: [0.10, 0.45, 0.15, 0.10, 0.08]
+    p_m1_high: [0.25, 0.85, 0.40, 0.30, 0.25]
+    p_0_low: [0.10, 0.15, 0.45, 0.12, 0.08]
+  scenarios:
+    - {scenario_id: scale_low_entry_low_persistence, group: scale, field_pairs: [[e_0_low, p_m1_low], [e_0_low, p_m1_low], [e_0_low, p_m1_low], [e_0_low, p_m1_low]], opportunities: 2000}
+    - {scenario_id: scale_low_entry_high_persistence, group: scale, field_pairs: [[e_0_low, p_m1_high], [e_0_low, p_m1_high], [e_0_low, p_m1_high], [e_0_low, p_m1_high]], opportunities: 2000}
+    - {scenario_id: scale_high_entry_low_persistence, group: scale, field_pairs: [[e_0_high, p_m1_low], [e_0_high, p_m1_low], [e_0_high, p_m1_low], [e_0_high, p_m1_low]], opportunities: 2000}
+    - {scenario_id: scale_high_support, group: scale, field_pairs: [[e_0_low, p_m1_low], [e_0_low, p_m1_low], [e_0_low, p_m1_low], [e_0_low, p_m1_low]], opportunities: 20000}
+    - {scenario_id: contrast_exact_tie, group: contrast, field_pairs: [[e_tie_01, p_m1_low], [e_tie_01, p_m1_low], [e_tie_01, p_m1_low], [e_tie_01, p_m1_low]], opportunities: 10000}
+    - {scenario_id: contrast_regret_05, group: contrast, field_pairs: [[e_regret_05, p_m1_low], [e_regret_05, p_m1_low], [e_regret_05, p_m1_low], [e_regret_05, p_m1_low]], opportunities: 10000}
+    - {scenario_id: contrast_regret_10, group: contrast, field_pairs: [[e_regret_10, p_m1_low], [e_regret_10, p_m1_low], [e_regret_10, p_m1_low], [e_regret_10, p_m1_low]], opportunities: 10000}
+    - {scenario_id: contrast_regret_20, group: contrast, field_pairs: [[e_regret_20, p_m1_low], [e_regret_20, p_m1_low], [e_regret_20, p_m1_low], [e_regret_20, p_m1_low]], opportunities: 10000}
+    - {scenario_id: geometry_all_positive, group: geometry, field_pairs: [[e_0_low, p_m1_low], [e_0_low, p_m1_low], [e_0_low, p_m1_low], [e_0_low, p_m1_low]], opportunities: 10000}
+    - {scenario_id: geometry_mixed_field_vector, group: geometry, field_pairs: [[e_m1_low, p_0_low], [e_0_low, p_0_low], [e_0_low, p_m1_low], [e_1_low, p_m1_low]], opportunities: 10000}
+    - {scenario_id: geometry_multimodal, group: geometry, field_pairs: [[e_multimodal, p_m1_low], [e_multimodal, p_m1_low], [e_multimodal, p_m1_low], [e_multimodal, p_m1_low]], opportunities: 10000}
+    - {scenario_id: geometry_adjacent_set, group: geometry, field_pairs: [[e_tie_01, p_m1_low], [e_tie_01, p_m1_low], [e_tie_01, p_m1_low], [e_tie_01, p_m1_low]], opportunities: 20000}
+    - {scenario_id: structural_flat, group: structural, field_pairs: [[e_flat, p_m1_low], [e_flat, p_m1_low], [e_flat, p_m1_low], [e_flat, p_m1_low]], opportunities: 20000}
+    - {scenario_id: structural_boundary, group: structural, field_pairs: [[e_boundary, p_m1_low], [e_boundary, p_m1_low], [e_boundary, p_m1_low], [e_boundary, p_m1_low]], opportunities: 20000}
+    - {scenario_id: structural_missing, group: structural, field_pairs: [[e_0_low, p_m1_low], [e_0_low, p_m1_low], [e_0_low, p_m1_low], [e_0_low, p_m1_low]], opportunities: 20000, missing_time_index: 2}
+    - {scenario_id: structural_overdispersed, group: structural, field_pairs: [[e_0_low, p_m1_low], [e_0_low, p_m1_low], [e_0_low, p_m1_low], [e_0_low, p_m1_low]], opportunities: 10000, beta_concentration: 30.0}
+  profiles:
+    smoke: {replicates_per_scenario: 2, posterior_draws: 99}
+    development: {replicates_per_scenario: 16, posterior_draws: 399}
+
+development_reporting:
+  role: DESCRIPTIVE_OPERATING_CHARACTERISTICS_NO_ADMISSIBILITY
+  metrics:
+    - truth_valid_estimator_valid_rate
+    - truth_invalid_estimator_invalid_rate
+    - field_vector_interval_containment_among_jointly_valid
+    - identification_state_match_among_jointly_valid
+    - direction_state_match_among_jointly_valid
+    - invalid_reason_counts
+  thresholds: NONE
+  estimator_selection: FORBIDDEN
+  support_rule_selection: FORBIDDEN
+  fresh_blind_promotion: FORBIDDEN_PENDING_RESULT_REVIEW_AND_SEPARATE_PRECOMMIT
+
+precommit_order:
+  - COMMIT_CONFIG_GENERATOR_ESTIMATOR_EVALUATOR_VERIFIER_AND_TESTS
+  - GENERATE_PUBLIC_DETERMINISTIC_NONBLIND_PANELS_AND_TRUTH
+  - ESTIMATE_FROM_PANEL_ROWS_WITHOUT_TRUTH_READ
+  - WRITE_ESTIMATION_RECEIPT
+  - EVALUATE_DESCRIPTIVELY_WITH_TRUTH
+  - INDEPENDENTLY_REPLAY_BINDINGS_AND_METRICS
+
+authorization:
+  public_nonblind_generation: AUTHORIZED_AFTER_PRECOMMIT
+  public_nonblind_estimation: AUTHORIZED_AFTER_GENERATION_RECEIPT
+  descriptive_evaluation: AUTHORIZED_AFTER_ESTIMATION_RECEIPT
+  opened_challenge_panel_read: FORBIDDEN
+  opened_challenge_private_label_read: FORBIDDEN
+  source_or_empirical_row_read: FORBIDDEN
+  current_g1_row_read: FORBIDDEN
+  model_selection_row_read: FORBIDDEN
+  holdout_or_private_g4_read: FORBIDDEN
+  empirical_parameter_calibration: FORBIDDEN
+  repeated_author_model_claim: FORBIDDEN
+  confirmatory_execution: FORBIDDEN
+  candidate_admissibility: NOT_EVALUATED
+  candidate_selected: "NO"
+  estimator_selected: "NO"
+  support_rule_selected: "NO"
+  fresh_blind_authorized: false
+  scientific_effect: NOT_ESTABLISHED
+
+claim_boundary: >-
+  This public nonblind synthetic development contract evaluates one frozen
+  working-likelihood implementation on a new template grid selected by analytic
+  axes rather than opened challenge metrics. It does not validate empirical
+  dependence, establish estimator admissibility or superiority, select an
+  estimator or support rule, authorize a fresh blind or empirical access, or
+  establish H3, feedback, causality, prediction, NABM necessity, or a
+  scientific effect.

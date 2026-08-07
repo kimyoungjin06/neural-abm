@@ -256,6 +256,37 @@ uncertainty, an explicit dependence boundary, and a disjoint nonblind
 development generator. A fresh held-out blind remains forbidden until that
 candidate is frozen.
 
+### Stochastic set-development precommit v3
+
+The public nonblind stochastic contract is frozen in
+[`pivot_feedback_lean_h3_stochastic_set_development_v3.yaml`](../../experiments/configs/pivot_feedback_lean_h3_stochastic_set_development_v3.yaml).
+It imports no opened scenario parameter and uses no opened metric for rule
+selection. Sixteen public scenarios cross probability scale and support,
+near-tie contrast, peak geometry, field-vector geometry, structural invalidity,
+and one beta-binomial overdispersion stress.
+
+The scale audit fixes a mathematical criterion before generation: peak-set
+membership must be invariant to positive affine transformation of a rate
+curve. A fixed absolute `0.01` membership margin fails that criterion. The v3
+candidate therefore uses normalized posterior regret
+`(draw max - draw rate) / (draw max - draw min)` with an inclusive `0.10`
+design margin. The outcome-blind absolute `0.01` anchor remains only as a
+practically-flat prominence floor. Neither value is literature-mandated or
+empirically validated for peak location.
+
+Within an episode, joint Jeffreys-binomial draws across the five registered
+times produce inclusion probabilities for the practical peak set. Near ties
+and interior multimodality remain sets; missing denominators, posterior
+flatness, empty posterior sets, and boundary sets fail closed. Four field
+intervals remain primary and no binary pass/fail decision is produced.
+
+The working likelihood still assumes binomial counts within each episode-time.
+The public generator can stress beta-binomial probability perturbation, but the
+estimator does not claim to model repeated-author dependence or empirical
+overdispersion. Those remain an explicit empirical-scale boundary. This
+development run is descriptive with no performance thresholds, candidate
+selection, or fresh-blind authorization.
+
 ## What the completed route established
 
 The completed route established a reproducible measurement and partition
