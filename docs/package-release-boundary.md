@@ -159,6 +159,14 @@ classes or selecting a model. The contract, runner, tests, and evidence are
 excluded until empirical or held-out predictive validation justifies a
 separate public-case decision.
 
+The matched-marginal policy discriminator is repository-only as well. It holds
+synthetic success prevalence fixed while reversing conditional feature-outcome
+structure and compares scalar, explicit linear, classical nonlinear, and
+residual-neural policies on disjoint synthetic cohorts. Its contract, runner,
+tests, and evidence remain outside the package; a result can distinguish policy
+capacity only on the frozen generator and cannot select an empirical model or
+change the generic API.
+
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy
 reference auditor live at

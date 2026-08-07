@@ -1818,6 +1818,23 @@ def test_release_inspector_rejects_adaptive_baseline_ladder_paths() -> None:
     assert forbidden == sorted(repository_paths)
 
 
+def test_release_inspector_rejects_matched_marginal_discriminator_paths() -> None:
+    inspector = runpy.run_path(str(INSPECT_SCRIPT))
+    repository_paths = {
+        "docs/research/pivot-matched-marginal-discriminator-v1.md",
+        "experiments/configs/pivot_matched_marginal_discriminator_v1.yaml",
+        "scripts/prototype_pivot_matched_marginal_discriminator_v1.py",
+        "tests/test_pivot_matched_marginal_discriminator_v1.py",
+    }
+    assert repository_paths == inspector[
+        "PIVOT_MATCHED_MARGINAL_DISCRIMINATOR_REPOSITORY_ONLY_PATHS"
+    ]
+
+    forbidden = inspector["_forbidden_sdist_files"]({"README.md", *repository_paths})
+
+    assert forbidden == sorted(repository_paths)
+
+
 def test_release_inspector_rejects_g0_measurement_precommitment_paths() -> None:
     inspector = runpy.run_path(str(INSPECT_SCRIPT))
     repository_paths = {

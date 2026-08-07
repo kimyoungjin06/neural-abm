@@ -1,0 +1,196 @@
+schema_version: pivot_matched_marginal_discriminator.v1
+label: pivot_matched_marginal_discriminator_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+
+purpose:
+  primary_goal: >-
+    DISTINGUISH_SCALAR_ADAPTATION_FROM_CONDITIONAL_FEATURE_LEARNING_AND
+    NONLINEAR_NEURAL_REPRESENTATION
+  question: >-
+    When paired Pivot evidence worlds have exactly the same features, event
+    count, and success fraction but reverse the feature-outcome association,
+    which policy families transport that conditional structure to a disjoint
+    cohort?
+  evidence_role: >-
+    SYNTHETIC_POLICY_LAYER_DISCRIMINATOR_NOT_EMPIRICAL_OR_FULL_ABM_SELECTION
+
+source_bindings:
+  - path: examples/research_pivot_study.py
+    sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+    role: PIVOT_FEATURE_POPULATION_GENERATOR
+  - path: examples/research_pivot_learning_study.py
+    sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+    role: FROZEN_NINE_FEATURE_LOGISTIC_POLICY
+  - path: experiments/configs/pivot_adaptive_baseline_ladder_v1.yaml
+    sha256: 413a4bc1d8ecdb69be3b4c8adb7138f83527e134deeb97249914048557468758
+    role: SCALAR_DELTA_PREDECESSOR_CONTRACT
+  - path: experiments/evidence/results/pivot_adaptive_baseline_ladder_v1_20260807.summary.json
+    sha256: 304ec1946577fd571698cec4e964f9ef5385b150b8270566fa9282894433172d
+    role: OPENED_PREDECESSOR_RESULT_REQUIRING_DISJOINT_SUCCESSOR
+
+cohorts:
+  scenario: hot_field_hype
+  features: EXACT_RESEARCH_PIVOT_LEARNING_FEATURE_ORDER
+  training:
+    role: PUBLIC_SYNTHETIC_EVIDENCE
+    agent_count: 256
+    base_seed: 20260808
+  evaluation:
+    role: DISJOINT_SYNTHETIC_PREDICTIVE_TARGET
+    agent_count: 256
+    base_seed: 20260809
+  replicate_count: 16
+  cohort_overlap: FORBIDDEN_BY_DISTINCT_BASE_SEED_NAMESPACE
+  feature_rows_identical_across_worlds_within_role_and_replicate: true
+  empirical_rows_read: 0
+
+matched_marginal_worlds:
+  success_fraction: 0.5
+  assignment: >-
+    ALIGNED_WORLD_TOP_EXACT_HALF_BY_FROZEN_SCORE_WITH_AGENT_ID_ASCENDING_TIEBREAK;
+    REVERSED_WORLD_EXACT_COMPLEMENT
+  pairs:
+    - pair_id: linear_orientation
+      purpose: DISTINGUISH_SCALAR_FROM_FEATURE_CONDITIONAL_LEARNING
+      worlds:
+        - id: linear_support_aligned
+          score: >-
+            0.20*field_opportunity + 0.45*resource_security +
+            0.35*network_support - 0.45*skill_distance -
+            0.25*reputation_risk + 0.15*openness
+          orientation: 1.0
+        - id: linear_support_reversed
+          score: EXACT_NEGATIVE_OF_LINEAR_SUPPORT_ALIGNED_SCORE
+          orientation: -1.0
+    - pair_id: interaction_orientation
+      purpose: DISTINGUISH_LINEAR_FROM_NONLINEAR_REPRESENTATION
+      worlds:
+        - id: interaction_aligned
+          score: >-
+            (resource_security-0.5)*(network_support-0.5) -
+            (skill_distance-0.5)*(openness-0.5)
+          orientation: 1.0
+        - id: interaction_reversed
+          score: EXACT_NEGATIVE_OF_INTERACTION_ALIGNED_SCORE
+          orientation: -1.0
+
+model_ladder:
+  - id: fixed_rule
+    family: FIXED_LOGISTIC_POLICY
+    adaptive_state: NONE
+  - id: scalar_delta
+    family: EXPLICIT_NONNEURAL_SCALAR_ADAPTATION
+    adaptive_state: ONE_GLOBAL_LOGIT_OFFSET
+    epochs: 80
+    eta: 0.5
+    prior_anchor: 0.25
+  - id: explicit_linear_logit
+    family: EXPLICIT_NONNEURAL_FEATURE_CONDITIONAL_LINEAR_POLICY
+    adaptive_state: NINE_WEIGHT_DELTAS_PLUS_BIAS
+    epochs: 300
+    learning_rate: 0.1
+    prior_anchor: 0.01
+    backpropagation: false
+  - id: histogram_tree
+    family: CLASSICAL_NONNEURAL_NONLINEAR_POLICY
+    implementation: SKLEARN_HIST_GRADIENT_BOOSTING_CLASSIFIER
+    max_iter: 100
+    learning_rate: 0.05
+    max_depth: 3
+    min_samples_leaf: 20
+    l2_regularization: 0.1
+  - id: residual_mlp
+    family: NEURAL_NONLINEAR_RESIDUAL_POLICY
+    architecture: FROZEN_LOGIT_PLUS_LINEAR_DELTA_PLUS_9_16_1_TANH_RESIDUAL
+    initialization: EXACT_FROZEN_LOGISTIC_OUTPUT_BEFORE_LABEL_TRAINING
+    hidden_width: 16
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.001
+    optimizer: ADAM
+
+primary_targets:
+  predictive:
+    - brier_score
+    - log_loss
+    - roc_auc
+    - conditional_separation
+  paired:
+    - paired_brier_improvement
+    - orientation_prediction_distance
+    - replicate_sign_count
+
+decision_contract:
+  scalar_invariance_check:
+    required: true
+    condition: >-
+      SCALAR_DELTA_PREDICTIONS_MUST_BE_BYTE_IDENTICAL_ACROSS_ORIENTATIONS
+      WITHIN_EACH_PAIR_ROLE_AND_REPLICATE
+    failure_action: INVALID_IMPLEMENTATION_STOP
+  feature_conditional_need:
+    comparison: EXPLICIT_LINEAR_LOGIT_BRIER_IMPROVEMENT_OVER_SCALAR_DELTA
+    worlds: [linear_support_aligned, linear_support_reversed]
+    brier_improvement_at_least: 0.02
+    improved_replicates_at_least: 12
+    required_in_each_world: true
+  nonlinear_representation_need:
+    comparison: RESIDUAL_MLP_BRIER_IMPROVEMENT_OVER_EXPLICIT_LINEAR_LOGIT
+    worlds: [interaction_aligned, interaction_reversed]
+    brier_improvement_at_least: 0.01
+    improved_replicates_at_least: 12
+    required_in_each_world: true
+  neural_specific_advantage:
+    comparison: RESIDUAL_MLP_BRIER_IMPROVEMENT_OVER_HISTOGRAM_TREE
+    worlds: [interaction_aligned, interaction_reversed]
+    brier_improvement_at_least: 0.005
+    improved_replicates_at_least: 12
+    required_in_each_world: true
+    maximum_linear_world_brier_regression: 0.01
+    linear_world_reference: EXPLICIT_LINEAR_LOGIT
+  interpretation:
+    - SCALAR_FAIL_AND_LINEAR_PASS_SUPPORTS_FEATURE_CONDITIONAL_NEED_ONLY
+    - MLP_BEATS_LINEAR_BUT_NOT_TREE_SUPPORTS_NONLINEARITY_NOT_NEURAL_NECESSITY
+    - MLP_BEATS_LINEAR_AND_TREE_SUPPORTS_NEURAL_ADVANTAGE_ON_THIS_GENERATOR_ONLY
+    - NO_SYNTHETIC_RESULT_SELECTS_AN_EMPIRICAL_OR_GENERIC_NABM_MODEL
+
+profiles:
+  smoke:
+    replicate_count: 2
+    training_agent_count: 64
+    evaluation_agent_count: 64
+  development:
+    replicate_count: 16
+    training_agent_count: 256
+    evaluation_agent_count: 256
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+    - docs/research/pivot-matched-marginal-discriminator-v1.md
+    - docs/package-release-boundary.md
+    - experiments/configs/pivot_matched_marginal_discriminator_v1.yaml
+    - scripts/prototype_pivot_matched_marginal_discriminator_v1.py
+    - scripts/inspect_release_artifacts.py
+    - tests/test_pivot_matched_marginal_discriminator_v1.py
+    - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+
+outputs:
+  - replicate_metrics.jsonl
+  - policy_scorecard.json
+  - policy_scorecard.md
+  - receipt.json
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  full_agent_dynamics_run: false
+  empirical_rows_read: 0
+  empirical_fit: NOT_RUN
+  empirical_predictive_validation: NOT_RUN
+  synthetic_policy_selected: "NO_UNTIL_FROZEN_EXECUTION"
+  empirical_model_selected: "NO"
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED
