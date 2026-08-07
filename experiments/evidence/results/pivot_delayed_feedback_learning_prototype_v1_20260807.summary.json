@@ -1,0 +1,267 @@
+{
+  "schema_version": "pivot_delayed_feedback_learning_result.v1",
+  "label": "pivot_delayed_feedback_learning_prototype_v1_20260807",
+  "status": "DESCRIPTIVE_SYNTHETIC_RESULT_REPRODUCED",
+  "precommit": {
+    "commit_sha": "3fc30cd5094e7fdcd0d59515bbf995d6ff6edede",
+    "contract_path": "experiments/configs/pivot_delayed_feedback_learning_prototype_v1.yaml",
+    "contract_sha256": "e58e3840cd6afff87bde5715ee5d36be0f60ff60063eabe87d3818ec5af3c511"
+  },
+  "execution": {
+    "profile": "development",
+    "scenario": "hot_field_hype",
+    "agent_count": 80,
+    "steps": 14,
+    "replicates": 16,
+    "visibility_regimes": 5,
+    "learning_arms": 3,
+    "raw_row_count": 240,
+    "first_run": {
+      "output_dir": "/ssd/pivot_delayed_feedback_learning_v1_3fc30cd_development",
+      "receipt_sha256": "74de74f9beecd8a891c593768da74afa95c034955d8e3fb32bf1660a3b7b1e55"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_delayed_feedback_learning_v1_3fc30cd_reproduction",
+      "receipt_sha256": "74de74f9beecd8a891c593768da74afa95c034955d8e3fb32bf1660a3b7b1e55",
+      "all_four_artifacts_byte_identical": true
+    },
+    "artifact_sha256": {
+      "replicates.jsonl": "8dd145723f69d51f41fcbb7512ac89840ecccecceb0ff85ed8f15b8a173000dd",
+      "phase_map.json": "b1b62458eb53c6f8d44507b488cdfe42fc7378a0cf1ea4c22cca8e799e9042ce",
+      "phase_map.md": "31660b425b80000275bab61030ba782aefca6556feeda431bf9c71e3076f0642",
+      "receipt.json": "74de74f9beecd8a891c593768da74afa95c034955d8e3fb32bf1660a3b7b1e55"
+    }
+  },
+  "validation": {
+    "receipt_status": "COMPLETE",
+    "artifact_hash_issues": [],
+    "cell_count": 15,
+    "replicates_per_cell": 16,
+    "immediate_regime_exactly_nests_predecessor": true,
+    "frozen_arm_identical_across_visibility_regimes": true,
+    "generic_nabm_api_hash_bindings_held": true
+  },
+  "cell_means": [
+    {
+      "regime": "immediate",
+      "arm": "frozen",
+      "pivot_rate": 0.78984375,
+      "productive_pivot_rate": 0.23515625,
+      "failed_pivot_rate": 0.5546875,
+      "productive_share_of_pivots": 0.29961
+    },
+    {
+      "regime": "immediate",
+      "arm": "imitative",
+      "pivot_rate": 0.79453125,
+      "productive_pivot_rate": 0.2515625,
+      "failed_pivot_rate": 0.54296875,
+      "productive_share_of_pivots": 0.31607823
+    },
+    {
+      "regime": "immediate",
+      "arm": "cautionary",
+      "pivot_rate": 0.61015625,
+      "productive_pivot_rate": 0.18671875,
+      "failed_pivot_rate": 0.4234375,
+      "productive_share_of_pivots": 0.30978662
+    },
+    {
+      "regime": "symmetric_lag_2",
+      "arm": "frozen",
+      "pivot_rate": 0.78984375,
+      "productive_pivot_rate": 0.23515625,
+      "failed_pivot_rate": 0.5546875,
+      "productive_share_of_pivots": 0.29961
+    },
+    {
+      "regime": "symmetric_lag_2",
+      "arm": "imitative",
+      "pivot_rate": 0.85546875,
+      "productive_pivot_rate": 0.2640625,
+      "failed_pivot_rate": 0.59140625,
+      "productive_share_of_pivots": 0.30902592
+    },
+    {
+      "regime": "symmetric_lag_2",
+      "arm": "cautionary",
+      "pivot_rate": 0.70078125,
+      "productive_pivot_rate": 0.20859375,
+      "failed_pivot_rate": 0.4921875,
+      "productive_share_of_pivots": 0.2993475
+    },
+    {
+      "regime": "failure_lag_2",
+      "arm": "frozen",
+      "pivot_rate": 0.78984375,
+      "productive_pivot_rate": 0.23515625,
+      "failed_pivot_rate": 0.5546875,
+      "productive_share_of_pivots": 0.29961
+    },
+    {
+      "regime": "failure_lag_2",
+      "arm": "imitative",
+      "pivot_rate": 0.93359375,
+      "productive_pivot_rate": 0.2734375,
+      "failed_pivot_rate": 0.66015625,
+      "productive_share_of_pivots": 0.2927477
+    },
+    {
+      "regime": "failure_lag_2",
+      "arm": "cautionary",
+      "pivot_rate": 0.70078125,
+      "productive_pivot_rate": 0.20859375,
+      "failed_pivot_rate": 0.4921875,
+      "productive_share_of_pivots": 0.2993475
+    },
+    {
+      "regime": "failure_lag_4",
+      "arm": "frozen",
+      "pivot_rate": 0.78984375,
+      "productive_pivot_rate": 0.23515625,
+      "failed_pivot_rate": 0.5546875,
+      "productive_share_of_pivots": 0.29961
+    },
+    {
+      "regime": "failure_lag_4",
+      "arm": "imitative",
+      "pivot_rate": 0.96015625,
+      "productive_pivot_rate": 0.27578125,
+      "failed_pivot_rate": 0.684375,
+      "productive_share_of_pivots": 0.2872855
+    },
+    {
+      "regime": "failure_lag_4",
+      "arm": "cautionary",
+      "pivot_rate": 0.74609375,
+      "productive_pivot_rate": 0.221875,
+      "failed_pivot_rate": 0.52421875,
+      "productive_share_of_pivots": 0.299317
+    },
+    {
+      "regime": "selective_failure_lag_4",
+      "arm": "frozen",
+      "pivot_rate": 0.78984375,
+      "productive_pivot_rate": 0.23515625,
+      "failed_pivot_rate": 0.5546875,
+      "productive_share_of_pivots": 0.29961
+    },
+    {
+      "regime": "selective_failure_lag_4",
+      "arm": "imitative",
+      "pivot_rate": 0.9609375,
+      "productive_pivot_rate": 0.27578125,
+      "failed_pivot_rate": 0.68515625,
+      "productive_share_of_pivots": 0.28707782
+    },
+    {
+      "regime": "selective_failure_lag_4",
+      "arm": "cautionary",
+      "pivot_rate": 0.75625,
+      "productive_pivot_rate": 0.225,
+      "failed_pivot_rate": 0.53125,
+      "productive_share_of_pivots": 0.29951971
+    }
+  ],
+  "registered_contrasts": {
+    "imitative_delay_minus_immediate": [
+      {
+        "regime": "symmetric_lag_2",
+        "pivot_rate": 0.0609375,
+        "failed_pivot_rate": 0.0484375,
+        "productive_pivot_rate": 0.0125,
+        "pivot_rate_positive_replicates": 15
+      },
+      {
+        "regime": "failure_lag_2",
+        "pivot_rate": 0.1390625,
+        "failed_pivot_rate": 0.1171875,
+        "productive_pivot_rate": 0.021875,
+        "pivot_rate_positive_replicates": 16
+      },
+      {
+        "regime": "failure_lag_4",
+        "pivot_rate": 0.165625,
+        "failed_pivot_rate": 0.14140625,
+        "productive_pivot_rate": 0.02421875,
+        "pivot_rate_positive_replicates": 16
+      },
+      {
+        "regime": "selective_failure_lag_4",
+        "pivot_rate": 0.16640625,
+        "failed_pivot_rate": 0.1421875,
+        "productive_pivot_rate": 0.02421875,
+        "pivot_rate_positive_replicates": 16
+      }
+    ],
+    "cautionary_learning_minus_frozen": [
+      {
+        "regime": "immediate",
+        "pivot_rate": -0.1796875,
+        "failed_pivot_rate": -0.13125,
+        "productive_pivot_rate": -0.0484375
+      },
+      {
+        "regime": "failure_lag_2",
+        "pivot_rate": -0.0890625,
+        "failed_pivot_rate": -0.0625,
+        "productive_pivot_rate": -0.0265625
+      },
+      {
+        "regime": "failure_lag_4",
+        "pivot_rate": -0.04375,
+        "failed_pivot_rate": -0.03046875,
+        "productive_pivot_rate": -0.01328125
+      },
+      {
+        "regime": "selective_failure_lag_4",
+        "pivot_rate": -0.03359375,
+        "failed_pivot_rate": -0.0234375,
+        "productive_pivot_rate": -0.01015625
+      }
+    ]
+  },
+  "mechanism_readout": {
+    "first_transition_step_mean_private_events": 48.5,
+    "failure_lag_4_imitative_attention_weight": {
+      "initial": 1.0,
+      "pre_failure_release_step_7": 1.144,
+      "final": 0.767
+    },
+    "selective_failure_lag_4_imitative_attention_weight_final": 0.841,
+    "interpretation": [
+      "Immediate mixed outcome evidence leaves imitative entry near the frozen arm and modestly improves mean pivot composition in this synthetic setup.",
+      "When success remains immediate but failure is delayed, early positive evidence raises the learned attention weight before the first failure batch arrives; entry and failure then overshoot in every paired replicate.",
+      "When both outcome types are delayed by two steps, overshoot remains but is smaller because there is no early success-only learning window.",
+      "The four-step delay lets absorbing pivots approach saturation before corrective failure evidence arrives, so later policy correction cannot reverse committed entries.",
+      "Halving failure visibility materially changes the final learned weight but barely changes the imitative final outcome rates after four-step delay, exposing latent-policy divergence hidden by an absorbing endpoint.",
+      "Cautionary learning reduces failures and productive pivots together; its corrective magnitude weakens monotonically as failure information is delayed or suppressed."
+    ]
+  },
+  "registered_result_disposition": {
+    "DELAY_AMPLIFIES_IMITATIVE_LOCK_IN": "OBSERVED_IN_SYNTHETIC_PHASE_MAP",
+    "DELAY_REDUCES_IMITATIVE_ENTRY": "NOT_OBSERVED",
+    "CAUTIONARY_CORRECTION_WITH_PRODUCTIVE_EXPLORATION_COST": "OBSERVED_IN_SYNTHETIC_PHASE_MAP",
+    "SYMMETRIC_DELAY_DIFFERS_FROM_ASYMMETRIC_DELAY": "OBSERVED_IN_SYNTHETIC_PHASE_MAP",
+    "SELECTIVE_FAILURE_VISIBILITY_DIFFERS_FROM_DELAY_ALONE": "OBSERVED_IN_POLICY_STATE_MORE_THAN_FINAL_OUTCOME",
+    "OBSERVATIONAL_EQUIVALENCE_ACROSS_VISIBILITY_MECHANISMS": "APPROXIMATE_FOR_SATURATED_FINAL_OUTCOMES_NOT_POLICY_STATE",
+    "NO_NONTRIVIAL_PHASE_BEHAVIOR": "NOT_OBSERVED"
+  },
+  "framework_assessment": {
+    "domain_owned_queue_worked_without_generic_api_change": true,
+    "generic_extraction_decision": "DEFER_NO_SECOND_MODEL_FAMILY_YET",
+    "current_case_limitation": "ABSORBING_ONE_TIME_PIVOT_HIDES_LATE_POLICY_DIVERGENCE",
+    "next_case_model_target": "NONABSORBING_PERSISTENCE_EXIT_OR_REDIRECTION_STATE_MACHINE",
+    "reason": "The queue generated an informative phase map, but the strongest new diagnostic is that late correction cannot affect an already absorbed endpoint. The next improvement should expose persistence and correction rather than generalize the queue prematurely."
+  },
+  "boundaries": {
+    "evidence_type": "SYNTHETIC_DESCRIPTIVE_MODEL_BEHAVIOR",
+    "empirical_rows_read": 0,
+    "empirical_fit": "NOT_RUN",
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "package_promotion": "NOT_AUTHORIZED"
+  }
+}
