@@ -1,0 +1,304 @@
+schema_version: pivot_matched_marginal_discriminator.v3
+label: pivot_matched_marginal_discriminator_v3
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+
+purpose:
+  primary_goal: >-
+    ISOLATE_NONLINEAR_REPRESENTATION_AND_TEST_NEURAL_VERSUS_CLASSICAL_NONLINEAR_POLICY_ACROSS_BOUNDARY_GEOMETRY
+  question: >-
+    With the optimizer matched between linear and neural policies, tuned
+    classical and neural nonlinear baselines, and both smooth and axis-aligned
+    interaction worlds, which policy family should the Pivot ABM carry forward?
+  evidence_role: >-
+    SYNTHETIC_POLICY_LAYER_DISCRIMINATOR_NOT_EMPIRICAL_OR_FULL_ABM_SELECTION
+  result_informed_successor: true
+  informed_by: >-
+    V2_POST_HOC_CHECK_SHOWED_OPTIMIZER_CONFOUNDED_LINEAR_BASELINE_AND_A_NEURAL_EDGE_OVER_THE_TREE_THAT_WAS_NOT_INTERACTION_SPECIFIC
+
+source_bindings:
+  - path: examples/research_pivot_study.py
+    sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+    role: PIVOT_FEATURE_POPULATION_GENERATOR
+  - path: examples/research_pivot_learning_study.py
+    sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+    role: FROZEN_NINE_FEATURE_LOGISTIC_POLICY
+  - path: scripts/prototype_pivot_delayed_feedback_learning_v1.py
+    sha256: 9555b0968293ec89620ff461e7c449fee098a7eb8809be2b936812b521358515
+    role: PRECOMMIT_VERIFICATION_AND_EXCLUSIVE_WRITE_HELPERS
+  - path: scripts/prototype_pivot_matched_marginal_discriminator_v2.py
+    sha256: 19dc841ebcbaa0f97d5f7fef89b96b13bf92c2953877e52dfc5b5f888e40b520
+    role: IMPORTED_COHORT_LABEL_SCALAR_TREE_MLP_AND_METRIC_HELPERS
+  - path: experiments/configs/pivot_matched_marginal_discriminator_v2.yaml
+    sha256: 407a074d381168c3336ad3082da8322ed51897bd4b9b2c186316f11d4db2dccd
+    role: OPENED_PREDECESSOR_CONTRACT
+  - path: experiments/evidence/results/pivot_matched_marginal_discriminator_v2_20260928.summary.json
+    sha256: 3fc7cf17cac4785f0a4cabae68ccbbc89a5cdf3a687124da0d21bc9c281eae62
+    role: OPENED_PREDECESSOR_RESULT_MOTIVATING_THIS_SUCCESSOR
+
+cohorts:
+  scenario: hot_field_hype
+  features: EXACT_RESEARCH_PIVOT_LEARNING_FEATURE_ORDER
+  training:
+    role: PUBLIC_SYNTHETIC_EVIDENCE
+    agent_count: 256
+    base_seed: 20261001
+  evaluation:
+    role: DISJOINT_SYNTHETIC_PREDICTIVE_TARGET
+    agent_count: 256
+    base_seed: 20261002
+  replicate_count: 16
+  cohort_overlap: FORBIDDEN_BY_DISTINCT_BASE_SEED_NAMESPACE
+  forbidden_base_seeds: [20260808, 20260809]
+  forbidden_base_seed_reason: OPENED_V2_SEED_NAMESPACES
+  feature_rows_identical_across_worlds_within_role_and_replicate: true
+  empirical_rows_read: 0
+
+matched_marginal_worlds:
+  success_fraction: 0.5
+  assignment: >-
+    ALIGNED_WORLD_TOP_EXACT_HALF_BY_FROZEN_SCORE_WITH_AGENT_ID_ASCENDING_TIEBREAK;
+    REVERSED_WORLD_EXACT_COMPLEMENT
+  centered_features: FEATURE_MINUS_0.5
+  corner_function: >-
+    CORNER(X,Y) = SIGN(X)*SIGN(Y)*MIN(ABS(X),ABS(Y))
+  pairs:
+    - pair_id: linear_orientation
+      purpose: NONLINEARITY_FREE_REFERENCE_FOR_DIFFERENCE_IN_DIFFERENCES
+      worlds:
+        - id: linear_support_aligned
+          score: >-
+            0.20*field_opportunity + 0.45*resource_security +
+            0.35*network_support - 0.45*skill_distance -
+            0.25*reputation_risk + 0.15*openness
+          orientation: 1.0
+        - id: linear_support_reversed
+          score: EXACT_COMPLEMENT_OF_LINEAR_SUPPORT_ALIGNED_LABELS
+          orientation: -1.0
+    - pair_id: smooth_interaction_orientation
+      purpose: SMOOTH_CURVED_INTERACTION_BOUNDARY
+      worlds:
+        - id: smooth_interaction_aligned
+          score: >-
+            (resource_security-0.5)*(network_support-0.5) -
+            (skill_distance-0.5)*(openness-0.5)
+          orientation: 1.0
+        - id: smooth_interaction_reversed
+          score: EXACT_COMPLEMENT_OF_SMOOTH_INTERACTION_ALIGNED_LABELS
+          orientation: -1.0
+    - pair_id: axis_interaction_orientation
+      purpose: AXIS_ALIGNED_INTERACTION_BOUNDARY_MATCHING_TREE_INDUCTIVE_BIAS
+      worlds:
+        - id: axis_interaction_aligned
+          score: >-
+            MAX(CORNER(resource_security-0.5, network_support-0.5),
+            -CORNER(skill_distance-0.5, openness-0.5))
+          boundary: UNION_OF_AXIS_ALIGNED_BOXES
+          orientation: 1.0
+        - id: axis_interaction_reversed
+          score: EXACT_COMPLEMENT_OF_AXIS_INTERACTION_ALIGNED_LABELS
+          orientation: -1.0
+
+model_ladder:
+  - id: fixed_rule
+    family: FIXED_LOGISTIC_POLICY
+    adaptive_state: NONE
+    tuned: false
+  - id: scalar_delta
+    family: EXPLICIT_NONNEURAL_SCALAR_ADAPTATION
+    adaptive_state: ONE_GLOBAL_LOGIT_OFFSET
+    evidence_reduction: TRAINING_SUCCESS_COUNT_ONLY
+    epochs: 80
+    eta: 0.5
+    prior_anchor: 0.25
+    tuned: false
+  - id: matched_linear
+    family: FEATURE_CONDITIONAL_LINEAR_POLICY_WITH_NEURAL_OPTIMIZER
+    architecture: FROZEN_LOGIT_PLUS_LINEAR_DELTA
+    identical_to_residual_mlp_except: NO_TANH_HIDDEN_BRANCH
+    initialization: EXACT_FROZEN_LOGISTIC_OUTPUT_BEFORE_LABEL_TRAINING
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    tuned: true
+    candidates:
+      - weight_decay: 0.0001
+      - weight_decay: 0.001
+      - weight_decay: 0.01
+  - id: histogram_tree
+    family: CLASSICAL_NONNEURAL_NONLINEAR_POLICY
+    implementation: SKLEARN_HIST_GRADIENT_BOOSTING_CLASSIFIER
+    l2_regularization: 0.1
+    tuned: true
+    candidates:
+      - {max_iter: 100, learning_rate: 0.05, max_depth: 2, min_samples_leaf: 5}
+      - {max_iter: 100, learning_rate: 0.05, max_depth: 2, min_samples_leaf: 20}
+      - {max_iter: 100, learning_rate: 0.05, max_depth: 3, min_samples_leaf: 5}
+      - {max_iter: 100, learning_rate: 0.05, max_depth: 3, min_samples_leaf: 20}
+      - {max_iter: 100, learning_rate: 0.05, max_depth: 5, min_samples_leaf: 5}
+      - {max_iter: 100, learning_rate: 0.05, max_depth: 5, min_samples_leaf: 20}
+      - {max_iter: 300, learning_rate: 0.1, max_depth: 2, min_samples_leaf: 5}
+      - {max_iter: 300, learning_rate: 0.1, max_depth: 2, min_samples_leaf: 20}
+      - {max_iter: 300, learning_rate: 0.1, max_depth: 3, min_samples_leaf: 5}
+      - {max_iter: 300, learning_rate: 0.1, max_depth: 3, min_samples_leaf: 20}
+      - {max_iter: 300, learning_rate: 0.1, max_depth: 5, min_samples_leaf: 5}
+      - {max_iter: 300, learning_rate: 0.1, max_depth: 5, min_samples_leaf: 20}
+  - id: residual_mlp
+    family: NEURAL_NONLINEAR_RESIDUAL_POLICY
+    architecture: FROZEN_LOGIT_PLUS_LINEAR_DELTA_PLUS_9_16_1_TANH_RESIDUAL
+    initialization: EXACT_FROZEN_LOGISTIC_OUTPUT_BEFORE_LABEL_TRAINING
+    hidden_width: 16
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    tuned: true
+    candidates:
+      - weight_decay: 0.0001
+      - weight_decay: 0.001
+      - weight_decay: 0.01
+
+hyperparameter_selection:
+  data: TRAINING_COHORT_ONLY
+  inner_folds: 4
+  fold_assignment: >-
+    WITHIN_EACH_LABEL_AGENT_ID_ASCENDING_ROUND_ROBIN;
+    IDENTICAL_ACROSS_ORIENTATIONS_BECAUSE_LABELS_ARE_COMPLEMENTS
+  criterion: MEAN_VALIDATION_BRIER_ACROSS_INNER_FOLDS
+  tie_break: FIRST_CANDIDATE_IN_REGISTERED_ORDER
+  refit: FULL_TRAINING_COHORT_WITH_SELECTED_CANDIDATE
+  seed_components: >-
+    TRAINING_BASE_SEED, REPLICATE, WORLD_COMPONENT, MODEL_COMPONENT,
+    FOLD_COMPONENT (0 FOR REFIT, FOLD+1 FOR INNER FITS); SHARED BY ALL
+    CANDIDATES WITHIN A FIT
+  evaluation_cohort_used_for_selection: false
+
+primary_targets:
+  predictive:
+    - brier_score
+    - log_loss
+    - roc_auc
+    - conditional_separation
+  paired:
+    - paired_brier_improvement
+    - difference_in_differences_against_linear_world
+    - orientation_prediction_distance
+    - replicate_sign_count
+    - selected_candidate_frequency
+
+decision_contract:
+  improvement_rule: >-
+    MEAN_PAIRED_BRIER_IMPROVEMENT_AT_LEAST_THRESHOLD_AND_STRICTLY_POSITIVE_IN_AT_LEAST_REQUIRED_REPLICATES
+  difference_in_differences_rule: >-
+    INTERACTION_WORLD_GAP_MINUS_LINEAR_WORLD_GAP_SAME_ORIENTATION_AND_REPLICATE
+  scalar_invariance_check:
+    required: true
+    condition: >-
+      SCALAR_DELTA_PREDICTIONS_MUST_BE_BYTE_IDENTICAL_ACROSS_ORIENTATIONS
+      WITHIN_EACH_PAIR_ROLE_AND_REPLICATE
+    failure_action: INVALID_IMPLEMENTATION_STOP
+  feature_conditional_need:
+    comparison: MATCHED_LINEAR_BRIER_IMPROVEMENT_OVER_SCALAR_DELTA
+    statistic: RAW_PAIRED_GAP
+    worlds: [linear_support_aligned, linear_support_reversed]
+    brier_improvement_at_least: 0.02
+    improved_replicates_at_least: 12
+    required_in_each_world: true
+  nonlinear_representation_need:
+    comparison: RESIDUAL_MLP_BRIER_IMPROVEMENT_OVER_MATCHED_LINEAR
+    statistic: DIFFERENCE_IN_DIFFERENCES_AGAINST_LINEAR_WORLD
+    worlds:
+      - smooth_interaction_aligned
+      - smooth_interaction_reversed
+      - axis_interaction_aligned
+      - axis_interaction_reversed
+    brier_improvement_at_least: 0.01
+    improved_replicates_at_least: 12
+    geometry_passes_when: BOTH_ORIENTATIONS_PASS
+    dispositions:
+      - SUPPORTED_BOTH_GEOMETRIES
+      - SUPPORTED_SMOOTH_ONLY
+      - SUPPORTED_AXIS_ONLY
+      - NOT_SUPPORTED
+  nonlinear_family_dominance:
+    comparison: RESIDUAL_MLP_VERSUS_HISTOGRAM_TREE_BRIER
+    statistic: RAW_PAIRED_GAP_IN_EACH_DIRECTION
+    worlds:
+      - smooth_interaction_aligned
+      - smooth_interaction_reversed
+      - axis_interaction_aligned
+      - axis_interaction_reversed
+    brier_improvement_at_least: 0.005
+    improved_replicates_at_least: 12
+    dispositions:
+      - MLP_DOMINATES_ALL_FOUR_WORLDS
+      - TREE_DOMINATES_ALL_FOUR_WORLDS
+      - GENERATOR_DEPENDENT_OR_TIED
+  neural_interaction_specificity:
+    comparison: RESIDUAL_MLP_BRIER_IMPROVEMENT_OVER_HISTOGRAM_TREE
+    statistic: DIFFERENCE_IN_DIFFERENCES_AGAINST_LINEAR_WORLD
+    worlds: [smooth_interaction_aligned, smooth_interaction_reversed]
+    brier_improvement_at_least: 0.005
+    improved_replicates_at_least: 12
+    required_in_each_world: true
+  neural_specific_advantage:
+    requires:
+      - MLP_DOMINATES_ALL_FOUR_WORLDS
+      - NEURAL_INTERACTION_SPECIFICITY_PASS
+  abm_routing:
+    evaluated_in_order:
+      - condition: FEATURE_CONDITIONAL_NEED_NOT_SUPPORTED
+        route: SCALAR_ADAPTATION_POLICY
+      - condition: NONLINEAR_REPRESENTATION_NEED_NOT_SUPPORTED
+        route: LINEAR_CONDITIONAL_POLICY
+      - condition: NEURAL_SPECIFIC_ADVANTAGE_SUPPORTED
+        route: NEURAL_NONLINEAR_PRIMARY_WITH_CLASSICAL_COMPARATOR
+      - condition: TREE_DOMINATES_ALL_FOUR_WORLDS
+        route: CLASSICAL_NONLINEAR_POLICY_NEURAL_RETIRED_FROM_POLICY_LAYER
+      - condition: OTHERWISE
+        route: PAIRED_CLASSICAL_AND_NEURAL_NONLINEAR_ARMS
+    abm_integration_requires_separate_precommit: true
+  interpretation:
+    - DID_REMOVES_GAPS_ALSO_PRESENT_WHERE_NO_INTERACTION_EXISTS
+    - FAMILY_DOMINANCE_REQUIRES_WINNING_ON_BOTH_BOUNDARY_GEOMETRIES
+    - NO_SYNTHETIC_RESULT_SELECTS_AN_EMPIRICAL_OR_GENERIC_NABM_MODEL
+
+profiles:
+  smoke:
+    replicate_count: 2
+    training_agent_count: 64
+    evaluation_agent_count: 64
+  development:
+    replicate_count: 16
+    training_agent_count: 256
+    evaluation_agent_count: 256
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+    - docs/research/pivot-matched-marginal-discriminator-v3.md
+    - docs/package-release-boundary.md
+    - experiments/configs/pivot_matched_marginal_discriminator_v3.yaml
+    - scripts/prototype_pivot_matched_marginal_discriminator_v3.py
+    - scripts/inspect_release_artifacts.py
+    - tests/test_pivot_matched_marginal_discriminator_v3.py
+    - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+
+outputs:
+  - replicate_metrics.jsonl
+  - policy_scorecard.json
+  - policy_scorecard.md
+  - receipt.json
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  full_agent_dynamics_run: false
+  empirical_rows_read: 0
+  empirical_fit: NOT_RUN
+  empirical_predictive_validation: NOT_RUN
+  synthetic_policy_selected: "NO_UNTIL_FROZEN_EXECUTION"
+  empirical_model_selected: "NO"
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED

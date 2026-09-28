@@ -168,6 +168,8 @@ capacity only on the frozen generator and cannot select an empirical model or
 change the generic API.
 Its v2 successor, which corrects only the scalar learner's reduction after the
 v1 run stopped at its invariance check, has the same repository-only boundary.
+The result-informed v3 successor, with a matched linear baseline, tuned
+baselines, and an axis-aligned control, has the same boundary.
 
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy
