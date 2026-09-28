@@ -1,0 +1,513 @@
+{
+  "schema_version": "pivot_matched_marginal_result.v2",
+  "label": "pivot_matched_marginal_discriminator_v2_20260928",
+  "status": "SYNTHETIC_POLICY_LAYER_DISCRIMINATOR_REPRODUCED",
+  "precommit": {
+    "commit_sha": "4c5920c30e69e493c2eceb4bb90dc6a6b0bd45a7",
+    "contract_path": "experiments/configs/pivot_matched_marginal_discriminator_v2.yaml",
+    "contract_sha256": "407a074d381168c3336ad3082da8322ed51897bd4b9b2c186316f11d4db2dccd",
+    "predecessor_stop": "experiments/evidence/results/pivot_matched_marginal_discriminator_v1_20260928.summary.json"
+  },
+  "execution": {
+    "profile": "development",
+    "scenario": "hot_field_hype",
+    "replicates": 16,
+    "training_agent_count": 256,
+    "evaluation_agent_count": 256,
+    "world_count": 4,
+    "model_count": 5,
+    "raw_row_count": 320,
+    "first_run": {
+      "output_dir": "/ssd/pivot_matched_marginal_discriminator_v2_4c5920c_development",
+      "receipt_sha256": "bbfe5b31ec15f06e4b79761ea970c92200e5337fe8d63c0d9165befe1534963b"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_matched_marginal_discriminator_v2_4c5920c_reproduction",
+      "receipt_sha256": "bbfe5b31ec15f06e4b79761ea970c92200e5337fe8d63c0d9165befe1534963b",
+      "all_four_artifacts_byte_identical": true
+    },
+    "artifact_sha256": {
+      "replicate_metrics.jsonl": "de6e8918957388e1c853046fc8df1b88acde5c0b8b377350e5b9c2eb535e2f19",
+      "policy_scorecard.json": "f8ba20af6764625731b25f086aa7cf4fa414afac85f498755f0e2029cffb38ef",
+      "policy_scorecard.md": "8787615acde0ea41874ddadd8e74745382270d641baa3bb0e3b2cfa2ffbede8a",
+      "receipt.json": "bbfe5b31ec15f06e4b79761ea970c92200e5337fe8d63c0d9165befe1534963b"
+    }
+  },
+  "validation": {
+    "receipt_status": "COMPLETE",
+    "source_bindings_verified": 6,
+    "scalar_orientation_invariance": "PASS_EXACT",
+    "fixed_and_scalar_orientation_distance_zero": true,
+    "exact_half_success_fraction_all_rows": true
+  },
+  "cell_means": [
+    {
+      "world_id": "linear_support_aligned",
+      "model_id": "fixed_rule",
+      "brier_score": 0.261567,
+      "log_loss": 0.720088,
+      "roc_auc": 0.599464,
+      "conditional_separation": 0.031931
+    },
+    {
+      "world_id": "linear_support_aligned",
+      "model_id": "scalar_delta",
+      "brier_score": 0.251034,
+      "log_loss": 0.696653,
+      "roc_auc": 0.599464,
+      "conditional_separation": 0.033009
+    },
+    {
+      "world_id": "linear_support_aligned",
+      "model_id": "explicit_linear_logit",
+      "brier_score": 0.144934,
+      "log_loss": 0.471436,
+      "roc_auc": 0.977505,
+      "conditional_separation": 0.26295
+    },
+    {
+      "world_id": "linear_support_aligned",
+      "model_id": "histogram_tree",
+      "brier_score": 0.071767,
+      "log_loss": 0.233396,
+      "roc_auc": 0.972651,
+      "conditional_separation": 0.683288
+    },
+    {
+      "world_id": "linear_support_aligned",
+      "model_id": "residual_mlp",
+      "brier_score": 0.023885,
+      "log_loss": 0.079825,
+      "roc_auc": 0.999146,
+      "conditional_separation": 0.887578
+    },
+    {
+      "world_id": "linear_support_reversed",
+      "model_id": "fixed_rule",
+      "brier_score": 0.293498,
+      "log_loss": 0.78953,
+      "roc_auc": 0.400536,
+      "conditional_separation": -0.031931
+    },
+    {
+      "world_id": "linear_support_reversed",
+      "model_id": "scalar_delta",
+      "brier_score": 0.284043,
+      "log_loss": 0.766095,
+      "roc_auc": 0.400536,
+      "conditional_separation": -0.033009
+    },
+    {
+      "world_id": "linear_support_reversed",
+      "model_id": "explicit_linear_logit",
+      "brier_score": 0.18067,
+      "log_loss": 0.545572,
+      "roc_auc": 0.849525,
+      "conditional_separation": 0.188528
+    },
+    {
+      "world_id": "linear_support_reversed",
+      "model_id": "histogram_tree",
+      "brier_score": 0.071767,
+      "log_loss": 0.233396,
+      "roc_auc": 0.972651,
+      "conditional_separation": 0.683288
+    },
+    {
+      "world_id": "linear_support_reversed",
+      "model_id": "residual_mlp",
+      "brier_score": 0.024135,
+      "log_loss": 0.080595,
+      "roc_auc": 0.999157,
+      "conditional_separation": 0.886553
+    },
+    {
+      "world_id": "interaction_aligned",
+      "model_id": "fixed_rule",
+      "brier_score": 0.260472,
+      "log_loss": 0.71773,
+      "roc_auc": 0.611538,
+      "conditional_separation": 0.03412
+    },
+    {
+      "world_id": "interaction_aligned",
+      "model_id": "scalar_delta",
+      "brier_score": 0.249858,
+      "log_loss": 0.694295,
+      "roc_auc": 0.611538,
+      "conditional_separation": 0.035362
+    },
+    {
+      "world_id": "interaction_aligned",
+      "model_id": "explicit_linear_logit",
+      "brier_score": 0.236274,
+      "log_loss": 0.665659,
+      "roc_auc": 0.642979,
+      "conditional_separation": 0.049439
+    },
+    {
+      "world_id": "interaction_aligned",
+      "model_id": "histogram_tree",
+      "brier_score": 0.118556,
+      "log_loss": 0.381196,
+      "roc_auc": 0.917606,
+      "conditional_separation": 0.468154
+    },
+    {
+      "world_id": "interaction_aligned",
+      "model_id": "residual_mlp",
+      "brier_score": 0.09887,
+      "log_loss": 0.32278,
+      "roc_auc": 0.940792,
+      "conditional_separation": 0.567856
+    },
+    {
+      "world_id": "interaction_reversed",
+      "model_id": "fixed_rule",
+      "brier_score": 0.294592,
+      "log_loss": 0.791889,
+      "roc_auc": 0.388462,
+      "conditional_separation": -0.03412
+    },
+    {
+      "world_id": "interaction_reversed",
+      "model_id": "scalar_delta",
+      "brier_score": 0.28522,
+      "log_loss": 0.768454,
+      "roc_auc": 0.388462,
+      "conditional_separation": -0.035362
+    },
+    {
+      "world_id": "interaction_reversed",
+      "model_id": "explicit_linear_logit",
+      "brier_score": 0.255945,
+      "log_loss": 0.70538,
+      "roc_auc": 0.491318,
+      "conditional_separation": -0.002935
+    },
+    {
+      "world_id": "interaction_reversed",
+      "model_id": "histogram_tree",
+      "brier_score": 0.118556,
+      "log_loss": 0.381196,
+      "roc_auc": 0.917606,
+      "conditional_separation": 0.468154
+    },
+    {
+      "world_id": "interaction_reversed",
+      "model_id": "residual_mlp",
+      "brier_score": 0.093663,
+      "log_loss": 0.307153,
+      "roc_auc": 0.947491,
+      "conditional_separation": 0.585108
+    }
+  ],
+  "orientation_prediction_distance_means": [
+    {
+      "pair_id": "linear_orientation",
+      "model_id": "fixed_rule",
+      "mean_absolute_distance": 0.0
+    },
+    {
+      "pair_id": "linear_orientation",
+      "model_id": "scalar_delta",
+      "mean_absolute_distance": 0.0
+    },
+    {
+      "pair_id": "linear_orientation",
+      "model_id": "explicit_linear_logit",
+      "mean_absolute_distance": 0.238404
+    },
+    {
+      "pair_id": "linear_orientation",
+      "model_id": "histogram_tree",
+      "mean_absolute_distance": 0.760413
+    },
+    {
+      "pair_id": "linear_orientation",
+      "model_id": "residual_mlp",
+      "mean_absolute_distance": 0.910069
+    },
+    {
+      "pair_id": "interaction_orientation",
+      "model_id": "fixed_rule",
+      "mean_absolute_distance": 0.0
+    },
+    {
+      "pair_id": "interaction_orientation",
+      "model_id": "scalar_delta",
+      "mean_absolute_distance": 0.0
+    },
+    {
+      "pair_id": "interaction_orientation",
+      "model_id": "explicit_linear_logit",
+      "mean_absolute_distance": 0.063244
+    },
+    {
+      "pair_id": "interaction_orientation",
+      "model_id": "histogram_tree",
+      "mean_absolute_distance": 0.581312
+    },
+    {
+      "pair_id": "interaction_orientation",
+      "model_id": "residual_mlp",
+      "mean_absolute_distance": 0.670956
+    }
+  ],
+  "registered_decisions": {
+    "feature_conditional_need": {
+      "model_id": "explicit_linear_logit",
+      "reference_model_id": "scalar_delta",
+      "minimum_mean_brier_improvement": 0.02,
+      "minimum_positive_replicates": 12,
+      "worlds": {
+        "linear_support_aligned": {
+          "mean": 0.10610023,
+          "min": 0.09860201,
+          "max": 0.12207588,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "linear_support_reversed": {
+          "mean": 0.10337362,
+          "min": 0.09555376,
+          "max": 0.11028172,
+          "positive_replicates": 16,
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    "nonlinear_representation_need": {
+      "model_id": "residual_mlp",
+      "reference_model_id": "explicit_linear_logit",
+      "minimum_mean_brier_improvement": 0.01,
+      "minimum_positive_replicates": 12,
+      "worlds": {
+        "interaction_aligned": {
+          "mean": 0.13740458,
+          "min": 0.0963003,
+          "max": 0.16281847,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "interaction_reversed": {
+          "mean": 0.16228199,
+          "min": 0.12756783,
+          "max": 0.1976044,
+          "positive_replicates": 16,
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    "neural_specific_advantage": {
+      "model_id": "residual_mlp",
+      "reference_model_id": "histogram_tree",
+      "minimum_mean_brier_improvement": 0.005,
+      "minimum_positive_replicates": 12,
+      "worlds": {
+        "interaction_aligned": {
+          "mean": 0.01968606,
+          "min": -0.01267575,
+          "max": 0.04094894,
+          "positive_replicates": 14,
+          "pass": true
+        },
+        "interaction_reversed": {
+          "mean": 0.02489304,
+          "min": -0.00286306,
+          "max": 0.06209717,
+          "positive_replicates": 15,
+          "pass": true
+        }
+      },
+      "pass": true,
+      "maximum_linear_world_brier_regression": -0.0961315,
+      "linear_world_guard_pass": true
+    }
+  },
+  "registered_result_disposition": {
+    "feature_conditional_need": "SUPPORTED_ON_FROZEN_GENERATOR",
+    "nonlinear_representation_need": "SUPPORTED_ON_FROZEN_GENERATOR",
+    "neural_specific_advantage": "SUPPORTED_ON_FROZEN_GENERATOR_ONLY"
+  },
+  "post_hoc_descriptive": {
+    "status": "POST_HOC_DESCRIPTIVE_NOT_REGISTERED_NO_NEW_EXECUTION",
+    "mlp_over_linear_brier": {
+      "aligned": {
+        "linear_world": {
+          "mean": 0.121049,
+          "min": 0.096131,
+          "max": 0.141458,
+          "positive_replicates": 16
+        },
+        "interaction_world": {
+          "mean": 0.137405,
+          "min": 0.0963,
+          "max": 0.162818,
+          "positive_replicates": 16
+        },
+        "interaction_minus_linear": {
+          "mean": 0.016356,
+          "min": -0.015024,
+          "max": 0.054908,
+          "positive_replicates": 13
+        }
+      },
+      "reversed": {
+        "linear_world": {
+          "mean": 0.156535,
+          "min": 0.137732,
+          "max": 0.173498,
+          "positive_replicates": 16
+        },
+        "interaction_world": {
+          "mean": 0.162282,
+          "min": 0.127568,
+          "max": 0.197604,
+          "positive_replicates": 16
+        },
+        "interaction_minus_linear": {
+          "mean": 0.005747,
+          "min": -0.034065,
+          "max": 0.059872,
+          "positive_replicates": 9
+        }
+      }
+    },
+    "mlp_over_tree_brier": {
+      "aligned": {
+        "linear_world": {
+          "mean": 0.047882,
+          "min": 0.031739,
+          "max": 0.067622,
+          "positive_replicates": 16
+        },
+        "interaction_world": {
+          "mean": 0.019686,
+          "min": -0.012676,
+          "max": 0.040949,
+          "positive_replicates": 14
+        },
+        "interaction_minus_linear": {
+          "mean": -0.028196,
+          "min": -0.060192,
+          "max": 0.00921,
+          "positive_replicates": 1
+        }
+      },
+      "reversed": {
+        "linear_world": {
+          "mean": 0.047632,
+          "min": 0.0309,
+          "max": 0.065111,
+          "positive_replicates": 16
+        },
+        "interaction_world": {
+          "mean": 0.024893,
+          "min": -0.002863,
+          "max": 0.062097,
+          "positive_replicates": 15
+        },
+        "interaction_minus_linear": {
+          "mean": -0.022739,
+          "min": -0.051089,
+          "max": 0.01914,
+          "positive_replicates": 2
+        }
+      }
+    },
+    "tree_over_linear_auc": {
+      "aligned": {
+        "linear_world": {
+          "mean": -0.004854,
+          "min": -0.021851,
+          "max": 0.011902,
+          "positive_replicates": 6
+        },
+        "interaction_world": {
+          "mean": 0.274628,
+          "min": 0.205872,
+          "max": 0.331116,
+          "positive_replicates": 16
+        }
+      },
+      "reversed": {
+        "linear_world": {
+          "mean": 0.123125,
+          "min": 0.102295,
+          "max": 0.154541,
+          "positive_replicates": 16
+        },
+        "interaction_world": {
+          "mean": 0.426289,
+          "min": 0.360504,
+          "max": 0.489136,
+          "positive_replicates": 16
+        }
+      }
+    },
+    "mlp_over_tree_auc": {
+      "aligned": {
+        "linear_world": {
+          "mean": 0.026495,
+          "min": 0.014038,
+          "max": 0.038147,
+          "positive_replicates": 16
+        },
+        "interaction_world": {
+          "mean": 0.023186,
+          "min": -0.016724,
+          "max": 0.050293,
+          "positive_replicates": 14
+        }
+      },
+      "reversed": {
+        "linear_world": {
+          "mean": 0.026506,
+          "min": 0.014038,
+          "max": 0.038269,
+          "positive_replicates": 16
+        },
+        "interaction_world": {
+          "mean": 0.029884,
+          "min": -0.005676,
+          "max": 0.080505,
+          "positive_replicates": 15
+        }
+      }
+    }
+  },
+  "scientific_assessment": {
+    "feature_conditional_need": "SUPPORTED_ROBUSTLY_ON_FROZEN_GENERATOR",
+    "nonlinear_representation_need": "SUPPORTED_BY_RANKING_CONTRAST_BUT_REGISTERED_BRIER_MARGIN_MOSTLY_BASELINE_FIT_CONFOUND",
+    "neural_specific_advantage": "REGISTERED_PASS_NOT_INTERACTION_SPECIFIC_GENERAL_SMOOTH_FIT_ADVANTAGE_OVER_FROZEN_TREE",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "model_selected": "NO",
+    "reason": "Explicit linear beats scalar Delta by about 0.10 Brier in all 16 replicates of both linear orientations. The residual MLP beats explicit linear by nearly as much on the linear worlds, where no nonlinearity exists, as on the interaction worlds, so the registered Brier margin mainly reflects the linear baseline's slower fit and weaker calibration. Ranking accuracy isolates the nonlinearity: explicit linear matches the tree on the aligned linear world but loses 0.27 to 0.43 AUC on the interaction worlds. The MLP's advantage over the tree is larger on the linear worlds than on the interaction worlds, so it does not come from representing the interaction."
+  },
+  "framework_assessment": {
+    "generic_api_change_needed": false,
+    "policy_families_should_remain_case_owned": true,
+    "valid_distinctions_for_pivot": [
+      "SCALAR_VERSUS_FEATURE_CONDITIONAL",
+      "LINEAR_VERSUS_NONLINEAR_BY_RANKING"
+    ],
+    "unresolved_distinction": "NEURAL_VERSUS_CLASSICAL_NONLINEAR",
+    "full_abm_integration_on_neural_grounds": "NOT_YET_WARRANTED",
+    "no_post_result_tuning_of_v2": true,
+    "next_case_target": "RESULT_INFORMED_PRECOMMITTED_SUCCESSOR_WITH_CONVERGED_LINEAR_BASELINE_FRESH_SEEDS_AND_NONSMOOTH_GENERATOR_CONTROL"
+  },
+  "boundaries": {
+    "evidence_type": "SYNTHETIC_POLICY_LAYER_DISCRIMINATOR",
+    "empirical_rows_read": 0,
+    "empirical_fit": "NOT_RUN",
+    "predictive_validation": "SYNTHETIC_DISJOINT_COHORT_ONLY",
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "package_promotion": "NOT_AUTHORIZED"
+  }
+}
