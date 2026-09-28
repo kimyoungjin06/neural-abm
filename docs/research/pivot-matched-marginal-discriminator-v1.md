@@ -94,3 +94,12 @@ source hashes. Outputs are exclusive-create artifacts.
 After a frozen result, a full ABM integration is authorized only if the policy
 layer distinction is both valid and substantively useful. Otherwise the
 simpler surviving policy family remains the correct baseline for Pivot.
+
+## Execution disposition
+
+On 2026-09-28 the frozen development run stopped at the scalar invariance
+check with `INVALID_IMPLEMENTATION_STOP`. No artifact was written and no
+question was evaluated. The stop record is
+[`pivot_matched_marginal_discriminator_v1_20260928.summary.md`](../../experiments/evidence/results/pivot_matched_marginal_discriminator_v1_20260928.summary.md).
+The design above is unchanged. A v2 successor corrects only the
+scalar reduction.

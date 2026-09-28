@@ -1,0 +1,87 @@
+{
+  "schema_version": "pivot_matched_marginal_stop_result.v1",
+  "label": "pivot_matched_marginal_discriminator_v1_20260928",
+  "status": "INVALID_IMPLEMENTATION_STOP_NO_RESULT",
+  "precommit": {
+    "commit_sha": "b960fe0fc39e1c82390ee66c70856f4142f4532a",
+    "contract_path": "experiments/configs/pivot_matched_marginal_discriminator_v1.yaml",
+    "contract_sha256": "b25697c707cfe9e69c35aac4bc7e4849854e1fe900d56c20af2f6ff9e57bd3c5",
+    "runner_path": "scripts/prototype_pivot_matched_marginal_discriminator_v1.py",
+    "runner_sha256": "61647355fbf33b2195813f8fc1b14a53453c88771fa9edb6ce20932ca9f9d223"
+  },
+  "execution": {
+    "profile": "development",
+    "command": "python scripts/prototype_pivot_matched_marginal_discriminator_v1.py run --profile development --precommit-sha b960fe0fc39e1c82390ee66c70856f4142f4532a --output-dir /ssd/pivot_matched_marginal_discriminator_v1_b960fe0_development",
+    "precommit_verification": "PASSED",
+    "stopped_at": {
+      "replicate": 0,
+      "pair_id": "interaction_orientation",
+      "check": "scalar_invariance_check",
+      "error": "RuntimeError: scalar orientation invariance failed for interaction_orientation"
+    },
+    "contract_failure_action": "INVALID_IMPLEMENTATION_STOP",
+    "output_dir_created": false,
+    "artifacts_written": [],
+    "metrics_computed_in_memory_before_stop": "REPLICATE_0_ONLY_DISCARDED_AT_PROCESS_EXIT",
+    "metrics_written_printed_or_inspected": false
+  },
+  "diagnosis": {
+    "scope": "SCALAR_DELTA_PREDICTIONS_COMPARED_ONLY_WITH_EACH_OTHER_NO_LABEL_METRIC_COMPUTED",
+    "defect": "FLOATING_POINT_REDUCTION_OVER_ORIENTATION_SPECIFIC_LABEL_VECTOR",
+    "mechanism": "The v1 scalar update computes mean(train_labels - prediction). The two orientations have equal success counts but different label vectors, so the elementwise differences round differently and the reduction can differ in the final bit. The scalar learner is therefore not implemented as a function of the success count alone, which the contract requires.",
+    "maximum_absolute_prediction_difference": 1.1102230246251565e-16,
+    "smoke_profile": {
+      "replicates": 2,
+      "agent_count": 64,
+      "non_identical_replicates": {
+        "linear_orientation": [],
+        "interaction_orientation": []
+      }
+    },
+    "development_profile": {
+      "replicates": 16,
+      "agent_count": 256,
+      "non_identical_replicates": {
+        "linear_orientation": [3, 4, 5, 6, 7, 8, 10, 15],
+        "interaction_orientation": [0, 1, 10, 12]
+      },
+      "replicates_with_any_failure": 11
+    },
+    "why_tests_passed": "The frozen invariance test used only the 64-agent smoke cohort for replicate 0, where both reductions happen to round identically.",
+    "count_based_correction_checked": {
+      "update": "success_fraction - mean(prediction), with success_fraction = count_nonzero(train_labels) / n",
+      "invariance_failures_smoke_and_development": 0,
+      "maximum_absolute_difference_from_v1_prediction": 1.1102230246251565e-16
+    }
+  },
+  "registered_result_disposition": {
+    "feature_conditional_need": "NOT_EVALUATED",
+    "nonlinear_representation_need": "NOT_EVALUATED",
+    "neural_specific_advantage": "NOT_EVALUATED"
+  },
+  "successor": {
+    "route": "FROZEN_V2_CORRECTS_ONLY_THE_SCALAR_REDUCTION",
+    "unchanged": [
+      "cohort seeds and sizes",
+      "matched-marginal worlds and label assignment",
+      "model ladder and hyperparameters",
+      "decision thresholds and replicate rules",
+      "exact scalar invariance requirement"
+    ],
+    "added": [
+      "scalar learner consumes the training success count only",
+      "invariance test over every smoke and development replicate"
+    ]
+  },
+  "boundaries": {
+    "evidence_type": "PRECOMMITTED_EXECUTION_STOP_RECORD",
+    "empirical_rows_read": 0,
+    "empirical_fit": "NOT_RUN",
+    "predictive_validation": "NOT_RUN",
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "package_promotion": "NOT_AUTHORIZED"
+  }
+}
