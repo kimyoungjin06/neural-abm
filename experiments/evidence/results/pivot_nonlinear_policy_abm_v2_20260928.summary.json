@@ -1,0 +1,2976 @@
+{
+  "schema_version": "pivot_nonlinear_policy_abm_result.v2",
+  "label": "pivot_nonlinear_policy_abm_v2_20260928",
+  "status": "SYNTHETIC_GENERATIVE_ABM_COMPARISON_REPRODUCED",
+  "precommit": {
+    "commit_sha": "c56d74112af6b962e3b704b724a8cf94ffeb0e34",
+    "contract_path": "experiments/configs/pivot_nonlinear_policy_abm_v2.yaml",
+    "contract_sha256": "0b00c3758ccecc387118c33842a79c5e3a6b11ec246e6fc224d93fa340cd3874",
+    "result_informed_successor": true
+  },
+  "execution": {
+    "profile": "development",
+    "agent_count": 256,
+    "steps": 18,
+    "replicates": 16,
+    "visibility_regimes": 3,
+    "fit_worlds": 3,
+    "arm_keys": 10,
+    "raw_row_count": 1440,
+    "workers": 16,
+    "first_run": {
+      "output_dir": "/ssd/pivot_nonlinear_policy_abm_v2_c56d741_development",
+      "receipt_sha256": "715c6ed201c45dd0c3663aad0cf1685412867e4fc9a1ec7597c50282981bb13d"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_nonlinear_policy_abm_v2_c56d741_reproduction",
+      "receipt_sha256": "715c6ed201c45dd0c3663aad0cf1685412867e4fc9a1ec7597c50282981bb13d",
+      "all_five_artifacts_byte_identical": true
+    },
+    "artifact_sha256": {
+      "family_transfer.json": "0a676e0edd74be69eaba6a715e730b1ee035efa651f93178c0d04fde059f3458",
+      "runs.jsonl": "8088d43cbee6c5c19c1e8f08499eb734b725f5f0ccbe79c59482f00d7da4c41f",
+      "abm_scorecard.json": "5ba618031e2b98044273079bc3ff7dbbaba234a3381cfaabb1b586e85a6d5dbf",
+      "abm_scorecard.md": "01de17ff48c2b83485eca50d86a22e7c6f091e28b5ecda32313d702407158e21",
+      "receipt.json": "715c6ed201c45dd0c3663aad0cf1685412867e4fc9a1ec7597c50282981bb13d"
+    }
+  },
+  "validation": {
+    "receipt_status": "COMPLETE",
+    "source_bindings_verified": 11,
+    "nesting_and_fold_isolation_checks": "PASS_EXACT",
+    "family_transfer": "FAMILY_TRANSFERRED"
+  },
+  "family_transfer": {
+    "mean_brier": {
+      "axis_interaction_fit/linear_batch": 0.229803,
+      "axis_interaction_fit/mlp_batch": 0.10132,
+      "axis_interaction_fit/scalar_batch": 0.249998,
+      "axis_interaction_fit/tree_batch": 0.041892,
+      "linear_fit/linear_batch": 0.063151,
+      "linear_fit/mlp_batch": 0.016924,
+      "linear_fit/scalar_batch": 0.251562,
+      "linear_fit/tree_batch": 0.053987,
+      "smooth_interaction_fit/linear_batch": 0.221593,
+      "smooth_interaction_fit/mlp_batch": 0.065593,
+      "smooth_interaction_fit/scalar_batch": 0.247676,
+      "smooth_interaction_fit/tree_batch": 0.113791
+    },
+    "required_replicates": 3,
+    "status": "FAMILY_TRANSFERRED",
+    "winning_replicates": {
+      "mlp_beats_linear_axis": 4,
+      "mlp_beats_linear_smooth": 4,
+      "mlp_beats_tree_smooth": 4,
+      "tree_beats_linear_axis": 4,
+      "tree_beats_linear_smooth": 4,
+      "tree_beats_mlp_axis": 4
+    }
+  },
+  "cell_means": [
+    {
+      "visibility_id": "immediate",
+      "world_id": "linear_fit",
+      "arm_id": "fixed_rule",
+      "evidence_regime": "none",
+      "means": {
+        "active_failed_rate": 0.052979,
+        "active_productive_rate": 0.266602,
+        "active_rate": 0.31958,
+        "cumulative_entry_rate": 0.808105,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.488525,
+        "failed_entry_rate": 0.541504,
+        "in_situ_policy_brier": 0.201232,
+        "probe_auc": 0.654053,
+        "probe_brier": 0.200451,
+        "productive_share_of_active": 0.833126,
+        "productive_share_of_entrants": 0.329711
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "linear_fit",
+      "arm_id": "online_logistic",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.135254,
+        "active_productive_rate": 0.283203,
+        "active_rate": 0.418457,
+        "cumulative_entry_rate": 0.807373,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.388916,
+        "failed_entry_rate": 0.52417,
+        "in_situ_policy_brier": 0.226759,
+        "probe_auc": 0.70837,
+        "probe_brier": 0.280697,
+        "productive_share_of_active": 0.674918,
+        "productive_share_of_entrants": 0.349158
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "linear_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.062012,
+        "active_productive_rate": 0.278564,
+        "active_rate": 0.340576,
+        "cumulative_entry_rate": 0.782715,
+        "evidence_events_per_learner": 3.121582,
+        "exited_failed_rate": 0.442139,
+        "failed_entry_rate": 0.50415,
+        "in_situ_policy_brier": 0.181876,
+        "probe_auc": 0.654053,
+        "probe_brier": 0.208798,
+        "productive_share_of_active": 0.816327,
+        "productive_share_of_entrants": 0.354129
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "linear_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.125977,
+        "active_productive_rate": 0.28418,
+        "active_rate": 0.410156,
+        "cumulative_entry_rate": 0.773193,
+        "evidence_events_per_learner": 3.106689,
+        "exited_failed_rate": 0.363037,
+        "failed_entry_rate": 0.489014,
+        "in_situ_policy_brier": 0.186793,
+        "probe_auc": 0.983776,
+        "probe_brier": 0.262609,
+        "productive_share_of_active": 0.690995,
+        "productive_share_of_entrants": 0.366449
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "linear_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.125244,
+        "active_productive_rate": 0.279541,
+        "active_rate": 0.404785,
+        "cumulative_entry_rate": 0.787842,
+        "evidence_events_per_learner": 3.151367,
+        "exited_failed_rate": 0.383057,
+        "failed_entry_rate": 0.508301,
+        "in_situ_policy_brier": 0.205065,
+        "probe_auc": 0.654053,
+        "probe_brier": 0.291039,
+        "productive_share_of_active": 0.688572,
+        "productive_share_of_entrants": 0.353181
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "linear_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.134033,
+        "active_productive_rate": 0.281982,
+        "active_rate": 0.416016,
+        "cumulative_entry_rate": 0.76416,
+        "evidence_events_per_learner": 3.073486,
+        "exited_failed_rate": 0.348145,
+        "failed_entry_rate": 0.482178,
+        "in_situ_policy_brier": 0.219208,
+        "probe_auc": 0.967107,
+        "probe_brier": 0.296635,
+        "productive_share_of_active": 0.675806,
+        "productive_share_of_entrants": 0.367914
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "linear_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.034668,
+        "active_productive_rate": 0.25,
+        "active_rate": 0.284668,
+        "cumulative_entry_rate": 0.743896,
+        "evidence_events_per_learner": 142.265625,
+        "exited_failed_rate": 0.459229,
+        "failed_entry_rate": 0.493896,
+        "in_situ_policy_brier": 0.199842,
+        "probe_auc": 0.654053,
+        "probe_brier": 0.199196,
+        "productive_share_of_active": 0.87961,
+        "productive_share_of_entrants": 0.333211
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "linear_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.043945,
+        "active_productive_rate": 0.305908,
+        "active_rate": 0.349854,
+        "cumulative_entry_rate": 0.748779,
+        "evidence_events_per_learner": 143.71875,
+        "exited_failed_rate": 0.398926,
+        "failed_entry_rate": 0.442871,
+        "in_situ_policy_brier": 0.058274,
+        "probe_auc": 0.991088,
+        "probe_brier": 0.059364,
+        "productive_share_of_active": 0.876936,
+        "productive_share_of_entrants": 0.408281
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "linear_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.051025,
+        "active_productive_rate": 0.303711,
+        "active_rate": 0.354736,
+        "cumulative_entry_rate": 0.75415,
+        "evidence_events_per_learner": 144.796875,
+        "exited_failed_rate": 0.399414,
+        "failed_entry_rate": 0.450439,
+        "in_situ_policy_brier": 0.073996,
+        "probe_auc": 0.975723,
+        "probe_brier": 0.072667,
+        "productive_share_of_active": 0.85703,
+        "productive_share_of_entrants": 0.402101
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "linear_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.010986,
+        "active_productive_rate": 0.306885,
+        "active_rate": 0.317871,
+        "cumulative_entry_rate": 0.703857,
+        "evidence_events_per_learner": 135.140625,
+        "exited_failed_rate": 0.385986,
+        "failed_entry_rate": 0.396973,
+        "in_situ_policy_brier": 0.011419,
+        "probe_auc": 0.999455,
+        "probe_brier": 0.012993,
+        "productive_share_of_active": 0.96595,
+        "productive_share_of_entrants": 0.435782
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "fixed_rule",
+      "evidence_regime": "none",
+      "means": {
+        "active_failed_rate": 0.043213,
+        "active_productive_rate": 0.268799,
+        "active_rate": 0.312012,
+        "cumulative_entry_rate": 0.808105,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.496094,
+        "failed_entry_rate": 0.539307,
+        "in_situ_policy_brier": 0.204188,
+        "probe_auc": 0.637177,
+        "probe_brier": 0.204919,
+        "productive_share_of_active": 0.862525,
+        "productive_share_of_entrants": 0.332717
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "online_logistic",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.137939,
+        "active_productive_rate": 0.262695,
+        "active_rate": 0.400635,
+        "cumulative_entry_rate": 0.778076,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.377441,
+        "failed_entry_rate": 0.515381,
+        "in_situ_policy_brier": 0.26781,
+        "probe_auc": 0.642703,
+        "probe_brier": 0.278322,
+        "productive_share_of_active": 0.657062,
+        "productive_share_of_entrants": 0.336358
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.061035,
+        "active_productive_rate": 0.258545,
+        "active_rate": 0.31958,
+        "cumulative_entry_rate": 0.754639,
+        "evidence_events_per_learner": 3.00415,
+        "exited_failed_rate": 0.435059,
+        "failed_entry_rate": 0.496094,
+        "in_situ_policy_brier": 0.206583,
+        "probe_auc": 0.637177,
+        "probe_brier": 0.211141,
+        "productive_share_of_active": 0.808071,
+        "productive_share_of_entrants": 0.341996
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.151855,
+        "active_productive_rate": 0.254883,
+        "active_rate": 0.406738,
+        "cumulative_entry_rate": 0.736572,
+        "evidence_events_per_learner": 2.967285,
+        "exited_failed_rate": 0.329834,
+        "failed_entry_rate": 0.481689,
+        "in_situ_policy_brier": 0.277079,
+        "probe_auc": 0.764321,
+        "probe_brier": 0.305961,
+        "productive_share_of_active": 0.626037,
+        "productive_share_of_entrants": 0.345025
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.138916,
+        "active_productive_rate": 0.25708,
+        "active_rate": 0.395996,
+        "cumulative_entry_rate": 0.759033,
+        "evidence_events_per_learner": 3.034912,
+        "exited_failed_rate": 0.363037,
+        "failed_entry_rate": 0.501953,
+        "in_situ_policy_brier": 0.262518,
+        "probe_auc": 0.637177,
+        "probe_brier": 0.279025,
+        "productive_share_of_active": 0.649677,
+        "productive_share_of_entrants": 0.337598
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.164307,
+        "active_productive_rate": 0.25293,
+        "active_rate": 0.417236,
+        "cumulative_entry_rate": 0.729248,
+        "evidence_events_per_learner": 2.936279,
+        "exited_failed_rate": 0.312012,
+        "failed_entry_rate": 0.476318,
+        "in_situ_policy_brier": 0.318819,
+        "probe_auc": 0.81183,
+        "probe_brier": 0.34833,
+        "productive_share_of_active": 0.606414,
+        "productive_share_of_entrants": 0.345899
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.030762,
+        "active_productive_rate": 0.259521,
+        "active_rate": 0.290283,
+        "cumulative_entry_rate": 0.761719,
+        "evidence_events_per_learner": 145.59375,
+        "exited_failed_rate": 0.471436,
+        "failed_entry_rate": 0.502197,
+        "in_situ_policy_brier": 0.202858,
+        "probe_auc": 0.637177,
+        "probe_brier": 0.203721,
+        "productive_share_of_active": 0.896268,
+        "productive_share_of_entrants": 0.339186
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.058594,
+        "active_productive_rate": 0.246094,
+        "active_rate": 0.304688,
+        "cumulative_entry_rate": 0.66748,
+        "evidence_events_per_learner": 128.15625,
+        "exited_failed_rate": 0.362793,
+        "failed_entry_rate": 0.421387,
+        "in_situ_policy_brier": 0.174674,
+        "probe_auc": 0.714897,
+        "probe_brier": 0.17646,
+        "productive_share_of_active": 0.810165,
+        "productive_share_of_entrants": 0.368381
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.048584,
+        "active_productive_rate": 0.277832,
+        "active_rate": 0.326416,
+        "cumulative_entry_rate": 0.710938,
+        "evidence_events_per_learner": 136.5,
+        "exited_failed_rate": 0.384521,
+        "failed_entry_rate": 0.433105,
+        "in_situ_policy_brier": 0.119053,
+        "probe_auc": 0.91275,
+        "probe_brier": 0.124328,
+        "productive_share_of_active": 0.852202,
+        "productive_share_of_entrants": 0.390077
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.039307,
+        "active_productive_rate": 0.285156,
+        "active_rate": 0.324463,
+        "cumulative_entry_rate": 0.695068,
+        "evidence_events_per_learner": 133.453125,
+        "exited_failed_rate": 0.370605,
+        "failed_entry_rate": 0.409912,
+        "in_situ_policy_brier": 0.076457,
+        "probe_auc": 0.951405,
+        "probe_brier": 0.084517,
+        "productive_share_of_active": 0.877869,
+        "productive_share_of_entrants": 0.410057
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "fixed_rule",
+      "evidence_regime": "none",
+      "means": {
+        "active_failed_rate": 0.054932,
+        "active_productive_rate": 0.26709,
+        "active_rate": 0.322021,
+        "cumulative_entry_rate": 0.808105,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.486084,
+        "failed_entry_rate": 0.541016,
+        "in_situ_policy_brier": 0.206943,
+        "probe_auc": 0.618223,
+        "probe_brier": 0.206115,
+        "productive_share_of_active": 0.829438,
+        "productive_share_of_entrants": 0.330404
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "online_logistic",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.13623,
+        "active_productive_rate": 0.259766,
+        "active_rate": 0.395996,
+        "cumulative_entry_rate": 0.782471,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.386475,
+        "failed_entry_rate": 0.522705,
+        "in_situ_policy_brier": 0.271246,
+        "probe_auc": 0.624293,
+        "probe_brier": 0.280988,
+        "productive_share_of_active": 0.654685,
+        "productive_share_of_entrants": 0.330429
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.064453,
+        "active_productive_rate": 0.25415,
+        "active_rate": 0.318604,
+        "cumulative_entry_rate": 0.756836,
+        "evidence_events_per_learner": 3.010986,
+        "exited_failed_rate": 0.438232,
+        "failed_entry_rate": 0.502686,
+        "in_situ_policy_brier": 0.209916,
+        "probe_auc": 0.618223,
+        "probe_brier": 0.212222,
+        "productive_share_of_active": 0.796785,
+        "productive_share_of_entrants": 0.334843
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.154053,
+        "active_productive_rate": 0.249268,
+        "active_rate": 0.40332,
+        "cumulative_entry_rate": 0.735107,
+        "evidence_events_per_learner": 2.953125,
+        "exited_failed_rate": 0.331787,
+        "failed_entry_rate": 0.48584,
+        "in_situ_policy_brier": 0.283377,
+        "probe_auc": 0.760578,
+        "probe_brier": 0.308854,
+        "productive_share_of_active": 0.618206,
+        "productive_share_of_entrants": 0.338002
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.137207,
+        "active_productive_rate": 0.253906,
+        "active_rate": 0.391113,
+        "cumulative_entry_rate": 0.759521,
+        "evidence_events_per_learner": 3.03125,
+        "exited_failed_rate": 0.368408,
+        "failed_entry_rate": 0.505615,
+        "in_situ_policy_brier": 0.265375,
+        "probe_auc": 0.618223,
+        "probe_brier": 0.279971,
+        "productive_share_of_active": 0.647737,
+        "productive_share_of_entrants": 0.333224
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.169434,
+        "active_productive_rate": 0.246826,
+        "active_rate": 0.41626,
+        "cumulative_entry_rate": 0.727295,
+        "evidence_events_per_learner": 2.924805,
+        "exited_failed_rate": 0.311035,
+        "failed_entry_rate": 0.480469,
+        "in_situ_policy_brier": 0.328998,
+        "probe_auc": 0.812074,
+        "probe_brier": 0.351565,
+        "productive_share_of_active": 0.593388,
+        "productive_share_of_entrants": 0.338174
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.038574,
+        "active_productive_rate": 0.25293,
+        "active_rate": 0.291504,
+        "cumulative_entry_rate": 0.751953,
+        "evidence_events_per_learner": 143.90625,
+        "exited_failed_rate": 0.460449,
+        "failed_entry_rate": 0.499023,
+        "in_situ_policy_brier": 0.205545,
+        "probe_auc": 0.618223,
+        "probe_brier": 0.204772,
+        "productive_share_of_active": 0.870102,
+        "productive_share_of_entrants": 0.334451
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.062988,
+        "active_productive_rate": 0.23584,
+        "active_rate": 0.298828,
+        "cumulative_entry_rate": 0.662109,
+        "evidence_events_per_learner": 127.078125,
+        "exited_failed_rate": 0.363281,
+        "failed_entry_rate": 0.42627,
+        "in_situ_policy_brier": 0.192217,
+        "probe_auc": 0.690985,
+        "probe_brier": 0.187433,
+        "productive_share_of_active": 0.791122,
+        "productive_share_of_entrants": 0.355239
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.016602,
+        "active_productive_rate": 0.299805,
+        "active_rate": 0.316406,
+        "cumulative_entry_rate": 0.717773,
+        "evidence_events_per_learner": 137.8125,
+        "exited_failed_rate": 0.401367,
+        "failed_entry_rate": 0.417969,
+        "in_situ_policy_brier": 0.036968,
+        "probe_auc": 0.961652,
+        "probe_brier": 0.060353,
+        "productive_share_of_active": 0.947225,
+        "productive_share_of_entrants": 0.417714
+      }
+    },
+    {
+      "visibility_id": "immediate",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.052734,
+        "active_productive_rate": 0.284912,
+        "active_rate": 0.337646,
+        "cumulative_entry_rate": 0.717529,
+        "evidence_events_per_learner": 137.671875,
+        "exited_failed_rate": 0.379883,
+        "failed_entry_rate": 0.432617,
+        "in_situ_policy_brier": 0.107255,
+        "probe_auc": 0.923867,
+        "probe_brier": 0.11423,
+        "productive_share_of_active": 0.844122,
+        "productive_share_of_entrants": 0.39619
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "linear_fit",
+      "arm_id": "fixed_rule",
+      "evidence_regime": "none",
+      "means": {
+        "active_failed_rate": 0.052979,
+        "active_productive_rate": 0.266602,
+        "active_rate": 0.31958,
+        "cumulative_entry_rate": 0.808105,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.488525,
+        "failed_entry_rate": 0.541504,
+        "in_situ_policy_brier": 0.201232,
+        "probe_auc": 0.654053,
+        "probe_brier": 0.200451,
+        "productive_share_of_active": 0.833126,
+        "productive_share_of_entrants": 0.329711
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "linear_fit",
+      "arm_id": "online_logistic",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.015137,
+        "active_productive_rate": 0.302979,
+        "active_rate": 0.318115,
+        "cumulative_entry_rate": 0.945312,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.627197,
+        "failed_entry_rate": 0.642334,
+        "in_situ_policy_brier": 0.241363,
+        "probe_auc": 0.695607,
+        "probe_brier": 0.24764,
+        "productive_share_of_active": 0.954269,
+        "productive_share_of_entrants": 0.320351
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "linear_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.057129,
+        "active_productive_rate": 0.298584,
+        "active_rate": 0.355713,
+        "cumulative_entry_rate": 0.907227,
+        "evidence_events_per_learner": 3.636719,
+        "exited_failed_rate": 0.551514,
+        "failed_entry_rate": 0.608643,
+        "in_situ_policy_brier": 0.180997,
+        "probe_auc": 0.654053,
+        "probe_brier": 0.207118,
+        "productive_share_of_active": 0.838492,
+        "productive_share_of_entrants": 0.328488
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "linear_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.099854,
+        "active_productive_rate": 0.303711,
+        "active_rate": 0.403564,
+        "cumulative_entry_rate": 0.947021,
+        "evidence_events_per_learner": 3.796631,
+        "exited_failed_rate": 0.543457,
+        "failed_entry_rate": 0.643311,
+        "in_situ_policy_brier": 0.161706,
+        "probe_auc": 0.98443,
+        "probe_brier": 0.23013,
+        "productive_share_of_active": 0.750859,
+        "productive_share_of_entrants": 0.320559
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "linear_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.108887,
+        "active_productive_rate": 0.303467,
+        "active_rate": 0.412354,
+        "cumulative_entry_rate": 0.947998,
+        "evidence_events_per_learner": 3.800293,
+        "exited_failed_rate": 0.535645,
+        "failed_entry_rate": 0.644531,
+        "in_situ_policy_brier": 0.190084,
+        "probe_auc": 0.654053,
+        "probe_brier": 0.275425,
+        "productive_share_of_active": 0.735806,
+        "productive_share_of_entrants": 0.319946
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "linear_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.108643,
+        "active_productive_rate": 0.303711,
+        "active_rate": 0.412354,
+        "cumulative_entry_rate": 0.945801,
+        "evidence_events_per_learner": 3.792236,
+        "exited_failed_rate": 0.533447,
+        "failed_entry_rate": 0.64209,
+        "in_situ_policy_brier": 0.195246,
+        "probe_auc": 0.970586,
+        "probe_brier": 0.261907,
+        "productive_share_of_active": 0.734887,
+        "productive_share_of_entrants": 0.320921
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "linear_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.034424,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.341553,
+        "cumulative_entry_rate": 0.995605,
+        "evidence_events_per_learner": 191.15625,
+        "exited_failed_rate": 0.654053,
+        "failed_entry_rate": 0.688477,
+        "in_situ_policy_brier": 0.199877,
+        "probe_auc": 0.654053,
+        "probe_brier": 0.199271,
+        "productive_share_of_active": 0.900355,
+        "productive_share_of_entrants": 0.308497
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "linear_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.031738,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.338867,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.661133,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.057975,
+        "probe_auc": 0.990682,
+        "probe_brier": 0.059624,
+        "productive_share_of_active": 0.908078,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "linear_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.037598,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.344727,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.655273,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.068828,
+        "probe_auc": 0.978356,
+        "probe_brier": 0.067715,
+        "productive_share_of_active": 0.890573,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "linear_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.008301,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.31543,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.68457,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.009949,
+        "probe_auc": 0.999476,
+        "probe_brier": 0.012139,
+        "productive_share_of_active": 0.973755,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "fixed_rule",
+      "evidence_regime": "none",
+      "means": {
+        "active_failed_rate": 0.043213,
+        "active_productive_rate": 0.268799,
+        "active_rate": 0.312012,
+        "cumulative_entry_rate": 0.808105,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.496094,
+        "failed_entry_rate": 0.539307,
+        "in_situ_policy_brier": 0.204188,
+        "probe_auc": 0.637177,
+        "probe_brier": 0.204919,
+        "productive_share_of_active": 0.862525,
+        "productive_share_of_entrants": 0.332717
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "online_logistic",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.009033,
+        "active_productive_rate": 0.293945,
+        "active_rate": 0.302979,
+        "cumulative_entry_rate": 0.94165,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.638672,
+        "failed_entry_rate": 0.647705,
+        "in_situ_policy_brier": 0.252458,
+        "probe_auc": 0.653241,
+        "probe_brier": 0.248742,
+        "productive_share_of_active": 0.971146,
+        "productive_share_of_entrants": 0.311609
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.049316,
+        "active_productive_rate": 0.284668,
+        "active_rate": 0.333984,
+        "cumulative_entry_rate": 0.897705,
+        "evidence_events_per_learner": 3.591309,
+        "exited_failed_rate": 0.563721,
+        "failed_entry_rate": 0.613037,
+        "in_situ_policy_brier": 0.204026,
+        "probe_auc": 0.637177,
+        "probe_brier": 0.209166,
+        "productive_share_of_active": 0.852881,
+        "productive_share_of_entrants": 0.316512
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.132568,
+        "active_productive_rate": 0.294922,
+        "active_rate": 0.42749,
+        "cumulative_entry_rate": 0.945312,
+        "evidence_events_per_learner": 3.784912,
+        "exited_failed_rate": 0.517822,
+        "failed_entry_rate": 0.650391,
+        "in_situ_policy_brier": 0.251816,
+        "probe_auc": 0.782078,
+        "probe_brier": 0.283799,
+        "productive_share_of_active": 0.691185,
+        "productive_share_of_entrants": 0.311531
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.118164,
+        "active_productive_rate": 0.294678,
+        "active_rate": 0.412842,
+        "cumulative_entry_rate": 0.946045,
+        "evidence_events_per_learner": 3.786621,
+        "exited_failed_rate": 0.533203,
+        "failed_entry_rate": 0.651367,
+        "in_situ_policy_brier": 0.241591,
+        "probe_auc": 0.637177,
+        "probe_brier": 0.260411,
+        "productive_share_of_active": 0.715935,
+        "productive_share_of_entrants": 0.311027
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.144775,
+        "active_productive_rate": 0.294678,
+        "active_rate": 0.439453,
+        "cumulative_entry_rate": 0.943848,
+        "evidence_events_per_learner": 3.780029,
+        "exited_failed_rate": 0.504395,
+        "failed_entry_rate": 0.64917,
+        "in_situ_policy_brier": 0.29736,
+        "probe_auc": 0.839674,
+        "probe_brier": 0.329206,
+        "productive_share_of_active": 0.671892,
+        "productive_share_of_entrants": 0.311722
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.026611,
+        "active_productive_rate": 0.305664,
+        "active_rate": 0.332275,
+        "cumulative_entry_rate": 0.99585,
+        "evidence_events_per_learner": 191.203125,
+        "exited_failed_rate": 0.663574,
+        "failed_entry_rate": 0.690186,
+        "in_situ_policy_brier": 0.202632,
+        "probe_auc": 0.637177,
+        "probe_brier": 0.203628,
+        "productive_share_of_active": 0.921562,
+        "productive_share_of_entrants": 0.306944
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.044678,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.351807,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.648193,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.183509,
+        "probe_auc": 0.71096,
+        "probe_brier": 0.183267,
+        "productive_share_of_active": 0.878376,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.049561,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.356689,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.643311,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.106495,
+        "probe_auc": 0.932502,
+        "probe_brier": 0.114034,
+        "productive_share_of_active": 0.860757,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.037842,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.344971,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.655029,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.061354,
+        "probe_auc": 0.97688,
+        "probe_brier": 0.069195,
+        "productive_share_of_active": 0.889307,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "fixed_rule",
+      "evidence_regime": "none",
+      "means": {
+        "active_failed_rate": 0.054932,
+        "active_productive_rate": 0.26709,
+        "active_rate": 0.322021,
+        "cumulative_entry_rate": 0.808105,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.486084,
+        "failed_entry_rate": 0.541016,
+        "in_situ_policy_brier": 0.206943,
+        "probe_auc": 0.618223,
+        "probe_brier": 0.206115,
+        "productive_share_of_active": 0.829438,
+        "productive_share_of_entrants": 0.330404
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "online_logistic",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.011475,
+        "active_productive_rate": 0.297119,
+        "active_rate": 0.308594,
+        "cumulative_entry_rate": 0.943359,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.634766,
+        "failed_entry_rate": 0.64624,
+        "in_situ_policy_brier": 0.255998,
+        "probe_auc": 0.639118,
+        "probe_brier": 0.248919,
+        "productive_share_of_active": 0.963306,
+        "productive_share_of_entrants": 0.314498
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.057373,
+        "active_productive_rate": 0.287598,
+        "active_rate": 0.344971,
+        "cumulative_entry_rate": 0.899902,
+        "evidence_events_per_learner": 3.604248,
+        "exited_failed_rate": 0.554932,
+        "failed_entry_rate": 0.612305,
+        "in_situ_policy_brier": 0.20778,
+        "probe_auc": 0.618223,
+        "probe_brier": 0.210537,
+        "productive_share_of_active": 0.835769,
+        "productive_share_of_entrants": 0.318969
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.143066,
+        "active_productive_rate": 0.297363,
+        "active_rate": 0.44043,
+        "cumulative_entry_rate": 0.946533,
+        "evidence_events_per_learner": 3.790283,
+        "exited_failed_rate": 0.506104,
+        "failed_entry_rate": 0.64917,
+        "in_situ_policy_brier": 0.260625,
+        "probe_auc": 0.777476,
+        "probe_brier": 0.28722,
+        "productive_share_of_active": 0.676129,
+        "productive_share_of_entrants": 0.313728
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.123535,
+        "active_productive_rate": 0.298096,
+        "active_rate": 0.421631,
+        "cumulative_entry_rate": 0.94751,
+        "evidence_events_per_learner": 3.790771,
+        "exited_failed_rate": 0.525879,
+        "failed_entry_rate": 0.649414,
+        "in_situ_policy_brier": 0.248049,
+        "probe_auc": 0.618223,
+        "probe_brier": 0.262538,
+        "productive_share_of_active": 0.707223,
+        "productive_share_of_entrants": 0.314186
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.157227,
+        "active_productive_rate": 0.296875,
+        "active_rate": 0.454102,
+        "cumulative_entry_rate": 0.944824,
+        "evidence_events_per_learner": 3.783691,
+        "exited_failed_rate": 0.490723,
+        "failed_entry_rate": 0.647949,
+        "in_situ_policy_brier": 0.313729,
+        "probe_auc": 0.836127,
+        "probe_brier": 0.334817,
+        "productive_share_of_active": 0.65476,
+        "productive_share_of_entrants": 0.313775
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.034668,
+        "active_productive_rate": 0.306152,
+        "active_rate": 0.34082,
+        "cumulative_entry_rate": 0.99585,
+        "evidence_events_per_learner": 191.203125,
+        "exited_failed_rate": 0.655029,
+        "failed_entry_rate": 0.689697,
+        "in_situ_policy_brier": 0.205478,
+        "probe_auc": 0.618223,
+        "probe_brier": 0.204797,
+        "productive_share_of_active": 0.900462,
+        "productive_share_of_entrants": 0.307436
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.045898,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.353027,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.646973,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.19697,
+        "probe_auc": 0.680148,
+        "probe_brier": 0.192474,
+        "productive_share_of_active": 0.875043,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.008545,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.315674,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.684326,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.030127,
+        "probe_auc": 0.968319,
+        "probe_brier": 0.054828,
+        "productive_share_of_active": 0.973132,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_2",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.058594,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.365723,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.634277,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.098671,
+        "probe_auc": 0.93957,
+        "probe_brier": 0.10417,
+        "productive_share_of_active": 0.839883,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "linear_fit",
+      "arm_id": "fixed_rule",
+      "evidence_regime": "none",
+      "means": {
+        "active_failed_rate": 0.052979,
+        "active_productive_rate": 0.266602,
+        "active_rate": 0.31958,
+        "cumulative_entry_rate": 0.808105,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.488525,
+        "failed_entry_rate": 0.541504,
+        "in_situ_policy_brier": 0.201232,
+        "probe_auc": 0.654053,
+        "probe_brier": 0.200451,
+        "productive_share_of_active": 0.833126,
+        "productive_share_of_entrants": 0.329711
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "linear_fit",
+      "arm_id": "online_logistic",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.014404,
+        "active_productive_rate": 0.305176,
+        "active_rate": 0.31958,
+        "cumulative_entry_rate": 0.963379,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.643799,
+        "failed_entry_rate": 0.658203,
+        "in_situ_policy_brier": 0.242924,
+        "probe_auc": 0.694724,
+        "probe_brier": 0.24709,
+        "productive_share_of_active": 0.956538,
+        "productive_share_of_entrants": 0.316814
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "linear_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.055176,
+        "active_productive_rate": 0.30127,
+        "active_rate": 0.356445,
+        "cumulative_entry_rate": 0.931396,
+        "evidence_events_per_learner": 3.734863,
+        "exited_failed_rate": 0.574951,
+        "failed_entry_rate": 0.630127,
+        "in_situ_policy_brier": 0.180957,
+        "probe_auc": 0.654053,
+        "probe_brier": 0.206782,
+        "productive_share_of_active": 0.844752,
+        "productive_share_of_entrants": 0.323084
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "linear_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.096924,
+        "active_productive_rate": 0.305908,
+        "active_rate": 0.402832,
+        "cumulative_entry_rate": 0.969727,
+        "evidence_events_per_learner": 3.882812,
+        "exited_failed_rate": 0.566895,
+        "failed_entry_rate": 0.663818,
+        "in_situ_policy_brier": 0.158205,
+        "probe_auc": 0.984322,
+        "probe_brier": 0.226925,
+        "productive_share_of_active": 0.757916,
+        "productive_share_of_entrants": 0.315413
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "linear_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.106201,
+        "active_productive_rate": 0.306152,
+        "active_rate": 0.412354,
+        "cumulative_entry_rate": 0.96875,
+        "evidence_events_per_learner": 3.877441,
+        "exited_failed_rate": 0.556396,
+        "failed_entry_rate": 0.662598,
+        "in_situ_policy_brier": 0.1886,
+        "probe_auc": 0.654053,
+        "probe_brier": 0.274236,
+        "productive_share_of_active": 0.742663,
+        "productive_share_of_entrants": 0.316047
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "linear_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.105713,
+        "active_productive_rate": 0.30542,
+        "active_rate": 0.411133,
+        "cumulative_entry_rate": 0.968506,
+        "evidence_events_per_learner": 3.879639,
+        "exited_failed_rate": 0.557373,
+        "failed_entry_rate": 0.663086,
+        "in_situ_policy_brier": 0.191744,
+        "probe_auc": 0.970805,
+        "probe_brier": 0.258459,
+        "productive_share_of_active": 0.741169,
+        "productive_share_of_entrants": 0.31527
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "linear_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.034424,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.341553,
+        "cumulative_entry_rate": 0.999023,
+        "evidence_events_per_learner": 191.8125,
+        "exited_failed_rate": 0.657471,
+        "failed_entry_rate": 0.691895,
+        "in_situ_policy_brier": 0.199869,
+        "probe_auc": 0.654053,
+        "probe_brier": 0.199261,
+        "productive_share_of_active": 0.900355,
+        "productive_share_of_entrants": 0.307436
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "linear_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.031738,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.338867,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.661133,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.057975,
+        "probe_auc": 0.990682,
+        "probe_brier": 0.059624,
+        "productive_share_of_active": 0.908078,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "linear_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.037598,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.344727,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.655273,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.068812,
+        "probe_auc": 0.978314,
+        "probe_brier": 0.06774,
+        "productive_share_of_active": 0.890573,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "linear_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.007812,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.314941,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.685059,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.009774,
+        "probe_auc": 0.999476,
+        "probe_brier": 0.012174,
+        "productive_share_of_active": 0.975144,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "fixed_rule",
+      "evidence_regime": "none",
+      "means": {
+        "active_failed_rate": 0.043213,
+        "active_productive_rate": 0.268799,
+        "active_rate": 0.312012,
+        "cumulative_entry_rate": 0.808105,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.496094,
+        "failed_entry_rate": 0.539307,
+        "in_situ_policy_brier": 0.204188,
+        "probe_auc": 0.637177,
+        "probe_brier": 0.204919,
+        "productive_share_of_active": 0.862525,
+        "productive_share_of_entrants": 0.332717
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "online_logistic",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.007568,
+        "active_productive_rate": 0.298584,
+        "active_rate": 0.306152,
+        "cumulative_entry_rate": 0.960938,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.654785,
+        "failed_entry_rate": 0.662354,
+        "in_situ_policy_brier": 0.251842,
+        "probe_auc": 0.653186,
+        "probe_brier": 0.247924,
+        "productive_share_of_active": 0.97624,
+        "productive_share_of_entrants": 0.310318
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.047852,
+        "active_productive_rate": 0.292969,
+        "active_rate": 0.34082,
+        "cumulative_entry_rate": 0.930176,
+        "evidence_events_per_learner": 3.723389,
+        "exited_failed_rate": 0.589355,
+        "failed_entry_rate": 0.637207,
+        "in_situ_policy_brier": 0.203799,
+        "probe_auc": 0.637177,
+        "probe_brier": 0.208982,
+        "productive_share_of_active": 0.860214,
+        "productive_share_of_entrants": 0.314484
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.130371,
+        "active_productive_rate": 0.300781,
+        "active_rate": 0.431152,
+        "cumulative_entry_rate": 0.969727,
+        "evidence_events_per_learner": 3.88623,
+        "exited_failed_rate": 0.538574,
+        "failed_entry_rate": 0.668945,
+        "in_situ_policy_brier": 0.249557,
+        "probe_auc": 0.785977,
+        "probe_brier": 0.282543,
+        "productive_share_of_active": 0.698862,
+        "productive_share_of_entrants": 0.309896
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.116943,
+        "active_productive_rate": 0.300293,
+        "active_rate": 0.417236,
+        "cumulative_entry_rate": 0.968506,
+        "evidence_events_per_learner": 3.879883,
+        "exited_failed_rate": 0.55127,
+        "failed_entry_rate": 0.668213,
+        "in_situ_policy_brier": 0.240616,
+        "probe_auc": 0.637177,
+        "probe_brier": 0.259332,
+        "productive_share_of_active": 0.721538,
+        "productive_share_of_entrants": 0.309744
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.143799,
+        "active_productive_rate": 0.300781,
+        "active_rate": 0.44458,
+        "cumulative_entry_rate": 0.969238,
+        "evidence_events_per_learner": 3.884033,
+        "exited_failed_rate": 0.524658,
+        "failed_entry_rate": 0.668457,
+        "in_situ_policy_brier": 0.29659,
+        "probe_auc": 0.845377,
+        "probe_brier": 0.328575,
+        "productive_share_of_active": 0.677572,
+        "productive_share_of_entrants": 0.310035
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.026855,
+        "active_productive_rate": 0.306885,
+        "active_rate": 0.33374,
+        "cumulative_entry_rate": 0.999023,
+        "evidence_events_per_learner": 191.8125,
+        "exited_failed_rate": 0.665283,
+        "failed_entry_rate": 0.692139,
+        "in_situ_policy_brier": 0.202634,
+        "probe_auc": 0.637177,
+        "probe_brier": 0.203653,
+        "productive_share_of_active": 0.921239,
+        "productive_share_of_entrants": 0.307191
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.044678,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.351807,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.648193,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.183509,
+        "probe_auc": 0.71096,
+        "probe_brier": 0.183267,
+        "productive_share_of_active": 0.878376,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.049561,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.356689,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.643311,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.106654,
+        "probe_auc": 0.932404,
+        "probe_brier": 0.114054,
+        "productive_share_of_active": 0.860757,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "smooth_interaction_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.036133,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.343262,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.656738,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.061835,
+        "probe_auc": 0.97688,
+        "probe_brier": 0.069406,
+        "productive_share_of_active": 0.89414,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "fixed_rule",
+      "evidence_regime": "none",
+      "means": {
+        "active_failed_rate": 0.054932,
+        "active_productive_rate": 0.26709,
+        "active_rate": 0.322021,
+        "cumulative_entry_rate": 0.808105,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.486084,
+        "failed_entry_rate": 0.541016,
+        "in_situ_policy_brier": 0.206943,
+        "probe_auc": 0.618223,
+        "probe_brier": 0.206115,
+        "productive_share_of_active": 0.829438,
+        "productive_share_of_entrants": 0.330404
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "online_logistic",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.009033,
+        "active_productive_rate": 0.300293,
+        "active_rate": 0.309326,
+        "cumulative_entry_rate": 0.963379,
+        "evidence_events_per_learner": null,
+        "exited_failed_rate": 0.654053,
+        "failed_entry_rate": 0.663086,
+        "in_situ_policy_brier": 0.255353,
+        "probe_auc": 0.639904,
+        "probe_brier": 0.24869,
+        "productive_share_of_active": 0.971275,
+        "productive_share_of_entrants": 0.311406
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.056885,
+        "active_productive_rate": 0.295898,
+        "active_rate": 0.352783,
+        "cumulative_entry_rate": 0.930664,
+        "evidence_events_per_learner": 3.719238,
+        "exited_failed_rate": 0.577881,
+        "failed_entry_rate": 0.634766,
+        "in_situ_policy_brier": 0.207469,
+        "probe_auc": 0.618223,
+        "probe_brier": 0.210383,
+        "productive_share_of_active": 0.840638,
+        "productive_share_of_entrants": 0.31742
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.142822,
+        "active_productive_rate": 0.302002,
+        "active_rate": 0.444824,
+        "cumulative_entry_rate": 0.969727,
+        "evidence_events_per_learner": 3.872803,
+        "exited_failed_rate": 0.524902,
+        "failed_entry_rate": 0.667725,
+        "in_situ_policy_brier": 0.260053,
+        "probe_auc": 0.778082,
+        "probe_brier": 0.286112,
+        "productive_share_of_active": 0.680439,
+        "productive_share_of_entrants": 0.311209
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.121826,
+        "active_productive_rate": 0.30127,
+        "active_rate": 0.423096,
+        "cumulative_entry_rate": 0.968262,
+        "evidence_events_per_learner": 3.86792,
+        "exited_failed_rate": 0.545166,
+        "failed_entry_rate": 0.666992,
+        "in_situ_policy_brier": 0.24707,
+        "probe_auc": 0.618223,
+        "probe_brier": 0.260999,
+        "productive_share_of_active": 0.71285,
+        "productive_share_of_entrants": 0.310926
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "neighbor_local",
+      "means": {
+        "active_failed_rate": 0.155518,
+        "active_productive_rate": 0.302246,
+        "active_rate": 0.457764,
+        "cumulative_entry_rate": 0.969238,
+        "evidence_events_per_learner": 3.870361,
+        "exited_failed_rate": 0.511475,
+        "failed_entry_rate": 0.666992,
+        "in_situ_policy_brier": 0.313733,
+        "probe_auc": 0.837489,
+        "probe_brier": 0.333546,
+        "productive_share_of_active": 0.661655,
+        "productive_share_of_entrants": 0.311605
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "scalar_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.034912,
+        "active_productive_rate": 0.306641,
+        "active_rate": 0.341553,
+        "cumulative_entry_rate": 0.999023,
+        "evidence_events_per_learner": 191.8125,
+        "exited_failed_rate": 0.657471,
+        "failed_entry_rate": 0.692383,
+        "in_situ_policy_brier": 0.205474,
+        "probe_auc": 0.618223,
+        "probe_brier": 0.204807,
+        "productive_share_of_active": 0.899999,
+        "productive_share_of_entrants": 0.306946
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "linear_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.045898,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.353027,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.646973,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.19697,
+        "probe_auc": 0.680148,
+        "probe_brier": 0.192474,
+        "productive_share_of_active": 0.875043,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "tree_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.008545,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.315674,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.684326,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.030107,
+        "probe_auc": 0.968314,
+        "probe_brier": 0.054832,
+        "productive_share_of_active": 0.973132,
+        "productive_share_of_entrants": 0.307129
+      }
+    },
+    {
+      "visibility_id": "failure_lag_4",
+      "world_id": "axis_interaction_fit",
+      "arm_id": "mlp_batch",
+      "evidence_regime": "field_public",
+      "means": {
+        "active_failed_rate": 0.059814,
+        "active_productive_rate": 0.307129,
+        "active_rate": 0.366943,
+        "cumulative_entry_rate": 1.0,
+        "evidence_events_per_learner": 192.0,
+        "exited_failed_rate": 0.633057,
+        "failed_entry_rate": 0.692871,
+        "in_situ_policy_brier": 0.100871,
+        "probe_auc": 0.940911,
+        "probe_brier": 0.103656,
+        "productive_share_of_active": 0.837646,
+        "productive_share_of_entrants": 0.307129
+      }
+    }
+  ],
+  "registered_result_disposition": {
+    "immediate": {
+      "field_nonlinear_learning": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+      "learned_family_geometries": [
+        "mlp_batch/axis_interaction_fit",
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "geometry_crossover": "CROSSOVER_TRANSFERS_TO_ABM",
+      "evidence_scale": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+      "useful_learners_field": [
+        "linear_batch/axis_interaction_fit",
+        "linear_batch/smooth_interaction_fit",
+        "mlp_batch/axis_interaction_fit",
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "useful_learners_local": [],
+      "entry": "ENTRY_CHANNEL_ACTIVE",
+      "entry_passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "exit": "EXIT_CHANNEL_ACTIVE",
+      "exit_passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ]
+    },
+    "failure_lag_2": {
+      "field_nonlinear_learning": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+      "learned_family_geometries": [
+        "mlp_batch/axis_interaction_fit",
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "geometry_crossover": "CROSSOVER_TRANSFERS_TO_ABM",
+      "evidence_scale": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+      "useful_learners_field": [
+        "linear_batch/axis_interaction_fit",
+        "linear_batch/smooth_interaction_fit",
+        "mlp_batch/axis_interaction_fit",
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "useful_learners_local": [],
+      "entry": "ENTRY_SATURATED",
+      "entry_passing_family_geometries": [],
+      "exit": "EXIT_CHANNEL_ACTIVE",
+      "exit_passing_family_geometries": [
+        "tree_batch/axis_interaction_fit"
+      ]
+    },
+    "failure_lag_4": {
+      "field_nonlinear_learning": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+      "learned_family_geometries": [
+        "mlp_batch/axis_interaction_fit",
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "geometry_crossover": "CROSSOVER_TRANSFERS_TO_ABM",
+      "evidence_scale": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+      "useful_learners_field": [
+        "linear_batch/axis_interaction_fit",
+        "linear_batch/smooth_interaction_fit",
+        "mlp_batch/axis_interaction_fit",
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "useful_learners_local": [],
+      "entry": "ENTRY_SATURATED",
+      "entry_passing_family_geometries": [],
+      "exit": "EXIT_CHANNEL_ACTIVE",
+      "exit_passing_family_geometries": [
+        "tree_batch/axis_interaction_fit"
+      ]
+    }
+  },
+  "registered_decisions": {
+    "immediate": {
+      "field_nonlinear_learning": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.02683181,
+          "min": 0.00357999,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.04557142,
+          "min": 0.00424211,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.14038254,
+          "min": 0.08783499,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.06543429,
+          "min": 0.03501173,
+          "positive_replicates": 16,
+          "pass": true
+        }
+      },
+      "field_geometry_crossover": {
+        "mlp_batch_over_tree_batch/axis_interaction_fit": {
+          "mean": -0.05387689,
+          "min": -0.09072482,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "mlp_batch_over_tree_batch/smooth_interaction_fit": {
+          "mean": 0.03981097,
+          "min": 0.0033888,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch_over_mlp_batch/axis_interaction_fit": {
+          "mean": 0.05387689,
+          "min": 0.01490637,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch_over_mlp_batch/smooth_interaction_fit": {
+          "mean": -0.03981097,
+          "min": -0.06471755,
+          "positive_replicates": 0,
+          "pass": false
+        }
+      },
+      "useful_learning": {
+        "field_public": {
+          "linear_batch/axis_interaction_fit": {
+            "mean": 0.01868237,
+            "min": 0.00449478,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "linear_batch/smooth_interaction_fit": {
+            "mean": 0.02845927,
+            "min": 0.01163687,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "mlp_batch/axis_interaction_fit": {
+            "mean": 0.09188531,
+            "min": 0.07405187,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "mlp_batch/smooth_interaction_fit": {
+            "mean": 0.12040182,
+            "min": 0.08426253,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "tree_batch/axis_interaction_fit": {
+            "mean": 0.14576221,
+            "min": 0.09289778,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "tree_batch/smooth_interaction_fit": {
+            "mean": 0.08059085,
+            "min": 0.04500911,
+            "positive_replicates": 16,
+            "pass": true
+          }
+        },
+        "neighbor_local": {
+          "linear_batch/axis_interaction_fit": {
+            "mean": -0.10273879,
+            "min": -0.12681419,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "linear_batch/smooth_interaction_fit": {
+            "mean": -0.10104189,
+            "min": -0.11636307,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "mlp_batch/axis_interaction_fit": {
+            "mean": -0.1454499,
+            "min": -0.16340549,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "mlp_batch/smooth_interaction_fit": {
+            "mean": -0.14341051,
+            "min": -0.16973188,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "tree_batch/axis_interaction_fit": {
+            "mean": -0.07385545,
+            "min": -0.08972936,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "tree_batch/smooth_interaction_fit": {
+            "mean": -0.07410585,
+            "min": -0.08299538,
+            "positive_replicates": 0,
+            "pass": false
+          }
+        }
+      },
+      "entry_behavior": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.01345012,
+          "min": -0.00636474,
+          "positive_replicates": 13,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.014174,
+          "min": -0.01553484,
+          "positive_replicates": 13,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.06865547,
+          "min": 0.04103404,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.02787577,
+          "min": -0.0149827,
+          "positive_replicates": 15,
+          "pass": true
+        }
+      },
+      "exit_channel": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": -0.02270508,
+          "min": -0.05078125,
+          "positive_replicates": 2,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": -0.01367188,
+          "min": -0.0625,
+          "positive_replicates": 3,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.0534668,
+          "min": 0.01171875,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.01708984,
+          "min": -0.0390625,
+          "positive_replicates": 13,
+          "pass": true
+        }
+      }
+    },
+    "failure_lag_2": {
+      "field_nonlinear_learning": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.04081954,
+          "min": 0.02122338,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.06658709,
+          "min": 0.04039998,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.1457374,
+          "min": 0.07226332,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.07732391,
+          "min": 0.03906916,
+          "positive_replicates": 16,
+          "pass": true
+        }
+      },
+      "field_geometry_crossover": {
+        "mlp_batch_over_tree_batch/axis_interaction_fit": {
+          "mean": -0.04934175,
+          "min": -0.08610312,
+          "positive_replicates": 1,
+          "pass": false
+        },
+        "mlp_batch_over_tree_batch/smooth_interaction_fit": {
+          "mean": 0.0448393,
+          "min": 0.02342194,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch_over_mlp_batch/axis_interaction_fit": {
+          "mean": 0.04934175,
+          "min": -0.01901108,
+          "positive_replicates": 15,
+          "pass": true
+        },
+        "tree_batch_over_mlp_batch/smooth_interaction_fit": {
+          "mean": -0.0448393,
+          "min": -0.0675757,
+          "positive_replicates": 0,
+          "pass": false
+        }
+      },
+      "useful_learning": {
+        "field_public": {
+          "linear_batch/axis_interaction_fit": {
+            "mean": 0.01364114,
+            "min": 0.003076,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "linear_batch/smooth_interaction_fit": {
+            "mean": 0.02165269,
+            "min": 0.00951717,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "mlp_batch/axis_interaction_fit": {
+            "mean": 0.10194565,
+            "min": 0.08260107,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "mlp_batch/smooth_interaction_fit": {
+            "mean": 0.13572474,
+            "min": 0.11547752,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "tree_batch/axis_interaction_fit": {
+            "mean": 0.15128739,
+            "min": 0.08683402,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "tree_batch/smooth_interaction_fit": {
+            "mean": 0.09088545,
+            "min": 0.05185043,
+            "positive_replicates": 16,
+            "pass": true
+          }
+        },
+        "neighbor_local": {
+          "linear_batch/axis_interaction_fit": {
+            "mean": -0.08110453,
+            "min": -0.10194201,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "linear_batch/smooth_interaction_fit": {
+            "mean": -0.07887971,
+            "min": -0.10307342,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "mlp_batch/axis_interaction_fit": {
+            "mean": -0.12870168,
+            "min": -0.14563593,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "mlp_batch/smooth_interaction_fit": {
+            "mean": -0.12428681,
+            "min": -0.14764449,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "tree_batch/axis_interaction_fit": {
+            "mean": -0.05642268,
+            "min": -0.06682395,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "tree_batch/smooth_interaction_fit": {
+            "mean": -0.05549166,
+            "min": -0.06550891,
+            "positive_replicates": 0,
+            "pass": false
+          }
+        }
+      },
+      "entry_behavior": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        }
+      },
+      "exit_channel": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": -0.03613281,
+          "min": -0.0625,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": -0.01660156,
+          "min": -0.046875,
+          "positive_replicates": 4,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.04321289,
+          "min": 0.00390625,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.00097656,
+          "min": -0.02734375,
+          "positive_replicates": 6,
+          "pass": false
+        }
+      }
+    },
+    "failure_lag_4": {
+      "field_nonlinear_learning": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.04136822,
+          "min": 0.02418816,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.06641098,
+          "min": 0.039664,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.14575864,
+          "min": 0.07226897,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.07732863,
+          "min": 0.03899756,
+          "positive_replicates": 16,
+          "pass": true
+        }
+      },
+      "field_geometry_crossover": {
+        "mlp_batch_over_tree_batch/axis_interaction_fit": {
+          "mean": -0.04882487,
+          "min": -0.08492767,
+          "positive_replicates": 1,
+          "pass": false
+        },
+        "mlp_batch_over_tree_batch/smooth_interaction_fit": {
+          "mean": 0.0446479,
+          "min": 0.02285745,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch_over_mlp_batch/axis_interaction_fit": {
+          "mean": 0.04882487,
+          "min": -0.02206702,
+          "positive_replicates": 15,
+          "pass": true
+        },
+        "tree_batch_over_mlp_batch/smooth_interaction_fit": {
+          "mean": -0.0446479,
+          "min": -0.06504414,
+          "positive_replicates": 0,
+          "pass": false
+        }
+      },
+      "useful_learning": {
+        "field_public": {
+          "linear_batch/axis_interaction_fit": {
+            "mean": 0.01364114,
+            "min": 0.003076,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "linear_batch/smooth_interaction_fit": {
+            "mean": 0.02165269,
+            "min": 0.00951717,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "mlp_batch/axis_interaction_fit": {
+            "mean": 0.10245888,
+            "min": 0.0798973,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "mlp_batch/smooth_interaction_fit": {
+            "mean": 0.13551319,
+            "min": 0.11690251,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "tree_batch/axis_interaction_fit": {
+            "mean": 0.15128374,
+            "min": 0.08688364,
+            "positive_replicates": 16,
+            "pass": true
+          },
+          "tree_batch/smooth_interaction_fit": {
+            "mean": 0.09086529,
+            "min": 0.05185838,
+            "positive_replicates": 16,
+            "pass": true
+          }
+        },
+        "neighbor_local": {
+          "linear_batch/axis_interaction_fit": {
+            "mean": -0.07999675,
+            "min": -0.1002975,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "linear_batch/smooth_interaction_fit": {
+            "mean": -0.0776233,
+            "min": -0.10296028,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "mlp_batch/axis_interaction_fit": {
+            "mean": -0.12743037,
+            "min": -0.14457143,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "mlp_batch/smooth_interaction_fit": {
+            "mean": -0.12365595,
+            "min": -0.147946,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "tree_batch/axis_interaction_fit": {
+            "mean": -0.05488387,
+            "min": -0.06648622,
+            "positive_replicates": 0,
+            "pass": false
+          },
+          "tree_batch/smooth_interaction_fit": {
+            "mean": -0.05441244,
+            "min": -0.06433877,
+            "positive_replicates": 0,
+            "pass": false
+          }
+        }
+      },
+      "entry_behavior": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        }
+      },
+      "exit_channel": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": -0.0378418,
+          "min": -0.0625,
+          "positive_replicates": 1,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": -0.01538086,
+          "min": -0.0546875,
+          "positive_replicates": 3,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.04321289,
+          "min": 0.00390625,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.00097656,
+          "min": -0.02734375,
+          "positive_replicates": 6,
+          "pass": false
+        }
+      }
+    }
+  },
+  "post_hoc_descriptive": {
+    "status": "POST_HOC_DESCRIPTIVE_NOT_REGISTERED_NO_NEW_EXECUTION",
+    "field_raw_means": {
+      "immediate": {
+        "linear_fit": {
+          "scalar_batch": {
+            "productive_share_of_entrants": 0.333211,
+            "active_failed_rate": 0.034668,
+            "probe_brier": 0.199196,
+            "in_situ_policy_brier": 0.199842,
+            "cumulative_entry_rate": 0.743896
+          },
+          "linear_batch": {
+            "productive_share_of_entrants": 0.408281,
+            "active_failed_rate": 0.043945,
+            "probe_brier": 0.059364,
+            "in_situ_policy_brier": 0.058274,
+            "cumulative_entry_rate": 0.748779
+          },
+          "tree_batch": {
+            "productive_share_of_entrants": 0.402101,
+            "active_failed_rate": 0.051025,
+            "probe_brier": 0.072667,
+            "in_situ_policy_brier": 0.073996,
+            "cumulative_entry_rate": 0.75415
+          },
+          "mlp_batch": {
+            "productive_share_of_entrants": 0.435782,
+            "active_failed_rate": 0.010986,
+            "probe_brier": 0.012993,
+            "in_situ_policy_brier": 0.011419,
+            "cumulative_entry_rate": 0.703857
+          }
+        },
+        "smooth_interaction_fit": {
+          "scalar_batch": {
+            "productive_share_of_entrants": 0.339186,
+            "active_failed_rate": 0.030762,
+            "probe_brier": 0.203721,
+            "in_situ_policy_brier": 0.202858,
+            "cumulative_entry_rate": 0.761719
+          },
+          "linear_batch": {
+            "productive_share_of_entrants": 0.368381,
+            "active_failed_rate": 0.058594,
+            "probe_brier": 0.17646,
+            "in_situ_policy_brier": 0.174674,
+            "cumulative_entry_rate": 0.66748
+          },
+          "tree_batch": {
+            "productive_share_of_entrants": 0.390077,
+            "active_failed_rate": 0.048584,
+            "probe_brier": 0.124328,
+            "in_situ_policy_brier": 0.119053,
+            "cumulative_entry_rate": 0.710938
+          },
+          "mlp_batch": {
+            "productive_share_of_entrants": 0.410057,
+            "active_failed_rate": 0.039307,
+            "probe_brier": 0.084517,
+            "in_situ_policy_brier": 0.076457,
+            "cumulative_entry_rate": 0.695068
+          }
+        },
+        "axis_interaction_fit": {
+          "scalar_batch": {
+            "productive_share_of_entrants": 0.334451,
+            "active_failed_rate": 0.038574,
+            "probe_brier": 0.204772,
+            "in_situ_policy_brier": 0.205545,
+            "cumulative_entry_rate": 0.751953
+          },
+          "linear_batch": {
+            "productive_share_of_entrants": 0.355239,
+            "active_failed_rate": 0.062988,
+            "probe_brier": 0.187433,
+            "in_situ_policy_brier": 0.192217,
+            "cumulative_entry_rate": 0.662109
+          },
+          "tree_batch": {
+            "productive_share_of_entrants": 0.417714,
+            "active_failed_rate": 0.016602,
+            "probe_brier": 0.060353,
+            "in_situ_policy_brier": 0.036968,
+            "cumulative_entry_rate": 0.717773
+          },
+          "mlp_batch": {
+            "productive_share_of_entrants": 0.39619,
+            "active_failed_rate": 0.052734,
+            "probe_brier": 0.11423,
+            "in_situ_policy_brier": 0.107255,
+            "cumulative_entry_rate": 0.717529
+          }
+        }
+      },
+      "failure_lag_2": {
+        "linear_fit": {
+          "scalar_batch": {
+            "productive_share_of_entrants": 0.308497,
+            "active_failed_rate": 0.034424,
+            "probe_brier": 0.199271,
+            "in_situ_policy_brier": 0.199877,
+            "cumulative_entry_rate": 0.995605
+          },
+          "linear_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.031738,
+            "probe_brier": 0.059624,
+            "in_situ_policy_brier": 0.057975,
+            "cumulative_entry_rate": 1.0
+          },
+          "tree_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.037598,
+            "probe_brier": 0.067715,
+            "in_situ_policy_brier": 0.068828,
+            "cumulative_entry_rate": 1.0
+          },
+          "mlp_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.008301,
+            "probe_brier": 0.012139,
+            "in_situ_policy_brier": 0.009949,
+            "cumulative_entry_rate": 1.0
+          }
+        },
+        "smooth_interaction_fit": {
+          "scalar_batch": {
+            "productive_share_of_entrants": 0.306944,
+            "active_failed_rate": 0.026611,
+            "probe_brier": 0.203628,
+            "in_situ_policy_brier": 0.202632,
+            "cumulative_entry_rate": 0.99585
+          },
+          "linear_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.044678,
+            "probe_brier": 0.183267,
+            "in_situ_policy_brier": 0.183509,
+            "cumulative_entry_rate": 1.0
+          },
+          "tree_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.049561,
+            "probe_brier": 0.114034,
+            "in_situ_policy_brier": 0.106495,
+            "cumulative_entry_rate": 1.0
+          },
+          "mlp_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.037842,
+            "probe_brier": 0.069195,
+            "in_situ_policy_brier": 0.061354,
+            "cumulative_entry_rate": 1.0
+          }
+        },
+        "axis_interaction_fit": {
+          "scalar_batch": {
+            "productive_share_of_entrants": 0.307436,
+            "active_failed_rate": 0.034668,
+            "probe_brier": 0.204797,
+            "in_situ_policy_brier": 0.205478,
+            "cumulative_entry_rate": 0.99585
+          },
+          "linear_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.045898,
+            "probe_brier": 0.192474,
+            "in_situ_policy_brier": 0.19697,
+            "cumulative_entry_rate": 1.0
+          },
+          "tree_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.008545,
+            "probe_brier": 0.054828,
+            "in_situ_policy_brier": 0.030127,
+            "cumulative_entry_rate": 1.0
+          },
+          "mlp_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.058594,
+            "probe_brier": 0.10417,
+            "in_situ_policy_brier": 0.098671,
+            "cumulative_entry_rate": 1.0
+          }
+        }
+      },
+      "failure_lag_4": {
+        "linear_fit": {
+          "scalar_batch": {
+            "productive_share_of_entrants": 0.307436,
+            "active_failed_rate": 0.034424,
+            "probe_brier": 0.199261,
+            "in_situ_policy_brier": 0.199869,
+            "cumulative_entry_rate": 0.999023
+          },
+          "linear_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.031738,
+            "probe_brier": 0.059624,
+            "in_situ_policy_brier": 0.057975,
+            "cumulative_entry_rate": 1.0
+          },
+          "tree_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.037598,
+            "probe_brier": 0.06774,
+            "in_situ_policy_brier": 0.068812,
+            "cumulative_entry_rate": 1.0
+          },
+          "mlp_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.007812,
+            "probe_brier": 0.012174,
+            "in_situ_policy_brier": 0.009774,
+            "cumulative_entry_rate": 1.0
+          }
+        },
+        "smooth_interaction_fit": {
+          "scalar_batch": {
+            "productive_share_of_entrants": 0.307191,
+            "active_failed_rate": 0.026855,
+            "probe_brier": 0.203653,
+            "in_situ_policy_brier": 0.202634,
+            "cumulative_entry_rate": 0.999023
+          },
+          "linear_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.044678,
+            "probe_brier": 0.183267,
+            "in_situ_policy_brier": 0.183509,
+            "cumulative_entry_rate": 1.0
+          },
+          "tree_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.049561,
+            "probe_brier": 0.114054,
+            "in_situ_policy_brier": 0.106654,
+            "cumulative_entry_rate": 1.0
+          },
+          "mlp_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.036133,
+            "probe_brier": 0.069406,
+            "in_situ_policy_brier": 0.061835,
+            "cumulative_entry_rate": 1.0
+          }
+        },
+        "axis_interaction_fit": {
+          "scalar_batch": {
+            "productive_share_of_entrants": 0.306946,
+            "active_failed_rate": 0.034912,
+            "probe_brier": 0.204807,
+            "in_situ_policy_brier": 0.205474,
+            "cumulative_entry_rate": 0.999023
+          },
+          "linear_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.045898,
+            "probe_brier": 0.192474,
+            "in_situ_policy_brier": 0.19697,
+            "cumulative_entry_rate": 1.0
+          },
+          "tree_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.008545,
+            "probe_brier": 0.054832,
+            "in_situ_policy_brier": 0.030107,
+            "cumulative_entry_rate": 1.0
+          },
+          "mlp_batch": {
+            "productive_share_of_entrants": 0.307129,
+            "active_failed_rate": 0.059814,
+            "probe_brier": 0.103656,
+            "in_situ_policy_brier": 0.100871,
+            "cumulative_entry_rate": 1.0
+          }
+        }
+      }
+    },
+    "field_full_entry_runs": {
+      "immediate": {
+        "scalar_batch": 0,
+        "linear_batch": 0,
+        "tree_batch": 0,
+        "mlp_batch": 0
+      },
+      "failure_lag_2": {
+        "scalar_batch": 16,
+        "linear_batch": 48,
+        "tree_batch": 48,
+        "mlp_batch": 48
+      },
+      "failure_lag_4": {
+        "scalar_batch": 36,
+        "linear_batch": 48,
+        "tree_batch": 48,
+        "mlp_batch": 48
+      }
+    },
+    "mlp_minus_linear_raw_in_linear_world": {
+      "immediate": {
+        "probe_brier": {
+          "mean": 0.046371,
+          "min": 0.029272,
+          "max": 0.061258,
+          "positive_replicates": 16
+        },
+        "productive_share_of_entrants": {
+          "mean": 0.027501,
+          "min": 0.014659,
+          "max": 0.037303,
+          "positive_replicates": 16
+        },
+        "active_failed_rate": {
+          "mean": 0.032959,
+          "min": 0.007812,
+          "max": 0.058594,
+          "positive_replicates": 16
+        }
+      },
+      "failure_lag_2": {
+        "probe_brier": {
+          "mean": 0.047485,
+          "min": 0.030951,
+          "max": 0.063895,
+          "positive_replicates": 16
+        },
+        "productive_share_of_entrants": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "positive_replicates": 0
+        },
+        "active_failed_rate": {
+          "mean": 0.023438,
+          "min": 0.007812,
+          "max": 0.046875,
+          "positive_replicates": 16
+        }
+      },
+      "failure_lag_4": {
+        "probe_brier": {
+          "mean": 0.04745,
+          "min": 0.030707,
+          "max": 0.063768,
+          "positive_replicates": 16
+        },
+        "productive_share_of_entrants": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "positive_replicates": 0
+        },
+        "active_failed_rate": {
+          "mean": 0.023926,
+          "min": 0.007812,
+          "max": 0.046875,
+          "positive_replicates": 16
+        }
+      }
+    },
+    "raw_entry_share_mlp_minus_tree_immediate": {
+      "smooth_interaction_fit": {
+        "mean": 0.01998,
+        "min": -0.003995,
+        "max": 0.041037,
+        "positive_replicates": 15
+      },
+      "axis_interaction_fit": {
+        "mean": -0.021524,
+        "min": -0.045714,
+        "max": 0.000208,
+        "positive_replicates": 1
+      }
+    },
+    "field_in_situ_minus_probe_brier": {
+      "immediate": {
+        "linear_fit": {
+          "linear_batch": -0.00109,
+          "tree_batch": 0.001329,
+          "mlp_batch": -0.001574
+        },
+        "smooth_interaction_fit": {
+          "linear_batch": -0.001786,
+          "tree_batch": -0.005275,
+          "mlp_batch": -0.00806
+        },
+        "axis_interaction_fit": {
+          "linear_batch": 0.004784,
+          "tree_batch": -0.023385,
+          "mlp_batch": -0.006975
+        }
+      },
+      "failure_lag_2": {
+        "linear_fit": {
+          "linear_batch": -0.001649,
+          "tree_batch": 0.001113,
+          "mlp_batch": -0.00219
+        },
+        "smooth_interaction_fit": {
+          "linear_batch": 0.000242,
+          "tree_batch": -0.007539,
+          "mlp_batch": -0.007841
+        },
+        "axis_interaction_fit": {
+          "linear_batch": 0.004496,
+          "tree_batch": -0.024701,
+          "mlp_batch": -0.005499
+        }
+      },
+      "failure_lag_4": {
+        "linear_fit": {
+          "linear_batch": -0.001649,
+          "tree_batch": 0.001072,
+          "mlp_batch": -0.0024
+        },
+        "smooth_interaction_fit": {
+          "linear_batch": 0.000242,
+          "tree_batch": -0.0074,
+          "mlp_batch": -0.007571
+        },
+        "axis_interaction_fit": {
+          "linear_batch": 0.004496,
+          "tree_batch": -0.024725,
+          "mlp_batch": -0.002785
+        }
+      }
+    }
+  },
+  "scientific_assessment": {
+    "out_of_sample_nonlinear_learning": "SUPPORTED_ALL_FAMILY_GEOMETRIES_ALL_VISIBILITY_REGIMES",
+    "geometry_crossover": "TRANSFERS_TO_ABM_MLP_WINS_SMOOTH_TREE_WINS_AXIS_OUT_OF_SAMPLE",
+    "evidence_scale": "GATES_USEFUL_LEARNING_EVERY_LOCAL_FEATURE_LEARNER_WORSE_THAN_PRIOR_EVERY_FIELD_LEARNER_BETTER",
+    "entry_channel": "ACTIVE_ONLY_UNDER_IMMEDIATE_VISIBILITY_SATURATED_FROM_TWO_STEP_FAILURE_DELAY",
+    "entry_interaction_specific_pass": "TREE_ONLY",
+    "entry_raw_ordering": "FOLLOWS_THE_GEOMETRY_CROSSOVER_MLP_BEST_ON_SMOOTH_TREE_BEST_ON_AXIS",
+    "why_mlp_fails_the_entry_did": "MLP_ALSO_GAINS_OVER_LINEAR_IN_THE_LINEAR_WORLD_SO_ITS_ADVANTAGE_IS_PARTLY_NOT_INTERACTION_SPECIFIC",
+    "exit_channel": "TREE_REDUCES_FAILED_STOCK_INTERACTION_SPECIFICALLY_ON_AXIS_ALL_REGIMES_AND_SMOOTH_IMMEDIATE",
+    "v1_memorization_artifact": "REMOVED_IN_SITU_AND_PROBE_BRIER_NOW_AGREE",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "model_selected": "NO",
+    "reason": "Scored on probe agents the ABM never simulated, field-wide tree and MLP policies learn interaction structure a linear policy cannot, in every visibility regime. The v3 geometry crossover survives: the MLP wins the smooth world and the tree wins the axis world. Neighbor-scale evidence makes every feature learner worse than the fixed prior. Learning changes who enters only when failure is visible at once. From a two-step delay on, every field arm enters every agent. Raw entry precision follows the crossover, but only the tree passes the interaction-specific DiD, because the MLP also gains in the linear world."
+  },
+  "framework_assessment": {
+    "generic_api_change_needed": false,
+    "pivot_policy_layer_conclusion": "A_NONLINEAR_POLICY_IS_NEEDED_WHEN_SUCCESS_DEPENDS_ON_INTERACTIONS_AND_EVIDENCE_IS_FIELD_WIDE_THE_BETTER_FAMILY_DEPENDS_ON_BOUNDARY_GEOMETRY",
+    "behavioral_relevance_conditions": [
+      "FIELD_WIDE_OUTCOME_EVIDENCE",
+      "IMMEDIATE_FAILURE_VISIBILITY_FOR_ENTRY",
+      "EXIT_CHANNEL_UNDER_DELAY"
+    ],
+    "empirical_question_left_open": "WHICH_BOUNDARY_GEOMETRY_AND_EVIDENCE_REGIME_REAL_PIVOT_OUTCOMES_FOLLOW",
+    "no_post_result_tuning_of_v2": true
+  },
+  "boundaries": {
+    "evidence_type": "SYNTHETIC_GENERATIVE_ABM_COMPARISON",
+    "empirical_rows_read": 0,
+    "empirical_fit": "NOT_RUN",
+    "predictive_validation": "SYNTHETIC_PROBE_COHORT_ONLY",
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "package_promotion": "NOT_AUTHORIZED"
+  }
+}
