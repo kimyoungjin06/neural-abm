@@ -167,6 +167,12 @@ PIVOT_MATCHED_MARGINAL_DISCRIMINATOR_REPOSITORY_ONLY_PATHS = {
     "scripts/prototype_pivot_matched_marginal_discriminator_v3.py",
     "tests/test_pivot_matched_marginal_discriminator_v3.py",
 }
+PIVOT_NONLINEAR_POLICY_ABM_REPOSITORY_ONLY_PATHS = {
+    "docs/research/pivot-nonlinear-policy-abm-v1.md",
+    "experiments/configs/pivot_nonlinear_policy_abm_v1.yaml",
+    "scripts/prototype_pivot_nonlinear_policy_abm_v1.py",
+    "tests/test_pivot_nonlinear_policy_abm_v1.py",
+}
 PIVOT_GATE_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_feedback_g0_measurement_freeze_v0.yaml",
     "experiments/configs/pivot_feedback_g_minus_1_readiness_v0.yaml",
@@ -1227,6 +1233,7 @@ FORBIDDEN_SDIST_PATHS = {
     *PIVOT_PERSISTENCE_EXIT_PROTOTYPE_REPOSITORY_ONLY_PATHS,
     *PIVOT_ADAPTIVE_BASELINE_LADDER_REPOSITORY_ONLY_PATHS,
     *PIVOT_MATCHED_MARGINAL_DISCRIMINATOR_REPOSITORY_ONLY_PATHS,
+    *PIVOT_NONLINEAR_POLICY_ABM_REPOSITORY_ONLY_PATHS,
     *PIVOT_GATE_REPOSITORY_ONLY_PATHS,
     *CONTENT_FREEZE_REPOSITORY_ONLY_PATHS,
     *MAIN_TEMPORAL_VALIDITY_REPOSITORY_ONLY_PATHS,

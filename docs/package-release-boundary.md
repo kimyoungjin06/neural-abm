@@ -171,6 +171,11 @@ v1 run stopped at its invariance check, has the same repository-only boundary.
 The result-informed v3 successor, with a matched linear baseline, tuned
 baselines, and an axis-aligned control, has the same boundary.
 
+The nonlinear policy ABM is repository-only as well. It carries the tree and
+neural policy families into the persistence-and-exit ABM, with rank-matched
+interaction-fit worlds and a field-wide evidence regime. Its contract, runner,
+tests, and evidence remain outside the package, and it changes no generic API.
+
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy
 reference auditor live at

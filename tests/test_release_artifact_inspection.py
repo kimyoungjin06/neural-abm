@@ -1843,6 +1843,23 @@ def test_release_inspector_rejects_matched_marginal_discriminator_paths() -> Non
     assert forbidden == sorted(repository_paths)
 
 
+def test_release_inspector_rejects_nonlinear_policy_abm_paths() -> None:
+    inspector = runpy.run_path(str(INSPECT_SCRIPT))
+    repository_paths = {
+        "docs/research/pivot-nonlinear-policy-abm-v1.md",
+        "experiments/configs/pivot_nonlinear_policy_abm_v1.yaml",
+        "scripts/prototype_pivot_nonlinear_policy_abm_v1.py",
+        "tests/test_pivot_nonlinear_policy_abm_v1.py",
+    }
+    assert repository_paths == inspector[
+        "PIVOT_NONLINEAR_POLICY_ABM_REPOSITORY_ONLY_PATHS"
+    ]
+
+    forbidden = inspector["_forbidden_sdist_files"]({"README.md", *repository_paths})
+
+    assert forbidden == sorted(repository_paths)
+
+
 def test_release_inspector_rejects_g0_measurement_precommitment_paths() -> None:
     inspector = runpy.run_path(str(INSPECT_SCRIPT))
     repository_paths = {
