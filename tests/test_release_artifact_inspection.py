@@ -1825,6 +1825,10 @@ def test_release_inspector_rejects_matched_marginal_discriminator_paths() -> Non
         "experiments/configs/pivot_matched_marginal_discriminator_v1.yaml",
         "scripts/prototype_pivot_matched_marginal_discriminator_v1.py",
         "tests/test_pivot_matched_marginal_discriminator_v1.py",
+        "docs/research/pivot-matched-marginal-discriminator-v2.md",
+        "experiments/configs/pivot_matched_marginal_discriminator_v2.yaml",
+        "scripts/prototype_pivot_matched_marginal_discriminator_v2.py",
+        "tests/test_pivot_matched_marginal_discriminator_v2.py",
     }
     assert repository_paths == inspector[
         "PIVOT_MATCHED_MARGINAL_DISCRIMINATOR_REPOSITORY_ONLY_PATHS"
