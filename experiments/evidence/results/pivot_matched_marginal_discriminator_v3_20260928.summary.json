@@ -1,0 +1,722 @@
+{
+  "schema_version": "pivot_matched_marginal_result.v3",
+  "label": "pivot_matched_marginal_discriminator_v3_20260928",
+  "status": "SYNTHETIC_POLICY_LAYER_DISCRIMINATOR_REPRODUCED",
+  "precommit": {
+    "commit_sha": "14f37afb2e740df28f0a1c505cea63823fc1b9c1",
+    "contract_path": "experiments/configs/pivot_matched_marginal_discriminator_v3.yaml",
+    "contract_sha256": "aa39e72799aae48dda2cc5b2c534de94e6d3a80274e9dc6eef4fc5e064e2568c",
+    "result_informed_successor": true
+  },
+  "execution": {
+    "profile": "development",
+    "replicates": 16,
+    "training_agent_count": 256,
+    "evaluation_agent_count": 256,
+    "world_count": 6,
+    "model_count": 5,
+    "raw_row_count": 480,
+    "first_run": {
+      "output_dir": "/ssd/pivot_matched_marginal_discriminator_v3_14f37af_development",
+      "receipt_sha256": "059c9e7ef40ea4afc952607beae67608c6198abde10b3b5a5cfe799a4db79d3a"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_matched_marginal_discriminator_v3_14f37af_reproduction",
+      "receipt_sha256": "059c9e7ef40ea4afc952607beae67608c6198abde10b3b5a5cfe799a4db79d3a",
+      "all_four_artifacts_byte_identical": true
+    },
+    "artifact_sha256": {
+      "replicate_metrics.jsonl": "b15373ea482fc2dad934bcda80dcb5db94949e3bf8282777de40292f5da01eab",
+      "policy_scorecard.json": "928110cf472fc6de90b6801b1c05f98a647d552866584b85dab1e6c2c0ee38bc",
+      "policy_scorecard.md": "f4e2e909f51d540366481ad34f9f4311c3903e5141efe06422f273feb7c83ca7",
+      "receipt.json": "059c9e7ef40ea4afc952607beae67608c6198abde10b3b5a5cfe799a4db79d3a"
+    }
+  },
+  "validation": {
+    "receipt_status": "COMPLETE",
+    "source_bindings_verified": 6,
+    "scalar_orientation_invariance": "PASS_EXACT",
+    "fixed_and_scalar_orientation_distance_zero": true,
+    "exact_half_success_fraction_all_rows": true
+  },
+  "cell_means": [
+    {
+      "world_id": "linear_support_aligned",
+      "model_id": "fixed_rule",
+      "brier_score": 0.260714,
+      "log_loss": 0.717752,
+      "roc_auc": 0.598175,
+      "conditional_separation": 0.032882
+    },
+    {
+      "world_id": "linear_support_aligned",
+      "model_id": "scalar_delta",
+      "brier_score": 0.250466,
+      "log_loss": 0.695099,
+      "roc_auc": 0.598175,
+      "conditional_separation": 0.034014
+    },
+    {
+      "world_id": "linear_support_aligned",
+      "model_id": "matched_linear",
+      "brier_score": 0.065551,
+      "log_loss": 0.246441,
+      "roc_auc": 0.994679,
+      "conditional_separation": 0.601056
+    },
+    {
+      "world_id": "linear_support_aligned",
+      "model_id": "histogram_tree",
+      "brier_score": 0.061943,
+      "log_loss": 0.221465,
+      "roc_auc": 0.982939,
+      "conditional_separation": 0.797929
+    },
+    {
+      "world_id": "linear_support_aligned",
+      "model_id": "residual_mlp",
+      "brier_score": 0.037536,
+      "log_loss": 0.1275,
+      "roc_auc": 0.999443,
+      "conditional_separation": 0.893384
+    },
+    {
+      "world_id": "linear_support_reversed",
+      "model_id": "fixed_rule",
+      "brier_score": 0.293596,
+      "log_loss": 0.789834,
+      "roc_auc": 0.401825,
+      "conditional_separation": -0.032882
+    },
+    {
+      "world_id": "linear_support_reversed",
+      "model_id": "scalar_delta",
+      "brier_score": 0.28448,
+      "log_loss": 0.767181,
+      "roc_auc": 0.401825,
+      "conditional_separation": -0.034014
+    },
+    {
+      "world_id": "linear_support_reversed",
+      "model_id": "matched_linear",
+      "brier_score": 0.075014,
+      "log_loss": 0.272192,
+      "roc_auc": 0.985378,
+      "conditional_separation": 0.567583
+    },
+    {
+      "world_id": "linear_support_reversed",
+      "model_id": "histogram_tree",
+      "brier_score": 0.061943,
+      "log_loss": 0.221465,
+      "roc_auc": 0.982939,
+      "conditional_separation": 0.797929
+    },
+    {
+      "world_id": "linear_support_reversed",
+      "model_id": "residual_mlp",
+      "brier_score": 0.03717,
+      "log_loss": 0.125624,
+      "roc_auc": 0.999435,
+      "conditional_separation": 0.893605
+    },
+    {
+      "world_id": "smooth_interaction_aligned",
+      "model_id": "fixed_rule",
+      "brier_score": 0.260074,
+      "log_loss": 0.716776,
+      "roc_auc": 0.61409,
+      "conditional_separation": 0.034162
+    },
+    {
+      "world_id": "smooth_interaction_aligned",
+      "model_id": "scalar_delta",
+      "brier_score": 0.24978,
+      "log_loss": 0.694123,
+      "roc_auc": 0.61409,
+      "conditional_separation": 0.035385
+    },
+    {
+      "world_id": "smooth_interaction_aligned",
+      "model_id": "matched_linear",
+      "brier_score": 0.226186,
+      "log_loss": 0.647049,
+      "roc_auc": 0.687511,
+      "conditional_separation": 0.099459
+    },
+    {
+      "world_id": "smooth_interaction_aligned",
+      "model_id": "histogram_tree",
+      "brier_score": 0.109552,
+      "log_loss": 0.378979,
+      "roc_auc": 0.936405,
+      "conditional_separation": 0.642687
+    },
+    {
+      "world_id": "smooth_interaction_aligned",
+      "model_id": "residual_mlp",
+      "brier_score": 0.064202,
+      "log_loss": 0.209102,
+      "roc_auc": 0.97765,
+      "conditional_separation": 0.729021
+    },
+    {
+      "world_id": "smooth_interaction_reversed",
+      "model_id": "fixed_rule",
+      "brier_score": 0.294236,
+      "log_loss": 0.790809,
+      "roc_auc": 0.38591,
+      "conditional_separation": -0.034162
+    },
+    {
+      "world_id": "smooth_interaction_reversed",
+      "model_id": "scalar_delta",
+      "brier_score": 0.285165,
+      "log_loss": 0.768157,
+      "roc_auc": 0.38591,
+      "conditional_separation": -0.035385
+    },
+    {
+      "world_id": "smooth_interaction_reversed",
+      "model_id": "matched_linear",
+      "brier_score": 0.22572,
+      "log_loss": 0.644635,
+      "roc_auc": 0.690586,
+      "conditional_separation": 0.090059
+    },
+    {
+      "world_id": "smooth_interaction_reversed",
+      "model_id": "histogram_tree",
+      "brier_score": 0.109552,
+      "log_loss": 0.378979,
+      "roc_auc": 0.936405,
+      "conditional_separation": 0.642687
+    },
+    {
+      "world_id": "smooth_interaction_reversed",
+      "model_id": "residual_mlp",
+      "brier_score": 0.067491,
+      "log_loss": 0.219597,
+      "roc_auc": 0.975018,
+      "conditional_separation": 0.718218
+    },
+    {
+      "world_id": "axis_interaction_aligned",
+      "model_id": "fixed_rule",
+      "brier_score": 0.258142,
+      "log_loss": 0.712514,
+      "roc_auc": 0.619335,
+      "conditional_separation": 0.038025
+    },
+    {
+      "world_id": "axis_interaction_aligned",
+      "model_id": "scalar_delta",
+      "brier_score": 0.247823,
+      "log_loss": 0.689861,
+      "roc_auc": 0.619335,
+      "conditional_separation": 0.039299
+    },
+    {
+      "world_id": "axis_interaction_aligned",
+      "model_id": "matched_linear",
+      "brier_score": 0.229774,
+      "log_loss": 0.653743,
+      "roc_auc": 0.673023,
+      "conditional_separation": 0.086291
+    },
+    {
+      "world_id": "axis_interaction_aligned",
+      "model_id": "histogram_tree",
+      "brier_score": 0.060358,
+      "log_loss": 0.335169,
+      "roc_auc": 0.966665,
+      "conditional_separation": 0.858964
+    },
+    {
+      "world_id": "axis_interaction_aligned",
+      "model_id": "residual_mlp",
+      "brier_score": 0.107301,
+      "log_loss": 0.349874,
+      "roc_auc": 0.93018,
+      "conditional_separation": 0.609922
+    },
+    {
+      "world_id": "axis_interaction_reversed",
+      "model_id": "fixed_rule",
+      "brier_score": 0.296168,
+      "log_loss": 0.795071,
+      "roc_auc": 0.380665,
+      "conditional_separation": -0.038025
+    },
+    {
+      "world_id": "axis_interaction_reversed",
+      "model_id": "scalar_delta",
+      "brier_score": 0.287122,
+      "log_loss": 0.772419,
+      "roc_auc": 0.380665,
+      "conditional_separation": -0.039299
+    },
+    {
+      "world_id": "axis_interaction_reversed",
+      "model_id": "matched_linear",
+      "brier_score": 0.230053,
+      "log_loss": 0.653494,
+      "roc_auc": 0.672245,
+      "conditional_separation": 0.078438
+    },
+    {
+      "world_id": "axis_interaction_reversed",
+      "model_id": "histogram_tree",
+      "brier_score": 0.060358,
+      "log_loss": 0.335169,
+      "roc_auc": 0.966665,
+      "conditional_separation": 0.858964
+    },
+    {
+      "world_id": "axis_interaction_reversed",
+      "model_id": "residual_mlp",
+      "brier_score": 0.10676,
+      "log_loss": 0.346284,
+      "roc_auc": 0.929886,
+      "conditional_separation": 0.60414
+    }
+  ],
+  "registered_decisions": {
+    "feature_conditional_need": {
+      "model_id": "matched_linear",
+      "reference_model_id": "scalar_delta",
+      "statistic": "RAW_GAP",
+      "minimum_mean_brier_improvement": 0.02,
+      "minimum_positive_replicates": 12,
+      "worlds": {
+        "linear_support_aligned": {
+          "mean": 0.1849148,
+          "min": 0.17038347,
+          "max": 0.20343299,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "linear_support_reversed": {
+          "mean": 0.20946608,
+          "min": 0.1947715,
+          "max": 0.22787586,
+          "positive_replicates": 16,
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    "mlp_over_tree": {
+      "model_id": "residual_mlp",
+      "reference_model_id": "histogram_tree",
+      "statistic": "RAW_GAP",
+      "minimum_mean_brier_improvement": 0.005,
+      "minimum_positive_replicates": 12,
+      "worlds": {
+        "axis_interaction_aligned": {
+          "mean": -0.04694383,
+          "min": -0.07520527,
+          "max": -0.01238402,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "axis_interaction_reversed": {
+          "mean": -0.04640235,
+          "min": -0.08048047,
+          "max": -0.00771417,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "smooth_interaction_aligned": {
+          "mean": 0.04535,
+          "min": 0.02160224,
+          "max": 0.07103771,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "smooth_interaction_reversed": {
+          "mean": 0.04206053,
+          "min": 0.0124021,
+          "max": 0.0682058,
+          "positive_replicates": 16,
+          "pass": true
+        }
+      },
+      "pass": false
+    },
+    "neural_interaction_specificity": {
+      "model_id": "residual_mlp",
+      "reference_model_id": "histogram_tree",
+      "statistic": "DIFFERENCE_IN_DIFFERENCES",
+      "minimum_mean_brier_improvement": 0.005,
+      "minimum_positive_replicates": 12,
+      "worlds": {
+        "smooth_interaction_aligned": {
+          "mean": 0.02094288,
+          "min": -0.01434383,
+          "max": 0.04079722,
+          "positive_replicates": 15,
+          "pass": true
+        },
+        "smooth_interaction_reversed": {
+          "mean": 0.01728774,
+          "min": -0.02365869,
+          "max": 0.03678392,
+          "positive_replicates": 14,
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    "nonlinear_representation_need": {
+      "model_id": "residual_mlp",
+      "reference_model_id": "matched_linear",
+      "statistic": "DIFFERENCE_IN_DIFFERENCES",
+      "minimum_mean_brier_improvement": 0.01,
+      "minimum_positive_replicates": 12,
+      "worlds": {
+        "axis_interaction_aligned": {
+          "mean": 0.09445739,
+          "min": 0.02799948,
+          "max": 0.13847807,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "axis_interaction_reversed": {
+          "mean": 0.08545021,
+          "min": 0.0380265,
+          "max": 0.11295024,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "smooth_interaction_aligned": {
+          "mean": 0.13396902,
+          "min": 0.08784374,
+          "max": 0.18877811,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "smooth_interaction_reversed": {
+          "mean": 0.12038525,
+          "min": 0.07195372,
+          "max": 0.16961909,
+          "positive_replicates": 16,
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    "tree_over_mlp": {
+      "model_id": "histogram_tree",
+      "reference_model_id": "residual_mlp",
+      "statistic": "RAW_GAP",
+      "minimum_mean_brier_improvement": 0.005,
+      "minimum_positive_replicates": 12,
+      "worlds": {
+        "axis_interaction_aligned": {
+          "mean": 0.04694383,
+          "min": 0.01238402,
+          "max": 0.07520527,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "axis_interaction_reversed": {
+          "mean": 0.04640235,
+          "min": 0.00771417,
+          "max": 0.08048047,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "smooth_interaction_aligned": {
+          "mean": -0.04535,
+          "min": -0.07103771,
+          "max": -0.02160224,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "smooth_interaction_reversed": {
+          "mean": -0.04206053,
+          "min": -0.0682058,
+          "max": -0.0124021,
+          "positive_replicates": 0,
+          "pass": false
+        }
+      },
+      "pass": false
+    }
+  },
+  "registered_result_disposition": {
+    "feature_conditional_need": "SUPPORTED_ON_FROZEN_GENERATOR",
+    "nonlinear_representation_need": "SUPPORTED_BOTH_GEOMETRIES",
+    "nonlinear_family_dominance": "GENERATOR_DEPENDENT_OR_TIED",
+    "neural_interaction_specificity": "PASS",
+    "neural_specific_advantage": "NOT_SUPPORTED_ON_FROZEN_GENERATOR",
+    "abm_route": "PAIRED_CLASSICAL_AND_NEURAL_NONLINEAR_ARMS"
+  },
+  "post_hoc_descriptive": {
+    "status": "POST_HOC_DESCRIPTIVE_NOT_REGISTERED_NO_NEW_EXECUTION",
+    "mlp_minus_tree_advantage": {
+      "smooth_interaction_aligned": {
+        "brier": {
+          "mean": 0.04535,
+          "min": 0.021602,
+          "max": 0.071038,
+          "positive_replicates": 16
+        },
+        "log_loss": {
+          "mean": 0.169877,
+          "min": 0.083583,
+          "max": 0.256226,
+          "positive_replicates": 16
+        },
+        "roc_auc": {
+          "mean": 0.041245,
+          "min": 0.018005,
+          "max": 0.062805,
+          "positive_replicates": 16
+        }
+      },
+      "smooth_interaction_reversed": {
+        "brier": {
+          "mean": 0.042061,
+          "min": 0.012402,
+          "max": 0.068206,
+          "positive_replicates": 16
+        },
+        "log_loss": {
+          "mean": 0.159382,
+          "min": 0.071867,
+          "max": 0.226423,
+          "positive_replicates": 16
+        },
+        "roc_auc": {
+          "mean": 0.038612,
+          "min": 0.009583,
+          "max": 0.059448,
+          "positive_replicates": 16
+        }
+      },
+      "axis_interaction_aligned": {
+        "brier": {
+          "mean": -0.046944,
+          "min": -0.075205,
+          "max": -0.012384,
+          "positive_replicates": 0
+        },
+        "log_loss": {
+          "mean": -0.014704,
+          "min": -0.230447,
+          "max": 0.190901,
+          "positive_replicates": 9
+        },
+        "roc_auc": {
+          "mean": -0.036486,
+          "min": -0.069031,
+          "max": 0.002869,
+          "positive_replicates": 1
+        }
+      },
+      "axis_interaction_reversed": {
+        "brier": {
+          "mean": -0.046402,
+          "min": -0.08048,
+          "max": -0.007714,
+          "positive_replicates": 0
+        },
+        "log_loss": {
+          "mean": -0.011114,
+          "min": -0.251361,
+          "max": 0.229009,
+          "positive_replicates": 10
+        },
+        "roc_auc": {
+          "mean": -0.036779,
+          "min": -0.087646,
+          "max": 0.001404,
+          "positive_replicates": 1
+        }
+      },
+      "linear_support_aligned": {
+        "brier": {
+          "mean": 0.024407,
+          "min": -0.001055,
+          "max": 0.045374,
+          "positive_replicates": 14
+        },
+        "log_loss": {
+          "mean": 0.093965,
+          "min": -0.031828,
+          "max": 0.202187,
+          "positive_replicates": 15
+        },
+        "roc_auc": {
+          "mean": 0.016504,
+          "min": 0.008118,
+          "max": 0.027649,
+          "positive_replicates": 16
+        }
+      },
+      "linear_support_reversed": {
+        "brier": {
+          "mean": 0.024773,
+          "min": -0.000924,
+          "max": 0.047054,
+          "positive_replicates": 14
+        },
+        "log_loss": {
+          "mean": 0.095841,
+          "min": -0.035267,
+          "max": 0.214518,
+          "positive_replicates": 15
+        },
+        "roc_auc": {
+          "mean": 0.016497,
+          "min": 0.007935,
+          "max": 0.027649,
+          "positive_replicates": 16
+        }
+      }
+    },
+    "selected_candidates": {
+      "matched_linear": {
+        "linear_support_aligned": {
+          "0": 16
+        },
+        "linear_support_reversed": {
+          "0": 16
+        },
+        "smooth_interaction_aligned": {
+          "0": 9,
+          "1": 5,
+          "2": 2
+        },
+        "smooth_interaction_reversed": {
+          "0": 12,
+          "1": 4
+        },
+        "axis_interaction_aligned": {
+          "0": 6,
+          "1": 8,
+          "2": 2
+        },
+        "axis_interaction_reversed": {
+          "0": 12,
+          "1": 4
+        }
+      },
+      "histogram_tree": {
+        "linear_support_aligned": {
+          "1": 1,
+          "10": 1,
+          "11": 1,
+          "6": 6,
+          "7": 6,
+          "8": 1
+        },
+        "linear_support_reversed": {
+          "1": 1,
+          "10": 1,
+          "11": 1,
+          "6": 6,
+          "7": 6,
+          "8": 1
+        },
+        "smooth_interaction_aligned": {
+          "10": 3,
+          "11": 2,
+          "4": 2,
+          "5": 2,
+          "7": 3,
+          "8": 4
+        },
+        "smooth_interaction_reversed": {
+          "10": 3,
+          "11": 2,
+          "4": 2,
+          "5": 2,
+          "7": 3,
+          "8": 4
+        },
+        "axis_interaction_aligned": {
+          "11": 4,
+          "6": 3,
+          "7": 2,
+          "8": 5,
+          "9": 2
+        },
+        "axis_interaction_reversed": {
+          "11": 4,
+          "6": 3,
+          "7": 2,
+          "8": 5,
+          "9": 2
+        }
+      },
+      "residual_mlp": {
+        "linear_support_aligned": {
+          "0": 16
+        },
+        "linear_support_reversed": {
+          "0": 16
+        },
+        "smooth_interaction_aligned": {
+          "0": 16
+        },
+        "smooth_interaction_reversed": {
+          "0": 16
+        },
+        "axis_interaction_aligned": {
+          "0": 15,
+          "1": 1
+        },
+        "axis_interaction_reversed": {
+          "0": 14,
+          "1": 2
+        }
+      }
+    },
+    "grid_edge_selection": {
+      "neural_optimizers_smallest_weight_decay_share": 0.854167,
+      "tree_300_round_schedule_share": 0.895833
+    }
+  },
+  "scientific_assessment": {
+    "feature_conditional_need": "SUPPORTED_ROBUSTLY",
+    "nonlinear_representation_need": "SUPPORTED_IN_BOTH_GEOMETRIES_AFTER_REMOVING_THE_OPTIMIZER_CONFOUND",
+    "family_ranking": "INDUCTIVE_BIAS_CROSSOVER_MLP_WINS_SMOOTH_TREE_WINS_AXIS_ON_BRIER_AND_AUC",
+    "neural_edge_on_smooth_worlds": "INTERACTION_SPECIFIC",
+    "tree_edge_on_axis_worlds_under_log_loss": "NOT_PRESERVED_TREE_MAKES_OVERCONFIDENT_ERRORS",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "model_selected": "NO",
+    "reason": "With the optimizer matched, the hidden branch adds 0.09 to 0.13 Brier beyond what it adds on the linear worlds, in both geometries and all replicates. The neural and classical nonlinear families then split by boundary geometry: the MLP wins every smooth-world replicate and the tree wins every axis-world replicate, by similar Brier margins. Neither dominates, so the synthetic policy layer cannot choose between them. Under log loss the tree's axis-world edge disappears because some of its probabilities are overconfident."
+  },
+  "framework_assessment": {
+    "generic_api_change_needed": false,
+    "registered_abm_route": "PAIRED_CLASSICAL_AND_NEURAL_NONLINEAR_ARMS",
+    "carry_forward_policy_families": [
+      "CLASSICAL_NONLINEAR",
+      "NEURAL_NONLINEAR"
+    ],
+    "abm_integration_requires_separate_precommit": true,
+    "abm_preconditions_found_during_design": [
+      "PIVOT_PRODUCTIVE_FIT_IS_LINEAR_IN_FEATURES_SO_AN_INTERACTION_FIT_WORLD_IS_NEEDED_FOR_NONLINEAR_POLICIES_TO_MATTER",
+      "IMITATIVE_AGENTS_SEE_ABOUT_3_NEIGHBOR_OUTCOMES_EACH_SO_EVIDENCE_SCALE_MUST_BE_ADDRESSED"
+    ],
+    "limitations": [
+      "CV_SELECTIONS_CONCENTRATE_AT_THE_HIGH_CAPACITY_EDGE_OF_BOTH_GRIDS",
+      "BRIER_IS_THE_REGISTERED_DECISION_METRIC_LOG_LOSS_RANKING_DIFFERS_ON_AXIS_WORLDS"
+    ],
+    "no_post_result_tuning_of_v3": true
+  },
+  "boundaries": {
+    "evidence_type": "SYNTHETIC_POLICY_LAYER_DISCRIMINATOR",
+    "empirical_rows_read": 0,
+    "empirical_fit": "NOT_RUN",
+    "predictive_validation": "SYNTHETIC_DISJOINT_COHORT_ONLY",
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "package_promotion": "NOT_AUTHORIZED"
+  }
+}
