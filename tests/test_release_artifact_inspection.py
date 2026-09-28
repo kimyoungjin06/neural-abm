@@ -1850,6 +1850,10 @@ def test_release_inspector_rejects_nonlinear_policy_abm_paths() -> None:
         "experiments/configs/pivot_nonlinear_policy_abm_v1.yaml",
         "scripts/prototype_pivot_nonlinear_policy_abm_v1.py",
         "tests/test_pivot_nonlinear_policy_abm_v1.py",
+        "docs/research/pivot-nonlinear-policy-abm-v2.md",
+        "experiments/configs/pivot_nonlinear_policy_abm_v2.yaml",
+        "scripts/prototype_pivot_nonlinear_policy_abm_v2.py",
+        "tests/test_pivot_nonlinear_policy_abm_v2.py",
     }
     assert repository_paths == inspector[
         "PIVOT_NONLINEAR_POLICY_ABM_REPOSITORY_ONLY_PATHS"

@@ -175,6 +175,8 @@ The nonlinear policy ABM is repository-only as well. It carries the tree and
 neural policy families into the persistence-and-exit ABM, with rank-matched
 interaction-fit worlds and a field-wide evidence regime. Its contract, runner,
 tests, and evidence remain outside the package, and it changes no generic API.
+Its result-informed v2 successor scores policies on an out-of-sample probe
+cohort and cross-fits the field record. It has the same boundary.
 
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy

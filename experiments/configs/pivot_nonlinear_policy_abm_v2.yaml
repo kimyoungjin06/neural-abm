@@ -1,0 +1,324 @@
+schema_version: pivot_nonlinear_policy_abm.v2
+label: pivot_nonlinear_policy_abm_v2
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+
+purpose:
+  primary_goal: >-
+    TEST_OUT_OF_SAMPLE_NONLINEAR_POLICY_LEARNING_AND_ITS_ENTRY_AND_EXIT_CONSEQUENCES_IN_THE_PIVOT_ABM
+  question: >-
+    Scored on agents the ABM never saw, do field-wide tree and MLP policies
+    learn interaction structure a linear policy cannot? Does the v3 geometry
+    crossover survive inside the ABM, does any local learner beat the prior,
+    and does learning change entry or exit at each failure-visibility delay?
+  evidence_role: SYNTHETIC_GENERATIVE_ABM_COMPARISON_NOT_EMPIRICAL_SELECTION
+  result_informed_successor: true
+  corrects_v1_defects:
+    - IN_SAMPLE_POLICY_SCORING
+    - LINEAR_LEARNER_AS_LOCAL_REFERENCE
+    - BEHAVIOR_RULE_POOLED_ACROSS_VISIBILITY_DESPITE_SATURATION
+    - OWN_OUTCOME_IN_THE_FIELD_RECORD
+
+source_bindings:
+  - path: scripts/prototype_pivot_nonlinear_policy_abm_v1.py
+    sha256: c0fa1621eab02140f5b6bc0e0a54c35c0df8e3ed6498ac391c8665b17f754cdb
+    role: IMPORTED_FIT_WORLDS_BATCH_LEARNERS_AND_TRANSFER_CHECK
+  - path: experiments/configs/pivot_nonlinear_policy_abm_v1.yaml
+    sha256: b533bd78f1769dd5a9040bb7f81c0be997b3a5c8f31b1e734e1e5b2d71890199
+    role: OPENED_PREDECESSOR_CONTRACT
+  - path: experiments/evidence/results/pivot_nonlinear_policy_abm_v1_20260928.summary.json
+    sha256: ba405144980af147d7091fdfadbbdfbe8e3d94c848d46a93e84dbb7f590e2042
+    role: OPENED_PREDECESSOR_RESULT_AND_DESIGN_DEFECTS
+  - path: scripts/prototype_pivot_persistence_exit_v1.py
+    sha256: e8c604ac33f34cc58496723c2adff8e4d30c05182ee40cad114d961be3b17991
+    role: NESTED_PERSISTENCE_ENVIRONMENT_ADAPTER_AND_PREDECESSOR_ARM
+  - path: scripts/prototype_pivot_delayed_feedback_learning_v1.py
+    sha256: 9555b0968293ec89620ff461e7c449fee098a7eb8809be2b936812b521358515
+    role: VISIBILITY_QUEUE_AND_PRECOMMIT_HELPERS
+  - path: examples/research_pivot_study.py
+    sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+    role: POPULATION_NETWORK_AND_LINEAR_PRODUCTIVE_FIT
+  - path: examples/research_pivot_learning_study.py
+    sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+    role: FROZEN_PRIOR_AND_ONLINE_LOGISTIC_PREDECESSOR
+  - path: scripts/prototype_pivot_matched_marginal_discriminator_v2.py
+    sha256: 19dc841ebcbaa0f97d5f7fef89b96b13bf92c2953877e52dfc5b5f888e40b520
+    role: SCALAR_LEARNER_COHORTS_AND_METRICS
+  - path: scripts/prototype_pivot_matched_marginal_discriminator_v3.py
+    sha256: a4c7a54b839fb1c56af753484457fdff04d3e8af8267b8983327d75e4a9505ba
+    role: INTERACTION_SCORES_AND_LINEAR_AND_MLP_LEARNERS
+  - path: src/neural_abm/api.py
+    sha256: 83005b43023d29640d96a8929aaab5e5c552542c7c9d797c288e5820a7061898
+    role: UNCHANGED_GENERIC_TORCH_API
+  - path: src/neural_abm/unit_core.py
+    sha256: d399a6fc29f1b2efd3a648f48c79d7f8cab927e704974223ffabf861333ff4da
+    role: UNCHANGED_GENERIC_LIFECYCLE_CORE
+
+common_environment:
+  scenario: hot_field_hype
+  state_model: persistence_exit_v1
+  learning_mode: imitative
+  population_network_randomness: IDENTICAL_BY_REPLICATE_ACROSS_ALL_ARMS_AND_WORLDS
+  entry_rule: EXACT_PERSISTENCE_PREDECESSOR
+  visibility_queue: EXACT_PERSISTENCE_PREDECESSOR
+  transition:
+    failed_minimum_active_steps: 2
+    failed_continuation_score:
+      productive_fit_weight: 0.5
+      current_policy_output_weight: 0.5
+      exit_below: 0.4
+    reentry_after_exit: false
+
+inherited_learning_parameters:
+  neighbor_count: 4
+  within_stage_probability: 0.6
+  learning_rate: 1.5
+  prior_anchor: 0.25
+  local_alpha: 0.45
+  local_noise_scale: 0.02
+  social_alpha: 0.40
+  peer_similarity_threshold: 0.68
+  pivot_threshold: 0.34
+  productive_threshold: 0.40
+
+visibility_regimes:
+  - id: immediate
+    success_delay_steps: 0
+    failure_delay_steps: 0
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+  - id: failure_lag_2
+    success_delay_steps: 0
+    failure_delay_steps: 2
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+  - id: failure_lag_4
+    success_delay_steps: 0
+    failure_delay_steps: 4
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+
+fit_worlds:
+  worlds:
+    - id: linear_fit
+      structural_fit: EXACT_STUDY1_PRODUCTIVE_FIT
+    - id: smooth_interaction_fit
+      structural_fit: V1_RANK_MATCHED_SMOOTH_INTERACTION
+    - id: axis_interaction_fit
+      structural_fit: V1_RANK_MATCHED_AXIS_INTERACTION
+  implementation: V1_APPLY_FIT_WORLD
+
+evidence_regimes:
+  - id: neighbor_local
+    buffer: PER_AGENT_CUMULATIVE_PUBLIC_NEIGHBOR_EVENTS_EXCLUDING_SELF
+    learner: ONE_PER_AGENT
+  - id: field_public
+    buffer: ALL_PUBLIC_EVENTS_CROSS_FITTED_BY_AGENT_FOLD
+    cross_fit_folds: 4
+    fold_of_agent: AGENT_ID_MODULO_FOLDS
+    learner: ONE_PER_FOLD_TRAINED_ON_PUBLIC_EVENTS_OUTSIDE_THE_FOLD
+    agent_output: FROM_THE_LEARNER_OF_THE_AGENT_OWN_FOLD
+    includes_own_public_outcome: false
+
+policy_arms:
+  - id: fixed_rule
+    evidence_regimes: [none]
+    learner: NONE_FROZEN_PRIOR
+  - id: online_logistic
+    evidence_regimes: [neighbor_local]
+    learner: EXACT_PREDECESSOR_IMITATIVE_ONLINE_LOGISTIC
+  - id: scalar_batch
+    evidence_regimes: [neighbor_local, field_public]
+    learner: V1_SCALAR_BATCH
+  - id: linear_batch
+    evidence_regimes: [neighbor_local, field_public]
+    learner: V1_LINEAR_BATCH
+  - id: tree_batch
+    evidence_regimes: [neighbor_local, field_public]
+    learner: V1_PRIOR_ANCHORED_BOOSTED_TREES
+  - id: mlp_batch
+    evidence_regimes: [neighbor_local, field_public]
+    learner: V1_RESIDUAL_MLP
+
+batch_learners:
+  source: EXACT_V1_BATCH_LEARNER_SETTINGS_UNCHANGED
+  refit: FROM_THE_FROZEN_PRIOR_ON_THE_FULL_BUFFER_WHENEVER_THE_BUFFER_GROWS
+  empty_buffer_output: EXACT_FROZEN_PRIOR_OUTPUT
+  scalar_batch:
+    epochs: 80
+    eta: 0.5
+    prior_anchor: 0.25
+  linear_batch:
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  mlp_batch:
+    hidden_width: 16
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  tree_batch:
+    initial_margin: FROZEN_PRIOR_LOGIT
+    rounds: 300
+    learning_rate: 0.1
+    max_depth: 3
+    min_samples_leaf: 5
+    leaf_l2: 1.0
+  seed_components: >-
+    BASE_SEED, REPLICATE, WORLD, VISIBILITY, EVIDENCE_REGIME, ARM,
+    AGENT_OR_FOLD, REFIT_INDEX
+
+probe_cohort:
+  purpose: OUT_OF_SAMPLE_POLICY_SCORING_ON_AGENTS_THE_ABM_NEVER_SIMULATES
+  base_seed: 20261013
+  agent_count: 256
+  per_replicate: true
+  structural_label: SAME_FIT_WORLD_RULE_APPLIED_WITHIN_THE_PROBE_COHORT
+  scored_policy: FINAL_POLICY_OF_EACH_LEARNER
+  probe_brier:
+    field_public: MEAN_OVER_FOLD_LEARNERS_OF_PROBE_BRIER
+    neighbor_local: MEAN_OVER_AGENTS_OF_PROBE_BRIER
+    online_logistic: MEAN_OVER_AGENTS_OF_PROBE_BRIER_FROM_FINAL_WEIGHTS
+    fixed_rule: FROZEN_PRIOR_PROBE_BRIER
+
+family_transfer_check:
+  implementation: V1_FAMILY_TRANSFER_CHECK
+  training_base_seed: 20261011
+  evaluation_base_seed: 20261012
+  agent_count: 256
+  replicates: 4
+  pass_when_all_hold_in_at_least_replicates: 3
+  failure_action: REPORT_FAMILY_NOT_TRANSFERRED_AND_RESTRICT_INTERPRETATION
+
+profiles:
+  smoke:
+    agent_count: 24
+    steps: 12
+    burn_in_steps: 2
+    replicates: 2
+    base_seed: 20261010
+  development:
+    agent_count: 256
+    steps: 18
+    burn_in_steps: 2
+    replicates: 16
+    base_seed: 20261010
+
+outcomes:
+  final:
+    - cumulative_entry_rate
+    - active_rate
+    - active_productive_rate
+    - active_failed_rate
+    - exited_failed_rate
+    - productive_share_of_active
+    - productive_share_of_entrants
+    - failed_entry_rate
+    - probe_brier
+    - probe_auc
+    - in_situ_policy_brier
+    - evidence_events_per_learner
+  trajectories:
+    - cumulative_entry_rate_trajectory
+    - active_productive_rate_trajectory
+    - active_failed_rate_trajectory
+    - exited_failed_rate_trajectory
+    - mean_policy_output
+
+decision_contract:
+  improvement_rule: >-
+    MEAN_PAIRED_IMPROVEMENT_AT_LEAST_THRESHOLD_AND_STRICTLY_POSITIVE_IN_AT_LEAST_REQUIRED_REPLICATES
+  difference_in_differences_rule: >-
+    INTERACTION_FIT_WORLD_GAP_MINUS_LINEAR_FIT_WORLD_GAP_SAME_VISIBILITY_EVIDENCE_AND_REPLICATE
+  evaluated_per_visibility_regime: true
+  improved_replicates_at_least: 12
+  nesting_checks:
+    required: true
+    conditions:
+      - FIXED_RULE_EQUALS_PERSISTENCE_FROZEN_ARM_IN_LINEAR_FIT_WORLD
+      - ONLINE_LOGISTIC_EQUALS_PERSISTENCE_IMITATIVE_ARM_IN_LINEAR_FIT_WORLD
+      - FIELD_FOLD_LEARNERS_NEVER_SEE_THEIR_OWN_FOLD
+    failure_action: INVALID_IMPLEMENTATION_STOP
+  field_nonlinear_learning:
+    metric: PROBE_BRIER
+    comparison: TREE_OR_MLP_OVER_LINEAR_BATCH
+    statistic: DIFFERENCE_IN_DIFFERENCES_AGAINST_LINEAR_FIT_WORLD
+    evidence_regime: field_public
+    improvement_at_least: 0.01
+  field_geometry_crossover:
+    metric: PROBE_BRIER
+    evidence_regime: field_public
+    mlp_over_tree_on: smooth_interaction_fit
+    tree_over_mlp_on: axis_interaction_fit
+    improvement_at_least: 0.005
+    dispositions:
+      - CROSSOVER_TRANSFERS_TO_ABM
+      - MLP_DOMINATES_IN_ABM
+      - TREE_DOMINATES_IN_ABM
+      - TIED_OR_MIXED
+  useful_learning:
+    metric: PROBE_BRIER
+    comparison: LINEAR_TREE_OR_MLP_OVER_FIXED_RULE
+    statistic: RAW_PAIRED_GAP
+    worlds: [smooth_interaction_fit, axis_interaction_fit]
+    evidence_regimes: [neighbor_local, field_public]
+    improvement_at_least: 0.01
+    evidence_scale_dispositions:
+      - EVIDENCE_SCALE_GATES_USEFUL_LEARNING
+      - USEFUL_LEARNING_SURVIVES_LOCAL_EVIDENCE
+      - NO_USEFUL_LEARNING_UNDER_FIELD_EVIDENCE
+  entry_behavior:
+    metric: PRODUCTIVE_SHARE_OF_ENTRANTS
+    comparison: TREE_OR_MLP_OVER_LINEAR_BATCH
+    statistic: DIFFERENCE_IN_DIFFERENCES_AGAINST_LINEAR_FIT_WORLD
+    evidence_regime: field_public
+    improvement_at_least: 0.02
+    saturation:
+      condition: >-
+        LINEAR_TREE_AND_MLP_FIELD_ARMS_EACH_REACH_FULL_ENTRY_IN_AT_LEAST_12_REPLICATES_OF_EVERY_WORLD
+      disposition: ENTRY_SATURATED
+  exit_channel:
+    metric: ACTIVE_FAILED_RATE_REDUCTION
+    comparison: TREE_OR_MLP_OVER_LINEAR_BATCH
+    statistic: DIFFERENCE_IN_DIFFERENCES_AGAINST_LINEAR_FIT_WORLD
+    evidence_regime: field_public
+    improvement_at_least: 0.01
+  registered_result_space:
+    - OUT_OF_SAMPLE_NONLINEAR_LEARNING_IN_ABM_OR_NOT
+    - GEOMETRY_CROSSOVER_TRANSFERS_OR_NOT
+    - EVIDENCE_SCALE_GATES_USEFUL_LEARNING_OR_NOT
+    - ENTRY_CHANNEL_ACTIVE_SATURATED_OR_ABSENT_BY_VISIBILITY
+    - EXIT_CHANNEL_ACTIVE_OR_ABSENT_BY_VISIBILITY
+  model_selection: FORBIDDEN
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+    - docs/research/pivot-nonlinear-policy-abm-v2.md
+    - docs/package-release-boundary.md
+    - experiments/configs/pivot_nonlinear_policy_abm_v2.yaml
+    - scripts/prototype_pivot_nonlinear_policy_abm_v2.py
+    - scripts/inspect_release_artifacts.py
+    - tests/test_pivot_nonlinear_policy_abm_v2.py
+    - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+
+outputs:
+  - family_transfer.json
+  - runs.jsonl
+  - abm_scorecard.json
+  - abm_scorecard.md
+  - receipt.json
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  empirical_fit: NOT_RUN
+  predictive_validation: NOT_RUN
+  model_selected: "NO"
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED
