@@ -1,0 +1,853 @@
+{
+  "schema_version": "pivot_relative_delay_cost_result.v1",
+  "label": "pivot_relative_delay_cost_v1_20260929",
+  "status": "SYNTHETIC_GENERATIVE_ABM_COMPARISON_REPRODUCED_WITH_SEPARATE_COST_LEDGER",
+  "precommit": {
+    "commit_sha": "22605d51d778743d4436ad78065776bf3c9a192b",
+    "contract_path": "experiments/configs/pivot_relative_delay_cost_v1.yaml",
+    "contract_sha256": "11e3b67c551c7df61951111617e8004b766cc330155c59b5f4f4fff16fe3d3fb"
+  },
+  "execution": {
+    "profile": "development",
+    "agent_count": 256,
+    "steps": 24,
+    "replicates": 16,
+    "q_values": [
+      1.0,
+      0.5,
+      0.25
+    ],
+    "visibility_regimes": 4,
+    "fit_worlds": 3,
+    "main_arms": 4,
+    "raw_row_count": 2304,
+    "workers": 16,
+    "first_run": {
+      "output_dir": "/ssd/pivot_relative_delay_cost_v1_22605d5_development",
+      "receipt_sha256": "8ae295bda5f903b4682e5a469825c92c8570e0de0291ba7a1ad8b8ba7e0c16ae"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_relative_delay_cost_v1_22605d5_reproduction",
+      "receipt_sha256": "8ae295bda5f903b4682e5a469825c92c8570e0de0291ba7a1ad8b8ba7e0c16ae",
+      "all_four_artifacts_byte_identical": true
+    },
+    "artifact_sha256": {
+      "runs.jsonl": "fa7dac63aa54be713783b950faa2dd368202b68d13603250faa25edc0865c343",
+      "scorecard.json": "56ed355915735d50cf6c0c92c9b105114658ef2d898b4cd43b7f2e038eca2a37",
+      "scorecard.md": "12e84015f9a72e8b462c4a402e9037cc3d42f0bde8f459195147b9df243828a9",
+      "receipt.json": "8ae295bda5f903b4682e5a469825c92c8570e0de0291ba7a1ad8b8ba7e0c16ae"
+    }
+  },
+  "validation": {
+    "receipt_status": "COMPLETE",
+    "source_bindings_verified": 11,
+    "nesting_checks": "PASS_EXACT"
+  },
+  "registered_cells": [
+    {
+      "q": 1.0,
+      "visibility_id": "immediate",
+      "delay": 0,
+      "fixed_rule_entry_wave_width": 6.125,
+      "relative_delay": 0.163265,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "saturated": false,
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "entry_channel_reports": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.00440346,
+          "min": -0.0348277,
+          "positive_replicates": 11,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.0087184,
+          "min": -0.01815569,
+          "positive_replicates": 11,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.0525978,
+          "min": 0.02610749,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.03016849,
+          "min": 0.01028203,
+          "positive_replicates": 16,
+          "pass": true
+        }
+      }
+    },
+    {
+      "q": 1.0,
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "fixed_rule_entry_wave_width": 6.125,
+      "relative_delay": 0.326531,
+      "status": "ENTRY_SATURATED",
+      "saturated": true,
+      "passing_family_geometries": [],
+      "entry_channel_reports": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        }
+      }
+    },
+    {
+      "q": 1.0,
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "fixed_rule_entry_wave_width": 6.125,
+      "relative_delay": 0.489796,
+      "status": "ENTRY_SATURATED",
+      "saturated": true,
+      "passing_family_geometries": [],
+      "entry_channel_reports": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        }
+      }
+    },
+    {
+      "q": 1.0,
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "fixed_rule_entry_wave_width": 6.125,
+      "relative_delay": 0.816327,
+      "status": "ENTRY_SATURATED",
+      "saturated": true,
+      "passing_family_geometries": [],
+      "entry_channel_reports": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.0,
+          "min": 0.0,
+          "positive_replicates": 0,
+          "pass": false
+        }
+      }
+    },
+    {
+      "q": 0.5,
+      "visibility_id": "immediate",
+      "delay": 0,
+      "fixed_rule_entry_wave_width": 7.9375,
+      "relative_delay": 0.125984,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "saturated": false,
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "entry_channel_reports": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": -0.01496144,
+          "min": -0.07982647,
+          "positive_replicates": 6,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.00015845,
+          "min": -0.03827751,
+          "positive_replicates": 8,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.08476208,
+          "min": 0.02161939,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.03138184,
+          "min": 0.00742958,
+          "positive_replicates": 16,
+          "pass": true
+        }
+      }
+    },
+    {
+      "q": 0.5,
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "fixed_rule_entry_wave_width": 7.9375,
+      "relative_delay": 0.251969,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "saturated": false,
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit"
+      ],
+      "entry_channel_reports": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.00496555,
+          "min": -0.0094908,
+          "positive_replicates": 12,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.0088872,
+          "min": -0.01079795,
+          "positive_replicates": 15,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.02495446,
+          "min": 0.00721615,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.01207077,
+          "min": -0.00875039,
+          "positive_replicates": 14,
+          "pass": false
+        }
+      }
+    },
+    {
+      "q": 0.5,
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "fixed_rule_entry_wave_width": 7.9375,
+      "relative_delay": 0.377953,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "saturated": false,
+      "passing_family_geometries": [],
+      "entry_channel_reports": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.00310045,
+          "min": -0.00729813,
+          "positive_replicates": 14,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.00261147,
+          "min": -0.00594873,
+          "positive_replicates": 11,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.00965924,
+          "min": 0.00106827,
+          "positive_replicates": 16,
+          "pass": false
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.00465469,
+          "min": -0.00701271,
+          "positive_replicates": 13,
+          "pass": false
+        }
+      }
+    },
+    {
+      "q": 0.5,
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "fixed_rule_entry_wave_width": 7.9375,
+      "relative_delay": 0.629921,
+      "status": "ENTRY_SATURATED",
+      "saturated": true,
+      "passing_family_geometries": [],
+      "entry_channel_reports": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.00024823,
+          "min": -0.00213294,
+          "positive_replicates": 5,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": -5.954e-05,
+          "min": -0.0039317,
+          "positive_replicates": 6,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.00209809,
+          "min": -0.00121017,
+          "positive_replicates": 12,
+          "pass": false
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.00059544,
+          "min": -0.0039317,
+          "positive_replicates": 7,
+          "pass": false
+        }
+      }
+    },
+    {
+      "q": 0.25,
+      "visibility_id": "immediate",
+      "delay": 0,
+      "fixed_rule_entry_wave_width": 12.0625,
+      "relative_delay": 0.082902,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "saturated": false,
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "entry_channel_reports": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": -0.037584,
+          "min": -0.11227284,
+          "positive_replicates": 1,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": -0.02054531,
+          "min": -0.10913538,
+          "positive_replicates": 4,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.11130719,
+          "min": 0.03653358,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.03540297,
+          "min": -0.04132514,
+          "positive_replicates": 13,
+          "pass": true
+        }
+      }
+    },
+    {
+      "q": 0.25,
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "fixed_rule_entry_wave_width": 12.0625,
+      "relative_delay": 0.165803,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "saturated": false,
+      "passing_family_geometries": [
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "entry_channel_reports": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.0197165,
+          "min": -0.03034238,
+          "positive_replicates": 14,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.03238187,
+          "min": -0.02932342,
+          "positive_replicates": 15,
+          "pass": true
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.08738255,
+          "min": 0.05201226,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.05043273,
+          "min": 0.01285803,
+          "positive_replicates": 16,
+          "pass": true
+        }
+      }
+    },
+    {
+      "q": 0.25,
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "fixed_rule_entry_wave_width": 12.0625,
+      "relative_delay": 0.248705,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "saturated": false,
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "entry_channel_reports": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.00951225,
+          "min": -0.00538188,
+          "positive_replicates": 12,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.01261928,
+          "min": -0.00938452,
+          "positive_replicates": 14,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.04800897,
+          "min": 0.03129875,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.02561742,
+          "min": 0.01159566,
+          "positive_replicates": 16,
+          "pass": true
+        }
+      }
+    },
+    {
+      "q": 0.25,
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "fixed_rule_entry_wave_width": 12.0625,
+      "relative_delay": 0.414508,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "saturated": false,
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit"
+      ],
+      "entry_channel_reports": {
+        "mlp_batch/axis_interaction_fit": {
+          "mean": 0.00595273,
+          "min": -0.00597267,
+          "positive_replicates": 11,
+          "pass": false
+        },
+        "mlp_batch/smooth_interaction_fit": {
+          "mean": 0.00824804,
+          "min": -0.00261838,
+          "positive_replicates": 14,
+          "pass": false
+        },
+        "tree_batch/axis_interaction_fit": {
+          "mean": 0.02191783,
+          "min": 0.00160505,
+          "positive_replicates": 16,
+          "pass": true
+        },
+        "tree_batch/smooth_interaction_fit": {
+          "mean": 0.01230765,
+          "min": -0.00483218,
+          "positive_replicates": 14,
+          "pass": false
+        }
+      }
+    }
+  ],
+  "registered_relative_delay_test": {
+    "active_delays_by_q": {
+      "0.25": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "0.5": [
+        0,
+        1
+      ],
+      "1.0": [
+        0
+      ]
+    },
+    "disposition": "NEITHER_SIMPLE_RULE",
+    "identical_active_delays_across_q": false,
+    "separable_by_relative_delay": false,
+    "threshold_interval": null
+  },
+  "timing_observables": {
+    "0.25": {
+      "median_model_h3_gap": 0.0,
+      "runs": 768,
+      "share_of_runs_peaking_at_first_open_step": 0.434896,
+      "share_of_runs_with_decline_onset": 0.884115
+    },
+    "0.5": {
+      "median_model_h3_gap": -1.0,
+      "runs": 768,
+      "share_of_runs_peaking_at_first_open_step": 0.578125,
+      "share_of_runs_with_decline_onset": 0.88151
+    },
+    "1.0": {
+      "median_model_h3_gap": -1.0,
+      "runs": 768,
+      "share_of_runs_peaking_at_first_open_step": 0.964844,
+      "share_of_runs_with_decline_onset": 0.867188
+    }
+  },
+  "llm_reference_counts": {
+    "policy_queries": 14155776,
+    "pre_entry_decisions": 4757398,
+    "runs": 2304
+  },
+  "post_hoc_descriptive": {
+    "status": "POST_HOC_DESCRIPTIVE_NOT_REGISTERED_NO_NEW_EXECUTION",
+    "normalizations_chosen_after_opening_results": true,
+    "cells": [
+      {
+        "q": 1.0,
+        "visibility_id": "immediate",
+        "status": "ENTRY_CHANNEL_ACTIVE",
+        "feature_arm_entry_wave_width": 1.854167,
+        "relative_delay_to_feature_arm_wave": 0.539326,
+        "post_failure_entry_share": 0.155103
+      },
+      {
+        "q": 1.0,
+        "visibility_id": "failure_lag_1",
+        "status": "ENTRY_SATURATED",
+        "feature_arm_entry_wave_width": 2.0,
+        "relative_delay_to_feature_arm_wave": 1.0,
+        "post_failure_entry_share": 0.0
+      },
+      {
+        "q": 1.0,
+        "visibility_id": "failure_lag_2",
+        "status": "ENTRY_SATURATED",
+        "feature_arm_entry_wave_width": 2.0,
+        "relative_delay_to_feature_arm_wave": 1.5,
+        "post_failure_entry_share": 0.0
+      },
+      {
+        "q": 1.0,
+        "visibility_id": "failure_lag_4",
+        "status": "ENTRY_SATURATED",
+        "feature_arm_entry_wave_width": 2.0,
+        "relative_delay_to_feature_arm_wave": 2.5,
+        "post_failure_entry_share": 0.0
+      },
+      {
+        "q": 0.5,
+        "visibility_id": "immediate",
+        "status": "ENTRY_CHANNEL_ACTIVE",
+        "feature_arm_entry_wave_width": 4.479167,
+        "relative_delay_to_feature_arm_wave": 0.223256,
+        "post_failure_entry_share": 0.433766
+      },
+      {
+        "q": 0.5,
+        "visibility_id": "failure_lag_1",
+        "status": "ENTRY_CHANNEL_ACTIVE",
+        "feature_arm_entry_wave_width": 3.465278,
+        "relative_delay_to_feature_arm_wave": 0.577154,
+        "post_failure_entry_share": 0.282002
+      },
+      {
+        "q": 0.5,
+        "visibility_id": "failure_lag_2",
+        "status": "ENTRY_CHANNEL_ABSENT",
+        "feature_arm_entry_wave_width": 4.0,
+        "relative_delay_to_feature_arm_wave": 0.75,
+        "post_failure_entry_share": 0.147464
+      },
+      {
+        "q": 0.5,
+        "visibility_id": "failure_lag_4",
+        "status": "ENTRY_SATURATED",
+        "feature_arm_entry_wave_width": 4.055556,
+        "relative_delay_to_feature_arm_wave": 1.232877,
+        "post_failure_entry_share": 0.038682
+      },
+      {
+        "q": 0.25,
+        "visibility_id": "immediate",
+        "status": "ENTRY_CHANNEL_ACTIVE",
+        "feature_arm_entry_wave_width": 10.25,
+        "relative_delay_to_feature_arm_wave": 0.097561,
+        "post_failure_entry_share": 0.658641
+      },
+      {
+        "q": 0.25,
+        "visibility_id": "failure_lag_1",
+        "status": "ENTRY_CHANNEL_ACTIVE",
+        "feature_arm_entry_wave_width": 6.888889,
+        "relative_delay_to_feature_arm_wave": 0.290323,
+        "post_failure_entry_share": 0.502472
+      },
+      {
+        "q": 0.25,
+        "visibility_id": "failure_lag_2",
+        "status": "ENTRY_CHANNEL_ACTIVE",
+        "feature_arm_entry_wave_width": 6.625,
+        "relative_delay_to_feature_arm_wave": 0.45283,
+        "post_failure_entry_share": 0.373379
+      },
+      {
+        "q": 0.25,
+        "visibility_id": "failure_lag_4",
+        "status": "ENTRY_CHANNEL_ACTIVE",
+        "feature_arm_entry_wave_width": 7.020833,
+        "relative_delay_to_feature_arm_wave": 0.712166,
+        "post_failure_entry_share": 0.196834
+      }
+    ],
+    "feature_arm_wave_separation": {
+      "max_active": 0.712166,
+      "min_inactive": 0.75
+    },
+    "post_failure_entry_share_separation": {
+      "min_active": 0.155103,
+      "max_inactive": 0.147464
+    }
+  },
+  "cost_ledger": {
+    "source_path": "/ssd/pivot_relative_delay_cost_v1_22605d5_cost_ledger.json",
+    "source_sha256": "16cd3b780732225af55b6cdbb318141f645bb910f7cb5b77aedb93e4f59b5386",
+    "status": "TIMING_NOT_BYTE_REPRODUCIBLE",
+    "task": {
+      "agent_count": 256,
+      "agent_steps_per_run": 6144,
+      "q": 1.0,
+      "replicate": 0,
+      "steps": 24,
+      "visibility_id": "immediate",
+      "world_id": "axis_interaction_fit"
+    },
+    "clock": "PROCESS_CPU_TIME_SINGLE_THREAD",
+    "repeats": 3,
+    "load_average_before": [
+      38.99560546875,
+      46.70703125,
+      46.21728515625
+    ],
+    "load_average_after": [
+      33.13427734375,
+      34.96484375,
+      40.23388671875
+    ],
+    "records": [
+      {
+        "arm_id": "fixed_rule",
+        "evidence_regime": "none",
+        "median_cpu_seconds_per_run": 0.9138201499999994,
+        "median_cpu_ms_per_agent_step": 0.14873374837239572,
+        "cost_relative_to_fixed_rule": 1.0,
+        "cpu_seconds_per_run": [
+          0.9138201499999994,
+          0.9707487740000005,
+          0.846473195999998
+        ],
+        "policy_queries_per_run": 6144,
+        "pre_entry_decisions_per_run": 2162
+      },
+      {
+        "arm_id": "online_logistic",
+        "evidence_regime": "neighbor_local",
+        "median_cpu_seconds_per_run": 1.049508460000002,
+        "median_cpu_ms_per_agent_step": 0.170818434244792,
+        "cost_relative_to_fixed_rule": 1.1484846990953337,
+        "cpu_seconds_per_run": [
+          1.5259091470000001,
+          1.0425922790000008,
+          1.049508460000002
+        ],
+        "policy_queries_per_run": 6144,
+        "pre_entry_decisions_per_run": 2198
+      },
+      {
+        "arm_id": "scalar_batch",
+        "evidence_regime": "neighbor_local",
+        "median_cpu_seconds_per_run": 1.196973389,
+        "median_cpu_ms_per_agent_step": 0.19481988753255208,
+        "cost_relative_to_fixed_rule": 1.309856637545146,
+        "cpu_seconds_per_run": [
+          1.1008826149999997,
+          1.196973389,
+          1.218891911
+        ],
+        "policy_queries_per_run": 6144,
+        "pre_entry_decisions_per_run": 2365
+      },
+      {
+        "arm_id": "linear_batch",
+        "evidence_regime": "neighbor_local",
+        "median_cpu_seconds_per_run": 51.716371984999995,
+        "median_cpu_ms_per_agent_step": 8.417378252766927,
+        "cost_relative_to_fixed_rule": 56.593599938675055,
+        "cpu_seconds_per_run": [
+          56.746162096000006,
+          40.021687537999995,
+          51.716371984999995
+        ],
+        "policy_queries_per_run": 6144,
+        "pre_entry_decisions_per_run": 2214
+      },
+      {
+        "arm_id": "tree_batch",
+        "evidence_regime": "neighbor_local",
+        "median_cpu_seconds_per_run": 59.037211481999975,
+        "median_cpu_ms_per_agent_step": 9.608921139648434,
+        "cost_relative_to_fixed_rule": 64.60484755342725,
+        "cpu_seconds_per_run": [
+          71.16556333,
+          59.037211481999975,
+          56.049478908000026
+        ],
+        "policy_queries_per_run": 6144,
+        "pre_entry_decisions_per_run": 2355
+      },
+      {
+        "arm_id": "mlp_batch",
+        "evidence_regime": "neighbor_local",
+        "median_cpu_seconds_per_run": 55.76120902299999,
+        "median_cpu_ms_per_agent_step": 9.07571761442057,
+        "cost_relative_to_fixed_rule": 61.01989436652281,
+        "cpu_seconds_per_run": [
+          57.19642919200004,
+          55.76120902299999,
+          55.591602905
+        ],
+        "policy_queries_per_run": 6144,
+        "pre_entry_decisions_per_run": 2219
+      },
+      {
+        "arm_id": "scalar_batch",
+        "evidence_regime": "field_public",
+        "median_cpu_seconds_per_run": 0.7192498609999802,
+        "median_cpu_ms_per_agent_step": 0.11706540706379887,
+        "cost_relative_to_fixed_rule": 0.787080325379103,
+        "cpu_seconds_per_run": [
+          0.6413799829999789,
+          0.7192498609999802,
+          1.005120207999994
+        ],
+        "policy_queries_per_run": 6144,
+        "pre_entry_decisions_per_run": 2252
+      },
+      {
+        "arm_id": "linear_batch",
+        "evidence_regime": "field_public",
+        "median_cpu_seconds_per_run": 1.7151530450000791,
+        "median_cpu_ms_per_agent_step": 0.27915902425131495,
+        "cost_relative_to_fixed_rule": 1.8769043832094097,
+        "cpu_seconds_per_run": [
+          1.5766999379999334,
+          1.7151530450000791,
+          1.9962827450000304
+        ],
+        "policy_queries_per_run": 6144,
+        "pre_entry_decisions_per_run": 2628
+      },
+      {
+        "arm_id": "tree_batch",
+        "evidence_regime": "field_public",
+        "median_cpu_seconds_per_run": 6.112553718000072,
+        "median_cpu_ms_per_agent_step": 0.9948817900390742,
+        "cost_relative_to_fixed_rule": 6.689011747005225,
+        "cpu_seconds_per_run": [
+          6.212900891999993,
+          5.5480375120000645,
+          6.112553718000072
+        ],
+        "policy_queries_per_run": 6144,
+        "pre_entry_decisions_per_run": 2335
+      },
+      {
+        "arm_id": "mlp_batch",
+        "evidence_regime": "field_public",
+        "median_cpu_seconds_per_run": 3.336206546000085,
+        "median_cpu_ms_per_agent_step": 0.5430023675130347,
+        "cost_relative_to_fixed_rule": 3.6508349547775754,
+        "cpu_seconds_per_run": [
+          3.336206546000085,
+          3.0962619910000058,
+          3.420645879999938
+        ],
+        "policy_queries_per_run": 6144,
+        "pre_entry_decisions_per_run": 2358
+      }
+    ]
+  },
+  "scientific_assessment": {
+    "o04_registered_disposition": "NEITHER_SIMPLE_RULE",
+    "saturation_boundary_shifts_with_entry_wave_width": true,
+    "fixed_rule_normalization_separates_cells": false,
+    "post_hoc_feature_arm_normalization_separates_cells": true,
+    "post_hoc_post_failure_entry_share_separates_cells": true,
+    "post_hoc_separations_are_hypotheses_not_confirmed": true,
+    "interior_entry_peaks_appear_with_entry_friction": true,
+    "entry_channel_family": "TREE_PASSES_IN_EVERY_ACTIVE_CELL_MLP_IN_ONE",
+    "reason": "Widening the entry wave keeps learned policy precision acting on entry under longer failure delays: the active delays grow from {0} at q = 1 to {0, 1} at q = 0.5 and to {0, 1, 2, 4} at q = 0.25. The registered test failed because the fixed rule's own slow entry tail was the wrong normalizer. Learning arms rush in once successes are public, so their wave is much shorter. Normalizing by the learning arms' own wave width, or measuring the share of entry that occurs after the first public failure, separates all twelve cells post hoc, with thin margins."
+  },
+  "framework_assessment": {
+    "cost_position": "POOLED_LEARNED_POLICIES_COST_ABOUT_2_TO_7_TIMES_THE_RULE_BASED_ABM_PER_AGENT_STEP_PER_AGENT_LOCAL_LEARNERS_ABOUT_60_TIMES",
+    "cost_and_usefulness_align": "THE_EXPENSIVE_PER_AGENT_LOCAL_LEARNERS_ARE_ALSO_THE_ONES_WORSE_THAN_THE_PRIOR",
+    "llm_reference": "ONE_POLICY_QUERY_PER_AGENT_STEP_14_2_MILLION_FOR_THIS_STUDY_NO_PRICE_ASSUMED",
+    "t01_candidate_discriminant": "POST_FAILURE_ENTRY_SHARE_TO_BE_REGISTERED_BEFORE_ANY_EMPIRICAL_COMPARISON",
+    "h3_adapter_status": "INTERIOR_PEAKS_IN_ABOUT_HALF_OF_RUNS_ONLY_WITH_ENTRY_FRICTION_A_SURGE_CLOCK_REMAINS_NEEDED_FOR_A_FULL_COMPARISON",
+    "no_post_result_tuning": true
+  },
+  "boundaries": {
+    "evidence_type": "SYNTHETIC_GENERATIVE_ABM_COMPARISON",
+    "empirical_rows_read": 0,
+    "empirical_fit": "NOT_RUN",
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "scientific_effect": "NOT_ESTABLISHED",
+    "package_promotion": "NOT_AUTHORIZED"
+  }
+}
