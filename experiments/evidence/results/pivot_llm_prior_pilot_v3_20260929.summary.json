@@ -1,0 +1,5367 @@
+{
+  "schema_version": "pivot_llm_prior_pilot_result.v3",
+  "label": "pivot_llm_prior_pilot_v3_20260929",
+  "status": "SYNTHETIC_GENERATIVE_ABM_COMPARISON_REPRODUCED",
+  "precommit": {
+    "commit_sha": "87c90eb24b51e0d8bc472a11d8501f5772dffbfc",
+    "contract_path": "experiments/configs/pivot_llm_prior_pilot_v3.yaml",
+    "contract_sha256": "c60635d3623770dd5006e5e5b3bfc99086c736a10f537af01217c96dd7d2a5b1",
+    "result_informed_successor": true
+  },
+  "execution": {
+    "profile": "development",
+    "agent_count": 256,
+    "steps": 18,
+    "replicates": 16,
+    "conditions": 6,
+    "raw_row_count": 1152,
+    "workers": 16,
+    "new_llm_calls": 0,
+    "first_run": {
+      "output_dir": "/ssd/pivot_llm_prior_pilot_v3_87c90eb_development",
+      "receipt_sha256": "808ac272bfb921291c49d611f4a1e6c9c1456dc20d35bf8cd063a3b6fcbf36e3"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_llm_prior_pilot_v3_87c90eb_reproduction",
+      "receipt_sha256": "808ac272bfb921291c49d611f4a1e6c9c1456dc20d35bf8cd063a3b6fcbf36e3",
+      "all_four_artifacts_byte_identical": true
+    },
+    "artifact_sha256": {
+      "runs.jsonl": "1f532d98663767cd2c9bdfa74022b620efbac4fd4827f1d6e85a2f9bb3b3d6ca",
+      "scorecard.json": "f4566f08df58791870977190f27221cbbd61b078bedf727df4e68f6af931cae2",
+      "scorecard.md": "084220c0311bc0cd1809500c9ae81fadd0f2a571d20f77dcbc445469f0a56b98",
+      "receipt.json": "808ac272bfb921291c49d611f4a1e6c9c1456dc20d35bf8cd063a3b6fcbf36e3"
+    }
+  },
+  "validation": {
+    "nesting_checks": "PASS_EXACT",
+    "epsilon_by_condition": {
+      "flat": 0.0,
+      "hand": 0.0,
+      "hybrid_10": 0.006563398416385313,
+      "hybrid_20": 0.013849670452788954,
+      "hybrid_40": 0.0314223283673708,
+      "llm_selective": 0.0
+    }
+  },
+  "registered_result_disposition": {
+    "flat": {
+      "role": "REFERENCE",
+      "summary": "DOMINATES_NOWHERE",
+      "dominating_cells": [],
+      "cells": {
+        "axis_interaction_fit/linear_batch": "LEARNING_ONLY",
+        "axis_interaction_fit/mlp_batch": "LEARNING_ONLY",
+        "axis_interaction_fit/tree_batch": "LEARNING_ONLY",
+        "linear_fit/linear_batch": "NEITHER",
+        "linear_fit/mlp_batch": "LEARNING_ONLY",
+        "linear_fit/tree_batch": "LEARNING_ONLY",
+        "smooth_interaction_fit/linear_batch": "NEITHER",
+        "smooth_interaction_fit/mlp_batch": "LEARNING_ONLY",
+        "smooth_interaction_fit/tree_batch": "LEARNING_ONLY"
+      },
+      "cell_numbers": {
+        "axis_interaction_fit/linear_batch": {
+          "precision_mean": -0.0476,
+          "precision_positive_replicates": 0,
+          "learning_hand_minus_condition_mean": -0.00415,
+          "restored_mean": 0.00389,
+          "restored_positive_replicates": 10
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "precision_mean": -0.08327,
+          "precision_positive_replicates": 0,
+          "learning_hand_minus_condition_mean": 0.02107,
+          "restored_mean": 0.04642,
+          "restored_positive_replicates": 16
+        },
+        "axis_interaction_fit/tree_batch": {
+          "precision_mean": -0.10223,
+          "precision_positive_replicates": 0,
+          "learning_hand_minus_condition_mean": 0.01415,
+          "restored_mean": 0.04099,
+          "restored_positive_replicates": 16
+        },
+        "linear_fit/linear_batch": {
+          "precision_mean": -0.09548,
+          "precision_positive_replicates": 0,
+          "learning_hand_minus_condition_mean": -0.01671,
+          "restored_mean": -0.00638,
+          "restored_positive_replicates": 4
+        },
+        "linear_fit/mlp_batch": {
+          "precision_mean": -0.11952,
+          "precision_positive_replicates": 0,
+          "learning_hand_minus_condition_mean": 0.00131,
+          "restored_mean": 0.00358,
+          "restored_positive_replicates": 14
+        },
+        "linear_fit/tree_batch": {
+          "precision_mean": -0.08874,
+          "precision_positive_replicates": 0,
+          "learning_hand_minus_condition_mean": 0.00478,
+          "restored_mean": 0.00219,
+          "restored_positive_replicates": 8
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "precision_mean": -0.0635,
+          "precision_positive_replicates": 0,
+          "learning_hand_minus_condition_mean": -0.00866,
+          "restored_mean": -0.00592,
+          "restored_positive_replicates": 4
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "precision_mean": -0.0984,
+          "precision_positive_replicates": 0,
+          "learning_hand_minus_condition_mean": 0.01415,
+          "restored_mean": 0.03731,
+          "restored_positive_replicates": 16
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "precision_mean": -0.08607,
+          "precision_positive_replicates": 0,
+          "learning_hand_minus_condition_mean": 0.01265,
+          "restored_mean": 0.02426,
+          "restored_positive_replicates": 15
+        }
+      }
+    },
+    "hybrid_10": {
+      "role": "REGISTERED_HYBRID",
+      "summary": "DOMINATES_IN_MAJORITY",
+      "dominating_cells": [
+        "axis_interaction_fit/mlp_batch",
+        "linear_fit/mlp_batch",
+        "linear_fit/tree_batch",
+        "smooth_interaction_fit/linear_batch",
+        "smooth_interaction_fit/mlp_batch"
+      ],
+      "cells": {
+        "axis_interaction_fit/linear_batch": "SELECTION_ONLY",
+        "axis_interaction_fit/mlp_batch": "HYBRID_DOMINATES_HAND",
+        "axis_interaction_fit/tree_batch": "SELECTION_ONLY",
+        "linear_fit/linear_batch": "SELECTION_ONLY",
+        "linear_fit/mlp_batch": "HYBRID_DOMINATES_HAND",
+        "linear_fit/tree_batch": "HYBRID_DOMINATES_HAND",
+        "smooth_interaction_fit/linear_batch": "HYBRID_DOMINATES_HAND",
+        "smooth_interaction_fit/mlp_batch": "HYBRID_DOMINATES_HAND",
+        "smooth_interaction_fit/tree_batch": "SELECTION_ONLY"
+      },
+      "cell_numbers": {
+        "axis_interaction_fit/linear_batch": {
+          "precision_mean": 0.04655,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00655,
+          "restored_mean": 0.0015,
+          "restored_positive_replicates": 9
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "precision_mean": 0.06845,
+          "precision_positive_replicates": 15,
+          "learning_hand_minus_condition_mean": -0.004,
+          "restored_mean": 0.02135,
+          "restored_positive_replicates": 14
+        },
+        "axis_interaction_fit/tree_batch": {
+          "precision_mean": 0.08301,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00912,
+          "restored_mean": 0.01773,
+          "restored_positive_replicates": 12
+        },
+        "linear_fit/linear_batch": {
+          "precision_mean": 0.11789,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00893,
+          "restored_mean": 0.0014,
+          "restored_positive_replicates": 14
+        },
+        "linear_fit/mlp_batch": {
+          "precision_mean": 0.13082,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00097,
+          "restored_mean": 0.0013,
+          "restored_positive_replicates": 12
+        },
+        "linear_fit/tree_batch": {
+          "precision_mean": 0.09414,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": 0.00562,
+          "restored_mean": 0.00304,
+          "restored_positive_replicates": 13
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "precision_mean": 0.06767,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00256,
+          "restored_mean": 0.00018,
+          "restored_positive_replicates": 9
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "precision_mean": 0.07319,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00442,
+          "restored_mean": 0.01874,
+          "restored_positive_replicates": 13
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "precision_mean": 0.06692,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00711,
+          "restored_mean": 0.0045,
+          "restored_positive_replicates": 9
+        }
+      }
+    },
+    "hybrid_20": {
+      "role": "REGISTERED_HYBRID",
+      "summary": "DOMINATES_IN_MAJORITY",
+      "dominating_cells": [
+        "axis_interaction_fit/mlp_batch",
+        "axis_interaction_fit/tree_batch",
+        "linear_fit/mlp_batch",
+        "linear_fit/tree_batch",
+        "smooth_interaction_fit/linear_batch",
+        "smooth_interaction_fit/mlp_batch",
+        "smooth_interaction_fit/tree_batch"
+      ],
+      "cells": {
+        "axis_interaction_fit/linear_batch": "SELECTION_ONLY",
+        "axis_interaction_fit/mlp_batch": "HYBRID_DOMINATES_HAND",
+        "axis_interaction_fit/tree_batch": "HYBRID_DOMINATES_HAND",
+        "linear_fit/linear_batch": "SELECTION_ONLY",
+        "linear_fit/mlp_batch": "HYBRID_DOMINATES_HAND",
+        "linear_fit/tree_batch": "HYBRID_DOMINATES_HAND",
+        "smooth_interaction_fit/linear_batch": "HYBRID_DOMINATES_HAND",
+        "smooth_interaction_fit/mlp_batch": "HYBRID_DOMINATES_HAND",
+        "smooth_interaction_fit/tree_batch": "HYBRID_DOMINATES_HAND"
+      },
+      "cell_numbers": {
+        "axis_interaction_fit/linear_batch": {
+          "precision_mean": 0.02635,
+          "precision_positive_replicates": 13,
+          "learning_hand_minus_condition_mean": -0.00526,
+          "restored_mean": 0.00278,
+          "restored_positive_replicates": 11
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "precision_mean": 0.04028,
+          "precision_positive_replicates": 15,
+          "learning_hand_minus_condition_mean": -0.00293,
+          "restored_mean": 0.02243,
+          "restored_positive_replicates": 14
+        },
+        "axis_interaction_fit/tree_batch": {
+          "precision_mean": 0.05008,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00357,
+          "restored_mean": 0.02327,
+          "restored_positive_replicates": 14
+        },
+        "linear_fit/linear_batch": {
+          "precision_mean": 0.07953,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00755,
+          "restored_mean": 0.00277,
+          "restored_positive_replicates": 15
+        },
+        "linear_fit/mlp_batch": {
+          "precision_mean": 0.08593,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00136,
+          "restored_mean": 0.00091,
+          "restored_positive_replicates": 11
+        },
+        "linear_fit/tree_batch": {
+          "precision_mean": 0.06412,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": 0.00665,
+          "restored_mean": 0.00406,
+          "restored_positive_replicates": 13
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "precision_mean": 0.03463,
+          "precision_positive_replicates": 15,
+          "learning_hand_minus_condition_mean": -0.00313,
+          "restored_mean": -0.00039,
+          "restored_positive_replicates": 8
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "precision_mean": 0.04419,
+          "precision_positive_replicates": 15,
+          "learning_hand_minus_condition_mean": 0.00073,
+          "restored_mean": 0.02389,
+          "restored_positive_replicates": 14
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "precision_mean": 0.03894,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00243,
+          "restored_mean": 0.00918,
+          "restored_positive_replicates": 12
+        }
+      }
+    },
+    "hybrid_40": {
+      "role": "REGISTERED_HYBRID",
+      "summary": "DOMINATES_NOWHERE",
+      "dominating_cells": [],
+      "cells": {
+        "axis_interaction_fit/linear_batch": "LEARNING_ONLY",
+        "axis_interaction_fit/mlp_batch": "LEARNING_ONLY",
+        "axis_interaction_fit/tree_batch": "LEARNING_ONLY",
+        "linear_fit/linear_batch": "NEITHER",
+        "linear_fit/mlp_batch": "LEARNING_ONLY",
+        "linear_fit/tree_batch": "LEARNING_ONLY",
+        "smooth_interaction_fit/linear_batch": "LEARNING_ONLY",
+        "smooth_interaction_fit/mlp_batch": "LEARNING_ONLY",
+        "smooth_interaction_fit/tree_batch": "LEARNING_ONLY"
+      },
+      "cell_numbers": {
+        "axis_interaction_fit/linear_batch": {
+          "precision_mean": -0.00309,
+          "precision_positive_replicates": 6,
+          "learning_hand_minus_condition_mean": -0.0027,
+          "restored_mean": 0.00534,
+          "restored_positive_replicates": 11
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "precision_mean": 0.00384,
+          "precision_positive_replicates": 8,
+          "learning_hand_minus_condition_mean": 0.01015,
+          "restored_mean": 0.0355,
+          "restored_positive_replicates": 12
+        },
+        "axis_interaction_fit/tree_batch": {
+          "precision_mean": 0.00074,
+          "precision_positive_replicates": 8,
+          "learning_hand_minus_condition_mean": 0.00728,
+          "restored_mean": 0.03412,
+          "restored_positive_replicates": 15
+        },
+        "linear_fit/linear_batch": {
+          "precision_mean": 0.01948,
+          "precision_positive_replicates": 14,
+          "learning_hand_minus_condition_mean": -0.00618,
+          "restored_mean": 0.00414,
+          "restored_positive_replicates": 15
+        },
+        "linear_fit/mlp_batch": {
+          "precision_mean": 0.01259,
+          "precision_positive_replicates": 12,
+          "learning_hand_minus_condition_mean": 0.00035,
+          "restored_mean": 0.00262,
+          "restored_positive_replicates": 13
+        },
+        "linear_fit/tree_batch": {
+          "precision_mean": 0.01685,
+          "precision_positive_replicates": 14,
+          "learning_hand_minus_condition_mean": 0.00844,
+          "restored_mean": 0.00585,
+          "restored_positive_replicates": 14
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "precision_mean": -0.00058,
+          "precision_positive_replicates": 7,
+          "learning_hand_minus_condition_mean": -0.00242,
+          "restored_mean": 0.00033,
+          "restored_positive_replicates": 9
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "precision_mean": 0.0,
+          "precision_positive_replicates": 8,
+          "learning_hand_minus_condition_mean": 0.00859,
+          "restored_mean": 0.03174,
+          "restored_positive_replicates": 16
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "precision_mean": 0.00167,
+          "precision_positive_replicates": 9,
+          "learning_hand_minus_condition_mean": 0.00182,
+          "restored_mean": 0.01344,
+          "restored_positive_replicates": 15
+        }
+      }
+    },
+    "llm_selective": {
+      "role": "REFERENCE",
+      "summary": "DOMINATES_IN_MINORITY",
+      "dominating_cells": [
+        "linear_fit/mlp_batch",
+        "linear_fit/tree_batch",
+        "smooth_interaction_fit/linear_batch"
+      ],
+      "cells": {
+        "axis_interaction_fit/linear_batch": "SELECTION_ONLY",
+        "axis_interaction_fit/mlp_batch": "SELECTION_ONLY",
+        "axis_interaction_fit/tree_batch": "SELECTION_ONLY",
+        "linear_fit/linear_batch": "SELECTION_ONLY",
+        "linear_fit/mlp_batch": "HYBRID_DOMINATES_HAND",
+        "linear_fit/tree_batch": "HYBRID_DOMINATES_HAND",
+        "smooth_interaction_fit/linear_batch": "HYBRID_DOMINATES_HAND",
+        "smooth_interaction_fit/mlp_batch": "SELECTION_ONLY",
+        "smooth_interaction_fit/tree_batch": "SELECTION_ONLY"
+      },
+      "cell_numbers": {
+        "axis_interaction_fit/linear_batch": {
+          "precision_mean": 0.08336,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00804,
+          "restored_mean": 0.0,
+          "restored_positive_replicates": 0
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "precision_mean": 0.09991,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.02535,
+          "restored_mean": 0.0,
+          "restored_positive_replicates": 0
+        },
+        "axis_interaction_fit/tree_batch": {
+          "precision_mean": 0.10791,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.02684,
+          "restored_mean": 0.0,
+          "restored_positive_replicates": 0
+        },
+        "linear_fit/linear_batch": {
+          "precision_mean": 0.16259,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.01033,
+          "restored_mean": 0.0,
+          "restored_positive_replicates": 0
+        },
+        "linear_fit/mlp_batch": {
+          "precision_mean": 0.18876,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00227,
+          "restored_mean": 0.0,
+          "restored_positive_replicates": 0
+        },
+        "linear_fit/tree_batch": {
+          "precision_mean": 0.12783,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": 0.00258,
+          "restored_mean": 0.0,
+          "restored_positive_replicates": 0
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "precision_mean": 0.11113,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.00274,
+          "restored_mean": 0.0,
+          "restored_positive_replicates": 0
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "precision_mean": 0.11521,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.02315,
+          "restored_mean": 0.0,
+          "restored_positive_replicates": 0
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "precision_mean": 0.09434,
+          "precision_positive_replicates": 16,
+          "learning_hand_minus_condition_mean": -0.01161,
+          "restored_mean": 0.0,
+          "restored_positive_replicates": 0
+        }
+      }
+    }
+  },
+  "registered_decisions": {
+    "flat": {
+      "cells": {
+        "axis_interaction_fit/linear_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.00307244,
+              "mean": -0.00415312,
+              "min": -0.01215284,
+              "n": 16,
+              "std": 0.00455487,
+              "values": [
+                -0.00782364,
+                -0.00696893,
+                -0.00469026,
+                -0.00619463,
+                -0.01215284,
+                0.00034394,
+                -0.00605885,
+                0.00085696,
+                -0.00342014,
+                -0.00447637,
+                -0.00205121,
+                -0.00033422,
+                0.00307244,
+                0.00183127,
+                -0.00655052,
+                -0.01183295
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.02153409,
+              "mean": 0.00388904,
+              "min": -0.01740302,
+              "n": 16,
+              "std": 0.01294583,
+              "values": [
+                0.02153409,
+                0.00793644,
+                -0.00966822,
+                -0.01522722,
+                -0.01396022,
+                0.01519733,
+                -0.00253467,
+                0.01274133,
+                0.0062888,
+                0.01854761,
+                0.00132238,
+                0.01168855,
+                0.01863368,
+                0.01104177,
+                -0.00391403,
+                -0.01740302
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 10
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": -0.02238176,
+              "mean": -0.04759891,
+              "min": -0.08055804,
+              "n": 16,
+              "std": 0.01758986,
+              "values": [
+                -0.05337171,
+                -0.02914021,
+                -0.03643699,
+                -0.02238176,
+                -0.04342532,
+                -0.05517845,
+                -0.05418883,
+                -0.05749775,
+                -0.07430907,
+                -0.04386837,
+                -0.0284262,
+                -0.08055804,
+                -0.03520539,
+                -0.0739512,
+                -0.03303761,
+                -0.04060571
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          }
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.05936873,
+              "mean": 0.02106581,
+              "min": -0.0003903,
+              "n": 16,
+              "std": 0.01883915,
+              "values": [
+                -0.0003903,
+                0.01719493,
+                0.01381689,
+                0.03739563,
+                0.00076195,
+                0.00682243,
+                0.01482296,
+                0.04793441,
+                0.01790099,
+                0.00247122,
+                0.00549335,
+                0.02384415,
+                0.05359831,
+                0.01922641,
+                0.05936873,
+                0.01679083
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.11336424,
+              "mean": 0.04642006,
+              "min": 0.00792222,
+              "n": 16,
+              "std": 0.03325278,
+              "values": [
+                0.07834395,
+                0.01921701,
+                0.00993831,
+                0.03651809,
+                0.02003879,
+                0.00792222,
+                0.04457269,
+                0.11336424,
+                0.04527213,
+                0.05026489,
+                0.01503232,
+                0.01506276,
+                0.07841873,
+                0.0651346,
+                0.10411397,
+                0.03950632
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": -0.03485577,
+              "mean": -0.08326727,
+              "min": -0.12087539,
+              "n": 16,
+              "std": 0.02536349,
+              "values": [
+                -0.07674632,
+                -0.06314132,
+                -0.08003657,
+                -0.03485577,
+                -0.10422486,
+                -0.09663723,
+                -0.08407738,
+                -0.1065625,
+                -0.09094024,
+                -0.0813519,
+                -0.08301327,
+                -0.11484375,
+                -0.03660301,
+                -0.12087539,
+                -0.05680429,
+                -0.1015625
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          }
+        },
+        "axis_interaction_fit/tree_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.05677551,
+              "mean": 0.01414632,
+              "min": -0.00166766,
+              "n": 16,
+              "std": 0.01793375,
+              "values": [
+                0.00275474,
+                0.00982695,
+                0.00233591,
+                -0.00166766,
+                0.00982551,
+                -0.00153421,
+                -0.00092382,
+                0.04371495,
+                0.01592016,
+                0.04256292,
+                0.00632338,
+                0.00919035,
+                0.05677551,
+                0.01536361,
+                0.01593861,
+                -6.573e-05
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.1233326,
+              "mean": 0.04098962,
+              "min": 0.00161592,
+              "n": 16,
+              "std": 0.03489913,
+              "values": [
+                0.0187183,
+                0.02241495,
+                0.00788594,
+                0.02458496,
+                0.05826774,
+                0.01220514,
+                0.00161592,
+                0.07505683,
+                0.02261838,
+                0.04273409,
+                0.01080861,
+                0.01360483,
+                0.06650013,
+                0.0844953,
+                0.1233326,
+                0.07099019
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": -0.0518488,
+              "mean": -0.1022255,
+              "min": -0.12911932,
+              "n": 16,
+              "std": 0.02206938,
+              "values": [
+                -0.0896875,
+                -0.08662684,
+                -0.09116587,
+                -0.11065424,
+                -0.12337428,
+                -0.11294158,
+                -0.09786184,
+                -0.11989583,
+                -0.11550164,
+                -0.0518488,
+                -0.12070742,
+                -0.12288973,
+                -0.0647689,
+                -0.12911932,
+                -0.08947562,
+                -0.10908868
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          }
+        },
+        "linear_fit/linear_batch": {
+          "disposition": "NEITHER",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": -0.00674832,
+              "mean": -0.0167088,
+              "min": -0.02699074,
+              "n": 16,
+              "std": 0.00616592,
+              "values": [
+                -0.01781881,
+                -0.01350051,
+                -0.01072628,
+                -0.02659248,
+                -0.02699074,
+                -0.01229712,
+                -0.01673771,
+                -0.02344102,
+                -0.00884602,
+                -0.0211553,
+                -0.01585626,
+                -0.01790657,
+                -0.01960995,
+                -0.01975908,
+                -0.00935468,
+                -0.00674832
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.00964686,
+              "mean": -0.00638365,
+              "min": -0.02387632,
+              "n": 16,
+              "std": 0.00937428,
+              "values": [
+                -0.00568473,
+                -0.0043853,
+                0.00182297,
+                -0.02124632,
+                -0.01738638,
+                -0.00020098,
+                -0.0134351,
+                -0.01193475,
+                0.00208598,
+                -0.00562213,
+                -0.00579542,
+                -0.00701448,
+                -0.02387632,
+                -0.00486384,
+                0.00575161,
+                0.00964686
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 4
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": -0.06831309,
+              "mean": -0.09548299,
+              "min": -0.14076368,
+              "n": 16,
+              "std": 0.02008619,
+              "values": [
+                -0.06831309,
+                -0.07642419,
+                -0.09286668,
+                -0.10460805,
+                -0.09970238,
+                -0.10546875,
+                -0.08000942,
+                -0.14076368,
+                -0.09293781,
+                -0.07240994,
+                -0.09375,
+                -0.10943834,
+                -0.07268054,
+                -0.1290166,
+                -0.08872768,
+                -0.10061072
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          }
+        },
+        "linear_fit/mlp_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.01073946,
+              "mean": 0.00131444,
+              "min": -0.00094685,
+              "n": 16,
+              "std": 0.00289621,
+              "values": [
+                -0.00039902,
+                0.00159891,
+                -0.00086006,
+                0.00210489,
+                0.00106728,
+                -0.0005496,
+                0.00037909,
+                0.01073946,
+                0.00069961,
+                0.00461379,
+                -0.00094685,
+                0.00137516,
+                -0.00035839,
+                -0.00051306,
+                0.00016267,
+                0.00191711
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.00737906,
+              "mean": 0.00358418,
+              "min": -0.00099138,
+              "n": 16,
+              "std": 0.00281111,
+              "values": [
+                -6.11e-05,
+                0.00651471,
+                0.00467373,
+                0.00211214,
+                0.00572523,
+                0.00737906,
+                0.00652715,
+                0.00050915,
+                0.00662179,
+                0.00460689,
+                0.00223589,
+                0.00249726,
+                0.00673405,
+                -0.00099138,
+                0.00099214,
+                0.00127023
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 14
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": -0.08877841,
+              "mean": -0.11951675,
+              "min": -0.17242237,
+              "n": 16,
+              "std": 0.02201433,
+              "values": [
+                -0.08877841,
+                -0.09955019,
+                -0.11033622,
+                -0.12276786,
+                -0.11654006,
+                -0.1262167,
+                -0.09674202,
+                -0.17242237,
+                -0.1207648,
+                -0.10233539,
+                -0.1230145,
+                -0.13438398,
+                -0.09756847,
+                -0.15405127,
+                -0.11278783,
+                -0.13400786
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          }
+        },
+        "linear_fit/tree_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.01545625,
+              "mean": 0.0047763,
+              "min": -0.002459,
+              "n": 16,
+              "std": 0.00557745,
+              "values": [
+                0.00083995,
+                0.00637628,
+                0.0092926,
+                0.00057378,
+                0.01136845,
+                -0.00193123,
+                0.00766007,
+                0.01093434,
+                0.00233251,
+                0.0001627,
+                0.01545625,
+                0.00443172,
+                -0.00170585,
+                0.00243523,
+                -0.002459,
+                0.01065297
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.02292293,
+              "mean": 0.00219298,
+              "min": -0.01298849,
+              "n": 16,
+              "std": 0.00843131,
+              "values": [
+                -0.00218436,
+                -0.00018568,
+                0.00774847,
+                -0.01298849,
+                -0.00070142,
+                -0.00087445,
+                -0.00563856,
+                0.00814814,
+                -0.00680081,
+                0.00539172,
+                0.01145229,
+                0.02292293,
+                -0.0043399,
+                0.00505432,
+                0.00324325,
+                0.00484026
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 8
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": -0.06246262,
+              "mean": -0.08873967,
+              "min": -0.12428977,
+              "n": 16,
+              "std": 0.01515683,
+              "values": [
+                -0.06246262,
+                -0.07842548,
+                -0.08694876,
+                -0.08802937,
+                -0.09180699,
+                -0.0787157,
+                -0.08000942,
+                -0.12428977,
+                -0.09512982,
+                -0.07240994,
+                -0.09375,
+                -0.09782247,
+                -0.08053524,
+                -0.11530908,
+                -0.08801695,
+                -0.08617305
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          }
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "disposition": "NEITHER",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": -0.0035046,
+              "mean": -0.00866273,
+              "min": -0.0171196,
+              "n": 16,
+              "std": 0.00356024,
+              "values": [
+                -0.0049959,
+                -0.00639499,
+                -0.00659298,
+                -0.00761929,
+                -0.0139085,
+                -0.0035046,
+                -0.00962721,
+                -0.00585709,
+                -0.0171196,
+                -0.00900379,
+                -0.00567297,
+                -0.01003666,
+                -0.00727204,
+                -0.01279122,
+                -0.00826237,
+                -0.00994441
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.01829204,
+              "mean": -0.00592101,
+              "min": -0.01502704,
+              "n": 16,
+              "std": 0.00827462,
+              "values": [
+                0.01829204,
+                -0.00808062,
+                -0.01502704,
+                -0.01030159,
+                -0.01216086,
+                0.00206845,
+                0.00184548,
+                -0.01106166,
+                -0.00773075,
+                1.786e-05,
+                -0.00453006,
+                -0.00549928,
+                -0.01086489,
+                -0.0082053,
+                -0.00998326,
+                -0.01351464
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 4
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": -0.03097251,
+              "mean": -0.06350399,
+              "min": -0.1083734,
+              "n": 16,
+              "std": 0.01793299,
+              "values": [
+                -0.05723852,
+                -0.05698165,
+                -0.03097251,
+                -0.04750419,
+                -0.06490385,
+                -0.06480922,
+                -0.05796371,
+                -0.07139009,
+                -0.06613685,
+                -0.06996164,
+                -0.07282197,
+                -0.06039349,
+                -0.04609375,
+                -0.1083734,
+                -0.05053058,
+                -0.08998843
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          }
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.05526592,
+              "mean": 0.01415153,
+              "min": 0.00094009,
+              "n": 16,
+              "std": 0.01383769,
+              "values": [
+                0.00881366,
+                0.00782769,
+                0.02612212,
+                0.02146188,
+                0.01893348,
+                0.00178259,
+                0.0253094,
+                0.00613346,
+                0.01168902,
+                0.00410083,
+                0.01118516,
+                0.00094009,
+                0.05526592,
+                0.00321351,
+                0.01991789,
+                0.00372773
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.06351067,
+              "mean": 0.03730625,
+              "min": 0.01299433,
+              "n": 16,
+              "std": 0.01366613,
+              "values": [
+                0.02996325,
+                0.03303655,
+                0.04056316,
+                0.05013629,
+                0.01526196,
+                0.02527505,
+                0.04464522,
+                0.01299433,
+                0.04008249,
+                0.05795568,
+                0.06351067,
+                0.04376149,
+                0.03421281,
+                0.0273854,
+                0.03809049,
+                0.04002523
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": -0.04842809,
+              "mean": -0.0984038,
+              "min": -0.136973,
+              "n": 16,
+              "std": 0.02275226,
+              "values": [
+                -0.08562809,
+                -0.08655219,
+                -0.07789765,
+                -0.08380682,
+                -0.09142081,
+                -0.12741397,
+                -0.08899457,
+                -0.12415286,
+                -0.10312095,
+                -0.09765625,
+                -0.103125,
+                -0.12266498,
+                -0.04842809,
+                -0.136973,
+                -0.08147605,
+                -0.11514946
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          }
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.05461632,
+              "mean": 0.01264534,
+              "min": -0.01120612,
+              "n": 16,
+              "std": 0.01561376,
+              "values": [
+                0.00211816,
+                0.0109837,
+                0.00901424,
+                0.02576869,
+                -0.00377749,
+                0.0016257,
+                0.0080377,
+                0.0198844,
+                0.02218292,
+                0.02617005,
+                -0.01120612,
+                0.00823164,
+                0.05461632,
+                -0.00233558,
+                0.01927846,
+                0.01173262
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.05235682,
+              "mean": 0.02425681,
+              "min": -0.00222053,
+              "n": 16,
+              "std": 0.01336649,
+              "values": [
+                0.04483483,
+                0.01278767,
+                0.02014534,
+                0.02386073,
+                -0.00222053,
+                0.02544388,
+                0.01988785,
+                0.01327691,
+                0.01665188,
+                0.03391235,
+                0.01182479,
+                0.02506785,
+                0.02850712,
+                0.02523129,
+                0.05235682,
+                0.03654016
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 15
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": -0.05783155,
+              "mean": -0.08607123,
+              "min": -0.13069059,
+              "n": 16,
+              "std": 0.02134751,
+              "values": [
+                -0.07077661,
+                -0.06015625,
+                -0.07051809,
+                -0.05783279,
+                -0.10336538,
+                -0.11137153,
+                -0.07184008,
+                -0.0965047,
+                -0.09505208,
+                -0.0745081,
+                -0.09442935,
+                -0.09945913,
+                -0.05783155,
+                -0.13069059,
+                -0.0785236,
+                -0.10427989
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          }
+        }
+      },
+      "dominating_cells": [],
+      "role": "REFERENCE",
+      "summary": "DOMINATES_NOWHERE"
+    },
+    "hybrid_10": {
+      "cells": {
+        "axis_interaction_fit/linear_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.01479162,
+              "mean": -0.00654708,
+              "min": -0.03383174,
+              "n": 16,
+              "std": 0.01027284,
+              "values": [
+                -0.03383174,
+                -0.01215567,
+                0.00085944,
+                0.01479162,
+                -0.00317178,
+                -0.01149385,
+                -0.00046958,
+                -0.00962453,
+                -0.00751227,
+                -0.00701325,
+                -0.00389297,
+                -0.01126541,
+                -0.01175654,
+                -0.00981754,
+                -0.00357764,
+                0.00517837
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.01601074,
+              "mean": 0.00149508,
+              "min": -0.00497915,
+              "n": 16,
+              "std": 0.00496893,
+              "values": [
+                -0.00447401,
+                0.0027497,
+                -0.00411852,
+                0.00575903,
+                -0.00497915,
+                0.00335955,
+                0.00305461,
+                0.00225983,
+                0.00219667,
+                0.01601074,
+                -0.00051938,
+                0.00075737,
+                0.0038047,
+                -0.00060704,
+                -0.00094115,
+                -0.00039169
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 9
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.10375416,
+              "mean": 0.04654691,
+              "min": 0.00062267,
+              "n": 16,
+              "std": 0.0287814,
+              "values": [
+                0.06221323,
+                0.01064567,
+                0.03934426,
+                0.054564,
+                0.05916306,
+                0.06431274,
+                0.05389485,
+                0.012202,
+                0.08168432,
+                0.06196545,
+                0.03628072,
+                0.01746328,
+                0.06822532,
+                0.00062267,
+                0.10375416,
+                0.01841477
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.0383949,
+              "mean": -0.00399996,
+              "min": -0.04379134,
+              "n": 16,
+              "std": 0.01948262,
+              "values": [
+                -0.04379134,
+                -0.01905311,
+                -0.00358363,
+                0.0383949,
+                -0.01405436,
+                0.00094525,
+                0.01560903,
+                0.00122339,
+                -0.004319,
+                0.00562631,
+                -0.00736666,
+                0.01222243,
+                0.01177571,
+                -0.01475547,
+                -0.03165698,
+                -0.01121588
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.06665323,
+              "mean": 0.0213543,
+              "min": -0.01703103,
+              "n": 16,
+              "std": 0.02341609,
+              "values": [
+                0.03494292,
+                -0.01703103,
+                -0.00746222,
+                0.03751735,
+                0.00522248,
+                0.00204504,
+                0.04535875,
+                0.06665323,
+                0.02305214,
+                0.05341998,
+                0.00217232,
+                0.00344104,
+                0.03659612,
+                0.03115273,
+                0.01308827,
+                0.01149961
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 14
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.12812813,
+              "mean": 0.06844561,
+              "min": -0.01365894,
+              "n": 16,
+              "std": 0.03094631,
+              "values": [
+                0.06910659,
+                0.0725394,
+                0.06813732,
+                0.10410256,
+                0.07342925,
+                0.08054627,
+                0.06420891,
+                0.04635659,
+                0.06467148,
+                0.06723027,
+                0.07011173,
+                0.04303797,
+                0.12812813,
+                0.05383023,
+                0.10335196,
+                -0.01365894
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 15
+          }
+        },
+        "axis_interaction_fit/tree_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.0181452,
+              "mean": -0.00911605,
+              "min": -0.06049317,
+              "n": 16,
+              "std": 0.02258142,
+              "values": [
+                0.007941,
+                -0.00802046,
+                -0.01199832,
+                0.00827526,
+                -0.00267249,
+                -0.00920552,
+                -0.0097113,
+                -0.03233548,
+                0.00062637,
+                -0.00119665,
+                -0.0021039,
+                -0.00185444,
+                0.0181452,
+                0.01513374,
+                -0.06049317,
+                -0.05638664
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.08426543,
+              "mean": 0.01772725,
+              "min": -0.00717156,
+              "n": 16,
+              "std": 0.02493324,
+              "values": [
+                0.02390456,
+                0.00456754,
+                -0.00644829,
+                0.03452788,
+                0.04576974,
+                0.00453383,
+                -0.00717156,
+                -0.00099359,
+                0.00732459,
+                -0.00102548,
+                0.00238132,
+                0.00256004,
+                0.02786982,
+                0.08426543,
+                0.04690082,
+                0.01466928
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 12
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.13137827,
+              "mean": 0.08300503,
+              "min": 0.02680481,
+              "n": 16,
+              "std": 0.0277994,
+              "values": [
+                0.10612903,
+                0.0855776,
+                0.09393215,
+                0.06755817,
+                0.08488621,
+                0.08765898,
+                0.08325058,
+                0.03002433,
+                0.06411483,
+                0.10280745,
+                0.0959311,
+                0.07786952,
+                0.13137827,
+                0.07132867,
+                0.11882878,
+                0.02680481
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "linear_fit/linear_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.00381303,
+              "mean": -0.00892667,
+              "min": -0.0158146,
+              "n": 16,
+              "std": 0.00469825,
+              "values": [
+                -0.01171932,
+                -0.00671224,
+                -0.01018218,
+                -0.00711852,
+                -0.00694095,
+                -0.01110491,
+                -0.00263369,
+                -0.00858347,
+                -0.0092166,
+                -0.01321467,
+                -0.00808563,
+                -0.00897007,
+                0.00381303,
+                -0.01286504,
+                -0.01347788,
+                -0.0158146
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.00292279,
+              "mean": 0.00139849,
+              "min": -0.00177236,
+              "n": 16,
+              "std": 0.00125683,
+              "values": [
+                0.00041477,
+                0.00240297,
+                0.00236707,
+                -0.00177236,
+                0.00266341,
+                0.00099123,
+                0.00066892,
+                0.00292279,
+                0.0017154,
+                0.0023185,
+                0.00197521,
+                0.00192203,
+                -0.00045334,
+                0.0020302,
+                0.00162841,
+                0.00058058
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 14
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.15793861,
+              "mean": 0.11789312,
+              "min": 0.0625321,
+              "n": 16,
+              "std": 0.02689324,
+              "values": [
+                0.10826882,
+                0.14866712,
+                0.1407377,
+                0.0625321,
+                0.14177489,
+                0.14108796,
+                0.11247728,
+                0.09760984,
+                0.10208887,
+                0.15793861,
+                0.10261824,
+                0.13095285,
+                0.1310198,
+                0.09620662,
+                0.13352007,
+                0.0787892
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "linear_fit/mlp_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.00998706,
+              "mean": -0.00096633,
+              "min": -0.00807371,
+              "n": 16,
+              "std": 0.00408519,
+              "values": [
+                -0.00057091,
+                -0.00483915,
+                -0.00443567,
+                0.00111317,
+                0.00233588,
+                -0.00807371,
+                -0.00231124,
+                0.00998706,
+                -0.00528116,
+                0.00106484,
+                -0.00289927,
+                -0.00025435,
+                -0.00221708,
+                0.00064121,
+                -0.0008678,
+                0.00114693
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.00699382,
+              "mean": 0.00130342,
+              "min": -0.00024325,
+              "n": 16,
+              "std": 0.00208909,
+              "values": [
+                -0.00023299,
+                7.665e-05,
+                0.00109812,
+                0.00112042,
+                0.00699382,
+                -0.00014505,
+                0.00383682,
+                -0.00024325,
+                0.00064102,
+                0.00105794,
+                0.00028348,
+                0.00086774,
+                0.00487535,
+                0.0001629,
+                -3.834e-05,
+                0.00050005
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 12
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.17820994,
+              "mean": 0.13081609,
+              "min": 0.05353052,
+              "n": 16,
+              "std": 0.03941697,
+              "values": [
+                0.10340909,
+                0.16477273,
+                0.17128444,
+                0.07142857,
+                0.17820994,
+                0.14131866,
+                0.1308585,
+                0.09260167,
+                0.14116799,
+                0.17500836,
+                0.12296764,
+                0.14635124,
+                0.15876688,
+                0.05353052,
+                0.16004448,
+                0.0813367
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "linear_fit/tree_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.01818872,
+              "mean": 0.00562147,
+              "min": -0.00729561,
+              "n": 16,
+              "std": 0.00624525,
+              "values": [
+                0.00401123,
+                0.00671957,
+                0.00892042,
+                0.01224717,
+                0.01355846,
+                0.00014701,
+                0.01818872,
+                0.00414764,
+                0.00841636,
+                0.00126579,
+                0.00858809,
+                -0.00729561,
+                0.00221096,
+                0.00088033,
+                7.44e-06,
+                0.00792996
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.0111956,
+              "mean": 0.00303815,
+              "min": -0.0013151,
+              "n": 16,
+              "std": 0.00343942,
+              "values": [
+                0.00098691,
+                0.00015762,
+                0.00737628,
+                -0.0013151,
+                0.00148858,
+                0.0012038,
+                0.00489009,
+                0.00136143,
+                -0.00071695,
+                0.0064948,
+                0.00458414,
+                0.0111956,
+                -0.0004231,
+                0.00349942,
+                0.00570969,
+                0.00211725
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 13
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.14289336,
+              "mean": 0.09414066,
+              "min": 0.04562842,
+              "n": 16,
+              "std": 0.03088071,
+              "values": [
+                0.07745215,
+                0.12890058,
+                0.11786475,
+                0.04866481,
+                0.1234465,
+                0.08658537,
+                0.10363506,
+                0.04743402,
+                0.09335851,
+                0.14289336,
+                0.08373397,
+                0.12751079,
+                0.08194365,
+                0.04562842,
+                0.11930911,
+                0.07788945
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.00781541,
+              "mean": -0.0025625,
+              "min": -0.02359498,
+              "n": 16,
+              "std": 0.00812587,
+              "values": [
+                -0.02359498,
+                0.00650795,
+                -0.00695769,
+                0.00781541,
+                -0.00964429,
+                -0.00410945,
+                -0.00549551,
+                0.00706904,
+                -0.00405789,
+                -0.00831551,
+                -0.00080602,
+                0.00257475,
+                0.00315216,
+                -0.00906019,
+                0.00050123,
+                0.00342092
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.00711213,
+              "mean": 0.00017922,
+              "min": -0.01539175,
+              "n": 16,
+              "std": 0.00572206,
+              "values": [
+                -0.00030704,
+                0.00482233,
+                -0.01539175,
+                0.00513311,
+                -0.00789665,
+                0.00146361,
+                0.00597718,
+                0.00186447,
+                0.00533096,
+                0.00070613,
+                0.00033689,
+                0.00711213,
+                -0.00044069,
+                -0.00447427,
+                -0.00121966,
+                -0.00014931
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 9
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.11508838,
+              "mean": 0.06767492,
+              "min": 0.0026455,
+              "n": 16,
+              "std": 0.02984889,
+              "values": [
+                0.10190103,
+                0.02422723,
+                0.09096259,
+                0.06674466,
+                0.07692308,
+                0.10239109,
+                0.08362283,
+                0.06057782,
+                0.07439587,
+                0.07286268,
+                0.03181818,
+                0.05811999,
+                0.11508838,
+                0.05217651,
+                0.06834126,
+                0.0026455
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.02404747,
+              "mean": -0.00441902,
+              "min": -0.04275852,
+              "n": 16,
+              "std": 0.01982375,
+              "values": [
+                0.00669715,
+                -0.0147136,
+                0.00736293,
+                0.02404747,
+                0.02233424,
+                -0.01533303,
+                0.01186821,
+                -0.01943873,
+                -0.03509732,
+                -0.02551983,
+                -0.00779976,
+                -0.04275852,
+                0.0154451,
+                0.00534756,
+                -0.00443468,
+                0.00128845
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.05272187,
+              "mean": 0.0187357,
+              "min": -0.01257786,
+              "n": 16,
+              "std": 0.01898348,
+              "values": [
+                0.02784674,
+                0.01049527,
+                0.02180396,
+                0.05272187,
+                0.01866272,
+                0.00815942,
+                0.03120403,
+                -0.01257786,
+                -0.00670386,
+                0.02833502,
+                0.04452576,
+                6.288e-05,
+                -0.00560801,
+                0.02951945,
+                0.01373792,
+                0.03758595
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 13
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.13092631,
+              "mean": 0.07319318,
+              "min": 0.02273433,
+              "n": 16,
+              "std": 0.02865312,
+              "values": [
+                0.097165,
+                0.08994393,
+                0.05718592,
+                0.09057731,
+                0.13092631,
+                0.06681807,
+                0.07864656,
+                0.04087118,
+                0.06050099,
+                0.05565693,
+                0.08965517,
+                0.02273433,
+                0.10770354,
+                0.05047456,
+                0.09219372,
+                0.0400373
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.02693973,
+              "mean": -0.00711034,
+              "min": -0.03069161,
+              "n": 16,
+              "std": 0.01643761,
+              "values": [
+                -0.03069161,
+                -0.00114038,
+                -0.01272195,
+                0.02693973,
+                -0.00976212,
+                -0.00107996,
+                -0.02246006,
+                0.00971173,
+                0.00345278,
+                -0.00906434,
+                -0.01751656,
+                -0.02214356,
+                0.02225533,
+                -0.01184801,
+                -0.02585859,
+                -0.01183785
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.02503177,
+              "mean": 0.00450113,
+              "min": -0.01060992,
+              "n": 16,
+              "std": 0.01065668,
+              "values": [
+                0.01202506,
+                0.00066359,
+                -0.00159085,
+                0.02503177,
+                -0.00820515,
+                0.02273822,
+                -0.01060992,
+                0.00310424,
+                -0.00207826,
+                -0.00132204,
+                0.00551435,
+                -0.00530735,
+                -0.00385387,
+                0.01571886,
+                0.00721978,
+                0.01296969
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 9
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.1195122,
+              "mean": 0.06692205,
+              "min": 0.02477152,
+              "n": 16,
+              "std": 0.02835789,
+              "values": [
+                0.09298732,
+                0.08101266,
+                0.03978697,
+                0.10495533,
+                0.097399,
+                0.07222222,
+                0.06354298,
+                0.04145021,
+                0.03607955,
+                0.02477152,
+                0.07808341,
+                0.04395604,
+                0.1195122,
+                0.05675698,
+                0.08163265,
+                0.0366038
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        }
+      },
+      "dominating_cells": [
+        "axis_interaction_fit/mlp_batch",
+        "linear_fit/mlp_batch",
+        "linear_fit/tree_batch",
+        "smooth_interaction_fit/linear_batch",
+        "smooth_interaction_fit/mlp_batch"
+      ],
+      "role": "REGISTERED_HYBRID",
+      "summary": "DOMINATES_IN_MAJORITY"
+    },
+    "hybrid_20": {
+      "cells": {
+        "axis_interaction_fit/linear_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.01551385,
+              "mean": -0.00526211,
+              "min": -0.03437516,
+              "n": 16,
+              "std": 0.00973361,
+              "values": [
+                -0.03437516,
+                -0.00432413,
+                -0.00791817,
+                0.01551385,
+                0.00131648,
+                -0.00736871,
+                -0.00297137,
+                -0.00148155,
+                -0.00488737,
+                -0.00384554,
+                -0.00331696,
+                -0.00537536,
+                -0.01185308,
+                -0.0039288,
+                -0.00742104,
+                -0.00195681
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.01917844,
+              "mean": 0.00278005,
+              "min": -0.01289613,
+              "n": 16,
+              "std": 0.00792895,
+              "values": [
+                -0.00501743,
+                0.01058123,
+                -0.01289613,
+                0.00648126,
+                -0.00049089,
+                0.00748469,
+                0.00055281,
+                0.01040281,
+                0.00482157,
+                0.01917844,
+                5.663e-05,
+                0.00664741,
+                0.00370816,
+                0.00528171,
+                -0.00478455,
+                -0.00752688
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 11
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.08381156,
+              "mean": 0.02634897,
+              "min": -0.01518761,
+              "n": 16,
+              "std": 0.02380085,
+              "values": [
+                0.00866873,
+                0.01563143,
+                0.04359958,
+                0.03490991,
+                0.04199134,
+                0.03886306,
+                -0.0035461,
+                0.01583894,
+                0.04556715,
+                0.03495226,
+                0.03184165,
+                -0.0013732,
+                0.02395655,
+                -0.01518761,
+                0.08381156,
+                0.02205819
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 13
+          }
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.03749044,
+              "mean": -0.00292535,
+              "min": -0.04613968,
+              "n": 16,
+              "std": 0.02221254,
+              "values": [
+                -0.04526454,
+                -0.01899166,
+                -0.00812133,
+                0.03749044,
+                -0.01405093,
+                -0.00067135,
+                0.01027024,
+                0.00558298,
+                0.01300789,
+                -0.04613968,
+                -0.00608158,
+                0.01364833,
+                0.0098925,
+                -0.00307475,
+                0.02125293,
+                -0.01555504
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.07101281,
+              "mean": 0.02242891,
+              "min": -0.01696959,
+              "n": 16,
+              "std": 0.02662238,
+              "values": [
+                0.03346971,
+                -0.01696959,
+                -0.01199991,
+                0.0366129,
+                0.00522591,
+                0.00042844,
+                0.04001996,
+                0.07101281,
+                0.04037903,
+                0.00165399,
+                0.0034574,
+                0.00486694,
+                0.03471291,
+                0.04283344,
+                0.06599818,
+                0.00716044
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 14
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.09615385,
+              "mean": 0.04028235,
+              "min": -0.03125,
+              "n": 16,
+              "std": 0.03366255,
+              "values": [
+                0.01627451,
+                0.04984511,
+                0.05306175,
+                0.09615385,
+                0.04401232,
+                0.05081194,
+                0.02134647,
+                0.01130435,
+                0.05263158,
+                0.00731742,
+                0.04868316,
+                0.01176471,
+                0.08425219,
+                0.03761456,
+                0.09069373,
+                -0.03125
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 15
+          }
+        },
+        "axis_interaction_fit/tree_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.01640025,
+              "mean": -0.00357142,
+              "min": -0.04530243,
+              "n": 16,
+              "std": 0.0177575,
+              "values": [
+                0.00178079,
+                0.00546835,
+                -0.00813806,
+                0.01068673,
+                0.00527488,
+                0.00133119,
+                -0.00709382,
+                -0.02155686,
+                0.00749045,
+                0.00812417,
+                -0.00031781,
+                -0.003545,
+                0.01640025,
+                0.01196251,
+                -0.03970807,
+                -0.04530243
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.08109419,
+              "mean": 0.02327187,
+              "min": -0.00455408,
+              "n": 16,
+              "std": 0.02499016,
+              "values": [
+                0.01774435,
+                0.01805636,
+                -0.00258803,
+                0.03693935,
+                0.05371711,
+                0.01507054,
+                -0.00455408,
+                0.00978503,
+                0.01418867,
+                0.00829534,
+                0.00416741,
+                0.00086947,
+                0.02612487,
+                0.08109419,
+                0.06768592,
+                0.02575349
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 14
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.0885147,
+              "mean": 0.05008364,
+              "min": 0.00392694,
+              "n": 16,
+              "std": 0.02025563,
+              "values": [
+                0.05551724,
+                0.05648396,
+                0.06414755,
+                0.0497076,
+                0.05942801,
+                0.05190217,
+                0.03464169,
+                0.00392694,
+                0.03684211,
+                0.05701435,
+                0.06649402,
+                0.0322056,
+                0.0885147,
+                0.05550239,
+                0.06736937,
+                0.02164049
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "linear_fit/linear_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.00057884,
+              "mean": -0.00755022,
+              "min": -0.01544904,
+              "n": 16,
+              "std": 0.00418772,
+              "values": [
+                -0.01078026,
+                -0.00478283,
+                -0.00676535,
+                -0.00451324,
+                -0.00463439,
+                -0.01104379,
+                -0.00152312,
+                -0.0077586,
+                -0.00671928,
+                -0.01089411,
+                -0.00704179,
+                -0.0060105,
+                0.00057884,
+                -0.01153162,
+                -0.01193445,
+                -0.01544904
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.00578391,
+              "mean": 0.00277494,
+              "min": -0.00368754,
+              "n": 16,
+              "std": 0.00234727,
+              "values": [
+                0.00135382,
+                0.00433238,
+                0.00578391,
+                0.00083292,
+                0.00496996,
+                0.00105234,
+                0.00177949,
+                0.00374766,
+                0.00421272,
+                0.00463906,
+                0.00301905,
+                0.0048816,
+                -0.00368754,
+                0.00336362,
+                0.00317184,
+                0.00094614
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 15
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.11599973,
+              "mean": 0.07953247,
+              "min": 0.04679172,
+              "n": 16,
+              "std": 0.02179823,
+              "values": [
+                0.07921066,
+                0.10782844,
+                0.10549522,
+                0.04834089,
+                0.09165036,
+                0.08479167,
+                0.07311558,
+                0.04679172,
+                0.06508776,
+                0.11599973,
+                0.07140032,
+                0.07599364,
+                0.0903775,
+                0.06514238,
+                0.10229277,
+                0.04900091
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "linear_fit/mlp_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.01021011,
+              "mean": -0.0013581,
+              "min": -0.00501549,
+              "n": 16,
+              "std": 0.00372221,
+              "values": [
+                -0.0003649,
+                -0.00448479,
+                -0.00423994,
+                -0.000134,
+                -0.00401868,
+                -0.00427075,
+                -0.00194527,
+                0.01021011,
+                -0.00501549,
+                0.00112408,
+                -0.00364684,
+                -0.00023645,
+                -0.0020048,
+                -0.00328677,
+                -0.00068358,
+                0.00126853
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.00508764,
+              "mean": 0.00091165,
+              "min": -0.00376508,
+              "n": 16,
+              "std": 0.00205863,
+              "values": [
+                -2.698e-05,
+                0.000431,
+                0.00129385,
+                -0.00012674,
+                0.00063926,
+                0.00365791,
+                0.00420279,
+                -2.02e-05,
+                0.00090669,
+                0.00111717,
+                -0.00046409,
+                0.00088564,
+                0.00508764,
+                -0.00376508,
+                0.00014589,
+                0.00062165
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 11
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.13393818,
+              "mean": 0.08592872,
+              "min": 0.03689875,
+              "n": 16,
+              "std": 0.02913024,
+              "values": [
+                0.07044125,
+                0.11829837,
+                0.13393818,
+                0.05102041,
+                0.12019556,
+                0.08369284,
+                0.07222149,
+                0.03689875,
+                0.09132738,
+                0.11337641,
+                0.08677716,
+                0.07705841,
+                0.1019975,
+                0.06028759,
+                0.11230349,
+                0.0450247
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "linear_fit/tree_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.02157835,
+              "mean": 0.00664559,
+              "min": -0.00594996,
+              "n": 16,
+              "std": 0.00686132,
+              "values": [
+                0.00120239,
+                0.00815338,
+                0.0107068,
+                0.01411526,
+                0.02157835,
+                0.00365332,
+                0.00765195,
+                0.00699348,
+                0.01121286,
+                -0.00364096,
+                0.0118534,
+                -0.00594996,
+                0.00163948,
+                0.00526516,
+                0.00217137,
+                0.00972312
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.01254125,
+              "mean": 0.00406227,
+              "min": -0.00564667,
+              "n": 16,
+              "std": 0.00486101,
+              "values": [
+                -0.00182193,
+                0.00159142,
+                0.00916266,
+                0.000553,
+                0.00950847,
+                0.0047101,
+                -0.00564667,
+                0.00420728,
+                0.00207954,
+                0.00158805,
+                0.00784945,
+                0.01254125,
+                -0.00099457,
+                0.00788425,
+                0.00787362,
+                0.0039104
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 13
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.10455576,
+              "mean": 0.0641219,
+              "min": 0.01544638,
+              "n": 16,
+              "std": 0.02295767,
+              "values": [
+                0.05744227,
+                0.0905027,
+                0.10455576,
+                0.03088904,
+                0.06793679,
+                0.06152545,
+                0.05586412,
+                0.01544638,
+                0.06289575,
+                0.09991073,
+                0.05316198,
+                0.07327128,
+                0.05305851,
+                0.06316088,
+                0.08091123,
+                0.05541754
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.0066691,
+              "mean": -0.00312989,
+              "min": -0.02757783,
+              "n": 16,
+              "std": 0.00850019,
+              "values": [
+                -0.02757783,
+                0.00332471,
+                -0.00179004,
+                0.0062389,
+                -0.00865969,
+                -0.00442637,
+                -0.00686366,
+                0.0066691,
+                -0.00448283,
+                -0.00792485,
+                -0.00115869,
+                0.00568477,
+                -0.00205052,
+                -0.01035609,
+                -0.00025119,
+                0.00354606
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.01022216,
+              "mean": -0.00038817,
+              "min": -0.01022411,
+              "n": 16,
+              "std": 0.00520984,
+              "values": [
+                -0.00428989,
+                0.00163908,
+                -0.01022411,
+                0.0035566,
+                -0.00691204,
+                0.00114669,
+                0.00460904,
+                0.00146454,
+                0.00490602,
+                0.00109679,
+                -1.579e-05,
+                0.01022216,
+                -0.00564337,
+                -0.00577016,
+                -0.00197207,
+                -2.416e-05
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 8
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.06878453,
+              "mean": 0.0346326,
+              "min": -0.01239209,
+              "n": 16,
+              "std": 0.0187554,
+              "values": [
+                0.05641124,
+                0.02108505,
+                0.05785222,
+                0.03217039,
+                0.04584615,
+                0.06878453,
+                0.03291639,
+                0.02525115,
+                0.02838377,
+                0.02412318,
+                0.02191142,
+                0.02849606,
+                0.04098451,
+                0.03960114,
+                0.04269653,
+                -0.01239209
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 15
+          }
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.02924821,
+              "mean": 0.00073342,
+              "min": -0.04057317,
+              "n": 16,
+              "std": 0.01675594,
+              "values": [
+                0.01003194,
+                -0.01694358,
+                0.00766372,
+                0.02924821,
+                0.01771871,
+                -0.003175,
+                0.00818979,
+                -0.0171524,
+                -0.00449689,
+                0.00432661,
+                -0.01095404,
+                -0.04057317,
+                0.01945627,
+                0.00657538,
+                0.00236788,
+                -0.00054869
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.05818146,
+              "mean": 0.02388815,
+              "min": -0.01029153,
+              "n": 16,
+              "std": 0.01923238,
+              "values": [
+                0.03118153,
+                0.00826528,
+                0.02210476,
+                0.05792262,
+                0.01404719,
+                0.02031746,
+                0.02752561,
+                -0.01029153,
+                0.02389657,
+                0.05818146,
+                0.04137148,
+                0.00224823,
+                -0.00159684,
+                0.03074727,
+                0.02054048,
+                0.03574881
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 14
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.09090535,
+              "mean": 0.04418657,
+              "min": -0.01788412,
+              "n": 16,
+              "std": 0.0275221,
+              "values": [
+                0.04603681,
+                0.07360406,
+                0.03974406,
+                0.06436852,
+                0.09090535,
+                0.04367978,
+                0.02217641,
+                0.02132856,
+                0.02483255,
+                0.02850877,
+                0.06153846,
+                -0.01788412,
+                0.07138142,
+                0.0290927,
+                0.07561272,
+                0.03205911
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 15
+          }
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.02983099,
+              "mean": -0.00243452,
+              "min": -0.01813033,
+              "n": 16,
+              "std": 0.01491752,
+              "values": [
+                -0.0178189,
+                -0.00723343,
+                -0.01813033,
+                0.02983099,
+                -0.00303858,
+                0.00094825,
+                -0.00114901,
+                0.01041467,
+                0.01843775,
+                0.00375995,
+                -0.01138426,
+                -0.01483194,
+                0.01736917,
+                -0.01316419,
+                -0.01760921,
+                -0.01535324
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.02792303,
+              "mean": 0.00917695,
+              "min": -0.00874004,
+              "n": 16,
+              "std": 0.01133205,
+              "values": [
+                0.02489777,
+                -0.00542946,
+                -0.00699922,
+                0.02792303,
+                -0.00148162,
+                0.02476643,
+                0.01070114,
+                0.00380718,
+                0.01290672,
+                0.01150226,
+                0.01164665,
+                0.00200426,
+                -0.00874004,
+                0.01440268,
+                0.01546916,
+                0.0094543
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 12
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.08112554,
+              "mean": 0.03894289,
+              "min": 0.00391965,
+              "n": 16,
+              "std": 0.0248456,
+              "values": [
+                0.05077136,
+                0.06107784,
+                0.02480339,
+                0.08112554,
+                0.05909322,
+                0.04690577,
+                0.03590919,
+                0.01927936,
+                0.00577652,
+                0.02092921,
+                0.05455552,
+                0.00391965,
+                0.07245337,
+                0.01582974,
+                0.05989352,
+                0.010763
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        }
+      },
+      "dominating_cells": [
+        "axis_interaction_fit/mlp_batch",
+        "axis_interaction_fit/tree_batch",
+        "linear_fit/mlp_batch",
+        "linear_fit/tree_batch",
+        "smooth_interaction_fit/linear_batch",
+        "smooth_interaction_fit/mlp_batch",
+        "smooth_interaction_fit/tree_batch"
+      ],
+      "role": "REGISTERED_HYBRID",
+      "summary": "DOMINATES_IN_MAJORITY"
+    },
+    "hybrid_40": {
+      "cells": {
+        "axis_interaction_fit/linear_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.015673,
+              "mean": -0.00270248,
+              "min": -0.01825544,
+              "n": 16,
+              "std": 0.0068968,
+              "values": [
+                -0.01825544,
+                -0.00431123,
+                -0.0046783,
+                0.015673,
+                -0.0022854,
+                -0.00532046,
+                -0.00353196,
+                -0.00034669,
+                -0.00484677,
+                -0.00709228,
+                0.00468704,
+                -0.00174425,
+                -0.00564123,
+                -0.00122135,
+                -0.00558063,
+                0.0012563
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.0159317,
+              "mean": 0.00533968,
+              "min": -0.00965626,
+              "n": 16,
+              "std": 0.00728,
+              "values": [
+                0.01110229,
+                0.01059414,
+                -0.00965626,
+                0.00664041,
+                -0.00409277,
+                0.00953293,
+                -7.78e-06,
+                0.01153767,
+                0.00486217,
+                0.0159317,
+                0.00806063,
+                0.01027853,
+                0.00992001,
+                0.00798915,
+                -0.00294414,
+                -0.00431377
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 11
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.02963437,
+              "mean": -0.00308604,
+              "min": -0.03450409,
+              "n": 16,
+              "std": 0.01482504,
+              "values": [
+                -0.0203908,
+                0.00826155,
+                0.00681414,
+                0.00411281,
+                -0.0034632,
+                0.00906046,
+                -0.00106383,
+                -0.00578188,
+                -0.0003437,
+                0.0034632,
+                -0.00326731,
+                -0.03450409,
+                -0.00616095,
+                -0.01634703,
+                0.02963437,
+                -0.01940035
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 6
+          }
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.05019492,
+              "mean": 0.01014973,
+              "min": -0.02577011,
+              "n": 16,
+              "std": 0.021053,
+              "values": [
+                -0.00488757,
+                -0.02577011,
+                -0.00532519,
+                0.03981704,
+                -0.01327527,
+                -0.00257731,
+                0.01481014,
+                0.03464246,
+                0.01500415,
+                0.00688468,
+                0.00605791,
+                -0.00427324,
+                0.0376295,
+                0.00231454,
+                0.05019492,
+                0.01114908
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.10007229,
+              "mean": 0.03550399,
+              "min": -0.02374803,
+              "n": 16,
+              "std": 0.03748151,
+              "values": [
+                0.07384668,
+                -0.02374803,
+                -0.00920378,
+                0.0389395,
+                0.00600157,
+                -0.00147752,
+                0.04455987,
+                0.10007229,
+                0.04237529,
+                0.05467835,
+                0.01559688,
+                -0.01305463,
+                0.06244992,
+                0.04822274,
+                0.09494017,
+                0.03386456
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 12
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.04490536,
+              "mean": 0.00383799,
+              "min": -0.04673913,
+              "n": 16,
+              "std": 0.02568428,
+              "values": [
+                0.02093059,
+                0.01099342,
+                0.0,
+                0.04490536,
+                -0.02377273,
+                0.01712412,
+                -0.01039401,
+                -0.02640884,
+                -0.00712441,
+                0.01227209,
+                0.00720851,
+                -0.04673913,
+                0.03771044,
+                -0.0087751,
+                0.04314253,
+                -0.00966495
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 8
+          }
+        },
+        "axis_interaction_fit/tree_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.05331838,
+              "mean": 0.00727818,
+              "min": -0.01788631,
+              "n": 16,
+              "std": 0.01639616,
+              "values": [
+                0.00538241,
+                0.01546706,
+                -0.00298375,
+                0.00896007,
+                0.00181382,
+                0.00517179,
+                -0.00792038,
+                0.02669207,
+                0.01080344,
+                0.01124056,
+                0.00504203,
+                -0.0027961,
+                0.05331838,
+                0.0136869,
+                -0.01788631,
+                -0.00954111
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.08950768,
+              "mean": 0.03412147,
+              "min": -0.00538064,
+              "n": 16,
+              "std": 0.02977695,
+              "values": [
+                0.02134597,
+                0.02805506,
+                0.00256627,
+                0.03521268,
+                0.05025604,
+                0.01891115,
+                -0.00538064,
+                0.05803395,
+                0.01750166,
+                0.01141173,
+                0.00952726,
+                0.00161838,
+                0.063043,
+                0.08281858,
+                0.08950768,
+                0.06151481
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 15
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.04006023,
+              "mean": 0.00073778,
+              "min": -0.02666667,
+              "n": 16,
+              "std": 0.01742167,
+              "values": [
+                0.00836735,
+                0.01007764,
+                0.0072958,
+                -0.00604619,
+                -0.01235908,
+                0.00815217,
+                -0.00895004,
+                -0.02666667,
+                -0.01645739,
+                0.02265931,
+                -0.00228187,
+                -0.02602351,
+                0.04006023,
+                0.00785368,
+                0.01135859,
+                -0.0052356
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 8
+          }
+        },
+        "linear_fit/linear_batch": {
+          "disposition": "NEITHER",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": -1.636e-05,
+              "mean": -0.0061825,
+              "min": -0.0150914,
+              "n": 16,
+              "std": 0.00424821,
+              "values": [
+                -0.01024877,
+                -0.00039801,
+                -0.00347203,
+                -0.00475941,
+                -0.00029475,
+                -0.00966651,
+                -1.636e-05,
+                -0.00754212,
+                -0.00362121,
+                -0.01007253,
+                -0.00572109,
+                -0.00493146,
+                -0.00456883,
+                -0.00886274,
+                -0.00965271,
+                -0.0150914
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.00930961,
+              "mean": 0.00414266,
+              "min": -0.00883521,
+              "n": 16,
+              "std": 0.00439929,
+              "values": [
+                0.00188532,
+                0.0087172,
+                0.00907723,
+                0.00058675,
+                0.00930961,
+                0.00242962,
+                0.00328625,
+                0.00396415,
+                0.00731079,
+                0.00546064,
+                0.00433975,
+                0.00596064,
+                -0.00883521,
+                0.0060325,
+                0.00545357,
+                0.00130378
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 15
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.05988486,
+              "mean": 0.01947657,
+              "min": -0.03629421,
+              "n": 16,
+              "std": 0.02474433,
+              "values": [
+                0.04148193,
+                0.05400233,
+                0.03847013,
+                -0.01528363,
+                0.003663,
+                0.03426535,
+                0.01075603,
+                -0.03629421,
+                0.01118259,
+                0.05988486,
+                0.01386938,
+                0.02159038,
+                0.02368162,
+                0.00297354,
+                0.03419453,
+                0.01318723
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 14
+          }
+        },
+        "linear_fit/mlp_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.01121663,
+              "mean": 0.00034957,
+              "min": -0.00451523,
+              "n": 16,
+              "std": 0.00358489,
+              "values": [
+                -0.00024929,
+                0.00183212,
+                -0.0042158,
+                -0.00138758,
+                0.0032317,
+                -0.00451523,
+                0.00095779,
+                0.01121663,
+                -0.00144513,
+                0.00212719,
+                -0.00027161,
+                0.00097705,
+                -0.00026224,
+                -0.00209745,
+                0.00081997,
+                -0.00112506
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.00788965,
+              "mean": 0.00261931,
+              "min": -0.00257576,
+              "n": 16,
+              "std": 0.00327966,
+              "values": [
+                8.863e-05,
+                0.00674791,
+                0.001318,
+                -0.00138033,
+                0.00788965,
+                0.00341343,
+                0.00710584,
+                0.00098632,
+                0.00447705,
+                0.00212028,
+                0.00291113,
+                0.00209915,
+                0.00683019,
+                -0.00257576,
+                0.00164944,
+                -0.00177194
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 13
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.0480317,
+              "mean": 0.01259195,
+              "min": -0.04585987,
+              "n": 16,
+              "std": 0.02456804,
+              "values": [
+                0.02248804,
+                0.04126904,
+                0.04800317,
+                -0.01623377,
+                0.00220994,
+                0.02521331,
+                0.01621904,
+                -0.04585987,
+                0.01007357,
+                0.0480317,
+                0.00707679,
+                0.00736035,
+                0.02314877,
+                -0.01036523,
+                0.0253904,
+                -0.00255405
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 12
+          }
+        },
+        "linear_fit/tree_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.02008279,
+              "mean": 0.00843772,
+              "min": -0.00448328,
+              "n": 16,
+              "std": 0.00630254,
+              "values": [
+                0.00487636,
+                0.01488556,
+                0.00696379,
+                0.01356545,
+                0.02008279,
+                0.00221773,
+                0.01124338,
+                0.01257036,
+                0.01491415,
+                -0.00448328,
+                0.00370176,
+                0.00523668,
+                0.0051302,
+                0.00606327,
+                0.00377181,
+                0.01426348
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.02372789,
+              "mean": 0.0058544,
+              "min": -0.00205524,
+              "n": 16,
+              "std": 0.00615602,
+              "values": [
+                0.00185204,
+                0.00832361,
+                0.00541965,
+                3.19e-06,
+                0.00801291,
+                0.00327451,
+                -0.00205524,
+                0.00978415,
+                0.00578084,
+                0.00074573,
+                -0.00030219,
+                0.02372789,
+                0.00249614,
+                0.00868237,
+                0.00947407,
+                0.00845077
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 14
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.04739602,
+              "mean": 0.01684686,
+              "min": -0.030706,
+              "n": 16,
+              "std": 0.01983609,
+              "values": [
+                0.02518508,
+                0.03962551,
+                0.04739602,
+                -0.00921756,
+                0.00737779,
+                0.03422587,
+                0.01689796,
+                -0.030706,
+                0.00899058,
+                0.03946786,
+                0.01363032,
+                0.02151566,
+                0.00620078,
+                0.00240808,
+                0.02763669,
+                0.01891509
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 14
+          }
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.00784547,
+              "mean": -0.00241573,
+              "min": -0.01880937,
+              "n": 16,
+              "std": 0.00756218,
+              "values": [
+                -0.01880937,
+                -0.0011047,
+                0.00379912,
+                0.00679619,
+                -0.01205712,
+                -0.00374788,
+                -0.0066874,
+                0.00784547,
+                -0.00853281,
+                -0.00930772,
+                -0.00121438,
+                0.00342926,
+                0.00453298,
+                -0.00766577,
+                -0.00015023,
+                0.00422267
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.00796664,
+              "mean": 0.00032599,
+              "min": -0.01030948,
+              "n": 16,
+              "std": 0.00434069,
+              "values": [
+                0.00447857,
+                -0.00279033,
+                -0.00463494,
+                0.00411389,
+                -0.01030948,
+                0.00182518,
+                0.0047853,
+                0.0026409,
+                0.00085604,
+                -0.00028608,
+                -7.148e-05,
+                0.00796664,
+                0.00094013,
+                -0.00307985,
+                -0.00187111,
+                0.00065245
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 9
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.03125,
+              "mean": -0.00057893,
+              "min": -0.04083276,
+              "n": 16,
+              "std": 0.01985514,
+              "values": [
+                0.02138515,
+                0.00083542,
+                0.01450571,
+                -0.01736307,
+                -0.01085973,
+                0.02732112,
+                -0.00455622,
+                -0.02607759,
+                -0.0105673,
+                -0.00768275,
+                -0.0034179,
+                0.00012927,
+                0.03125,
+                -0.00613155,
+                0.02279932,
+                -0.04083276
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 7
+          }
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.05368941,
+              "mean": 0.00858638,
+              "min": -0.02098744,
+              "n": 16,
+              "std": 0.01702284,
+              "values": [
+                0.00729037,
+                -0.00478478,
+                0.01227667,
+                0.02124196,
+                0.02105336,
+                -0.0051237,
+                0.02243811,
+                0.00521718,
+                0.01440645,
+                -0.00621544,
+                0.00427569,
+                -0.02098744,
+                0.05368941,
+                0.01519856,
+                0.00232635,
+                -0.00492064
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.0566012,
+              "mean": 0.03174111,
+              "min": 0.01207804,
+              "n": 16,
+              "std": 0.01327555,
+              "values": [
+                0.02843996,
+                0.02042408,
+                0.02671771,
+                0.04991636,
+                0.01738184,
+                0.01836876,
+                0.04177393,
+                0.01207804,
+                0.04279992,
+                0.04763941,
+                0.0566012,
+                0.02183396,
+                0.0326363,
+                0.03937045,
+                0.02049895,
+                0.03137686
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.03965013,
+              "mean": 4.18e-06,
+              "min": -0.03484826,
+              "n": 16,
+              "std": 0.02081305,
+              "values": [
+                0.01158518,
+                0.01804851,
+                0.00604686,
+                0.0,
+                0.01111298,
+                -0.00879198,
+                -0.00831854,
+                -0.03199896,
+                -0.02291651,
+                0.00785714,
+                0.01573034,
+                -0.03484826,
+                0.03965013,
+                -0.0016169,
+                0.02253047,
+                -0.02400362
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 8
+          }
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "disposition": "LEARNING_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.05606278,
+              "mean": 0.00182358,
+              "min": -0.02075026,
+              "n": 16,
+              "std": 0.01856437,
+              "values": [
+                -0.00958415,
+                0.00068003,
+                -0.00532309,
+                0.02525402,
+                -2.436e-05,
+                0.00458255,
+                -0.00182305,
+                0.00679408,
+                0.0090577,
+                0.01046131,
+                -0.02075026,
+                -0.0176527,
+                0.05606278,
+                -0.0147263,
+                -0.00539573,
+                -0.00843559
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.03313252,
+              "mean": 0.01343505,
+              "min": -0.00081649,
+              "n": 16,
+              "std": 0.01197321,
+              "values": [
+                0.03313252,
+                0.002484,
+                0.00580801,
+                0.02334605,
+                0.0015326,
+                0.02840073,
+                0.0100271,
+                0.00018659,
+                0.00352667,
+                0.01820362,
+                0.00228065,
+                -0.00081649,
+                0.02995358,
+                0.01284057,
+                0.02768263,
+                0.01637196
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 15
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.04286549,
+              "mean": 0.00167142,
+              "min": -0.02977667,
+              "n": 16,
+              "std": 0.02154869,
+              "values": [
+                0.01205225,
+                0.0213198,
+                -0.00298426,
+                0.02963129,
+                -0.01505017,
+                0.00574823,
+                0.00628492,
+                -0.01475094,
+                -0.02856692,
+                0.00769871,
+                0.01425121,
+                -0.02977667,
+                0.04286549,
+                -0.01297343,
+                0.01780287,
+                -0.02680957
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 9
+          }
+        }
+      },
+      "dominating_cells": [],
+      "role": "REGISTERED_HYBRID",
+      "summary": "DOMINATES_NOWHERE"
+    },
+    "llm_selective": {
+      "cells": {
+        "axis_interaction_fit/linear_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.00903259,
+              "mean": -0.00804216,
+              "min": -0.02935773,
+              "n": 16,
+              "std": 0.01057796,
+              "values": [
+                -0.02935773,
+                -0.01490537,
+                0.00497796,
+                0.00903259,
+                0.00180737,
+                -0.01485339,
+                -0.00352418,
+                -0.01188436,
+                -0.00970894,
+                -0.02302399,
+                -0.00337359,
+                -0.01202277,
+                -0.01556124,
+                -0.00921051,
+                -0.00263649,
+                0.00557007
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "n": 16,
+              "std": 0.0,
+              "values": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.14258256,
+              "mean": 0.0833552,
+              "min": 0.04239171,
+              "n": 16,
+              "std": 0.03104351,
+              "values": [
+                0.08176133,
+                0.04338718,
+                0.07144303,
+                0.0727887,
+                0.09304619,
+                0.11295138,
+                0.08192586,
+                0.06650065,
+                0.13359024,
+                0.07315408,
+                0.0621988,
+                0.07746753,
+                0.12785265,
+                0.04239171,
+                0.14258256,
+                0.05064126
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.00878139,
+              "mean": -0.02535426,
+              "min": -0.07873425,
+              "n": 16,
+              "std": 0.02571089,
+              "values": [
+                -0.07873425,
+                -0.00202208,
+                0.00387858,
+                0.00087754,
+                -0.01927684,
+                -0.00109979,
+                -0.02974973,
+                -0.06542984,
+                -0.02737114,
+                -0.04779367,
+                -0.00953897,
+                0.00878139,
+                -0.02482041,
+                -0.0459082,
+                -0.04474524,
+                -0.02271548
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "n": 16,
+              "std": 0.0,
+              "values": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.16757001,
+              "mean": 0.09990985,
+              "min": 0.01506173,
+              "n": 16,
+              "std": 0.03936955,
+              "values": [
+                0.06960784,
+                0.11379345,
+                0.12314194,
+                0.06055646,
+                0.11828454,
+                0.12216779,
+                0.090122,
+                0.01506173,
+                0.11954304,
+                0.1035685,
+                0.13122284,
+                0.09295775,
+                0.16757001,
+                0.09986603,
+                0.13800542,
+                0.03308824
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "axis_interaction_fit/tree_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": -0.00017117,
+              "mean": -0.02684329,
+              "min": -0.10739399,
+              "n": 16,
+              "std": 0.03127208,
+              "values": [
+                -0.01596356,
+                -0.012588,
+                -0.00555003,
+                -0.02625262,
+                -0.04844223,
+                -0.01373936,
+                -0.00253974,
+                -0.03134188,
+                -0.00669822,
+                -0.00017117,
+                -0.00448523,
+                -0.00441448,
+                -0.00972462,
+                -0.06913169,
+                -0.10739399,
+                -0.07105592
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "n": 16,
+              "std": 0.0,
+              "values": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.19742334,
+              "mean": 0.10791436,
+              "min": 0.05497076,
+              "n": 16,
+              "std": 0.03297888,
+              "values": [
+                0.11941176,
+                0.11840121,
+                0.12103923,
+                0.05497076,
+                0.09988023,
+                0.10168666,
+                0.08913413,
+                0.09804598,
+                0.09453441,
+                0.13509317,
+                0.11433248,
+                0.13041556,
+                0.19742334,
+                0.06725508,
+                0.11415889,
+                0.07084684
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "linear_fit/linear_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.00426638,
+              "mean": -0.01032516,
+              "min": -0.01639518,
+              "n": 16,
+              "std": 0.00522957,
+              "values": [
+                -0.01213408,
+                -0.00911521,
+                -0.01254926,
+                -0.00534616,
+                -0.00960436,
+                -0.01209613,
+                -0.00330261,
+                -0.01150627,
+                -0.010932,
+                -0.01553317,
+                -0.01006084,
+                -0.0108921,
+                0.00426638,
+                -0.01489524,
+                -0.01510629,
+                -0.01639518
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "n": 16,
+              "std": 0.0,
+              "values": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.20015871,
+              "mean": 0.16259359,
+              "min": 0.10268362,
+              "n": 16,
+              "std": 0.02787566,
+              "values": [
+                0.14117573,
+                0.17962247,
+                0.18145472,
+                0.10268362,
+                0.18462139,
+                0.1878811,
+                0.16783103,
+                0.1669954,
+                0.12628492,
+                0.18806143,
+                0.15072838,
+                0.17233454,
+                0.20015871,
+                0.15334948,
+                0.17857143,
+                0.11974317
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "linear_fit/mlp_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.01023031,
+              "mean": -0.00226975,
+              "min": -0.00792866,
+              "n": 16,
+              "std": 0.00445415,
+              "values": [
+                -0.00033792,
+                -0.0049158,
+                -0.0055338,
+                -7.26e-06,
+                -0.00465795,
+                -0.00792866,
+                -0.00614806,
+                0.01023031,
+                -0.00592218,
+                6.91e-06,
+                -0.00318275,
+                -0.0011221,
+                -0.00709244,
+                0.00047831,
+                -0.00082947,
+                0.00064688
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "n": 16,
+              "std": 0.0,
+              "values": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.24977528,
+              "mean": 0.18876467,
+              "min": 0.09703221,
+              "n": 16,
+              "std": 0.04593696,
+              "values": [
+                0.14124466,
+                0.20505051,
+                0.2457729,
+                0.11160714,
+                0.2282969,
+                0.19737705,
+                0.19693416,
+                0.17360915,
+                0.18599071,
+                0.22201577,
+                0.19301372,
+                0.20977011,
+                0.24977528,
+                0.09703221,
+                0.22705592,
+                0.13568845
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "linear_fit/tree_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.01356226,
+              "mean": 0.00258332,
+              "min": -0.01849121,
+              "n": 16,
+              "std": 0.00821373,
+              "values": [
+                0.00302432,
+                0.00656196,
+                0.00154413,
+                0.01356226,
+                0.01206987,
+                -0.00105678,
+                0.01329862,
+                0.0027862,
+                0.00913332,
+                -0.00522901,
+                0.00400395,
+                -0.01849121,
+                0.00263405,
+                -0.00261909,
+                -0.00570225,
+                0.00581271
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "n": 16,
+              "std": 0.0,
+              "values": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.18303539,
+              "mean": 0.12782935,
+              "min": 0.07244961,
+              "n": 16,
+              "std": 0.03432537,
+              "values": [
+                0.09936774,
+                0.15788971,
+                0.18303539,
+                0.07895617,
+                0.15286893,
+                0.10814602,
+                0.14035696,
+                0.08479021,
+                0.12050507,
+                0.16587131,
+                0.11613176,
+                0.1617974,
+                0.12537994,
+                0.07244961,
+                0.16524275,
+                0.11248064
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "disposition": "HYBRID_DOMINATES_HAND",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.00843406,
+              "mean": -0.00274172,
+              "min": -0.02328794,
+              "n": 16,
+              "std": 0.00790414,
+              "values": [
+                -0.02328794,
+                0.00168563,
+                0.00843406,
+                0.0026823,
+                -0.00174764,
+                -0.00557306,
+                -0.0114727,
+                0.00520457,
+                -0.00938885,
+                -0.00902164,
+                -0.0011429,
+                -0.00453738,
+                0.00359285,
+                -0.00458592,
+                0.00172089,
+                0.00357023
+              ]
+            },
+            "pass": true
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "n": 16,
+              "std": 0.0,
+              "values": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.19278846,
+              "mean": 0.11113096,
+              "min": 0.02741703,
+              "n": 16,
+              "std": 0.03743411,
+              "values": [
+                0.12658121,
+                0.02741703,
+                0.11071783,
+                0.09589858,
+                0.11452031,
+                0.15211786,
+                0.12135177,
+                0.12183908,
+                0.10872942,
+                0.11014142,
+                0.114174,
+                0.09631073,
+                0.19278846,
+                0.13065399,
+                0.10962567,
+                0.04522792
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.02105311,
+              "mean": -0.02315473,
+              "min": -0.05385485,
+              "n": 16,
+              "std": 0.01910505,
+              "values": [
+                -0.02114959,
+                -0.02520886,
+                -0.01444104,
+                -0.02867441,
+                0.00367152,
+                -0.02349246,
+                -0.01933582,
+                -0.00686087,
+                -0.02839346,
+                -0.05385485,
+                -0.05232551,
+                -0.0428214,
+                0.02105311,
+                -0.02417189,
+                -0.0181726,
+                -0.0362975
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "n": 16,
+              "std": 0.0,
+              "values": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.15626609,
+              "mean": 0.11520701,
+              "min": 0.06723485,
+              "n": 16,
+              "std": 0.02557471,
+              "values": [
+                0.11548798,
+                0.12605161,
+                0.1014297,
+                0.06723485,
+                0.1483376,
+                0.11173533,
+                0.13351028,
+                0.11047415,
+                0.11224801,
+                0.11590909,
+                0.15140187,
+                0.08817877,
+                0.15626609,
+                0.10075021,
+                0.1290678,
+                0.07522883
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_condition_probe_brier": {
+              "max": 0.0261092,
+              "mean": -0.01161147,
+              "min": -0.04271667,
+              "n": 16,
+              "std": 0.01752662,
+              "values": [
+                -0.04271667,
+                -0.00180397,
+                -0.0111311,
+                0.00190796,
+                -0.00155696,
+                -0.02381818,
+                -0.01185015,
+                0.00660749,
+                0.00553103,
+                -0.0077423,
+                -0.02303091,
+                -0.01683621,
+                0.0261092,
+                -0.02756687,
+                -0.03307837,
+                -0.02480754
+              ]
+            },
+            "pass": false
+          },
+          "learning_restored_versus_selective": {
+            "improvement": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "n": 16,
+              "std": 0.0,
+              "values": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.1895122,
+              "mean": 0.09433779,
+              "min": 0.05410695,
+              "n": 16,
+              "std": 0.03060449,
+              "values": [
+                0.10526126,
+                0.08701299,
+                0.08471521,
+                0.10609729,
+                0.07371795,
+                0.09641577,
+                0.08930018,
+                0.07291495,
+                0.05410695,
+                0.06541434,
+                0.11702899,
+                0.09194712,
+                0.1895122,
+                0.09563153,
+                0.10835021,
+                0.07197773
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        }
+      },
+      "dominating_cells": [
+        "linear_fit/mlp_batch",
+        "linear_fit/tree_batch",
+        "smooth_interaction_fit/linear_batch"
+      ],
+      "role": "REFERENCE",
+      "summary": "DOMINATES_IN_MINORITY"
+    }
+  },
+  "condition_profiles": {
+    "linear_fit": {
+      "hand": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.804443,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.313173,
+          "probe_brier": 0.1988,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.756104,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.394311,
+          "probe_brier": 0.05798,
+          "evidence_events_per_learner": 145.125
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.762939,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.387568,
+          "probe_brier": 0.068112,
+          "evidence_events_per_learner": 146.4375
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.711426,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.418345,
+          "probe_brier": 0.012355,
+          "evidence_events_per_learner": 136.59375
+        }
+      },
+      "llm_selective": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.341064,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.46913,
+          "probe_brier": 0.197155,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.513428,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.556905,
+          "probe_brier": 0.068305,
+          "evidence_events_per_learner": 98.578125
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.570312,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.515397,
+          "probe_brier": 0.065529,
+          "evidence_events_per_learner": 109.5
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.491943,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.60711,
+          "probe_brier": 0.014625,
+          "evidence_events_per_learner": 94.453125
+        }
+      },
+      "hybrid_10": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.410156,
+          "exploratory_entry_rate": 0.070312,
+          "productive_share_of_entrants": 0.426481,
+          "probe_brier": 0.197155,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.559814,
+          "exploratory_entry_rate": 0.053711,
+          "productive_share_of_entrants": 0.512204,
+          "probe_brier": 0.066906,
+          "evidence_events_per_learner": 106.828125
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.611084,
+          "exploratory_entry_rate": 0.045898,
+          "productive_share_of_entrants": 0.481708,
+          "probe_brier": 0.062491,
+          "evidence_events_per_learner": 116.8125
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.543213,
+          "exploratory_entry_rate": 0.053711,
+          "productive_share_of_entrants": 0.549161,
+          "probe_brier": 0.013322,
+          "evidence_events_per_learner": 103.59375
+        }
+      },
+      "hybrid_20": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.475586,
+          "exploratory_entry_rate": 0.13623,
+          "productive_share_of_entrants": 0.395429,
+          "probe_brier": 0.197155,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.607422,
+          "exploratory_entry_rate": 0.106689,
+          "productive_share_of_entrants": 0.473844,
+          "probe_brier": 0.06553,
+          "evidence_events_per_learner": 115.59375
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.651855,
+          "exploratory_entry_rate": 0.093506,
+          "productive_share_of_entrants": 0.45169,
+          "probe_brier": 0.061466,
+          "evidence_events_per_learner": 124.265625
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.59082,
+          "exploratory_entry_rate": 0.105957,
+          "productive_share_of_entrants": 0.504274,
+          "probe_brier": 0.013713,
+          "evidence_events_per_learner": 112.3125
+        }
+      },
+      "hybrid_40": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.599121,
+          "exploratory_entry_rate": 0.262451,
+          "productive_share_of_entrants": 0.347809,
+          "probe_brier": 0.197155,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.696289,
+          "exploratory_entry_rate": 0.208984,
+          "productive_share_of_entrants": 0.413788,
+          "probe_brier": 0.064162,
+          "evidence_events_per_learner": 131.484375
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.726807,
+          "exploratory_entry_rate": 0.187012,
+          "productive_share_of_entrants": 0.404415,
+          "probe_brier": 0.059674,
+          "evidence_events_per_learner": 137.53125
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.691406,
+          "exploratory_entry_rate": 0.209473,
+          "productive_share_of_entrants": 0.430937,
+          "probe_brier": 0.012006,
+          "evidence_events_per_learner": 130.40625
+        }
+      },
+      "flat": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 1.0,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.298828,
+          "probe_brier": 0.25,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 1.0,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.298828,
+          "probe_brier": 0.074688,
+          "evidence_events_per_learner": 192.0
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 1.0,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.298828,
+          "probe_brier": 0.063336,
+          "evidence_events_per_learner": 192.0
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 1.0,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.298828,
+          "probe_brier": 0.011041,
+          "evidence_events_per_learner": 192.0
+        }
+      }
+    },
+    "smooth_interaction_fit": {
+      "hand": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.804443,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.32167,
+          "probe_brier": 0.201396,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.670654,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.362332,
+          "probe_brier": 0.169391,
+          "evidence_events_per_learner": 128.71875
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.700195,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.384899,
+          "probe_brier": 0.127759,
+          "evidence_events_per_learner": 134.4375
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.702637,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.397232,
+          "probe_brier": 0.092676,
+          "evidence_events_per_learner": 134.90625
+        }
+      },
+      "llm_selective": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.341064,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.452771,
+          "probe_brier": 0.211623,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.375,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.473463,
+          "probe_brier": 0.172133,
+          "evidence_events_per_learner": 71.8125
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.512207,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.479237,
+          "probe_brier": 0.139371,
+          "evidence_events_per_learner": 98.203125
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.480957,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.512439,
+          "probe_brier": 0.115831,
+          "evidence_events_per_learner": 92.109375
+        }
+      },
+      "hybrid_10": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.410156,
+          "exploratory_entry_rate": 0.070312,
+          "productive_share_of_entrants": 0.415116,
+          "probe_brier": 0.211623,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.466064,
+          "exploratory_entry_rate": 0.066162,
+          "productive_share_of_entrants": 0.430007,
+          "probe_brier": 0.171954,
+          "evidence_events_per_learner": 88.171875
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.588623,
+          "exploratory_entry_rate": 0.054443,
+          "productive_share_of_entrants": 0.451821,
+          "probe_brier": 0.134869,
+          "evidence_events_per_learner": 111.609375
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.57251,
+          "exploratory_entry_rate": 0.056885,
+          "productive_share_of_entrants": 0.470425,
+          "probe_brier": 0.097095,
+          "evidence_events_per_learner": 108.515625
+        }
+      },
+      "hybrid_20": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.475586,
+          "exploratory_entry_rate": 0.13623,
+          "productive_share_of_entrants": 0.379229,
+          "probe_brier": 0.211623,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.527344,
+          "exploratory_entry_rate": 0.130371,
+          "productive_share_of_entrants": 0.396965,
+          "probe_brier": 0.172521,
+          "evidence_events_per_learner": 99.46875
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.628174,
+          "exploratory_entry_rate": 0.105957,
+          "productive_share_of_entrants": 0.423842,
+          "probe_brier": 0.130194,
+          "evidence_events_per_learner": 119.15625
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.632812,
+          "exploratory_entry_rate": 0.110596,
+          "productive_share_of_entrants": 0.441418,
+          "probe_brier": 0.091943,
+          "evidence_events_per_learner": 119.625
+        }
+      },
+      "hybrid_40": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.599121,
+          "exploratory_entry_rate": 0.262451,
+          "productive_share_of_entrants": 0.34776,
+          "probe_brier": 0.211623,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.651367,
+          "exploratory_entry_rate": 0.241455,
+          "productive_share_of_entrants": 0.361753,
+          "probe_brier": 0.171807,
+          "evidence_events_per_learner": 122.25
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.718018,
+          "exploratory_entry_rate": 0.204102,
+          "productive_share_of_entrants": 0.386571,
+          "probe_brier": 0.125936,
+          "evidence_events_per_learner": 135.703125
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.724121,
+          "exploratory_entry_rate": 0.207764,
+          "productive_share_of_entrants": 0.397236,
+          "probe_brier": 0.08409,
+          "evidence_events_per_learner": 136.640625
+        }
+      },
+      "flat": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 1.0,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.298828,
+          "probe_brier": 0.25,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 1.0,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.298828,
+          "probe_brier": 0.178054,
+          "evidence_events_per_learner": 192.0
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 1.0,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.298828,
+          "probe_brier": 0.115114,
+          "evidence_events_per_learner": 192.0
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 1.0,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.298828,
+          "probe_brier": 0.078525,
+          "evidence_events_per_learner": 192.0
+        }
+      }
+    },
+    "axis_interaction_fit": {
+      "hand": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.804443,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.313194,
+          "probe_brier": 0.203729,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.657959,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.346427,
+          "probe_brier": 0.183868,
+          "evidence_events_per_learner": 126.328125
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.705078,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.401054,
+          "probe_brier": 0.070343,
+          "evidence_events_per_learner": 135.375
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.696777,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.382095,
+          "probe_brier": 0.116637,
+          "evidence_events_per_learner": 133.734375
+        }
+      },
+      "llm_selective": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.341064,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.417019,
+          "probe_brier": 0.219827,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.346191,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.429782,
+          "probe_brier": 0.19191,
+          "evidence_events_per_learner": 66.421875
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.497803,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.508968,
+          "probe_brier": 0.097187,
+          "evidence_events_per_learner": 95.578125
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.464844,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.482005,
+          "probe_brier": 0.141991,
+          "evidence_events_per_learner": 89.109375
+        }
+      },
+      "hybrid_10": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.410156,
+          "exploratory_entry_rate": 0.070312,
+          "productive_share_of_entrants": 0.386914,
+          "probe_brier": 0.219827,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.445557,
+          "exploratory_entry_rate": 0.067627,
+          "productive_share_of_entrants": 0.392974,
+          "probe_brier": 0.190415,
+          "evidence_events_per_learner": 84.046875
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.568359,
+          "exploratory_entry_rate": 0.05542,
+          "productive_share_of_entrants": 0.484059,
+          "probe_brier": 0.079459,
+          "evidence_events_per_learner": 108.234375
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.569824,
+          "exploratory_entry_rate": 0.058838,
+          "productive_share_of_entrants": 0.450541,
+          "probe_brier": 0.120637,
+          "evidence_events_per_learner": 108.1875
+        }
+      },
+      "hybrid_20": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.475586,
+          "exploratory_entry_rate": 0.13623,
+          "productive_share_of_entrants": 0.362416,
+          "probe_brier": 0.219827,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.521973,
+          "exploratory_entry_rate": 0.132568,
+          "productive_share_of_entrants": 0.372776,
+          "probe_brier": 0.18913,
+          "evidence_events_per_learner": 98.15625
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.617676,
+          "exploratory_entry_rate": 0.105713,
+          "productive_share_of_entrants": 0.451137,
+          "probe_brier": 0.073915,
+          "evidence_events_per_learner": 117.328125
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.614502,
+          "exploratory_entry_rate": 0.111572,
+          "productive_share_of_entrants": 0.422378,
+          "probe_brier": 0.119563,
+          "evidence_events_per_learner": 116.390625
+        }
+      },
+      "hybrid_40": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.599121,
+          "exploratory_entry_rate": 0.262451,
+          "productive_share_of_entrants": 0.334912,
+          "probe_brier": 0.219827,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.639893,
+          "exploratory_entry_rate": 0.247803,
+          "productive_share_of_entrants": 0.343341,
+          "probe_brier": 0.18657,
+          "evidence_events_per_learner": 119.71875
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.714355,
+          "exploratory_entry_rate": 0.201904,
+          "productive_share_of_entrants": 0.401791,
+          "probe_brier": 0.063065,
+          "evidence_events_per_learner": 135.09375
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.726074,
+          "exploratory_entry_rate": 0.205078,
+          "productive_share_of_entrants": 0.385933,
+          "probe_brier": 0.106487,
+          "evidence_events_per_learner": 137.15625
+        }
+      },
+      "flat": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 1.0,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.298828,
+          "probe_brier": 0.25,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 1.0,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.298828,
+          "probe_brier": 0.188021,
+          "evidence_events_per_learner": 192.0
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 1.0,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.298828,
+          "probe_brier": 0.056197,
+          "evidence_events_per_learner": 192.0
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 1.0,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.298828,
+          "probe_brier": 0.095571,
+          "evidence_events_per_learner": 192.0
+        }
+      }
+    }
+  },
+  "post_hoc_descriptive": {
+    "status": "POST_HOC_DESCRIPTIVE_NOT_REGISTERED_NO_NEW_EXECUTION",
+    "exploration_path": [
+      "llm_selective",
+      "hybrid_10",
+      "hybrid_20",
+      "hybrid_40"
+    ],
+    "exploration_path_monotonicity": {
+      "linear_fit/linear_batch": {
+        "precision_decreases": true,
+        "evidence_increases": true,
+        "probe_brier_decreases": true,
+        "precision": [
+          0.5569,
+          0.5122,
+          0.4738,
+          0.4138
+        ],
+        "probe_brier": [
+          0.0683,
+          0.0669,
+          0.0655,
+          0.0642
+        ],
+        "evidence": [
+          98.6,
+          106.8,
+          115.6,
+          131.5
+        ]
+      },
+      "linear_fit/tree_batch": {
+        "precision_decreases": true,
+        "evidence_increases": true,
+        "probe_brier_decreases": true,
+        "precision": [
+          0.5154,
+          0.4817,
+          0.4517,
+          0.4044
+        ],
+        "probe_brier": [
+          0.0655,
+          0.0625,
+          0.0615,
+          0.0597
+        ],
+        "evidence": [
+          109.5,
+          116.8,
+          124.3,
+          137.5
+        ]
+      },
+      "linear_fit/mlp_batch": {
+        "precision_decreases": true,
+        "evidence_increases": true,
+        "probe_brier_decreases": false,
+        "precision": [
+          0.6071,
+          0.5492,
+          0.5043,
+          0.4309
+        ],
+        "probe_brier": [
+          0.0146,
+          0.0133,
+          0.0137,
+          0.012
+        ],
+        "evidence": [
+          94.5,
+          103.6,
+          112.3,
+          130.4
+        ]
+      },
+      "smooth_interaction_fit/linear_batch": {
+        "precision_decreases": true,
+        "evidence_increases": true,
+        "probe_brier_decreases": false,
+        "precision": [
+          0.4735,
+          0.43,
+          0.397,
+          0.3618
+        ],
+        "probe_brier": [
+          0.1721,
+          0.172,
+          0.1725,
+          0.1718
+        ],
+        "evidence": [
+          71.8,
+          88.2,
+          99.5,
+          122.2
+        ]
+      },
+      "smooth_interaction_fit/tree_batch": {
+        "precision_decreases": true,
+        "evidence_increases": true,
+        "probe_brier_decreases": true,
+        "precision": [
+          0.4792,
+          0.4518,
+          0.4238,
+          0.3866
+        ],
+        "probe_brier": [
+          0.1394,
+          0.1349,
+          0.1302,
+          0.1259
+        ],
+        "evidence": [
+          98.2,
+          111.6,
+          119.2,
+          135.7
+        ]
+      },
+      "smooth_interaction_fit/mlp_batch": {
+        "precision_decreases": true,
+        "evidence_increases": true,
+        "probe_brier_decreases": true,
+        "precision": [
+          0.5124,
+          0.4704,
+          0.4414,
+          0.3972
+        ],
+        "probe_brier": [
+          0.1158,
+          0.0971,
+          0.0919,
+          0.0841
+        ],
+        "evidence": [
+          92.1,
+          108.5,
+          119.6,
+          136.6
+        ]
+      },
+      "axis_interaction_fit/linear_batch": {
+        "precision_decreases": true,
+        "evidence_increases": true,
+        "probe_brier_decreases": true,
+        "precision": [
+          0.4298,
+          0.393,
+          0.3728,
+          0.3433
+        ],
+        "probe_brier": [
+          0.1919,
+          0.1904,
+          0.1891,
+          0.1866
+        ],
+        "evidence": [
+          66.4,
+          84.0,
+          98.2,
+          119.7
+        ]
+      },
+      "axis_interaction_fit/tree_batch": {
+        "precision_decreases": true,
+        "evidence_increases": true,
+        "probe_brier_decreases": true,
+        "precision": [
+          0.509,
+          0.4841,
+          0.4511,
+          0.4018
+        ],
+        "probe_brier": [
+          0.0972,
+          0.0795,
+          0.0739,
+          0.0631
+        ],
+        "evidence": [
+          95.6,
+          108.2,
+          117.3,
+          135.1
+        ]
+      },
+      "axis_interaction_fit/mlp_batch": {
+        "precision_decreases": true,
+        "evidence_increases": true,
+        "probe_brier_decreases": true,
+        "precision": [
+          0.482,
+          0.4505,
+          0.4224,
+          0.3859
+        ],
+        "probe_brier": [
+          0.142,
+          0.1206,
+          0.1196,
+          0.1065
+        ],
+        "evidence": [
+          89.1,
+          108.2,
+          116.4,
+          137.2
+        ]
+      }
+    },
+    "cells_with_precision_falling_and_evidence_rising": 9,
+    "cells_with_probe_brier_falling": 7,
+    "linear_learner_in_linear_world_hand_minus_condition_probe_brier": {
+      "llm_selective": -0.01033,
+      "hybrid_10": -0.00893,
+      "hybrid_20": -0.00755,
+      "hybrid_40": -0.00618,
+      "flat": -0.01671
+    },
+    "linear_learner_in_linear_world_note": "NO_CONDITION_IS_NONINFERIOR_TO_HAND_INCLUDING_FLAT_WITH_THE_MOST_EVIDENCE",
+    "restoration_passes_by_condition": {
+      "hybrid_10": [
+        "axis_interaction_fit/mlp_batch",
+        "axis_interaction_fit/tree_batch",
+        "smooth_interaction_fit/mlp_batch"
+      ],
+      "hybrid_20": [
+        "axis_interaction_fit/mlp_batch",
+        "axis_interaction_fit/tree_batch",
+        "smooth_interaction_fit/mlp_batch"
+      ],
+      "hybrid_40": [
+        "axis_interaction_fit/mlp_batch",
+        "axis_interaction_fit/tree_batch",
+        "smooth_interaction_fit/mlp_batch",
+        "smooth_interaction_fit/tree_batch"
+      ],
+      "flat": [
+        "axis_interaction_fit/mlp_batch",
+        "axis_interaction_fit/tree_batch",
+        "smooth_interaction_fit/mlp_batch",
+        "smooth_interaction_fit/tree_batch"
+      ]
+    }
+  },
+  "scientific_assessment": {
+    "registered_outcome": "HYBRID_20_DOMINATES_HAND_IN_7_OF_9_CELLS_HYBRID_10_IN_5_HYBRID_40_NOWHERE",
+    "trade_off": "MORE_EXPLORATION_LOWERS_ENTRANT_PRECISION_RAISES_EVIDENCE_AND_USUALLY_IMPROVES_POOLED_LEARNING",
+    "interior_hybrids_get_both": true,
+    "failing_cells_for_hybrid_20": [
+      "axis_interaction_fit/linear_batch",
+      "linear_fit/linear_batch"
+    ],
+    "no_share_selected": true,
+    "llm_knowledge_of_real_pivots": "NOT_ESTABLISHED",
+    "model_selected": "NO",
+    "reason": "Separating selection from exploration resolves most of the v2 trade-off. The calibrated LLM prior decides who is ready, and a prior-independent floor lets a share of the rest enter anyway. With a 20 percent exploratory share, entrants are more productive than under the hand rule in all nine combinations of world and field arm, and pooled learning stays within 0.005 of the hand rule in seven of them. Without exploration, learning falls short of the hand rule in six of nine. With a 40 percent share, the precision gain disappears.",
+    "failing_cells_reason": "LINEAR_LEARNER_PROBE_BRIER_0_0053_AND_0_0076_WORSE_THAN_HAND_JUST_OUTSIDE_THE_0_005_MARGIN"
+  },
+  "framework_assessment": {
+    "hybrid_design": "LLM_PRIOR_FOR_SELECTION_PLUS_A_PRIOR_INDEPENDENT_EXPLORATION_FLOOR_FOR_EVIDENCE",
+    "exploration_as_a_design_parameter": "THE_SHARE_TRACES_A_PRECISION_EVIDENCE_FRONTIER_AND_MUST_BE_CHOSEN_FOR_THE_QUESTION_NOT_TUNED_TO_A_RESULT",
+    "generic_api_change_needed": false,
+    "no_post_result_tuning": true,
+    "linear_learner_exception": "HYBRID_10_AND_20_NOT_NONINFERIOR_FOR_THE_LINEAR_LEARNER_IN_THE_LINEAR_AND_AXIS_WORLDS",
+    "restoration_location": "NONLINEAR_LEARNERS_IN_THE_INTERACTION_WORLDS",
+    "added_llm_cost": 0
+  },
+  "boundaries": {
+    "empirical_rows_read": 0,
+    "generic_nabm_api_changed": false,
+    "llm_knowledge_of_real_pivots": "NOT_ESTABLISHED_THE_WORLDS_ARE_SYNTHETIC",
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "new_llm_calls": 0,
+    "package_promotion": "NOT_AUTHORIZED",
+    "paid_api_calls": 0,
+    "repository_only": true,
+    "scientific_effect": "NOT_ESTABLISHED"
+  }
+}
