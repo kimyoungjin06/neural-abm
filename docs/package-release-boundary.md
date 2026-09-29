@@ -191,6 +191,8 @@ The local-LLM prior pilot is repository-only. It elicits a prior once from a
 pinned local Qwen model and evaluates it in the Pivot ABM. Its contract, runner,
 tests, elicitation artifacts, and evidence stay outside the package, and the
 package gains no LLM dependency.
+Its v2 successor calibrates the same elicited prior using aggregate
+information only and makes no new LLM calls. It has the same boundary.
 
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy
