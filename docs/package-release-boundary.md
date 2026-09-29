@@ -178,6 +178,10 @@ tests, and evidence remain outside the package, and it changes no generic API.
 Its result-informed v2 successor scores policies on an out-of-sample probe
 cohort and cross-fits the field record. It has the same boundary.
 
+The policy-ladder consolidation is a repository-only ledger of recorded
+results, framework extraction decisions, and empirical targets. Its document,
+ledger, and audit test stay outside the package.
+
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy
 reference auditor live at

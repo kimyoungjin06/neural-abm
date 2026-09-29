@@ -1,0 +1,363 @@
+schema_version: pivot_policy_ladder_consolidation.v1
+label: pivot_policy_ladder_consolidation_v1
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: 2026-09-29
+
+purpose: >-
+  One auditable ledger for the Pivot policy-layer ladder, from the
+  delayed-feedback prototype through nonlinear policy ABM v2. It lists which
+  claims are confirmed, rejected, or open, records the framework extraction
+  decisions, and specifies the empirical targets the next stage should measure.
+
+sources:
+  - id: delayed_feedback
+    path: experiments/evidence/results/pivot_delayed_feedback_learning_prototype_v1_20260807.summary.json
+    sha256: 444b21372ca7e9b725fd1f50f21645cbe95ee5c7f055b5eed9f79983a79e5194
+    freeze_commit: 3fc30cd
+    record_commit: aef43a6
+  - id: persistence_exit
+    path: experiments/evidence/results/pivot_persistence_exit_prototype_v1_20260807.summary.json
+    sha256: 400a5b8bacbec3f0ead16c8969f2988b5d49cc20392e16867f82b1d4ee12b482
+    freeze_commit: 4347d53
+    record_commit: b8f1e73
+  - id: adaptive_ladder
+    path: experiments/evidence/results/pivot_adaptive_baseline_ladder_v1_20260807.summary.json
+    sha256: 304ec1946577fd571698cec4e964f9ef5385b150b8270566fa9282894433172d
+    freeze_commit: bae8d48
+    record_commit: afa56e4
+  - id: matched_marginal_v1_stop
+    path: experiments/evidence/results/pivot_matched_marginal_discriminator_v1_20260928.summary.json
+    sha256: eefc641d940ddd44b18eba6f724d4394a3b8082d5e042992c1278b6e0945ac44
+    freeze_commit: b960fe0
+    record_commit: 563df21
+  - id: matched_marginal_v2
+    path: experiments/evidence/results/pivot_matched_marginal_discriminator_v2_20260928.summary.json
+    sha256: 3fc7cf17cac4785f0a4cabae68ccbbc89a5cdf3a687124da0d21bc9c281eae62
+    freeze_commit: 4c5920c
+    record_commit: 322ffed
+  - id: matched_marginal_v3
+    path: experiments/evidence/results/pivot_matched_marginal_discriminator_v3_20260928.summary.json
+    sha256: 5a9bd6da56bad1518e9fe50ea2fd0c6c41e51d4ee0b1230b2c42e651dc6877f2
+    freeze_commit: 14f37af
+    record_commit: d6b1d6e
+  - id: nonlinear_abm_v1
+    path: experiments/evidence/results/pivot_nonlinear_policy_abm_v1_20260928.summary.json
+    sha256: ba405144980af147d7091fdfadbbdfbe8e3d94c848d46a93e84dbb7f590e2042
+    freeze_commit: 4ffc5dd
+    record_commit: 300254b
+  - id: nonlinear_abm_v2
+    path: experiments/evidence/results/pivot_nonlinear_policy_abm_v2_20260928.summary.json
+    sha256: 2309ff8078a68074f8728768be399dd9ee008927f55451a110e0ce284f4f18db
+    freeze_commit: c56d741
+    record_commit: 48ab3a3
+  - id: h3_stochastic_v3
+    path: experiments/evidence/results/pivot_feedback_lean_h3_stochastic_set_development_v3_20260807.summary.json
+    sha256: 4b435bf0ea4b10da8f99ec2ce461d7409773945f668949f5254c9a5a91bd6ffd
+    freeze_commit: 730a6d9
+    record_commit: 73cc2a7
+
+reference_documents:
+  - path: docs/research/pivot-nabm-case-study-bridge-v1.md
+    sha256: 383209f62bb21adad651b1df5d056a91c5a075e8638b7e12c64c62dd43df7dd9
+    role: FRAMEWORK_EXTRACTION_RULE_AND_FLAGSHIP_OUTPUTS
+  - path: docs/research/pivot-feedback-lean-h3-successor-design-v1.md
+    sha256: 1e335a717cb1665b75360842e1dbc5761341faeed67b578c174add2e2701130d
+    role: H3_ESTIMAND_CLAIM_CEILING_AND_LIFECYCLE
+  - path: src/neural_abm/toy_classification.py
+    sha256: 2dbba917133e095fe00068f89208d76b3c73af61d44ba698ea2eb0d395b7e858
+    role: SECOND_CONSUMER_OF_HELD_OUT_AGENT_POLICY_SCORING
+
+claims:
+  confirmed:
+    - id: C01_failure_delay_amplifies_imitative_entry
+      statement: Delaying failure visibility raises imitative entry and failed pivots.
+      evidence:
+        - {source: delayed_feedback, pointer: registered_result_disposition/DELAY_AMPLIFIES_IMITATIVE_LOCK_IN, equals: OBSERVED_IN_SYNTHETIC_PHASE_MAP}
+    - id: C02_cautionary_learning_trades_exploration_for_correction
+      statement: Failure-only learning cuts failed pivots at a productive-exploration cost, and a scalar rule reproduces the trade-off.
+      evidence:
+        - {source: delayed_feedback, pointer: registered_result_disposition/CAUTIONARY_CORRECTION_WITH_PRODUCTIVE_EXPLORATION_COST, equals: OBSERVED_IN_SYNTHETIC_PHASE_MAP}
+        - {source: adaptive_ladder, pointer: registered_result_disposition/CAUTIONARY_TRADEOFF_DOES_NOT_REQUIRE_NEURAL_WEIGHTS, equals: OBSERVED}
+    - id: C03_overshoot_purge_and_missingness_residue
+      statement: Complete delay gives overshoot then purge; permanently missing failures leave a persistent failed stock.
+      evidence:
+        - {source: persistence_exit, pointer: registered_result_disposition/LATE_FAILURE_EVIDENCE_REDUCES_ACTIVE_FAILED_STOCK, equals: OBSERVED_AFTER_OVERSHOOT_AND_PURGE_WITH_FULL_VISIBILITY}
+        - {source: persistence_exit, pointer: registered_result_disposition/SELECTIVE_VISIBILITY_PRESERVES_FAILED_ACTIVITY, equals: OBSERVED}
+    - id: C04_final_stock_alone_misleads
+      statement: Similar final stocks can hide different entry, exit, and survivor paths, so the full observation vector is required.
+      evidence:
+        - {source: persistence_exit, pointer: case_study_assessment/single_final_stock_is_insufficient, equals: true}
+    - id: C05_adaptation_is_needed
+      statement: A fixed rule cannot produce the visibility response.
+      evidence:
+        - {source: adaptive_ladder, pointer: registered_result_disposition/FIXED_RULE_REMAINS_SUFFICIENT_FOR_THE_REGISTERED_SURFACE, equals: NOT_OBSERVED_FIXED_RULE_IS_VISIBILITY_INVARIANT}
+    - id: C06_scalar_adaptation_reproduces_the_linear_fit_phase_surface
+      statement: With linear productive fit, a one-state rule reproduces the neural phase directions.
+      evidence:
+        - {source: adaptive_ladder, pointer: registered_result_disposition/DELTA_RULE_REPRODUCES_NEURAL_PHASE_DIRECTIONS, equals: OBSERVED}
+    - id: C07_feature_conditional_learning_is_needed_when_structure_reverses
+      statement: At a fixed success rate, a scalar learner cannot track which profiles succeed; a feature-conditional one can.
+      evidence:
+        - {source: matched_marginal_v3, pointer: registered_result_disposition/feature_conditional_need, equals: SUPPORTED_ON_FROZEN_GENERATOR}
+    - id: C08_nonlinear_representation_is_needed_for_interactions
+      statement: With the optimizer matched, nonlinear policies beat linear ones beyond their linear-world edge in both boundary geometries.
+      evidence:
+        - {source: matched_marginal_v3, pointer: registered_result_disposition/nonlinear_representation_need, equals: SUPPORTED_BOTH_GEOMETRIES}
+    - id: C09_family_choice_depends_on_boundary_geometry
+      statement: The MLP wins smooth boundaries and the tree wins axis-aligned ones, in the policy layer and out of sample inside the ABM.
+      evidence:
+        - {source: matched_marginal_v3, pointer: registered_result_disposition/nonlinear_family_dominance, equals: GENERATOR_DEPENDENT_OR_TIED}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/immediate/geometry_crossover, equals: CROSSOVER_TRANSFERS_TO_ABM}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/failure_lag_2/geometry_crossover, equals: CROSSOVER_TRANSFERS_TO_ABM}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/failure_lag_4/geometry_crossover, equals: CROSSOVER_TRANSFERS_TO_ABM}
+    - id: C10_out_of_sample_nonlinear_learning_inside_the_abm
+      statement: With field-wide evidence, ABM tree and MLP policies learn interaction structure that generalizes to unsimulated agents.
+      evidence:
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/immediate/field_nonlinear_learning, equals: OUT_OF_SAMPLE_NONLINEAR_LEARNING}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/failure_lag_2/field_nonlinear_learning, equals: OUT_OF_SAMPLE_NONLINEAR_LEARNING}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/failure_lag_4/field_nonlinear_learning, equals: OUT_OF_SAMPLE_NONLINEAR_LEARNING}
+    - id: C11_evidence_scale_gates_useful_learning
+      statement: Every feature learner beats the prior with field-wide evidence and loses to it with neighbor evidence.
+      evidence:
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/immediate/evidence_scale, equals: EVIDENCE_SCALE_GATES_USEFUL_LEARNING}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/failure_lag_2/evidence_scale, equals: EVIDENCE_SCALE_GATES_USEFUL_LEARNING}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/failure_lag_4/evidence_scale, equals: EVIDENCE_SCALE_GATES_USEFUL_LEARNING}
+    - id: C12_entry_responds_to_learning_only_with_immediate_failure_visibility
+      statement: Learned structure changes who enters only when failure is visible at once; from a two-step delay every field arm saturates.
+      evidence:
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/immediate/entry, equals: ENTRY_CHANNEL_ACTIVE}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/failure_lag_2/entry, equals: ENTRY_SATURATED}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/failure_lag_4/entry, equals: ENTRY_SATURATED}
+    - id: C13_tree_reduces_failed_stock_on_axis_boundaries
+      statement: The tree policy lowers active failed stock interaction-specifically in the axis world at every delay.
+      evidence:
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/immediate/exit_passing_family_geometries, contains: tree_batch/axis_interaction_fit}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/failure_lag_2/exit_passing_family_geometries, contains: tree_batch/axis_interaction_fit}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/failure_lag_4/exit_passing_family_geometries, contains: tree_batch/axis_interaction_fit}
+    - id: C14_raw_entry_precision_follows_the_crossover
+      statement: Post hoc, the MLP gives the best entrant precision on smooth boundaries and the tree on axis boundaries.
+      evidence_type: POST_HOC_DESCRIPTIVE
+      evidence:
+        - {source: nonlinear_abm_v2, pointer: post_hoc_descriptive/raw_entry_share_mlp_minus_tree_immediate/smooth_interaction_fit/mean, greater_than: 0.0}
+        - {source: nonlinear_abm_v2, pointer: post_hoc_descriptive/raw_entry_share_mlp_minus_tree_immediate/axis_interaction_fit/mean, less_than: 0.0}
+
+  rejected:
+    - id: R01_neural_policy_is_necessary
+      statement: A neural policy is necessary for the Pivot surface.
+      reason: Scalar rules reproduce the linear-fit surface, and on interactions the neural family wins only smooth boundaries.
+      evidence:
+        - {source: adaptive_ladder, pointer: scientific_assessment/neural_necessity_on_current_synthetic_surface, equals: NOT_SUPPORTED}
+        - {source: matched_marginal_v3, pointer: registered_result_disposition/neural_specific_advantage, equals: NOT_SUPPORTED_ON_FROZEN_GENERATOR}
+        - {source: nonlinear_abm_v2, pointer: scientific_assessment/neural_necessity, equals: NOT_ESTABLISHED}
+    - id: R02_v2_neural_specific_advantage
+      statement: v2's registered neural-specific advantage.
+      reason: The edge was larger on linear worlds and vanished against a tuned tree on axis boundaries.
+      evidence:
+        - {source: matched_marginal_v2, pointer: registered_result_disposition/neural_specific_advantage, equals: SUPPORTED_ON_FROZEN_GENERATOR_ONLY}
+        - {source: matched_marginal_v2, pointer: scientific_assessment/neural_specific_advantage, equals: REGISTERED_PASS_NOT_INTERACTION_SPECIFIC_GENERAL_SMOOTH_FIT_ADVANTAGE_OVER_FROZEN_TREE}
+        - {source: matched_marginal_v3, pointer: registered_result_disposition/nonlinear_family_dominance, equals: GENERATOR_DEPENDENT_OR_TIED}
+    - id: R03_v2_brier_margin_measures_nonlinearity
+      statement: v2's MLP-over-linear Brier margin measures nonlinearity.
+      reason: Most of it also appeared on linear worlds, as a baseline fit and calibration gap.
+      evidence:
+        - {source: matched_marginal_v2, pointer: scientific_assessment/nonlinear_representation_need, equals: SUPPORTED_BY_RANKING_CONTRAST_BUT_REGISTERED_BRIER_MARGIN_MOSTLY_BASELINE_FIT_CONFOUND}
+    - id: R04_abm_v1_tree_dominance
+      statement: ABM v1's registered tree dominance.
+      reason: It scored agents whose own outcomes trained the learner; out of sample the crossover holds.
+      evidence:
+        - {source: nonlinear_abm_v1, pointer: registered_result_disposition/abm_geometry_crossover, equals: TREE_DOMINATES_IN_ABM}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/immediate/geometry_crossover, equals: CROSSOVER_TRANSFERS_TO_ABM}
+    - id: R05_abm_v1_learning_survives_local_evidence
+      statement: ABM v1's registered survival of nonlinear learning under neighbor evidence.
+      reason: Its reference was the degrading linear learner; against the prior every local learner loses.
+      evidence:
+        - {source: nonlinear_abm_v1, pointer: registered_result_disposition/evidence_scale, equals: NONLINEAR_LEARNING_SURVIVES_LOCAL_EVIDENCE}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/immediate/useful_learners_local, equals: []}
+    - id: R06_abm_v1_behavior_unchanged
+      statement: ABM v1's registered conclusion that behavior does not change.
+      reason: The rule pooled visibility regimes; under immediate visibility entry changes.
+      evidence:
+        - {source: nonlinear_abm_v1, pointer: registered_result_disposition/result, equals: NONLINEAR_LEARNING_CHANGES_BUT_BEHAVIOR_DOES_NOT}
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/immediate/entry, equals: ENTRY_CHANNEL_ACTIVE}
+
+  open:
+    - id: O01_empirical_failure_visibility_delay
+      question: How long after entry do failures become publicly visible in real pivots, relative to the entry wave?
+      kind: EMPIRICAL
+      priority: 1
+    - id: O02_empirical_evidence_regime
+      question: Do researchers learn from field-wide outcomes or from their own collaborators' outcomes?
+      kind: EMPIRICAL
+      priority: 2
+    - id: O03_empirical_boundary_geometry
+      question: Is real pivot success a smooth or an axis-aligned function of researcher attributes?
+      kind: EMPIRICAL
+      priority: 3
+    - id: O04_saturation_boundary_versus_entry_wave_width
+      question: Does the saturation boundary depend on delay relative to entry-wave width rather than on absolute delay?
+      kind: SYNTHETIC
+      priority: 1
+      motivation: The ABM entry wave is compressed; see derived_raw_row_facts.
+    - id: O05_policy_calibration
+      question: Do calibration differences, such as the tree's overconfident errors under log loss, change ABM behavior?
+      kind: SYNTHETIC
+      priority: 3
+      evidence:
+        - {source: matched_marginal_v3, pointer: scientific_assessment/tree_edge_on_axis_worlds_under_log_loss, equals: NOT_PRESERVED_TREE_MAKES_OVERCONFIDENT_ERRORS}
+    - id: O06_selective_nonavailability_with_nonlinear_policies
+      question: Does permanent missing failure evidence interact with nonlinear policies?
+      kind: SYNTHETIC
+      priority: 3
+    - id: O07_cautionary_and_mixed_nonlinear_policies
+      question: Do failure-only or mixed learning modes change the nonlinear results?
+      kind: SYNTHETIC
+      priority: 3
+
+derived_raw_row_facts:
+  source_path: /ssd/pivot_nonlinear_policy_abm_v2_c56d741_development/runs.jsonl
+  source_sha256: 8088d43cbee6c5c19c1e8f08499eb734b725f5f0ccbe79c59482f00d7da4c41f
+  availability: MACHINE_LOCAL_RAW_ROWS_VERIFIED_WHEN_PRESENT
+  facts:
+    - id: entry_wave_is_compressed
+      statement: In every run, at least half of final entry occurs in the first open step.
+      step_of_half_final_entry_in_every_run: 3
+      first_open_step: 3
+    - id: first_public_failure_step_by_regime
+      immediate: 4
+      failure_lag_2: 6
+      failure_lag_4: 8
+    - id: field_arms_mean_step_of_ninety_percent_entry
+      statement: >-
+        Averaged over runs, the linear, tree, and MLP field arms reach 90% of
+        final entry by step 4. The fixed rule's tail runs to step 7.4 on average.
+      arms: [linear_batch, tree_batch, mlp_batch]
+      immediate_at_most: 4.0
+      failure_lag_2_at_most: 4.0
+      failure_lag_4_at_most: 4.0
+
+framework_decisions:
+  rule: >-
+    Generalize a Pivot capability into the generic NABM API only when a second
+    model family needs the same semantics; otherwise record an explicit
+    domain-owned decision.
+  decisions:
+    - id: F01_delayed_selective_outcome_queue
+      decision: DOMAIN_OWNED
+      second_consumer: NONE
+    - id: F02_persistence_exit_state_machine
+      decision: DOMAIN_OWNED
+      second_consumer: NONE
+    - id: F03_out_of_sample_agent_policy_scoring
+      decision: EXTRACTION_CANDIDATE_DESIGN_BEFORE_API
+      second_consumer: TOY_CLASSIFICATION_EVALUATE_AGENTS_ON_A_HELD_OUT_TEST_SPLIT
+      next_action: >-
+        DESIGN_ONE_SHARED_SCORING_CONTRACT_FOR_BOTH_CONSUMERS_BEFORE_ANY_API_CHANGE
+    - id: F04_cross_fitted_shared_evidence_record
+      decision: DOMAIN_OWNED
+      second_consumer: NONE
+      lesson: IN_SITU_POLICY_SCORING_LEAKS_WHEN_THE_LEARNER_HOLDS_THE_SCORED_AGENTS_OWN_OUTCOME
+    - id: F05_rank_matched_fit_worlds_and_matched_marginal_generators
+      decision: CASE_OWNED_RESEARCH_INSTRUMENTS
+      second_consumer: NONE
+    - id: F06_batch_policy_families
+      decision: CASE_OWNED
+      second_consumer: NONE
+    - id: F07_deterministic_parallel_task_runner
+      decision: ENGINEERING_PATTERN_NOT_EXTRACTED
+      second_consumer: NONE_THE_GENERIC_SWEEP_RUNNER_HAS_NO_PARALLEL_NEED_YET
+    - id: F08_fair_model_ladder_practices
+      decision: RECORD_AS_METHOD_GUIDANCE
+      practices:
+        - MATCH_OPTIMIZER_AND_INITIALIZATION_ACROSS_COMPARED_FAMILIES
+        - SUBTRACT_THE_SAME_GAP_IN_A_WORLD_WHERE_THE_CLAIMED_STRUCTURE_IS_ABSENT
+        - TUNE_EVERY_FAMILY_ON_TRAINING_DATA_ONLY
+        - SCORE_POLICIES_OUT_OF_SAMPLE
+        - DECIDE_PER_REGIME_AND_REPORT_SATURATION_AS_AN_OUTCOME
+        - EXACTLY_NEST_THE_PREDECESSOR_BEFORE_INTERPRETING_A_NEW_ARM
+
+empirical_targets:
+  - id: T01_relative_failure_visibility_delay
+    priority: 1
+    answers: O01_empirical_failure_visibility_delay
+    abm_quantity: >-
+      TIME_FROM_ENTRY_TO_FIRST_PUBLIC_FAILURE_RELATIVE_TO_THE_WIDTH_OF_THE_RESIDUAL_ENTRY_WAVE
+    empirical_observable: >-
+      LEAN_H3_EPISODE_GAP_BETWEEN_ENTRY_PEAK_AND_LATER_COHORT_PERSISTENCE_DECLINE_ONSET_DIVIDED_BY_ENTRY_WAVE_WIDTH
+    discriminating_condition: >-
+      WHETHER_THE_EMPIRICAL_SET_FOR_THE_DIMENSIONLESS_GAP_LIES_ENTIRELY_IN_THE_BAND_THE_ABM_ASSOCIATES_WITH_SATURATED_ENTRY_OR_WITH_AN_ACTIVE_ENTRY_CHANNEL
+    requirements_before_comparison:
+      - SIMULATION_SIDE_H3_ADAPTER_LOGGING_COHORT_PERSISTENCE_BY_ENTRY_STEP
+      - PREREGISTERED_ABM_BANDS_FOR_THE_DIMENSIONLESS_GAP_BY_VISIBILITY_REGIME
+      - O04_RESOLVED_SO_BANDS_DO_NOT_DEPEND_ON_THE_STYLIZED_ENTRY_WAVE
+      - H3_SET_ESTIMATOR_CALIBRATED_ON_A_NEW_DISJOINT_STRESS_GRID
+      - H3_OVERDISPERSION_OR_SUPPORT_DOMAIN_RULE
+      - COMPLETE_IMMUTABLE_SOURCE_INTAKE
+    current_blockers:
+      - {source: h3_stochastic_v3, pointer: descriptive_metrics/field_vector_interval_containment_among_jointly_valid, less_than: 0.6}
+      - {source: h3_stochastic_v3, pointer: scenario_findings/set_geometry/multimodal_set_containment, equals: 0.0}
+      - {source: h3_stochastic_v3, pointer: scenario_findings/beta_binomial_probability_perturbation/estimator_valid, equals: 0}
+    source_transfer_observed_2026_09_29:
+      remote_new_bytes_transferred: 689789629026
+      expected_bytes: 724973106144
+      state_file_status: RUNNING
+      process_running: false
+      resume_requires_user_authorization: true
+    claim_ceiling: >-
+      A MATCHING BAND IS CONSISTENT WITH A DELAY REGIME; IT DOES NOT IDENTIFY
+      SOCIAL LEARNING, INFORMATION RECEIPT, OR NABM NECESSITY
+  - id: T02_evidence_regime
+    priority: 2
+    answers: O02_empirical_evidence_regime
+    abm_quantity: WHETHER_POLICIES_LEARN_FROM_FIELD_WIDE_OR_NEIGHBOR_OUTCOMES
+    empirical_observable: >-
+      ENTRY_RESPONSE_TO_TOPIC_LEVEL_OUTCOMES_VERSUS_COAUTHOR_NEIGHBOR_OUTCOMES
+    readiness: NOT_DESIGNED_AUTHORS_DATA_DEFERRED_FROM_THE_LEAN_H3_CORE
+  - id: T03_boundary_geometry
+    priority: 3
+    answers: O03_empirical_boundary_geometry
+    abm_quantity: SMOOTH_VERSUS_AXIS_ALIGNED_SUCCESS_BOUNDARY
+    empirical_observable: >-
+      OUT_OF_SAMPLE_TREE_VERSUS_MLP_PREDICTION_OF_PIVOT_SUCCESS_FROM_ATTRIBUTE_PROXIES
+    readiness: NOT_DESIGNED_ATTRIBUTE_PROXY_VALIDITY_IS_THE_BINDING_CONSTRAINT
+
+flagship_output_map:
+  - output: OBSERVED_AND_SIMULATED_ENTRY_PERSISTENCE_CURVES
+    supplied_by: NONE_REQUIRES_T01
+  - output: VISIBILITY_DELAY_BY_SOCIAL_LEARNING_PHASE_MAP
+    supplied_by: [delayed_feedback, persistence_exit, nonlinear_abm_v2]
+  - output: IMITATIVE_CAUTIONARY_AND_MIXED_TRAJECTORIES
+    supplied_by: [persistence_exit, adaptive_ladder]
+  - output: FAIR_BASELINE_LADDER_SCORECARD
+    supplied_by: [adaptive_ladder, matched_marginal_v3, nonlinear_abm_v2]
+  - output: CAPABILITY_ABLATION_AND_FRAMEWORK_CHANGE_LEDGER
+    supplied_by: [THIS_CONSOLIDATION]
+  - output: SUPPORT_BY_ATTENTION_MAP
+    supplied_by: PREDECESSOR_STUDY_1
+
+next_steps:
+  - id: N01
+    kind: SYNTHETIC
+    action: >-
+      SIMULATION_SIDE_H3_ADAPTER_PLUS_ENTRY_WAVE_WIDTH_VARIATION_TO_RESOLVE_O04_AND_FIX_T01_BANDS
+    authorization: SEPARATE_PRECOMMIT
+  - id: N02
+    kind: OPERATIONAL
+    action: RESUME_THE_OPENALEX_FULL_CORE_TRANSFER_AND_CLOSE_SOURCE_INTAKE
+    authorization: USER_DECISION_REQUIRED
+  - id: N03
+    kind: EMPIRICAL_METHOD
+    action: H3_SET_ESTIMATOR_SUCCESSOR_ON_A_NEW_DISJOINT_STRESS_GRID
+    authorization: SEPARATE_PRECOMMIT
+  - id: N04
+    kind: FRAMEWORK
+    action: DESIGN_THE_SHARED_OUT_OF_SAMPLE_SCORING_CONTRACT_FOR_F03
+    authorization: OPTIONAL
+
+boundaries:
+  new_execution: NONE
+  empirical_rows_read: 0
+  generic_nabm_api_changed: false
+  model_selected: "NO"
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED

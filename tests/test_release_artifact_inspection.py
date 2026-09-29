@@ -1864,6 +1864,22 @@ def test_release_inspector_rejects_nonlinear_policy_abm_paths() -> None:
     assert forbidden == sorted(repository_paths)
 
 
+def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
+    inspector = runpy.run_path(str(INSPECT_SCRIPT))
+    repository_paths = {
+        "docs/research/pivot-policy-ladder-consolidation-v1.md",
+        "experiments/configs/pivot_policy_ladder_consolidation_v1.yaml",
+        "tests/test_pivot_policy_ladder_consolidation_v1.py",
+    }
+    assert repository_paths == inspector[
+        "PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS"
+    ]
+
+    forbidden = inspector["_forbidden_sdist_files"]({"README.md", *repository_paths})
+
+    assert forbidden == sorted(repository_paths)
+
+
 def test_release_inspector_rejects_g0_measurement_precommitment_paths() -> None:
     inspector = runpy.run_path(str(INSPECT_SCRIPT))
     repository_paths = {
