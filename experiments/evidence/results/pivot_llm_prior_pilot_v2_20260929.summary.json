@@ -1,0 +1,5280 @@
+{
+  "schema_version": "pivot_llm_prior_pilot_result.v2",
+  "label": "pivot_llm_prior_pilot_v2_20260929",
+  "status": "SYNTHETIC_GENERATIVE_ABM_COMPARISON_REPRODUCED",
+  "precommit": {
+    "commit_sha": "2ddcd9337c7b6c389f45994570ecbea7b3905c1d",
+    "contract_path": "experiments/configs/pivot_llm_prior_pilot_v2.yaml",
+    "contract_sha256": "6e16336dd53455a2eb7f66dc476f881d63064bad9550426a43d639ccdaa20239",
+    "result_informed_successor": true
+  },
+  "execution": {
+    "profile": "development",
+    "agent_count": 256,
+    "steps": 18,
+    "replicates": 16,
+    "priors": 7,
+    "raw_row_count": 1680,
+    "workers": 16,
+    "new_llm_calls": 0,
+    "first_run": {
+      "output_dir": "/ssd/pivot_llm_prior_pilot_v2_2ddcd93_development",
+      "receipt_sha256": "e4e749269b1732539bcaec02b1a9a112b6f8b0bfc7e6cf1920fcc9f132b1090b"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_llm_prior_pilot_v2_2ddcd93_reproduction",
+      "receipt_sha256": "e4e749269b1732539bcaec02b1a9a112b6f8b0bfc7e6cf1920fcc9f132b1090b",
+      "all_five_artifacts_byte_identical": true
+    },
+    "artifact_sha256": {
+      "calibrated_priors.json": "db4a910caa35153aea8608a7386b4b0f14f45743b65cae65a2103e2fb73ffa2b",
+      "runs.jsonl": "e84baa7eecccc4663c69eca2966edddb4981dfd4188a2ed38308ac16d4ebd8e8",
+      "scorecard.json": "89ef3c21256f7a3fcce64e522831b2c4a0f751722148110381202d1ce22c914a",
+      "scorecard.md": "530c2b4b4682eb2924ade38f9147f0cdcbd718b3a6ea0065cd851ae28ca997b8",
+      "receipt.json": "e4e749269b1732539bcaec02b1a9a112b6f8b0bfc7e6cf1920fcc9f132b1090b"
+    }
+  },
+  "validation": {
+    "nesting_checks": "PASS_EXACT",
+    "calibration_diagnostics": {
+      "hand_mean_over_design_cohort": 0.3577509671808251,
+      "llm_base_rate": {
+        "achieved_mean": 0.3000000000920112,
+        "intercept_shift": 6.904613731894639,
+        "target_mean": 0.3
+      },
+      "llm_hand_level": {
+        "achieved_mean": 0.3577509671775668,
+        "intercept_shift": 7.289307077880945,
+        "target_mean": 0.3577509671808251
+      },
+      "llm_verbalized": {
+        "mean_over_design_cohort": 0.4748164872352407,
+        "r_squared_on_log_odds": 0.594945132978435
+      },
+      "uncalibrated_mean_over_design_cohort": 0.0012267039120746961
+    }
+  },
+  "priors": {
+    "llm_variants": {
+      "llm_base_rate": {
+        "bias": -0.2703771745023289,
+        "weights": [
+          -1.0079054437595656,
+          -1.7795064953039035,
+          2.8293538189617933,
+          -4.407419973482626,
+          -4.294489979357873,
+          4.203980746630415,
+          0.0,
+          1.5121129077089506,
+          0.962253668542063
+        ]
+      },
+      "llm_hand_level": {
+        "bias": 0.11431617148397777,
+        "weights": [
+          -1.0079054437595656,
+          -1.7795064953039035,
+          2.8293538189617933,
+          -4.407419973482626,
+          -4.294489979357873,
+          4.203980746630415,
+          0.0,
+          1.5121129077089506,
+          0.962253668542063
+        ]
+      },
+      "llm_uncalibrated": {
+        "bias": -7.1749909063969675,
+        "weights": [
+          -1.0079054437595656,
+          -1.7795064953039035,
+          2.8293538189617933,
+          -4.407419973482626,
+          -4.294489979357873,
+          4.203980746630415,
+          0.0,
+          1.5121129077089506,
+          0.962253668542063
+        ]
+      },
+      "llm_verbalized": {
+        "bias": -0.01516831908144517,
+        "weights": [
+          -0.24334803137019442,
+          -0.6039200495362167,
+          0.6685994925564738,
+          -0.7840693943882836,
+          -0.7943930025655208,
+          0.9336089440239664,
+          0.0,
+          0.4046875842469829,
+          0.25752846232976884
+        ]
+      }
+    },
+    "oracle_linear": {
+      "axis_interaction_fit": {
+        "bias": 0.2796216548280538,
+        "weights": [
+          -0.1797432931402694,
+          0.1029717533327559,
+          -0.9711250720057556,
+          -3.4083598596123372,
+          -0.6291858533546645,
+          1.6566691557996658,
+          0.0,
+          0.4246367980392011,
+          0.2702234169340405
+        ]
+      },
+      "linear_fit": {
+        "bias": -12.934487715915914,
+        "weights": [
+          11.172916018991002,
+          7.652580379760875,
+          11.02960951098422,
+          -8.255176793602944,
+          -5.235970234450524,
+          3.7616244809986488,
+          0.0,
+          -1.7019372746433599,
+          -1.083050992954868
+        ]
+      },
+      "smooth_interaction_fit": {
+        "bias": 0.08699223105736385,
+        "weights": [
+          -0.05460460757464319,
+          0.21811048640321654,
+          -1.3125994923776634,
+          -3.6120032176274406,
+          -0.36970419967451973,
+          1.9636261957078887,
+          0.0,
+          0.39942762450185193,
+          0.2541812155920851
+        ]
+      }
+    }
+  },
+  "registered_result_disposition": {
+    "by_variant": {
+      "llm_base_rate": {
+        "axis_interaction_fit": {
+          "prior_quality": "HAND_BETTER",
+          "local_rescue": "VARIANT_BETTER",
+          "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+          "prior_persists_for_arms": {
+            "linear_batch": "HAND_BETTER",
+            "tree_batch": "HAND_BETTER"
+          },
+          "entry_precision": "VARIANT_BETTER"
+        },
+        "linear_fit": {
+          "prior_quality": "NO_CLEAR_DIFFERENCE",
+          "local_rescue": "VARIANT_BETTER",
+          "pooled_washout": "PRIOR_WASHES_OUT_UNDER_POOLING",
+          "prior_persists_for_arms": {},
+          "entry_precision": "VARIANT_BETTER"
+        },
+        "smooth_interaction_fit": {
+          "prior_quality": "HAND_BETTER",
+          "local_rescue": "NO_CLEAR_DIFFERENCE",
+          "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+          "prior_persists_for_arms": {
+            "mlp_batch": "HAND_BETTER",
+            "tree_batch": "HAND_BETTER"
+          },
+          "entry_precision": "VARIANT_BETTER"
+        }
+      },
+      "llm_hand_level": {
+        "axis_interaction_fit": {
+          "prior_quality": "HAND_BETTER",
+          "local_rescue": "VARIANT_BETTER",
+          "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+          "prior_persists_for_arms": {
+            "linear_batch": "HAND_BETTER",
+            "tree_batch": "HAND_BETTER"
+          },
+          "entry_precision": "VARIANT_BETTER"
+        },
+        "linear_fit": {
+          "prior_quality": "NO_CLEAR_DIFFERENCE",
+          "local_rescue": "VARIANT_BETTER",
+          "pooled_washout": "PRIOR_WASHES_OUT_UNDER_POOLING",
+          "prior_persists_for_arms": {},
+          "entry_precision": "VARIANT_BETTER"
+        },
+        "smooth_interaction_fit": {
+          "prior_quality": "HAND_BETTER",
+          "local_rescue": "VARIANT_BETTER",
+          "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+          "prior_persists_for_arms": {
+            "linear_batch": "HAND_BETTER"
+          },
+          "entry_precision": "VARIANT_BETTER"
+        }
+      },
+      "llm_uncalibrated": {
+        "axis_interaction_fit": {
+          "prior_quality": "HAND_BETTER",
+          "local_rescue": "HAND_BETTER",
+          "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+          "prior_persists_for_arms": {
+            "linear_batch": "HAND_BETTER",
+            "mlp_batch": "HAND_BETTER",
+            "tree_batch": "HAND_BETTER"
+          },
+          "entry_precision": "HAND_BETTER"
+        },
+        "linear_fit": {
+          "prior_quality": "HAND_BETTER",
+          "local_rescue": "HAND_BETTER",
+          "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+          "prior_persists_for_arms": {
+            "linear_batch": "HAND_BETTER",
+            "mlp_batch": "HAND_BETTER",
+            "tree_batch": "HAND_BETTER"
+          },
+          "entry_precision": "HAND_BETTER"
+        },
+        "smooth_interaction_fit": {
+          "prior_quality": "HAND_BETTER",
+          "local_rescue": "HAND_BETTER",
+          "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+          "prior_persists_for_arms": {
+            "linear_batch": "HAND_BETTER",
+            "mlp_batch": "HAND_BETTER",
+            "tree_batch": "HAND_BETTER"
+          },
+          "entry_precision": "HAND_BETTER"
+        }
+      },
+      "llm_verbalized": {
+        "axis_interaction_fit": {
+          "prior_quality": "HAND_BETTER",
+          "local_rescue": "VARIANT_BETTER",
+          "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+          "prior_persists_for_arms": {
+            "mlp_batch": "VARIANT_BETTER",
+            "tree_batch": "VARIANT_BETTER"
+          },
+          "entry_precision": "NO_CLEAR_DIFFERENCE"
+        },
+        "linear_fit": {
+          "prior_quality": "HAND_BETTER",
+          "local_rescue": "VARIANT_BETTER",
+          "pooled_washout": "PRIOR_WASHES_OUT_UNDER_POOLING",
+          "prior_persists_for_arms": {},
+          "entry_precision": "HAND_BETTER"
+        },
+        "smooth_interaction_fit": {
+          "prior_quality": "HAND_BETTER",
+          "local_rescue": "VARIANT_BETTER",
+          "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+          "prior_persists_for_arms": {
+            "linear_batch": "HAND_BETTER",
+            "mlp_batch": "VARIANT_BETTER",
+            "tree_batch": "VARIANT_BETTER"
+          },
+          "entry_precision": "NO_CLEAR_DIFFERENCE"
+        }
+      }
+    },
+    "self_sealing_priors": [
+      "llm_uncalibrated/axis_interaction_fit",
+      "llm_uncalibrated/linear_fit",
+      "llm_uncalibrated/smooth_interaction_fit"
+    ]
+  },
+  "registered_decisions": {
+    "llm_base_rate": {
+      "axis_interaction_fit": {
+        "entry_precision": "VARIANT_BETTER",
+        "local_rescue": "VARIANT_BETTER",
+        "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+        "prior_persists_for_arms": {
+          "linear_batch": "HAND_BETTER",
+          "tree_batch": "HAND_BETTER"
+        },
+        "prior_quality": "HAND_BETTER",
+        "reports": {
+          "entry_precision": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": -0.05922873,
+                "mean": -0.1269626,
+                "min": -0.21548999,
+                "n": 16,
+                "std": 0.03962308,
+                "values": [
+                  -0.18306011,
+                  -0.14553991,
+                  -0.07433546,
+                  -0.09376258,
+                  -0.15304369,
+                  -0.15828957,
+                  -0.12211527,
+                  -0.0984181,
+                  -0.05922873,
+                  -0.1193893,
+                  -0.12477718,
+                  -0.14177489,
+                  -0.13189594,
+                  -0.21548999,
+                  -0.10631912,
+                  -0.10396183
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.21548999,
+                "mean": 0.1269626,
+                "min": 0.05922873,
+                "n": 16,
+                "std": 0.03962308,
+                "values": [
+                  0.18306011,
+                  0.14553991,
+                  0.07433546,
+                  0.09376258,
+                  0.15304369,
+                  0.15828957,
+                  0.12211527,
+                  0.0984181,
+                  0.05922873,
+                  0.1193893,
+                  0.12477718,
+                  0.14177489,
+                  0.13189594,
+                  0.21548999,
+                  0.10631912,
+                  0.10396183
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "local_rescue": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.00393194,
+                "mean": -0.02334007,
+                "min": -0.05288443,
+                "n": 16,
+                "std": 0.01595576,
+                "values": [
+                  -0.02152126,
+                  0.00393194,
+                  -0.00659844,
+                  -0.05209306,
+                  -0.02900438,
+                  -0.00252967,
+                  -0.01560878,
+                  -0.01674173,
+                  -0.02783374,
+                  -0.02036588,
+                  -0.05288443,
+                  -0.03452106,
+                  -0.03875214,
+                  -0.02730248,
+                  -0.01695284,
+                  -0.01466317
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 1
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.05288443,
+                "mean": 0.02334007,
+                "min": -0.00393194,
+                "n": 16,
+                "std": 0.01595576,
+                "values": [
+                  0.02152126,
+                  -0.00393194,
+                  0.00659844,
+                  0.05209306,
+                  0.02900438,
+                  0.00252967,
+                  0.01560878,
+                  0.01674173,
+                  0.02783374,
+                  0.02036588,
+                  0.05288443,
+                  0.03452106,
+                  0.03875214,
+                  0.02730248,
+                  0.01695284,
+                  0.01466317
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 15
+            }
+          },
+          "pooled_washout": {
+            "linear_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.02875675,
+                  "mean": 0.01112118,
+                  "min": -0.00368339,
+                  "n": 16,
+                  "std": 0.01049219,
+                  "values": [
+                    0.01272635,
+                    0.00898008,
+                    0.01795285,
+                    -0.00175992,
+                    0.02256711,
+                    0.01506294,
+                    -0.00084001,
+                    0.00870032,
+                    0.02758889,
+                    -0.00286116,
+                    0.01881682,
+                    0.00870148,
+                    0.00306796,
+                    -0.00368339,
+                    0.01416183,
+                    0.02875675
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 12
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00368339,
+                  "mean": -0.01112118,
+                  "min": -0.02875675,
+                  "n": 16,
+                  "std": 0.01049219,
+                  "values": [
+                    -0.01272635,
+                    -0.00898008,
+                    -0.01795285,
+                    0.00175992,
+                    -0.02256711,
+                    -0.01506294,
+                    0.00084001,
+                    -0.00870032,
+                    -0.02758889,
+                    0.00286116,
+                    -0.01881682,
+                    -0.00870148,
+                    -0.00306796,
+                    0.00368339,
+                    -0.01416183,
+                    -0.02875675
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 4
+              }
+            },
+            "mlp_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.10764829,
+                  "mean": 0.02329547,
+                  "min": -0.01398786,
+                  "n": 16,
+                  "std": 0.03584945,
+                  "values": [
+                    0.10764829,
+                    -0.00413653,
+                    -0.01398786,
+                    0.00697758,
+                    0.08167918,
+                    0.04436473,
+                    -0.01060064,
+                    0.04823638,
+                    0.00644843,
+                    0.0049369,
+                    0.04330273,
+                    -0.00425351,
+                    0.0104393,
+                    0.05434565,
+                    -0.0032044,
+                    0.00053129
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 11
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.01398786,
+                  "mean": -0.02329547,
+                  "min": -0.10764829,
+                  "n": 16,
+                  "std": 0.03584945,
+                  "values": [
+                    -0.10764829,
+                    0.00413653,
+                    0.01398786,
+                    -0.00697758,
+                    -0.08167918,
+                    -0.04436473,
+                    0.01060064,
+                    -0.04823638,
+                    -0.00644843,
+                    -0.0049369,
+                    -0.04330273,
+                    0.00425351,
+                    -0.0104393,
+                    -0.05434565,
+                    0.0032044,
+                    -0.00053129
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 5
+              }
+            },
+            "tree_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.09112492,
+                  "mean": 0.02257715,
+                  "min": -0.00678881,
+                  "n": 16,
+                  "std": 0.02706729,
+                  "values": [
+                    0.01203384,
+                    0.03033506,
+                    0.00137825,
+                    0.00525681,
+                    0.09112492,
+                    0.00456274,
+                    0.00535423,
+                    0.04548795,
+                    0.0165018,
+                    0.01960762,
+                    0.07527702,
+                    -0.00678881,
+                    0.0297073,
+                    0.00491969,
+                    0.01235382,
+                    0.01412211
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 15
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00678881,
+                  "mean": -0.02257715,
+                  "min": -0.09112492,
+                  "n": 16,
+                  "std": 0.02706729,
+                  "values": [
+                    -0.01203384,
+                    -0.03033506,
+                    -0.00137825,
+                    -0.00525681,
+                    -0.09112492,
+                    -0.00456274,
+                    -0.00535423,
+                    -0.04548795,
+                    -0.0165018,
+                    -0.01960762,
+                    -0.07527702,
+                    0.00678881,
+                    -0.0297073,
+                    -0.00491969,
+                    -0.01235382,
+                    -0.01412211
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 1
+              }
+            }
+          },
+          "prior_quality": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.03703285,
+                "mean": 0.0154602,
+                "min": -0.02249276,
+                "n": 16,
+                "std": 0.01509211,
+                "values": [
+                  0.03703285,
+                  0.01591858,
+                  0.02578642,
+                  -0.02249276,
+                  0.01856927,
+                  0.0289807,
+                  0.01488784,
+                  0.01935766,
+                  0.02150821,
+                  0.00695058,
+                  0.00019322,
+                  0.03134554,
+                  -0.00592327,
+                  0.01085751,
+                  0.02621788,
+                  0.01817297
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 14
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.02249276,
+                "mean": -0.0154602,
+                "min": -0.03703285,
+                "n": 16,
+                "std": 0.01509211,
+                "values": [
+                  -0.03703285,
+                  -0.01591858,
+                  -0.02578642,
+                  0.02249276,
+                  -0.01856927,
+                  -0.0289807,
+                  -0.01488784,
+                  -0.01935766,
+                  -0.02150821,
+                  -0.00695058,
+                  -0.00019322,
+                  -0.03134554,
+                  0.00592327,
+                  -0.01085751,
+                  -0.02621788,
+                  -0.01817297
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 2
+            }
+          }
+        }
+      },
+      "linear_fit": {
+        "entry_precision": "VARIANT_BETTER",
+        "local_rescue": "VARIANT_BETTER",
+        "pooled_washout": "PRIOR_WASHES_OUT_UNDER_POOLING",
+        "prior_persists_for_arms": {},
+        "prior_quality": "NO_CLEAR_DIFFERENCE",
+        "reports": {
+          "entry_precision": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": -0.07909982,
+                "mean": -0.14305702,
+                "min": -0.22984574,
+                "n": 16,
+                "std": 0.03724549,
+                "values": [
+                  -0.18306011,
+                  -0.13511461,
+                  -0.14624974,
+                  -0.22984574,
+                  -0.15819833,
+                  -0.15973993,
+                  -0.15352339,
+                  -0.09145975,
+                  -0.13166958,
+                  -0.08335326,
+                  -0.07909982,
+                  -0.15681818,
+                  -0.14758579,
+                  -0.15516333,
+                  -0.14765666,
+                  -0.13037401
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.22984574,
+                "mean": 0.14305702,
+                "min": 0.07909982,
+                "n": 16,
+                "std": 0.03724549,
+                "values": [
+                  0.18306011,
+                  0.13511461,
+                  0.14624974,
+                  0.22984574,
+                  0.15819833,
+                  0.15973993,
+                  0.15352339,
+                  0.09145975,
+                  0.13166958,
+                  0.08335326,
+                  0.07909982,
+                  0.15681818,
+                  0.14758579,
+                  0.15516333,
+                  0.14765666,
+                  0.13037401
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "local_rescue": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": -0.00061662,
+                "mean": -0.02265835,
+                "min": -0.04938339,
+                "n": 16,
+                "std": 0.0136247,
+                "values": [
+                  -0.02672888,
+                  -0.00845938,
+                  -0.014554,
+                  -0.04938339,
+                  -0.02471763,
+                  -0.00889029,
+                  -0.00398393,
+                  -0.03002455,
+                  -0.03822742,
+                  -0.03996035,
+                  -0.00061662,
+                  -0.02972563,
+                  -0.01820487,
+                  -0.02242495,
+                  -0.01655892,
+                  -0.03007272
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.04938339,
+                "mean": 0.02265835,
+                "min": 0.00061662,
+                "n": 16,
+                "std": 0.0136247,
+                "values": [
+                  0.02672888,
+                  0.00845938,
+                  0.014554,
+                  0.04938339,
+                  0.02471763,
+                  0.00889029,
+                  0.00398393,
+                  0.03002455,
+                  0.03822742,
+                  0.03996035,
+                  0.00061662,
+                  0.02972563,
+                  0.01820487,
+                  0.02242495,
+                  0.01655892,
+                  0.03007272
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "pooled_washout": {
+            "linear_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.01503906,
+                  "mean": 0.00801919,
+                  "min": -0.00057902,
+                  "n": 16,
+                  "std": 0.00489242,
+                  "values": [
+                    0.01417778,
+                    0.00892983,
+                    0.00260702,
+                    0.01503906,
+                    0.00961273,
+                    0.0125141,
+                    0.01335637,
+                    0.00583935,
+                    -0.00057902,
+                    -0.00025973,
+                    0.00452014,
+                    0.01203384,
+                    0.00595509,
+                    0.00713706,
+                    0.0108212,
+                    0.00660219
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 14
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00057902,
+                  "mean": -0.00801919,
+                  "min": -0.01503906,
+                  "n": 16,
+                  "std": 0.00489242,
+                  "values": [
+                    -0.01417778,
+                    -0.00892983,
+                    -0.00260702,
+                    -0.01503906,
+                    -0.00961273,
+                    -0.0125141,
+                    -0.01335637,
+                    -0.00583935,
+                    0.00057902,
+                    0.00025973,
+                    -0.00452014,
+                    -0.01203384,
+                    -0.00595509,
+                    -0.00713706,
+                    -0.0108212,
+                    -0.00660219
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 2
+              }
+            },
+            "mlp_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.00775557,
+                  "mean": 0.00193534,
+                  "min": -0.00164635,
+                  "n": 16,
+                  "std": 0.00294514,
+                  "values": [
+                    -0.00119197,
+                    0.00115852,
+                    0.0071931,
+                    0.00775557,
+                    -0.00027332,
+                    -0.0003172,
+                    0.0026852,
+                    0.00621487,
+                    0.00316562,
+                    0.00233071,
+                    0.00064579,
+                    -0.00161605,
+                    -0.00164635,
+                    0.00200692,
+                    0.00162786,
+                    0.00122609
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 11
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00164635,
+                  "mean": -0.00193534,
+                  "min": -0.00775557,
+                  "n": 16,
+                  "std": 0.00294514,
+                  "values": [
+                    0.00119197,
+                    -0.00115852,
+                    -0.0071931,
+                    -0.00775557,
+                    0.00027332,
+                    0.0003172,
+                    -0.0026852,
+                    -0.00621487,
+                    -0.00316562,
+                    -0.00233071,
+                    -0.00064579,
+                    0.00161605,
+                    0.00164635,
+                    -0.00200692,
+                    -0.00162786,
+                    -0.00122609
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 5
+              }
+            },
+            "tree_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.00724492,
+                  "mean": -0.00355576,
+                  "min": -0.01743551,
+                  "n": 16,
+                  "std": 0.00577524,
+                  "values": [
+                    -0.012446,
+                    -0.0045925,
+                    -0.00571621,
+                    -0.00415614,
+                    -0.00128481,
+                    -0.01743551,
+                    -0.00325399,
+                    0.00724492,
+                    -0.002786,
+                    -0.00469084,
+                    -0.00580721,
+                    0.00129588,
+                    -0.00620747,
+                    0.00191712,
+                    0.0004015,
+                    0.00062508
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 5
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.01743551,
+                  "mean": 0.00355576,
+                  "min": -0.00724492,
+                  "n": 16,
+                  "std": 0.00577524,
+                  "values": [
+                    0.012446,
+                    0.0045925,
+                    0.00571621,
+                    0.00415614,
+                    0.00128481,
+                    0.01743551,
+                    0.00325399,
+                    -0.00724492,
+                    0.002786,
+                    0.00469084,
+                    0.00580721,
+                    -0.00129588,
+                    0.00620747,
+                    -0.00191712,
+                    -0.0004015,
+                    -0.00062508
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 11
+              }
+            }
+          },
+          "prior_quality": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.01703248,
+                "mean": -0.00209158,
+                "min": -0.02353535,
+                "n": 16,
+                "std": 0.01165827,
+                "values": [
+                  -0.00768926,
+                  -0.01018321,
+                  0.00630304,
+                  -0.01265004,
+                  0.00489892,
+                  0.01703248,
+                  0.01307274,
+                  -0.00250332,
+                  -0.0183693,
+                  -0.02353535,
+                  -0.00108856,
+                  -0.00817123,
+                  0.00808938,
+                  0.01094661,
+                  0.0008506,
+                  -0.01046879
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 7
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.02353535,
+                "mean": 0.00209158,
+                "min": -0.01703248,
+                "n": 16,
+                "std": 0.01165827,
+                "values": [
+                  0.00768926,
+                  0.01018321,
+                  -0.00630304,
+                  0.01265004,
+                  -0.00489892,
+                  -0.01703248,
+                  -0.01307274,
+                  0.00250332,
+                  0.0183693,
+                  0.02353535,
+                  0.00108856,
+                  0.00817123,
+                  -0.00808938,
+                  -0.01094661,
+                  -0.0008506,
+                  0.01046879
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 9
+            }
+          }
+        }
+      },
+      "smooth_interaction_fit": {
+        "entry_precision": "VARIANT_BETTER",
+        "local_rescue": "NO_CLEAR_DIFFERENCE",
+        "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+        "prior_persists_for_arms": {
+          "mlp_batch": "HAND_BETTER",
+          "tree_batch": "HAND_BETTER"
+        },
+        "prior_quality": "HAND_BETTER",
+        "reports": {
+          "entry_precision": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": -0.06873248,
+                "mean": -0.13294479,
+                "min": -0.17920179,
+                "n": 16,
+                "std": 0.03111051,
+                "values": [
+                  -0.1344086,
+                  -0.15472245,
+                  -0.10694416,
+                  -0.10784708,
+                  -0.14788905,
+                  -0.16294074,
+                  -0.14457608,
+                  -0.06873248,
+                  -0.08170064,
+                  -0.13282309,
+                  -0.16688948,
+                  -0.11612554,
+                  -0.16332625,
+                  -0.17920179,
+                  -0.13965245,
+                  -0.1193368
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.17920179,
+                "mean": 0.13294479,
+                "min": 0.06873248,
+                "n": 16,
+                "std": 0.03111051,
+                "values": [
+                  0.1344086,
+                  0.15472245,
+                  0.10694416,
+                  0.10784708,
+                  0.14788905,
+                  0.16294074,
+                  0.14457608,
+                  0.06873248,
+                  0.08170064,
+                  0.13282309,
+                  0.16688948,
+                  0.11612554,
+                  0.16332625,
+                  0.17920179,
+                  0.13965245,
+                  0.1193368
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "local_rescue": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.01606731,
+                "mean": -0.01622798,
+                "min": -0.06481434,
+                "n": 16,
+                "std": 0.02280256,
+                "values": [
+                  -0.0093671,
+                  0.00903053,
+                  0.01442965,
+                  -0.06481434,
+                  -0.01694849,
+                  0.013858,
+                  -0.02431657,
+                  0.01606731,
+                  9.61e-06,
+                  -0.03463314,
+                  -0.03025798,
+                  -0.04169982,
+                  -0.02328181,
+                  -0.02669088,
+                  -0.02933656,
+                  -0.01169613
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 5
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.06481434,
+                "mean": 0.01622798,
+                "min": -0.01606731,
+                "n": 16,
+                "std": 0.02280256,
+                "values": [
+                  0.0093671,
+                  -0.00903053,
+                  -0.01442965,
+                  0.06481434,
+                  0.01694849,
+                  -0.013858,
+                  0.02431657,
+                  -0.01606731,
+                  -9.61e-06,
+                  0.03463314,
+                  0.03025798,
+                  0.04169982,
+                  0.02328181,
+                  0.02669088,
+                  0.02933656,
+                  0.01169613
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 11
+            }
+          },
+          "pooled_washout": {
+            "linear_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.02004435,
+                  "mean": 0.00858907,
+                  "min": -0.00703567,
+                  "n": 16,
+                  "std": 0.00879184,
+                  "values": [
+                    0.01795379,
+                    0.01276499,
+                    0.01689609,
+                    -0.00507217,
+                    0.01053709,
+                    -0.00070433,
+                    0.00047333,
+                    -0.00291488,
+                    0.02004435,
+                    0.01511813,
+                    0.01649775,
+                    0.00912415,
+                    0.01356757,
+                    -0.00703567,
+                    0.00976183,
+                    0.01041303
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 12
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00703567,
+                  "mean": -0.00858907,
+                  "min": -0.02004435,
+                  "n": 16,
+                  "std": 0.00879184,
+                  "values": [
+                    -0.01795379,
+                    -0.01276499,
+                    -0.01689609,
+                    0.00507217,
+                    -0.01053709,
+                    0.00070433,
+                    -0.00047333,
+                    0.00291488,
+                    -0.02004435,
+                    -0.01511813,
+                    -0.01649775,
+                    -0.00912415,
+                    -0.01356757,
+                    0.00703567,
+                    -0.00976183,
+                    -0.01041303
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 4
+              }
+            },
+            "mlp_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.07430697,
+                  "mean": 0.02210191,
+                  "min": -0.00697974,
+                  "n": 16,
+                  "std": 0.02269804,
+                  "values": [
+                    0.06059293,
+                    0.00443223,
+                    0.00626376,
+                    0.01787586,
+                    0.07430697,
+                    0.00689121,
+                    0.04843294,
+                    0.01764346,
+                    0.01498677,
+                    0.01258727,
+                    0.03154787,
+                    0.03580321,
+                    0.02048729,
+                    0.01148423,
+                    -0.00272565,
+                    -0.00697974
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 14
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00697974,
+                  "mean": -0.02210191,
+                  "min": -0.07430697,
+                  "n": 16,
+                  "std": 0.02269804,
+                  "values": [
+                    -0.06059293,
+                    -0.00443223,
+                    -0.00626376,
+                    -0.01787586,
+                    -0.07430697,
+                    -0.00689121,
+                    -0.04843294,
+                    -0.01764346,
+                    -0.01498677,
+                    -0.01258727,
+                    -0.03154787,
+                    -0.03580321,
+                    -0.02048729,
+                    -0.01148423,
+                    0.00272565,
+                    0.00697974
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 2
+              }
+            },
+            "tree_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.05484577,
+                  "mean": 0.01316218,
+                  "min": -0.01594002,
+                  "n": 16,
+                  "std": 0.019784,
+                  "values": [
+                    0.05170853,
+                    0.00296629,
+                    0.01633576,
+                    0.00727521,
+                    0.00229093,
+                    -0.01594002,
+                    0.02199852,
+                    0.03689497,
+                    0.01531162,
+                    0.00443923,
+                    0.00334581,
+                    -0.00752643,
+                    0.00245349,
+                    0.01414382,
+                    0.05484577,
+                    5.13e-05
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 14
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.01594002,
+                  "mean": -0.01316218,
+                  "min": -0.05484577,
+                  "n": 16,
+                  "std": 0.019784,
+                  "values": [
+                    -0.05170853,
+                    -0.00296629,
+                    -0.01633576,
+                    -0.00727521,
+                    -0.00229093,
+                    0.01594002,
+                    -0.02199852,
+                    -0.03689497,
+                    -0.01531162,
+                    -0.00443923,
+                    -0.00334581,
+                    0.00752643,
+                    -0.00245349,
+                    -0.01414382,
+                    -0.05484577,
+                    -5.13e-05
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 2
+              }
+            }
+          },
+          "prior_quality": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.04372911,
+                "mean": 0.0128308,
+                "min": -0.02457801,
+                "n": 16,
+                "std": 0.01842051,
+                "values": [
+                  0.04372911,
+                  0.02701608,
+                  0.01713265,
+                  -0.02457801,
+                  0.02269767,
+                  0.0256045,
+                  0.03129841,
+                  0.00512956,
+                  0.01087713,
+                  6.15e-05,
+                  -0.00913361,
+                  0.0310315,
+                  -0.01473079,
+                  0.00536015,
+                  0.02049526,
+                  0.01330169
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 13
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.02457801,
+                "mean": -0.0128308,
+                "min": -0.04372911,
+                "n": 16,
+                "std": 0.01842051,
+                "values": [
+                  -0.04372911,
+                  -0.02701608,
+                  -0.01713265,
+                  0.02457801,
+                  -0.02269767,
+                  -0.0256045,
+                  -0.03129841,
+                  -0.00512956,
+                  -0.01087713,
+                  -6.15e-05,
+                  0.00913361,
+                  -0.0310315,
+                  0.01473079,
+                  -0.00536015,
+                  -0.02049526,
+                  -0.01330169
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 3
+            }
+          }
+        }
+      }
+    },
+    "llm_hand_level": {
+      "axis_interaction_fit": {
+        "entry_precision": "VARIANT_BETTER",
+        "local_rescue": "VARIANT_BETTER",
+        "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+        "prior_persists_for_arms": {
+          "linear_batch": "HAND_BETTER",
+          "tree_batch": "HAND_BETTER"
+        },
+        "prior_quality": "HAND_BETTER",
+        "reports": {
+          "entry_precision": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": -0.02715189,
+                "mean": -0.06772969,
+                "min": -0.09614111,
+                "n": 16,
+                "std": 0.02128173,
+                "values": [
+                  -0.09269866,
+                  -0.07407407,
+                  -0.04350866,
+                  -0.07453416,
+                  -0.09614111,
+                  -0.0904186,
+                  -0.03926192,
+                  -0.05704281,
+                  -0.02715189,
+                  -0.04750492,
+                  -0.09175465,
+                  -0.07433217,
+                  -0.08431869,
+                  -0.07625995,
+                  -0.0550996,
+                  -0.05957315
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.09614111,
+                "mean": 0.06772969,
+                "min": 0.02715189,
+                "n": 16,
+                "std": 0.02128173,
+                "values": [
+                  0.09269866,
+                  0.07407407,
+                  0.04350866,
+                  0.07453416,
+                  0.09614111,
+                  0.0904186,
+                  0.03926192,
+                  0.05704281,
+                  0.02715189,
+                  0.04750492,
+                  0.09175465,
+                  0.07433217,
+                  0.08431869,
+                  0.07625995,
+                  0.0550996,
+                  0.05957315
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "local_rescue": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.01270144,
+                "mean": -0.02243175,
+                "min": -0.0735981,
+                "n": 16,
+                "std": 0.02252544,
+                "values": [
+                  0.01270144,
+                  -0.00969423,
+                  -0.00496464,
+                  -0.05998593,
+                  -0.00406203,
+                  -0.0056517,
+                  -0.00726303,
+                  -0.02490969,
+                  -0.02432614,
+                  -0.04538177,
+                  -0.0735981,
+                  -0.03494796,
+                  -0.03116877,
+                  -0.02301284,
+                  -0.00856583,
+                  -0.01407686
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 1
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.0735981,
+                "mean": 0.02243175,
+                "min": -0.01270144,
+                "n": 16,
+                "std": 0.02252544,
+                "values": [
+                  -0.01270144,
+                  0.00969423,
+                  0.00496464,
+                  0.05998593,
+                  0.00406203,
+                  0.0056517,
+                  0.00726303,
+                  0.02490969,
+                  0.02432614,
+                  0.04538177,
+                  0.0735981,
+                  0.03494796,
+                  0.03116877,
+                  0.02301284,
+                  0.00856583,
+                  0.01407686
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 15
+            }
+          },
+          "pooled_washout": {
+            "linear_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.02847667,
+                  "mean": 0.01075519,
+                  "min": -0.0043892,
+                  "n": 16,
+                  "std": 0.00981912,
+                  "values": [
+                    0.0200048,
+                    0.00970789,
+                    0.0148165,
+                    -0.00434432,
+                    0.02508527,
+                    0.01284879,
+                    0.00189973,
+                    0.00423962,
+                    0.02847667,
+                    0.00453251,
+                    0.01430198,
+                    0.01447727,
+                    0.00419629,
+                    -0.0043892,
+                    0.00531184,
+                    0.02091743
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 14
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.0043892,
+                  "mean": -0.01075519,
+                  "min": -0.02847667,
+                  "n": 16,
+                  "std": 0.00981912,
+                  "values": [
+                    -0.0200048,
+                    -0.00970789,
+                    -0.0148165,
+                    0.00434432,
+                    -0.02508527,
+                    -0.01284879,
+                    -0.00189973,
+                    -0.00423962,
+                    -0.02847667,
+                    -0.00453251,
+                    -0.01430198,
+                    -0.01447727,
+                    -0.00419629,
+                    0.0043892,
+                    -0.00531184,
+                    -0.02091743
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 2
+              }
+            },
+            "mlp_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.08023051,
+                  "mean": 0.0118592,
+                  "min": -0.01372075,
+                  "n": 16,
+                  "std": 0.02431275,
+                  "values": [
+                    0.08023051,
+                    -0.00071025,
+                    -0.00927584,
+                    0.00173975,
+                    -0.01372075,
+                    -0.00244994,
+                    -0.00266625,
+                    0.03027195,
+                    -0.0052184,
+                    0.00436978,
+                    0.03150652,
+                    0.0092616,
+                    -0.00093116,
+                    0.03478324,
+                    0.03370176,
+                    -0.00114529
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 8
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.01372075,
+                  "mean": -0.0118592,
+                  "min": -0.08023051,
+                  "n": 16,
+                  "std": 0.02431275,
+                  "values": [
+                    -0.08023051,
+                    0.00071025,
+                    0.00927584,
+                    -0.00173975,
+                    0.01372075,
+                    0.00244994,
+                    0.00266625,
+                    -0.03027195,
+                    0.0052184,
+                    -0.00436978,
+                    -0.03150652,
+                    -0.0092616,
+                    0.00093116,
+                    -0.03478324,
+                    -0.03370176,
+                    0.00114529
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 8
+              }
+            },
+            "tree_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.08074169,
+                  "mean": 0.01249643,
+                  "min": -0.01786912,
+                  "n": 16,
+                  "std": 0.02115072,
+                  "values": [
+                    0.00256557,
+                    0.02477997,
+                    0.00181954,
+                    0.02879954,
+                    -0.01786912,
+                    0.0084796,
+                    -0.00097077,
+                    0.0045129,
+                    0.00863777,
+                    0.01692743,
+                    0.08074169,
+                    0.00973422,
+                    0.0146921,
+                    0.00768497,
+                    0.00963851,
+                    -0.00023113
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 13
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.01786912,
+                  "mean": -0.01249643,
+                  "min": -0.08074169,
+                  "n": 16,
+                  "std": 0.02115072,
+                  "values": [
+                    -0.00256557,
+                    -0.02477997,
+                    -0.00181954,
+                    -0.02879954,
+                    0.01786912,
+                    -0.0084796,
+                    0.00097077,
+                    -0.0045129,
+                    -0.00863777,
+                    -0.01692743,
+                    -0.08074169,
+                    -0.00973422,
+                    -0.0146921,
+                    -0.00768497,
+                    -0.00963851,
+                    0.00023113
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 3
+              }
+            }
+          },
+          "prior_quality": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.04890168,
+                "mean": 0.02541625,
+                "min": -0.01766625,
+                "n": 16,
+                "std": 0.01718288,
+                "values": [
+                  0.04890168,
+                  0.03128974,
+                  0.03266929,
+                  -0.01766625,
+                  0.02603679,
+                  0.04134424,
+                  0.02881751,
+                  0.03025605,
+                  0.03437497,
+                  0.01397688,
+                  0.01151497,
+                  0.04364517,
+                  0.00026278,
+                  0.01713374,
+                  0.03976224,
+                  0.02434024
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 15
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.01766625,
+                "mean": -0.02541625,
+                "min": -0.04890168,
+                "n": 16,
+                "std": 0.01718288,
+                "values": [
+                  -0.04890168,
+                  -0.03128974,
+                  -0.03266929,
+                  0.01766625,
+                  -0.02603679,
+                  -0.04134424,
+                  -0.02881751,
+                  -0.03025605,
+                  -0.03437497,
+                  -0.01397688,
+                  -0.01151497,
+                  -0.04364517,
+                  -0.00026278,
+                  -0.01713374,
+                  -0.03976224,
+                  -0.02434024
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 1
+            }
+          }
+        }
+      },
+      "linear_fit": {
+        "entry_precision": "VARIANT_BETTER",
+        "local_rescue": "VARIANT_BETTER",
+        "pooled_washout": "PRIOR_WASHES_OUT_UNDER_POOLING",
+        "prior_persists_for_arms": {},
+        "prior_quality": "NO_CLEAR_DIFFERENCE",
+        "reports": {
+          "entry_precision": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": -0.06565133,
+                "mean": -0.10528035,
+                "min": -0.17412008,
+                "n": 16,
+                "std": 0.02668759,
+                "values": [
+                  -0.12884324,
+                  -0.12363834,
+                  -0.10473157,
+                  -0.17412008,
+                  -0.11047007,
+                  -0.09711628,
+                  -0.10389999,
+                  -0.06999511,
+                  -0.08862863,
+                  -0.07528269,
+                  -0.12581699,
+                  -0.1203252,
+                  -0.09755068,
+                  -0.10875332,
+                  -0.08966208,
+                  -0.06565133
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.17412008,
+                "mean": 0.10528035,
+                "min": 0.06565133,
+                "n": 16,
+                "std": 0.02668759,
+                "values": [
+                  0.12884324,
+                  0.12363834,
+                  0.10473157,
+                  0.17412008,
+                  0.11047007,
+                  0.09711628,
+                  0.10389999,
+                  0.06999511,
+                  0.08862863,
+                  0.07528269,
+                  0.12581699,
+                  0.1203252,
+                  0.09755068,
+                  0.10875332,
+                  0.08966208,
+                  0.06565133
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "local_rescue": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": -0.00363744,
+                "mean": -0.02177481,
+                "min": -0.03869624,
+                "n": 16,
+                "std": 0.01019369,
+                "values": [
+                  -0.01978727,
+                  -0.01462999,
+                  -0.02232597,
+                  -0.03869624,
+                  -0.02014398,
+                  -0.00865415,
+                  -0.00363744,
+                  -0.02223315,
+                  -0.03295762,
+                  -0.03864972,
+                  -0.01525484,
+                  -0.02472635,
+                  -0.01279037,
+                  -0.03030159,
+                  -0.01478344,
+                  -0.02882476
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.03869624,
+                "mean": 0.02177481,
+                "min": 0.00363744,
+                "n": 16,
+                "std": 0.01019369,
+                "values": [
+                  0.01978727,
+                  0.01462999,
+                  0.02232597,
+                  0.03869624,
+                  0.02014398,
+                  0.00865415,
+                  0.00363744,
+                  0.02223315,
+                  0.03295762,
+                  0.03864972,
+                  0.01525484,
+                  0.02472635,
+                  0.01279037,
+                  0.03030159,
+                  0.01478344,
+                  0.02882476
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "pooled_washout": {
+            "linear_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.00800525,
+                  "mean": 0.00199203,
+                  "min": -0.00351552,
+                  "n": 16,
+                  "std": 0.00341529,
+                  "values": [
+                    0.00800525,
+                    0.0027526,
+                    0.00328929,
+                    0.00130126,
+                    0.00181394,
+                    0.00799931,
+                    0.00571035,
+                    -0.0014415,
+                    -0.00351552,
+                    -0.00316506,
+                    0.00091982,
+                    0.00513407,
+                    0.00036001,
+                    0.00059001,
+                    0.00113829,
+                    0.00098041
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 13
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00351552,
+                  "mean": -0.00199203,
+                  "min": -0.00800525,
+                  "n": 16,
+                  "std": 0.00341529,
+                  "values": [
+                    -0.00800525,
+                    -0.0027526,
+                    -0.00328929,
+                    -0.00130126,
+                    -0.00181394,
+                    -0.00799931,
+                    -0.00571035,
+                    0.0014415,
+                    0.00351552,
+                    0.00316506,
+                    -0.00091982,
+                    -0.00513407,
+                    -0.00036001,
+                    -0.00059001,
+                    -0.00113829,
+                    -0.00098041
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 3
+              }
+            },
+            "mlp_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.00585655,
+                  "mean": 0.00076189,
+                  "min": -0.0023137,
+                  "n": 16,
+                  "std": 0.00194744,
+                  "values": [
+                    -0.0023137,
+                    0.00020685,
+                    0.00585655,
+                    0.00214933,
+                    -0.00225998,
+                    0.00171112,
+                    -5.338e-05,
+                    0.00284754,
+                    0.00092744,
+                    0.00179315,
+                    0.0009339,
+                    -5.951e-05,
+                    -0.00058157,
+                    0.00026127,
+                    0.00021449,
+                    0.00055668
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 11
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.0023137,
+                  "mean": -0.00076189,
+                  "min": -0.00585655,
+                  "n": 16,
+                  "std": 0.00194744,
+                  "values": [
+                    0.0023137,
+                    -0.00020685,
+                    -0.00585655,
+                    -0.00214933,
+                    0.00225998,
+                    -0.00171112,
+                    5.338e-05,
+                    -0.00284754,
+                    -0.00092744,
+                    -0.00179315,
+                    -0.0009339,
+                    5.951e-05,
+                    0.00058157,
+                    -0.00026127,
+                    -0.00021449,
+                    -0.00055668
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 5
+              }
+            },
+            "tree_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.01659649,
+                  "mean": -0.00392805,
+                  "min": -0.01225032,
+                  "n": 16,
+                  "std": 0.00690061,
+                  "values": [
+                    -0.00493771,
+                    -0.01225032,
+                    -0.00410182,
+                    -0.0051009,
+                    -0.00811723,
+                    -0.01153821,
+                    0.00429061,
+                    0.01659649,
+                    -5.582e-05,
+                    -0.0032486,
+                    -0.00617378,
+                    -0.00343825,
+                    -0.0020626,
+                    -0.00600325,
+                    -0.00604875,
+                    -0.01065865
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 2
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.01225032,
+                  "mean": 0.00392805,
+                  "min": -0.01659649,
+                  "n": 16,
+                  "std": 0.00690061,
+                  "values": [
+                    0.00493771,
+                    0.01225032,
+                    0.00410182,
+                    0.0051009,
+                    0.00811723,
+                    0.01153821,
+                    -0.00429061,
+                    -0.01659649,
+                    5.582e-05,
+                    0.0032486,
+                    0.00617378,
+                    0.00343825,
+                    0.0020626,
+                    0.00600325,
+                    0.00604875,
+                    0.01065865
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 14
+              }
+            }
+          },
+          "prior_quality": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.02266277,
+                "mean": 0.00414373,
+                "min": -0.0206657,
+                "n": 16,
+                "std": 0.01194448,
+                "values": [
+                  -0.00034244,
+                  0.00024222,
+                  0.01249868,
+                  -0.0087563,
+                  0.00863233,
+                  0.02266277,
+                  0.02216983,
+                  0.00564957,
+                  -0.00913886,
+                  -0.0206657,
+                  0.00723552,
+                  -0.00054529,
+                  0.01131007,
+                  0.01094217,
+                  0.01337382,
+                  -0.00896869
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 10
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.0206657,
+                "mean": -0.00414373,
+                "min": -0.02266277,
+                "n": 16,
+                "std": 0.01194448,
+                "values": [
+                  0.00034244,
+                  -0.00024222,
+                  -0.01249868,
+                  0.0087563,
+                  -0.00863233,
+                  -0.02266277,
+                  -0.02216983,
+                  -0.00564957,
+                  0.00913886,
+                  0.0206657,
+                  -0.00723552,
+                  0.00054529,
+                  -0.01131007,
+                  -0.01094217,
+                  -0.01337382,
+                  0.00896869
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 6
+            }
+          }
+        }
+      },
+      "smooth_interaction_fit": {
+        "entry_precision": "VARIANT_BETTER",
+        "local_rescue": "VARIANT_BETTER",
+        "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+        "prior_persists_for_arms": {
+          "linear_batch": "HAND_BETTER"
+        },
+        "prior_quality": "HAND_BETTER",
+        "reports": {
+          "entry_precision": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": -0.01908737,
+                "mean": -0.08118714,
+                "min": -0.12833082,
+                "n": 16,
+                "std": 0.02857294,
+                "values": [
+                  -0.04016064,
+                  -0.08769063,
+                  -0.06809883,
+                  -0.08322981,
+                  -0.10016079,
+                  -0.10306977,
+                  -0.07567932,
+                  -0.0614481,
+                  -0.01908737,
+                  -0.06581858,
+                  -0.12833082,
+                  -0.09256678,
+                  -0.12549268,
+                  -0.07244695,
+                  -0.10388009,
+                  -0.07183313
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.12833082,
+                "mean": 0.08118714,
+                "min": 0.01908737,
+                "n": 16,
+                "std": 0.02857294,
+                "values": [
+                  0.04016064,
+                  0.08769063,
+                  0.06809883,
+                  0.08322981,
+                  0.10016079,
+                  0.10306977,
+                  0.07567932,
+                  0.0614481,
+                  0.01908737,
+                  0.06581858,
+                  0.12833082,
+                  0.09256678,
+                  0.12549268,
+                  0.07244695,
+                  0.10388009,
+                  0.07183313
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "local_rescue": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.01232865,
+                "mean": -0.01988191,
+                "min": -0.07263577,
+                "n": 16,
+                "std": 0.02194528,
+                "values": [
+                  -0.00760146,
+                  0.01232865,
+                  0.00581443,
+                  -0.07263577,
+                  -0.02175847,
+                  0.00561571,
+                  -0.01098496,
+                  0.00808938,
+                  -0.03229021,
+                  -0.03511753,
+                  -0.03190988,
+                  -0.03528656,
+                  -0.0333605,
+                  -0.03076972,
+                  -0.02108265,
+                  -0.017161
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 4
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.07263577,
+                "mean": 0.01988191,
+                "min": -0.01232865,
+                "n": 16,
+                "std": 0.02194528,
+                "values": [
+                  0.00760146,
+                  -0.01232865,
+                  -0.00581443,
+                  0.07263577,
+                  0.02175847,
+                  -0.00561571,
+                  0.01098496,
+                  -0.00808938,
+                  0.03229021,
+                  0.03511753,
+                  0.03190988,
+                  0.03528656,
+                  0.0333605,
+                  0.03076972,
+                  0.02108265,
+                  0.017161
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 12
+            }
+          },
+          "pooled_washout": {
+            "linear_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.03764564,
+                  "mean": 0.01040629,
+                  "min": -0.00854723,
+                  "n": 16,
+                  "std": 0.01249002,
+                  "values": [
+                    0.03764564,
+                    0.01317489,
+                    0.00513151,
+                    -0.00361734,
+                    0.00777556,
+                    0.00473791,
+                    0.009413,
+                    -0.00854723,
+                    0.02890725,
+                    0.016392,
+                    0.01583223,
+                    0.02602285,
+                    -0.00042066,
+                    -0.00332536,
+                    0.01001096,
+                    0.0073675
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 12
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00854723,
+                  "mean": -0.01040629,
+                  "min": -0.03764564,
+                  "n": 16,
+                  "std": 0.01249002,
+                  "values": [
+                    -0.03764564,
+                    -0.01317489,
+                    -0.00513151,
+                    0.00361734,
+                    -0.00777556,
+                    -0.00473791,
+                    -0.009413,
+                    0.00854723,
+                    -0.02890725,
+                    -0.016392,
+                    -0.01583223,
+                    -0.02602285,
+                    0.00042066,
+                    0.00332536,
+                    -0.01001096,
+                    -0.0073675
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 4
+              }
+            },
+            "mlp_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.056096,
+                  "mean": 0.01374633,
+                  "min": -0.00728772,
+                  "n": 16,
+                  "std": 0.01948477,
+                  "values": [
+                    0.056096,
+                    0.00166412,
+                    0.0019068,
+                    -0.00728772,
+                    0.01946266,
+                    0.04976161,
+                    0.01202512,
+                    -0.00623595,
+                    0.013501,
+                    -0.0011428,
+                    0.03611074,
+                    0.02632388,
+                    0.00590195,
+                    -0.00192207,
+                    -0.00204274,
+                    0.01581875
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 11
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00728772,
+                  "mean": -0.01374633,
+                  "min": -0.056096,
+                  "n": 16,
+                  "std": 0.01948477,
+                  "values": [
+                    -0.056096,
+                    -0.00166412,
+                    -0.0019068,
+                    0.00728772,
+                    -0.01946266,
+                    -0.04976161,
+                    -0.01202512,
+                    0.00623595,
+                    -0.013501,
+                    0.0011428,
+                    -0.03611074,
+                    -0.02632388,
+                    -0.00590195,
+                    0.00192207,
+                    0.00204274,
+                    -0.01581875
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 5
+              }
+            },
+            "tree_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.09378576,
+                  "mean": 0.01169128,
+                  "min": -0.00898211,
+                  "n": 16,
+                  "std": 0.02535582,
+                  "values": [
+                    0.09378576,
+                    -0.0013981,
+                    0.00328776,
+                    0.01987554,
+                    -0.00898211,
+                    0.00663816,
+                    0.00619755,
+                    -0.00047808,
+                    0.00191055,
+                    0.00497799,
+                    0.00607833,
+                    -0.00074461,
+                    -0.00120939,
+                    0.02194731,
+                    0.04304384,
+                    -0.00787004
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 10
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00898211,
+                  "mean": -0.01169128,
+                  "min": -0.09378576,
+                  "n": 16,
+                  "std": 0.02535582,
+                  "values": [
+                    -0.09378576,
+                    0.0013981,
+                    -0.00328776,
+                    -0.01987554,
+                    0.00898211,
+                    -0.00663816,
+                    -0.00619755,
+                    0.00047808,
+                    -0.00191055,
+                    -0.00497799,
+                    -0.00607833,
+                    0.00074461,
+                    0.00120939,
+                    -0.02194731,
+                    -0.04304384,
+                    0.00787004
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 6
+              }
+            }
+          },
+          "prior_quality": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.05408352,
+                "mean": 0.02122515,
+                "min": -0.02205007,
+                "n": 16,
+                "std": 0.02121828,
+                "values": [
+                  0.05408352,
+                  0.04149772,
+                  0.02448891,
+                  -0.02205007,
+                  0.02793134,
+                  0.03562741,
+                  0.04498259,
+                  0.01533087,
+                  0.02222992,
+                  0.0033774,
+                  -0.00020955,
+                  0.04219812,
+                  -0.01099052,
+                  0.0106027,
+                  0.03317776,
+                  0.01732431
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 13
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.02205007,
+                "mean": -0.02122515,
+                "min": -0.05408352,
+                "n": 16,
+                "std": 0.02121828,
+                "values": [
+                  -0.05408352,
+                  -0.04149772,
+                  -0.02448891,
+                  0.02205007,
+                  -0.02793134,
+                  -0.03562741,
+                  -0.04498259,
+                  -0.01533087,
+                  -0.02222992,
+                  -0.0033774,
+                  0.00020955,
+                  -0.04219812,
+                  0.01099052,
+                  -0.0106027,
+                  -0.03317776,
+                  -0.01732431
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 3
+            }
+          }
+        }
+      }
+    },
+    "llm_uncalibrated": {
+      "axis_interaction_fit": {
+        "entry_precision": "HAND_BETTER",
+        "local_rescue": "HAND_BETTER",
+        "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+        "prior_persists_for_arms": {
+          "linear_batch": "HAND_BETTER",
+          "mlp_batch": "HAND_BETTER",
+          "tree_batch": "HAND_BETTER"
+        },
+        "prior_quality": "HAND_BETTER",
+        "reports": {
+          "entry_precision": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.38095238,
+                "mean": 0.32805111,
+                "min": 0.28431373,
+                "n": 16,
+                "std": 0.03123308,
+                "values": [
+                  0.31693989,
+                  0.33333333,
+                  0.28436019,
+                  0.34285714,
+                  0.33505155,
+                  0.3255814,
+                  0.29680365,
+                  0.37885463,
+                  0.31155779,
+                  0.37610619,
+                  0.28431373,
+                  0.38095238,
+                  0.30630631,
+                  0.34615385,
+                  0.32701422,
+                  0.30263158
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": -0.28431373,
+                "mean": -0.32805111,
+                "min": -0.38095238,
+                "n": 16,
+                "std": 0.03123308,
+                "values": [
+                  -0.31693989,
+                  -0.33333333,
+                  -0.28436019,
+                  -0.34285714,
+                  -0.33505155,
+                  -0.3255814,
+                  -0.29680365,
+                  -0.37885463,
+                  -0.31155779,
+                  -0.37610619,
+                  -0.28431373,
+                  -0.38095238,
+                  -0.30630631,
+                  -0.34615385,
+                  -0.32701422,
+                  -0.30263158
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "local_rescue": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.07353185,
+                "mean": 0.02228798,
+                "min": -0.02527888,
+                "n": 16,
+                "std": 0.02732359,
+                "values": [
+                  0.01514732,
+                  0.00411533,
+                  0.0452691,
+                  0.05165938,
+                  0.02988279,
+                  0.07353185,
+                  0.02123093,
+                  -0.02527888,
+                  0.01582548,
+                  0.01677982,
+                  -0.01636701,
+                  0.01909683,
+                  0.06327841,
+                  0.03472077,
+                  -0.01008252,
+                  0.01779805
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 13
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.02527888,
+                "mean": -0.02228798,
+                "min": -0.07353185,
+                "n": 16,
+                "std": 0.02732359,
+                "values": [
+                  -0.01514732,
+                  -0.00411533,
+                  -0.0452691,
+                  -0.05165938,
+                  -0.02988279,
+                  -0.07353185,
+                  -0.02123093,
+                  0.02527888,
+                  -0.01582548,
+                  -0.01677982,
+                  0.01636701,
+                  -0.01909683,
+                  -0.06327841,
+                  -0.03472077,
+                  0.01008252,
+                  -0.01779805
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 3
+            }
+          },
+          "pooled_washout": {
+            "linear_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.17632839,
+                  "mean": 0.12599001,
+                  "min": 0.08925053,
+                  "n": 16,
+                  "std": 0.02397978,
+                  "values": [
+                    0.10560602,
+                    0.1026411,
+                    0.13055885,
+                    0.16342769,
+                    0.14049321,
+                    0.14501299,
+                    0.13169661,
+                    0.08925053,
+                    0.11001224,
+                    0.13053612,
+                    0.11038673,
+                    0.1295455,
+                    0.17632839,
+                    0.13410322,
+                    0.09203842,
+                    0.12420251
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": -0.08925053,
+                  "mean": -0.12599001,
+                  "min": -0.17632839,
+                  "n": 16,
+                  "std": 0.02397978,
+                  "values": [
+                    -0.10560602,
+                    -0.1026411,
+                    -0.13055885,
+                    -0.16342769,
+                    -0.14049321,
+                    -0.14501299,
+                    -0.13169661,
+                    -0.08925053,
+                    -0.11001224,
+                    -0.13053612,
+                    -0.11038673,
+                    -0.1295455,
+                    -0.17632839,
+                    -0.13410322,
+                    -0.09203842,
+                    -0.12420251
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 0
+              }
+            },
+            "mlp_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.24757869,
+                  "mean": 0.19031898,
+                  "min": 0.15354182,
+                  "n": 16,
+                  "std": 0.02737306,
+                  "values": [
+                    0.17388557,
+                    0.15354182,
+                    0.15753966,
+                    0.24757869,
+                    0.18142808,
+                    0.21242216,
+                    0.19310201,
+                    0.16863695,
+                    0.16981904,
+                    0.21398378,
+                    0.16874417,
+                    0.19850192,
+                    0.22039818,
+                    0.22898944,
+                    0.18097062,
+                    0.17556167
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": -0.15354182,
+                  "mean": -0.19031898,
+                  "min": -0.24757869,
+                  "n": 16,
+                  "std": 0.02737306,
+                  "values": [
+                    -0.17388557,
+                    -0.15354182,
+                    -0.15753966,
+                    -0.24757869,
+                    -0.18142808,
+                    -0.21242216,
+                    -0.19310201,
+                    -0.16863695,
+                    -0.16981904,
+                    -0.21398378,
+                    -0.16874417,
+                    -0.19850192,
+                    -0.22039818,
+                    -0.22898944,
+                    -0.18097062,
+                    -0.17556167
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 0
+              }
+            },
+            "tree_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.30832687,
+                  "mean": 0.25046893,
+                  "min": 0.18723663,
+                  "n": 16,
+                  "std": 0.03302434,
+                  "values": [
+                    0.24598411,
+                    0.19524518,
+                    0.18723663,
+                    0.30832687,
+                    0.23668231,
+                    0.28886269,
+                    0.25085401,
+                    0.22286311,
+                    0.22749273,
+                    0.25775422,
+                    0.25432984,
+                    0.28753665,
+                    0.26670006,
+                    0.28188618,
+                    0.25977425,
+                    0.23597407
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": -0.18723663,
+                  "mean": -0.25046893,
+                  "min": -0.30832687,
+                  "n": 16,
+                  "std": 0.03302434,
+                  "values": [
+                    -0.24598411,
+                    -0.19524518,
+                    -0.18723663,
+                    -0.30832687,
+                    -0.23668231,
+                    -0.28886269,
+                    -0.25085401,
+                    -0.22286311,
+                    -0.22749273,
+                    -0.25775422,
+                    -0.25432984,
+                    -0.28753665,
+                    -0.26670006,
+                    -0.28188618,
+                    -0.25977425,
+                    -0.23597407
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 0
+              }
+            }
+          },
+          "prior_quality": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.13938839,
+                "mean": 0.10351861,
+                "min": 0.07392327,
+                "n": 16,
+                "std": 0.02152147,
+                "values": [
+                  0.09065605,
+                  0.07671145,
+                  0.10636853,
+                  0.13938839,
+                  0.11282328,
+                  0.13445833,
+                  0.09987653,
+                  0.077301,
+                  0.08017303,
+                  0.11105833,
+                  0.08428729,
+                  0.11554147,
+                  0.1303082,
+                  0.12120435,
+                  0.07392327,
+                  0.10221831
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": -0.07392327,
+                "mean": -0.10351861,
+                "min": -0.13938839,
+                "n": 16,
+                "std": 0.02152147,
+                "values": [
+                  -0.09065605,
+                  -0.07671145,
+                  -0.10636853,
+                  -0.13938839,
+                  -0.11282328,
+                  -0.13445833,
+                  -0.09987653,
+                  -0.077301,
+                  -0.08017303,
+                  -0.11105833,
+                  -0.08428729,
+                  -0.11554147,
+                  -0.1303082,
+                  -0.12120435,
+                  -0.07392327,
+                  -0.10221831
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            }
+          }
+        }
+      },
+      "linear_fit": {
+        "entry_precision": "HAND_BETTER",
+        "local_rescue": "HAND_BETTER",
+        "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+        "prior_persists_for_arms": {
+          "linear_batch": "HAND_BETTER",
+          "mlp_batch": "HAND_BETTER",
+          "tree_batch": "HAND_BETTER"
+        },
+        "prior_quality": "HAND_BETTER",
+        "reports": {
+          "entry_precision": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.4,
+                "mean": 0.3359922,
+                "min": 0.25592417,
+                "n": 16,
+                "std": 0.03460293,
+                "values": [
+                  0.31693989,
+                  0.35784314,
+                  0.25592417,
+                  0.34761905,
+                  0.32989691,
+                  0.33488372,
+                  0.30593607,
+                  0.37444934,
+                  0.30653266,
+                  0.37610619,
+                  0.31862745,
+                  0.4,
+                  0.32432432,
+                  0.36538462,
+                  0.34123223,
+                  0.32017544
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": -0.25592417,
+                "mean": -0.3359922,
+                "min": -0.4,
+                "n": 16,
+                "std": 0.03460293,
+                "values": [
+                  -0.31693989,
+                  -0.35784314,
+                  -0.25592417,
+                  -0.34761905,
+                  -0.32989691,
+                  -0.33488372,
+                  -0.30593607,
+                  -0.37444934,
+                  -0.30653266,
+                  -0.37610619,
+                  -0.31862745,
+                  -0.4,
+                  -0.32432432,
+                  -0.36538462,
+                  -0.34123223,
+                  -0.32017544
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "local_rescue": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.05922375,
+                "mean": 0.02548827,
+                "min": -0.02783585,
+                "n": 16,
+                "std": 0.02308804,
+                "values": [
+                  0.01281596,
+                  0.00973034,
+                  0.0408356,
+                  0.05025301,
+                  0.03456852,
+                  0.05464947,
+                  0.03458773,
+                  -0.01180413,
+                  0.01932695,
+                  0.03101143,
+                  0.01204776,
+                  0.02577991,
+                  0.05922375,
+                  0.03538712,
+                  -0.02783585,
+                  0.02723479
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 14
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.02783585,
+                "mean": -0.02548827,
+                "min": -0.05922375,
+                "n": 16,
+                "std": 0.02308804,
+                "values": [
+                  -0.01281596,
+                  -0.00973034,
+                  -0.0408356,
+                  -0.05025301,
+                  -0.03456852,
+                  -0.05464947,
+                  -0.03458773,
+                  0.01180413,
+                  -0.01932695,
+                  -0.03101143,
+                  -0.01204776,
+                  -0.02577991,
+                  -0.05922375,
+                  -0.03538712,
+                  0.02783585,
+                  -0.02723479
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 2
+            }
+          },
+          "pooled_washout": {
+            "linear_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.29249879,
+                  "mean": 0.25053593,
+                  "min": 0.20006204,
+                  "n": 16,
+                  "std": 0.02727372,
+                  "values": [
+                    0.2464233,
+                    0.21661296,
+                    0.25879891,
+                    0.28572599,
+                    0.25831639,
+                    0.29249879,
+                    0.24813743,
+                    0.20006204,
+                    0.22384326,
+                    0.25405091,
+                    0.23625344,
+                    0.26716751,
+                    0.27822618,
+                    0.27898728,
+                    0.21148509,
+                    0.25198534
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": -0.20006204,
+                  "mean": -0.25053593,
+                  "min": -0.29249879,
+                  "n": 16,
+                  "std": 0.02727372,
+                  "values": [
+                    -0.2464233,
+                    -0.21661296,
+                    -0.25879891,
+                    -0.28572599,
+                    -0.25831639,
+                    -0.29249879,
+                    -0.24813743,
+                    -0.20006204,
+                    -0.22384326,
+                    -0.25405091,
+                    -0.23625344,
+                    -0.26716751,
+                    -0.27822618,
+                    -0.27898728,
+                    -0.21148509,
+                    -0.25198534
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 0
+              }
+            },
+            "mlp_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.34251804,
+                  "mean": 0.29871903,
+                  "min": 0.25346698,
+                  "n": 16,
+                  "std": 0.02813707,
+                  "values": [
+                    0.29353395,
+                    0.26617079,
+                    0.3061273,
+                    0.34251804,
+                    0.30880594,
+                    0.33730126,
+                    0.30124649,
+                    0.25892137,
+                    0.26279101,
+                    0.29543391,
+                    0.27996389,
+                    0.31623651,
+                    0.32451285,
+                    0.32943318,
+                    0.25346698,
+                    0.30304093
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": -0.25346698,
+                  "mean": -0.29871903,
+                  "min": -0.34251804,
+                  "n": 16,
+                  "std": 0.02813707,
+                  "values": [
+                    -0.29353395,
+                    -0.26617079,
+                    -0.3061273,
+                    -0.34251804,
+                    -0.30880594,
+                    -0.33730126,
+                    -0.30124649,
+                    -0.25892137,
+                    -0.26279101,
+                    -0.29543391,
+                    -0.27996389,
+                    -0.31623651,
+                    -0.32451285,
+                    -0.32943318,
+                    -0.25346698,
+                    -0.30304093
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 0
+              }
+            },
+            "tree_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.28635042,
+                  "mean": 0.24422525,
+                  "min": 0.19773184,
+                  "n": 16,
+                  "std": 0.02905143,
+                  "values": [
+                    0.23392129,
+                    0.20203509,
+                    0.25610086,
+                    0.28635042,
+                    0.24397256,
+                    0.2759868,
+                    0.23502264,
+                    0.19773184,
+                    0.21583074,
+                    0.24322638,
+                    0.22194773,
+                    0.27501173,
+                    0.27214992,
+                    0.2831161,
+                    0.21273875,
+                    0.25246122
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": -0.19773184,
+                  "mean": -0.24422525,
+                  "min": -0.28635042,
+                  "n": 16,
+                  "std": 0.02905143,
+                  "values": [
+                    -0.23392129,
+                    -0.20203509,
+                    -0.25610086,
+                    -0.28635042,
+                    -0.24397256,
+                    -0.2759868,
+                    -0.23502264,
+                    -0.19773184,
+                    -0.21583074,
+                    -0.24322638,
+                    -0.22194773,
+                    -0.27501173,
+                    -0.27214992,
+                    -0.2831161,
+                    -0.21273875,
+                    -0.25246122
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 0
+              }
+            }
+          },
+          "prior_quality": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.14019552,
+                "mean": 0.10814861,
+                "min": 0.07559895,
+                "n": 16,
+                "std": 0.02054346,
+                "values": [
+                  0.10621297,
+                  0.07802372,
+                  0.11429504,
+                  0.14019552,
+                  0.11678266,
+                  0.13563119,
+                  0.10287587,
+                  0.08450847,
+                  0.08754498,
+                  0.11473514,
+                  0.08882819,
+                  0.11672867,
+                  0.13405569,
+                  0.12522328,
+                  0.07559895,
+                  0.10913743
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": -0.07559895,
+                "mean": -0.10814861,
+                "min": -0.14019552,
+                "n": 16,
+                "std": 0.02054346,
+                "values": [
+                  -0.10621297,
+                  -0.07802372,
+                  -0.11429504,
+                  -0.14019552,
+                  -0.11678266,
+                  -0.13563119,
+                  -0.10287587,
+                  -0.08450847,
+                  -0.08754498,
+                  -0.11473514,
+                  -0.08882819,
+                  -0.11672867,
+                  -0.13405569,
+                  -0.12522328,
+                  -0.07559895,
+                  -0.10913743
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            }
+          }
+        }
+      },
+      "smooth_interaction_fit": {
+        "entry_precision": "HAND_BETTER",
+        "local_rescue": "HAND_BETTER",
+        "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+        "prior_persists_for_arms": {
+          "linear_batch": "HAND_BETTER",
+          "mlp_batch": "HAND_BETTER",
+          "tree_batch": "HAND_BETTER"
+        },
+        "prior_quality": "HAND_BETTER",
+        "reports": {
+          "entry_precision": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.3952381,
+                "mean": 0.33122902,
+                "min": 0.28436019,
+                "n": 16,
+                "std": 0.03036203,
+                "values": [
+                  0.33333333,
+                  0.33823529,
+                  0.28436019,
+                  0.34285714,
+                  0.34020619,
+                  0.32093023,
+                  0.30136986,
+                  0.37444934,
+                  0.31155779,
+                  0.37168142,
+                  0.29901961,
+                  0.3952381,
+                  0.31981982,
+                  0.34134615,
+                  0.32701422,
+                  0.29824561
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": -0.28436019,
+                "mean": -0.33122902,
+                "min": -0.3952381,
+                "n": 16,
+                "std": 0.03036203,
+                "values": [
+                  -0.33333333,
+                  -0.33823529,
+                  -0.28436019,
+                  -0.34285714,
+                  -0.34020619,
+                  -0.32093023,
+                  -0.30136986,
+                  -0.37444934,
+                  -0.31155779,
+                  -0.37168142,
+                  -0.29901961,
+                  -0.3952381,
+                  -0.31981982,
+                  -0.34134615,
+                  -0.32701422,
+                  -0.29824561
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "local_rescue": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.07122725,
+                "mean": 0.02619702,
+                "min": -0.00686221,
+                "n": 16,
+                "std": 0.02350999,
+                "values": [
+                  0.01486244,
+                  0.01164848,
+                  0.06025186,
+                  0.04017943,
+                  0.03618859,
+                  0.07122725,
+                  0.00054066,
+                  0.00534437,
+                  0.01771442,
+                  0.01946902,
+                  0.03212883,
+                  0.00354642,
+                  0.06545336,
+                  0.02935029,
+                  -0.00686221,
+                  0.01810912
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 15
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.00686221,
+                "mean": -0.02619702,
+                "min": -0.07122725,
+                "n": 16,
+                "std": 0.02350999,
+                "values": [
+                  -0.01486244,
+                  -0.01164848,
+                  -0.06025186,
+                  -0.04017943,
+                  -0.03618859,
+                  -0.07122725,
+                  -0.00054066,
+                  -0.00534437,
+                  -0.01771442,
+                  -0.01946902,
+                  -0.03212883,
+                  -0.00354642,
+                  -0.06545336,
+                  -0.02935029,
+                  0.00686221,
+                  -0.01810912
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 1
+            }
+          },
+          "pooled_washout": {
+            "linear_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.18701057,
+                  "mean": 0.13743736,
+                  "min": 0.09832516,
+                  "n": 16,
+                  "std": 0.02554707,
+                  "values": [
+                    0.12204189,
+                    0.10901676,
+                    0.13443637,
+                    0.17777962,
+                    0.15175263,
+                    0.16679685,
+                    0.1161383,
+                    0.09832516,
+                    0.13211405,
+                    0.16019451,
+                    0.12223082,
+                    0.13215532,
+                    0.18701057,
+                    0.1440138,
+                    0.11013462,
+                    0.13485642
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": -0.09832516,
+                  "mean": -0.13743736,
+                  "min": -0.18701057,
+                  "n": 16,
+                  "std": 0.02554707,
+                  "values": [
+                    -0.12204189,
+                    -0.10901676,
+                    -0.13443637,
+                    -0.17777962,
+                    -0.15175263,
+                    -0.16679685,
+                    -0.1161383,
+                    -0.09832516,
+                    -0.13211405,
+                    -0.16019451,
+                    -0.12223082,
+                    -0.13215532,
+                    -0.18701057,
+                    -0.1440138,
+                    -0.11013462,
+                    -0.13485642
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 0
+              }
+            },
+            "mlp_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.29526132,
+                  "mean": 0.22579373,
+                  "min": 0.15984056,
+                  "n": 16,
+                  "std": 0.04074256,
+                  "values": [
+                    0.24572324,
+                    0.15984056,
+                    0.1765988,
+                    0.28380111,
+                    0.25919184,
+                    0.29526132,
+                    0.23656461,
+                    0.17345118,
+                    0.19255259,
+                    0.24950806,
+                    0.20586829,
+                    0.25639759,
+                    0.24660146,
+                    0.23217702,
+                    0.18058735,
+                    0.21857468
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": -0.15984056,
+                  "mean": -0.22579373,
+                  "min": -0.29526132,
+                  "n": 16,
+                  "std": 0.04074256,
+                  "values": [
+                    -0.24572324,
+                    -0.15984056,
+                    -0.1765988,
+                    -0.28380111,
+                    -0.25919184,
+                    -0.29526132,
+                    -0.23656461,
+                    -0.17345118,
+                    -0.19255259,
+                    -0.24950806,
+                    -0.20586829,
+                    -0.25639759,
+                    -0.24660146,
+                    -0.23217702,
+                    -0.18058735,
+                    -0.21857468
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 0
+              }
+            },
+            "tree_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.26243184,
+                  "mean": 0.19609735,
+                  "min": 0.15008211,
+                  "n": 16,
+                  "std": 0.02512933,
+                  "values": [
+                    0.21053976,
+                    0.15008211,
+                    0.1825743,
+                    0.26243184,
+                    0.20450759,
+                    0.19720896,
+                    0.19877493,
+                    0.15483461,
+                    0.18132087,
+                    0.21094212,
+                    0.19108684,
+                    0.20913465,
+                    0.2044485,
+                    0.19543343,
+                    0.18733611,
+                    0.19690094
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": -0.15008211,
+                  "mean": -0.19609735,
+                  "min": -0.26243184,
+                  "n": 16,
+                  "std": 0.02512933,
+                  "values": [
+                    -0.21053976,
+                    -0.15008211,
+                    -0.1825743,
+                    -0.26243184,
+                    -0.20450759,
+                    -0.19720896,
+                    -0.19877493,
+                    -0.15483461,
+                    -0.18132087,
+                    -0.21094212,
+                    -0.19108684,
+                    -0.20913465,
+                    -0.2044485,
+                    -0.19543343,
+                    -0.18733611,
+                    -0.19690094
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 0
+              }
+            }
+          },
+          "prior_quality": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.13866485,
+                "mean": 0.10413154,
+                "min": 0.07589424,
+                "n": 16,
+                "std": 0.02071214,
+                "values": [
+                  0.09107551,
+                  0.07589424,
+                  0.10450462,
+                  0.13866485,
+                  0.11578972,
+                  0.13197633,
+                  0.09068612,
+                  0.07799871,
+                  0.08704849,
+                  0.11390594,
+                  0.08839547,
+                  0.11243869,
+                  0.12993568,
+                  0.12396196,
+                  0.07711864,
+                  0.1067096
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": -0.07589424,
+                "mean": -0.10413154,
+                "min": -0.13866485,
+                "n": 16,
+                "std": 0.02071214,
+                "values": [
+                  -0.09107551,
+                  -0.07589424,
+                  -0.10450462,
+                  -0.13866485,
+                  -0.11578972,
+                  -0.13197633,
+                  -0.09068612,
+                  -0.07799871,
+                  -0.08704849,
+                  -0.11390594,
+                  -0.08839547,
+                  -0.11243869,
+                  -0.12993568,
+                  -0.12396196,
+                  -0.07711864,
+                  -0.1067096
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            }
+          }
+        }
+      }
+    },
+    "llm_verbalized": {
+      "axis_interaction_fit": {
+        "entry_precision": "NO_CLEAR_DIFFERENCE",
+        "local_rescue": "VARIANT_BETTER",
+        "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+        "prior_persists_for_arms": {
+          "mlp_batch": "VARIANT_BETTER",
+          "tree_batch": "VARIANT_BETTER"
+        },
+        "prior_quality": "HAND_BETTER",
+        "reports": {
+          "entry_precision": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.04036458,
+                "mean": 0.01408627,
+                "min": -0.00205592,
+                "n": 16,
+                "std": 0.01285354,
+                "values": [
+                  0.02397114,
+                  0.04036458,
+                  0.02654769,
+                  0.01473214,
+                  0.02255155,
+                  0.00917515,
+                  0.0038349,
+                  0.00385463,
+                  0.03421404,
+                  0.00891869,
+                  0.00306373,
+                  0.01767113,
+                  0.00161881,
+                  0.01802885,
+                  -0.00111078,
+                  -0.00205592
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 14
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.00205592,
+                "mean": -0.01408627,
+                "min": -0.04036458,
+                "n": 16,
+                "std": 0.01285354,
+                "values": [
+                  -0.02397114,
+                  -0.04036458,
+                  -0.02654769,
+                  -0.01473214,
+                  -0.02255155,
+                  -0.00917515,
+                  -0.0038349,
+                  -0.00385463,
+                  -0.03421404,
+                  -0.00891869,
+                  -0.00306373,
+                  -0.01767113,
+                  -0.00161881,
+                  -0.01802885,
+                  0.00111078,
+                  0.00205592
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 2
+            }
+          },
+          "local_rescue": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": -0.02120959,
+                "mean": -0.04553955,
+                "min": -0.07881078,
+                "n": 16,
+                "std": 0.01302379,
+                "values": [
+                  -0.03947318,
+                  -0.04026339,
+                  -0.03721644,
+                  -0.05304089,
+                  -0.04904182,
+                  -0.02120959,
+                  -0.04672364,
+                  -0.06131077,
+                  -0.03137655,
+                  -0.0462252,
+                  -0.07881078,
+                  -0.046035,
+                  -0.03335841,
+                  -0.04813337,
+                  -0.04487972,
+                  -0.0515341
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.07881078,
+                "mean": 0.04553955,
+                "min": 0.02120959,
+                "n": 16,
+                "std": 0.01302379,
+                "values": [
+                  0.03947318,
+                  0.04026339,
+                  0.03721644,
+                  0.05304089,
+                  0.04904182,
+                  0.02120959,
+                  0.04672364,
+                  0.06131077,
+                  0.03137655,
+                  0.0462252,
+                  0.07881078,
+                  0.046035,
+                  0.03335841,
+                  0.04813337,
+                  0.04487972,
+                  0.0515341
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "pooled_washout": {
+            "linear_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.01790954,
+                  "mean": 0.00805439,
+                  "min": -0.00108473,
+                  "n": 16,
+                  "std": 0.00516245,
+                  "values": [
+                    0.00109156,
+                    0.003798,
+                    0.00942709,
+                    0.01240461,
+                    0.01324023,
+                    0.01393668,
+                    0.01790954,
+                    0.00792044,
+                    0.00781769,
+                    0.00192714,
+                    0.00504666,
+                    0.00797937,
+                    0.01231172,
+                    -0.00108473,
+                    0.00914616,
+                    0.00599806
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 15
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00108473,
+                  "mean": -0.00805439,
+                  "min": -0.01790954,
+                  "n": 16,
+                  "std": 0.00516245,
+                  "values": [
+                    -0.00109156,
+                    -0.003798,
+                    -0.00942709,
+                    -0.01240461,
+                    -0.01324023,
+                    -0.01393668,
+                    -0.01790954,
+                    -0.00792044,
+                    -0.00781769,
+                    -0.00192714,
+                    -0.00504666,
+                    -0.00797937,
+                    -0.01231172,
+                    0.00108473,
+                    -0.00914616,
+                    -0.00599806
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 1
+              }
+            },
+            "mlp_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": -0.00786619,
+                  "mean": -0.02309868,
+                  "min": -0.05155956,
+                  "n": 16,
+                  "std": 0.01797704,
+                  "values": [
+                    -0.01360331,
+                    -0.0120678,
+                    -0.05024271,
+                    -0.01029293,
+                    -0.05155956,
+                    -0.05091968,
+                    -0.01010271,
+                    -0.00786619,
+                    -0.01179955,
+                    -0.00810569,
+                    -0.05002278,
+                    -0.03517923,
+                    -0.01285104,
+                    -0.00925048,
+                    -0.0085035,
+                    -0.02721168
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.05155956,
+                  "mean": 0.02309868,
+                  "min": 0.00786619,
+                  "n": 16,
+                  "std": 0.01797704,
+                  "values": [
+                    0.01360331,
+                    0.0120678,
+                    0.05024271,
+                    0.01029293,
+                    0.05155956,
+                    0.05091968,
+                    0.01010271,
+                    0.00786619,
+                    0.01179955,
+                    0.00810569,
+                    0.05002278,
+                    0.03517923,
+                    0.01285104,
+                    0.00925048,
+                    0.0085035,
+                    0.02721168
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 16
+              }
+            },
+            "tree_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.00042052,
+                  "mean": -0.01045542,
+                  "min": -0.05625805,
+                  "n": 16,
+                  "std": 0.01552747,
+                  "values": [
+                    -0.02025231,
+                    0.00042052,
+                    -0.03569492,
+                    -0.00336426,
+                    -0.05625805,
+                    -0.00084821,
+                    -0.00858466,
+                    -0.00127666,
+                    -0.00634352,
+                    1.837e-05,
+                    -0.00066571,
+                    -0.01085896,
+                    -0.00041399,
+                    -0.0047758,
+                    -0.00294351,
+                    -0.01544504
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 2
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.05625805,
+                  "mean": 0.01045542,
+                  "min": -0.00042052,
+                  "n": 16,
+                  "std": 0.01552747,
+                  "values": [
+                    0.02025231,
+                    -0.00042052,
+                    0.03569492,
+                    0.00336426,
+                    0.05625805,
+                    0.00084821,
+                    0.00858466,
+                    0.00127666,
+                    0.00634352,
+                    -1.837e-05,
+                    0.00066571,
+                    0.01085896,
+                    0.00041399,
+                    0.0047758,
+                    0.00294351,
+                    0.01544504
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 14
+              }
+            }
+          },
+          "prior_quality": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.03728019,
+                "mean": 0.02373143,
+                "min": 0.00669873,
+                "n": 16,
+                "std": 0.007954,
+                "values": [
+                  0.02718317,
+                  0.03728019,
+                  0.02081097,
+                  0.00669873,
+                  0.01930896,
+                  0.02201769,
+                  0.02173631,
+                  0.03087752,
+                  0.034947,
+                  0.02427134,
+                  0.02605465,
+                  0.02143911,
+                  0.0163579,
+                  0.01555146,
+                  0.03427819,
+                  0.02088968
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": -0.00669873,
+                "mean": -0.02373143,
+                "min": -0.03728019,
+                "n": 16,
+                "std": 0.007954,
+                "values": [
+                  -0.02718317,
+                  -0.03728019,
+                  -0.02081097,
+                  -0.00669873,
+                  -0.01930896,
+                  -0.02201769,
+                  -0.02173631,
+                  -0.03087752,
+                  -0.034947,
+                  -0.02427134,
+                  -0.02605465,
+                  -0.02143911,
+                  -0.0163579,
+                  -0.01555146,
+                  -0.03427819,
+                  -0.02088968
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            }
+          }
+        }
+      },
+      "linear_fit": {
+        "entry_precision": "HAND_BETTER",
+        "local_rescue": "VARIANT_BETTER",
+        "pooled_washout": "PRIOR_WASHES_OUT_UNDER_POOLING",
+        "prior_persists_for_arms": {},
+        "prior_quality": "HAND_BETTER",
+        "reports": {
+          "entry_precision": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.06487439,
+                "mean": 0.02202736,
+                "min": -0.00188833,
+                "n": 16,
+                "std": 0.01648954,
+                "values": [
+                  0.02397114,
+                  0.06487439,
+                  -0.00188833,
+                  0.01949405,
+                  0.01739691,
+                  0.01847747,
+                  0.01296732,
+                  -0.00055066,
+                  0.02918891,
+                  0.00891869,
+                  0.03737745,
+                  0.03671875,
+                  0.01963682,
+                  0.03725962,
+                  0.01310723,
+                  0.01548794
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 14
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.00188833,
+                "mean": -0.02202736,
+                "min": -0.06487439,
+                "n": 16,
+                "std": 0.01648954,
+                "values": [
+                  -0.02397114,
+                  -0.06487439,
+                  0.00188833,
+                  -0.01949405,
+                  -0.01739691,
+                  -0.01847747,
+                  -0.01296732,
+                  0.00055066,
+                  -0.02918891,
+                  -0.00891869,
+                  -0.03737745,
+                  -0.03671875,
+                  -0.01963682,
+                  -0.03725962,
+                  -0.01310723,
+                  -0.01548794
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 2
+            }
+          },
+          "local_rescue": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": -0.02071503,
+                "mean": -0.0334509,
+                "min": -0.05055732,
+                "n": 16,
+                "std": 0.00921055,
+                "values": [
+                  -0.04271247,
+                  -0.02283454,
+                  -0.03448549,
+                  -0.03965377,
+                  -0.02740099,
+                  -0.02318982,
+                  -0.02345365,
+                  -0.03288243,
+                  -0.02633069,
+                  -0.02752206,
+                  -0.0378031,
+                  -0.04544947,
+                  -0.02071503,
+                  -0.04007229,
+                  -0.05055732,
+                  -0.04015124
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.05055732,
+                "mean": 0.0334509,
+                "min": 0.02071503,
+                "n": 16,
+                "std": 0.00921055,
+                "values": [
+                  0.04271247,
+                  0.02283454,
+                  0.03448549,
+                  0.03965377,
+                  0.02740099,
+                  0.02318982,
+                  0.02345365,
+                  0.03288243,
+                  0.02633069,
+                  0.02752206,
+                  0.0378031,
+                  0.04544947,
+                  0.02071503,
+                  0.04007229,
+                  0.05055732,
+                  0.04015124
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "pooled_washout": {
+            "linear_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.01815664,
+                  "mean": 0.0097646,
+                  "min": -0.00426984,
+                  "n": 16,
+                  "std": 0.00631368,
+                  "values": [
+                    0.01357687,
+                    0.01108351,
+                    0.01748609,
+                    0.00734731,
+                    0.01107391,
+                    0.01496542,
+                    0.01550378,
+                    -0.00426984,
+                    0.01103969,
+                    0.00119257,
+                    0.01815664,
+                    0.00187904,
+                    0.01292189,
+                    0.00534469,
+                    0.00629291,
+                    0.01263907
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 15
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00426984,
+                  "mean": -0.0097646,
+                  "min": -0.01815664,
+                  "n": 16,
+                  "std": 0.00631368,
+                  "values": [
+                    -0.01357687,
+                    -0.01108351,
+                    -0.01748609,
+                    -0.00734731,
+                    -0.01107391,
+                    -0.01496542,
+                    -0.01550378,
+                    0.00426984,
+                    -0.01103969,
+                    -0.00119257,
+                    -0.01815664,
+                    -0.00187904,
+                    -0.01292189,
+                    -0.00534469,
+                    -0.00629291,
+                    -0.01263907
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 1
+              }
+            },
+            "mlp_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.0017708,
+                  "mean": -0.00071441,
+                  "min": -0.00557044,
+                  "n": 16,
+                  "std": 0.00195246,
+                  "values": [
+                    0.00074656,
+                    0.0017708,
+                    -0.00038847,
+                    3.255e-05,
+                    -0.00220381,
+                    -0.00320829,
+                    0.00061165,
+                    -0.00203353,
+                    -0.00090387,
+                    0.00069323,
+                    0.00152671,
+                    -0.00557044,
+                    -0.00022524,
+                    0.00066465,
+                    -0.00255824,
+                    -0.00038488
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 7
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.00557044,
+                  "mean": 0.00071441,
+                  "min": -0.0017708,
+                  "n": 16,
+                  "std": 0.00195246,
+                  "values": [
+                    -0.00074656,
+                    -0.0017708,
+                    0.00038847,
+                    -3.255e-05,
+                    0.00220381,
+                    0.00320829,
+                    -0.00061165,
+                    0.00203353,
+                    0.00090387,
+                    -0.00069323,
+                    -0.00152671,
+                    0.00557044,
+                    0.00022524,
+                    -0.00066465,
+                    0.00255824,
+                    0.00038488
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 9
+              }
+            },
+            "tree_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.00928618,
+                  "mean": -0.00157322,
+                  "min": -0.01169414,
+                  "n": 16,
+                  "std": 0.00569695,
+                  "values": [
+                    -0.00297474,
+                    5.41e-05,
+                    0.00320809,
+                    -0.0018904,
+                    -0.00490912,
+                    -0.01169414,
+                    0.00063667,
+                    -0.01106951,
+                    -0.00095757,
+                    -0.00761452,
+                    0.00060807,
+                    0.00194656,
+                    0.00634073,
+                    0.00928618,
+                    -0.00066637,
+                    -0.00547551
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 7
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.01169414,
+                  "mean": 0.00157322,
+                  "min": -0.00928618,
+                  "n": 16,
+                  "std": 0.00569695,
+                  "values": [
+                    0.00297474,
+                    -5.41e-05,
+                    -0.00320809,
+                    0.0018904,
+                    0.00490912,
+                    0.01169414,
+                    -0.00063667,
+                    0.01106951,
+                    0.00095757,
+                    0.00761452,
+                    -0.00060807,
+                    -0.00194656,
+                    -0.00634073,
+                    -0.00928618,
+                    0.00066637,
+                    0.00547551
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 9
+              }
+            }
+          },
+          "prior_quality": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.03735204,
+                "mean": 0.02840756,
+                "min": 0.01712347,
+                "n": 16,
+                "std": 0.00649483,
+                "values": [
+                  0.0320601,
+                  0.03522191,
+                  0.02878016,
+                  0.01712347,
+                  0.02340286,
+                  0.02679077,
+                  0.0293481,
+                  0.03583391,
+                  0.03735204,
+                  0.0253507,
+                  0.03344189,
+                  0.01811684,
+                  0.02829488,
+                  0.02131309,
+                  0.03724799,
+                  0.02484222
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": -0.01712347,
+                "mean": -0.02840756,
+                "min": -0.03735204,
+                "n": 16,
+                "std": 0.00649483,
+                "values": [
+                  -0.0320601,
+                  -0.03522191,
+                  -0.02878016,
+                  -0.01712347,
+                  -0.02340286,
+                  -0.02679077,
+                  -0.0293481,
+                  -0.03583391,
+                  -0.03735204,
+                  -0.0253507,
+                  -0.03344189,
+                  -0.01811684,
+                  -0.02829488,
+                  -0.02131309,
+                  -0.03724799,
+                  -0.02484222
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            }
+          }
+        }
+      },
+      "smooth_interaction_fit": {
+        "entry_precision": "NO_CLEAR_DIFFERENCE",
+        "local_rescue": "VARIANT_BETTER",
+        "pooled_washout": "PRIOR_PERSISTS_UNDER_POOLING",
+        "prior_persists_for_arms": {
+          "linear_batch": "HAND_BETTER",
+          "mlp_batch": "VARIANT_BETTER",
+          "tree_batch": "VARIANT_BETTER"
+        },
+        "prior_quality": "HAND_BETTER",
+        "reports": {
+          "entry_precision": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.04526654,
+                "mean": 0.01726417,
+                "min": -0.00644189,
+                "n": 16,
+                "std": 0.0156304,
+                "values": [
+                  0.04036458,
+                  0.04526654,
+                  0.02654769,
+                  0.01473214,
+                  0.02770619,
+                  0.00452398,
+                  0.00840111,
+                  -0.00055066,
+                  0.03421404,
+                  0.00449392,
+                  0.01776961,
+                  0.03195685,
+                  0.01513232,
+                  0.01322115,
+                  -0.00111078,
+                  -0.00644189
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 13
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.00644189,
+                "mean": -0.01726417,
+                "min": -0.04526654,
+                "n": 16,
+                "std": 0.0156304,
+                "values": [
+                  -0.04036458,
+                  -0.04526654,
+                  -0.02654769,
+                  -0.01473214,
+                  -0.02770619,
+                  -0.00452398,
+                  -0.00840111,
+                  0.00055066,
+                  -0.03421404,
+                  -0.00449392,
+                  -0.01776961,
+                  -0.03195685,
+                  -0.01513232,
+                  -0.01322115,
+                  0.00111078,
+                  0.00644189
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 3
+            }
+          },
+          "local_rescue": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": -0.02194658,
+                "mean": -0.0426352,
+                "min": -0.06659553,
+                "n": 16,
+                "std": 0.01465291,
+                "values": [
+                  -0.03623941,
+                  -0.03262665,
+                  -0.02194658,
+                  -0.06659553,
+                  -0.04041602,
+                  -0.02331092,
+                  -0.06450077,
+                  -0.03003971,
+                  -0.03240116,
+                  -0.04753681,
+                  -0.03913253,
+                  -0.06057503,
+                  -0.02943722,
+                  -0.06076461,
+                  -0.04432301,
+                  -0.05231729
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": 0.06659553,
+                "mean": 0.0426352,
+                "min": 0.02194658,
+                "n": 16,
+                "std": 0.01465291,
+                "values": [
+                  0.03623941,
+                  0.03262665,
+                  0.02194658,
+                  0.06659553,
+                  0.04041602,
+                  0.02331092,
+                  0.06450077,
+                  0.03003971,
+                  0.03240116,
+                  0.04753681,
+                  0.03913253,
+                  0.06057503,
+                  0.02943722,
+                  0.06076461,
+                  0.04432301,
+                  0.05231729
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "pooled_washout": {
+            "linear_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.02321956,
+                  "mean": 0.01222862,
+                  "min": 0.00507857,
+                  "n": 16,
+                  "std": 0.00515858,
+                  "values": [
+                    0.00744655,
+                    0.00507857,
+                    0.01003855,
+                    0.01192993,
+                    0.0136888,
+                    0.02321956,
+                    0.01006437,
+                    0.01349654,
+                    0.01923081,
+                    0.01516629,
+                    0.00912715,
+                    0.01465685,
+                    0.00669906,
+                    0.00510408,
+                    0.01827073,
+                    0.01244008
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": -0.00507857,
+                  "mean": -0.01222862,
+                  "min": -0.02321956,
+                  "n": 16,
+                  "std": 0.00515858,
+                  "values": [
+                    -0.00744655,
+                    -0.00507857,
+                    -0.01003855,
+                    -0.01192993,
+                    -0.0136888,
+                    -0.02321956,
+                    -0.01006437,
+                    -0.01349654,
+                    -0.01923081,
+                    -0.01516629,
+                    -0.00912715,
+                    -0.01465685,
+                    -0.00669906,
+                    -0.00510408,
+                    -0.01827073,
+                    -0.01244008
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 0
+              }
+            },
+            "mlp_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.01309246,
+                  "mean": -0.01823189,
+                  "min": -0.0613016,
+                  "n": 16,
+                  "std": 0.01878487,
+                  "values": [
+                    0.01309246,
+                    -0.04353429,
+                    -0.0613016,
+                    -0.02335371,
+                    -0.00433061,
+                    -0.00100037,
+                    -0.00795385,
+                    -0.01127347,
+                    -0.02221494,
+                    -0.00637041,
+                    -0.0302631,
+                    -0.00577144,
+                    -0.00140443,
+                    -0.03236026,
+                    -0.03225748,
+                    -0.0214128
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 1
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.0613016,
+                  "mean": 0.01823189,
+                  "min": -0.01309246,
+                  "n": 16,
+                  "std": 0.01878487,
+                  "values": [
+                    -0.01309246,
+                    0.04353429,
+                    0.0613016,
+                    0.02335371,
+                    0.00433061,
+                    0.00100037,
+                    0.00795385,
+                    0.01127347,
+                    0.02221494,
+                    0.00637041,
+                    0.0302631,
+                    0.00577144,
+                    0.00140443,
+                    0.03236026,
+                    0.03225748,
+                    0.0214128
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 15
+              }
+            },
+            "tree_batch": {
+              "hand_over_variant": {
+                "improvement": {
+                  "max": 0.00520236,
+                  "mean": -0.01036519,
+                  "min": -0.0249914,
+                  "n": 16,
+                  "std": 0.00801981,
+                  "values": [
+                    -0.00524075,
+                    -0.01719767,
+                    -0.02171457,
+                    -0.00221531,
+                    -0.00729384,
+                    -0.0249914,
+                    -0.00663021,
+                    -0.00676879,
+                    -0.00428786,
+                    -0.01158799,
+                    -0.00373612,
+                    -0.01718292,
+                    -0.01514591,
+                    -0.01754506,
+                    -0.00950692,
+                    0.00520236
+                  ]
+                },
+                "pass": false,
+                "positive_replicates": 1
+              },
+              "variant_over_hand": {
+                "improvement": {
+                  "max": 0.0249914,
+                  "mean": 0.01036519,
+                  "min": -0.00520236,
+                  "n": 16,
+                  "std": 0.00801981,
+                  "values": [
+                    0.00524075,
+                    0.01719767,
+                    0.02171457,
+                    0.00221531,
+                    0.00729384,
+                    0.0249914,
+                    0.00663021,
+                    0.00676879,
+                    0.00428786,
+                    0.01158799,
+                    0.00373612,
+                    0.01718292,
+                    0.01514591,
+                    0.01754506,
+                    0.00950692,
+                    -0.00520236
+                  ]
+                },
+                "pass": true,
+                "positive_replicates": 15
+              }
+            }
+          },
+          "prior_quality": {
+            "hand_over_variant": {
+              "improvement": {
+                "max": 0.03944982,
+                "mean": 0.02395574,
+                "min": 0.00619093,
+                "n": 16,
+                "std": 0.0089424,
+                "values": [
+                  0.02988866,
+                  0.03944982,
+                  0.01923616,
+                  0.00619093,
+                  0.02255438,
+                  0.02219811,
+                  0.02044771,
+                  0.02906988,
+                  0.0374146,
+                  0.02442339,
+                  0.02409801,
+                  0.02057627,
+                  0.01397324,
+                  0.01423786,
+                  0.03641614,
+                  0.02311662
+                ]
+              },
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "variant_over_hand": {
+              "improvement": {
+                "max": -0.00619093,
+                "mean": -0.02395574,
+                "min": -0.03944982,
+                "n": 16,
+                "std": 0.0089424,
+                "values": [
+                  -0.02988866,
+                  -0.03944982,
+                  -0.01923616,
+                  -0.00619093,
+                  -0.02255438,
+                  -0.02219811,
+                  -0.02044771,
+                  -0.02906988,
+                  -0.0374146,
+                  -0.02442339,
+                  -0.02409801,
+                  -0.02057627,
+                  -0.01397324,
+                  -0.01423786,
+                  -0.03641614,
+                  -0.02311662
+                ]
+              },
+              "pass": false,
+              "positive_replicates": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "prior_profiles": {
+    "linear_fit": {
+      "hand": {
+        "fixed_entry": 0.822998,
+        "fixed_entrant_precision": 0.335992,
+        "fixed_probe_brier": 0.203062,
+        "fixed_probe_auc": 0.655859,
+        "online_probe_brier": 0.285723,
+        "field_evidence_per_learner": 138.375,
+        "pooled_probe_brier": {
+          "linear_batch": 0.060675,
+          "tree_batch": 0.066986,
+          "mlp_batch": 0.012492
+        }
+      },
+      "llm_uncalibrated": {
+        "fixed_entry": 0.0,
+        "fixed_entrant_precision": 0.0,
+        "fixed_probe_brier": 0.311211,
+        "fixed_probe_auc": 0.701788,
+        "online_probe_brier": 0.311211,
+        "field_evidence_per_learner": 0.0,
+        "pooled_probe_brier": {
+          "linear_batch": 0.311211,
+          "tree_batch": 0.311211,
+          "mlp_batch": 0.311211
+        }
+      },
+      "llm_base_rate": {
+        "fixed_entry": 0.330566,
+        "fixed_entrant_precision": 0.479049,
+        "fixed_probe_brier": 0.200971,
+        "fixed_probe_auc": 0.701788,
+        "online_probe_brier": 0.263064,
+        "field_evidence_per_learner": 95.25,
+        "pooled_probe_brier": {
+          "linear_batch": 0.068694,
+          "tree_batch": 0.06343,
+          "mlp_batch": 0.014427
+        }
+      },
+      "llm_hand_level": {
+        "fixed_entry": 0.4646,
+        "fixed_entrant_precision": 0.441273,
+        "fixed_probe_brier": 0.207206,
+        "fixed_probe_auc": 0.701788,
+        "online_probe_brier": 0.263948,
+        "field_evidence_per_learner": 108.84375,
+        "pooled_probe_brier": {
+          "linear_batch": 0.062667,
+          "tree_batch": 0.063058,
+          "mlp_batch": 0.013254
+        }
+      },
+      "llm_verbalized": {
+        "fixed_entry": 1.0,
+        "fixed_entrant_precision": 0.313965,
+        "fixed_probe_brier": 0.23147,
+        "fixed_probe_auc": 0.626673,
+        "online_probe_brier": 0.252272,
+        "field_evidence_per_learner": 191.578125,
+        "pooled_probe_brier": {
+          "linear_batch": 0.07044,
+          "tree_batch": 0.065412,
+          "mlp_batch": 0.011777
+        }
+      },
+      "oracle_linear": {
+        "fixed_entry": 0.336914,
+        "fixed_entrant_precision": 0.92129,
+        "fixed_probe_brier": 0.028119,
+        "fixed_probe_auc": 0.999428,
+        "online_probe_brier": 0.038554,
+        "field_evidence_per_learner": 84.890625,
+        "pooled_probe_brier": {
+          "linear_batch": 0.028902,
+          "tree_batch": 0.047593,
+          "mlp_batch": 0.016784
+        }
+      },
+      "flat": {
+        "fixed_entry": 1.0,
+        "fixed_entrant_precision": 0.313965,
+        "fixed_probe_brier": 0.25,
+        "fixed_probe_auc": 0.5,
+        "online_probe_brier": 0.264808,
+        "field_evidence_per_learner": 192.0,
+        "pooled_probe_brier": {
+          "linear_batch": 0.075476,
+          "tree_batch": 0.067059,
+          "mlp_batch": 0.0119
+        }
+      }
+    },
+    "smooth_interaction_fit": {
+      "hand": {
+        "fixed_entry": 0.822998,
+        "fixed_entrant_precision": 0.331229,
+        "fixed_probe_brier": 0.207277,
+        "fixed_probe_auc": 0.636236,
+        "online_probe_brier": 0.285211,
+        "field_evidence_per_learner": 137.390625,
+        "pooled_probe_brier": {
+          "linear_batch": 0.173971,
+          "tree_batch": 0.115311,
+          "mlp_batch": 0.085615
+        }
+      },
+      "llm_uncalibrated": {
+        "fixed_entry": 0.0,
+        "fixed_entrant_precision": 0.0,
+        "fixed_probe_brier": 0.311408,
+        "fixed_probe_auc": 0.64115,
+        "online_probe_brier": 0.311408,
+        "field_evidence_per_learner": 0.0,
+        "pooled_probe_brier": {
+          "linear_batch": 0.311408,
+          "tree_batch": 0.311408,
+          "mlp_batch": 0.311408
+        }
+      },
+      "llm_base_rate": {
+        "fixed_entry": 0.330566,
+        "fixed_entrant_precision": 0.464174,
+        "fixed_probe_brier": 0.220108,
+        "fixed_probe_auc": 0.64115,
+        "online_probe_brier": 0.268983,
+        "field_evidence_per_learner": 92.765625,
+        "pooled_probe_brier": {
+          "linear_batch": 0.18256,
+          "tree_batch": 0.128473,
+          "mlp_batch": 0.107717
+        }
+      },
+      "llm_hand_level": {
+        "fixed_entry": 0.4646,
+        "fixed_entrant_precision": 0.412416,
+        "fixed_probe_brier": 0.228502,
+        "fixed_probe_auc": 0.64115,
+        "online_probe_brier": 0.265329,
+        "field_evidence_per_learner": 107.953125,
+        "pooled_probe_brier": {
+          "linear_batch": 0.184377,
+          "tree_batch": 0.127002,
+          "mlp_batch": 0.099361
+        }
+      },
+      "llm_verbalized": {
+        "fixed_entry": 1.0,
+        "fixed_entrant_precision": 0.313965,
+        "fixed_probe_brier": 0.231233,
+        "fixed_probe_auc": 0.641353,
+        "online_probe_brier": 0.242576,
+        "field_evidence_per_learner": 191.578125,
+        "pooled_probe_brier": {
+          "linear_batch": 0.1862,
+          "tree_batch": 0.104946,
+          "mlp_batch": 0.067383
+        }
+      },
+      "oracle_linear": {
+        "fixed_entry": 0.38208,
+        "fixed_entrant_precision": 0.512932,
+        "fixed_probe_brier": 0.177996,
+        "fixed_probe_auc": 0.730112,
+        "online_probe_brier": 0.259425,
+        "field_evidence_per_learner": 79.875,
+        "pooled_probe_brier": {
+          "linear_batch": 0.169948,
+          "tree_batch": 0.141983,
+          "mlp_batch": 0.115252
+        }
+      },
+      "flat": {
+        "fixed_entry": 1.0,
+        "fixed_entrant_precision": 0.313965,
+        "fixed_probe_brier": 0.25,
+        "fixed_probe_auc": 0.5,
+        "online_probe_brier": 0.255367,
+        "field_evidence_per_learner": 192.0,
+        "pooled_probe_brier": {
+          "linear_batch": 0.187517,
+          "tree_batch": 0.104235,
+          "mlp_batch": 0.067515
+        }
+      }
+    },
+    "axis_interaction_fit": {
+      "hand": {
+        "fixed_entry": 0.822998,
+        "fixed_entrant_precision": 0.328051,
+        "fixed_probe_brier": 0.207679,
+        "fixed_probe_auc": 0.625198,
+        "online_probe_brier": 0.28891,
+        "field_evidence_per_learner": 137.90625,
+        "pooled_probe_brier": {
+          "linear_batch": 0.185208,
+          "tree_batch": 0.060729,
+          "mlp_batch": 0.120879
+        }
+      },
+      "llm_uncalibrated": {
+        "fixed_entry": 0.0,
+        "fixed_entrant_precision": 0.0,
+        "fixed_probe_brier": 0.311198,
+        "fixed_probe_auc": 0.627313,
+        "online_probe_brier": 0.311198,
+        "field_evidence_per_learner": 0.0,
+        "pooled_probe_brier": {
+          "linear_batch": 0.311198,
+          "tree_batch": 0.311198,
+          "mlp_batch": 0.311198
+        }
+      },
+      "llm_base_rate": {
+        "fixed_entry": 0.330566,
+        "fixed_entrant_precision": 0.455014,
+        "fixed_probe_brier": 0.22314,
+        "fixed_probe_auc": 0.627313,
+        "online_probe_brier": 0.26557,
+        "field_evidence_per_learner": 95.71875,
+        "pooled_probe_brier": {
+          "linear_batch": 0.196329,
+          "tree_batch": 0.083306,
+          "mlp_batch": 0.144174
+        }
+      },
+      "llm_hand_level": {
+        "fixed_entry": 0.4646,
+        "fixed_entrant_precision": 0.395781,
+        "fixed_probe_brier": 0.233096,
+        "fixed_probe_auc": 0.627313,
+        "online_probe_brier": 0.266478,
+        "field_evidence_per_learner": 109.96875,
+        "pooled_probe_brier": {
+          "linear_batch": 0.195963,
+          "tree_batch": 0.073225,
+          "mlp_batch": 0.132738
+        }
+      },
+      "llm_verbalized": {
+        "fixed_entry": 1.0,
+        "fixed_entrant_precision": 0.313965,
+        "fixed_probe_brier": 0.231411,
+        "fixed_probe_auc": 0.627547,
+        "online_probe_brier": 0.24337,
+        "field_evidence_per_learner": 191.578125,
+        "pooled_probe_brier": {
+          "linear_batch": 0.193262,
+          "tree_batch": 0.050274,
+          "mlp_batch": 0.09778
+        }
+      },
+      "oracle_linear": {
+        "fixed_entry": 0.377197,
+        "fixed_entrant_precision": 0.482143,
+        "fixed_probe_brier": 0.187744,
+        "fixed_probe_auc": 0.690548,
+        "online_probe_brier": 0.275157,
+        "field_evidence_per_learner": 88.3125,
+        "pooled_probe_brier": {
+          "linear_batch": 0.188727,
+          "tree_batch": 0.087932,
+          "mlp_batch": 0.144408
+        }
+      },
+      "flat": {
+        "fixed_entry": 1.0,
+        "fixed_entrant_precision": 0.313965,
+        "fixed_probe_brier": 0.25,
+        "fixed_probe_auc": 0.5,
+        "online_probe_brier": 0.256622,
+        "field_evidence_per_learner": 192.0,
+        "pooled_probe_brier": {
+          "linear_batch": 0.193992,
+          "tree_batch": 0.050926,
+          "mlp_batch": 0.097861
+        }
+      }
+    }
+  },
+  "post_hoc_descriptive": {
+    "status": "POST_HOC_DESCRIPTIVE_NOT_REGISTERED_NO_NEW_EXECUTION",
+    "online_probe_brier_improvement_over_flat": {
+      "linear_fit": {
+        "hand": {
+          "mean": -0.020914,
+          "min": -0.041007,
+          "positive_replicates": 0
+        },
+        "llm_base_rate": {
+          "mean": 0.001744,
+          "min": -0.02815,
+          "positive_replicates": 7
+        },
+        "llm_hand_level": {
+          "mean": 0.00086,
+          "min": -0.026223,
+          "positive_replicates": 8
+        },
+        "llm_verbalized": {
+          "mean": 0.012536,
+          "min": 0.007776,
+          "positive_replicates": 16
+        },
+        "oracle_linear": {
+          "mean": 0.226254,
+          "min": 0.213748,
+          "positive_replicates": 16
+        }
+      },
+      "smooth_interaction_fit": {
+        "hand": {
+          "mean": -0.029844,
+          "min": -0.057844,
+          "positive_replicates": 0
+        },
+        "llm_base_rate": {
+          "mean": -0.013616,
+          "min": -0.034955,
+          "positive_replicates": 4
+        },
+        "llm_hand_level": {
+          "mean": -0.009962,
+          "min": -0.046859,
+          "positive_replicates": 5
+        },
+        "llm_verbalized": {
+          "mean": 0.012791,
+          "min": 0.000218,
+          "positive_replicates": 16
+        },
+        "oracle_linear": {
+          "mean": -0.004058,
+          "min": -0.037316,
+          "positive_replicates": 7
+        }
+      },
+      "axis_interaction_fit": {
+        "hand": {
+          "mean": -0.032288,
+          "min": -0.069674,
+          "positive_replicates": 0
+        },
+        "llm_base_rate": {
+          "mean": -0.008948,
+          "min": -0.034204,
+          "positive_replicates": 3
+        },
+        "llm_hand_level": {
+          "mean": -0.009856,
+          "min": -0.048223,
+          "positive_replicates": 5
+        },
+        "llm_verbalized": {
+          "mean": 0.013252,
+          "min": 0.003952,
+          "positive_replicates": 16
+        },
+        "oracle_linear": {
+          "mean": -0.018535,
+          "min": -0.046288,
+          "positive_replicates": 2
+        }
+      }
+    },
+    "fixed_probe_brier_improvement_over_flat": {
+      "linear_fit": {
+        "hand": {
+          "mean": 0.046938,
+          "min": 0.032694,
+          "positive_replicates": 16
+        },
+        "llm_base_rate": {
+          "mean": 0.049029,
+          "min": 0.018463,
+          "positive_replicates": 16
+        },
+        "llm_hand_level": {
+          "mean": 0.042794,
+          "min": 0.012832,
+          "positive_replicates": 16
+        },
+        "llm_verbalized": {
+          "mean": 0.01853,
+          "min": 0.008704,
+          "positive_replicates": 16
+        }
+      },
+      "smooth_interaction_fit": {
+        "hand": {
+          "mean": 0.042723,
+          "min": 0.02811,
+          "positive_replicates": 16
+        },
+        "llm_base_rate": {
+          "mean": 0.029892,
+          "min": -0.006352,
+          "positive_replicates": 13
+        },
+        "llm_hand_level": {
+          "mean": 0.021498,
+          "min": -0.016706,
+          "positive_replicates": 12
+        },
+        "llm_verbalized": {
+          "mean": 0.018767,
+          "min": 0.007489,
+          "positive_replicates": 16
+        }
+      },
+      "axis_interaction_fit": {
+        "hand": {
+          "mean": 0.042321,
+          "min": 0.031403,
+          "positive_replicates": 16
+        },
+        "llm_base_rate": {
+          "mean": 0.02686,
+          "min": 5.8e-05,
+          "positive_replicates": 16
+        },
+        "llm_hand_level": {
+          "mean": 0.016904,
+          "min": -0.012242,
+          "positive_replicates": 13
+        },
+        "llm_verbalized": {
+          "mean": 0.018589,
+          "min": 0.009964,
+          "positive_replicates": 16
+        }
+      }
+    },
+    "hand_level_control_entry_rate_vs_hand": {
+      "linear_fit": [
+        0.4646,
+        0.822998
+      ],
+      "smooth_interaction_fit": [
+        0.4646,
+        0.822998
+      ],
+      "axis_interaction_fit": [
+        0.4646,
+        0.822998
+      ]
+    },
+    "spearman_evidence_vs_pooled_probe_brier_across_priors": {
+      "linear_fit": {
+        "linear_batch": 0.6,
+        "tree_batch": 0.8,
+        "mlp_batch": -0.9
+      },
+      "smooth_interaction_fit": {
+        "linear_batch": 0.7,
+        "tree_batch": -1.0,
+        "mlp_batch": -0.9
+      },
+      "axis_interaction_fit": {
+        "linear_batch": -0.6,
+        "tree_batch": -0.9,
+        "mlp_batch": -0.9
+      }
+    }
+  },
+  "scientific_assessment": {
+    "calibration_removes_self_sealing": true,
+    "primary_variant_llm_base_rate": "SELECTS_BETTER_ENTRANTS_IN_EVERY_WORLD_HELPS_LOCAL_LEARNING_IN_TWO_OF_THREE_NO_BETTER_AS_A_FORECAST_AND_WEAKER_UNDER_POOLING_IN_INTERACTION_WORLDS",
+    "mechanism": "EXPLORATION_EXPLOITATION_TRADEOFF_SELECTIVE_PRIORS_PICK_BETTER_ENTRANTS_BUT_GENERATE_LESS_EVIDENCE_FOR_POOLED_LEARNING",
+    "local_rescue_source": "MOSTLY_ESCAPING_THE_HAND_PRESSURE_PRIOR_ONLY_THE_VERBALIZED_READOUT_BEATS_THE_FLAT_PRIOR",
+    "llm_prior_information": "ALL_LLM_VARIANTS_BEAT_THE_FLAT_PRIOR_AS_STATIC_FORECASTS_COMPARABLE_TO_THE_HAND_RULE_IN_THE_LINEAR_WORLD",
+    "hand_level_control_limitation": "EQUAL_MEAN_DID_NOT_EQUALIZE_ENTRY_BECAUSE_THE_LLM_PRIOR_IS_MORE_DISPERSED",
+    "llm_knowledge_of_real_pivots": "NOT_ESTABLISHED",
+    "model_selected": "NO",
+    "reason": "Aggregate-only calibration lets the once-elicited Qwen prior drive behavior. Calibrated to a 0.30 base rate, it admits about a third of agents and picks entrants who are productive 46 to 48 percent of the time, against 33 percent under the hand rule, in every replicate of every world. As a probability forecast it is no better than the hand rule, and its selectivity leaves pooled learners about 30 percent less evidence, so they end up worse in the interaction worlds. The verbalized prior admits everyone. It produces the most evidence and the best pooled nonlinear learning, and it is the only LLM variant that improves neighbor-scale learning beyond a no-knowledge prior."
+  },
+  "framework_assessment": {
+    "hybrid_design_lesson": "CALIBRATE_THE_ELICITED_PRIOR_AND_CHOOSE_ITS_SELECTIVITY_DELIBERATELY_BECAUSE_THE_PRIOR_SETS_THE_EXPLORATION_REGIME",
+    "where_llm_knowledge_pays": "IMMEDIATE_SELECTION_OF_WHO_ACTS_AND_MODESTLY_LOCAL_LEARNING_NOT_POOLED_LEARNING_WHICH_NEEDS_EXPLORATION",
+    "candidate_next_design": "SEPARATE_SELECTION_FROM_EXPLORATION_FOR_EXAMPLE_AN_LLM_PRIOR_WITH_AN_EXPLORATION_FLOOR",
+    "no_post_result_tuning": true
+  },
+  "boundaries": {
+    "empirical_rows_read": 0,
+    "generic_nabm_api_changed": false,
+    "llm_knowledge_of_real_pivots": "NOT_ESTABLISHED_THE_WORLDS_ARE_SYNTHETIC",
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "new_llm_calls": 0,
+    "package_promotion": "NOT_AUTHORIZED",
+    "paid_api_calls": 0,
+    "repository_only": true,
+    "scientific_effect": "NOT_ESTABLISHED"
+  }
+}
