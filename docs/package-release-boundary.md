@@ -187,6 +187,11 @@ entry hazard, simulation-side timing observables, and a compute-cost benchmark.
 Its contract, runner, tests, and evidence stay outside the package, and it
 changes no generic API.
 
+The local-LLM prior pilot is repository-only. It elicits a prior once from a
+pinned local Qwen model and evaluates it in the Pivot ABM. Its contract, runner,
+tests, elicitation artifacts, and evidence stay outside the package, and the
+package gains no LLM dependency.
+
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy
 reference auditor live at

@@ -1,0 +1,325 @@
+schema_version: pivot_llm_prior_pilot.v1
+label: pivot_llm_prior_pilot_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+
+purpose:
+  primary_goal: >-
+    TEST_WHETHER_A_LOCAL_LLM_CAN_FILL_THE_NABM_PRIOR_SLOT_ONCE_AND_WHAT_THAT_PRIOR_DOES_FOR_EVIDENCE_STARVED_AND_POOLED_LEARNING
+  question: >-
+    Elicited once from a local LLM and distilled into the existing logistic
+    prior slot, is an LLM prior a better starting policy than the hand-set
+    rule? Does it rescue neighbor-scale learning? Does pooled evidence wash it
+    out? What does one elicitation cost, against an LLM queried at every agent
+    step?
+  positioning: >-
+    NABM_BETWEEN_RULE_BASED_ABM_AND_LLM_AGENTS_LLM_KNOWLEDGE_ENTERS_ONCE_AS_A_PRIOR_NABM_LEARNS_AND_SCALES
+  backend_decision: LOCAL_QWEN_BY_USER_INSTRUCTION_NO_PAID_API
+
+source_bindings:
+  - path: scripts/prototype_pivot_nonlinear_policy_abm_v2.py
+    sha256: ed827c5b1cddf6a36e32bfd6ebb4e41a1773af10ebcab975bf5c54e5c5887436
+    role: IMPORTED_ABM_ARM_RUNNER_PROBE_COHORT_AND_CROSS_FIT_FIELD
+  - path: scripts/prototype_pivot_nonlinear_policy_abm_v1.py
+    sha256: c0fa1621eab02140f5b6bc0e0a54c35c0df8e3ed6498ac391c8665b17f754cdb
+    role: FIT_WORLDS_BATCH_LEARNERS_AND_NESTING_CHECK
+  - path: scripts/prototype_pivot_relative_delay_cost_v1.py
+    sha256: 4fb362e67e1450820e7763b48e299e2dc53777d16fffbd6439c37b8267348bc7
+    role: NABM_COST_LEDGER_REFERENCE
+  - path: experiments/evidence/results/pivot_relative_delay_cost_v1_20260929.summary.json
+    sha256: b3d990a35b53066b835c9683f09476088ffc9cd10f64881389b16b2a5e158b3e
+    role: NABM_CPU_COST_PER_AGENT_STEP
+  - path: scripts/prototype_pivot_persistence_exit_v1.py
+    sha256: e8c604ac33f34cc58496723c2adff8e4d30c05182ee40cad114d961be3b17991
+    role: NESTED_PERSISTENCE_PREDECESSOR
+  - path: scripts/prototype_pivot_delayed_feedback_learning_v1.py
+    sha256: 9555b0968293ec89620ff461e7c449fee098a7eb8809be2b936812b521358515
+    role: VISIBILITY_QUEUE_AND_PRECOMMIT_HELPERS
+  - path: examples/research_pivot_study.py
+    sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+    role: POPULATION_AND_LINEAR_PRODUCTIVE_FIT
+  - path: examples/research_pivot_learning_study.py
+    sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+    role: HAND_SET_PRIOR_AND_PRIOR_SLOT
+  - path: src/neural_abm/api.py
+    sha256: 83005b43023d29640d96a8929aaab5e5c552542c7c9d797c288e5820a7061898
+    role: UNCHANGED_GENERIC_TORCH_API
+  - path: src/neural_abm/unit_core.py
+    sha256: d399a6fc29f1b2efd3a648f48c79d7f8cab927e704974223ffabf861333ff4da
+    role: UNCHANGED_GENERIC_LIFECYCLE_CORE
+
+llm:
+  model_id: Qwen/Qwen3-4B-Instruct-2507
+  snapshot: cdbee75f17c01a7cc42f958dc650907174af0554
+  local_files_only: true
+  snapshot_file_sha256:
+    config.json: 5beea1a4a34c62782bfb2f911c606741a3bab8f92d80a118fa053c28af12e8ba
+    model.safetensors.index.json: d6c42883a895dfef5b0080ed2116a1bcd764f558406b98923d675978a1abf29c
+    tokenizer.json: aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4
+    generation_config.json: 835fffe355c9438e7a25be099b3fccaa98350b83451f9fd2d99512e74f1ade48
+  weight_shards: HASHED_AND_RECORDED_IN_THE_ELICITATION_RECEIPT
+  runtime:
+    transformers: 5.14.1
+    install: EPHEMERAL_UV_RUN_WITH_NO_PROJECT_DEPENDENCY_CHANGE
+    dtype: bfloat16
+    device: cuda
+    batch_size: 1
+    batch_size_reason: >-
+      A_DRY_RUN_ON_A_DISJOINT_COHORT_SHOWED_BF16_LOG_ODDS_SHIFT_UP_TO_1.0_BETWEEN_BATCH_32_AND_1_SO_EACH_PROMPT_RUNS_ALONE_WITHOUT_PADDING
+    sensitivity_batch_size: 32
+    padding_side: left
+  decoding:
+    primary: FIRST_ANSWER_TOKEN_LOGITS_NO_SAMPLING
+    secondary: GREEDY_GENERATION_MAX_8_NEW_TOKENS
+
+elicitation:
+  design_cohort:
+    scenario: hot_field_hype
+    base_seed: 20261016
+    replicates: 4
+    agents_per_replicate: 256
+    profiles: 1024
+  features_in_prompt_order:
+    - field_opportunity
+    - resource_security
+    - network_support
+    - skill_distance
+    - reputation_risk
+    - openness
+    - funding_signal
+    - attention_signal
+    - peer_success_signal
+  system_prompt: >-
+    You are an expert in the science of science who studies how researchers
+    move between research fields. You give careful, calibrated judgments.
+  profile_template: |-
+    A researcher is considering pivoting into a hot emerging research field that is currently receiving a surge of attention. Each attribute below is scored from 0 (very low) to 1 (very high).
+
+    - Opportunity in the target field: {field_opportunity:.2f}
+    - Resource security (funding and job stability): {resource_security:.2f}
+    - Network support (collaborators who can help in the new field): {network_support:.2f}
+    - Skill distance (how far the new field is from their current expertise): {skill_distance:.2f}
+    - Reputation risk of switching fields: {reputation_risk:.2f}
+    - Openness to new ideas and methods: {openness:.2f}
+    - Dedicated funding for moving into the field: {funding_signal:.2f}
+    - Attention the field draws for this researcher: {attention_signal:.2f}
+    - Visible success of peers who already moved: {peer_success_signal:.2f}
+  primary_question: >-
+    If this researcher pivots now, will the pivot be productive, meaning they
+    establish a sustained, productive research line in the new field? Answer
+    with Yes or No.
+  secondary_question: >-
+    Give the probability, from 0 to 100, that the pivot will be productive,
+    meaning they establish a sustained, productive research line in the new
+    field. Reply with only the number.
+  primary_readout: P_YES_OVER_P_YES_PLUS_P_NO_AT_THE_FIRST_ANSWER_TOKEN
+  answer_tokens: ["Yes", "No"]
+  validity:
+    answer_token_mass: SOFTMAX_MASS_ON_YES_AND_NO_AT_THE_FIRST_ANSWER_TOKEN
+    weak_format_flag: MEDIAN_ANSWER_TOKEN_MASS_BELOW_0.5
+  determinism_checks:
+    repeat_pass: IDENTICAL_BATCHES_MUST_GIVE_IDENTICAL_PRIMARY_LOGITS
+    batch_sensitivity: >-
+      MAX_ABSOLUTE_LOG_ODDS_DIFFERENCE_BETWEEN_THE_CANONICAL_BATCH_1_AND_A_BATCH_32_PASS_ON_THE_FIRST_32_PROFILES_REPORTED
+  dry_run_before_freeze: >-
+    64_PROFILES_FROM_A_DISJOINT_SEED_CHECKED_FORMAT_VALIDITY_DETERMINISM_AND_TIMING_ONLY_NO_PROBABILITIES_INSPECTED
+  timing: RECORD_GPU_WALL_SECONDS_PER_BATCH_AND_PER_PROMPT
+
+distillation:
+  target: LOG_ODDS_OF_THE_PRIMARY_READOUT_CLIPPED_TO_0.0001_AND_0.9999
+  model: RIDGE_LINEAR_REGRESSION_ON_RAW_FEATURES_WITH_INTERCEPT
+  ridge_lambda_per_profile: 0.001
+  output: NINE_WEIGHTS_AND_ONE_BIAS_IN_THE_HAND_PRIOR_LOGIT_UNITS
+  fidelity:
+    - R_SQUARED_ON_LOG_ODDS
+    - SPEARMAN_BETWEEN_PRIMARY_AND_DISTILLED_PROBABILITY
+    - SPEARMAN_BETWEEN_PRIMARY_AND_SECONDARY_READOUT
+
+priors:
+  - id: hand
+    source: EXACT_STUDY2_INITIAL_POLICY
+    role: NESTED_PREDECESSOR_PRESSURE_PRIOR
+  - id: llm
+    source: DISTILLED_LOCAL_QWEN_ELICITATION
+  - id: oracle_linear
+    source: >-
+      PER_WORLD_LOGISTIC_REGRESSION_ON_STRUCTURAL_LABELS_OF_A_FRESH_ORACLE_COHORT
+    oracle_cohort_base_seed: 20261017
+    oracle_cohort_replicates: 16
+    logistic_c: 1.0
+    role: BEST_LINEAR_PRIOR_REFERENCE_FOR_EACH_WORLD
+  - id: flat
+    source: ZERO_WEIGHTS_ZERO_BIAS
+    role: NO_KNOWLEDGE_REFERENCE
+prior_slot: STUDY2_INITIAL_POLICY_REPLACED_FOR_ALL_AGENTS_AND_LEARNERS_WITHIN_A_TASK
+
+common_environment:
+  scenario: hot_field_hype
+  state_model: persistence_exit_v1
+  learning_mode: imitative
+  transition:
+    failed_minimum_active_steps: 2
+    failed_continuation_score:
+      productive_fit_weight: 0.5
+      current_policy_output_weight: 0.5
+      exit_below: 0.4
+    reentry_after_exit: false
+
+inherited_learning_parameters:
+  neighbor_count: 4
+  within_stage_probability: 0.6
+  learning_rate: 1.5
+  prior_anchor: 0.25
+  local_alpha: 0.45
+  local_noise_scale: 0.02
+  social_alpha: 0.40
+  peer_similarity_threshold: 0.68
+  pivot_threshold: 0.34
+  productive_threshold: 0.40
+
+visibility_regimes:
+  - id: immediate
+    success_delay_steps: 0
+    failure_delay_steps: 0
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+
+fit_worlds:
+  worlds:
+    - id: linear_fit
+    - id: smooth_interaction_fit
+    - id: axis_interaction_fit
+  implementation: V1_APPLY_FIT_WORLD
+
+evidence_regimes:
+  - id: neighbor_local
+  - id: field_public
+    cross_fit_folds: 4
+    includes_own_public_outcome: false
+
+abm_arms:
+  - [fixed_rule, none]
+  - [online_logistic, neighbor_local]
+  - [linear_batch, field_public]
+  - [tree_batch, field_public]
+  - [mlp_batch, field_public]
+
+batch_learners:
+  source: EXACT_V2_BATCH_LEARNER_SETTINGS_UNCHANGED
+  scalar_batch:
+    epochs: 80
+    eta: 0.5
+    prior_anchor: 0.25
+  linear_batch:
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  mlp_batch:
+    hidden_width: 16
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  tree_batch:
+    initial_margin: FROZEN_PRIOR_LOGIT
+    rounds: 300
+    learning_rate: 0.1
+    max_depth: 3
+    min_samples_leaf: 5
+    leaf_l2: 1.0
+
+probe_cohort:
+  base_seed: 20261019
+  agent_count: 256
+  per_replicate: true
+
+profiles:
+  smoke:
+    agent_count: 24
+    steps: 12
+    burn_in_steps: 2
+    replicates: 2
+    base_seed: 20261018
+  development:
+    agent_count: 256
+    steps: 18
+    burn_in_steps: 2
+    replicates: 16
+    base_seed: 20261018
+
+decision_contract:
+  improvement_rule: >-
+    MEAN_PAIRED_IMPROVEMENT_AT_LEAST_THRESHOLD_AND_STRICTLY_POSITIVE_IN_AT_LEAST_REQUIRED_REPLICATES
+  improved_replicates_at_least: 12
+  evaluated_per_world: true
+  nesting_checks:
+    required: true
+    conditions:
+      - UNDER_THE_HAND_PRIOR_FIXED_AND_ONLINE_ARMS_EQUAL_THE_PERSISTENCE_PREDECESSOR_IN_THE_LINEAR_WORLD
+      - THE_PRIOR_SLOT_IS_RESTORED_AFTER_EVERY_TASK
+    failure_action: INVALID_IMPLEMENTATION_STOP
+  prior_quality:
+    metric: FIXED_RULE_PROBE_BRIER
+    comparison: LLM_OVER_HAND
+    improvement_at_least: 0.01
+    dispositions: [LLM_PRIOR_BETTER, HAND_PRIOR_BETTER, NO_CLEAR_DIFFERENCE]
+  local_rescue:
+    metric: ONLINE_LOGISTIC_PROBE_BRIER
+    comparison: LLM_OVER_HAND
+    improvement_at_least: 0.01
+    dispositions: [LLM_PRIOR_IMPROVES_LOCAL_LEARNING, HAND_PRIOR_BETTER_FOR_LOCAL_LEARNING, NO_CLEAR_DIFFERENCE]
+  pooled_washout:
+    metric: FIELD_ARM_PROBE_BRIER
+    comparison: LLM_VERSUS_HAND_IN_EACH_DIRECTION
+    improvement_at_least: 0.01
+    arms: [linear_batch, tree_batch, mlp_batch]
+    dispositions: [PRIOR_WASHES_OUT_UNDER_POOLING, PRIOR_PERSISTS_UNDER_POOLING]
+  entry_precision:
+    metric: FIXED_RULE_PRODUCTIVE_SHARE_OF_ENTRANTS
+    comparison: LLM_OVER_HAND
+    improvement_at_least: 0.02
+    dispositions: [LLM_PRIOR_SELECTS_BETTER_ENTRANTS, HAND_PRIOR_SELECTS_BETTER_ENTRANTS, NO_CLEAR_DIFFERENCE]
+  references_reported_not_decided: [oracle_linear, flat]
+  model_selection: FORBIDDEN
+
+cost_ledger:
+  llm_elicitation: MEASURED_GPU_SECONDS_FOR_THE_ONE_TIME_ELICITATION
+  llm_agent_equivalent: >-
+    MEASURED_GPU_SECONDS_PER_PROMPT_TIMES_ONE_QUERY_PER_AGENT_STEP_A_LOWER_BOUND_BECAUSE_AN_LLM_AGENT_ALSO_NEEDS_EVIDENCE_CONTEXT_AND_GENERATION
+  nabm_reference: RELATIVE_DELAY_COST_V1_CPU_MS_PER_AGENT_STEP
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+    - docs/research/pivot-llm-prior-pilot-v1.md
+    - docs/package-release-boundary.md
+    - experiments/configs/pivot_llm_prior_pilot_v1.yaml
+    - scripts/prototype_pivot_llm_prior_pilot_v1.py
+    - scripts/inspect_release_artifacts.py
+    - tests/test_pivot_llm_prior_pilot_v1.py
+    - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+  order: ELICIT_THEN_ABM_THE_ABM_RECEIPT_BINDS_THE_ELICITATION_ARTIFACT_HASH
+
+outputs:
+  elicitation:
+    - elicitation.jsonl
+    - llm_prior.json
+    - elicitation_receipt.json
+  abm:
+    - runs.jsonl
+    - scorecard.json
+    - scorecard.md
+    - receipt.json
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  paid_api_calls: 0
+  model_selected: "NO"
+  neural_necessity: NOT_ESTABLISHED
+  llm_knowledge_of_real_pivots: NOT_ESTABLISHED_THE_WORLDS_ARE_SYNTHETIC
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED
