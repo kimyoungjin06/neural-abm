@@ -193,6 +193,8 @@ tests, elicitation artifacts, and evidence stay outside the package, and the
 package gains no LLM dependency.
 Its v2 successor calibrates the same elicited prior using aggregate
 information only and makes no new LLM calls. It has the same boundary.
+Its v3 successor adds a prior-independent exploration floor to the calibrated
+prior, again without LLM calls. It has the same boundary.
 
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy

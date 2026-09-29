@@ -1,0 +1,247 @@
+schema_version: pivot_llm_prior_pilot.v3
+label: pivot_llm_prior_pilot_v3
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+
+purpose:
+  primary_goal: >-
+    TEST_WHETHER_AN_EXPLORATION_FLOOR_LETS_A_CALIBRATED_LLM_PRIOR_SELECT_BETTER_ENTRANTS_WITHOUT_STARVING_POOLED_LEARNING
+  question: >-
+    v2 showed that the calibrated LLM prior picks better entrants but leaves
+    pooled learners less evidence. If a small, prior-independent share of
+    agents explores by entering anyway, does the hybrid beat the hand rule on
+    entrant precision while learning at least as well?
+  result_informed_successor: true
+  informed_by: >-
+    V2_SELECTIVE_LLM_PRIOR_IMPROVED_ENTRANT_PRECISION_BUT_REDUCED_EVIDENCE_AND_POOLED_LEARNING_IN_INTERACTION_WORLDS
+  new_llm_calls: 0
+  reuses: V2_HASH_BOUND_CALIBRATED_PRIORS
+
+source_bindings:
+  - path: scripts/prototype_pivot_llm_prior_pilot_v2.py
+    sha256: e8eac73fc2a661d14be69384601e7b215c9e3391b5133b5f53a65f8ffa1617d2
+    role: CALIBRATED_PRIOR_CONSTRUCTION
+  - path: experiments/configs/pivot_llm_prior_pilot_v2.yaml
+    sha256: 6e16336dd53455a2eb7f66dc476f881d63064bad9550426a43d639ccdaa20239
+    role: OPENED_PREDECESSOR_CONTRACT
+  - path: experiments/evidence/results/pivot_llm_prior_pilot_v2_20260929.summary.json
+    sha256: 703c463d147c0edb5d72d4afea95c7dc841eddc0557fb77d20d9faf67cad1ee7
+    role: OPENED_PREDECESSOR_RESULT_AND_CALIBRATED_PRIOR_HASH
+  - path: scripts/prototype_pivot_llm_prior_pilot_v1.py
+    sha256: ef6cd6f306e6499e9c4ec6649f0853f074cb73bb06169fc7553d556bb0b935c1
+    role: IMPORTED_PRIOR_SLOT
+  - path: scripts/prototype_pivot_nonlinear_policy_abm_v2.py
+    sha256: ed827c5b1cddf6a36e32bfd6ebb4e41a1773af10ebcab975bf5c54e5c5887436
+    role: ABM_ARM_RUNNER_PROBE_COHORT_AND_CROSS_FIT_FIELD
+  - path: scripts/prototype_pivot_nonlinear_policy_abm_v1.py
+    sha256: c0fa1621eab02140f5b6bc0e0a54c35c0df8e3ed6498ac391c8665b17f754cdb
+    role: FIT_WORLDS_AND_BATCH_LEARNERS
+  - path: scripts/prototype_pivot_persistence_exit_v1.py
+    sha256: e8c604ac33f34cc58496723c2adff8e4d30c05182ee40cad114d961be3b17991
+    role: NESTED_PERSISTENCE_ADAPTER_AND_PREDECESSOR
+  - path: scripts/prototype_pivot_delayed_feedback_learning_v1.py
+    sha256: 9555b0968293ec89620ff461e7c449fee098a7eb8809be2b936812b521358515
+    role: VISIBILITY_QUEUE_AND_PRECOMMIT_HELPERS
+  - path: examples/research_pivot_study.py
+    sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+    role: POPULATION_AND_LINEAR_PRODUCTIVE_FIT
+  - path: examples/research_pivot_learning_study.py
+    sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+    role: HAND_SET_PRIOR_AND_PRIOR_SLOT
+  - path: src/neural_abm/api.py
+    sha256: 83005b43023d29640d96a8929aaab5e5c552542c7c9d797c288e5820a7061898
+    role: UNCHANGED_GENERIC_TORCH_API
+  - path: src/neural_abm/unit_core.py
+    sha256: d399a6fc29f1b2efd3a648f48c79d7f8cab927e704974223ffabf861333ff4da
+    role: UNCHANGED_GENERIC_LIFECYCLE_CORE
+
+v2_calibrated_priors:
+  path: /ssd/pivot_llm_prior_pilot_v2_2ddcd93_development/calibrated_priors.json
+  sha256: db4a910caa35153aea8608a7386b4b0f14f45743b65cae65a2103e2fb73ffa2b
+  prior_used: llm_base_rate
+
+exploration_floor:
+  rule: >-
+    EACH_OPEN_STEP_A_NOT_YET_ENTERED_AGENT_BELOW_THE_PIVOT_THRESHOLD_ENTERS_ANYWAY_IF_A_UNIFORM_DRAW_IS_BELOW_EPSILON
+  draw: SEED_SEQUENCE_OF_BASE_SEED_REPLICATE_EXPLORATION_COMPONENT_STEP_AND_AGENT
+  exploratory_share_targets: [0.1, 0.2, 0.4]
+  epsilon_from_share: ONE_MINUS_ONE_MINUS_SHARE_TO_THE_POWER_ONE_OVER_OPEN_STEPS
+  open_steps: 16
+  epsilon_zero_nests_predecessor: true
+  implementation: ADAPTER_SLOT_REPLACES_THE_PERSISTENCE_ADAPTER_WITHIN_A_TASK_AND_RESTORES_IT
+  interpretation: PRIOR_INDEPENDENT_EXPLORATORY_ENTRY_THAT_GUARANTEES_EVIDENCE
+
+conditions:
+  - {id: hand, prior: hand, exploratory_share: 0.0, role: INCUMBENT_RULE}
+  - {id: llm_selective, prior: llm_base_rate, exploratory_share: 0.0, role: V2_PURE_SELECTION}
+  - {id: hybrid_10, prior: llm_base_rate, exploratory_share: 0.1, role: HYBRID}
+  - {id: hybrid_20, prior: llm_base_rate, exploratory_share: 0.2, role: HYBRID}
+  - {id: hybrid_40, prior: llm_base_rate, exploratory_share: 0.4, role: HYBRID}
+  - {id: flat, prior: flat, exploratory_share: 0.0, role: PURE_EXPLORATION_REFERENCE}
+
+common_environment:
+  scenario: hot_field_hype
+  state_model: persistence_exit_v1
+  learning_mode: imitative
+  transition:
+    failed_minimum_active_steps: 2
+    failed_continuation_score:
+      productive_fit_weight: 0.5
+      current_policy_output_weight: 0.5
+      exit_below: 0.4
+    reentry_after_exit: false
+
+inherited_learning_parameters:
+  neighbor_count: 4
+  within_stage_probability: 0.6
+  learning_rate: 1.5
+  prior_anchor: 0.25
+  local_alpha: 0.45
+  local_noise_scale: 0.02
+  social_alpha: 0.40
+  peer_similarity_threshold: 0.68
+  pivot_threshold: 0.34
+  productive_threshold: 0.40
+
+visibility_regimes:
+  - id: immediate
+    success_delay_steps: 0
+    failure_delay_steps: 0
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+
+fit_worlds:
+  worlds:
+    - id: linear_fit
+    - id: smooth_interaction_fit
+    - id: axis_interaction_fit
+  implementation: V1_APPLY_FIT_WORLD
+
+evidence_regimes:
+  - id: neighbor_local
+  - id: field_public
+    cross_fit_folds: 4
+    includes_own_public_outcome: false
+
+abm_arms:
+  - [fixed_rule, none]
+  - [linear_batch, field_public]
+  - [tree_batch, field_public]
+  - [mlp_batch, field_public]
+
+batch_learners:
+  source: EXACT_V2_BATCH_LEARNER_SETTINGS_UNCHANGED
+  scalar_batch:
+    epochs: 80
+    eta: 0.5
+    prior_anchor: 0.25
+  linear_batch:
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  mlp_batch:
+    hidden_width: 16
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  tree_batch:
+    initial_margin: FROZEN_PRIOR_LOGIT
+    rounds: 300
+    learning_rate: 0.1
+    max_depth: 3
+    min_samples_leaf: 5
+    leaf_l2: 1.0
+
+probe_cohort:
+  base_seed: 20261024
+  agent_count: 256
+  per_replicate: true
+
+profiles:
+  smoke:
+    agent_count: 24
+    steps: 12
+    burn_in_steps: 2
+    replicates: 2
+    base_seed: 20261023
+  development:
+    agent_count: 256
+    steps: 18
+    burn_in_steps: 2
+    replicates: 16
+    base_seed: 20261023
+
+decision_contract:
+  improvement_rule: >-
+    MEAN_PAIRED_IMPROVEMENT_AT_LEAST_THRESHOLD_AND_STRICTLY_POSITIVE_IN_AT_LEAST_REQUIRED_REPLICATES
+  improved_replicates_at_least: 12
+  evaluated_per_world_and_field_arm: true
+  field_arms: [linear_batch, tree_batch, mlp_batch]
+  hybrids: [hybrid_10, hybrid_20, hybrid_40]
+  nesting_checks:
+    required: true
+    conditions:
+      - UNDER_THE_HAND_CONDITION_THE_FIXED_ARM_EQUALS_THE_PERSISTENCE_PREDECESSOR_IN_THE_LINEAR_WORLD
+      - THE_PRIOR_AND_ADAPTER_SLOTS_ARE_RESTORED_AFTER_EVERY_TASK
+      - THE_LLM_PRIOR_EQUALS_THE_V2_LLM_BASE_RATE_PRIOR_EXACTLY
+    failure_action: INVALID_IMPLEMENTATION_STOP
+  precision_versus_hand:
+    metric: FIELD_ARM_PRODUCTIVE_SHARE_OF_ENTRANTS
+    improvement_at_least: 0.02
+  learning_noninferior_versus_hand:
+    metric: FIELD_ARM_PROBE_BRIER
+    rule: MEAN_OF_HAND_MINUS_HYBRID_AT_LEAST_MINUS_0.005
+  learning_restored_versus_selective:
+    metric: FIELD_ARM_PROBE_BRIER
+    comparison: HYBRID_OVER_LLM_SELECTIVE
+    improvement_at_least: 0.01
+  cell_dispositions:
+    HYBRID_DOMINATES_HAND: PRECISION_PASS_AND_LEARNING_NONINFERIOR
+    SELECTION_ONLY: PRECISION_PASS_ONLY
+    LEARNING_ONLY: LEARNING_NONINFERIOR_ONLY
+    NEITHER: NEITHER_PASSES
+  hybrid_summary:
+    cells: NINE_WORLD_BY_FIELD_ARM_CELLS
+    dispositions:
+      DOMINATES_IN_ALL_CELLS: 9
+      DOMINATES_IN_MAJORITY: 5_TO_8
+      DOMINATES_IN_MINORITY: 1_TO_4
+      DOMINATES_NOWHERE: 0
+  references_reported: [llm_selective, flat]
+  reported_for_every_condition:
+    - ENTRY_RATE
+    - EXPLORATORY_ENTRY_RATE
+    - FIELD_EVIDENCE_EVENTS_PER_LEARNER
+  model_selection: FORBIDDEN
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+    - docs/research/pivot-llm-prior-pilot-v3.md
+    - docs/package-release-boundary.md
+    - experiments/configs/pivot_llm_prior_pilot_v3.yaml
+    - scripts/prototype_pivot_llm_prior_pilot_v3.py
+    - scripts/inspect_release_artifacts.py
+    - tests/test_pivot_llm_prior_pilot_v3.py
+    - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+
+outputs:
+  - runs.jsonl
+  - scorecard.json
+  - scorecard.md
+  - receipt.json
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  paid_api_calls: 0
+  new_llm_calls: 0
+  model_selected: "NO"
+  neural_necessity: NOT_ESTABLISHED
+  llm_knowledge_of_real_pivots: NOT_ESTABLISHED_THE_WORLDS_ARE_SYNTHETIC
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED
