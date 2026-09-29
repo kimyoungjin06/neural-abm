@@ -182,6 +182,12 @@ PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_policy_ladder_consolidation_v1.yaml",
     "tests/test_pivot_policy_ladder_consolidation_v1.py",
 }
+PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
+    "docs/research/pivot-relative-delay-cost-v1.md",
+    "experiments/configs/pivot_relative_delay_cost_v1.yaml",
+    "scripts/prototype_pivot_relative_delay_cost_v1.py",
+    "tests/test_pivot_relative_delay_cost_v1.py",
+}
 PIVOT_GATE_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_feedback_g0_measurement_freeze_v0.yaml",
     "experiments/configs/pivot_feedback_g_minus_1_readiness_v0.yaml",
@@ -1244,6 +1250,7 @@ FORBIDDEN_SDIST_PATHS = {
     *PIVOT_MATCHED_MARGINAL_DISCRIMINATOR_REPOSITORY_ONLY_PATHS,
     *PIVOT_NONLINEAR_POLICY_ABM_REPOSITORY_ONLY_PATHS,
     *PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS,
+    *PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS,
     *PIVOT_GATE_REPOSITORY_ONLY_PATHS,
     *CONTENT_FREEZE_REPOSITORY_ONLY_PATHS,
     *MAIN_TEMPORAL_VALIDITY_REPOSITORY_ONLY_PATHS,

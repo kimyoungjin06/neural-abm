@@ -1880,6 +1880,23 @@ def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
     assert forbidden == sorted(repository_paths)
 
 
+def test_release_inspector_rejects_relative_delay_cost_paths() -> None:
+    inspector = runpy.run_path(str(INSPECT_SCRIPT))
+    repository_paths = {
+        "docs/research/pivot-relative-delay-cost-v1.md",
+        "experiments/configs/pivot_relative_delay_cost_v1.yaml",
+        "scripts/prototype_pivot_relative_delay_cost_v1.py",
+        "tests/test_pivot_relative_delay_cost_v1.py",
+    }
+    assert repository_paths == inspector[
+        "PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS"
+    ]
+
+    forbidden = inspector["_forbidden_sdist_files"]({"README.md", *repository_paths})
+
+    assert forbidden == sorted(repository_paths)
+
+
 def test_release_inspector_rejects_g0_measurement_precommitment_paths() -> None:
     inspector = runpy.run_path(str(INSPECT_SCRIPT))
     repository_paths = {
