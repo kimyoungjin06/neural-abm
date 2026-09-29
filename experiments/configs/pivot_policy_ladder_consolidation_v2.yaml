@@ -1,0 +1,371 @@
+schema_version: pivot_policy_ladder_consolidation.v2
+label: pivot_policy_ladder_consolidation_v2
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: 2026-09-29
+
+purpose: >-
+  Extend the v1 ledger with the relative-delay and cost study (N01) and the
+  three local-LLM prior pilots, and state what the whole ladder implies for
+  NABM's position between rule-based ABMs and LLM-agent simulations. v1 stays
+  the record for the ladder through nonlinear policy ABM v2; this ledger adds
+  to it and updates the status of v1 items it answers.
+
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v1.yaml
+    sha256: e5ae6b26c8dc97fe3728b2b57d04b33a2fe60bc80a0826bbc9b197aeb3be97cd
+    record_commit: c7e52f1
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v1.md
+    sha256: 5e51397e0906593449cff6436ace8fdb24d2c8bf3a6b8ed3aa1dbb4ecce428f7
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v1.py
+
+pointer_syntax: >-
+  SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+
+sources:
+  - id: relative_delay_cost
+    path: experiments/evidence/results/pivot_relative_delay_cost_v1_20260929.summary.json
+    sha256: b3d990a35b53066b835c9683f09476088ffc9cd10f64881389b16b2a5e158b3e
+    freeze_commit: 22605d5
+    record_commit: 6d839de
+  - id: llm_prior_v1
+    path: experiments/evidence/results/pivot_llm_prior_pilot_v1_20260929.summary.json
+    sha256: 31759b94d796cf80cad4eec7d483ea5c0b4a23706c6d79585bc247dc1b90a31a
+    freeze_commit: 75fbbf7
+    record_commit: 533ed03
+  - id: llm_prior_v2
+    path: experiments/evidence/results/pivot_llm_prior_pilot_v2_20260929.summary.json
+    sha256: 703c463d147c0edb5d72d4afea95c7dc841eddc0557fb77d20d9faf67cad1ee7
+    freeze_commit: 2ddcd93
+    record_commit: fe4033e
+  - id: llm_prior_v3
+    path: experiments/evidence/results/pivot_llm_prior_pilot_v3_20260929.summary.json
+    sha256: e110e15f8af0d1c4d2573268aba08e6fed325a7a21bc819b66bb2df2707faeea
+    freeze_commit: 87c90eb
+    record_commit: d896782
+  - id: nonlinear_abm_v2
+    path: experiments/evidence/results/pivot_nonlinear_policy_abm_v2_20260928.summary.json
+    sha256: 2309ff8078a68074f8728768be399dd9ee008927f55451a110e0ce284f4f18db
+    freeze_commit: c56d741
+    record_commit: 48ab3a3
+    role: INHERITED_SOURCE_REUSED_FOR_POSITIONING
+  - id: matched_marginal_v3
+    path: experiments/evidence/results/pivot_matched_marginal_discriminator_v3_20260928.summary.json
+    sha256: 5a9bd6da56bad1518e9fe50ea2fd0c6c41e51d4ee0b1230b2c42e651dc6877f2
+    freeze_commit: 14f37af
+    record_commit: d6b1d6e
+    role: INHERITED_SOURCE_REUSED_FOR_POSITIONING
+  - id: adaptive_ladder
+    path: experiments/evidence/results/pivot_adaptive_baseline_ladder_v1_20260807.summary.json
+    sha256: 304ec1946577fd571698cec4e964f9ef5385b150b8270566fa9282894433172d
+    freeze_commit: bae8d48
+    record_commit: afa56e4
+    role: INHERITED_SOURCE_REUSED_FOR_POSITIONING
+
+claims:
+  confirmed:
+    - id: C15_saturation_boundary_moves_with_entry_wave_width
+      statement: >-
+        Spreading entry over more steps keeps learned precision acting on entry
+        under longer failure delays. The active delays grow from {0} at q = 1
+        to {0, 1} at q = 0.5 and {0, 1, 2, 4} at q = 0.25.
+      evidence:
+        - {source: relative_delay_cost, pointer: scientific_assessment/saturation_boundary_shifts_with_entry_wave_width, equals: true}
+        - {source: relative_delay_cost, pointer: registered_relative_delay_test/active_delays_by_q/1.0, equals: [0]}
+        - {source: relative_delay_cost, pointer: registered_relative_delay_test/active_delays_by_q/0.5, equals: [0, 1]}
+        - {source: relative_delay_cost, pointer: registered_relative_delay_test/active_delays_by_q/0.25, equals: [0, 1, 2, 4]}
+    - id: C16_pooled_learning_is_cheap_and_per_agent_learning_is_not
+      statement: >-
+        Pooled linear, tree, and MLP policies cost 1.9 to 6.7 times the
+        rule-based ABM per agent-step. The same families learning per agent
+        from neighbor outcomes cost 57 to 65 times, and they are also the
+        learners that do worse than the prior.
+      evidence:
+        - {source: relative_delay_cost, pointer: cost_ledger/records/0/arm_id, equals: fixed_rule}
+        - {source: relative_delay_cost, pointer: cost_ledger/records/7/evidence_regime, equals: field_public}
+        - {source: relative_delay_cost, pointer: cost_ledger/records/7/cost_relative_to_fixed_rule, greater_than: 1.8}
+        - {source: relative_delay_cost, pointer: cost_ledger/records/8/cost_relative_to_fixed_rule, less_than: 6.7}
+        - {source: relative_delay_cost, pointer: cost_ledger/records/3/evidence_regime, equals: neighbor_local}
+        - {source: relative_delay_cost, pointer: cost_ledger/records/3/cost_relative_to_fixed_rule, greater_than: 56.0}
+        - {source: relative_delay_cost, pointer: cost_ledger/records/4/cost_relative_to_fixed_rule, less_than: 65.0}
+        - {source: relative_delay_cost, pointer: framework_assessment/cost_and_usefulness_align, equals: THE_EXPENSIVE_PER_AGENT_LOCAL_LEARNERS_ARE_ALSO_THE_ONES_WORSE_THAN_THE_PRIOR}
+    - id: C17_uncalibrated_elicited_prior_self_seals
+      statement: >-
+        An LLM prior elicited once and used on its raw scale is so pessimistic
+        that no agent enters, so no evidence is produced to correct it. The hand
+        rule wins every registered decision.
+      evidence:
+        - {source: llm_prior_v1, pointer: scientific_assessment/registered_outcome, equals: HAND_PRIOR_BETTER_ON_EVERY_DECISION_IN_EVERY_WORLD}
+        - {source: llm_prior_v1, pointer: scientific_assessment/mechanism, equals: SELF_SEALING_PESSIMISTIC_PRIOR_NO_AGENT_ENTERS_SO_NO_OUTCOME_EVIDENCE_IS_EVER_PRODUCED}
+        - {source: llm_prior_v1, pointer: post_hoc_descriptive/llm_prior_max_entry_rate, equals: 0.0}
+    - id: C18_the_llm_ranks_like_the_hand_rule
+      statement: >-
+        The elicited prior ranks agents about as well as the hand rule, and as a
+        static forecast every calibrated variant beats a no-knowledge prior.
+      evidence:
+        - {source: llm_prior_v1, pointer: scientific_assessment/llm_ranking_skill, equals: COMPARABLE_TO_OR_SLIGHTLY_BETTER_THAN_THE_HAND_RULE_DISTILLED_AUC_0_707_VS_0_647_IN_THE_LINEAR_WORLD}
+        - {source: llm_prior_v2, pointer: scientific_assessment/llm_prior_information, equals: ALL_LLM_VARIANTS_BEAT_THE_FLAT_PRIOR_AS_STATIC_FORECASTS_COMPARABLE_TO_THE_HAND_RULE_IN_THE_LINEAR_WORLD}
+    - id: C19_aggregate_calibration_removes_self_sealing
+      statement: >-
+        Shifting the elicited prior's intercept to one stated base rate, with
+        no outcome labels, makes it usable. Only the uncalibrated prior seals.
+      evidence:
+        - {source: llm_prior_v2, pointer: scientific_assessment/calibration_removes_self_sealing, equals: true}
+        - {source: llm_prior_v2, pointer: registered_result_disposition/self_sealing_priors, equals: [llm_uncalibrated/axis_interaction_fit, llm_uncalibrated/linear_fit, llm_uncalibrated/smooth_interaction_fit]}
+    - id: C20_calibrated_llm_prior_selects_better_entrants
+      statement: >-
+        The calibrated prior picks more productive entrants than the hand rule
+        in every world, and in all nine world-by-field-arm cells of v3.
+      evidence:
+        - {source: llm_prior_v2, pointer: registered_result_disposition/by_variant/llm_base_rate/linear_fit/entry_precision, equals: VARIANT_BETTER}
+        - {source: llm_prior_v2, pointer: registered_result_disposition/by_variant/llm_base_rate/smooth_interaction_fit/entry_precision, equals: VARIANT_BETTER}
+        - {source: llm_prior_v2, pointer: registered_result_disposition/by_variant/llm_base_rate/axis_interaction_fit/entry_precision, equals: VARIANT_BETTER}
+        - {source: llm_prior_v3, pointer: registered_decisions/llm_selective/cells/linear_fit~1linear_batch/precision_versus_hand/pass, equals: true}
+        - {source: llm_prior_v3, pointer: registered_decisions/llm_selective/cells/axis_interaction_fit~1linear_batch/precision_versus_hand/pass, equals: true}
+    - id: C21_the_prior_sets_the_exploration_regime
+      statement: >-
+        A selective prior picks better entrants but leaves pooled learners less
+        evidence; a permissive prior produces the most evidence and the best
+        pooled nonlinear learning. Without exploration, the calibrated prior
+        dominates the hand rule in only 3 of 9 cells.
+      evidence:
+        - {source: llm_prior_v2, pointer: scientific_assessment/mechanism, equals: EXPLORATION_EXPLOITATION_TRADEOFF_SELECTIVE_PRIORS_PICK_BETTER_ENTRANTS_BUT_GENERATE_LESS_EVIDENCE_FOR_POOLED_LEARNING}
+        - {source: llm_prior_v3, pointer: registered_result_disposition/llm_selective/summary, equals: DOMINATES_IN_MINORITY}
+    - id: C22_an_exploration_floor_separates_selection_from_exploration
+      statement: >-
+        With a prior-independent exploration floor, the calibrated prior beats
+        the hand rule on entrant precision while keeping pooled learning within
+        the registered margin: in 7 of 9 cells at a 20% share and 5 of 9 at
+        10%. At 40% the precision gain is gone.
+      evidence:
+        - {source: llm_prior_v3, pointer: scientific_assessment/registered_outcome, equals: HYBRID_20_DOMINATES_HAND_IN_7_OF_9_CELLS_HYBRID_10_IN_5_HYBRID_40_NOWHERE}
+        - {source: llm_prior_v3, pointer: registered_result_disposition/hybrid_20/summary, equals: DOMINATES_IN_MAJORITY}
+        - {source: llm_prior_v3, pointer: registered_result_disposition/hybrid_10/summary, equals: DOMINATES_IN_MAJORITY}
+        - {source: llm_prior_v3, pointer: registered_result_disposition/hybrid_40/summary, equals: DOMINATES_NOWHERE}
+        - {source: llm_prior_v3, pointer: execution/new_llm_calls, equals: 0}
+    - id: C23_the_exploratory_share_traces_a_frontier
+      statement: >-
+        Post hoc, raising the exploratory share lowers entrant precision and
+        raises evidence in every cell, and improves pooled learning in seven.
+      evidence_type: POST_HOC_DESCRIPTIVE
+      evidence:
+        - {source: llm_prior_v3, pointer: post_hoc_descriptive/cells_with_precision_falling_and_evidence_rising, equals: 9}
+        - {source: llm_prior_v3, pointer: post_hoc_descriptive/cells_with_probe_brier_falling, equals: 7}
+    - id: C24_escaping_the_hand_prior_explains_most_local_rescue
+      statement: >-
+        Post hoc, the hand pressure rule is a worse starting point for
+        neighbor-scale learning than no prior. Most of the LLM variants'
+        local-learning gain over it comes from escaping it; only the verbalized
+        readout beats the flat prior.
+      evidence_type: POST_HOC_DESCRIPTIVE
+      evidence:
+        - {source: llm_prior_v2, pointer: scientific_assessment/local_rescue_source, equals: MOSTLY_ESCAPING_THE_HAND_PRESSURE_PRIOR_ONLY_THE_VERBALIZED_READOUT_BEATS_THE_FLAT_PRIOR}
+    - id: C25_a_once_elicited_prior_costs_minutes_not_hours
+      statement: >-
+        Eliciting the prior took under 10 GPU minutes and 3,104 LLM queries.
+        Querying the LLM at every agent-step of the same design would take an
+        estimated 38 to 125 GPU hours at least. Its successors made no LLM
+        calls.
+      evidence:
+        - {source: llm_prior_v1, pointer: framework_assessment/cost_position_measured, equals: ONE_TIME_ELICITATION_UNDER_10_GPU_MINUTES_VERSUS_AN_ESTIMATED_38_TO_125_GPU_HOURS_TO_QUERY_THE_LLM_AT_EVERY_AGENT_STEP_OF_PHASE_B}
+        - {source: llm_prior_v1, pointer: cost_ledger/llm_queries_used_by_the_hybrid, equals: 3104}
+        - {source: llm_prior_v1, pointer: cost_ledger/llm_agent_equivalent_gpu_hours_lower_bound/batched_32, greater_than: 38.0}
+        - {source: llm_prior_v2, pointer: execution/new_llm_calls, equals: 0}
+        - {source: llm_prior_v3, pointer: execution/new_llm_calls, equals: 0}
+
+  rejected:
+    - id: R07_fixed_rule_normalized_relative_delay_threshold
+      statement: >-
+        A single threshold on failure delay relative to the fixed rule's
+        entry-wave width separates active from saturated entry cells.
+      reason: >-
+        The fixed rule has a slow entry tail while learning arms rush in, so it
+        is the wrong normalizer; q = 0.25 with a four-step delay stays active
+        above two inactive cells.
+      evidence:
+        - {source: relative_delay_cost, pointer: registered_relative_delay_test/disposition, equals: NEITHER_SIMPLE_RULE}
+        - {source: relative_delay_cost, pointer: registered_relative_delay_test/separable_by_relative_delay, equals: false}
+        - {source: relative_delay_cost, pointer: scientific_assessment/fixed_rule_normalization_separates_cells, equals: false}
+
+  open:
+    - id: O08_post_failure_entry_share_as_the_t01_discriminant
+      question: >-
+        Registered in advance, does the share of entry that happens after the
+        first public failure separate active from saturated entry cells, under
+        an attention-surge clock that produces interior entry peaks?
+      kind: SYNTHETIC
+      priority: 1
+      motivation: Post hoc it separates all twelve N01 cells, by a thin margin.
+      evidence:
+        - {source: relative_delay_cost, pointer: post_hoc_descriptive/post_failure_entry_share_separation/min_active, greater_than: 0.155}
+        - {source: relative_delay_cost, pointer: post_hoc_descriptive/post_failure_entry_share_separation/max_inactive, less_than: 0.148}
+        - {source: relative_delay_cost, pointer: framework_assessment/h3_adapter_status, equals: INTERIOR_PEAKS_IN_ABOUT_HALF_OF_RUNS_ONLY_WITH_ENTRY_FRICTION_A_SURGE_CLOCK_REMAINS_NEEDED_FOR_A_FULL_COMPARISON}
+    - id: O09_llm_agent_reference
+      question: >-
+        On a reduced design, how do the NABM hybrid's behavior and cost compare
+        with a local LLM queried at every agent-step?
+      kind: SYNTHETIC
+      priority: 2
+      motivation: The LLM-agent end of the positioning is estimated from query counts, not measured.
+    - id: O10_llm_knowledge_of_real_pivots
+      question: Does the elicited prior carry knowledge of real pivot success, beyond the designer's synthetic worlds?
+      kind: EMPIRICAL
+      priority: 2
+      evidence:
+        - {source: llm_prior_v3, pointer: scientific_assessment/llm_knowledge_of_real_pivots, equals: NOT_ESTABLISHED}
+    - id: O11_exploration_floor_under_delayed_visibility
+      question: Does the exploration frontier hold when failure visibility is delayed, where entry saturates?
+      kind: SYNTHETIC
+      priority: 3
+      motivation: v3 ran under immediate visibility only.
+    - id: O12_linear_learner_depends_on_entrant_composition
+      question: >-
+        Why is the linear field learner in the linear world never non-inferior
+        to the hand rule, even under the flat prior with the most evidence?
+      kind: SYNTHETIC
+      priority: 3
+      evidence:
+        - {source: llm_prior_v3, pointer: post_hoc_descriptive/linear_learner_in_linear_world_note, equals: NO_CONDITION_IS_NONINFERIOR_TO_HAND_INCLUDING_FLAT_WITH_THE_MOST_EVIDENCE}
+
+status_updates:
+  - id: O04_saturation_boundary_versus_entry_wave_width
+    previous: OPEN_PRIORITY_1
+    status: PARTLY_ANSWERED
+    answered_by: [C15_saturation_boundary_moves_with_entry_wave_width, R07_fixed_rule_normalized_relative_delay_threshold]
+    remaining: O08_post_failure_entry_share_as_the_t01_discriminant
+  - id: N01
+    previous: PROPOSED
+    status: DONE
+    freeze_commit: 22605d5
+    record_commit: 6d839de
+  - id: T01_relative_failure_visibility_delay
+    previous: RATIO_OF_FAILURE_DELAY_TO_ENTRY_WAVE_WIDTH
+    status: DISCRIMINANT_CANDIDATE_REPLACED
+    candidate_discriminant: POST_FAILURE_ENTRY_SHARE
+    empirical_analog: SHARE_OF_TOPIC_ENTRY_AFTER_LATER_COHORT_PERSISTENCE_DECLINE_BECAME_OBSERVABLE
+    requirement_replaced: O04_RESOLVED_SO_BANDS_DO_NOT_DEPEND_ON_THE_STYLIZED_ENTRY_WAVE
+    replacement_requirement: O08_REGISTERED_AND_PASSED_UNDER_AN_ATTENTION_SURGE_CLOCK
+    evidence:
+      - {source: relative_delay_cost, pointer: framework_assessment/t01_candidate_discriminant, equals: POST_FAILURE_ENTRY_SHARE_TO_BE_REGISTERED_BEFORE_ANY_EMPIRICAL_COMPARISON}
+
+positioning:
+  statement: >-
+    NABM sits between rule-based ABMs and LLM-agent simulations. Agents carry
+    small learned policies that take a hand rule or an elicited LLM judgment as
+    their prior and learn from pooled outcome records. That makes them heavier
+    than a fixed rule and far lighter than querying an LLM at every decision.
+  tiers:
+    - id: RULE_BASED_ABM
+      policy: FIXED_HAND_WRITTEN_RULE
+      measured_cost_ms_per_agent_step: 0.149
+      evidence:
+        - {source: relative_delay_cost, pointer: cost_ledger/records/0/median_cpu_ms_per_agent_step, less_than: 0.15}
+        - {source: adaptive_ladder, pointer: registered_result_disposition/FIXED_RULE_REMAINS_SUFFICIENT_FOR_THE_REGISTERED_SURFACE, equals: NOT_OBSERVED_FIXED_RULE_IS_VISIBILITY_INVARIANT}
+    - id: NABM_POOLED_LEARNED_POLICY
+      policy: LEARNED_POLICY_WITH_THE_RULE_AS_PRIOR_AND_POOLED_EVIDENCE
+      measured_cost_relative_to_rule: [1.9, 6.7]
+      evidence:
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/immediate/field_nonlinear_learning, equals: OUT_OF_SAMPLE_NONLINEAR_LEARNING}
+        - {source: relative_delay_cost, pointer: validation/nesting_checks, equals: PASS_EXACT}
+    - id: NABM_PER_AGENT_LOCAL_LEARNER
+      policy: SEPARATE_SMALL_LEARNER_PER_AGENT_ON_NEIGHBOR_EVIDENCE
+      measured_cost_relative_to_rule: [56.6, 64.6]
+      verdict: NOT_THE_DESIGN_EXPENSIVE_AND_WORSE_THAN_THE_PRIOR
+      evidence:
+        - {source: nonlinear_abm_v2, pointer: registered_result_disposition/immediate/useful_learners_local, equals: []}
+    - id: NABM_WITH_ONCE_ELICITED_LLM_PRIOR
+      policy: CALIBRATED_LLM_PRIOR_PLUS_EXPLORATION_FLOOR_PLUS_POOLED_LEARNING
+      measured_one_time_cost: UNDER_10_GPU_MINUTES_3104_QUERIES
+      evidence:
+        - {source: llm_prior_v3, pointer: registered_result_disposition/hybrid_20/summary, equals: DOMINATES_IN_MAJORITY}
+        - {source: llm_prior_v3, pointer: validation/nesting_checks, equals: PASS_EXACT}
+    - id: LLM_AGENT_SIMULATION
+      policy: LLM_QUERIED_AT_EVERY_AGENT_STEP
+      estimated_cost: ONE_QUERY_PER_AGENT_STEP_14_2_MILLION_FOR_THE_N01_DESIGN_38_TO_125_GPU_HOURS_AT_LEAST_FOR_THE_LLM_PILOT_DESIGN
+      behavior: NOT_MEASURED_SEE_O09
+      evidence:
+        - {source: relative_delay_cost, pointer: llm_reference_counts/policy_queries, equals: 14155776}
+  what_the_ladder_implies:
+    - NABM_STRICTLY_NESTS_THE_RULE_ABM_FIXED_RULE_ARMS_EXACTLY_REPRODUCE_THEIR_PREDECESSORS
+    - THE_VALUE_COMES_FROM_LEARNED_POLICIES_NOT_SPECIFICALLY_NEURAL_ONES_THE_FAMILY_DEPENDS_ON_BOUNDARY_GEOMETRY
+    - SMALL_LEARNED_AGENTS_ARE_EVIDENCE_STARVED_THE_WORKING_DESIGN_IS_RULE_AS_PRIOR_PLUS_POOLED_EVIDENCE
+    - LLM_KNOWLEDGE_ENTERS_BEST_ONCE_THROUGH_THE_PRIOR_SLOT_AFTER_AGGREGATE_CALIBRATION_WITH_EXPLORATION_KEPT_SEPARATE
+    - EVERY_REGISTERED_RUN_IS_BYTE_REPRODUCIBLE_WHICH_PAIRED_DESIGNS_OF_THOUSANDS_OF_RUNS_NEED
+  evidence:
+    - {source: matched_marginal_v3, pointer: registered_result_disposition/nonlinear_family_dominance, equals: GENERATOR_DEPENDENT_OR_TIED}
+    - {source: nonlinear_abm_v2, pointer: registered_result_disposition/immediate/evidence_scale, equals: EVIDENCE_SCALE_GATES_USEFUL_LEARNING}
+    - {source: llm_prior_v3, pointer: execution/deterministic_rerun/all_four_artifacts_byte_identical, equals: true}
+  claim_ceiling: >-
+    SYNTHETIC_STYLIZED_WORLDS_ONLY_THE_LLM_AGENT_TIER_IS_ESTIMATED_NOT_MEASURED_NO_REAL_RESEARCHER_BEHAVIOR_IS_CLAIMED
+
+framework_decisions:
+  rule: INHERITED_FROM_V1_GENERALIZE_ONLY_WITH_A_SECOND_MODEL_FAMILY_CONSUMER
+  decisions:
+    - id: F09_prior_slot_for_external_knowledge
+      decision: DOMAIN_OWNED
+      second_consumer: NONE
+      implementation: SCOPED_MODULE_SLOT_RESTORED_AFTER_EVERY_TASK
+      watch: CENTRAL_TO_THE_POSITIONING_EXTRACT_ONLY_WHEN_A_SECOND_MODEL_FAMILY_TAKES_AN_EXTERNAL_PRIOR
+    - id: F10_exploration_floor_adapter
+      decision: DOMAIN_OWNED
+      second_consumer: NONE
+    - id: F11_local_llm_elicitation_and_distillation
+      decision: REPOSITORY_ONLY_RESEARCH_INSTRUMENT
+      second_consumer: NONE
+      package_llm_dependency: false
+      dependency_route: EPHEMERAL_PINNED_UV_RUN_WITH
+    - id: F12_compute_cost_benchmark
+      decision: ENGINEERING_PATTERN_NOT_EXTRACTED
+      second_consumer: NONE
+    - id: F13_hybrid_prior_practices
+      decision: RECORD_AS_METHOD_GUIDANCE
+      practices:
+        - CALIBRATE_AN_ELICITED_PRIOR_WITH_AGGREGATE_INFORMATION_ONLY
+        - REPORT_ENTRY_AND_EVIDENCE_VOLUME_FOR_EVERY_PRIOR
+        - KEEP_SELECTION_AND_EXPLORATION_AS_SEPARATE_REGISTERED_PARAMETERS
+        - FIX_THE_LLM_READOUT_BATCH_SIZE_BECAUSE_BATCHING_SHIFTS_LOG_ODDS
+        - HASH_BIND_ONCE_ELICITED_OUTPUTS_AND_REUSE_THEM_WITHOUT_NEW_CALLS
+      evidence:
+        - {source: llm_prior_v1, pointer: elicitation/determinism/max_abs_log_odds_canonical_vs_sensitivity_batch, greater_than: 0.5}
+        - {source: llm_prior_v1, pointer: framework_assessment/hybrid_design_lesson, equals: ELICITED_KNOWLEDGE_MUST_BE_CALIBRATED_TO_THE_DECISION_SCALE_BEFORE_IT_ENTERS_AN_ADAPTIVE_AGENT}
+  extraction_candidates_unchanged: [F03_out_of_sample_agent_policy_scoring]
+
+next_steps:
+  - id: N02
+    kind: OPERATIONAL
+    action: RESUME_THE_OPENALEX_FULL_CORE_TRANSFER_AND_CLOSE_SOURCE_INTAKE
+    authorization: USER_DECISION_REQUIRED
+    serves: PIVOT_EMPIRICAL_STAGE
+  - id: N03
+    kind: EMPIRICAL_METHOD
+    action: H3_SET_ESTIMATOR_SUCCESSOR_ON_A_NEW_DISJOINT_STRESS_GRID
+    authorization: SEPARATE_PRECOMMIT
+    serves: PIVOT_EMPIRICAL_STAGE
+  - id: N04
+    kind: FRAMEWORK
+    action: DESIGN_THE_SHARED_OUT_OF_SAMPLE_SCORING_CONTRACT_FOR_F03
+    authorization: OPTIONAL
+    serves: GENERIC_NABM_API
+  - id: N05
+    kind: SYNTHETIC
+    action: REGISTER_THE_POST_FAILURE_ENTRY_SHARE_DISCRIMINANT_UNDER_AN_ATTENTION_SURGE_CLOCK
+    answers: O08_post_failure_entry_share_as_the_t01_discriminant
+    authorization: SEPARATE_PRECOMMIT
+    serves: PIVOT_EMPIRICAL_STAGE
+  - id: N06
+    kind: SYNTHETIC
+    action: REDUCED_DESIGN_LLM_AGENT_REFERENCE_ARM_WITH_LOCAL_QWEN_QUERIED_EVERY_AGENT_STEP
+    answers: O09_llm_agent_reference
+    authorization: SEPARATE_PRECOMMIT
+    serves: NABM_POSITIONING
+
+boundaries:
+  new_execution: NONE
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: "NO"
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED

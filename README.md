@@ -6,6 +6,12 @@ Neural ABM is a pre-release Python package for Neural Agent-Based Models
 (NABM): simulations where neural local updates, explicit social exchange, and
 ABM-style state logging are kept separate and inspectable.
 
+NABM aims at the space between rule-based ABMs and LLM-agent simulations.
+Agents carry small learned policies that start from a hand rule, or from an
+LLM judgment elicited once, and learn from pooled outcome records. That makes
+them heavier than a fixed rule but far lighter than querying a language model
+at every decision. See [Where NABM Sits](#where-nabm-sits).
+
 The current alpha is clone-first. Start from a Git clone, use `uv`, and stay on
 the default torch-free `neural_abm.api_lite` surface unless you explicitly need
 the torch-backed lifecycle API. The current distribution path is the repository
@@ -310,6 +316,10 @@ torch-backed behavior. The early-user checklist is in
   use those provisional episodes for leave-out construction pending ABI
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
+- Repository-only policy-ladder ledger at
+  `docs/research/pivot-policy-ladder-consolidation-v2.md`: the hash-audited
+  record of the researcher-pivot policy ladder, including the measured cost
+  and behavior of each tier between rule-based ABMs and LLM agents.
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
   and Granovetter special cases, plus explicitly labeled FJ-like anchored and
   self-excluding HK variants, as settings of the same lifecycle.
@@ -365,6 +375,36 @@ catalog = toy_catalog()
 binary_probability_toys = toys_by_taxonomy("output_family", "binary_probability")
 ```
 
+## Where NABM Sits
+
+| | Rule-based ABM | NABM | LLM-agent simulation |
+|---|---|---|---|
+| Agent policy | Fixed hand-written rule | Small learned policy, with the rule or an elicited LLM judgment as its prior | Language model queried at each decision |
+| What agents learn from | Nothing | Pooled outcome records | Prompt context |
+| Cost per agent-step | 1× | About 2 to 7× for pooled linear, tree, and MLP policies | One model call |
+
+The repository-only researcher-pivot case study measures this range in
+synthetic, stylized worlds:
+
+- Each step of the study exactly reproduces its rule-based predecessor before
+  a learned arm is interpreted, so the rule ABM is a special case.
+- Pooled linear, tree, and MLP policies cost 1.9 to 6.7 times the rule-based
+  ABM per agent-step. Separate per-agent learners cost about 60 times, and with only
+  neighbor-scale evidence they do worse than the rule they start from.
+- The gain comes from learned policies rather than neural ones as such. An MLP
+  wins on smooth success boundaries and a tree on axis-aligned ones.
+- A local LLM (Qwen3-4B) was consulted once, calibrated to a stated base rate,
+  and paired with a small exploration floor. It then selected better entrants
+  than the hand rule while keeping pooled learning within a registered margin,
+  in 7 of 9 world-and-learner settings. Eliciting it took under 10 GPU minutes.
+  Querying the model at every agent-step of the same design would take at
+  least an estimated 38 to 125 GPU hours.
+
+These are synthetic results, not claims about real researchers, and the
+LLM-agent cost is estimated rather than measured. The repository-only,
+hash-audited ledger is at
+`docs/research/pivot-policy-ladder-consolidation-v2.md`.
+
 ## Scope
 
 In this repository, a model is inside the NABM claim when it has:
@@ -377,6 +417,8 @@ In this repository, a model is inside the NABM claim when it has:
 
 The current framing is conservative:
 
+- Position NABM between rule-based ABMs and LLM-agent simulations, as a
+  replacement for neither.
 - Do not claim a general Transformer replacement.
 - Do not claim a universal simulator or general-purpose ABM framework.
 - Treat the core unit as a Neural ABM Node with learnable social mixing.

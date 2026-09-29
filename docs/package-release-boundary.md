@@ -181,6 +181,8 @@ cohort and cross-fits the field record. It has the same boundary.
 The policy-ladder consolidation is a repository-only ledger of recorded
 results, framework extraction decisions, and empirical targets. Its document,
 ledger, and audit test stay outside the package.
+Its v2 successor adds the later studies and the positioning evidence. It has
+the same boundary.
 
 The relative-delay and cost study is repository-only. It adds a Pivot-owned
 entry hazard, simulation-side timing observables, and a compute-cost benchmark.
