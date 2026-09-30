@@ -1,0 +1,546 @@
+{
+  "schema_version": "pivot_observable_confirmation_result.v1",
+  "label": "pivot_observable_confirmation_v1_20261001",
+  "status": "SYNTHETIC_GENERATIVE_ABM_COMPARISON_REPRODUCED",
+  "precommit": {
+    "commit_sha": "b270e5137e37a846e9e30f8d3acb4c1448edf886",
+    "contract_path": "experiments/configs/pivot_observable_confirmation_v1.yaml",
+    "contract_sha256": "4df4d680b6fa4f55dad20223d88875e0fd2c4b54f2bf2367e451363889eecbd0",
+    "result_informed_successor": true
+  },
+  "execution": {
+    "profile": "development",
+    "agent_count": 256,
+    "steps": 24,
+    "replicates": 16,
+    "cells": 24,
+    "raw_row_count": 4608,
+    "workers": 16,
+    "first_run": {
+      "output_dir": "/ssd/pivot_observable_confirmation_v1_b270e51_development",
+      "receipt_sha256": "de28f2fbba66e8a62f627369113f2de096d94668771c3ead730c43ee84936be8"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_observable_confirmation_v1_b270e51_reproduction",
+      "receipt_sha256": "de28f2fbba66e8a62f627369113f2de096d94668771c3ead730c43ee84936be8",
+      "all_four_artifacts_byte_identical": true
+    },
+    "artifact_sha256": {
+      "runs.jsonl": "02514b8cc5c29eb47895cc7f282fd8f8798a0cc2359140629627953815d23ec2",
+      "scorecard.json": "b88f938a22672883bb2c282c9748c8573ebced68b632c1d9ed8fa14f6ab377f2",
+      "scorecard.md": "1a18d431b919a1ebf33fe29a0a723c72b17b98355e68aede71e89dd2ba20078c",
+      "receipt.json": "de28f2fbba66e8a62f627369113f2de096d94668771c3ead730c43ee84936be8"
+    }
+  },
+  "validation": {
+    "nesting_checks": "PASS_EXACT"
+  },
+  "registered_result_disposition": {
+    "status_mix": {
+      "active_cells": 10,
+      "discriminating": true,
+      "inactive_cells": 14
+    },
+    "observable_tests": {
+      "cohort_persistence_drop": {
+        "accuracy": 0.958333,
+        "active_when": "BELOW",
+        "cells": 24,
+        "correct": 23,
+        "disposition": "HOLDS_IN_MOST_CELLS",
+        "false_active": 0,
+        "false_inactive": 1,
+        "threshold": 0.023175,
+        "separation_in_this_study": {
+          "active_range": [
+            -0.372273,
+            0.052394
+          ],
+          "direction": "ACTIVE_LOWER",
+          "disposition": "SEPARATES",
+          "inactive_range": [
+            0.053625,
+            0.59197
+          ],
+          "missing_cells": 0
+        },
+        "missed_active_cells": [
+          "hazard_q0p35/failure_lag_2"
+        ]
+      },
+      "outcome_selection_trend": {
+        "accuracy": 0.916667,
+        "active_when": "ABOVE",
+        "cells": 24,
+        "correct": 22,
+        "disposition": "HOLDS_IN_MOST_CELLS",
+        "false_active": 0,
+        "false_inactive": 2,
+        "threshold": 0.098417,
+        "separation_in_this_study": {
+          "active_range": [
+            0.036611,
+            0.361389
+          ],
+          "direction": null,
+          "disposition": "DOES_NOT_SEPARATE",
+          "inactive_range": [
+            -0.631476,
+            0.097423
+          ],
+          "missing_cells": 0
+        },
+        "missed_active_cells": [
+          "hazard_q0p35/failure_lag_2",
+          "surge_peak8_width4/failure_lag_1"
+        ]
+      }
+    },
+    "joint_rule_both_observables": {
+      "accuracy": 0.9166666666666666,
+      "cells": 24,
+      "correct": 22,
+      "disposition": "HOLDS_IN_MOST_CELLS",
+      "false_active": 0,
+      "false_inactive": 2
+    },
+    "no_learning_control": {
+      "cohort_persistence_drop": {
+        "cells": 24,
+        "cells_reading_inactive": 24
+      },
+      "disposition": "CONTROL_READS_INACTIVE_EVERYWHERE",
+      "outcome_selection_trend": {
+        "cells": 24,
+        "cells_reading_inactive": 24
+      }
+    },
+    "post_failure_entry_share_comparator": {
+      "accuracy": 0.833333,
+      "cells": 24,
+      "correct": 20,
+      "disposition": "HOLDS_IN_MOST_CELLS",
+      "false_active": 4,
+      "false_inactive": 0,
+      "threshold": 0.151284
+    },
+    "carried_to_the_empirical_stage_as_a_confirmed_discriminant": [],
+    "use_on_data_rule": "ONLY_AN_OBSERVABLE_CONFIRMED_IN_ALL_CELLS_WITH_THE_CONTROL_READING_INACTIVE_IS_CARRIED"
+  },
+  "cells": [
+    {
+      "schedule_id": "hazard_q0p35",
+      "schedule_type": "hazard",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.571281,
+      "interior_peak_share": 0.0,
+      "cohort_persistence_drop": -0.372273,
+      "outcome_selection_trend": 0.361389,
+      "fixed_rule_cohort_persistence_drop": 0.038827,
+      "fixed_rule_outcome_selection_trend": -0.072107
+    },
+    {
+      "schedule_id": "hazard_q0p35",
+      "schedule_type": "hazard",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.414449,
+      "interior_peak_share": 0.875,
+      "cohort_persistence_drop": -0.016851,
+      "outcome_selection_trend": 0.137484,
+      "fixed_rule_cohort_persistence_drop": 0.038827,
+      "fixed_rule_outcome_selection_trend": -0.072107
+    },
+    {
+      "schedule_id": "hazard_q0p35",
+      "schedule_type": "hazard",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.263891,
+      "interior_peak_share": 0.875,
+      "cohort_persistence_drop": 0.052394,
+      "outcome_selection_trend": 0.036611,
+      "fixed_rule_cohort_persistence_drop": 0.038827,
+      "fixed_rule_outcome_selection_trend": -0.072107
+    },
+    {
+      "schedule_id": "hazard_q0p35",
+      "schedule_type": "hazard",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.102051,
+      "interior_peak_share": 0.875,
+      "cohort_persistence_drop": 0.557288,
+      "outcome_selection_trend": -0.426431,
+      "fixed_rule_cohort_persistence_drop": 0.038827,
+      "fixed_rule_outcome_selection_trend": -0.072107
+    },
+    {
+      "schedule_id": "hazard_q0p7",
+      "schedule_type": "hazard",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.288895,
+      "interior_peak_share": 0.0,
+      "cohort_persistence_drop": -0.354956,
+      "outcome_selection_trend": 0.312827,
+      "fixed_rule_cohort_persistence_drop": 0.106823,
+      "fixed_rule_outcome_selection_trend": -0.129963
+    },
+    {
+      "schedule_id": "hazard_q0p7",
+      "schedule_type": "hazard",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.145063,
+      "interior_peak_share": 0.125,
+      "cohort_persistence_drop": 0.082927,
+      "outcome_selection_trend": -0.060101,
+      "fixed_rule_cohort_persistence_drop": 0.106823,
+      "fixed_rule_outcome_selection_trend": -0.129963
+    },
+    {
+      "schedule_id": "hazard_q0p7",
+      "schedule_type": "hazard",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.046213,
+      "interior_peak_share": 0.125,
+      "cohort_persistence_drop": 0.10282,
+      "outcome_selection_trend": -0.090292,
+      "fixed_rule_cohort_persistence_drop": 0.106823,
+      "fixed_rule_outcome_selection_trend": -0.129963
+    },
+    {
+      "schedule_id": "hazard_q0p7",
+      "schedule_type": "hazard",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.003664,
+      "interior_peak_share": 0.125,
+      "cohort_persistence_drop": 0.59197,
+      "outcome_selection_trend": -0.618692,
+      "fixed_rule_cohort_persistence_drop": 0.106823,
+      "fixed_rule_outcome_selection_trend": -0.129963
+    },
+    {
+      "schedule_id": "surge_peak4_width2",
+      "schedule_type": "surge",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.567422,
+      "interior_peak_share": 0.104167,
+      "cohort_persistence_drop": -0.350525,
+      "outcome_selection_trend": 0.342804,
+      "fixed_rule_cohort_persistence_drop": 0.034575,
+      "fixed_rule_outcome_selection_trend": -0.072895
+    },
+    {
+      "schedule_id": "surge_peak4_width2",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.281587,
+      "interior_peak_share": 1.0,
+      "cohort_persistence_drop": 0.053625,
+      "outcome_selection_trend": -0.008799,
+      "fixed_rule_cohort_persistence_drop": 0.034575,
+      "fixed_rule_outcome_selection_trend": -0.072895
+    },
+    {
+      "schedule_id": "surge_peak4_width2",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.037354,
+      "interior_peak_share": 1.0,
+      "cohort_persistence_drop": 0.083551,
+      "outcome_selection_trend": -0.046253,
+      "fixed_rule_cohort_persistence_drop": 0.034575,
+      "fixed_rule_outcome_selection_trend": -0.072895
+    },
+    {
+      "schedule_id": "surge_peak4_width2",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.0,
+      "interior_peak_share": 1.0,
+      "cohort_persistence_drop": 0.511398,
+      "outcome_selection_trend": -0.456364,
+      "fixed_rule_cohort_persistence_drop": 0.034575,
+      "fixed_rule_outcome_selection_trend": -0.072895
+    },
+    {
+      "schedule_id": "surge_peak4_width4",
+      "schedule_type": "surge",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.249625,
+      "interior_peak_share": 0.0,
+      "cohort_persistence_drop": -0.356205,
+      "outcome_selection_trend": 0.301903,
+      "fixed_rule_cohort_persistence_drop": 0.118291,
+      "fixed_rule_outcome_selection_trend": -0.135549
+    },
+    {
+      "schedule_id": "surge_peak4_width4",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.05713,
+      "interior_peak_share": 0.3125,
+      "cohort_persistence_drop": 0.099296,
+      "outcome_selection_trend": -0.095143,
+      "fixed_rule_cohort_persistence_drop": 0.118291,
+      "fixed_rule_outcome_selection_trend": -0.135549
+    },
+    {
+      "schedule_id": "surge_peak4_width4",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.001953,
+      "interior_peak_share": 0.3125,
+      "cohort_persistence_drop": 0.108371,
+      "outcome_selection_trend": -0.105542,
+      "fixed_rule_cohort_persistence_drop": 0.118291,
+      "fixed_rule_outcome_selection_trend": -0.135549
+    },
+    {
+      "schedule_id": "surge_peak4_width4",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.0,
+      "interior_peak_share": 0.3125,
+      "cohort_persistence_drop": 0.583783,
+      "outcome_selection_trend": -0.631476,
+      "fixed_rule_cohort_persistence_drop": 0.118291,
+      "fixed_rule_outcome_selection_trend": -0.135549
+    },
+    {
+      "schedule_id": "surge_peak8_width2",
+      "schedule_type": "surge",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.887301,
+      "interior_peak_share": 0.944444,
+      "cohort_persistence_drop": -0.289045,
+      "outcome_selection_trend": 0.221645,
+      "fixed_rule_cohort_persistence_drop": 0.037876,
+      "fixed_rule_outcome_selection_trend": -0.062722
+    },
+    {
+      "schedule_id": "surge_peak8_width2",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.843863,
+      "interior_peak_share": 1.0,
+      "cohort_persistence_drop": -0.102376,
+      "outcome_selection_trend": 0.257678,
+      "fixed_rule_cohort_persistence_drop": 0.037876,
+      "fixed_rule_outcome_selection_trend": -0.062722
+    },
+    {
+      "schedule_id": "surge_peak8_width2",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.777386,
+      "interior_peak_share": 1.0,
+      "cohort_persistence_drop": 0.104387,
+      "outcome_selection_trend": 0.097423,
+      "fixed_rule_cohort_persistence_drop": 0.037876,
+      "fixed_rule_outcome_selection_trend": -0.062722
+    },
+    {
+      "schedule_id": "surge_peak8_width2",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.417516,
+      "interior_peak_share": 1.0,
+      "cohort_persistence_drop": 0.516831,
+      "outcome_selection_trend": -0.260026,
+      "fixed_rule_cohort_persistence_drop": 0.037876,
+      "fixed_rule_outcome_selection_trend": -0.062722
+    },
+    {
+      "schedule_id": "surge_peak8_width4",
+      "schedule_type": "surge",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.673005,
+      "interior_peak_share": 0.125,
+      "cohort_persistence_drop": -0.336725,
+      "outcome_selection_trend": 0.312365,
+      "fixed_rule_cohort_persistence_drop": 0.055581,
+      "fixed_rule_outcome_selection_trend": -0.097579
+    },
+    {
+      "schedule_id": "surge_peak8_width4",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.484351,
+      "interior_peak_share": 1.0,
+      "cohort_persistence_drop": 0.022207,
+      "outcome_selection_trend": 0.087548,
+      "fixed_rule_cohort_persistence_drop": 0.055581,
+      "fixed_rule_outcome_selection_trend": -0.097579
+    },
+    {
+      "schedule_id": "surge_peak8_width4",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.26367,
+      "interior_peak_share": 1.0,
+      "cohort_persistence_drop": 0.102493,
+      "outcome_selection_trend": -0.034368,
+      "fixed_rule_cohort_persistence_drop": 0.055581,
+      "fixed_rule_outcome_selection_trend": -0.097579
+    },
+    {
+      "schedule_id": "surge_peak8_width4",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.022546,
+      "interior_peak_share": 1.0,
+      "cohort_persistence_drop": 0.534769,
+      "outcome_selection_trend": -0.421021,
+      "fixed_rule_cohort_persistence_drop": 0.055581,
+      "fixed_rule_outcome_selection_trend": -0.097579
+    }
+  ],
+  "mean_interior_peak_share": 0.587963,
+  "post_hoc_descriptive": {
+    "status": "POST_HOC_DESCRIPTIVE_NOT_REGISTERED_NO_NEW_EXECUTION",
+    "channel_strength": {
+      "n08_weak_active_cells": [
+        "hazard_q0p35/failure_lag_2",
+        "surge_peak8_width4/failure_lag_1"
+      ],
+      "n05_weak_active_cells": [
+        "peak9_width3p0/immediate"
+      ],
+      "all_misses_are_weak_cells": true,
+      "cells_with_two_or_more_passing_pairs_all_correct": true,
+      "false_actives_across_n05_and_n08": 0,
+      "predictions_across_n05_and_n08": 96
+    },
+    "persistence_drop_separates_n08_by_a_hair": {
+      "active_max": 0.052394,
+      "inactive_min": 0.053625
+    },
+    "reading": "THE_OBSERVABLES_ARE_SPECIFIC_NOT_FULLY_SENSITIVE_WHEN_THEY_SAY_ACTIVE_THE_CHANNEL_IS_ACTIVE_THEY_MISS_ONLY_WEAK_CHANNELS"
+  },
+  "scientific_assessment": {
+    "registered_outcome": "BOTH_OBSERVABLES_HOLD_IN_MOST_CELLS_DROP_23_OF_24_TREND_22_OF_24_NONE_CONFIRMED_IN_ALL_CELLS_CONTROL_READS_INACTIVE_EVERYWHERE",
+    "error_type": "ONLY_FALSE_INACTIVES_ON_CELLS_WHERE_ONE_FAMILY_GEOMETRY_PAIR_PASSES",
+    "no_learning_control": "THE_FIXED_RULE_READS_INACTIVE_IN_ALL_24_CELLS_SO_THE_OBSERVABLES_TRACK_LEARNING_NOT_TIMING",
+    "comparator": "POST_FAILURE_ENTRY_SHARE_20_OF_24_WITH_4_FALSE_ACTIVES",
+    "status": "NOT_CARRIED_AS_A_CONFIRMED_TWO_SIDED_DISCRIMINANT",
+    "candidate_successor": "REGISTER_A_ONE_SIDED_CLAIM_A_TREND_ABOVE_THRESHOLD_IMPLIES_AN_ACTIVE_CHANNEL_ON_A_FRESH_GRID",
+    "model_selected": "NO",
+    "reason": "At thresholds fixed from N05, the cohort persistence drop classified 23 of 24 new cells and the outcome selection trend 22. Every error missed an active channel, and none called an inactive cell active. The fixed rule, which does not learn, read inactive in every cell. Neither observable is confirmed in all cells, so by the registered rule neither goes to the empirical stage as a two-sided discriminant. Post hoc, both missed only weak channels, where one family-geometry pair passed."
+  },
+  "framework_assessment": {
+    "empirical_implication": "A_RISING_PERSISTENCE_TREND_ACROSS_ENTRY_TIME_IS_A_CANDIDATE_SIGN_THAT_LEARNING_ACTS_ON_ENTRY_ITS_ABSENCE_DOES_NOT_RULE_A_WEAK_CHANNEL_OUT",
+    "h3_link": "A_LATER_COHORT_PERSISTENCE_DECLINE_IS_THE_NO_LEARNING_DEFAULT_IN_THESE_WORLDS",
+    "generic_api_change_needed": false,
+    "no_post_result_tuning": true
+  },
+  "boundaries": {
+    "empirical_fit": "NOT_RUN",
+    "empirical_rows_read": 0,
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "package_promotion": "NOT_AUTHORIZED",
+    "repository_only": true,
+    "scientific_effect": "NOT_ESTABLISHED"
+  }
+}
