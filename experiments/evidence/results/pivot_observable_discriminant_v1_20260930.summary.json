@@ -1,0 +1,724 @@
+{
+  "schema_version": "pivot_observable_discriminant_result.v1",
+  "label": "pivot_observable_discriminant_v1_20260930",
+  "status": "SYNTHETIC_GENERATIVE_ABM_COMPARISON_REPRODUCED",
+  "precommit": {
+    "commit_sha": "5b73c19c571a6f870fb7994ea576206e314380fe",
+    "contract_path": "experiments/configs/pivot_observable_discriminant_v1.yaml",
+    "contract_sha256": "b2a3cf0ffadf125b63b030f45f348fa6499c9316b565f5a064500cba5870d0f1",
+    "result_informed_successor": true
+  },
+  "execution": {
+    "profile": "development",
+    "agent_count": 256,
+    "steps": 24,
+    "replicates": 16,
+    "cells": 24,
+    "raw_row_count": 4608,
+    "workers": 16,
+    "first_run": {
+      "output_dir": "/ssd/pivot_observable_discriminant_v1_5b73c19_development",
+      "receipt_sha256": "05be0521da132f60588be29d8072f912ad1032ec6d80a7aecd1c9e36804ec18c"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_observable_discriminant_v1_5b73c19_reproduction",
+      "receipt_sha256": "05be0521da132f60588be29d8072f912ad1032ec6d80a7aecd1c9e36804ec18c",
+      "all_four_artifacts_byte_identical": true
+    },
+    "artifact_sha256": {
+      "runs.jsonl": "62bfdd9f68d4d866db8f526b1ac2f977af059acfe1a48c534d26e70f538d0ad6",
+      "scorecard.json": "3aa360ad0bc542d34f0ab81b563ebc5538cc30701f129109e9b030d4b9460b30",
+      "scorecard.md": "271167424f2f28a0f10c7cbf6727e6a20ac393885b56d0a611340db019e234b2",
+      "receipt.json": "05be0521da132f60588be29d8072f912ad1032ec6d80a7aecd1c9e36804ec18c"
+    }
+  },
+  "validation": {
+    "nesting_checks": "PASS_EXACT",
+    "flat_clock_nests_n01": true
+  },
+  "pre_freeze_n01_screen": {
+    "status": "POST_HOC_ON_RECORDED_N01_ROWS_BEFORE_THIS_FREEZE",
+    "separating": [
+      "post_failure_entry_share"
+    ],
+    "not_separating": [
+      "post_decline_entry_share",
+      "post_first_cohort_entry_share",
+      "cohort_persistence_drop",
+      "post_peak_entry_share"
+    ],
+    "not_computable_from_n01_rows": [
+      "attribute_selection_trend",
+      "outcome_selection_trend"
+    ]
+  },
+  "registered_result_disposition": {
+    "status_mix": {
+      "active_cells": 10,
+      "discriminating": true,
+      "inactive_cells": 14
+    },
+    "design_check": {
+      "disposition": "SURGE_CLOCK_PRODUCES_INTERIOR_PEAKS",
+      "mean_interior_peak_share": 0.79022
+    },
+    "post_failure_entry_share": {
+      "accuracy": 0.75,
+      "cells": 24,
+      "correct": 18,
+      "disposition": "HOLDS_IN_MOST_CELLS",
+      "false_active": 6,
+      "false_inactive": 0,
+      "threshold": 0.151284,
+      "separates_in_this_study": "DOES_NOT_SEPARATE",
+      "false_active_cells": [
+        "peak6_width1p5/failure_lag_2",
+        "peak6_width3p0/failure_lag_1",
+        "peak6_width3p0/failure_lag_2",
+        "peak9_width1p5/failure_lag_4",
+        "peak9_width3p0/failure_lag_2",
+        "peak9_width3p0/failure_lag_4"
+      ]
+    },
+    "feature_arm_relative_delay": {
+      "accuracy": 0.791667,
+      "cells": 24,
+      "correct": 19,
+      "disposition": "HOLDS_IN_MOST_CELLS",
+      "false_active": 5,
+      "false_inactive": 0,
+      "threshold": 0.731083
+    },
+    "separating_observables": [
+      "cohort_persistence_drop",
+      "outcome_selection_trend"
+    ],
+    "observable_screen": {
+      "attribute_selection_trend": {
+        "active_range": [
+          0.036453,
+          0.138186
+        ],
+        "direction": null,
+        "disposition": "DOES_NOT_SEPARATE",
+        "inactive_range": [
+          -0.09572,
+          0.076481
+        ],
+        "missing_cells": 0,
+        "spearman_with_post_failure_entry_share": 0.788144
+      },
+      "cohort_persistence_drop": {
+        "active_range": [
+          -0.351935,
+          9.3e-05
+        ],
+        "direction": "ACTIVE_LOWER",
+        "disposition": "SEPARATES",
+        "inactive_range": [
+          0.046256,
+          0.585438
+        ],
+        "missing_cells": 0,
+        "spearman_with_post_failure_entry_share": -0.5756
+      },
+      "outcome_selection_trend": {
+        "active_range": [
+          0.148043,
+          0.334931
+        ],
+        "direction": "ACTIVE_HIGHER",
+        "disposition": "SEPARATES",
+        "inactive_range": [
+          -0.648836,
+          0.048791
+        ],
+        "missing_cells": 0,
+        "spearman_with_post_failure_entry_share": 0.686276
+      },
+      "post_decline_entry_share": {
+        "active_range": [
+          0.000909,
+          0.480169
+        ],
+        "direction": null,
+        "disposition": "DOES_NOT_SEPARATE",
+        "inactive_range": [
+          0.0,
+          0.685753
+        ],
+        "missing_cells": 0,
+        "spearman_with_post_failure_entry_share": 0.80089
+      },
+      "post_first_cohort_entry_share": {
+        "active_range": [
+          0.009091,
+          0.740021
+        ],
+        "direction": null,
+        "disposition": "DOES_NOT_SEPARATE",
+        "inactive_range": [
+          0.0,
+          0.813122
+        ],
+        "missing_cells": 0,
+        "spearman_with_post_failure_entry_share": 0.800012
+      },
+      "post_peak_entry_share": {
+        "active_range": [
+          0.180654,
+          0.58681
+        ],
+        "direction": null,
+        "disposition": "DOES_NOT_SEPARATE",
+        "inactive_range": [
+          0.141546,
+          0.379395
+        ],
+        "missing_cells": 0,
+        "spearman_with_post_failure_entry_share": 0.044464
+      }
+    }
+  },
+  "cells": [
+    {
+      "clock_id": "peak3_width1p5",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.486618,
+      "feature_arm_relative_delay": 0.346154,
+      "interior_peak_share": 0.076389,
+      "model_h3_gap_mean": -5.409091,
+      "post_decline_entry_share": 0.002693,
+      "post_first_cohort_entry_share": 0.017492,
+      "cohort_persistence_drop": -0.345723,
+      "post_peak_entry_share": 0.44979,
+      "attribute_selection_trend": 0.108597,
+      "outcome_selection_trend": 0.334931
+    },
+    {
+      "clock_id": "peak3_width1p5",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.141546,
+      "feature_arm_relative_delay": 0.666667,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": -0.273504,
+      "post_decline_entry_share": 0.0,
+      "post_first_cohort_entry_share": 0.0,
+      "cohort_persistence_drop": 0.071443,
+      "post_peak_entry_share": 0.141546,
+      "attribute_selection_trend": -0.045129,
+      "outcome_selection_trend": -0.07029
+    },
+    {
+      "clock_id": "peak3_width1p5",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.0,
+      "feature_arm_relative_delay": 1.0,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": -0.214286,
+      "post_decline_entry_share": 0.0,
+      "post_first_cohort_entry_share": 0.0,
+      "cohort_persistence_drop": 0.088983,
+      "post_peak_entry_share": 0.143799,
+      "attribute_selection_trend": -0.04808,
+      "outcome_selection_trend": -0.086917
+    },
+    {
+      "clock_id": "peak3_width1p5",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.0,
+      "feature_arm_relative_delay": 1.666667,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": 0.0,
+      "post_decline_entry_share": 0.0,
+      "post_first_cohort_entry_share": 0.0,
+      "cohort_persistence_drop": 0.509522,
+      "post_peak_entry_share": 0.143799,
+      "attribute_selection_trend": -0.04808,
+      "outcome_selection_trend": -0.502351
+    },
+    {
+      "clock_id": "peak3_width3p0",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.230903,
+      "feature_arm_relative_delay": 0.489796,
+      "interior_peak_share": 0.0,
+      "model_h3_gap_mean": -3.857143,
+      "post_decline_entry_share": 0.000909,
+      "post_first_cohort_entry_share": 0.009091,
+      "cohort_persistence_drop": -0.351935,
+      "post_peak_entry_share": 0.230903,
+      "attribute_selection_trend": 0.07372,
+      "outcome_selection_trend": 0.290198
+    },
+    {
+      "clock_id": "peak3_width3p0",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.025697,
+      "feature_arm_relative_delay": 1.0,
+      "interior_peak_share": 0.3125,
+      "model_h3_gap_mean": -0.867647,
+      "post_decline_entry_share": 0.0,
+      "post_first_cohort_entry_share": 0.0,
+      "cohort_persistence_drop": 0.102384,
+      "post_peak_entry_share": 0.329863,
+      "attribute_selection_trend": -0.093921,
+      "outcome_selection_trend": -0.107302
+    },
+    {
+      "clock_id": "peak3_width3p0",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.0,
+      "feature_arm_relative_delay": 1.5,
+      "interior_peak_share": 0.3125,
+      "model_h3_gap_mean": -0.866667,
+      "post_decline_entry_share": 0.0,
+      "post_first_cohort_entry_share": 0.0,
+      "cohort_persistence_drop": 0.107692,
+      "post_peak_entry_share": 0.330566,
+      "attribute_selection_trend": -0.09572,
+      "outcome_selection_trend": -0.113394
+    },
+    {
+      "clock_id": "peak3_width3p0",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.0,
+      "feature_arm_relative_delay": 2.5,
+      "interior_peak_share": 0.3125,
+      "model_h3_gap_mean": -0.6875,
+      "post_decline_entry_share": 0.0,
+      "post_first_cohort_entry_share": 0.0,
+      "cohort_persistence_drop": 0.585438,
+      "post_peak_entry_share": 0.330566,
+      "attribute_selection_trend": -0.09572,
+      "outcome_selection_trend": -0.648836
+    },
+    {
+      "clock_id": "peak6_width1p5",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.898294,
+      "feature_arm_relative_delay": 0.168028,
+      "interior_peak_share": 0.958333,
+      "model_h3_gap_mean": -0.413793,
+      "post_decline_entry_share": 0.05859,
+      "post_first_cohort_entry_share": 0.480273,
+      "cohort_persistence_drop": -0.293877,
+      "post_peak_entry_share": 0.241219,
+      "attribute_selection_trend": 0.036453,
+      "outcome_selection_trend": 0.207332
+    },
+    {
+      "clock_id": "peak6_width1p5",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.868653,
+      "feature_arm_relative_delay": 0.389716,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": 1.163462,
+      "post_decline_entry_share": 0.031886,
+      "post_first_cohort_entry_share": 0.340795,
+      "cohort_persistence_drop": -0.021252,
+      "post_peak_entry_share": 0.292903,
+      "attribute_selection_trend": 0.104548,
+      "outcome_selection_trend": 0.162954
+    },
+    {
+      "clock_id": "peak6_width1p5",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.720419,
+      "feature_arm_relative_delay": 0.589359,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": 2.186992,
+      "post_decline_entry_share": 0.048003,
+      "post_first_cohort_entry_share": 0.386408,
+      "cohort_persistence_drop": 0.248475,
+      "post_peak_entry_share": 0.223575,
+      "attribute_selection_trend": 0.016553,
+      "outcome_selection_trend": -0.036001
+    },
+    {
+      "clock_id": "peak6_width1p5",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.081055,
+      "feature_arm_relative_delay": 0.963855,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": 2.111111,
+      "post_decline_entry_share": 0.046495,
+      "post_first_cohort_entry_share": 0.417318,
+      "cohort_persistence_drop": 0.494488,
+      "post_peak_entry_share": 0.17513,
+      "attribute_selection_trend": -0.02693,
+      "outcome_selection_trend": -0.333277
+    },
+    {
+      "clock_id": "peak6_width3p0",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.639232,
+      "feature_arm_relative_delay": 0.227488,
+      "interior_peak_share": 0.145833,
+      "model_h3_gap_mean": -6.047619,
+      "post_decline_entry_share": 0.002345,
+      "post_first_cohort_entry_share": 0.079458,
+      "cohort_persistence_drop": -0.329772,
+      "post_peak_entry_share": 0.58681,
+      "attribute_selection_trend": 0.080286,
+      "outcome_selection_trend": 0.300825
+    },
+    {
+      "clock_id": "peak6_width3p0",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.429715,
+      "feature_arm_relative_delay": 0.565815,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": -0.163636,
+      "post_decline_entry_share": 0.00088,
+      "post_first_cohort_entry_share": 0.018001,
+      "cohort_persistence_drop": 0.046256,
+      "post_peak_entry_share": 0.361206,
+      "attribute_selection_trend": 0.011555,
+      "outcome_selection_trend": 0.012997
+    },
+    {
+      "clock_id": "peak6_width3p0",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.154371,
+      "feature_arm_relative_delay": 0.75,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": -0.092308,
+      "post_decline_entry_share": 0.000871,
+      "post_first_cohort_entry_share": 0.024713,
+      "cohort_persistence_drop": 0.109925,
+      "post_peak_entry_share": 0.375901,
+      "attribute_selection_trend": -0.030659,
+      "outcome_selection_trend": -0.071677
+    },
+    {
+      "clock_id": "peak6_width3p0",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.001709,
+      "feature_arm_relative_delay": 1.25,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": 0.229167,
+      "post_decline_entry_share": 0.001709,
+      "post_first_cohort_entry_share": 0.030273,
+      "cohort_persistence_drop": 0.525862,
+      "post_peak_entry_share": 0.379395,
+      "attribute_selection_trend": -0.035776,
+      "outcome_selection_trend": -0.455125
+    },
+    {
+      "clock_id": "peak9_width1p5",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.843276,
+      "feature_arm_relative_delay": 0.119701,
+      "interior_peak_share": 0.902778,
+      "model_h3_gap_mean": 3.309278,
+      "post_decline_entry_share": 0.335574,
+      "post_first_cohort_entry_share": 0.729252,
+      "cohort_persistence_drop": -0.282927,
+      "post_peak_entry_share": 0.211236,
+      "attribute_selection_trend": 0.043901,
+      "outcome_selection_trend": 0.18717
+    },
+    {
+      "clock_id": "peak9_width1p5",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.870751,
+      "feature_arm_relative_delay": 0.232446,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": 4.081081,
+      "post_decline_entry_share": 0.41284,
+      "post_first_cohort_entry_share": 0.729813,
+      "cohort_persistence_drop": -0.175578,
+      "post_peak_entry_share": 0.194661,
+      "attribute_selection_trend": 0.108032,
+      "outcome_selection_trend": 0.200548
+    },
+    {
+      "clock_id": "peak9_width1p5",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.814597,
+      "feature_arm_relative_delay": 0.362416,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": 4.456693,
+      "post_decline_entry_share": 0.480169,
+      "post_first_cohort_entry_share": 0.740021,
+      "cohort_persistence_drop": 9.3e-05,
+      "post_peak_entry_share": 0.180654,
+      "attribute_selection_trend": 0.138186,
+      "outcome_selection_trend": 0.148043
+    },
+    {
+      "clock_id": "peak9_width1p5",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.740144,
+      "feature_arm_relative_delay": 0.625,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": 4.916667,
+      "post_decline_entry_share": 0.685753,
+      "post_first_cohort_entry_share": 0.813122,
+      "cohort_persistence_drop": 0.503865,
+      "post_peak_entry_share": 0.226797,
+      "attribute_selection_trend": 0.076481,
+      "outcome_selection_trend": -0.16238
+    },
+    {
+      "clock_id": "peak9_width3p0",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.872155,
+      "feature_arm_relative_delay": 0.13321,
+      "interior_peak_share": 0.944444,
+      "model_h3_gap_mean": -0.877551,
+      "post_decline_entry_share": 0.123337,
+      "post_first_cohort_entry_share": 0.551935,
+      "cohort_persistence_drop": -0.334536,
+      "post_peak_entry_share": 0.35534,
+      "attribute_selection_trend": 0.043508,
+      "outcome_selection_trend": 0.205732
+    },
+    {
+      "clock_id": "peak9_width3p0",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.789811,
+      "feature_arm_relative_delay": 0.317181,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": 0.25,
+      "post_decline_entry_share": 0.100963,
+      "post_first_cohort_entry_share": 0.381541,
+      "cohort_persistence_drop": -0.085469,
+      "post_peak_entry_share": 0.451471,
+      "attribute_selection_trend": 0.126802,
+      "outcome_selection_trend": 0.231742
+    },
+    {
+      "clock_id": "peak9_width3p0",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.645699,
+      "feature_arm_relative_delay": 0.489241,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": 1.783333,
+      "post_decline_entry_share": 0.142102,
+      "post_first_cohort_entry_share": 0.425907,
+      "cohort_persistence_drop": 0.112263,
+      "post_peak_entry_share": 0.320994,
+      "attribute_selection_trend": 0.065509,
+      "outcome_selection_trend": 0.048791
+    },
+    {
+      "clock_id": "peak9_width3p0",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.271228,
+      "feature_arm_relative_delay": 0.784314,
+      "interior_peak_share": 1.0,
+      "model_h3_gap_mean": 2.590278,
+      "post_decline_entry_share": 0.234471,
+      "post_first_cohort_entry_share": 0.498595,
+      "cohort_persistence_drop": 0.524359,
+      "post_peak_entry_share": 0.309102,
+      "attribute_selection_trend": -0.016205,
+      "outcome_selection_trend": -0.314959
+    }
+  ],
+  "post_hoc_descriptive": {
+    "status": "POST_HOC_DESCRIPTIVE_NOT_REGISTERED_NO_NEW_EXECUTION",
+    "by_status": {
+      "ENTRY_CHANNEL_ACTIVE": {
+        "cells": 10,
+        "model_h3_gap_mean_range": [
+          -6.047619,
+          4.456693
+        ],
+        "cohort_persistence_drop_range": [
+          -0.351935,
+          9.3e-05
+        ],
+        "outcome_selection_trend_range": [
+          0.148043,
+          0.334931
+        ]
+      },
+      "ENTRY_CHANNEL_ABSENT": {
+        "cells": 5,
+        "model_h3_gap_mean_range": [
+          -0.163636,
+          4.916667
+        ],
+        "cohort_persistence_drop_range": [
+          0.046256,
+          0.524359
+        ],
+        "outcome_selection_trend_range": [
+          -0.314959,
+          0.048791
+        ]
+      },
+      "ENTRY_SATURATED": {
+        "cells": 9,
+        "model_h3_gap_mean_range": [
+          -0.867647,
+          2.111111
+        ],
+        "cohort_persistence_drop_range": [
+          0.071443,
+          0.585438
+        ],
+        "outcome_selection_trend_range": [
+          -0.648836,
+          -0.07029
+        ]
+      }
+    },
+    "separation_margins": {
+      "cohort_persistence_drop": 0.046163,
+      "outcome_selection_trend": 0.099252
+    },
+    "cohort_persistence_drop_in_n01": {
+      "separates": false,
+      "active_range": [
+        -0.3585,
+        0.5469
+      ],
+      "inactive_range": [
+        0.0957,
+        0.6041
+      ],
+      "breaking_cell": "Q_0_25_FAILURE_LAG_4_ACTIVE_WITH_A_0_547_DROP",
+      "source": "PRE_FREEZE_SCREEN_OF_RECORDED_N01_ROWS"
+    },
+    "outcome_selection_trend_in_n01": "NOT_COMPUTABLE_N01_ROWS_HOLD_NO_PER_ENTRANT_RECORDS",
+    "reading": "WHEN_LEARNING_ACTS_ON_ENTRY_LATER_ENTRANTS_PERSIST_AT_LEAST_AS_WELL_AS_EARLY_ONES_WHEN_IT_DOES_NOT_LATER_COHORTS_PERSIST_LESS"
+  },
+  "scientific_assessment": {
+    "registered_outcome": "PFES_HOLDS_IN_18_OF_24_CELLS_WITH_6_FALSE_ACTIVES_TWO_OBSERVABLES_SEPARATE_ALL_24_CELLS",
+    "pfes_is_necessary_not_sufficient": "EVERY_ACTIVE_CELL_HAS_PFES_ABOVE_0_23_BUT_INACTIVE_CELLS_REACH_0_74",
+    "separating_observables": [
+      "cohort_persistence_drop",
+      "outcome_selection_trend"
+    ],
+    "both_need": "ENTRY_TIMING_AND_PERSISTENCE_NOT_THE_TIME_OF_THE_FIRST_PUBLIC_FAILURE",
+    "cohort_persistence_drop_is_regime_dependent": "IT_DID_NOT_SEPARATE_THE_N01_HAZARD_CELLS",
+    "status": "CANDIDATES_FOR_A_THIRD_REGISTERED_TEST_NOT_CONFIRMED_DISCRIMINANTS",
+    "h3_link": "A_LATER_COHORT_PERSISTENCE_DECLINE_MARKS_AN_INACTIVE_ENTRY_CHANNEL_IN_THESE_WORLDS",
+    "model_selected": "NO",
+    "reason": "Under an attention-surge clock, the post-failure entry share classified 18 of 24 cells, all errors being cells it called active where learning did not change entry. Two data-observable candidates separated all 24 cells: whether later cohorts persist less than the first, and whether later entrants persist more. Both read the entry channel from entry timing and persistence alone. The cohort version did not separate the N01 hazard cells, so neither is confirmed until a third registered test."
+  },
+  "framework_assessment": {
+    "t01_implication": "THE_EMPIRICAL_OBSERVABLE_SHOULD_BE_THE_PERSISTENCE_TREND_ACROSS_ENTRY_TIME_NOT_A_DELAY_RATIO",
+    "data_need": "ENTRY_YEAR_AND_PERSISTENCE_PER_RESEARCHER_OR_COHORT_WITHIN_A_PIVOT_EPISODE",
+    "next_step": "A_THIRD_REGISTERED_TEST_OF_BOTH_OBSERVABLES_ON_A_NEW_GRID_THAT_INCLUDES_N01_STYLE_HAZARDS_AND_SURGE_CLOCKS",
+    "generic_api_change_needed": false,
+    "no_post_result_tuning": true
+  },
+  "boundaries": {
+    "empirical_fit": "NOT_RUN",
+    "empirical_rows_read": 0,
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "package_promotion": "NOT_AUTHORIZED",
+    "repository_only": true,
+    "scientific_effect": "NOT_ESTABLISHED"
+  }
+}
