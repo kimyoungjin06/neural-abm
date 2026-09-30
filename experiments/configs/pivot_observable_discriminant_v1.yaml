@@ -1,0 +1,312 @@
+schema_version: pivot_observable_discriminant.v1
+label: pivot_observable_discriminant_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+purpose:
+  primary_goal: FIND_WHICH_DATA_OBSERVABLE_IF_ANY_TRACKS_THE_ENTRY_CHANNEL_STATUS_BEFORE_THE_EMPIRICAL_STAGE
+  question: The post-failure entry share separated the N01 cells, but it needs the time of the first public
+    failure, which data cannot see. Under an attention-surge clock that puts the entry peak inside the
+    window, does it still classify the entry channel out of sample, and does any candidate computable
+    from entry timing, cohort persistence, or entrant attributes separate the same cells?
+  next_step_id: N05
+  answers: O08_post_failure_entry_share_as_the_t01_discriminant
+  user_decision: USER_CHOSE_THE_OBSERVABLE_SEARCH_AFTER_THE_N01_SCREEN_FOUND_NO_OBSERVABLE_PROXY
+  result_informed_successor: true
+  pre_freeze_screen:
+    status: POST_HOC_ON_RECORDED_N01_ROWS_BEFORE_THIS_FREEZE
+    separating:
+    - post_failure_entry_share
+    not_separating:
+    - post_decline_entry_share
+    - post_first_cohort_entry_share
+    - cohort_persistence_drop
+    - post_peak_entry_share
+    not_computable_from_n01_rows:
+    - attribute_selection_trend
+    - outcome_selection_trend
+source_bindings:
+- path: scripts/prototype_pivot_relative_delay_cost_v1.py
+  sha256: 4fb362e67e1450820e7763b48e299e2dc53777d16fffbd6439c37b8267348bc7
+  role: N01_RUN_LOOP_HAZARD_ADAPTER_TIMING_OBSERVABLES_AND_NESTING
+- path: experiments/configs/pivot_relative_delay_cost_v1.yaml
+  sha256: 11e3b67c551c7df61951111617e8004b766cc330155c59b5f4f4fff16fe3d3fb
+  role: OPENED_PREDECESSOR_CONTRACT
+- path: experiments/evidence/results/pivot_relative_delay_cost_v1_20260929.summary.json
+  sha256: b3d990a35b53066b835c9683f09476088ffc9cd10f64881389b16b2a5e158b3e
+  role: OPENED_PREDECESSOR_RESULT_AND_THRESHOLD_SOURCE
+- path: experiments/configs/pivot_policy_ladder_consolidation_v3.yaml
+  sha256: 52a38bb52f25ccab4dd508f7584559cc8090e1ddc7aef0e4e7c8ef2b3d36c9ae
+  role: CONSOLIDATION_NAMING_O08
+- path: scripts/prototype_pivot_nonlinear_policy_abm_v2.py
+  sha256: ed827c5b1cddf6a36e32bfd6ebb4e41a1773af10ebcab975bf5c54e5c5887436
+  role: IMPORTED_PROBED_LEARNERS_CROSS_FIT_FIELD_AND_NESTED_V2_ARM
+- path: experiments/configs/pivot_nonlinear_policy_abm_v2.yaml
+  sha256: 0b00c3758ccecc387118c33842a79c5e3a6b11ec246e6fc224d93fa340cd3874
+  role: OPENED_PREDECESSOR_CONTRACT
+- path: experiments/evidence/results/pivot_nonlinear_policy_abm_v2_20260928.summary.json
+  sha256: 2309ff8078a68074f8728768be399dd9ee008927f55451a110e0ce284f4f18db
+  role: OPENED_PREDECESSOR_RESULT
+- path: scripts/prototype_pivot_nonlinear_policy_abm_v1.py
+  sha256: c0fa1621eab02140f5b6bc0e0a54c35c0df8e3ed6498ac391c8665b17f754cdb
+  role: FIT_WORLDS_AND_BATCH_LEARNERS
+- path: scripts/prototype_pivot_persistence_exit_v1.py
+  sha256: e8c604ac33f34cc58496723c2adff8e4d30c05182ee40cad114d961be3b17991
+  role: NESTED_PERSISTENCE_ADAPTER_AND_PREDECESSOR_ARM
+- path: scripts/prototype_pivot_delayed_feedback_learning_v1.py
+  sha256: 9555b0968293ec89620ff461e7c449fee098a7eb8809be2b936812b521358515
+  role: VISIBILITY_QUEUE_AND_PRECOMMIT_HELPERS
+- path: examples/research_pivot_study.py
+  sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+  role: POPULATION_NETWORK_AND_LINEAR_PRODUCTIVE_FIT
+- path: examples/research_pivot_learning_study.py
+  sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+  role: FROZEN_PRIOR_AND_ONLINE_LOGISTIC_PREDECESSOR
+- path: src/neural_abm/api.py
+  sha256: 83005b43023d29640d96a8929aaab5e5c552542c7c9d797c288e5820a7061898
+  role: UNCHANGED_GENERIC_TORCH_API
+- path: src/neural_abm/unit_core.py
+  sha256: d399a6fc29f1b2efd3a648f48c79d7f8cab927e704974223ffabf861333ff4da
+  role: UNCHANGED_GENERIC_LIFECYCLE_CORE
+common_environment:
+  scenario: hot_field_hype
+  state_model: persistence_exit_v1
+  learning_mode: imitative
+  population_network_randomness: IDENTICAL_BY_REPLICATE_ACROSS_ALL_ARMS_WORLDS_AND_HAZARDS
+  transition:
+    failed_minimum_active_steps: 2
+    failed_continuation_score:
+      productive_fit_weight: 0.5
+      current_policy_output_weight: 0.5
+      exit_below: 0.4
+    reentry_after_exit: false
+surge_clock:
+  role: ATTENTION_SURGE_ADMISSION_A_READY_AGENT_ENTERS_ONLY_IF_A_UNIFORM_DRAW_IS_BELOW_THE_CURRENT_ADMISSION
+  admission: FLOOR_PLUS_ONE_MINUS_FLOOR_TIMES_A_GAUSSIAN_IN_THE_OPEN_STEP
+  floor: 0.05
+  clocks:
+  - id: peak3_width1p5
+    peak: 3
+    width: 1.5
+  - id: peak3_width3p0
+    peak: 3
+    width: 3.0
+  - id: peak6_width1p5
+    peak: 6
+    width: 1.5
+  - id: peak6_width3p0
+    peak: 6
+    width: 3.0
+  - id: peak9_width1p5
+    peak: 9
+    width: 1.5
+  - id: peak9_width3p0
+    peak: 9
+    width: 3.0
+  draw: SEED_SEQUENCE_OF_BASE_SEED_REPLICATE_SURGE_COMPONENT_72_STEP_AND_AGENT
+  flat_clock_nests_n01_q_one: true
+  interpretation: A_STYLIZED_ATTENTION_SURGE_NOT_A_CLAIM_ABOUT_REAL_ATTENTION_DYNAMICS
+inherited_learning_parameters:
+  neighbor_count: 4
+  within_stage_probability: 0.6
+  learning_rate: 1.5
+  prior_anchor: 0.25
+  local_alpha: 0.45
+  local_noise_scale: 0.02
+  social_alpha: 0.4
+  peer_similarity_threshold: 0.68
+  pivot_threshold: 0.34
+  productive_threshold: 0.4
+visibility_regimes:
+- id: immediate
+  success_delay_steps: 0
+  failure_delay_steps: 0
+  success_visibility_probability: 1.0
+  failure_visibility_probability: 1.0
+- id: failure_lag_1
+  success_delay_steps: 0
+  failure_delay_steps: 1
+  success_visibility_probability: 1.0
+  failure_visibility_probability: 1.0
+- id: failure_lag_2
+  success_delay_steps: 0
+  failure_delay_steps: 2
+  success_visibility_probability: 1.0
+  failure_visibility_probability: 1.0
+- id: failure_lag_4
+  success_delay_steps: 0
+  failure_delay_steps: 4
+  success_visibility_probability: 1.0
+  failure_visibility_probability: 1.0
+fit_worlds:
+  worlds:
+  - id: linear_fit
+  - id: smooth_interaction_fit
+  - id: axis_interaction_fit
+  implementation: V1_APPLY_FIT_WORLD
+evidence_regimes:
+- id: neighbor_local
+  used_in: BENCHMARK_ONLY
+- id: field_public
+  cross_fit_folds: 4
+  includes_own_public_outcome: false
+  used_in: MAIN_RUN_AND_BENCHMARK
+main_run_arms:
+- - fixed_rule
+  - none
+- - linear_batch
+  - field_public
+- - tree_batch
+  - field_public
+- - mlp_batch
+  - field_public
+batch_learners:
+  source: EXACT_V2_BATCH_LEARNER_SETTINGS_UNCHANGED
+  scalar_batch:
+    epochs: 80
+    eta: 0.5
+    prior_anchor: 0.25
+  linear_batch:
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  mlp_batch:
+    hidden_width: 16
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  tree_batch:
+    initial_margin: FROZEN_PRIOR_LOGIT
+    rounds: 300
+    learning_rate: 0.1
+    max_depth: 3
+    min_samples_leaf: 5
+    leaf_l2: 1.0
+probe_cohort:
+  base_seed: 20261032
+  agent_count: 256
+  per_replicate: true
+profiles:
+  smoke:
+    agent_count: 24
+    steps: 12
+    burn_in_steps: 2
+    replicates: 2
+    base_seed: 20261031
+  development:
+    agent_count: 256
+    steps: 24
+    burn_in_steps: 2
+    replicates: 16
+    base_seed: 20261031
+h3_adapter:
+  role: DESCRIPTIVE_SIMULATION_SIDE_TIMING_OBSERVABLES_NOT_A_DECISION
+  entry_incidence: NEW_ENTRANTS_PER_STEP
+  entry_peak_steps: STEPS_WITH_MAXIMUM_INCIDENCE
+  cohort_persistence_horizon_steps: 4
+  cohort_persistence: SHARE_OF_AN_ENTRY_COHORT_NOT_EXITED_FOUR_STEPS_AFTER_ENTRY_FOR_COHORTS_WITH_A_FULL_HORIZON
+  decline_onset: FIRST_LATER_COHORT_WHOSE_PERSISTENCE_IS_AT_LEAST_0.05_BELOW_THE_FIRST_COHORT
+  model_h3_gap: EARLIEST_ENTRY_PEAK_STEP_MINUS_DECLINE_ONSET_STEP
+  limitation: A_FULL_H3_COMPARISON_NEEDS_AN_INTERIOR_ENTRY_PEAK_WHICH_REQUIRES_AN_ATTENTION_SURGE_CLOCK_NOT_IN_THIS_MODEL
+observables:
+  registered:
+  - post_decline_entry_share
+  - post_first_cohort_entry_share
+  - cohort_persistence_drop
+  - post_peak_entry_share
+  - attribute_selection_trend
+  - outcome_selection_trend
+  definitions:
+    post_failure_entry_share: MODEL_INTERNAL_SHARE_OF_FINAL_ENTRY_AT_OR_AFTER_THE_FIRST_STEP_WITH_A_PUBLIC_FAILURE
+    post_decline_entry_share: SHARE_OF_FINAL_ENTRY_AT_OR_AFTER_THE_DECLINE_ONSET_COHORT_PLUS_THE_PERSISTENCE_HORIZON
+    post_first_cohort_entry_share: SHARE_OF_FINAL_ENTRY_AT_OR_AFTER_THE_FIRST_ENTRY_STEP_PLUS_THE_PERSISTENCE_HORIZON
+    cohort_persistence_drop: FIRST_COHORT_PERSISTENCE_MINUS_THE_ENTRY_WEIGHTED_MEAN_OF_LATER_COHORTS
+    post_peak_entry_share: SHARE_OF_FINAL_ENTRY_STRICTLY_AFTER_THE_EARLIEST_ENTRY_PEAK
+    attribute_selection_trend: SPEARMAN_OF_ENTRY_STEP_WITH_THE_DESIGNER_LINEAR_ATTRIBUTE_FIT_AMONG_ENTRANTS
+    outcome_selection_trend: SPEARMAN_OF_ENTRY_STEP_WITH_PERSISTENCE_AT_THE_HORIZON_AMONG_ENTRANTS_WITH_A_FULL_HORIZON
+  cell_value: MEAN_OVER_THE_LINEAR_TREE_AND_MLP_FIELD_ARM_RUNS_OF_ALL_WORLDS_AND_REPLICATES_AS_IN_THE_N01_POST_HOC
+  data_requirement:
+    post_decline_entry_share: ENTRY_TIMING_AND_COHORT_PERSISTENCE
+    post_first_cohort_entry_share: ENTRY_TIMING
+    cohort_persistence_drop: COHORT_PERSISTENCE
+    post_peak_entry_share: ENTRY_TIMING
+    attribute_selection_trend: ENTRY_TIMING_AND_RESEARCHER_ATTRIBUTE_PROXIES
+    outcome_selection_trend: ENTRY_TIMING_AND_INDIVIDUAL_PERSISTENCE
+discriminants:
+  n01_post_hoc_separation:
+    post_failure_entry_share:
+      min_active: 0.155103
+      max_inactive: 0.147464
+    feature_arm_relative_delay:
+      max_active: 0.712166
+      min_inactive: 0.75
+  post_failure_entry_share:
+    threshold: 0.151284
+    rule: PREDICT_ACTIVE_WHEN_AT_OR_ABOVE_THE_N01_MIDPOINT
+    role: PRIMARY_MODEL_INTERNAL
+  feature_arm_relative_delay:
+    threshold: 0.731083
+    rule: PREDICT_ACTIVE_WHEN_AT_OR_BELOW_THE_N01_MIDPOINT
+    role: COMPARATOR
+  accuracy_tiers:
+    CONFIRMED_IN_ALL_CELLS: EVERY_CELL_CORRECT
+    mostly_holds_at_least: 0.75
+    FAILS: BELOW_0.75
+  observable_rule: NO_THRESHOLD_REGISTERED_AN_OBSERVABLE_SEPARATES_WHEN_ACTIVE_AND_INACTIVE_CELL_RANGES_DO_NOT_OVERLAP
+  observable_claim_ceiling: A_SEPARATING_OBSERVABLE_IS_A_CANDIDATE_FOR_A_THIRD_REGISTERED_TEST_NOT_A_CONFIRMED_DISCRIMINANT
+decision_contract:
+  improvement_rule: MEAN_PAIRED_IMPROVEMENT_AT_LEAST_THRESHOLD_AND_STRICTLY_POSITIVE_IN_AT_LEAST_REQUIRED_REPLICATES
+  difference_in_differences_rule: INTERACTION_FIT_WORLD_GAP_MINUS_LINEAR_FIT_WORLD_GAP_SAME_HAZARD_VISIBILITY_AND_REPLICATE
+  improved_replicates_at_least: 12
+  entry_channel:
+    metric: PRODUCTIVE_SHARE_OF_ENTRANTS
+    comparison: TREE_OR_MLP_OVER_LINEAR_BATCH
+    statistic: DIFFERENCE_IN_DIFFERENCES_AGAINST_LINEAR_FIT_WORLD
+    worlds:
+    - smooth_interaction_fit
+    - axis_interaction_fit
+    improvement_at_least: 0.02
+    cell: EACH_HAZARD_AND_VISIBILITY
+    saturation: LINEAR_TREE_AND_MLP_FIELD_ARMS_EACH_REACH_AT_LEAST_0.98_FINAL_ENTRY_IN_AT_LEAST_12_REPLICATES_OF_EVERY_WORLD
+    cell_dispositions:
+    - ENTRY_CHANNEL_ACTIVE
+    - ENTRY_SATURATED
+    - ENTRY_CHANNEL_ABSENT
+    precedence: ACTIVE_THEN_SATURATED_THEN_ABSENT
+  cells: EACH_SURGE_CLOCK_AND_VISIBILITY
+  nesting_checks:
+    required: true
+    conditions:
+    - A_FLAT_SURGE_CLOCK_REPRODUCES_THE_N01_Q_ONE_FIXED_AND_MLP_ARMS_EXACTLY_IN_THE_LINEAR_WORLD
+    - THOSE_ARMS_NEST_THE_PERSISTENCE_PREDECESSOR_AND_THE_V2_MLP_ARM_THROUGH_THE_N01_CHECK
+    - THE_ADAPTER_SLOT_IS_RESTORED_AFTER_EVERY_RUN
+    failure_action: INVALID_IMPLEMENTATION_STOP
+  interior_peak_share_at_least: 0.5
+  status_mix_required: BOTH_ACTIVE_AND_INACTIVE_CELLS_ELSE_NOT_DISCRIMINATED
+  model_selection: FORBIDDEN
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+  - docs/research/pivot-observable-discriminant-v1.md
+  - docs/package-release-boundary.md
+  - experiments/configs/pivot_observable_discriminant_v1.yaml
+  - scripts/prototype_pivot_observable_discriminant_v1.py
+  - scripts/inspect_release_artifacts.py
+  - tests/test_pivot_observable_discriminant_v1.py
+  - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+outputs:
+- runs.jsonl
+- scorecard.json
+- scorecard.md
+- receipt.json
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  empirical_fit: NOT_RUN
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED

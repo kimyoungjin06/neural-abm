@@ -188,6 +188,8 @@ The relative-delay and cost study is repository-only. It adds a Pivot-owned
 entry hazard, simulation-side timing observables, and a compute-cost benchmark.
 Its contract, runner, tests, and evidence stay outside the package, and it
 changes no generic API.
+Its observable-discriminant successor adds a Pivot-owned attention-surge
+clock and screens data-observable candidates. It has the same boundary.
 
 The local-LLM prior pilot is repository-only. It elicits a prior once from a
 pinned local Qwen model and evaluates it in the Pivot ABM. Its contract, runner,
