@@ -197,6 +197,10 @@ PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_observable_discriminant_v1.yaml",
     "scripts/prototype_pivot_observable_discriminant_v1.py",
     "tests/test_pivot_observable_discriminant_v1.py",
+    "docs/research/pivot-observable-confirmation-v1.md",
+    "experiments/configs/pivot_observable_confirmation_v1.yaml",
+    "scripts/prototype_pivot_observable_confirmation_v1.py",
+    "tests/test_pivot_observable_confirmation_v1.py",
 }
 PIVOT_LLM_PRIOR_PILOT_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-llm-prior-pilot-v1.md",

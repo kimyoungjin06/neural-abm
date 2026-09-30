@@ -190,6 +190,8 @@ Its contract, runner, tests, and evidence stay outside the package, and it
 changes no generic API.
 Its observable-discriminant successor adds a Pivot-owned attention-surge
 clock and screens data-observable candidates. It has the same boundary.
+Its confirmation successor tests the separating observables on new entry
+schedules. It has the same boundary.
 
 The local-LLM prior pilot is repository-only. It elicits a prior once from a
 pinned local Qwen model and evaluates it in the Pivot ABM. Its contract, runner,
