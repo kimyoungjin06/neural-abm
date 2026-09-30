@@ -1,0 +1,246 @@
+schema_version: pivot_policy_ladder_consolidation.v3
+label: pivot_policy_ladder_consolidation_v3
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: 2026-09-30
+
+purpose: >-
+  Extend the v2 ledger with the model-size ladder (LLM prior pilot v4) and the
+  measured LLM-agent reference (N06), and update the positioning: the
+  LLM-agent tier is now measured in this design rather than estimated. v1 and
+  v2 remain the records for everything before; this ledger adds to them.
+
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v2.yaml
+    sha256: ba8288c02ccb1cc38512dc8a7d72d0bb57d5333a353d9baaaa3b096c6e3e9f2a
+    record_commit: fbcbb78
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v2.md
+    sha256: c0ccf72674bf3eda9a5d3ec5accc40c80984e5a3d2a139706b2718f96998309a
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v2.py
+
+pointer_syntax: >-
+  SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+
+sources:
+  - id: llm_prior_v4
+    path: experiments/evidence/results/pivot_llm_prior_pilot_v4_20260930.summary.json
+    sha256: 66ea6ce18c85e1c8ef723d2afc5280e6e9c31b3f8271827e25587c310da33408
+    freeze_commit: 15dc4d1
+    record_commit: 4e923ca
+  - id: llm_agent_reference
+    path: experiments/evidence/results/pivot_llm_agent_reference_v1_20260930.summary.json
+    sha256: 0080aeee75c60798e5e93c4912d7f78872de3172d6b4cb8b7f8002b49af3aac0
+    freeze_commit: 2a25ab5
+    record_commit: 2d469c1
+  - id: relative_delay_cost
+    path: experiments/evidence/results/pivot_relative_delay_cost_v1_20260929.summary.json
+    sha256: b3d990a35b53066b835c9683f09476088ffc9cd10f64881389b16b2a5e158b3e
+    freeze_commit: 22605d5
+    record_commit: 6d839de
+    role: INHERITED_SOURCE_REUSED_FOR_POSITIONING
+
+claims:
+  confirmed:
+    - id: C26_the_size_frontier_is_4b
+      statement: >-
+        Within one Qwen3 release, the 4B model is the smallest whose calibrated
+        prior, with the exploration floor, dominates the hand rule in a majority
+        of cells (7 of 9). Its selective prior selects better in all nine.
+      evidence:
+        - {source: llm_prior_v4, pointer: size_frontier/smallest_same_release_model_dominating_in_majority, equals: qwen3_4b}
+        - {source: llm_prior_v4, pointer: registered_result_disposition/qwen3_4b/hybrid_summary, equals: DOMINATES_IN_MAJORITY}
+        - {source: llm_prior_v4, pointer: registered_result_disposition/qwen3_4b/selective_summary, equals: SELECTS_BETTER_IN_ALL_CELLS}
+    - id: C27_below_4b_quality_is_erratic
+      statement: >-
+        The 0.6B model dominates in 4 of 9 cells and the 1.7B in 1 of 9. Quality
+        is not monotone in size, so a smaller model is not a drop-in prior.
+      evidence:
+        - {source: llm_prior_v4, pointer: registered_result_disposition/qwen3_0_6b/hybrid_summary, equals: DOMINATES_IN_MINORITY}
+        - {source: llm_prior_v4, pointer: registered_result_disposition/qwen3_1_7b/hybrid_summary, equals: DOMINATES_IN_MINORITY}
+        - {source: llm_prior_v4, pointer: registered_result_disposition/qwen3_1_7b/selective_summary, equals: SELECTS_BETTER_NOWHERE}
+        - {source: llm_prior_v4, pointer: scientific_assessment/size_effect, equals: NOT_MONOTONE_0_6B_BEATS_1_7B_ON_DOMINANCE_4_VERSUS_1_AND_SELECTION_7_VERSUS_0_THEY_TIE_AT_5_ON_MATCHING_THE_ANCHOR}
+    - id: C28_the_readout_is_model_specific
+      statement: >-
+        The v1 first-token readout fails for the 1.7B model. A prefilled forced
+        choice is valid for all four models.
+      evidence:
+        - {source: llm_prior_v4, pointer: phase_a/models/qwen3_1_7b/v1_first_token_readout_validity/weak_format, equals: true}
+        - {source: llm_prior_v4, pointer: phase_a/models/qwen3_1_7b/validity/median_answer_token_mass, greater_than: 0.999}
+        - {source: llm_prior_v4, pointer: phase_a/models/qwen3_0_6b/validity/median_answer_token_mass, greater_than: 0.999}
+    - id: C29_the_v3_hybrid_replicates_on_fresh_seeds
+      statement: The exact v3 prior dominates the hand rule in a majority of cells again (6 of 9).
+      evidence:
+        - {source: llm_prior_v4, pointer: v3_replication, equals: V3_HYBRID_20_MAJORITY_REPLICATED_ON_FRESH_SEEDS}
+    - id: C30_a_lighter_llm_is_only_a_batched_cost_floor
+      statement: >-
+        Every model's one-time elicitation takes under 50 GPU seconds. At batch
+        32 the 0.6B model is about 4.7 times faster than the 4B; at batch 1 it
+        is not faster.
+      evidence:
+        - {source: llm_prior_v4, pointer: framework_assessment/lighter_llm_for_the_prior_slot, equals: NOT_WORTH_IT_ELICITATION_COSTS_30_TO_50_GPU_SECONDS_FOR_EVERY_MODEL_AND_QUALITY_DROPS_BELOW_4B}
+        - {source: llm_prior_v4, pointer: framework_assessment/lighter_llm_for_an_llm_agent_cost_floor, equals: QWEN3_0_6B_IS_ABOUT_4_7_TIMES_FASTER_THAN_4B_AT_BATCH_32_BUT_NOT_FASTER_AT_BATCH_1}
+    - id: C31_phase_a_auc_tracks_abm_selection
+      statement: >-
+        Post hoc, the design-cohort AUC of each prior tracks its fixed-rule
+        selection in the ABM (Spearman 0.857 over 15 prior-by-world points).
+      evidence_type: POST_HOC_DESCRIPTIVE
+      evidence:
+        - {source: llm_prior_v4, pointer: post_hoc_descriptive/phase_a_auc_predicts_abm_selection/spearman_design_auc_vs_fixed_rule_selective_precision, greater_than: 0.85}
+    - id: C32_nabm_matches_an_every_step_llm_agent
+      statement: >-
+        With the same LLM and exploration floor, the NABM hybrid matches an LLM
+        agent queried at every step in all nine cells, and is superior on
+        learning in nine and on entrant precision in eight.
+      evidence:
+        - {source: llm_agent_reference, pointer: registered_result_disposition/nabm_versus_llm_agent/summary, equals: NABM_MATCHES_LLM_AGENT_IN_ALL_CELLS}
+        - {source: llm_agent_reference, pointer: registered_result_disposition/nabm_versus_llm_agent/cells/axis_interaction_fit~1linear_batch/nabm_precision_superior, equals: false}
+        - {source: llm_agent_reference, pointer: registered_result_disposition/nabm_versus_llm_agent/cells/axis_interaction_fit~1linear_batch/nabm_learning_superior, equals: true}
+    - id: C33_the_llm_agent_does_not_beat_the_hand_rule
+      statement: The every-step LLM agent dominates the hand rule in no cell.
+      evidence:
+        - {source: llm_agent_reference, pointer: registered_result_disposition/llm_agent_versus_hand/summary, equals: DOMINATES_NOWHERE}
+    - id: C34_the_llm_agent_fails_on_calibration_not_ranking
+      statement: >-
+        Post hoc, once outcomes are public the LLM agent ranks probe profiles
+        like the pooled nonlinear learners, but its mean output rises well above
+        the population rate, so it over-enters.
+      evidence_type: POST_HOC_DESCRIPTIVE
+      evidence:
+        - {source: llm_agent_reference, pointer: post_hoc_descriptive/ranking_in_context/linear_fit/llm_agent_probe_auc, greater_than: 0.97}
+        - {source: llm_agent_reference, pointer: post_hoc_descriptive/ranking_in_context/axis_interaction_fit/llm_agent_probe_auc, greater_than: 0.88}
+        - {source: llm_agent_reference, pointer: post_hoc_descriptive/calibration_drift_after_evidence/smooth_interaction_fit/llm_agent_mean_output_from_step_4/min, greater_than: 0.45}
+        - {source: llm_agent_reference, pointer: post_hoc_descriptive/calibration_drift_after_evidence/smooth_interaction_fit/population_productive_rate, less_than: 0.31}
+    - id: C35_the_llm_agent_needs_a_gpu_every_run
+      statement: >-
+        The LLM agent needed a median of about 110 GPU seconds per run; an NABM
+        arm run needed about 5 single-core CPU seconds, and the hybrid's LLM
+        cost was one elicitation of under 50 GPU seconds.
+      evidence:
+        - {source: llm_agent_reference, pointer: cost/llm_agent_median_gpu_seconds_per_run/development, greater_than: 100.0}
+        - {source: llm_agent_reference, pointer: cost/nabm_median_cpu_seconds_per_arm_run/development, less_than: 6.0}
+        - {source: llm_agent_reference, pointer: cost/nabm_hybrid_one_time_llm_gpu_seconds, less_than: 50.0}
+
+  rejected:
+    - id: R08_a_lighter_llm_is_a_drop_in_prior
+      statement: A smaller model of the same family can replace the 4B prior.
+      reason: The 0.6B and 1.7B priors dominate in a minority of cells and fall short of the 4B in selection.
+      evidence:
+        - {source: llm_prior_v4, pointer: registered_result_disposition/qwen3_1_7b/hybrid_summary, equals: DOMINATES_IN_MINORITY}
+        - {source: llm_prior_v4, pointer: registered_result_disposition/qwen3_0_6b/hybrid_summary, equals: DOMINATES_IN_MINORITY}
+
+  open:
+    - id: O13_online_recalibration_of_the_llm_agent
+      question: >-
+        If the LLM agent's probabilities were recalibrated online against the
+        public outcomes, would it close the gap to the NABM hybrid, and at what
+        extra cost?
+      kind: SYNTHETIC
+      priority: 3
+      evidence:
+        - {source: llm_agent_reference, pointer: scientific_assessment/llm_agent_failure_mode, equals: OVER_ENTRY_FROM_CALIBRATION_DRIFT_THE_ZERO_EVIDENCE_SHIFT_DOES_NOT_HOLD_ONCE_EVIDENCE_ENTERS_THE_PROMPT}
+    - id: O14_decision_making_llm_agents
+      question: >-
+        How does an LLM agent that decides for itself, role-playing the
+        researcher, compare with the forecaster design used here?
+      kind: SYNTHETIC
+      priority: 3
+      motivation: N06 asked the LLM for a success forecast and kept the ABM's decision rule.
+    - id: O15_llm_ranking_beyond_the_nearest_outcome_summary
+      question: How much of the LLM agent's in-context ranking comes from the LLM rather than from the 8-nearest outcome counts in its prompt?
+      kind: SYNTHETIC
+      priority: 3
+      evidence:
+        - {source: llm_agent_reference, pointer: post_hoc_descriptive/ranking_caveat, equals: THE_PROMPT_S_8_NEAREST_OUTCOME_COUNTS_ARE_ITSELF_A_NEAREST_NEIGHBOUR_ESTIMATE_HOW_MUCH_RANKING_THE_LLM_ADDS_TO_IT_IS_NOT_SEPARATED}
+    - id: O16_empirical_base_rate_for_calibration
+      question: >-
+        What productive-pivot base rate should calibrate the LLM prior in real
+        data? The synthetic studies used a designer-stated 0.30, close to the
+        worlds' true rate.
+      kind: EMPIRICAL
+      priority: 2
+
+status_updates:
+  - id: O09_llm_agent_reference
+    previous: OPEN_PRIORITY_2
+    status: ANSWERED_FOR_THIS_DESIGN
+    answered_by: [C32_nabm_matches_an_every_step_llm_agent, C33_the_llm_agent_does_not_beat_the_hand_rule, C35_the_llm_agent_needs_a_gpu_every_run]
+    remaining: O14_decision_making_llm_agents
+  - id: N06
+    previous: PROPOSED
+    status: DONE
+    freeze_commit: 2a25ab5
+    record_commit: 2d469c1
+
+positioning_update:
+  tier: LLM_AGENT_SIMULATION
+  previous_behavior: NOT_MEASURED_SEE_O09
+  behavior: MEASURED_IN_THIS_DESIGN_THE_NABM_HYBRID_MATCHES_OR_BEATS_IT_IN_9_OF_9_CELLS
+  measured_cost: ABOUT_110_GPU_SECONDS_PER_RUN_ON_AN_RTX_4080_AGAINST_ABOUT_5_CPU_SECONDS_PER_NABM_ARM_RUN
+  claim_ceiling: >-
+    ONE_REASONABLE_IN_CONTEXT_FORECASTER_DESIGN_WITH_ONE_4B_LOCAL_MODEL_ON_SYNTHETIC_WORLDS_NOT_ALL_LLM_AGENTS_AND_NOT_REAL_RESEARCHERS
+  evidence:
+    - {source: llm_agent_reference, pointer: scientific_assessment/llm_agent_design, equals: ONE_REASONABLE_IN_CONTEXT_DESIGN_NOT_THE_BEST_POSSIBLE_LLM_AGENT}
+    - {source: llm_agent_reference, pointer: framework_assessment/positioning, equals: THE_LLM_AGENT_TIER_IS_NOW_MEASURED_IN_THIS_DESIGN_IT_COSTS_MORE_AND_DOES_NOT_DO_BETTER}
+    - {source: relative_delay_cost, pointer: cost_ledger/records/7/cost_relative_to_fixed_rule, greater_than: 1.8}
+
+framework_decisions:
+  rule: INHERITED_FROM_V1_GENERALIZE_ONLY_WITH_A_SECOND_MODEL_FAMILY_CONSUMER
+  decisions:
+    - id: F14_llm_agent_slot
+      decision: DOMAIN_OWNED
+      second_consumer: NONE
+      implementation: SCOPED_AGENT_CLASS_SLOT_RESTORED_AFTER_EVERY_RUN_NESTED_AGAINST_THE_FIXED_RULE
+    - id: F15_prefilled_forced_choice_readout
+      decision: REPOSITORY_ONLY_RESEARCH_INSTRUMENT
+      second_consumer: NONE
+      package_llm_dependency: false
+    - id: F16_llm_practices
+      decision: RECORD_AS_METHOD_GUIDANCE
+      practices:
+        - CHECK_THE_READOUT_FORMAT_PER_MODEL_WITH_A_FORMAT_ONLY_DRY_RUN_BEFORE_FREEZING
+        - QUERY_AT_BATCH_1_WHEN_AN_ANSWER_MUST_NOT_DEPEND_ON_ITS_BATCH
+        - SCREEN_PRIORS_BY_DESIGN_COHORT_AUC_BEFORE_ABM_RUNS_IN_SYNTHETIC_WORLDS
+        - A_CALIBRATION_SET_WITHOUT_EVIDENCE_DOES_NOT_TRANSFER_TO_PROMPTS_WITH_EVIDENCE
+      evidence:
+        - {source: llm_agent_reference, pointer: framework_assessment/why_nabm_wins_here, equals: POOLED_LEARNERS_ARE_FIT_TO_OUTCOMES_UNDER_LOG_LOSS_SO_THEY_STAY_CALIBRATED_THE_LLM_S_REACTION_TO_EVIDENCE_IS_NOT}
+  extraction_candidates_unchanged: [F03_out_of_sample_agent_policy_scoring]
+
+next_steps:
+  - id: N02
+    kind: OPERATIONAL
+    action: RESUME_THE_OPENALEX_FULL_CORE_TRANSFER_AND_CLOSE_SOURCE_INTAKE
+    authorization: USER_DECISION_REQUIRED
+    serves: PIVOT_EMPIRICAL_STAGE
+  - id: N03
+    kind: EMPIRICAL_METHOD
+    action: H3_SET_ESTIMATOR_SUCCESSOR_ON_A_NEW_DISJOINT_STRESS_GRID
+    authorization: SEPARATE_PRECOMMIT
+    serves: PIVOT_EMPIRICAL_STAGE
+  - id: N04
+    kind: FRAMEWORK
+    action: DESIGN_THE_SHARED_OUT_OF_SAMPLE_SCORING_CONTRACT_FOR_F03
+    authorization: OPTIONAL
+    serves: GENERIC_NABM_API
+  - id: N05
+    kind: SYNTHETIC
+    action: REGISTER_THE_POST_FAILURE_ENTRY_SHARE_DISCRIMINANT_UNDER_AN_ATTENTION_SURGE_CLOCK
+    answers: O08_post_failure_entry_share_as_the_t01_discriminant
+    authorization: SEPARATE_PRECOMMIT
+    serves: PIVOT_EMPIRICAL_STAGE
+  - id: N07
+    kind: SYNTHETIC
+    action: DECISION_MAKING_OR_ONLINE_RECALIBRATED_LLM_AGENT_ONLY_IF_A_RESEARCH_QUESTION_NEEDS_A_STRONGER_LLM_AGENT
+    answers: O14_decision_making_llm_agents
+    authorization: SEPARATE_PRECOMMIT
+    serves: NABM_POSITIONING
+
+boundaries:
+  new_execution: NONE
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: "NO"
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED

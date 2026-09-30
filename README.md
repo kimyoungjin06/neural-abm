@@ -317,7 +317,7 @@ torch-backed behavior. The early-user checklist is in
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
 - Repository-only policy-ladder ledger at
-  `docs/research/pivot-policy-ladder-consolidation-v2.md`: the hash-audited
+  `docs/research/pivot-policy-ladder-consolidation-v3.md`: the hash-audited
   record of the researcher-pivot policy ladder, including the measured cost
   and behavior of each tier between rule-based ABMs and LLM agents.
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
@@ -396,14 +396,20 @@ synthetic, stylized worlds:
 - A local LLM (Qwen3-4B) was consulted once, calibrated to a stated base rate,
   and paired with a small exploration floor. It then selected better entrants
   than the hand rule while keeping pooled learning within a registered margin,
-  in 7 of 9 world-and-learner settings. Eliciting it took under 10 GPU minutes.
-  Querying the model at every agent-step of the same design would take at
-  least an estimated 38 to 125 GPU hours.
+  in 7 of 9 world-and-learner settings. Eliciting it took under 10 GPU
+  minutes. Smaller models of the same family (0.6B, 1.7B) did not do the
+  same job.
+- The same model was also run as an LLM agent, queried at every agent-step
+  with the public outcomes in its prompt. The NABM design matched or beat it
+  in all 9 settings. The LLM agent needed about 110 GPU-seconds per run,
+  against about 5 single-core CPU-seconds per NABM learner run, because it
+  was queried at every step. Once evidence was in its prompt, its forecasts
+  drifted above the population's success rate.
 
-These are synthetic results, not claims about real researchers, and the
-LLM-agent cost is estimated rather than measured. The repository-only,
-hash-audited ledger is at
-`docs/research/pivot-policy-ladder-consolidation-v2.md`.
+These are synthetic results from one in-context LLM-agent design and one local
+4B model. They are not claims about real researchers or about every LLM agent.
+The repository-only, hash-audited ledger is at
+`docs/research/pivot-policy-ladder-consolidation-v3.md`.
 
 ## Scope
 
