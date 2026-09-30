@@ -203,6 +203,8 @@ and it has the same boundary.
 The LLM-agent reference queries the same pinned local model at every agent-step
 inside the Pivot ABM, as a measured comparison for the pilots. It has the same
 boundary.
+Its persona successor lets that model role-play each researcher and decide.
+It has the same boundary.
 
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy

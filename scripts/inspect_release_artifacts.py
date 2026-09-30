@@ -215,6 +215,10 @@ PIVOT_LLM_PRIOR_PILOT_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_llm_agent_reference_v1.yaml",
     "scripts/prototype_pivot_llm_agent_reference_v1.py",
     "tests/test_pivot_llm_agent_reference_v1.py",
+    "docs/research/pivot-llm-persona-agent-v1.md",
+    "experiments/configs/pivot_llm_persona_agent_v1.yaml",
+    "scripts/prototype_pivot_llm_persona_agent_v1.py",
+    "tests/test_pivot_llm_persona_agent_v1.py",
 }
 PIVOT_GATE_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_feedback_g0_measurement_freeze_v0.yaml",
