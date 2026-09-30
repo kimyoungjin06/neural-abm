@@ -200,6 +200,9 @@ prior, again without LLM calls. It has the same boundary.
 Its v4 successor compares a ladder of pinned local Qwen models under one
 readout. The open weights stay in the local model cache, not in the repository,
 and it has the same boundary.
+The LLM-agent reference queries the same pinned local model at every agent-step
+inside the Pivot ABM, as a measured comparison for the pilots. It has the same
+boundary.
 
 The cross-field expansion follows the same boundary. The no-rescan feasibility
 summarizer, engineering-only field-matrix planner, and current-snapshot taxonomy
