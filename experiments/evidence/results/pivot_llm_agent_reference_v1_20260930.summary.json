@@ -1,0 +1,2434 @@
+{
+  "schema_version": "pivot_llm_agent_reference_result.v1",
+  "label": "pivot_llm_agent_reference_v1_20260930",
+  "status": "SYNTHETIC_GENERATIVE_ABM_COMPARISON_REPRODUCED_WITH_A_LOCAL_LLM_AT_EVERY_AGENT_STEP",
+  "precommit": {
+    "commit_sha": "2a25ab562e160a1e51f8eab6b10a214591574fc5",
+    "contract_path": "experiments/configs/pivot_llm_agent_reference_v1.yaml",
+    "contract_sha256": "69aef526f7a1d6523f9990bb74c45c3e3d00b68845f93b7c0a4036f8f5e36efa",
+    "result_informed_successor": true
+  },
+  "execution": {
+    "profile": "development",
+    "agent_count": 256,
+    "steps": 18,
+    "replicates": 16,
+    "raw_row_count": 432,
+    "nabm_workers": 16,
+    "llm_runs": 48,
+    "first_run": {
+      "output_dir": "/ssd/pivot_llm_agent_reference_v1_2a25ab5_development",
+      "receipt_sha256": "85e6b8a3dd8a195ec3aa6ee01458823d12d31b222819deec3121fb421cfde771"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_llm_agent_reference_v1_2a25ab5_reproduction",
+      "receipt_sha256": "85e6b8a3dd8a195ec3aa6ee01458823d12d31b222819deec3121fb421cfde771",
+      "all_four_reproducible_artifacts_byte_identical": true,
+      "cost_timing_differs_as_registered": true
+    },
+    "artifact_sha256": {
+      "runs.jsonl": "5b14ebd2dcb2c103dccd527001dea5c30c1d0734ab214246a2fa1ae661eb43e4",
+      "scorecard.json": "4782897409a8d8f3cc127141184afc8c8751f9b755bdd3e556a496d5ee913125",
+      "scorecard.md": "f2bc0afa0ec902529486a9ed8c9ade4102d30983834d5b1012e886d9bf0ac9ce",
+      "receipt.json": "85e6b8a3dd8a195ec3aa6ee01458823d12d31b222819deec3121fb421cfde771"
+    }
+  },
+  "validation": {
+    "nesting_checks": "PASS_EXACT",
+    "llm_machinery_nests_the_fixed_rule_in_every_linear_world_replicate": true,
+    "repeated_llm_forward_passes_identical": true
+  },
+  "llm_calibration": {
+    "achieved_mean": 0.30000000008009176,
+    "calibration_shift": 12.790281281340867,
+    "determinism": {
+      "repeat_identical": true,
+      "repeat_prompts": 64
+    },
+    "profiles": 1024,
+    "raw_mean_probability": 0.0035171040760982497,
+    "validity": {
+      "median_answer_token_mass": 1.0,
+      "weak_format": false
+    }
+  },
+  "query_profile": {
+    "agent_steps_per_run": 4608,
+    "mean_agent_steps_queried_per_run": 3772.7916666666665,
+    "probe_queries_per_run": 256,
+    "median_forward_passes_per_run": 2501.5,
+    "cache_saving_share": 0.3791
+  },
+  "registered_result_disposition": {
+    "nabm_versus_llm_agent": {
+      "summary": "NABM_MATCHES_LLM_AGENT_IN_ALL_CELLS",
+      "matching_cells": [
+        "axis_interaction_fit/linear_batch",
+        "axis_interaction_fit/mlp_batch",
+        "axis_interaction_fit/tree_batch",
+        "linear_fit/linear_batch",
+        "linear_fit/mlp_batch",
+        "linear_fit/tree_batch",
+        "smooth_interaction_fit/linear_batch",
+        "smooth_interaction_fit/mlp_batch",
+        "smooth_interaction_fit/tree_batch"
+      ],
+      "cells": {
+        "axis_interaction_fit/linear_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "nabm_minus_llm_precision_mean": 0.00596,
+          "llm_minus_nabm_probe_brier_mean": 0.04956,
+          "nabm_precision_superior": false,
+          "nabm_precision_positive_replicates": 10,
+          "nabm_learning_superior": true,
+          "nabm_learning_positive_replicates": 14
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "nabm_minus_llm_precision_mean": 0.06818,
+          "llm_minus_nabm_probe_brier_mean": 0.10788,
+          "nabm_precision_superior": true,
+          "nabm_precision_positive_replicates": 16,
+          "nabm_learning_superior": true,
+          "nabm_learning_positive_replicates": 15
+        },
+        "axis_interaction_fit/tree_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "nabm_minus_llm_precision_mean": 0.08425,
+          "llm_minus_nabm_probe_brier_mean": 0.16631,
+          "nabm_precision_superior": true,
+          "nabm_precision_positive_replicates": 16,
+          "nabm_learning_superior": true,
+          "nabm_learning_positive_replicates": 16
+        },
+        "linear_fit/linear_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "nabm_minus_llm_precision_mean": 0.06331,
+          "llm_minus_nabm_probe_brier_mean": 0.07321,
+          "nabm_precision_superior": true,
+          "nabm_precision_positive_replicates": 16,
+          "nabm_learning_superior": true,
+          "nabm_learning_positive_replicates": 16
+        },
+        "linear_fit/mlp_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "nabm_minus_llm_precision_mean": 0.10848,
+          "llm_minus_nabm_probe_brier_mean": 0.12699,
+          "nabm_precision_superior": true,
+          "nabm_precision_positive_replicates": 16,
+          "nabm_learning_superior": true,
+          "nabm_learning_positive_replicates": 16
+        },
+        "linear_fit/tree_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "nabm_minus_llm_precision_mean": 0.04537,
+          "llm_minus_nabm_probe_brier_mean": 0.07258,
+          "nabm_precision_superior": true,
+          "nabm_precision_positive_replicates": 15,
+          "nabm_learning_superior": true,
+          "nabm_learning_positive_replicates": 15
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "nabm_minus_llm_precision_mean": 0.0247,
+          "llm_minus_nabm_probe_brier_mean": 0.0525,
+          "nabm_precision_superior": true,
+          "nabm_precision_positive_replicates": 13,
+          "nabm_learning_superior": true,
+          "nabm_learning_positive_replicates": 12
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "nabm_minus_llm_precision_mean": 0.07563,
+          "llm_minus_nabm_probe_brier_mean": 0.13128,
+          "nabm_precision_superior": true,
+          "nabm_precision_positive_replicates": 16,
+          "nabm_learning_superior": true,
+          "nabm_learning_positive_replicates": 16
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "nabm_minus_llm_precision_mean": 0.04918,
+          "llm_minus_nabm_probe_brier_mean": 0.09615,
+          "nabm_precision_superior": true,
+          "nabm_precision_positive_replicates": 16,
+          "nabm_learning_superior": true,
+          "nabm_learning_positive_replicates": 14
+        }
+      },
+      "nabm_precision_superior_cells": [
+        "axis_interaction_fit/mlp_batch",
+        "axis_interaction_fit/tree_batch",
+        "linear_fit/linear_batch",
+        "linear_fit/mlp_batch",
+        "linear_fit/tree_batch",
+        "smooth_interaction_fit/linear_batch",
+        "smooth_interaction_fit/mlp_batch",
+        "smooth_interaction_fit/tree_batch"
+      ],
+      "nabm_learning_superior_cells": [
+        "axis_interaction_fit/linear_batch",
+        "axis_interaction_fit/mlp_batch",
+        "axis_interaction_fit/tree_batch",
+        "linear_fit/linear_batch",
+        "linear_fit/mlp_batch",
+        "linear_fit/tree_batch",
+        "smooth_interaction_fit/linear_batch",
+        "smooth_interaction_fit/mlp_batch",
+        "smooth_interaction_fit/tree_batch"
+      ]
+    },
+    "llm_agent_versus_hand": {
+      "summary": "DOMINATES_NOWHERE",
+      "dominating_cells": [],
+      "cells": {
+        "axis_interaction_fit/linear_batch": {
+          "disposition": "SELECTION_ONLY",
+          "precision_mean": 0.02228,
+          "precision_positive_replicates": 15,
+          "hand_minus_llm_probe_brier_mean": -0.04968
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "disposition": "NEITHER",
+          "precision_mean": -0.01463,
+          "precision_positive_replicates": 4,
+          "hand_minus_llm_probe_brier_mean": -0.11544
+        },
+        "axis_interaction_fit/tree_batch": {
+          "disposition": "NEITHER",
+          "precision_mean": -0.03116,
+          "precision_positive_replicates": 2,
+          "hand_minus_llm_probe_brier_mean": -0.16941
+        },
+        "linear_fit/linear_batch": {
+          "disposition": "NEITHER",
+          "precision_mean": 0.0226,
+          "precision_positive_replicates": 11,
+          "hand_minus_llm_probe_brier_mean": -0.08102
+        },
+        "linear_fit/mlp_batch": {
+          "disposition": "NEITHER",
+          "precision_mean": -0.00073,
+          "precision_positive_replicates": 6,
+          "hand_minus_llm_probe_brier_mean": -0.12697
+        },
+        "linear_fit/tree_batch": {
+          "disposition": "SELECTION_ONLY",
+          "precision_mean": 0.02717,
+          "precision_positive_replicates": 12,
+          "hand_minus_llm_probe_brier_mean": -0.07094
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "disposition": "NEITHER",
+          "precision_mean": 0.01612,
+          "precision_positive_replicates": 12,
+          "hand_minus_llm_probe_brier_mean": -0.05497
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "disposition": "NEITHER",
+          "precision_mean": -0.02217,
+          "precision_positive_replicates": 4,
+          "hand_minus_llm_probe_brier_mean": -0.14165
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "disposition": "NEITHER",
+          "precision_mean": -0.00857,
+          "precision_positive_replicates": 7,
+          "hand_minus_llm_probe_brier_mean": -0.1017
+        }
+      },
+      "selection_only_cells": [
+        "axis_interaction_fit/linear_batch",
+        "linear_fit/tree_batch"
+      ]
+    }
+  },
+  "registered_decisions": {
+    "llm_agent_versus_hand": {
+      "cells": {
+        "axis_interaction_fit/linear_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_llm_probe_brier": {
+              "max": 0.01440568,
+              "mean": -0.04967567,
+              "min": -0.19158238,
+              "n": 16,
+              "std": 0.05462335,
+              "values": [
+                -0.13548785,
+                -0.00785515,
+                0.01440568,
+                -0.06590326,
+                -0.03746407,
+                -0.04251201,
+                -0.07812067,
+                -0.02365152,
+                -0.06404815,
+                -0.006479,
+                -0.19158238,
+                -0.09292088,
+                -0.0323749,
+                -0.02688426,
+                0.00625157,
+                -0.01018392
+              ]
+            },
+            "pass": false
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.05757699,
+              "mean": 0.02228128,
+              "min": -0.01045045,
+              "n": 16,
+              "std": 0.01958078,
+              "values": [
+                -0.01045045,
+                0.04714906,
+                0.01490148,
+                0.02101606,
+                0.02203112,
+                0.01292024,
+                0.00595238,
+                0.05392097,
+                0.02284427,
+                0.02998625,
+                0.04382333,
+                0.01455026,
+                0.00479292,
+                0.01452511,
+                0.05757699,
+                0.00096053
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 15
+          }
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "disposition": "NEITHER",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_llm_probe_brier": {
+              "max": -0.04174103,
+              "mean": -0.11544328,
+              "min": -0.22736025,
+              "n": 16,
+              "std": 0.05591697,
+              "values": [
+                -0.21643836,
+                -0.07030657,
+                -0.06672836,
+                -0.09023549,
+                -0.13444999,
+                -0.12440775,
+                -0.1364472,
+                -0.08677758,
+                -0.15576474,
+                -0.05229914,
+                -0.22736025,
+                -0.1736883,
+                -0.11344493,
+                -0.0897685,
+                -0.04174103,
+                -0.06723424
+              ]
+            },
+            "pass": false
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.03915739,
+              "mean": -0.01462552,
+              "min": -0.05895833,
+              "n": 16,
+              "std": 0.02834598,
+              "values": [
+                -0.05895833,
+                0.02297067,
+                -0.02914614,
+                -0.00411215,
+                -0.01482914,
+                -0.0235526,
+                -0.01364366,
+                0.02632156,
+                -0.05602477,
+                0.00316279,
+                -0.00581348,
+                -0.02994484,
+                -0.04314356,
+                -0.00911331,
+                0.03915739,
+                -0.0373387
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 4
+          }
+        },
+        "axis_interaction_fit/tree_batch": {
+          "disposition": "NEITHER",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_llm_probe_brier": {
+              "max": -0.09379834,
+              "mean": -0.16940774,
+              "min": -0.25305369,
+              "n": 16,
+              "std": 0.04728297,
+              "values": [
+                -0.21370349,
+                -0.1327583,
+                -0.12281546,
+                -0.18686419,
+                -0.12450102,
+                -0.17785902,
+                -0.19485553,
+                -0.14150284,
+                -0.19422496,
+                -0.16110913,
+                -0.24833638,
+                -0.25305369,
+                -0.19237508,
+                -0.1672325,
+                -0.10553391,
+                -0.09379834
+              ]
+            },
+            "pass": false
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.01931713,
+              "mean": -0.03116245,
+              "min": -0.07297297,
+              "n": 16,
+              "std": 0.02602423,
+              "values": [
+                -0.05895833,
+                -0.00519761,
+                -0.04866995,
+                -0.00315977,
+                -0.00110039,
+                -0.03787954,
+                -0.03846154,
+                0.00185748,
+                -0.07297297,
+                -0.02659039,
+                -0.04654763,
+                -0.04058314,
+                -0.0535674,
+                -0.03589758,
+                0.01931713,
+                -0.05018759
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 2
+          }
+        },
+        "linear_fit/linear_batch": {
+          "disposition": "NEITHER",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_llm_probe_brier": {
+              "max": -0.01626489,
+              "mean": -0.08101865,
+              "min": -0.13945477,
+              "n": 16,
+              "std": 0.03056864,
+              "values": [
+                -0.11457794,
+                -0.01657082,
+                -0.08658433,
+                -0.08128884,
+                -0.09009797,
+                -0.13945477,
+                -0.07355357,
+                -0.01626489,
+                -0.09578258,
+                -0.08735536,
+                -0.09601184,
+                -0.09881285,
+                -0.07782164,
+                -0.07301041,
+                -0.07346491,
+                -0.07564569
+              ]
+            },
+            "pass": false
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.07636702,
+              "mean": 0.02260029,
+              "min": -0.01776054,
+              "n": 16,
+              "std": 0.02851864,
+              "values": [
+                0.00222046,
+                0.06019016,
+                -0.00214856,
+                0.04407828,
+                0.01912847,
+                0.01896806,
+                0.02017414,
+                0.07636702,
+                -0.01776054,
+                0.05516682,
+                -0.01261261,
+                -0.00231133,
+                0.0,
+                0.01755108,
+                0.05847318,
+                0.02411997
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 11
+          }
+        },
+        "linear_fit/mlp_batch": {
+          "disposition": "NEITHER",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_llm_probe_brier": {
+              "max": -0.05706279,
+              "mean": -0.12696934,
+              "min": -0.1847811,
+              "n": 16,
+              "std": 0.03216355,
+              "values": [
+                -0.16849252,
+                -0.05706279,
+                -0.12905456,
+                -0.12123611,
+                -0.13688589,
+                -0.1847811,
+                -0.11435021,
+                -0.06092109,
+                -0.14175741,
+                -0.14210454,
+                -0.13969805,
+                -0.14184643,
+                -0.12379002,
+                -0.1206537,
+                -0.12188628,
+                -0.12698883
+              ]
+            },
+            "pass": false
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.0565537,
+              "mean": -0.00073395,
+              "min": -0.0418344,
+              "n": 16,
+              "std": 0.03047262,
+              "values": [
+                -0.02353205,
+                0.0552613,
+                -0.02746085,
+                0.02486539,
+                0.00218504,
+                -0.00900705,
+                -0.01138572,
+                0.0565537,
+                -0.0418344,
+                0.02323834,
+                -0.03431804,
+                -0.02172143,
+                -0.02562908,
+                -0.00767638,
+                0.02978122,
+                -0.00106312
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 6
+          }
+        },
+        "linear_fit/tree_batch": {
+          "disposition": "SELECTION_ONLY",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_llm_probe_brier": {
+              "max": 0.00499924,
+              "mean": -0.07094035,
+              "min": -0.14192207,
+              "n": 16,
+              "std": 0.03674294,
+              "values": [
+                -0.12598184,
+                -0.02005855,
+                -0.08181358,
+                -0.07287554,
+                -0.09938494,
+                -0.14192207,
+                -0.06098329,
+                0.00499924,
+                -0.08186091,
+                -0.02489955,
+                -0.08115767,
+                -0.08540885,
+                -0.05922407,
+                -0.06965165,
+                -0.07374016,
+                -0.06108211
+              ]
+            },
+            "pass": false
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.07805907,
+              "mean": 0.02717022,
+              "min": -0.02243193,
+              "n": 16,
+              "std": 0.03042056,
+              "values": [
+                0.01087914,
+                0.06747222,
+                0.00630555,
+                0.04718641,
+                0.02594909,
+                0.02684495,
+                0.01630435,
+                0.07805907,
+                -0.02243193,
+                0.06477273,
+                -0.0019899,
+                -0.00464726,
+                -0.00443066,
+                0.03082256,
+                0.0683254,
+                0.02530176
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 12
+          }
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "disposition": "NEITHER",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_llm_probe_brier": {
+              "max": 0.02528092,
+              "mean": -0.05496522,
+              "min": -0.15523264,
+              "n": 16,
+              "std": 0.05558388,
+              "values": [
+                -0.15523264,
+                -0.0150854,
+                -0.00629439,
+                -0.08561567,
+                -0.04242561,
+                -0.07496058,
+                -0.05352437,
+                0.02517145,
+                -0.09046803,
+                0.01414638,
+                -0.12844924,
+                -0.11007319,
+                -0.07751727,
+                -0.09075457,
+                0.02528092,
+                -0.01364129
+              ]
+            },
+            "pass": false
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.05397727,
+              "mean": 0.01611905,
+              "min": -0.02742258,
+              "n": 16,
+              "std": 0.02316686,
+              "values": [
+                -0.025,
+                0.03809524,
+                -0.00326797,
+                0.03402452,
+                0.02242893,
+                0.03419119,
+                0.01725686,
+                0.05397727,
+                -0.00143174,
+                0.01130705,
+                0.03557325,
+                -0.02742258,
+                0.01670593,
+                0.00294442,
+                0.03954802,
+                0.00897436
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 12
+          }
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "disposition": "NEITHER",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_llm_probe_brier": {
+              "max": -0.03385507,
+              "mean": -0.14164902,
+              "min": -0.21713902,
+              "n": 16,
+              "std": 0.05839689,
+              "values": [
+                -0.21713902,
+                -0.11977166,
+                -0.12940935,
+                -0.14014051,
+                -0.16054361,
+                -0.18556797,
+                -0.14106817,
+                -0.03487666,
+                -0.20249425,
+                -0.0882056,
+                -0.19035455,
+                -0.19814936,
+                -0.16907584,
+                -0.18382347,
+                -0.03385507,
+                -0.07190923
+              ]
+            },
+            "pass": false
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.01966476,
+              "mean": -0.02216598,
+              "min": -0.05884521,
+              "n": 16,
+              "std": 0.02664372,
+              "values": [
+                -0.05357143,
+                0.00590521,
+                -0.03807821,
+                0.01164806,
+                -0.01391364,
+                -0.01401337,
+                -0.0209798,
+                0.01942568,
+                -0.05679285,
+                -0.01144114,
+                -0.035,
+                -0.05884521,
+                -0.03431191,
+                -0.05200063,
+                0.01966476,
+                -0.02235123
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 4
+          }
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "disposition": "NEITHER",
+          "learning_noninferior_versus_hand": {
+            "hand_minus_llm_probe_brier": {
+              "max": 0.00811138,
+              "mean": -0.10169606,
+              "min": -0.21560113,
+              "n": 16,
+              "std": 0.06960656,
+              "values": [
+                -0.21560113,
+                -0.05836797,
+                -0.05668107,
+                -0.12534948,
+                -0.09427797,
+                -0.14807425,
+                -0.09452067,
+                0.00811138,
+                -0.14500026,
+                -0.01832791,
+                -0.15192533,
+                -0.19667344,
+                -0.15462411,
+                -0.14840708,
+                -0.00709597,
+                -0.0203217
+              ]
+            },
+            "pass": false
+          },
+          "precision_versus_hand": {
+            "improvement": {
+              "max": 0.02956742,
+              "mean": -0.00857428,
+              "min": -0.05280749,
+              "n": 16,
+              "std": 0.02950332,
+              "values": [
+                -0.05280749,
+                0.02564103,
+                -0.01358789,
+                0.02956742,
+                0.01526821,
+                0.01299585,
+                -0.0040542,
+                0.02330801,
+                -0.05027998,
+                0.00163075,
+                -0.02277778,
+                -0.05203095,
+                -0.03107238,
+                -0.0386697,
+                0.02316384,
+                -0.00348331
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 7
+          }
+        }
+      },
+      "dominating_cells": [],
+      "summary": "DOMINATES_NOWHERE"
+    },
+    "nabm_versus_llm_agent": {
+      "cells": {
+        "axis_interaction_fit/linear_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "llm_minus_nabm_probe_brier": {
+            "max": 0.17283313,
+            "mean": 0.04956365,
+            "min": -0.01165763,
+            "n": 16,
+            "std": 0.0512096,
+            "values": [
+              0.14249302,
+              0.00770471,
+              -0.01165763,
+              0.06402482,
+              0.04106496,
+              0.0584127,
+              0.06599503,
+              0.02507579,
+              0.06690198,
+              0.0054626,
+              0.17283313,
+              0.08718615,
+              0.03150301,
+              0.02889512,
+              -0.0044652,
+              0.01158828
+            ]
+          },
+          "nabm_learning_superior": {
+            "improvement": {
+              "max": 0.17283313,
+              "mean": 0.04956365,
+              "min": -0.01165763,
+              "n": 16,
+              "std": 0.0512096,
+              "values": [
+                0.14249302,
+                0.00770471,
+                -0.01165763,
+                0.06402482,
+                0.04106496,
+                0.0584127,
+                0.06599503,
+                0.02507579,
+                0.06690198,
+                0.0054626,
+                0.17283313,
+                0.08718615,
+                0.03150301,
+                0.02889512,
+                -0.0044652,
+                0.01158828
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 14
+          },
+          "nabm_minus_llm_precision": {
+            "max": 0.05292051,
+            "mean": 0.00595662,
+            "min": -0.04442223,
+            "n": 16,
+            "std": 0.02658129,
+            "values": [
+              0.03878788,
+              0.01160313,
+              -0.00077104,
+              0.03381629,
+              0.01380471,
+              -0.04442223,
+              0.00649351,
+              -0.0251379,
+              -0.00617761,
+              -0.02667677,
+              0.00848264,
+              0.00204976,
+              -0.01908725,
+              0.03751765,
+              0.0121027,
+              0.05292051
+            ]
+          },
+          "nabm_precision_superior": {
+            "improvement": {
+              "max": 0.05292051,
+              "mean": 0.00595662,
+              "min": -0.04442223,
+              "n": 16,
+              "std": 0.02658129,
+              "values": [
+                0.03878788,
+                0.01160313,
+                -0.00077104,
+                0.03381629,
+                0.01380471,
+                -0.04442223,
+                0.00649351,
+                -0.0251379,
+                -0.00617761,
+                -0.02667677,
+                0.00848264,
+                0.00204976,
+                -0.01908725,
+                0.03751765,
+                0.0121027,
+                0.05292051
+              ]
+            },
+            "pass": false,
+            "positive_replicates": 10
+          }
+        },
+        "axis_interaction_fit/mlp_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "llm_minus_nabm_probe_brier": {
+            "max": 0.2499216,
+            "mean": 0.10788222,
+            "min": -0.01492441,
+            "n": 16,
+            "std": 0.06938927,
+            "values": [
+              0.22653024,
+              -0.01492441,
+              0.08332935,
+              0.08646138,
+              0.12807616,
+              0.12383921,
+              0.16180306,
+              0.08416474,
+              0.10882641,
+              0.0586541,
+              0.2499216,
+              0.16235261,
+              0.11528294,
+              0.08993059,
+              0.0244338,
+              0.0374338
+            ]
+          },
+          "nabm_learning_superior": {
+            "improvement": {
+              "max": 0.2499216,
+              "mean": 0.10788222,
+              "min": -0.01492441,
+              "n": 16,
+              "std": 0.06938927,
+              "values": [
+                0.22653024,
+                -0.01492441,
+                0.08332935,
+                0.08646138,
+                0.12807616,
+                0.12383921,
+                0.16180306,
+                0.08416474,
+                0.10882641,
+                0.0586541,
+                0.2499216,
+                0.16235261,
+                0.11528294,
+                0.08993059,
+                0.0244338,
+                0.0374338
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 15
+          },
+          "nabm_minus_llm_precision": {
+            "max": 0.10604447,
+            "mean": 0.06818384,
+            "min": 0.02593938,
+            "n": 16,
+            "std": 0.02429861,
+            "values": [
+              0.07970534,
+              0.02593938,
+              0.10604447,
+              0.07786215,
+              0.07182941,
+              0.06463415,
+              0.07843996,
+              0.03782506,
+              0.05872539,
+              0.03632225,
+              0.07464357,
+              0.09778973,
+              0.05149098,
+              0.08397485,
+              0.04315374,
+              0.10256104
+            ]
+          },
+          "nabm_precision_superior": {
+            "improvement": {
+              "max": 0.10604447,
+              "mean": 0.06818384,
+              "min": 0.02593938,
+              "n": 16,
+              "std": 0.02429861,
+              "values": [
+                0.07970534,
+                0.02593938,
+                0.10604447,
+                0.07786215,
+                0.07182941,
+                0.06463415,
+                0.07843996,
+                0.03782506,
+                0.05872539,
+                0.03632225,
+                0.07464357,
+                0.09778973,
+                0.05149098,
+                0.08397485,
+                0.04315374,
+                0.10256104
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "axis_interaction_fit/tree_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "llm_minus_nabm_probe_brier": {
+            "max": 0.24795192,
+            "mean": 0.16631446,
+            "min": 0.05469764,
+            "n": 16,
+            "std": 0.05423117,
+            "values": [
+              0.22923855,
+              0.13347385,
+              0.12812468,
+              0.19157503,
+              0.17135169,
+              0.16949025,
+              0.19245409,
+              0.1377669,
+              0.19572904,
+              0.12990305,
+              0.24707602,
+              0.24795192,
+              0.19970189,
+              0.14347624,
+              0.05469764,
+              0.08902052
+            ]
+          },
+          "nabm_learning_superior": {
+            "improvement": {
+              "max": 0.24795192,
+              "mean": 0.16631446,
+              "min": 0.05469764,
+              "n": 16,
+              "std": 0.05423117,
+              "values": [
+                0.22923855,
+                0.13347385,
+                0.12812468,
+                0.19157503,
+                0.17135169,
+                0.16949025,
+                0.19245409,
+                0.1377669,
+                0.19572904,
+                0.12990305,
+                0.24707602,
+                0.24795192,
+                0.19970189,
+                0.14347624,
+                0.05469764,
+                0.08902052
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "nabm_minus_llm_precision": {
+            "max": 0.12216749,
+            "mean": 0.08424684,
+            "min": 0.03751583,
+            "n": 16,
+            "std": 0.0237001,
+            "values": [
+              0.08734082,
+              0.09305734,
+              0.12216749,
+              0.06519323,
+              0.08181818,
+              0.10165505,
+              0.09134199,
+              0.05634358,
+              0.10810811,
+              0.07787788,
+              0.09015808,
+              0.10503295,
+              0.03751583,
+              0.08186044,
+              0.04315374,
+              0.10532477
+            ]
+          },
+          "nabm_precision_superior": {
+            "improvement": {
+              "max": 0.12216749,
+              "mean": 0.08424684,
+              "min": 0.03751583,
+              "n": 16,
+              "std": 0.0237001,
+              "values": [
+                0.08734082,
+                0.09305734,
+                0.12216749,
+                0.06519323,
+                0.08181818,
+                0.10165505,
+                0.09134199,
+                0.05634358,
+                0.10810811,
+                0.07787788,
+                0.09015808,
+                0.10503295,
+                0.03751583,
+                0.08186044,
+                0.04315374,
+                0.10532477
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "linear_fit/linear_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "llm_minus_nabm_probe_brier": {
+            "max": 0.12854537,
+            "mean": 0.0732085,
+            "min": 0.00510028,
+            "n": 16,
+            "std": 0.02988774,
+            "values": [
+              0.10985667,
+              0.00510028,
+              0.08115686,
+              0.07473124,
+              0.08384262,
+              0.12854537,
+              0.06627649,
+              0.01593256,
+              0.08947092,
+              0.07736155,
+              0.08372199,
+              0.08896608,
+              0.0708772,
+              0.06416153,
+              0.06746092,
+              0.06387373
+            ]
+          },
+          "nabm_learning_superior": {
+            "improvement": {
+              "max": 0.12854537,
+              "mean": 0.0732085,
+              "min": 0.00510028,
+              "n": 16,
+              "std": 0.02988774,
+              "values": [
+                0.10985667,
+                0.00510028,
+                0.08115686,
+                0.07473124,
+                0.08384262,
+                0.12854537,
+                0.06627649,
+                0.01593256,
+                0.08947092,
+                0.07736155,
+                0.08372199,
+                0.08896608,
+                0.0708772,
+                0.06416153,
+                0.06746092,
+                0.06387373
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "nabm_minus_llm_precision": {
+            "max": 0.12636553,
+            "mean": 0.06331356,
+            "min": 0.03465076,
+            "n": 16,
+            "std": 0.02348605,
+            "values": [
+              0.04428304,
+              0.05932203,
+              0.09601829,
+              0.04175028,
+              0.06198608,
+              0.07216495,
+              0.04522149,
+              0.03465076,
+              0.07223091,
+              0.05019543,
+              0.12636553,
+              0.06940789,
+              0.05471729,
+              0.07219251,
+              0.03871103,
+              0.07379939
+            ]
+          },
+          "nabm_precision_superior": {
+            "improvement": {
+              "max": 0.12636553,
+              "mean": 0.06331356,
+              "min": 0.03465076,
+              "n": 16,
+              "std": 0.02348605,
+              "values": [
+                0.04428304,
+                0.05932203,
+                0.09601829,
+                0.04175028,
+                0.06198608,
+                0.07216495,
+                0.04522149,
+                0.03465076,
+                0.07223091,
+                0.05019543,
+                0.12636553,
+                0.06940789,
+                0.05471729,
+                0.07219251,
+                0.03871103,
+                0.07379939
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "linear_fit/mlp_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "llm_minus_nabm_probe_brier": {
+            "max": 0.1860226,
+            "mean": 0.12699455,
+            "min": 0.06067099,
+            "n": 16,
+            "std": 0.0315347,
+            "values": [
+              0.16946941,
+              0.0638766,
+              0.12944904,
+              0.12241311,
+              0.13435327,
+              0.1860226,
+              0.11212022,
+              0.06067099,
+              0.13897371,
+              0.14505148,
+              0.13691572,
+              0.14301574,
+              0.12215526,
+              0.11884001,
+              0.12166016,
+              0.12692543
+            ]
+          },
+          "nabm_learning_superior": {
+            "improvement": {
+              "max": 0.1860226,
+              "mean": 0.12699455,
+              "min": 0.06067099,
+              "n": 16,
+              "std": 0.0315347,
+              "values": [
+                0.16946941,
+                0.0638766,
+                0.12944904,
+                0.12241311,
+                0.13435327,
+                0.1860226,
+                0.11212022,
+                0.06067099,
+                0.13897371,
+                0.14505148,
+                0.13691572,
+                0.14301574,
+                0.12215526,
+                0.11884001,
+                0.12166016,
+                0.12692543
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "nabm_minus_llm_precision": {
+            "max": 0.17752489,
+            "mean": 0.10848423,
+            "min": 0.06686846,
+            "n": 16,
+            "std": 0.02954237,
+            "values": [
+              0.07610122,
+              0.09778357,
+              0.13564773,
+              0.08544395,
+              0.08445341,
+              0.12549828,
+              0.10628019,
+              0.06686846,
+              0.1350964,
+              0.07856061,
+              0.17752489,
+              0.11649123,
+              0.09459459,
+              0.13862608,
+              0.09226573,
+              0.12451128
+            ]
+          },
+          "nabm_precision_superior": {
+            "improvement": {
+              "max": 0.17752489,
+              "mean": 0.10848423,
+              "min": 0.06686846,
+              "n": 16,
+              "std": 0.02954237,
+              "values": [
+                0.07610122,
+                0.09778357,
+                0.13564773,
+                0.08544395,
+                0.08445341,
+                0.12549828,
+                0.10628019,
+                0.06686846,
+                0.1350964,
+                0.07856061,
+                0.17752489,
+                0.11649123,
+                0.09459459,
+                0.13862608,
+                0.09226573,
+                0.12451128
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "linear_fit/tree_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "llm_minus_nabm_probe_brier": {
+            "max": 0.14535611,
+            "mean": 0.07258095,
+            "min": -0.00849596,
+            "n": 16,
+            "std": 0.03672367,
+            "values": [
+              0.12922157,
+              0.02269372,
+              0.07943565,
+              0.07365278,
+              0.08380117,
+              0.14535611,
+              0.07377623,
+              -0.00849596,
+              0.09204716,
+              0.03914888,
+              0.08215318,
+              0.09455204,
+              0.05570199,
+              0.06473312,
+              0.06778371,
+              0.06573384
+            ]
+          },
+          "nabm_learning_superior": {
+            "improvement": {
+              "max": 0.14535611,
+              "mean": 0.07258095,
+              "min": -0.00849596,
+              "n": 16,
+              "std": 0.03672367,
+              "values": [
+                0.12922157,
+                0.02269372,
+                0.07943565,
+                0.07365278,
+                0.08380117,
+                0.14535611,
+                0.07377623,
+                -0.00849596,
+                0.09204716,
+                0.03914888,
+                0.08215318,
+                0.09455204,
+                0.05570199,
+                0.06473312,
+                0.06778371,
+                0.06573384
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 15
+          },
+          "nabm_minus_llm_precision": {
+            "max": 0.10299293,
+            "mean": 0.04537122,
+            "min": -0.00734867,
+            "n": 16,
+            "std": 0.02791476,
+            "values": [
+              -0.00734867,
+              0.04080352,
+              0.07683583,
+              0.03048022,
+              0.03518483,
+              0.02979207,
+              0.03286749,
+              0.02104003,
+              0.06644979,
+              0.02967172,
+              0.10299293,
+              0.06012759,
+              0.05755756,
+              0.0658634,
+              0.01215346,
+              0.07146771
+            ]
+          },
+          "nabm_precision_superior": {
+            "improvement": {
+              "max": 0.10299293,
+              "mean": 0.04537122,
+              "min": -0.00734867,
+              "n": 16,
+              "std": 0.02791476,
+              "values": [
+                -0.00734867,
+                0.04080352,
+                0.07683583,
+                0.03048022,
+                0.03518483,
+                0.02979207,
+                0.03286749,
+                0.02104003,
+                0.06644979,
+                0.02967172,
+                0.10299293,
+                0.06012759,
+                0.05755756,
+                0.0658634,
+                0.01215346,
+                0.07146771
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 15
+          }
+        },
+        "smooth_interaction_fit/linear_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "llm_minus_nabm_probe_brier": {
+            "max": 0.15598938,
+            "mean": 0.05250459,
+            "min": -0.02605008,
+            "n": 16,
+            "std": 0.05402101,
+            "values": [
+              0.15598938,
+              0.01602932,
+              -0.00268908,
+              0.08363993,
+              0.03663772,
+              0.07394816,
+              0.05286725,
+              -0.02124389,
+              0.08780141,
+              -0.01459083,
+              0.11237196,
+              0.10668896,
+              0.06829873,
+              0.09304091,
+              -0.02605008,
+              0.01733358
+            ]
+          },
+          "nabm_learning_superior": {
+            "improvement": {
+              "max": 0.15598938,
+              "mean": 0.05250459,
+              "min": -0.02605008,
+              "n": 16,
+              "std": 0.05402101,
+              "values": [
+                0.15598938,
+                0.01602932,
+                -0.00268908,
+                0.08363993,
+                0.03663772,
+                0.07394816,
+                0.05286725,
+                -0.02124389,
+                0.08780141,
+                -0.01459083,
+                0.11237196,
+                0.10668896,
+                0.06829873,
+                0.09304091,
+                -0.02605008,
+                0.01733358
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 12
+          },
+          "nabm_minus_llm_precision": {
+            "max": 0.06805979,
+            "mean": 0.02470319,
+            "min": -0.04946353,
+            "n": 16,
+            "std": 0.03010818,
+            "values": [
+              0.05978261,
+              -0.00391682,
+              0.0257152,
+              0.03312986,
+              -0.00401387,
+              0.00857186,
+              0.01171851,
+              0.01386589,
+              0.04032905,
+              0.0187985,
+              0.02783582,
+              0.06805979,
+              -0.04946353,
+              0.06020139,
+              0.02566245,
+              0.05897436
+            ]
+          },
+          "nabm_precision_superior": {
+            "improvement": {
+              "max": 0.06805979,
+              "mean": 0.02470319,
+              "min": -0.04946353,
+              "n": 16,
+              "std": 0.03010818,
+              "values": [
+                0.05978261,
+                -0.00391682,
+                0.0257152,
+                0.03312986,
+                -0.00401387,
+                0.00857186,
+                0.01171851,
+                0.01386589,
+                0.04032905,
+                0.0187985,
+                0.02783582,
+                0.06805979,
+                -0.04946353,
+                0.06020139,
+                0.02566245,
+                0.05897436
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 13
+          }
+        },
+        "smooth_interaction_fit/mlp_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "llm_minus_nabm_probe_brier": {
+            "max": 0.21536939,
+            "mean": 0.13128329,
+            "min": 0.0028552,
+            "n": 16,
+            "std": 0.06055549,
+            "values": [
+              0.21536939,
+              0.0881793,
+              0.08492985,
+              0.14969229,
+              0.15561373,
+              0.17904111,
+              0.14310999,
+              0.01934572,
+              0.17646024,
+              0.08636848,
+              0.14955152,
+              0.19065089,
+              0.17204908,
+              0.17253227,
+              0.0028552,
+              0.11478358
+            ]
+          },
+          "nabm_learning_superior": {
+            "improvement": {
+              "max": 0.21536939,
+              "mean": 0.13128329,
+              "min": 0.0028552,
+              "n": 16,
+              "std": 0.06055549,
+              "values": [
+                0.21536939,
+                0.0881793,
+                0.08492985,
+                0.14969229,
+                0.15561373,
+                0.17904111,
+                0.14310999,
+                0.01934572,
+                0.17646024,
+                0.08636848,
+                0.14955152,
+                0.19065089,
+                0.17204908,
+                0.17253227,
+                0.0028552,
+                0.11478358
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "nabm_minus_llm_precision": {
+            "max": 0.13508616,
+            "mean": 0.07562978,
+            "min": 0.03431191,
+            "n": 16,
+            "std": 0.02589907,
+            "values": [
+              0.09320809,
+              0.07964417,
+              0.08543417,
+              0.07098623,
+              0.05584832,
+              0.07972936,
+              0.06092233,
+              0.08090753,
+              0.07937767,
+              0.04645406,
+              0.07151007,
+              0.13508616,
+              0.03431191,
+              0.10300623,
+              0.03570141,
+              0.09794872
+            ]
+          },
+          "nabm_precision_superior": {
+            "improvement": {
+              "max": 0.13508616,
+              "mean": 0.07562978,
+              "min": 0.03431191,
+              "n": 16,
+              "std": 0.02589907,
+              "values": [
+                0.09320809,
+                0.07964417,
+                0.08543417,
+                0.07098623,
+                0.05584832,
+                0.07972936,
+                0.06092233,
+                0.08090753,
+                0.07937767,
+                0.04645406,
+                0.07151007,
+                0.13508616,
+                0.03431191,
+                0.10300623,
+                0.03570141,
+                0.09794872
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "smooth_interaction_fit/tree_batch": {
+          "disposition": "NABM_MATCHES_LLM_AGENT",
+          "llm_minus_nabm_probe_brier": {
+            "max": 0.19922719,
+            "mean": 0.09615424,
+            "min": -0.01010701,
+            "n": 16,
+            "std": 0.06566683,
+            "values": [
+              0.19922719,
+              0.05362609,
+              0.02494803,
+              0.1223573,
+              0.09103542,
+              0.13048407,
+              0.09752606,
+              -0.01010701,
+              0.15252592,
+              0.03247369,
+              0.13982695,
+              0.17370169,
+              0.15411954,
+              0.14198892,
+              -0.00459621,
+              0.03933022
+            ]
+          },
+          "nabm_learning_superior": {
+            "improvement": {
+              "max": 0.19922719,
+              "mean": 0.09615424,
+              "min": -0.01010701,
+              "n": 16,
+              "std": 0.06566683,
+              "values": [
+                0.19922719,
+                0.05362609,
+                0.02494803,
+                0.1223573,
+                0.09103542,
+                0.13048407,
+                0.09752606,
+                -0.01010701,
+                0.15252592,
+                0.03247369,
+                0.13982695,
+                0.17370169,
+                0.15411954,
+                0.14198892,
+                -0.00459621,
+                0.03933022
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 14
+          },
+          "nabm_minus_llm_precision": {
+            "max": 0.09064171,
+            "mean": 0.04917834,
+            "min": 0.01887419,
+            "n": 16,
+            "std": 0.02390713,
+            "values": [
+              0.08522727,
+              0.04318324,
+              0.04492245,
+              0.04041595,
+              0.01887419,
+              0.03910724,
+              0.03003998,
+              0.03429878,
+              0.08145638,
+              0.04616337,
+              0.04533113,
+              0.09064171,
+              0.02557787,
+              0.08712374,
+              0.0219342,
+              0.05255594
+            ]
+          },
+          "nabm_precision_superior": {
+            "improvement": {
+              "max": 0.09064171,
+              "mean": 0.04917834,
+              "min": 0.01887419,
+              "n": 16,
+              "std": 0.02390713,
+              "values": [
+                0.08522727,
+                0.04318324,
+                0.04492245,
+                0.04041595,
+                0.01887419,
+                0.03910724,
+                0.03003998,
+                0.03429878,
+                0.08145638,
+                0.04616337,
+                0.04533113,
+                0.09064171,
+                0.02557787,
+                0.08712374,
+                0.0219342,
+                0.05255594
+              ]
+            },
+            "pass": true,
+            "positive_replicates": 16
+          }
+        }
+      },
+      "matching_cells": [
+        "axis_interaction_fit/linear_batch",
+        "axis_interaction_fit/mlp_batch",
+        "axis_interaction_fit/tree_batch",
+        "linear_fit/linear_batch",
+        "linear_fit/mlp_batch",
+        "linear_fit/tree_batch",
+        "smooth_interaction_fit/linear_batch",
+        "smooth_interaction_fit/mlp_batch",
+        "smooth_interaction_fit/tree_batch"
+      ],
+      "summary": "NABM_MATCHES_LLM_AGENT_IN_ALL_CELLS"
+    },
+    "status": "FROZEN_SYNTHETIC_DECISION_COMPLETE"
+  },
+  "condition_profiles": {
+    "linear_fit": {
+      "hand": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.828125,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.326036,
+          "probe_brier": 0.200013,
+          "probe_auc": 0.659674,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.757324,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.399833,
+          "probe_brier": 0.058598,
+          "probe_auc": 0.991504,
+          "evidence_events_per_learner": 145.40625
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.761963,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.395263,
+          "probe_brier": 0.068676,
+          "probe_auc": 0.978547,
+          "evidence_events_per_learner": 146.296875
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.716553,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.423167,
+          "probe_brier": 0.012647,
+          "probe_auc": 0.999241,
+          "evidence_events_per_learner": 137.578125
+        }
+      },
+      "hybrid_qwen3_4b_2507": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.484863,
+          "exploratory_entry_rate": 0.133057,
+          "productive_share_of_entrants": 0.404212,
+          "probe_brier": 0.185655,
+          "probe_auc": 0.706461,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.616211,
+          "exploratory_entry_rate": 0.095459,
+          "productive_share_of_entrants": 0.485746,
+          "probe_brier": 0.066408,
+          "probe_auc": 0.983609,
+          "evidence_events_per_learner": 117.1875
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.644043,
+          "exploratory_entry_rate": 0.086182,
+          "productive_share_of_entrants": 0.467804,
+          "probe_brier": 0.067035,
+          "probe_auc": 0.979859,
+          "evidence_events_per_learner": 122.578125
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.570068,
+          "exploratory_entry_rate": 0.107666,
+          "productive_share_of_entrants": 0.530917,
+          "probe_brier": 0.012622,
+          "probe_auc": 0.999296,
+          "evidence_events_per_learner": 108.234375
+        }
+      },
+      "llm_agent_qwen3_4b_2507": {
+        "llm_agent": {
+          "cumulative_entry_rate": 0.71875,
+          "exploratory_entry_rate": 0.075439,
+          "productive_share_of_entrants": 0.422433,
+          "probe_brier": 0.139616,
+          "probe_auc": 0.973164,
+          "evidence_events_per_learner": 182.8125
+        }
+      }
+    },
+    "smooth_interaction_fit": {
+      "hand": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.828125,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.325954,
+          "probe_brier": 0.202953,
+          "probe_auc": 0.650576,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.678955,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.359829,
+          "probe_brier": 0.171118,
+          "probe_auc": 0.733186,
+          "evidence_events_per_learner": 130.359375
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.71875,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.384523,
+          "probe_brier": 0.124387,
+          "probe_auc": 0.916056,
+          "evidence_events_per_learner": 137.953125
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.715332,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.398114,
+          "probe_brier": 0.084434,
+          "probe_auc": 0.956738,
+          "evidence_events_per_learner": 137.34375
+        }
+      },
+      "hybrid_qwen3_4b_2507": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.484863,
+          "exploratory_entry_rate": 0.133057,
+          "productive_share_of_entrants": 0.372099,
+          "probe_brier": 0.197201,
+          "probe_auc": 0.652687,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.571045,
+          "exploratory_entry_rate": 0.115479,
+          "productive_share_of_entrants": 0.400652,
+          "probe_brier": 0.173578,
+          "probe_auc": 0.729837,
+          "evidence_events_per_learner": 107.90625
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.649414,
+          "exploratory_entry_rate": 0.093018,
+          "productive_share_of_entrants": 0.425127,
+          "probe_brier": 0.129929,
+          "probe_auc": 0.903587,
+          "evidence_events_per_learner": 123.09375
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.616455,
+          "exploratory_entry_rate": 0.100586,
+          "productive_share_of_entrants": 0.451578,
+          "probe_brier": 0.0948,
+          "probe_auc": 0.935497,
+          "evidence_events_per_learner": 116.765625
+        }
+      },
+      "llm_agent_qwen3_4b_2507": {
+        "llm_agent": {
+          "cumulative_entry_rate": 0.800293,
+          "exploratory_entry_rate": 0.061768,
+          "productive_share_of_entrants": 0.375948,
+          "probe_brier": 0.226083,
+          "probe_auc": 0.909856,
+          "evidence_events_per_learner": 203.6875
+        }
+      }
+    },
+    "axis_interaction_fit": {
+      "hand": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.828125,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.322705,
+          "probe_brier": 0.204832,
+          "probe_auc": 0.625547,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.679199,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.351757,
+          "probe_brier": 0.185422,
+          "probe_auc": 0.692231,
+          "evidence_events_per_learner": 130.359375
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.728516,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.4052,
+          "probe_brier": 0.06569,
+          "probe_auc": 0.962029,
+          "evidence_events_per_learner": 139.875
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.718018,
+          "exploratory_entry_rate": 0.0,
+          "productive_share_of_entrants": 0.388663,
+          "probe_brier": 0.119654,
+          "probe_auc": 0.92119,
+          "evidence_events_per_learner": 137.859375
+        }
+      },
+      "hybrid_qwen3_4b_2507": {
+        "fixed_rule": {
+          "cumulative_entry_rate": 0.484863,
+          "exploratory_entry_rate": 0.133057,
+          "productive_share_of_entrants": 0.358831,
+          "probe_brier": 0.198688,
+          "probe_auc": 0.632199,
+          "evidence_events_per_learner": null
+        },
+        "linear_batch": {
+          "cumulative_entry_rate": 0.525635,
+          "exploratory_entry_rate": 0.123535,
+          "productive_share_of_entrants": 0.379994,
+          "probe_brier": 0.185534,
+          "probe_auc": 0.687939,
+          "evidence_events_per_learner": 98.859375
+        },
+        "tree_batch": {
+          "cumulative_entry_rate": 0.640381,
+          "exploratory_entry_rate": 0.0979,
+          "productive_share_of_entrants": 0.458285,
+          "probe_brier": 0.068783,
+          "probe_auc": 0.955975,
+          "evidence_events_per_learner": 121.546875
+        },
+        "mlp_batch": {
+          "cumulative_entry_rate": 0.610107,
+          "exploratory_entry_rate": 0.106934,
+          "productive_share_of_entrants": 0.442222,
+          "probe_brier": 0.127215,
+          "probe_auc": 0.901525,
+          "evidence_events_per_learner": 115.640625
+        }
+      },
+      "llm_agent_qwen3_4b_2507": {
+        "llm_agent": {
+          "cumulative_entry_rate": 0.803467,
+          "exploratory_entry_rate": 0.065186,
+          "productive_share_of_entrants": 0.374038,
+          "probe_brier": 0.235097,
+          "probe_auc": 0.891877,
+          "evidence_events_per_learner": 204.5
+        }
+      }
+    }
+  },
+  "cost": {
+    "status": "TIMING_NOT_BYTE_REPRODUCIBLE_FROM_THE_SEPARATE_COST_TIMING_FILES",
+    "development_cost_timing_sha256": "4fb2c28cd51159ded108b9fa3d2176f4fe2a0ff42d445218ab48d0344125d025",
+    "reproduction_cost_timing_sha256": "ea3804fdce601bf66cc60f17907ad3982c425d8bc15aad90c77ef4483e589747",
+    "llm_agent_median_gpu_seconds_per_run": {
+      "development": 110.00058794021606,
+      "reproduction": 110.06142258644104
+    },
+    "llm_agent_gpu_seconds_per_forward_pass": 0.043957848695908464,
+    "llm_agent_total_gpu_seconds_48_runs": 5220.96160531044,
+    "nabm_median_cpu_seconds_per_arm_run": {
+      "development": 4.760440134,
+      "reproduction": 5.1597910188750005
+    },
+    "nabm_hybrid_one_time_llm_gpu_seconds": 48.794612646102905,
+    "nabm_hybrid_one_time_llm_source": "V4_QWEN3_4B_2507_ELICITATION_PRIMARY_FORWARD_TOTAL",
+    "cost_floor_from_v4_batch_32": {
+      "qwen3_0_6b": {
+        "gpu_seconds_per_run_at_this_query_count": 16.042207289487123,
+        "seconds_per_query": 0.006413035094738007
+      },
+      "qwen3_4b_2507": {
+        "gpu_seconds_per_run_at_this_query_count": 75.07055516913533,
+        "seconds_per_query": 0.030010215938091278
+      }
+    },
+    "machine_load_average": {
+      "development": [
+        20.23681640625,
+        17.2109375,
+        13.56884765625
+      ],
+      "reproduction": [
+        2.14404296875,
+        2.6279296875,
+        3.99365234375
+      ]
+    },
+    "hardware_note": "LLM_SECONDS_ARE_GPU_SECONDS_ON_AN_RTX_4080_NABM_SECONDS_ARE_SINGLE_CORE_CPU_SECONDS_THE_RATIO_MIXES_HARDWARE"
+  },
+  "post_hoc_descriptive": {
+    "status": "POST_HOC_DESCRIPTIVE_NOT_REGISTERED_NO_NEW_EXECUTION",
+    "calibration_drift_after_evidence": {
+      "linear_fit": {
+        "llm_agent_mean_policy_output_by_step": [
+          0.3173,
+          0.3173,
+          0.3173,
+          0.499,
+          0.479,
+          0.4176,
+          0.41,
+          0.4134,
+          0.4128,
+          0.4134,
+          0.4115,
+          0.4189,
+          0.4176,
+          0.4185,
+          0.429,
+          0.4341,
+          0.438,
+          0.4436
+        ],
+        "hybrid_mlp_mean_policy_output_by_step": [
+          0.3062,
+          0.3062,
+          0.3062,
+          0.3002,
+          0.3127,
+          0.3116,
+          0.3101,
+          0.3101,
+          0.3101,
+          0.3097,
+          0.3095,
+          0.3096,
+          0.3096,
+          0.3093,
+          0.3092,
+          0.3091,
+          0.3086,
+          0.3085
+        ],
+        "final_public_success_share": 0.4256,
+        "llm_agent_entry_by_step": [
+          0.0,
+          0.0,
+          0.311,
+          0.5964,
+          0.6528,
+          0.6616,
+          0.6682,
+          0.6736,
+          0.6782,
+          0.6821,
+          0.6865,
+          0.6875,
+          0.6929,
+          0.6982,
+          0.7048,
+          0.7092,
+          0.7141,
+          0.7188
+        ],
+        "hybrid_mlp_entry_by_step": [
+          0.0,
+          0.0,
+          0.2957,
+          0.4519,
+          0.4761,
+          0.4895,
+          0.4983,
+          0.5046,
+          0.5117,
+          0.5183,
+          0.5259,
+          0.5295,
+          0.5366,
+          0.5435,
+          0.551,
+          0.5569,
+          0.5637,
+          0.5701
+        ],
+        "population_productive_rate": 0.3047,
+        "llm_agent_mean_output_from_step_4": {
+          "min": 0.41,
+          "max": 0.499,
+          "final": 0.4436
+        },
+        "hybrid_mlp_mean_output_range": {
+          "min": 0.3002,
+          "max": 0.3127
+        }
+      },
+      "smooth_interaction_fit": {
+        "llm_agent_mean_policy_output_by_step": [
+          0.3173,
+          0.3173,
+          0.3173,
+          0.4671,
+          0.5207,
+          0.5183,
+          0.519,
+          0.5247,
+          0.54,
+          0.536,
+          0.5358,
+          0.5369,
+          0.5383,
+          0.5376,
+          0.5326,
+          0.5349,
+          0.5315,
+          0.5337
+        ],
+        "hybrid_mlp_mean_policy_output_by_step": [
+          0.3062,
+          0.3062,
+          0.3062,
+          0.2807,
+          0.2756,
+          0.2823,
+          0.2887,
+          0.2914,
+          0.2913,
+          0.2924,
+          0.2952,
+          0.2929,
+          0.294,
+          0.2979,
+          0.2973,
+          0.2962,
+          0.2962,
+          0.2961
+        ],
+        "final_public_success_share": 0.378,
+        "llm_agent_entry_by_step": [
+          0.0,
+          0.0,
+          0.311,
+          0.5637,
+          0.6821,
+          0.7209,
+          0.7368,
+          0.7527,
+          0.7605,
+          0.7651,
+          0.77,
+          0.7747,
+          0.7791,
+          0.7834,
+          0.7883,
+          0.7915,
+          0.7957,
+          0.8003
+        ],
+        "hybrid_mlp_entry_by_step": [
+          0.0,
+          0.0,
+          0.2957,
+          0.449,
+          0.4841,
+          0.5066,
+          0.5208,
+          0.533,
+          0.5437,
+          0.5522,
+          0.563,
+          0.5708,
+          0.5781,
+          0.5876,
+          0.5955,
+          0.6011,
+          0.6082,
+          0.6165
+        ],
+        "population_productive_rate": 0.3047,
+        "llm_agent_mean_output_from_step_4": {
+          "min": 0.4671,
+          "max": 0.54,
+          "final": 0.5337
+        },
+        "hybrid_mlp_mean_output_range": {
+          "min": 0.2756,
+          "max": 0.3062
+        }
+      },
+      "axis_interaction_fit": {
+        "llm_agent_mean_policy_output_by_step": [
+          0.3173,
+          0.3173,
+          0.3173,
+          0.391,
+          0.4725,
+          0.495,
+          0.5109,
+          0.5326,
+          0.5296,
+          0.5311,
+          0.5364,
+          0.5348,
+          0.5345,
+          0.5389,
+          0.5384,
+          0.5401,
+          0.538,
+          0.5413
+        ],
+        "hybrid_mlp_mean_policy_output_by_step": [
+          0.3062,
+          0.3062,
+          0.3062,
+          0.2351,
+          0.2419,
+          0.2523,
+          0.2573,
+          0.2658,
+          0.2691,
+          0.2755,
+          0.2791,
+          0.2783,
+          0.2804,
+          0.2818,
+          0.2856,
+          0.2859,
+          0.2891,
+          0.2855
+        ],
+        "final_public_success_share": 0.3765,
+        "llm_agent_entry_by_step": [
+          0.0,
+          0.0,
+          0.311,
+          0.4814,
+          0.6116,
+          0.6809,
+          0.7183,
+          0.7397,
+          0.7512,
+          0.761,
+          0.7671,
+          0.7727,
+          0.7778,
+          0.782,
+          0.7893,
+          0.7957,
+          0.7988,
+          0.8035
+        ],
+        "hybrid_mlp_entry_by_step": [
+          0.0,
+          0.0,
+          0.2957,
+          0.4089,
+          0.448,
+          0.4736,
+          0.4917,
+          0.5051,
+          0.5188,
+          0.5364,
+          0.55,
+          0.5576,
+          0.5654,
+          0.5745,
+          0.5874,
+          0.595,
+          0.6023,
+          0.6101
+        ],
+        "population_productive_rate": 0.3047,
+        "llm_agent_mean_output_from_step_4": {
+          "min": 0.391,
+          "max": 0.5413,
+          "final": 0.5413
+        },
+        "hybrid_mlp_mean_output_range": {
+          "min": 0.2351,
+          "max": 0.3062
+        }
+      }
+    },
+    "ranking_in_context": {
+      "linear_fit": {
+        "llm_agent_probe_auc": 0.973164,
+        "hybrid_probe_auc": {
+          "linear_batch": 0.983609,
+          "tree_batch": 0.979859,
+          "mlp_batch": 0.999296
+        }
+      },
+      "smooth_interaction_fit": {
+        "llm_agent_probe_auc": 0.909856,
+        "hybrid_probe_auc": {
+          "linear_batch": 0.729837,
+          "tree_batch": 0.903587,
+          "mlp_batch": 0.935497
+        }
+      },
+      "axis_interaction_fit": {
+        "llm_agent_probe_auc": 0.891877,
+        "hybrid_probe_auc": {
+          "linear_batch": 0.687939,
+          "tree_batch": 0.955975,
+          "mlp_batch": 0.901525
+        }
+      }
+    },
+    "ranking_caveat": "THE_PROMPT_S_8_NEAREST_OUTCOME_COUNTS_ARE_ITSELF_A_NEAREST_NEIGHBOUR_ESTIMATE_HOW_MUCH_RANKING_THE_LLM_ADDS_TO_IT_IS_NOT_SEPARATED",
+    "population_productive_rate_source": "RECOMPUTED_FROM_THE_SEEDED_POPULATION_DRAWS_OF_EVERY_REPLICATE_NO_ABM_EXECUTION",
+    "calibration_drift_note": "THE_LLM_AGENT_S_MEAN_OUTPUT_RISES_FROM_ABOUT_0_32_WITH_NO_EVIDENCE_TO_0_39_TO_0_54_ONCE_OUTCOMES_ARE_PUBLIC_ABOVE_THE_0_305_POPULATION_RATE_THE_HYBRID_MLP_STAYS_BETWEEN_0_24_AND_0_31"
+  },
+  "scientific_assessment": {
+    "registered_outcome": "NABM_HYBRID_MATCHES_THE_LLM_AGENT_IN_9_OF_9_CELLS_AND_IS_SUPERIOR_ON_LEARNING_IN_9_AND_PRECISION_IN_8_THE_LLM_AGENT_DOMINATES_THE_HAND_RULE_NOWHERE",
+    "llm_agent_failure_mode": "OVER_ENTRY_FROM_CALIBRATION_DRIFT_THE_ZERO_EVIDENCE_SHIFT_DOES_NOT_HOLD_ONCE_EVIDENCE_ENTERS_THE_PROMPT",
+    "llm_agent_strength": "IN_CONTEXT_RANKING_COMPARABLE_TO_POOLED_NONLINEAR_LEARNERS",
+    "llm_agent_design": "ONE_REASONABLE_IN_CONTEXT_DESIGN_NOT_THE_BEST_POSSIBLE_LLM_AGENT",
+    "model_selected": "NO",
+    "llm_knowledge_of_real_pivots": "NOT_ESTABLISHED",
+    "reason": "With the same local LLM and the same exploration floor, consulting the LLM once and learning from pooled outcomes did at least as well as asking the LLM at every step in all nine cells, and better on learning in all nine and on entrant precision in eight. The LLM agent ranked probe profiles well once evidence was public, but its probabilities rose well above the observed success rate, so it admitted too many agents and forecast poorly. It did not beat the hand rule in any cell."
+  },
+  "framework_assessment": {
+    "positioning": "THE_LLM_AGENT_TIER_IS_NOW_MEASURED_IN_THIS_DESIGN_IT_COSTS_MORE_AND_DOES_NOT_DO_BETTER",
+    "why_nabm_wins_here": "POOLED_LEARNERS_ARE_FIT_TO_OUTCOMES_UNDER_LOG_LOSS_SO_THEY_STAY_CALIBRATED_THE_LLM_S_REACTION_TO_EVIDENCE_IS_NOT",
+    "candidate_successor": "RE_CALIBRATE_THE_LLM_AGENT_ONLINE_OR_LET_IT_REASON_OVER_CASES_ONLY_IF_THE_RESEARCH_QUESTION_NEEDS_A_STRONGER_LLM_AGENT",
+    "generic_api_change_needed": false,
+    "no_post_result_tuning": true
+  },
+  "boundaries": {
+    "empirical_rows_read": 0,
+    "generic_nabm_api_changed": false,
+    "llm_agent_design": "ONE_REASONABLE_IN_CONTEXT_DESIGN_NOT_THE_BEST_POSSIBLE_LLM_AGENT",
+    "llm_knowledge_of_real_pivots": "NOT_ESTABLISHED_THE_WORLDS_ARE_SYNTHETIC",
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "package_llm_dependency": false,
+    "package_promotion": "NOT_AUTHORIZED",
+    "paid_api_calls": 0,
+    "repository_only": true,
+    "scientific_effect": "NOT_ESTABLISHED"
+  }
+}
