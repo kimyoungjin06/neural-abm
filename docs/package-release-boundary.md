@@ -192,6 +192,9 @@ Its observable-discriminant successor adds a Pivot-owned attention-surge
 clock and screens data-observable candidates. It has the same boundary.
 Its confirmation and one-sided successors test the separating observables on
 new entry schedules. They have the same boundary.
+Its empirical outcome-selection-trend preregistration (N10) transfers the
+surviving indicator's threshold from stored synthetic runs and registers the
+empirical stages. It has the same boundary and reads no empirical row.
 
 The local-LLM prior pilot is repository-only. It elicits a prior once from a
 pinned local Qwen model and evaluates it in the Pivot ABM. Its contract, runner,
