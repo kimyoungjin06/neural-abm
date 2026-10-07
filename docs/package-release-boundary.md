@@ -195,6 +195,8 @@ new entry schedules. They have the same boundary.
 Its empirical outcome-selection-trend preregistration (N10) transfers the
 surviving indicator's threshold from stored synthetic runs and registers the
 empirical stages. It has the same boundary and reads no empirical row.
+Its v2 amendment moves the empirical entry clock to publication-date quarters
+and reruns the transfer. It has the same boundary.
 
 The local-LLM prior pilot is repository-only. It elicits a prior once from a
 pinned local Qwen model and evaluates it in the Pivot ABM. Its contract, runner,

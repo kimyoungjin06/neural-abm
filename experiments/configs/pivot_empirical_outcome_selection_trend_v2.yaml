@@ -1,0 +1,529 @@
+schema_version: pivot_empirical_outcome_selection_trend.v2
+label: pivot_empirical_outcome_selection_trend_v2
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-07'
+next_step_id: N10
+purpose: Amend the N10 preregistration before any empirical row is read. Stage T of v1 showed that three yearly entry levels
+  catch 12 of 33 active synthetic cells. v2 measures entry time in publication-date quarters (twelve levels), aligns the persistence
+  window to the entry quarter, registers a date-precision rule, and reruns the threshold transfer on twelve levels. Every
+  other choice is v1's. Stage T is the only stage this precommit executes.
+amends:
+  contract_v1:
+    path: experiments/configs/pivot_empirical_outcome_selection_trend_v1.yaml
+    sha256: 2bb689b3e4447c6e169b9b41d79081b139592e40aeb55c2ac21cc250a5ffc2d0
+    commit: 49f5345
+  result_v1:
+    path: experiments/evidence/results/pivot_empirical_outcome_selection_trend_v1_20261007.summary.json
+    sha256: 971e51aad49ed7efc9bddf4b1b3ac442ed2012f918df95be0e6b545ef6e8da5b
+    commit: bea6145
+  script_v1:
+    path: scripts/prototype_pivot_empirical_outcome_selection_trend_v1.py
+    sha256: 1a3c5befe0f34c5c488f48894867a23ce42564c32b68c60a22d423850a63a863
+  changed:
+  - ENTRY_CLOCK_PUBLICATION_DATE_QUARTERS
+  - PERSISTENCE_WINDOW_ALIGNED_TO_THE_ENTRY_QUARTER
+  - DATE_PRECISION_RULE
+  - THRESHOLD_TRANSFER_ON_TWELVE_LEVELS
+  - REPORT_ONLY_BLOCK_ADDS_THE_V1_CLOCK_AND_IMPRECISE_ENTRANTS
+  - REQUIRED_COLUMNS_ADD_PUBLICATION_DATE
+  unchanged:
+  - SOURCE_SNAPSHOT_AND_MATURITY
+  - FIELDS
+  - DECISION_YEARS
+  - RESPONSE_YEARS
+  - WORK_ELIGIBILITY
+  - EPISODE_RULE
+  - PARTITION
+  - AUTHOR_OVERLAP
+  - ENTRANT_DEFINITION_AT_THE_YEAR_LEVEL
+  - PRECISION_RULE
+  - UNCERTAINTY
+  - DECISION_RULE
+  - STAGES_AND_AUTHORIZATION
+  - CLAIM_CEILING
+  result_informed_successor: true
+  informed_by: V1_STAGE_T_SYNTHETIC_ONLY_NO_EMPIRICAL_ROW_HAS_BEEN_READ
+  why_the_persistence_window_moves: WITH_A_QUARTER_CLOCK_AND_A_CALENDAR_YEAR_WINDOW_LATER_QUARTER_ENTRANTS_WOULD_START_FOLLOW_UP_SOONER_A_SPURIOUS_POSITIVE_WITHIN_YEAR_TREND
+source_bindings:
+- path: experiments/configs/pivot_empirical_outcome_selection_trend_v1.yaml
+  sha256: 2bb689b3e4447c6e169b9b41d79081b139592e40aeb55c2ac21cc250a5ffc2d0
+  role: AMENDED_V1_CONTRACT
+- path: experiments/evidence/results/pivot_empirical_outcome_selection_trend_v1_20261007.summary.json
+  sha256: 971e51aad49ed7efc9bddf4b1b3ac442ed2012f918df95be0e6b545ef6e8da5b
+  role: V1_STAGE_T_RESULT_THAT_INFORMS_V2
+- path: scripts/prototype_pivot_empirical_outcome_selection_trend_v1.py
+  sha256: 1a3c5befe0f34c5c488f48894867a23ce42564c32b68c60a22d423850a63a863
+  role: V1_TRANSFER_ESTIMATOR_AND_DECISION_FUNCTIONS_REUSED_UNCHANGED
+- path: experiments/configs/pivot_policy_ladder_consolidation_v4.yaml
+  sha256: fe7ef093d965070ad48b8b48c5fa3bcb05abfa8791983abdd9a216c9288333b9
+  role: T01_REVISED_EMPIRICAL_TARGET_AND_N10_DEFINITION
+- path: experiments/configs/pivot_observable_discriminant_v1.yaml
+  sha256: b2a3cf0ffadf125b63b030f45f348fa6499c9316b565f5a064500cba5870d0f1
+  role: N05_SYNTHETIC_CONTRACT_GEOMETRY_AND_INDICATOR_DEFINITION
+- path: experiments/evidence/results/pivot_observable_discriminant_v1_20260930.summary.json
+  sha256: 60a76578f369e1c74405880679da61a6841fed1f579c604204a670b7d4de9704
+  role: N05_CELL_STATUSES_AND_RUNS_ARTIFACT_HASH
+- path: experiments/configs/pivot_observable_confirmation_v1.yaml
+  sha256: 4df4d680b6fa4f55dad20223d88875e0fd2c4b54f2bf2367e451363889eecbd0
+  role: N08_SYNTHETIC_CONTRACT_AND_REGISTERED_THRESHOLD
+- path: experiments/evidence/results/pivot_observable_confirmation_v1_20261001.summary.json
+  sha256: e6cab9fe9ce49f5ac77bfd6db808a0e59b5c1ec0cf758cbb8ef2fb5c6ef59da4
+  role: N08_CELL_STATUSES_AND_RUNS_ARTIFACT_HASH
+- path: experiments/configs/pivot_observable_one_sided_v1.yaml
+  sha256: 2fe0e8eac89ce6e67d888e9ee3b91cb78ee8cd8d4815d6f36d261485c63be071
+  role: N09_SYNTHETIC_CONTRACT
+- path: experiments/evidence/results/pivot_observable_one_sided_v1_20261007.summary.json
+  sha256: 0140553c563df86aa45e7c6ab177d7a60776a307cbd38258f50e48b678dbdae2
+  role: N09_CELL_STATUSES_AND_RUNS_ARTIFACT_HASH
+- path: experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_resume_v3_20261007.summary.json
+  sha256: 167999a15c1ff862a4b99988f668ecc8e2d3a89181c980e1ece5f0b558eb8d48
+  role: COMPLETE_2026_06_26_SOURCE_RECEIPT
+- path: docs/research/pivot-feedback-lean-h3-successor-design-v1.md
+  sha256: 1e335a717cb1665b75360842e1dbc5761341faeed67b578c174add2e2701130d
+  role: SUCCESSOR_REQUIREMENTS_AND_CLAIM_CEILING
+- path: experiments/configs/pivot_feedback_e_g1_disjoint_successor_availability_v1.yaml
+  sha256: ba68d3fda3a71f090122cb6f651f7ac13499b8357856b068ddc5fa051c5fe6e5
+  role: FORBIDDEN_RECOVERY_ROUTES_AND_DISJOINT_SUCCESSOR_REQUIREMENTS
+- path: experiments/configs/pivot_feedback_current_state_v4.yaml
+  sha256: 4c10f6aa579e129715fab088d669a77ac9c7884ef9ed9f912f6acd2686f8efda
+  role: ACTIVE_AUTHORITY_UNCHANGED
+- path: experiments/configs/pivot_feedback_cross_field_matrix_v0.yaml
+  sha256: 6fd3e2c7aae7a7aac085ed73ba4bf3d64a91c02d60dce8a9a6a262591a0c934a
+  role: FIELD_UNIVERSE_AND_REGISTERED_YEAR_PARTITIONS
+- path: experiments/configs/pivot_feedback_f_aligned_strict_incumbent_rescreen_v1.yaml
+  sha256: 795f625dac2400b892c7c5139b0b99641ec65529c29566b66b3273bc952175ee
+  role: ATTENTION_SURGE_RULE_AND_STRUCTURALLY_SELECTED_FIELDS
+- path: experiments/configs/pivot_feedback_f_atomic_partition_assignment_v1.yaml
+  sha256: d9623fc90af17702fd5938692eb4a5bf9a72818985f8575c8cd7d85d83d35f04
+  role: LINEAGE_EPISODE_KEYS_AND_ATOMICITY_RULES
+- path: experiments/configs/pivot_feedback_f_pre_g1_scientific_sections_v1.yaml
+  sha256: cc58a651667b7cecb4cc61d96b6700aa665f1121c7c0b0a254368fb0299041dd
+  role: OPPORTUNITY_RULE_AND_WORK_ELIGIBILITY
+- path: experiments/configs/pivot_feedback_researcher_pivot_definition_v2.yaml
+  sha256: 625145e60fa38b787b25842b8b2d6877880b2f6102169588dfd1efb919e224de
+  role: NEW_TOPIC_ENTRY_DEFINITION
+- path: experiments/configs/pivot_feedback_d0_persistence_outcome_contract_v1.yaml
+  sha256: 177fd11366c36143f601743a27afb952b1482c2f90bc536b95787e114c482b6c
+  role: THREE_YEAR_PERSISTENCE_DEFINITION
+- path: experiments/configs/pivot_feedback_d0_production_candidate_rule_v1.yaml
+  sha256: 027872f50742421176cfe20b71eb7469fc447e7d9e78a1c556e1c16b74852519
+  role: STRUCTURAL_INDEXING_ANOMALY_SCREEN
+- path: experiments/configs/pivot_feedback_d0_certified_episode_reselection_v1.yaml
+  sha256: 8b0677a84b94db5ffca4def3249a71c10833479a72f985e8f3219ce5bea4483b
+  role: D0_EPISODES_EXCLUDED_AS_OPENED
+- path: experiments/configs/openalex_g1_canonical_work_time_spine_v0.yaml
+  sha256: 192d78e3df094121e63922a6eaf20f57a57af41bc174c0fdbbcc347e3eaed385
+  role: WORK_TEMPORAL_DISPOSITION_RULE
+target:
+  id: T01_revised
+  observable: RANK_CORRELATION_BETWEEN_ENTRY_TIME_AND_INDIVIDUAL_PERSISTENCE_WITHIN_A_PIVOT_EPISODE
+  reading: ONE_SIDED
+  positive_reading: LATER_ENTRANTS_PERSIST_MORE_A_SIGN_THAT_IN_THE_SYNTHETIC_WORLDS_APPEARED_ONLY_WHEN_LEARNED_POLICY_CHANGED_WHO_ENTERED
+  absence_reading: NOT_EVIDENCE_AGAINST_LEARNING_ON_ENTRY
+  negative_reading: A_LATER_COHORT_PERSISTENCE_DECLINE_IS_THE_NO_LEARNING_DEFAULT_OF_THE_SYNTHETIC_WORLDS_REPORTED_DESCRIPTIVELY
+source:
+  snapshot: OPENALEX_PUBLIC_PARQUET_2026_06_26_EXACT_MANIFEST
+  local_root: /ssd/pivot-feedback-lean-h3-openalex-full-core-v1-20260806
+  receipt_status: PASS_THE_EXACT_2026_06_26_FULL_CORE_TRANSFER_IS_COMPLETE_NO_ROW_DECODE
+  file_count: 2454
+  bytes: 724973106144
+  entities_used:
+  - works
+  - topics
+  - subfields
+  - fields
+  authors_entity: NOT_USED
+  last_complete_calendar_year: 2025
+  latest_year_any_stage_reads: 2017
+  maturity_rule: THE_LATEST_YEAR_ANY_STAGE_READS_MUST_NOT_EXCEED_THE_LAST_COMPLETE_CALENDAR_YEAR
+  schema_check_before_any_stage: EVERY_REQUIRED_COLUMN_PRESENT_WITH_ITS_FOOTER_TYPE_IN_EVERY_WORKS_FILE
+  required_columns:
+  - id
+  - publication_year
+  - publication_date
+  - type
+  - is_paratext
+  - is_retracted
+  - primary_topic.id
+  - primary_topic.field.id
+  - primary_topic.subfield.id
+  - authorships.author.id
+  optional_screen_columns:
+  - primary_topic.score
+  - primary_location.source.id
+  latest_quarter_any_stage_reads: 2017Q4
+fields:
+  ids:
+  - 16
+  - 32
+  - 11
+  names:
+  - Chemistry
+  - Psychology
+  - Agricultural and Biological Sciences
+  provenance: THE_THREE_FIELDS_SELECTED_BY_THE_FROZEN_OUTCOME_BLIND_STRUCTURAL_RESCREEN_FOR_THE_THREE_NON_G4_DOMAIN_SLOTS
+  excluded:
+  - id: 27
+    reason: SEALED_G4_DOMAIN_FIELD
+  - id: 17
+    reason: D0_DISCOVERY_FIELD_WITH_OPENED_EPISODES
+  selection_from_g1_support_counts: false
+  reserve_activation: FORBIDDEN
+years:
+  decision_years:
+  - 2000
+  - 2012
+  rationale: The only registered window open to a new study. 2013-2016 is the opened G1 cohort, 2017-2019 may not be reselected
+    or repurposed, and 2020-2022 is the sealed G4 holdout. The window starts at 2000 so that the attention reference window
+    begins no earlier than 1994.
+  forbidden_decision_years:
+  - - 2013
+    - 2016
+  - - 2017
+    - 2019
+  - - 2020
+    - 2022
+  response_cohort_offsets:
+  - 0
+  - 1
+  - 2
+  latest_entry_year: 2014
+  persistence_offsets:
+  - 1
+  - 2
+  - 3
+  latest_outcome_year: 2017
+  attention_offsets_earliest: -6
+  earliest_attention_year: 1994
+work_eligibility:
+  inherited_from: experiments/configs/pivot_feedback_f_pre_g1_scientific_sections_v1.yaml
+  type_codes:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 7
+  - 16
+  - 18
+  - 21
+  temporal_dispositions_allowed:
+  - 2
+  - 3
+  temporal_disposition_rule: FROZEN_WORK_TIME_SPINE_DISPOSITION_V1_REBUILT_ON_THE_2026_06_26_SNAPSHOT
+  null_year: EXCLUDE
+  paratext: EXCLUDE
+  retracted_true: EXCLUDE
+  retracted_null: RETAIN_AND_REPORT
+  duplicate_author_work_pair: DEDUPLICATE_AND_REPORT
+  team_cap: NONE
+  topic_and_field: CURRENT_SNAPSHOT_PRIMARY_TOPIC_AND_FIELD_EXACT_MATCH
+  author_identity: CURRENT_SNAPSHOT_OPENALEX_AUTHOR_TOKEN_NOT_A_VERIFIED_PERSON
+episodes:
+  unit: FIELD_X_PRIMARY_TOPIC_X_DECISION_YEAR
+  surge_rule:
+    inherited_from: experiments/configs/pivot_feedback_f_aligned_strict_incumbent_rescreen_v1.yaml
+    estimand_id: CLOSED_PRE_SIGNAL_INCUMBENT_TEAM_ATTENTION_V1
+    attention_unit: DISTINCT_ELIGIBLE_AUTHOR_LINKED_WORK
+    incumbent_rule: AUTHOR_FIRST_EXACT_TARGET_TOPIC_WORK_STRICTLY_BEFORE_T_MINUS_6
+    primary_work_inclusion: EVERY_LINKED_AUTHOR_IS_PRE_SIGNAL_INCUMBENT
+    candidate_universe: ALL_ELIGIBLE_AUTHOR_LINKED_PRIMARY_TOPICS_IN_EACH_FIELD_X_DECISION_YEAR
+    reference_offsets:
+    - -6
+    - -5
+    - -4
+    recent_offsets:
+    - -3
+    - -2
+    - -1
+    positive_reference_required_for_normalization_universe: true
+    acceleration: LOG1P_RECENT_ANNUAL_MEAN_MINUS_LOG1P_REFERENCE_ANNUAL_MEAN
+    normalization_group: FIELD_X_DECISION_YEAR_ACROSS_ALL_ELIGIBLE_TOPICS
+    location: MEDIAN
+    scale: MEDIAN_ABSOLUTE_DEVIATION
+    modified_z_multiplier: 0.6744897501960817
+    modified_z_threshold_inclusive: 3.0
+    requires_positive_acceleration: true
+    requires_recent_greater_than_reference: true
+    mad_zero_or_nonfinite_action: NO_SURGE_EXCLUDE_AND_REPORT
+    threshold_relaxation: FORBIDDEN
+  non_overlap:
+    rule: PER_TOPIC_EARLIEST_SURGE_YEAR_FIRST_THEN_THE_NEXT_SURGE_YEAR_AT_LEAST_THREE_YEARS_LATER
+    minimum_spacing_years: 3
+    reason: RESPONSE_COHORTS_OF_TWO_EPISODES_OF_ONE_TOPIC_MUST_NOT_OVERLAP
+  indexing_screen:
+    inherited_from: experiments/configs/pivot_feedback_d0_production_candidate_rule_v1.yaml
+    exclude_when_all_hold:
+    - MEDIAN_PRIMARY_TOPIC_SCORE_DROPS_BY_AT_LEAST_0_15_FROM_THE_REFERENCE_TO_THE_RECENT_WINDOW
+    - DOMINANT_SOURCE_SHARE_RISES_BY_AT_LEAST_0_25_FROM_THE_REFERENCE_TO_THE_RECENT_WINDOW
+    title_review_screen: NOT_USED_IT_REQUIRES_CONTENT_REVIEW
+    if_optional_columns_absent: SCREEN_REPORTED_UNAVAILABLE_AND_CLAIM_ADDS_NO_INDEXING_SCREEN
+  exclusions:
+  - THE_FOUR_D0_CERTIFIED_EPISODES
+  - EVERY_EPISODE_KEY_OF_THE_F_ATOMIC_PARTITION
+  - EVERY_DECISION_YEAR_OUTSIDE_THE_REGISTERED_WINDOW
+  selection_uses_entry_or_persistence: false
+partition:
+  unit: CURRENT_SNAPSHOT_FIELD_X_SUBFIELD_FAMILY
+  atomicity: EVERY_EPISODE_OF_A_FAMILY_IN_ONE_PARTITION
+  seed: pivot_empirical_outcome_selection_trend_v1/partition
+  rule: WITHIN_EACH_FIELD_SORT_FAMILIES_BY_SHA256_OF_SEED_FIELD_SUBFIELD_THE_FIRST_CEIL_ONE_THIRD_TO_DISCOVERY_THE_REST_TO_CONFIRMATORY
+  key_format: '{seed}|{field_id}|{subfield_id}'
+  discovery_fraction: one_third_rounded_up
+  families_counted: FAMILIES_WITH_AT_LEAST_ONE_REGISTERED_EPISODE
+  outcome_based_assignment: FORBIDDEN
+entry:
+  inherited_from: experiments/configs/pivot_feedback_researcher_pivot_definition_v2.yaml
+  state: NEW_TOPIC_ENTRY
+  definition: AT_LEAST_ONE_ELIGIBLE_EPISODE_TOPIC_WORK_IN_THE_ENTRY_YEAR_AND_ZERO_ELIGIBLE_EPISODE_TOPIC_WORKS_THROUGH_THE_PREVIOUS_YEAR
+  prior_history_lookback: ALL_ELIGIBLE_YEARS_THROUGH_ENTRY_YEAR_MINUS_1
+  content_confirmation: REPLACED_BY_THE_EPISODE_LEVEL_STRUCTURAL_INDEXING_SCREEN
+  pivot_eligibility: AT_LEAST_ONE_ELIGIBLE_WORK_IN_THE_EPISODE_FIELD_IN_ENTRY_YEAR_MINUS_3_THROUGH_MINUS_1
+  minimum_history_beyond_eligibility: NONE
+  entry_time: QUARTER_INDEX_OF_THE_ENTRY_DATE_MINUS_FOUR_TIMES_THE_DECISION_YEAR
+  entry_offsets:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  one_entry_per_author_per_episode: true
+  entry_date: THE_EARLIEST_PUBLICATION_DATE_AMONG_THE_ENTRANT_ELIGIBLE_EPISODE_TOPIC_WORKS_IN_THE_ENTRY_YEAR
+  quarter_index: FOUR_TIMES_YEAR_PLUS_MONTH_MINUS_ONE_INTEGER_DIVIDED_BY_THREE
+  date_precision:
+    imprecise_entry: THE_ENTRY_DATE_IS_JANUARY_1
+    why: OPENALEX_RECORDS_A_YEAR_ONLY_DATE_AS_JANUARY_1_SO_THE_QUARTER_IS_UNKNOWN
+    primary_action: EXCLUDE_IMPRECISE_ENTRANTS_FROM_THE_PRIMARY_STATISTIC
+    reported: PER_EPISODE_SHARE_OF_IMPRECISE_ENTRANTS
+    real_january_1_publications: ALSO_EXCLUDED_THEY_CANNOT_BE_DISTINGUISHED
+persistence:
+  primary:
+    label: QUARTER_ALIGNED_TWELVE_QUARTER_TARGET_TOPIC_PERSISTENCE
+    rule: AT_LEAST_ONE_DISTINCT_ELIGIBLE_WORK_WITH_THE_EPISODE_PRIMARY_TOPIC_AND_FIELD_DATED_IN_THE_TWELVE_QUARTERS_AFTER_THE_ENTRY_QUARTER
+    window_quarters:
+    - 1
+    - 12
+    entry_quarter_itself: EXCLUDED
+    follow_up_dates: AS_RECORDED_A_JANUARY_1_FOLLOW_UP_COUNTS_IN_THE_FIRST_QUARTER_OF_ITS_YEAR
+    derived_from: THE_D0_THREE_YEAR_PERSISTENCE_WITH_THE_WINDOW_ALIGNED_TO_THE_ENTRY_QUARTER
+    states:
+    - MATURED_PERSISTENCE
+    - MATURED_NO_PERSISTENCE
+    - RIGHT_CENSORED
+    right_censored_in_this_window: NONE_EXPECTED_EVERY_WINDOW_ENDS_BY_2017Q4
+  sensitivities:
+  - id: S1_HORIZON_END_ACTIVITY
+    rule: AT_LEAST_ONE_DISTINCT_ELIGIBLE_EPISODE_TOPIC_WORK_IN_QUARTERS_9_TO_12_AFTER_THE_ENTRY_QUARTER
+    why: CLOSEST_TO_THE_SYNTHETIC_NOT_EXITED_AT_THE_HORIZON_SEMANTICS
+  - id: S2_TWO_WORKS
+    rule: AT_LEAST_TWO_DISTINCT_ELIGIBLE_EPISODE_TOPIC_WORKS_IN_THE_TWELVE_QUARTER_WINDOW
+  semantic_gap: The synthetic persistence is 'not exited four steps after entry'. The primary empirical persistence is 'returned
+    at least once in the twelve quarters after entry'. Both are now aligned to entry, but they are not the same object. S1
+    is the closer analogue and is reported, not decided.
+indicator:
+  episode_statistic: SPEARMAN_RANK_CORRELATION_OF_THE_ENTRY_QUARTER_OFFSET_WITH_PRIMARY_PERSISTENCE_OVER_PRECISE_ELIGIBLE_ENTRANTS
+  ties: AVERAGE_RANKS
+  undefined_when: FEWER_THAN_3_ENTRANTS_OR_CONSTANT_ENTRY_OFFSET_OR_CONSTANT_PERSISTENCE
+  synthetic_counterpart: outcome_selection_trend
+  field_estimate: EQUAL_WEIGHT_MEAN_OVER_VALID_EPISODES_IN_THE_FIELD
+  primary_estimate: EQUAL_WEIGHT_MEAN_OF_THE_THREE_FIELD_ESTIMATES
+  field_vector: REPORTED_DESCRIPTIVE_ONLY
+episode_validity:
+  minimum_precise_eligible_entrants: 30
+  minimum_nonempty_response_years: 2
+  statistic_defined: true
+  role: ENGINEERING_FLOOR_NOT_A_PRECISION_RULE
+threshold_transfer:
+  stage: T
+  data: STORED_SYNTHETIC_RUNS_ONLY
+  studies:
+  - study: N05
+    summary: experiments/evidence/results/pivot_observable_discriminant_v1_20260930.summary.json
+    contract: experiments/configs/pivot_observable_discriminant_v1.yaml
+    runs: /ssd/pivot_observable_discriminant_v1_5b73c19_development/runs.jsonl
+    cell_key: clock_id
+  - study: N08
+    summary: experiments/evidence/results/pivot_observable_confirmation_v1_20261001.summary.json
+    contract: experiments/configs/pivot_observable_confirmation_v1.yaml
+    runs: /ssd/pivot_observable_confirmation_v1_b270e51_development/runs.jsonl
+    cell_key: schedule_id
+  - study: N09
+    summary: experiments/evidence/results/pivot_observable_one_sided_v1_20261007.summary.json
+    contract: experiments/configs/pivot_observable_one_sided_v1.yaml
+    runs: /ssd/pivot_observable_one_sided_v1_c0a8b1a_development/runs.jsonl
+    cell_key: schedule_id
+  runs_binding: SHA256_EQUALS_THE_RUNS_JSONL_HASH_RECORDED_IN_THE_STUDY_SUMMARY
+  profile: development
+  reconstruction_check: EVERY_RUN_FINE_CLOCK_SPEARMAN_FROM_COHORT_PERSISTENCE_EQUALS_THE_STORED_OUTCOME_SELECTION_TREND
+  reconstruction_tolerance: 1.0e-12
+  empirical_entry_levels: 12
+  coarsening: EQUAL_WIDTH_BINS_OVER_THE_FULL_HORIZON_ENTRY_STEPS_FROM_BURN_IN_PLUS_1_TO_STEPS_MINUS_HORIZON
+  bin_formula: FLOOR_OF_STEP_MINUS_FIRST_TIMES_LEVELS_DIVIDED_BY_WINDOW_LENGTH
+  cell_value: MEAN_OVER_FEATURE_ARM_RUNS_OF_THE_COARSENED_STATISTIC_NONE_DROPPED
+  control_value: MEAN_OVER_FIXED_RULE_RUNS_OF_THE_COARSENED_STATISTIC_NONE_DROPPED
+  feature_arms:
+  - linear_batch
+  - tree_batch
+  - mlp_batch
+  control_arm: fixed_rule
+  active_status: ENTRY_CHANNEL_ACTIVE
+  inactive_statuses:
+  - ENTRY_CHANNEL_ABSENT
+  - ENTRY_SATURATED
+  fine_clock_threshold: 0.098417
+  coarse_threshold_rule: THE_MAXIMUM_TWELVE_LEVEL_CELL_VALUE_OVER_EVERY_INACTIVE_CELL_OF_N05_N08_AND_N09
+  data_threshold_rule: THE_LARGER_OF_THE_FINE_CLOCK_THRESHOLD_AND_THE_COARSE_THRESHOLD
+  dispositions:
+    THRESHOLD_TRANSFERRED: RECONSTRUCTION_PASSES_AT_LEAST_ONE_INACTIVE_CELL_AND_THE_CONTROL_READS_AT_OR_BELOW_THE_DATA_THRESHOLD_IN_EVERY_CELL
+    THRESHOLD_NOT_TRANSFERABLE_CONTROL: THE_FIXED_RULE_CONTROL_EXCEEDS_THE_DATA_THRESHOLD_IN_SOME_CELL_OR_IS_UNDEFINED_IN_SOME_CELL
+    THRESHOLD_NOT_TRANSFERABLE_NO_INACTIVE_CELL: NO_INACTIVE_CELL_HAS_A_DEFINED_COARSENED_VALUE
+    TRANSFER_RECONSTRUCTION_FAILED: ANY_RUN_FAILS_THE_RECONSTRUCTION_CHECK
+  reported_not_decided:
+  - COARSENED_SENSITIVITY_SHARE_OF_ACTIVE_CELLS_ABOVE_THE_DATA_THRESHOLD
+  - COARSENED_SEPARATION_MINIMUM_ACTIVE_MINUS_MAXIMUM_INACTIVE
+  - PER_STUDY_CELL_VALUES
+  not_transferred: THE_PERSISTENCE_SEMANTICS_AND_HORIZON_REMAIN_A_REGISTERED_LIMITATION
+  if_not_transferred: EMPIRICAL_STAGES_MAY_REPORT_THE_INDICATOR_ONLY_DESCRIPTIVELY_WITH_NO_POSITIVE_READING
+  v1_three_level_data_threshold: 0.105635
+  v1_three_level_role: REPORTED_FOR_THE_S5_SENSITIVITY_NOT_PART_OF_THE_V2_RULE
+author_overlap:
+  g4_author_cold_guard: GUARD_FIRST_ANTI_JOIN_OF_THE_SEALED_G4_AUTHOR_TOKEN_LIST_BEFORE_ANY_ENTRY_LABEL_COUNTS_ONLY_REPORTED
+  g4_guard_token_mismatch: TOKENS_ARE_MATCHED_EXACTLY_NO_REMAPPING_UNMATCHED_COUNT_REPORTED
+  discovery_to_confirmatory: CONFIRMATORY_ENTRANTS_WHO_ARE_ENTRANTS_IN_ANY_DISCOVERY_EPISODE_ARE_EXCLUDED_AT_S1_BEFORE_ANY_PERSISTENCE_LABEL
+  across_confirmatory_episodes: RETAINED_AND_COUNTED_EPISODES_ARE_THE_RESAMPLING_UNIT
+  repeated_author_dependence: NOT_MODELLED_REGISTERED_LIMITATION
+precision:
+  derived_from: DISCOVERY_PERSISTENCE_AND_CONFIRMATORY_ENTRANT_COUNTS
+  between_episode_sd: PER_FIELD_SAMPLE_SD_OF_VALID_DISCOVERY_EPISODE_STATISTICS
+  sd_fallback: POOLED_SD_OVER_FIELDS_WHEN_A_FIELD_HAS_FEWER_THAN_3_VALID_DISCOVERY_EPISODES
+  minimum_valid_discovery_episodes_total: 6
+  projected_confirmatory_episodes: PER_FIELD_COUNT_OF_CONFIRMATORY_EPISODES_MEETING_THE_ENTRANT_AND_COHORT_FLOORS
+  projected_se: SQRT_OF_SUM_OVER_FIELDS_OF_SD_SQUARED_OVER_COUNT_DIVIDED_BY_THE_FIELD_COUNT
+  target: ONE_SIDED_95_HALF_WIDTH_1_645_TIMES_PROJECTED_SE_AT_MOST_THE_DATA_THRESHOLD
+  minimum_valid_confirmatory_episodes_per_field: 4
+  reason: WHEN_THE_TARGET_HOLDS_ANY_POINT_ESTIMATE_ABOVE_THE_DATA_THRESHOLD_IS_PROJECTED_TO_HAVE_A_POSITIVE_LOWER_BOUND
+uncertainty:
+  method: FIELD_STRATIFIED_EPISODE_BOOTSTRAP
+  resamples: 9999
+  seed: 20261007
+  lower_bound: ONE_SIDED_95_PERCENT_PERCENTILE_LOWER_BOUND_OF_THE_PRIMARY_ESTIMATE
+  multiplicity: ONE_PRIMARY_DECISION_EVERYTHING_ELSE_REPORTED
+decision:
+  primary_requires:
+  - THE_THRESHOLD_TRANSFERRED
+  - EVERY_FIELD_HAS_AT_LEAST_4_VALID_CONFIRMATORY_EPISODES
+  INDICATOR_POSITIVE: PRIMARY_ESTIMATE_ABOVE_THE_DATA_THRESHOLD_AND_LOWER_BOUND_ABOVE_ZERO
+  NOT_POSITIVE_NO_INFERENCE: OTHERWISE
+  descriptive_flag_later_cohort_decline: ONE_SIDED_95_PERCENT_UPPER_BOUND_BELOW_ZERO
+  INVALID_FIELD_SUPPORT: A_FIELD_HAS_FEWER_THAN_4_VALID_CONFIRMATORY_EPISODES_NO_FIELD_DROPPING_OR_POOLING
+  field_vector: SAME_RULE_PER_FIELD_DESCRIPTIVE_ONLY
+report_only:
+  sensitivities:
+  - S1_HORIZON_END_ACTIVITY
+  - S2_TWO_WORKS
+  - S3_FIRST_EPISODE_PER_AUTHOR
+  - S4_SURGE_THRESHOLDS_2_5_AND_3_5
+  - S5_V1_YEAR_CLOCK_WITH_D0_PERSISTENCE_AGAINST_THE_V1_DATA_THRESHOLD
+  - S6_IMPRECISE_ENTRANTS_INCLUDED_AT_THE_MID_YEAR_RANK_WITH_A_CALENDAR_YEAR_WINDOW
+  placebo:
+    id: P1_NON_SURGE_CONTRAST
+    rule: ONE_MATCHED_NON_SURGE_TOPIC_YEAR_PER_CONFIRMATORY_EPISODE_SAME_FIELD_SAME_DECISION_YEAR_SAME_PARTITION_MODIFIED_Z_IN_MINUS_1_TO_1_NEAREST_LOG1P_RECENT_ATTENTION_TIE_BREAK_SHA256
+    excluded_controls: TOPICS_WITH_A_REGISTERED_EPISODE_WITHIN_TWO_YEARS
+    reading: SURGE_SPECIFICITY_ONLY
+  downgrades:
+    DEFINITION_SENSITIVE: A_SENSITIVITY_DISAGREES_WITH_THE_PRIMARY_DISPOSITION
+    NOT_SURGE_SPECIFIC: THE_PLACEBO_ESTIMATE_ALSO_EXCEEDS_THE_DATA_THRESHOLD
+    NO_INDEXING_SCREEN: THE_OPTIONAL_SCREEN_COLUMNS_ARE_ABSENT
+stages:
+- id: T
+  name: THRESHOLD_TRANSFER
+  data: STORED_SYNTHETIC_RUNS
+  empirical_rows: 0
+  authorization: THIS_PRECOMMIT
+- id: S1
+  name: STRUCTURAL_BUILD
+  reads: COLUMN_LIMITED_WORKS_ROWS_FOR_ELIGIBILITY_ATTENTION_EPISODES_PARTITION_AND_ENTRANT_COUNTS
+  persistence_labels: 0
+  outputs:
+  - EPISODE_MANIFEST
+  - PARTITION
+  - ENTRANT_COUNTS_BY_EPISODE_AND_COHORT_AFTER_BOTH_AUTHOR_EXCLUSIONS
+  - SCHEMA_AND_MATURITY_RECEIPT
+  - G4_GUARD_COUNTS
+  capacity: REGISTER_A_BYTE_BUDGET_AND_REQUIRE_FREE_SPACE_AT_LEAST_BUDGET_PLUS_100_GIB_BEFORE_START
+  authorization: SEPARATE_USER_AUTHORIZATION_AND_A_FROZEN_EXECUTABLE
+- id: S2
+  name: DISCOVERY_AND_PRECISION
+  reads: DISCOVERY_PERSISTENCE_LABELS_ONLY
+  outputs:
+  - DISCOVERY_EPISODE_STATISTICS
+  - PRECISION_PROJECTION
+  - GO_OR_STOP
+  may_change_registered_definitions: false
+  authorization: SEPARATE_USER_AUTHORIZATION
+- id: S3
+  name: CONFIRMATORY
+  reads: CONFIRMATORY_PERSISTENCE_LABELS_OF_THE_ENTRANTS_RETAINED_AT_S1
+  outputs:
+  - PRIMARY_DECISION
+  - FIELD_VECTOR
+  - REPORT_ONLY_BLOCK
+  authorization: SEPARATE_USER_AUTHORIZATION
+failure_actions:
+  schema_or_maturity_check_fails: STOP_BEFORE_S1_OUTPUTS
+  fewer_than_4_confirmatory_episodes_meeting_floors_in_a_field_at_s1: STOP_INSUFFICIENT_EPISODES_NO_WINDOW_OR_FIELD_EXPANSION
+  fewer_than_6_valid_discovery_episodes: STOP_DISCOVERY_SUPPORT_NO_DEFINITION_CHANGE
+  precision_target_unmet: STOP_INSUFFICIENT_PRECISION_BEFORE_CONFIRMATORY_LABELS
+  threshold_not_transferred: EMPIRICAL_INDICATOR_DESCRIPTIVE_ONLY
+  invalid_field_support_at_s3: INVALID_FIELD_SUPPORT_NO_FIELD_DROPPING_OR_POOLING
+  any_stop: NO_SCIENTIFIC_NULL_OR_EFFECT_IS_INFERRED_FROM_A_STOP
+  amendment: A_NEW_VERSIONED_PRECOMMIT_BEFORE_THE_AFFECTED_LABELS_ARE_READ
+claims:
+  ceiling: In the preregistered OpenAlex episodes, later post-surge entrants were more likely to persist in the topic, past
+    the threshold transferred from the synthetic worlds. In those worlds this sign appeared only when learned policy changed
+    who entered.
+  not_claimed:
+  - LEARNING_OR_SOCIAL_LEARNING_IN_DATA
+  - FEEDBACK_OR_A_MECHANISM
+  - CAUSAL_INFLUENCE
+  - THE_H3_TIMING_GAP
+  - TRANSPORT_BEYOND_THE_REGISTERED_FIELDS_AND_YEARS
+  - NABM_NECESSITY
+  not_positive_language: NO_INFERENCE_ABSENCE_OF_THE_SIGN_IS_NOT_EVIDENCE_AGAINST_LEARNING_ON_ENTRY
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+  - docs/research/pivot-empirical-outcome-selection-trend-v2.md
+  - docs/package-release-boundary.md
+  - experiments/configs/pivot_empirical_outcome_selection_trend_v2.yaml
+  - scripts/prototype_pivot_empirical_outcome_selection_trend_v2.py
+  - scripts/inspect_release_artifacts.py
+  - tests/test_pivot_empirical_outcome_selection_trend_v2.py
+  - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+outputs:
+  root_pattern: /ssd/pivot_empirical_outcome_selection_trend_v2_{sha7}_{development|reproduction}
+  files:
+  - transfer.json
+  - transfer.md
+  - receipt.json
+  deterministic_rerun_must_be_byte_identical: true
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  source_row_decode: NOT_AUTHORIZED
+  transform_or_materialization: NOT_AUTHORIZED
+  g4_open: false
+  current_g1_or_model_selection_access: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  model_selected: 'NO'
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED
