@@ -159,3 +159,37 @@ def test_preflight_binds_exactly_the_pending_files_of_the_unchanged_plan() -> No
     assert result["status"] == "PASS_V3_RESUME_PREFLIGHT_NO_NETWORK"
     assert result["bound_pending_files"] == 71
     assert state["plan_sha256"] == authorization["stall_record"]["plan_sha256"]
+
+
+RESULT = ROOT / "experiments" / "evidence" / "results" / (
+    "pivot_feedback_lean_h3_openalex_full_core_resume_v3_20261007.summary.json"
+)
+
+
+def test_the_recorded_result_is_the_complete_exact_manifest_with_no_row_decode() -> None:
+    result = json.loads(RESULT.read_text(encoding="utf-8"))
+    authorization = _authorization()
+    assert result["status"] == "PASS_THE_EXACT_2026_06_26_FULL_CORE_TRANSFER_IS_COMPLETE_NO_ROW_DECODE"
+    assert result["authorization_v3"]["sha256"] == _resume_module().AUTHORIZATION_V3_SHA256
+    assert result["pending_at_start"]["state_sha256"] == authorization["stall_record"]["state_sha256_at_amendment"]
+    terminal = result["terminal"]
+    assert (terminal["file_count"], terminal["downloaded_bytes"]) == (2_454, 724_973_106_144)
+    assert terminal["plan_sha256"] == authorization["stall_record"]["plan_sha256"]
+    controls = result["controls"]
+    assert controls["bound_etag_check"]["checked_files"] == 71
+    assert controls["bound_etag_check"]["etag_mismatches"] == []
+    assert controls["new_bytes"] + controls["uncheckpointed_tail"]["bytes"] == result["pending_at_start"]["bytes"]
+    assert all(value in (0, False) for value in terminal["access_accounting"].values())
+    assert result["corrects"]["commit"] == "e7ae454"
+    assert result["authorization"]["source_row_decode"] == "NOT_AUTHORIZED"
+
+
+@needs_root
+def test_the_receipts_on_disk_match_the_record() -> None:
+    terminal = json.loads(RESULT.read_text(encoding="utf-8"))["terminal"]
+    for receipt in (terminal["download_receipt"], terminal["resume_v3_receipt"]):
+        path = Path(receipt["path"])
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == receipt["sha256"]
+        assert json.loads(path.read_text(encoding="utf-8"))["status"] == receipt["status"]
+    state = OUTPUT_ROOT / "download_state.json"
+    assert hashlib.sha256(state.read_bytes()).hexdigest() == terminal["state_sha256"]

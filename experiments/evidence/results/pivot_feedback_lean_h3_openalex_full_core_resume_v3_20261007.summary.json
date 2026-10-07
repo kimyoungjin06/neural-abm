@@ -1,0 +1,107 @@
+{
+ "schema_version": "pivot_feedback_lean_h3_openalex_full_core_resume_result.v3",
+ "label": "pivot_feedback_lean_h3_openalex_full_core_resume_v3_20261007",
+ "status": "PASS_THE_EXACT_2026_06_26_FULL_CORE_TRANSFER_IS_COMPLETE_NO_ROW_DECODE",
+ "authorization_v3": {
+  "path": "experiments/configs/pivot_feedback_lean_h3_openalex_full_core_transfer_authorization_v3.json",
+  "sha256": "468895a4980307a4131674d5268eb6e4432b476ed97cd945c401813c55cdf375",
+  "commit": "29de3e2"
+ },
+ "why_the_partial_download_failed": {
+  "user_question": "왜 부분 다운로드가 안되?",
+  "cause": "AN_UNVERSIONED_URL_ADDRESSES_THE_CURRENT_OBJECT_THE_2026_09_23_SNAPSHOT_PLACED_A_DELETE_MARKER_OVER_EACH_2026_06_26_OBJECT_SO_THE_V1_URLS_RETURNED_404",
+  "bucket_versioning": "Enabled",
+  "partition_listing": {
+   "versions": 161,
+   "delete_markers": 159,
+   "versions_written_2026_06_27": 160
+  },
+  "remedy": "RANGE_REQUESTS_ON_THE_BOUND_VERSION_ID_OF_EACH_PENDING_FILE"
+ },
+ "corrects": {
+  "record": "experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_resume_v2_attempt_20261007.summary.json",
+  "commit": "e7ae454",
+  "finding": "PERMANENTLY_INCOMPLETE_AT_THE_SOURCE",
+  "now": "WRONG_THE_2026_06_26_OBJECTS_WERE_RETRIEVABLE_AS_NONCURRENT_VERSIONS_AND_THE_TRANSFER_IS_COMPLETE"
+ },
+ "run": {
+  "log": "/ssd/pivot-feedback-lean-h3-openalex-full-core-resume-v3_29de3e2_run.log",
+  "started_at_utc": "2026-10-07T07:18:30.183651+00:00",
+  "completed_at_utc": "2026-10-07T08:58:56.230079+00:00",
+  "wall_minutes": 100.4,
+  "exit_code": 0
+ },
+ "pending_at_start": {
+  "files": 71,
+  "scope": "WORKS_UPDATED_DATE_2026_06_26_PARTS_0089_TO_0159",
+  "bytes": 35183477118,
+  "manifest_records": 25462673,
+  "state_sha256": "7dec4aaf4be2b3a1debdc69887e8f013a69994a3d96389769291fcb10a515a4f"
+ },
+ "controls": {
+  "uncheckpointed_tail": {
+   "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0089.parquet",
+   "bytes": 117440512,
+   "disposition": "RECOVERED_AFTER_REMOTE_RANGE_HASH_MATCH",
+   "against": "THE_BOUND_VERSION"
+  },
+  "new_segments": 144,
+  "new_bytes": 35066036606,
+  "bound_identity_recorded_for_every_file": true,
+  "bound_etag_check": {
+   "checked_files": 71,
+   "etag_mismatches": [],
+   "rule": "LOCAL_S3_MULTIPART_ETAG_WITH_64_MIB_PARTS_EQUALS_THE_BOUND_ETAG"
+  }
+ },
+ "terminal": {
+  "state_status": "COMPLETE",
+  "state_sha256": "63eec21d1bccdb92edbf878bd8fc9ed06e0f76aa719fde9dcaf69e8ef2348eed",
+  "download_receipt": {
+   "path": "/ssd/pivot-feedback-lean-h3-openalex-full-core-v1-20260806/download_receipt.json",
+   "sha256": "58f5c2b97c6ae14816a3cf4edcad02b18ff5fa55fb92aedd064c814b17ee4a56",
+   "status": "PASS_EXACT_MANIFEST_FULL_CORE_TRANSFER_COMPLETE_LOCAL_SHA256_NO_ROW_DECODE"
+  },
+  "resume_v3_receipt": {
+   "path": "/ssd/pivot-feedback-lean-h3-openalex-full-core-v1-20260806.resume-v3-receipt.json",
+   "sha256": "e37464b58a7539da3030a2879514250924a9a08362c804d4909c91a3196b6fe1",
+   "status": "PASS_V3_RESUME_COMPLETED_THE_EXACT_MANIFEST_TRANSFER_FROM_BOUND_VERSIONS_NO_ROW_DECODE"
+  },
+  "plan_sha256": "182d1d4e679c4e7a01811822e0384c06e84795b48f175f65a6f20baa560c9031",
+  "file_count": 2454,
+  "downloaded_bytes": 724973106144,
+  "transfer_accounting": {
+   "run_count": 137,
+   "http_head_requests": 2584,
+   "http_range_requests": 4038,
+   "remote_new_bytes_transferred": 724855665632,
+   "remote_recovery_validation_bytes": 117440512
+  },
+  "access_accounting": {
+   "source_row_values_decoded": 0,
+   "current_g1_label_rows_read": 0,
+   "model_selection_rows_read": 0,
+   "holdout_or_private_g4_rows_read": 0,
+   "g4_open": false,
+   "models_fitted": 0
+  }
+ },
+ "capacity_after": {
+  "ssd_available_bytes": 928879054848,
+  "deferred_v1_transform_and_replay_reserve_bytes": 1087459659216,
+  "reading": "THE_DEFERRED_V1_TRANSFORM_RESERVE_EXCEEDS_THE_FREE_SPACE_ANY_TRANSFORM_STAGE_MUST_REGISTER_AND_CHECK_ITS_OWN_BUDGET"
+ },
+ "answers": {
+  "O18": "THE_SOURCE_IS_THE_COMPLETE_EXACT_2026_06_26_SNAPSHOT"
+ },
+ "next": {
+  "N10": "PREREGISTER_THE_EMPIRICAL_OUTCOME_SELECTION_TREND_BEFORE_ANY_ROW_IS_READ",
+  "transform": "NOT_AUTHORIZED_NEEDS_ITS_OWN_CAPACITY_CHECK_AND_AUTHORIZATION"
+ },
+ "authorization": {
+  "source_row_decode": "NOT_AUTHORIZED",
+  "transform_or_materialization": "NOT_AUTHORIZED",
+  "confirmatory_successor_execution": "NOT_AUTHORIZED",
+  "scientific_effect": "NOT_ESTABLISHED"
+ }
+}

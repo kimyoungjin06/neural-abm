@@ -1642,6 +1642,7 @@ def test_release_inspector_rejects_disjoint_successor_routing_closure_paths() ->
         "experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_canary_v1_20260806.summary.md",
         "experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_launch_v1_20260806.summary.json",
         "experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_launch_v1_20260806.summary.md",
+        "experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_resume_v3_20261007.summary.json",
         "scripts/inspect_pivot_feedback_lean_h3_openalex_footer_preflight_v1.py",
         "scripts/download_pivot_feedback_lean_h3_openalex_v1.py",
         "scripts/verify_pivot_feedback_lean_h3_openalex_taxonomy_dry_run_v1.py",
