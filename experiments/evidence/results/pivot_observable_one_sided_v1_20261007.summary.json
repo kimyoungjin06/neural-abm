@@ -1,0 +1,528 @@
+{
+  "schema_version": "pivot_observable_one_sided_result.v1",
+  "label": "pivot_observable_one_sided_v1_20261007",
+  "status": "SYNTHETIC_GENERATIVE_ABM_COMPARISON_REPRODUCED",
+  "precommit": {
+    "commit_sha": "c0a8b1a5e119e685688d82d6f0c72a0f42502bfc",
+    "contract_path": "experiments/configs/pivot_observable_one_sided_v1.yaml",
+    "contract_sha256": "2fe0e8eac89ce6e67d888e9ee3b91cb78ee8cd8d4815d6f36d261485c63be071",
+    "result_informed_successor": true
+  },
+  "execution": {
+    "profile": "development",
+    "agent_count": 256,
+    "steps": 24,
+    "replicates": 16,
+    "cells": 24,
+    "raw_row_count": 4608,
+    "workers": 16,
+    "first_run": {
+      "output_dir": "/ssd/pivot_observable_one_sided_v1_c0a8b1a_development",
+      "receipt_sha256": "aedc20b8f0a96db5efb341131f41402393083b3931246c2a721c7640f60d7b04"
+    },
+    "deterministic_rerun": {
+      "output_dir": "/ssd/pivot_observable_one_sided_v1_c0a8b1a_reproduction",
+      "receipt_sha256": "aedc20b8f0a96db5efb341131f41402393083b3931246c2a721c7640f60d7b04",
+      "all_four_artifacts_byte_identical": true
+    },
+    "artifact_sha256": {
+      "runs.jsonl": "3e9627729c8600c9ef46189cf9fc9eecbdc0d0f24b86953004acf7375ec66737",
+      "scorecard.json": "f93f35b04672248b2ba0fcff2e6cca9bfcf1f8b2650d035ed17d401554ca5cfd",
+      "scorecard.md": "7bb2ae990eb525cce8dd480daeaa847fe83c3030cf38ab3e88096b8a98718979",
+      "receipt.json": "aedc20b8f0a96db5efb341131f41402393083b3931246c2a721c7640f60d7b04"
+    }
+  },
+  "validation": {
+    "nesting_checks": "PASS_EXACT"
+  },
+  "registered_result_disposition": {
+    "status_mix": {
+      "active_cells": 13,
+      "discriminating": true,
+      "inactive_cells": 11
+    },
+    "one_sided_tests": {
+      "cohort_persistence_drop": {
+        "active_cells": 13,
+        "detected_active": 11,
+        "disposition": "SUFFICIENT_SIGN_CONFIRMED",
+        "false_active": 0,
+        "flagged_cells": 11,
+        "sensitivity": 0.846154
+      },
+      "outcome_selection_trend": {
+        "active_cells": 13,
+        "detected_active": 11,
+        "disposition": "SUFFICIENT_SIGN_CONFIRMED",
+        "false_active": 0,
+        "flagged_cells": 11,
+        "sensitivity": 0.846154
+      }
+    },
+    "one_sided_either_observable": {
+      "active_cells": 13,
+      "detected_active": 11,
+      "disposition": "SUFFICIENT_SIGN_CONFIRMED",
+      "false_active": 0,
+      "flagged_cells": 11,
+      "sensitivity": 0.846154
+    },
+    "no_learning_control": {
+      "cohort_persistence_drop": {
+        "cells": 24,
+        "cells_reading_inactive": 16
+      },
+      "disposition": "CONTROL_READS_ACTIVE_SOMEWHERE_OBSERVABLES_MAY_TRACK_TIMING",
+      "outcome_selection_trend": {
+        "cells": 24,
+        "cells_reading_inactive": 24
+      }
+    },
+    "no_learning_control_by_observable": {
+      "cohort_persistence_drop": false,
+      "outcome_selection_trend": true
+    },
+    "control_reading": "THE_USE_ON_DATA_RULE_IS_APPLIED_PER_OBSERVABLE_WITH_THAT_OBSERVABLE_S_OWN_CONTROL_COUNT_THE_COMBINED_CONTROL_DISPOSITION_FAILS_BECAUSE_OF_THE_PERSISTENCE_DROP",
+    "two_sided_tests": {
+      "cohort_persistence_drop": {
+        "correct": 22,
+        "cells": 24,
+        "false_active": 0,
+        "false_inactive": 2,
+        "disposition": "HOLDS_IN_MOST_CELLS",
+        "separates_in_this_study": "DOES_NOT_SEPARATE",
+        "missed_active_cells": [
+          "hazard_q0p15/failure_lag_4",
+          "hazard_q0p45/failure_lag_1"
+        ]
+      },
+      "outcome_selection_trend": {
+        "correct": 22,
+        "cells": 24,
+        "false_active": 0,
+        "false_inactive": 2,
+        "disposition": "HOLDS_IN_MOST_CELLS",
+        "separates_in_this_study": "DOES_NOT_SEPARATE",
+        "missed_active_cells": [
+          "hazard_q0p15/failure_lag_4",
+          "hazard_q0p45/failure_lag_1"
+        ]
+      }
+    },
+    "joint_rule_both_observables": {
+      "correct": 22,
+      "cells": 24,
+      "false_active": 0,
+      "false_inactive": 2,
+      "disposition": "HOLDS_IN_MOST_CELLS"
+    },
+    "post_failure_entry_share_comparator": {
+      "correct": 19,
+      "cells": 24,
+      "false_active": 4,
+      "false_inactive": 1,
+      "disposition": "HOLDS_IN_MOST_CELLS"
+    },
+    "carried_to_the_empirical_stage_as_a_one_sided_indicator": [
+      "outcome_selection_trend"
+    ]
+  },
+  "cells": [
+    {
+      "schedule_id": "hazard_q0p15",
+      "schedule_type": "hazard",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.774759,
+      "cohort_persistence_drop": -0.368891,
+      "outcome_selection_trend": 0.289536,
+      "fixed_rule_cohort_persistence_drop": 0.004105,
+      "fixed_rule_outcome_selection_trend": -0.053491
+    },
+    {
+      "schedule_id": "hazard_q0p15",
+      "schedule_type": "hazard",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "mlp_batch/axis_interaction_fit",
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.637609,
+      "cohort_persistence_drop": -0.118068,
+      "outcome_selection_trend": 0.307769,
+      "fixed_rule_cohort_persistence_drop": 0.004105,
+      "fixed_rule_outcome_selection_trend": -0.053491
+    },
+    {
+      "schedule_id": "hazard_q0p15",
+      "schedule_type": "hazard",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "mlp_batch/smooth_interaction_fit",
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.50324,
+      "cohort_persistence_drop": 0.009713,
+      "outcome_selection_trend": 0.201275,
+      "fixed_rule_cohort_persistence_drop": 0.004105,
+      "fixed_rule_outcome_selection_trend": -0.053491
+    },
+    {
+      "schedule_id": "hazard_q0p15",
+      "schedule_type": "hazard",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.342844,
+      "cohort_persistence_drop": 0.506911,
+      "outcome_selection_trend": -0.176135,
+      "fixed_rule_cohort_persistence_drop": 0.004105,
+      "fixed_rule_outcome_selection_trend": -0.053491
+    },
+    {
+      "schedule_id": "hazard_q0p45",
+      "schedule_type": "hazard",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.495757,
+      "cohort_persistence_drop": -0.375225,
+      "outcome_selection_trend": 0.34837,
+      "fixed_rule_cohort_persistence_drop": 0.063618,
+      "fixed_rule_outcome_selection_trend": -0.116198
+    },
+    {
+      "schedule_id": "hazard_q0p45",
+      "schedule_type": "hazard",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.33053,
+      "cohort_persistence_drop": 0.025758,
+      "outcome_selection_trend": 0.052085,
+      "fixed_rule_cohort_persistence_drop": 0.063618,
+      "fixed_rule_outcome_selection_trend": -0.116198
+    },
+    {
+      "schedule_id": "hazard_q0p45",
+      "schedule_type": "hazard",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.17989,
+      "cohort_persistence_drop": 0.082974,
+      "outcome_selection_trend": -0.035526,
+      "fixed_rule_cohort_persistence_drop": 0.063618,
+      "fixed_rule_outcome_selection_trend": -0.116198
+    },
+    {
+      "schedule_id": "hazard_q0p45",
+      "schedule_type": "hazard",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.053755,
+      "cohort_persistence_drop": 0.574962,
+      "outcome_selection_trend": -0.497717,
+      "fixed_rule_cohort_persistence_drop": 0.063618,
+      "fixed_rule_outcome_selection_trend": -0.116198
+    },
+    {
+      "schedule_id": "surge_peak5_width1",
+      "schedule_type": "surge",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.867128,
+      "cohort_persistence_drop": -0.28157,
+      "outcome_selection_trend": 0.217867,
+      "fixed_rule_cohort_persistence_drop": 0.019849,
+      "fixed_rule_outcome_selection_trend": -0.074801
+    },
+    {
+      "schedule_id": "surge_peak5_width1",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.889455,
+      "cohort_persistence_drop": 0.016587,
+      "outcome_selection_trend": 0.12233,
+      "fixed_rule_cohort_persistence_drop": 0.019849,
+      "fixed_rule_outcome_selection_trend": -0.074801
+    },
+    {
+      "schedule_id": "surge_peak5_width1",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.740331,
+      "cohort_persistence_drop": 0.327901,
+      "outcome_selection_trend": -0.051445,
+      "fixed_rule_cohort_persistence_drop": 0.019849,
+      "fixed_rule_outcome_selection_trend": -0.074801
+    },
+    {
+      "schedule_id": "surge_peak5_width1",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.0,
+      "cohort_persistence_drop": 0.455757,
+      "outcome_selection_trend": -0.330087,
+      "fixed_rule_cohort_persistence_drop": 0.019849,
+      "fixed_rule_outcome_selection_trend": -0.074801
+    },
+    {
+      "schedule_id": "surge_peak10_width5",
+      "schedule_type": "surge",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.700588,
+      "cohort_persistence_drop": -0.344388,
+      "outcome_selection_trend": 0.278729,
+      "fixed_rule_cohort_persistence_drop": 0.051063,
+      "fixed_rule_outcome_selection_trend": -0.121744
+    },
+    {
+      "schedule_id": "surge_peak10_width5",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.51434,
+      "cohort_persistence_drop": 0.014129,
+      "outcome_selection_trend": 0.110149,
+      "fixed_rule_cohort_persistence_drop": 0.051063,
+      "fixed_rule_outcome_selection_trend": -0.121744
+    },
+    {
+      "schedule_id": "surge_peak10_width5",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.312184,
+      "cohort_persistence_drop": 0.109326,
+      "outcome_selection_trend": -0.024007,
+      "fixed_rule_cohort_persistence_drop": 0.051063,
+      "fixed_rule_outcome_selection_trend": -0.121744
+    },
+    {
+      "schedule_id": "surge_peak10_width5",
+      "schedule_type": "surge",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.065001,
+      "cohort_persistence_drop": 0.536011,
+      "outcome_selection_trend": -0.414439,
+      "fixed_rule_cohort_persistence_drop": 0.051063,
+      "fixed_rule_outcome_selection_trend": -0.121744
+    },
+    {
+      "schedule_id": "decay_tau3",
+      "schedule_type": "decay",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.130422,
+      "cohort_persistence_drop": -0.325997,
+      "outcome_selection_trend": 0.222798,
+      "fixed_rule_cohort_persistence_drop": 0.207779,
+      "fixed_rule_outcome_selection_trend": -0.156248
+    },
+    {
+      "schedule_id": "decay_tau3",
+      "schedule_type": "decay",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.076919,
+      "cohort_persistence_drop": 0.141368,
+      "outcome_selection_trend": -0.126729,
+      "fixed_rule_cohort_persistence_drop": 0.207779,
+      "fixed_rule_outcome_selection_trend": -0.156248
+    },
+    {
+      "schedule_id": "decay_tau3",
+      "schedule_type": "decay",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.032557,
+      "cohort_persistence_drop": 0.155018,
+      "outcome_selection_trend": -0.146064,
+      "fixed_rule_cohort_persistence_drop": 0.207779,
+      "fixed_rule_outcome_selection_trend": -0.156248
+    },
+    {
+      "schedule_id": "decay_tau3",
+      "schedule_type": "decay",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.010634,
+      "cohort_persistence_drop": 0.657677,
+      "outcome_selection_trend": -0.730011,
+      "fixed_rule_cohort_persistence_drop": 0.207779,
+      "fixed_rule_outcome_selection_trend": -0.156248
+    },
+    {
+      "schedule_id": "ramp_8",
+      "schedule_type": "ramp",
+      "visibility_id": "immediate",
+      "delay": 0,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit",
+        "tree_batch/smooth_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.772355,
+      "cohort_persistence_drop": -0.344071,
+      "outcome_selection_trend": 0.241009,
+      "fixed_rule_cohort_persistence_drop": 0.032696,
+      "fixed_rule_outcome_selection_trend": -0.125831
+    },
+    {
+      "schedule_id": "ramp_8",
+      "schedule_type": "ramp",
+      "visibility_id": "failure_lag_1",
+      "delay": 1,
+      "status": "ENTRY_CHANNEL_ACTIVE",
+      "passing_family_geometries": [
+        "tree_batch/axis_interaction_fit"
+      ],
+      "post_failure_entry_share": 0.569676,
+      "cohort_persistence_drop": 0.004033,
+      "outcome_selection_trend": 0.1216,
+      "fixed_rule_cohort_persistence_drop": 0.032696,
+      "fixed_rule_outcome_selection_trend": -0.125831
+    },
+    {
+      "schedule_id": "ramp_8",
+      "schedule_type": "ramp",
+      "visibility_id": "failure_lag_2",
+      "delay": 2,
+      "status": "ENTRY_CHANNEL_ABSENT",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.346911,
+      "cohort_persistence_drop": 0.112334,
+      "outcome_selection_trend": -0.020755,
+      "fixed_rule_cohort_persistence_drop": 0.032696,
+      "fixed_rule_outcome_selection_trend": -0.125831
+    },
+    {
+      "schedule_id": "ramp_8",
+      "schedule_type": "ramp",
+      "visibility_id": "failure_lag_4",
+      "delay": 4,
+      "status": "ENTRY_SATURATED",
+      "passing_family_geometries": [],
+      "post_failure_entry_share": 0.066903,
+      "cohort_persistence_drop": 0.518623,
+      "outcome_selection_trend": -0.396209,
+      "fixed_rule_cohort_persistence_drop": 0.032696,
+      "fixed_rule_outcome_selection_trend": -0.125831
+    }
+  ],
+  "mean_interior_peak_share": 0.660012,
+  "post_hoc_descriptive": {
+    "status": "POST_HOC_DESCRIPTIVE_NOT_REGISTERED_NO_NEW_EXECUTION",
+    "fixed_rule_cells_where_the_drop_reads_active": [
+      "hazard_q0p15/failure_lag_1",
+      "hazard_q0p15/failure_lag_2",
+      "hazard_q0p15/failure_lag_4",
+      "hazard_q0p15/immediate",
+      "surge_peak5_width1/failure_lag_1",
+      "surge_peak5_width1/failure_lag_2",
+      "surge_peak5_width1/failure_lag_4",
+      "surge_peak5_width1/immediate"
+    ],
+    "why": "WITH_THE_LOWEST_CONSTANT_HAZARD_AND_THE_NARROW_SURGE_THE_NO_LEARNING_RULE_SHOWS_LITTLE_PERSISTENCE_DECLINE_ACROSS_COHORTS",
+    "missed_cells_passing_pairs": {
+      "hazard_q0p15/failure_lag_4": 2,
+      "hazard_q0p45/failure_lag_1": 1
+    },
+    "n08_weak_channel_reading": "BROKEN_HAZARD_Q0P15_FAILURE_LAG_4_HAS_TWO_PASSING_PAIRS_AND_IS_MISSED_BY_BOTH_OBSERVABLES",
+    "false_actives_across_n05_n08_n09": 0,
+    "predictions_across_n05_n08_n09": 144
+  },
+  "scientific_assessment": {
+    "registered_outcome": "SUFFICIENT_SIGN_CONFIRMED_FOR_BOTH_OBSERVABLES_11_FLAGGED_0_FALSE_ACTIVES_SENSITIVITY_11_OF_13_CONTROL_HOLDS_FOR_THE_OUTCOME_TREND_ONLY",
+    "carried_indicator": "OUTCOME_SELECTION_TREND_AS_A_ONE_SIDED_INDICATOR",
+    "not_carried": "COHORT_PERSISTENCE_DROP_BECAUSE_THE_NO_LEARNING_RULE_PASSES_ITS_THRESHOLD_IN_8_OF_24_CELLS",
+    "reading": "A_POSITIVE_CORRELATION_BETWEEN_ENTRY_TIME_AND_PERSISTENCE_INDICATES_THAT_LEARNING_ACTS_ON_ENTRY_ITS_ABSENCE_IS_NOT_EVIDENCE_AGAINST",
+    "model_selected": "NO",
+    "reason": "With the N08 thresholds unchanged, on six new schedule shapes, neither observable called an inactive cell active, and each flagged 11 of 13 active cells. The fixed rule, which does not learn, never passed the outcome-trend threshold, but it passed the persistence-drop threshold in 8 of 24 cells under the lowest hazard and the narrow surge. The outcome selection trend therefore goes to the empirical stage as a one-sided indicator; the persistence drop does not."
+  },
+  "framework_assessment": {
+    "empirical_target": "THE_RANK_CORRELATION_BETWEEN_ENTRY_TIME_AND_INDIVIDUAL_PERSISTENCE_WITHIN_A_PIVOT_EPISODE",
+    "threshold_for_data": "0_098417_IS_A_MODEL_SCALE_THRESHOLD_ITS_TRANSFER_TO_DATA_NEEDS_THE_EMPIRICAL_PERSISTENCE_DEFINITION_FIXED_FIRST",
+    "generic_api_change_needed": false,
+    "no_post_result_tuning": true
+  },
+  "boundaries": {
+    "empirical_fit": "NOT_RUN",
+    "empirical_rows_read": 0,
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "package_promotion": "NOT_AUTHORIZED",
+    "repository_only": true,
+    "scientific_effect": "NOT_ESTABLISHED"
+  }
+}
