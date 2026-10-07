@@ -1,0 +1,76 @@
+{
+  "schema_version": "pivot_feedback_lean_h3_openalex_full_core_transfer_authorization.v2",
+  "status": "AUTHORIZED_RESUME_OF_THE_EXACT_MANIFEST_FULL_CORE_TRANSFER_WITH_A_SOURCE_PHASE_CAPACITY_RULE_NO_ROW_DECODE",
+  "authorized_on": "2026-10-07",
+  "mode": "SOURCE_BYTE_TRANSFER_ONLY_NOT_SCIENTIFIC_GATE_NOT_CONFIRMATORY_EXECUTION",
+  "amends": {
+    "authorization_v1": {
+      "relative_path": "experiments/configs/pivot_feedback_lean_h3_openalex_full_core_transfer_authorization_v1.json",
+      "sha256": "b9b1519587e16c20632871601db5e04419f038be41d043c5fe2100057b92c817"
+    },
+    "downloader_v1": {
+      "relative_path": "scripts/download_pivot_feedback_lean_h3_openalex_full_core_v1.py",
+      "sha256": "7c16af6e38569889969f7528dbbd2cb1bccef87ab407fc5ae4cd23bd62f59e5f"
+    },
+    "unchanged": [
+      "TRANSFER_SCOPE",
+      "EXACT_MANIFEST_IDENTITY",
+      "DOWNLOAD_PLAN",
+      "SEGMENT_AND_RESUME_CONTROLS",
+      "ROW_DECODE_PROHIBITION",
+      "ALL_SCIENTIFIC_AUTHORIZATIONS"
+    ],
+    "changed": [
+      "RUNTIME_CAPACITY_RULE_ONLY"
+    ]
+  },
+  "human_authorization": {
+    "decision": "FINISH_THE_2026_06_26_SNAPSHOT_OPTION_A",
+    "user_instruction": "좋아. 그럼 업데이트 하자.A로가자",
+    "context": "THE_USER_CHOSE_TO_FINISH_THE_TRANSFER_OVER_AMENDING_THE_DESIGN_TO_THE_LOCAL_2026_03_30_SNAPSHOT"
+  },
+  "stall_record": {
+    "last_state_update_local": "2026-08-08T12:47",
+    "state_status_left": "RUNNING",
+    "process_running_at_amendment": false,
+    "terminal_receipt_present": false,
+    "cause": "NOT_RECORDED_THE_BACKGROUND_PROCESS_ENDED_WITHOUT_AN_ERROR_IN_THE_STATE",
+    "complete_files": 2383,
+    "pending_files": 71,
+    "pending_scope": "WORKS_UPDATED_DATE_2026_06_26_PARTS_0089_TO_0159",
+    "pending_records": 25462673,
+    "remaining_source_bytes": 35183477118,
+    "uncheckpointed_tail": "PART_0089_117440512_BYTES_RECOVERED_ONLY_AFTER_A_REMOTE_RANGE_HASH_MATCH_BY_THE_V1_LOGIC",
+    "plan_sha256": "182d1d4e679c4e7a01811822e0384c06e84795b48f175f65a6f20baa560c9031",
+    "state_sha256_at_amendment": "f8ade9f571c5612707933380f071a57caab7bb01611f7cc2a860514f51df060b",
+    "canary_receipt_sha256": "450630c2212f936be2ada9b3f8252a52fe077773152f8671586e8d07ca12207f"
+  },
+  "capacity_contract": {
+    "v1_runtime_rule": "AVAILABLE_BYTES_GTE_REMAINING_SOURCE_BYTES_PLUS_WORKING_TRANSFORMED_AND_REPLAY_CAP_BYTES",
+    "v1_working_reserve_bytes": 1087459659216,
+    "why_amended": "THE_V1_RULE_RESERVED_TRANSFORM_AND_REPLAY_SPACE_DURING_THE_SOURCE_TRANSFER_SSD_FREE_SPACE_FELL_BELOW_IT_AFTER_LATER_STUDIES_SO_A_RESUME_WOULD_STOP_AT_ONCE",
+    "observed_on_amendment": {
+      "ssd_available_bytes_approx": 898000000000,
+      "v1_required_bytes": 1122643136334
+    },
+    "source_phase_safety_reserve_bytes": 107374182400,
+    "runtime_rule": "AVAILABLE_BYTES_GTE_REMAINING_SOURCE_BYTES_PLUS_SOURCE_PHASE_SAFETY_RESERVE_BYTES",
+    "runtime_failure_action": "STOP_FAIL_CLOSED_WITH_RESUMABLE_STATE_NO_FILE_DELETION",
+    "deferred": {
+      "working_transformed_and_replay_cap_bytes": 1087459659216,
+      "rule": "ANY_TRANSFORM_MATERIALIZATION_OR_REPLAY_STAGE_MUST_RECHECK_ITS_OWN_REGISTERED_CAPACITY_BEFORE_STARTING",
+      "authorized_here": false
+    }
+  },
+  "authorization": {
+    "resume_of_the_full_core_source_byte_transfer": "AUTHORIZED",
+    "authors_transfer": "NOT_AUTHORIZED",
+    "source_row_decode": "NOT_AUTHORIZED",
+    "transform_or_materialization": "NOT_AUTHORIZED",
+    "current_g1_or_model_selection_row_access": "NOT_AUTHORIZED",
+    "current_g4_or_holdout_access": "NOT_AUTHORIZED",
+    "confirmatory_successor_execution": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  }
+}

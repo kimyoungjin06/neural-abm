@@ -1627,6 +1627,7 @@ def test_release_inspector_rejects_disjoint_successor_routing_closure_paths() ->
     repository_paths = {
         "experiments/configs/pivot_feedback_e_g1_disjoint_successor_availability_v1.yaml",
         "experiments/configs/pivot_feedback_lean_h3_openalex_full_core_transfer_authorization_v1.json",
+        "experiments/configs/pivot_feedback_lean_h3_openalex_full_core_transfer_authorization_v2.json",
         "docs/research/pivot-feedback-current-status-evidence-ledger-v19.md",
         "docs/research/pivot-feedback-lean-h3-successor-design-v1.md",
         "experiments/evidence/results/pivot_feedback_e_g1_disjoint_successor_availability_v1_20260806.summary.json",
@@ -1645,6 +1646,7 @@ def test_release_inspector_rejects_disjoint_successor_routing_closure_paths() ->
         "scripts/download_pivot_feedback_lean_h3_openalex_v1.py",
         "scripts/verify_pivot_feedback_lean_h3_openalex_taxonomy_dry_run_v1.py",
         "scripts/download_pivot_feedback_lean_h3_openalex_full_core_v1.py",
+        "scripts/resume_pivot_feedback_lean_h3_openalex_full_core_v2.py",
         "scripts/verify_pivot_feedback_lean_h3_openalex_full_core_canary_v1.py",
         "scripts/verify_pivot_feedback_e_g1_disjoint_successor_availability_v1.py",
     }
