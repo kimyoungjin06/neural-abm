@@ -220,6 +220,7 @@ PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_empirical_outcome_selection_trend_s1_build_v1.yaml",
     "scripts/build_pivot_empirical_outcome_selection_trend_s1_v1.py",
     "tests/test_pivot_empirical_outcome_selection_trend_s1_build_v1.py",
+    "experiments/configs/pivot_empirical_outcome_selection_trend_s1_authorization_v1.json",
 }
 PIVOT_LLM_PRIOR_PILOT_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-llm-prior-pilot-v1.md",

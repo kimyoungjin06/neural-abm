@@ -1,0 +1,35 @@
+{
+  "schema_version": "pivot_empirical_outcome_selection_trend_s1_authorization.v1",
+  "status": "AUTHORIZED_S1_STRUCTURAL_BUILD",
+  "authorized_on": "2026-10-07",
+  "s1_contract": "experiments/configs/pivot_empirical_outcome_selection_trend_s1_build_v1.yaml",
+  "s1_contract_sha256": "7761513822841678433463af19c644b547f7a3db7d6f77c20436313cc655c3b6",
+  "s1_builder": "scripts/build_pivot_empirical_outcome_selection_trend_s1_v1.py",
+  "s1_builder_sha256": "67aff468711926d1660313d10f280ebda732c500c50af820a7e82a44d78c09e5",
+  "builder_commits": {
+    "frozen": "14c93eb",
+    "revised_before_first_run": "52dcf76"
+  },
+  "human_authorization": {
+    "user_instruction": "좋아 B로 가자",
+    "earlier_instructions": [
+      "좋아 진행하자",
+      "좋아 지금 작업은 정확히 뭘 하는거지? 다시 한번 재점검 해보자"
+    ],
+    "context": "THE_USER_CHOSE_OPTION_B_REDESIGN_THE_EMPIRICAL_STAGE_AS_A_MODEL_COMPARISON_LADDER_WITH_S1_RUN_FIRST_AS_THE_COMMON_STRUCTURAL_BUILD_AFTER_A_RE_REVIEW_OF_THE_S1_BUILDER"
+  },
+  "role": "COMMON_STRUCTURAL_FOUNDATION_FOR_N10_V2_AND_THE_MODEL_COMPARISON_REDESIGN",
+  "scope": {
+    "reads": "COLUMN_LIMITED_WORKS_ROWS_OF_THE_COMPLETE_2026_06_26_SNAPSHOT_AND_THE_G4_GUARD_AUTHOR_ID_COLUMN",
+    "writes": "PRIVATE_MODE_0700_OUTPUTS_UNDER_SSD_AND_A_COUNTS_ONLY_SUMMARY",
+    "runs": [
+      "development",
+      "reproduction"
+    ],
+    "byte_budget": 214748364800
+  },
+  "persistence_labels": "NOT_AUTHORIZED",
+  "s2_s3": "NOT_AUTHORIZED",
+  "model_fitting": "NOT_AUTHORIZED",
+  "g4_outcomes": "NOT_AUTHORIZED"
+}
