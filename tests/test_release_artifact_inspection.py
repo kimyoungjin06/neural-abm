@@ -1925,6 +1925,11 @@ def test_release_inspector_rejects_relative_delay_cost_paths() -> None:
         "scripts/build_pivot_empirical_outcome_selection_trend_s1_v1.py",
         "tests/test_pivot_empirical_outcome_selection_trend_s1_build_v1.py",
         "experiments/configs/pivot_empirical_outcome_selection_trend_s1_authorization_v1.json",
+        "docs/research/pivot-empirical-model-ladder-design-v1.md",
+        "docs/research/pivot-empirical-ladder-recovery-v1.md",
+        "experiments/configs/pivot_empirical_ladder_recovery_v1.yaml",
+        "scripts/prototype_pivot_empirical_ladder_recovery_v1.py",
+        "tests/test_pivot_empirical_ladder_recovery_v1.py",
     }
     assert repository_paths == inspector[
         "PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS"
