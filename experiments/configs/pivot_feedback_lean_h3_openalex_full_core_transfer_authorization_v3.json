@@ -1,0 +1,590 @@
+{
+  "schema_version": "pivot_feedback_lean_h3_openalex_full_core_transfer_authorization.v3",
+  "status": "AUTHORIZED_RESUME_OF_THE_EXACT_MANIFEST_FULL_CORE_TRANSFER_FROM_BOUND_S3_OBJECT_VERSIONS_NO_ROW_DECODE",
+  "authorized_on": "2026-10-07",
+  "mode": "SOURCE_BYTE_TRANSFER_ONLY_NOT_SCIENTIFIC_GATE_NOT_CONFIRMATORY_EXECUTION",
+  "amends": {
+    "authorization_v2": {
+      "relative_path": "experiments/configs/pivot_feedback_lean_h3_openalex_full_core_transfer_authorization_v2.json",
+      "sha256": "8f48356dc7db8514645c6c864bc3f192aba5fc645f74ddc2faa7c4e2818e2176"
+    },
+    "resume_v2": {
+      "relative_path": "scripts/resume_pivot_feedback_lean_h3_openalex_full_core_v2.py",
+      "sha256": "b8594a642e4166be179e0d65a57865f3e1915872154ad2774af9820c8f189f2b"
+    },
+    "unchanged": [
+      "TRANSFER_SCOPE",
+      "EXACT_MANIFEST_IDENTITY",
+      "DOWNLOAD_PLAN",
+      "SEGMENT_AND_RESUME_CONTROLS",
+      "V2_RUNTIME_CAPACITY_RULE",
+      "ROW_DECODE_PROHIBITION",
+      "ALL_SCIENTIFIC_AUTHORIZATIONS"
+    ],
+    "changed": [
+      "REMOTE_OBJECT_ADDRESSING_BY_BOUND_S3_VERSION_ID"
+    ]
+  },
+  "human_authorization": {
+    "decision": "FINISH_THE_2026_06_26_SNAPSHOT_OPTION_A",
+    "user_instruction": "좋아. 그럼 업데이트 하자.A로가자",
+    "follow_up_question": "왜 부분 다운로드가 안되?",
+    "context": "THE_V2_RESUME_STOPPED_AT_HTTP_404_THE_USER_ASKED_WHY_THE_MISSING_PART_COULD_NOT_BE_DOWNLOADED_THE_ANSWER_IS_THAT_THE_OBJECTS_ARE_NONCURRENT_VERSIONS_THE_OPTION_A_DECISION_IS_UNCHANGED"
+  },
+  "supersedes_finding": {
+    "record": "experiments/evidence/results/pivot_feedback_lean_h3_openalex_full_core_resume_v2_attempt_20261007.summary.json",
+    "commit": "e7ae454",
+    "finding": "PERMANENTLY_INCOMPLETE_AT_THE_SOURCE",
+    "correction": "THE_BUCKET_HAS_VERSIONING_ENABLED_THE_2026_09_23_SNAPSHOT_PLACED_DELETE_MARKERS_OVER_THE_2026_06_26_OBJECTS_WHICH_REMAIN_RETRIEVABLE_BY_VERSION_ID"
+  },
+  "why_amended": "AN_UNVERSIONED_URL_ADDRESSES_THE_CURRENT_OBJECT_WHICH_IS_NOW_A_DELETE_MARKER_SO_EVERY_PENDING_FILE_RETURNS_404_A_VERSIONED_URL_ADDRESSES_THE_EXACT_2026_06_26_OBJECT",
+  "version_evidence": {
+    "listing": {
+      "path": "/ssd/pivot-feedback-lean-h3-openalex-full-core-v1-20260806.version-listing-works-20260626-20261007.json",
+      "sha256": "db49bbf5293436cb8639ffc633e892957992fd1b431983a9f8e4cdadb6e0a86d",
+      "captured_on": "2026-10-07",
+      "bucket_versioning": "Enabled",
+      "rows": 320,
+      "versions": 161,
+      "delete_markers": 159
+    },
+    "selection_rule": "THE_UNIQUE_VERSION_WITH_LAST_MODIFIED_ON_2026_06_2X_AND_SIZE_EQUAL_TO_THE_PLAN_EXPECTED_BYTES",
+    "rule_validation": {
+      "completed_works_2026_06_26_files": 89,
+      "rule_reproduces_the_v1_recorded_version_etag_size_and_last_modified": 89,
+      "reading": "THE_RULE_SELECTS_THE_SAME_OBJECT_THE_V1_RUN_BOUND_FOR_EVERY_FILE_IT_COMPLETED"
+    },
+    "probe": {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0089.parquet",
+      "head_status": 200,
+      "range_status": 206,
+      "first_16_bytes_equal_the_local_partial_file": true
+    }
+  },
+  "version_bindings": [
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0089.parquet",
+      "version_id": "PACFN1j.gFoFbWL.lGa8y26ZBo0mpskE",
+      "etag": "\"85de93979e5add0604abd767f0dcd83d-8\"",
+      "content_length_bytes": 491420937,
+      "last_modified": "Sat, 27 Jun 2026 03:02:03 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0090.parquet",
+      "version_id": "uKM3h.2qOgHxpSM8Gle9TKojENUC9PGW",
+      "etag": "\"220b8a7063074edfb387a8085fcba544-8\"",
+      "content_length_bytes": 494659596,
+      "last_modified": "Sat, 27 Jun 2026 03:01:32 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0091.parquet",
+      "version_id": "1SwDOoLhsY.qzrN16QR0LAw.WNFo5NTm",
+      "etag": "\"6f3d7958a9c9fba558a75abb89d764ac-8\"",
+      "content_length_bytes": 488679385,
+      "last_modified": "Sat, 27 Jun 2026 02:57:48 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0092.parquet",
+      "version_id": "SeCFi7ojXd9UqsTvXx5Sd_UqTwgLUlt.",
+      "etag": "\"0d0615e54be984ec89194fad34556241-8\"",
+      "content_length_bytes": 491417779,
+      "last_modified": "Sat, 27 Jun 2026 03:01:23 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0093.parquet",
+      "version_id": "PeNLnXm6W9gSbfGEkThZNGR5.XKrY8xq",
+      "etag": "\"d0bfd727e85214031d54d00d29c22bad-8\"",
+      "content_length_bytes": 490656914,
+      "last_modified": "Sat, 27 Jun 2026 02:59:14 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0094.parquet",
+      "version_id": "HPsXwWflvRWPeKV3UBlimh3xE2wfJ.72",
+      "etag": "\"ee22a51a14ab6b2c8df9fc6096770861-8\"",
+      "content_length_bytes": 496046762,
+      "last_modified": "Sat, 27 Jun 2026 02:58:59 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0095.parquet",
+      "version_id": "Ply.nGB0GXevatIB4c9hkG__epMk8SqQ",
+      "etag": "\"dc7ea426ecbfa4bcf88b991ee8df709c-8\"",
+      "content_length_bytes": 488943977,
+      "last_modified": "Sat, 27 Jun 2026 02:59:44 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0096.parquet",
+      "version_id": "bp80zoADjHaaUAOmffms2nxWQZsFG6KG",
+      "etag": "\"487c1904d6005b7c3a609e2f5d566435-8\"",
+      "content_length_bytes": 498000344,
+      "last_modified": "Sat, 27 Jun 2026 02:59:22 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0097.parquet",
+      "version_id": "e3eW77.7b3YcNzmuJTqBLrnscWYTKOSO",
+      "etag": "\"5910077400db7f3fe24d6a61a4d03211-8\"",
+      "content_length_bytes": 489524581,
+      "last_modified": "Sat, 27 Jun 2026 03:00:01 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0098.parquet",
+      "version_id": "d0nnYI2KqOBmudoyIvGDmSd7rZanr3yk",
+      "etag": "\"b5403ecc2e9cee1142e6185dcf4223b1-8\"",
+      "content_length_bytes": 496830865,
+      "last_modified": "Sat, 27 Jun 2026 02:58:00 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0099.parquet",
+      "version_id": "n8WZS1sPhu3qaiAgeXkS4FRSxmTVMZ2W",
+      "etag": "\"9b014f04b7dc31341cca604c4b82e532-8\"",
+      "content_length_bytes": 493149103,
+      "last_modified": "Sat, 27 Jun 2026 02:58:00 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0100.parquet",
+      "version_id": "vmhZhr3o3M9dWBF04nK8z4k7V7U5j0TC",
+      "etag": "\"8a218ae19cca3c725b60f8bf70279386-8\"",
+      "content_length_bytes": 489529602,
+      "last_modified": "Sat, 27 Jun 2026 02:59:44 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0101.parquet",
+      "version_id": "BQwPCgAnWC09lS2lretU6DxsHKMipNit",
+      "etag": "\"f88c1c1e2cac0bb5a52461623e32866e-8\"",
+      "content_length_bytes": 494038788,
+      "last_modified": "Sat, 27 Jun 2026 03:02:05 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0102.parquet",
+      "version_id": "8jIaJmdsUql8t_Bzp2xTpY7YkHjQVGPT",
+      "etag": "\"5bcc89204885d31de541f26f63e0a6f5-8\"",
+      "content_length_bytes": 507214507,
+      "last_modified": "Sat, 27 Jun 2026 02:59:38 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0103.parquet",
+      "version_id": "ZR5nX9M_ylsAPan1aRfiTfuD5Uk0OwMF",
+      "etag": "\"576c0ae6785f0a552267bf2f95e46e6c-8\"",
+      "content_length_bytes": 505855786,
+      "last_modified": "Sat, 27 Jun 2026 03:03:14 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0104.parquet",
+      "version_id": "Ik.oOZru6eSrZz.ILijZpas9FYWeIqpt",
+      "etag": "\"e6a0e9b8f29fc9d533e4a90f75ce7f47-8\"",
+      "content_length_bytes": 491550093,
+      "last_modified": "Sat, 27 Jun 2026 03:01:04 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0105.parquet",
+      "version_id": "5xYrvCYNJS8TB5aTQrLQAPtMGc30y26R",
+      "etag": "\"016190782cd8f8eb17a26733b1838006-8\"",
+      "content_length_bytes": 503542978,
+      "last_modified": "Sat, 27 Jun 2026 02:58:59 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0106.parquet",
+      "version_id": "8_lrvI3XQYqeWuF1PjlzMqH6L6OCCej.",
+      "etag": "\"79893961ed0240b9748b555b361563e1-8\"",
+      "content_length_bytes": 487104040,
+      "last_modified": "Sat, 27 Jun 2026 02:59:01 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0107.parquet",
+      "version_id": "e0ES8lyBB4Pp7RCvVss3jtkRFExm4PGv",
+      "etag": "\"054b012182ca38d9fab1d05653eb323e-8\"",
+      "content_length_bytes": 492421661,
+      "last_modified": "Sat, 27 Jun 2026 03:01:19 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0108.parquet",
+      "version_id": "3..rKah87b.8g71PKpbTmypm4lkTM.xf",
+      "etag": "\"13e1c0fe5aff06da974de98e527811c0-8\"",
+      "content_length_bytes": 490072248,
+      "last_modified": "Sat, 27 Jun 2026 03:00:25 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0109.parquet",
+      "version_id": "ezepuiCL_Du0ngFo7Wbolheh3GealaZK",
+      "etag": "\"4a1daec9ad2f11fd339249962645a820-8\"",
+      "content_length_bytes": 501196103,
+      "last_modified": "Sat, 27 Jun 2026 02:59:59 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0110.parquet",
+      "version_id": "WfcxzGjXn.lqGfaXbeWVGD.53hvsdy7q",
+      "etag": "\"d96046b10538e8ecb21e1bc76360c60e-8\"",
+      "content_length_bytes": 488986855,
+      "last_modified": "Sat, 27 Jun 2026 03:02:19 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0111.parquet",
+      "version_id": "pyT7Lp9zPABG64C2lhNzwcRQBd61kgaN",
+      "etag": "\"ed067fd938bade899694c6c10885811b-8\"",
+      "content_length_bytes": 497529769,
+      "last_modified": "Sat, 27 Jun 2026 03:01:02 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0112.parquet",
+      "version_id": "AjV1EdemYnQDugeNBXB_zz6rzEKmbDTf",
+      "etag": "\"d260b94e4d1df8d7b2d4e60735b0e419-8\"",
+      "content_length_bytes": 491847520,
+      "last_modified": "Sat, 27 Jun 2026 02:59:05 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0113.parquet",
+      "version_id": "2eWVPv5BgJd_skywyUNeC8pkFz54sutI",
+      "etag": "\"018a033b47b4bfbdb2e0cd968b479c4a-8\"",
+      "content_length_bytes": 491023881,
+      "last_modified": "Sat, 27 Jun 2026 02:59:41 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0114.parquet",
+      "version_id": "NlQ2m_voYvRQtopLybS3BAYqDPnTMCG7",
+      "etag": "\"cf4c665a67cd3a98ed3ae36cd78f2186-9\"",
+      "content_length_bytes": 565275081,
+      "last_modified": "Sat, 27 Jun 2026 02:59:38 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0115.parquet",
+      "version_id": "bJDCY9d8EtZVtwFR.W120r85kDb7DTyt",
+      "etag": "\"223de3dab5aeb5141630876026b99dd9-7\"",
+      "content_length_bytes": 441569737,
+      "last_modified": "Sat, 27 Jun 2026 03:00:24 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0116.parquet",
+      "version_id": "_uVo_VRekGMd_vjgklU84MujxhSm4cqJ",
+      "etag": "\"5c7fcb3949724d85a4863238c478f9ce-8\"",
+      "content_length_bytes": 491628427,
+      "last_modified": "Sat, 27 Jun 2026 03:01:45 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0117.parquet",
+      "version_id": "UYQHtWXym3BOyP1AP1ypO.9TPMcCzxD8",
+      "etag": "\"01c55859044392673365e2c594702108-8\"",
+      "content_length_bytes": 498633892,
+      "last_modified": "Sat, 27 Jun 2026 03:00:18 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0118.parquet",
+      "version_id": "P6t1CDrrtXYWWHppxJnJ6PTQSeLMAznc",
+      "etag": "\"a6ab6bde2cf48f2aac44011716cdf60a-8\"",
+      "content_length_bytes": 491331980,
+      "last_modified": "Sat, 27 Jun 2026 02:58:54 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0119.parquet",
+      "version_id": "z9.Aqya7.NVAId9D2AhOgm.KR_Cds2yD",
+      "etag": "\"7ac094d8c271fc96969a7b1fdbfea991-8\"",
+      "content_length_bytes": 491836174,
+      "last_modified": "Sat, 27 Jun 2026 03:01:54 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0120.parquet",
+      "version_id": "9xRKcwAoKJxhLmifbKbDbOlEGdun6VCG",
+      "etag": "\"004e2d8361225e5705a08a4c9d4d46fb-8\"",
+      "content_length_bytes": 490673183,
+      "last_modified": "Sat, 27 Jun 2026 02:59:11 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0121.parquet",
+      "version_id": "LIgatb8AEwYFojPYcqXgm.5xOawZin5h",
+      "etag": "\"a3031386d4bc6a6c14a2ac1d6542889c-8\"",
+      "content_length_bytes": 490298211,
+      "last_modified": "Sat, 27 Jun 2026 02:57:15 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0122.parquet",
+      "version_id": "a9dquq.pqTKhUHkLF6TLsbzk.VudOnKI",
+      "etag": "\"d95968f3cf9ba26aadf77db087ef5202-8\"",
+      "content_length_bytes": 497655892,
+      "last_modified": "Sat, 27 Jun 2026 02:59:11 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0123.parquet",
+      "version_id": ".irNR.v9bHLh99COXw00T.hRPSHSLbrR",
+      "etag": "\"54233f136e10e8f149d1093c92a4a306-8\"",
+      "content_length_bytes": 492901123,
+      "last_modified": "Sat, 27 Jun 2026 03:02:00 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0124.parquet",
+      "version_id": "2eo8l8n_SoWipMNB7J5pq7RclU01uY_E",
+      "etag": "\"5a0e23dbb915c9680360607d060fb9d3-8\"",
+      "content_length_bytes": 492626490,
+      "last_modified": "Sat, 27 Jun 2026 03:02:12 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0125.parquet",
+      "version_id": "VoDn6ZwNoPW4vu8s5zf2HDY86WFbNrwr",
+      "etag": "\"63469db5ecea71209bbf506f363fe5a0-8\"",
+      "content_length_bytes": 490122245,
+      "last_modified": "Sat, 27 Jun 2026 02:58:54 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0126.parquet",
+      "version_id": "eiSn_8g52Bt8X30Yls3YMyAxA0y_JvHi",
+      "etag": "\"a4dfff846502a4e44ec55841671d9364-8\"",
+      "content_length_bytes": 491088891,
+      "last_modified": "Sat, 27 Jun 2026 03:01:38 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0127.parquet",
+      "version_id": "ELUUhm3Zs8TXHcp8qYqLj08Zc8ncL1sa",
+      "etag": "\"c776e601e8b517c2f9abefc981eb9c9e-8\"",
+      "content_length_bytes": 490771265,
+      "last_modified": "Sat, 27 Jun 2026 03:03:04 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0128.parquet",
+      "version_id": "ceHaYpi1UI9SKhHTCZ.n8fxd.Wxho04n",
+      "etag": "\"5ac701e6f92f865fe345d914c8240c1f-8\"",
+      "content_length_bytes": 491081650,
+      "last_modified": "Sat, 27 Jun 2026 02:58:48 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0129.parquet",
+      "version_id": "lKOYDkz7DWSLJHIXIOkRpi3P4Zz4DL1r",
+      "etag": "\"bcc308b6cab3fb271e9a4c4f2880eb52-8\"",
+      "content_length_bytes": 497488230,
+      "last_modified": "Sat, 27 Jun 2026 03:00:07 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0130.parquet",
+      "version_id": "WkrPcclnU1HEGa0iUb.56.6NiuhZBCNh",
+      "etag": "\"e4cd165f28ae581bbc9fcde20174fd11-8\"",
+      "content_length_bytes": 496168092,
+      "last_modified": "Sat, 27 Jun 2026 03:02:50 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0131.parquet",
+      "version_id": "0idDixk.nuOEcqdeP2_09cWJaRU4iJbA",
+      "etag": "\"60491be12cd7af3502eb4e84df3f8eea-8\"",
+      "content_length_bytes": 494107143,
+      "last_modified": "Sat, 27 Jun 2026 02:57:26 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0132.parquet",
+      "version_id": "vOjFwem7Gg2uhdVQak_AbTV1Te6tSEKR",
+      "etag": "\"2e39a5672149b43593e2bc1252636a8e-8\"",
+      "content_length_bytes": 498319470,
+      "last_modified": "Sat, 27 Jun 2026 03:01:37 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0133.parquet",
+      "version_id": "BAls9JkKBAg80Umio7Fs9BboEFGw48dS",
+      "etag": "\"87b3c63fa6d80b83fe541a3ea7b62b98-8\"",
+      "content_length_bytes": 488886471,
+      "last_modified": "Sat, 27 Jun 2026 03:00:23 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0134.parquet",
+      "version_id": "Dy1qqB1VwvXFwoCKDcmmPulova6I5ndV",
+      "etag": "\"ac2813cb634b80c812e9f9cdc26dc3a6-8\"",
+      "content_length_bytes": 532689061,
+      "last_modified": "Sat, 27 Jun 2026 03:00:04 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0135.parquet",
+      "version_id": "0Phe.sDdk9Cym7ctSfoniR1hjwr4PyDl",
+      "etag": "\"7885a6429720723ba2e2a7f641f7bd1b-8\"",
+      "content_length_bytes": 477652027,
+      "last_modified": "Sat, 27 Jun 2026 02:58:17 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0136.parquet",
+      "version_id": "2FOXpBIYx6QvYOYEnvv5yrAvuXC0CJfr",
+      "etag": "\"ab3f5a0155f6c7ac5b66bb398ac0fa6d-8\"",
+      "content_length_bytes": 492247782,
+      "last_modified": "Sat, 27 Jun 2026 02:59:22 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0137.parquet",
+      "version_id": "Oq3C70qU8Nu2gM7TCE2QlGBjWk9L.ex8",
+      "etag": "\"517085fda81bd4a566afa724b7b13e92-8\"",
+      "content_length_bytes": 496477899,
+      "last_modified": "Sat, 27 Jun 2026 02:57:36 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0138.parquet",
+      "version_id": "mWQU_BTqrgy9rydCwMWoR55uTWAIBNgV",
+      "etag": "\"4b24a62cc87245ed122200cfe39b7798-8\"",
+      "content_length_bytes": 490920936,
+      "last_modified": "Sat, 27 Jun 2026 03:01:12 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0139.parquet",
+      "version_id": ".U7BeCFjdhaRkaI4xzTo9BebrtNnj28D",
+      "etag": "\"124e14dd9d324765972e79a40aa61a53-8\"",
+      "content_length_bytes": 504422971,
+      "last_modified": "Sat, 27 Jun 2026 03:01:33 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0140.parquet",
+      "version_id": "PlfeW9A5DIP6iTUqNL0ASCxMVGUyhDwq",
+      "etag": "\"26276c8511ed87403eff4b3b0335c309-8\"",
+      "content_length_bytes": 494136537,
+      "last_modified": "Sat, 27 Jun 2026 02:58:37 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0141.parquet",
+      "version_id": "aQOmMsLOxDG6b_jBVpq.VPATk5DFGWqn",
+      "etag": "\"075512a5ef843d5308deeff1f006d9d9-8\"",
+      "content_length_bytes": 487529387,
+      "last_modified": "Sat, 27 Jun 2026 02:58:12 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0142.parquet",
+      "version_id": "UbMo1i6nVcanqEb96Ku97MpTc7xzWKhu",
+      "etag": "\"0603be8d881361527173352136a2d4db-8\"",
+      "content_length_bytes": 489007284,
+      "last_modified": "Sat, 27 Jun 2026 02:58:59 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0143.parquet",
+      "version_id": "0e5OYM58ncx2wSq4phPxF0a4aJglMaAc",
+      "etag": "\"34cca0ea87359236ba68845ce4522e48-8\"",
+      "content_length_bytes": 501882587,
+      "last_modified": "Sat, 27 Jun 2026 03:02:27 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0144.parquet",
+      "version_id": "Aa0CLuPidEMk.rkgkaDgyISRafSm_1Qs",
+      "etag": "\"c1862f1532809d6c29920585d63e755a-8\"",
+      "content_length_bytes": 506532289,
+      "last_modified": "Sat, 27 Jun 2026 02:58:13 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0145.parquet",
+      "version_id": "wS3HMbzYzNSAABtLk9h7wMFjZcrEXXo_",
+      "etag": "\"338c8e3a0110258db8fc8d6f93683787-8\"",
+      "content_length_bytes": 506738242,
+      "last_modified": "Sat, 27 Jun 2026 02:59:51 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0146.parquet",
+      "version_id": "vqEvdw.sPWV6kdOqnf1o504Fv1CnJDHn",
+      "etag": "\"84af59e62866f53ca13017b8160a8249-8\"",
+      "content_length_bytes": 495267909,
+      "last_modified": "Sat, 27 Jun 2026 02:59:44 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0147.parquet",
+      "version_id": "LOfB8S.RI_S9btOZ13W4GqBZzLMy.20K",
+      "etag": "\"6e98b211081ca02a6635c1befecf00af-9\"",
+      "content_length_bytes": 576058236,
+      "last_modified": "Sat, 27 Jun 2026 02:58:45 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0148.parquet",
+      "version_id": "t6E2L4ypbF_DC2c_cfcn3GMWQYqXu4Lg",
+      "etag": "\"a4776f3eb6c73ba5c7714f53d9e2edbb-7\"",
+      "content_length_bytes": 427782474,
+      "last_modified": "Sat, 27 Jun 2026 02:59:34 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0149.parquet",
+      "version_id": "zllIEPEro1xPZHAsahhh9B8aSyGV.82X",
+      "etag": "\"2ac719354d47f4e9c7eddea1745648ca-8\"",
+      "content_length_bytes": 490363212,
+      "last_modified": "Sat, 27 Jun 2026 02:59:06 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0150.parquet",
+      "version_id": "LnH9Lwh_cvBPLn6QQ1cRGLHagqbOfXxb",
+      "etag": "\"74a8bb642739064361277cb1ab7979e1-8\"",
+      "content_length_bytes": 495193280,
+      "last_modified": "Sat, 27 Jun 2026 03:02:09 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0151.parquet",
+      "version_id": "pNSRmt769gHGkF.gMb1w5yLYqdmgOyTR",
+      "etag": "\"82ccf48d805e017b3a748d4a5e4556da-8\"",
+      "content_length_bytes": 498954817,
+      "last_modified": "Sat, 27 Jun 2026 02:58:12 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0152.parquet",
+      "version_id": "wTBHQ32PFCdqLvvs.9wa6le_DQxW61Mp",
+      "etag": "\"e57de54fac09553cae22b01a0be879f4-8\"",
+      "content_length_bytes": 488644622,
+      "last_modified": "Sat, 27 Jun 2026 03:01:54 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0153.parquet",
+      "version_id": "7whSllFIIHsDoLA4iGPr3WuGM6PdjH40",
+      "etag": "\"4d04724c3cd3b9dfd92544c0f4f6a287-8\"",
+      "content_length_bytes": 492810479,
+      "last_modified": "Sat, 27 Jun 2026 03:00:41 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0154.parquet",
+      "version_id": "Nsaa6s_culn0PnXtj1HllYGbtPE9eTaR",
+      "etag": "\"75fcfa9bf834269a7ceaaaf652274758-8\"",
+      "content_length_bytes": 499269721,
+      "last_modified": "Sat, 27 Jun 2026 02:59:02 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0155.parquet",
+      "version_id": "kakvvnaEX7rYUEgW509nLVyoxVTlwDDn",
+      "etag": "\"94d4c4b0508e43421135d552ba11f594-8\"",
+      "content_length_bytes": 504636050,
+      "last_modified": "Sat, 27 Jun 2026 02:59:57 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0156.parquet",
+      "version_id": "AoqttFfPHFgKTilXT.F5ttzHEFPfOjsZ",
+      "etag": "\"ce4edb8b3492f986b0b38df603af8167-8\"",
+      "content_length_bytes": 505290034,
+      "last_modified": "Sat, 27 Jun 2026 03:00:06 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0157.parquet",
+      "version_id": "hJob3JUXUcZtQRQDn8YVWAeJUTxXmyyu",
+      "etag": "\"3ce16997bef6055e2e6e09b547390d8a-8\"",
+      "content_length_bytes": 497531783,
+      "last_modified": "Sat, 27 Jun 2026 03:01:22 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0158.parquet",
+      "version_id": "yb6EyZQJUjVZeApCId4wgY3loP9G9kku",
+      "etag": "\"46189a6815a7750a597c8474962e2646-8\"",
+      "content_length_bytes": 489241042,
+      "last_modified": "Sat, 27 Jun 2026 03:00:13 GMT"
+    },
+    {
+      "relative_path": "data/parquet/works/updated_date=2026-06-26/part_0159.parquet",
+      "version_id": "k4QpIONqTOX5Q_cnUOhXGEt7mKffvsFB",
+      "etag": "\"3ae1eccdb740c4e3dc3894051a20b5fa-8\"",
+      "content_length_bytes": 508488736,
+      "last_modified": "Sat, 27 Jun 2026 03:00:16 GMT"
+    }
+  ],
+  "runtime_identity_rule": "EACH_HEAD_ON_A_VERSIONED_URL_MUST_RETURN_THE_BOUND_VERSION_ID_ETAG_CONTENT_LENGTH_AND_LAST_MODIFIED_ANY_UNBOUND_URL_IS_REFUSED",
+  "post_transfer_check": {
+    "rule": "FOR_EVERY_BOUND_FILE_THE_LOCAL_S3_MULTIPART_ETAG_RECOMPUTED_WITH_64_MIB_PARTS_MUST_EQUAL_THE_BOUND_ETAG",
+    "multipart_part_bytes": 67108864,
+    "validated_on": "data/parquet/works/updated_date=2026-06-26/part_0088.parquet_A_COMPLETED_FILE",
+    "row_decode": false
+  },
+  "stall_record": {
+    "state_sha256_at_amendment": "7dec4aaf4be2b3a1debdc69887e8f013a69994a3d96389769291fcb10a515a4f",
+    "run_count_at_amendment": 136,
+    "complete_files": 2383,
+    "pending_files": 71,
+    "remaining_source_bytes": 35183477118,
+    "plan_sha256": "182d1d4e679c4e7a01811822e0384c06e84795b48f175f65a6f20baa560c9031"
+  },
+  "authorization": {
+    "resume_of_the_full_core_source_byte_transfer": "AUTHORIZED",
+    "versioned_retrieval_of_the_bound_objects_only": "AUTHORIZED",
+    "authors_transfer": "NOT_AUTHORIZED",
+    "source_row_decode": "NOT_AUTHORIZED",
+    "transform_or_materialization": "NOT_AUTHORIZED",
+    "current_g1_or_model_selection_row_access": "NOT_AUTHORIZED",
+    "current_g4_or_holdout_access": "NOT_AUTHORIZED",
+    "confirmatory_successor_execution": "NOT_AUTHORIZED",
+    "model_fitting": "NOT_AUTHORIZED",
+    "scientific_effect": "NOT_ESTABLISHED"
+  }
+}

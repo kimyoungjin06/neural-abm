@@ -1647,6 +1647,7 @@ def test_release_inspector_rejects_disjoint_successor_routing_closure_paths() ->
         "scripts/verify_pivot_feedback_lean_h3_openalex_taxonomy_dry_run_v1.py",
         "scripts/download_pivot_feedback_lean_h3_openalex_full_core_v1.py",
         "scripts/resume_pivot_feedback_lean_h3_openalex_full_core_v2.py",
+        "scripts/resume_pivot_feedback_lean_h3_openalex_full_core_v3.py",
         "scripts/verify_pivot_feedback_lean_h3_openalex_full_core_canary_v1.py",
         "scripts/verify_pivot_feedback_e_g1_disjoint_successor_availability_v1.py",
     }
