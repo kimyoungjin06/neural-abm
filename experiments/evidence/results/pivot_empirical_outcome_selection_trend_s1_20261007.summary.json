@@ -1,0 +1,176 @@
+{
+ "schema_version": "pivot_empirical_outcome_selection_trend_s1_result.v1",
+ "label": "pivot_empirical_outcome_selection_trend_s1_20261007",
+ "status": "S1_PASS_STRUCTURAL_BUILD_REPRODUCED_NO_PERSISTENCE_LABEL",
+ "precommit": {
+  "builder_frozen": "14c93eb",
+  "builder_revised": "52dcf76",
+  "authorization_commit": "13fcf8766c33bb40043bec161f1205edb42c4bbf",
+  "contract": "experiments/configs/pivot_empirical_outcome_selection_trend_s1_build_v1.yaml",
+  "contract_sha256": "7761513822841678433463af19c644b547f7a3db7d6f77c20436313cc655c3b6",
+  "authorization": "experiments/configs/pivot_empirical_outcome_selection_trend_s1_authorization_v1.json",
+  "authorization_sha256": "0a8791280bc4b90985f440378c5ee47dab23269c022e84ceb19329eccfabf292"
+ },
+ "execution": {
+  "runs": {
+   "development": "/ssd/pivot_empirical_outcome_selection_trend_s1_13fcf87_development",
+   "reproduction": "/ssd/pivot_empirical_outcome_selection_trend_s1_13fcf87_reproduction"
+  },
+  "receipt_sha256": "13701d4294152472cf54a7b6ed6e8163e54af77eeb23fbf2d5ba4afdddbf307c",
+  "byte_identical": {
+   "s1_summary.json": true,
+   "s1_receipt.json": true,
+   "private/parts_digest.json": true,
+   "private/episodes.parquet": true,
+   "private/entrants.parquet": true,
+   "private/works.parquet": true,
+   "private/authorships.parquet": true
+  },
+  "minutes": {
+   "development": 13.5,
+   "reproduction": 12.8
+  },
+  "output_bytes_development": 402653184
+ },
+ "registered_result": {
+  "status": "S1_PASS",
+  "disposition_by_field": {
+   "11": {
+    "confirmatory_episodes": 19,
+    "confirmatory_meeting_floors": 12,
+    "discovery_episodes": 9,
+    "discovery_meeting_floors": 8
+   },
+   "16": {
+    "confirmatory_episodes": 7,
+    "confirmatory_meeting_floors": 7,
+    "discovery_episodes": 10,
+    "discovery_meeting_floors": 8
+   },
+   "32": {
+    "confirmatory_episodes": 13,
+    "confirmatory_meeting_floors": 9,
+    "discovery_episodes": 5,
+    "discovery_meeting_floors": 4
+   }
+  },
+  "failure_metrics": {
+   "duplicate_numeric_work_id_rows": 0,
+   "malformed_field_id": 0,
+   "malformed_work_id": 0,
+   "null_work_id": 0,
+   "publication_date_year_mismatch": 0,
+   "publication_exactly_one_null": 0,
+   "registered_malformed_author_id": 0,
+   "registered_malformed_source_id": 0,
+   "registered_malformed_subfield_id": 0,
+   "registered_malformed_topic_id": 0,
+   "rows_read_differ_from_footer_rows": 0
+  }
+ },
+ "source_accounting": {
+  "rows": 510372821,
+  "registered_field_rows": 38530906,
+  "extract_works": 20063050,
+  "extract_authorships": 40527738,
+  "extract_xpac": 3462282,
+  "extract_null_author_ids": 10464779,
+  "extract_retracted_null": 3047,
+  "registered_excluded_by_date_or_year": 15371575,
+  "registered_excluded_by_type": 3094710,
+  "registered_excluded_retracted": 1571,
+  "quarantined_work_id": 0,
+  "duplicate_numeric_work_id_rows": 0
+ },
+ "episodes": {
+  "candidates": 63,
+  "registered": 63,
+  "screen": {
+   "RETAINED": 63
+  },
+  "surge_status_by_field_year": {
+   "OK": 39
+  }
+ },
+ "entrants": {
+  "discovery_author_removed": 309,
+  "entrants_by_episode": {
+   "max": 1922.0,
+   "median": 171.0,
+   "min": 10.0,
+   "q25": 79.5,
+   "q75": 393.5
+  },
+  "episodes_without_entrants": 0,
+  "g4_guard_removed": 13529,
+  "pivot_eligible_entrants": 32970,
+  "precise_entrants_by_episode": {
+   "max": 1550.0,
+   "median": 66.0,
+   "min": 5.0,
+   "q25": 33.0,
+   "q75": 193.0
+  },
+  "precise_share_by_episode": {
+   "max": 0.8184991273996509,
+   "median": 0.48735955056179775,
+   "min": 0.2066115702479339,
+   "q25": 0.3401360544217687,
+   "q75": 0.634508348794063
+  },
+  "precise_share_overall": 0.5751620321973657,
+  "raw_entrants": 118119,
+  "retained": 19132
+ },
+ "post_hoc_structural_diagnostics": {
+  "status": "POST_HOC_DESCRIPTIVE_FROM_S1_PRIVATE_OUTPUTS_NO_PERSISTENCE",
+  "pivot_eligible_entrants_by_response_year": {
+   "0": 9962,
+   "1": 11076,
+   "2": 11932
+  },
+  "g4_guard_share_by_response_year": {
+   "0": 0.408,
+   "1": 0.413,
+   "2": 0.41
+  },
+  "g4_guard_share_by_field": {
+   "11": 0.346,
+   "16": 0.441,
+   "32": 0.481
+  },
+  "precise_date_share_by_response_year": {
+   "0": 0.589,
+   "1": 0.603,
+   "2": 0.604
+  },
+  "precise_date_share_by_entry_year": {
+   "2000": 0.509,
+   "2001": 0.532,
+   "2002": 0.541,
+   "2003": 0.533,
+   "2004": 0.539,
+   "2005": 0.56,
+   "2006": 0.543,
+   "2007": 0.473,
+   "2008": 0.391,
+   "2009": 0.572,
+   "2010": 0.493,
+   "2011": 0.634,
+   "2012": 0.651,
+   "2013": 0.748,
+   "2014": 0.778
+  },
+  "xpac_share_of_entry_works": 0.0,
+  "readings": [
+   "THE_G4_GUARD_REMOVES_ABOUT_41_PERCENT_OF_PIVOT_ELIGIBLE_ENTRANTS_FLAT_ACROSS_RESPONSE_YEARS_IT_CONDITIONS_THE_POPULATION_ON_NOT_BEING_MEDICINE_ACTIVE_IN_2017_2021",
+   "DATE_PRECISION_RISES_ACROSS_CALENDAR_YEARS_BUT_IS_NEARLY_FLAT_WITHIN_EPISODES",
+   "XPAC_WORKS_NEVER_CREATE_A_PIVOT_ELIGIBLE_ENTRY"
+  ]
+ },
+ "authorization": {
+  "persistence_labels": "NOT_AUTHORIZED",
+  "s2_s3": "NOT_AUTHORIZED",
+  "model_fitting": "NOT_AUTHORIZED"
+ }
+}
