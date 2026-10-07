@@ -1,0 +1,104 @@
+{
+  "schema_version": "pivot_feedback_lean_h3_openalex_full_core_resume_attempt.v2",
+  "label": "pivot_feedback_lean_h3_openalex_full_core_resume_v2_attempt_20261007",
+  "status": "STOPPED_FAIL_CLOSED_THE_EXACT_2026_06_26_SNAPSHOT_IS_NO_LONGER_AVAILABLE_AT_THE_SOURCE",
+  "authorization_v2": {
+    "path": "experiments/configs/pivot_feedback_lean_h3_openalex_full_core_transfer_authorization_v2.json",
+    "sha256": "8f48356dc7db8514645c6c864bc3f192aba5fc645f74ddc2faa7c4e2818e2176",
+    "commit": "625ed69"
+  },
+  "preflight": {
+    "status": "PASS_V2_RESUME_PREFLIGHT_NO_NETWORK",
+    "available_bytes": 963947229184,
+    "remaining_source_bytes": 35183477118,
+    "v2_margin_bytes": 821389569666,
+    "v1_rule_margin_bytes": -158695907150
+  },
+  "resume_attempt": {
+    "first_pending_file": "data/parquet/works/updated_date=2026-06-26/part_0089.parquet",
+    "remote_status": 404,
+    "error": "remote metadata failed: HTTP Error 404: Not Found",
+    "bytes_written": 0,
+    "state_effect": "RUN_COUNT_INCREMENTED_TO_136_STATUS_LEFT_RUNNING_NO_FILE_CHANGED",
+    "state_sha256_after": "7dec4aaf4be2b3a1debdc69887e8f013a69994a3d96389769291fcb10a515a4f"
+  },
+  "remote_checks": {
+    "works/updated_date=2026-06-26/part_0089.parquet": 404,
+    "works/updated_date=2026-06-26/part_0090.parquet": 404,
+    "topics/updated_date=2026-06-26/part_0000.parquet": 404,
+    "works/updated_date=2026-06-26/part_0000.parquet": {
+      "status": 200,
+      "content_length": 17696538,
+      "last_modified": "Wed, 23 Sep 2026 16:03:04 GMT",
+      "local_bound_content_length": 501612025,
+      "local_bound_last_modified": "Sat, 27 Jun 2026 02:59:04 GMT",
+      "reading": "THE_SAME_PATH_NOW_HOLDS_A_DIFFERENT_OBJECT"
+    }
+  },
+  "finding": "OPENALEX_REPLACES_ITS_PUBLIC_SNAPSHOT_IN_PLACE_THE_2026_06_26_OBJECTS_WERE_OVERWRITTEN_OR_REMOVED_BY_THE_2026_09_23_SNAPSHOT",
+  "new_snapshot_candidate": {
+    "captured_manifests": {
+      "works": {
+        "path": "/ssd/pivot-feedback-lean-h3-openalex-source-intake-v2-candidate-20261007/works.manifest.json",
+        "sha256": "a72ff4b43c9d13d0911386e1a5dd1b9d71b3c1080ac44ccfc016e11d6390a059",
+        "date": "2026-09-23",
+        "files": 2040,
+        "record_count": 476196327,
+        "content_length_bytes": 707141690793
+      },
+      "topics": {
+        "path": "/ssd/pivot-feedback-lean-h3-openalex-source-intake-v2-candidate-20261007/topics.manifest.json",
+        "sha256": "86b2cc93c9b4029fe84af20fe445140952eb02f856c8a30b6209ba9180fac40b",
+        "date": "2026-09-23",
+        "files": 4,
+        "record_count": 4516,
+        "content_length_bytes": 2529939
+      },
+      "subfields": {
+        "path": "/ssd/pivot-feedback-lean-h3-openalex-source-intake-v2-candidate-20261007/subfields.manifest.json",
+        "sha256": "dce899b23e44b69f12a9a02152c5d3ac01142a189821cb81f85f77b993c9d5ff",
+        "date": "2026-09-23",
+        "files": 1,
+        "record_count": 252,
+        "content_length_bytes": 174229
+      },
+      "fields": {
+        "path": "/ssd/pivot-feedback-lean-h3-openalex-source-intake-v2-candidate-20261007/fields.manifest.json",
+        "sha256": "3624251f19305660b3351a848058fd41e3d76d16539792092a5232697d1233f6",
+        "date": "2026-09-23",
+        "files": 1,
+        "record_count": 26,
+        "content_length_bytes": 19252
+      }
+    },
+    "total_files": 2046,
+    "total_bytes": 707144414213,
+    "works_records": 476196327,
+    "files_identical_to_a_local_complete_file": 0,
+    "shared_paths_with_the_old_works_manifest": 665,
+    "reading": "NO_LOCAL_FILE_IS_REUSABLE_A_NEW_SNAPSHOT_IS_A_FULL_707_GB_TRANSFER",
+    "authorization": "NOT_AUTHORIZED_CAPTURED_ONLY_SO_THE_OPTION_REMAINS_DECIDABLE"
+  },
+  "old_snapshot_local_state": {
+    "complete_files": 2383,
+    "total_files": 2454,
+    "missing_records": 25462673,
+    "missing_bytes": 35183477118,
+    "status": "PERMANENTLY_INCOMPLETE_AT_THE_SOURCE"
+  },
+  "local_alternative": {
+    "path": "/hdd/raid_backup_20260624/data/OpenAlex/parquet_exports",
+    "snapshot": "2026-03-30",
+    "derived_tables_on_ssd": [
+      "openalex-g1-author-history-v3-full-20260722",
+      "openalex-g1-work-topic-relation-full-20260722",
+      "openalex-g1-canonical-work-time-spine-full-20260722"
+    ]
+  },
+  "decision_required": "USER_CHOOSES_BETWEEN_A_FULL_TRANSFER_OF_THE_2026_09_23_SNAPSHOT_AND_THE_LOCAL_2026_03_30_SNAPSHOT_UNDER_AN_AMENDED_DESIGN",
+  "access_accounting": {
+    "source_row_values_decoded": 0,
+    "manifests_fetched": 4,
+    "data_bytes_transferred": 0
+  }
+}
