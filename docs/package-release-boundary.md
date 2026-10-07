@@ -197,6 +197,9 @@ surviving indicator's threshold from stored synthetic runs and registers the
 empirical stages. It has the same boundary and reads no empirical row.
 Its v2 amendment moves the empirical entry clock to publication-date quarters
 and reruns the transfer. It has the same boundary.
+Its S1 structural builder reads column-limited Works rows under a separate
+committed authorization and writes private outputs only. It has the same
+repository-only boundary.
 
 The local-LLM prior pilot is repository-only. It elicits a prior once from a
 pinned local Qwen model and evaluates it in the Pivot ABM. Its contract, runner,

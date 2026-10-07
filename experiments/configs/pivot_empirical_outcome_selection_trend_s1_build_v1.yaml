@@ -1,0 +1,215 @@
+schema_version: pivot_empirical_outcome_selection_trend_s1_build.v1
+label: pivot_empirical_outcome_selection_trend_s1_build_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-07'
+purpose: >-
+  The frozen executable contract for stage S1 of the N10 v2 preregistration:
+  the structural build. It reads column-limited Works rows of the complete
+  2026-06-26 snapshot and writes the eligible work extract, the episodes, the
+  discovery and confirmatory partition, and the entrants of every episode. It
+  computes no persistence label. A run needs a committed user authorization
+  file in addition to this precommit.
+implements:
+  contract: experiments/configs/pivot_empirical_outcome_selection_trend_v2.yaml
+  contract_sha256: 58ad600273b370380cf7f9d4efee49f6a85425dd343b3e02b34d84bb5ff6e8a6
+  stage: S1
+  functions: scripts/prototype_pivot_empirical_outcome_selection_trend_v2.py
+  functions_sha256: 76ef0c2ae14c4bd17c25440029327935fbff39ef3728086e08dd8d4790d44ab5
+source_bindings:
+- path: experiments/configs/pivot_empirical_outcome_selection_trend_v2.yaml
+  sha256: 58ad600273b370380cf7f9d4efee49f6a85425dd343b3e02b34d84bb5ff6e8a6
+  role: N10_V2_PREREGISTRATION_THIS_STAGE_IMPLEMENTS
+- path: experiments/evidence/results/pivot_empirical_outcome_selection_trend_v2_20261007.summary.json
+  sha256: f518bfb7e3c84a351920fbd35bc7ef6e4f40186cc01fca3cad0d544409a48adc
+  role: N10_V2_STAGE_T_THRESHOLD_TRANSFERRED
+- path: scripts/prototype_pivot_empirical_outcome_selection_trend_v2.py
+  sha256: 76ef0c2ae14c4bd17c25440029327935fbff39ef3728086e08dd8d4790d44ab5
+  role: N10_V2_CLOCK_AND_V1_SURGE_EPISODE_PARTITION_FUNCTIONS
+- path: experiments/configs/pivot_feedback_d0_measurement_abi_v1.yaml
+  sha256: eb51a85c206da328609b2fa05f9bbb6900160dc837dc345715d1bd709134c36e
+  role: WORK_TYPE_DICTIONARY
+- path: experiments/configs/pivot_feedback_f_g4_private_membership_materialization_v1.yaml
+  sha256: b7fe25e6d8cb4dd74c39bea3e6c1f501e2669efd9bbb857f2233b493c560198b
+  role: G4_AUTHOR_COLD_GUARD_CONTRACT_EARLIER_ROW_BUILDS_MUST_ANTI_JOIN
+- path: experiments/evidence/results/pivot_feedback_f_g4_private_membership_materialization_v1_20260804.summary.json
+  sha256: 5f733120ec6366be018df254279acd5c378fd85aeadcdd2e9d2f517433edabb4
+  role: G4_GUARD_ARTIFACT_PATH_HASH_AND_ROWS
+- path: experiments/configs/pivot_feedback_lean_h3_openalex_full_core_transfer_authorization_v3.json
+  sha256: 468895a4980307a4131674d5268eb6e4432b476ed97cd945c401813c55cdf375
+  role: SOURCE_TRANSFER_AUTHORIZATION_STALL_RECORD_AND_PLAN_HASH
+
+source:
+  root: /ssd/pivot-feedback-lean-h3-openalex-full-core-v1-20260806
+  plan_sha256: 182d1d4e679c4e7a01811822e0384c06e84795b48f175f65a6f20baa560c9031
+  terminal_state_sha256: 63eec21d1bccdb92edbf878bd8fc9ed06e0f76aa719fde9dcaf69e8ef2348eed
+  terminal_receipt_sha256: 58f5c2b97c6ae14816a3cf4edcad02b18ff5fa55fb92aedd064c814b17ee4a56
+  works_files: 2446
+  file_identity_check: EVERY_WORKS_FILE_MATCHES_ITS_TERMINAL_STATE_SIZE_AND_STAT_BINDING
+  snapshot_date: '2026-06-26'
+  works_only: true
+
+columns:
+  id: id
+  publication_year: publication_year
+  publication_date: publication_date
+  type: type
+  is_paratext: is_paratext
+  is_retracted: is_retracted
+  is_xpac: is_xpac
+  topic_id: primary_topic.id
+  topic_score: primary_topic.score
+  subfield_id: primary_topic.subfield.id
+  field_id: primary_topic.field.id
+  source_id: primary_location.source.id
+  author_id: authorships.list.element.author.id
+  every_leaf_must_exist_in_every_file: true
+  why: A_MISSING_NESTED_PATH_IS_READ_AS_EMPTY_SO_PRESENCE_IS_CHECKED_FROM_THE_FOOTER_FIRST
+
+identifiers:
+  work: ^https://openalex[.]org/W(0|[1-9][0-9]*)$
+  author: ^https://openalex[.]org/A(0|[1-9][0-9]*)$
+  topic: ^https://openalex[.]org/T(0|[1-9][0-9]*)$
+  subfield: ^https://openalex[.]org/subfields/(0|[1-9][0-9]*)$
+  field: ^https://openalex[.]org/fields/(0|[1-9][0-9]*)$
+  source: ^https://openalex[.]org/S(0|[1-9][0-9]*)$
+  work_quarantine: [https://openalex.org/W-1]
+  malformed_non_null_identifier: STOP_SOURCE_INVALID
+  null_work_id: STOP_SOURCE_INVALID
+  duplicate_numeric_work_id_across_all_files: STOP_SOURCE_INVALID
+  null_author_id: SKIP_THE_AUTHORSHIP_AND_COUNT
+  null_source_id: RETAIN_AS_NULL
+
+publication_dates:
+  rule: FROZEN_WORK_TIME_SPINE_DISPOSITION_V1_WITH_THE_2026_06_26_SNAPSHOT_DATE
+  zero_failure_metrics_over_all_rows:
+  - EXACTLY_ONE_OF_YEAR_AND_DATE_IS_NULL
+  - DATE_YEAR_DIFFERS_FROM_PUBLICATION_YEAR
+  any_failure: STOP_SOURCE_INVALID
+  dispositions:
+    0: BOTH_NULL_EXCLUDED
+    1: VALID_PRE_1900_EXCLUDED
+    2: USABLE_1900_BEFORE_SNAPSHOT_YEAR
+    3: USABLE_SNAPSHOT_YEAR_ON_OR_BEFORE_SNAPSHOT
+    4: VALID_SNAPSHOT_YEAR_AFTER_SNAPSHOT_EXCLUDED
+    5: VALID_POST_SNAPSHOT_YEAR_EXCLUDED
+  allowed: [2, 3]
+
+extract:
+  rows: ELIGIBLE_WORKS_WHOSE_PRIMARY_FIELD_IS_REGISTERED_AND_YEAR_AT_MOST_2017
+  fields: [16, 32, 11]
+  latest_year: 2017
+  type_names: [article, book, book-chapter, book-section, dissertation, preprint, report, review]
+  type_codes_from_abi: [1, 2, 3, 4, 7, 16, 18, 21]
+  paratext_true: EXCLUDE
+  paratext_null: RETAIN_AND_COUNT
+  retracted_true: EXCLUDE
+  retracted_null: RETAIN_AND_COUNT
+  is_xpac: RETAINED_UNDER_THE_INHERITED_RULES_FLAG_KEPT_SHARE_REPORTED
+  authorships: DISTINCT_WORK_AUTHOR_PAIRS
+  work_columns: [work_id, year, date, topic, subfield, field, score, source, is_xpac, retracted_null]
+  topic_hierarchy_check: EVERY_TOPIC_HAS_ONE_SUBFIELD_AND_ONE_FIELD_IN_THE_EXTRACT
+  ordering: WORK_ID_THEN_AUTHOR_ID
+
+build:
+  first_topic_year: MINIMUM_ELIGIBLE_YEAR_PER_AUTHOR_AND_TOPIC_OVER_THE_WHOLE_EXTRACT
+  attention:
+    work_universe: EXTRACT_WORKS_WITH_AT_LEAST_ONE_LINKED_AUTHOR
+    incumbent_only_work: THE_LATEST_FIRST_TOPIC_YEAR_AMONG_ITS_AUTHORS_IS_AT_MOST_T_MINUS_7
+    counts: PER_FIELD_TOPIC_DECISION_YEAR_AND_OFFSET_MINUS_6_TO_MINUS_1
+    decision_years: [2000, 2012]
+  surge: N10_V1_SURGE_FLAGS_FUNCTION_THRESHOLD_3_0
+  episodes: N10_V1_SELECT_EPISODES_FUNCTION_SPACING_3
+  indexing_screen:
+    windows: ALL_EXTRACT_WORKS_OF_THE_TOPIC_IN_THE_REFERENCE_AND_RECENT_OFFSETS
+    score_drop: MEDIAN_REFERENCE_SCORE_MINUS_MEDIAN_RECENT_SCORE_AT_LEAST_0_15
+    source_rise: RECENT_DOMINANT_SOURCE_SHARE_MINUS_REFERENCE_DOMINANT_SOURCE_SHARE_AT_LEAST_0_25
+    dominant_source_share: LARGEST_SINGLE_SOURCE_SHARE_AMONG_WORKS_WITH_A_SOURCE
+    exclude_when: BOTH_HOLD
+    undefined_window: NOT_EXCLUDED_AND_COUNTED
+  exclusions_by_construction:
+  - REGISTERED_FIELDS_EXCLUDE_17_AND_27_SO_NO_D0_EPISODE_CAN_APPEAR
+  - DECISION_YEARS_2000_2012_SO_NO_F_PARTITION_EPISODE_CAN_APPEAR
+  partition: N10_V1_PARTITION_FAMILIES_FUNCTION
+  entrants:
+    rule: FIRST_TOPIC_YEAR_IN_DECISION_YEAR_TO_PLUS_2
+    entry_date: EARLIEST_DATE_AMONG_THE_AUTHOR_TOPIC_WORKS_IN_THE_ENTRY_YEAR
+    clock: N10_V2_ENTRY_CLOCK_FUNCTION
+    pivot_eligibility: AT_LEAST_ONE_EXTRACT_WORK_IN_THE_EPISODE_FIELD_IN_ENTRY_YEAR_MINUS_3_TO_MINUS_1
+  g4_guard:
+    path: /ssd/pivot-feedback-f-g4-private-membership-v1-20260804/private/g4_author_cold_guard.parquet
+    sha256: 90f79d46dd16e83088a258aeafd795541d918e4afb1915feadd5648523b5ca3a
+    rows: 8174698
+    column: author_numeric_id
+    rule: ANTI_JOIN_ENTRANTS_ON_THE_EXACT_NUMERIC_AUTHOR_ID_BEFORE_ANY_FLOOR_OR_PARTITION_COUNT
+    reads: THE_AUTHOR_ID_COLUMN_ONLY
+    reported: REMOVED_ENTRANT_COUNT_ONLY
+  discovery_exclusion: CONFIRMATORY_ENTRANTS_WHO_ENTER_ANY_DISCOVERY_EPISODE_ARE_REMOVED_AFTER_THE_G4_GUARD
+  floors: N10_V2_EPISODE_VALIDITY_ON_ENTRANTS_WITHOUT_PERSISTENCE
+  persistence_labels_computed: 0
+
+s1_disposition:
+  S1_PASS: EVERY_FIELD_HAS_AT_LEAST_4_CONFIRMATORY_EPISODES_MEETING_THE_FLOORS
+  STOP_INSUFFICIENT_EPISODES: OTHERWISE_NO_WINDOW_OR_FIELD_EXPANSION
+  STOP_SOURCE_INVALID: ANY_IDENTIFIER_DATE_SCHEMA_OR_HIERARCHY_CHECK_FAILS
+  reported: DISCOVERY_EPISODES_MEETING_THE_FLOORS_PER_FIELD_FOR_S2
+
+capacity:
+  byte_budget: 214748364800
+  safety_reserve_bytes: 107374182400
+  preflight_rule: FREE_BYTES_AT_LEAST_BUDGET_PLUS_RESERVE
+  runtime_rule: OUTPUT_ROOT_BYTES_AT_MOST_BUDGET_AFTER_EXTRACTION
+  failure_action: STOP_FAIL_CLOSED_NO_SOURCE_FILE_TOUCHED
+
+execution:
+  workers: 48
+  duckdb_threads: 32
+  deterministic_rerun: A_SECOND_FULL_RUN_MUST_REPRODUCE_EVERY_IDENTITY_ARTIFACT_BYTE_FOR_BYTE
+  identity_artifacts: [s1_summary.json, s1_receipt.json, private/parts_digest.json, private/episodes.parquet, private/entrants.parquet]
+  timing_artifact: s1_timing.json
+  output_root_pattern: /ssd/pivot_empirical_outcome_selection_trend_s1_{sha7}_{development|reproduction}
+  output_modes: {directory: '0700', file: '0600'}
+
+outputs:
+  public:
+  - s1_summary.json
+  - s1_receipt.json
+  private:
+  - private/works.parquet
+  - private/authorships.parquet
+  - private/episodes.parquet
+  - private/entrants.parquet
+  - private/parts_digest.json
+  private_ids_repository_forbidden: true
+  summary_contains: COUNTS_ONLY_NO_WORK_AUTHOR_OR_TOPIC_IDENTIFIERS
+
+authorization:
+  footer_only_preflight: AUTHORIZED_BY_THE_LEAN_H3_DESIGN_NO_ROW_VALUE
+  run: REQUIRES_A_COMMITTED_AUTHORIZATION_FILE_THAT_NAMES_THIS_CONTRACT_AND_QUOTES_THE_USER
+  authorization_file_schema: pivot_empirical_outcome_selection_trend_s1_authorization.v1
+  persistence_labels: NOT_AUTHORIZED
+  s2_s3: NOT_AUTHORIZED
+  transform_beyond_this_extract: NOT_AUTHORIZED
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+  - docs/research/pivot-empirical-outcome-selection-trend-s1-build-v1.md
+  - docs/package-release-boundary.md
+  - experiments/configs/pivot_empirical_outcome_selection_trend_s1_build_v1.yaml
+  - scripts/build_pivot_empirical_outcome_selection_trend_s1_v1.py
+  - scripts/inspect_release_artifacts.py
+  - tests/test_pivot_empirical_outcome_selection_trend_s1_build_v1.py
+  - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  persistence_labels_computed: 0
+  g4_outcomes_read: 0
+  g4_guard_use: AUTHOR_ID_ANTI_JOIN_ONLY
+  current_g1_or_model_selection_access: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED
