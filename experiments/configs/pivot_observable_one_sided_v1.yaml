@@ -1,0 +1,363 @@
+schema_version: pivot_observable_one_sided.v1
+label: pivot_observable_one_sided_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+purpose:
+  primary_goal: REGISTER_AND_TEST_THE_ONE_SIDED_READING_A_PERSISTENCE_TREND_PAST_THE_THRESHOLD_IMPLIES_AN_ACTIVE_ENTRY_CHANNEL
+  question: 'N08 found no false actives: whenever an observable said active, the channel was active, and
+    it missed only weak channels. With the N08 thresholds unchanged, does that hold on new entry-schedule
+    shapes and fresh seeds?'
+  next_step_id: N09
+  user_decision: USER_APPROVED_THE_ONE_SIDED_TEST_WITH_CONSOLIDATION_V4_IN_PARALLEL
+  result_informed_successor: true
+  informed_by: N08_ZERO_FALSE_ACTIVES_IN_48_PREDICTIONS_AND_ZERO_ACROSS_96_WITH_N05
+source_bindings:
+- path: scripts/prototype_pivot_observable_confirmation_v1.py
+  sha256: b88fb3fceef92ef0aea868286ecf6f6c103a0b4212a3744a34c959487813e968
+  role: N08_DECISION_PREDICTION_AND_SCHEDULE_RUNNER
+- path: experiments/configs/pivot_observable_confirmation_v1.yaml
+  sha256: 4df4d680b6fa4f55dad20223d88875e0fd2c4b54f2bf2367e451363889eecbd0
+  role: OPENED_PREDECESSOR_CONTRACT_AND_THRESHOLD_SOURCE
+- path: experiments/evidence/results/pivot_observable_confirmation_v1_20261001.summary.json
+  sha256: e6cab9fe9ce49f5ac77bfd6db808a0e59b5c1ec0cf758cbb8ef2fb5c6ef59da4
+  role: OPENED_PREDECESSOR_RESULT
+- path: scripts/prototype_pivot_observable_discriminant_v1.py
+  sha256: 07bf50f6eb2c1c7a10b95366849ccb5e9910f7e8343847daed0b1ca77f4848ec
+  role: SURGE_ADAPTER_OBSERVABLES_CELL_STATUS_AND_NESTING
+- path: experiments/configs/pivot_observable_discriminant_v1.yaml
+  sha256: b2a3cf0ffadf125b63b030f45f348fa6499c9316b565f5a064500cba5870d0f1
+  role: OPENED_PREDECESSOR_CONTRACT
+- path: experiments/evidence/results/pivot_observable_discriminant_v1_20260930.summary.json
+  sha256: 60a76578f369e1c74405880679da61a6841fed1f579c604204a670b7d4de9704
+  role: OPENED_PREDECESSOR_RESULT_AND_THRESHOLD_SOURCE
+- path: scripts/prototype_pivot_relative_delay_cost_v1.py
+  sha256: 4fb362e67e1450820e7763b48e299e2dc53777d16fffbd6439c37b8267348bc7
+  role: N01_RUN_LOOP_HAZARD_ADAPTER_TIMING_OBSERVABLES_AND_NESTING
+- path: experiments/configs/pivot_relative_delay_cost_v1.yaml
+  sha256: 11e3b67c551c7df61951111617e8004b766cc330155c59b5f4f4fff16fe3d3fb
+  role: OPENED_PREDECESSOR_CONTRACT
+- path: experiments/evidence/results/pivot_relative_delay_cost_v1_20260929.summary.json
+  sha256: b3d990a35b53066b835c9683f09476088ffc9cd10f64881389b16b2a5e158b3e
+  role: OPENED_PREDECESSOR_RESULT_AND_THRESHOLD_SOURCE
+- path: experiments/configs/pivot_policy_ladder_consolidation_v3.yaml
+  sha256: 52a38bb52f25ccab4dd508f7584559cc8090e1ddc7aef0e4e7c8ef2b3d36c9ae
+  role: CONSOLIDATION_NAMING_O08
+- path: scripts/prototype_pivot_nonlinear_policy_abm_v2.py
+  sha256: ed827c5b1cddf6a36e32bfd6ebb4e41a1773af10ebcab975bf5c54e5c5887436
+  role: IMPORTED_PROBED_LEARNERS_CROSS_FIT_FIELD_AND_NESTED_V2_ARM
+- path: experiments/configs/pivot_nonlinear_policy_abm_v2.yaml
+  sha256: 0b00c3758ccecc387118c33842a79c5e3a6b11ec246e6fc224d93fa340cd3874
+  role: OPENED_PREDECESSOR_CONTRACT
+- path: experiments/evidence/results/pivot_nonlinear_policy_abm_v2_20260928.summary.json
+  sha256: 2309ff8078a68074f8728768be399dd9ee008927f55451a110e0ce284f4f18db
+  role: OPENED_PREDECESSOR_RESULT
+- path: scripts/prototype_pivot_nonlinear_policy_abm_v1.py
+  sha256: c0fa1621eab02140f5b6bc0e0a54c35c0df8e3ed6498ac391c8665b17f754cdb
+  role: FIT_WORLDS_AND_BATCH_LEARNERS
+- path: scripts/prototype_pivot_persistence_exit_v1.py
+  sha256: e8c604ac33f34cc58496723c2adff8e4d30c05182ee40cad114d961be3b17991
+  role: NESTED_PERSISTENCE_ADAPTER_AND_PREDECESSOR_ARM
+- path: scripts/prototype_pivot_delayed_feedback_learning_v1.py
+  sha256: 9555b0968293ec89620ff461e7c449fee098a7eb8809be2b936812b521358515
+  role: VISIBILITY_QUEUE_AND_PRECOMMIT_HELPERS
+- path: examples/research_pivot_study.py
+  sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+  role: POPULATION_NETWORK_AND_LINEAR_PRODUCTIVE_FIT
+- path: examples/research_pivot_learning_study.py
+  sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+  role: FROZEN_PRIOR_AND_ONLINE_LOGISTIC_PREDECESSOR
+- path: src/neural_abm/api.py
+  sha256: 83005b43023d29640d96a8929aaab5e5c552542c7c9d797c288e5820a7061898
+  role: UNCHANGED_GENERIC_TORCH_API
+- path: src/neural_abm/unit_core.py
+  sha256: d399a6fc29f1b2efd3a648f48c79d7f8cab927e704974223ffabf861333ff4da
+  role: UNCHANGED_GENERIC_LIFECYCLE_CORE
+common_environment:
+  scenario: hot_field_hype
+  state_model: persistence_exit_v1
+  learning_mode: imitative
+  population_network_randomness: IDENTICAL_BY_REPLICATE_ACROSS_ALL_ARMS_WORLDS_AND_HAZARDS
+  transition:
+    failed_minimum_active_steps: 2
+    failed_continuation_score:
+      productive_fit_weight: 0.5
+      current_policy_output_weight: 0.5
+      exit_below: 0.4
+    reentry_after_exit: false
+inherited_learning_parameters:
+  neighbor_count: 4
+  within_stage_probability: 0.6
+  learning_rate: 1.5
+  prior_anchor: 0.25
+  local_alpha: 0.45
+  local_noise_scale: 0.02
+  social_alpha: 0.4
+  peer_similarity_threshold: 0.68
+  pivot_threshold: 0.34
+  productive_threshold: 0.4
+visibility_regimes:
+- id: immediate
+  success_delay_steps: 0
+  failure_delay_steps: 0
+  success_visibility_probability: 1.0
+  failure_visibility_probability: 1.0
+- id: failure_lag_1
+  success_delay_steps: 0
+  failure_delay_steps: 1
+  success_visibility_probability: 1.0
+  failure_visibility_probability: 1.0
+- id: failure_lag_2
+  success_delay_steps: 0
+  failure_delay_steps: 2
+  success_visibility_probability: 1.0
+  failure_visibility_probability: 1.0
+- id: failure_lag_4
+  success_delay_steps: 0
+  failure_delay_steps: 4
+  success_visibility_probability: 1.0
+  failure_visibility_probability: 1.0
+fit_worlds:
+  worlds:
+  - id: linear_fit
+  - id: smooth_interaction_fit
+  - id: axis_interaction_fit
+  implementation: V1_APPLY_FIT_WORLD
+evidence_regimes:
+- id: neighbor_local
+  used_in: BENCHMARK_ONLY
+- id: field_public
+  cross_fit_folds: 4
+  includes_own_public_outcome: false
+  used_in: MAIN_RUN_AND_BENCHMARK
+main_run_arms:
+- - fixed_rule
+  - none
+- - linear_batch
+  - field_public
+- - tree_batch
+  - field_public
+- - mlp_batch
+  - field_public
+batch_learners:
+  source: EXACT_V2_BATCH_LEARNER_SETTINGS_UNCHANGED
+  scalar_batch:
+    epochs: 80
+    eta: 0.5
+    prior_anchor: 0.25
+  linear_batch:
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  mlp_batch:
+    hidden_width: 16
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  tree_batch:
+    initial_margin: FROZEN_PRIOR_LOGIT
+    rounds: 300
+    learning_rate: 0.1
+    max_depth: 3
+    min_samples_leaf: 5
+    leaf_l2: 1.0
+h3_adapter:
+  role: DESCRIPTIVE_SIMULATION_SIDE_TIMING_OBSERVABLES_NOT_A_DECISION
+  entry_incidence: NEW_ENTRANTS_PER_STEP
+  entry_peak_steps: STEPS_WITH_MAXIMUM_INCIDENCE
+  cohort_persistence_horizon_steps: 4
+  cohort_persistence: SHARE_OF_AN_ENTRY_COHORT_NOT_EXITED_FOUR_STEPS_AFTER_ENTRY_FOR_COHORTS_WITH_A_FULL_HORIZON
+  decline_onset: FIRST_LATER_COHORT_WHOSE_PERSISTENCE_IS_AT_LEAST_0.05_BELOW_THE_FIRST_COHORT
+  model_h3_gap: EARLIEST_ENTRY_PEAK_STEP_MINUS_DECLINE_ONSET_STEP
+  limitation: A_FULL_H3_COMPARISON_NEEDS_AN_INTERIOR_ENTRY_PEAK_WHICH_REQUIRES_AN_ATTENTION_SURGE_CLOCK_NOT_IN_THIS_MODEL
+entry_schedules:
+- id: hazard_q0p15
+  type: hazard
+  q: 0.15
+- id: hazard_q0p45
+  type: hazard
+  q: 0.45
+- id: surge_peak5_width1
+  type: surge
+  peak: 5
+  width: 1.0
+- id: surge_peak10_width5
+  type: surge
+  peak: 10
+  width: 5.0
+- id: decay_tau3
+  type: decay
+  tau: 3.0
+- id: ramp_8
+  type: ramp
+  ramp_steps: 8
+schedule_floor: 0.05
+schedule_shapes:
+  hazard: CONSTANT_ADMISSION_Q
+  surge: N05_GAUSSIAN_SURGE_ABOVE_THE_FLOOR
+  decay: FRONT_LOADED_ATTENTION_FLOOR_PLUS_ONE_MINUS_FLOOR_TIMES_EXP_OF_MINUS_OPEN_STEP_MINUS_ONE_OVER_TAU
+  ramp: SLOW_RISE_FLOOR_PLUS_ONE_MINUS_FLOOR_TIMES_MIN_OF_ONE_AND_OPEN_STEP_OVER_RAMP_STEPS
+  new_shapes:
+  - decay
+  - ramp
+opened_schedules:
+- id: n01_q1.0
+  type: hazard
+  q: 1.0
+- id: n01_q0.5
+  type: hazard
+  q: 0.5
+- id: n01_q0.25
+  type: hazard
+  q: 0.25
+- id: peak3_width1p5
+  type: surge
+  peak: 3
+  width: 1.5
+- id: peak3_width3p0
+  type: surge
+  peak: 3
+  width: 3.0
+- id: peak6_width1p5
+  type: surge
+  peak: 6
+  width: 1.5
+- id: peak6_width3p0
+  type: surge
+  peak: 6
+  width: 3.0
+- id: peak9_width1p5
+  type: surge
+  peak: 9
+  width: 1.5
+- id: peak9_width3p0
+  type: surge
+  peak: 9
+  width: 3.0
+- id: hazard_q0p35
+  type: hazard
+  q: 0.35
+- id: hazard_q0p7
+  type: hazard
+  q: 0.7
+- id: surge_peak4_width2
+  type: surge
+  peak: 4
+  width: 2.0
+- id: surge_peak4_width4
+  type: surge
+  peak: 4
+  width: 4.0
+- id: surge_peak8_width2
+  type: surge
+  peak: 8
+  width: 2.0
+- id: surge_peak8_width4
+  type: surge
+  peak: 8
+  width: 4.0
+probe_cohort:
+  base_seed: 20261036
+  agent_count: 256
+  per_replicate: true
+profiles:
+  smoke:
+    agent_count: 24
+    steps: 12
+    burn_in_steps: 2
+    replicates: 2
+    base_seed: 20261035
+  development:
+    agent_count: 256
+    steps: 24
+    burn_in_steps: 2
+    replicates: 16
+    base_seed: 20261035
+observables:
+  cohort_persistence_drop: FIRST_COHORT_PERSISTENCE_MINUS_THE_ENTRY_WEIGHTED_MEAN_OF_LATER_COHORTS
+  outcome_selection_trend: SPEARMAN_OF_ENTRY_STEP_WITH_PERSISTENCE_AT_THE_HORIZON_AMONG_ENTRANTS_WITH_A_FULL_HORIZON
+  post_failure_entry_share: MODEL_INTERNAL_SHARE_OF_FINAL_ENTRY_AT_OR_AFTER_THE_FIRST_STEP_WITH_A_PUBLIC_FAILURE
+thresholds:
+  cohort_persistence_drop:
+    threshold: 0.023175
+    active_when: BELOW
+  outcome_selection_trend:
+    threshold: 0.098417
+    active_when: ABOVE
+  post_failure_entry_share_comparator:
+    threshold: 0.151284
+    source: N01_MIDPOINT
+  accuracy_tiers:
+    CONFIRMED_IN_ALL_CELLS: EVERY_CELL_CORRECT
+    mostly_holds_at_least: 0.75
+    FAILS: BELOW_0.75
+  rule: THE_N08_THRESHOLDS_UNCHANGED
+  source: COPIED_FROM_THE_HASH_BOUND_N08_CONTRACT_AND_CHECKED_EQUAL_AT_LOAD
+decision_contract:
+  improvement_rule: MEAN_PAIRED_IMPROVEMENT_AT_LEAST_THRESHOLD_AND_STRICTLY_POSITIVE_IN_AT_LEAST_REQUIRED_REPLICATES
+  difference_in_differences_rule: INTERACTION_FIT_WORLD_GAP_MINUS_LINEAR_FIT_WORLD_GAP_SAME_HAZARD_VISIBILITY_AND_REPLICATE
+  improved_replicates_at_least: 12
+  entry_channel:
+    metric: PRODUCTIVE_SHARE_OF_ENTRANTS
+    comparison: TREE_OR_MLP_OVER_LINEAR_BATCH
+    statistic: DIFFERENCE_IN_DIFFERENCES_AGAINST_LINEAR_FIT_WORLD
+    worlds:
+    - smooth_interaction_fit
+    - axis_interaction_fit
+    improvement_at_least: 0.02
+    cell: EACH_HAZARD_AND_VISIBILITY
+    saturation: LINEAR_TREE_AND_MLP_FIELD_ARMS_EACH_REACH_AT_LEAST_0.98_FINAL_ENTRY_IN_AT_LEAST_12_REPLICATES_OF_EVERY_WORLD
+    cell_dispositions:
+    - ENTRY_CHANNEL_ACTIVE
+    - ENTRY_SATURATED
+    - ENTRY_CHANNEL_ABSENT
+    precedence: ACTIVE_THEN_SATURATED_THEN_ABSENT
+  nesting_checks:
+    required: true
+    conditions:
+    - A_FLAT_SURGE_CLOCK_REPRODUCES_THE_N01_Q_ONE_FIXED_AND_MLP_ARMS_EXACTLY_IN_THE_LINEAR_WORLD
+    - THOSE_ARMS_NEST_THE_PERSISTENCE_PREDECESSOR_AND_THE_V2_MLP_ARM_THROUGH_THE_N01_CHECK
+    - THE_ADAPTER_SLOT_IS_RESTORED_AFTER_EVERY_RUN
+    failure_action: INVALID_IMPLEMENTATION_STOP
+  no_learning_control: THE_FIXED_RULE_ARM_S_OBSERVABLES_MUST_READ_INACTIVE_IN_EVERY_CELL_OTHERWISE_THE_OBSERVABLES_MAY_TRACK_TIMING
+  cells: EACH_ENTRY_SCHEDULE_AND_VISIBILITY
+  one_sided:
+    claim: AN_OBSERVABLE_PAST_ITS_THRESHOLD_IMPLIES_AN_ACTIVE_ENTRY_CHANNEL
+    confirmed_when: ZERO_FALSE_ACTIVES
+    minimum_flagged_cells: 5
+    minimum_inactive_cells: 5
+    dispositions:
+    - SUFFICIENT_SIGN_CONFIRMED
+    - SUFFICIENT_SIGN_FAILS
+    - NOT_INFORMATIVE
+    also_tested: EITHER_OBSERVABLE_PAST_ITS_THRESHOLD
+    sensitivity: REPORTED_NOT_DECIDED
+  two_sided_accuracy: REPORTED_AS_IN_N08
+  use_on_data: AN_OBSERVABLE_WHOSE_SUFFICIENT_SIGN_IS_CONFIRMED_WITH_THE_CONTROL_READING_INACTIVE_GOES_TO_THE_EMPIRICAL_STAGE_AS_A_ONE_SIDED_INDICATOR
+  model_selection: FORBIDDEN
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+  - docs/research/pivot-observable-one-sided-v1.md
+  - docs/package-release-boundary.md
+  - experiments/configs/pivot_observable_one_sided_v1.yaml
+  - scripts/prototype_pivot_observable_one_sided_v1.py
+  - scripts/inspect_release_artifacts.py
+  - tests/test_pivot_observable_one_sided_v1.py
+  - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+outputs:
+- runs.jsonl
+- scorecard.json
+- scorecard.md
+- receipt.json
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  empirical_fit: NOT_RUN
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED
