@@ -315,6 +315,8 @@ def test_execute_end_to_end_is_deterministic(tmp_path: Path) -> None:
     assert summary["source_accounting"]["rows"] == summary["source_accounting"]["registered_field_rows"] + 1
     assert summary["entrants"]["g4_guard_removed"] == 2 and summary["entrants"]["discovery_author_removed"] > 0
     assert summary["persistence_labels_computed"] == 0
+    assert 0 < summary["entrants"]["precise_share_overall"] < 1
+    assert summary["entrants"]["episodes_without_entrants"] >= 0
     assert not (tmp_path / "first" / "private" / "parts").exists()
     assert oct((tmp_path / "first").stat().st_mode & 0o777) == "0o700"
     text = (tmp_path / "first" / "s1_summary.json").read_text(encoding="utf-8")
@@ -335,3 +337,15 @@ def test_execute_stops_on_duplicate_work_ids(tmp_path: Path) -> None:
     assert receipt["status"] == "STOP_SOURCE_INVALID"
     summary = json.loads((tmp_path / "out" / "s1_summary.json").read_text(encoding="utf-8"))
     assert summary["failure_metrics"]["duplicate_numeric_work_id_rows"] == 1
+
+
+def test_execute_stops_when_rows_read_differ_from_the_footers(tmp_path: Path) -> None:
+    path = tmp_path / "one.parquet"
+    pq.write_table(pa.Table.from_pylist([_row("https://openalex.org/W5", 2005, dt.date(2005, 5, 3))], schema=SCHEMA), path)
+    guard_path = tmp_path / "guard.parquet"
+    pq.write_table(pa.table({"author_numeric_id": pa.array([1], pa.uint64())}), guard_path)
+    receipt = s1.execute(CONTRACT, s1.DEFAULT_CONFIG, [("one", path)], guard_path, tmp_path / "out", {"commit_sha": "0" * 40},
+                         {"rows_by_footer": 2}, "f" * 64, workers=1, threads=1, started=0.0)
+    assert receipt["status"] == "STOP_SOURCE_INVALID"
+    summary = json.loads((tmp_path / "out" / "s1_summary.json").read_text(encoding="utf-8"))
+    assert summary["failure_metrics"]["rows_read_differ_from_footer_rows"] == 1

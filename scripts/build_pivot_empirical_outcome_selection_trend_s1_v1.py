@@ -672,6 +672,8 @@ def execute(
     digests = {"schema_version": "pivot_empirical_outcome_selection_trend_s1_parts.v1", "parts": [{"index": r["index"], "relative_path": r["relative_path"], **r["digests"]} for r in results]}
     _write_json(private / "parts_digest.json", digests)
     failures = {key: counts.get(key, 0) for key in FAILURE_COUNTS} | {"duplicate_numeric_work_id_rows": counts["duplicate_numeric_work_id_rows"]}
+    if "rows_by_footer" in preflight_record:
+        failures["rows_read_differ_from_footer_rows"] = abs(int(counts.get("rows", 0)) - int(preflight_record["rows_by_footer"]))
     summary: dict[str, Any] = {
         "schema_version": "pivot_empirical_outcome_selection_trend_s1_summary.v1",
         "precommit_sha": precommit["commit_sha"],
@@ -680,6 +682,7 @@ def execute(
         "failure_metrics": failures,
     }
     if any(failures.values()):
+        con.close()
         summary["status"] = "STOP_SOURCE_INVALID"
         return _finish(output_dir, summary, precommit, authorization_sha256, contract_path, timing, started)
     stage = time.monotonic()
@@ -721,6 +724,8 @@ def execute(
                      "surge_status_by_field_year": built["counts"]["surge_status"]},
         "entrants": {key: built["counts"][key] for key in ("raw_entrants", "pivot_eligible_entrants", "g4_guard_removed", "discovery_author_removed")}
                     | {"retained": built["entrants"].num_rows,
+                       "precise_share_overall": (sum(f["precise_entrants"] for f in floors.values()) / max(1, built["entrants"].num_rows)),
+                       "episodes_without_entrants": sum(1 for e in built["registered"] if e["episode_id"] not in floors),
                        "precise_share_by_episode": _quantiles(precise_share),
                        "entrants_by_episode": _quantiles([f["entrants"] for f in floors.values()]),
                        "precise_entrants_by_episode": _quantiles([f["precise_entrants"] for f in floors.values()])},
