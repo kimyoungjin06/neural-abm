@@ -171,5 +171,5 @@ def test_document_and_readme_state_the_measured_llm_agent_tier() -> None:
         assert required in document, required
     readme = " ".join(README.read_text(encoding="utf-8").split())
     assert "LLM-agent cost is estimated rather than measured" not in readme
-    assert "docs/research/pivot-policy-ladder-consolidation-v3.md" in readme
+    assert any(f"docs/research/pivot-policy-ladder-consolidation-v{n}.md" in readme for n in range(3, 10))
     assert "110 GPU-seconds" in readme

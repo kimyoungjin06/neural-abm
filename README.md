@@ -317,7 +317,7 @@ torch-backed behavior. The early-user checklist is in
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
 - Repository-only policy-ladder ledger at
-  `docs/research/pivot-policy-ladder-consolidation-v3.md`: the hash-audited
+  `docs/research/pivot-policy-ladder-consolidation-v4.md`: the hash-audited
   record of the researcher-pivot policy ladder, including the measured cost
   and behavior of each tier between rule-based ABMs and LLM agents.
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
@@ -405,11 +405,14 @@ synthetic, stylized worlds:
   against about 5 single-core CPU-seconds per NABM learner run, because it
   was queried at every step. Once evidence was in its prompt, its forecasts
   drifted above the population's success rate.
+- When the same model instead role-played each researcher and decided for
+  itself, it almost never chose to pivot and never stayed after a failed
+  pivot. The NABM design matched or beat this agent in all 9 settings as well.
 
-These are synthetic results from one in-context LLM-agent design and one local
-4B model. They are not claims about real researchers or about every LLM agent.
-The repository-only, hash-audited ledger is at
-`docs/research/pivot-policy-ladder-consolidation-v3.md`.
+These are synthetic results from two LLM-agent designs and one local 4B model.
+They are not claims about real researchers or about every LLM agent. The
+repository-only, hash-audited ledger is at
+`docs/research/pivot-policy-ladder-consolidation-v4.md`.
 
 ## Scope
 

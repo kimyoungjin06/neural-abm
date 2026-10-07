@@ -1,0 +1,237 @@
+schema_version: pivot_policy_ladder_consolidation.v4
+label: pivot_policy_ladder_consolidation_v4
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-10-07'
+purpose: 'Extend the v3 ledger with the persona LLM agent (N07) and the observable chain (N05, N08, N09):
+  what the empirical stage should measure, and what it should not. v1 to v3 remain the records for everything
+  before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v3.yaml
+    sha256: 52a38bb52f25ccab4dd508f7584559cc8090e1ddc7aef0e4e7c8ef2b3d36c9ae
+    record_commit: 93496ce
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v3.md
+    sha256: 015c5c2cbf9e2ad10c9d87ec420aceb41217436b734abeabd134d9cfb8a7cc23
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v3.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: persona_agent
+  path: experiments/evidence/results/pivot_llm_persona_agent_v1_20261001.summary.json
+  sha256: 1728294b96bce02c959d44516bed915a148ff6ea70755763698cd2037ecadf69
+  freeze_commit: 150486a
+  record_commit: 02659d6
+- id: observable_discriminant
+  path: experiments/evidence/results/pivot_observable_discriminant_v1_20260930.summary.json
+  sha256: 60a76578f369e1c74405880679da61a6841fed1f579c604204a670b7d4de9704
+  freeze_commit: 5b73c19
+  record_commit: 2c18e9d
+- id: observable_confirmation
+  path: experiments/evidence/results/pivot_observable_confirmation_v1_20261001.summary.json
+  sha256: e6cab9fe9ce49f5ac77bfd6db808a0e59b5c1ec0cf758cbb8ef2fb5c6ef59da4
+  freeze_commit: b270e51
+  record_commit: 77b6f96
+- id: observable_one_sided
+  path: experiments/evidence/results/pivot_observable_one_sided_v1_20261007.summary.json
+  sha256: 0140553c563df86aa45e7c6ab177d7a60776a307cbd38258f50e48b678dbdae2
+  freeze_commit: c0a8b1a
+  record_commit: 47497da
+claims:
+  confirmed:
+  - id: C36_nabm_matches_a_persona_llm_agent
+    statement: With the same LLM and exploration floor, the NABM hybrid matches a persona LLM agent that
+      decides for itself in all nine cells, and the persona selects better than the hand rule nowhere.
+    evidence:
+    - source: persona_agent
+      pointer: registered_result_disposition/nabm_versus_persona/summary
+      equals: NABM_MATCHES_PERSONA_AGENT_IN_ALL_CELLS
+    - source: persona_agent
+      pointer: registered_result_disposition/persona_versus_hand_precision/summary
+      equals: SELECTS_BETTER_NOWHERE
+  - id: C37_the_uncalibrated_persona_nearly_seals_itself
+    statement: The persona says Yes to pivoting in under 0.2% of questions, never stays after a failed
+      pivot, and self-seals in both interaction worlds.
+    evidence:
+    - source: persona_agent
+      pointer: registered_result_disposition/self_sealing_by_world/smooth_interaction_fit/self_sealing
+      equals: true
+    - source: persona_agent
+      pointer: registered_result_disposition/self_sealing_by_world/axis_interaction_fit/self_sealing
+      equals: true
+    - source: persona_agent
+      pointer: phase_a/zero_evidence_yes_share
+      equals: 0.0
+    - source: persona_agent
+      pointer: decision_totals/stay_no
+      equals: 1492
+  - id: C38_the_post_failure_share_is_near_necessary_not_sufficient
+    statement: Under surge clocks the post-failure entry share classifies 18 of 24 cells, with only false
+      actives.
+    evidence:
+    - source: observable_discriminant
+      pointer: registered_result_disposition/post_failure_entry_share/disposition
+      equals: HOLDS_IN_MOST_CELLS
+    - source: observable_discriminant
+      pointer: registered_result_disposition/post_failure_entry_share/false_inactive
+      equals: 0
+    - source: observable_discriminant
+      pointer: registered_result_disposition/post_failure_entry_share/false_active
+      equals: 6
+  - id: C39_persistence_trends_track_the_entry_channel
+    statement: 'Two observables from entry timing and persistence separate all N05 cells: later entrants
+      persist more when learning acts on entry.'
+    evidence:
+    - source: observable_discriminant
+      pointer: registered_result_disposition/separating_observables
+      equals:
+      - cohort_persistence_drop
+      - outcome_selection_trend
+  - id: C40_two_sided_classification_is_not_confirmed
+    statement: At thresholds fixed from N05, neither observable classifies every new N08 cell; each mostly
+      holds.
+    evidence:
+    - source: observable_confirmation
+      pointer: registered_result_disposition/observable_tests/cohort_persistence_drop/disposition
+      equals: HOLDS_IN_MOST_CELLS
+    - source: observable_confirmation
+      pointer: registered_result_disposition/observable_tests/outcome_selection_trend/disposition
+      equals: HOLDS_IN_MOST_CELLS
+    - source: observable_confirmation
+      pointer: registered_result_disposition/carried_to_the_empirical_stage_as_a_confirmed_discriminant
+      equals: []
+  - id: C41_the_sufficient_sign_is_confirmed
+    statement: 'On new schedule shapes, an observable past its threshold always marked an active channel:
+      11 flagged, 0 false actives, for each.'
+    evidence:
+    - source: observable_one_sided
+      pointer: registered_result_disposition/one_sided_tests/outcome_selection_trend/disposition
+      equals: SUFFICIENT_SIGN_CONFIRMED
+    - source: observable_one_sided
+      pointer: registered_result_disposition/one_sided_tests/cohort_persistence_drop/disposition
+      equals: SUFFICIENT_SIGN_CONFIRMED
+    - source: observable_one_sided
+      pointer: registered_result_disposition/one_sided_tests/outcome_selection_trend/false_active
+      equals: 0
+  - id: C42_the_outcome_selection_trend_is_the_empirical_indicator
+    statement: Only the outcome selection trend also passes its no-learning control, so it alone goes
+      to the empirical stage, as a one-sided indicator.
+    evidence:
+    - source: observable_one_sided
+      pointer: registered_result_disposition/carried_to_the_empirical_stage_as_a_one_sided_indicator
+      equals:
+      - outcome_selection_trend
+    - source: observable_one_sided
+      pointer: registered_result_disposition/no_learning_control_by_observable/outcome_selection_trend
+      equals: true
+    - source: observable_confirmation
+      pointer: registered_result_disposition/no_learning_control/disposition
+      equals: CONTROL_READS_INACTIVE_EVERYWHERE
+  rejected:
+  - id: R09_the_post_failure_share_as_a_discriminant
+    statement: The post-failure entry share classifies the entry channel on its own.
+    reason: Out of sample it calls inactive cells active (6 in N05), and data cannot observe the time
+      of the first public failure.
+    evidence:
+    - source: observable_discriminant
+      pointer: registered_result_disposition/post_failure_entry_share/separates_in_this_study
+      equals: DOES_NOT_SEPARATE
+  - id: R10_the_persistence_drop_as_a_learning_specific_sign
+    statement: A small cohort-persistence drop shows that learning acts on entry.
+    reason: Without learning, the fixed rule passes the drop threshold in 8 of 24 N09 cells.
+    evidence:
+    - source: observable_one_sided
+      pointer: registered_result_disposition/no_learning_control_by_observable/cohort_persistence_drop
+      equals: false
+  - id: R11_only_weak_channels_are_missed
+    statement: The observables miss only weak channels (a post-hoc reading of N08).
+    reason: N09 misses a cell with two passing family-geometry pairs.
+    evidence:
+    - source: observable_one_sided
+      pointer: post_hoc_descriptive/missed_cells_passing_pairs/hazard_q0p15~1failure_lag_4
+      equals: 2
+  open:
+  - id: O17_empirical_persistence_definition_and_threshold_transfer
+    question: How should persistence and its horizon be defined in OpenAlex so that the model-scale threshold
+      of the outcome selection trend transfers?
+    kind: EMPIRICAL
+    priority: 1
+  - id: O18_empirical_source_choice
+    question: Finish the 2026-06-26 snapshot (35 GB left) or amend the lean H3 design to use the local
+      2026-03-30 snapshot and its G1 derived tables, excluding 2013-2016 G1 episodes and 2020-2022 G4?
+    kind: EMPIRICAL
+    priority: 1
+    motivation: USER_DECISION_PENDING_SINCE_2026_10_07
+  - id: O19_sensitivity_of_the_one_sided_indicator
+    question: What lowers sensitivity below 85%, and can a registered indicator catch the missed channels
+      without false actives?
+    kind: SYNTHETIC
+    priority: 3
+status_updates:
+- id: O08_post_failure_entry_share_as_the_t01_discriminant
+  previous: OPEN_PRIORITY_1
+  status: ANSWERED_REPLACED_BY_THE_OUTCOME_SELECTION_TREND
+  answered_by:
+  - C38_the_post_failure_share_is_near_necessary_not_sufficient
+  - C42_the_outcome_selection_trend_is_the_empirical_indicator
+- id: O14_decision_making_llm_agents
+  previous: OPEN_PRIORITY_3
+  status: ANSWERED_FOR_THIS_DESIGN
+  answered_by:
+  - C36_nabm_matches_a_persona_llm_agent
+  - C37_the_uncalibrated_persona_nearly_seals_itself
+- id: N05
+  previous: PROPOSED
+  status: DONE_AS_AN_OBSERVABLE_SEARCH_WITH_N08_AND_N09
+- id: N07
+  previous: PROPOSED
+  status: DONE
+positioning_update:
+  tier: LLM_AGENT_SIMULATION
+  previous_behavior: MEASURED_IN_THIS_DESIGN_THE_NABM_HYBRID_MATCHES_OR_BEATS_IT_IN_9_OF_9_CELLS
+  behavior: BOTH_THE_FORECASTER_AND_THE_PERSONA_DESIGNS_ARE_MATCHED_OR_BEATEN_BY_THE_NABM_HYBRID_IN_9_OF_9_CELLS
+  evidence:
+  - source: persona_agent
+    pointer: framework_assessment/positioning
+    equals: BOTH_COMMON_LLM_AGENT_DESIGNS_FORECASTER_AND_PERSONA_ARE_MATCHED_OR_BEATEN_BY_THE_NABM_HYBRID_IN_9_OF_9_CELLS
+empirical_target:
+  id: T01_revised
+  observable: RANK_CORRELATION_BETWEEN_ENTRY_TIME_AND_INDIVIDUAL_PERSISTENCE_WITHIN_A_PIVOT_EPISODE
+  reading: ONE_SIDED_A_CLEARLY_POSITIVE_CORRELATION_INDICATES_THAT_LEARNING_CHANGES_WHO_ENTERS_ITS_ABSENCE_IS_NOT_EVIDENCE_AGAINST
+  replaces: THE_DELAY_RATIO_AND_THE_POST_FAILURE_ENTRY_SHARE
+  h3_link: A_LATER_COHORT_PERSISTENCE_DECLINE_IS_THE_NO_LEARNING_DEFAULT_IN_THESE_WORLDS
+  requirements:
+  - O17_PERSISTENCE_DEFINITION_AND_HORIZON_FIXED
+  - O18_SOURCE_DECIDED
+  - AN_EMPIRICAL_PREREGISTRATION_FREEZING_EPISODES_YEARS_AND_THE_INDICATOR_BEFORE_ROWS_ARE_READ
+  evidence:
+  - source: observable_one_sided
+    pointer: framework_assessment/empirical_target
+    equals: THE_RANK_CORRELATION_BETWEEN_ENTRY_TIME_AND_INDIVIDUAL_PERSISTENCE_WITHIN_A_PIVOT_EPISODE
+next_steps:
+- id: N02
+  kind: OPERATIONAL
+  action: DECIDE_THE_SOURCE_FINISH_THE_2026_06_26_TRANSFER_OR_AMEND_THE_DESIGN_TO_THE_LOCAL_2026_03_30_SNAPSHOT
+  answers: O18_empirical_source_choice
+  authorization: USER_DECISION_REQUIRED
+- id: N10
+  kind: EMPIRICAL_DESIGN
+  action: PREREGISTER_THE_EMPIRICAL_OUTCOME_SELECTION_TREND_EPISODES_YEARS_PERSISTENCE_AND_FAILURE_ACTIONS_BEFORE_ROW_ACCESS
+  answers: O17_empirical_persistence_definition_and_threshold_transfer
+  authorization: SEPARATE_PRECOMMIT_AFTER_N02
+- id: N03
+  kind: EMPIRICAL_METHOD
+  action: H3_SET_ESTIMATOR_SUCCESSOR_ON_A_NEW_DISJOINT_STRESS_GRID
+  authorization: SEPARATE_PRECOMMIT
+- id: N04
+  kind: FRAMEWORK
+  action: DESIGN_THE_SHARED_OUT_OF_SAMPLE_SCORING_CONTRACT_FOR_F03
+  authorization: OPTIONAL
+boundaries:
+  new_execution: NONE
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED

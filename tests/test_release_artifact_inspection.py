@@ -1876,6 +1876,9 @@ def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
         "docs/research/pivot-policy-ladder-consolidation-v3.md",
         "experiments/configs/pivot_policy_ladder_consolidation_v3.yaml",
         "tests/test_pivot_policy_ladder_consolidation_v3.py",
+        "docs/research/pivot-policy-ladder-consolidation-v4.md",
+        "experiments/configs/pivot_policy_ladder_consolidation_v4.yaml",
+        "tests/test_pivot_policy_ladder_consolidation_v4.py",
     }
     assert repository_paths == inspector[
         "PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS"
