@@ -1,0 +1,107 @@
+{
+ "schema_version": "pivot_empirical_outcome_selection_trend_result.v1",
+ "label": "pivot_empirical_outcome_selection_trend_v1_stage_t_20261007",
+ "status": "STAGE_T_THRESHOLD_TRANSFERRED_EMPIRICAL_STAGES_NOT_AUTHORIZED",
+ "precommit": {
+  "commit_sha": "49f5345583e29fc7edc838b697180ee29d8f0921",
+  "contract_path": "experiments/configs/pivot_empirical_outcome_selection_trend_v1.yaml",
+  "contract_sha256": "2bb689b3e4447c6e169b9b41d79081b139592e40aeb55c2ac21cc250a5ffc2d0"
+ },
+ "execution": {
+  "stage": "T",
+  "data": "STORED_SYNTHETIC_RUNS_ONLY",
+  "empirical_rows_read": 0,
+  "first_run": {
+   "output_dir": "/ssd/pivot_empirical_outcome_selection_trend_v1_49f5345_development",
+   "receipt_sha256": "11d991202f29987e29b1f69b61bdb60811aaa02ab9537e51a15cf3e2516408b7"
+  },
+  "deterministic_rerun": {
+   "output_dir": "/ssd/pivot_empirical_outcome_selection_trend_v1_49f5345_reproduction",
+   "receipt_sha256": "11d991202f29987e29b1f69b61bdb60811aaa02ab9537e51a15cf3e2516408b7"
+  },
+  "artifact_sha256": {
+   "transfer.json": "c3e35d9687142fd58b504e6b85492312e1891d63726f0b7699d94a3b443bcfe2",
+   "transfer.md": "bc6bcff797fe6712b7eb836b57d19ca2e70d09a17f3b42a9df938977b11f7015"
+  },
+  "byte_identical": true,
+  "runs_read": {
+   "N05": 4608,
+   "N08": 4608,
+   "N09": 4608
+  },
+  "reconstruction_failures": 0,
+  "geometry": {
+   "first": 3,
+   "horizon": 4,
+   "last": 20,
+   "steps": 24
+  }
+ },
+ "registered_result": {
+  "disposition": "THRESHOLD_TRANSFERRED",
+  "fine_clock_threshold": 0.098417,
+  "coarse_threshold": 0.10563455436952679,
+  "coarse_threshold_cell": "N08:surge_peak8_width2:failure_lag_2",
+  "data_threshold": 0.10563455436952679,
+  "data_threshold_rounded": 0.105635,
+  "maximum_control": -0.03129256921192617,
+  "control_cells_above_threshold": [],
+  "cells": 72,
+  "active_cells": 33,
+  "inactive_cells_with_a_value": 23,
+  "cells_undefined_on_the_coarse_clock": 16,
+  "undefined_cell_statuses": {
+   "ENTRY_SATURATED": 15,
+   "ENTRY_CHANNEL_ABSENT": 1,
+   "ENTRY_CHANNEL_ACTIVE": 0
+  }
+ },
+ "reported_not_decided": {
+  "coarse_sensitivity": 0.36363636363636365,
+  "coarse_active_cells_above_the_data_threshold": 12,
+  "fine_clock_active_cells_above_0_098417": 29,
+  "coarse_separation": -0.12962073094059282,
+  "passing_active_cells": [
+   "N05:peak9_width1p5:failure_lag_1",
+   "N05:peak9_width1p5:failure_lag_2",
+   "N05:peak9_width1p5:immediate",
+   "N05:peak9_width3p0:failure_lag_1",
+   "N08:hazard_q0p35:failure_lag_1",
+   "N08:hazard_q0p35:failure_lag_2",
+   "N08:hazard_q0p35:immediate",
+   "N08:surge_peak8_width2:failure_lag_1",
+   "N08:surge_peak8_width2:immediate",
+   "N09:hazard_q0p15:failure_lag_1",
+   "N09:hazard_q0p15:failure_lag_2",
+   "N09:hazard_q0p15:immediate"
+  ]
+ },
+ "post_hoc_descriptive": {
+  "reading": "COARSENING_TO_THREE_ENTRY_LEVELS_REMOVES_MOST_OF_THE_SIGNAL_WHEN_ENTRY_IS_CONCENTRATED_EARLY_THE_PASSING_ACTIVE_CELLS_ARE_LOW_HAZARD_OR_LATE_PEAK_CLOCKS",
+  "undefined_cells": "SATURATED_ENTRY_FALLS_INTO_ONE_BIN_SO_THE_STATISTIC_IS_UNDEFINED_THE_SAME_WOULD_INVALIDATE_SUCH_AN_EMPIRICAL_EPISODE",
+  "in_sample_threshold": "THE_COARSE_THRESHOLD_IS_THE_MAXIMUM_INACTIVE_VALUE_SO_ZERO_SYNTHETIC_FALSE_ACTIVES_HOLD_BY_CONSTRUCTION_NOT_OUT_OF_SAMPLE"
+ },
+ "implications": {
+  "for_s3": "A_POSITIVE_EMPIRICAL_READING_REMAINS_A_SIGN_BUT_NOT_POSITIVE_IS_EVEN_LESS_INFORMATIVE_THAN_REGISTERED_SENSITIVITY_ON_THIS_CLOCK_IS_ABOUT_ONE_THIRD",
+  "design_option": "A_FINER_EMPIRICAL_ENTRY_CLOCK_SUCH_AS_PUBLICATION_DATE_QUARTERS_WOULD_NEED_A_NEW_VERSIONED_PRECOMMIT_BEFORE_ANY_EMPIRICAL_ROW_IS_READ"
+ },
+ "authorization": {
+  "S1": "NOT_AUTHORIZED",
+  "S2": "NOT_AUTHORIZED",
+  "S3": "NOT_AUTHORIZED",
+  "source_row_decode": "NOT_AUTHORIZED"
+ },
+ "boundaries": {
+  "current_g1_or_model_selection_access": "NOT_AUTHORIZED",
+  "empirical_rows_read": 0,
+  "g4_open": false,
+  "generic_nabm_api_changed": false,
+  "model_fitting": "NOT_AUTHORIZED",
+  "model_selected": "NO",
+  "package_promotion": "NOT_AUTHORIZED",
+  "repository_only": true,
+  "scientific_effect": "NOT_ESTABLISHED",
+  "source_row_decode": "NOT_AUTHORIZED",
+  "transform_or_materialization": "NOT_AUTHORIZED"
+ }
+}
