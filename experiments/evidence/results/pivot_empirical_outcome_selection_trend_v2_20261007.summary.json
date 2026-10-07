@@ -1,0 +1,92 @@
+{
+ "schema_version": "pivot_empirical_outcome_selection_trend_result.v2",
+ "label": "pivot_empirical_outcome_selection_trend_v2_stage_t_20261007",
+ "status": "STAGE_T_THRESHOLD_TRANSFERRED_ON_TWELVE_LEVELS_EMPIRICAL_STAGES_NOT_AUTHORIZED",
+ "precommit": {
+  "commit_sha": "58c87f4bf86b84bc756b9c406400b7ba66d732c7",
+  "contract_path": "experiments/configs/pivot_empirical_outcome_selection_trend_v2.yaml",
+  "contract_sha256": "58ad600273b370380cf7f9d4efee49f6a85425dd343b3e02b34d84bb5ff6e8a6",
+  "amends": "49f5345",
+  "result_informed_successor": true
+ },
+ "execution": {
+  "stage": "T",
+  "data": "STORED_SYNTHETIC_RUNS_ONLY",
+  "empirical_rows_read": 0,
+  "empirical_entry_levels": 12,
+  "first_run": {
+   "output_dir": "/ssd/pivot_empirical_outcome_selection_trend_v2_58c87f4_development",
+   "receipt_sha256": "5c46c2c497d0730bed2fe3c870530e3c954a493a32fb567c2e7b4f4184fbb739"
+  },
+  "deterministic_rerun": {
+   "output_dir": "/ssd/pivot_empirical_outcome_selection_trend_v2_58c87f4_reproduction",
+   "receipt_sha256": "5c46c2c497d0730bed2fe3c870530e3c954a493a32fb567c2e7b4f4184fbb739"
+  },
+  "artifact_sha256": {
+   "transfer.json": "c26480f55daf3c828191655d8cad0b1c83e6967aa77b7d83fffe717cb70af476",
+   "transfer.md": "5ac03c84f4f0faae5d4abc9bcb371b8a268b5788a2139992f6fdd9f3acc4b156"
+  },
+  "byte_identical": true,
+  "runs_read": {
+   "N05": 4608,
+   "N08": 4608,
+   "N09": 4608
+  },
+  "reconstruction_failures": 0
+ },
+ "registered_result": {
+  "disposition": "THRESHOLD_TRANSFERRED",
+  "fine_clock_threshold": 0.098417,
+  "coarse_threshold": 0.09184424405021176,
+  "coarse_threshold_cell": "N08:surge_peak8_width2:failure_lag_2",
+  "data_threshold": 0.098417,
+  "data_threshold_source": "FINE_CLOCK_THRESHOLD_THE_TWELVE_LEVEL_INACTIVE_MAXIMUM_IS_LOWER",
+  "maximum_control": -0.05112154820606052,
+  "control_cells_above_threshold": [],
+  "cells": 72,
+  "active_cells": 33,
+  "inactive_cells_with_a_value": 39,
+  "cells_undefined_on_the_twelve_level_clock": 0
+ },
+ "reported_not_decided": {
+  "twelve_level_sensitivity": 0.8787878787878788,
+  "twelve_level_active_cells_above_the_data_threshold": 29,
+  "v1_three_level_active_cells_above_its_threshold": 12,
+  "fine_clock_active_cells_above_0_098417": 29,
+  "twelve_level_separation": -0.24422120162883215,
+  "missed_active_cells": [
+   "N05:peak3_width3p0:immediate",
+   "N08:hazard_q0p35:failure_lag_2",
+   "N09:hazard_q0p15:failure_lag_4",
+   "N09:hazard_q0p45:failure_lag_1"
+  ]
+ },
+ "post_hoc_descriptive": {
+  "reading": "TWELVE_LEVELS_RESTORE_THE_FINE_CLOCK_SENSITIVITY_THE_THRESHOLD_IS_THE_OUT_OF_SAMPLE_CONFIRMED_FINE_CLOCK_ONE",
+  "missed_cells": "THE_MISSES_INCLUDE_N09_HAZARD_0_15_FAILURE_LAG_4_THE_WEAK_CHANNEL_N09_ALSO_MISSED"
+ },
+ "empirical_caveats_not_tested_here": [
+  "THE_SHARE_OF_JANUARY_1_ENTRY_DATES_IS_UNKNOWN_UNTIL_S1",
+  "REAL_QUARTER_RESOLUTION_DEPENDS_ON_PUBLICATION_DATE_ACCURACY",
+  "PERSISTENCE_SEMANTICS_DIFFER_FROM_THE_SYNTHETIC_NOT_EXITED_DEFINITION"
+ ],
+ "authorization": {
+  "S1": "NOT_AUTHORIZED",
+  "S2": "NOT_AUTHORIZED",
+  "S3": "NOT_AUTHORIZED",
+  "source_row_decode": "NOT_AUTHORIZED"
+ },
+ "boundaries": {
+  "current_g1_or_model_selection_access": "NOT_AUTHORIZED",
+  "empirical_rows_read": 0,
+  "g4_open": false,
+  "generic_nabm_api_changed": false,
+  "model_fitting": "NOT_AUTHORIZED",
+  "model_selected": "NO",
+  "package_promotion": "NOT_AUTHORIZED",
+  "repository_only": true,
+  "scientific_effect": "NOT_ESTABLISHED",
+  "source_row_decode": "NOT_AUTHORIZED",
+  "transform_or_materialization": "NOT_AUTHORIZED"
+ }
+}
