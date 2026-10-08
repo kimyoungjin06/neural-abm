@@ -199,8 +199,8 @@ Its v2 amendment moves the empirical entry clock to publication-date quarters
 and reruns the transfer. It has the same boundary.
 Its S1 structural builder reads column-limited Works rows under a separate
 committed authorization and writes private outputs only. It has the same
-repository-only boundary. Its model-ladder recovery study (N11a) is synthetic and
-has the same boundary.
+repository-only boundary. Its model-ladder recovery studies (N11a and its v2) are
+synthetic and have the same boundary.
 
 The local-LLM prior pilot is repository-only. It elicits a prior once from a
 pinned local Qwen model and evaluates it in the Pivot ABM. Its contract, runner,

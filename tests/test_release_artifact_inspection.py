@@ -1930,6 +1930,10 @@ def test_release_inspector_rejects_relative_delay_cost_paths() -> None:
         "experiments/configs/pivot_empirical_ladder_recovery_v1.yaml",
         "scripts/prototype_pivot_empirical_ladder_recovery_v1.py",
         "tests/test_pivot_empirical_ladder_recovery_v1.py",
+        "docs/research/pivot-empirical-ladder-recovery-v2.md",
+        "experiments/configs/pivot_empirical_ladder_recovery_v2.yaml",
+        "scripts/prototype_pivot_empirical_ladder_recovery_v2.py",
+        "tests/test_pivot_empirical_ladder_recovery_v2.py",
     }
     assert repository_paths == inspector[
         "PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS"
