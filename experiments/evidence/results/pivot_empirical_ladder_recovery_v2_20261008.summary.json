@@ -1,0 +1,189 @@
+{
+ "schema_version": "pivot_empirical_ladder_recovery_result.v2",
+ "label": "pivot_empirical_ladder_recovery_v2_20261008",
+ "status": "IDENTIFICATION_PASSES_LEARNING_SEPARATED_FROM_ANTICIPATION",
+ "precommit": {
+  "commit_sha": "0cbe5f24db2ffed37f633a1716be24cd2deafed6",
+  "amends": "af43b16",
+  "contract": "experiments/configs/pivot_empirical_ladder_recovery_v2.yaml",
+  "contract_sha256": "9d4ea4b20ec6e2f6d146c7663dfc23236134d5a4a79405a3e93bb5f1fd6b9a8d",
+  "result_informed_successor": true
+ },
+ "execution": {
+  "profile": "development",
+  "tasks": 64,
+  "replicates_per_world": 8,
+  "seed": 20261102,
+  "first_run": {
+   "output_dir": "/ssd/pivot_empirical_ladder_recovery_v2_0cbe5f2_development",
+   "receipt_sha256": "88a5a4532c278c772ae53d033c488393411906e0fd4b37ddd09afdd731f9caaa"
+  },
+  "deterministic_rerun": {
+   "output_dir": "/ssd/pivot_empirical_ladder_recovery_v2_0cbe5f2_reproduction",
+   "receipt_sha256": "88a5a4532c278c772ae53d033c488393411906e0fd4b37ddd09afdd731f9caaa"
+  },
+  "byte_identical": true,
+  "minutes_per_run": 6
+ },
+ "registered_result": {
+  "disposition": "IDENTIFICATION_PASSES",
+  "worlds": {
+   "W1_learning": {
+    "role": "MUST_RECOVER",
+    "nabm_wins": 8,
+    "replicates": 8,
+    "meets_role": true,
+    "beats_best_non_learning": 8,
+    "beats_b2": 8,
+    "beats_anticipatory": 8,
+    "median_ll_difference_vs_anticipatory": 38.0983,
+    "median_ll_difference_vs_b2": 50.9126,
+    "median_learned_coefficient": 1.0028,
+    "median_anticipatory_coefficient": 0.4006,
+    "best_non_learning": [
+     "B7_anticipatory"
+    ],
+    "sign_test_positive": 0
+   },
+   "W1w_weak_learning": {
+    "role": "REPORTED_POWER",
+    "nabm_wins": 8,
+    "replicates": 8,
+    "meets_role": null,
+    "beats_best_non_learning": 8,
+    "beats_b2": 8,
+    "beats_anticipatory": 8,
+    "median_ll_difference_vs_anticipatory": 8.8443,
+    "median_ll_difference_vs_b2": 11.355,
+    "median_learned_coefficient": 0.4978,
+    "median_anticipatory_coefficient": 0.1977,
+    "best_non_learning": [
+     "B7_anticipatory"
+    ],
+    "sign_test_positive": 0
+   },
+   "W2_learning_confounded": {
+    "role": "MUST_RECOVER",
+    "nabm_wins": 8,
+    "replicates": 8,
+    "meets_role": true,
+    "beats_best_non_learning": 8,
+    "beats_b2": 8,
+    "beats_anticipatory": 8,
+    "median_ll_difference_vs_anticipatory": 34.7346,
+    "median_ll_difference_vs_b2": 43.4286,
+    "median_learned_coefficient": 1.0103,
+    "median_anticipatory_coefficient": 0.3964,
+    "best_non_learning": [
+     "B7_anticipatory"
+    ],
+    "sign_test_positive": 8
+   },
+   "W3_static": {
+    "role": "MUST_NOT_FALSE_RECOVER",
+    "nabm_wins": 1,
+    "replicates": 8,
+    "meets_role": true,
+    "beats_best_non_learning": 3,
+    "beats_b2": 1,
+    "beats_anticipatory": 1,
+    "median_ll_difference_vs_anticipatory": -0.0713,
+    "median_ll_difference_vs_b2": -0.0746,
+    "median_learned_coefficient": -0.0231,
+    "median_anticipatory_coefficient": -0.0021,
+    "best_non_learning": [
+     "B2t",
+     "B3"
+    ],
+    "sign_test_positive": 0
+   },
+   "W4_static_confounded": {
+    "role": "MUST_NOT_FALSE_RECOVER",
+    "nabm_wins": 0,
+    "replicates": 8,
+    "meets_role": true,
+    "beats_best_non_learning": 5,
+    "beats_b2": 0,
+    "beats_anticipatory": 1,
+    "median_ll_difference_vs_anticipatory": -0.012,
+    "median_ll_difference_vs_b2": -0.0352,
+    "median_learned_coefficient": -0.0055,
+    "median_anticipatory_coefficient": -0.0081,
+    "best_non_learning": [
+     "B2t"
+    ],
+    "sign_test_positive": 0
+   },
+   "W5_static_independent_drift": {
+    "role": "MUST_NOT_FALSE_RECOVER",
+    "nabm_wins": 0,
+    "replicates": 8,
+    "meets_role": true,
+    "beats_best_non_learning": 0,
+    "beats_b2": 1,
+    "beats_anticipatory": 1,
+    "median_ll_difference_vs_anticipatory": 0.0678,
+    "median_ll_difference_vs_b2": -0.0322,
+    "median_learned_coefficient": 0.0185,
+    "median_anticipatory_coefficient": 0.0035,
+    "best_non_learning": [
+     "B2t"
+    ],
+    "sign_test_positive": 0
+   },
+   "W6_static_aligned_drift": {
+    "role": "MUST_NOT_FALSE_RECOVER",
+    "nabm_wins": 0,
+    "replicates": 8,
+    "meets_role": true,
+    "beats_best_non_learning": 0,
+    "beats_b2": 8,
+    "beats_anticipatory": 0,
+    "median_ll_difference_vs_anticipatory": -1.2107,
+    "median_ll_difference_vs_b2": 4.6035,
+    "median_learned_coefficient": 0.3208,
+    "median_anticipatory_coefficient": 0.2844,
+    "best_non_learning": [
+     "B7_anticipatory"
+    ],
+    "sign_test_positive": 0
+   },
+   "W7_learning_with_anticipation": {
+    "role": "REPORTED_BOTH_MECHANISMS",
+    "nabm_wins": 8,
+    "replicates": 8,
+    "meets_role": null,
+    "beats_best_non_learning": 8,
+    "beats_b2": 8,
+    "beats_anticipatory": 8,
+    "median_ll_difference_vs_anticipatory": 45.3938,
+    "median_ll_difference_vs_b2": 83.5857,
+    "median_learned_coefficient": 1.2624,
+    "median_anticipatory_coefficient": 0.6678,
+    "best_non_learning": [
+     "B7_anticipatory"
+    ],
+    "sign_test_positive": 3
+   }
+  }
+ },
+ "reading": {
+  "anticipation": "W6_NOW_0_OF_8_NABM_BEATS_B2_IN_8_BUT_LOSES_TO_B7_IN_EVERY_REPLICATE_THE_V1_LIMIT_IS_RESOLVED",
+  "learning": "LEARNING_BEATS_THE_ANTICIPATORY_COMPETITOR_IN_EVERY_LEARNING_REPLICATE_INCLUDING_WEAK_LEARNING_AND_LEARNING_WITH_ANTICIPATION",
+  "rule": "IN_W4_NABM_BEAT_THE_CHOSEN_OVERFIT_B2T_IN_5_OF_8_REPLICATES_THE_REQUIRED_WINS_OVER_B2_AND_B7_PREVENTED_EVERY_FALSE_WIN",
+  "w3": "ONE_MARGINAL_W3_WIN_AS_IN_V1_WITHIN_THE_REGISTERED_LIMIT"
+ },
+ "claim_for_data": "A_LADDER_WIN_IN_DATA_WOULD_MEAN_ENTRY_SELECTIVITY_FOLLOWED_THE_SUCCESS_RELATION_REVEALED_BY_VISIBLE_EVIDENCE_AT_THE_TIME_IT_BECAME_VISIBLE_BEYOND_STATIC_SELECTION_OUTCOME_INDEPENDENT_DRIFT_GROWTH_LINKAGE_AND_ANTICIPATION_OF_THE_EVENTUAL_RELATION",
+ "next": {
+  "N11b": "RISK_SETS_AND_PRE_ENTRY_FEATURES_FROM_THE_S1_EXTRACT_NEEDS_AUTHORIZATION_NO_OUTCOMES"
+ },
+ "boundaries": {
+  "empirical_outcome_rows_read": 0,
+  "empirical_rows_read": 0,
+  "generic_nabm_api_changed": false,
+  "model_selected_for_data": "NO",
+  "package_promotion": "NOT_AUTHORIZED",
+  "repository_only": true,
+  "scientific_effect": "NOT_ESTABLISHED"
+ }
+}
