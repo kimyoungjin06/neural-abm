@@ -1,0 +1,205 @@
+{
+ "schema_version": "pivot_empirical_ladder_recovery_result.v1",
+ "label": "pivot_empirical_ladder_recovery_v1_20261008",
+ "status": "IDENTIFICATION_PASSES_WITH_A_REGISTERED_ANTICIPATION_LIMIT",
+ "precommit": {
+  "commit_sha": "af43b16722be63fb128614975614c387fab674f2",
+  "contract": "experiments/configs/pivot_empirical_ladder_recovery_v1.yaml",
+  "contract_sha256": "021030c12d7160c563cc3a1659c95b56ecc2829bc10d250d15007951b73dc122"
+ },
+ "execution": {
+  "profile": "development",
+  "tasks": 56,
+  "replicates_per_world": 8,
+  "first_run": {
+   "output_dir": "/ssd/pivot_empirical_ladder_recovery_v1_af43b16_development",
+   "receipt_sha256": "4947249b9bda466c0d5209e2e89785b997dff6b350f36cb270a36fe9b1ab387d"
+  },
+  "deterministic_rerun": {
+   "output_dir": "/ssd/pivot_empirical_ladder_recovery_v1_af43b16_reproduction",
+   "receipt_sha256": "4947249b9bda466c0d5209e2e89785b997dff6b350f36cb270a36fe9b1ab387d"
+  },
+  "artifact_sha256": {
+   "results.jsonl": "0722183a0564582f90a3a58ccc0319deebbda68edf049af5766bfce412e5d3a5",
+   "scorecard.json": "5b0d14fa0d3faf11359fb87b03293b4ece5abed558e8d0621f2ca0d54ed70cf2",
+   "scorecard.md": "fb5306c35d3b31ff3665a4edb373b7920844a7185fad74abbbe36889ef329b6e"
+  },
+  "byte_identical": true,
+  "minutes_per_run": 4
+ },
+ "registered_result": {
+  "disposition": "IDENTIFICATION_PASSES",
+  "worlds": {
+   "W1_learning": {
+    "best_nabm": [
+     "B4_linear"
+    ],
+    "best_non_learning": [
+     "B3"
+    ],
+    "median_ll_difference": 43.86260158667295,
+    "meets_role": true,
+    "nabm_wins": 8,
+    "replicates": 8,
+    "role": "MUST_RECOVER",
+    "sign_test_positive": 0,
+    "median_ll_difference_vs_best_non_learning": 43.8626,
+    "median_ll_difference_vs_b2": 47.7977,
+    "median_learned_coefficient": 1.0049,
+    "median_sign_statistic": 0.0725,
+    "median_entrants_per_episode": 211.0
+   },
+   "W1w_weak_learning": {
+    "best_nabm": [
+     "B4_linear"
+    ],
+    "best_non_learning": [
+     "B2t",
+     "B3"
+    ],
+    "median_ll_difference": 10.913930003681802,
+    "meets_role": null,
+    "nabm_wins": 8,
+    "replicates": 8,
+    "role": "REPORTED_POWER",
+    "sign_test_positive": 0,
+    "median_ll_difference_vs_best_non_learning": 10.9139,
+    "median_ll_difference_vs_b2": 11.3422,
+    "median_learned_coefficient": 0.4977,
+    "median_sign_statistic": 0.03,
+    "median_entrants_per_episode": 187.0
+   },
+   "W2_learning_confounded": {
+    "best_nabm": [
+     "B4_linear"
+    ],
+    "best_non_learning": [
+     "B3"
+    ],
+    "median_ll_difference": 38.747165446217494,
+    "meets_role": true,
+    "nabm_wins": 8,
+    "replicates": 8,
+    "role": "MUST_RECOVER",
+    "sign_test_positive": 8,
+    "median_ll_difference_vs_best_non_learning": 38.7472,
+    "median_ll_difference_vs_b2": 43.2975,
+    "median_learned_coefficient": 0.9979,
+    "median_sign_statistic": 0.1472,
+    "median_entrants_per_episode": 206.0
+   },
+   "W3_static": {
+    "best_nabm": [
+     "B4_linear",
+     "B5_tree",
+     "B6_mlp"
+    ],
+    "best_non_learning": [
+     "B2t"
+    ],
+    "median_ll_difference": 0.21686438236093322,
+    "meets_role": true,
+    "nabm_wins": 1,
+    "replicates": 8,
+    "role": "MUST_NOT_FALSE_RECOVER",
+    "sign_test_positive": 0,
+    "median_ll_difference_vs_best_non_learning": 0.2169,
+    "median_ll_difference_vs_b2": -0.0164,
+    "median_learned_coefficient": -0.0161,
+    "median_sign_statistic": -0.0213,
+    "median_entrants_per_episode": 176.5
+   },
+   "W4_static_confounded": {
+    "best_nabm": [
+     "B4_linear",
+     "B5_tree",
+     "B6_mlp"
+    ],
+    "best_non_learning": [
+     "B2t"
+    ],
+    "median_ll_difference": 0.086153700772719,
+    "meets_role": true,
+    "nabm_wins": 0,
+    "replicates": 8,
+    "role": "MUST_NOT_FALSE_RECOVER",
+    "sign_test_positive": 0,
+    "median_ll_difference_vs_best_non_learning": 0.0862,
+    "median_ll_difference_vs_b2": -0.012,
+    "median_learned_coefficient": -0.0175,
+    "median_sign_statistic": 0.0818,
+    "median_entrants_per_episode": 175.5
+   },
+   "W5_static_independent_drift": {
+    "best_nabm": [
+     "B4_linear",
+     "B5_tree"
+    ],
+    "best_non_learning": [
+     "B2t"
+    ],
+    "median_ll_difference": -3.326990176858552,
+    "meets_role": true,
+    "nabm_wins": 0,
+    "replicates": 8,
+    "role": "MUST_NOT_FALSE_RECOVER",
+    "sign_test_positive": 0,
+    "median_ll_difference_vs_best_non_learning": -3.327,
+    "median_ll_difference_vs_b2": -0.0361,
+    "median_learned_coefficient": 0.0433,
+    "median_sign_statistic": -0.011,
+    "median_entrants_per_episode": 187.0
+   },
+   "W6_static_aligned_drift": {
+    "best_nabm": [
+     "B4_linear"
+    ],
+    "best_non_learning": [
+     "B2t",
+     "B3"
+    ],
+    "median_ll_difference": 4.938740231228676,
+    "meets_role": null,
+    "nabm_wins": 8,
+    "replicates": 8,
+    "role": "REPORTED_IDENTIFICATION_LIMIT",
+    "sign_test_positive": 0,
+    "median_ll_difference_vs_best_non_learning": 4.9387,
+    "median_ll_difference_vs_b2": 4.8778,
+    "median_learned_coefficient": 0.3368,
+    "median_sign_statistic": 0.0304,
+    "median_entrants_per_episode": 182.5
+   }
+  }
+ },
+ "w3_false_win": [
+  {
+   "replicate": 2,
+   "best_nabm": "B5_tree",
+   "best_non_learning": "B2t",
+   "mean_episode_ll_difference": 0.40169501657971385,
+   "lower_bound": 0.13735189677726165,
+   "mean_episode_ll_difference_vs_b2": 0.03243059868307931,
+   "lower_bound_vs_b2": 0.009000923433912147
+  }
+ ],
+ "reading": {
+  "learning": "THE_LADDER_RECOVERS_LEARNED_SELECTIVITY_IN_EVERY_LEARNING_REPLICATE_AND_ESTIMATES_KAPPA_AT_ITS_TRUE_VALUE_1_0_AND_0_5",
+  "confounds": "GROWTH_LINKAGE_AND_INDEPENDENT_DRIFT_PRODUCE_NO_FALSE_WIN_THE_LEARNED_COEFFICIENT_STAYS_NEAR_ZERO",
+  "identification_limit": "DRIFT_TOWARD_THE_EPISODE_SUCCESS_RELATION_FROM_THE_START_WITHOUT_LEARNING_WINS_8_OF_8_WITH_KAPPA_HAT_0_34_THE_LADDER_CANNOT_YET_SEPARATE_LEARNING_FROM_ANTICIPATORY_SELECTION",
+  "sign_test": "THE_N10_SIGN_TEST_MISSES_PURE_LEARNING_0_OF_8_AND_TURNS_POSITIVE_ONLY_WHEN_GROWTH_IS_ADDED_8_OF_8_IT_RESPONDS_TO_GROWTH_MORE_THAN_TO_LEARNING"
+ },
+ "next": {
+  "N11a_v2": "ADD_AN_ANTICIPATORY_COMPETITOR_THAT_APPLIES_THE_EPISODE_EVENTUAL_SUCCESS_RELATION_FROM_THE_FIRST_QUARTER_LEARNING_PREDICTS_THE_EVIDENCE_TIMED_MODEL_WINS_ANTICIPATION_PREDICTS_THE_REVERSE",
+  "N11b": "RISK_SETS_AND_PRE_ENTRY_FEATURES_FROM_THE_S1_EXTRACT_NEEDS_AUTHORIZATION"
+ },
+ "boundaries": {
+  "empirical_outcome_rows_read": 0,
+  "empirical_rows_read": 0,
+  "generic_nabm_api_changed": false,
+  "model_selected_for_data": "NO",
+  "package_promotion": "NOT_AUTHORIZED",
+  "repository_only": true,
+  "scientific_effect": "NOT_ESTABLISHED"
+ }
+}
