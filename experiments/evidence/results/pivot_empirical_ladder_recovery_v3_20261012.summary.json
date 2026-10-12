@@ -1,0 +1,453 @@
+{
+ "schema_version": "pivot_empirical_ladder_recovery_result.v3",
+ "label": "pivot_empirical_ladder_recovery_v3_20261012",
+ "status": "UNDERPOWERED_AT_THE_EMPIRICAL_SHAPE_NO_FALSE_RECOVERY",
+ "precommit": {
+  "commit_sha": "288062a8df6eb6580659bf79d25ceadcd3d606f4",
+  "amends": "0cbe5f2",
+  "contract": "experiments/configs/pivot_empirical_ladder_recovery_v3.yaml",
+  "contract_sha256": "28477cbc6003ab69a767c31c93eb9dba460f49f783687133635b963883fbe855",
+  "script": "scripts/prototype_pivot_empirical_ladder_recovery_v3.py",
+  "script_sha256": "344dbbbe33dd4214b0cfe62eea1f70b9e287b8e1937f19c79f3c5a700cbb1969",
+  "shape_source": "experiments/evidence/results/pivot_empirical_ladder_risk_sets_v1_20261012.summary.json"
+ },
+ "execution": {
+  "profile": "development",
+  "tasks": 80,
+  "worlds": 10,
+  "replicates_per_world": 8,
+  "seed": 20261103,
+  "workers": 48,
+  "first_run": {
+   "output_dir": "/ssd/pivot_empirical_ladder_recovery_v3_288062a_development",
+   "receipt_sha256": "cd9c689dd359269993b68de214cce730788714fa5b8197fc7409a71f0c886033",
+   "outputs": {
+    "results.jsonl": "51b6a03050b3bfadbc52a0cba8f99d5fec541d49534c5d204f5031b203ad0c3e",
+    "scorecard.json": "faa0c6450946ca8df2792586dbdd32e08d6ff21b0bebf934c80f92693cd78af1",
+    "scorecard.md": "e18b8b5f695fde777c194649f0624641b9d36500c5cdb75d3e67c6efdedd3573"
+   }
+  },
+  "deterministic_rerun": {
+   "output_dir": "/ssd/pivot_empirical_ladder_recovery_v3_288062a_reproduction",
+   "receipt_sha256": "cd9c689dd359269993b68de214cce730788714fa5b8197fc7409a71f0c886033"
+  },
+  "byte_identical": true,
+  "minutes_per_run": {
+   "first_run": 160,
+   "deterministic_rerun": 178
+  }
+ },
+ "registered_result": {
+  "disposition": "UNDERPOWERED_AT_THE_EMPIRICAL_SHAPE",
+  "action": "N11C_AND_N11D_ARE_NOT_PROPOSED_IN_THIS_FORM_THE_REPORTED_POWER_WORLDS_GUIDE_A_REDESIGN_BEFORE_ANY_OUTCOME_ROW",
+  "worlds": {
+   "W1_learning": {
+    "role": "MUST_RECOVER",
+    "kappa": 1.0,
+    "nabm_wins": 1,
+    "replicates": 8,
+    "meets_role": false,
+    "beats_best_non_learning": 2,
+    "beats_b2": 5,
+    "beats_anticipatory": 1,
+    "median_ll_difference_per_episode": {
+     "anticipatory": 1.9136,
+     "b2": 10.6834,
+     "best_non_learning": 1.9136
+    },
+    "median_lower_bound_per_episode": {
+     "best_non_learning": -5.5584,
+     "b2": 4.4254,
+     "anticipatory": -5.462
+    },
+    "median_learned_coefficient": 0.4026,
+    "median_anticipatory_coefficient": 0.3764,
+    "best_nabm": [
+     "B4_linear"
+    ],
+    "best_non_learning": [
+     "B3",
+     "B7_anticipatory"
+    ],
+    "median_entrants_per_episode": 174.5,
+    "median_precise_share": 0.575,
+    "median_recruited_share": 0.0,
+    "median_confirmatory_evidence_pool": {
+     "quarter_11": 58.5,
+     "quarter_5": 6.0,
+     "quarter_8": 40.0
+    },
+    "wins_without_recruitment_censoring": null
+   },
+   "W2_learning_confounded": {
+    "role": "MUST_RECOVER",
+    "kappa": 1.0,
+    "nabm_wins": 3,
+    "replicates": 8,
+    "meets_role": false,
+    "beats_best_non_learning": 4,
+    "beats_b2": 5,
+    "beats_anticipatory": 4,
+    "median_ll_difference_per_episode": {
+     "anticipatory": 8.1807,
+     "b2": 11.365,
+     "best_non_learning": 10.2896
+    },
+    "median_lower_bound_per_episode": {
+     "best_non_learning": -1.4359,
+     "b2": 1.3237,
+     "anticipatory": -0.2412
+    },
+    "median_learned_coefficient": 0.399,
+    "median_anticipatory_coefficient": 0.3863,
+    "best_nabm": [
+     "B4_linear"
+    ],
+    "best_non_learning": [
+     "B2t",
+     "B3",
+     "B7_anticipatory"
+    ],
+    "median_entrants_per_episode": 235.5,
+    "median_precise_share": 0.5764,
+    "median_recruited_share": 0.2782,
+    "median_confirmatory_evidence_pool": {
+     "quarter_11": 69.5,
+     "quarter_5": 6.0,
+     "quarter_8": 45.0
+    },
+    "wins_without_recruitment_censoring": null
+   },
+   "W3_static": {
+    "role": "MUST_NOT_FALSE_RECOVER",
+    "kappa": 0.0,
+    "nabm_wins": 0,
+    "replicates": 8,
+    "meets_role": true,
+    "beats_best_non_learning": 1,
+    "beats_b2": 1,
+    "beats_anticipatory": 3,
+    "median_ll_difference_per_episode": {
+     "anticipatory": 1.1901,
+     "b2": -0.0511,
+     "best_non_learning": -4.1304
+    },
+    "median_lower_bound_per_episode": {
+     "best_non_learning": -11.1062,
+     "b2": -0.7205,
+     "anticipatory": -0.5948
+    },
+    "median_learned_coefficient": 0.0327,
+    "median_anticipatory_coefficient": 0.0655,
+    "best_nabm": [
+     "B4_linear",
+     "B6_mlp"
+    ],
+    "best_non_learning": [
+     "B3"
+    ],
+    "median_entrants_per_episode": 176.0,
+    "median_precise_share": 0.5776,
+    "median_recruited_share": 0.0,
+    "median_confirmatory_evidence_pool": {
+     "quarter_11": 64.0,
+     "quarter_5": 6.0,
+     "quarter_8": 42.0
+    },
+    "wins_without_recruitment_censoring": null
+   },
+   "W4_static_confounded": {
+    "role": "MUST_NOT_FALSE_RECOVER",
+    "kappa": 0.0,
+    "nabm_wins": 0,
+    "replicates": 8,
+    "meets_role": true,
+    "beats_best_non_learning": 0,
+    "beats_b2": 0,
+    "beats_anticipatory": 1,
+    "median_ll_difference_per_episode": {
+     "anticipatory": 0.2635,
+     "b2": -0.044,
+     "best_non_learning": -7.2525
+    },
+    "median_lower_bound_per_episode": {
+     "best_non_learning": -12.7252,
+     "b2": -0.561,
+     "anticipatory": -0.5474
+    },
+    "median_learned_coefficient": -0.0009,
+    "median_anticipatory_coefficient": 0.0091,
+    "best_nabm": [
+     "B4_linear",
+     "B5_tree",
+     "B6_mlp"
+    ],
+    "best_non_learning": [
+     "B3"
+    ],
+    "median_entrants_per_episode": 176.0,
+    "median_precise_share": 0.5748,
+    "median_recruited_share": 0.0,
+    "median_confirmatory_evidence_pool": {
+     "quarter_11": 61.5,
+     "quarter_5": 6.0,
+     "quarter_8": 41.5
+    },
+    "wins_without_recruitment_censoring": null
+   },
+   "W5_static_independent_drift": {
+    "role": "MUST_NOT_FALSE_RECOVER",
+    "kappa": 0.0,
+    "nabm_wins": 0,
+    "replicates": 8,
+    "meets_role": true,
+    "beats_best_non_learning": 1,
+    "beats_b2": 0,
+    "beats_anticipatory": 3,
+    "median_ll_difference_per_episode": {
+     "anticipatory": 0.1409,
+     "b2": -1.507,
+     "best_non_learning": -8.6387
+    },
+    "median_lower_bound_per_episode": {
+     "best_non_learning": -18.1011,
+     "b2": -3.7091,
+     "anticipatory": -4.3936
+    },
+    "median_learned_coefficient": 0.1155,
+    "median_anticipatory_coefficient": 0.1278,
+    "best_nabm": [
+     "B4_linear",
+     "B5_tree",
+     "B6_mlp"
+    ],
+    "best_non_learning": [
+     "B2t",
+     "B3"
+    ],
+    "median_entrants_per_episode": 175.5,
+    "median_precise_share": 0.5766,
+    "median_recruited_share": 0.0,
+    "median_confirmatory_evidence_pool": {
+     "quarter_11": 63.0,
+     "quarter_5": 6.0,
+     "quarter_8": 43.5
+    },
+    "wins_without_recruitment_censoring": null
+   },
+   "W6_static_aligned_drift": {
+    "role": "MUST_NOT_FALSE_RECOVER",
+    "kappa": 0.0,
+    "nabm_wins": 0,
+    "replicates": 8,
+    "meets_role": true,
+    "beats_best_non_learning": 1,
+    "beats_b2": 4,
+    "beats_anticipatory": 0,
+    "median_ll_difference_per_episode": {
+     "anticipatory": 0.7311,
+     "b2": 6.7756,
+     "best_non_learning": 1.2273
+    },
+    "median_lower_bound_per_episode": {
+     "best_non_learning": -13.4287,
+     "b2": -1.6395,
+     "anticipatory": -13.0108
+    },
+    "median_learned_coefficient": 0.3295,
+    "median_anticipatory_coefficient": 0.4302,
+    "best_nabm": [
+     "B4_linear"
+    ],
+    "best_non_learning": [
+     "B3",
+     "B7_anticipatory"
+    ],
+    "median_entrants_per_episode": 168.5,
+    "median_precise_share": 0.5767,
+    "median_recruited_share": 0.0,
+    "median_confirmatory_evidence_pool": {
+     "quarter_11": 61.0,
+     "quarter_5": 6.0,
+     "quarter_8": 45.5
+    },
+    "wins_without_recruitment_censoring": null
+   },
+   "W8_static_recruitment": {
+    "role": "MUST_NOT_FALSE_RECOVER",
+    "kappa": 0.0,
+    "nabm_wins": 0,
+    "replicates": 8,
+    "meets_role": true,
+    "beats_best_non_learning": 0,
+    "beats_b2": 1,
+    "beats_anticipatory": 2,
+    "median_ll_difference_per_episode": {
+     "anticipatory": 0.1979,
+     "b2": -0.0985,
+     "best_non_learning": -5.4194
+    },
+    "median_lower_bound_per_episode": {
+     "best_non_learning": -11.6055,
+     "b2": -0.657,
+     "anticipatory": -0.6219
+    },
+    "median_learned_coefficient": -0.0024,
+    "median_anticipatory_coefficient": 0.0107,
+    "best_nabm": [
+     "B4_linear",
+     "B5_tree",
+     "B6_mlp"
+    ],
+    "best_non_learning": [
+     "B3"
+    ],
+    "median_entrants_per_episode": 239.0,
+    "median_precise_share": 0.576,
+    "median_recruited_share": 0.2362,
+    "median_confirmatory_evidence_pool": {
+     "quarter_11": 69.5,
+     "quarter_5": 6.0,
+     "quarter_8": 45.0
+    },
+    "wins_without_recruitment_censoring": 0
+   },
+   "W1w_weak_learning": {
+    "role": "REPORTED_POWER",
+    "kappa": 0.5,
+    "nabm_wins": 0,
+    "replicates": 8,
+    "meets_role": null,
+    "beats_best_non_learning": 0,
+    "beats_b2": 4,
+    "beats_anticipatory": 3,
+    "median_ll_difference_per_episode": {
+     "anticipatory": 2.7681,
+     "b2": 3.3054,
+     "best_non_learning": -5.412
+    },
+    "median_lower_bound_per_episode": {
+     "best_non_learning": -15.4546,
+     "b2": -1.7755,
+     "anticipatory": -2.295
+    },
+    "median_learned_coefficient": 0.2437,
+    "median_anticipatory_coefficient": 0.1898,
+    "best_nabm": [
+     "B4_linear"
+    ],
+    "best_non_learning": [
+     "B3",
+     "B7_anticipatory"
+    ],
+    "median_entrants_per_episode": 170.0,
+    "median_precise_share": 0.5746,
+    "median_recruited_share": 0.0,
+    "median_confirmatory_evidence_pool": {
+     "quarter_11": 64.0,
+     "quarter_5": 6.0,
+     "quarter_8": 43.0
+    },
+    "wins_without_recruitment_censoring": null
+   },
+   "W1s_strong_learning": {
+    "role": "REPORTED_POWER",
+    "kappa": 2.0,
+    "nabm_wins": 1,
+    "replicates": 8,
+    "meets_role": null,
+    "beats_best_non_learning": 1,
+    "beats_b2": 2,
+    "beats_anticipatory": 1,
+    "median_ll_difference_per_episode": {
+     "anticipatory": -1.4591,
+     "b2": 12.4983,
+     "best_non_learning": -1.4591
+    },
+    "median_lower_bound_per_episode": {
+     "best_non_learning": -36.2725,
+     "b2": -25.8029,
+     "anticipatory": -36.9185
+    },
+    "median_learned_coefficient": 0.5055,
+    "median_anticipatory_coefficient": 0.7609,
+    "best_nabm": [
+     "B4_linear"
+    ],
+    "best_non_learning": [
+     "B7_anticipatory"
+    ],
+    "median_entrants_per_episode": 166.5,
+    "median_precise_share": 0.5777,
+    "median_recruited_share": 0.0,
+    "median_confirmatory_evidence_pool": {
+     "quarter_11": 60.0,
+     "quarter_5": 6.0,
+     "quarter_8": 44.0
+    },
+    "wins_without_recruitment_censoring": null
+   },
+   "W7_learning_with_anticipation": {
+    "role": "REPORTED",
+    "kappa": 1.0,
+    "nabm_wins": 0,
+    "replicates": 8,
+    "meets_role": null,
+    "beats_best_non_learning": 0,
+    "beats_b2": 5,
+    "beats_anticipatory": 0,
+    "median_ll_difference_per_episode": {
+     "anticipatory": 9.8001,
+     "b2": 20.8806,
+     "best_non_learning": 9.8001
+    },
+    "median_lower_bound_per_episode": {
+     "best_non_learning": -14.3187,
+     "b2": 4.5706,
+     "anticipatory": -14.3667
+    },
+    "median_learned_coefficient": 0.4477,
+    "median_anticipatory_coefficient": 0.7335,
+    "best_nabm": [
+     "B4_linear"
+    ],
+    "best_non_learning": [
+     "B7_anticipatory"
+    ],
+    "median_entrants_per_episode": 164.5,
+    "median_precise_share": 0.5775,
+    "median_recruited_share": 0.0,
+    "median_confirmatory_evidence_pool": {
+     "quarter_11": 59.5,
+     "quarter_5": 6.5,
+     "quarter_8": 41.0
+    },
+    "wins_without_recruitment_censoring": null
+   }
+  }
+ },
+ "reading": {
+  "false_recovery": "NONE_EVERY_NO_LEARNING_WORLD_WON_0_OF_8_INCLUDING_ANTICIPATION_AND_RECRUITMENT",
+  "power": "W1_WON_1_OF_8_AND_W2_3_OF_8_AGAINST_A_REQUIRED_7_OF_8",
+  "binding_rival": "B7_ANTICIPATORY_W1_BEAT_B2_IN_5_OF_8_BUT_B7_IN_1_OF_8_MEDIAN_MARGIN_OVER_B7_FELL_FROM_38_PER_EPISODE_IN_V2_TO_1_9",
+  "collinearity": "IN_W1_THE_LEARNED_AND_ANTICIPATORY_COEFFICIENTS_ARE_0_40_AND_0_38_THE_ANALYST_EVIDENCE_POOL_IS_6_40_AND_58_PRECISE_ENTRANTS_AT_QUARTERS_5_8_AND_11",
+  "strong_learning": "W1S_WON_1_OF_8_ITS_ANTICIPATORY_COEFFICIENT_0_76_EXCEEDS_THE_LEARNED_0_51_AND_ITS_BOUNDS_ARE_WIDE",
+  "recruitment": "W8_WON_0_OF_8_WITH_AND_WITHOUT_COMPETING_RISK_CENSORING_AT_RHO_0_3_ABOUT_A_QUARTER_OF_ENTRANTS_WERE_RECRUITED"
+ },
+ "claim_for_data": "NONE_N11C_AND_N11D_ARE_NOT_PROPOSED_IN_THIS_FORM",
+ "next": {
+  "redesign": "REQUIRED_BEFORE_ANY_OUTCOME_ROW_IS_READ_ITS_FORM_NEEDS_THE_USERS_DECISION",
+  "N11c": "NOT_PROPOSED",
+  "N11d": "NOT_PROPOSED"
+ },
+ "boundaries": {
+  "empirical_outcome_rows_read": 0,
+  "empirical_rows_read": 0,
+  "generic_nabm_api_changed": false,
+  "model_selected_for_data": "NO",
+  "package_promotion": "NOT_AUTHORIZED",
+  "repository_only": true,
+  "scientific_effect": "NOT_ESTABLISHED",
+  "shape_inputs": "N11B_COUNTS_ONLY"
+ }
+}
