@@ -1938,6 +1938,7 @@ def test_release_inspector_rejects_relative_delay_cost_paths() -> None:
         "experiments/configs/pivot_empirical_ladder_risk_sets_v1.yaml",
         "scripts/build_pivot_empirical_ladder_risk_sets_v1.py",
         "tests/test_pivot_empirical_ladder_risk_sets_v1.py",
+        "experiments/configs/pivot_empirical_ladder_risk_sets_authorization_v1.json",
     }
     assert repository_paths == inspector[
         "PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS"

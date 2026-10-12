@@ -1,0 +1,35 @@
+{
+  "schema_version": "pivot_empirical_ladder_risk_sets_authorization.v1",
+  "status": "AUTHORIZED_N11B_RISK_SET_BUILD",
+  "authorized_on": "2026-10-12",
+  "n11b_contract": "experiments/configs/pivot_empirical_ladder_risk_sets_v1.yaml",
+  "n11b_contract_sha256": "4a8e02382dd67a96136162e054ebe92916410e477425335fe8ac113f1eb386fd",
+  "n11b_builder": "scripts/build_pivot_empirical_ladder_risk_sets_v1.py",
+  "n11b_builder_sha256": "a1d5194df3ad2e10f7aa87d180b6cdb5190a32d0d2cd4f9dbc79c8055507dfb9",
+  "builder_commits": {
+    "frozen": "8a375d8"
+  },
+  "human_authorization": {
+    "user_instruction": "좋아 그 순서대로 진행하자",
+    "earlier_instructions": [
+      "좋아 그럼 진행하자",
+      "지금 방향은 맞는거같아?"
+    ],
+    "context": "THE_USER_APPROVED_THE_RECOMMENDED_ORDER_RUN_N11B_AS_DESIGNED_THEN_USE_ITS_COUNTS_TO_DECIDE_AN_EMPIRICAL_SHAPE_RECOVERY_CHECK_BEFORE_N11C_AND_N11D"
+  },
+  "role": "CASE_COHORT_RISK_SET_PANEL_FOR_THE_N11_LADDER_AND_THE_EMPIRICAL_SHAPE_FOR_A_RECOVERY_CHECK",
+  "scope": {
+    "reads": "THE_HASH_BOUND_PRIVATE_S1_EXTRACT_AND_THE_G4_GUARD_AUTHOR_ID_COLUMN",
+    "writes": "PRIVATE_MODE_0700_OUTPUTS_UNDER_SSD_AND_A_COUNTS_ONLY_SUMMARY",
+    "runs": [
+      "development",
+      "reproduction"
+    ],
+    "byte_budget": 21474836480
+  },
+  "outcomes": "NOT_AUTHORIZED",
+  "visible_evidence": "NOT_AUTHORIZED",
+  "model_fitting": "NOT_AUTHORIZED",
+  "n11c_n11d": "NOT_AUTHORIZED",
+  "g4_outcomes": "NOT_AUTHORIZED"
+}
