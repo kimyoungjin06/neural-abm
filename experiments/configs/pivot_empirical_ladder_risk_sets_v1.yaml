@@ -1,0 +1,213 @@
+schema_version: pivot_empirical_ladder_risk_sets.v1
+label: pivot_empirical_ladder_risk_sets_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-12'
+next_step_id: N11b
+purpose: >-
+  The frozen executable contract for stage N11b of the empirical model ladder.
+  It reads the private S1 extract and writes, for every S1 episode, the risk
+  set of field-active authors over the twelve response quarters, a case-cohort
+  sample of it, pre-entry features, coauthor entry exposure, and the shared
+  episode environment. It reads no outcome: no follow-up topic work, no
+  persistence label, and no visible evidence. A run needs a committed user
+  authorization file in addition to this precommit.
+
+source_bindings:
+- path: docs/research/pivot-empirical-model-ladder-design-v1.md
+  sha256: 8340783f5c4eb78158f287739c417bc1d76b9bfd99cb46b3a904311dbe8eb82e
+  role: N11_DESIGN_BRIEF_DATA_UNIT_AND_STAGES
+- path: experiments/evidence/results/pivot_empirical_ladder_recovery_v2_20261008.summary.json
+  sha256: 47269616db01795ff1256ce5d675264133080d726db8a15fd5b840c680d45cce
+  role: N11A_V2_IDENTIFICATION_PASSES_PRECONDITION
+- path: experiments/configs/pivot_empirical_outcome_selection_trend_s1_build_v1.yaml
+  sha256: 7761513822841678433463af19c644b547f7a3db7d6f77c20436313cc655c3b6
+  role: S1_CONTRACT_EXTRACT_ENTRANT_RULES_AND_G4_GUARD_IDENTITY
+- path: scripts/build_pivot_empirical_outcome_selection_trend_s1_v1.py
+  sha256: 67aff468711926d1660313d10f280ebda732c500c50af820a7e82a44d78c09e5
+  role: S1_BUILDER_REUSED_BY_HASH_BOUND_IMPORT
+- path: experiments/evidence/results/pivot_empirical_outcome_selection_trend_s1_20261007.summary.json
+  sha256: d9707946b1f38ac79fa5eca4aec91a6f59e57c33a5385c2afd1033314a795f26
+  role: S1_RECORDED_RESULT_RECEIPT_HASH_AND_BYTE_IDENTITY
+- path: experiments/configs/pivot_empirical_outcome_selection_trend_s1_authorization_v1.json
+  sha256: 0a8791280bc4b90985f440378c5ee47dab23269c022e84ceb19329eccfabf292
+  role: S1_AUTHORIZATION_THAT_PRODUCED_THE_INPUT
+- path: experiments/configs/pivot_empirical_outcome_selection_trend_v2.yaml
+  sha256: 58ad600273b370380cf7f9d4efee49f6a85425dd343b3e02b34d84bb5ff6e8a6
+  role: N10_V2_QUARTER_CLOCK
+
+precondition:
+  n11a_status: IDENTIFICATION_PASSES_LEARNING_SEPARATED_FROM_ANTICIPATION
+  s1_status: S1_PASS_STRUCTURAL_BUILD_REPRODUCED_NO_PERSISTENCE_LABEL
+
+inputs:
+  s1_root: /ssd/pivot_empirical_outcome_selection_trend_s1_13fcf87_development
+  s1_receipt_sha256: 13701d4294152472cf54a7b6ed6e8163e54af77eeb23fbf2d5ba4afdddbf307c
+  files:
+    private/works.parquet: 62dce663ee11b2f65b140f381d886830a4ca835d7fc4f1f8eb2b90d440565693
+    private/authorships.parquet: 7af8d2371bc003e379a7dd5acd235a76030f62d3a42a7eb8d0e7a2c5bbe8326f
+    private/episodes.parquet: d57c792fff297662b81283957fce3210dfc092788f28cd0da47cc8f3f58852c8
+    private/entrants.parquet: 5502c99774605e36db63ca3a4a03fd6e8dd9ab6bf51053d511f09efb277f23ac
+  receipt_binds: [private/episodes.parquet, private/entrants.parquet]
+  extract_files_why: THE_S1_RECEIPT_DOES_NOT_HASH_THE_EXTRACT_SO_IT_IS_BOUND_HERE_AND_WAS_BYTE_IDENTICAL_ACROSS_THE_TWO_S1_RUNS
+  works_columns_read: [work_id, year, date, topic, subfield, field]
+  g4_guard: THE_S1_CONTRACT_GUARD_PATH_HASH_ROWS_AND_COLUMN
+
+clock:
+  quarter_offset: 4_TIMES_YEAR_PLUS_MONTH_MINUS_1_DIV_3_MINUS_4_TIMES_T
+  quarters: 12
+  response_year: QUARTER_DIV_4
+  imprecise_date: JANUARY_1
+  check: THE_SQL_CLOCK_EQUALS_THE_N10_V2_ENTRY_CLOCK_ON_A_DETERMINISTIC_SAMPLE
+
+risk_set:
+  unit: EPISODE_X_AUTHOR_X_RESPONSE_QUARTER
+  eligible_in_response_year_y: AT_LEAST_ONE_EXTRACT_WORK_IN_THE_EPISODE_FIELD_IN_YEARS_Y_MINUS_3_TO_Y_MINUS_1
+  why: THE_S1_PIVOT_ELIGIBILITY_RULE_APPLIED_TO_EVERY_AUTHOR_SO_EVERY_S1_ENTRANT_IS_AT_RISK_IN_ITS_ENTRY_YEAR
+  no_prior_topic_work: THE_FIRST_EPISODE_TOPIC_YEAR_OVER_THE_WHOLE_EXTRACT_IS_NULL_OR_AT_LEAST_Y
+  g4_guard: ANTI_JOIN_EVERY_RISK_SET_AUTHOR_ON_THE_EXACT_NUMERIC_ID_BEFORE_SAMPLING
+  confirmatory_exclusion: AUTHORS_WHO_ARE_S1_ENTRANTS_OF_ANY_DISCOVERY_EPISODE
+  exit:
+    precise_entrant: AFTER_THE_ENTRY_QUARTER
+    imprecise_entrant: AFTER_THE_ENTRY_YEAR
+    ineligible_year: NO_ROWS_IN_THAT_YEAR
+  events:
+    precise: EVENT_1_IN_THE_ENTRY_QUARTER
+    imprecise: EVENT_2_IN_EVERY_QUARTER_OF_THE_ENTRY_YEAR_ENTRY_QUARTER_UNKNOWN
+    why_no_narrower_interval: A_LATER_PRECISE_TOPIC_WORK_IN_THE_ENTRY_YEAR_WOULD_BE_A_FOLLOW_UP_SO_IT_IS_NOT_READ
+    likelihood_for_event_2: REGISTERED_BY_N11C_NOT_HERE
+  episodes: ALL_63_S1_EPISODES_WITH_THE_S1_FLOOR_FLAG_CARRIED
+
+sampling:
+  design: CASE_COHORT_A_RANDOM_SUBCOHORT_PLUS_EVERY_S1_ENTRANT_WITH_ITS_FULL_AT_RISK_HISTORY
+  unit: AUTHOR_WITHIN_EPISODE
+  population_u: DISTINCT_AUTHORS_AT_RISK_IN_AT_LEAST_ONE_RESPONSE_YEAR_AFTER_THE_GUARD_AND_EXCLUSION
+  entrants_e: S1_RETAINED_ENTRANTS_OF_THE_EPISODE
+  probability: MIN_1_MAX_FLOOR_RATIO_TIMES_E_OVER_U
+  floor_authors: 2000
+  ratio_per_entrant: 20
+  draw: SPLITMIX64_OF_AUTHOR_ID_XOR_SPLITMIX64_OF_SALT_PLUS_EPISODE_ID_TOP_53_BITS_OVER_2_POW_53_BELOW_PROBABILITY
+  salt: 20261012
+  salt_opened: NONE
+  independence: THE_DRAW_DEPENDS_ON_THE_AUTHOR_ID_AND_EPISODE_ONLY_NEVER_ON_ENTRY_OR_ANY_FEATURE
+  weights_for_n11c: EVENT_ROWS_1_SUBCOHORT_NON_EVENT_ROWS_1_OVER_PROBABILITY
+  reported: PROBABILITY_SUBCOHORT_SIZE_AND_FULL_RISK_SET_COUNTS_PER_EPISODE
+
+features:
+  window: EXTRACT_WORKS_DATED_IN_CALENDAR_YEARS_Y_MINUS_3_TO_Y_MINUS_1_OF_THE_ROW_RESPONSE_YEAR
+  never_reads: ANY_WORK_DATED_IN_OR_AFTER_THE_ROW_RESPONSE_YEAR
+  stored_as: INTEGER_COUNTS_TRANSFORMS_ARE_REGISTERED_BY_N11C
+  columns:
+    productivity_works: DISTINCT_EPISODE_FIELD_WORKS_IN_THE_WINDOW
+    subfield_works: DISTINCT_EPISODE_FIELD_WORKS_IN_THE_WINDOW_IN_THE_EPISODE_TOPIC_SUBFIELD
+    career_age_years: Y_MINUS_THE_FIRST_EXTRACT_YEAR_OF_THE_AUTHOR_IN_ANY_REGISTERED_FIELD
+    incumbent_coauthors: DISTINCT_COAUTHORS_ON_ANY_WINDOW_WORK_WHOSE_FIRST_EPISODE_TOPIC_YEAR_IS_BEFORE_T
+  limitation: CAREER_AGE_AND_COAUTHOR_TIES_SEE_ONLY_THE_THREE_REGISTERED_FIELDS
+
+exposure:
+  column: coauthor_entries_visible
+  coauthors: THE_SAME_WINDOW_COAUTHORS_AS_INCUMBENT_COAUTHORS
+  counted: DISTINCT_COAUTHORS_WHOSE_FIRST_EPISODE_TOPIC_WORK_FALLS_IN_T_TO_T_PLUS_2_AND_IS_VISIBLE_BY_THE_ROW_QUARTER
+  visible_from:
+    precise_entry: THE_QUARTER_AFTER_THE_ENTRY_QUARTER
+    imprecise_entry: THE_FIRST_QUARTER_OF_THE_FOLLOWING_YEAR
+  sources: EVERY_EXTRACT_AUTHOR_INCLUDING_INELIGIBLE_AND_GUARDED_ENTRANTS
+  reads: ENTRY_DATES_ONLY
+
+environment:
+  unit: EPISODE_X_QUARTER
+  columns:
+    incumbent_works_prev_quarter: PRECISE_DATED_TOPIC_WORKS_IN_QUARTER_Q_MINUS_1_WHOSE_LINKED_AUTHORS_ALL_HAVE_A_FIRST_TOPIC_YEAR_BEFORE_T
+    incumbent_works_prev_year: ALL_SUCH_INCUMBENT_ONLY_TOPIC_WORKS_IN_CALENDAR_YEAR_Y_MINUS_1
+    entries_visible: DISTINCT_AUTHORS_WITH_A_FIRST_TOPIC_WORK_IN_T_TO_T_PLUS_2_VISIBLE_BY_QUARTER_Q
+    at_risk_authors_full: FULL_RISK_SET_SIZE_AT_THE_START_OF_THE_RESPONSE_YEAR
+    field_works_year: EPISODE_FIELD_EXTRACT_WORKS_OUTSIDE_EVERY_EPISODE_TOPIC_IN_CALENDAR_YEAR_Y
+    field_precise_works_year: THOSE_NOT_DATED_JANUARY_1
+  why_outside_every_topic: EPISODE_TOPIC_WORKS_IN_THE_RESPONSE_YEARS_INCLUDE_FOLLOW_UPS_SO_NO_FOLLOW_UP_OF_ANY_EPISODE_ENTERS_THE_PRECISION_COVARIATE
+  incumbent_only_work: AT_LEAST_ONE_LINKED_AUTHOR_AND_THE_LATEST_FIRST_TOPIC_YEAR_AMONG_ITS_AUTHORS_BEFORE_T
+  why_incumbent_only: A_TOPIC_WORK_WITH_AN_EPISODE_ENTRANT_AUTHOR_IS_AN_ENTRY_OR_A_FOLLOW_UP_AND_FOLLOW_UPS_ARE_OUTCOMES
+  contextual_counts_and_the_guard: CONTEXTUAL_COUNTS_USE_EVERY_EXTRACT_AUTHOR_AS_S1_ATTENTION_DID_NO_GUARDED_AUTHOR_IS_A_ROW
+
+outcome_boundary:
+  topic_works_enter_only_as: [PER_AUTHOR_MINIMUM_DATE_PER_EPISODE_TOPIC, INCUMBENT_ONLY_COUNTS]
+  persistence_labels_computed: 0
+  visible_evidence_computed: 0
+  follow_up_counts_computed: 0
+  visible_evidence_stage: N11C
+
+invariants:
+  every_s1_entrant_is_an_event_exactly_once: STOP_INVARIANT_FAILED
+  no_event_outside_the_s1_entrants: STOP_INVARIANT_FAILED
+  risk_set_entrants_equal_the_s1_entrants_per_episode: STOP_INVARIANT_FAILED
+  entry_dates_equal_the_s1_entry_dates: STOP_INVARIANT_FAILED
+  no_guarded_author_in_the_panel: STOP_INVARIANT_FAILED
+  no_discovery_entrant_in_a_confirmatory_panel: STOP_INVARIANT_FAILED
+  no_row_after_exit: STOP_INVARIANT_FAILED
+  every_panel_row_eligible_in_its_response_year: STOP_INVARIANT_FAILED
+  input_identity: STOP_INPUT_DRIFT
+
+disposition:
+  N11B_PASS: EVERY_INVARIANT_HOLDS
+  STOP_INVARIANT_FAILED: OTHERWISE_THE_COUNTS_ARE_REPORTED_AND_NO_PANEL_IS_KEPT
+  STOP_INPUT_DRIFT: AN_INPUT_HASH_OR_PRECONDITION_DIFFERS
+
+capacity:
+  byte_budget: 21474836480
+  safety_reserve_bytes: 53687091200
+  preflight_rule: FREE_BYTES_AT_LEAST_BUDGET_PLUS_RESERVE
+  runtime_rule: OUTPUT_ROOT_BYTES_AT_MOST_BUDGET
+  failure_action: STOP_FAIL_CLOSED_NO_INPUT_TOUCHED
+
+execution:
+  duckdb_threads: 32
+  deterministic_rerun: A_SECOND_FULL_RUN_MUST_REPRODUCE_EVERY_IDENTITY_ARTIFACT_BYTE_FOR_BYTE
+  identity_artifacts: [n11b_summary.json, n11b_receipt.json, private/panel.parquet, private/environment.parquet, private/episodes_sampling.parquet]
+  timing_artifact: n11b_timing.json
+  output_root_pattern: /ssd/pivot_empirical_ladder_risk_sets_v1_{sha7}_{development|reproduction}
+  output_modes: {directory: '0700', file: '0600'}
+
+outputs:
+  public:
+  - n11b_summary.json
+  - n11b_receipt.json
+  private:
+  - private/panel.parquet
+  - private/environment.parquet
+  - private/episodes_sampling.parquet
+  private_ids_repository_forbidden: true
+  summary_contains: COUNTS_AND_POOLED_SUBCOHORT_QUANTILES_ONLY_NO_IDENTIFIERS_NO_ENTRANT_VERSUS_NON_ENTRANT_CONTRAST
+
+authorization:
+  preflight: INPUT_HASHES_GUARD_IDENTITY_AND_CAPACITY_NO_ROW_VALUE
+  run: REQUIRES_A_COMMITTED_AUTHORIZATION_FILE_THAT_NAMES_THIS_CONTRACT_AND_BUILDER_AND_QUOTES_THE_USER
+  authorization_file_schema: pivot_empirical_ladder_risk_sets_authorization.v1
+  authorization_status: AUTHORIZED_N11B_RISK_SET_BUILD
+  outcomes: NOT_AUTHORIZED
+  visible_evidence: NOT_AUTHORIZED
+  model_fitting: NOT_AUTHORIZED
+  n11c_n11d: NOT_AUTHORIZED
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+  - docs/research/pivot-empirical-ladder-risk-sets-v1.md
+  - docs/package-release-boundary.md
+  - experiments/configs/pivot_empirical_ladder_risk_sets_v1.yaml
+  - scripts/build_pivot_empirical_ladder_risk_sets_v1.py
+  - scripts/inspect_release_artifacts.py
+  - tests/test_pivot_empirical_ladder_risk_sets_v1.py
+  - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  source_snapshot_read: 0
+  persistence_labels_computed: 0
+  visible_evidence_computed: 0
+  g4_outcomes_read: 0
+  g4_guard_use: AUTHOR_ID_ANTI_JOIN_ONLY
+  model_fitting: NOT_AUTHORIZED
+  model_selected_for_data: 'NO'
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED

@@ -201,6 +201,9 @@ Its S1 structural builder reads column-limited Works rows under a separate
 committed authorization and writes private outputs only. It has the same
 repository-only boundary. Its model-ladder recovery studies (N11a and its v2) are
 synthetic and have the same boundary.
+Its N11b risk-set builder reads only the private S1 extract, under its own
+committed authorization, and writes private outputs only. It has the same
+boundary.
 
 The local-LLM prior pilot is repository-only. It elicits a prior once from a
 pinned local Qwen model and evaluates it in the Pivot ABM. Its contract, runner,
