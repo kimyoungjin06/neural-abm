@@ -199,8 +199,8 @@ Its v2 amendment moves the empirical entry clock to publication-date quarters
 and reruns the transfer. It has the same boundary.
 Its S1 structural builder reads column-limited Works rows under a separate
 committed authorization and writes private outputs only. It has the same
-repository-only boundary. Its model-ladder recovery studies (N11a and its v2) are
-synthetic and have the same boundary.
+repository-only boundary. Its model-ladder recovery studies (N11a, its v2, and
+its v3 at the N11b shape) are synthetic and have the same boundary.
 Its N11b risk-set builder reads only the private S1 extract, under its own
 committed authorization, and writes private outputs only. It has the same
 boundary.

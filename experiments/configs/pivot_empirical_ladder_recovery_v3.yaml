@@ -1,0 +1,390 @@
+schema_version: pivot_empirical_ladder_recovery.v3
+label: pivot_empirical_ladder_recovery_v3
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-12'
+next_step_id: N11a_v3
+purpose: >-
+  v1 and v2 passed identification in worlds of 600 authors at risk per
+  episode, a third of whom entered. N11b measured the empirical shape, which
+  is far from that: about 680,000 authors at risk per confirmatory episode,
+  about 3 entries per 100,000 per quarter, 42.5% of entry dates known only to
+  the year, sparse count features, and an evidence pool that is small and
+  appears late. Confirmatory outcomes can be read once. v3 therefore reruns
+  the recovery test at the measured shape, with the exact analysis N11c and
+  N11d would apply to data, before any outcome row is read.
+
+amends:
+  contract_v2:
+    path: experiments/configs/pivot_empirical_ladder_recovery_v2.yaml
+    sha256: 9d4ea4b20ec6e2f6d146c7663dfc23236134d5a4a79405a3e93bb5f1fd6b9a8d
+    commit: 0cbe5f2
+  script_v2:
+    path: scripts/prototype_pivot_empirical_ladder_recovery_v2.py
+    sha256: 59cc73f967ecca2ff28fa11b3fa07778b95290a894400414a9d6436a75e10536
+  result_v2:
+    path: experiments/evidence/results/pivot_empirical_ladder_recovery_v2_20261008.summary.json
+    sha256: 47269616db01795ff1256ce5d675264133080d726db8a15fd5b840c680d45cce
+    commit: 886be72
+  changed:
+  - EPISODE_SHAPE_IS_THE_N11B_MEASURED_SHAPE
+  - SPARSE_COUNT_FEATURES_MATCHED_TO_THE_N11B_POOLED_QUANTILES
+  - FLAT_ENTRY_HAZARD_CALIBRATED_PER_EPISODE
+  - IMPRECISE_ENTRY_AND_FOLLOW_UP_DATES
+  - AGENTS_LEARN_FROM_TRUE_OUTCOMES_THE_ANALYST_SEES_ONLY_DATED_RECORDS
+  - CASE_COHORT_SAMPLE_WITH_INVERSE_PROBABILITY_WEIGHTS
+  - RECRUITMENT_CONFOUND_AND_ITS_COMPETING_RISK_CENSORING
+  - THREE_DISPOSITIONS_INCLUDING_UNDERPOWERED
+  - REPORTED_SIGN_TEST_DROPPED
+  - FRESH_SEEDS
+  unchanged:
+  - SUCCESS_FOLLOW_UP_GROWTH_LINKAGE_AND_DRIFT_MECHANISMS
+  - LADDER_MODELS_B1_TO_B7
+  - LEARNERS
+  - THREE_WAY_WIN_RULE
+  - BOOTSTRAP
+  - REPLICATES_AND_ROLE_THRESHOLDS
+  result_informed_successor: true
+
+source_bindings:
+- path: experiments/configs/pivot_empirical_ladder_recovery_v2.yaml
+  sha256: 9d4ea4b20ec6e2f6d146c7663dfc23236134d5a4a79405a3e93bb5f1fd6b9a8d
+  role: AMENDED_V2_CONTRACT
+- path: experiments/configs/pivot_empirical_ladder_recovery_v1.yaml
+  sha256: 021030c12d7160c563cc3a1659c95b56ecc2829bc10d250d15007951b73dc122
+  role: V1_MECHANISMS_CHECKED_AT_LOAD
+- path: scripts/prototype_pivot_empirical_ladder_recovery_v1.py
+  sha256: 3ac85cf8a55c8b8ec695c8543c0cf1a6ad114b0f5b42607dcde73decaa415102
+  role: V1_LEARNERS_DRIFT_LINKAGE_BOOTSTRAP_AND_PRECOMMIT_CHECK_REUSED_UNCHANGED
+- path: experiments/evidence/results/pivot_empirical_ladder_recovery_v2_20261008.summary.json
+  sha256: 47269616db01795ff1256ce5d675264133080d726db8a15fd5b840c680d45cce
+  role: V2_IDENTIFICATION_PASSES_AT_THE_SYNTHETIC_SHAPE
+- path: experiments/evidence/results/pivot_empirical_ladder_risk_sets_v1_20261012.summary.json
+  sha256: e19b041f569b69efe66177247eddf5f31cbd66f7ee6df503e55beb4d5edde134
+  role: N11B_MEASURED_SHAPE_COUNTS_ONLY
+- path: experiments/configs/pivot_empirical_ladder_risk_sets_v1.yaml
+  sha256: 4a8e02382dd67a96136162e054ebe92916410e477425335fe8ac113f1eb386fd
+  role: N11B_RISK_SET_SAMPLING_AND_EVENT_RULES
+- path: docs/research/pivot-empirical-model-ladder-design-v1.md
+  sha256: 8340783f5c4eb78158f287739c417bc1d76b9bfd99cb46b3a904311dbe8eb82e
+  role: N11_DESIGN_BRIEF
+
+episode_shape:
+  source: N11B_PER_EPISODE_AUTHORS_AT_RISK_AND_S1_ENTRANTS_COUNTS_ONLY_NO_IDENTIFIER
+  order: PARTITION_THEN_FIELD_THEN_AUTHORS_AT_RISK
+  columns: [field, at_risk_authors, entrants]
+  discovery:
+  - [11, 680757, 193]
+  - [11, 759507, 171]
+  - [11, 845730, 487]
+  - [11, 848329, 104]
+  - [11, 906378, 290]
+  - [11, 1248309, 705]
+  - [11, 1341165, 1170]
+  - [11, 1345467, 430]
+  - [11, 1444999, 304]
+  - [16, 337340, 11]
+  - [16, 363771, 357]
+  - [16, 392372, 72]
+  - [16, 392477, 154]
+  - [16, 411868, 569]
+  - [16, 465832, 41]
+  - [16, 494246, 898]
+  - [16, 519527, 1922]
+  - [16, 528440, 937]
+  - [16, 549003, 1146]
+  - [32, 311668, 98]
+  - [32, 472639, 23]
+  - [32, 518969, 69]
+  - [32, 573693, 168]
+  - [32, 683540, 99]
+  confirmatory:
+  - [11, 678736, 258]
+  - [11, 680285, 47]
+  - [11, 717404, 346]
+  - [11, 718949, 151]
+  - [11, 719322, 38]
+  - [11, 758284, 94]
+  - [11, 758431, 105]
+  - [11, 758585, 52]
+  - [11, 841115, 337]
+  - [11, 842900, 347]
+  - [11, 843565, 121]
+  - [11, 846087, 33]
+  - [11, 905192, 49]
+  - [11, 972340, 40]
+  - [11, 1048697, 232]
+  - [11, 1144009, 506]
+  - [11, 1146889, 234]
+  - [11, 1335951, 712]
+  - [11, 1440057, 333]
+  - [16, 332305, 829]
+  - [16, 384853, 496]
+  - [16, 486944, 567]
+  - [16, 524123, 525]
+  - [16, 541089, 529]
+  - [16, 545989, 107]
+  - [16, 546016, 231]
+  - [32, 272830, 82]
+  - [32, 273059, 79]
+  - [32, 273180, 25]
+  - [32, 338081, 126]
+  - [32, 363388, 82]
+  - [32, 395548, 25]
+  - [32, 396030, 35]
+  - [32, 518147, 206]
+  - [32, 519327, 10]
+  - [32, 571820, 203]
+  - [32, 571849, 319]
+  - [32, 626372, 80]
+  - [32, 738865, 123]
+  quarters: 12
+  follow_up_quarters_simulated: 24
+  entry_removes_from_risk_set: true
+
+features:
+  order: [productivity, career_age, proximity, network]
+  copula: GAUSSIAN_WITH_EQUAL_CORRELATION
+  copula_correlation: 0.2
+  marginals:
+    productivity: MAX_1_ROUND_EXP_0_115_PLUS_0_951_G
+    career_age: CLIP_1_60_1_PLUS_ROUND_EXP_0_85_PLUS_1_6_G
+    proximity: ZERO_IF_U_BELOW_0_6_ELSE_U_MINUS_0_6_OVER_0_4_TO_THE_1_1
+    network: ZERO_IF_U_BELOW_0_927_ELSE_MAX_1_ROUND_EXP_0_3_PLUS_PROBIT_OF_U_MINUS_0_927_OVER_0_073
+  marginal_parameters:
+    productivity: {mu: 0.115, sigma: 0.951}
+    career_age: {mu: 0.85, sigma: 1.6, max: 60}
+    proximity: {zero_share: 0.6, power: 1.1}
+    network: {zero_share: 0.927, mu: 0.3}
+  matched_to: N11B_POOLED_SUBCOHORT_QUANTILES_MEDIAN_PRODUCTIVITY_1_CAREER_AGE_3_SUBFIELD_SHARE_0_SHARE_WITH_AN_INCUMBENT_COAUTHOR_0_073
+  transform: [LOG1P, LOG1P, IDENTITY, LOG1P]
+  standardization: FIXED_CONSTANTS_FROM_A_REFERENCE_DRAW_OF_1000000_ON_THE_STANDARDIZATION_SEED
+
+mechanisms:
+  entry:
+    logit: A0_E + ATTENTION_Q + BETA . z + DRIFT_Q . z + KAPPA * LEARNED_TERM
+    attention: 0_2_TIMES_QUARTER_OVER_11
+    attention_slope: 0.2
+    why_flat: N11B_PRECISE_ENTRY_HAZARD_IS_FLAT_FROM_2_9_TO_3_6_PER_100000_PER_QUARTER
+    beta: [0.3, -0.2, 0.5, 0.4]
+    level: A0_E_SETS_THE_EXPECTED_ENTRANTS_WITHOUT_LEARNING_OR_DRIFT_TO_THE_EPISODE_ENTRANT_COUNT_UNDER_THE_RARE_EVENT_APPROXIMATION
+    level_neutral_selectivity: DRIFT_AND_LEARNING_TERMS_ARE_SHIFTED_EACH_QUARTER_SO_THE_EXPECTED_ENTRIES_EQUAL_THOSE_OF_THE_STATIC_WORLD
+    why_level_neutral: LEARNING_AND_DRIFT_CHANGE_WHO_ENTERS_NOT_HOW_MANY_SO_EVERY_WORLD_KEEPS_THE_MEASURED_SHAPE
+  success:
+    logit: C0 + W_E . x + GROWTH_TERM
+    c0: -0.6
+    episode_weight_mean: [0.3, 0.0, 0.3, 0.3]
+    episode_weight_sd: 0.8
+    episode_weights: DRAWN_PER_EPISODE_SO_THE_REVEALED_RELATION_DIFFERS_ACROSS_EPISODES
+  follow_up:
+    success_rate_per_quarter: 0.30
+    failure_rate_per_quarter: 0.02
+  growth_confound: SUCCESS_LOGIT_PLUS_1_0_TIMES_ENTRY_QUARTER_OVER_11
+  linkage_confound: EACH_TRUE_FOLLOW_UP_OBSERVED_WITH_PROBABILITY_0_70_PLUS_0_25_TIMES_MIN_QUARTER_23_OVER_23
+  linkage_without_confound: EVERY_TRUE_FOLLOW_UP_OBSERVED
+  independent_drift: BETA_PLUS_0_8_TIMES_QUARTER_OVER_11_TIMES_THE_FIXED_UNIT_DIRECTION_0_5_0_5_MINUS_0_5_0_5
+  aligned_drift: BETA_PLUS_0_8_TIMES_QUARTER_OVER_11_TIMES_THE_UNIT_DIRECTION_OF_THE_EPISODE_WEIGHTS_MINUS_THEIR_MEAN
+  agent_learning:
+    evidence: EVERY_EARLIER_ENTRANT_WITH_ITS_TRUE_EARLY_LABEL_A_TRUE_FOLLOW_UP_IN_THE_FOUR_QUARTERS_AFTER_ENTRY
+    visible_from: ENTRY_QUARTER_PLUS_5
+    minimum_visible_entrants: 10
+    both_classes_required: true
+    learner: LOGISTIC_REGRESSION_L2_C_1
+    term: KAPPA_TIMES_CENTRED_LOGIT_OF_THE_LEARNED_SUCCESS_PREDICTION_OVER_THE_FULL_CURRENT_RISK_SET
+    why_true_outcomes: RESEARCHERS_SEE_PUBLICATIONS_NOT_BIBLIOGRAPHIC_DATE_PRECISION_OR_AUTHOR_LINKAGE
+  recruitment:
+    rule: EACH_TRUE_FOLLOW_UP_IN_A_RESPONSE_QUARTER_RECRUITS_ONE_AT_RISK_AUTHOR_WITH_PROBABILITY_RHO
+    rho: 0.3
+    rho_why: SET_BEFORE_ANY_REGISTERED_SEED_SO_RECRUITED_ENTRANTS_ARE_ABOUT_A_QUARTER_OF_ENTRANTS
+    candidates: 2000
+    choice: AMONG_UNIFORMLY_DRAWN_AT_RISK_CANDIDATES_WITH_WEIGHT_EXP_MINUS_SQUARED_FEATURE_DISTANCE_OVER_2_H_SQUARED
+    bandwidth_h: 0.5
+    recruit_enters: IN_THE_FOLLOW_UP_QUARTER_AS_A_COAUTHOR_OF_THE_FOLLOW_UP
+    why: A_SUCCESSFUL_ENTRANT_PUBLISHES_AGAIN_WITH_SIMILAR_NEW_COAUTHORS_SO_LATER_ENTRANTS_RESEMBLE_SUCCESSFUL_ONES_WITHOUT_LEARNING
+  date_precision:
+    entry_precise_share: 0.575
+    follow_up_precise_share: 0.575
+    imprecise: KNOWN_ONLY_TO_THE_CALENDAR_YEAR
+    independent_of_features_and_time: true
+    why: N11B_IMPRECISE_ENTRANT_SHARE_0_4248_AND_S1_PRECISION_FLAT_WITHIN_EPISODES
+
+analysis:
+  role: THE_PROCEDURE_N11C_AND_N11D_WOULD_APPLY_TO_DATA
+  sampling:
+    probability: MIN_1_MAX_2000_20_TIMES_ENTRANTS_OVER_AUTHORS_AT_RISK
+    subcohort: BERNOULLI_INDEPENDENT_OF_ENTRY_FEATURES_AND_OUTCOMES
+    kept: EVERY_ENTRANT_AND_THE_SUBCOHORT
+    min_subcohort: 2000
+    entrants_multiple: 20
+  weights: ROWS_OF_ENTRANTS_1_ROWS_OF_NON_ENTRANT_SUBCOHORT_AUTHORS_1_OVER_THE_SAMPLING_PROBABILITY
+  events: PRECISE_NOT_RECRUITED_ENTRIES_IN_THEIR_ENTRY_QUARTER
+  censoring:
+    imprecise_entrant: FROM_THE_FIRST_QUARTER_OF_THE_ENTRY_YEAR
+    recruited_precise_entrant: FROM_THE_ENTRY_QUARTER_AS_A_COMPETING_RISK
+    recruited_flag: THE_ENTRY_WORK_HAS_AN_EARLIER_ENTRANT_AS_COAUTHOR
+  evidence:
+    entrants: EVERY_ENTRANT_OF_THE_EPISODE
+    precise_entrant:
+      visible_from: ENTRY_QUARTER_PLUS_5
+      label: A_SEEN_FOLLOW_UP_IN_THE_FOUR_QUARTERS_AFTER_ENTRY_DATED_TO_THE_QUARTER_OR_DATED_TO_A_YEAR_LYING_WHOLLY_IN_THAT_WINDOW
+    imprecise_entrant:
+      visible_from: FIRST_QUARTER_OF_THE_ENTRY_YEAR_PLUS_2
+      label: A_SEEN_FOLLOW_UP_DATED_IN_THE_CALENDAR_YEAR_AFTER_THE_ENTRY_YEAR
+    minimum_visible_entrants: 10
+    both_classes_required: true
+  centring: LEARNED_AND_ANTICIPATORY_TERMS_CENTRED_PER_EPISODE_QUARTER_BY_THE_WEIGHTED_MEAN_OVER_PANEL_ROWS
+  likelihood: WEIGHTED_BERNOULLI_LOG_LIKELIHOOD_OVER_PANEL_ROWS
+
+ladder:
+  rows: CASE_COHORT_AT_RISK_AUTHOR_X_QUARTER_WEIGHTED_BERNOULLI_ENTRY
+  shared_inputs: [attention]
+  models:
+  - B1
+  - B2
+  - B2t
+  - B3
+  - B4_linear
+  - B5_tree
+  - B6_mlp
+  - B7_anticipatory
+  nabm: [B4_linear, B5_tree, B6_mlp]
+  non_learning: [B1, B2, B2t, B3, B7_anticipatory]
+  learned_term_without_enough_evidence: ZERO
+  learners:
+    linear:
+      family: logistic_regression
+      C: 1.0
+    tree:
+      family: gradient_boosting
+      n_estimators: 50
+      max_depth: 2
+      learning_rate: 0.1
+    mlp:
+      family: mlp
+      hidden: 16
+      alpha: 0.01
+      max_iter: 500
+  fit: WEIGHTED_UNPENALIZED_MAXIMUM_LIKELIHOOD_ON_DISCOVERY_EPISODES_ONLY
+  solver: NEWTON_STEPS_WITH_STEP_HALVING_LEAST_SQUARES_STEP_MAX_200_ITERATIONS_TOLERANCE_1E_10
+  selection: THE_BEST_NABM_AND_THE_BEST_NON_LEARNING_MODEL_ARE_CHOSEN_BY_WEIGHTED_DISCOVERY_LOG_LIKELIHOOD
+  anticipatory:
+    learner: LINEAR_LOGISTIC_C_1_FITTED_ON_THE_ANALYST_LABELS_OF_EVERY_ENTRANT_OF_THE_EPISODE
+    applied: FROM_THE_FIRST_QUARTER
+
+worlds:
+- id: W1_learning
+  kappa: 1.0
+  confounds: []
+  role: MUST_RECOVER
+- id: W2_learning_confounded
+  kappa: 1.0
+  confounds: [growth, linkage, recruitment]
+  role: MUST_RECOVER
+- id: W3_static
+  kappa: 0.0
+  confounds: []
+  role: MUST_NOT_FALSE_RECOVER
+- id: W4_static_confounded
+  kappa: 0.0
+  confounds: [growth, linkage]
+  role: MUST_NOT_FALSE_RECOVER
+- id: W5_static_independent_drift
+  kappa: 0.0
+  confounds: [independent_drift]
+  role: MUST_NOT_FALSE_RECOVER
+- id: W6_static_aligned_drift
+  kappa: 0.0
+  confounds: [aligned_drift]
+  role: MUST_NOT_FALSE_RECOVER
+- id: W8_static_recruitment
+  kappa: 0.0
+  confounds: [recruitment]
+  role: MUST_NOT_FALSE_RECOVER
+- id: W1w_weak_learning
+  kappa: 0.5
+  confounds: []
+  role: REPORTED_POWER
+- id: W1s_strong_learning
+  kappa: 2.0
+  confounds: []
+  role: REPORTED_POWER
+- id: W7_learning_with_anticipation
+  kappa: 1.0
+  confounds: [aligned_drift]
+  role: REPORTED
+
+decision:
+  replicate_score: PER_CONFIRMATORY_EPISODE_WEIGHTED_LOG_LIKELIHOOD_OF_THE_CHOSEN_NABM_MINUS_EACH_OF_THE_CHOSEN_NON_LEARNING_MODEL_B2_AND_B7
+  bootstrap:
+    resamples: 2000
+    unit: CONFIRMATORY_EPISODE
+    lower_quantile: 0.05
+  nabm_win: ALL_THREE_DIFFERENCES_HAVE_A_MEAN_ABOVE_ZERO_AND_A_LOWER_BOUND_ABOVE_ZERO
+  replicates: 8
+  must_recover_at_least: 7
+  must_not_false_recover_at_most: 1
+  dispositions:
+    FALSE_RECOVERY_AT_THE_EMPIRICAL_SHAPE: SOME_MUST_NOT_FALSE_RECOVER_WORLD_ABOVE_1
+    UNDERPOWERED_AT_THE_EMPIRICAL_SHAPE: NO_FALSE_RECOVERY_AND_SOME_MUST_RECOVER_WORLD_BELOW_7
+    RECOVERY_PASSES_AT_THE_EMPIRICAL_SHAPE: OTHERWISE
+  actions:
+    FALSE_RECOVERY_AT_THE_EMPIRICAL_SHAPE: N11C_IS_NOT_PROPOSED_IN_THIS_FORM_THE_ANALYSIS_IS_REDESIGNED_BEFORE_ANY_OUTCOME_ROW
+    UNDERPOWERED_AT_THE_EMPIRICAL_SHAPE: N11C_AND_N11D_ARE_NOT_PROPOSED_IN_THIS_FORM_THE_REPORTED_POWER_WORLDS_GUIDE_A_REDESIGN_BEFORE_ANY_OUTCOME_ROW
+    RECOVERY_PASSES_AT_THE_EMPIRICAL_SHAPE: N11C_MAY_BE_PROPOSED_FOR_AUTHORIZATION_WITH_THIS_ANALYSIS_UNCHANGED
+  reported:
+  - WINS_AND_BEATS_PER_RIVAL_PER_WORLD
+  - MEDIAN_PER_EPISODE_LOG_LIKELIHOOD_DIFFERENCES
+  - LEARNED_AND_ANTICIPATORY_COEFFICIENTS
+  - ENTRANTS_PRECISE_SHARE_AND_RECRUITED_SHARE
+  - ANALYST_EVIDENCE_POOL_IN_CONFIRMATORY_EPISODES_AT_QUARTERS_5_8_11
+  - W8_ALSO_SCORED_WITHOUT_RECRUITMENT_CENSORING
+
+profiles:
+  smoke:
+    replicates: 2
+    discovery_episodes: [0, 9, 19]
+    confirmatory_episodes: [0, 19, 26, 30]
+    at_risk_scale: 0.01
+    entrants_cap_share: 0.05
+  development:
+    replicates: 8
+    discovery_episodes: ALL
+    confirmatory_episodes: ALL
+    at_risk_scale: 1.0
+    entrants_cap_share: 1.0
+seeds:
+  base_seed: 20261103
+  opened:
+  - 20261101
+  - 20261102
+  standardization_seed: 20261104
+  rule: SEED_SEQUENCE_OF_BASE_WORLD_INDEX_REPLICATE_EPISODE
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+  - docs/research/pivot-empirical-ladder-recovery-v3.md
+  - docs/package-release-boundary.md
+  - experiments/configs/pivot_empirical_ladder_recovery_v3.yaml
+  - scripts/prototype_pivot_empirical_ladder_recovery_v3.py
+  - scripts/inspect_release_artifacts.py
+  - tests/test_pivot_empirical_ladder_recovery_v3.py
+  - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+outputs:
+  root_pattern: /ssd/pivot_empirical_ladder_recovery_v3_{sha7}_{development|reproduction}
+  files:
+  - results.jsonl
+  - scorecard.json
+  - scorecard.md
+  - receipt.json
+  deterministic_rerun_must_be_byte_identical: true
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  empirical_outcome_rows_read: 0
+  shape_inputs: N11B_COUNTS_ONLY
+  model_selected_for_data: 'NO'
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED
