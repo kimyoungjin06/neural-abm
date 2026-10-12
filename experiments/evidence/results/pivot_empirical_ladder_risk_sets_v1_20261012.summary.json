@@ -1,0 +1,256 @@
+{
+ "schema_version": "pivot_empirical_ladder_risk_sets_result.v1",
+ "label": "pivot_empirical_ladder_risk_sets_v1_20261012",
+ "status": "N11B_PASS_RISK_SETS_REPRODUCED_NO_OUTCOME",
+ "precommit": {
+  "builder_frozen": "8a375d8",
+  "authorization_commit": "d6b7f988ae80df0fddb6111599be45b14975053e",
+  "contract": "experiments/configs/pivot_empirical_ladder_risk_sets_v1.yaml",
+  "contract_sha256": "4a8e02382dd67a96136162e054ebe92916410e477425335fe8ac113f1eb386fd",
+  "builder": "scripts/build_pivot_empirical_ladder_risk_sets_v1.py",
+  "builder_sha256": "a1d5194df3ad2e10f7aa87d180b6cdb5190a32d0d2cd4f9dbc79c8055507dfb9",
+  "authorization": "experiments/configs/pivot_empirical_ladder_risk_sets_authorization_v1.json",
+  "authorization_sha256": "7037c1236af92da3556cd5fdf74db42b15fb4ef027df17562a7957430438e10f"
+ },
+ "execution": {
+  "runs": {
+   "development": "/ssd/pivot_empirical_ladder_risk_sets_v1_d6b7f98_development",
+   "reproduction": "/ssd/pivot_empirical_ladder_risk_sets_v1_d6b7f98_reproduction"
+  },
+  "receipt_sha256": "cc918fdb439f5d12a7dee5f4ac1b72bdf0027d1ff623c2448294483e46e28ebf",
+  "byte_identical": {
+   "n11b_summary.json": true,
+   "n11b_receipt.json": true,
+   "private/panel.parquet": true,
+   "private/environment.parquet": true,
+   "private/episodes_sampling.parquet": true
+  },
+  "minutes": {
+   "development": 2.2,
+   "reproduction": 2.2
+  },
+  "peak_memory_gib_development": 21.2,
+  "output_bytes_development": 6442414
+ },
+ "registered_result": {
+  "status": "N11B_PASS",
+  "invariants": {
+   "discovery_entrants_in_confirmatory_panels": 0,
+   "entrant_flags_differ_from_s1": 0,
+   "entrants_without_exactly_one_event": 0,
+   "entry_clock_mismatches": 0,
+   "entry_date_mismatches": 0,
+   "event_rows_outside_s1_entrants": 0,
+   "guarded_panel_authors": 0,
+   "risk_set_entrants_not_in_s1": 0,
+   "rows_after_exit": 0,
+   "rows_not_eligible_in_their_response_year": 0,
+   "rows_without_a_field_work_in_the_window": 0,
+   "s1_entrants_missing_from_risk_set": 0
+  }
+ },
+ "risk_set": {
+  "at_risk_author_years_by_response_year": [
+   26521041,
+   28501538,
+   30379363
+  ],
+  "at_risk_authors_union_by_episode": {
+   "max": 1444999.0,
+   "median": 573693.0,
+   "min": 272830.0,
+   "q25": 469235.5,
+   "q75": 843232.5
+  },
+  "at_risk_authors_union_total": 42812639,
+  "discovery_excluded_author_episodes": 89230,
+  "eligible_author_years": 111568918,
+  "guard_removed_author_episodes": 11755110,
+  "prior_topic_excluded_author_years": 672388
+ },
+ "sampling": {
+  "entrants_total": 19132,
+  "episodes_with_probability_1": 0,
+  "panel_rows": 3340784,
+  "sampling_probability_by_episode": {
+   "max": 0.07399037971077538,
+   "median": 0.006391832724251134,
+   "min": 0.002056893679165724,
+   "q25": 0.004000048511115268,
+   "q75": 0.010152481738422758
+  },
+  "subcohort_authors_total": 403053,
+  "subcohort_entrants_total": 452,
+  "subcohort_rows": 3225564
+ },
+ "events": {
+  "imprecise_entrants": 8128,
+  "imprecise_entrants_by_response_year": [
+   2501,
+   2723,
+   2904
+  ],
+  "precise_event_rows": 11004,
+  "precise_events_by_quarter": [
+   766,
+   909,
+   826,
+   827,
+   841,
+   982,
+   812,
+   1028,
+   927,
+   1016,
+   974,
+   1096
+  ]
+ },
+ "subcohort_author_years_pooled": {
+  "author_years": 806501,
+  "career_age_years": {
+   "max": 114.0,
+   "median": 3.0,
+   "min": 1.0,
+   "q25": 2.0,
+   "q75": 9.0
+  },
+  "incumbent_coauthors": {
+   "max": 169.0,
+   "median": 0.0,
+   "min": 0.0,
+   "q25": 0.0,
+   "q75": 0.0
+  },
+  "productivity_works": {
+   "max": 1534.0,
+   "median": 1.0,
+   "min": 1.0,
+   "q25": 1.0,
+   "q75": 2.0
+  },
+  "share_of_subcohort_rows_with_a_visible_coauthor_entry": 0.008416822608387246,
+  "share_with_an_incumbent_coauthor": 0.07272154653249036,
+  "subfield_share": {
+   "max": 1.0,
+   "median": 0.0,
+   "min": 0.0,
+   "q25": 0.0,
+   "q75": 0.36363636363636365
+  }
+ },
+ "post_hoc_structural_diagnostics": {
+  "note": "COUNTS_ONLY_NO_OUTCOME_NO_ENTRANT_VERSUS_NON_ENTRANT_CONTRAST",
+  "by_partition": {
+   "confirmatory": {
+    "episodes": 39,
+    "meeting_floors": 28,
+    "entrants": {
+     "min": 10.0,
+     "q25": 65.5,
+     "median": 126.0,
+     "q75": 335.0,
+     "max": 829.0
+    },
+    "at_risk_authors": {
+     "min": 272830.0,
+     "q25": 502545.5,
+     "median": 678736.0,
+     "q75": 842007.5,
+     "max": 1440057.0
+    },
+    "subcohort_authors": {
+     "min": 1911.0,
+     "q25": 2030.0,
+     "median": 2518.0,
+     "q75": 6838.5,
+     "max": 16282.0
+    }
+   },
+   "discovery": {
+    "episodes": 24,
+    "meeting_floors": 20,
+    "entrants": {
+     "min": 11.0,
+     "q25": 98.8,
+     "median": 241.5,
+     "q75": 603.0,
+     "max": 1922.0
+    },
+    "at_risk_authors": {
+     "min": 311668.0,
+     "q25": 452341.0,
+     "median": 538721.5,
+     "q75": 846379.8,
+     "max": 1444999.0
+    },
+    "subcohort_authors": {
+     "min": 1949.0,
+     "q25": 2035.5,
+     "median": 4817.5,
+     "q75": 12019.0,
+     "max": 38502.0
+    }
+   }
+  },
+  "precise_entry_hazard_per_quarter_x1e5": [
+   2.89,
+   3.43,
+   3.11,
+   3.12,
+   2.95,
+   3.45,
+   2.85,
+   3.61,
+   3.05,
+   3.34,
+   3.21,
+   3.61
+  ],
+  "imprecise_entry_hazard_per_response_year_x1e5": [
+   9.43,
+   9.55,
+   9.56
+  ],
+  "imprecise_entrant_share": 0.4248,
+  "confirmatory_precise_entrants_old_enough_for_evidence": {
+   "quarter_5": {
+    "min": 0.0,
+    "q25": 1.0,
+    "median": 3.0,
+    "q75": 7.5,
+    "max": 56.0
+   },
+   "quarter_8": {
+    "min": 0.0,
+    "q25": 6.5,
+    "median": 16.0,
+    "q75": 36.5,
+    "max": 166.0
+   },
+   "quarter_11": {
+    "min": 1.0,
+    "q25": 11.5,
+    "median": 32.0,
+    "q75": 77.5,
+    "max": 310.0
+   }
+  },
+  "n11a_synthetic_shape": {
+   "at_risk_authors": 600,
+   "entrants_per_episode": "ABOUT_200",
+   "attention": "GAUSSIAN_SURGE_PEAK_QUARTER_3",
+   "features": "FOUR_CONTINUOUS_CORRELATED_GAUSSIANS",
+   "imprecise_dates": 0
+  }
+ },
+ "authorization": {
+  "outcomes": "NOT_AUTHORIZED",
+  "visible_evidence": "NOT_AUTHORIZED",
+  "model_fitting": "NOT_AUTHORIZED",
+  "n11c_n11d": "NOT_AUTHORIZED"
+ },
+ "persistence_labels_computed": 0,
+ "visible_evidence_computed": 0,
+ "follow_up_counts_computed": 0
+}
