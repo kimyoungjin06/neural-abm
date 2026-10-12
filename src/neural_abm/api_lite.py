@@ -30,6 +30,13 @@ from neural_abm.domain_social_diagnostics import (
     aggregate_social_diagnostic_fields,
     micro_social_diagnostic_fields,
 )
+from neural_abm.policy_scoring import (
+    POLICY_SCORING_METRICS,
+    PolicyScore,
+    PolicyScoreReport,
+    PolicyScoringLeakError,
+    score_policies,
+)
 from neural_abm.readiness import (
     BinaryReadinessPropagationReport,
     BinaryReadinessPropagationUnit,
@@ -130,9 +137,13 @@ __all__ = [
     "LocalUpdateReport",
     "NABMLocalStep",
     "NABMStepResult",
+    "POLICY_SCORING_METRICS",
     "PROBABILITY_DISTRIBUTION_CHANNEL",
     "PeerSelectionResult",
     "PeerSelector",
+    "PolicyScore",
+    "PolicyScoreReport",
+    "PolicyScoringLeakError",
     "ReplicatedScenarioComparison",
     "ReplicatedScenarioResult",
     "ReplicationSpec",
@@ -162,6 +173,7 @@ __all__ = [
     "run_bounded_scalar_scenarios",
     "run_replicated_bounded_scalar_scenarios",
     "scalar_output_similarity_matrix",
+    "score_policies",
     "select_bounded_scalar_output_peers",
     "select_distribution_output_peers",
     "select_scalar_output_peers",

@@ -10,6 +10,9 @@ DECISION_0014 = ROOT / "docs" / "decisions" / "0014-package-dependency-policy.md
 DECISION_0015 = (
     ROOT / "docs" / "decisions" / "0015-researcher-scenario-lite-contract.md"
 )
+DECISION_0016 = (
+    ROOT / "docs" / "decisions" / "0016-out-of-sample-policy-scoring-contract.md"
+)
 API_SURFACE_AUDIT = ROOT / "docs" / "api-surface-audit.md"
 RELEASE_BOUNDARY = ROOT / "docs" / "package-release-boundary.md"
 PYPROJECT = ROOT / "pyproject.toml"
@@ -223,6 +226,29 @@ def test_researcher_scenario_lite_contract_keeps_claim_judgment_user_owned() -> 
         "Decision 0015",
     ):
         assert required in release_boundary
+
+
+def test_policy_scoring_contract_is_torch_free_and_unreleased() -> None:
+    decision = _plain(DECISION_0016.read_text(encoding="utf-8"))
+    audit = _plain(API_SURFACE_AUDIT.read_text(encoding="utf-8"))
+    release_boundary_source = RELEASE_BOUNDARY.read_text(encoding="utf-8")
+
+    for required in (
+        "Accepted for the `main` / next-alpha candidate",
+        "`neural_abm.api_lite`",
+        "It does not compare policies against a margin",
+        "must not import `torch`, `scipy`, or `scikit-learn`",
+        "The released `v0.1.0a5` tag predates it",
+    ):
+        assert required in decision
+    assert "Decision 0016" in audit
+
+    released_tag_section, candidate_and_later = release_boundary_source.split(
+        "## Main / Next-Alpha Candidate",
+        maxsplit=1,
+    )
+    assert "policy_scoring" not in released_tag_section
+    assert "Decision 0016" in candidate_and_later
 
 
 def test_package_profile_smoke_script_covers_release_profiles() -> None:

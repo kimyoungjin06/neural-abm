@@ -435,3 +435,7 @@ Use this directory for internal project knowledge.
 - [decisions/0015-researcher-scenario-lite-contract.md](decisions/0015-researcher-scenario-lite-contract.md):
   accepted main/next-alpha boundary for torch-free scenario comparison and
   caller-owned scientific interpretation.
+- [decisions/0016-out-of-sample-policy-scoring-contract.md](decisions/0016-out-of-sample-policy-scoring-contract.md):
+  accepted main/next-alpha torch-free scoring of agent policies on held-out
+  data, with a declared-unit leak check; comparison and claims stay with the
+  caller.

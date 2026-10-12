@@ -117,6 +117,7 @@ include = [
     "/docs/decisions/0013-public-api-v0-contract.md",
     "/docs/decisions/0014-package-dependency-policy.md",
     "/docs/decisions/0015-researcher-scenario-lite-contract.md",
+    "/docs/decisions/0016-out-of-sample-policy-scoring-contract.md",
     "/examples/README.md",
     "/examples/classical_reductions.py",
     "/examples/first_run.py",

@@ -40,6 +40,7 @@ def test_release_artifact_inspection_builds_and_reports_package_boundary() -> No
     assert payload["wheel"]["runtime_version"] == "0.1.0a6.dev0"
     assert payload["wheel"]["default_requires"] == ["numpy", "pyyaml"]
     assert "neural_abm/scenario_lite.py" in payload["wheel"]["required_modules"]
+    assert "neural_abm/policy_scoring.py" in payload["wheel"]["required_modules"]
     assert "neural_abm/workflow_lite.py" in payload["wheel"]["required_modules"]
     assert payload["wheel"]["required_modules_present"] is True
     assert (
@@ -51,6 +52,7 @@ def test_release_artifact_inspection_builds_and_reports_package_boundary() -> No
         "docs/case-studies/researcher-pivot/data/study_results.json",
         "docs/classical-reductions.md",
         "docs/decisions/0015-researcher-scenario-lite-contract.md",
+        "docs/decisions/0016-out-of-sample-policy-scoring-contract.md",
         "docs/figures/nabm_unit_recurrent_block.png",
         "docs/figures/nabm_unit_recurrent_block.svg",
         "examples/classical_reductions.py",

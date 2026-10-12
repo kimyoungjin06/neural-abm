@@ -35,6 +35,7 @@ own lifecycle or typed exchange mechanics rather than domain semantics.
 | `neural_abm.results` | `DomainToyResult` and stable artifact summary helpers | Result envelope and artifact output contract. |
 | `neural_abm.readiness` | `BinaryReadinessPropagationUnit` and report types | Generic peer-readiness aggregation after domains define readiness. |
 | `neural_abm.scenario_lite` | Scenario definitions/specs, deterministic and replicated result envelopes, replicate context, and bounded-scalar scenario runners | Torch-free baseline/counterfactual orchestration whose domain callbacks, outcome meaning, and comparison threshold remain caller-owned. |
+| `neural_abm.policy_scoring` | `score_policies`, `PolicyScore`, `PolicyScoreReport`, `PolicyScoringLeakError`, `POLICY_SCORING_METRICS` | Torch-free out-of-sample scoring of agent policies; held-out data, comparison rules, and their meaning remain caller-owned. |
 
 ## Experimental Core Candidates
 
@@ -91,7 +92,7 @@ When implementation starts, prefer a small facade rather than widening
 | Namespace | Contents |
 | --- | --- |
 | `neural_abm.api` | Stable lifecycle, typed social exchange, domain runner, diagnostics, result envelope, and toy feature-taxonomy helpers. |
-| `neural_abm.api_lite` | Torch-free seed surface for compatible runner, diagnostics, result envelope, toy feature-taxonomy helpers, readiness utilities, NumPy-only social primitives, lifecycle reports/local-step primitives, and the `main` / next-alpha bounded-scalar scenario candidate. |
+| `neural_abm.api_lite` | Torch-free seed surface for compatible runner, diagnostics, result envelope, toy feature-taxonomy helpers, readiness utilities, NumPy-only social primitives, lifecycle reports/local-step primitives, and the `main` / next-alpha bounded-scalar scenario and policy-scoring candidates. |
 | `neural_abm.experimental` | Binary policy lifecycle, binary revision lifecycle, accelerator/tensor runtime helpers if needed. |
 | `neural_abm.paper` or evidence docs | Manifest loading, gate summaries, and reproducibility commands if a library namespace is justified. |
 
@@ -133,3 +134,21 @@ hypothesis testing, calibration, or external-validity claims.
 See
 [Decision 0015](decisions/0015-researcher-scenario-lite-contract.md) for the
 complete contract. The released `v0.1.0a5` tag predates this scenario surface.
+
+## Main / Next-Alpha Policy-Scoring Candidate
+
+The same candidate extends `neural_abm.api_lite` with `score_policies`, its
+`PolicyScore` and `PolicyScoreReport` records, `PolicyScoringLeakError`, and
+`POLICY_SCORING_METRICS`. It scores every agent policy on held-out examples it
+never trained on, with Brier, log-loss, accuracy, and binary AUC, per policy,
+as a mean over policies, and for the mean prediction. It refuses to score a
+policy declared to have trained on a held-out unit.
+
+It is the first capability extracted under the Pivot bridge's second-consumer
+rule. Toy 1 and the repository-only Pivot ABM v2 both score policies this way.
+The surface computes scores only. Choosing held-out data, isolating learners,
+comparing policies against a margin, and judging a claim remain caller-owned.
+
+See
+[Decision 0016](decisions/0016-out-of-sample-policy-scoring-contract.md) for
+the complete contract. The released `v0.1.0a5` tag predates this surface.
