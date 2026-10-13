@@ -12,6 +12,11 @@ ROOT = Path(__file__).resolve().parents[1]
 CASE_ROOT = ROOT / "docs" / "case-studies" / "researcher-pivot"
 STUDY1 = CASE_ROOT / "data" / "study_results.json"
 STUDY2 = CASE_ROOT / "data" / "learning_study_results.json"
+REPRODUCTIONS = sorted(
+    (ROOT / "experiments" / "evidence" / "results").glob(
+        "research_pivot_study_reproduction_*.json"
+    )
+)
 
 
 def _comparison(
@@ -34,24 +39,51 @@ def _comparison(
     return matches[0]
 
 
-def _assert_source_snapshot_matches_current_tree(payload: dict[str, object]) -> None:
-    provenance = payload["provenance"]
-    assert isinstance(provenance, dict)
-    snapshot = provenance["source_snapshot"]
-    assert isinstance(snapshot, dict)
+def _snapshot_matches_current_tree(snapshot: dict[str, object]) -> bool:
     paths = snapshot["paths"]
     assert isinstance(paths, list)
+    assert snapshot["file_count"] == len(paths)
     digest = hashlib.sha256()
     for relative in paths:
         assert isinstance(relative, str)
         path = ROOT / relative
-        assert path.is_file(), relative
+        if not path.is_file():
+            return False
         digest.update(relative.encode("utf-8"))
         digest.update(b"\0")
         digest.update(path.read_bytes())
         digest.update(b"\0")
-    assert snapshot["file_count"] == len(paths)
-    assert snapshot["sha256"] == digest.hexdigest()
+    return snapshot["sha256"] == digest.hexdigest()
+
+
+def _attested_snapshots(artifact: Path) -> list[dict[str, object]]:
+    """Snapshots of later reproductions of exactly these tracked bytes.
+
+    The tracked results are bound by hash elsewhere, so their own provenance
+    is not refreshed in place. A reproduction record attests that the study,
+    regenerated from a later tree, matched them except for provenance.
+    """
+
+    tracked = hashlib.sha256(artifact.read_bytes()).hexdigest()
+    snapshots = []
+    for record_path in REPRODUCTIONS:
+        record = json.loads(record_path.read_text(encoding="utf-8"))
+        study = record["studies"].get(artifact.name)
+        if study and study["tracked_sha256"] == tracked:
+            assert study["non_provenance_identical"] is True
+            snapshots.append(study["regenerated_source_snapshot"])
+    return snapshots
+
+
+def _assert_source_snapshot_matches_current_tree(
+    payload: dict[str, object], artifact: Path
+) -> None:
+    provenance = payload["provenance"]
+    assert isinstance(provenance, dict)
+    snapshot = provenance["source_snapshot"]
+    assert isinstance(snapshot, dict)
+    candidates = [snapshot, *_attested_snapshots(artifact)]
+    assert any(_snapshot_matches_current_tree(item) for item in candidates)
 
 
 def test_study1_claim_ledger_matches_tracked_artifact() -> None:
@@ -83,7 +115,7 @@ def test_study1_claim_ledger_matches_tracked_artifact() -> None:
     ]
     assert direct["paired_deltas"] == pytest.approx(recomputed_direct, abs=1e-8)
     assert payload["provenance"]["rng_contract"].startswith("keyed SeedSequence")
-    _assert_source_snapshot_matches_current_tree(payload)
+    _assert_source_snapshot_matches_current_tree(payload, STUDY1)
 
 
 def test_study2_claim_ledger_keeps_raw_outcomes_and_parameter_audit() -> None:
@@ -117,7 +149,7 @@ def test_study2_claim_ledger_keeps_raw_outcomes_and_parameter_audit() -> None:
         "attention_signal"
         in payload["scenario_definitions"]["hot_field_hype"]["parameters"]
     )
-    _assert_source_snapshot_matches_current_tree(payload)
+    _assert_source_snapshot_matches_current_tree(payload, STUDY2)
 
     for arms in payload["scenarios"].values():
         for summary in arms.values():
