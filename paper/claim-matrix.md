@@ -146,8 +146,17 @@ decision. Nothing here is authorized to run.
      while neither LLM agent is recalibrated.
    - If this is not run, P5 must carry that asymmetry as a limitation.
 3. **A larger local model (optional).** It tests sensitivity to model scale
-   only and does not remove the comparison asymmetry. The GPU driver must be
-   reloaded first.
+   only and does not remove the comparison asymmetry. It would run on the GPU
+   server.
+4. **Inputs from the LLM-ABM survey.** The
+   [related-work contrast](related-work/llm-abm-frameworks-v1.md) adds two
+   candidates:
+   - **For gap 2: an AgentTorch-style archetype baseline,** an LLM queried
+     per archetype at each step without outcome learning. It is the closest
+     published alternative to a once-elicited prior.
+   - **For gap 1: an information- or opinion-spread domain,** where most LLM-ABM
+     applications sit and where the repository's DeGroot and Granovetter
+     reductions already hold.
 
 ## Prospective Pivot-Feedback Claim Gates
 

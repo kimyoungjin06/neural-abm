@@ -91,7 +91,17 @@ and `execution_authorized=false`.
   `docs/classical-reductions.md`, `examples/classical_reductions.py`.
 - Neural agent-based models.
 - LLM-agent social simulation and its audit/reproducibility critiques, as
-  the opposite pole motivating the auditable-middle positioning.
+  the opposite pole motivating the auditable-middle positioning. Contrast
+  axes and sources are in
+  [related-work/llm-abm-frameworks-v1.md](related-work/llm-abm-frameworks-v1.md).
+  The axes are:
+  - what decides an action;
+  - how behavior changes;
+  - learning across agents;
+  - rule agents in the same environment;
+  - reproducibility controls;
+  - scale;
+  - validation against real data.
 - Social learning via state-based and output-based updates; imitative versus
   postulated failure-only outcome updates as the Sec. 7 learning-rule axis,
   with the canonical informational-cascade definition kept separate.

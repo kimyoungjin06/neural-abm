@@ -30,6 +30,8 @@ lifecycle evidence.
 Current planning artifacts:
 
 - [claim-matrix.md](claim-matrix.md)
+- [related-work/llm-abm-frameworks-v1.md](related-work/llm-abm-frameworks-v1.md):
+  LLM-ABM framework contrast for related work (2026-10-13)
 - [tables/nabm-unit-v1-manuscript-tables.md](tables/nabm-unit-v1-manuscript-tables.md)
 
 Current draft sections:
