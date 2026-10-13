@@ -1,0 +1,559 @@
+{
+ "schema_version": "pivot_empirical_ladder_power_levers_result.v1",
+ "label": "pivot_empirical_ladder_power_levers_v1_20261013",
+ "status": "EXPLORATORY_NOT_REGISTERED_NO_LEVER_ADOPTABLE",
+ "script": {
+  "commit_sha": "d29752c",
+  "path": "scripts/explore_pivot_empirical_ladder_power_levers_v1.py",
+  "script_sha256": "52b56bd78400df40e27b364f88d4a960801393e92d991a74b418745ff9356f9a",
+  "v3_script_sha256": "344dbbbe33dd4214b0cfe62eea1f70b9e287b8e1937f19c79f3c5a700cbb1969",
+  "v3_contract_sha256": "28477cbc6003ab69a767c31c93eb9dba460f49f783687133635b963883fbe855"
+ },
+ "execution": {
+  "profile": "development",
+  "seed": 20261105,
+  "tasks": 72,
+  "configs": 3,
+  "worlds": 3,
+  "replicates_per_world": 8,
+  "workers": 48,
+  "wall_seconds": 12925.5,
+  "output_dir": "/ssd/pivot_empirical_ladder_power_levers_v1_d29752c",
+  "outputs": {
+   "results.jsonl": "a5be366587d43dd5a05d9f8798bc70b829ec056736ce080b230cf43abbd642bb",
+   "summary.json": "2c76983711e0e6f5ca569fee7b7653cf8aa79d17ec0c0a652c84861b3905d0bc"
+  },
+  "deterministic_rerun": "NOT_RUN_EXPLORATORY"
+ },
+ "levers": {
+  "A0_three_way": "v3's registered rule with B4 linear as the only learner",
+  "A1_joint": "one model with attention, x, B7 anticipatory and B4 learned; one-sided Wald on the learned coefficient with an episode-clustered sandwich",
+  "A2_joint_ramp": "A1 plus anticipatory x quarter/11",
+  "B_field_history": "agents and analyst also learn from earlier episodes of the same field",
+  "C_no_g4_guard": "entrants x1.707 and at-risk x1.275, the scale the G4 guard removed"
+ },
+ "cells": {
+  "B_field_history/W1_learning": {
+   "role": "SHOULD_RECOVER",
+   "replicates": 8,
+   "median_confirmatory_events": 4948,
+   "A0_three_way": {
+    "wins": 3,
+    "beats_b2": 6,
+    "beats_anticipatory": 4,
+    "median_margin_vs_b7": 4.43,
+    "median_lower_bound_vs_b7": 0.31
+   },
+   "A1_joint_confirmatory": {
+    "wins": 5,
+    "median_learned_coefficient": 0.87,
+    "median_anticipatory_coefficient": -0.01,
+    "median_se": 0.34,
+    "median_z": 3.11,
+    "z_range": [
+     -2.89,
+     7.76
+    ]
+   },
+   "A2_joint_ramp_confirmatory": {
+    "wins": 5,
+    "median_learned_coefficient": 0.87,
+    "median_anticipatory_coefficient": 0.0,
+    "median_se": 0.34,
+    "median_z": 3.11,
+    "z_range": [
+     -2.89,
+     7.75
+    ]
+   },
+   "A1_joint_all_episodes": {
+    "wins": 7,
+    "median_learned_coefficient": 0.43,
+    "median_anticipatory_coefficient": 0.01,
+    "median_se": 0.12,
+    "median_z": 4.04,
+    "z_range": [
+     1.47,
+     7.49
+    ]
+   },
+   "A2_joint_ramp_all_episodes": {
+    "wins": 7,
+    "median_learned_coefficient": 0.43,
+    "median_anticipatory_coefficient": 0.01,
+    "median_se": 0.12,
+    "median_z": 4.02,
+    "z_range": [
+     1.41,
+     7.44
+    ]
+   }
+  },
+  "B_field_history/W3_static": {
+   "role": "MUST_NOT_FALSE_RECOVER",
+   "replicates": 8,
+   "median_confirmatory_events": 4934,
+   "A0_three_way": {
+    "wins": 0,
+    "beats_b2": 3,
+    "beats_anticipatory": 3,
+    "median_margin_vs_b7": 2.1,
+    "median_lower_bound_vs_b7": -0.26
+   },
+   "A1_joint_confirmatory": {
+    "wins": 2,
+    "median_learned_coefficient": -0.05,
+    "median_anticipatory_coefficient": 0.01,
+    "median_se": 0.28,
+    "median_z": -0.37,
+    "z_range": [
+     -4.23,
+     3.49
+    ]
+   },
+   "A2_joint_ramp_confirmatory": {
+    "wins": 2,
+    "median_learned_coefficient": -0.05,
+    "median_anticipatory_coefficient": 0.03,
+    "median_se": 0.28,
+    "median_z": -0.35,
+    "z_range": [
+     -4.24,
+     3.49
+    ]
+   },
+   "A1_joint_all_episodes": {
+    "wins": 2,
+    "median_learned_coefficient": -0.12,
+    "median_anticipatory_coefficient": 0.02,
+    "median_se": 0.11,
+    "median_z": -0.93,
+    "z_range": [
+     -3.27,
+     2.39
+    ]
+   },
+   "A2_joint_ramp_all_episodes": {
+    "wins": 2,
+    "median_learned_coefficient": -0.12,
+    "median_anticipatory_coefficient": 0.02,
+    "median_se": 0.11,
+    "median_z": -0.93,
+    "z_range": [
+     -3.27,
+     2.36
+    ]
+   }
+  },
+  "B_field_history/W6_static_aligned_drift": {
+   "role": "MUST_NOT_FALSE_RECOVER",
+   "replicates": 8,
+   "median_confirmatory_events": 4893,
+   "A0_three_way": {
+    "wins": 0,
+    "beats_b2": 2,
+    "beats_anticipatory": 0,
+    "median_margin_vs_b7": 3.98,
+    "median_lower_bound_vs_b7": -13.01
+   },
+   "A1_joint_confirmatory": {
+    "wins": 1,
+    "median_learned_coefficient": -0.61,
+    "median_anticipatory_coefficient": 0.34,
+    "median_se": 0.7,
+    "median_z": -0.75,
+    "z_range": [
+     -3.11,
+     2.08
+    ]
+   },
+   "A2_joint_ramp_confirmatory": {
+    "wins": 1,
+    "median_learned_coefficient": -0.71,
+    "median_anticipatory_coefficient": 0.06,
+    "median_se": 0.69,
+    "median_z": -0.79,
+    "z_range": [
+     -3.16,
+     1.99
+    ]
+   },
+   "A1_joint_all_episodes": {
+    "wins": 2,
+    "median_learned_coefficient": 0.22,
+    "median_anticipatory_coefficient": 0.4,
+    "median_se": 0.19,
+    "median_z": 1.14,
+    "z_range": [
+     -2.49,
+     4.26
+    ]
+   },
+   "A2_joint_ramp_all_episodes": {
+    "wins": 2,
+    "median_learned_coefficient": 0.2,
+    "median_anticipatory_coefficient": 0.09,
+    "median_se": 0.2,
+    "median_z": 1.01,
+    "z_range": [
+     -2.66,
+     3.91
+    ]
+   }
+  },
+  "C_no_g4_guard/W1_learning": {
+   "role": "SHOULD_RECOVER",
+   "replicates": 8,
+   "median_confirmatory_events": 8370,
+   "A0_three_way": {
+    "wins": 2,
+    "beats_b2": 5,
+    "beats_anticipatory": 3,
+    "median_margin_vs_b7": 11.84,
+    "median_lower_bound_vs_b7": -0.97
+   },
+   "A1_joint_confirmatory": {
+    "wins": 8,
+    "median_learned_coefficient": 0.3,
+    "median_anticipatory_coefficient": 0.25,
+    "median_se": 0.05,
+    "median_z": 6.04,
+    "z_range": [
+     4.3,
+     10.08
+    ]
+   },
+   "A2_joint_ramp_confirmatory": {
+    "wins": 8,
+    "median_learned_coefficient": 0.26,
+    "median_anticipatory_coefficient": -0.04,
+    "median_se": 0.05,
+    "median_z": 5.06,
+    "z_range": [
+     2.95,
+     9.51
+    ]
+   },
+   "A1_joint_all_episodes": {
+    "wins": 8,
+    "median_learned_coefficient": 0.3,
+    "median_anticipatory_coefficient": 0.25,
+    "median_se": 0.04,
+    "median_z": 6.9,
+    "z_range": [
+     5.57,
+     10.12
+    ]
+   },
+   "A2_joint_ramp_all_episodes": {
+    "wins": 8,
+    "median_learned_coefficient": 0.25,
+    "median_anticipatory_coefficient": -0.04,
+    "median_se": 0.04,
+    "median_z": 5.12,
+    "z_range": [
+     3.45,
+     8.37
+    ]
+   }
+  },
+  "C_no_g4_guard/W3_static": {
+   "role": "MUST_NOT_FALSE_RECOVER",
+   "replicates": 8,
+   "median_confirmatory_events": 8458,
+   "A0_three_way": {
+    "wins": 0,
+    "beats_b2": 2,
+    "beats_anticipatory": 3,
+    "median_margin_vs_b7": 0.11,
+    "median_lower_bound_vs_b7": -2.15
+   },
+   "A1_joint_confirmatory": {
+    "wins": 1,
+    "median_learned_coefficient": 0.03,
+    "median_anticipatory_coefficient": 0.01,
+    "median_se": 0.03,
+    "median_z": 1.08,
+    "z_range": [
+     -0.37,
+     2.01
+    ]
+   },
+   "A2_joint_ramp_confirmatory": {
+    "wins": 1,
+    "median_learned_coefficient": 0.04,
+    "median_anticipatory_coefficient": 0.02,
+    "median_se": 0.04,
+    "median_z": 1.12,
+    "z_range": [
+     0.09,
+     2.03
+    ]
+   },
+   "A1_joint_all_episodes": {
+    "wins": 1,
+    "median_learned_coefficient": 0.03,
+    "median_anticipatory_coefficient": 0.01,
+    "median_se": 0.02,
+    "median_z": 1.2,
+    "z_range": [
+     -0.6,
+     1.69
+    ]
+   },
+   "A2_joint_ramp_all_episodes": {
+    "wins": 1,
+    "median_learned_coefficient": 0.04,
+    "median_anticipatory_coefficient": 0.03,
+    "median_se": 0.03,
+    "median_z": 1.32,
+    "z_range": [
+     -1.17,
+     1.78
+    ]
+   }
+  },
+  "C_no_g4_guard/W6_static_aligned_drift": {
+   "role": "MUST_NOT_FALSE_RECOVER",
+   "replicates": 8,
+   "median_confirmatory_events": 8412,
+   "A0_three_way": {
+    "wins": 0,
+    "beats_b2": 2,
+    "beats_anticipatory": 0,
+    "median_margin_vs_b7": -9.38,
+    "median_lower_bound_vs_b7": -28.09
+   },
+   "A1_joint_confirmatory": {
+    "wins": 8,
+    "median_learned_coefficient": 0.19,
+    "median_anticipatory_coefficient": 0.37,
+    "median_se": 0.04,
+    "median_z": 4.24,
+    "z_range": [
+     3.44,
+     5.94
+    ]
+   },
+   "A2_joint_ramp_confirmatory": {
+    "wins": 5,
+    "median_learned_coefficient": 0.12,
+    "median_anticipatory_coefficient": 0.09,
+    "median_se": 0.05,
+    "median_z": 2.38,
+    "z_range": [
+     1.03,
+     3.63
+    ]
+   },
+   "A1_joint_all_episodes": {
+    "wins": 8,
+    "median_learned_coefficient": 0.21,
+    "median_anticipatory_coefficient": 0.39,
+    "median_se": 0.04,
+    "median_z": 5.05,
+    "z_range": [
+     4.61,
+     7.12
+    ]
+   },
+   "A2_joint_ramp_all_episodes": {
+    "wins": 6,
+    "median_learned_coefficient": 0.14,
+    "median_anticipatory_coefficient": 0.09,
+    "median_se": 0.05,
+    "median_z": 2.76,
+    "z_range": [
+     1.4,
+     4.42
+    ]
+   }
+  },
+  "base/W1_learning": {
+   "role": "SHOULD_RECOVER",
+   "replicates": 8,
+   "median_confirmatory_events": 4895,
+   "A0_three_way": {
+    "wins": 3,
+    "beats_b2": 5,
+    "beats_anticipatory": 3,
+    "median_margin_vs_b7": 7.91,
+    "median_lower_bound_vs_b7": -3.26
+   },
+   "A1_joint_confirmatory": {
+    "wins": 8,
+    "median_learned_coefficient": 0.33,
+    "median_anticipatory_coefficient": 0.3,
+    "median_se": 0.05,
+    "median_z": 6.83,
+    "z_range": [
+     3.92,
+     9.24
+    ]
+   },
+   "A2_joint_ramp_confirmatory": {
+    "wins": 8,
+    "median_learned_coefficient": 0.29,
+    "median_anticipatory_coefficient": 0.0,
+    "median_se": 0.05,
+    "median_z": 5.24,
+    "z_range": [
+     3.62,
+     7.99
+    ]
+   },
+   "A1_joint_all_episodes": {
+    "wins": 8,
+    "median_learned_coefficient": 0.31,
+    "median_anticipatory_coefficient": 0.23,
+    "median_se": 0.05,
+    "median_z": 6.6,
+    "z_range": [
+     4.09,
+     11.23
+    ]
+   },
+   "A2_joint_ramp_all_episodes": {
+    "wins": 8,
+    "median_learned_coefficient": 0.26,
+    "median_anticipatory_coefficient": -0.01,
+    "median_se": 0.05,
+    "median_z": 5.44,
+    "z_range": [
+     3.64,
+     9.51
+    ]
+   }
+  },
+  "base/W3_static": {
+   "role": "MUST_NOT_FALSE_RECOVER",
+   "replicates": 8,
+   "median_confirmatory_events": 4995,
+   "A0_three_way": {
+    "wins": 0,
+    "beats_b2": 0,
+    "beats_anticipatory": 0,
+    "median_margin_vs_b7": 0.81,
+    "median_lower_bound_vs_b7": -1.63
+   },
+   "A1_joint_confirmatory": {
+    "wins": 0,
+    "median_learned_coefficient": 0.02,
+    "median_anticipatory_coefficient": -0.0,
+    "median_se": 0.04,
+    "median_z": 0.53,
+    "z_range": [
+     -1.16,
+     1.41
+    ]
+   },
+   "A2_joint_ramp_confirmatory": {
+    "wins": 0,
+    "median_learned_coefficient": 0.03,
+    "median_anticipatory_coefficient": 0.01,
+    "median_se": 0.04,
+    "median_z": 0.61,
+    "z_range": [
+     -1.19,
+     1.28
+    ]
+   },
+   "A1_joint_all_episodes": {
+    "wins": 2,
+    "median_learned_coefficient": 0.01,
+    "median_anticipatory_coefficient": -0.01,
+    "median_se": 0.03,
+    "median_z": 0.51,
+    "z_range": [
+     -0.92,
+     2.46
+    ]
+   },
+   "A2_joint_ramp_all_episodes": {
+    "wins": 2,
+    "median_learned_coefficient": 0.02,
+    "median_anticipatory_coefficient": 0.01,
+    "median_se": 0.04,
+    "median_z": 0.47,
+    "z_range": [
+     -0.89,
+     2.17
+    ]
+   }
+  },
+  "base/W6_static_aligned_drift": {
+   "role": "MUST_NOT_FALSE_RECOVER",
+   "replicates": 8,
+   "median_confirmatory_events": 4944,
+   "A0_three_way": {
+    "wins": 0,
+    "beats_b2": 4,
+    "beats_anticipatory": 0,
+    "median_margin_vs_b7": -2.54,
+    "median_lower_bound_vs_b7": -12.91
+   },
+   "A1_joint_confirmatory": {
+    "wins": 8,
+    "median_learned_coefficient": 0.24,
+    "median_anticipatory_coefficient": 0.28,
+    "median_se": 0.05,
+    "median_z": 4.92,
+    "z_range": [
+     2.69,
+     6.83
+    ]
+   },
+   "A2_joint_ramp_confirmatory": {
+    "wins": 7,
+    "median_learned_coefficient": 0.17,
+    "median_anticipatory_coefficient": 0.06,
+    "median_se": 0.05,
+    "median_z": 2.68,
+    "z_range": [
+     1.19,
+     4.53
+    ]
+   },
+   "A1_joint_all_episodes": {
+    "wins": 8,
+    "median_learned_coefficient": 0.22,
+    "median_anticipatory_coefficient": 0.31,
+    "median_se": 0.04,
+    "median_z": 5.58,
+    "z_range": [
+     3.24,
+     7.82
+    ]
+   },
+   "A2_joint_ramp_all_episodes": {
+    "wins": 6,
+    "median_learned_coefficient": 0.18,
+    "median_anticipatory_coefficient": 0.07,
+    "median_se": 0.05,
+    "median_z": 3.77,
+    "z_range": [
+     1.37,
+     5.26
+    ]
+   }
+  }
+ },
+ "findings": {
+  "joint_tests_are_not_specific": "A1 and A2 win 8/8 in W1 but also 5-8/8 in the anticipation world W6 under base and C.",
+  "field_history_adds_false_wins": "Under B the joint tests win 2/8 in the static world W3; A0 stays at 3/8 in W1.",
+  "scale_does_not_lift_a0": "C raises confirmatory events about 1.7x but A0 wins 2/8 in W1 (base 3/8).",
+  "a0_stays_specific": "A0 wins 0/8 in W3 and W6 under every configuration."
+ },
+ "boundaries": {
+  "empirical_rows_read": 0,
+  "empirical_outcome_rows_read": 0,
+  "registered": false,
+  "model_selected_for_data": "NO"
+ },
+ "next": {
+  "v4_freeze": "NOT_PROPOSED_FROM_THESE_LEVERS",
+  "N11c": "NOT_PROPOSED",
+  "N11d": "NOT_PROPOSED",
+  "decision": "USER"
+ }
+}
