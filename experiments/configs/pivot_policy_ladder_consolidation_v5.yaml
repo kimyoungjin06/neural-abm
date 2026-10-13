@@ -1,0 +1,328 @@
+schema_version: pivot_policy_ladder_consolidation.v5
+label: pivot_policy_ladder_consolidation_v5
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-10-13'
+purpose: 'Extend the v4 ledger with the empirical model-ladder stage (N10 through the N11a power-lever
+  screen), close the current N11 design before confirmatory scoring, and record the reporting rules and
+  the Paper-1 direction the user set on 2026-10-13. v1 to v4 remain the records for everything before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v4.yaml
+    sha256: fe7ef093d965070ad48b8b48c5fa3bcb05abfa8791983abdd9a216c9288333b9
+    record_commit: da7208a
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v4.md
+    sha256: 77986ba244c4025486e6e0c90e8e760a8fb4335b034d2912a1bcf9a2fa3f3b3d
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v4.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: trend_transfer
+  path: experiments/evidence/results/pivot_empirical_outcome_selection_trend_v2_20261007.summary.json
+  sha256: f518bfb7e3c84a351920fbd35bc7ef6e4f40186cc01fca3cad0d544409a48adc
+  freeze_commit: 58c87f4
+  record_commit: e10308a
+- id: s1_build
+  path: experiments/evidence/results/pivot_empirical_outcome_selection_trend_s1_20261007.summary.json
+  sha256: d9707946b1f38ac79fa5eca4aec91a6f59e57c33a5385c2afd1033314a795f26
+  freeze_commit: 52dcf76
+  record_commit: b603a4d
+- id: ladder_v1
+  path: experiments/evidence/results/pivot_empirical_ladder_recovery_v1_20261008.summary.json
+  sha256: d3a829be3e17e169da91f654fd3f8dd8baad76e0d87395ee643737a419ad5cd7
+  freeze_commit: af43b16
+  record_commit: d114272
+- id: ladder_v2
+  path: experiments/evidence/results/pivot_empirical_ladder_recovery_v2_20261008.summary.json
+  sha256: 47269616db01795ff1256ce5d675264133080d726db8a15fd5b840c680d45cce
+  freeze_commit: 0cbe5f2
+  record_commit: 886be72
+- id: risk_sets
+  path: experiments/evidence/results/pivot_empirical_ladder_risk_sets_v1_20261012.summary.json
+  sha256: e19b041f569b69efe66177247eddf5f31cbd66f7ee6df503e55beb4d5edde134
+  freeze_commit: 8a375d8
+  record_commit: 72476b3
+- id: ladder_v3
+  path: experiments/evidence/results/pivot_empirical_ladder_recovery_v3_20261012.summary.json
+  sha256: 2edbca9ccc78a231afd1e0a8be827ea0b11816df3168d8e97b61e74d254a0467
+  freeze_commit: 288062a
+  record_commit: bca896d
+- id: power_screen
+  path: experiments/evidence/results/pivot_empirical_ladder_power_levers_v1_20261013.summary.json
+  sha256: a94b4e647a9bffe024de3281a3b1e8db8b35142d9ec5d1acc90f095388dd9066
+  freeze_commit: NONE_EXPLORATORY_SCRIPT_AT_d29752c
+  record_commit: 42d6b21
+- id: persona_agent
+  path: experiments/evidence/results/pivot_llm_persona_agent_v1_20261001.summary.json
+  sha256: 1728294b96bce02c959d44516bed915a148ff6ea70755763698cd2037ecadf69
+  freeze_commit: 150486a
+  record_commit: 02659d6
+claims:
+  confirmed:
+  - id: C43_the_s1_structure_was_rebuilt_without_outcomes
+    statement: S1 built 63 episodes and 19,132 retained entrants from the 2026-06-26 snapshot, reproduced
+      byte for byte, and computed no persistence label.
+    evidence:
+    - source: s1_build
+      pointer: status
+      equals: S1_PASS_STRUCTURAL_BUILD_REPRODUCED_NO_PERSISTENCE_LABEL
+    - source: s1_build
+      pointer: episodes/registered
+      equals: 63
+    - source: s1_build
+      pointer: entrants/retained
+      equals: 19132
+  - id: C44_the_ladder_separates_learning_from_anticipation_at_the_s1_scale_shape
+    statement: At the S1-scale synthetic shape (600 at risk, about 200 entrants per episode, exact dates),
+      the ladder with the anticipatory competitor B7 recovers learning in 8 of 8 replicates and wins 0 of
+      8 in the anticipation world.
+    evidence:
+    - source: ladder_v2
+      pointer: registered_result/disposition
+      equals: IDENTIFICATION_PASSES
+    - source: ladder_v2
+      pointer: registered_result/worlds/W1_learning/nabm_wins
+      equals: 8
+    - source: ladder_v2
+      pointer: registered_result/worlds/W6_static_aligned_drift/nabm_wins
+      equals: 0
+  - id: C45_the_n11b_risk_sets_were_built_without_outcomes
+    statement: N11b built and reproduced the risk sets, entry events, and pre-entry features, and computed
+      no persistence label, follow-up count, or visible evidence.
+    evidence:
+    - source: risk_sets
+      pointer: status
+      equals: N11B_PASS_RISK_SETS_REPRODUCED_NO_OUTCOME
+    - source: risk_sets
+      pointer: persistence_labels_computed
+      equals: 0
+    - source: risk_sets
+      pointer: follow_up_counts_computed
+      equals: 0
+    - source: risk_sets
+      pointer: visible_evidence_computed
+      equals: 0
+  - id: C46_no_false_recovery_was_observed_at_the_n11b_shape
+    statement: At the N11b shape, the registered analysis won in none of the 8 replicates of each of the
+      five no-learning worlds. With 8 independent replicates, the one-sided 95% upper bound on a world's
+      false-recovery rate is about 31%, so a zero rate is not established.
+    evidence:
+    - source: ladder_v3
+      pointer: registered_result/worlds/W3_static/nabm_wins
+      equals: 0
+    - source: ladder_v3
+      pointer: registered_result/worlds/W4_static_confounded/nabm_wins
+      equals: 0
+    - source: ladder_v3
+      pointer: registered_result/worlds/W5_static_independent_drift/nabm_wins
+      equals: 0
+    - source: ladder_v3
+      pointer: registered_result/worlds/W6_static_aligned_drift/nabm_wins
+      equals: 0
+    - source: ladder_v3
+      pointer: registered_result/worlds/W8_static_recruitment/nabm_wins
+      equals: 0
+  rejected:
+  - id: R12_the_outcome_selection_trend_as_the_empirical_test
+    statement: The one-sided outcome selection trend (N10) is an adequate empirical test of learning.
+    reason: In the N11a v1 worlds it missed pure learning in 8 of 8 replicates and turned positive only
+      when topic growth accompanied learning, so a positive reading cannot be separated from growth.
+    evidence:
+    - source: ladder_v1
+      pointer: registered_result/worlds/W1_learning/sign_test_positive
+      equals: 0
+    - source: ladder_v1
+      pointer: registered_result/worlds/W2_learning_confounded/sign_test_positive
+      equals: 8
+  - id: R13_the_registered_v3_analysis_detects_learning_at_the_n11b_shape
+    statement: The registered N11a v3 analysis detects learning at the N11b shape.
+    reason: It recovered learning in 1 of 8 replicates of W1 and 3 of 8 of the confounded W2, against a
+      required 7 of 8.
+    evidence:
+    - source: ladder_v3
+      pointer: registered_result/disposition
+      equals: UNDERPOWERED_AT_THE_EMPIRICAL_SHAPE
+    - source: ladder_v3
+      pointer: registered_result/worlds/W1_learning/nabm_wins
+      equals: 1
+    - source: ladder_v3
+      pointer: registered_result/worlds/W2_learning_confounded/nabm_wins
+      equals: 3
+  - id: R14_a_joint_model_test_of_the_learned_coefficient_separates_learning_from_anticipation
+    statement: A one-sided test of the learned coefficient in a joint model with the anticipatory proxy,
+      with or without an anticipation ramp, separates learning from anticipation at the N11b shape.
+    reason: In the exploratory screen it flagged the anticipation world W6 in 8 of 8 replicates without
+      the ramp and 7 of 8 with it. The proxy is estimated from final observed labels, so this is a
+      counterexample for this test, not evidence that an exactly specified anticipation model also fails.
+    evidence:
+    - source: power_screen
+      pointer: cells/base~1W6_static_aligned_drift/A1_joint_confirmatory/wins
+      equals: 8
+    - source: power_screen
+      pointer: cells/base~1W6_static_aligned_drift/A2_joint_ramp_confirmatory/wins
+      equals: 7
+    - source: power_screen
+      pointer: cells/C_no_g4_guard~1W6_static_aligned_drift/A2_joint_ramp_confirmatory/wins
+      equals: 5
+  - id: R15_field_history_or_lifting_the_g4_guard_restores_power
+    statement: Adding same-field history as evidence, or lifting the G4 guard, restores the registered
+      rule's power without false recovery.
+    reason: In the exploratory screen the registered rule recovered W1 in 3 of 8 replicates with field
+      history and 2 of 8 with the guard lifted, and the joint test under field history flagged the
+      static world W3 in 2 of 8.
+    evidence:
+    - source: power_screen
+      pointer: cells/B_field_history~1W1_learning/A0_three_way/wins
+      equals: 3
+    - source: power_screen
+      pointer: cells/C_no_g4_guard~1W1_learning/A0_three_way/wins
+      equals: 2
+    - source: power_screen
+      pointer: cells/B_field_history~1W3_static/A1_joint_confirmatory/wins
+      equals: 2
+  open:
+  - id: O20_which_factors_cost_the_v3_power
+    question: How much of the loss of power from v2 to v3 comes from each change made together in v3,
+      namely date imprecision, the gap between agent and analyst evidence, sparse features, case-cohort
+      sampling, and censoring?
+    kind: SYNTHETIC
+    priority: 3
+    motivation: Scarce analyst evidence and the similarity of the learned and anticipatory terms are the
+      leading candidates, but similar coefficients alone do not establish collinearity, and no factor was
+      varied on its own.
+  - id: O21_fidelity_of_the_synthetic_evidence_timing
+    question: Why does v3's median analyst evidence pool in W1 (6, 40, and about 58 at quarters 5, 8, and
+      11) exceed N11b's median count of precise confirmatory entrants old enough for evidence (3, 16, and
+      32)?
+    kind: SYNTHETIC
+    priority: 3
+    motivation: The two count different things. v3 also counts imprecise entrants' labels, which become
+      visible from the second year after the entry year, and its entry timing is simulated rather than
+      copied. The remaining gap at quarter 5 was not decomposed, so v3 is not a complete reproduction of
+      the empirical structure.
+    evidence:
+    - source: ladder_v3
+      pointer: registered_result/worlds/W1_learning/median_confirmatory_evidence_pool/quarter_5
+      equals: 6.0
+    - source: risk_sets
+      pointer: post_hoc_structural_diagnostics/confirmatory_precise_entrants_old_enough_for_evidence/quarter_5/median
+      equals: 3.0
+  - id: O22_learning_and_anticipation_with_another_unit_or_information_source
+    question: Can learning be separated from anticipation with a different empirical unit or a measured
+      information source, such as finer choices with many more events?
+    kind: EMPIRICAL
+    priority: 3
+    motivation: Outside Paper-1. Any such design must first show power at its own measured shape.
+status_updates:
+- id: O17_empirical_persistence_definition_and_threshold_transfer
+  previous: OPEN_PRIORITY_1
+  status: SUPERSEDED_THE_EMPIRICAL_STAGE_MOVED_TO_THE_MODEL_LADDER
+  answered_by:
+  - R12_the_outcome_selection_trend_as_the_empirical_test
+- id: O18_empirical_source_choice
+  previous: OPEN_PRIORITY_1
+  status: ANSWERED_THE_2026_06_26_SNAPSHOT_WAS_COMPLETED_AND_USED
+  answered_by:
+  - C43_the_s1_structure_was_rebuilt_without_outcomes
+- id: N02
+  previous: USER_DECISION_REQUIRED
+  status: DONE
+- id: N10
+  previous: SEPARATE_PRECOMMIT_AFTER_N02
+  status: DONE_AS_A_THRESHOLD_TRANSFER_THEN_SUPERSEDED_BY_THE_MODEL_LADDER
+  evidence:
+  - source: trend_transfer
+    pointer: registered_result/disposition
+    equals: THRESHOLD_TRANSFERRED
+- id: N04
+  previous: OPTIONAL
+  status: DONE_BY_DECISION_0016_AT_29bd59c
+empirical_stage:
+  id: N11
+  current_design: CLOSED_BEFORE_CONFIRMATORY_SCORING
+  closure: In synthetic worlds that reflect the data structure measured in N11b, the registered analysis
+    did not meet the power criterion needed to distinguish learning from anticipation. The explored
+    alternatives did not achieve power and false-recovery control together, so the confirmatory analysis
+    of the current design does not proceed. This does not imply the absence of learning.
+  not_implied:
+  - THE_ABSENCE_OF_LEARNING_IN_THE_DATA
+  - THAT_NO_METHOD_COULD_DISTINGUISH_LEARNING_FROM_ANTICIPATION_IN_THIS_DATA
+  - THAT_V3_REPRODUCES_THE_EMPIRICAL_STRUCTURE_COMPLETELY
+  diagnosis: SCARCE_ANALYST_EVIDENCE_AND_SIMILAR_LEARNED_AND_ANTICIPATORY_TERMS_ARE_THE_LEADING_CANDIDATE_BOTTLENECKS_NOT_SEPARATED_FROM_THE_OTHER_V3_CHANGES
+  data_access:
+    read:
+    - S1_THE_2026_06_26_SNAPSHOT_EXTRACT_EPISODES_AND_ENTRANTS
+    - N11B_CONFIRMATORY_WINDOW_RISK_SETS_ENTRY_EVENTS_AND_PRE_ENTRY_FEATURES
+    - N11B_THE_G4_GUARD_AUTHOR_ID_COLUMN
+    not_read:
+    - N11_CONFIRMATORY_OUTCOME_LABELS
+    - N11_FOLLOW_UP_OUTCOMES
+    - N11_VISIBLE_EVIDENCE
+  N11c: NOT_PROPOSED
+  N11d: NOT_PROPOSED
+  evidence:
+  - source: ladder_v3
+    pointer: next/N11c
+    equals: NOT_PROPOSED
+  - source: power_screen
+    pointer: next/v4_freeze
+    equals: NOT_PROPOSED_FROM_THESE_LEVERS
+  - source: ladder_v3
+    pointer: boundaries/empirical_outcome_rows_read
+    equals: 0
+  - source: power_screen
+    pointer: boundaries/empirical_outcome_rows_read
+    equals: 0
+reporting_rules:
+- id: ZERO_OF_N
+  rule: Report a count of 0 of n replicates with its one-sided 95% binomial upper bound, 1 - 0.05^(1/n),
+    which is about 31% at n = 8. It means no event was observed, not a zero rate.
+- id: MATCHES
+  rule: '"Matches" means each mean metric lies within the registered 0.02 margin of the comparator. It
+    is not a test of statistical equivalence.'
+- id: LLM_SCOPE
+  rule: Both LLM-agent designs used the same local Qwen3-4B-Instruct-2507. The comparison is conditional
+    on the specified worlds and comparison conditions, and its outcome reflects calibration and decision
+    rules as well as the policy family.
+- id: NEURAL_NECESSITY
+  rule: The learned arms include linear and tree learners, so these results do not establish that a
+    neural policy is necessary.
+paper_direction:
+  decided_by: USER_2026_10_13
+  paper_1: METHOD_AND_FRAMEWORK
+  central_claim: NABM is a reusable framework that separates policy learning from social interaction, so
+    fixed policies, adaptive policies, and external priors can be compared and traced within one
+    simulation lifecycle.
+  performance_comparisons: CONDITIONAL_CASES_NOT_THE_CENTRAL_CLAIM
+  safe_llm_wording: In the specified synthetic worlds and comparison conditions, the NABM hybrid met the
+    registered performance criteria against two local LLM implementations.
+  empirical_stage: REPORTED_WITH_THE_CLOSURE_STATEMENT_NOT_AS_EVIDENCE_OF_LEARNING
+  evidence:
+  - source: persona_agent
+    pointer: boundaries/llm_agent_design
+    equals: ONE_REASONABLE_PERSONA_DESIGN_GREEDY_DECISIONS_NOT_EVERY_PERSONA_AGENT
+next_steps:
+- id: N12
+  kind: PAPER
+  action: UPDATE_THE_CLAIM_MATRIX_AND_OUTLINE_TO_THE_METHOD_AND_FRAMEWORK_CLAIM_WITH_THESE_REPORTING_RULES
+  authorization: USER_DIRECTED_2026_10_13
+- id: N13
+  kind: COMPARISON_DESIGN
+  action: FROM_THE_CLAIM_MATRIX_DECIDE_WHICH_ADDITIONAL_COMPARISON_THE_CENTRAL_CLAIM_NEEDS_FIRST_CANDIDATE_AN_LLM_BASELINE_WITH_THE_SAME_INFORMATION_RECALIBRATED_ON_PUBLIC_OUTCOMES
+  note: A larger local model tests sensitivity to model scale only and does not remove the asymmetry of
+    the comparison design.
+  authorization: SEPARATE_PRECOMMIT_AFTER_N12
+- id: N14
+  kind: FRAMEWORK
+  action: DESIGN_A_SECOND_CONSUMER_FIRST_AND_EXTRACT_ONLY_CAPABILITIES_WHOSE_SHARED_SEMANTICS_IT_CONFIRMS
+  note: The bridge rule stands. The shared evidence record, the prior slot (F09), and the exploration
+    floor (F10) stay domain-owned until a second model family needs the same semantics.
+  authorization: AFTER_N12
+boundaries:
+  new_execution: NONE
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED

@@ -317,9 +317,12 @@ torch-backed behavior. The early-user checklist is in
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
 - Repository-only policy-ladder ledger at
+  `docs/research/pivot-policy-ladder-consolidation-v5.md`, which extends
   `docs/research/pivot-policy-ladder-consolidation-v4.md`: the hash-audited
   record of the researcher-pivot policy ladder, including the measured cost
-  and behavior of each tier between rule-based ABMs and LLM agents.
+  and behavior of each tier between rule-based ABMs and LLM agents, and the
+  closure of the current empirical model-ladder design before confirmatory
+  scoring.
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
   and Granovetter special cases, plus explicitly labeled FJ-like anchored and
   self-excluding HK variants, as settings of the same lifecycle.
@@ -401,7 +404,8 @@ synthetic, stylized worlds:
   same job.
 - The same model was also run as an LLM agent, queried at every agent-step
   with the public outcomes in its prompt. The NABM design matched or beat it
-  in all 9 settings. The LLM agent needed about 110 GPU-seconds per run,
+  in all 9 settings. "Matched" means each mean metric lay within a registered
+  0.02 margin; it is not a test of statistical equivalence. The LLM agent needed about 110 GPU-seconds per run,
   against about 5 single-core CPU-seconds per NABM learner run, because it
   was queried at every step. Once evidence was in its prompt, its forecasts
   drifted above the population's success rate.
@@ -411,7 +415,13 @@ synthetic, stylized worlds:
 
 These are synthetic results from two LLM-agent designs and one local 4B model.
 They are not claims about real researchers or about every LLM agent. The
+learned arms include linear and tree learners, so they do not establish that a
+neural policy is necessary. An empirical test of whether real researchers'
+entry follows visible outcomes was closed before confirmatory scoring: at the
+measured data shape, the registered analysis lacked the power to tell learning
+from anticipation. This does not imply the absence of learning. The
 repository-only, hash-audited ledger is at
+`docs/research/pivot-policy-ladder-consolidation-v5.md`, which extends
 `docs/research/pivot-policy-ladder-consolidation-v4.md`.
 
 ## Scope
