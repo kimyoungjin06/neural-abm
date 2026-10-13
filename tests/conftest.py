@@ -1,7 +1,10 @@
 """Collection rules for tests that cannot run from a clean clone.
 
-Two registries, both explicit:
+Three registries, all explicit:
 
+- ``duckdb_overlay_tests.txt`` lists test modules that import the
+  repository-only DuckDB overlay, which is not a declared dependency. They are
+  not collected where ``duckdb`` is not installed, as in CI.
 - ``machine_local_tests.txt`` lists tests that read machine-local artifacts:
   private outputs under ``/ssd`` or the git-ignored ``experiments/runs``.
   They run on the workstation and are skipped where ``/ssd`` is absent, as in
@@ -16,6 +19,7 @@ Two registries, both explicit:
 
 from __future__ import annotations
 
+import importlib.util
 from pathlib import Path
 
 import pytest
@@ -23,10 +27,19 @@ import pytest
 
 TESTS = Path(__file__).resolve().parent
 MACHINE_LOCAL_ROOT = Path("/ssd")
-MACHINE_LOCAL_TESTS = frozenset(
-    line.strip()
-    for line in (TESTS / "machine_local_tests.txt").read_text(encoding="utf-8").splitlines()
-    if line.strip() and not line.startswith("#")
+
+
+def _registry(name: str) -> frozenset[str]:
+    lines = (TESTS / name).read_text(encoding="utf-8").splitlines()
+    return frozenset(line.strip() for line in lines if line.strip() and not line.startswith("#"))
+
+
+MACHINE_LOCAL_TESTS = _registry("machine_local_tests.txt")
+DUCKDB_OVERLAY_TESTS = _registry("duckdb_overlay_tests.txt")
+collect_ignore = (
+    sorted(Path(path).name for path in DUCKDB_OVERLAY_TESTS)
+    if importlib.util.find_spec("duckdb") is None
+    else []
 )
 HISTORICAL_BINDING_DRIFT = {
     "tests/test_pivot_delayed_feedback_learning_prototype_v1.py::test_source_bindings_and_exclusive_output_receipt": (
