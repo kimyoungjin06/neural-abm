@@ -69,9 +69,11 @@ threshold. It has no outcome channel. The outcome channel below is new.
   cannot help.
 
 **Decision.**
-- When a neighbor shares item j, agent i is exposed and decides once whether
-  to share it. The decision is binary and absorbing per item, as Toy 5
-  adoption is.
+- When a neighbor newly shares item j, an agent that has not shared it decides
+  whether to share it. A share is absorbing, as Toy 5 adoption is. A decline
+  is reconsidered at the next new exposure, as in Watts–Granovetter threshold
+  dynamics. (D1 changed this from "decides once", which cannot reproduce the
+  threshold reduction.)
 - The observation has three parts:
   - z_j;
   - exposure features: the fraction and count of neighbors sharing j;
