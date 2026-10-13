@@ -1,0 +1,15 @@
+# Test modules that import the repository-only DuckDB overlay, which is not a
+# declared dependency. tests/conftest.py does not collect them where duckdb is
+# not installed, as in CI. Generated 2026-10-13 from CI collection errors.
+tests/test_pivot_empirical_ladder_risk_sets_v1.py
+tests/test_pivot_empirical_outcome_selection_trend_s1_build_v1.py
+tests/test_pivot_feedback_d0_certified_leaveout_prior_peer_v1.py
+tests/test_pivot_feedback_d0_certified_predecision_author_measurement_v1.py
+tests/test_pivot_feedback_d0_certified_raw_authorship_identity_affiliation_v1.py
+tests/test_pivot_feedback_d0_entry_source_build_v1.py
+tests/test_pivot_feedback_d0_persistence_source_v1.py
+tests/test_pivot_feedback_d0_production_pivot_classification_v1.py
+tests/test_pivot_feedback_e_g1_guarded_risk_label_source_v1.py
+tests/test_pivot_feedback_f_aligned_strict_incumbent_rescreen_v1.py
+tests/test_pivot_feedback_f_definition_theory_audit_v1.py
+tests/test_pivot_feedback_f_final_panel_conformance_v1.py
