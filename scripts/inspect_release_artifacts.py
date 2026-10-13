@@ -241,6 +241,8 @@ PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_empirical_ladder_recovery_v3.yaml",
     "scripts/prototype_pivot_empirical_ladder_recovery_v3.py",
     "tests/test_pivot_empirical_ladder_recovery_v3.py",
+    "scripts/explore_pivot_empirical_ladder_power_levers_v1.py",
+    "tests/test_explore_pivot_empirical_ladder_power_levers_v1.py",
 }
 PIVOT_LLM_PRIOR_PILOT_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-llm-prior-pilot-v1.md",
