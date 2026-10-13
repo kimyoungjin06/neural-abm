@@ -157,6 +157,13 @@ decision. Nothing here is authorized to run.
    - **For gap 1: an information- or opinion-spread domain,** where most LLM-ABM
      applications sit and where the repository's DeGroot and Granovetter
      reductions already hold.
+5. **Chosen on 2026-10-13.** The user chose the information-spread domain
+   and the archetype baseline. The draft design is
+   [info-spread-policy-ladder-design-v1.md](../docs/research/info-spread-policy-ladder-design-v1.md).
+   - It adds a precomputed-table arm, which tests whether NABM differs from a
+     rule table computed before the run.
+   - It contrasts a regime where a table should suffice with one where
+     computation during the run should matter.
 
 ## Prospective Pivot-Feedback Claim Gates
 
