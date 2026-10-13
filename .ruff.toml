@@ -11,3 +11,13 @@ extend = "pyproject.toml"
 "scripts/verify_pivot_feedback_d0_certified_leaveout_prior_peer_v1.py" = ["F401"]
 "scripts/verify_pivot_feedback_d0_t10151_rank5_abstract_cross_provider_result_v1.py" = ["F401"]
 "scripts/verify_pivot_feedback_d0_t10151_rank5_cross_provider_v1.py" = ["F401"]
+
+# Later frozen precommit files, bound by hash in contracts, results, or later
+# scripts (pivot-feedback F stage, S1 build, empirical ladder recovery).
+"scripts/build_pivot_empirical_outcome_selection_trend_s1_v1.py" = ["F401"]
+"scripts/build_pivot_feedback_f_aligned_strict_incumbent_rescreen_v1.py" = ["F401"]
+"scripts/build_pivot_feedback_f_final_panel_conformance_v1.py" = ["F401"]
+"scripts/prototype_pivot_empirical_ladder_recovery_v1.py" = ["F401"]
+"scripts/prototype_pivot_empirical_ladder_recovery_v3.py" = ["E731"]
+"scripts/verify_pivot_feedback_f_aligned_strict_incumbent_rescreen_v1.py" = ["F401"]
+"tests/test_pivot_feedback_f_g4_private_root_artifact_binding_v1.py" = ["F401"]
