@@ -1,8 +1,19 @@
 # Paper Outline
 
-Working title:
+Working title (2026-10-13 candidate):
 
-> Neural Social Nodes for Agent-Based Modeling
+> Neural ABM: Comparing and Tracing Fixed, Adaptive, and Prior-Informed Agent
+> Policies in One Simulation Lifecycle
+
+Previous working title: Neural Social Nodes for Agent-Based Modeling.
+
+Central claim (set by the user on 2026-10-13; see
+[claim-matrix.md](claim-matrix.md) and
+[consolidation v5](../docs/research/pivot-policy-ladder-consolidation-v5.md)):
+NABM is a reusable framework that separates policy learning from social
+interaction, so fixed policies, adaptive policies, and external priors can be
+compared and traced within one simulation lifecycle. Performance comparisons
+are conditional cases, not the central claim.
 
 Route status: this is the method-first outline. The prospective science-first
 pivot-feedback route is specified in the
@@ -61,11 +72,15 @@ and `execution_authorized=false`.
   simulation and not a replacement for classical ABM; a different point with
   different guarantees.
 - Goal: define a reusable Neural ABM Node with explicit social mixing.
-- Claim: the right positioning is a temporal heterogeneous graph simulation
-  framework, not a direct Transformer replacement.
+- Claim: the central claim above. Policy learning is separated from social
+  interaction, so fixed, adaptive, and prior-informed policies can be compared
+  and traced in one lifecycle. The framework is a temporal heterogeneous graph
+  simulation, not a direct Transformer replacement.
 - Contribution preview: unit contract (Sec. 3), toy evidence (Secs. 4-5),
-  calibration discipline (Sec. 6), and an end-to-end research application
-  with a fixed-rule-versus-learning controlled comparison (Sec. 7).
+  calibration discipline (Sec. 6), an end-to-end research application
+  with a fixed-rule-versus-learning controlled comparison (Sec. 7), and a
+  policy ladder that adds external priors and conditional cost and LLM-agent
+  comparisons (Sec. 8).
 
 ## 2. Background
 
@@ -155,16 +170,55 @@ Draft:
   them against field-wide attention, homophily, chaperoned entry or
   recruitment, and capacity bridges before invoking social learning.
 
-## 8. Discussion
+## 8. Policy Ladder: Fixed, Adaptive, and Prior-Informed Policies
+
+Source: claim matrix rows P1 to P6. Every result here is synthetic and
+repository-only, and each is a conditional case of the central claim.
+
+- Design (P1): one ABM design holds a fixed rule, pooled learners, and an
+  external prior. Each step reproduces its rule-based predecessor exactly
+  before a learned arm is read. Seeds are paired, and every claim is bound to
+  a hash-audited ledger.
+- Policy class as a modeling assumption (P2): feature-conditional and
+  nonlinear learning are needed only in some worlds; the best family depends
+  on boundary geometry; and evidence scale decides whether learning beats the
+  prior. A neural policy is not shown to be necessary.
+- External priors (P3): a local LLM consulted once, calibrated to a stated
+  base rate, and paired with an exploration floor. Report the self-sealing
+  failure of the raw prior alongside the calibrated result.
+- Cost (P4): pooled learners against the rule ABM, per-agent learners, and
+  every-step LLM queries, measured on one machine.
+- Conditional LLM-agent comparison (P5): "In the specified synthetic worlds
+  and comparison conditions, the NABM hybrid met the registered performance
+  criteria against two local LLM implementations." State the 0.02 margin, the
+  single 4B model, and the calibration asymmetry. Keep this subsection only if
+  the gap analysis in the claim matrix keeps P5.
+- The empirical stage as a limitation (P6): the protocol stopped a test that
+  lacked power at the measured data shape before confirmatory outcomes were
+  read. Quote the closure statement, including that it does not imply the
+  absence of learning.
+- Open before submission: whether a second domain runs the same comparison
+  through a common API (claim-matrix gaps 1 and 2).
+
+## 9. Discussion
 
 - What the toy models show.
 - What the research application shows: the contract carries a full study,
   and learning direction is a first-class experimental axis.
+- What the policy ladder shows: fixed, adaptive, and prior-informed policies
+  can be compared in one lifecycle, and when each is worth its cost.
+- Limits of the evidence:
+  - the worlds are synthetic and were designed by the authors;
+  - the empirical test of learning closed without an answer;
+  - the LLM comparisons cover one model family;
+  - neural necessity is not established.
 - Limits of the Transformer analogy.
 - Limits of parameter averaging.
 - Path to richer ABM environments.
 
-## 9. Conclusion
+## 10. Conclusion
 
 - Neural Social Nodes are a practical unit for NABM prototyping.
+- The lifecycle makes the choice between a fixed rule, a learned policy, and
+  an external prior an explicit, testable modeling decision.
 - The primitive claim should be earned through ablations, not assumed.

@@ -4,6 +4,8 @@ Date: 2026-07-16
 
 Operational status refresh: 2026-08-03
 
+Paper-1 direction refresh: 2026-10-13
+
 ## Purpose
 
 This matrix is the paper-facing boundary for current NABM Unit v1 evidence. It
@@ -12,6 +14,34 @@ candidate figure or table, and limitation that must travel with the claim.
 
 Claims not listed here should stay out of the primary manuscript narrative until
 their evidence is upgraded.
+
+## Paper-1 Direction (2026-10-13)
+
+The user set this direction after the empirical model-ladder stage closed. It
+is recorded in
+[consolidation v5](../docs/research/pivot-policy-ladder-consolidation-v5.md).
+
+Paper-1 is a method and framework paper. Its central claim is:
+
+> NABM is a reusable framework that separates policy learning from social
+> interaction, so fixed policies, adaptive policies, and external priors can be
+> compared and traced within one simulation lifecycle.
+
+Performance comparisons are conditional cases that illustrate the claim. None
+of them is the central claim.
+
+### What the central claim needs
+
+| Component | Package evidence | Repository-only evidence | Status | Gap |
+| --- | --- | --- | --- | --- |
+| Policy learning is separated from social interaction | The unit-contract and two adapter-holdout rows of the Primary Claim Path | None needed | Supported for binary lifecycles | None |
+| Fixed and adaptive policies are compared in one lifecycle | The Study 2 row: a frozen-versus-adaptive comparison with paired shocks and named-parameter traces | The Pivot policy ladder reproduces its fixed rule exactly before any learned arm is read (P1) | Supported | The pooled outcome record is in prototype scripts only |
+| External priors enter the same lifecycle | None | A once-elicited, base-rate-calibrated LLM prior with an exploration floor (P3) | Repository-only. The prior slot (F09) and exploration floor (F10) are domain-owned | No package API, and only one consumer |
+| Policies are traced and scored out of sample | `neural_abm.policy_scoring` (Decision 0016) | Pivot probe-cohort scoring | Supported | None |
+| The structure is reusable across domains | The unit contract spans Toy2, Toy4, Toy5, and two adapters | The fixed / adaptive / prior comparison exists in one domain | Partial | A second domain running the same comparison through a common API |
+
+The last two rows set the work before the framework claim can be made at
+package level. The gap analysis below proposes how to close them.
 
 ## Route Boundary
 
@@ -68,6 +98,57 @@ or scientific effect is established.
 | The torch-free surface carries a researcher-authored replicated counterfactual scenario study end to end, with paired mean-effect CIs separated from empirical replicate intervals and a true-null invariant. | `src/neural_abm/scenario_lite.py`, `src/neural_abm/workflow_lite.py`, `examples/research_pivot_study.py` | `docs/case-studies/researcher-pivot/README.md`, `docs/case-studies/researcher-pivot/data/study_results.json`, `tests/test_scenario_lite.py`, `tests/test_research_pivot_evidence.py` | Seed grants raise the productive pivot rate +0.191 [95% mean CI 0.181, 0.202]; hype raises it +0.187 [0.180, 0.194] at 2.3x the pivots and 8.6x the failures. The direct hype-minus-grant contrast is -0.004 [-0.012, 0.004], without an equivalence claim. Zeroing every grant component yields exactly 0.000 [0.000, 0.000]. | `paper/sections/07-research-application.md`, `paper/figures/pivot_composition.png`. | The domain model is hand-set and uncalibrated; the true-null result validates the pipeline invariant, not the scenario's external validity. Hype bundles multiple mechanisms, so susceptibility is not separately identified. |
 | The NABM lifecycle supports a controlled frozen-versus-adaptive comparison with component-keyed paired shocks and complete named-parameter traces. | `src/neural_abm/unit.py` lifecycle via `examples/research_pivot_learning_study.py` (shared population and base-network generators with Study 1). | `docs/case-studies/researcher-pivot/README.md` Study 2, `docs/case-studies/researcher-pivot/data/learning_study_results.json`, `tests/test_research_pivot_evidence.py` | Imitative learning raises failed pivots +0.281 [0.235, 0.322] at baseline and +0.289 [0.268, 0.308] under grants, but not under hype (-0.009 [-0.024, 0.007]). Failure-only learning reduces hype failures -0.144 [-0.159, -0.129] and productive pivots -0.050 [-0.056, -0.044]; the attention coefficient falls 1.00 -> 0.81 while other weights and bias also move. | `paper/sections/07-research-application.md`, `paper/figures/pivot_learning_failed_trajectories.png`, `paper/figures/pivot_learning_attention_weights.png`. | This is a lifecycle expressiveness and audit claim, not performance, causal-mechanism, canonical-cascade, or ABM-framework exclusivity evidence. The frozen policy is a sigmoid reparameterization, learning rules are postulated, and failure-only learning also loses productive pivots under grants (-0.069). |
 
+## Policy-Ladder Conditional Cases
+
+These rows come from the repository-only researcher-pivot policy ladder. They
+are synthetic, stylized worlds, and their code is in prototype scripts, not in
+`src/neural_abm`. Each statement is hash-audited in the consolidation ledgers
+[v1](../docs/research/pivot-policy-ladder-consolidation-v1.md) to
+[v5](../docs/research/pivot-policy-ladder-consolidation-v5.md). Ledger ids are
+in parentheses. Use them as conditional cases for the central claim, never as
+general performance claims.
+
+| Id | Claim | Code path | Evidence artifact | Result summary | Required limitation |
+| --- | --- | --- | --- | --- | --- |
+| P1 | A fixed rule, pooled learners, and an external prior can be compared in one ABM design, with the rule ABM reproduced exactly before any learned arm is read. | `scripts/prototype_pivot_nonlinear_policy_abm_v2.py`, `scripts/prototype_pivot_llm_prior_pilot_v3.py`, `scripts/prototype_pivot_llm_persona_agent_v1.py` | `experiments/evidence/results/pivot_llm_persona_agent_v1_20261001.summary.md` (nesting checks); consolidation v1 to v4 | Each ladder step exactly reproduces its rule-based predecessor before a learned arm is read. In N07 every nesting check passed exactly, including one showing that the decision machinery without the persona reproduces the fixed-rule arm in every linear-world replicate. | Repository-only scripts. The pooled outcome record, prior slot, and exploration floor are not package API. |
+| P2 | Policy class is a per-question modeling assumption that the lifecycle lets one test. | `scripts/prototype_pivot_matched_marginal_discriminator_v3.py`, `scripts/prototype_pivot_nonlinear_policy_abm_v2.py` | `pivot_matched_marginal_discriminator_v3_20260928`, `pivot_nonlinear_policy_abm_v2_20260928` summaries | Feature-conditional learning is needed when structure reverses (C07). Nonlinear policies beat linear ones on interactions (C08). The MLP wins smooth boundaries and the tree axis-aligned ones (C09). Every learner beats the prior with field-wide evidence and loses to it with neighbor evidence (C11). | Synthetic worlds built for this ladder. A neural policy is not shown to be necessary (R01), since linear and tree learners are in the comparison. |
+| P3 | An external prior elicited once from a local LLM can enter the lifecycle, provided it is calibrated and paired with an exploration floor. | `scripts/prototype_pivot_llm_prior_pilot_v1.py` to `_v4.py` | `pivot_llm_prior_pilot_v1_20260929` to `v4_20260930` summaries | Used raw, the prior self-seals (C17). Shifted to a stated base rate, it stops sealing (C19). With a 20% floor it beat the hand rule on entrant precision while keeping pooled learning within the registered margin in 7 of 9 cells (C22), and 6 of 9 on fresh seeds (C29). | One Qwen3 release, 4B the smallest that worked (C26, C27). "Within the margin" is a registered tolerance, not equivalence. |
+| P4 | Pooled learning adds modest cost over the rule ABM; per-agent learning and every-step LLM queries do not. | `scripts/prototype_pivot_relative_delay_cost_v1.py`, `scripts/prototype_pivot_llm_agent_reference_v1.py` | `pivot_relative_delay_cost_v1_20260929`, `pivot_llm_agent_reference_v1_20260930` summaries | Pooled linear, tree, and MLP policies cost 1.9 to 6.7 times the rule ABM per agent-step, and per-agent learners 57 to 65 times (C16). Elicitation took under 10 GPU minutes (C25). The every-step LLM agent needed about 110 GPU-seconds per run, against about 5 CPU-seconds for an NABM learner run (C35). | One machine and one design. Costs are for this ladder, not a general benchmark. |
+| P5 | In the specified synthetic worlds and comparison conditions, the NABM hybrid met the registered performance criteria against two local LLM implementations. | `scripts/prototype_pivot_llm_agent_reference_v1.py`, `scripts/prototype_pivot_llm_persona_agent_v1.py` | `pivot_llm_agent_reference_v1_20260930`, `pivot_llm_persona_agent_v1_20261001` summaries | The hybrid matched or beat an every-step forecaster agent (C32) and a persona agent (C36) in 9 of 9 cells. The forecaster over-entered once outcomes were public (C34). The persona said Yes in 0.15% of questions and self-sealed (C37). | Both agents used the same Qwen3-4B-Instruct-2507. "Matches" means each mean metric within a 0.02 margin, not statistical equivalence. Calibration and decision rules differ between arms and drive much of the result. |
+| P6 | The registration discipline stopped an empirical test that could not answer its question before confirmatory outcomes were read. | `scripts/build_pivot_empirical_ladder_risk_sets_v1.py`, `scripts/prototype_pivot_empirical_ladder_recovery_v3.py`, `scripts/explore_pivot_empirical_ladder_power_levers_v1.py` | `pivot_empirical_ladder_recovery_v3_20261012`, `pivot_empirical_ladder_power_levers_v1_20261013` summaries; consolidation v5 | At the measured data shape the registered analysis recovered learning in 1 of 8 (W1) and 3 of 8 (W2) replicates, against a required 7 of 8. No false recovery was observed (0 of 8 per world). The explored alternatives did not achieve power and false-recovery control together. N11c and N11d were not run. | A limitation and a protocol case, not evidence about learning. It does not imply the absence of learning. 0 of 8 bounds a world's false-recovery rate only below about 31%. v3 does not reproduce the empirical structure completely. |
+
+## Gaps the Central Claim Exposes
+
+This section proposes resolutions for next steps N13 (comparison design) and
+N14 (framework) in consolidation v5. It is a proposal awaiting the user's
+decision. Nothing here is authorized to run.
+
+1. **A second domain, through a common API (N13 and N14 together).**
+   - Run the fixed / adaptive / external-prior comparison in a second model
+     family. This tests reusability, which is what the central claim asserts.
+     It is not a performance test.
+   - The same consumer satisfies the bridge rule, so only the semantics it
+     confirms are extracted.
+   - Candidate API surface, to be confirmed by that consumer:
+     - a policy slot that holds a fixed rule, a learned policy, or a
+       prior-initialized policy;
+     - a pooled outcome record;
+     - an exploration floor;
+     - an exact nesting check that the learned machinery with learning off
+       reproduces the fixed rule;
+     - scoring through `policy_scoring`.
+   - The second domain's prior can be a hand rule or a rule from the
+     literature, so the step needs no GPU. An LLM prior there is optional.
+2. **A fairer LLM comparison (N13), only if P5 stays in the paper.**
+   - The candidate is an LLM baseline given the same information and
+     recalibrated on public outcomes.
+   - Today the hybrid is calibrated to a base rate and learns from outcomes,
+     while neither LLM agent is recalibrated.
+   - If this is not run, P5 must carry that asymmetry as a limitation.
+3. **A larger local model (optional).** It tests sensitivity to model scale
+   only and does not remove the comparison asymmetry. The GPU driver must be
+   reloaded first.
+
 ## Prospective Pivot-Feedback Claim Gates
 
 These rows are planned tests, not supported claims.
@@ -107,6 +188,9 @@ rather than a post hoc field, endpoint, or model substitution.
 | Basin credit is a finalized learned critic. | Deferred. Current basin-credit and basin-phase critic work is prototype-level. | Holdout evidence showing learned credit transfers beyond Toy2/Toy4 quick gates and improves beyond prototype/fallback heuristics. |
 | NABM policies generally outperform Fermi, RD, reputation imitation, or threshold baselines. | Unsupported. Several clean environments remain baseline-favored. | A set of stresses where the classical baseline fails for mechanistic reasons not injected directly into its own signal channel. |
 | Toy6-Toy10 are full NABM evidence cases. | Unsupported. Decision 0005 marks them as compatible or limited rather than primary full NABM evidence. | Migration through the same unit contract plus manifest-backed evidence. |
+| A neural policy is necessary for the policy-ladder results. | Unsupported (R01). Linear and tree learners are in every comparison, and the gain comes from learned policies rather than neural ones as such. | A registered test where every non-neural learner fails for a stated reason. |
+| NABM is statistically equivalent to, or generally better than, LLM-agent simulation. | Unsupported. P5 is a registered-tolerance result against two implementations of one 4B model. | An equivalence design, a recalibrated LLM baseline, and more than one model family. |
+| Real researchers' entry choices learn from visible outcomes. | Not established. The current N11 design closed before confirmatory scoring (consolidation v5). This does not imply the absence of learning. | A design that shows power at its own measured shape (O22). Outside Paper-1. |
 
 ## Manuscript Framing Rules
 
@@ -119,6 +203,19 @@ rather than a post hoc field, endpoint, or model substitution.
   not an embarrassment to hide.
 - Report final ceiling hits, ever ceiling hits, mean TtC, and the relevant
   failure-mode tag together whenever a Toy2/Toy4 result is discussed.
+- Treat the unit contract as the first half of the central claim of
+  2026-10-13. The second half is a reusable structure for comparing and
+  tracing fixed, adaptive, and prior-informed policies. Present P1 to P6 as
+  conditional cases of that structure.
+- Report 0 of n replicates with its one-sided 95% upper bound, about 31% at
+  n = 8.
+- Write "matched" only with its registered margin, and never as statistical
+  equivalence.
+- State the LLM scope wherever P3 or P5 appears: one local Qwen3 model
+  family, two agent designs, and calibration and decision rules that differ
+  between arms.
+- Present the empirical stage (P6) as a limitation and a protocol case, with
+  its closure statement.
 
 ## Immediate Paper Work
 
@@ -139,3 +236,9 @@ rather than a post hoc field, endpoint, or model substitution.
 8. Carry the capacity-ladder justification (Section 7.5) wherever a learned
    policy is introduced, so policy-class size is stated as a per-question
    modeling assumption rather than an implementation default.
+9. Restructure the outline around the central claim, with a policy-ladder
+   section built from P1 to P6.
+10. Decide the gap resolutions above (N13, N14) before claiming package-level
+    reuse for external priors or pooled outcome records.
+11. Until a second consumer exists, cite the prior slot, pooled outcome
+    record, and exploration floor as repository-only case machinery.
