@@ -410,24 +410,36 @@ class OutcomeRecord:
     labels: list[float] = field(default_factory=list)
     agents: list[int] = field(default_factory=list)
     visible_from: list[int] = field(default_factory=list)
+    # 1 for an outcome of an action taken (the usual case); 0 for an outcome
+    # of an action declined, kept only by label-selection diagnostics.
+    kinds: list[int] = field(default_factory=list)
 
-    def add(self, features: np.ndarray, labels: np.ndarray, agents: np.ndarray, visible_from: int) -> None:
-        for row, label, agent in zip(features, labels, agents, strict=True):
+    def add(
+        self, features: np.ndarray, labels: np.ndarray, agents: np.ndarray,
+        visible_from: int, kinds: np.ndarray | None = None,
+    ) -> None:
+        if kinds is None:
+            kinds = np.ones(len(labels), dtype=np.int64)
+        for row, label, agent, kind in zip(features, labels, agents, kinds, strict=True):
             self.features.append(np.asarray(row, dtype=np.float64))
             self.labels.append(float(label))
             self.agents.append(int(agent))
             self.visible_from.append(int(visible_from))
+            self.kinds.append(int(kind))
 
     def visible(
-        self, step: int, since: int | None = None
+        self, step: int, since: int | None = None, kinds: tuple[int, ...] | None = (1,)
     ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         """Rows visible at `step`; with `since`, only those that became
-        visible at `since` or later (a forgetting window)."""
+        visible at `since` or later (a forgetting window). By default only
+        outcomes of actions taken; `kinds=None` returns every kind."""
 
         visible_from = np.asarray(self.visible_from, dtype=np.int64)
         mask = visible_from <= step
         if since is not None:
             mask &= visible_from >= since
+        if kinds is not None:
+            mask &= np.isin(np.asarray(self.kinds, dtype=np.int64), kinds)
         if not mask.any():
             return np.zeros((0, self.width)), np.zeros(0), np.zeros(0, dtype=np.int64)
         rows = np.flatnonzero(mask)

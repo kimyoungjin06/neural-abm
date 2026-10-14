@@ -254,6 +254,9 @@ class Policy:
     threshold_rule: bool = False
     observe: Callable[[core.OutcomeRecord, int], None] | None = None
     snapshots: core.PolicySnapshots = field(default_factory=core.PolicySnapshots)
+    # Label-selection diagnostics: keep outcomes of declined exposures too.
+    records_declines: bool = False
+    diagnostics: list[dict[str, float]] = field(default_factory=list)
 
 
 def threshold_policy() -> Policy:
@@ -270,16 +273,69 @@ def _since(step: int, window: int | None) -> int | None:
     return None if window is None else step - window
 
 
+LABEL_MODES = ("shares", "all", "matched")
+
+
+def _training_rows(
+    record: core.OutcomeRecord, step: int, window: int | None, label_mode: str,
+    key: tuple[int, ...],
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """The rows a learner trains on, by label mode.
+
+    - "shares": outcomes of shared items only, as every registered arm sees;
+    - "all": outcomes of every decided exposure, shared or declined;
+    - "matched": a keyed random subset of "all" with as many rows as "shares",
+      which removes the selection but keeps the volume.
+    """
+
+    since = _since(step, window)
+    if label_mode == "shares":
+        return record.visible(step, since)
+    if label_mode not in LABEL_MODES:
+        raise ValueError(f"unknown label mode: {label_mode}")
+    features, labels, owners = record.visible(step, since, kinds=None)
+    if label_mode == "matched":
+        target = len(record.visible(step, since)[1])
+        if target < len(labels):
+            rng = np.random.default_rng(core.keyed_seed(*key))
+            keep = np.sort(rng.choice(len(labels), target, replace=False))
+            features, labels, owners = features[keep], labels[keep], owners[keep]
+    return features, labels, owners
+
+
+def label_diagnostics(features: np.ndarray, labels: np.ndarray) -> dict[str, float]:
+    """What the training rows say, with no prior and almost no penalty.
+
+    `data_credibility_weight` is a plain logistic fit of the label on the four
+    item features; `low_credibility_share` is the share of rows with
+    credibility below 0.5, a measure of coverage.
+    """
+
+    from sklearn.linear_model import LogisticRegression
+
+    if len(labels) < 10 or len(set(labels.tolist())) < 2:
+        return {"rows": float(len(labels)), "data_credibility_weight": float("nan"),
+                "low_credibility_share": float("nan")}
+    model = LogisticRegression(C=1e6, max_iter=2000).fit(features[:, :4], labels)
+    return {
+        "rows": float(len(labels)),
+        "data_credibility_weight": float(model.coef_[0][0]),
+        "low_credibility_share": float(np.mean(features[:, 0] < 0.5)),
+    }
+
+
 def pooled_learning_policy(
     family: str, prior: core.LinearPrior, *, seed_components: tuple[int, ...],
-    learning: bool = True, window: int | None = None,
+    learning: bool = True, window: int | None = None, label_mode: str = "shares",
+    diagnose_labels: bool = False,
 ) -> Policy:
     """L0 in Regime A. `window` keeps only outcomes that became visible in the
     last `window` steps, a forgetting learner; None keeps every outcome."""
 
     state: dict[str, Any] = {"predictor": core.PriorPredictor(prior), "refits": 0}
     suffix = "" if window is None else f"_window{window}"
-    policy = Policy(f"L0_pooled_{family}{suffix}")
+    suffix += "" if label_mode == "shares" else f"_labels_{label_mode}"
+    policy = Policy(f"L0_pooled_{family}{suffix}", records_declines=label_mode != "shares")
     policy.snapshots.record(0, ("pooled", state["predictor"]))
 
     def probability(_ids: np.ndarray, x: np.ndarray, _t: int) -> np.ndarray:
@@ -288,7 +344,11 @@ def pooled_learning_policy(
     def observe(record: core.OutcomeRecord, step: int) -> None:
         if not learning:
             return
-        features, labels, _owners = record.visible(step, _since(step, window))
+        features, labels, _owners = _training_rows(
+            record, step, window, label_mode, (*seed_components, 7, state["refits"])
+        )
+        if diagnose_labels:
+            policy.diagnostics.append({"step": float(step), **label_diagnostics(features, labels)})
         if len(labels) == 0:
             return
         seed = core.keyed_seed(*seed_components, state["refits"])
@@ -306,6 +366,7 @@ def pooled_learning_policy(
 def per_agent_learning_policy(
     family: str, prior: core.LinearPrior, agents: int, *, seed_components: tuple[int, ...],
     device: str = "cpu", learning: bool = True, window: int | None = None,
+    label_mode: str = "shares", diagnose_labels: bool = False,
 ) -> Policy:
     predictor = core.BatchedPredictor(
         prior, core.initial_batched_state(family, agents, len(prior.weight),
@@ -314,7 +375,8 @@ def per_agent_learning_policy(
     )
     state: dict[str, Any] = {"predictor": predictor, "refits": 0}
     suffix = "" if window is None else f"_window{window}"
-    policy = Policy(f"L0_per_agent_{family}{suffix}")
+    suffix += "" if label_mode == "shares" else f"_labels_{label_mode}"
+    policy = Policy(f"L0_per_agent_{family}{suffix}", records_declines=label_mode != "shares")
     policy.snapshots.record(0, ("per_agent", predictor))
 
     def probability(ids: np.ndarray, x: np.ndarray, _t: int) -> np.ndarray:
@@ -323,7 +385,11 @@ def per_agent_learning_policy(
     def observe(record: core.OutcomeRecord, step: int) -> None:
         if not learning:
             return
-        features, labels, owners = record.visible(step, _since(step, window))
+        features, labels, owners = _training_rows(
+            record, step, window, label_mode, (*seed_components, 7, state["refits"])
+        )
+        if diagnose_labels:
+            policy.diagnostics.append({"step": float(step), **label_diagnostics(features, labels)})
         if len(labels) == 0:
             return
         seed = core.keyed_seed(*seed_components, state["refits"])
@@ -427,6 +493,7 @@ def simulate(world: World, stream: Stream, policy: Policy, replicate: int) -> Ru
     frontier = np.zeros((count, config.agents), dtype=bool)
     record = core.OutcomeRecord(width=width)
     pending: dict[int, tuple[np.ndarray, np.ndarray]] = {}
+    declined: dict[int, tuple[np.ndarray, np.ndarray]] = {}
     revealed_true = np.zeros(config.agents)
     revealed_total = np.zeros(config.agents)
     floor = core.ExplorationFloor(config.epsilon)
@@ -449,6 +516,12 @@ def simulate(world: World, stream: Stream, policy: Policy, replicate: int) -> Ru
             record.add(rows, np.full(len(agents), label), agents, visible_from=step)
             revealed_total[agents] += 1.0
             revealed_true[agents] += label
+        for item in np.flatnonzero((stream.born + config.delay == step) & stream.revealed):
+            agents, rows = declined.pop(int(item), (np.zeros(0, dtype=np.int64), None))
+            if rows is not None and len(agents):
+                label = float(stream.veracity[item])
+                record.add(rows, np.full(len(agents), label), agents, visible_from=step,
+                           kinds=np.zeros(len(agents), dtype=np.int64))
 
         # New items: their seed agents share without deciding.
         for item in np.flatnonzero(stream.born == step):
@@ -498,6 +571,15 @@ def simulate(world: World, stream: Stream, policy: Policy, replicate: int) -> Ru
         order = np.lexsort((agent_idx, items))
         digest.update(np.stack([items[order], agent_idx[order], share[order]]).astype(np.int64).tobytes())
 
+        if policy.records_declines:
+            for item in np.unique(items[~share]):
+                rows = (items == item) & ~share
+                if stream.revealed[item] and stream.born[item] + config.delay > step:
+                    old_agents, old_rows = declined.get(int(item), (np.zeros(0, dtype=np.int64), np.zeros((0, width))))
+                    declined[int(item)] = (
+                        np.concatenate([old_agents, agent_idx[rows]]),
+                        np.vstack([old_rows, features[rows]]),
+                    )
         for item in np.unique(items[share]):
             rows = (items == item) & share
             if stream.revealed[item] and stream.born[item] + config.delay > step:

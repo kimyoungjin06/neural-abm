@@ -233,3 +233,35 @@ def test_learner_settings_switch_between_d1_and_pivot() -> None:
     finally:
         spread.use_learner_settings("d1")
     assert spread.LEARNER_SETTINGS == spread.D1_LEARNER_SETTINGS
+
+
+def test_recording_declines_does_not_change_behavior_without_learning() -> None:
+    config = _small()
+    prior = spread.hand_prior(config)
+    for mode in ("all", "matched"):
+        learner = spread.pooled_learning_policy(
+            "linear", prior, seed_components=(6,), learning=False, label_mode=mode
+        )
+        assert learner.records_declines
+        assert _run(config, learner).digest == _run(config, spread.prior_policy("F1", prior)).digest
+
+
+def test_label_modes_select_the_registered_rows() -> None:
+    record = core.OutcomeRecord(width=6)
+    rng = np.random.default_rng(0)
+    record.add(rng.random((5, 6)), np.ones(5), np.arange(5), visible_from=1)
+    record.add(rng.random((20, 6)), np.zeros(20), np.arange(20), visible_from=1,
+               kinds=np.zeros(20, dtype=np.int64))
+    shares = spread._training_rows(record, 3, None, "shares", (1,))
+    everything = spread._training_rows(record, 3, None, "all", (1,))
+    matched = spread._training_rows(record, 3, None, "matched", (1,))
+    assert len(shares[1]) == 5 and len(everything[1]) == 25 and len(matched[1]) == 5
+    assert np.array_equal(matched[0], spread._training_rows(record, 3, None, "matched", (1,))[0])
+
+
+def test_the_label_diagnostic_recovers_the_weight_from_unselected_rows() -> None:
+    rng = np.random.default_rng(1)
+    z = rng.random((40_000, 6))
+    logit = -0.4 + 3.0 * (z[:, 0] - 0.5) - 1.0 * (z[:, 1] - 0.5) - 2.0 * (z[:, 2] - 0.5)
+    labels = (rng.random(len(z)) < core.sigmoid(logit)).astype(np.float64)
+    assert spread.label_diagnostics(z, labels)["data_credibility_weight"] == pytest.approx(3.0, abs=0.2)
