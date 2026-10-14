@@ -223,3 +223,13 @@ def test_decision_shares_exclude_seeds() -> None:
     config = _small()
     result = _run(config, spread.prior_policy("F1", spread.hand_prior(config)))
     assert np.array_equal(result.reach - config.seeds_per_item, result.decision_shares)
+
+
+def test_learner_settings_switch_between_d1_and_pivot() -> None:
+    try:
+        spread.use_learner_settings("pivot")
+        assert spread.LEARNER_SETTINGS["linear"]["epochs"] == 300
+        assert spread.LEARNER_SETTINGS["mlp"]["hidden_width"] == 16
+    finally:
+        spread.use_learner_settings("d1")
+    assert spread.LEARNER_SETTINGS == spread.D1_LEARNER_SETTINGS

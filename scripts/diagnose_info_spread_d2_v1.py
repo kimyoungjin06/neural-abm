@@ -126,8 +126,9 @@ def run_cell(
     return {"control": control, "regime": regime, "family": family, "cell": cell, "rows": rows}
 
 
-def _task(args: tuple[str, str, str, int, int]) -> dict[str, Any]:
-    control, regime, family, cell, replicates = args
+def _task(args: tuple[str, str, str, int, int, str]) -> dict[str, Any]:
+    control, regime, family, cell, replicates, settings = args
+    spread.use_learner_settings(settings)
     return run_cell(control, regime, family, cell, replicates=replicates)
 
 
@@ -203,12 +204,17 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--cells", type=int, default=10)
     parser.add_argument("--replicates", type=int, default=16)
+    parser.add_argument("--learner-settings", choices=("d1", "pivot"), default="d1")
+    parser.add_argument("--controls", nargs="+", choices=tuple(CONTROLS), default=list(CONTROLS))
     args = parser.parse_args()
     order = sorted(
-        ((c, r, f) for c in CONTROLS for r in power.REGIMES for f in power.FAMILIES),
+        ((c, r, f) for c in args.controls for r in power.REGIMES for f in power.FAMILIES),
         key=lambda t: (t[1] != "B", t[2] != "mlp"),
     )
-    tasks = [(c, r, f, cell, args.replicates) for c, r, f in order for cell in range(args.cells)]
+    tasks = [
+        (c, r, f, cell, args.replicates, args.learner_settings)
+        for c, r, f in order for cell in range(args.cells)
+    ]
     args.output_dir.mkdir(parents=True, exist_ok=False)
     started = time.perf_counter()
     if args.workers <= 1:
@@ -222,6 +228,7 @@ def main() -> None:
     summary = {
         "status": "EXPLORATORY_DIAGNOSIS_OF_D2_CONTROLS_ONLY",
         "window": WINDOW, "cells_per_group": args.cells, "replicates": args.replicates,
+        "learner_settings": args.learner_settings,
         "wall_seconds": round(time.perf_counter() - started, 1),
         "groups": summarize(cells),
     }

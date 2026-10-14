@@ -85,11 +85,29 @@ class WorldConfig:
         return names + (TRUST_FEATURE,) if self.regime == "B" else names
 
 
+# D1 settings, chosen for speed. They are weaker than the Pivot ladder's
+# (PIVOT_LEARNER_SETTINGS), which the D2 diagnosis compares.
 LEARNER_SETTINGS: dict[str, dict[str, Any]] = {
     "linear": {"learning_rate": 0.05, "epochs": 60, "weight_decay": 1e-3},
     "mlp": {"learning_rate": 0.05, "epochs": 60, "weight_decay": 1e-3, "hidden_width": 8},
     "tree": {"rounds": 6, "learning_rate": 0.3, "leaf_l2": 1.0, "max_depth": 3, "min_samples_leaf": 10},
 }
+
+
+PIVOT_LEARNER_SETTINGS: dict[str, dict[str, Any]] = {
+    "linear": {"learning_rate": 0.02, "epochs": 300, "weight_decay": 1e-4},
+    "mlp": {"learning_rate": 0.02, "epochs": 300, "weight_decay": 1e-4, "hidden_width": 16},
+    "tree": {"rounds": 300, "learning_rate": 0.1, "leaf_l2": 1.0, "max_depth": 3, "min_samples_leaf": 5},
+}
+D1_LEARNER_SETTINGS = {family: dict(settings) for family, settings in LEARNER_SETTINGS.items()}
+
+
+def use_learner_settings(name: str) -> None:
+    """Switch every learner in this process to the D1 or the Pivot settings."""
+
+    source = {"d1": D1_LEARNER_SETTINGS, "pivot": PIVOT_LEARNER_SETTINGS}[name]
+    for family, settings in source.items():
+        LEARNER_SETTINGS[family] = dict(settings)
 
 
 # -- world -------------------------------------------------------------------

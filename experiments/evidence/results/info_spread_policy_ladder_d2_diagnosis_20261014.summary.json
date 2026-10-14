@@ -1,0 +1,1353 @@
+{
+ "schema_version": "info_spread_policy_ladder_d2_diagnosis.v1",
+ "label": "info_spread_policy_ladder_d2_diagnosis_20261014",
+ "status": "EXPLORATORY_DIAGNOSIS_ENSEMBLING_SUPPORTED_FORGETTING_PARTLY_FIT_BUDGET_CANDIDATE",
+ "question": "Why was the adaptive arm worse than the four-donor table in the D2 shift controls?",
+ "code_commit": "aade5f6",
+ "learner_settings": "D1 (linear/mlp: 60 epochs, lr 0.05, weight decay 1e-3, hidden 8)",
+ "execution": {
+  "host": "GPU-Server (CPU only)",
+  "workers": 36,
+  "wall_seconds": 2453.5,
+  "cells": 80,
+  "cells_per_group": 10,
+  "replicates": 16,
+  "window": 12,
+  "output": "~/neural_abm/runs/info_spread_d2_diagnosis_aade5f6/",
+  "cells_jsonl_sha256": "0d59cd5c2fcb35642e43296cc899416e620fd3445bb229354400901a7d49ea1e"
+ },
+ "groups": {
+  "POS_flat/A/linear": {
+   "cells": 10,
+   "mean_precision": {
+    "L0_full": {
+     "overall": 0.5724,
+     "pre_shift": 0.6366,
+     "post_shift": 0.4625
+    },
+    "L0_window": {
+     "overall": 0.5837,
+     "pre_shift": 0.6324,
+     "post_shift": 0.4603
+    },
+    "T0_1": {
+     "overall": 0.5783,
+     "pre_shift": 0.6413,
+     "post_shift": 0.4764
+    },
+    "T0_4": {
+     "overall": 0.5841,
+     "pre_shift": 0.6519,
+     "post_shift": 0.472
+    }
+   },
+   "contrasts": {
+    "L0_full - T0_4": {
+     "overall": {
+      "mean": -0.0117,
+      "interval_95": [
+       -0.0215,
+       -0.0014
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0152,
+      "interval_95": [
+       -0.0259,
+       -0.0044
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0095,
+      "interval_95": [
+       -0.024,
+       0.0047
+      ]
+     }
+    },
+    "L0_full - T0_1 (closed loop at matched evidence)": {
+     "overall": {
+      "mean": -0.0059,
+      "interval_95": [
+       -0.0228,
+       0.0122
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0047,
+      "interval_95": [
+       -0.0211,
+       0.0137
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0139,
+      "interval_95": [
+       -0.0394,
+       0.0081
+      ]
+     }
+    },
+    "T0_1 - T0_4 (ensembling)": {
+     "overall": {
+      "mean": -0.0059,
+      "interval_95": [
+       -0.0183,
+       0.0054
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0105,
+      "interval_95": [
+       -0.0289,
+       0.0053
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0044,
+      "interval_95": [
+       -0.0095,
+       0.0214
+      ]
+     }
+    },
+    "L0_window - L0_full (forgetting)": {
+     "overall": {
+      "mean": 0.0113,
+      "interval_95": [
+       0.006,
+       0.016
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0042,
+      "interval_95": [
+       -0.0072,
+       -0.0016
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0022,
+      "interval_95": [
+       -0.0093,
+       0.0054
+      ]
+     }
+    }
+   },
+   "credibility_weight_by_steps_from_shift": {
+    "L0_full": {
+     "[-16,-12)": 4.126,
+     "[-12,-8)": 4.18,
+     "[-8,-4)": 4.199,
+     "[-4,0)": 4.181,
+     "[0,4)": 4.162,
+     "[4,8)": 4.126,
+     "[8,12)": 4.014,
+     "[12,16)": 3.927,
+     "[16,20)": 3.874
+    },
+    "L0_window": {
+     "[-16,-12)": 4.129,
+     "[-12,-8)": 4.157,
+     "[-8,-4)": 4.225,
+     "[-4,0)": 4.228,
+     "[0,4)": 4.131,
+     "[4,8)": 3.935,
+     "[8,12)": 3.707,
+     "[12,16)": 3.53,
+     "[16,20)": 3.481
+    },
+    "T0_1": {
+     "[-16,-12)": 4.049,
+     "[-12,-8)": 4.018,
+     "[-8,-4)": 4.039,
+     "[-4,0)": 4.076,
+     "[0,4)": 4.063,
+     "[4,8)": 4.017,
+     "[8,12)": 3.966,
+     "[12,16)": 3.944,
+     "[16,20)": 3.918
+    },
+    "T0_4": {
+     "[-16,-12)": 4.046,
+     "[-12,-8)": 4.029,
+     "[-8,-4)": 4.041,
+     "[-4,0)": 4.053,
+     "[0,4)": 4.031,
+     "[4,8)": 3.99,
+     "[8,12)": 3.952,
+     "[12,16)": 3.923,
+     "[16,20)": 3.902
+    }
+   }
+  },
+  "POS_flat/A/mlp": {
+   "cells": 10,
+   "mean_precision": {
+    "L0_full": {
+     "overall": 0.5734,
+     "pre_shift": 0.6209,
+     "post_shift": 0.4993
+    },
+    "L0_window": {
+     "overall": 0.5656,
+     "pre_shift": 0.6114,
+     "post_shift": 0.4914
+    },
+    "T0_1": {
+     "overall": 0.5794,
+     "pre_shift": 0.6256,
+     "post_shift": 0.5107
+    },
+    "T0_4": {
+     "overall": 0.5962,
+     "pre_shift": 0.651,
+     "post_shift": 0.5109
+    }
+   },
+   "contrasts": {
+    "L0_full - T0_4": {
+     "overall": {
+      "mean": -0.0228,
+      "interval_95": [
+       -0.0344,
+       -0.0119
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0301,
+      "interval_95": [
+       -0.0451,
+       -0.0146
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0116,
+      "interval_95": [
+       -0.0247,
+       0.0053
+      ]
+     }
+    },
+    "L0_full - T0_1 (closed loop at matched evidence)": {
+     "overall": {
+      "mean": -0.006,
+      "interval_95": [
+       -0.028,
+       0.0171
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0047,
+      "interval_95": [
+       -0.0344,
+       0.0286
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0114,
+      "interval_95": [
+       -0.0347,
+       0.0095
+      ]
+     }
+    },
+    "T0_1 - T0_4 (ensembling)": {
+     "overall": {
+      "mean": -0.0168,
+      "interval_95": [
+       -0.0367,
+       0.0016
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0254,
+      "interval_95": [
+       -0.0563,
+       0.0048
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0001,
+      "interval_95": [
+       -0.0189,
+       0.0185
+      ]
+     }
+    },
+    "L0_window - L0_full (forgetting)": {
+     "overall": {
+      "mean": -0.0078,
+      "interval_95": [
+       -0.0131,
+       -0.0024
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0094,
+      "interval_95": [
+       -0.0132,
+       -0.0059
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0079,
+      "interval_95": [
+       -0.0171,
+       0.0021
+      ]
+     }
+    }
+   },
+   "credibility_weight_by_steps_from_shift": {
+    "L0_full": {
+     "[-16,-12)": 4.282,
+     "[-12,-8)": 4.482,
+     "[-8,-4)": 4.453,
+     "[-4,0)": 4.358,
+     "[0,4)": 4.279,
+     "[4,8)": 4.066,
+     "[8,12)": 3.647,
+     "[12,16)": 3.281,
+     "[16,20)": 3.112
+    },
+    "L0_window": {
+     "[-16,-12)": 4.379,
+     "[-12,-8)": 4.659,
+     "[-8,-4)": 4.875,
+     "[-4,0)": 4.928,
+     "[0,4)": 4.579,
+     "[4,8)": 3.878,
+     "[8,12)": 2.862,
+     "[12,16)": 1.476,
+     "[16,20)": 1.092
+    },
+    "T0_1": {
+     "[-16,-12)": 4.174,
+     "[-12,-8)": 3.92,
+     "[-8,-4)": 3.905,
+     "[-4,0)": 3.931,
+     "[0,4)": 3.856,
+     "[4,8)": 3.723,
+     "[8,12)": 3.538,
+     "[12,16)": 3.37,
+     "[16,20)": 3.202
+    },
+    "T0_4": {
+     "[-16,-12)": 3.528,
+     "[-12,-8)": 3.481,
+     "[-8,-4)": 3.414,
+     "[-4,0)": 3.355,
+     "[0,4)": 3.28,
+     "[4,8)": 3.152,
+     "[8,12)": 3.042,
+     "[12,16)": 2.943,
+     "[16,20)": 2.883
+    }
+   }
+  },
+  "POS_flat/B/linear": {
+   "cells": 10,
+   "mean_precision": {
+    "L0_full": {
+     "overall": 0.5463,
+     "pre_shift": 0.5975,
+     "post_shift": 0.4457
+    },
+    "L0_window": {
+     "overall": 0.5139,
+     "pre_shift": 0.5648,
+     "post_shift": 0.4164
+    },
+    "T0_1": {
+     "overall": 0.5584,
+     "pre_shift": 0.6113,
+     "post_shift": 0.4579
+    },
+    "T0_4": {
+     "overall": 0.571,
+     "pre_shift": 0.6272,
+     "post_shift": 0.4623
+    }
+   },
+   "contrasts": {
+    "L0_full - T0_4": {
+     "overall": {
+      "mean": -0.0246,
+      "interval_95": [
+       -0.0315,
+       -0.0181
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0297,
+      "interval_95": [
+       -0.0374,
+       -0.0218
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0167,
+      "interval_95": [
+       -0.0236,
+       -0.0106
+      ]
+     }
+    },
+    "L0_full - T0_1 (closed loop at matched evidence)": {
+     "overall": {
+      "mean": -0.0121,
+      "interval_95": [
+       -0.0266,
+       0.0016
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0137,
+      "interval_95": [
+       -0.0298,
+       0.0024
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0123,
+      "interval_95": [
+       -0.0238,
+       -0.0021
+      ]
+     }
+    },
+    "T0_1 - T0_4 (ensembling)": {
+     "overall": {
+      "mean": -0.0125,
+      "interval_95": [
+       -0.0238,
+       -0.0014
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.016,
+      "interval_95": [
+       -0.0307,
+       -0.0032
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0044,
+      "interval_95": [
+       -0.0144,
+       0.0062
+      ]
+     }
+    },
+    "L0_window - L0_full (forgetting)": {
+     "overall": {
+      "mean": -0.0324,
+      "interval_95": [
+       -0.0341,
+       -0.0305
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0327,
+      "interval_95": [
+       -0.0355,
+       -0.0297
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0293,
+      "interval_95": [
+       -0.0325,
+       -0.0253
+      ]
+     }
+    }
+   },
+   "credibility_weight_by_steps_from_shift": {
+    "L0_full": {
+     "[-16,-12)": 4.065,
+     "[-12,-8)": 4.09,
+     "[-8,-4)": 4.108,
+     "[-4,0)": 4.084,
+     "[0,4)": 4.069,
+     "[4,8)": 4.025,
+     "[8,12)": 3.921,
+     "[12,16)": 3.835,
+     "[16,20)": 3.792
+    },
+    "L0_window": {
+     "[-16,-12)": 4.063,
+     "[-12,-8)": 4.103,
+     "[-8,-4)": 4.117,
+     "[-4,0)": 4.094,
+     "[0,4)": 4.071,
+     "[4,8)": 3.935,
+     "[8,12)": 3.664,
+     "[12,16)": 3.454,
+     "[16,20)": 3.379
+    },
+    "T0_1": {
+     "[-16,-12)": 4.029,
+     "[-12,-8)": 3.998,
+     "[-8,-4)": 4.008,
+     "[-4,0)": 3.987,
+     "[0,4)": 3.966,
+     "[4,8)": 3.928,
+     "[8,12)": 3.88,
+     "[12,16)": 3.846,
+     "[16,20)": 3.818
+    },
+    "T0_4": {
+     "[-16,-12)": 3.542,
+     "[-12,-8)": 3.483,
+     "[-8,-4)": 3.538,
+     "[-4,0)": 3.607,
+     "[0,4)": 3.628,
+     "[4,8)": 3.624,
+     "[8,12)": 3.615,
+     "[12,16)": 3.604,
+     "[16,20)": 3.597
+    }
+   }
+  },
+  "POS_flat/B/mlp": {
+   "cells": 10,
+   "mean_precision": {
+    "L0_full": {
+     "overall": 0.5424,
+     "pre_shift": 0.5691,
+     "post_shift": 0.4817
+    },
+    "L0_window": {
+     "overall": 0.4864,
+     "pre_shift": 0.5166,
+     "post_shift": 0.4384
+    },
+    "T0_1": {
+     "overall": 0.5526,
+     "pre_shift": 0.5789,
+     "post_shift": 0.4974
+    },
+    "T0_4": {
+     "overall": 0.5891,
+     "pre_shift": 0.6188,
+     "post_shift": 0.518
+    }
+   },
+   "contrasts": {
+    "L0_full - T0_4": {
+     "overall": {
+      "mean": -0.0467,
+      "interval_95": [
+       -0.0564,
+       -0.0374
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0497,
+      "interval_95": [
+       -0.06,
+       -0.0393
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0363,
+      "interval_95": [
+       -0.0477,
+       -0.0257
+      ]
+     }
+    },
+    "L0_full - T0_1 (closed loop at matched evidence)": {
+     "overall": {
+      "mean": -0.0102,
+      "interval_95": [
+       -0.0245,
+       0.0054
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0098,
+      "interval_95": [
+       -0.028,
+       0.0102
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0157,
+      "interval_95": [
+       -0.0307,
+       -0.0009
+      ]
+     }
+    },
+    "T0_1 - T0_4 (ensembling)": {
+     "overall": {
+      "mean": -0.0365,
+      "interval_95": [
+       -0.052,
+       -0.0227
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.04,
+      "interval_95": [
+       -0.0586,
+       -0.0226
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0206,
+      "interval_95": [
+       -0.036,
+       -0.006
+      ]
+     }
+    },
+    "L0_window - L0_full (forgetting)": {
+     "overall": {
+      "mean": -0.056,
+      "interval_95": [
+       -0.058,
+       -0.0539
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0525,
+      "interval_95": [
+       -0.0557,
+       -0.05
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0433,
+      "interval_95": [
+       -0.0487,
+       -0.0384
+      ]
+     }
+    }
+   },
+   "credibility_weight_by_steps_from_shift": {
+    "L0_full": {
+     "[-16,-12)": 6.702,
+     "[-12,-8)": 7.19,
+     "[-8,-4)": 7.502,
+     "[-4,0)": 7.493,
+     "[0,4)": 7.308,
+     "[4,8)": 6.832,
+     "[8,12)": 5.993,
+     "[12,16)": 5.359,
+     "[16,20)": 4.945
+    },
+    "L0_window": {
+     "[-16,-12)": 6.542,
+     "[-12,-8)": 7.248,
+     "[-8,-4)": 7.564,
+     "[-4,0)": 7.656,
+     "[0,4)": 7.522,
+     "[4,8)": 6.665,
+     "[8,12)": 4.777,
+     "[12,16)": 3.04,
+     "[16,20)": 2.2
+    },
+    "T0_1": {
+     "[-16,-12)": 6.399,
+     "[-12,-8)": 6.578,
+     "[-8,-4)": 6.761,
+     "[-4,0)": 6.716,
+     "[0,4)": 6.513,
+     "[4,8)": 6.146,
+     "[8,12)": 5.691,
+     "[12,16)": 5.325,
+     "[16,20)": 5.084
+    },
+    "T0_4": {
+     "[-16,-12)": 3.66,
+     "[-12,-8)": 3.607,
+     "[-8,-4)": 3.646,
+     "[-4,0)": 3.714,
+     "[0,4)": 3.686,
+     "[4,8)": 3.566,
+     "[8,12)": 3.401,
+     "[12,16)": 3.268,
+     "[16,20)": 3.204
+    }
+   }
+  },
+  "POS_flip/A/linear": {
+   "cells": 10,
+   "mean_precision": {
+    "L0_full": {
+     "overall": 0.507,
+     "pre_shift": 0.6368,
+     "post_shift": 0.2458
+    },
+    "L0_window": {
+     "overall": 0.555,
+     "pre_shift": 0.6326,
+     "post_shift": 0.2582
+    },
+    "T0_1": {
+     "overall": 0.5096,
+     "pre_shift": 0.6412,
+     "post_shift": 0.2476
+    },
+    "T0_4": {
+     "overall": 0.5168,
+     "pre_shift": 0.653,
+     "post_shift": 0.2491
+    }
+   },
+   "contrasts": {
+    "L0_full - T0_4": {
+     "overall": {
+      "mean": -0.0098,
+      "interval_95": [
+       -0.0231,
+       0.003
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0162,
+      "interval_95": [
+       -0.0274,
+       -0.006
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0033,
+      "interval_95": [
+       -0.0171,
+       0.0106
+      ]
+     }
+    },
+    "L0_full - T0_1 (closed loop at matched evidence)": {
+     "overall": {
+      "mean": -0.0026,
+      "interval_95": [
+       -0.0234,
+       0.0154
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0044,
+      "interval_95": [
+       -0.0208,
+       0.0154
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0018,
+      "interval_95": [
+       -0.0204,
+       0.019
+      ]
+     }
+    },
+    "T0_1 - T0_4 (ensembling)": {
+     "overall": {
+      "mean": -0.0072,
+      "interval_95": [
+       -0.0194,
+       0.0036
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0118,
+      "interval_95": [
+       -0.0298,
+       0.0037
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0015,
+      "interval_95": [
+       -0.0152,
+       0.011
+      ]
+     }
+    },
+    "L0_window - L0_full (forgetting)": {
+     "overall": {
+      "mean": 0.048,
+      "interval_95": [
+       0.0418,
+       0.0547
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0042,
+      "interval_95": [
+       -0.0071,
+       -0.0015
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0124,
+      "interval_95": [
+       0.0054,
+       0.0203
+      ]
+     }
+    }
+   },
+   "credibility_weight_by_steps_from_shift": {
+    "L0_full": {
+     "[-16,-12)": 4.126,
+     "[-12,-8)": 4.18,
+     "[-8,-4)": 4.199,
+     "[-4,0)": 4.181,
+     "[0,4)": 4.162,
+     "[4,8)": 4.064,
+     "[8,12)": 3.867,
+     "[12,16)": 3.751,
+     "[16,20)": 3.667
+    },
+    "L0_window": {
+     "[-16,-12)": 4.129,
+     "[-12,-8)": 4.157,
+     "[-8,-4)": 4.225,
+     "[-4,0)": 4.228,
+     "[0,4)": 4.131,
+     "[4,8)": 3.795,
+     "[8,12)": 3.47,
+     "[12,16)": 3.278,
+     "[16,20)": 3.158
+    },
+    "T0_1": {
+     "[-16,-12)": 4.04,
+     "[-12,-8)": 4.004,
+     "[-8,-4)": 4.015,
+     "[-4,0)": 4.039,
+     "[0,4)": 4.009,
+     "[4,8)": 3.95,
+     "[8,12)": 3.878,
+     "[12,16)": 3.839,
+     "[16,20)": 3.814
+    },
+    "T0_4": {
+     "[-16,-12)": 4.033,
+     "[-12,-8)": 4.007,
+     "[-8,-4)": 4.005,
+     "[-4,0)": 3.999,
+     "[0,4)": 3.958,
+     "[4,8)": 3.897,
+     "[8,12)": 3.836,
+     "[12,16)": 3.79,
+     "[16,20)": 3.762
+    }
+   }
+  },
+  "POS_flip/A/mlp": {
+   "cells": 10,
+   "mean_precision": {
+    "L0_full": {
+     "overall": 0.5208,
+     "pre_shift": 0.6209,
+     "post_shift": 0.3405
+    },
+    "L0_window": {
+     "overall": 0.5632,
+     "pre_shift": 0.6114,
+     "post_shift": 0.4515
+    },
+    "T0_1": {
+     "overall": 0.5202,
+     "pre_shift": 0.6249,
+     "post_shift": 0.3373
+    },
+    "T0_4": {
+     "overall": 0.538,
+     "pre_shift": 0.6518,
+     "post_shift": 0.342
+    }
+   },
+   "contrasts": {
+    "L0_full - T0_4": {
+     "overall": {
+      "mean": -0.0171,
+      "interval_95": [
+       -0.0329,
+       -0.002
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0308,
+      "interval_95": [
+       -0.046,
+       -0.0151
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0015,
+      "interval_95": [
+       -0.0337,
+       0.0313
+      ]
+     }
+    },
+    "L0_full - T0_1 (closed loop at matched evidence)": {
+     "overall": {
+      "mean": 0.0007,
+      "interval_95": [
+       -0.0242,
+       0.0239
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0039,
+      "interval_95": [
+       -0.0325,
+       0.0299
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0032,
+      "interval_95": [
+       -0.0674,
+       0.0588
+      ]
+     }
+    },
+    "T0_1 - T0_4 (ensembling)": {
+     "overall": {
+      "mean": -0.0178,
+      "interval_95": [
+       -0.0395,
+       0.0009
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0269,
+      "interval_95": [
+       -0.0577,
+       0.0025
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0047,
+      "interval_95": [
+       -0.0525,
+       0.0489
+      ]
+     }
+    },
+    "L0_window - L0_full (forgetting)": {
+     "overall": {
+      "mean": 0.0424,
+      "interval_95": [
+       0.0348,
+       0.0502
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0096,
+      "interval_95": [
+       -0.0134,
+       -0.0061
+      ]
+     },
+     "post_shift": {
+      "mean": 0.1111,
+      "interval_95": [
+       0.093,
+       0.1255
+      ]
+     }
+    }
+   },
+   "credibility_weight_by_steps_from_shift": {
+    "L0_full": {
+     "[-16,-12)": 4.282,
+     "[-12,-8)": 4.482,
+     "[-8,-4)": 4.453,
+     "[-4,0)": 4.358,
+     "[0,4)": 4.279,
+     "[4,8)": 3.868,
+     "[8,12)": 3.157,
+     "[12,16)": 2.689,
+     "[16,20)": 2.331
+    },
+    "L0_window": {
+     "[-16,-12)": 4.379,
+     "[-12,-8)": 4.659,
+     "[-8,-4)": 4.875,
+     "[-4,0)": 4.928,
+     "[0,4)": 4.579,
+     "[4,8)": 3.448,
+     "[8,12)": 1.492,
+     "[12,16)": -0.263,
+     "[16,20)": -1.413
+    },
+    "T0_1": {
+     "[-16,-12)": 4.149,
+     "[-12,-8)": 3.869,
+     "[-8,-4)": 3.826,
+     "[-4,0)": 3.824,
+     "[0,4)": 3.701,
+     "[4,8)": 3.543,
+     "[8,12)": 3.29,
+     "[12,16)": 3.079,
+     "[16,20)": 2.901
+    },
+    "T0_4": {
+     "[-16,-12)": 3.482,
+     "[-12,-8)": 3.411,
+     "[-8,-4)": 3.299,
+     "[-4,0)": 3.169,
+     "[0,4)": 2.994,
+     "[4,8)": 2.78,
+     "[8,12)": 2.536,
+     "[12,16)": 2.357,
+     "[16,20)": 2.233
+    }
+   }
+  },
+  "POS_flip/B/linear": {
+   "cells": 10,
+   "mean_precision": {
+    "L0_full": {
+     "overall": 0.4893,
+     "pre_shift": 0.5978,
+     "post_shift": 0.2476
+    },
+    "L0_window": {
+     "overall": 0.4783,
+     "pre_shift": 0.5673,
+     "post_shift": 0.2505
+    },
+    "T0_1": {
+     "overall": 0.5009,
+     "pre_shift": 0.6119,
+     "post_shift": 0.2511
+    },
+    "T0_4": {
+     "overall": 0.5104,
+     "pre_shift": 0.628,
+     "post_shift": 0.2476
+    }
+   },
+   "contrasts": {
+    "L0_full - T0_4": {
+     "overall": {
+      "mean": -0.0211,
+      "interval_95": [
+       -0.0316,
+       -0.0111
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0302,
+      "interval_95": [
+       -0.0386,
+       -0.0219
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0,
+      "interval_95": [
+       -0.0079,
+       0.0072
+      ]
+     }
+    },
+    "L0_full - T0_1 (closed loop at matched evidence)": {
+     "overall": {
+      "mean": -0.0116,
+      "interval_95": [
+       -0.0286,
+       0.0044
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0141,
+      "interval_95": [
+       -0.0318,
+       0.0023
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0035,
+      "interval_95": [
+       -0.0115,
+       0.0047
+      ]
+     }
+    },
+    "T0_1 - T0_4 (ensembling)": {
+     "overall": {
+      "mean": -0.0095,
+      "interval_95": [
+       -0.0221,
+       0.0035
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0161,
+      "interval_95": [
+       -0.0314,
+       -0.0023
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0035,
+      "interval_95": [
+       -0.0033,
+       0.0101
+      ]
+     }
+    },
+    "L0_window - L0_full (forgetting)": {
+     "overall": {
+      "mean": -0.011,
+      "interval_95": [
+       -0.0141,
+       -0.0075
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0305,
+      "interval_95": [
+       -0.0338,
+       -0.0275
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0028,
+      "interval_95": [
+       -0.0014,
+       0.0074
+      ]
+     }
+    }
+   },
+   "credibility_weight_by_steps_from_shift": {
+    "L0_full": {
+     "[-16,-12)": 4.065,
+     "[-12,-8)": 4.09,
+     "[-8,-4)": 4.108,
+     "[-4,0)": 4.084,
+     "[0,4)": 4.069,
+     "[4,8)": 3.978,
+     "[8,12)": 3.797,
+     "[12,16)": 3.679,
+     "[16,20)": 3.605
+    },
+    "L0_window": {
+     "[-16,-12)": 4.063,
+     "[-12,-8)": 4.103,
+     "[-8,-4)": 4.117,
+     "[-4,0)": 4.094,
+     "[0,4)": 4.071,
+     "[4,8)": 3.814,
+     "[8,12)": 3.375,
+     "[12,16)": 3.123,
+     "[16,20)": 3.017
+    },
+    "T0_1": {
+     "[-16,-12)": 4.021,
+     "[-12,-8)": 3.984,
+     "[-8,-4)": 3.988,
+     "[-4,0)": 3.954,
+     "[0,4)": 3.919,
+     "[4,8)": 3.867,
+     "[8,12)": 3.799,
+     "[12,16)": 3.751,
+     "[16,20)": 3.723
+    },
+    "T0_4": {
+     "[-16,-12)": 3.535,
+     "[-12,-8)": 3.47,
+     "[-8,-4)": 3.516,
+     "[-4,0)": 3.572,
+     "[0,4)": 3.578,
+     "[4,8)": 3.558,
+     "[8,12)": 3.53,
+     "[12,16)": 3.505,
+     "[16,20)": 3.491
+    }
+   }
+  },
+  "POS_flip/B/mlp": {
+   "cells": 10,
+   "mean_precision": {
+    "L0_full": {
+     "overall": 0.5032,
+     "pre_shift": 0.5687,
+     "post_shift": 0.3442
+    },
+    "L0_window": {
+     "overall": 0.4868,
+     "pre_shift": 0.515,
+     "post_shift": 0.4324
+    },
+    "T0_1": {
+     "overall": 0.5117,
+     "pre_shift": 0.578,
+     "post_shift": 0.3699
+    },
+    "T0_4": {
+     "overall": 0.5393,
+     "pre_shift": 0.6183,
+     "post_shift": 0.3362
+    }
+   },
+   "contrasts": {
+    "L0_full - T0_4": {
+     "overall": {
+      "mean": -0.0361,
+      "interval_95": [
+       -0.0483,
+       -0.0236
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0496,
+      "interval_95": [
+       -0.0606,
+       -0.039
+      ]
+     },
+     "post_shift": {
+      "mean": 0.008,
+      "interval_95": [
+       -0.0121,
+       0.0279
+      ]
+     }
+    },
+    "L0_full - T0_1 (closed loop at matched evidence)": {
+     "overall": {
+      "mean": -0.0085,
+      "interval_95": [
+       -0.0269,
+       0.008
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0093,
+      "interval_95": [
+       -0.0267,
+       0.0105
+      ]
+     },
+     "post_shift": {
+      "mean": -0.0257,
+      "interval_95": [
+       -0.0617,
+       0.0098
+      ]
+     }
+    },
+    "T0_1 - T0_4 (ensembling)": {
+     "overall": {
+      "mean": -0.0277,
+      "interval_95": [
+       -0.0442,
+       -0.0126
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0403,
+      "interval_95": [
+       -0.059,
+       -0.0226
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0337,
+      "interval_95": [
+       -0.0008,
+       0.0666
+      ]
+     }
+    },
+    "L0_window - L0_full (forgetting)": {
+     "overall": {
+      "mean": -0.0164,
+      "interval_95": [
+       -0.0204,
+       -0.0122
+      ]
+     },
+     "pre_shift": {
+      "mean": -0.0537,
+      "interval_95": [
+       -0.0567,
+       -0.0511
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0882,
+      "interval_95": [
+       0.0832,
+       0.0934
+      ]
+     }
+    }
+   },
+   "credibility_weight_by_steps_from_shift": {
+    "L0_full": {
+     "[-16,-12)": 6.702,
+     "[-12,-8)": 7.19,
+     "[-8,-4)": 7.502,
+     "[-4,0)": 7.493,
+     "[0,4)": 7.308,
+     "[4,8)": 6.534,
+     "[8,12)": 5.191,
+     "[12,16)": 4.302,
+     "[16,20)": 3.653
+    },
+    "L0_window": {
+     "[-16,-12)": 6.542,
+     "[-12,-8)": 7.248,
+     "[-8,-4)": 7.564,
+     "[-4,0)": 7.656,
+     "[0,4)": 7.522,
+     "[4,8)": 5.817,
+     "[8,12)": 2.359,
+     "[12,16)": -0.414,
+     "[16,20)": -2.153
+    },
+    "T0_1": {
+     "[-16,-12)": 6.347,
+     "[-12,-8)": 6.472,
+     "[-8,-4)": 6.6,
+     "[-4,0)": 6.465,
+     "[0,4)": 6.157,
+     "[4,8)": 5.668,
+     "[8,12)": 5.072,
+     "[12,16)": 4.591,
+     "[16,20)": 4.321
+    },
+    "T0_4": {
+     "[-16,-12)": 3.611,
+     "[-12,-8)": 3.521,
+     "[-8,-4)": 3.5,
+     "[-4,0)": 3.497,
+     "[0,4)": 3.387,
+     "[4,8)": 3.173,
+     "[8,12)": 2.901,
+     "[12,16)": 2.695,
+     "[16,20)": 2.592
+    }
+   }
+  }
+ },
+ "findings": {
+  "a_ensembling": "Supported. The single-donor table is below the four-donor table before the shift in all 8 groups (-0.010 to -0.040; intervals exclude zero in the 4 Regime B groups). At matched evidence, L0 minus the single-donor table stays within +-0.015 and its interval includes zero in 14 of 16 cohort contrasts. The four-donor table's credibility weight is closer to the truth (about 3.5 against 3) than single learners' (4.1 to 7.5; per-agent MLPs are overconfident).",
+  "b_forgetting": "Partly supported. After a shift the full learner's credibility weight moves slowly; the forgetting learner moves faster and, under the flip, raises post-shift precision for MLPs (+0.111 in A, +0.088 in B) but little for linear learners (+0.012, +0.003). Forgetting costs evidence: pre-shift precision falls by 0.004 to 0.054, most in Regime B, and under the flat shift it does not help.",
+  "c_fit_budget": "New candidate, not yet tested. Linear learners hardly leave the prior (credibility weight about 4.1 against a true 3 before the shift, 3.2 to 3.9 against -3 after the flip) with or without forgetting. The D1 learner settings were chosen for speed and are weaker than the Pivot ladder's (300 epochs, lr 0.02, weight decay 1e-4, hidden 16).",
+  "composition": "Overall precision mixes item cohorts; read the pre- and post-shift cohorts."
+ },
+ "boundaries": {
+  "study_cells_scored": false,
+  "llm_calls": 0,
+  "empirical_rows_read": 0,
+  "registered": false
+ }
+}
