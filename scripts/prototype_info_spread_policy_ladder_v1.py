@@ -53,7 +53,8 @@ GEOMETRIES = ("linear", "smooth", "axis", "null")
 REGIMES = ("A", "B")
 
 # Stream tags for keyed randomness.
-TAG_GRAPH, TAG_AGENTS, TAG_ITEMS, TAG_CALIBRATION, TAG_EXPLORE = 1, 2, 3, 4, 5
+TAG_GRAPH, TAG_AGENTS, TAG_ITEMS, TAG_CALIBRATION, TAG_EXPLORE, TAG_SHIFT = 1, 2, 3, 4, 5, 6
+EARLY_SHOCK_STEPS = 10
 
 
 @dataclass(frozen=True)
@@ -75,6 +76,9 @@ class WorldConfig:
     refit_every: int = 4
     epsilon: float = 0.0
     world_seed: int = 0
+    # D2 positive controls: from a step drawn per replicate, the credibility
+    # weight of the veracity relation becomes this value. None means no shift.
+    shift_credibility_weight: float | None = None
 
     def feature_names(self) -> tuple[str, ...]:
         names = ITEM_FEATURES + EXPOSURE_FEATURES
@@ -91,11 +95,13 @@ LEARNER_SETTINGS: dict[str, dict[str, Any]] = {
 # -- world -------------------------------------------------------------------
 
 
-def _veracity_logit_without_intercept(geometry: str, z: np.ndarray) -> np.ndarray:
+def _veracity_logit_without_intercept(
+    geometry: str, z: np.ndarray, credibility_weight: float = 3.0
+) -> np.ndarray:
     cred, nov, inten, fit = (z[:, k] for k in range(4))
     if geometry == "null":
         return np.zeros(len(z))
-    linear = 3.0 * (cred - 0.5) - 1.0 * (nov - 0.5) - 2.0 * (inten - 0.5)
+    linear = credibility_weight * (cred - 0.5) - 1.0 * (nov - 0.5) - 2.0 * (inten - 0.5)
     if geometry == "linear":
         return linear
     if geometry == "smooth":
@@ -139,6 +145,8 @@ class World:
 def build_world(config: WorldConfig) -> World:
     if config.geometry not in GEOMETRIES or config.regime not in REGIMES:
         raise ValueError("unknown geometry or regime")
+    if config.shift_credibility_weight is not None and config.geometry not in ("linear", "smooth"):
+        raise ValueError("a credibility shift needs a linear or smooth geometry")
     graph = nx.watts_strogatz_graph(
         config.agents, config.degree, config.rewire,
         seed=core.keyed_seed(config.world_seed, TAG_GRAPH),
@@ -164,6 +172,16 @@ class Stream:
     revealed: np.ndarray  # [items] bool
     seeds: np.ndarray  # [items, seeds_per_item]
     born: np.ndarray  # [items]
+    shift_step: int | None = None
+
+    def early_shock(self) -> float:
+        """Share of false items among early items that will be fact-checked.
+
+        The stream alone fixes it, so it is identical across arms.
+        """
+
+        early = (self.born < EARLY_SHOCK_STEPS) & self.revealed
+        return float(np.mean(~self.veracity[early])) if early.any() else float("nan")
 
 
 def build_stream(world: World, replicate: int) -> Stream:
@@ -171,16 +189,24 @@ def build_stream(world: World, replicate: int) -> Stream:
     count = config.steps * config.items_per_step
     rng = np.random.default_rng(core.keyed_seed(config.world_seed, TAG_ITEMS, replicate))
     features = rng.random((count, 4))
-    truth_probability = core.sigmoid(
-        world.intercept + _veracity_logit_without_intercept(config.geometry, features)
-    )
+    shape = _veracity_logit_without_intercept(config.geometry, features)
+    shift_step = None
+    if config.shift_credibility_weight is not None:
+        shift_rng = np.random.default_rng(core.keyed_seed(config.world_seed, TAG_SHIFT, replicate))
+        shift_step = int(shift_rng.integers(config.steps // 4, 3 * config.steps // 4 + 1))
+        after = np.repeat(np.arange(config.steps), config.items_per_step) >= shift_step
+        shifted = _veracity_logit_without_intercept(
+            config.geometry, features, config.shift_credibility_weight
+        )
+        shape = np.where(after, shifted, shape)
+    truth_probability = core.sigmoid(world.intercept + shape)
     veracity = rng.random(count) < truth_probability
     revealed = rng.random(count) < config.visibility
     seeds = np.stack([
         rng.choice(config.agents, config.seeds_per_item, replace=False) for _ in range(count)
     ])
     born = np.repeat(np.arange(config.steps), config.items_per_step)
-    return Stream(features, veracity, revealed, seeds, born)
+    return Stream(features, veracity, revealed, seeds, born, shift_step)
 
 
 # -- policies ----------------------------------------------------------------
@@ -471,6 +497,8 @@ def simulate(world: World, stream: Stream, policy: Policy, replicate: int) -> Ru
         behavior={  # never reported at stage D1
             "share_precision": true_shares / total if total else float("nan"),
             "false_shares": float(false_shares),
+            "false_reach": float(shared.sum(axis=1)[~stream.veracity].mean())
+            if (~stream.veracity).any() else float("nan"),
         },
     )
 

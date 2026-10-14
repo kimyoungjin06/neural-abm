@@ -272,6 +272,61 @@ Each stage starts only on the user's go-ahead.
 | D5 | P0 elicitation and X0 runs on the GPU server, then record | Yes |
 | D6 | Consolidation, and the N14 extraction decision | Yes |
 
+## D2 specification (fixed before D2 runs, 2026-10-14)
+
+D2 measures how the proposed closed-loop rule behaves when the answer is
+known. It runs no comparison of L0 with T0 in a study cell.
+
+**Defaults set by the user on 2026-10-14.**
+- Unfollow (B+) is deferred.
+- N is 1,000 agents.
+- X0 uses K = 2 threshold bins and 4 item classes.
+- No larger Qwen.
+- The N14 parity host is decided at D6.
+
+**Controls.**
+
+| Control | Arms compared | Worlds | Known answer |
+|---|---|---|---|
+| NEG: two tables | T0-traj from donor seeds 1000–1003 against T0-traj from donor seeds 2000–2003 | A/linear and B/linear | No closed-loop effect: both arms are tables written before the run |
+| POS-flat | L0 against T0-traj | Linear world in which the credibility weight of the veracity relation drops from +3 to 0 at a step τ drawn per replicate from 15 to 45 | A closed-loop effect: only L0 sees its own run's shift |
+| POS-flip | L0 against T0-traj | As POS-flat, with the weight going from +3 to −3 | A larger closed-loop effect |
+
+**Design.**
+- Learner families: Regime A pooled linear and pooled MLP; Regime B
+  per-agent linear and per-agent MLP.
+- 20 cells, each with its own world seed, per control, regime, and family.
+- 16 paired evaluation replicates per cell.
+- Sizes are the D1 feasibility sizes: 60 steps, 20 items per step, and ε =
+  0.02.
+
+**Rule components, evaluated per cell.** Δ is the paired difference L0 − T0
+(or table 1 − table 2) in each replicate.
+- **R1, paired.** Δ share precision ≥ 0.02 in at least 12 of 16 replicates,
+  or ≤ −0.02 in at least 12 of 16.
+- **R2, path dependence.**
+  - The early shock is the share of false items among items born in steps
+    0–9 that will be fact-checked. The stream fixes it, so it is identical
+    across arms.
+  - Each arm's slope of mean false reach on the shock is fitted over the 16
+    replicates.
+  - R2 holds when the 95% bootstrap interval of the slope difference (2,000
+    keyed resamples of replicates) excludes zero.
+- **Material.** R1 and R2 both hold, as proposed. R1 alone and R2 alone are
+  also reported.
+
+**Reading.**
+- The proposed rule is adequate when both hold:
+  - NEG is material in at most 1 of 20 cells per regime and family;
+  - POS-flip is material in at least 16 of 20 cells in both regimes.
+- Otherwise D3 revises the rule, using these controls only.
+- Counts of 0 are reported with their one-sided 95% upper bound.
+
+**Boundary.**
+- L0 donor runs in A/linear and B/linear are made only to build the tables;
+  their outcomes are not reported.
+- No study cell is scored.
+
 ## Threats and how the design meets them
 
 | Threat | Response |

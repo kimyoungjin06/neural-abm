@@ -172,3 +172,24 @@ def test_the_feasibility_report_carries_no_behavioral_outcome() -> None:
     result = _run(config, spread.prior_policy("F1", spread.hand_prior(config)))
     row = spread._feasibility_row(config, result, 0)
     assert "behavior" not in row and "share_precision" not in str(row)
+
+
+def test_a_credibility_shift_changes_only_items_born_after_its_step() -> None:
+    plain = _small()
+    shifted = spread.WorldConfig(**{**plain.__dict__, "shift_credibility_weight": -3.0})
+    stream = spread.build_stream(spread.build_world(plain), 2)
+    moved = spread.build_stream(spread.build_world(shifted), 2)
+    assert stream.shift_step is None and moved.shift_step is not None
+    assert plain.steps // 4 <= moved.shift_step <= 3 * plain.steps // 4
+    before = moved.born < moved.shift_step
+    assert np.array_equal(stream.features, moved.features)
+    assert np.array_equal(stream.veracity[before], moved.veracity[before])
+    assert not np.array_equal(stream.veracity[~before], moved.veracity[~before])
+
+
+def test_the_early_shock_depends_on_the_stream_only() -> None:
+    config = _small()
+    world = spread.build_world(config)
+    stream = spread.build_stream(world, 1)
+    early = (stream.born < spread.EARLY_SHOCK_STEPS) & stream.revealed
+    assert stream.early_shock() == float(np.mean(~stream.veracity[early]))
