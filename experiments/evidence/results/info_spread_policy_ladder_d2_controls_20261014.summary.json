@@ -1,0 +1,240 @@
+{
+ "schema_version": "info_spread_policy_ladder_d2.v1",
+ "label": "info_spread_policy_ladder_d2_controls_20261014",
+ "status": "D2_RULE_FAILS_THE_POWER_CRITERION_POSITIVE_CONTROLS_NOT_POSITIVE",
+ "specification": "docs/research/info-spread-policy-ladder-design-v1.md#d2-specification-fixed-before-d2-runs-2026-10-14",
+ "code_commit": "ccac2fd",
+ "execution": {
+  "host": "GPU-Server (AMD Ryzen Threadripper PRO 7965WX, CPU only)",
+  "workers": 36,
+  "wall_seconds": 4706.4,
+  "peak_memory_kb": 791636,
+  "cells": 240,
+  "replicates_per_cell": 16,
+  "sizes": {
+   "agents": 1000,
+   "steps": 60,
+   "items_per_step": 20,
+   "epsilon": 0.02
+  },
+  "output": "~/neural_abm/runs/info_spread_d2_ccac2fd/",
+  "cells_jsonl_sha256": "0f4c65e7521fd04f8238a545d7ef34124271469323f8b25bf897affc546eebd7"
+ },
+ "comparison_sign": "delta = first - second: L0 - T0_traj in POS controls; table 1 - table 2 in NEG",
+ "table": {
+  "NEG_two_tables/A/linear": {
+   "cells": 20,
+   "material": 1,
+   "material_zero_upper_bound_95": null,
+   "r1_only_rule": 2,
+   "r2_only_rule": 3,
+   "median_cell_delta_share_precision": -0.0020292089928213852,
+   "mean_delta_share_precision": -0.0,
+   "cell_mean_delta_q10_q90": [
+    -0.0177,
+    0.0175
+   ],
+   "share_of_replicates_first_lower": 0.547,
+   "mean_delta_false_reach": -1.06
+  },
+  "NEG_two_tables/A/mlp": {
+   "cells": 20,
+   "material": 0,
+   "material_zero_upper_bound_95": 0.139,
+   "r1_only_rule": 3,
+   "r2_only_rule": 2,
+   "median_cell_delta_share_precision": -0.0004011764763611758,
+   "mean_delta_share_precision": 0.0022,
+   "cell_mean_delta_q10_q90": [
+    -0.0217,
+    0.0261
+   ],
+   "share_of_replicates_first_lower": 0.497,
+   "mean_delta_false_reach": -2.1
+  },
+  "NEG_two_tables/B/linear": {
+   "cells": 20,
+   "material": 1,
+   "material_zero_upper_bound_95": null,
+   "r1_only_rule": 1,
+   "r2_only_rule": 2,
+   "median_cell_delta_share_precision": 0.0020410651486430786,
+   "mean_delta_share_precision": 0.0023,
+   "cell_mean_delta_q10_q90": [
+    -0.0132,
+    0.0196
+   ],
+   "share_of_replicates_first_lower": 0.45,
+   "mean_delta_false_reach": -3.75
+  },
+  "NEG_two_tables/B/mlp": {
+   "cells": 20,
+   "material": 0,
+   "material_zero_upper_bound_95": 0.139,
+   "r1_only_rule": 2,
+   "r2_only_rule": 4,
+   "median_cell_delta_share_precision": -0.0020459254607294586,
+   "mean_delta_share_precision": 0.0016,
+   "cell_mean_delta_q10_q90": [
+    -0.0176,
+    0.0207
+   ],
+   "share_of_replicates_first_lower": 0.506,
+   "mean_delta_false_reach": -2.3
+  },
+  "POS_flat/A/linear": {
+   "cells": 20,
+   "material": 1,
+   "material_zero_upper_bound_95": null,
+   "r1_only_rule": 2,
+   "r2_only_rule": 10,
+   "median_cell_delta_share_precision": -0.009297150658191977,
+   "mean_delta_share_precision": -0.0117,
+   "cell_mean_delta_q10_q90": [
+    -0.0324,
+    0.0113
+   ],
+   "share_of_replicates_first_lower": 0.653,
+   "mean_delta_false_reach": 6.88
+  },
+  "POS_flat/A/mlp": {
+   "cells": 20,
+   "material": 3,
+   "material_zero_upper_bound_95": null,
+   "r1_only_rule": 3,
+   "r2_only_rule": 12,
+   "median_cell_delta_share_precision": -0.023122277158724863,
+   "mean_delta_share_precision": -0.0273,
+   "cell_mean_delta_q10_q90": [
+    -0.0495,
+    -0.0082
+   ],
+   "share_of_replicates_first_lower": 0.756,
+   "mean_delta_false_reach": 23.25
+  },
+  "POS_flat/B/linear": {
+   "cells": 20,
+   "material": 4,
+   "material_zero_upper_bound_95": null,
+   "r1_only_rule": 5,
+   "r2_only_rule": 15,
+   "median_cell_delta_share_precision": -0.025541145281198996,
+   "mean_delta_share_precision": -0.024,
+   "cell_mean_delta_q10_q90": [
+    -0.0375,
+    -0.0081
+   ],
+   "share_of_replicates_first_lower": 0.831,
+   "mean_delta_false_reach": 28.32
+  },
+  "POS_flat/B/mlp": {
+   "cells": 20,
+   "material": 10,
+   "material_zero_upper_bound_95": null,
+   "r1_only_rule": 14,
+   "r2_only_rule": 15,
+   "median_cell_delta_share_precision": -0.04764064277335783,
+   "mean_delta_share_precision": -0.045,
+   "cell_mean_delta_q10_q90": [
+    -0.0609,
+    -0.0253
+   ],
+   "share_of_replicates_first_lower": 0.916,
+   "mean_delta_false_reach": 54.68
+  },
+  "POS_flip/A/linear": {
+   "cells": 20,
+   "material": 1,
+   "material_zero_upper_bound_95": null,
+   "r1_only_rule": 3,
+   "r2_only_rule": 9,
+   "median_cell_delta_share_precision": -0.011151053166029073,
+   "mean_delta_share_precision": -0.0103,
+   "cell_mean_delta_q10_q90": [
+    -0.0438,
+    0.0169
+   ],
+   "share_of_replicates_first_lower": 0.613,
+   "mean_delta_false_reach": 6.25
+  },
+  "POS_flip/A/mlp": {
+   "cells": 20,
+   "material": 5,
+   "material_zero_upper_bound_95": null,
+   "r1_only_rule": 6,
+   "r2_only_rule": 11,
+   "median_cell_delta_share_precision": -0.020172599720601897,
+   "mean_delta_share_precision": -0.0196,
+   "cell_mean_delta_q10_q90": [
+    -0.0535,
+    0.0106
+   ],
+   "share_of_replicates_first_lower": 0.706,
+   "mean_delta_false_reach": 24.93
+  },
+  "POS_flip/B/linear": {
+   "cells": 20,
+   "material": 3,
+   "material_zero_upper_bound_95": null,
+   "r1_only_rule": 5,
+   "r2_only_rule": 14,
+   "median_cell_delta_share_precision": -0.028873729850166646,
+   "mean_delta_share_precision": -0.0214,
+   "cell_mean_delta_q10_q90": [
+    -0.0428,
+    0.0022
+   ],
+   "share_of_replicates_first_lower": 0.744,
+   "mean_delta_false_reach": 28.81
+  },
+  "POS_flip/B/mlp": {
+   "cells": 20,
+   "material": 7,
+   "material_zero_upper_bound_95": null,
+   "r1_only_rule": 9,
+   "r2_only_rule": 15,
+   "median_cell_delta_share_precision": -0.044707943505265677,
+   "mean_delta_share_precision": -0.0348,
+   "cell_mean_delta_q10_q90": [
+    -0.0623,
+    -0.0085
+   ],
+   "share_of_replicates_first_lower": 0.791,
+   "mean_delta_false_reach": 54.95
+  }
+ },
+ "registered_reading": {
+  "A/linear": {
+   "neg_false_positive_ok": true,
+   "pos_flip_power_ok": false
+  },
+  "A/mlp": {
+   "neg_false_positive_ok": true,
+   "pos_flip_power_ok": false
+  },
+  "B/linear": {
+   "neg_false_positive_ok": true,
+   "pos_flip_power_ok": false
+  },
+  "B/mlp": {
+   "neg_false_positive_ok": true,
+   "pos_flip_power_ok": false
+  }
+ },
+ "findings": {
+  "false_positives": "NEG is material in 0 or 1 of 20 cells per regime and family, within the criterion; R1 alone flags 1-3 and R2 alone 2-4.",
+  "power": "POS-flip is material in 1-7 of 20 cells, short of the 16 required in every regime and family.",
+  "direction": "In both shift controls the adaptive arm has lower share precision and larger false reach than the four-donor table; in Regime B MLP it is lower in 79-92% of replicates.",
+  "why_not_a_positive_control": "The comparison mixes the closed loop with what the table pools: the table averages four donors' policies, and the registered learners refit on all visible outcomes without forgetting, so a shift is diluted by pre-shift evidence."
+ },
+ "next": {
+  "D3": "NOT_FROZEN_RULE_AND_CONTROLS_NEED_REVISION",
+  "decision": "USER"
+ },
+ "boundaries": {
+  "study_cells_scored": false,
+  "llm_calls": 0,
+  "empirical_rows_read": 0,
+  "registered": false
+ }
+}
