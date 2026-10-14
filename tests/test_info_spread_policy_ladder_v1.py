@@ -193,3 +193,33 @@ def test_the_early_shock_depends_on_the_stream_only() -> None:
     stream = spread.build_stream(world, 1)
     early = (stream.born < spread.EARLY_SHOCK_STEPS) & stream.revealed
     assert stream.early_shock() == float(np.mean(~stream.veracity[early]))
+
+
+@pytest.mark.parametrize("regime", ["A", "B"])
+def test_a_window_longer_than_the_run_is_the_full_learner(regime: str) -> None:
+    config = _small(regime, epsilon=0.05)
+    prior = spread.hand_prior(config)
+
+    def learner(window: int | None) -> spread.Policy:
+        if regime == "A":
+            return spread.pooled_learning_policy("linear", prior, seed_components=(4,), window=window)
+        return spread.per_agent_learning_policy(
+            "linear", prior, config.agents, seed_components=(4,), window=window
+        )
+
+    assert _run(config, learner(config.steps + 1)).digest == _run(config, learner(None)).digest
+    assert _run(config, learner(3)).digest != _run(config, learner(None)).digest
+
+
+def test_the_probe_reads_the_hand_rule_credibility_weight() -> None:
+    for regime in ("A", "B"):
+        config = _small(regime)
+        prior = spread.hand_prior(config)
+        weight = spread.credibility_sensitivity(config, lambda _ids, rows: prior.probability(rows))
+        assert weight == pytest.approx(4.0, abs=1e-9)
+
+
+def test_decision_shares_exclude_seeds() -> None:
+    config = _small()
+    result = _run(config, spread.prior_policy("F1", spread.hand_prior(config)))
+    assert np.array_equal(result.reach - config.seeds_per_item, result.decision_shares)

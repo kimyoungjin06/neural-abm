@@ -248,12 +248,20 @@ def prior_policy(name: str, prior: core.LinearPrior) -> Policy:
     return policy
 
 
+def _since(step: int, window: int | None) -> int | None:
+    return None if window is None else step - window
+
+
 def pooled_learning_policy(
     family: str, prior: core.LinearPrior, *, seed_components: tuple[int, ...],
-    learning: bool = True,
+    learning: bool = True, window: int | None = None,
 ) -> Policy:
+    """L0 in Regime A. `window` keeps only outcomes that became visible in the
+    last `window` steps, a forgetting learner; None keeps every outcome."""
+
     state: dict[str, Any] = {"predictor": core.PriorPredictor(prior), "refits": 0}
-    policy = Policy(f"L0_pooled_{family}")
+    suffix = "" if window is None else f"_window{window}"
+    policy = Policy(f"L0_pooled_{family}{suffix}")
     policy.snapshots.record(0, ("pooled", state["predictor"]))
 
     def probability(_ids: np.ndarray, x: np.ndarray, _t: int) -> np.ndarray:
@@ -262,7 +270,7 @@ def pooled_learning_policy(
     def observe(record: core.OutcomeRecord, step: int) -> None:
         if not learning:
             return
-        features, labels, _owners = record.visible(step)
+        features, labels, _owners = record.visible(step, _since(step, window))
         if len(labels) == 0:
             return
         seed = core.keyed_seed(*seed_components, state["refits"])
@@ -279,7 +287,7 @@ def pooled_learning_policy(
 
 def per_agent_learning_policy(
     family: str, prior: core.LinearPrior, agents: int, *, seed_components: tuple[int, ...],
-    device: str = "cpu", learning: bool = True,
+    device: str = "cpu", learning: bool = True, window: int | None = None,
 ) -> Policy:
     predictor = core.BatchedPredictor(
         prior, core.initial_batched_state(family, agents, len(prior.weight),
@@ -287,7 +295,8 @@ def per_agent_learning_policy(
                                           core.keyed_seed(*seed_components, 0), device)
     )
     state: dict[str, Any] = {"predictor": predictor, "refits": 0}
-    policy = Policy(f"L0_per_agent_{family}")
+    suffix = "" if window is None else f"_window{window}"
+    policy = Policy(f"L0_per_agent_{family}{suffix}")
     policy.snapshots.record(0, ("per_agent", predictor))
 
     def probability(ids: np.ndarray, x: np.ndarray, _t: int) -> np.ndarray:
@@ -296,7 +305,7 @@ def per_agent_learning_policy(
     def observe(record: core.OutcomeRecord, step: int) -> None:
         if not learning:
             return
-        features, labels, owners = record.visible(step)
+        features, labels, owners = record.visible(step, _since(step, window))
         if len(labels) == 0:
             return
         seed = core.keyed_seed(*seed_components, state["refits"])
@@ -386,6 +395,7 @@ class RunResult:
     pooled_revealed: int
     snapshots: core.PolicySnapshots
     reach: np.ndarray  # sharers per item at the end, seeds included
+    decision_shares: np.ndarray  # shares per item made by decisions, seeds excluded
     behavior: dict[str, float]
 
 
@@ -405,6 +415,7 @@ def simulate(world: World, stream: Stream, policy: Policy, replicate: int) -> Ru
     digest = hashlib.sha256()
     decisions = 0
     true_shares = false_shares = 0
+    decision_shares = np.zeros(count, dtype=np.int64)
     started = time.perf_counter()
 
     for step in range(config.steps):
@@ -478,6 +489,7 @@ def simulate(world: World, stream: Stream, policy: Policy, replicate: int) -> Ru
                     np.vstack([old_rows, features[rows]]),
                 )
             truth = bool(stream.veracity[item])
+            decision_shares[item] += int(rows.sum())
             true_shares += int(rows.sum()) if truth else 0
             false_shares += 0 if truth else int(rows.sum())
 
@@ -494,6 +506,7 @@ def simulate(world: World, stream: Stream, policy: Policy, replicate: int) -> Ru
         pooled_revealed=int(final_counts.sum()),
         snapshots=policy.snapshots,
         reach=shared.sum(axis=1),
+        decision_shares=decision_shares,
         behavior={  # never reported at stage D1
             "share_precision": true_shares / total if total else float("nan"),
             "false_shares": float(false_shares),
@@ -501,6 +514,41 @@ def simulate(world: World, stream: Stream, policy: Policy, replicate: int) -> Ru
             if (~stream.veracity).any() else float("nan"),
         },
     )
+
+
+# -- policy probes -------------------------------------------------------------
+
+
+def probe_rows(config: WorldConfig, credibility: float) -> np.ndarray:
+    """One probe exposure: every feature at a fixed value but credibility."""
+
+    row = [credibility, 0.5, 0.5, 0.5, 0.3, float(np.log1p(2.0))]
+    if config.regime == "B":
+        row.append(0.5)
+    return np.asarray([row], dtype=np.float64)
+
+
+def credibility_sensitivity(
+    config: WorldConfig, probability: Callable[[np.ndarray, np.ndarray], np.ndarray]
+) -> float:
+    """Logit change per unit credibility, averaged over agents.
+
+    `probability(agent_ids, rows)` is a policy's probability for each agent's
+    probe row. This is the policy's effective weight on credibility at the
+    probe point, comparable with the veracity relation's weight.
+    """
+
+    agents = np.arange(config.agents)
+    low = np.repeat(probe_rows(config, 0.25), config.agents, axis=0)
+    high = np.repeat(probe_rows(config, 0.75), config.agents, axis=0)
+    p_low = np.clip(probability(agents, low), 1e-9, 1 - 1e-9)
+    p_high = np.clip(probability(agents, high), 1e-9, 1 - 1e-9)
+    logit = lambda p: np.log(p) - np.log1p(-p)  # noqa: E731
+    return float(np.mean(logit(p_high) - logit(p_low)) / 0.5)
+
+
+def snapshot_probability(snapshot: tuple[str, Any]) -> Callable[[np.ndarray, np.ndarray], np.ndarray]:
+    return lambda ids, rows: _snapshot_probability(snapshot, ids, rows)
 
 
 # -- archetypes ----------------------------------------------------------------

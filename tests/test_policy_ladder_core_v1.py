@@ -114,3 +114,11 @@ def test_outcome_record_and_snapshots() -> None:
     assert [snapshots.active(t) for t in (0, 3, 4, 9)] == ["prior", "prior", "refit", "refit"]
     with pytest.raises(ValueError):
         snapshots.record(4, "again")
+
+
+def test_the_outcome_record_window_keeps_recent_rows_only() -> None:
+    record = core.OutcomeRecord(width=1)
+    for step in range(5):
+        record.add(np.full((1, 1), step), np.array([1.0]), np.array([0]), visible_from=step)
+    assert record.visible(4)[0].ravel().tolist() == [0, 1, 2, 3, 4]
+    assert record.visible(4, since=2)[0].ravel().tolist() == [2, 3, 4]

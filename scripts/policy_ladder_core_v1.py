@@ -418,8 +418,16 @@ class OutcomeRecord:
             self.agents.append(int(agent))
             self.visible_from.append(int(visible_from))
 
-    def visible(self, step: int) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-        mask = np.asarray(self.visible_from, dtype=np.int64) <= step
+    def visible(
+        self, step: int, since: int | None = None
+    ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+        """Rows visible at `step`; with `since`, only those that became
+        visible at `since` or later (a forgetting window)."""
+
+        visible_from = np.asarray(self.visible_from, dtype=np.int64)
+        mask = visible_from <= step
+        if since is not None:
+            mask &= visible_from >= since
         if not mask.any():
             return np.zeros((0, self.width)), np.zeros(0), np.zeros(0, dtype=np.int64)
         rows = np.flatnonzero(mask)
