@@ -345,8 +345,13 @@ def fit_batched_residual(
     settings: Mapping[str, Any],
     seed: int,
     device: torch.device | str = "cpu",
+    base_logits: np.ndarray | None = None,
 ) -> BatchedResidualState:
     """Fit every agent's residual on its own rows, all in one Adam run.
+
+    `base_logits` replaces the prior logit of each training row, so the
+    residuals sit on top of another model, e.g. a pooled learner (partial
+    pooling). By default the base is the prior.
 
     The loss is the sum over agents of each agent's mean cross-entropy. Adam
     and weight decay act elementwise, so each agent's parameters move only
@@ -363,7 +368,8 @@ def fit_batched_residual(
     ids = torch.as_tensor(agent_ids, dtype=torch.long, device=device)
     inputs = torch.as_tensor(train_features, dtype=torch.float64, device=device)
     targets = torch.as_tensor(train_labels, dtype=torch.float64, device=device)
-    base = torch.as_tensor(prior.logit(train_features), dtype=torch.float64, device=device)
+    base_values = prior.logit(train_features) if base_logits is None else base_logits
+    base = torch.as_tensor(base_values, dtype=torch.float64, device=device)
     counts = torch.bincount(ids, minlength=agents).to(torch.float64)
     row_weight = 1.0 / counts[ids]
     parameters = state.tensors()
@@ -384,10 +390,23 @@ def fit_batched_residual(
     return state.detached()
 
 
+def probability_logit(probability: np.ndarray) -> np.ndarray:
+    clipped = np.clip(probability, 1e-12, 1.0 - 1e-12)
+    return np.log(clipped) - np.log1p(-clipped)
+
+
 @dataclass
 class BatchedPredictor:
+    """Per-agent residuals on the prior, or on a shared `base` predictor."""
+
     prior: LinearPrior
     state: BatchedResidualState
+    base: Predictor | None = None
+
+    def base_logit(self, features: np.ndarray) -> np.ndarray:
+        if self.base is None:
+            return self.prior.logit(features)
+        return probability_logit(self.base.predict(features))
 
     def predict_for(self, agent_ids: np.ndarray, features: np.ndarray) -> np.ndarray:
         with torch.no_grad():
@@ -395,7 +414,7 @@ class BatchedPredictor:
             ids = torch.as_tensor(agent_ids, dtype=torch.long, device=device)
             inputs = torch.as_tensor(features, dtype=torch.float64, device=device)
             residual = batched_residual_logits(self.state, ids, inputs).cpu().numpy()
-        return sigmoid(self.prior.logit(features) + residual)
+        return sigmoid(self.base_logit(features) + residual)
 
 
 # -- outcome record and policy snapshots -----------------------------------

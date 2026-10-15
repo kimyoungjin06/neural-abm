@@ -265,3 +265,36 @@ def test_the_label_diagnostic_recovers_the_weight_from_unselected_rows() -> None
     logit = -0.4 + 3.0 * (z[:, 0] - 0.5) - 1.0 * (z[:, 1] - 0.5) - 2.0 * (z[:, 2] - 0.5)
     labels = (rng.random(len(z)) < core.sigmoid(logit)).astype(np.float64)
     assert spread.label_diagnostics(z, labels)["data_credibility_weight"] == pytest.approx(3.0, abs=0.2)
+
+
+def test_a_random_sign_world_with_sign_plus_is_the_plain_world() -> None:
+    plain = _small()
+    signed = spread.WorldConfig(**{**plain.__dict__, "random_credibility_sign": True})
+    world_plain, world_signed = spread.build_world(plain), spread.build_world(signed)
+    signs = set()
+    for replicate in range(8):
+        stream = spread.build_stream(world_signed, replicate)
+        signs.add(stream.credibility_sign)
+        reference = spread.build_stream(world_plain, replicate)
+        same = np.array_equal(stream.veracity, reference.veracity)
+        assert same == (stream.credibility_sign == 1)
+    assert signs == {-1, 1}
+
+
+def test_partial_pooling_replays_exactly_and_idle_agents_follow_the_pool() -> None:
+    config = _small("B", epsilon=0.05)
+    prior = spread.hand_prior(config)
+    learner = spread.partial_pooling_policy(
+        "linear", prior, config.agents, seed_components=(8,), label_mode="all"
+    )
+    adaptive = _run(config, learner)
+    assert len(adaptive.snapshots.steps) > 1
+    replay = spread.table_policy("T0_self", [adaptive.snapshots], final_only=False)
+    assert _run(config, replay).digest == adaptive.digest
+    _kind, predictor = adaptive.snapshots.policies[-1]
+    rows = np.repeat(spread.probe_rows(config, 0.6), 3, axis=0)
+    last_agent = predictor.predict_for(np.full(3, config.agents - 1), rows)
+    assert predictor.base is not None
+    idle = core.BatchedPredictor(prior, core.initial_batched_state("linear", 1, rows.shape[1], 0, 0), base=predictor.base)
+    assert idle.predict_for(np.zeros(3, dtype=np.int64), rows) == pytest.approx(predictor.base.predict(rows), abs=1e-12)
+    assert last_agent.shape == (3,)

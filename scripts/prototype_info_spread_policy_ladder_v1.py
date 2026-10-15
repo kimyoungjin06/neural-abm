@@ -54,6 +54,7 @@ REGIMES = ("A", "B")
 
 # Stream tags for keyed randomness.
 TAG_GRAPH, TAG_AGENTS, TAG_ITEMS, TAG_CALIBRATION, TAG_EXPLORE, TAG_SHIFT = 1, 2, 3, 4, 5, 6
+TAG_SIGN = 7
 EARLY_SHOCK_STEPS = 10
 
 
@@ -79,6 +80,9 @@ class WorldConfig:
     # D2 positive controls: from a step drawn per replicate, the credibility
     # weight of the veracity relation becomes this value. None means no shift.
     shift_credibility_weight: float | None = None
+    # D2b positive control: each replicate's credibility weight is +3 or -3,
+    # drawn per replicate and held from step 0.
+    random_credibility_sign: bool = False
 
     def feature_names(self) -> tuple[str, ...]:
         names = ITEM_FEATURES + EXPOSURE_FEATURES
@@ -165,6 +169,10 @@ def build_world(config: WorldConfig) -> World:
         raise ValueError("unknown geometry or regime")
     if config.shift_credibility_weight is not None and config.geometry not in ("linear", "smooth"):
         raise ValueError("a credibility shift needs a linear or smooth geometry")
+    if config.random_credibility_sign and (
+        config.geometry not in ("linear", "smooth") or config.shift_credibility_weight is not None
+    ):
+        raise ValueError("a random credibility sign needs a linear or smooth geometry and no shift")
     graph = nx.watts_strogatz_graph(
         config.agents, config.degree, config.rewire,
         seed=core.keyed_seed(config.world_seed, TAG_GRAPH),
@@ -191,6 +199,7 @@ class Stream:
     seeds: np.ndarray  # [items, seeds_per_item]
     born: np.ndarray  # [items]
     shift_step: int | None = None
+    credibility_sign: int | None = None
 
     def early_shock(self) -> float:
         """Share of false items among early items that will be fact-checked.
@@ -208,6 +217,11 @@ def build_stream(world: World, replicate: int) -> Stream:
     rng = np.random.default_rng(core.keyed_seed(config.world_seed, TAG_ITEMS, replicate))
     features = rng.random((count, 4))
     shape = _veracity_logit_without_intercept(config.geometry, features)
+    credibility_sign = None
+    if config.random_credibility_sign:
+        sign_rng = np.random.default_rng(core.keyed_seed(config.world_seed, TAG_SIGN, replicate))
+        credibility_sign = 1 if sign_rng.random() < 0.5 else -1
+        shape = _veracity_logit_without_intercept(config.geometry, features, 3.0 * credibility_sign)
     shift_step = None
     if config.shift_credibility_weight is not None:
         shift_rng = np.random.default_rng(core.keyed_seed(config.world_seed, TAG_SHIFT, replicate))
@@ -224,7 +238,7 @@ def build_stream(world: World, replicate: int) -> Stream:
         rng.choice(config.agents, config.seeds_per_item, replace=False) for _ in range(count)
     ])
     born = np.repeat(np.arange(config.steps), config.items_per_step)
-    return Stream(features, veracity, revealed, seeds, born, shift_step)
+    return Stream(features, veracity, revealed, seeds, born, shift_step, credibility_sign)
 
 
 # -- policies ----------------------------------------------------------------
@@ -399,6 +413,55 @@ def per_agent_learning_policy(
             settings=LEARNER_SETTINGS[family], seed=seed, device=device,
         )
         state["predictor"] = core.BatchedPredictor(prior, fitted)
+        policy.snapshots.record(step, ("per_agent", state["predictor"]))
+
+    policy.probability = probability
+    policy.observe = observe
+    return policy
+
+
+AGENT_RESIDUAL_WEIGHT_DECAY = 1e-2
+
+
+def partial_pooling_policy(
+    family: str, prior: core.LinearPrior, agents: int, *, seed_components: tuple[int, ...],
+    window: int | None = None, label_mode: str = "shares", device: str = "cpu",
+) -> Policy:
+    """Regime B with partial pooling: a pooled learner of `family`, fitted on
+    every agent's rows, plus a per-agent linear residual fitted on the
+    agent's own rows with a stronger weight decay."""
+
+    initial = core.BatchedPredictor(
+        prior, core.initial_batched_state("linear", agents, len(prior.weight), 0, 0, device)
+    )
+    state: dict[str, Any] = {"predictor": initial, "refits": 0}
+    suffix = "" if window is None else f"_window{window}"
+    suffix += "" if label_mode == "shares" else f"_labels_{label_mode}"
+    policy = Policy(f"L0_partial_{family}{suffix}", records_declines=label_mode != "shares")
+    policy.snapshots.record(0, ("per_agent", initial))
+
+    def probability(ids: np.ndarray, x: np.ndarray, _t: int) -> np.ndarray:
+        return state["predictor"].predict_for(ids, x)
+
+    def observe(record: core.OutcomeRecord, step: int) -> None:
+        features, labels, owners = _training_rows(
+            record, step, window, label_mode, (*seed_components, 7, state["refits"])
+        )
+        if len(labels) == 0:
+            return
+        refit = state["refits"]
+        state["refits"] += 1
+        pooled = core.fit_residual(
+            family, prior, features, labels, LEARNER_SETTINGS[family],
+            core.keyed_seed(*seed_components, refit, 1),
+        )
+        agent_settings = {**LEARNER_SETTINGS["linear"], "weight_decay": AGENT_RESIDUAL_WEIGHT_DECAY}
+        fitted = core.fit_batched_residual(
+            "linear", prior, owners, features, labels, agents=agents, settings=agent_settings,
+            seed=core.keyed_seed(*seed_components, refit, 2), device=device,
+            base_logits=core.probability_logit(pooled.predict(features)),
+        )
+        state["predictor"] = core.BatchedPredictor(prior, fitted, base=pooled)
         policy.snapshots.record(step, ("per_agent", state["predictor"]))
 
     policy.probability = probability

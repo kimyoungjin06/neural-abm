@@ -327,6 +327,83 @@ known. It runs no comparison of L0 with T0 in a study cell.
   their outcomes are not reported.
 - No study cell is scored.
 
+## D2b specification (fixed before D2b runs, 2026-10-15)
+
+D2 failed its power criterion. Its diagnosis found four mechanisms behind
+that failure:
+[D2](../../experiments/evidence/results/info_spread_policy_ladder_d2_controls_20261014.summary.md),
+[diagnosis](../../experiments/evidence/results/info_spread_policy_ladder_d2_diagnosis_20261014.summary.md),
+[fit budget](../../experiments/evidence/results/info_spread_policy_ladder_d2_fit_budget_check_20261014.summary.md),
+[selective labels](../../experiments/evidence/results/info_spread_policy_ladder_label_selection_20261014.summary.md).
+
+D2b revises the design accordingly and measures the revised rule on controls
+again. It still scores no study cell.
+
+**Changes from D2.**
+
+1. **Observability (user's choice, 2026-10-15).**
+   - Fact-checks are public. A learner trains on the outcome of every
+     exposure it decided on, whether it shared or declined. This is label
+     mode "all".
+   - The sharer-trust feature still counts shares only, since it is a
+     neighbor's sharing record.
+2. **Learner settings.**
+   - Linear and MLP learners use the Pivot ladder's settings: 300 epochs,
+     learning rate 0.02, weight decay 1e-4, MLP hidden width 16.
+   - A forgetting variant, L0-window, trains on outcomes visible in the last
+     12 steps. It is an arm in the shift control only.
+3. **Regime B learners use partial pooling.**
+   - Each agent's policy is a pooled learner, fitted on every agent's rows,
+     plus a per-agent linear residual.
+   - The residual is fitted on the agent's own rows with weight decay 1e-2.
+   - This replaces raw per-agent MLPs, whose overconfidence (a credibility
+     weight near 13 against a true 3) the diagnosis traced to overfitting.
+   - The two Regime B families are "partial_linear" (pooled linear base) and
+     "partial_mlp" (pooled MLP base).
+4. **Two comparators, for two questions.**
+   - **T0-1, a single-donor trajectory table.** It carries the evidence of
+     one run, so L0 − T0-1 is the closed-loop effect at matched evidence.
+   - **T0-4, the four-donor table.** L0 − T0-4 answers whether the best
+     table written before the run can match the adaptive arm.
+5. **A positive control that does not need forgetting.**
+   - In POS-sign, each replicate's credibility weight is +3 or −3. The sign
+     is drawn per replicate and holds from step 0, so the world is
+     stationary within the run.
+   - Donor tables mix both signs. Only L0 can learn its own run's sign.
+   - POS-flip is kept as a secondary control, now with L0-window.
+6. **A group-level rule.** The study question is about a regime, not a
+   single world seed, so a group-level rule is added.
+
+**Controls and arms.**
+
+| Control | Arms per replicate | Known answer |
+|---|---|---|
+| NEG | T0-1 from donor set 1 against set 2; T0-4 from set 1 against set 2 | No closed loop in either pair |
+| POS-sign | L0, T0-1, T0-4 | L0 should beat both tables |
+| POS-flip | L0, L0-window, T0-1, T0-4 | Tracking the flip needs forgetting |
+
+**Design.**
+- Families: Regime A pooled linear and pooled MLP; Regime B partial_linear
+  and partial_mlp.
+- Sizes: 20 cells per control, regime, and family, with 16 paired
+  replicates per cell. 1,000 agents, 60 steps, 20 items per step, ε = 0.02.
+
+**Rules.** Δ is the first arm minus the second, in share precision.
+- **Per cell.** R1 and R2 as in D2, reported for continuity.
+- **Group level (G).**
+  - The group is material when the 95% bootstrap interval of the mean cell
+    Δ, with cells resampled, excludes zero.
+  - The mean cell Δ must also be at least 0.01 in magnitude.
+
+**Reading.** The revised design is adequate when all three hold:
+- G calls no NEG pair material (8 groups);
+- G calls L0 − T0-1 material and positive in POS-sign in all four regime
+  and family groups;
+- the per-cell rule's power on POS-sign is reported, whatever it is.
+
+If the design is adequate, D3 freezes the study with these choices. If not,
+the gap is reported before any study cell is run.
+
 ## Threats and how the design meets them
 
 | Threat | Response |
