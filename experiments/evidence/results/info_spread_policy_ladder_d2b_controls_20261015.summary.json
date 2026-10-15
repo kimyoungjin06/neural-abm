@@ -1,0 +1,798 @@
+{
+ "schema_version": "info_spread_policy_ladder_d2b.v1",
+ "label": "info_spread_policy_ladder_d2b_controls_20261015",
+ "status": "D2B_NOT_ADEQUATE_GROUP_RULE_WORKS_POOLED_LINEAR_CANNOT_REVERSE",
+ "specification": "docs/research/info-spread-policy-ladder-design-v1.md (D2b specification)",
+ "code_commit": "f0ea165",
+ "execution": {
+  "host": "GPU-Server (CPU only)",
+  "workers": 40,
+  "wall_seconds": 37047.0,
+  "peak_memory_kb": 788012,
+  "cells": 240,
+  "replicates": 16,
+  "label_mode": "all",
+  "learner_settings": "pivot",
+  "output": "~/neural_abm/runs/info_spread_d2b_f0ea165/",
+  "cells_jsonl_sha256": "ad8b5e2f160930581f1301c8318b0c893403f82c2d813dcb859b3188c5692d3b",
+  "runtime_note": "10.3 h against a quoted 1 h. 95% of run time was pooled-MLP training: under public fact-checks every re-evaluated decline became a training row, and the Pivot settings refit 300 epochs from scratch at every refit."
+ },
+ "table": {
+  "NEG/A/linear/T0_1a-T0_1b": {
+   "cells": 20,
+   "per_cell_material": 0,
+   "group": {
+    "mean_cell_delta": -0.0049,
+    "interval_95": [
+     -0.015,
+     0.0057
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 4,
+   "per_cell_r2_alone": 0
+  },
+  "NEG/A/linear/T0_4a-T0_4b": {
+   "cells": 20,
+   "per_cell_material": 0,
+   "group": {
+    "mean_cell_delta": -0.0044,
+    "interval_95": [
+     -0.0118,
+     0.0026
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 1,
+   "per_cell_r2_alone": 2
+  },
+  "NEG/A/mlp/T0_1a-T0_1b": {
+   "cells": 20,
+   "per_cell_material": 0,
+   "group": {
+    "mean_cell_delta": -0.0083,
+    "interval_95": [
+     -0.0222,
+     0.0049
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 7,
+   "per_cell_r2_alone": 2
+  },
+  "NEG/A/mlp/T0_4a-T0_4b": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": -0.0013,
+    "interval_95": [
+     -0.0105,
+     0.0072
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 3,
+   "per_cell_r2_alone": 4
+  },
+  "NEG/B/partial_linear/T0_1a-T0_1b": {
+   "cells": 20,
+   "per_cell_material": 0,
+   "group": {
+    "mean_cell_delta": -0.0019,
+    "interval_95": [
+     -0.01,
+     0.0072
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 5,
+   "per_cell_r2_alone": 6
+  },
+  "NEG/B/partial_linear/T0_4a-T0_4b": {
+   "cells": 20,
+   "per_cell_material": 0,
+   "group": {
+    "mean_cell_delta": -0.0031,
+    "interval_95": [
+     -0.0085,
+     0.0026
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 1,
+   "per_cell_r2_alone": 6
+  },
+  "NEG/B/partial_mlp/T0_1a-T0_1b": {
+   "cells": 20,
+   "per_cell_material": 2,
+   "group": {
+    "mean_cell_delta": -0.0059,
+    "interval_95": [
+     -0.0191,
+     0.0097
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 7,
+   "per_cell_r2_alone": 4
+  },
+  "NEG/B/partial_mlp/T0_4a-T0_4b": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": -0.0022,
+    "interval_95": [
+     -0.0098,
+     0.0055
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 3,
+   "per_cell_r2_alone": 3
+  },
+  "POS_flip/A/linear/L0-T0_1": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": -0.0017,
+    "interval_95": [
+     -0.0106,
+     0.0071
+    ],
+    "material": false
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": -0.0049,
+    "interval_95": [
+     -0.0152,
+     0.0049
+    ],
+    "material": false
+   },
+   "group_post_shift": {
+    "mean_cell_delta": -0.0245,
+    "interval_95": [
+     -0.0519,
+     -0.001
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 2,
+   "per_cell_r2_alone": 8
+  },
+  "POS_flip/A/linear/L0-T0_4": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": -0.0118,
+    "interval_95": [
+     -0.0198,
+     -0.0046
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": -0.0189,
+    "interval_95": [
+     -0.0245,
+     -0.0135
+    ],
+    "material": true
+   },
+   "group_post_shift": {
+    "mean_cell_delta": -0.0022,
+    "interval_95": [
+     -0.0147,
+     0.0098
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 2,
+   "per_cell_r2_alone": 9
+  },
+  "POS_flip/A/linear/L0_window-T0_1": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": 0.0445,
+    "interval_95": [
+     0.0345,
+     0.0545
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": -0.0088,
+    "interval_95": [
+     -0.0192,
+     0.002
+    ],
+    "material": false
+   },
+   "group_post_shift": {
+    "mean_cell_delta": 0.0348,
+    "interval_95": [
+     0.0088,
+     0.0587
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 9,
+   "per_cell_r2_alone": 5
+  },
+  "POS_flip/A/linear/L0_window-L0": {
+   "cells": 20,
+   "per_cell_material": 4,
+   "group": {
+    "mean_cell_delta": 0.0461,
+    "interval_95": [
+     0.0432,
+     0.0491
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": -0.0039,
+    "interval_95": [
+     -0.0055,
+     -0.0025
+    ],
+    "material": false
+   },
+   "group_post_shift": {
+    "mean_cell_delta": 0.0593,
+    "interval_95": [
+     0.0489,
+     0.0697
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 16,
+   "per_cell_r2_alone": 5
+  },
+  "POS_flip/A/mlp/L0-T0_1": {
+   "cells": 20,
+   "per_cell_material": 0,
+   "group": {
+    "mean_cell_delta": 0.0138,
+    "interval_95": [
+     0.0039,
+     0.0235
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": 0.0061,
+    "interval_95": [
+     -0.0037,
+     0.0154
+    ],
+    "material": false
+   },
+   "group_post_shift": {
+    "mean_cell_delta": -0.0049,
+    "interval_95": [
+     -0.0339,
+     0.0229
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 1,
+   "per_cell_r2_alone": 11
+  },
+  "POS_flip/A/mlp/L0-T0_4": {
+   "cells": 20,
+   "per_cell_material": 2,
+   "group": {
+    "mean_cell_delta": -0.0197,
+    "interval_95": [
+     -0.0315,
+     -0.0088
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": -0.0375,
+    "interval_95": [
+     -0.0444,
+     -0.0304
+    ],
+    "material": true
+   },
+   "group_post_shift": {
+    "mean_cell_delta": -0.0116,
+    "interval_95": [
+     -0.038,
+     0.0126
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 3,
+   "per_cell_r2_alone": 11
+  },
+  "POS_flip/A/mlp/L0_window-T0_1": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": 0.0463,
+    "interval_95": [
+     0.0369,
+     0.0558
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": 0.0001,
+    "interval_95": [
+     -0.0092,
+     0.0102
+    ],
+    "material": false
+   },
+   "group_post_shift": {
+    "mean_cell_delta": 0.0931,
+    "interval_95": [
+     0.066,
+     0.122
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 8,
+   "per_cell_r2_alone": 4
+  },
+  "POS_flip/A/mlp/L0_window-L0": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": 0.0324,
+    "interval_95": [
+     0.0286,
+     0.0361
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": -0.006,
+    "interval_95": [
+     -0.0079,
+     -0.0043
+    ],
+    "material": false
+   },
+   "group_post_shift": {
+    "mean_cell_delta": 0.0979,
+    "interval_95": [
+     0.088,
+     0.1079
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 8,
+   "per_cell_r2_alone": 8
+  },
+  "POS_flip/B/partial_linear/L0-T0_1": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": 0.0071,
+    "interval_95": [
+     -0.0003,
+     0.0137
+    ],
+    "material": false
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": 0.0009,
+    "interval_95": [
+     -0.0075,
+     0.0101
+    ],
+    "material": false
+   },
+   "group_post_shift": {
+    "mean_cell_delta": -0.0118,
+    "interval_95": [
+     -0.0373,
+     0.0121
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 2,
+   "per_cell_r2_alone": 11
+  },
+  "POS_flip/B/partial_linear/L0-T0_4": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": -0.0126,
+    "interval_95": [
+     -0.0186,
+     -0.0072
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": -0.0274,
+    "interval_95": [
+     -0.0317,
+     -0.023
+    ],
+    "material": true
+   },
+   "group_post_shift": {
+    "mean_cell_delta": -0.0033,
+    "interval_95": [
+     -0.0172,
+     0.0108
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 2,
+   "per_cell_r2_alone": 11
+  },
+  "POS_flip/B/partial_linear/L0_window-T0_1": {
+   "cells": 20,
+   "per_cell_material": 0,
+   "group": {
+    "mean_cell_delta": 0.0349,
+    "interval_95": [
+     0.0266,
+     0.0424
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": -0.0176,
+    "interval_95": [
+     -0.0265,
+     -0.0074
+    ],
+    "material": true
+   },
+   "group_post_shift": {
+    "mean_cell_delta": 0.0974,
+    "interval_95": [
+     0.0705,
+     0.1213
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 5,
+   "per_cell_r2_alone": 5
+  },
+  "POS_flip/B/partial_linear/L0_window-L0": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": 0.0278,
+    "interval_95": [
+     0.0252,
+     0.0305
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": -0.0185,
+    "interval_95": [
+     -0.02,
+     -0.0169
+    ],
+    "material": true
+   },
+   "group_post_shift": {
+    "mean_cell_delta": 0.1091,
+    "interval_95": [
+     0.1022,
+     0.1158
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 5,
+   "per_cell_r2_alone": 7
+  },
+  "POS_flip/B/partial_mlp/L0-T0_1": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": 0.0317,
+    "interval_95": [
+     0.0233,
+     0.0396
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": 0.0254,
+    "interval_95": [
+     0.0143,
+     0.0364
+    ],
+    "material": true
+   },
+   "group_post_shift": {
+    "mean_cell_delta": 0.0104,
+    "interval_95": [
+     -0.0175,
+     0.0349
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 4,
+   "per_cell_r2_alone": 11
+  },
+  "POS_flip/B/partial_mlp/L0-T0_4": {
+   "cells": 20,
+   "per_cell_material": 2,
+   "group": {
+    "mean_cell_delta": -0.0078,
+    "interval_95": [
+     -0.0166,
+     0.0006
+    ],
+    "material": false
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": -0.0213,
+    "interval_95": [
+     -0.0272,
+     -0.0155
+    ],
+    "material": true
+   },
+   "group_post_shift": {
+    "mean_cell_delta": -0.0039,
+    "interval_95": [
+     -0.0273,
+     0.0188
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 2,
+   "per_cell_r2_alone": 12
+  },
+  "POS_flip/B/partial_mlp/L0_window-T0_1": {
+   "cells": 20,
+   "per_cell_material": 0,
+   "group": {
+    "mean_cell_delta": 0.0649,
+    "interval_95": [
+     0.0562,
+     0.0733
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": 0.0236,
+    "interval_95": [
+     0.0129,
+     0.0347
+    ],
+    "material": true
+   },
+   "group_post_shift": {
+    "mean_cell_delta": 0.1115,
+    "interval_95": [
+     0.0873,
+     0.1351
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 15,
+   "per_cell_r2_alone": 2
+  },
+  "POS_flip/B/partial_mlp/L0_window-L0": {
+   "cells": 20,
+   "per_cell_material": 6,
+   "group": {
+    "mean_cell_delta": 0.0332,
+    "interval_95": [
+     0.0302,
+     0.0363
+    ],
+    "material": true
+   },
+   "group_pre_shift": {
+    "mean_cell_delta": -0.0018,
+    "interval_95": [
+     -0.0029,
+     -0.0006
+    ],
+    "material": false
+   },
+   "group_post_shift": {
+    "mean_cell_delta": 0.1011,
+    "interval_95": [
+     0.0932,
+     0.1089
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 11,
+   "per_cell_r2_alone": 9
+  },
+  "POS_sign/A/linear/L0-T0_1": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": 0.0002,
+    "interval_95": [
+     -0.0138,
+     0.0148
+    ],
+    "material": false
+   },
+   "per_cell_r1_alone": 1,
+   "per_cell_r2_alone": 2
+  },
+  "POS_sign/A/linear/L0-T0_4": {
+   "cells": 20,
+   "per_cell_material": 0,
+   "group": {
+    "mean_cell_delta": -0.0336,
+    "interval_95": [
+     -0.0453,
+     -0.0219
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 8,
+   "per_cell_r2_alone": 0
+  },
+  "POS_sign/A/mlp/L0-T0_1": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": 0.1423,
+    "interval_95": [
+     0.1285,
+     0.1557
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 6,
+   "per_cell_r2_alone": 3
+  },
+  "POS_sign/A/mlp/L0-T0_4": {
+   "cells": 20,
+   "per_cell_material": 3,
+   "group": {
+    "mean_cell_delta": 0.0907,
+    "interval_95": [
+     0.0766,
+     0.1064
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 8,
+   "per_cell_r2_alone": 5
+  },
+  "POS_sign/B/partial_linear/L0-T0_1": {
+   "cells": 20,
+   "per_cell_material": 0,
+   "group": {
+    "mean_cell_delta": 0.1204,
+    "interval_95": [
+     0.1083,
+     0.1327
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 4,
+   "per_cell_r2_alone": 4
+  },
+  "POS_sign/B/partial_linear/L0-T0_4": {
+   "cells": 20,
+   "per_cell_material": 2,
+   "group": {
+    "mean_cell_delta": 0.0827,
+    "interval_95": [
+     0.0692,
+     0.0991
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 4,
+   "per_cell_r2_alone": 7
+  },
+  "POS_sign/B/partial_mlp/L0-T0_1": {
+   "cells": 20,
+   "per_cell_material": 1,
+   "group": {
+    "mean_cell_delta": 0.1481,
+    "interval_95": [
+     0.1355,
+     0.1603
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 11,
+   "per_cell_r2_alone": 1
+  },
+  "POS_sign/B/partial_mlp/L0-T0_4": {
+   "cells": 20,
+   "per_cell_material": 3,
+   "group": {
+    "mean_cell_delta": 0.0976,
+    "interval_95": [
+     0.0842,
+     0.1101
+    ],
+    "material": true
+   },
+   "per_cell_r1_alone": 8,
+   "per_cell_r2_alone": 4
+  }
+ },
+ "pos_sign_precision_by_run_sign": {
+  "A/linear/sign+1": {
+   "L0": 0.647,
+   "T0_1": 0.627,
+   "T0_4": 0.691,
+   "n": 159
+  },
+  "A/linear/sign-1": {
+   "L0": 0.26,
+   "T0_1": 0.279,
+   "T0_4": 0.283,
+   "n": 161
+  },
+  "A/mlp/sign+1": {
+   "L0": 0.615,
+   "T0_1": 0.519,
+   "T0_4": 0.575,
+   "n": 159
+  },
+  "A/mlp/sign-1": {
+   "L0": 0.576,
+   "T0_1": 0.388,
+   "T0_4": 0.436,
+   "n": 161
+  },
+  "B/partial_linear/sign+1": {
+   "L0": 0.62,
+   "T0_1": 0.542,
+   "T0_4": 0.617,
+   "n": 159
+  },
+  "B/partial_linear/sign-1": {
+   "L0": 0.542,
+   "T0_1": 0.38,
+   "T0_4": 0.381,
+   "n": 161
+  },
+  "B/partial_mlp/sign+1": {
+   "L0": 0.617,
+   "T0_1": 0.51,
+   "T0_4": 0.564,
+   "n": 159
+  },
+  "B/partial_mlp/sign-1": {
+   "L0": 0.585,
+   "T0_1": 0.397,
+   "T0_4": 0.443,
+   "n": 161
+  }
+ },
+ "registered_reading": {
+  "neg_no_material_pair": true,
+  "pos_sign_closed_loop_material_and_positive": false,
+  "adequate": false
+ },
+ "findings": {
+  "neg": "The group rule calls no NEG pair material (0 of 8). Per cell, R1 alone flags up to 7 of 20, too liberal to use alone.",
+  "pos_sign": "L0 beats the single-donor table by 0.120-0.148 in three groups (A/MLP, B/partial_linear, B/partial_mlp), each material, and beats the four-donor table there by 0.083-0.098. In A/linear it does not (+0.000): in runs with sign -1 its precision is 0.260 against 0.54-0.59 for the other three groups, so it never learns the reversed relation.",
+  "why_a_linear_fails": "Fit budget again: 300 Adam steps at learning rate 0.02 move a weight at most about 6 logits from a zero residual, and reversing the prior's +4 to -3 needs 7. Partial pooling stacks two linear stages and the MLP has more parameters, so both can reverse.",
+  "per_cell_rules": "Unsuitable here. In POS-sign a cell's replicates have random signs, so the effect is large in about half and near zero in the rest: R1 needs 12 of 16 and rarely holds, and R2 (the early-shock slope) does not address a sign effect.",
+  "pos_flip": "Forgetting tracks the flip in every group (post-shift +0.059 to +0.109 against L0). The four-donor table still beats L0 overall where it is material (ensembling)."
+ },
+ "next": {
+  "D3": "NOT_FROZEN",
+  "decision": "USER"
+ },
+ "boundaries": {
+  "study_cells_scored": false,
+  "llm_calls": 0,
+  "empirical_rows_read": 0,
+  "registered": false
+ }
+}
