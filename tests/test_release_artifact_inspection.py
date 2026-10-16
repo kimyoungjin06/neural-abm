@@ -1910,6 +1910,10 @@ def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
         "scripts/power_info_spread_policy_ladder_v3.py",
         "tests/test_power_info_spread_policy_ladder_v3.py",
         "tests/test_info_spread_policy_ladder_d2c_result.py",
+        "docs/research/info-spread-policy-ladder-study-v1.md",
+        "experiments/configs/info_spread_policy_ladder_study_v1.yaml",
+        "scripts/run_info_spread_policy_ladder_study_v1.py",
+        "tests/test_info_spread_policy_ladder_study_v1.py",
     }
     assert repository_paths == inspector[
         "PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS"
