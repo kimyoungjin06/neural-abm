@@ -148,11 +148,12 @@ class ResidualMLP(torch.nn.Module):
 @dataclass
 class TorchPredictor:
     policy: torch.nn.Module
+    device: torch.device | str = "cpu"
 
     def predict(self, features: np.ndarray) -> np.ndarray:
         with torch.no_grad():
-            evaluation = torch.as_tensor(features, dtype=torch.float64)
-            return torch.sigmoid(self.policy(evaluation)).detach().numpy()
+            evaluation = torch.as_tensor(features, dtype=torch.float64, device=self.device)
+            return torch.sigmoid(self.policy(evaluation)).detach().cpu().numpy()
 
 
 def train_residual_policy(
@@ -163,14 +164,19 @@ def train_residual_policy(
     learning_rate: float,
     epochs: int,
     weight_decay: float,
+    device: torch.device | str = "cpu",
 ) -> TorchPredictor:
-    """Full-batch Adam on binary cross-entropy, as in the Pivot ladder."""
+    """Full-batch Adam on binary cross-entropy, as in the Pivot ladder.
+
+    On a GPU, set CUBLAS_WORKSPACE_CONFIG before CUDA starts, because
+    deterministic algorithms are enforced.
+    """
 
     torch.use_deterministic_algorithms(True)
     torch.set_num_threads(1)
-    inputs = torch.as_tensor(train_features, dtype=torch.float64)
-    targets = torch.as_tensor(train_labels, dtype=torch.float64)
-    policy = policy.to(dtype=torch.float64)
+    inputs = torch.as_tensor(train_features, dtype=torch.float64, device=device)
+    targets = torch.as_tensor(train_labels, dtype=torch.float64, device=device)
+    policy = policy.to(dtype=torch.float64, device=device)
     optimizer = torch.optim.Adam(
         policy.parameters(), lr=learning_rate, weight_decay=weight_decay
     )
@@ -181,7 +187,7 @@ def train_residual_policy(
         )
         loss.backward()
         optimizer.step()
-    return TorchPredictor(policy)
+    return TorchPredictor(policy, device)
 
 
 @dataclass
@@ -230,7 +236,135 @@ def fit_prior_boosted_trees(
     return predictor
 
 
-FAMILIES = ("linear", "mlp", "tree")
+FAMILIES = ("linear", "mlp", "tree", "linear_exact")
+
+
+@dataclass
+class LinearResidualPredictor:
+    """Prior logit plus a fitted linear residual."""
+
+    prior: LinearPrior
+    weight: np.ndarray
+    bias: float
+
+    def predict(self, features: np.ndarray) -> np.ndarray:
+        return sigmoid(self.prior.logit(features) + features @ self.weight + self.bias)
+
+
+def _ridge_logistic_newton(
+    offset: np.ndarray, features: np.ndarray, labels: np.ndarray, l2: float,
+    max_iter: int = 100, tol: float = 1e-10,
+) -> np.ndarray:
+    """Minimize mean cross-entropy of offset + [x, 1] @ theta, plus (l2/2)|theta|^2.
+
+    Newton steps with step halving. The objective is strictly convex, so the
+    solution is unique, and it has no step cap.
+    """
+
+    design = np.hstack([features, np.ones((len(features), 1))])
+    theta = np.zeros(design.shape[1])
+    n = float(len(labels))
+
+    def objective(t: np.ndarray) -> float:
+        z = offset + design @ t
+        return float(np.mean(np.logaddexp(0.0, z) - labels * z) + 0.5 * l2 * t @ t)
+
+    current = objective(theta)
+    for _ in range(max_iter):
+        p = sigmoid(offset + design @ theta)
+        gradient = design.T @ (p - labels) / n + l2 * theta
+        hessian = (design * (p * (1.0 - p))[:, None]).T @ design / n + l2 * np.eye(len(theta))
+        step = np.linalg.solve(hessian, gradient)
+        scale = 1.0
+        while scale > 1e-8:
+            candidate = theta - scale * step
+            value = objective(candidate)
+            if value <= current + 1e-15:
+                break
+            scale *= 0.5
+        theta, current = candidate, value
+        if np.max(np.abs(scale * step)) < tol:
+            break
+    return theta
+
+
+def fit_exact_linear(
+    prior: LinearPrior, train_features: np.ndarray, train_labels: np.ndarray, l2: float,
+) -> Predictor:
+    """A linear residual on the prior, fitted to convergence (no step cap)."""
+
+    if len(train_labels) == 0:
+        return PriorPredictor(prior)
+    theta = _ridge_logistic_newton(prior.logit(train_features), train_features, train_labels, l2)
+    return LinearResidualPredictor(prior, theta[:-1], float(theta[-1]))
+
+
+def fit_batched_exact_linear(
+    base_logits: np.ndarray,
+    agent_ids: np.ndarray,
+    train_features: np.ndarray,
+    train_labels: np.ndarray,
+    *,
+    agents: int,
+    l2: float,
+    max_iter: int = 100,
+    tol: float = 1e-10,
+) -> "BatchedResidualState":
+    """Each agent's linear residual on `base_logits`, fitted to convergence.
+
+    Per agent: mean cross-entropy over its own rows plus (l2/2)|theta|^2,
+    solved by batched Newton steps with a common step-halving factor. Agents
+    are independent; an agent with no rows keeps a zero residual.
+    """
+
+    width = train_features.shape[1] + 1
+    theta = np.zeros((agents, width))
+    if len(train_labels) == 0:
+        return _batched_state_from_theta(theta)
+    design = np.hstack([train_features, np.ones((len(train_features), 1))])
+    counts = np.bincount(agent_ids, minlength=agents).astype(np.float64)
+    active = counts > 0
+    weight_per_row = 1.0 / counts[agent_ids]
+    eye = np.eye(width)
+
+    def objective(t: np.ndarray) -> np.ndarray:
+        z = base_logits + (design * t[agent_ids]).sum(axis=1)
+        per_row = (np.logaddexp(0.0, z) - train_labels * z) * weight_per_row
+        return np.bincount(agent_ids, weights=per_row, minlength=agents) + 0.5 * l2 * (t * t).sum(axis=1)
+
+    current = objective(theta)
+    for _ in range(max_iter):
+        z = base_logits + (design * theta[agent_ids]).sum(axis=1)
+        p = sigmoid(z)
+        gradient = np.zeros((agents, width))
+        np.add.at(gradient, agent_ids, design * ((p - train_labels) * weight_per_row)[:, None])
+        gradient += l2 * theta
+        hessian = np.zeros((agents, width, width))
+        outer = design[:, :, None] * design[:, None, :] * (p * (1.0 - p) * weight_per_row)[:, None, None]
+        np.add.at(hessian, agent_ids, outer)
+        hessian += l2 * eye
+        step = np.linalg.solve(hessian, gradient[:, :, None])[:, :, 0]
+        step[~active] = 0.0
+        scale = np.ones(agents)
+        candidate = theta - step
+        value = objective(candidate)
+        worse = value > current + 1e-15
+        while worse.any() and scale.min() > 1e-8:
+            scale[worse] *= 0.5
+            candidate = theta - scale[:, None] * step
+            value = objective(candidate)
+            worse = value > current + 1e-15
+        theta, current = candidate, value
+        if np.max(np.abs(scale[:, None] * step)) < tol:
+            break
+    return _batched_state_from_theta(theta)
+
+
+def _batched_state_from_theta(theta: np.ndarray) -> "BatchedResidualState":
+    return BatchedResidualState(
+        delta_weight=torch.as_tensor(np.ascontiguousarray(theta[:, :-1])),
+        delta_bias=torch.as_tensor(np.ascontiguousarray(theta[:, -1])),
+    )
 
 
 def fit_residual(
@@ -240,6 +374,7 @@ def fit_residual(
     train_labels: np.ndarray,
     settings: Mapping[str, Any],
     seed: int,
+    device: torch.device | str = "cpu",
 ) -> Predictor:
     """Fit one prior-anchored learner. With no rows it is the prior."""
 
@@ -247,6 +382,8 @@ def fit_residual(
         return PriorPredictor(prior)
     if family == "tree":
         return fit_prior_boosted_trees(prior, train_features, train_labels, settings, seed)
+    if family == "linear_exact":
+        return fit_exact_linear(prior, train_features, train_labels, float(settings["l2"]))
     if family == "linear":
         policy: torch.nn.Module = ResidualLinear(prior)
     elif family == "mlp":
@@ -260,6 +397,7 @@ def fit_residual(
         learning_rate=float(settings["learning_rate"]),
         epochs=int(settings["epochs"]),
         weight_decay=float(settings["weight_decay"]),
+        device=device,
     )
 
 

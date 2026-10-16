@@ -404,6 +404,49 @@ again. It still scores no study cell.
 If the design is adequate, D3 freezes the study with these choices. If not,
 the gap is reported before any study cell is run.
 
+## D2c specification (fixed before D2c runs, 2026-10-16)
+
+D2b was not adequate. Its group rule worked, but the pooled linear learner
+could not reverse a relation, because 300 Adam steps at learning rate 0.02
+move a weight about 6 logits
+([D2b](../../experiments/evidence/results/info_spread_policy_ladder_d2b_controls_20261015.summary.md)).
+
+The user approved five changes on 2026-10-16. Controls, sizes, seeds layout,
+and the adequacy criterion are otherwise those of D2b.
+
+1. **Exact linear learners.**
+   - A linear residual on the prior's logit is fitted to convergence by
+     Newton steps on the mean cross-entropy, plus (λ/2) times the squared
+     residual. λ is 1e-4 for the pooled learner, matching the Pivot weight
+     decay, and 1e-2 for each agent's residual under partial pooling.
+   - The step-capped Adam version stays in the core for Pivot parity.
+   - The families are:
+     - Regime A: "linear_exact" and "mlp";
+     - Regime B: "partial_linear_exact" and "partial_mlp". Both bases carry
+       exact per-agent residuals.
+2. **One training row per agent and item.** Under public fact-checks, an
+   agent learns an item's outcome once. The row records the agent's last
+   decision before the fact-check: its share, or else its last decline.
+3. **Efficiency.**
+   - Pooled MLPs are trained on GPUs 2 and 3 of the GPU server, with
+     deterministic algorithms; workers alternate between the two GPUs.
+   - 24 workers.
+   - Per-task progress is logged.
+   - A pilot under full load sets the time estimate before the full run.
+4. **The group rule alone.**
+   - A pair is material when the cell-resampled 95% interval of its mean cell
+     Δ excludes zero and the mean is at least 0.01 in magnitude.
+   - The per-cell rules are dropped.
+5. **Controls.** NEG, POS-sign, and POS-flip as in D2b, with 20 cells × 16
+   replicates per control, regime, and family.
+
+**Adequacy (unchanged from D2b).**
+- No NEG pair is material.
+- L0 − T0-1 is material and positive in POS-sign in all four groups.
+
+If D2c is adequate, D3 freezes the study with these choices. No study cell
+is scored in D2c.
+
 ## Threats and how the design meets them
 
 | Threat | Response |

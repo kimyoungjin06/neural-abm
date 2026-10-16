@@ -122,3 +122,49 @@ def test_the_outcome_record_window_keeps_recent_rows_only() -> None:
         record.add(np.full((1, 1), step), np.array([1.0]), np.array([0]), visible_from=step)
     assert record.visible(4)[0].ravel().tolist() == [0, 1, 2, 3, 4]
     assert record.visible(4, since=2)[0].ravel().tolist() == [2, 3, 4]
+
+
+def _reversed_data(seed: int, rows: int = 6000) -> tuple[core.LinearPrior, np.ndarray, np.ndarray]:
+    rng = np.random.default_rng(seed)
+    features = rng.random((rows, 3))
+    truth = -0.2 - 3.0 * (features[:, 0] - 0.5)
+    labels = (rng.random(rows) < core.sigmoid(truth)).astype(np.float64)
+    prior = core.LinearPrior(np.array([4.0, 0.0, 0.0]), -2.0)  # the opposite sign, +4
+    return prior, features, labels
+
+
+def test_the_exact_linear_learner_can_reverse_the_prior() -> None:
+    prior, features, labels = _reversed_data(0)
+    fitted = core.fit_exact_linear(prior, features, labels, l2=1e-4)
+    assert 4.0 + fitted.weight[0] == pytest.approx(-3.0, abs=0.35)
+    # The Adam learner with the Pivot settings stays capped well short of it.
+    adam = core.fit_residual(
+        "linear", prior, features, labels,
+        {"learning_rate": 0.02, "epochs": 300, "weight_decay": 1e-4}, 0,
+    )
+    probe = np.array([[0.25, 0.5, 0.5], [0.75, 0.5, 0.5]])
+    logits = np.log(adam.predict(probe)) - np.log1p(-adam.predict(probe))
+    assert (logits[1] - logits[0]) / 0.5 > -2.5
+
+
+def test_the_exact_linear_solution_has_zero_gradient() -> None:
+    prior, features, labels = _reversed_data(1, 2000)
+    theta = core._ridge_logistic_newton(prior.logit(features), features, labels, 1e-2)
+    design = np.hstack([features, np.ones((len(features), 1))])
+    p = core.sigmoid(prior.logit(features) + design @ theta)
+    gradient = design.T @ (p - labels) / len(labels) + 1e-2 * theta
+    assert np.max(np.abs(gradient)) < 1e-9
+
+
+def test_batched_exact_agents_match_their_single_fits() -> None:
+    prior, features, labels = _reversed_data(2, 3000)
+    owners = np.arange(len(labels)) % 4
+    owners[owners == 3] = 2  # agent 3 has no rows
+    base = prior.logit(features)
+    state = core.fit_batched_exact_linear(base, owners, features, labels, agents=4, l2=1e-2)
+    for agent in (0, 1, 2):
+        rows = owners == agent
+        theta = core._ridge_logistic_newton(base[rows], features[rows], labels[rows], 1e-2)
+        assert np.allclose(state.delta_weight[agent].numpy(), theta[:-1], atol=1e-7)
+        assert float(state.delta_bias[agent]) == pytest.approx(theta[-1], abs=1e-7)
+    assert not state.delta_weight[3].any() and float(state.delta_bias[3]) == 0.0

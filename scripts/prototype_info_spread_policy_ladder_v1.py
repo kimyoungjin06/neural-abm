@@ -95,6 +95,7 @@ LEARNER_SETTINGS: dict[str, dict[str, Any]] = {
     "linear": {"learning_rate": 0.05, "epochs": 60, "weight_decay": 1e-3},
     "mlp": {"learning_rate": 0.05, "epochs": 60, "weight_decay": 1e-3, "hidden_width": 8},
     "tree": {"rounds": 6, "learning_rate": 0.3, "leaf_l2": 1.0, "max_depth": 3, "min_samples_leaf": 10},
+    "linear_exact": {"l2": 1e-4},
 }
 
 
@@ -102,6 +103,7 @@ PIVOT_LEARNER_SETTINGS: dict[str, dict[str, Any]] = {
     "linear": {"learning_rate": 0.02, "epochs": 300, "weight_decay": 1e-4},
     "mlp": {"learning_rate": 0.02, "epochs": 300, "weight_decay": 1e-4, "hidden_width": 16},
     "tree": {"rounds": 300, "learning_rate": 0.1, "leaf_l2": 1.0, "max_depth": 3, "min_samples_leaf": 5},
+    "linear_exact": {"l2": 1e-4},
 }
 D1_LEARNER_SETTINGS = {family: dict(settings) for family, settings in LEARNER_SETTINGS.items()}
 
@@ -270,6 +272,9 @@ class Policy:
     snapshots: core.PolicySnapshots = field(default_factory=core.PolicySnapshots)
     # Label-selection diagnostics: keep outcomes of declined exposures too.
     records_declines: bool = False
+    # Keep one declined outcome per agent and item: the last decline, dropped
+    # if the agent later shares the item (D2c). False keeps every decline row.
+    one_row_per_exposure: bool = False
     diagnostics: list[dict[str, float]] = field(default_factory=list)
 
 
@@ -341,7 +346,7 @@ def label_diagnostics(features: np.ndarray, labels: np.ndarray) -> dict[str, flo
 def pooled_learning_policy(
     family: str, prior: core.LinearPrior, *, seed_components: tuple[int, ...],
     learning: bool = True, window: int | None = None, label_mode: str = "shares",
-    diagnose_labels: bool = False,
+    diagnose_labels: bool = False, one_row_per_exposure: bool = False, device: str = "cpu",
 ) -> Policy:
     """L0 in Regime A. `window` keeps only outcomes that became visible in the
     last `window` steps, a forgetting learner; None keeps every outcome."""
@@ -349,7 +354,10 @@ def pooled_learning_policy(
     state: dict[str, Any] = {"predictor": core.PriorPredictor(prior), "refits": 0}
     suffix = "" if window is None else f"_window{window}"
     suffix += "" if label_mode == "shares" else f"_labels_{label_mode}"
-    policy = Policy(f"L0_pooled_{family}{suffix}", records_declines=label_mode != "shares")
+    policy = Policy(
+        f"L0_pooled_{family}{suffix}", records_declines=label_mode != "shares",
+        one_row_per_exposure=one_row_per_exposure,
+    )
     policy.snapshots.record(0, ("pooled", state["predictor"]))
 
     def probability(_ids: np.ndarray, x: np.ndarray, _t: int) -> np.ndarray:
@@ -368,7 +376,7 @@ def pooled_learning_policy(
         seed = core.keyed_seed(*seed_components, state["refits"])
         state["refits"] += 1
         state["predictor"] = core.fit_residual(
-            family, prior, features, labels, LEARNER_SETTINGS[family], seed
+            family, prior, features, labels, LEARNER_SETTINGS[family], seed, device=device
         )
         policy.snapshots.record(step, ("pooled", state["predictor"]))
 
@@ -426,10 +434,18 @@ AGENT_RESIDUAL_WEIGHT_DECAY = 1e-2
 def partial_pooling_policy(
     family: str, prior: core.LinearPrior, agents: int, *, seed_components: tuple[int, ...],
     window: int | None = None, label_mode: str = "shares", device: str = "cpu",
+    agent_residual: str = "adam", one_row_per_exposure: bool = False,
 ) -> Policy:
     """Regime B with partial pooling: a pooled learner of `family`, fitted on
     every agent's rows, plus a per-agent linear residual fitted on the
-    agent's own rows with a stronger weight decay."""
+    agent's own rows with a stronger weight decay.
+
+    `agent_residual` is "adam" (D2b: step-capped Adam) or "exact" (D2c: a
+    ridge-logistic fit to convergence, with l2 equal to that weight decay).
+    `device` is where a pooled MLP trains."""
+
+    if agent_residual not in ("adam", "exact"):
+        raise ValueError(f"unknown agent residual fit: {agent_residual}")
 
     initial = core.BatchedPredictor(
         prior, core.initial_batched_state("linear", agents, len(prior.weight), 0, 0, device)
@@ -437,7 +453,10 @@ def partial_pooling_policy(
     state: dict[str, Any] = {"predictor": initial, "refits": 0}
     suffix = "" if window is None else f"_window{window}"
     suffix += "" if label_mode == "shares" else f"_labels_{label_mode}"
-    policy = Policy(f"L0_partial_{family}{suffix}", records_declines=label_mode != "shares")
+    policy = Policy(
+        f"L0_partial_{family}{suffix}", records_declines=label_mode != "shares",
+        one_row_per_exposure=one_row_per_exposure,
+    )
     policy.snapshots.record(0, ("per_agent", initial))
 
     def probability(ids: np.ndarray, x: np.ndarray, _t: int) -> np.ndarray:
@@ -453,14 +472,21 @@ def partial_pooling_policy(
         state["refits"] += 1
         pooled = core.fit_residual(
             family, prior, features, labels, LEARNER_SETTINGS[family],
-            core.keyed_seed(*seed_components, refit, 1),
+            core.keyed_seed(*seed_components, refit, 1), device=device,
         )
-        agent_settings = {**LEARNER_SETTINGS["linear"], "weight_decay": AGENT_RESIDUAL_WEIGHT_DECAY}
-        fitted = core.fit_batched_residual(
-            "linear", prior, owners, features, labels, agents=agents, settings=agent_settings,
-            seed=core.keyed_seed(*seed_components, refit, 2), device=device,
-            base_logits=core.probability_logit(pooled.predict(features)),
-        )
+        base_logits = core.probability_logit(pooled.predict(features))
+        if agent_residual == "exact":
+            fitted = core.fit_batched_exact_linear(
+                base_logits, owners, features, labels, agents=agents,
+                l2=AGENT_RESIDUAL_WEIGHT_DECAY,
+            )
+        else:
+            agent_settings = {**LEARNER_SETTINGS["linear"], "weight_decay": AGENT_RESIDUAL_WEIGHT_DECAY}
+            fitted = core.fit_batched_residual(
+                "linear", prior, owners, features, labels, agents=agents, settings=agent_settings,
+                seed=core.keyed_seed(*seed_components, refit, 2), device=device,
+                base_logits=base_logits,
+            )
         state["predictor"] = core.BatchedPredictor(prior, fitted, base=pooled)
         policy.snapshots.record(step, ("per_agent", state["predictor"]))
 
@@ -580,7 +606,11 @@ def simulate(world: World, stream: Stream, policy: Policy, replicate: int) -> Ru
             revealed_total[agents] += 1.0
             revealed_true[agents] += label
         for item in np.flatnonzero((stream.born + config.delay == step) & stream.revealed):
-            agents, rows = declined.pop(int(item), (np.zeros(0, dtype=np.int64), None))
+            entry = declined.pop(int(item), None)
+            if isinstance(entry, dict):
+                ordered = sorted(entry)
+                entry = (np.asarray(ordered, dtype=np.int64), np.stack([entry[a] for a in ordered]) if ordered else None)
+            agents, rows = entry if entry is not None else (np.zeros(0, dtype=np.int64), None)
             if rows is not None and len(agents):
                 label = float(stream.veracity[item])
                 record.add(rows, np.full(len(agents), label), agents, visible_from=step,
@@ -638,13 +668,21 @@ def simulate(world: World, stream: Stream, policy: Policy, replicate: int) -> Ru
             for item in np.unique(items[~share]):
                 rows = (items == item) & ~share
                 if stream.revealed[item] and stream.born[item] + config.delay > step:
-                    old_agents, old_rows = declined.get(int(item), (np.zeros(0, dtype=np.int64), np.zeros((0, width))))
-                    declined[int(item)] = (
-                        np.concatenate([old_agents, agent_idx[rows]]),
-                        np.vstack([old_rows, features[rows]]),
-                    )
+                    if policy.one_row_per_exposure:
+                        latest = declined.setdefault(int(item), {})
+                        for agent, row in zip(agent_idx[rows], features[rows], strict=True):
+                            latest[int(agent)] = row
+                    else:
+                        old_agents, old_rows = declined.get(int(item), (np.zeros(0, dtype=np.int64), np.zeros((0, width))))
+                        declined[int(item)] = (
+                            np.concatenate([old_agents, agent_idx[rows]]),
+                            np.vstack([old_rows, features[rows]]),
+                        )
         for item in np.unique(items[share]):
             rows = (items == item) & share
+            if policy.one_row_per_exposure and isinstance(declined.get(int(item)), dict):
+                for agent in agent_idx[rows]:
+                    declined[int(item)].pop(int(agent), None)
             if stream.revealed[item] and stream.born[item] + config.delay > step:
                 old_agents, old_rows = pending.get(int(item), (np.zeros(0, dtype=np.int64), np.zeros((0, width))))
                 pending[int(item)] = (

@@ -298,3 +298,49 @@ def test_partial_pooling_replays_exactly_and_idle_agents_follow_the_pool() -> No
     idle = core.BatchedPredictor(prior, core.initial_batched_state("linear", 1, rows.shape[1], 0, 0), base=predictor.base)
     assert idle.predict_for(np.zeros(3, dtype=np.int64), rows) == pytest.approx(predictor.base.predict(rows), abs=1e-12)
     assert last_agent.shape == (3,)
+
+
+def _captured_record(config: spread.WorldConfig, policy: spread.Policy) -> core.OutcomeRecord:
+    captured: dict[str, core.OutcomeRecord] = {}
+    inner = policy.observe
+
+    def observe(record: core.OutcomeRecord, step: int) -> None:
+        captured["record"] = record
+        inner(record, step)
+
+    policy.observe = observe
+    _run(config, policy)
+    return captured["record"]
+
+
+def test_one_row_per_exposure_keeps_one_outcome_per_agent_and_item() -> None:
+    config = _small(epsilon=0.05)
+    prior = spread.hand_prior(config)
+
+    def learner(one_row: bool) -> spread.Policy:
+        return spread.pooled_learning_policy(
+            "linear", prior, seed_components=(9,), learning=False, label_mode="all",
+            one_row_per_exposure=one_row,
+        )
+
+    assert _run(config, learner(True)).digest == _run(config, learner(False)).digest
+    deduped, every = _captured_record(config, learner(True)), _captured_record(config, learner(False))
+    assert 0 < len(deduped.labels) < len(every.labels)
+    keys = [
+        (agent, tuple(np.round(row[:4], 12)))
+        for agent, row in zip(deduped.agents, deduped.features, strict=True)
+    ]
+    assert len(keys) == len(set(keys))  # an item's features identify the item
+
+
+def test_exact_partial_pooling_replays_exactly() -> None:
+    config = _small("B", epsilon=0.05)
+    prior = spread.hand_prior(config)
+    learner = spread.partial_pooling_policy(
+        "linear_exact", prior, config.agents, seed_components=(10,), label_mode="all",
+        agent_residual="exact", one_row_per_exposure=True,
+    )
+    adaptive = _run(config, learner)
+    assert len(adaptive.snapshots.steps) > 1
+    replay = spread.table_policy("T0_self", [adaptive.snapshots], final_only=False)
+    assert _run(config, replay).digest == adaptive.digest
