@@ -225,6 +225,11 @@ PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS = {
     "scripts/diagnose_info_spread_null_leak_v1.py",
     "tests/test_diagnose_info_spread_null_leak_v1.py",
     "tests/test_info_spread_policy_ladder_null_leak_diagnosis_result.py",
+    "docs/research/info-spread-policy-ladder-d2d-v1.md",
+    "scripts/info_spread_unverified_measure_v1.py",
+    "tests/test_info_spread_unverified_measure_v1.py",
+    "scripts/power_info_spread_policy_ladder_v4.py",
+    "tests/test_power_info_spread_policy_ladder_v4.py",
 }
 PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-relative-delay-cost-v1.md",
