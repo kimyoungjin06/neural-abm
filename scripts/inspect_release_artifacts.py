@@ -240,6 +240,7 @@ PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS = {
     "scripts/run_info_spread_policy_ladder_llm_arms_v1.py",
     "tests/test_info_spread_policy_ladder_llm_arms_v1.py",
     "tests/test_info_spread_policy_ladder_study_v2_d4_result.py",
+    "tests/test_info_spread_policy_ladder_llm_arms_d5_result.py",
 }
 PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-relative-delay-cost-v1.md",
