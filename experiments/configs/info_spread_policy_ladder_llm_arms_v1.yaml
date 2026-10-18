@@ -1,0 +1,217 @@
+schema_version: info_spread_policy_ladder_llm_arms.v1
+label: info_spread_policy_ladder_llm_arms_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-18'
+stage: D3b, frozen with study v2 (D3a v2) in one commit; run as D5 after D4 v2
+purpose: 'Freeze the LLM arms of the information-spread policy ladder in the study v2 cells: P0, a prior elicited
+  once from a local Qwen; X0, AgentTorch-style archetypes; and L1, the study learner started from P0. Three comparisons
+  on the study v2 primary measure (share precision on unverified items): L1 - L0 (the LLM prior inside NABM), L0 - X0
+  (NABM against archetypes), and L1 - P0 (the closed loop on the LLM prior).'
+design_document: docs/research/info-spread-policy-ladder-llm-arms-v1.md
+user_choices_2026_10_16:
+  scale: THE_D4_CELLS_IN_FULL (NOW THE STUDY V2 CELLS)
+  measure_2026_10_18: SHARE_PRECISION_ON_UNVERIFIED_ITEMS
+  comparisons: L1_MINUS_L0_L0_MINUS_X0_L1_MINUS_P0
+  weights: COPY_THE_PINNED_SNAPSHOT_TO_THE_GPU_SERVER_AND_VERIFY_ITS_HASHES
+source_bindings:
+- path: scripts/policy_ladder_core_v1.py
+  role: DOMAIN_FREE_CORE_EXACT_AND_PIVOT_LEARNERS
+  sha256: bc82caed34f1cf6542b8a144092137214c07939562c794fdfb865d02a302a579
+- path: scripts/prototype_info_spread_policy_ladder_v1.py
+  role: WORLD_ARCHETYPES_ITEM_CLASSES_AND_SIMULATION
+  sha256: 09375ca88431b4a90f2539f8e2dc33c5acfb7a2bdc76721ced4611cef734304e
+- path: scripts/power_info_spread_policy_ladder_v2.py
+  role: GROUP_RULE
+  sha256: d53d4ba99aeffcd63df37cce1f5b731817e7c80fa2940bd4a0273405c190080b
+- path: scripts/power_info_spread_policy_ladder_v1.py
+  role: BOOTSTRAP_RESAMPLES
+  sha256: d0f7f0b80ad69cf9d84c08815636de85eda062713559b50627d67e9d2f889da8
+- path: scripts/diagnose_info_spread_d2_v1.py
+  role: IMPORTED_BY_THE_GROUP_RULE_MODULE
+  sha256: 1ec9a630c41df2a36d34d801f04e8aabe47154d93dd4c2a526f1356fc77128a8
+- path: scripts/run_info_spread_policy_ladder_study_v1.py
+  role: V1_RUNNER_FUNCTIONS_REUSED_BY_STUDY_V2
+  sha256: 2e3b086ba35e53473fc64e5f8611a48a54e83a029959f482ec8f95a8caab77b2
+- path: scripts/info_spread_unverified_measure_v1.py
+  role: THE_UNVERIFIED_MEASURE
+  sha256: b1c43f385e1bbd440bd7a2a5176f8725625679f731ceabf0c395c882196eb14d
+- path: docs/research/info-spread-policy-ladder-design-v1.md
+  role: DESIGN_BRIEF
+  sha256: dc8209a149ae52c34b509d513e8ae302aa61c7ff2a3ea0f7a0d17e76c6829194
+- path: docs/research/info-spread-policy-ladder-study-v2.md
+  role: STUDY_V2_DESIGN
+  sha256: 5074c833b900f539f1b5b83b79007ed8384a50db5170c2a0e7b2dd90d1a42b12
+- path: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+  role: STUDY_V2_CONTRACT_WORLDS_CELLS_LEARNERS_SEEDS
+  sha256: a679035540ae7292d097a28bb3b0fea1860560a2a2aa8e8a26e1701b972f4845
+- path: scripts/run_info_spread_policy_ladder_study_v2.py
+  role: STUDY_V2_RUNNER_WORLD_MEASURE_AND_RULE
+  sha256: 3bcfb6162f1278067a562571eac22ba8d4f6d560b30820f8860b0a32656e9928
+d4:
+  contract: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+  runner: scripts/run_info_spread_policy_ladder_study_v2.py
+  record: PASSED_WITH_--d4-record; IT_MUST_NAME_THIS_PRECOMMIT_AND_THE_BOUND_STUDY_V2_CONTRACT_AND_A_BYTE_IDENTICAL_REPRODUCTION
+  cells: THE_DEVELOPMENT_CELLS_JSONL_WHOSE_SHA256_THE_RECORD_NAMES
+  arms_read: [F0, F1, T0_1, T0_4, L0]
+  parity: L0 RECOMPUTED AT REPLICATE 0 OF EVERY L1 TASK MUST EQUAL THE D4 V2 VALUE EXACTLY; ANY FAILURE BLOCKS READING
+  where_d5_runs: A_CHECKOUT_OF_THE_FREEZE_COMMIT_SO_THE_PRECOMMIT_CHECK_HOLDS
+llm:
+  model_id: Qwen/Qwen3-4B-Instruct-2507
+  snapshot: cdbee75f17c01a7cc42f958dc650907174af0554
+  snapshot_file_sha256:
+    config.json: 5beea1a4a34c62782bfb2f911c606741a3bab8f92d80a118fa053c28af12e8ba
+    generation_config.json: 835fffe355c9438e7a25be099b3fccaa98350b83451f9fd2d99512e74f1ade48
+    tokenizer.json: aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4
+    tokenizer_config.json: a62ff0a2472a0fa1b8eaabcb57c59b58afa42a22831dc141400b6e0cf2b65ce3
+    model.safetensors.index.json: d6c42883a895dfef5b0080ed2116a1bcd764f558406b98923d675978a1abf29c
+  source_of_hashes: experiments/configs/pivot_llm_prior_pilot_v4.yaml (qwen3_4b_2507)
+  weight_shard_sha256:
+    model-00001-of-00003.safetensors: 75311d91bb08cf0b882913da464a1e722a31fb44db35208663487efb7a3d8ed6
+    model-00002-of-00003.safetensors: 0b48adbb1f60e901153d91907ba11ce63bd4b8b584482e730f48808d055dfba1
+    model-00003-of-00003.safetensors: 7dd39ccca5e4de123c74c14af44c9bf2eb75df33b4614382af0134528e060d5d
+  weight_shards_source: THE_WORKSTATION_SNAPSHOT_COPIED_TO_GPU_SERVER_ON_2026_10_16_HASHES_EQUAL_ON_BOTH
+  transformers: 5.14.1
+  install: OVERLAY_DIRECTORY_ON_PYTHONPATH_NO_PROJECT_DEPENDENCY_CHANGE
+  dtype: bfloat16
+  batch_size: 1
+  batch_size_reason: AS_IN_PIVOT_V1_TO_V4_BECAUSE_BF16_BATCHING_SHIFTS_LOG_ODDS
+  answer_tokens: ['Yes', 'No']
+  assistant_prefill: 'Answer: **'
+  generation_prompt_suffix: "<|im_start|>assistant\n"
+  readout: LOGIT_YES_MINUS_LOGIT_NO_AT_THE_TOKEN_AFTER_THE_PREFILL
+  validity: SOFTMAX_MASS_ON_YES_AND_NO; WEAK_FORMAT_IF_THE_MEDIAN_IS_BELOW_0.5; REPORTED_THE_ARMS_STILL_RUN
+  repeat_check_prompts: 64
+  paid_api_calls: 0
+prompts:
+  system: You are an expert on misinformation who studies how people judge news shared on social media. You give
+    careful, calibrated judgments.
+  question: Is this item true? Answer with Yes or No.
+  p0_lead: A person on a social network has just been shown a news item that some of their contacts shared. Each
+    attribute of the item is scored from 0 (very low) to 1 (very high).
+  p0_item: "- Credibility of the source: {credibility:.2f}\n- Novelty of the claim: {novelty:.2f}\n- Emotional intensity\
+    \ of the wording: {intensity:.2f}\n- Fit with the person's existing views: {fit:.2f}\n- Contacts who shared it:\
+    \ {count} of the person's {degree} contacts"
+  p0_trust: '- Track record of those contacts: {trust:.2f} (the share of their past shares that fact-checks found
+    true)'
+  x0_lead: A person on a social network has just been shown a news item that some of their contacts shared.
+  x0_body: "The person: {person}\nThe item: {item}\nPublic fact-checks: {aggregate}"
+  x0_threshold:
+  - 'They share readily: once a few of their contacts have shared an item, they tend to pass it on.'
+  - 'They are cautious: they tend to pass an item on only once many of their contacts have shared it.'
+  x0_cost:
+  - For them, sharing a false item costs half as much as sharing a true item gains.
+  - For them, sharing a false item costs as much as sharing a true item gains.
+  - For them, sharing a false item costs twice as much as sharing a true item gains.
+  x0_class: Its source looks {credibility} credible than most, and its claim is {novelty} novel than most.
+  x0_level: [less, more]
+  x0_none: No item of this kind has been fact-checked yet.
+  x0_exact: 'Among items of this kind, fact-checks so far found {k} true out of {n}.'
+  x0_rounded: 'Among items of this kind, fact-checks so far found about {pct}% true out of about {n}.'
+p0:
+  design_cohort:
+    seed: 20261017
+    profiles: 1024
+    per_regime: true
+    degree: 6
+    contacts: UNIFORM_1_TO_DEGREE
+    item_features_and_trust: UNIFORM_0_1_ROUNDED_TO_THE_TWO_DECIMALS_SHOWN
+    columns: THE_WORLD_FEATURE_ORDER_ITEM_FEATURES_EXPOSURE_SHARE_LOG_EXPOSURES_AND_IN_B_SHARER_TRUST
+  distillation: RIDGE_ON_LOG_ODDS_CLIPPED_TO_0.0001_0.9999_INTERCEPT_UNPENALIZED
+  ridge_per_profile: 0.001
+x0:
+  threshold_bins: 2
+  cost_bins_in_regime_b: true
+  class_bins: 2
+  class_features: 2
+  class_features_named: [credibility, novelty]
+  source: D1 ARCHETYPES AND ITEM CLASSES (spread.archetypes, spread.item_classes); K AND BINS SET BY THE USER ON 2026-10-14
+  aggregates:
+    meaning: FACT_CHECKED_ITEMS_OF_THE_ITEM_CLASS_VISIBLE_AT_THE_STEP_AND_HOW_MANY_WERE_TRUE
+    exact_up_to: 10
+    count_step: 10
+    percent_step: 5
+    rounding: HALF_UP
+    n_max: 200
+    n_max_reason: THE_LARGEST_CLASS_COUNT_IN_THE_D4_STREAMS_IS_173_A_RUN_STOPS_IF_ANY_EXCEEDS_N_MAX
+  table: EVERY_ARCHETYPE_ITEM_CLASS_AND_AGGREGATE_STATE_ELICITED_ONCE_BEFORE_THE_RUN
+  table_reason: THE_AGGREGATES_DEPEND_ON_THE_ITEM_STREAM_ONLY_SO_THE_TABLE_GIVES_THE_ANSWERS_THAT_QUERYING_DURING_THE_RUN_WITH_A_PROMPT_CACHE_WOULD
+  query_cost_reported: QUERIES_WITHOUT_CACHE_ONE_PER_ARCHETYPE_AND_ITEM_CLASS_WITH_A_PENDING_DECISION_PER_STEP
+  decision: THE_SHARED_RULE_SHARE_IF_PROBABILITY_AT_LEAST_COST_OVER_ONE_PLUS_COST_WITH_THE_SAME_EXPLORATION_FLOOR
+  decision_reason: THE_BRIEF_SAID_AGENTS_SAMPLE_D1_BUILT_THE_SHARED_CUTOFF_RULE_WHICH_EVERY_ARM_USES_SAMPLING_WOULD_ADD_NOISE_NO_OTHER_ARM_HAS
+calibration:
+  information_used: AGGREGATE_ONLY_THE_STATED_BASE_RATE
+  base_rate: 0.4
+  p0: SHIFT_THE_DISTILLED_INTERCEPT_SO_THE_MEAN_PROBABILITY_OVER_THE_DESIGN_COHORT_IS_THE_BASE_RATE
+  x0: ONE_SHIFT_PER_REGIME_SO_THE_MEAN_PROBABILITY_OVER_ARCHETYPES_AND_CLASSES_BEFORE_ANY_FACT_CHECK_IS_THE_BASE_RATE
+  bisection_interval: [-40.0, 40.0]
+  tolerance: 1.0e-10
+arms:
+- P0
+- X0
+- L1
+l1:
+  learner: THE_D4_LEARNER_OF_EACH_FAMILY_WITH_P0_AS_ITS_PRIOR
+  seeds: THE_D4_LEARNER_SEEDS_SO_L1_AND_L0_DIFFER_ONLY_IN_THE_PRIOR
+comparisons:
+  llm_prior_in_learner: [L1, L0]
+  nabm_vs_archetypes: [L0, X0]
+  closed_loop_on_llm_prior: [L1, P0]
+descriptive:
+  llm_prior_vs_hand: [P0, F1]
+  archetypes_vs_hand: [X0, F1]
+seeds:
+  rule_tag: 7
+rule:
+  comparison: paired difference in the primary measure
+  minimum_effect: 0.01
+  bootstrap_resamples: 2000
+  interval: 0.95
+  resampling: cells, with replacement
+  material: interval excludes zero and |mean cell delta| >= minimum_effect
+dispositions:
+  per_group: POSITIVE (material, mean > 0), NEGATIVE (material, mean < 0), or INDISTINGUISHABLE
+  per_regime: MOSTLY_POSITIVE if POSITIVE in at least 4 of the 6 study groups, MOSTLY_NEGATIVE if NEGATIVE in at
+    least 4 of 6, otherwise MIXED_OR_NONE
+  mostly_at_least: 4
+  null_check: L1 - P0 on the primary measure material and positive in any null group is DESIGN_DEFECT_IN_NULL_WORLD
+    and blocks reading the study groups
+measures:
+  primary: unverified_share_precision (study v2's; share precision on items whose fact-check is not public at the decision)
+  recorded: share_precision over all items
+  secondary: false reach
+  cost: P0 prompts, X0 table prompts, X0 queries without a cache per run, GPU seconds per prompt
+dry_run_before_freeze:
+  what: AN_ELICITATION_OF_THE_FIRST_PROMPTS_OF_EACH_SET_AND_A_SMOKE_RUN_ON_STUB_LOG_ODDS
+  inspected: ANSWER_TOKEN_MASS_TOP_TOKEN_DETERMINISM_AND_TIMING_ONLY
+  not_inspected: LOG_ODDS_PROBABILITIES_OR_ANY_ARM_BEHAVIOR
+precommit:
+  precommit_paths:
+  - docs/research/info-spread-policy-ladder-llm-arms-v1.md
+  - experiments/configs/info_spread_policy_ladder_llm_arms_v1.yaml
+  - scripts/run_info_spread_policy_ladder_llm_arms_v1.py
+  - tests/test_info_spread_policy_ladder_llm_arms_v1.py
+runs:
+  elicitation: 'elicit --precommit-sha <HEAD> twice on GPU-Server into two directories; elicitation.jsonl must
+    match byte for byte. If it does not, the maximum log-odds difference is reported and the first elicitation
+    is used.'
+  pilot: run --pilot-cells 2 under full load, for the time estimate only
+  development: run --profile development --precommit-sha <freeze commit> --elicitation-dir <first> --d4-cells <D4 v2
+    development cells.jsonl> --d4-record <D4 v2 record JSON>, in a checkout of the freeze commit, CUDA_VISIBLE_DEVICES=2,
+    24 workers
+  reproduction: the same command into a second output directory; cells.jsonl and summary.json must be byte identical
+outputs:
+  elicitation:
+  - elicitation.jsonl
+  - elicitation_receipt.json
+  run:
+  - cells.jsonl
+  - summary.json
+  - progress.jsonl
+  - receipt.json
+boundaries:
+  empirical_rows_read: 0
+  paid_api_calls: 0
+  generic_nabm_api_changed: false
+  llm_knowledge_of_real_spread: NOT_ESTABLISHED_THE_WORLDS_ARE_SYNTHETIC
+  scientific_effect: NOT_ESTABLISHED
+  synthetic_only: true
