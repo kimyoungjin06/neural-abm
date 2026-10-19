@@ -1937,6 +1937,7 @@ def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
         "docs/research/n14-pivot-parity-v1.md",
         "scripts/reexpress_pivot_llm_prior_v3_through_core_v1.py",
         "tests/test_reexpress_pivot_llm_prior_v3_through_core_v1.py",
+        "tests/test_n14_pivot_parity_result.py",
     }
     assert repository_paths == inspector[
         "PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS"

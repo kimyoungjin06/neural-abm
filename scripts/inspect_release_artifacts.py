@@ -244,6 +244,7 @@ PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS = {
     "docs/research/n14-pivot-parity-v1.md",
     "scripts/reexpress_pivot_llm_prior_v3_through_core_v1.py",
     "tests/test_reexpress_pivot_llm_prior_v3_through_core_v1.py",
+    "tests/test_n14_pivot_parity_result.py",
 }
 PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-relative-delay-cost-v1.md",
