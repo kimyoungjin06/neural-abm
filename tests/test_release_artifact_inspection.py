@@ -1934,6 +1934,9 @@ def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
         "tests/test_info_spread_policy_ladder_llm_arms_v1.py",
         "tests/test_info_spread_policy_ladder_study_v2_d4_result.py",
         "tests/test_info_spread_policy_ladder_llm_arms_d5_result.py",
+        "docs/research/n14-pivot-parity-v1.md",
+        "scripts/reexpress_pivot_llm_prior_v3_through_core_v1.py",
+        "tests/test_reexpress_pivot_llm_prior_v3_through_core_v1.py",
     }
     assert repository_paths == inspector[
         "PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS"
