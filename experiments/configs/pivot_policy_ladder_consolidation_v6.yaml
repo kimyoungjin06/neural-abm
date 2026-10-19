@@ -1,0 +1,369 @@
+schema_version: pivot_policy_ladder_consolidation.v6
+label: pivot_policy_ladder_consolidation_v6
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-10-19'
+purpose: 'Extend the v5 ledger with the second domain (the information-spread policy ladder, D1 to D5) and the N14
+  reusability test (the Pivot ladder re-expressed through the shared core, and Decision 0017). This is stage D6 of
+  the information-spread design brief, run on the user''s go-ahead on 2026-10-19. v1 to v5 remain the records for
+  everything before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v5.yaml
+    sha256: c8692d24de617af1397ffe4996197c6b5d097ebcfd546c76ac45d37c1311e8c2
+    record_commit: 95b5c11
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v5.md
+    sha256: 780444be302d1c24f835f4285ef10b76e9e919fe2fbdf922ae75f712e277cccb
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v5.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: spread_d1
+  path: experiments/evidence/results/info_spread_policy_ladder_d1_feasibility_20261013.summary.json
+  sha256: 5f2fdc93fcdcfb2a8c0d2771b2b7143660e8e305f67bf8efb7aa33503d89d1eb
+  freeze_commit: NONE_FEASIBILITY_PROTOTYPE_AT_dfc5372
+  record_commit: d8e746e
+- id: spread_d2c
+  path: experiments/evidence/results/info_spread_policy_ladder_d2c_controls_20261016.summary.json
+  sha256: 7ce52bd148fd6b7bfd7909ae55beb2dd816f406157a63583dc93fa27fa0489e2
+  freeze_commit: d6c5d44
+  record_commit: bfd6269
+- id: spread_d4_v1
+  path: experiments/evidence/results/info_spread_policy_ladder_study_v1_d4_20261016.summary.json
+  sha256: 11249dc1d65a565b07ba5f2ff6a0b5eba89c183eab0a4e4ea2d37edef6183000
+  freeze_commit: daf5d80
+  record_commit: 947ca19
+- id: spread_leak
+  path: experiments/evidence/results/info_spread_policy_ladder_null_leak_diagnosis_20261018.summary.json
+  sha256: 1faf9a6eb0bd9441898da9554cb419f44e066e10591bb465ffe628db7d7d91e2
+  freeze_commit: NONE_EXPLORATORY_SCRIPT_AT_7a2e17b
+  record_commit: 7a2e17b
+- id: spread_d2d
+  path: experiments/evidence/results/info_spread_policy_ladder_d2d_controls_20261018.summary.json
+  sha256: 91dd7ceba241af2789a01f3e1f2fdfbecc27592087b5943da45cdadf6e0eab92
+  freeze_commit: 09c0a18
+  record_commit: bf49d03
+- id: spread_d4_v2
+  path: experiments/evidence/results/info_spread_policy_ladder_study_v2_d4_20261019.summary.json
+  sha256: 771f59bda2e05e7e4d0e1b155d6f1a65912c20cc334b318f7734f551958d50bb
+  freeze_commit: dcc6e74
+  record_commit: 27ce720
+- id: spread_d5
+  path: experiments/evidence/results/info_spread_policy_ladder_llm_arms_d5_20261019.summary.json
+  sha256: f08e16bf56ce50b92a46203d43e213b19d34d197785e9983144a1c881e4e7510
+  freeze_commit: dcc6e74
+  record_commit: 9c164c3
+- id: n14_parity
+  path: experiments/evidence/results/n14_pivot_parity_20261019.summary.json
+  sha256: f977412ffab595a8823de51bdf2ea3966b10acd5fa6ec8ddf3c526366fb36319
+  freeze_commit: c361a48
+  record_commit: 01f2f7a
+claims:
+  confirmed:
+  - id: C47_a_second_domain_runs_the_fixed_adaptive_prior_comparison_through_a_shared_core
+    statement: The information-spread policy ladder runs the fixed, adaptive, table, and external-prior arms through
+      a domain-free core. All 14 of its exact nesting checks pass, and the core's learners reproduce Pivot's
+      fitters byte for byte with the Pivot prior.
+    evidence:
+    - source: spread_d1
+      pointer: nesting_checks/passed
+      equals: 14
+    - source: spread_d1
+      pointer: nesting_checks/failed
+      equals: 0
+    - source: spread_d1
+      pointer: core_parity/passed
+      equals: 10
+    - source: spread_d1
+      pointer: core_parity/failed
+      equals: 0
+  - id: C48_the_pivot_ladder_reproduces_byte_for_byte_through_the_shared_core
+    statement: With its three field-public learner arms re-expressed through the shared core, the Pivot LLM-prior
+      pilot v3 wrote a runs.jsonl identical to its recorded file, 1,152 of 1,152 rows, on the workstation where it
+      was recorded.
+    evidence:
+    - source: n14_parity
+      pointer: status
+      equals: N14_PARITY_HOLDS_BYTE_FOR_BYTE
+    - source: n14_parity
+      pointer: parity/whole_file_identical
+      equals: true
+    - source: n14_parity
+      pointer: parity/identical_rows
+      equals: 1152
+    - source: n14_parity
+      pointer: parity/runs_jsonl_sha256
+      equals: 1f532d98663767cd2c9bdfa74022b620efbac4fd4827f1d6e85a2f9bb3b3d6ca
+    - source: n14_parity
+      pointer: baseline/identical_rows
+      equals: 72
+  - id: C49_the_closed_loop_beats_every_table_when_the_run_carries_information_donors_lack
+    statement: In the POS-sign control, where each run draws its own sign of the credibility relation, the adaptive
+      learner beats both the single-donor and the four-donor table in all four groups, on the unverified measure
+      (D2d) as on the old one (D2c).
+    evidence:
+    - source: spread_d2d
+      pointer: registered_reading/pos_sign_closed_loop_material_and_positive
+      equals: true
+    - source: spread_d2d
+      pointer: table/POS_sign~1A~1linear_exact~1L0-T0_4/unverified_share_precision/mean_cell_delta
+      greater_than: 0.08
+    - source: spread_d2d
+      pointer: table/POS_sign~1A~1mlp~1L0-T0_4/unverified_share_precision/mean_cell_delta
+      greater_than: 0.08
+    - source: spread_d2d
+      pointer: table/POS_sign~1B~1partial_linear_exact~1L0-T0_4/unverified_share_precision/mean_cell_delta
+      greater_than: 0.08
+    - source: spread_d2d
+      pointer: table/POS_sign~1B~1partial_mlp~1L0-T0_4/unverified_share_precision/mean_cell_delta
+      greater_than: 0.08
+    - source: spread_d2c
+      pointer: registered_reading/pos_sign_closed_loop_material_and_positive
+      equals: true
+  - id: C50_a_null_world_check_caught_mlp_learners_recognizing_fact_checked_items
+    statement: Study v1 failed its registered null-world check in B/partial_mlp, and its study groups were not read.
+      An exploratory diagnosis placed the gain on items whose fact-check was already public (6 of 6 cells), with no
+      gain on other items and none from the trust feature. On the unverified measure the gain is gone, while the
+      same control on the old measure shows it again.
+    evidence:
+    - source: spread_d4_v1
+      pointer: registered_reading/design_check
+      equals: DESIGN_DEFECT_IN_NULL_WORLD
+    - source: spread_d4_v1
+      pointer: registered_reading/null_violations/0
+      equals: B/partial_mlp/null
+    - source: spread_d4_v1
+      pointer: registered_reading/study_groups_read
+      equals: false
+    - source: spread_leak
+      pointer: per_cell_delta_vs_f1/B~1partial_mlp~1null/L0-F1/visible/positive_cells
+      equals: 6
+    - source: spread_leak
+      pointer: per_cell_delta_vs_f1/B~1partial_mlp~1null/L0_no_trust-F1/visible/mean
+      greater_than: 0.05
+    - source: spread_leak
+      pointer: per_cell_delta_vs_f1/B~1partial_mlp~1null/L0-F1/unrevealed/mean
+      less_than: 0.01
+    - source: spread_d2d
+      pointer: registered_reading/null_old_measure_material_positive_groups/0
+      equals: NULL/B/partial_mlp
+    - source: spread_d2d
+      pointer: table/NULL~1B~1partial_mlp~1L0-F1/unverified_share_precision/material
+      equals: false
+  - id: C51_in_stationary_worlds_a_table_written_before_the_run_suffices
+    statement: In study v2's stationary worlds, every learner beats the hand rule. But the closed loop at matched
+      evidence (L0 - T0-1) is material and positive in only 1 of 6 groups in Regime A and 0 of 6 in Regime B
+      (TABLE_SUFFICES_EVEN_IN_B), and the four-donor table beats the adaptive learner in all 12 study groups. The
+      donors are runs in the same world.
+    evidence:
+    - source: spread_d4_v2
+      pointer: registered_reading/design_check
+      equals: NULL_WORLD_PASSES
+    - source: spread_d4_v2
+      pointer: registered_reading/closed_loop
+      equals: TABLE_SUFFICES_EVEN_IN_B
+    - source: spread_d4_v2
+      pointer: registered_reading/closed_loop_material_positive_groups/A
+      equals: 1
+    - source: spread_d4_v2
+      pointer: registered_reading/closed_loop_material_positive_groups/B
+      equals: 0
+    - source: spread_d4_v2
+      pointer: registered_reading/best_table_counts/A/BEST_TABLE_BEATS_ADAPTIVE
+      equals: 6
+    - source: spread_d4_v2
+      pointer: registered_reading/best_table_counts/B/BEST_TABLE_BEATS_ADAPTIVE
+      equals: 6
+    - source: spread_d4_v2
+      pointer: table/A~1mlp~1linear/unverified_share_precision/hand_rule/mean_cell_delta
+      greater_than: 0.03
+    - source: spread_d4_v2
+      pointer: table/B~1partial_mlp~1linear/unverified_share_precision/hand_rule/mean_cell_delta
+      greater_than: 0.03
+  - id: C52_nabm_learners_beat_agenttorch_style_llm_archetypes
+    statement: Given the same public information, the adaptive learner beats AgentTorch-style archetypes of a local
+      Qwen3-4B-Instruct-2507 in all 12 study groups (MOSTLY_POSITIVE in both regimes).
+    evidence:
+    - source: spread_d5
+      pointer: registered_reading/design_check
+      equals: NULL_WORLD_PASSES
+    - source: spread_d5
+      pointer: registered_reading/by_comparison/nabm_vs_archetypes/A
+      equals: MOSTLY_POSITIVE
+    - source: spread_d5
+      pointer: registered_reading/counts/nabm_vs_archetypes/A/POSITIVE
+      equals: 6
+    - source: spread_d5
+      pointer: registered_reading/counts/nabm_vs_archetypes/B/POSITIVE
+      equals: 6
+  - id: C53_an_llm_prior_adds_no_detectable_gain_inside_the_learner
+    statement: Starting the learner from the once-elicited LLM prior instead of the hand rule (L1 - L0) is
+      MIXED_OR_NONE in both regimes, with no material difference in any Regime B study group, including where the
+      prior alone beats the hand rule.
+    evidence:
+    - source: spread_d5
+      pointer: registered_reading/by_comparison/llm_prior_in_learner/A
+      equals: MIXED_OR_NONE
+    - source: spread_d5
+      pointer: registered_reading/by_comparison/llm_prior_in_learner/B
+      equals: MIXED_OR_NONE
+    - source: spread_d5
+      pointer: registered_reading/counts/llm_prior_in_learner/B/INDISTINGUISHABLE
+      equals: 6
+    - source: spread_d5
+      pointer: table/B~1partial_mlp~1linear/unverified_share_precision/llm_prior_vs_hand/material
+      equals: true
+  - id: C54_every_registered_information_spread_run_reproduced_byte_for_byte
+    statement: Study v1, study v2, and the LLM arms each reproduced their cells and summaries byte for byte in a
+      second run on the same host. The two LLM elicitations matched byte for byte, and L0 recomputed in all 320 L1
+      tasks equalled study v2's value.
+    evidence:
+    - source: spread_d4_v1
+      pointer: reproduction/byte_identical/cells.jsonl
+      equals: true
+    - source: spread_d4_v2
+      pointer: reproduction/byte_identical/cells.jsonl
+      equals: true
+    - source: spread_d5
+      pointer: reproduction/byte_identical/cells.jsonl
+      equals: true
+    - source: spread_d5
+      pointer: elicitation/byte_identical
+      equals: true
+    - source: spread_d5
+      pointer: parity_failures
+      equals: []
+  rejected:
+  - id: R16_share_precision_over_all_items_is_a_clean_measure_under_public_fact_checks
+    statement: When fact-checks are public, share precision over all items measures what a learner learned about
+      the veracity relation.
+    reason: An MLP learner recognizes items it has seen fact-checked, so it beat the hand rule in a world where
+      features carry no information. The primary measure moved to unverified items.
+    evidence:
+    - source: spread_d4_v1
+      pointer: registered_reading/design_check
+      equals: DESIGN_DEFECT_IN_NULL_WORLD
+    - source: spread_d2d
+      pointer: table/NULL~1B~1partial_mlp~1L0-F1/share_precision/material
+      equals: true
+  - id: R17_heterogeneous_costs_with_partial_pooling_make_the_closed_loop_matter_in_stationary_worlds
+    statement: The design's expected disposition (AS_EXPECTED) that Regime B, with per-agent costs and partial
+      pooling, needs the closed loop in stationary worlds while Regime A does not.
+    reason: The closed loop was material and positive in 0 of 6 Regime B study groups. Its donors ran in the same
+      world, so their per-agent residuals carried over to the same agents.
+    evidence:
+    - source: spread_d4_v2
+      pointer: registered_reading/closed_loop_material_positive_groups/B
+      equals: 0
+  open:
+  - id: O23_tables_that_must_transfer_across_worlds
+    question: Does a table written before the run still match the adaptive learner when its donors ran in other
+      worlds (other agents, network, or costs)?
+    kind: SYNTHETIC
+    priority: 2
+    motivation: C51's donors ran in the same world, which favors the table, most of all for Regime B's per-agent
+      residuals.
+  - id: O24_an_llm_prior_readout_without_saturation
+    question: Does the once-elicited prior carry the model's knowledge in Regime A when the readout is not clipped?
+    kind: SYNTHETIC
+    priority: 3
+    motivation: 99% of P0's Regime A log-odds fell below the clip inherited from Pivot, so P0/A was nearly constant.
+      This is a readout property, not evidence that the model lacks knowledge.
+    evidence:
+    - source: spread_d5
+      pointer: post_run_description_not_registered/p0_readout_saturation/share_of_p0_log_odds_below_the_clip/A
+      greater_than: 0.95
+    - source: spread_d5
+      pointer: llm_arms/A/p0_distillation_r_squared
+      less_than: 0.05
+  - id: O25_a_utility_measure
+    question: Do the comparisons hold when each arm is scored by the agents' utility (gain for true shares, cost for
+      false ones) rather than by precision?
+    kind: SYNTHETIC
+    priority: 3
+    motivation: Precision rewards selectivity. P0 in Regime B shares 2-15% fewer unverified items than L1, and X0
+      1.4-1.7 times as many as F1.
+  - id: O26_non_stationary_worlds_as_study_cells
+    question: Where between stationary worlds (a table suffices) and run-specific information (the closed loop
+      wins) does the closed loop begin to matter?
+    kind: SYNTHETIC
+    priority: 2
+    motivation: Run-specific information appeared only in the controls (POS-sign, and POS-flip in D2c), not as
+      registered study cells.
+  - id: O27_outcome_row_order_under_delays
+    question: Which order of outcome rows reproduces both consumers when outcomes are delayed?
+    kind: FRAMEWORK
+    priority: 1
+    motivation: The core returns rows in insertion order and Pivot in release order. N14 parity used immediate
+      visibility, so Decision 0017 extracts the outcome record only after this is fixed.
+    evidence:
+    - source: n14_parity
+      pointer: semantic_differences_found/outcome_row_order_under_delays
+      contains: insertion order
+status_updates:
+- id: N12
+  previous: USER_DIRECTED_2026_10_13
+  status: DONE_AT_a174cec
+- id: N13
+  previous: SEPARATE_PRECOMMIT_AFTER_N12
+  status: DONE_THE_ARCHETYPE_BASELINE_AND_THE_LLM_PRIOR_RAN_IN_THE_INFORMATION_SPREAD_STUDY
+  answered_by:
+  - C52_nabm_learners_beat_agenttorch_style_llm_archetypes
+  - C53_an_llm_prior_adds_no_detectable_gain_inside_the_learner
+- id: N14
+  previous: AFTER_N12
+  status: PARITY_DONE_EXTRACTION_PROPOSED_IN_DECISION_0017_IMPLEMENTATION_AWAITS_APPROVAL
+  answered_by:
+  - C47_a_second_domain_runs_the_fixed_adaptive_prior_comparison_through_a_shared_core
+  - C48_the_pivot_ladder_reproduces_byte_for_byte_through_the_shared_core
+reporting_rules:
+- id: UNVERIFIED_MEASURE
+  rule: Information-spread comparisons from study v2 on are on share precision on unverified items, whose
+    fact-check is not public at the decision. Study v1's groups are not read.
+- id: SAME_WORLD_DONORS
+  rule: '"A table suffices" holds for tables whose donor runs used the same world. Transfer across worlds is not
+    tested.'
+- id: PRECISION_IS_NOT_UTILITY
+  rule: Share precision rewards selectivity and is not the agents' utility. Report share counts beside it when a
+    comparison may turn on selectivity.
+- id: LLM_READOUT
+  rule: P0 in Regime A saturated under the inherited clip and is nearly constant. Do not read it as the model's
+    knowledge. The X0 table is not clipped.
+paper_direction:
+  decided_by: USER_2026_10_13
+  central_claim: UNCHANGED_FROM_V5
+  reusability: TWO_CONSUMERS_SHARE_THE_CORE_SEMANTICS_BYTE_FOR_BYTE_PACKAGE_EXTRACTION_PROPOSED_NOT_IMPLEMENTED
+  new_conditional_cases:
+  - THE_PRECOMPUTED_TABLE_CRITIQUE_HOLDS_IN_STATIONARY_SAME_WORLD_DESIGNS_AND_FAILS_WITH_RUN_SPECIFIC_INFORMATION
+  - NABM_LEARNERS_BEAT_AGENTTORCH_STYLE_ARCHETYPES
+  - AN_LLM_PRIOR_ADDS_NOTHING_DETECTABLE_INSIDE_THE_LEARNER
+  - A_REGISTERED_NULL_CHECK_CAUGHT_A_LEAK_BEFORE_ANY_STUDY_GROUP_WAS_READ
+  evidence:
+  - source: spread_d4_v1
+    pointer: registered_reading/study_groups_read
+    equals: false
+next_steps:
+- id: N15
+  kind: FRAMEWORK
+  action: IMPLEMENT_DECISION_0017_STARTING_WITH_THE_OUTCOME_ROW_ORDER_PARITY_ON_A_DELAYED_PIVOT_RUN
+  authorization: USER_APPROVAL_REQUIRED
+- id: N16
+  kind: PAPER
+  action: WRITE_THE_POLICY_LADDER_SECTION_WITH_THE_INFORMATION_SPREAD_CASES_AND_THE_REPORTING_RULES
+  authorization: AFTER_THIS_CONSOLIDATION
+- id: N17
+  kind: COMPARISON_DESIGN
+  action: CHOOSE_AMONG_O23_TO_O26_EACH_AS_A_SEPARATE_PRECOMMIT
+  authorization: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+- id: N18
+  kind: REPOSITORY
+  action: MERGE_THE_INFORMATION_SPREAD_BRANCH_INTO_MAIN_THROUGH_A_PULL_REQUEST
+  authorization: USER_CONFIRMATION_REQUIRED
+boundaries:
+  new_execution: NONE
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: PROPOSED_IN_DECISION_0017_NOT_IMPLEMENTED
