@@ -439,3 +439,8 @@ Use this directory for internal project knowledge.
   accepted main/next-alpha torch-free scoring of agent policies on held-out
   data, with a declared-unit leak check; comparison and claims stay with the
   caller.
+- [decisions/0017-policy-ladder-semantics-extraction.md](decisions/0017-policy-ladder-semantics-extraction.md):
+  proposed (N14) extraction of the policy-ladder semantics that two consumers
+  share byte for byte (the prior rule, keyed randomness, the exploration
+  floor, prior-anchored learners, and the outcome record once its ordering
+  rule is fixed); implementation awaits approval.
