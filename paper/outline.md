@@ -182,7 +182,7 @@ Draft:
 
 ## 8. Policy Ladder: Fixed, Adaptive, and Prior-Informed Policies
 
-Source: claim matrix rows P1 to P6. Every result here is synthetic and
+Source: claim matrix rows P1 to P10. Every result here is synthetic and
 repository-only, and each is a conditional case of the central claim.
 
 - Design (P1): one ABM design holds a fixed rule, pooled learners, and an
@@ -207,8 +207,25 @@ repository-only, and each is a conditional case of the central claim.
   lacked power at the measured data shape before confirmatory outcomes were
   read. Quote the closure statement, including that it does not imply the
   absence of learning.
-- Open before submission: whether a second domain runs the same comparison
-  through a common API (claim-matrix gaps 1 and 2).
+- A second domain, information spread (P7 to P10, consolidation v6):
+  - **Reuse.** The same comparison runs through a shared core. The Pivot
+    ladder, re-expressed through that core, reproduces its record byte for
+    byte (C47, C48).
+  - **The precomputed-table critique (P7).**
+    - In stationary worlds, a table written before the run from same-world
+      donor runs is not detectably different from the closed loop in 11 of
+      12 groups, and the four-donor table beats it in all 12.
+    - The closed loop wins only when the run carries information the donors
+      lack.
+    - State the same-world boundary.
+  - **LLM comparators (P8, P9).** NABM learners beat AgentTorch-style
+    archetypes in all 12 groups. An LLM prior adds nothing detectable inside
+    the learner. State the saturated Regime A readout.
+  - **Protocol (P10).** A registered null check caught a leak before any study
+    group was read, and the measure moved to unverified items.
+  - **Package status.** Extraction is proposed in Decision 0017, not
+    implemented. Until it is, cite the shared semantics as repository-level
+    reuse.
 
 ## 9. Discussion
 
@@ -217,10 +234,17 @@ repository-only, and each is a conditional case of the central claim.
   and learning direction is a first-class experimental axis.
 - What the policy ladder shows: fixed, adaptive, and prior-informed policies
   can be compared in one lifecycle, and when each is worth its cost.
+- When NABM is more than a precomputed table:
+  - In stationary, same-world designs, it is not.
+  - It is when a run carries information that no table written before the
+    run can hold.
+  - Where between the two the closed loop begins to matter is open (O26).
 - Limits of the evidence:
   - the worlds are synthetic and were designed by the authors;
   - the empirical test of learning closed without an answer;
-  - the LLM comparisons cover one model family;
+  - the LLM comparisons cover one model family, and one of its readouts
+    saturated;
+  - the table comparisons use donors from the same world;
   - neural necessity is not established.
 - Limits of the Transformer analogy.
 - Limits of parameter averaging.

@@ -35,13 +35,14 @@ of them is the central claim.
 | Component | Package evidence | Repository-only evidence | Status | Gap |
 | --- | --- | --- | --- | --- |
 | Policy learning is separated from social interaction | The unit-contract and two adapter-holdout rows of the Primary Claim Path | None needed | Supported for binary lifecycles | None |
-| Fixed and adaptive policies are compared in one lifecycle | The Study 2 row: a frozen-versus-adaptive comparison with paired shocks and named-parameter traces | The Pivot policy ladder reproduces its fixed rule exactly before any learned arm is read (P1) | Supported | The pooled outcome record is in prototype scripts only |
-| External priors enter the same lifecycle | None | A once-elicited, base-rate-calibrated LLM prior with an exploration floor (P3) | Repository-only. The prior slot (F09) and exploration floor (F10) are domain-owned | No package API, and only one consumer |
+| Fixed and adaptive policies are compared in one lifecycle | The Study 2 row: a frozen-versus-adaptive comparison with paired shocks and named-parameter traces | The Pivot policy ladder reproduces its fixed rule exactly before any learned arm is read (P1). The information-spread ladder adds tables written before the run (P7) | Supported | The outcome record waits for its ordering rule under delays (O27) before extraction |
+| External priors enter the same lifecycle | None | A once-elicited LLM prior in two domains (P3, P9), with an exploration floor | Repository-only, two consumers. Extraction of the prior rule and floor is proposed in Decision 0017 | No package API until Decision 0017 is implemented |
 | Policies are traced and scored out of sample | `neural_abm.policy_scoring` (Decision 0016) | Pivot probe-cohort scoring | Supported | None |
-| The structure is reusable across domains | The unit contract spans Toy2, Toy4, Toy5, and two adapters | The fixed / adaptive / prior comparison exists in one domain | Partial | A second domain running the same comparison through a common API |
+| The structure is reusable across domains | The unit contract spans Toy2, Toy4, Toy5, and two adapters | A second domain runs the comparison through a shared core, and the Pivot ladder reproduces through it byte for byte (consolidation v6, C47 and C48) | Supported at repository level | Package extraction, proposed in Decision 0017 and awaiting approval |
 
-The last two rows set the work before the framework claim can be made at
-package level. The gap analysis below proposes how to close them.
+The two consumers now share the core's semantics byte for byte. What remains
+before the framework claim can be made at package level is the extraction in
+Decision 0017. Until then, cite reuse as repository-level.
 
 ## Route Boundary
 
@@ -100,11 +101,12 @@ or scientific effect is established.
 
 ## Policy-Ladder Conditional Cases
 
-These rows come from the repository-only researcher-pivot policy ladder. They
-are synthetic, stylized worlds, and their code is in prototype scripts, not in
+Rows P1 to P6 come from the repository-only researcher-pivot policy ladder,
+and P7 to P10 from its second domain, information spread. They are
+synthetic, stylized worlds, and their code is in prototype scripts, not in
 `src/neural_abm`. Each statement is hash-audited in the consolidation ledgers
 [v1](../docs/research/pivot-policy-ladder-consolidation-v1.md) to
-[v5](../docs/research/pivot-policy-ladder-consolidation-v5.md). Ledger ids are
+[v6](../docs/research/pivot-policy-ladder-consolidation-v6.md). Ledger ids are
 in parentheses. Use them as conditional cases for the central claim, never as
 general performance claims.
 
@@ -116,6 +118,10 @@ general performance claims.
 | P4 | Pooled learning adds modest cost over the rule ABM; per-agent learning and every-step LLM queries do not. | `scripts/prototype_pivot_relative_delay_cost_v1.py`, `scripts/prototype_pivot_llm_agent_reference_v1.py` | `pivot_relative_delay_cost_v1_20260929`, `pivot_llm_agent_reference_v1_20260930` summaries | Pooled linear, tree, and MLP policies cost 1.9 to 6.7 times the rule ABM per agent-step, and per-agent learners 57 to 65 times (C16). Elicitation took under 10 GPU minutes (C25). The every-step LLM agent needed about 110 GPU-seconds per run, against about 5 CPU-seconds for an NABM learner run (C35). | One machine and one design. Costs are for this ladder, not a general benchmark. |
 | P5 | In the specified synthetic worlds and comparison conditions, the NABM hybrid met the registered performance criteria against two local LLM implementations. | `scripts/prototype_pivot_llm_agent_reference_v1.py`, `scripts/prototype_pivot_llm_persona_agent_v1.py` | `pivot_llm_agent_reference_v1_20260930`, `pivot_llm_persona_agent_v1_20261001` summaries | The hybrid matched or beat an every-step forecaster agent (C32) and a persona agent (C36) in 9 of 9 cells. The forecaster over-entered once outcomes were public (C34). The persona said Yes in 0.15% of questions and self-sealed (C37). | Both agents used the same Qwen3-4B-Instruct-2507. "Matches" means each mean metric within a 0.02 margin, not statistical equivalence. Calibration and decision rules differ between arms and drive much of the result. |
 | P6 | The registration discipline stopped an empirical test that could not answer its question before confirmatory outcomes were read. | `scripts/build_pivot_empirical_ladder_risk_sets_v1.py`, `scripts/prototype_pivot_empirical_ladder_recovery_v3.py`, `scripts/explore_pivot_empirical_ladder_power_levers_v1.py` | `pivot_empirical_ladder_recovery_v3_20261012`, `pivot_empirical_ladder_power_levers_v1_20261013` summaries; consolidation v5 | At the measured data shape the registered analysis recovered learning in 1 of 8 (W1) and 3 of 8 (W2) replicates, against a required 7 of 8. No false recovery was observed (0 of 8 per world). The explored alternatives did not achieve power and false-recovery control together. N11c and N11d were not run. | A limitation and a protocol case, not evidence about learning. It does not imply the absence of learning. 0 of 8 bounds a world's false-recovery rate only below about 31%. v3 does not reproduce the empirical structure completely. |
+| P7 | A policy table written before the run suffices in stationary worlds; the closed loop matters when a run carries information the donors lack. | `scripts/run_info_spread_policy_ladder_study_v2.py`, `scripts/power_info_spread_policy_ladder_v4.py` | `info_spread_policy_ladder_study_v2_d4_20261019`, `info_spread_policy_ladder_d2d_controls_20261018` summaries; consolidation v6 (C49, C51) | Every learner beat the hand rule. The closed loop at matched evidence was material in 1 of 12 groups (TABLE_SUFFICES_EVEN_IN_B), and the four-donor table beat the learner in all 12. In the POS-sign control, the learner beat both tables in all 4 groups. | The donors ran in the same world; transfer across worlds is not tested (O23). The measure is precision on unverified items, which rewards selectivity. |
+| P8 | NABM learners beat AgentTorch-style LLM archetypes given the same public information. | `scripts/run_info_spread_policy_ladder_llm_arms_v1.py` | `info_spread_policy_ladder_llm_arms_d5_20261019` summary; consolidation v6 (C52) | MOSTLY_POSITIVE in both regimes, 12 of 12 groups, by 0.16-0.23. The archetypes also fell below the hand rule. | One local model (Qwen3-4B-Instruct-2507), one prompt, K = 2 threshold bins and 4 item classes, fixed in advance. Archetypes over-shared (1.4-1.7 times the hand rule). |
+| P9 | An LLM prior adds nothing detectable inside the learner. | `scripts/run_info_spread_policy_ladder_llm_arms_v1.py` | `info_spread_policy_ladder_llm_arms_d5_20261019` summary; consolidation v6 (C53) | L1 - L0 was MIXED_OR_NONE in both regimes, with no material difference in any Regime B group, although the prior alone beat the hand rule there. | P0 in Regime A saturated under the inherited readout clip and is nearly constant; it is not evidence about the model's knowledge (O24). |
+| P10 | A registered null check caught a leak before any study group was read. | `scripts/run_info_spread_policy_ladder_study_v1.py`, `scripts/diagnose_info_spread_null_leak_v1.py` | `info_spread_policy_ladder_study_v1_d4_20261016`, `info_spread_policy_ladder_null_leak_diagnosis_20261018` summaries; consolidation v6 (C50, R16) | MLP learners recognized items already fact-checked and beat the hand rule in a world with nothing to learn. Study v1's groups were not read, and the measure moved to unverified items. | A protocol case, not a performance result. The diagnosis was exploratory. |
 
 ## Gaps the Central Claim Exposes
 
@@ -164,6 +170,13 @@ decision. Nothing here is authorized to run.
      rule table computed before the run.
    - It contrasts a regime where a table should suffice with one where
      computation during the run should matter.
+6. **Resolved on 2026-10-19 (consolidation v6).**
+   - **Gap 1, a second domain.** Answered: P7 to P10, C47.
+   - **N14.** Answered by the byte-for-byte Pivot parity, C48, and Decision
+     0017.
+   - **Gap 2, a fairer LLM comparison.** Partly answered by the archetype
+     baseline (P8). The every-step agents of P5 were not rerun with
+     recalibration, so P5 keeps its asymmetry as a limitation.
 
 ## Prospective Pivot-Feedback Claim Gates
 
@@ -254,7 +267,9 @@ rather than a post hoc field, endpoint, or model substitution.
    modeling assumption rather than an implementation default.
 9. Restructure the outline around the central claim, with a policy-ladder
    section built from P1 to P6.
-10. Decide the gap resolutions above (N13, N14) before claiming package-level
-    reuse for external priors or pooled outcome records.
-11. Until a second consumer exists, cite the prior slot, pooled outcome
-    record, and exploration floor as repository-only case machinery.
+10. Write Section 8's second-domain subsection from P7 to P10, with the
+    consolidation v6 reporting rules: unverified measure, same-world donors,
+    precision is not utility, and the LLM readout.
+11. Until Decision 0017 is implemented, cite the prior rule, outcome record,
+    and exploration floor as repository-level reuse by two consumers, not as
+    package API.
