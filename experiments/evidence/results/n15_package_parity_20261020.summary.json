@@ -1,0 +1,177 @@
+{
+ "schema_version": "n15_package_parity.v1",
+ "label": "n15_package_parity_20261020",
+ "status": "N15_PARITY_HOLDS_THE_PACKAGE_REPRODUCES_BOTH_PIVOT_RECORDS",
+ "specification": "docs/research/n15-package-parity-v1.md",
+ "code_commit": "cb0aa44",
+ "host": "the workstation where both Pivot targets were recorded; CPU only, 16 spawned workers with one thread each",
+ "package_modules": [
+  "src/neural_abm/policy_ladder.py",
+  "src/neural_abm/policy_learners.py"
+ ],
+ "targets": {
+  "v3": {
+   "study": "pivot_llm_prior_pilot_v3",
+   "precommit": "87c90eb",
+   "recorded_runs_jsonl_sha256": "1f532d98663767cd2c9bdfa74022b620efbac4fd4827f1d6e85a2f9bb3b3d6ca",
+   "rows": 1152
+  },
+  "abm2": {
+   "study": "pivot_nonlinear_policy_abm_v2",
+   "precommit": "c56d741",
+   "recorded_runs_jsonl_sha256": "8088d43cbee6c5c19c1e8f08499eb734b725f5f0ccbe79c59482f00d7da4c41f",
+   "rows_compared": "the 432 field-public linear, tree, and MLP rows across the immediate, failure_lag_2, and failure_lag_4 regimes"
+  }
+ },
+ "runs": {
+  "v3_release": {
+   "target": "v3",
+   "insertion": "release",
+   "replicates": 16,
+   "tasks": 288,
+   "workers": 16,
+   "wall_seconds": 639.3,
+   "runs_jsonl_sha256": "1f532d98663767cd2c9bdfa74022b620efbac4fd4827f1d6e85a2f9bb3b3d6ca",
+   "whole_file_identical": true,
+   "rows": 1152,
+   "identical_rows": 1152,
+   "by_group": {
+    "immediate/fixed_rule": {
+     "rows": 288,
+     "identical": 288
+    },
+    "immediate/linear_batch": {
+     "rows": 288,
+     "identical": 288
+    },
+    "immediate/mlp_batch": {
+     "rows": 288,
+     "identical": 288
+    },
+    "immediate/tree_batch": {
+     "rows": 288,
+     "identical": 288
+    }
+   }
+  },
+  "abm2_release": {
+   "target": "abm2",
+   "insertion": "release",
+   "replicates": 16,
+   "tasks": 144,
+   "workers": 16,
+   "wall_seconds": 185.3,
+   "runs_jsonl_sha256": "1c987d9c868d524572df993e1b6708d44dc9dd530148ed7b144c54cc8beb964b",
+   "whole_file_identical": false,
+   "rows": 432,
+   "identical_rows": 432,
+   "by_group": {
+    "failure_lag_2/linear_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "failure_lag_2/mlp_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "failure_lag_2/tree_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "failure_lag_4/linear_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "failure_lag_4/mlp_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "failure_lag_4/tree_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "immediate/linear_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "immediate/mlp_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "immediate/tree_batch": {
+     "rows": 48,
+     "identical": 48
+    }
+   }
+  },
+  "abm2_event": {
+   "target": "abm2",
+   "insertion": "event",
+   "replicates": 16,
+   "tasks": 144,
+   "workers": 16,
+   "wall_seconds": 171.3,
+   "runs_jsonl_sha256": "1c987d9c868d524572df993e1b6708d44dc9dd530148ed7b144c54cc8beb964b",
+   "whole_file_identical": false,
+   "rows": 432,
+   "identical_rows": 432,
+   "by_group": {
+    "failure_lag_2/linear_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "failure_lag_2/mlp_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "failure_lag_2/tree_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "failure_lag_4/linear_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "failure_lag_4/mlp_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "failure_lag_4/tree_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "immediate/linear_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "immediate/mlp_batch": {
+     "rows": 48,
+     "identical": 48
+    },
+    "immediate/tree_batch": {
+     "rows": 48,
+     "identical": 48
+    }
+   }
+  }
+ },
+ "estimate_quoted": "15-30 min for the three runs",
+ "ordering_rule": {
+  "rule": "rows ordered by the step from which they are visible, then by insertion",
+  "event_insertion_reproduces_pivot_under_delays": true,
+  "insertion_order_without_the_rule": "differs from Pivot under both failure delays in the smoke checks before the freeze (tests/test_reexpress_pivot_through_policy_ladder_package_v1.py)",
+  "answers": "O27_outcome_row_order_under_delays"
+ },
+ "package_differences_from_the_core": [
+  "no global torch state: the MLP draws its initial weights from a private generator, with the core's draws",
+  "threads and deterministic algorithms are left to the caller",
+  "the outcome record's ordering rule, which equals the core's insertion order for release-time insertion"
+ ],
+ "boundaries": {
+  "llm_calls": 0,
+  "empirical_rows_read": 0,
+  "pivot_results_reinterpreted": false,
+  "frozen_scripts_changed": false,
+  "released_tag_changed": false
+ }
+}

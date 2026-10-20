@@ -1945,6 +1945,7 @@ def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
         "scripts/reexpress_pivot_through_policy_ladder_package_v1.py",
         "tests/test_reexpress_pivot_through_policy_ladder_package_v1.py",
         "scripts/attest_research_pivot_study_reproduction.py",
+        "tests/test_n15_package_parity_result.py",
     }
     assert repository_paths == inspector[
         "PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS"

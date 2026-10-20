@@ -13,6 +13,9 @@ DECISION_0015 = (
 DECISION_0016 = (
     ROOT / "docs" / "decisions" / "0016-out-of-sample-policy-scoring-contract.md"
 )
+DECISION_0017 = (
+    ROOT / "docs" / "decisions" / "0017-policy-ladder-semantics-extraction.md"
+)
 API_SURFACE_AUDIT = ROOT / "docs" / "api-surface-audit.md"
 RELEASE_BOUNDARY = ROOT / "docs" / "package-release-boundary.md"
 PYPROJECT = ROOT / "pyproject.toml"
@@ -313,3 +316,26 @@ def test_release_artifact_inspection_script_covers_dry_run_boundaries() -> None:
         "build",
     ):
         assert required in script
+
+
+def test_policy_ladder_contract_is_torch_free_and_unreleased() -> None:
+    decision = _plain(DECISION_0017.read_text(encoding="utf-8"))
+    audit = _plain(API_SURFACE_AUDIT.read_text(encoding="utf-8"))
+    release_boundary_source = RELEASE_BOUNDARY.read_text(encoding="utf-8")
+
+    for required in (
+        "Accepted for the `main` / next-alpha candidate",
+        "`neural_abm.api_lite`",
+        "must not import `torch`, `scipy`, or `scikit-learn` at import time",
+        "The released `v0.1.0a5` tag predates both modules",
+        "changes no global state",
+    ):
+        assert required in decision, required
+    assert "Decision 0017" in audit
+
+    released_tag_section, candidate_and_later = release_boundary_source.split(
+        "## Main / Next-Alpha Candidate",
+        maxsplit=1,
+    )
+    assert "policy_ladder" not in released_tag_section
+    assert "Decision 0017" in candidate_and_later

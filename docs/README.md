@@ -440,7 +440,7 @@ Use this directory for internal project knowledge.
   data, with a declared-unit leak check; comparison and claims stay with the
   caller.
 - [decisions/0017-policy-ladder-semantics-extraction.md](decisions/0017-policy-ladder-semantics-extraction.md):
-  proposed (N14) extraction of the policy-ladder semantics that two consumers
-  share byte for byte (the prior rule, keyed randomness, the exploration
-  floor, prior-anchored learners, and the outcome record once its ordering
-  rule is fixed); implementation awaits approval.
+  accepted main/next-alpha extraction of the policy-ladder semantics two
+  model families share byte for byte: the torch-free prior rule, keyed
+  randomness, exploration floor, ordered outcome record, and boosted trees
+  (`policy_ladder`), plus torch-backed residual learners (`policy_learners`).

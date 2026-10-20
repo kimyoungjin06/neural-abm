@@ -1,12 +1,14 @@
-# Decision 0017: Policy-Ladder Semantics Extraction (N14)
+# Decision 0017: Policy-Ladder Semantics Extraction (N14, N15)
 
 ## Status
 
-Proposed. The package implementation awaits the user's approval.
+Accepted for the `main` / next-alpha candidate. Proposed on 2026-10-19 (N14).
+The user approved its implementation on 2026-10-20 (N15), and it was
+accepted once the parity conditions below held.
 
 ## Date
 
-2026-10-19
+2026-10-19, accepted 2026-10-20
 
 ## Context
 
@@ -45,7 +47,7 @@ differences decide what stays domain-owned.
 | A linear prior rule: logit = x · w + b | The learners' anchor | The hand rule F1, the LLM prior P0, and every learner's anchor | **Extract** (torch-free) |
 | Keyed randomness: one seed or uniform stream per tuple of integers | Refit seeds and exploration draws | World, stream, learner, and exploration draws | **Extract** (torch-free) |
 | An exploration floor: take a declined action with probability ε on a keyed draw, independent of the prior | Exploratory entry | Exploratory sharing | **Extract** (torch-free) |
-| An outcome record: rows that become visible from a step, with pooled and per-agent views | Fold learners' evidence at immediate visibility | Delayed fact-checks, pooled and per agent | **Extract after the ordering rule below is fixed** (torch-free) |
+| An outcome record: rows that become visible from a step, with pooled and per-agent views | Fold learners' evidence, immediate and delayed | Delayed fact-checks, pooled and per agent | **Extract**, with the ordering rule below (torch-free) |
 | Prior-anchored residual learners: a residual linear model and a residual MLP, trained by full-batch Adam from the prior logit | The linear and MLP field arms | The study's MLP learners, and linear learners through D2b | **Extract** (`torch` extra) |
 | Prior-boosted regression trees from the prior logit | The tree field arm | D1 only: feasibility, and the self-replay nesting check | **Extract** (`research` extra, scikit-learn), noting that its second use is the weakest |
 
@@ -59,67 +61,92 @@ differences decide what stays domain-owned.
 | Batched per-agent residuals and partial pooling | Information spread only |
 | Replay of a policy trajectory as a table (`PolicySnapshots`) | Information spread only. It is central to that study's result, but has one consumer. |
 | Cross-fitted folds | Pivot only (F04) |
-| Decline rows and label-selection views | Information-spread diagnostics only |
+| What decline rows mean, and label-selection views | Information spread only. The record keeps a generic integer kind per row, with kind 1 in the default view; what a kind means stays with the caller. |
 | The nesting-check harness | Both consumers check nesting, but in domain tests. The pattern is documented, not an API: learning off reproduces the fixed rule. |
 | Worlds, measures, archetypes, LLM elicitation, and the unverified-item measure | Domain semantics |
 
 Out-of-sample scoring is already in the package through Decision 0016 and is
 unchanged.
 
-## The ordering rule to fix first
+## The ordering rule
 
-The core returns outcome rows in insertion order. Pivot buffers delayed
+The core returned outcome rows in insertion order. Pivot buffers delayed
 outcomes and adds them in release order. At immediate visibility the two
-orders agree, and the parity run used immediate visibility. With delays,
-row order changes how a full-batch learner's rows are stacked. So it can
-change the fitted bytes.
+orders agree. With delays, row order changes how a full-batch learner's rows
+are stacked, so it can change the fitted bytes.
 
-Before the record is extracted, the package must:
+**The rule.** The package's record returns rows ordered by the step from
+which they are visible, then by insertion. Two cases follow:
 
-- **State one rule.** Rows are ordered by the step from which they are
-  visible, then by insertion.
-- **Show which consumers it reproduces.**
-  - Run a second parity check against a recorded Pivot run with delays: the
-    field-public arms of the nonlinear policy ABM v2 with failure delays.
-  - Run the information-spread study's frozen tests.
-  - If the rule breaks the information-spread bytes, the package keeps
-    insertion order as an option, and the decision records which consumer
-    uses which.
+- **For a caller that adds outcomes when they are released,** this is
+  insertion order. Both consumers did so. The information-spread
+  simulator's decision digests are unchanged on the package record.
+- **For a caller that adds outcomes when they are realized,** each tagged
+  with its release step, the rule gives release order.
+
+**The N15 parity run** checked both cases against the nonlinear policy ABM
+v2's field-public arms under failure delays. With either insertion, all 432
+rows matched the record. Without the rule, event insertion differed under
+both delays. The record is
+`experiments/evidence/results/n15_package_parity_20261020.summary.md`
+(repository-only).
 
 ## Placement
 
 The placement follows Decision 0014.
 
-- **A torch-free module** holds the prior rule, keyed randomness, the
-  exploration floor, and, once its ordering rule is fixed, the outcome
-  record. It is re-exported through `neural_abm.api_lite`.
-- **A torch-backed module** (the `torch` extra) holds the residual linear and
-  MLP learners and their training. `import neural_abm` must still not import
-  `torch`.
-- **Prior-boosted trees** import scikit-learn lazily, under the `research`
-  extra.
+- **`neural_abm.policy_ladder`** is torch-free and imports NumPy only. It
+  holds:
+  - `keyed_seed` and `keyed_uniform`;
+  - `ExplorationFloor`;
+  - `LinearPrior` and `PriorPredictor`;
+  - `OutcomeRecord`;
+  - `fit_prior_boosted_trees`, with `BoostedTreesPredictor`.
 
-Names and signatures are set in the implementation step. The semantics
-above are the contract.
+  `fit_prior_boosted_trees` imports scikit-learn on first use (the
+  `research` extra). Every public name except `BoostedTreesPredictor` is
+  re-exported through `neural_abm.api_lite`.
+- **`neural_abm.policy_learners`** needs the `torch` extra. It holds:
+  - `ResidualLinear` and `ResidualMLP`;
+  - `TorchPredictor`;
+  - `train_residual_policy` and `fit_residual_policy`.
 
-## Implementation Consequence (when approved)
+  It is imported by module path. Neither `neural_abm.api` nor
+  `import neural_abm` imports it.
+
+**What changes from the frozen core.** The package changes no global state.
+- The MLP draws its initial weights from a private `torch.Generator`, with
+  the same draws as `torch.nn.Linear`'s default initialization under the
+  seed.
+- Thread counts and deterministic-algorithm settings are left to the caller.
+  Bit-for-bit reproduction of a recorded run needs the settings it was
+  recorded with.
+
+## Dependency and Release Boundary
+
+`neural_abm.policy_ladder` must not import `torch`, `scipy`, or
+`scikit-learn` at import time. The released `v0.1.0a5` tag predates both
+modules.
+
+## Implementation Consequence
 
 1. **Parity carried into the package.**
-   - The package versions reproduce the frozen core byte for byte on shared
-     fixtures.
-   - The Pivot v3 re-expression run on the package versions must reproduce
-     the recorded `runs.jsonl`.
+   - **Shared fixtures.** The package reproduces the frozen core byte for
+     byte for every primitive and learner (`tests/test_policy_ladder_package.py`).
+   - **The Pivot v3 record.** Through the package, the Pivot v3
+     re-expression reproduced its recorded `runs.jsonl` byte for byte:
+     1,152 of 1,152 rows.
+   - **The ABM v2 record.** Its delayed field arms also reproduced: 432 of
+     432 rows under each insertion mode.
 2. **Frozen sources stay unchanged.** The core, the Pivot scripts, and the
    information-spread scripts are all bound by hash. New callers use the
    package; old records stay as they are.
 3. **Ledger status.** The consolidation ledger's F09 (prior slot) and F10
-   (exploration floor) move from domain-owned to extracted, in the narrower
-   form above:
+   (exploration floor) are extracted, in a narrower form:
    - the prior is a weight vector, not a slot that replaces an agent's
      parameters;
    - the floor is the keyed test, not an adapter.
-4. **No release.** The released `v0.1.0a5` tag predates all of this. A
-   release needs a separate decision.
+4. **No release.** A release needs a separate decision.
 
 ## Non-Goals
 
