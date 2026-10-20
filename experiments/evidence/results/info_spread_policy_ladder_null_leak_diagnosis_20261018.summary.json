@@ -1,0 +1,326 @@
+{
+ "schema_version": "info_spread_null_leak_diagnosis.v1",
+ "label": "info_spread_policy_ladder_null_leak_diagnosis_20261018",
+ "status": "EXPLORATORY_DIAGNOSIS_NOT_REGISTERED_NULL_CELLS_ONLY",
+ "question": "Where does D4's null-world gain of the MLP learners arise?",
+ "code": "scripts/diagnose_info_spread_null_leak_v1.py",
+ "code_sha256": "db614689d7e87dbb642d19c3df74002f664d36611841f1a6d618a88a72d64286",
+ "frozen_inputs": {
+  "d4_contract": "experiments/configs/info_spread_policy_ladder_study_v1.yaml",
+  "d4_precommit": "daf5d80"
+ },
+ "execution": {
+  "host": "GPU-Server, GPU 0 for MLPs",
+  "workers": 8,
+  "wall_seconds": 197.4,
+  "cells": 6,
+  "replicates": 4,
+  "output": "GPU-Server ~/neural_abm/runs/null_leak_diag_v1/",
+  "cells_jsonl_sha256": "8e49942b2a4969d860fc66ab58b04e660375249fcfb5786cc819fb64f26082c8"
+ },
+ "measure": "precision of each policy's own share decisions (probability >= cutoff, before the exploration floor), split by the item's fact-check state at the decision",
+ "pooled": {
+  "A/mlp/null": {
+   "cells": 6,
+   "runs": 24,
+   "F1": {
+    "share_precision": 0.3976,
+    "policy_shares_by_fact_check_state": {
+     "unrevealed": {
+      "shares": 6241223,
+      "precision": 0.3943
+     },
+     "pending": {
+      "shares": 1907255,
+      "precision": 0.4013
+     },
+     "visible": {
+      "shares": 4202958,
+      "precision": 0.4009
+     }
+    }
+   },
+   "L0": {
+    "share_precision": 0.3988,
+    "policy_shares_by_fact_check_state": {
+     "unrevealed": {
+      "shares": 2412139,
+      "precision": 0.3908
+     },
+     "pending": {
+      "shares": 900993,
+      "precision": 0.3954
+     },
+     "visible": {
+      "shares": 1479893,
+      "precision": 0.4334
+     }
+    }
+   }
+  },
+  "B/partial_mlp/null": {
+   "cells": 6,
+   "runs": 24,
+   "F1": {
+    "share_precision": 0.3969,
+    "policy_shares_by_fact_check_state": {
+     "unrevealed": {
+      "shares": 7413578,
+      "precision": 0.394
+     },
+     "pending": {
+      "shares": 1622052,
+      "precision": 0.3994
+     },
+     "visible": {
+      "shares": 5652559,
+      "precision": 0.4002
+     }
+    }
+   },
+   "L0": {
+    "share_precision": 0.4184,
+    "policy_shares_by_fact_check_state": {
+     "unrevealed": {
+      "shares": 2738644,
+      "precision": 0.3948
+     },
+     "pending": {
+      "shares": 668306,
+      "precision": 0.3914
+     },
+     "visible": {
+      "shares": 2022949,
+      "precision": 0.4702
+     }
+    }
+   },
+   "L0_no_trust": {
+    "share_precision": 0.4183,
+    "policy_shares_by_fact_check_state": {
+     "unrevealed": {
+      "shares": 2794289,
+      "precision": 0.3989
+     },
+     "pending": {
+      "shares": 675957,
+      "precision": 0.3939
+     },
+     "visible": {
+      "shares": 2054028,
+      "precision": 0.4664
+     }
+    }
+   }
+  },
+  "B/partial_linear_exact/null": {
+   "cells": 6,
+   "runs": 24,
+   "F1": {
+    "share_precision": 0.3969,
+    "policy_shares_by_fact_check_state": {
+     "unrevealed": {
+      "shares": 7413578,
+      "precision": 0.394
+     },
+     "pending": {
+      "shares": 1622052,
+      "precision": 0.3994
+     },
+     "visible": {
+      "shares": 5652559,
+      "precision": 0.4002
+     }
+    }
+   },
+   "L0": {
+    "share_precision": 0.3973,
+    "policy_shares_by_fact_check_state": {
+     "unrevealed": {
+      "shares": 2468967,
+      "precision": 0.3993
+     },
+     "pending": {
+      "shares": 543200,
+      "precision": 0.3958
+     },
+     "visible": {
+      "shares": 1882479,
+      "precision": 0.4052
+     }
+    }
+   }
+  }
+ },
+ "per_cell_delta_vs_f1": {
+  "A/mlp/null": {
+   "L0-F1": {
+    "unrevealed": {
+     "cell_deltas": [
+      -0.0239,
+      0.009,
+      -0.017,
+      0.0262,
+      0.002,
+      -0.0168
+     ],
+     "mean": -0.0034,
+     "positive_cells": 3
+    },
+    "pending": {
+     "cell_deltas": [
+      -0.0093,
+      -0.0551,
+      0.0073,
+      0.0112,
+      0.0232,
+      -0.0245
+     ],
+     "mean": -0.0079,
+     "positive_cells": 3
+    },
+    "visible": {
+     "cell_deltas": [
+      0.0309,
+      -0.0136,
+      0.0372,
+      0.044,
+      0.0731,
+      0.0067
+     ],
+     "mean": 0.0297,
+     "positive_cells": 5
+    }
+   }
+  },
+  "B/partial_mlp/null": {
+   "L0-F1": {
+    "unrevealed": {
+     "cell_deltas": [
+      -0.0096,
+      -0.0006,
+      0.0034,
+      0.0137,
+      0.0097,
+      -0.0141
+     ],
+     "mean": 0.0004,
+     "positive_cells": 3
+    },
+    "pending": {
+     "cell_deltas": [
+      -0.0143,
+      -0.0549,
+      -0.0029,
+      -0.0016,
+      0.0034,
+      0.0071
+     ],
+     "mean": -0.0105,
+     "positive_cells": 2
+    },
+    "visible": {
+     "cell_deltas": [
+      0.0835,
+      0.0266,
+      0.072,
+      0.072,
+      0.0884,
+      0.0657
+     ],
+     "mean": 0.068,
+     "positive_cells": 6
+    }
+   },
+   "L0_no_trust-F1": {
+    "unrevealed": {
+     "cell_deltas": [
+      0.0031,
+      0.0017,
+      0.0086,
+      0.0106,
+      0.0118,
+      -0.0085
+     ],
+     "mean": 0.0045,
+     "positive_cells": 5
+    },
+    "pending": {
+     "cell_deltas": [
+      -0.0062,
+      -0.0537,
+      0.0023,
+      -0.0118,
+      0.0048,
+      0.0127
+     ],
+     "mean": -0.0086,
+     "positive_cells": 3
+    },
+    "visible": {
+     "cell_deltas": [
+      0.0715,
+      0.0256,
+      0.0757,
+      0.0635,
+      0.0854,
+      0.0625
+     ],
+     "mean": 0.064,
+     "positive_cells": 6
+    }
+   }
+  },
+  "B/partial_linear_exact/null": {
+   "L0-F1": {
+    "unrevealed": {
+     "cell_deltas": [
+      0.0012,
+      0.004,
+      0.0106,
+      0.0134,
+      0.0021,
+      -0.0003
+     ],
+     "mean": 0.0052,
+     "positive_cells": 5
+    },
+    "pending": {
+     "cell_deltas": [
+      -0.0088,
+      -0.0487,
+      0.0116,
+      -0.0031,
+      0.0144,
+      0.0001
+     ],
+     "mean": -0.0058,
+     "positive_cells": 3
+    },
+    "visible": {
+     "cell_deltas": [
+      0.0133,
+      -0.0283,
+      0.0112,
+      0.0085,
+      0.022,
+      -0.0075
+     ],
+     "mean": 0.0032,
+     "positive_cells": 4
+    }
+   }
+  }
+ },
+ "reading": {
+  "gain_only_on_items_with_a_visible_fact_check": true,
+  "trust_route_ruled_out_in_b_partial_mlp": true,
+  "remaining_route": "the MLP recognizes an item whose fact-check it has trained on, from the item's features",
+  "linear_learners": "no comparable gain; a linear rule cannot single out an item"
+ },
+ "boundaries": {
+  "study_cells_read": false,
+  "registered": false,
+  "llm_calls": 0
+ }
+}

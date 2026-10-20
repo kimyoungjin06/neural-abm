@@ -317,12 +317,14 @@ torch-backed behavior. The early-user checklist is in
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
 - Repository-only policy-ladder ledger at
-  `docs/research/pivot-policy-ladder-consolidation-v5.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v6.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v5.md` and, through it,
   `docs/research/pivot-policy-ladder-consolidation-v4.md`: the hash-audited
   record of the researcher-pivot policy ladder, including the measured cost
-  and behavior of each tier between rule-based ABMs and LLM agents, and the
+  and behavior of each tier between rule-based ABMs and LLM agents, the
   closure of the current empirical model-ladder design before confirmatory
-  scoring.
+  scoring, and the second domain (information spread) with the N14
+  reusability test.
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
   and Granovetter special cases, plus explicitly labeled FJ-like anchored and
   self-excluding HK variants, as settings of the same lifecycle.
@@ -423,6 +425,23 @@ from anticipation. This does not imply the absence of learning. The
 repository-only, hash-audited ledger is at
 `docs/research/pivot-policy-ladder-consolidation-v5.md`, which extends
 `docs/research/pivot-policy-ladder-consolidation-v4.md`.
+
+A second domain, information spread with delayed fact-checks, ran the same
+comparison through a shared repository-only core:
+
+- In its stationary worlds, every learner beat the hand rule.
+- A policy table written before the run, from one donor run in the same
+  world, was not detectably different from the closed loop in 11 of 12
+  settings. The average of four such runs beat it in all 12.
+- The closed loop won only when a run carried information the donors lacked.
+- The learner beat AgentTorch-style LLM archetypes in every setting. An LLM
+  prior added nothing detectable inside it.
+- The Pivot ladder, re-expressed through the same core, reproduced its
+  recorded runs byte for byte.
+
+These results are synthetic, and they are scored on items whose fact-check
+was not yet public. They make no claim about real information spread. The
+ledger is `docs/research/pivot-policy-ladder-consolidation-v6.md`.
 
 ## Scope
 

@@ -1,0 +1,371 @@
+{
+ "schema_version": "info_spread_policy_ladder_d1.v1",
+ "label": "info_spread_policy_ladder_d1_feasibility_20261013",
+ "status": "D1_FEASIBILITY_ONLY_NO_BEHAVIORAL_OUTCOME_REPORTED",
+ "design": "docs/research/info-spread-policy-ladder-design-v1.md",
+ "code_commit": "dfc5372",
+ "execution": {
+  "host": "GPU-Server (AMD Ryzen Threadripper PRO 7965WX, CPU only)",
+  "python": "3.14.0",
+  "numpy": "2.4.4",
+  "torch": "2.11.0+cu130 (CPU)",
+  "profile": "feasibility",
+  "sizes": {
+   "agents": 1000,
+   "steps": 60,
+   "items_per_step": 20,
+   "replicates": 2,
+   "donors": 4
+  },
+  "worlds": [
+   "A/linear",
+   "A/axis",
+   "A/null",
+   "B/linear",
+   "B/axis",
+   "B/null"
+  ],
+  "workers": 6,
+  "wall_seconds": 99.75,
+  "peak_memory_kb": 793548,
+  "output": "~/neural_abm/runs/info_spread_d1_feasibility_dfc5372/feasibility.json",
+  "output_sha256": "de7bd92e6f269985e0bbdcc6095384453bd728bc18a0f52e582bb8ff5c5ce130"
+ },
+ "nesting_checks": {
+  "tests": "tests/test_info_spread_policy_ladder_v1.py",
+  "passed": 14,
+  "failed": 0,
+  "rules": [
+   "F0 equals an independent threshold implementation",
+   "Granovetter knife edge on the complete graph",
+   "learning off equals F1 (pooled and per-agent)",
+   "a constant table equals F1",
+   "self-replay equals the adaptive run (pooled linear, pooled tree, per-agent linear)",
+   "identity archetypes with the F1 answer equal F1",
+   "exploration floor at zero changes nothing"
+  ]
+ },
+ "core_parity": {
+  "tests": "tests/test_policy_ladder_core_v1.py",
+  "passed": 10,
+  "failed": 0,
+  "statement": "With the Pivot prior, the core's residual linear, residual MLP, and prior-boosted trees reproduce the Pivot implementations byte for byte."
+ },
+ "feasibility": {
+  "A/F0_threshold": {
+   "regime": "A",
+   "arm": "F0_threshold",
+   "median_microseconds_per_agent_step": 30.8,
+   "median_decisions_per_run": 1526351,
+   "revealed_outcomes_per_agent_median": {
+    "median": 17.0,
+    "min": 16.0,
+    "max": 18.0
+   }
+  },
+  "A/F1_hand": {
+   "regime": "A",
+   "arm": "F1_hand",
+   "median_microseconds_per_agent_step": 6.7,
+   "median_decisions_per_run": 538629,
+   "revealed_outcomes_per_agent_median": {
+    "median": 76.5,
+    "min": 76.0,
+    "max": 77.0
+   }
+  },
+  "A/L0_pooled_linear": {
+   "regime": "A",
+   "arm": "L0_pooled_linear",
+   "median_microseconds_per_agent_step": 13.1,
+   "median_decisions_per_run": 382199,
+   "revealed_outcomes_per_agent_median": {
+    "median": 55.5,
+    "min": 10.0,
+    "max": 83.0
+   }
+  },
+  "A/L0_pooled_mlp": {
+   "regime": "A",
+   "arm": "L0_pooled_mlp",
+   "median_microseconds_per_agent_step": 69.9,
+   "median_decisions_per_run": 414297,
+   "revealed_outcomes_per_agent_median": {
+    "median": 62.0,
+    "min": 28.0,
+    "max": 79.0
+   }
+  },
+  "A/L0_pooled_tree": {
+   "regime": "A",
+   "arm": "L0_pooled_tree",
+   "median_microseconds_per_agent_step": 18.5,
+   "median_decisions_per_run": 339727,
+   "revealed_outcomes_per_agent_median": {
+    "median": 48.5,
+    "min": 21.0,
+    "max": 68.0
+   }
+  },
+  "A/T0_final_linear": {
+   "regime": "A",
+   "arm": "T0_final_linear",
+   "median_microseconds_per_agent_step": 3.4,
+   "median_decisions_per_run": 298364,
+   "revealed_outcomes_per_agent_median": {
+    "median": 44.5,
+    "min": 2.0,
+    "max": 64.0
+   }
+  },
+  "A/T0_final_mlp": {
+   "regime": "A",
+   "arm": "T0_final_mlp",
+   "median_microseconds_per_agent_step": 5.0,
+   "median_decisions_per_run": 283320,
+   "revealed_outcomes_per_agent_median": {
+    "median": 44.5,
+    "min": 0.0,
+    "max": 60.0
+   }
+  },
+  "A/T0_final_tree": {
+   "regime": "A",
+   "arm": "T0_final_tree",
+   "median_microseconds_per_agent_step": 6.4,
+   "median_decisions_per_run": 301821,
+   "revealed_outcomes_per_agent_median": {
+    "median": 39.0,
+    "min": 3.0,
+    "max": 50.0
+   }
+  },
+  "A/T0_traj_linear": {
+   "regime": "A",
+   "arm": "T0_traj_linear",
+   "median_microseconds_per_agent_step": 3.8,
+   "median_decisions_per_run": 322191,
+   "revealed_outcomes_per_agent_median": {
+    "median": 46.5,
+    "min": 11.0,
+    "max": 69.0
+   }
+  },
+  "A/T0_traj_mlp": {
+   "regime": "A",
+   "arm": "T0_traj_mlp",
+   "median_microseconds_per_agent_step": 5.1,
+   "median_decisions_per_run": 305024,
+   "revealed_outcomes_per_agent_median": {
+    "median": 48.5,
+    "min": 9.0,
+    "max": 69.0
+   }
+  },
+  "A/T0_traj_tree": {
+   "regime": "A",
+   "arm": "T0_traj_tree",
+   "median_microseconds_per_agent_step": 6.5,
+   "median_decisions_per_run": 317029,
+   "revealed_outcomes_per_agent_median": {
+    "median": 44.5,
+    "min": 13.0,
+    "max": 57.0
+   }
+  },
+  "A/X0_stub_k2_b2": {
+   "regime": "A",
+   "arm": "X0_stub_k2_b2",
+   "median_microseconds_per_agent_step": 9.4,
+   "median_decisions_per_run": 566600,
+   "revealed_outcomes_per_agent_median": {
+    "median": 81.0,
+    "min": 80.0,
+    "max": 82.0
+   },
+   "archetype_queries_per_run_median": 479
+  },
+  "A/X0_stub_k2_b4": {
+   "regime": "A",
+   "arm": "X0_stub_k2_b4",
+   "median_microseconds_per_agent_step": 9.6,
+   "median_decisions_per_run": 541787,
+   "revealed_outcomes_per_agent_median": {
+    "median": 76.0,
+    "min": 75.0,
+    "max": 77.0
+   },
+   "archetype_queries_per_run_median": 1770
+  },
+  "A/X0_stub_k4_b2": {
+   "regime": "A",
+   "arm": "X0_stub_k4_b2",
+   "median_microseconds_per_agent_step": 9.5,
+   "median_decisions_per_run": 579140,
+   "revealed_outcomes_per_agent_median": {
+    "median": 81.0,
+    "min": 80.0,
+    "max": 82.0
+   },
+   "archetype_queries_per_run_median": 958
+  },
+  "A/X0_stub_k4_b4": {
+   "regime": "A",
+   "arm": "X0_stub_k4_b4",
+   "median_microseconds_per_agent_step": 9.8,
+   "median_decisions_per_run": 589303,
+   "revealed_outcomes_per_agent_median": {
+    "median": 76.5,
+    "min": 75.0,
+    "max": 78.0
+   },
+   "archetype_queries_per_run_median": 3517
+  },
+  "B/F0_threshold": {
+   "regime": "B",
+   "arm": "F0_threshold",
+   "median_microseconds_per_agent_step": 26.9,
+   "median_decisions_per_run": 1526351,
+   "revealed_outcomes_per_agent_median": {
+    "median": 17.0,
+    "min": 16.0,
+    "max": 18.0
+   }
+  },
+  "B/F1_hand": {
+   "regime": "B",
+   "arm": "F1_hand",
+   "median_microseconds_per_agent_step": 9.1,
+   "median_decisions_per_run": 783694,
+   "revealed_outcomes_per_agent_median": {
+    "median": 65.5,
+    "min": 63.0,
+    "max": 68.0
+   }
+  },
+  "B/L0_per_agent_linear": {
+   "regime": "B",
+   "arm": "L0_per_agent_linear",
+   "median_microseconds_per_agent_step": 25.6,
+   "median_decisions_per_run": 665140,
+   "revealed_outcomes_per_agent_median": {
+    "median": 33.5,
+    "min": 11.0,
+    "max": 51.0
+   }
+  },
+  "B/L0_per_agent_mlp": {
+   "regime": "B",
+   "arm": "L0_per_agent_mlp",
+   "median_microseconds_per_agent_step": 158.6,
+   "median_decisions_per_run": 699723,
+   "revealed_outcomes_per_agent_median": {
+    "median": 34.5,
+    "min": 19.0,
+    "max": 53.0
+   }
+  },
+  "B/T0_final_linear": {
+   "regime": "B",
+   "arm": "T0_final_linear",
+   "median_microseconds_per_agent_step": 7.9,
+   "median_decisions_per_run": 489392,
+   "revealed_outcomes_per_agent_median": {
+    "median": 15.0,
+    "min": 1.0,
+    "max": 41.0
+   }
+  },
+  "B/T0_final_mlp": {
+   "regime": "B",
+   "arm": "T0_final_mlp",
+   "median_microseconds_per_agent_step": 9.2,
+   "median_decisions_per_run": 314299,
+   "revealed_outcomes_per_agent_median": {
+    "median": 8.5,
+    "min": 0.0,
+    "max": 31.0
+   }
+  },
+  "B/T0_traj_linear": {
+   "regime": "B",
+   "arm": "T0_traj_linear",
+   "median_microseconds_per_agent_step": 8.2,
+   "median_decisions_per_run": 519440,
+   "revealed_outcomes_per_agent_median": {
+    "median": 21.0,
+    "min": 9.0,
+    "max": 44.0
+   }
+  },
+  "B/T0_traj_mlp": {
+   "regime": "B",
+   "arm": "T0_traj_mlp",
+   "median_microseconds_per_agent_step": 11.9,
+   "median_decisions_per_run": 435988,
+   "revealed_outcomes_per_agent_median": {
+    "median": 19.25,
+    "min": 9.0,
+    "max": 44.0
+   }
+  },
+  "B/X0_stub_k2_b2": {
+   "regime": "B",
+   "arm": "X0_stub_k2_b2",
+   "median_microseconds_per_agent_step": 10.3,
+   "median_decisions_per_run": 614563,
+   "revealed_outcomes_per_agent_median": {
+    "median": 75.0,
+    "min": 73.0,
+    "max": 77.0
+   },
+   "archetype_queries_per_run_median": 1440
+  },
+  "B/X0_stub_k2_b4": {
+   "regime": "B",
+   "arm": "X0_stub_k2_b4",
+   "median_microseconds_per_agent_step": 13.1,
+   "median_decisions_per_run": 717407,
+   "revealed_outcomes_per_agent_median": {
+    "median": 75.0,
+    "min": 71.0,
+    "max": 79.0
+   },
+   "archetype_queries_per_run_median": 5398
+  },
+  "B/X0_stub_k4_b2": {
+   "regime": "B",
+   "arm": "X0_stub_k4_b2",
+   "median_microseconds_per_agent_step": 11.3,
+   "median_decisions_per_run": 616063,
+   "revealed_outcomes_per_agent_median": {
+    "median": 77.5,
+    "min": 75.0,
+    "max": 80.0
+   },
+   "archetype_queries_per_run_median": 2879
+  },
+  "B/X0_stub_k4_b4": {
+   "regime": "B",
+   "arm": "X0_stub_k4_b4",
+   "median_microseconds_per_agent_step": 15.4,
+   "median_decisions_per_run": 861045,
+   "revealed_outcomes_per_agent_median": {
+    "median": 77.0,
+    "min": 74.0,
+    "max": 80.0
+   },
+   "archetype_queries_per_run_median": 10568
+  }
+ },
+ "design_changes": [
+  "declines are reconsidered at each new exposure (Watts-Granovetter); shares are absorbing",
+  "archetypes group agents by threshold quantile, plus cost level in Regime B, because degree is nearly constant on a Watts-Strogatz graph"
+ ],
+ "boundaries": {
+  "behavioral_outcomes_reported": false,
+  "llm_calls": 0,
+  "empirical_rows_read": 0,
+  "registered": false
+ }
+}

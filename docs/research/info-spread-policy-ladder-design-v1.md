@@ -69,9 +69,11 @@ threshold. It has no outcome channel. The outcome channel below is new.
   cannot help.
 
 **Decision.**
-- When a neighbor shares item j, agent i is exposed and decides once whether
-  to share it. The decision is binary and absorbing per item, as Toy 5
-  adoption is.
+- When a neighbor newly shares item j, an agent that has not shared it decides
+  whether to share it. A share is absorbing, as Toy 5 adoption is. A decline
+  is reconsidered at the next new exposure, as in Watts–Granovetter threshold
+  dynamics. (D1 changed this from "decides once", which cannot reproduce the
+  threshold reduction.)
 - The observation has three parts:
   - z_j;
   - exposure features: the fraction and count of neighbors sharing j;
@@ -269,6 +271,181 @@ Each stage starts only on the user's go-ahead.
 | D4 | Non-LLM arms: development and reproduction runs, then record | Yes |
 | D5 | P0 elicitation and X0 runs on the GPU server, then record | Yes |
 | D6 | Consolidation, and the N14 extraction decision | Yes |
+
+## D2 specification (fixed before D2 runs, 2026-10-14)
+
+D2 measures how the proposed closed-loop rule behaves when the answer is
+known. It runs no comparison of L0 with T0 in a study cell.
+
+**Defaults set by the user on 2026-10-14.**
+- Unfollow (B+) is deferred.
+- N is 1,000 agents.
+- X0 uses K = 2 threshold bins and 4 item classes.
+- No larger Qwen.
+- The N14 parity host is decided at D6.
+
+**Controls.**
+
+| Control | Arms compared | Worlds | Known answer |
+|---|---|---|---|
+| NEG: two tables | T0-traj from donor seeds 1000–1003 against T0-traj from donor seeds 2000–2003 | A/linear and B/linear | No closed-loop effect: both arms are tables written before the run |
+| POS-flat | L0 against T0-traj | Linear world in which the credibility weight of the veracity relation drops from +3 to 0 at a step τ drawn per replicate from 15 to 45 | A closed-loop effect: only L0 sees its own run's shift |
+| POS-flip | L0 against T0-traj | As POS-flat, with the weight going from +3 to −3 | A larger closed-loop effect |
+
+**Design.**
+- Learner families: Regime A pooled linear and pooled MLP; Regime B
+  per-agent linear and per-agent MLP.
+- 20 cells, each with its own world seed, per control, regime, and family.
+- 16 paired evaluation replicates per cell.
+- Sizes are the D1 feasibility sizes: 60 steps, 20 items per step, and ε =
+  0.02.
+
+**Rule components, evaluated per cell.** Δ is the paired difference L0 − T0
+(or table 1 − table 2) in each replicate.
+- **R1, paired.** Δ share precision ≥ 0.02 in at least 12 of 16 replicates,
+  or ≤ −0.02 in at least 12 of 16.
+- **R2, path dependence.**
+  - The early shock is the share of false items among items born in steps
+    0–9 that will be fact-checked. The stream fixes it, so it is identical
+    across arms.
+  - Each arm's slope of mean false reach on the shock is fitted over the 16
+    replicates.
+  - R2 holds when the 95% bootstrap interval of the slope difference (2,000
+    keyed resamples of replicates) excludes zero.
+- **Material.** R1 and R2 both hold, as proposed. R1 alone and R2 alone are
+  also reported.
+
+**Reading.**
+- The proposed rule is adequate when both hold:
+  - NEG is material in at most 1 of 20 cells per regime and family;
+  - POS-flip is material in at least 16 of 20 cells in both regimes.
+- Otherwise D3 revises the rule, using these controls only.
+- Counts of 0 are reported with their one-sided 95% upper bound.
+
+**Boundary.**
+- L0 donor runs in A/linear and B/linear are made only to build the tables;
+  their outcomes are not reported.
+- No study cell is scored.
+
+## D2b specification (fixed before D2b runs, 2026-10-15)
+
+D2 failed its power criterion. Its diagnosis found four mechanisms behind
+that failure:
+[D2](../../experiments/evidence/results/info_spread_policy_ladder_d2_controls_20261014.summary.md),
+[diagnosis](../../experiments/evidence/results/info_spread_policy_ladder_d2_diagnosis_20261014.summary.md),
+[fit budget](../../experiments/evidence/results/info_spread_policy_ladder_d2_fit_budget_check_20261014.summary.md),
+[selective labels](../../experiments/evidence/results/info_spread_policy_ladder_label_selection_20261014.summary.md).
+
+D2b revises the design accordingly and measures the revised rule on controls
+again. It still scores no study cell.
+
+**Changes from D2.**
+
+1. **Observability (user's choice, 2026-10-15).**
+   - Fact-checks are public. A learner trains on the outcome of every
+     exposure it decided on, whether it shared or declined. This is label
+     mode "all".
+   - The sharer-trust feature still counts shares only, since it is a
+     neighbor's sharing record.
+2. **Learner settings.**
+   - Linear and MLP learners use the Pivot ladder's settings: 300 epochs,
+     learning rate 0.02, weight decay 1e-4, MLP hidden width 16.
+   - A forgetting variant, L0-window, trains on outcomes visible in the last
+     12 steps. It is an arm in the shift control only.
+3. **Regime B learners use partial pooling.**
+   - Each agent's policy is a pooled learner, fitted on every agent's rows,
+     plus a per-agent linear residual.
+   - The residual is fitted on the agent's own rows with weight decay 1e-2.
+   - This replaces raw per-agent MLPs, whose overconfidence (a credibility
+     weight near 13 against a true 3) the diagnosis traced to overfitting.
+   - The two Regime B families are "partial_linear" (pooled linear base) and
+     "partial_mlp" (pooled MLP base).
+4. **Two comparators, for two questions.**
+   - **T0-1, a single-donor trajectory table.** It carries the evidence of
+     one run, so L0 − T0-1 is the closed-loop effect at matched evidence.
+   - **T0-4, the four-donor table.** L0 − T0-4 answers whether the best
+     table written before the run can match the adaptive arm.
+5. **A positive control that does not need forgetting.**
+   - In POS-sign, each replicate's credibility weight is +3 or −3. The sign
+     is drawn per replicate and holds from step 0, so the world is
+     stationary within the run.
+   - Donor tables mix both signs. Only L0 can learn its own run's sign.
+   - POS-flip is kept as a secondary control, now with L0-window.
+6. **A group-level rule.** The study question is about a regime, not a
+   single world seed, so a group-level rule is added.
+
+**Controls and arms.**
+
+| Control | Arms per replicate | Known answer |
+|---|---|---|
+| NEG | T0-1 from donor set 1 against set 2; T0-4 from set 1 against set 2 | No closed loop in either pair |
+| POS-sign | L0, T0-1, T0-4 | L0 should beat both tables |
+| POS-flip | L0, L0-window, T0-1, T0-4 | Tracking the flip needs forgetting |
+
+**Design.**
+- Families: Regime A pooled linear and pooled MLP; Regime B partial_linear
+  and partial_mlp.
+- Sizes: 20 cells per control, regime, and family, with 16 paired
+  replicates per cell. 1,000 agents, 60 steps, 20 items per step, ε = 0.02.
+
+**Rules.** Δ is the first arm minus the second, in share precision.
+- **Per cell.** R1 and R2 as in D2, reported for continuity.
+- **Group level (G).**
+  - The group is material when the 95% bootstrap interval of the mean cell
+    Δ, with cells resampled, excludes zero.
+  - The mean cell Δ must also be at least 0.01 in magnitude.
+
+**Reading.** The revised design is adequate when all three hold:
+- G calls no NEG pair material (8 groups);
+- G calls L0 − T0-1 material and positive in POS-sign in all four regime
+  and family groups;
+- the per-cell rule's power on POS-sign is reported, whatever it is.
+
+If the design is adequate, D3 freezes the study with these choices. If not,
+the gap is reported before any study cell is run.
+
+## D2c specification (fixed before D2c runs, 2026-10-16)
+
+D2b was not adequate. Its group rule worked, but the pooled linear learner
+could not reverse a relation, because 300 Adam steps at learning rate 0.02
+move a weight about 6 logits
+([D2b](../../experiments/evidence/results/info_spread_policy_ladder_d2b_controls_20261015.summary.md)).
+
+The user approved five changes on 2026-10-16. Controls, sizes, seeds layout,
+and the adequacy criterion are otherwise those of D2b.
+
+1. **Exact linear learners.**
+   - A linear residual on the prior's logit is fitted to convergence by
+     Newton steps on the mean cross-entropy, plus (λ/2) times the squared
+     residual. λ is 1e-4 for the pooled learner, matching the Pivot weight
+     decay, and 1e-2 for each agent's residual under partial pooling.
+   - The step-capped Adam version stays in the core for Pivot parity.
+   - The families are:
+     - Regime A: "linear_exact" and "mlp";
+     - Regime B: "partial_linear_exact" and "partial_mlp". Both bases carry
+       exact per-agent residuals.
+2. **One training row per agent and item.** Under public fact-checks, an
+   agent learns an item's outcome once. The row records the agent's last
+   decision before the fact-check: its share, or else its last decline.
+3. **Efficiency.**
+   - Pooled MLPs are trained on GPUs 2 and 3 of the GPU server, with
+     deterministic algorithms; workers alternate between the two GPUs.
+   - 24 workers.
+   - Per-task progress is logged.
+   - A pilot under full load sets the time estimate before the full run.
+4. **The group rule alone.**
+   - A pair is material when the cell-resampled 95% interval of its mean cell
+     Δ excludes zero and the mean is at least 0.01 in magnitude.
+   - The per-cell rules are dropped.
+5. **Controls.** NEG, POS-sign, and POS-flip as in D2b, with 20 cells × 16
+   replicates per control, regime, and family.
+
+**Adequacy (unchanged from D2b).**
+- No NEG pair is material.
+- L0 − T0-1 is material and positive in POS-sign in all four groups.
+
+If D2c is adequate, D3 freezes the study with these choices. No study cell
+is scored in D2c.
 
 ## Threats and how the design meets them
 

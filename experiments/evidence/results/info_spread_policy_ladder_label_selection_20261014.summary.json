@@ -1,0 +1,330 @@
+{
+ "schema_version": "info_spread_policy_ladder_label_selection.v1",
+ "label": "info_spread_policy_ladder_label_selection_20261014",
+ "status": "EXPLORATORY_SELECTIVE_LABELS_SUPPORTED_FOR_POOLED_LEARNERS_NOT_FOR_PER_AGENT_MLP",
+ "question": "Do selective labels (outcomes only for shared items) keep learners near the prior before the shift?",
+ "code_commit": "0e950f5",
+ "learner_settings": "pivot",
+ "control": "POS_flip",
+ "modes": {
+  "S_shares": "outcomes of shared items only, as every registered arm sees",
+  "U_matched": "keyed random subset of all decided exposures, volume matched to the run's shares",
+  "F_all": "outcomes of every decided exposure"
+ },
+ "execution": {
+  "host": "GPU-Server (CPU only)",
+  "workers": 36,
+  "wall_seconds": 12616.6,
+  "cells": {
+   "linear": 10,
+   "mlp": 5
+  },
+  "replicates": 16,
+  "output": "~/neural_abm/runs/info_spread_labels_0e950f5/",
+  "cells_jsonl_sha256": "bd52cbb42138a3a53f9d524a9450158d43b5881545e1d0628e9d49ff6afa9229"
+ },
+ "reproduction_check": "The S arm reuses the fit-budget check's seeds and reproduced its L0-full exactly in 480 of 480 replicate records (precision by cohort and weight series).",
+ "groups": {
+  "A/linear": {
+   "cells": 10,
+   "arms": {
+    "S_shares": {
+     "policy_weight_8_steps_before_shift": 4.174,
+     "policy_weight_12_to_20_steps_after_shift": 3.155,
+     "data_weight_at_last_refit_before_shift": 4.132,
+     "low_credibility_share_of_rows_before_shift": 0.048,
+     "rows_at_last_refit_before_shift": 24411.0,
+     "precision": {
+      "pre_shift": 0.6337,
+      "post_shift": 0.2943
+     }
+    },
+    "U_matched": {
+     "policy_weight_8_steps_before_shift": 3.719,
+     "policy_weight_12_to_20_steps_after_shift": 2.343,
+     "data_weight_at_last_refit_before_shift": 3.392,
+     "low_credibility_share_of_rows_before_shift": 0.128,
+     "rows_at_last_refit_before_shift": 25297.0,
+     "precision": {
+      "pre_shift": 0.6331,
+      "post_shift": 0.306
+     }
+    },
+    "F_all": {
+     "policy_weight_8_steps_before_shift": 3.727,
+     "policy_weight_12_to_20_steps_after_shift": 2.344,
+     "data_weight_at_last_refit_before_shift": 3.399,
+     "low_credibility_share_of_rows_before_shift": 0.128,
+     "rows_at_last_refit_before_shift": 29529.8,
+     "precision": {
+      "pre_shift": 0.6333,
+      "post_shift": 0.3055
+     }
+    }
+   },
+   "precision_contrasts": {
+    "U_matched - S_shares": {
+     "pre_shift": {
+      "mean": -0.0006,
+      "interval_95": [
+       -0.0019,
+       0.0006
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0117,
+      "interval_95": [
+       0.0081,
+       0.0152
+      ]
+     }
+    },
+    "F_all - S_shares": {
+     "pre_shift": {
+      "mean": -0.0004,
+      "interval_95": [
+       -0.0018,
+       0.0012
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0112,
+      "interval_95": [
+       0.0079,
+       0.0143
+      ]
+     }
+    }
+   }
+  },
+  "A/mlp": {
+   "cells": 5,
+   "arms": {
+    "S_shares": {
+     "policy_weight_8_steps_before_shift": 7.749,
+     "policy_weight_12_to_20_steps_after_shift": 2.96,
+     "data_weight_at_last_refit_before_shift": 3.919,
+     "low_credibility_share_of_rows_before_shift": 0.174,
+     "rows_at_last_refit_before_shift": 25836.7,
+     "precision": {
+      "pre_shift": 0.5839,
+      "post_shift": 0.3788
+     }
+    },
+    "U_matched": {
+     "policy_weight_8_steps_before_shift": 3.898,
+     "policy_weight_12_to_20_steps_after_shift": 1.081,
+     "data_weight_at_last_refit_before_shift": 3.372,
+     "low_credibility_share_of_rows_before_shift": 0.203,
+     "rows_at_last_refit_before_shift": 25202.0,
+     "precision": {
+      "pre_shift": 0.5946,
+      "post_shift": 0.4054
+     }
+    },
+    "F_all": {
+     "policy_weight_8_steps_before_shift": 3.898,
+     "policy_weight_12_to_20_steps_after_shift": 1.26,
+     "data_weight_at_last_refit_before_shift": 3.361,
+     "low_credibility_share_of_rows_before_shift": 0.202,
+     "rows_at_last_refit_before_shift": 29972.9,
+     "precision": {
+      "pre_shift": 0.5948,
+      "post_shift": 0.4004
+     }
+    }
+   },
+   "precision_contrasts": {
+    "U_matched - S_shares": {
+     "pre_shift": {
+      "mean": 0.0107,
+      "interval_95": [
+       0.0031,
+       0.0192
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0267,
+      "interval_95": [
+       0.0186,
+       0.0343
+      ]
+     }
+    },
+    "F_all - S_shares": {
+     "pre_shift": {
+      "mean": 0.0108,
+      "interval_95": [
+       0.0042,
+       0.0175
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0216,
+      "interval_95": [
+       0.0151,
+       0.0285
+      ]
+     }
+    }
+   }
+  },
+  "B/linear": {
+   "cells": 10,
+   "arms": {
+    "S_shares": {
+     "policy_weight_8_steps_before_shift": 4.552,
+     "policy_weight_12_to_20_steps_after_shift": 3.498,
+     "data_weight_at_last_refit_before_shift": 3.462,
+     "low_credibility_share_of_rows_before_shift": 0.097,
+     "rows_at_last_refit_before_shift": 17751.4,
+     "precision": {
+      "pre_shift": 0.5898,
+      "post_shift": 0.2891
+     }
+    },
+    "U_matched": {
+     "policy_weight_8_steps_before_shift": 4.302,
+     "policy_weight_12_to_20_steps_after_shift": 2.699,
+     "data_weight_at_last_refit_before_shift": 3.228,
+     "low_credibility_share_of_rows_before_shift": 0.214,
+     "rows_at_last_refit_before_shift": 18957.3,
+     "precision": {
+      "pre_shift": 0.5781,
+      "post_shift": 0.3275
+     }
+    },
+    "F_all": {
+     "policy_weight_8_steps_before_shift": 4.186,
+     "policy_weight_12_to_20_steps_after_shift": 2.516,
+     "data_weight_at_last_refit_before_shift": 3.234,
+     "low_credibility_share_of_rows_before_shift": 0.204,
+     "rows_at_last_refit_before_shift": 29211.4,
+     "precision": {
+      "pre_shift": 0.5864,
+      "post_shift": 0.3338
+     }
+    }
+   },
+   "precision_contrasts": {
+    "U_matched - S_shares": {
+     "pre_shift": {
+      "mean": -0.0117,
+      "interval_95": [
+       -0.0133,
+       -0.0096
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0384,
+      "interval_95": [
+       0.0333,
+       0.0432
+      ]
+     }
+    },
+    "F_all - S_shares": {
+     "pre_shift": {
+      "mean": -0.0034,
+      "interval_95": [
+       -0.0049,
+       -0.0014
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0447,
+      "interval_95": [
+       0.0394,
+       0.0496
+      ]
+     }
+    }
+   }
+  },
+  "B/mlp": {
+   "cells": 5,
+   "arms": {
+    "S_shares": {
+     "policy_weight_8_steps_before_shift": 13.984,
+     "policy_weight_12_to_20_steps_after_shift": 8.628,
+     "data_weight_at_last_refit_before_shift": 3.582,
+     "low_credibility_share_of_rows_before_shift": 0.174,
+     "rows_at_last_refit_before_shift": 18347.2,
+     "precision": {
+      "pre_shift": 0.5515,
+      "post_shift": 0.3621
+     }
+    },
+    "U_matched": {
+     "policy_weight_8_steps_before_shift": 13.427,
+     "policy_weight_12_to_20_steps_after_shift": 5.774,
+     "data_weight_at_last_refit_before_shift": 3.274,
+     "low_credibility_share_of_rows_before_shift": 0.274,
+     "rows_at_last_refit_before_shift": 19307.3,
+     "precision": {
+      "pre_shift": 0.533,
+      "post_shift": 0.4188
+     }
+    },
+    "F_all": {
+     "policy_weight_8_steps_before_shift": 13.399,
+     "policy_weight_12_to_20_steps_after_shift": 5.312,
+     "data_weight_at_last_refit_before_shift": 3.314,
+     "low_credibility_share_of_rows_before_shift": 0.267,
+     "rows_at_last_refit_before_shift": 30384.3,
+     "precision": {
+      "pre_shift": 0.5422,
+      "post_shift": 0.4164
+     }
+    }
+   },
+   "precision_contrasts": {
+    "U_matched - S_shares": {
+     "pre_shift": {
+      "mean": -0.0186,
+      "interval_95": [
+       -0.0214,
+       -0.0162
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0567,
+      "interval_95": [
+       0.0504,
+       0.062
+      ]
+     }
+    },
+    "F_all - S_shares": {
+     "pre_shift": {
+      "mean": -0.0094,
+      "interval_95": [
+       -0.0109,
+       -0.0078
+      ]
+     },
+     "post_shift": {
+      "mean": 0.0544,
+      "interval_95": [
+       0.0491,
+       0.0597
+      ]
+     }
+    }
+   }
+  }
+ },
+ "findings": {
+  "pooled_learners": "Supported. With shares-only labels, the rows themselves imply a credibility weight above the truth before the shift (4.13 for A/linear, 3.92 for A/MLP, against 3); only 5% and 17% of rows have low credibility. Removing the selection at equal volume (U) lowers the implied weight to 3.39 and 3.37 and the policy weight from 4.17 to 3.72 (linear) and from 7.75 to 3.90 (MLP). Adding volume on top (F) changes nothing, so selection, not volume, is the cause.",
+  "per_agent_mlp": "Not explained. Per-agent MLPs in Regime B stay at a policy weight of 13.4 without selection (13.98 with it), although their rows imply 3.3. Their overconfidence is overfitting, not selection.",
+  "per_agent_linear": "Partly. B/linear moves from 4.55 to 4.19-4.30 without selection, while the rows imply 3.23-3.46.",
+  "precision": "Removing selection raises post-shift precision in every group (+0.011 to +0.057, intervals excluding zero), consistent with better coverage of low-credibility items, which become the true ones after the flip. Before the shift it is neutral for A/linear, +0.011 for A/MLP, and slightly lower in Regime B (-0.003 to -0.019).",
+  "residual": "Even unselected rows imply 3.2-3.4, not 3.0, and policies sit between that and the prior's 4. Prior anchoring and small-sample bias of the plain fit are not separated."
+ },
+ "boundaries": {
+  "study_cells_scored": false,
+  "llm_calls": 0,
+  "empirical_rows_read": 0,
+  "registered": false
+ }
+}

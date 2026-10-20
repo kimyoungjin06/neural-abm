@@ -1,0 +1,111 @@
+{
+ "schema_version": "n14_pivot_parity.v1",
+ "label": "n14_pivot_parity_20261019",
+ "status": "N14_PARITY_HOLDS_BYTE_FOR_BYTE",
+ "specification": "docs/research/n14-pivot-parity-v1.md",
+ "code_commit": "c361a48",
+ "host": "the workstation where the Pivot v3 result was recorded; CPU only",
+ "host_chosen_by": "USER_2026_10_19",
+ "target": {
+  "study": "pivot_llm_prior_pilot_v3",
+  "precommit": "87c90eb",
+  "result": "experiments/evidence/results/pivot_llm_prior_pilot_v3_20260929.summary.json",
+  "recorded_runs_jsonl_sha256": "1f532d98663767cd2c9bdfa74022b620efbac4fd4827f1d6e85a2f9bb3b3d6ca",
+  "rows": 1152
+ },
+ "re_expressed_through_the_core": {
+  "arms": [
+   "linear_batch",
+   "tree_batch",
+   "mlp_batch"
+  ],
+  "semantics": [
+   "the learners' prior (LinearPrior)",
+   "learners (fit_residual linear and mlp, fit_prior_boosted_trees)",
+   "refit seeds (keyed_seed)",
+   "outcome record (OutcomeRecord)",
+   "exploration floor (ExplorationFloor on keyed_uniform)"
+  ],
+  "kept_in_pivot_code": [
+   "the world: population, network, social step, persistence transition, probe cohort",
+   "the fixed-rule arm, whose torch rule differs from a numpy prior in the last bits",
+   "the agents' own policy parameters, built through Pivot's prior slot"
+  ]
+ },
+ "baseline": {
+  "mode": "baseline",
+  "replicates": 1,
+  "tasks": 18,
+  "workers": 16,
+  "wall_seconds": 79.2,
+  "rows": 72,
+  "identical_rows": 72,
+  "by_arm": {
+   "fixed_rule": {
+    "rows": 18,
+    "identical": 18
+   },
+   "linear_batch": {
+    "rows": 18,
+    "identical": 18
+   },
+   "tree_batch": {
+    "rows": 18,
+    "identical": 18
+   },
+   "mlp_batch": {
+    "rows": 18,
+    "identical": 18
+   }
+  }
+ },
+ "parity": {
+  "mode": "core",
+  "replicates": 16,
+  "tasks": 288,
+  "workers": 16,
+  "wall_seconds": 450.9,
+  "runs_jsonl_sha256": "1f532d98663767cd2c9bdfa74022b620efbac4fd4827f1d6e85a2f9bb3b3d6ca",
+  "whole_file_identical": true,
+  "rows": 1152,
+  "identical_rows": 1152,
+  "by_arm": {
+   "fixed_rule": {
+    "rows": 288,
+    "identical": 288
+   },
+   "linear_batch": {
+    "rows": 288,
+    "identical": 288
+   },
+   "tree_batch": {
+    "rows": 288,
+    "identical": 288
+   },
+   "mlp_batch": {
+    "rows": 288,
+    "identical": 288
+   }
+  }
+ },
+ "estimate_quoted": "20-35 min from the baseline (18 tasks in 79 s)",
+ "smoke_findings_before_the_freeze": {
+  "smoke_tasks_identical": 18,
+  "prior_held_in_two_places": "Pivot holds the prior as the learners' anchor and as each agent's own policy parameters (reported as mean_attention_weight); the core holds only the first",
+  "without_pivots_prior_slot": "only mean_attention_weight differed; decisions, trajectories, and probe scores were identical"
+ },
+ "semantic_differences_found": {
+  "fixed_rule_numerics": "Pivot's per-agent torch rule (sigmoid of x @ w + b, one row at a time) and the core's numpy LinearPrior on the stacked matrix differ in the last bits: 5,452 of 20,000 uniform feature rows (seed 0), by at most 2.2e-16",
+  "outcome_row_order_under_delays": "the core returns rows in insertion order and Pivot buffers them in release order; untested here because v3 has immediate visibility"
+ },
+ "outputs": {
+  "baseline": "/ssd/n14_parity_c361a48_baseline/",
+  "parity": "/ssd/n14_parity_c361a48_core/"
+ },
+ "boundaries": {
+  "llm_calls": 0,
+  "empirical_rows_read": 0,
+  "generic_nabm_api_changed": false,
+  "pivot_results_reinterpreted": false
+ }
+}

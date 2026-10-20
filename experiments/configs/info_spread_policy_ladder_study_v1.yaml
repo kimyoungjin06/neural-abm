@@ -1,0 +1,149 @@
+schema_version: info_spread_policy_ladder_study.v1
+label: info_spread_policy_ladder_study_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-16'
+stage: D3a (run as D4)
+purpose: 'Freeze the non-LLM study cells of the information-spread policy ladder: when does an adaptive NABM policy
+  differ from a policy table written before the run (T0-1, matched evidence), and from the best such table (T0-4)?
+  The LLM arms P0, X0, and L1 are frozen separately as D3b before D5.'
+design_document: docs/research/info-spread-policy-ladder-study-v1.md
+source_bindings:
+- path: scripts/policy_ladder_core_v1.py
+  role: DOMAIN_FREE_CORE_EXACT_AND_PIVOT_LEARNERS
+  sha256: bc82caed34f1cf6542b8a144092137214c07939562c794fdfb865d02a302a579
+- path: scripts/prototype_info_spread_policy_ladder_v1.py
+  role: WORLD_ARMS_AND_SIMULATION
+  sha256: 09375ca88431b4a90f2539f8e2dc33c5acfb7a2bdc76721ced4611cef734304e
+- path: scripts/power_info_spread_policy_ladder_v2.py
+  role: GROUP_RULE_TESTED_IN_D2B_AND_D2C
+  sha256: d53d4ba99aeffcd63df37cce1f5b731817e7c80fa2940bd4a0273405c190080b
+- path: scripts/power_info_spread_policy_ladder_v1.py
+  role: SIZES_DONOR_SETS_AND_BOOTSTRAP_RESAMPLES
+  sha256: d0f7f0b80ad69cf9d84c08815636de85eda062713559b50627d67e9d2f889da8
+- path: scripts/diagnose_info_spread_d2_v1.py
+  role: IMPORTED_BY_THE_GROUP_RULE_MODULE
+  sha256: 1ec9a630c41df2a36d34d801f04e8aabe47154d93dd4c2a526f1356fc77128a8
+- path: docs/research/info-spread-policy-ladder-design-v1.md
+  role: DESIGN_BRIEF_WITH_D2_D2B_D2C_SPECIFICATIONS
+  sha256: dc8209a149ae52c34b509d513e8ae302aa61c7ff2a3ea0f7a0d17e76c6829194
+- path: experiments/evidence/results/info_spread_policy_ladder_d2c_controls_20261016.summary.json
+  role: D2C_ADEQUATE_ON_CONTROLS
+  sha256: 7ce52bd148fd6b7bfd7909ae55beb2dd816f406157a63583dc93fa27fa0489e2
+world:
+  degree: 6
+  rewire: 0.1
+  seeds_per_item: 3
+  delay: 4
+  visibility: 0.5
+  epsilon: 0.02
+  refit_every: 4
+  base_rate: 0.4
+  threshold_range:
+  - 0.1
+  - 0.4
+  cost_levels_regime_b:
+  - 0.5
+  - 1.0
+  - 2.0
+  observability:
+    label_mode: all
+    one_row_per_agent_and_item: true
+    meaning: 'public fact-checks: a learner trains on the outcome of every exposure it decided on, once per agent
+      and item (its share, or else its last decline)'
+learners:
+  base_settings: pivot
+  pooled_linear_l2: 0.0001
+  agent_residual_l2: 0.01
+  mlp: 'Pivot settings: 300 epochs, lr 0.02, weight decay 1e-4, hidden width 16; trained on a GPU with deterministic
+    algorithms'
+  linear: exact Newton ridge-logistic residual on the prior logit, fitted to convergence
+arms:
+- F0
+- F1
+- T0_1
+- T0_4
+- L0
+design:
+  regimes:
+  - A
+  - B
+  families:
+    A:
+    - linear_exact
+    - mlp
+    B:
+    - partial_linear_exact
+    - partial_mlp
+  geometries:
+  - linear
+  - smooth
+  - axis
+  - 'null'
+  study_geometries:
+  - linear
+  - smooth
+  - axis
+  null_geometry: 'null'
+  groups: 16
+seeds:
+  world_seed_offset: 6000
+  donor_replicates:
+  - 1000
+  - 1001
+  - 1002
+  - 1003
+  learner_tag: 6
+  rule_tag: 6
+rule:
+  comparison: paired difference in share precision
+  minimum_effect: 0.01
+  bootstrap_resamples: 2000
+  interval: 0.95
+  resampling: cells, with replacement
+  material: interval excludes zero and |mean cell delta| >= minimum_effect
+dispositions:
+  b_at_least: 4
+  a_at_most: 1
+  b_at_most_for_table_suffices: 1
+  a_at_least_for_closed_loop_in_a: 4
+  order:
+  - AS_EXPECTED
+  - TABLE_SUFFICES_EVEN_IN_B
+  - CLOSED_LOOP_MATTERS_EVEN_IN_A
+  - MIXED
+  null_check: L0 - F1 material and positive in any null group is DESIGN_DEFECT_IN_NULL_WORLD and blocks reading
+    the study groups
+profiles:
+  development:
+    agents: 1000
+    steps: 60
+    items_per_step: 20
+    replicates: 16
+    cells: 20
+  smoke:
+    agents: 60
+    steps: 20
+    items_per_step: 4
+    replicates: 2
+    cells: 1
+precommit:
+  precommit_paths:
+  - docs/research/info-spread-policy-ladder-study-v1.md
+  - experiments/configs/info_spread_policy_ladder_study_v1.yaml
+  - scripts/run_info_spread_policy_ladder_study_v1.py
+  - tests/test_info_spread_policy_ladder_study_v1.py
+runs:
+  development: --profile development --precommit-sha <HEAD> on GPU-Server, CUDA_VISIBLE_DEVICES=2, 24 workers
+  reproduction: the same command into a second output directory; cells.jsonl and summary.json must be byte identical
+  pilot: --pilot-cells 2 under full load, for the time estimate only
+outputs:
+- cells.jsonl
+- summary.json
+- progress.jsonl
+- receipt.json
+boundaries:
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  scientific_effect: NOT_ESTABLISHED
+  synthetic_only: true
