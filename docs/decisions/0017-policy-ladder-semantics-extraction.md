@@ -30,8 +30,8 @@ N14 tested the bridge rule in three steps.
 2. **The first consumer through the same core.**
    - The Pivot LLM-prior pilot v3 was re-expressed through the core.
    - It reproduced its recorded `runs.jsonl` byte for byte: 1,152 of 1,152
-     rows, sha256 `1f532d98…`
-     ([N14 parity record](../../experiments/evidence/results/n14_pivot_parity_20261019.summary.md)).
+     rows, sha256 `1f532d98…`. The repository-only record is
+     `experiments/evidence/results/n14_pivot_parity_20261019.summary.md`.
 3. **Learner parity.** With the Pivot prior, the core's learners reproduce
    Pivot's fitters byte for byte (`tests/test_policy_ladder_core_v1.py`).
 
