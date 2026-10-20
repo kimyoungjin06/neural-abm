@@ -35,14 +35,14 @@ of them is the central claim.
 | Component | Package evidence | Repository-only evidence | Status | Gap |
 | --- | --- | --- | --- | --- |
 | Policy learning is separated from social interaction | The unit-contract and two adapter-holdout rows of the Primary Claim Path | None needed | Supported for binary lifecycles | None |
-| Fixed and adaptive policies are compared in one lifecycle | The Study 2 row: a frozen-versus-adaptive comparison with paired shocks and named-parameter traces | The Pivot policy ladder reproduces its fixed rule exactly before any learned arm is read (P1). The information-spread ladder adds tables written before the run (P7) | Supported | The outcome record waits for its ordering rule under delays (O27) before extraction |
-| External priors enter the same lifecycle | None | A once-elicited LLM prior in two domains (P3, P9), with an exploration floor | Repository-only, two consumers. Extraction of the prior rule and floor is proposed in Decision 0017 | No package API until Decision 0017 is implemented |
+| Fixed and adaptive policies are compared in one lifecycle | The Study 2 row: a frozen-versus-adaptive comparison with paired shocks and named-parameter traces | The Pivot policy ladder reproduces its fixed rule exactly before any learned arm is read (P1). The information-spread ladder adds tables written before the run (P7) | Supported | None. The outcome record is in the package with its ordering rule (Decision 0017, O27 answered by N15) |
+| External priors enter the same lifecycle | None | A once-elicited LLM prior in two domains (P3, P9), with an exploration floor | Supported. `neural_abm.policy_ladder` holds the prior rule and exploration floor on the `main` / next-alpha candidate (Decision 0017) | Not in the released `v0.1.0a5` tag |
 | Policies are traced and scored out of sample | `neural_abm.policy_scoring` (Decision 0016) | Pivot probe-cohort scoring | Supported | None |
-| The structure is reusable across domains | The unit contract spans Toy2, Toy4, Toy5, and two adapters | A second domain runs the comparison through a shared core, and the Pivot ladder reproduces through it byte for byte (consolidation v6, C47 and C48) | Supported at repository level | Package extraction, proposed in Decision 0017 and awaiting approval |
+| The structure is reusable across domains | The unit contract spans Toy2, Toy4, Toy5, and two adapters; `neural_abm.policy_ladder` and `neural_abm.policy_learners` (Decision 0017) | A second domain runs the comparison through a shared core, and both recorded Pivot runs reproduce byte for byte through the package (C47, C48, N15 parity) | Supported on the `main` / next-alpha candidate | Not in the released `v0.1.0a5` tag |
 
-The two consumers now share the core's semantics byte for byte. What remains
-before the framework claim can be made at package level is the extraction in
-Decision 0017. Until then, cite reuse as repository-level.
+Two consumers share the policy-ladder semantics byte for byte, and Decision
+0017 put them in the `main` / next-alpha package. Cite them as package API
+there, and note that the released `v0.1.0a5` tag predates them.
 
 ## Route Boundary
 
@@ -270,6 +270,6 @@ rather than a post hoc field, endpoint, or model substitution.
 10. Write Section 8's second-domain subsection from P7 to P10, with the
     consolidation v6 reporting rules: unverified measure, same-world donors,
     precision is not utility, and the LLM readout.
-11. Until Decision 0017 is implemented, cite the prior rule, outcome record,
-    and exploration floor as repository-level reuse by two consumers, not as
-    package API.
+11. Cite the prior rule, outcome record, exploration floor, and prior-anchored
+    learners as `main` / next-alpha package API (Decision 0017), not as part
+    of the released `v0.1.0a5` tag.

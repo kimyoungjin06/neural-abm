@@ -170,7 +170,10 @@ def test_document_decision_and_readme_state_the_results_narrowly() -> None:
         "not read",
     ):
         assert required in document, required
-    assert "Status\n\nProposed." in DECISION.read_text(encoding="utf-8")
+    # v6 records the decision as proposed; it may since have been accepted, but
+    # its status section must keep the proposal.
+    status = DECISION.read_text(encoding="utf-8").split("## Date", maxsplit=1)[0]
+    assert "Proposed" in status and "2026-10-19" in status
     readme = " ".join(README.read_text(encoding="utf-8").split())
     assert "docs/research/pivot-policy-ladder-consolidation-v6.md" in readme
     assert "no claim about real information spread" in readme
