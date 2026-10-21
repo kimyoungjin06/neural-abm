@@ -1,0 +1,127 @@
+schema_version: info_spread_policy_ladder_unclipped_prior.v1
+label: info_spread_policy_ladder_unclipped_prior_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-21'
+stage: O24 (N17, third of four follow-ups the user chose to run in order on 2026-10-21)
+purpose: 'D5 distilled the once-elicited prior after clipping each answer to a probability in [1e-4, 1 - 1e-4], and in
+  Regime A 99% of answers fell below the clip, so P0/A was nearly constant. This study rebuilds the prior from the same
+  registered elicitation without the clip (P0u) and runs it, and the learner started from it (L1u), in the study v2
+  cells. It asks whether the model''s answers carry usable information once the readout does not saturate, and whether
+  such a prior helps the learner.'
+design_document: docs/research/info-spread-policy-ladder-unclipped-prior-v1.md
+source_bindings:
+- path: scripts/policy_ladder_core_v1.py
+  role: DOMAIN_FREE_CORE
+  sha256: bc82caed34f1cf6542b8a144092137214c07939562c794fdfb865d02a302a579
+- path: scripts/prototype_info_spread_policy_ladder_v1.py
+  role: WORLD_ARMS_AND_SIMULATION
+  sha256: 09375ca88431b4a90f2539f8e2dc33c5acfb7a2bdc76721ced4611cef734304e
+- path: scripts/power_info_spread_policy_ladder_v2.py
+  role: GROUP_RULE
+  sha256: d53d4ba99aeffcd63df37cce1f5b731817e7c80fa2940bd4a0273405c190080b
+- path: scripts/power_info_spread_policy_ladder_v1.py
+  role: BOOTSTRAP_RESAMPLES
+  sha256: d0f7f0b80ad69cf9d84c08815636de85eda062713559b50627d67e9d2f889da8
+- path: scripts/diagnose_info_spread_d2_v1.py
+  role: IMPORTED_BY_THE_GROUP_RULE_MODULE
+  sha256: 1ec9a630c41df2a36d34d801f04e8aabe47154d93dd4c2a526f1356fc77128a8
+- path: scripts/run_info_spread_policy_ladder_study_v1.py
+  role: V1_RUNNER_FUNCTIONS_REUSED_BY_STUDY_V2
+  sha256: 2e3b086ba35e53473fc64e5f8611a48a54e83a029959f482ec8f95a8caab77b2
+- path: scripts/info_spread_unverified_measure_v1.py
+  role: THE_UNVERIFIED_MEASURE
+  sha256: b1c43f385e1bbd440bd7a2a5176f8725625679f731ceabf0c395c882196eb14d
+- path: scripts/run_info_spread_policy_ladder_study_v2.py
+  role: STUDY_V2_RUNNER
+  sha256: 3bcfb6162f1278067a562571eac22ba8d4f6d560b30820f8860b0a32656e9928
+- path: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+  role: STUDY_V2_CONTRACT
+  sha256: a679035540ae7292d097a28bb3b0fea1860560a2a2aa8e8a26e1701b972f4845
+- path: scripts/run_info_spread_policy_ladder_llm_arms_v1.py
+  role: D3B_RUNNER_COHORT_PROMPTS_DISTILLATION_CALIBRATION_AND_LEARNER
+  sha256: 17c3e35af8facb2b2a12254a022f9dbce5205f6eaf34189d74c8603031c91a5e
+- path: experiments/configs/info_spread_policy_ladder_llm_arms_v1.yaml
+  role: D3B_CONTRACT_PROMPTS_COHORT_RIDGE_AND_BASE_RATE
+  sha256: ab06f4003501d2926ecfe4ba0dafd27a3c762b9c36543334cac3c759bdc883c4
+- path: docs/research/info-spread-policy-ladder-llm-arms-v1.md
+  role: D3B_DESIGN
+  sha256: b0f2a579877e33b571a7051fc5a4a0e1cd4a343d8e719ac045ead626cef97031
+- path: experiments/evidence/results/info_spread_policy_ladder_study_v2_d4_20261019.summary.json
+  role: STUDY_V2_RECORD_WHOSE_CELLS_THIS_STUDY_READS
+  sha256: 771f59bda2e05e7e4d0e1b155d6f1a65912c20cc334b318f7734f551958d50bb
+- path: experiments/evidence/results/info_spread_policy_ladder_llm_arms_d5_20261019.summary.json
+  role: D5_RECORD_ITS_CELLS_AND_FIRST_ELICITATION
+  sha256: f08e16bf56ce50b92a46203d43e213b19d34d197785e9983144a1c881e4e7510
+- path: experiments/configs/pivot_policy_ladder_consolidation_v6.yaml
+  role: O24_THE_OPEN_ITEM_THIS_STUDY_ANSWERS
+  sha256: 28f47a0bd37141c41b26e3af2e5e0142b5c9a114135508919df2736b3ff84145
+study_v2:
+  contract: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+  record: experiments/evidence/results/info_spread_policy_ladder_study_v2_d4_20261019.summary.json
+  arms_read: [F1, L0]
+llm_arms:
+  contract: experiments/configs/info_spread_policy_ladder_llm_arms_v1.yaml
+  record: experiments/evidence/results/info_spread_policy_ladder_llm_arms_d5_20261019.summary.json
+  arms_read: [P0, L1]
+  elicitation: D5'S FIRST REGISTERED ELICITATION, WHOSE SHA256 THE D5 RECORD NAMES; ITS PROMPTS ARE CHECKED AGAINST D3B
+parity: L0 RECOMPUTED AT REPLICATE 0 OF EVERY L1U TASK MUST EQUAL STUDY V2'S VALUE EXACTLY; ANY FAILURE BLOCKS READING
+prior:
+  readout: THE RAW LOG-ODDS (LOGIT OF YES MINUS LOGIT OF NO), WITH NO PROBABILITY CLIP
+  distillation: D3B'S RIDGE ON THE SAME COHORT AND FEATURES, LAMBDA 0.001 PER PROFILE, INTERCEPT UNPENALIZED
+  calibration: D3B'S SINGLE INTERCEPT SHIFT TO THE STATED BASE RATE 0.4 OVER THE COHORT
+  inspected_before_the_freeze: NOTHING ABOUT THE UNCLIPPED PRIOR; ITS WEIGHTS AND FIT ARE FIRST READ IN THE RECORD
+  llm_calls: 0
+arms:
+- P0u
+- L1u
+comparisons:
+  unclipped_prior_vs_hand: [P0u, F1]
+  unclipped_prior_in_learner: [L1u, L0]
+  closed_loop_on_unclipped_prior: [L1u, P0u]
+descriptive:
+  readout_effect_on_the_prior: [P0u, P0]
+  readout_effect_on_the_learner: [L1u, L1]
+measures:
+  primary: unverified_share_precision (study v2's)
+  recorded: share_precision
+seeds:
+  learner_seeds: STUDY V2'S, AS FOR L0 AND L1
+  rule_tag: 12
+rule:
+  comparison: paired difference in the primary measure
+  minimum_effect: 0.01
+  bootstrap_resamples: 2000
+  interval: 0.95
+  resampling: cells, with replacement
+  material: interval excludes zero and |mean cell delta| >= minimum_effect
+dispositions:
+  per_regime: MOSTLY_POSITIVE if POSITIVE in at least 4 of the 6 study groups, MOSTLY_NEGATIVE if NEGATIVE in at least
+    4 of 6, otherwise MIXED_OR_NONE, for each comparison
+  mostly_at_least: 4
+  null_check: L1u - P0u material and positive in any null group is DESIGN_DEFECT_IN_NULL_WORLD and blocks reading the
+    study groups
+  expected_before_the_run: 'Not predicted. If the unclipped Regime A answers carry information, P0u - F1 rises from
+    D5''s P0 - F1; whether the learner gains from it is the open question.'
+precommit:
+  precommit_paths:
+  - docs/research/info-spread-policy-ladder-unclipped-prior-v1.md
+  - experiments/configs/info_spread_policy_ladder_unclipped_prior_v1.yaml
+  - scripts/run_info_spread_policy_ladder_unclipped_prior_v1.py
+  - tests/test_info_spread_policy_ladder_unclipped_prior_v1.py
+runs:
+  pilot: --pilot-cells 2 under full load, for the time estimate only; its summary is not opened
+  development: --profile development --precommit-sha <HEAD> --elicitation-dir <D5 first elicitation> --v2-cells <study v2
+    development cells.jsonl> --d5-cells <D5 development cells.jsonl> on GPU-Server, CUDA_VISIBLE_DEVICES=2, 24 workers
+  reproduction: the same command into a second output directory; cells.jsonl and summary.json must be byte identical
+outputs:
+- cells.jsonl
+- summary.json
+- progress.jsonl
+- receipt.json
+boundaries:
+  empirical_rows_read: 0
+  llm_calls: 0
+  paid_api_calls: 0
+  generic_nabm_api_changed: false
+  llm_knowledge_of_real_spread: NOT_ESTABLISHED_THE_WORLDS_ARE_SYNTHETIC
+  synthetic_only: true
