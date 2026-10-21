@@ -1955,6 +1955,10 @@ def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
         "scripts/run_info_spread_policy_ladder_transfer_v1.py",
         "tests/test_info_spread_policy_ladder_transfer_v1.py",
         "tests/test_info_spread_policy_ladder_transfer_v1_result.py",
+        "docs/research/info-spread-policy-ladder-flip-rate-v1.md",
+        "experiments/configs/info_spread_policy_ladder_flip_rate_v1.yaml",
+        "scripts/run_info_spread_policy_ladder_flip_rate_v1.py",
+        "tests/test_info_spread_policy_ladder_flip_rate_v1.py",
     }
     assert repository_paths == inspector[
         "PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS"
