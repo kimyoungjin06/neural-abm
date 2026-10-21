@@ -1,0 +1,1835 @@
+{
+ "schema_version": "info_spread_policy_ladder_unclipped_prior_result.v1",
+ "label": "info_spread_policy_ladder_unclipped_prior_v1_20261021",
+ "status": "O24_UNCLIPPED_PRIOR_BEATS_THE_HAND_RULE_BUT_ADDS_LITTLE_INSIDE_THE_LEARNER",
+ "specification": "docs/research/info-spread-policy-ladder-unclipped-prior-v1.md",
+ "contract": "experiments/configs/info_spread_policy_ladder_unclipped_prior_v1.yaml",
+ "run_status": "STUDY_RESULT",
+ "contract_sha256": "362ddf8552a5aa2f27e6c96b0e2e8142a6f98fab4be72840f5423c8eadb61473",
+ "precommit_commit": "eb4905787cc1bce2747536633e03944fb2db58f2",
+ "primary_measure": "unverified_share_precision",
+ "execution": {
+  "host": {
+   "node": "TRX50-5090",
+   "python": "3.14.0",
+   "numpy": "2.4.4",
+   "torch": "2.11.0+cu130",
+   "gpu": "NVIDIA GeForce RTX 5090",
+   "cuda_visible_devices": "2"
+  },
+  "workers": 24,
+  "wall_seconds": {
+   "development": 5098.8,
+   "reproduction": 5096.3
+  },
+  "estimate_quoted": "80-130 min per run from a full-load pilot (2 cells per group, 449 s wall)",
+  "mean_task_seconds": {
+   "fixed/A": 17.9,
+   "fixed/B": 19.6,
+   "learner/A": 347.8,
+   "learner/B": 396.0
+  },
+  "output": {
+   "development": "GPU-Server ~/neural_abm/runs/info_spread_unclipped_eb49057_development/",
+   "reproduction": "GPU-Server ~/neural_abm/runs/info_spread_unclipped_eb49057_reproduction/"
+  }
+ },
+ "reproduction": {
+  "outputs": {
+   "development": {
+    "cells.jsonl": "897f2def3ead6954e5ed92e71ed4dd4b9890384433f95cd18e71e7aab1170f0a",
+    "summary.json": "2492488725faa0d2bafb3715099cac52543233952151f99a95b16e0d351d2757"
+   },
+   "reproduction": {
+    "cells.jsonl": "897f2def3ead6954e5ed92e71ed4dd4b9890384433f95cd18e71e7aab1170f0a",
+    "summary.json": "2492488725faa0d2bafb3715099cac52543233952151f99a95b16e0d351d2757"
+   }
+  },
+  "byte_identical": {
+   "cells.jsonl": true,
+   "summary.json": true
+  }
+ },
+ "cells_per_group": 20,
+ "dispositions": {
+  "by_comparison": {
+   "closed_loop_on_unclipped_prior": {
+    "A": "MIXED_OR_NONE",
+    "B": "MIXED_OR_NONE"
+   },
+   "unclipped_prior_in_learner": {
+    "A": "MIXED_OR_NONE",
+    "B": "MIXED_OR_NONE"
+   },
+   "unclipped_prior_vs_hand": {
+    "A": "MOSTLY_POSITIVE",
+    "B": "MOSTLY_POSITIVE"
+   }
+  },
+  "counts": {
+   "closed_loop_on_unclipped_prior": {
+    "A": {
+     "INDISTINGUISHABLE": 2,
+     "NEGATIVE": 1,
+     "POSITIVE": 3
+    },
+    "B": {
+     "INDISTINGUISHABLE": 2,
+     "NEGATIVE": 1,
+     "POSITIVE": 3
+    }
+   },
+   "unclipped_prior_in_learner": {
+    "A": {
+     "INDISTINGUISHABLE": 3,
+     "NEGATIVE": 0,
+     "POSITIVE": 3
+    },
+    "B": {
+     "INDISTINGUISHABLE": 4,
+     "NEGATIVE": 0,
+     "POSITIVE": 2
+    }
+   },
+   "unclipped_prior_vs_hand": {
+    "A": {
+     "INDISTINGUISHABLE": 0,
+     "NEGATIVE": 0,
+     "POSITIVE": 6
+    },
+    "B": {
+     "INDISTINGUISHABLE": 0,
+     "NEGATIVE": 0,
+     "POSITIVE": 6
+    }
+   }
+  },
+  "design_check": "NULL_WORLD_PASSES",
+  "labels_by_group": {
+   "closed_loop_on_unclipped_prior": {
+    "A/linear_exact/axis": "POSITIVE",
+    "A/linear_exact/linear": "INDISTINGUISHABLE",
+    "A/linear_exact/smooth": "POSITIVE",
+    "A/mlp/axis": "POSITIVE",
+    "A/mlp/linear": "NEGATIVE",
+    "A/mlp/smooth": "INDISTINGUISHABLE",
+    "B/partial_linear_exact/axis": "POSITIVE",
+    "B/partial_linear_exact/linear": "INDISTINGUISHABLE",
+    "B/partial_linear_exact/smooth": "INDISTINGUISHABLE",
+    "B/partial_mlp/axis": "POSITIVE",
+    "B/partial_mlp/linear": "NEGATIVE",
+    "B/partial_mlp/smooth": "POSITIVE"
+   },
+   "unclipped_prior_in_learner": {
+    "A/linear_exact/axis": "POSITIVE",
+    "A/linear_exact/linear": "POSITIVE",
+    "A/linear_exact/smooth": "POSITIVE",
+    "A/mlp/axis": "INDISTINGUISHABLE",
+    "A/mlp/linear": "INDISTINGUISHABLE",
+    "A/mlp/smooth": "INDISTINGUISHABLE",
+    "B/partial_linear_exact/axis": "INDISTINGUISHABLE",
+    "B/partial_linear_exact/linear": "INDISTINGUISHABLE",
+    "B/partial_linear_exact/smooth": "INDISTINGUISHABLE",
+    "B/partial_mlp/axis": "INDISTINGUISHABLE",
+    "B/partial_mlp/linear": "POSITIVE",
+    "B/partial_mlp/smooth": "POSITIVE"
+   },
+   "unclipped_prior_vs_hand": {
+    "A/linear_exact/axis": "POSITIVE",
+    "A/linear_exact/linear": "POSITIVE",
+    "A/linear_exact/smooth": "POSITIVE",
+    "A/mlp/axis": "POSITIVE",
+    "A/mlp/linear": "POSITIVE",
+    "A/mlp/smooth": "POSITIVE",
+    "B/partial_linear_exact/axis": "POSITIVE",
+    "B/partial_linear_exact/linear": "POSITIVE",
+    "B/partial_linear_exact/smooth": "POSITIVE",
+    "B/partial_mlp/axis": "POSITIVE",
+    "B/partial_mlp/linear": "POSITIVE",
+    "B/partial_mlp/smooth": "POSITIVE"
+   }
+  },
+  "null_violations": []
+ },
+ "elicitation_sha256": "6ef051d4d03ff93f3e5d805fcbc93112ffa8036fc11f60df9ca4753a80dde8bd",
+ "parity_failures": [],
+ "table": {
+  "A/linear_exact/axis": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.636,
+    "L0": 0.6988,
+    "L1": 0.7198,
+    "L1u": 0.719,
+    "P0": 0.4008,
+    "P0u": 0.6951
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.6386,
+    "L0": 0.6963,
+    "L1": 0.7158,
+    "L1u": 0.716,
+    "P0": 0.4009,
+    "P0u": 0.6955
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0201,
+      0.0278
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0239
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.003,
+      0.0013
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0008
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      0.2908,
+      0.2974
+     ],
+     "material": true,
+     "mean_cell_delta": 0.2942
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0183,
+      0.0224
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0202
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0574,
+      0.0607
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0591
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0166,
+      0.0245
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0205
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0019,
+      0.0024
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0002
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      0.2899,
+      0.2989
+     ],
+     "material": true,
+     "mean_cell_delta": 0.2946
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0177,
+      0.0219
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0197
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0549,
+      0.0588
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0569
+    }
+   }
+  },
+  "A/linear_exact/linear": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.5641,
+    "L0": 0.6432,
+    "L1": 0.6535,
+    "L1u": 0.6553,
+    "P0": 0.4019,
+    "P0u": 0.6514
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.567,
+    "L0": 0.6416,
+    "L1": 0.6514,
+    "L1u": 0.6543,
+    "P0": 0.4019,
+    "P0u": 0.6537
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0017,
+      0.0064
+     ],
+     "material": false,
+     "mean_cell_delta": 0.004
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0004,
+      0.004
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0018
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      0.2461,
+      0.2532
+     ],
+     "material": true,
+     "mean_cell_delta": 0.2494
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0106,
+      0.0136
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0121
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0859,
+      0.0885
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0872
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0022,
+      0.0032
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0006
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      0.0004,
+      0.0054
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0029
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      0.2477,
+      0.2564
+     ],
+     "material": true,
+     "mean_cell_delta": 0.2518
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0111,
+      0.0145
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0127
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0848,
+      0.0885
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0867
+    }
+   }
+  },
+  "A/linear_exact/null": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.3989,
+    "L0": 0.3993,
+    "L1": 0.3884,
+    "L1u": 0.3955,
+    "P0": 0.3995,
+    "P0u": 0.3986
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.399,
+    "L0": 0.397,
+    "L1": 0.3824,
+    "L1u": 0.3921,
+    "P0": 0.3995,
+    "P0u": 0.3987
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0089,
+      0.0027
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0032
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      0.0007,
+      0.014
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0071
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0043,
+      0.0031
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0009
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      -0.009,
+      0.0014
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0038
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      -0.0015,
+      0.0009
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0002
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0121,
+      -0.0006
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0065
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      0.0038,
+      0.0156
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0097
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0052,
+      0.0038
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0009
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      -0.0087,
+      -0.0007
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0048
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      -0.002,
+      0.0014
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0003
+    }
+   }
+  },
+  "A/linear_exact/smooth": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.5498,
+    "L0": 0.6436,
+    "L1": 0.6495,
+    "L1u": 0.6552,
+    "P0": 0.4007,
+    "P0u": 0.6219
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.5521,
+    "L0": 0.6404,
+    "L1": 0.6454,
+    "L1u": 0.6527,
+    "P0": 0.4007,
+    "P0u": 0.623
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0293,
+      0.0368
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0333
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      0.0027,
+      0.009
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0057
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      0.217,
+      0.225
+     ],
+     "material": true,
+     "mean_cell_delta": 0.2212
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0099,
+      0.0133
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0116
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0707,
+      0.0733
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0721
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0252,
+      0.0335
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0296
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      0.0035,
+      0.0108
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0072
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      0.2175,
+      0.2267
+     ],
+     "material": true,
+     "mean_cell_delta": 0.2223
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0106,
+      0.0139
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0123
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0693,
+      0.0724
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0709
+    }
+   }
+  },
+  "A/mlp/axis": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.636,
+    "L0": 0.7156,
+    "L1": 0.7264,
+    "L1u": 0.7246,
+    "P0": 0.4008,
+    "P0u": 0.6951
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.6386,
+    "L0": 0.706,
+    "L1": 0.7164,
+    "L1u": 0.7147,
+    "P0": 0.4009,
+    "P0u": 0.6955
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0263,
+      0.0327
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0296
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0049,
+      0.0012
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0018
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      0.2907,
+      0.2975
+     ],
+     "material": true,
+     "mean_cell_delta": 0.2942
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.007,
+      0.0113
+     ],
+     "material": false,
+     "mean_cell_delta": 0.009
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0573,
+      0.0607
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0591
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0157,
+      0.0227
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0192
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0052,
+      0.0018
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0018
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      0.29,
+      0.2989
+     ],
+     "material": true,
+     "mean_cell_delta": 0.2946
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0063,
+      0.0112
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0087
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.055,
+      0.0587
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0569
+    }
+   }
+  },
+  "A/mlp/linear": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.5641,
+    "L0": 0.6167,
+    "L1": 0.6185,
+    "L1u": 0.6228,
+    "P0": 0.4019,
+    "P0u": 0.6514
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.567,
+    "L0": 0.6067,
+    "L1": 0.6055,
+    "L1u": 0.6118,
+    "P0": 0.4019,
+    "P0u": 0.6537
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0311,
+      -0.026
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0286
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      0.0019,
+      0.0067
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0043
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      0.2461,
+      0.2531
+     ],
+     "material": true,
+     "mean_cell_delta": 0.2494
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.004,
+      0.008
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0061
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0859,
+      0.0886
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0872
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0447,
+      -0.0389
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0419
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      0.0033,
+      0.0093
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0063
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      0.2476,
+      0.2565
+     ],
+     "material": true,
+     "mean_cell_delta": 0.2518
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0024,
+      0.0076
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0051
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0849,
+      0.0885
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0867
+    }
+   }
+  },
+  "A/mlp/null": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.3989,
+    "L0": 0.4089,
+    "L1": 0.4115,
+    "L1u": 0.4101,
+    "P0": 0.3995,
+    "P0u": 0.3986
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.399,
+    "L0": 0.3981,
+    "L1": 0.3935,
+    "L1u": 0.3978,
+    "P0": 0.3995,
+    "P0u": 0.3987
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0071,
+      0.0166
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0114
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0056,
+      0.0027
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0014
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0044,
+      0.0028
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0009
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      -0.0025,
+      0.005
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0012
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      -0.0015,
+      0.001
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0002
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0066,
+      0.0051
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0009
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0005,
+      0.0096
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0043
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0051,
+      0.0038
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0009
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      -0.0039,
+      0.0037
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0003
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      -0.002,
+      0.0014
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0003
+    }
+   }
+  },
+  "A/mlp/smooth": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.5498,
+    "L0": 0.6337,
+    "L1": 0.6413,
+    "L1u": 0.6424,
+    "P0": 0.4007,
+    "P0u": 0.6219
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.5521,
+    "L0": 0.6224,
+    "L1": 0.6283,
+    "L1u": 0.6317,
+    "P0": 0.4007,
+    "P0u": 0.623
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.017,
+      0.024
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0205
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0017,
+      0.004
+     ],
+     "material": false,
+     "mean_cell_delta": 0.001
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      0.2174,
+      0.2251
+     ],
+     "material": true,
+     "mean_cell_delta": 0.2212
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0068,
+      0.0105
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0087
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0708,
+      0.0732
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0721
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.005,
+      0.0125
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0087
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      0.0003,
+      0.0063
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0034
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      0.2176,
+      0.2267
+     ],
+     "material": true,
+     "mean_cell_delta": 0.2223
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0071,
+      0.0115
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0093
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0693,
+      0.0725
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0709
+    }
+   }
+  },
+  "B/partial_linear_exact/axis": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.5623,
+    "L0": 0.6856,
+    "L1": 0.6905,
+    "L1u": 0.6895,
+    "P0": 0.6525,
+    "P0u": 0.6279
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.5735,
+    "L0": 0.6892,
+    "L1": 0.6926,
+    "L1u": 0.6912,
+    "P0": 0.6531,
+    "P0u": 0.6306
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0591,
+      0.064
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0616
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0018,
+      -0.0002
+     ],
+     "material": false,
+     "mean_cell_delta": -0.001
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0261,
+      -0.0233
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0246
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.002,
+      0.0057
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0039
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.062,
+      0.0688
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0655
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0575,
+      0.0636
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0607
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0022,
+      -0.0007
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0014
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.024,
+      -0.0211
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0225
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0002,
+      0.0038
+     ],
+     "material": false,
+     "mean_cell_delta": 0.002
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0531,
+      0.0611
+     ],
+     "material": true,
+     "mean_cell_delta": 0.057
+    }
+   }
+  },
+  "B/partial_linear_exact/linear": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.5329,
+    "L0": 0.6196,
+    "L1": 0.6244,
+    "L1u": 0.6245,
+    "P0": 0.6463,
+    "P0u": 0.6238
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.5425,
+    "L0": 0.6219,
+    "L1": 0.6244,
+    "L1u": 0.6245,
+    "P0": 0.6499,
+    "P0u": 0.6283
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0021,
+      0.0035
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0007
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0008,
+      0.001
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0001
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0241,
+      -0.021
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0226
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0032,
+      0.0065
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0049
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0882,
+      0.0937
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0909
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0063,
+      -0.0011
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0037
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0007,
+      0.001
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0001
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0232,
+      -0.02
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0216
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0006,
+      0.0045
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0026
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0826,
+      0.0888
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0858
+    }
+   }
+  },
+  "B/partial_linear_exact/null": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.3991,
+    "L0": 0.3997,
+    "L1": 0.4036,
+    "L1u": 0.4031,
+    "P0": 0.4082,
+    "P0u": 0.4053
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.3993,
+    "L0": 0.3979,
+    "L1": 0.3953,
+    "L1u": 0.3946,
+    "P0": 0.3939,
+    "P0u": 0.3936
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0082,
+      0.0038
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0022
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0014,
+      0.0004
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0005
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0058,
+      -0.0
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0029
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0009,
+      0.0057
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0034
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0004,
+      0.0122
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0062
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0065,
+      0.0087
+     ],
+     "material": false,
+     "mean_cell_delta": 0.001
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0017,
+      0.0004
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0007
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0036,
+      0.0032
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0003
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      -0.0057,
+      -0.0007
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0032
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      -0.0126,
+      0.0018
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0057
+    }
+   }
+  },
+  "B/partial_linear_exact/smooth": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.5202,
+    "L0": 0.6178,
+    "L1": 0.6186,
+    "L1u": 0.6195,
+    "P0": 0.6314,
+    "P0u": 0.6124
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.5288,
+    "L0": 0.62,
+    "L1": 0.6188,
+    "L1u": 0.6196,
+    "P0": 0.6304,
+    "P0u": 0.6123
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0046,
+      0.0096
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0071
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      0.0002,
+      0.0015
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0009
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0203,
+      -0.0176
+     ],
+     "material": true,
+     "mean_cell_delta": -0.019
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      -0.0003,
+      0.0036
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0017
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0897,
+      0.0947
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0922
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.004,
+      0.0104
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0073
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      0.0002,
+      0.0015
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0008
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.02,
+      -0.0163
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0181
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      -0.0025,
+      0.0018
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0004
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0806,
+      0.0864
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0835
+    }
+   }
+  },
+  "B/partial_mlp/axis": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.5623,
+    "L0": 0.714,
+    "L1": 0.7207,
+    "L1u": 0.7138,
+    "P0": 0.6525,
+    "P0u": 0.6279
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.5735,
+    "L0": 0.703,
+    "L1": 0.7091,
+    "L1u": 0.7053,
+    "P0": 0.6531,
+    "P0u": 0.6306
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0833,
+      0.0885
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0859
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0085,
+      -0.0052
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0069
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0261,
+      -0.0232
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0246
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      -0.0022,
+      0.0018
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0002
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0618,
+      0.0691
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0655
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0709,
+      0.0783
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0747
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0057,
+      -0.0018
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0039
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0241,
+      -0.021
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0225
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      -0.0001,
+      0.0047
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0023
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.053,
+      0.0609
+     ],
+     "material": true,
+     "mean_cell_delta": 0.057
+    }
+   }
+  },
+  "B/partial_mlp/linear": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.5329,
+    "L0": 0.6164,
+    "L1": 0.6288,
+    "L1u": 0.627,
+    "P0": 0.6463,
+    "P0u": 0.6238
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.5425,
+    "L0": 0.6006,
+    "L1": 0.6091,
+    "L1u": 0.6132,
+    "P0": 0.6499,
+    "P0u": 0.6283
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0006,
+      0.0073
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0033
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0034,
+      -0.0002
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0018
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0241,
+      -0.0211
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0226
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0087,
+      0.0125
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0106
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0879,
+      0.0937
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0909
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0198,
+      -0.0103
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0151
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      0.0027,
+      0.0056
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0041
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0232,
+      -0.02
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0216
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.01,
+      0.0153
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0127
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0825,
+      0.0888
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0858
+    }
+   }
+  },
+  "B/partial_mlp/null": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.3991,
+    "L0": 0.4248,
+    "L1": 0.4323,
+    "L1u": 0.4281,
+    "P0": 0.4082,
+    "P0u": 0.4053
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.3993,
+    "L0": 0.3977,
+    "L1": 0.3963,
+    "L1u": 0.3963,
+    "P0": 0.3939,
+    "P0u": 0.3936
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0173,
+      0.0291
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0228
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0063,
+      -0.0024
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0042
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0057,
+      -0.0001
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0029
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0013,
+      0.0052
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0033
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      -0.0003,
+      0.0118
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0062
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      -0.0052,
+      0.0105
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0027
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0022,
+      0.002
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0001
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0034,
+      0.0031
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0003
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      -0.0038,
+      0.001
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0015
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      -0.013,
+      0.0013
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0057
+    }
+   }
+  },
+  "B/partial_mlp/smooth": {
+   "cells": 20,
+   "mean_share_precision": {
+    "F1": 0.5202,
+    "L0": 0.6339,
+    "L1": 0.6471,
+    "L1u": 0.6447,
+    "P0": 0.6314,
+    "P0u": 0.6124
+   },
+   "mean_unverified_share_precision": {
+    "F1": 0.5288,
+    "L0": 0.6173,
+    "L1": 0.6269,
+    "L1u": 0.6302,
+    "P0": 0.6304,
+    "P0u": 0.6123
+   },
+   "share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0296,
+      0.0351
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0323
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      -0.0034,
+      -0.0012
+     ],
+     "material": false,
+     "mean_cell_delta": -0.0024
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.0203,
+      -0.0176
+     ],
+     "material": true,
+     "mean_cell_delta": -0.019
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0087,
+      0.0128
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0108
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0895,
+      0.0946
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0922
+    }
+   },
+   "unverified_share_precision": {
+    "closed_loop_on_unclipped_prior": {
+     "interval_95": [
+      0.0143,
+      0.0212
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0179
+    },
+    "readout_effect_on_the_learner": {
+     "interval_95": [
+      0.002,
+      0.0047
+     ],
+     "material": false,
+     "mean_cell_delta": 0.0033
+    },
+    "readout_effect_on_the_prior": {
+     "interval_95": [
+      -0.02,
+      -0.0164
+     ],
+     "material": true,
+     "mean_cell_delta": -0.0181
+    },
+    "unclipped_prior_in_learner": {
+     "interval_95": [
+      0.0102,
+      0.0154
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0129
+    },
+    "unclipped_prior_vs_hand": {
+     "interval_95": [
+      0.0805,
+      0.0865
+     ],
+     "material": true,
+     "mean_cell_delta": 0.0835
+    }
+   }
+  }
+ },
+ "unclipped_priors": {
+  "A": {
+   "p0u_bias": -17.691985,
+   "p0u_calibration_shift": 15.303895,
+   "p0u_distillation_r_squared": 0.811581,
+   "p0u_weights": [
+    8.06615,
+    -1.619599,
+    -1.992381,
+    -0.68198,
+    6.260218,
+    -2.9916
+   ]
+  },
+  "B": {
+   "p0u_bias": -27.820748,
+   "p0u_calibration_shift": 9.607955,
+   "p0u_distillation_r_squared": 0.760087,
+   "p0u_weights": [
+    10.874075,
+    -5.590291,
+    -3.405293,
+    -1.561771,
+    4.269297,
+    1.476372,
+    22.282136
+   ]
+  }
+ }
+}
