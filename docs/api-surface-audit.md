@@ -36,6 +36,7 @@ own lifecycle or typed exchange mechanics rather than domain semantics.
 | `neural_abm.readiness` | `BinaryReadinessPropagationUnit` and report types | Generic peer-readiness aggregation after domains define readiness. |
 | `neural_abm.scenario_lite` | Scenario definitions/specs, deterministic and replicated result envelopes, replicate context, and bounded-scalar scenario runners | Torch-free baseline/counterfactual orchestration whose domain callbacks, outcome meaning, and comparison threshold remain caller-owned. |
 | `neural_abm.policy_scoring` | `score_policies`, `PolicyScore`, `PolicyScoreReport`, `PolicyScoringLeakError`, `POLICY_SCORING_METRICS` | Torch-free out-of-sample scoring of agent policies; held-out data, comparison rules, and their meaning remain caller-owned. |
+| `neural_abm.policy_ladder` | `LinearPrior`, `PriorPredictor`, `ExplorationFloor`, `OutcomeRecord`, `keyed_seed`, `keyed_uniform`, `fit_prior_boosted_trees` | Torch-free policy-ladder primitives shared by two model families; worlds, fixed-rule evaluation, decision rules, and claims remain caller-owned. |
 
 ## Experimental Core Candidates
 
@@ -92,7 +93,7 @@ When implementation starts, prefer a small facade rather than widening
 | Namespace | Contents |
 | --- | --- |
 | `neural_abm.api` | Stable lifecycle, typed social exchange, domain runner, diagnostics, result envelope, and toy feature-taxonomy helpers. |
-| `neural_abm.api_lite` | Torch-free seed surface for compatible runner, diagnostics, result envelope, toy feature-taxonomy helpers, readiness utilities, NumPy-only social primitives, lifecycle reports/local-step primitives, and the `main` / next-alpha bounded-scalar scenario and policy-scoring candidates. |
+| `neural_abm.api_lite` | Torch-free seed surface for compatible runner, diagnostics, result envelope, toy feature-taxonomy helpers, readiness utilities, NumPy-only social primitives, lifecycle reports/local-step primitives, and the `main` / next-alpha bounded-scalar scenario, policy-scoring, and policy-ladder candidates. |
 | `neural_abm.experimental` | Binary policy lifecycle, binary revision lifecycle, accelerator/tensor runtime helpers if needed. |
 | `neural_abm.paper` or evidence docs | Manifest loading, gate summaries, and reproducibility commands if a library namespace is justified. |
 
@@ -151,4 +152,33 @@ comparing policies against a margin, and judging a claim remain caller-owned.
 
 See
 [Decision 0016](decisions/0016-out-of-sample-policy-scoring-contract.md) for
+the complete contract. The released `v0.1.0a5` tag predates this surface.
+
+## Main / Next-Alpha Policy-Ladder Candidate
+
+The same candidate extends `neural_abm.api_lite` with the torch-free
+policy-ladder primitives of `neural_abm.policy_ladder`:
+
+- `LinearPrior`, a rule written as `logit = features @ weight + bias`, and
+  `PriorPredictor`;
+- `keyed_seed` and `keyed_uniform`;
+- `ExplorationFloor`;
+- `OutcomeRecord`, whose rows come back ordered by the step from which they
+  are visible, then by insertion;
+- `fit_prior_boosted_trees`, which imports scikit-learn on first use.
+
+The torch-backed residual learners (`ResidualLinear`, `ResidualMLP`, and
+`fit_residual_policy`) are in `neural_abm.policy_learners`. They are imported
+by module path, under the `torch` extra. Neither module changes global
+state.
+
+These are the second capability extracted under the bridge's second-consumer
+rule. The repository-only researcher-pivot and information-spread policy
+ladders both reproduce their recorded runs byte for byte through these
+semantics. The surface provides the primitives only. Evaluating a domain's
+fixed rule, building worlds and measures, comparing arms, and judging a
+claim remain caller-owned.
+
+See
+[Decision 0017](decisions/0017-policy-ladder-semantics-extraction.md) for
 the complete contract. The released `v0.1.0a5` tag predates this surface.

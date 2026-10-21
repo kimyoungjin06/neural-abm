@@ -45,9 +45,12 @@ Its package metadata uses `0.1.0a6.dev0` so artifacts from `main` cannot be
 mistaken for the verified `v0.1.0a5` release.
 It also adds `policy_scoring`, torch-free out-of-sample scoring of agent
 policies
-([Decision 0016](decisions/0016-out-of-sample-policy-scoring-contract.md)).
-The `v0.1.0a5` tag predates `scenario_lite` and `policy_scoring`; do not use
-that tag when testing these researcher-facing exports or examples.
+([Decision 0016](decisions/0016-out-of-sample-policy-scoring-contract.md)),
+and the policy-ladder primitives of `policy_ladder` and `policy_learners`
+([Decision 0017](decisions/0017-policy-ladder-semantics-extraction.md)).
+The `v0.1.0a5` tag predates `scenario_lite`, `policy_scoring`, and
+`policy_ladder`; do not use that tag when testing these researcher-facing
+exports or examples.
 Install that candidate explicitly when evaluating this surface:
 
 ```bash

@@ -223,9 +223,10 @@ repository-only, and each is a conditional case of the central claim.
     the learner. State the saturated Regime A readout.
   - **Protocol (P10).** A registered null check caught a leak before any study
     group was read, and the measure moved to unverified items.
-  - **Package status.** Extraction is proposed in Decision 0017, not
-    implemented. Until it is, cite the shared semantics as repository-level
-    reuse.
+  - **Package status.** Decision 0017 put the shared semantics in
+    `neural_abm.policy_ladder` and `neural_abm.policy_learners` on the
+    `main` / next-alpha candidate. Both recorded Pivot runs reproduce byte
+    for byte through them, including under delays (N15).
 
 ## 9. Discussion
 
