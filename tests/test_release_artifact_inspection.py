@@ -1959,6 +1959,7 @@ def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
         "experiments/configs/info_spread_policy_ladder_flip_rate_v1.yaml",
         "scripts/run_info_spread_policy_ladder_flip_rate_v1.py",
         "tests/test_info_spread_policy_ladder_flip_rate_v1.py",
+        "tests/test_info_spread_policy_ladder_flip_rate_v1_result.py",
     }
     assert repository_paths == inspector[
         "PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS"
