@@ -1,0 +1,138 @@
+schema_version: info_spread_policy_ladder_utility.v1
+label: info_spread_policy_ladder_utility_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-21'
+stage: O25 (N17, last of four follow-ups the user chose to run in order on 2026-10-21)
+purpose: 'Score the registered arms, in the same cells and runs, by the agents'' utility on unverified items instead of
+  share precision (a true share gains 1, a false share costs the sharer c, a decline is worth 0), and ask whether each
+  registered disposition still holds.'
+design_document: docs/research/info-spread-policy-ladder-utility-v1.md
+source_bindings:
+- path: scripts/policy_ladder_core_v1.py
+  role: DOMAIN_FREE_CORE
+  sha256: bc82caed34f1cf6542b8a144092137214c07939562c794fdfb865d02a302a579
+- path: scripts/prototype_info_spread_policy_ladder_v1.py
+  role: WORLD_ARMS_AND_SIMULATION
+  sha256: 09375ca88431b4a90f2539f8e2dc33c5acfb7a2bdc76721ced4611cef734304e
+- path: scripts/power_info_spread_policy_ladder_v2.py
+  role: GROUP_RULE_MODULE
+  sha256: d53d4ba99aeffcd63df37cce1f5b731817e7c80fa2940bd4a0273405c190080b
+- path: scripts/power_info_spread_policy_ladder_v1.py
+  role: BOOTSTRAP_RESAMPLES
+  sha256: d0f7f0b80ad69cf9d84c08815636de85eda062713559b50627d67e9d2f889da8
+- path: scripts/diagnose_info_spread_d2_v1.py
+  role: IMPORTED_BY_THE_GROUP_RULE_MODULE
+  sha256: 1ec9a630c41df2a36d34d801f04e8aabe47154d93dd4c2a526f1356fc77128a8
+- path: scripts/run_info_spread_policy_ladder_study_v1.py
+  role: V1_RUNNER_FUNCTIONS_REUSED_BY_STUDY_V2
+  sha256: 2e3b086ba35e53473fc64e5f8611a48a54e83a029959f482ec8f95a8caab77b2
+- path: scripts/info_spread_unverified_measure_v1.py
+  role: THE_UNVERIFIED_MEASURE
+  sha256: b1c43f385e1bbd440bd7a2a5176f8725625679f731ceabf0c395c882196eb14d
+- path: scripts/info_spread_utility_measure_v1.py
+  role: THE_UTILITY_MEASURE
+  sha256: 4a89106b2021a4b7164e58b402a787147558d2bbfacf7ade6902c169f2f9764e
+- path: scripts/run_info_spread_policy_ladder_study_v2.py
+  role: STUDY_V2_RUNNER
+  sha256: 3bcfb6162f1278067a562571eac22ba8d4f6d560b30820f8860b0a32656e9928
+- path: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+  role: STUDY_V2_CONTRACT
+  sha256: a679035540ae7292d097a28bb3b0fea1860560a2a2aa8e8a26e1701b972f4845
+- path: scripts/run_info_spread_policy_ladder_llm_arms_v1.py
+  role: D3B_RUNNER
+  sha256: 17c3e35af8facb2b2a12254a022f9dbce5205f6eaf34189d74c8603031c91a5e
+- path: experiments/configs/info_spread_policy_ladder_llm_arms_v1.yaml
+  role: D3B_CONTRACT
+  sha256: ab06f4003501d2926ecfe4ba0dafd27a3c762b9c36543334cac3c759bdc883c4
+- path: scripts/run_info_spread_policy_ladder_unclipped_prior_v1.py
+  role: O24_RUNNER
+  sha256: 2cb58b359f0d6bed1d2b5913e0d269d262f7b948db6f4e4c4906717be971b530
+- path: experiments/configs/info_spread_policy_ladder_unclipped_prior_v1.yaml
+  role: O24_CONTRACT
+  sha256: 362ddf8552a5aa2f27e6c96b0e2e8142a6f98fab4be72840f5423c8eadb61473
+- path: experiments/evidence/results/info_spread_policy_ladder_study_v2_d4_20261019.summary.json
+  role: STUDY_V2_RECORD
+  sha256: 771f59bda2e05e7e4d0e1b155d6f1a65912c20cc334b318f7734f551958d50bb
+- path: experiments/evidence/results/info_spread_policy_ladder_llm_arms_d5_20261019.summary.json
+  role: D5_RECORD
+  sha256: f08e16bf56ce50b92a46203d43e213b19d34d197785e9983144a1c881e4e7510
+- path: experiments/configs/pivot_policy_ladder_consolidation_v6.yaml
+  role: O25_THE_OPEN_ITEM_THIS_STUDY_ANSWERS
+  sha256: 28f47a0bd37141c41b26e3af2e5e0142b5c9a114135508919df2736b3ff84145
+- path: experiments/evidence/results/info_spread_policy_ladder_unclipped_prior_v1_20261021.summary.json
+  role: O24_RECORD
+  sha256: caa3e153d6557742ae23fb4051fd8980880f0410e66a6fdae5c9e0c3940dbe78
+inputs:
+  study_v2:
+    contract: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+    record: experiments/evidence/results/info_spread_policy_ladder_study_v2_d4_20261019.summary.json
+    arms: [F1, T0_1, T0_4, L0]
+  llm_arms:
+    contract: experiments/configs/info_spread_policy_ladder_llm_arms_v1.yaml
+    record: experiments/evidence/results/info_spread_policy_ladder_llm_arms_d5_20261019.summary.json
+    arms: [P0, X0, L1]
+  unclipped_prior:
+    contract: experiments/configs/info_spread_policy_ladder_unclipped_prior_v1.yaml
+    record: experiments/evidence/results/info_spread_policy_ladder_unclipped_prior_v1_20261021.summary.json
+    arms: [P0u, L1u]
+  elicitation: D5'S FIRST REGISTERED ELICITATION (FOR THE REGIME B RERUN OF P0, X0, P0u, L1, AND L1u)
+profile_for_counts: development
+measure:
+  name: unverified_utility_per_agent
+  definition: (TRUE SHARES - SUM OF THE SHARERS' COSTS OF FALSE SHARES) / AGENTS, OVER DECIDED SHARES (POLICY AND
+    EXPLORATION FLOOR) OF ITEMS WHOSE FACT-CHECK IS NOT PUBLIC AT THE DECISION
+  regime_a: COMPUTED FROM THE RECORDED COUNTS, BECAUSE EVERY COST IS 1; NO RUN
+  regime_b: EVERY ARM RERUN WITH scripts/info_spread_utility_measure_v1.py, WITH STUDY V2'S SEEDS, DONORS, AND STREAMS
+  parity: EVERY REGIME B RERUN ROW MUST REPRODUCE ITS RECORDED PRECISIONS, FALSE REACH, DECISIONS, AND COUNTS BY STATE
+    EXACTLY; ANY FAILURE BLOCKS READING
+arms: [F1, T0_1, T0_4, L0, P0, X0, L1, P0u, L1u]
+comparisons:
+  closed_loop: [L0, T0_1]
+  best_table: [L0, T0_4]
+  hand_rule: [L0, F1]
+  llm_prior_in_learner: [L1, L0]
+  nabm_vs_archetypes: [L0, X0]
+  closed_loop_on_llm_prior: [L1, P0]
+  llm_prior_vs_hand: [P0, F1]
+  unclipped_prior_vs_hand: [P0u, F1]
+  unclipped_prior_in_learner: [L1u, L0]
+  closed_loop_on_unclipped_prior: [L1u, P0u]
+seeds:
+  rule_tag: 13
+rule:
+  comparison: paired difference in utility per agent per run
+  bootstrap_resamples: 2000
+  interval: 0.95
+  resampling: cells, with replacement
+  minimum_effect_fraction_of_hand_rule: 0.01
+  minimum_effect: 1% OF THE MEAN ABSOLUTE UTILITY OF F1 OVER THE REGIME'S STUDY GROUPS, ONE SCALE PER REGIME
+  material: interval excludes zero and |mean cell delta| >= the regime's minimum effect
+dispositions:
+  per_comparison_and_regime: MOSTLY_POSITIVE if POSITIVE in at least 4 of the 6 study groups, MOSTLY_NEGATIVE if NEGATIVE
+    in at least 4 of 6, otherwise MIXED_OR_NONE; computed under utility and, from the records, under precision
+  mostly_at_least: 4
+  agreement: THE TWO SUMMARIES AGREE OR NOT, FOR EACH COMPARISON AND REGIME
+  overall: CONCLUSIONS_HOLD_UNDER_UTILITY if every summary agrees, otherwise SOME_CONCLUSIONS_CHANGE_UNDER_UTILITY
+  null_groups: REPORTED, NOT JUDGED. In the null world every share has negative expected utility, so a learner that
+    learns the base rate rightly gains utility by sharing less; reruns are validated by parity instead
+  expected_before_the_run: 'Not predicted. Precision rewards selectivity, so comparisons that turn on how much an arm
+    shares (P0 and X0 in particular) are the likeliest to change.'
+precommit:
+  precommit_paths:
+  - docs/research/info-spread-policy-ladder-utility-v1.md
+  - experiments/configs/info_spread_policy_ladder_utility_v1.yaml
+  - scripts/run_info_spread_policy_ladder_utility_v1.py
+  - tests/test_info_spread_policy_ladder_utility_v1.py
+  - scripts/info_spread_utility_measure_v1.py
+  - tests/test_info_spread_utility_measure_v1.py
+runs:
+  pilot: --pilot-cells 2 under full load, for the time estimate only
+  development: --profile development --precommit-sha <HEAD> --elicitation-dir <D5 first elicitation> --v2-cells --d5-cells
+    --o24-cells <the three development cells.jsonl> on GPU-Server, CUDA_VISIBLE_DEVICES=2, 24 workers
+  reproduction: the same command into a second output directory; cells.jsonl and summary.json must be byte identical
+outputs: [cells.jsonl, summary.json, progress.jsonl, receipt.json]
+boundaries:
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  synthetic_only: true
