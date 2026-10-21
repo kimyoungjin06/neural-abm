@@ -1,0 +1,120 @@
+schema_version: info_spread_policy_ladder_transfer.v1
+label: info_spread_policy_ladder_transfer_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-21'
+stage: O23 (N17, first of four follow-ups the user chose to run in order on 2026-10-21)
+purpose: 'Study v2 found that a table written before the run suffices in stationary worlds, with donors that ran in
+  the same world as the evaluation. This study asks whether a table still suffices when its donors ran in other worlds
+  from the same generator: the same regime and veracity relation, another network, other thresholds, and other costs.'
+design_document: docs/research/info-spread-policy-ladder-transfer-v1.md
+source_bindings:
+- path: scripts/policy_ladder_core_v1.py
+  role: DOMAIN_FREE_CORE
+  sha256: bc82caed34f1cf6542b8a144092137214c07939562c794fdfb865d02a302a579
+- path: scripts/prototype_info_spread_policy_ladder_v1.py
+  role: WORLD_ARMS_TABLE_REPLAY_AND_SIMULATION
+  sha256: 09375ca88431b4a90f2539f8e2dc33c5acfb7a2bdc76721ced4611cef734304e
+- path: scripts/power_info_spread_policy_ladder_v2.py
+  role: GROUP_RULE
+  sha256: d53d4ba99aeffcd63df37cce1f5b731817e7c80fa2940bd4a0273405c190080b
+- path: scripts/power_info_spread_policy_ladder_v1.py
+  role: BOOTSTRAP_RESAMPLES
+  sha256: d0f7f0b80ad69cf9d84c08815636de85eda062713559b50627d67e9d2f889da8
+- path: scripts/diagnose_info_spread_d2_v1.py
+  role: IMPORTED_BY_THE_GROUP_RULE_MODULE
+  sha256: 1ec9a630c41df2a36d34d801f04e8aabe47154d93dd4c2a526f1356fc77128a8
+- path: scripts/run_info_spread_policy_ladder_study_v1.py
+  role: V1_RUNNER_FUNCTIONS_REUSED_BY_STUDY_V2
+  sha256: 2e3b086ba35e53473fc64e5f8611a48a54e83a029959f482ec8f95a8caab77b2
+- path: scripts/info_spread_unverified_measure_v1.py
+  role: THE_UNVERIFIED_MEASURE
+  sha256: b1c43f385e1bbd440bd7a2a5176f8725625679f731ceabf0c395c882196eb14d
+- path: scripts/run_info_spread_policy_ladder_study_v2.py
+  role: STUDY_V2_RUNNER_WORLDS_LEARNERS_MEASURE_AND_RULE
+  sha256: 3bcfb6162f1278067a562571eac22ba8d4f6d560b30820f8860b0a32656e9928
+- path: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+  role: STUDY_V2_CONTRACT_CELLS_SEEDS_AND_PROFILES
+  sha256: a679035540ae7292d097a28bb3b0fea1860560a2a2aa8e8a26e1701b972f4845
+- path: docs/research/info-spread-policy-ladder-study-v2.md
+  role: STUDY_V2_DESIGN
+  sha256: 5074c833b900f539f1b5b83b79007ed8384a50db5170c2a0e7b2dd90d1a42b12
+- path: experiments/evidence/results/info_spread_policy_ladder_study_v2_d4_20261019.summary.json
+  role: STUDY_V2_RECORD_WHOSE_CELLS_THIS_STUDY_READS
+  sha256: 771f59bda2e05e7e4d0e1b155d6f1a65912c20cc334b318f7734f551958d50bb
+- path: experiments/configs/pivot_policy_ladder_consolidation_v6.yaml
+  role: O23_THE_OPEN_ITEM_THIS_STUDY_ANSWERS
+  sha256: 28f47a0bd37141c41b26e3af2e5e0142b5c9a114135508919df2736b3ff84145
+study_v2:
+  contract: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+  record: experiments/evidence/results/info_spread_policy_ladder_study_v2_d4_20261019.summary.json
+  cells: THE_DEVELOPMENT_CELLS_JSONL_WHOSE_SHA256_THE_RECORD_NAMES
+  arms_read: [F0, F1, T0_1, T0_4, L0]
+  parity: L0 RECOMPUTED AT REPLICATE 0 OF EVERY CELL MUST EQUAL STUDY V2'S VALUE EXACTLY; ANY FAILURE BLOCKS READING
+donors:
+  count: 4
+  world_seed_offset: 9000
+  world_seed_rule: WORLD_SEED_OFFSET + 4 * CELL + DONOR, DISJOINT FROM THE 5000, 6000, AND 7000 RANGES OF EARLIER STUDIES
+  learner_cell_offset: 1000
+  learner_seed_rule: STUDY V2'S LEARNER SEEDS WITH CELL = LEARNER_CELL_OFFSET + 4 * CELL + DONOR
+  stream_replicate: 1000
+  same_as_the_cell: REGIME, LEARNER FAMILY, VERACITY RELATION, WORLD SIZES, AND PROFILE
+  different_from_the_cell: NETWORK, THRESHOLDS, COSTS (REGIME B), AND ITEM STREAM
+  per_agent_parts: A DONOR'S PER-AGENT RESIDUALS APPLY BY AGENT INDEX, SO IN ANOTHER WORLD THEY FALL ON OTHER AGENTS
+arms:
+- T0x_1
+- T0x_4
+arm_meaning:
+  T0x_1: THE POLICY TRAJECTORY OF THE FIRST DONOR, REPLAYED AS A TABLE
+  T0x_4: THE AVERAGE OF THE FOUR DONORS' TRAJECTORIES
+comparisons:
+  transfer_closed_loop: [L0, T0x_1]
+  transfer_best_table: [L0, T0x_4]
+descriptive:
+  transfer_cost: [T0_4, T0x_4]
+  transfer_cost_single: [T0_1, T0x_1]
+measures:
+  primary: unverified_share_precision (study v2's)
+  recorded: share_precision
+seeds:
+  rule_tag: 10
+rule:
+  comparison: paired difference in the primary measure
+  minimum_effect: 0.01
+  bootstrap_resamples: 2000
+  interval: 0.95
+  resampling: cells, with replacement
+  material: interval excludes zero and |mean cell delta| >= minimum_effect
+dispositions:
+  primary_comparison: transfer_best_table
+  per_regime: ADAPTIVE_BEATS_TRANSFERRED_TABLE if POSITIVE in at least 4 of the 6 study groups, TRANSFERRED_TABLE_SUFFICES
+    if POSITIVE in at most 1 of 6, otherwise MIXED
+  adaptive_at_least: 4
+  table_suffices_at_most: 1
+  expected_before_the_run: 'Regime A: TRANSFERRED_TABLE_SUFFICES (one pooled policy over item features should transfer);
+    Regime B: ADAPTIVE_BEATS_TRANSFERRED_TABLE (per-agent residuals land on other agents). Stated so that it can be
+    rejected, not required.'
+  null_check: any comparison material, in either direction, in any null group is DESIGN_DEFECT_IN_NULL_WORLD and
+    blocks reading the study groups
+profiles: STUDY_V2_PROFILES
+precommit:
+  precommit_paths:
+  - docs/research/info-spread-policy-ladder-transfer-v1.md
+  - experiments/configs/info_spread_policy_ladder_transfer_v1.yaml
+  - scripts/run_info_spread_policy_ladder_transfer_v1.py
+  - tests/test_info_spread_policy_ladder_transfer_v1.py
+runs:
+  pilot: --pilot-cells 2 under full load, for the time estimate only
+  development: --profile development --precommit-sha <HEAD> --v2-cells <study v2 development cells.jsonl> on GPU-Server,
+    CUDA_VISIBLE_DEVICES=2, 24 workers
+  reproduction: the same command into a second output directory; cells.jsonl and summary.json must be byte identical
+outputs:
+- cells.jsonl
+- summary.json
+- progress.jsonl
+- receipt.json
+boundaries:
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  scientific_effect: NOT_ESTABLISHED
+  synthetic_only: true
