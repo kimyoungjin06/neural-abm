@@ -39,6 +39,7 @@ Current draft sections:
 - [sections/03-neural-abm-node.md](sections/03-neural-abm-node.md)
 - [sections/06-calibration-and-analysis.md](sections/06-calibration-and-analysis.md)
 - [sections/07-research-application.md](sections/07-research-application.md)
+- [sections/08-policy-ladder.md](sections/08-policy-ladder.md)
 
 Current figure candidates:
 
@@ -57,3 +58,4 @@ Current figure candidates:
 - [figures/pivot_composition.png](figures/pivot_composition.png)
 - [figures/pivot_learning_failed_trajectories.png](figures/pivot_learning_failed_trajectories.png)
 - [figures/pivot_learning_attention_weights.png](figures/pivot_learning_attention_weights.png)
+- [figures/info_spread_policy_ladder_comparisons.png](figures/info_spread_policy_ladder_comparisons.png)

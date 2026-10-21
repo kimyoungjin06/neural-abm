@@ -184,6 +184,7 @@ Draft:
 
 Source: claim matrix rows P1 to P10. Every result here is synthetic and
 repository-only, and each is a conditional case of the central claim.
+Draft: [sections/08-policy-ladder.md](sections/08-policy-ladder.md).
 
 - Design (P1): one ABM design holds a fixed rule, pooled learners, and an
   external prior. Each step reproduces its rule-based predecessor exactly
