@@ -39,7 +39,7 @@ The quoted estimate was 140–200 minutes, so the runs came in below it.
 
 | Regime | Material and positive | Mean cell Δ across the 6 study groups |
 |---|---|---|
-| A | 1 of 6 (A/mlp/smooth, +0.011 [+0.001, +0.021]) | +0.003 to +0.011 |
+| A | 1 of 6 (A/mlp/smooth, +0.011 [+0.001, +0.022]) | +0.003 to +0.011 |
 | B | 0 of 6 | +0.000 to +0.010 |
 
 In the other 11 groups, the interval covers zero.

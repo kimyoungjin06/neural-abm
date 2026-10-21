@@ -267,9 +267,9 @@ rather than a post hoc field, endpoint, or model substitution.
    modeling assumption rather than an implementation default.
 9. Restructure the outline around the central claim, with a policy-ladder
    section built from P1 to P6.
-10. Write Section 8's second-domain subsection from P7 to P10, with the
-    consolidation v6 reporting rules: unverified measure, same-world donors,
-    precision is not utility, and the LLM readout.
+10. Section 8 is drafted from P1 to P10 with the consolidation v6 reporting
+    rules (`sections/08-policy-ladder.md`, N16). Its numbers are checked
+    against the recorded results by `tests/test_paper_section_08_policy_ladder.py`.
 11. Cite the prior rule, outcome record, exploration floor, and prior-anchored
     learners as `main` / next-alpha package API (Decision 0017), not as part
     of the released `v0.1.0a5` tag.

@@ -256,6 +256,10 @@ PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS = {
     "tests/test_reexpress_pivot_through_policy_ladder_package_v1.py",
     "scripts/attest_research_pivot_study_reproduction.py",
     "tests/test_n15_package_parity_result.py",
+    "scripts/plot_info_spread_policy_ladder_v1.py",
+    "tests/test_paper_section_08_policy_ladder.py",
+    "paper/sections/08-policy-ladder.md",
+    "paper/figures/info_spread_policy_ladder_comparisons.png",
 }
 PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-relative-delay-cost-v1.md",
