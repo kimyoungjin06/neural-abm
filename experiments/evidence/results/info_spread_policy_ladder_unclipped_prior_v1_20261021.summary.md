@@ -51,7 +51,7 @@ smooth), then MLP (axis, linear, smooth).
 | P0u − F1 | +0.057 to +0.087 (+ + + + + +) | +0.057 to +0.086 (+ + + + + +) | `MOSTLY_POSITIVE` in both |
 | L1u − L0 | +0.005 to +0.020 (+ + + 0 0 0) | −0.000 to +0.013 (0 0 0 0 + +) | `MIXED_OR_NONE` in both |
 | L1u − P0u | −0.042 to +0.030 (+ 0 + + − 0) | −0.015 to +0.075 (+ 0 0 + − +) | `MIXED_OR_NONE` in both |
-| P0u − P0, descriptive | +0.222 to +0.295 (all +) | −0.022 to −0.018 (all −) | |
+| P0u − P0, descriptive | +0.222 to +0.295 (all +) | −0.023 to −0.018 (all −) | |
 | L1u − L1, descriptive | −0.002 to +0.007 (none) | −0.004 to +0.004 (none) | |
 
 ## Reading
