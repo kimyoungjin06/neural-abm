@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SECTION = ROOT / "paper" / "sections" / "08-policy-ladder.md"
 FIGURE = ROOT / "paper" / "figures" / "info_spread_policy_ladder_comparisons.png"
+FOLLOW_UPS = ROOT / "paper" / "figures" / "info_spread_policy_ladder_follow_ups.png"
 RESULTS = ROOT / "experiments" / "evidence" / "results"
 MEASURE = "unverified_share_precision"
 
@@ -80,6 +81,30 @@ def test_reuse_numbers_come_from_the_parity_records() -> None:
     assert "1,152 of 1,152" in _text()
 
 
+def test_follow_up_numbers_come_from_the_records() -> None:
+    text = _text()
+    o23 = _study_groups(_load("info_spread_policy_ladder_transfer_v1_20261021.summary.json")["table"])
+    assert _span([-v[MEASURE]["transfer_best_table"]["mean_cell_delta"] for v in o23.values()]) in text
+    assert not any(v[MEASURE]["transfer_cost"]["material"] for v in o23.values())
+    o26 = _load("info_spread_policy_ladder_flip_rate_v1_20261021.summary.json")["table"]
+    for rate, key in (("0.1", "closed_loop"), ("0.25", "best_table")):
+        values = [v[MEASURE][key]["mean_cell_delta"] for k, v in o26.items() if k.endswith(f"/p={rate}")]
+        assert _span(values, signed=True) in text, rate
+    o24 = _study_groups(_load("info_spread_policy_ladder_unclipped_prior_v1_20261021.summary.json")["table"])
+    assert _span([v[MEASURE]["unclipped_prior_vs_hand"]["mean_cell_delta"] for v in o24.values()], signed=True) in text
+    gains = [v[MEASURE]["unclipped_prior_in_learner"] for v in o24.values()]
+    material = [g["mean_cell_delta"] for g in gains if g["material"]]
+    assert len(material) == 5 and min(material) > 0
+    assert f"positive in 5 of 12 groups, by {_span(material, signed=True)}, and negative in none" in text
+    o25 = _load("info_spread_policy_ladder_utility_v1_20261022.summary.json")["dispositions"]
+    assert len(o25["disagreements"]) == 5 and len(o25["by_comparison"]) == 20
+    assert "Five of 20 summaries change" in text and "disagree in 5 of 20 summaries" in text
+    counts = o25["by_comparison"]
+    assert counts["llm_prior_in_learner/A"]["utility_counts"]["NEGATIVE"] == 6
+    assert counts["llm_prior_in_learner/B"]["utility_counts"]["NEGATIVE"] == 4
+    assert "lowers utility in 6 of 6 Regime A groups and 4 of 6 Regime B" in text
+
+
 def test_the_section_keeps_its_boundaries() -> None:
     text = _text()
     for required in (
@@ -91,7 +116,12 @@ def test_the_section_keeps_its_boundaries() -> None:
         "is not the agents' utility",
         "not evidence about the model's knowledge",
         "about 31%",
+        "other worlds of the same generator",
+        "Transfer across veracity relations or domains is not tested.",
+        "not the reach of false items",
+        "on precision only",
     ):
         assert required in text, required
-    assert FIGURE.is_file()
-    assert "paper/figures/info_spread_policy_ladder_comparisons.png" in text
+    for figure in (FIGURE, FOLLOW_UPS):
+        assert figure.is_file()
+        assert f"paper/figures/{figure.name}" in text

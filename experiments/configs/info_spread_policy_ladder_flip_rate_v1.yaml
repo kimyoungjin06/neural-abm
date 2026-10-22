@@ -1,0 +1,112 @@
+schema_version: info_spread_policy_ladder_flip_rate.v1
+label: info_spread_policy_ladder_flip_rate_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-21'
+stage: O26 (N17, second of four follow-ups the user chose to run in order on 2026-10-21)
+purpose: 'Trace the region between study v2 (stationary worlds, where a table written before the run suffices) and
+  the POS-sign control (each run draws its own sign of the credibility relation, and the closed loop wins). Each run
+  reverses its credibility relation with probability p, the flip rate, and the study asks at which p the adaptive
+  learner starts to beat the best table written before the run.'
+design_document: docs/research/info-spread-policy-ladder-flip-rate-v1.md
+source_bindings:
+- path: scripts/policy_ladder_core_v1.py
+  role: DOMAIN_FREE_CORE
+  sha256: bc82caed34f1cf6542b8a144092137214c07939562c794fdfb865d02a302a579
+- path: scripts/prototype_info_spread_policy_ladder_v1.py
+  role: WORLD_ARMS_TABLE_REPLAY_AND_SIMULATION
+  sha256: 09375ca88431b4a90f2539f8e2dc33c5acfb7a2bdc76721ced4611cef734304e
+- path: scripts/power_info_spread_policy_ladder_v2.py
+  role: GROUP_RULE
+  sha256: d53d4ba99aeffcd63df37cce1f5b731817e7c80fa2940bd4a0273405c190080b
+- path: scripts/power_info_spread_policy_ladder_v1.py
+  role: BOOTSTRAP_RESAMPLES
+  sha256: d0f7f0b80ad69cf9d84c08815636de85eda062713559b50627d67e9d2f889da8
+- path: scripts/diagnose_info_spread_d2_v1.py
+  role: IMPORTED_BY_THE_GROUP_RULE_MODULE
+  sha256: 1ec9a630c41df2a36d34d801f04e8aabe47154d93dd4c2a526f1356fc77128a8
+- path: scripts/run_info_spread_policy_ladder_study_v1.py
+  role: V1_RUNNER_FUNCTIONS_REUSED_BY_STUDY_V2
+  sha256: 2e3b086ba35e53473fc64e5f8611a48a54e83a029959f482ec8f95a8caab77b2
+- path: scripts/info_spread_unverified_measure_v1.py
+  role: THE_UNVERIFIED_MEASURE
+  sha256: b1c43f385e1bbd440bd7a2a5176f8725625679f731ceabf0c395c882196eb14d
+- path: scripts/run_info_spread_policy_ladder_study_v2.py
+  role: STUDY_V2_RUNNER_WORLDS_LEARNERS_MEASURE_AND_RULE
+  sha256: 3bcfb6162f1278067a562571eac22ba8d4f6d560b30820f8860b0a32656e9928
+- path: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+  role: STUDY_V2_CONTRACT_CELLS_SEEDS_AND_PROFILES
+  sha256: a679035540ae7292d097a28bb3b0fea1860560a2a2aa8e8a26e1701b972f4845
+- path: docs/research/info-spread-policy-ladder-study-v2.md
+  role: STUDY_V2_DESIGN
+  sha256: 5074c833b900f539f1b5b83b79007ed8384a50db5170c2a0e7b2dd90d1a42b12
+- path: experiments/configs/pivot_policy_ladder_consolidation_v6.yaml
+  role: O26_THE_OPEN_ITEM_THIS_STUDY_ANSWERS
+  sha256: 28f47a0bd37141c41b26e3af2e5e0142b5c9a114135508919df2736b3ff84145
+- path: experiments/evidence/results/info_spread_policy_ladder_d2d_controls_20261018.summary.json
+  role: D2D_POS_SIGN_CONTROL_THE_P_0_5_END
+  sha256: 91dd7ceba241af2789a01f3e1f2fdfbecc27592087b5943da45cdadf6e0eab92
+study_v2:
+  contract: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+  reused: WORLD SPEC, PROFILES, LEARNERS AND THEIR SETTINGS, OBSERVABILITY, DONOR REPLICATES, MEASURE, AND RULE
+arms:
+- F1
+- T0_1
+- T0_4
+- L0
+comparisons:
+  closed_loop: [L0, T0_1]
+  best_table: [L0, T0_4]
+  hand_rule: [L0, F1]
+design:
+  geometry: linear
+  flip_rates: [0.0, 0.1, 0.25, 0.5]
+  families:
+    A: [linear_exact, mlp]
+    B: [partial_linear_exact, partial_mlp]
+  groups: 16
+  stream: THE PROTOTYPE'S STREAM WITH THE CREDIBILITY WEIGHT +3 OR -3; REVERSED WHEN THE PROTOTYPE'S KEYED SIGN UNIFORM
+    U >= 1 - P, SO P = 0 IS THE STATIONARY STREAM AND P = 0.5 IS THE POS-SIGN STREAM
+  donors: STUDY V2'S DONOR REPLICATES (1000-1003), EACH DRAWING ITS OWN SIGN AT THE SAME FLIP RATE
+  pairing: THE SAME WORLD, ITEM FEATURES, AND LEARNER SEEDS AT EVERY FLIP RATE OF A CELL
+seeds:
+  world_seed_offset: 11000
+  learner_seeds: STUDY V2'S (LEARNER TAG 9) WITH THE CELL INDEX AND GEOMETRY INDEX 0
+  rule_tag: 11
+measures:
+  primary: unverified_share_precision (study v2's)
+  recorded: share_precision
+rule:
+  comparison: paired difference in the primary measure
+  minimum_effect: 0.01
+  bootstrap_resamples: 2000
+  interval: 0.95
+  resampling: cells, with replacement
+  material: interval excludes zero and |mean cell delta| >= minimum_effect
+dispositions:
+  per_family: THE ONSET, THE SMALLEST FLIP RATE AT WHICH L0 - T0_4 IS MATERIAL AND POSITIVE, OR NONE_UP_TO_0.5
+  reported_with_it: THE LABEL OF EVERY COMPARISON AT EVERY FLIP RATE
+  design_check: L0 - T0_1 MUST BE MATERIAL AND POSITIVE AT P = 0.5 IN ALL FOUR FAMILIES (THE POS-SIGN CONTROL INSIDE
+    THE STUDY); OTHERWISE POSITIVE_CONTROL_FAILS_AT_0.5 AND THE ONSETS ARE NOT READ
+  expected_before_the_run: 'At p = 0 the four-donor table beats or matches L0, as in study v2; at p = 0.5 L0 beats it,
+    as in D2d. The onset is not predicted.'
+precommit:
+  precommit_paths:
+  - docs/research/info-spread-policy-ladder-flip-rate-v1.md
+  - experiments/configs/info_spread_policy_ladder_flip_rate_v1.yaml
+  - scripts/run_info_spread_policy_ladder_flip_rate_v1.py
+  - tests/test_info_spread_policy_ladder_flip_rate_v1.py
+runs:
+  pilot: --pilot-cells 2 under full load, for the time estimate only
+  development: --profile development --precommit-sha <HEAD> on GPU-Server, CUDA_VISIBLE_DEVICES=2, 24 workers
+  reproduction: the same command into a second output directory; cells.jsonl and summary.json must be byte identical
+outputs:
+- cells.jsonl
+- summary.json
+- progress.jsonl
+- receipt.json
+boundaries:
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  scientific_effect: NOT_ESTABLISHED
+  synthetic_only: true
