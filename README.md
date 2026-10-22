@@ -317,14 +317,15 @@ torch-backed behavior. The early-user checklist is in
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
 - Repository-only policy-ladder ledger at
-  `docs/research/pivot-policy-ladder-consolidation-v6.md`, which extends
-  `docs/research/pivot-policy-ladder-consolidation-v5.md` and, through it,
-  `docs/research/pivot-policy-ladder-consolidation-v4.md`: the hash-audited
-  record of the researcher-pivot policy ladder, including the measured cost
-  and behavior of each tier between rule-based ABMs and LLM agents, the
-  closure of the current empirical model-ladder design before confirmatory
-  scoring, and the second domain (information spread) with the N14
-  reusability test.
+  `docs/research/pivot-policy-ladder-consolidation-v7.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v6.md` and, through it,
+  v1 to v5: the hash-audited record of the researcher-pivot policy ladder,
+  including the measured cost and behavior of each tier between rule-based
+  ABMs and LLM agents, the closure of the current empirical model-ladder
+  design before confirmatory scoring, the second domain (information spread)
+  with the N14 reusability test, the N15 package parity, and the four
+  information-spread follow-ups (table transfer, flip rate, unclipped prior,
+  and utility).
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
   and Granovetter special cases, plus explicitly labeled FJ-like anchored and
   self-excluding HK variants, as settings of the same lifecycle.
@@ -427,21 +428,32 @@ repository-only, hash-audited ledger is at
 `docs/research/pivot-policy-ladder-consolidation-v4.md`.
 
 A second domain, information spread with delayed fact-checks, ran the same
-comparison through a shared repository-only core:
+comparison through a shared core. The core's semantics are now the
+`neural_abm.policy_ladder` and `neural_abm.policy_learners` modules on
+`main`; they are not yet in a released tag.
 
-- In its stationary worlds, every learner beat the hand rule.
-- A policy table written before the run, from one donor run in the same
-  world, was not detectably different from the closed loop in 11 of 12
-  settings. The average of four such runs beat it in all 12.
-- The closed loop won only when a run carried information the donors lacked.
-- The learner beat AgentTorch-style LLM archetypes in every setting. An LLM
-  prior added nothing detectable inside it.
-- The Pivot ladder, re-expressed through the same core, reproduced its
-  recorded runs byte for byte.
+- **Learners against the hand rule.** In the stationary worlds, every
+  learner beat it.
+- **Tables written before the run.**
+  - A table from one donor run in the same world was not detectably
+    different from the closed loop in 11 of 12 settings.
+  - The average of four donor runs beat the closed loop in all 12 settings.
+    So did a four-donor table whose donors ran in other worlds of the same
+    generator.
+- **When the closed loop wins.** It won when a run carried information the
+  donors lacked. It beat the best table once about a quarter of runs did.
+- **LLM comparators.**
+  - The learner beat AgentTorch-style LLM archetypes in every setting.
+  - An LLM prior added nothing detectable inside the learner on share
+    precision. Scored by the agents' own utility, it mostly lowered it.
+- **Reproduction.** The Pivot ladder was re-expressed through the same core,
+  and then through the package. Both times it reproduced its recorded runs
+  byte for byte.
 
 These results are synthetic, and they are scored on items whose fact-check
 was not yet public. They make no claim about real information spread. The
-ledger is `docs/research/pivot-policy-ladder-consolidation-v6.md`.
+ledger is `docs/research/pivot-policy-ladder-consolidation-v7.md`, which
+extends `docs/research/pivot-policy-ladder-consolidation-v6.md`.
 
 ## Scope
 

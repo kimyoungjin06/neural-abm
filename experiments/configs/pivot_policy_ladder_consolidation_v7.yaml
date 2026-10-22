@@ -1,0 +1,441 @@
+schema_version: pivot_policy_ladder_consolidation.v7
+label: pivot_policy_ladder_consolidation_v7
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-10-22'
+purpose: 'Extend the v6 ledger with N15 (the package parity behind Decision 0017) and N17 (the four follow-ups the
+  user chose to run in order on 2026-10-21: O23, O26, O24, and O25). Each follow-up was a separate precommit, frozen
+  before it ran and recorded after. v1 to v6 remain the records for everything before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v6.yaml
+    sha256: 28f47a0bd37141c41b26e3af2e5e0142b5c9a114135508919df2736b3ff84145
+    record_commit: 5ddd81a
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v6.md
+    sha256: a449ddf2b155feed1c9115a1c6cc257a48be7d4f9d7ca363740a5efe8ab5c648
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v6.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: n15_parity
+  path: experiments/evidence/results/n15_package_parity_20261020.summary.json
+  sha256: 3be995069f776ece29dd2e20aaaf0cd7898ccf657fe8d301697675c3ecbbc350
+  freeze_commit: cb0aa44
+  record_commit: 8b7a31b
+- id: o23_transfer
+  path: experiments/evidence/results/info_spread_policy_ladder_transfer_v1_20261021.summary.json
+  sha256: e4b9322ff76d47e7511cdde8e8cc2441af96393bfef9d0976c03799d111d9bb4
+  freeze_commit: fded050
+  record_commit: 9a59e11
+- id: o26_flip_rate
+  path: experiments/evidence/results/info_spread_policy_ladder_flip_rate_v1_20261021.summary.json
+  sha256: 9778b9eb47d5b46e2f4cf9661c5d3b19813ee8341e14154add28866c1a6ff2f5
+  freeze_commit: 86d3e80
+  record_commit: 38120b1
+- id: o24_unclipped
+  path: experiments/evidence/results/info_spread_policy_ladder_unclipped_prior_v1_20261021.summary.json
+  sha256: caa3e153d6557742ae23fb4051fd8980880f0410e66a6fdae5c9e0c3940dbe78
+  freeze_commit: eb49057
+  record_commit: da84c2d
+- id: o25_utility
+  path: experiments/evidence/results/info_spread_policy_ladder_utility_v1_20261022.summary.json
+  sha256: e8b034a5b41b572da1e8b5ccdd418f239575f88c1f6d835331f17d1494f8bf43
+  freeze_commit: ebd2c8d
+  record_commit: 82088db
+claims:
+  confirmed:
+  - id: C55_the_package_reproduces_both_recorded_pivot_studies_including_under_delays
+    statement: Through the package modules of Decision 0017, the Pivot LLM-prior pilot v3 wrote a runs.jsonl
+      identical to its record, and the 432 delayed and immediate field-public learner rows of the nonlinear policy
+      ABM v2 were each identical to theirs, with outcomes inserted either at release or at the event. The ordering
+      rule (visible step, then insertion) recovers the Pivot release order under delays.
+    evidence:
+    - source: n15_parity
+      pointer: status
+      equals: N15_PARITY_HOLDS_THE_PACKAGE_REPRODUCES_BOTH_PIVOT_RECORDS
+    - source: n15_parity
+      pointer: runs/v3_release/whole_file_identical
+      equals: true
+    - source: n15_parity
+      pointer: runs/v3_release/identical_rows
+      equals: 1152
+    - source: n15_parity
+      pointer: runs/abm2_release/identical_rows
+      equals: 432
+    - source: n15_parity
+      pointer: runs/abm2_event/identical_rows
+      equals: 432
+    - source: n15_parity
+      pointer: ordering_rule/event_insertion_reproduces_pivot_under_delays
+      equals: true
+    - source: n15_parity
+      pointer: ordering_rule/answers
+      equals: O27_outcome_row_order_under_delays
+  - id: C56_a_table_from_donors_in_other_worlds_of_the_same_generator_suffices_in_stationary_worlds
+    statement: In study v2's cells, a four-donor table whose donors ran in other worlds from the same generator
+      (another network, thresholds, and costs, the same veracity relation) beats the adaptive learner in all 12
+      study groups, by 0.012 to 0.054 (TRANSFERRED_TABLE_SUFFICES in both regimes). The null check passes. What
+      same-world donors added over other-world ones (T0-4 - T0x-4) is material in none of the 12.
+    evidence:
+    - source: o23_transfer
+      pointer: status
+      equals: O23_TRANSFERRED_TABLE_SUFFICES_IN_BOTH_REGIMES
+    - source: o23_transfer
+      pointer: dispositions/design_check
+      equals: NULL_WORLD_PASSES
+    - source: o23_transfer
+      pointer: dispositions/counts/transfer_best_table/A/NEGATIVE
+      equals: 6
+    - source: o23_transfer
+      pointer: dispositions/counts/transfer_best_table/B/NEGATIVE
+      equals: 6
+    - source: o23_transfer
+      pointer: dispositions/counts/transfer_closed_loop/B/INDISTINGUISHABLE
+      equals: 6
+    - source: o23_transfer
+      pointer: table/A~1mlp~1smooth/unverified_share_precision/transfer_cost/material
+      equals: false
+    - source: o23_transfer
+      pointer: table/B~1partial_mlp~1smooth/unverified_share_precision/transfer_cost/material
+      equals: false
+  - id: C57_the_closed_loop_beats_the_best_table_once_a_quarter_of_runs_carry_run_specific_information
+    statement: When each run's credibility relation is reversed with probability p, the adaptive learner beats the
+      four-donor table from p = 0.25 in all four regime and family groups, and the single-donor table already at
+      p = 0.1, where 7.8% of runs were reversed. At p = 0 the four-donor table wins, as in study v2, and the
+      positive control holds at p = 0.5.
+    evidence:
+    - source: o26_flip_rate
+      pointer: status
+      equals: O26_ONSET_AT_P_0_25_IN_EVERY_FAMILY
+    - source: o26_flip_rate
+      pointer: dispositions/design_check
+      equals: POSITIVE_CONTROL_HOLDS_AT_0.5
+    - source: o26_flip_rate
+      pointer: dispositions/onset/A~1linear_exact
+      equals: '0.25'
+    - source: o26_flip_rate
+      pointer: dispositions/onset/A~1mlp
+      equals: '0.25'
+    - source: o26_flip_rate
+      pointer: dispositions/onset/B~1partial_linear_exact
+      equals: '0.25'
+    - source: o26_flip_rate
+      pointer: dispositions/onset/B~1partial_mlp
+      equals: '0.25'
+    - source: o26_flip_rate
+      pointer: dispositions/labels/A~1mlp/0.1/closed_loop
+      equals: POSITIVE
+    - source: o26_flip_rate
+      pointer: dispositions/labels/B~1partial_mlp/0.1/closed_loop
+      equals: POSITIVE
+    - source: o26_flip_rate
+      pointer: dispositions/labels/A~1mlp/0/best_table
+      equals: NEGATIVE
+    - source: o26_flip_rate
+      pointer: table/A~1mlp~1p=0.1/flipped_run_share
+      less_than: 0.1
+  - id: C58_without_the_inherited_clip_the_llm_prior_carries_the_relations_direction
+    statement: Rebuilt from D5's first elicitation without the inherited probability clip, the once-elicited prior
+      distils with R-squared 0.81 in Regime A and 0.76 in Regime B, its credibility, novelty, and intensity weights
+      have the signs of the world's linear relation, and it beats the hand rule in all 12 study groups. D5's flat Regime A prior was a
+      property of the readout.
+    evidence:
+    - source: o24_unclipped
+      pointer: dispositions/design_check
+      equals: NULL_WORLD_PASSES
+    - source: o24_unclipped
+      pointer: unclipped_priors/A/p0u_distillation_r_squared
+      greater_than: 0.8
+    - source: o24_unclipped
+      pointer: unclipped_priors/B/p0u_distillation_r_squared
+      greater_than: 0.75
+    - source: o24_unclipped
+      pointer: unclipped_priors/A/p0u_weights/0
+      greater_than: 0
+    - source: o24_unclipped
+      pointer: unclipped_priors/A/p0u_weights/2
+      less_than: 0
+    - source: o24_unclipped
+      pointer: dispositions/counts/unclipped_prior_vs_hand/A/POSITIVE
+      equals: 6
+    - source: o24_unclipped
+      pointer: dispositions/counts/unclipped_prior_vs_hand/B/POSITIVE
+      equals: 6
+    - source: o24_unclipped
+      pointer: table/A~1mlp~1linear/unverified_share_precision/readout_effect_on_the_prior/mean_cell_delta
+      greater_than: 0.2
+  - id: C59_on_precision_an_informative_llm_prior_adds_little_inside_the_learner
+    statement: Starting the learner from the unclipped prior instead of the hand rule (L1u - L0) is MIXED_OR_NONE
+      in both regimes on share precision. It is positive in 5 of 12 study groups, by 0.012 to 0.020, and negative
+      in none.
+    evidence:
+    - source: o24_unclipped
+      pointer: dispositions/by_comparison/unclipped_prior_in_learner/A
+      equals: MIXED_OR_NONE
+    - source: o24_unclipped
+      pointer: dispositions/by_comparison/unclipped_prior_in_learner/B
+      equals: MIXED_OR_NONE
+    - source: o24_unclipped
+      pointer: dispositions/counts/unclipped_prior_in_learner/A/NEGATIVE
+      equals: 0
+    - source: o24_unclipped
+      pointer: dispositions/counts/unclipped_prior_in_learner/B/NEGATIVE
+      equals: 0
+    - source: o24_unclipped
+      pointer: dispositions/counts/unclipped_prior_in_learner/A/POSITIVE
+      equals: 3
+    - source: o24_unclipped
+      pointer: dispositions/counts/unclipped_prior_in_learner/B/POSITIVE
+      equals: 2
+  - id: C60_the_framework_comparisons_hold_under_the_agents_utility
+    statement: Scored by the agents' own utility on unverified items (+1 per true share, -c per false share), the
+      best table still beats the learner in all 12 study groups, the closed loop at matched evidence stays
+      MIXED_OR_NONE, the learner still beats the hand rule, and NABM still beats the archetypes in all 12. Every
+      Regime B rerun reproduced its recorded counts exactly.
+    evidence:
+    - source: o25_utility
+      pointer: parity_failures
+      equals: []
+    - source: o25_utility
+      pointer: dispositions/by_comparison/best_table~1A/utility_counts/NEGATIVE
+      equals: 6
+    - source: o25_utility
+      pointer: dispositions/by_comparison/best_table~1B/utility_counts/NEGATIVE
+      equals: 6
+    - source: o25_utility
+      pointer: dispositions/by_comparison/closed_loop~1A/agrees
+      equals: true
+    - source: o25_utility
+      pointer: dispositions/by_comparison/closed_loop~1B/agrees
+      equals: true
+    - source: o25_utility
+      pointer: dispositions/by_comparison/hand_rule~1A/utility
+      equals: MOSTLY_POSITIVE
+    - source: o25_utility
+      pointer: dispositions/by_comparison/hand_rule~1B/utility
+      equals: MOSTLY_POSITIVE
+    - source: o25_utility
+      pointer: dispositions/by_comparison/nabm_vs_archetypes~1A/utility_counts/POSITIVE
+      equals: 6
+    - source: o25_utility
+      pointer: dispositions/by_comparison/nabm_vs_archetypes~1B/utility_counts/POSITIVE
+      equals: 6
+  - id: C61_under_utility_an_llm_prior_inside_the_learner_lowers_the_agents_utility
+    statement: Five of 20 summaries change under utility, all involving an LLM prior. Starting the learner from
+      D5's prior (L1 - L0) lowers utility in 6 of 6 Regime A and 4 of 6 Regime B study groups, and from the
+      unclipped prior (L1u - L0) in 4 of 6 Regime B groups, where 2 are positive. In Regime B the closed loop on
+      either prior raises utility over the prior alone (4 and 5 of 6). Each was MIXED_OR_NONE on precision.
+    evidence:
+    - source: o25_utility
+      pointer: dispositions/overall
+      equals: SOME_CONCLUSIONS_CHANGE_UNDER_UTILITY
+    - source: o25_utility
+      pointer: dispositions/by_comparison/llm_prior_in_learner~1A/utility_counts/NEGATIVE
+      equals: 6
+    - source: o25_utility
+      pointer: dispositions/by_comparison/llm_prior_in_learner~1A/precision
+      equals: MIXED_OR_NONE
+    - source: o25_utility
+      pointer: dispositions/by_comparison/llm_prior_in_learner~1B/utility_counts/NEGATIVE
+      equals: 4
+    - source: o25_utility
+      pointer: dispositions/by_comparison/unclipped_prior_in_learner~1B/utility
+      equals: MOSTLY_NEGATIVE
+    - source: o25_utility
+      pointer: dispositions/by_comparison/unclipped_prior_in_learner~1B/utility_counts/POSITIVE
+      equals: 2
+    - source: o25_utility
+      pointer: dispositions/by_comparison/closed_loop_on_llm_prior~1B/utility
+      equals: MOSTLY_POSITIVE
+    - source: o25_utility
+      pointer: dispositions/by_comparison/closed_loop_on_unclipped_prior~1B/utility
+      equals: MOSTLY_POSITIVE
+    - source: o25_utility
+      pointer: dispositions/by_comparison/unclipped_prior_in_learner~1A/agrees
+      equals: true
+  - id: C62_every_follow_up_reproduced_byte_for_byte
+    statement: O23, O26, O24, and O25 each reproduced their cells and summaries byte for byte in a second run on
+      GPU-Server. Where a follow-up read recorded arms (O23, O24, O25), its recomputed or rerun rows matched the
+      records.
+    evidence:
+    - source: o23_transfer
+      pointer: reproduction/byte_identical/cells.jsonl
+      equals: true
+    - source: o26_flip_rate
+      pointer: reproduction/byte_identical/cells.jsonl
+      equals: true
+    - source: o24_unclipped
+      pointer: reproduction/byte_identical/cells.jsonl
+      equals: true
+    - source: o25_utility
+      pointer: reproduction/byte_identical/cells.jsonl
+      equals: true
+    - source: o23_transfer
+      pointer: parity_failures
+      equals: []
+    - source: o24_unclipped
+      pointer: parity_failures
+      equals: []
+    - source: o26_flip_rate
+      pointer: dispositions/control_failures
+      equals: []
+  rejected:
+  - id: R18_per_agent_residuals_keep_a_table_from_transferring_across_worlds_in_regime_b
+    statement: The O23 expectation stated before the run, ADAPTIVE_BEATS_TRANSFERRED_TABLE in Regime B, because
+      per-agent residuals learned in donor worlds land on other agents.
+    reason: The transferred four-donor table beat the learner in all 6 Regime B study groups. Costs enter only the
+      decision cutoff, which comes from the evaluation world, so a pooled belief transfers. This explanation is
+      not tested.
+    evidence:
+    - source: o23_transfer
+      pointer: dispositions/transfer_best_table/B
+      equals: TRANSFERRED_TABLE_SUFFICES
+  - id: R19_an_llm_prior_that_adds_nothing_detectable_on_precision_is_neutral_for_the_agents
+    statement: C53 (no detectable effect of the LLM prior inside the learner on share precision) means the prior
+      is neutral for the agents.
+    reason: Under the agents' utility, L1 - L0 is MOSTLY_NEGATIVE in both regimes. The prior keeps precision but
+      lowers how much the learner shares, so it forgoes shares worth making.
+    evidence:
+    - source: o25_utility
+      pointer: dispositions/by_comparison/llm_prior_in_learner~1A/utility
+      equals: MOSTLY_NEGATIVE
+    - source: o25_utility
+      pointer: dispositions/by_comparison/llm_prior_in_learner~1B/utility
+      equals: MOSTLY_NEGATIVE
+  open:
+  - id: O28_what_makes_an_llm_prior_lower_utility_inside_the_learner
+    question: Does the utility cost of an LLM prior inside the learner come from the prior's calibration (its
+      base-rate shift and steepness) or from the model's answers?
+    kind: SYNTHETIC
+    priority: 1
+    motivation: C61 changes a Paper-1 case. The selectivity explanation agrees with D5's descriptive share counts
+      but was not tested, and no prior was calibrated for utility.
+  - id: O29_the_onset_with_larger_tables_and_shifts_within_a_run
+    question: Does the onset of the closed loop's advantage move with a table built from more donors, or with
+      run-specific information that shifts within a run?
+    kind: SYNTHETIC
+    priority: 2
+    motivation: O26 used one table size (four donors) and one kind of run-specific information (a sign drawn once
+      per run).
+  - id: O30_tables_across_relations
+    question: Does a table still suffice when its donors ran under another veracity relation or in another domain?
+    kind: SYNTHETIC
+    priority: 3
+    motivation: O23's other worlds came from one generator and shared the veracity relation.
+  - id: O31_scoring_harm_to_others
+    question: Do the comparisons hold when an arm is also charged for the reach of the false items it shares?
+    kind: SYNTHETIC
+    priority: 3
+    motivation: O25 scored only the sharer's own gain and cost. False reach is recorded for every arm but not
+      scored.
+status_updates:
+- id: N15
+  previous: USER_APPROVAL_REQUIRED
+  status: DONE_AT_cb0aa44_RECORDED_AT_8b7a31b_MERGED_INTO_MAIN_AT_261b447
+  answered_by:
+  - C55_the_package_reproduces_both_recorded_pivot_studies_including_under_delays
+- id: N16
+  previous: AFTER_THIS_CONSOLIDATION
+  status: DRAFTED_AT_0949c3c_MERGED_INTO_MAIN_AT_9e30d07
+- id: N17
+  previous: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+  status: DONE_O23_O26_O24_O25_EACH_FROZEN_RUN_AND_RECORDED_2026_10_21_TO_22
+  answered_by:
+  - C56_a_table_from_donors_in_other_worlds_of_the_same_generator_suffices_in_stationary_worlds
+  - C57_the_closed_loop_beats_the_best_table_once_a_quarter_of_runs_carry_run_specific_information
+  - C58_without_the_inherited_clip_the_llm_prior_carries_the_relations_direction
+  - C59_on_precision_an_informative_llm_prior_adds_little_inside_the_learner
+  - C60_the_framework_comparisons_hold_under_the_agents_utility
+  - C61_under_utility_an_llm_prior_inside_the_learner_lowers_the_agents_utility
+  - R18_per_agent_residuals_keep_a_table_from_transferring_across_worlds_in_regime_b
+  - R19_an_llm_prior_that_adds_nothing_detectable_on_precision_is_neutral_for_the_agents
+- id: N18
+  previous: USER_CONFIRMATION_REQUIRED
+  status: DONE_MERGED_INTO_MAIN_AT_ee4543e
+answered_open_items:
+- id: O23_tables_that_must_transfer_across_worlds
+  answered_by:
+  - C56_a_table_from_donors_in_other_worlds_of_the_same_generator_suffices_in_stationary_worlds
+  - R18_per_agent_residuals_keep_a_table_from_transferring_across_worlds_in_regime_b
+- id: O24_an_llm_prior_readout_without_saturation
+  answered_by:
+  - C58_without_the_inherited_clip_the_llm_prior_carries_the_relations_direction
+  - C59_on_precision_an_informative_llm_prior_adds_little_inside_the_learner
+- id: O25_a_utility_measure
+  answered_by:
+  - C60_the_framework_comparisons_hold_under_the_agents_utility
+  - C61_under_utility_an_llm_prior_inside_the_learner_lowers_the_agents_utility
+  - R19_an_llm_prior_that_adds_nothing_detectable_on_precision_is_neutral_for_the_agents
+- id: O26_non_stationary_worlds_as_study_cells
+  answered_by:
+  - C57_the_closed_loop_beats_the_best_table_once_a_quarter_of_runs_carry_run_specific_information
+- id: O27_outcome_row_order_under_delays
+  answered_by:
+  - C55_the_package_reproduces_both_recorded_pivot_studies_including_under_delays
+narrowed_claims:
+- id: C53_an_llm_prior_adds_no_detectable_gain_inside_the_learner
+  scope: Holds on share precision only. Under the agents' utility the same comparison is MOSTLY_NEGATIVE (C61).
+- id: C51_in_stationary_worlds_a_table_written_before_the_run_suffices
+  scope: Holds for donors in the same world and in other worlds of the same generator (C56), and while
+    run-specific information is rare (C57).
+reporting_rules:
+- id: UNVERIFIED_MEASURE
+  rule: Information-spread comparisons from study v2 on are on share precision on unverified items, whose
+    fact-check is not public at the decision. Study v1's groups are not read.
+  carried_from: v6
+- id: TRANSFER_WITHIN_ONE_GENERATOR
+  rule: '"A table suffices" holds for donors in the same world and in other worlds of the same generator, which
+    share the veracity relation. Transfer across relations or domains is not tested.'
+  replaces: SAME_WORLD_DONORS
+- id: RARE_RUN_SPECIFIC_INFORMATION
+  rule: The table critique holds only while run-specific information is rare. In the flip study, a four-donor
+    table falls behind between a tenth and a quarter of runs carrying it. That is one kind of information and one
+    table size.
+- id: PRECISION_AND_UTILITY
+  rule: Report comparisons that involve an LLM prior under both share precision and the agents' utility, since
+    they disagree in 5 of 20 summaries. Utility scores only the sharer's own gain and cost, not the reach of false
+    items.
+  replaces: PRECISION_IS_NOT_UTILITY
+- id: LLM_READOUT
+  rule: Name the readout with any LLM-prior result. P0 in Regime A saturated under the inherited clip and is
+    nearly constant; without the clip the same answers carry the relation's direction (C58). The X0 table is not
+    clipped.
+  carried_from: v6
+paper_direction:
+  decided_by: USER_2026_10_13
+  central_claim: UNCHANGED_FROM_V5
+  reusability: TWO_CONSUMERS_SHARE_THE_PACKAGE_SEMANTICS_BYTE_FOR_BYTE_ON_MAIN_NOT_IN_A_RELEASED_TAG
+  updated_conditional_cases:
+  - THE_PRECOMPUTED_TABLE_CRITIQUE_HOLDS_ACROSS_WORLDS_OF_ONE_GENERATOR_AND_FAILS_ONCE_A_QUARTER_OF_RUNS_CARRY_RUN_SPECIFIC_INFORMATION
+  - NABM_LEARNERS_BEAT_AGENTTORCH_STYLE_ARCHETYPES_ON_PRECISION_AND_ON_UTILITY
+  - AN_LLM_PRIOR_ADDS_NOTHING_DETECTABLE_INSIDE_THE_LEARNER_ON_PRECISION_AND_LOWERS_THE_AGENTS_UTILITY
+  - A_REGISTERED_NULL_CHECK_CAUGHT_A_LEAK_BEFORE_ANY_STUDY_GROUP_WAS_READ
+  evidence:
+  - source: o25_utility
+    pointer: dispositions/disagreements
+    contains: llm_prior_in_learner/A
+next_steps:
+- id: N19
+  kind: PAPER
+  action: UPDATE_SECTION_8_THE_CLAIM_MATRIX_AND_THE_OUTLINE_WITH_C55_TO_C62_AND_THE_V7_REPORTING_RULES
+  authorization: AFTER_THIS_CONSOLIDATION
+- id: N20
+  kind: REPOSITORY
+  action: MERGE_THE_FOLLOW_UP_BRANCH_INTO_MAIN_THROUGH_A_PULL_REQUEST
+  authorization: USER_CONFIRMED_2026_10_22
+- id: N21
+  kind: COMPARISON_DESIGN
+  action: CHOOSE_AMONG_O28_TO_O31_EACH_AS_A_SEPARATE_PRECOMMIT
+  authorization: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+- id: N22
+  kind: RELEASE
+  action: TAG_A_NEXT_ALPHA_THAT_SHIPS_THE_POLICY_LADDER_PACKAGE_SURFACE
+  authorization: USER_CONFIRMATION_REQUIRED
+boundaries:
+  new_execution: NONE
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: ACCEPTED_IN_DECISION_0017_ON_MAIN_SINCE_261b447_NOT_IN_A_RELEASED_TAG
