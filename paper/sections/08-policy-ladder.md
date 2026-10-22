@@ -3,9 +3,9 @@
 Status: draft prose candidate.
 
 **Sources.**
-- Claim-matrix rows P1 to P10.
-- The hash-audited consolidation ledgers v1 to v6:
-  `docs/research/pivot-policy-ladder-consolidation-v6.md` extends the others.
+- Claim-matrix rows P1 to P11.
+- The hash-audited consolidation ledgers v1 to v7:
+  `docs/research/pivot-policy-ladder-consolidation-v7.md` extends the others.
   Ledger ids are in parentheses.
 - Decision 0017 for the package surface.
 
@@ -15,8 +15,11 @@ Status: draft prose candidate.
 - The package modules `src/neural_abm/policy_ladder.py` and
   `src/neural_abm/policy_learners.py`.
 
-**Figure.** `paper/figures/info_spread_policy_ladder_comparisons.png`, made by
-`scripts/plot_info_spread_policy_ladder_v1.py` from recorded results only.
+**Figures.** Both are made from recorded results only.
+- Figure 1, `paper/figures/info_spread_policy_ladder_comparisons.png`, by
+  `scripts/plot_info_spread_policy_ladder_v1.py`.
+- Figure 2, `paper/figures/info_spread_policy_ladder_follow_ups.png`, by
+  `scripts/plot_info_spread_policy_ladder_follow_ups_v1.py`.
 
 Every result in this section comes from synthetic worlds designed by the
 authors. Each is a conditional case of the central claim, not a performance
@@ -131,7 +134,7 @@ recalibrated on public outcomes. The hybrid was calibrated to a base rate and
 learned from outcomes. "Matched" means each mean metric lay within a 0.02
 margin; it is not statistical equivalence.
 
-## 8.7 A Second Domain: Information Spread (P7–P10)
+## 8.7 A Second Domain: Information Spread (P7–P11)
 
 The second domain answers two questions at once:
 
@@ -160,12 +163,17 @@ The second domain answers two questions at once:
 | F0, F1 | The Granovetter threshold rule, and a hand rule on credibility and social proof (F1 is every learner's prior) | Before the run |
 | T0-1 | One donor learner run's policy trajectory, replayed as a table | Before the run |
 | T0-4 | The average of four donors' trajectories | Before the run |
+| T0x-1, T0x-4 | The same tables from donors in other worlds of the same generator (§8.7.2) | Before the run |
 | L0 | The adaptive learner (exact linear or MLP residuals on F1), refit every four steps | During the run |
 | P0 | The once-elicited LLM prior, distilled and calibrated | Before the run |
 | X0 | AgentTorch-style archetypes: one LLM answer per archetype, item class, and public fact-check aggregate | Before the run (§8.7.3) |
 | L1 | The learner started from P0 instead of F1 | During the run |
+| P0u, L1u | P0 read without the inherited clip, and the learner started from it (§8.7.3) | Before / during the run |
 
-Donors are runs of the same learner in the same world, on disjoint seeds.
+Donors are runs of the same learner on disjoint seeds. For T0-1 and T0-4 they
+ran in the same world. For T0x-1 and T0x-4 they ran in other worlds with
+another network, other thresholds, and other costs, but the same veracity
+relation.
 
 **Design.**
 - **Groups.** Two regimes × two learner families × four worlds give 16
@@ -193,13 +201,13 @@ fact-check is not yet public at the decision. A control check then showed:
 
 - the null control reproduces the leak on the old measure (+0.025, material);
 - on the new measure the leak is gone;
-- the closed-loop control effects survive (Figure, panel c).
+- the closed-loop control effects survive (Figure 1, panel c).
 
 The study was then frozen again with fresh seeds (R16).
 
 ### 8.7.2 When is a learned policy more than a table? (P7)
 
-**In the stationary worlds** of the second study (Figure, panel a):
+**In the stationary worlds** of the second study (Figure 1, panel a):
 
 - **Learning matters.** Every learner beats the hand rule, by +0.040 to
   +0.129 in each of the 12 study groups.
@@ -219,11 +227,32 @@ reverses. In a control where each run draws its own sign for the credibility
 relation, L0 beats both tables in all four groups: the single donor by 0.126
 to 0.152, and the four-donor average by 0.083 to 0.100 (C49).
 
-So the precomputed-table critique holds for stationary designs whose donors
-ran in the same world. It fails when the run itself carries information that
-no table written in advance can hold. Where between the two the closed loop
-begins to matter is open (O26). So is whether a table transfers when its
-donors ran in other worlds (O23).
+**Donors from other worlds** (Figure 2, panel a).
+- **The result.** A four-donor table whose donors ran in other worlds beats
+  the learner in all 12 groups, by 0.012 to 0.054 (C56). Same-world donors
+  added nothing material over other-world ones (0 of 12).
+- **The transfer study's expectation fails.** It expected Regime B's per-agent
+  residuals to keep the table from transferring. They did not (R18).
+- **One explanation, not tested.** Costs enter only the decision cutoff,
+  which comes from the evaluation world. So what is learned is a pooled
+  belief, and a pooled belief transfers.
+
+**Between the two cases** (Figure 2, panel b). Each run's credibility
+relation was reversed with probability p, so a run carries information its
+donors lack only when it is reversed.
+- **At p = 0**, the four-donor table wins, as above.
+- **At p = 0.1**, with 7.8% of runs reversed, the learner already beats the
+  single-donor table in every family, by +0.034 to +0.036. Against the
+  four-donor table the result is mixed.
+- **From p = 0.25**, the learner beats the four-donor table in every family,
+  by +0.050 to +0.069 (C57).
+
+So the precomputed-table critique holds in stationary designs, whether the
+donors ran in the same world or in other worlds of the same generator. It
+fails once run-specific information is no longer rare. For a four-donor table
+here, the boundary lies between a tenth and a quarter of runs carrying it.
+- **What is not tested:** another kind of run-specific information, a larger
+  table (O29), and another veracity relation or domain (O30).
 
 ### 8.7.3 LLM comparators (P8, P9)
 
@@ -233,24 +262,71 @@ agent's decision. So its table over archetype, item class, and aggregate
 holds every answer it could need. Elicited once, it gives the same answers
 as querying during the run with a prompt cache.
 
-Given the same public information (Figure, panel b):
+Given the same public information (Figure 1, panel b):
 
 - **NABM against archetypes (P8).** The adaptive learner beats the
   archetypes in all 12 study groups, by 0.155 to 0.229 (C52). The archetypes
   also fall below the hand rule, sharing 1.4 to 1.7 times as many items at
   near base-rate precision.
-- **An LLM prior inside the learner (P9).** It adds nothing detectable. L1 −
-  L0 is not material in any Regime B group and in four of six Regime A
-  groups (C53).
+- **An LLM prior inside the learner (P9).** On precision it adds nothing
+  detectable. L1 − L0 is not material in any Regime B group and in four of
+  six Regime A groups (C53).
   - In Regime B the prior alone beats the hand rule by +0.080 to +0.107, yet
     learning from the run's outcomes overrides the difference in starting
     point.
   - In Regime A the elicited prior saturated: 99% of its log-odds fell below
     the readout clip inherited from the pivot ladder. So P0/A is nearly
     constant, which is a property of the readout, not evidence about the
-    model's knowledge (O24).
+    model's knowledge.
+- **The same answers without the clip (P9).**
+  - **The prior.** Read without the clip, D5's first elicitation distils
+    with R² 0.81 in Regime A and 0.76 in Regime B. Its credibility,
+    novelty, and intensity weights have the world's signs. Alone, it beats
+    the hand rule in all 12 groups, by +0.057 to +0.087 (C58).
+  - **The prior inside the learner.** Started from it, the learner gains
+    little on precision. L1u − L0 is positive in 5 of 12 groups, by +0.012
+    to +0.020, and negative in none (C59).
 
-### 8.7.4 Reuse
+### 8.7.4 Scoring by the agents' utility (P11)
+
+Share precision rewards selectivity, and it is not what the agents optimize.
+
+**The utility.** Each agent's decision rule maximizes its own utility:
+- +1 for each true share;
+- −c for each false share, where c is the sharer's cost.
+
+**How the arms were rescored.** Every registered arm was scored by this
+utility on unverified items, in the same cells and runs.
+- **Regime A** was computed from the recorded counts.
+- **Regime B** was rerun. Every rerun row reproduced its recorded counts
+  exactly.
+- **The minimum effect** was fixed before any utility was computed: 1% of
+  F1's mean absolute utility in each regime.
+
+**The framework comparisons hold (C60).**
+- The best table still beats the learner in all 12 groups.
+- The closed loop at matched evidence still shows no consistent gain.
+- The learner still beats the hand rule.
+- NABM still beats the archetypes in all 12 groups.
+
+**The LLM-prior readings change (C61).** Five of 20 summaries change, and
+each involves an LLM prior (Figure 2, panel c).
+- **L1 − L0** lowers utility in 6 of 6 Regime A groups and 4 of 6 Regime B
+  groups.
+- **L1u − L0** lowers it in 4 of 6 Regime B groups, and raises it in the
+  other 2.
+- **In Regime B,** the closed loop on either prior raises utility over the
+  prior alone, in 4 and 5 of 6 groups.
+
+**One explanation, not tested.** A learner started from a selective prior
+shares less at about the same precision, so it forgoes shares worth making.
+D5's recorded share counts put L1 below L0 in both regimes.
+
+So "adds nothing detectable" holds on precision only. For the agents, the
+LLM prior is not neutral (R19). The utility counts only the sharer's own
+gain and cost, not the reach of false items (O31).
+
+### 8.7.5 Reuse
 
 The second domain ran through a domain-free core lifted from the pivot
 ladder. Its arms nest exactly, with 14 checks (C47).
@@ -303,9 +379,12 @@ These rules apply wherever this section's results are cited.
 - **Neural necessity** is not established.
 - **Information-spread comparisons** are on share precision on unverified
   items. The first study's groups are not read.
-- **"A table suffices"** holds for donors that ran in the same world.
-- **Share precision** rewards selectivity and is not the agents' utility
-  (O25).
+- **"A table suffices"** holds for donors in the same world or in other
+  worlds of the same generator, and while run-specific information is rare.
+  Transfer across veracity relations or domains is not tested.
+- **Share precision** rewards selectivity and is not the agents' utility.
+  Comparisons that involve an LLM prior are reported on both, because they
+  disagree in 5 of 20 summaries.
 
 ## 8.10 What This Section Claims
 
@@ -322,19 +401,27 @@ Four statements are supported, each with its boundary.
    - *Limitation:* two consumers and two recorded configurations, on one
      host. The surface is not in the released `v0.1.0a5` tag.
 3. **The lifecycle makes the table critique testable.**
-   - In stationary, same-world designs, a table written before the run
-     suffices.
-   - When a run carries information that donors lack, the adaptive policy
-     wins.
-   - *Limitations:* the transfer of tables across worlds, and the region
-     between the two cases, are not tested.
+   - In stationary designs, a table written before the run suffices, whether
+     its donors ran in the same world or in other worlds of the same
+     generator.
+   - Once about a quarter of runs carry information that donors lack, the
+     adaptive policy wins.
+   - These conclusions hold under the agents' utility as well as precision.
+   - *Limitations:* one generator and veracity relation, one kind of
+     run-specific information, and one table size.
 4. **Conditional comparisons with local language models.**
    - The NABM learner beats AgentTorch-style archetypes given the same
-     public information.
-   - A once-elicited prior adds nothing detectable inside the learner.
+     public information, on precision and on utility.
+   - A once-elicited prior adds nothing detectable inside the learner on
+     precision, and lowers the agents' utility.
    - The hybrid met its registered criteria against two LLM agents.
-   - *Limitations:* one small model, fixed prompts, a saturated readout in
-     one regime, and asymmetric recalibration in the agent comparison.
+   - *Limitations:*
+     - one small model and fixed prompts;
+     - a readout that matters: the inherited clip saturated one regime;
+     - asymmetric recalibration in the agent comparison;
+     - a utility that ignores harm to others.
 
-The registration discipline is part of the evidence: it caught one leak and
-closed one underpowered test before either could be read as a result.
+The registration discipline is part of the evidence. It caught one leak and
+closed one underpowered test before either could be read as a result. A
+second measure, with its minimum effect fixed before it was computed, showed
+which readings depend on precision.

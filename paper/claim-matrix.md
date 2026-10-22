@@ -102,11 +102,11 @@ or scientific effect is established.
 ## Policy-Ladder Conditional Cases
 
 Rows P1 to P6 come from the repository-only researcher-pivot policy ladder,
-and P7 to P10 from its second domain, information spread. They are
+and P7 to P11 from its second domain, information spread. They are
 synthetic, stylized worlds, and their code is in prototype scripts, not in
 `src/neural_abm`. Each statement is hash-audited in the consolidation ledgers
 [v1](../docs/research/pivot-policy-ladder-consolidation-v1.md) to
-[v6](../docs/research/pivot-policy-ladder-consolidation-v6.md). Ledger ids are
+[v7](../docs/research/pivot-policy-ladder-consolidation-v7.md). Ledger ids are
 in parentheses. Use them as conditional cases for the central claim, never as
 general performance claims.
 
@@ -118,10 +118,11 @@ general performance claims.
 | P4 | Pooled learning adds modest cost over the rule ABM; per-agent learning and every-step LLM queries do not. | `scripts/prototype_pivot_relative_delay_cost_v1.py`, `scripts/prototype_pivot_llm_agent_reference_v1.py` | `pivot_relative_delay_cost_v1_20260929`, `pivot_llm_agent_reference_v1_20260930` summaries | Pooled linear, tree, and MLP policies cost 1.9 to 6.7 times the rule ABM per agent-step, and per-agent learners 57 to 65 times (C16). Elicitation took under 10 GPU minutes (C25). The every-step LLM agent needed about 110 GPU-seconds per run, against about 5 CPU-seconds for an NABM learner run (C35). | One machine and one design. Costs are for this ladder, not a general benchmark. |
 | P5 | In the specified synthetic worlds and comparison conditions, the NABM hybrid met the registered performance criteria against two local LLM implementations. | `scripts/prototype_pivot_llm_agent_reference_v1.py`, `scripts/prototype_pivot_llm_persona_agent_v1.py` | `pivot_llm_agent_reference_v1_20260930`, `pivot_llm_persona_agent_v1_20261001` summaries | The hybrid matched or beat an every-step forecaster agent (C32) and a persona agent (C36) in 9 of 9 cells. The forecaster over-entered once outcomes were public (C34). The persona said Yes in 0.15% of questions and self-sealed (C37). | Both agents used the same Qwen3-4B-Instruct-2507. "Matches" means each mean metric within a 0.02 margin, not statistical equivalence. Calibration and decision rules differ between arms and drive much of the result. |
 | P6 | The registration discipline stopped an empirical test that could not answer its question before confirmatory outcomes were read. | `scripts/build_pivot_empirical_ladder_risk_sets_v1.py`, `scripts/prototype_pivot_empirical_ladder_recovery_v3.py`, `scripts/explore_pivot_empirical_ladder_power_levers_v1.py` | `pivot_empirical_ladder_recovery_v3_20261012`, `pivot_empirical_ladder_power_levers_v1_20261013` summaries; consolidation v5 | At the measured data shape the registered analysis recovered learning in 1 of 8 (W1) and 3 of 8 (W2) replicates, against a required 7 of 8. No false recovery was observed (0 of 8 per world). The explored alternatives did not achieve power and false-recovery control together. N11c and N11d were not run. | A limitation and a protocol case, not evidence about learning. It does not imply the absence of learning. 0 of 8 bounds a world's false-recovery rate only below about 31%. v3 does not reproduce the empirical structure completely. |
-| P7 | A policy table written before the run suffices in stationary worlds; the closed loop matters when a run carries information the donors lack. | `scripts/run_info_spread_policy_ladder_study_v2.py`, `scripts/power_info_spread_policy_ladder_v4.py` | `info_spread_policy_ladder_study_v2_d4_20261019`, `info_spread_policy_ladder_d2d_controls_20261018` summaries; consolidation v6 (C49, C51) | Every learner beat the hand rule. The closed loop at matched evidence was material in 1 of 12 groups (TABLE_SUFFICES_EVEN_IN_B), and the four-donor table beat the learner in all 12. In the POS-sign control, the learner beat both tables in all 4 groups. | The donors ran in the same world; transfer across worlds is not tested (O23). The measure is precision on unverified items, which rewards selectivity. |
-| P8 | NABM learners beat AgentTorch-style LLM archetypes given the same public information. | `scripts/run_info_spread_policy_ladder_llm_arms_v1.py` | `info_spread_policy_ladder_llm_arms_d5_20261019` summary; consolidation v6 (C52) | MOSTLY_POSITIVE in both regimes, 12 of 12 groups, by 0.16-0.23. The archetypes also fell below the hand rule. | One local model (Qwen3-4B-Instruct-2507), one prompt, K = 2 threshold bins and 4 item classes, fixed in advance. Archetypes over-shared (1.4-1.7 times the hand rule). |
-| P9 | An LLM prior adds nothing detectable inside the learner. | `scripts/run_info_spread_policy_ladder_llm_arms_v1.py` | `info_spread_policy_ladder_llm_arms_d5_20261019` summary; consolidation v6 (C53) | L1 - L0 was MIXED_OR_NONE in both regimes, with no material difference in any Regime B group, although the prior alone beat the hand rule there. | P0 in Regime A saturated under the inherited readout clip and is nearly constant; it is not evidence about the model's knowledge (O24). |
+| P7 | A policy table written before the run suffices in stationary worlds; the closed loop matters once run-specific information is no longer rare. | `scripts/run_info_spread_policy_ladder_study_v2.py`, `scripts/power_info_spread_policy_ladder_v4.py`, `scripts/run_info_spread_policy_ladder_transfer_v1.py`, `scripts/run_info_spread_policy_ladder_flip_rate_v1.py` | `info_spread_policy_ladder_study_v2_d4_20261019`, `info_spread_policy_ladder_d2d_controls_20261018`, `info_spread_policy_ladder_transfer_v1_20261021`, `info_spread_policy_ladder_flip_rate_v1_20261021` summaries; consolidation v6 (C49, C51) and v7 (C56, C57) | Every learner beat the hand rule. The closed loop at matched evidence was material in 1 of 12 groups (TABLE_SUFFICES_EVEN_IN_B), and the four-donor table beat the learner in all 12, also when its donors ran in other worlds of the same generator. With each run's relation reversed at rate p, the learner beat the four-donor table from p = 0.25 in all 4 families. | One generator and veracity relation; transfer across relations or domains is not tested (O30). One kind of run-specific information and one table size (O29). |
+| P8 | NABM learners beat AgentTorch-style LLM archetypes given the same public information. | `scripts/run_info_spread_policy_ladder_llm_arms_v1.py` | `info_spread_policy_ladder_llm_arms_d5_20261019` summary; consolidation v6 (C52) and v7 (C60) | MOSTLY_POSITIVE in both regimes, 12 of 12 groups, by 0.16-0.23, and again under the agents' utility (C60). The archetypes also fell below the hand rule. | One local model (Qwen3-4B-Instruct-2507), one prompt, K = 2 threshold bins and 4 item classes, fixed in advance. Archetypes over-shared (1.4-1.7 times the hand rule). |
+| P9 | On share precision, an LLM prior adds nothing detectable inside the learner, even when the prior alone is informative. | `scripts/run_info_spread_policy_ladder_llm_arms_v1.py`, `scripts/run_info_spread_policy_ladder_unclipped_prior_v1.py` | `info_spread_policy_ladder_llm_arms_d5_20261019`, `info_spread_policy_ladder_unclipped_prior_v1_20261021` summaries; consolidation v6 (C53) and v7 (C58, C59) | L1 - L0 was MIXED_OR_NONE in both regimes. Read without the inherited clip, the prior carried the relation's direction and beat the hand rule in all 12 groups; started from it, the learner was ahead in 5 of 12 groups, by 0.012-0.020, and behind in none. | On precision only: under the agents' utility the prior lowers it (P11). One model, one prompt, and the readout matters: the inherited clip saturated Regime A. |
 | P10 | A registered null check caught a leak before any study group was read. | `scripts/run_info_spread_policy_ladder_study_v1.py`, `scripts/diagnose_info_spread_null_leak_v1.py` | `info_spread_policy_ladder_study_v1_d4_20261016`, `info_spread_policy_ladder_null_leak_diagnosis_20261018` summaries; consolidation v6 (C50, R16) | MLP learners recognized items already fact-checked and beat the hand rule in a world with nothing to learn. Study v1's groups were not read, and the measure moved to unverified items. | A protocol case, not a performance result. The diagnosis was exploratory. |
+| P11 | Scored by the agents' utility, the framework comparisons hold and the LLM-prior readings change. | `scripts/run_info_spread_policy_ladder_utility_v1.py`, `scripts/info_spread_utility_measure_v1.py` | `info_spread_policy_ladder_utility_v1_20261022` summary; consolidation v7 (C60, C61, R19) | 15 of 20 summaries agree with precision: the best table, the closed loop, the hand rule, and the archetypes. All 5 changes involve an LLM prior: L1 - L0 lowers utility in 6 of 6 Regime A and 4 of 6 Regime B groups. | The utility counts only the sharer's own gain and cost, not the reach of false items (O31). Why the prior lowers utility is not tested (O28). |
 
 ## Gaps the Central Claim Exposes
 
@@ -177,6 +178,11 @@ decision. Nothing here is authorized to run.
    - **Gap 2, a fairer LLM comparison.** Partly answered by the archetype
      baseline (P8). The every-step agents of P5 were not rerun with
      recalibration, so P5 keeps its asymmetry as a limitation.
+7. **Resolved on 2026-10-22 (consolidation v7).**
+   - **N15.** The package reproduces both recorded Pivot studies (C55).
+   - **O23 to O26.** Answered: P7, P9, and P11.
+   - **New gaps.** O28 to O31, and a release that ships the package surface
+     (N22). Each awaits the user's choice.
 
 ## Prospective Pivot-Feedback Claim Gates
 
@@ -267,9 +273,11 @@ rather than a post hoc field, endpoint, or model substitution.
    modeling assumption rather than an implementation default.
 9. Restructure the outline around the central claim, with a policy-ladder
    section built from P1 to P6.
-10. Section 8 is drafted from P1 to P10 with the consolidation v6 reporting
-    rules (`sections/08-policy-ladder.md`, N16). Its numbers are checked
-    against the recorded results by `tests/test_paper_section_08_policy_ladder.py`.
+10. Section 8 is drafted from P1 to P11 with the consolidation v7 reporting
+    rules (`sections/08-policy-ladder.md`, N16, updated in N19). Its numbers
+    are checked against the recorded results by
+    `tests/test_paper_section_08_policy_ladder.py`. Report every comparison
+    that involves an LLM prior on both precision and utility (P11).
 11. Cite the prior rule, outcome record, exploration floor, and prior-anchored
     learners as `main` / next-alpha package API (Decision 0017), not as part
     of the released `v0.1.0a5` tag.

@@ -182,7 +182,7 @@ Draft:
 
 ## 8. Policy Ladder: Fixed, Adaptive, and Prior-Informed Policies
 
-Source: claim matrix rows P1 to P10. Every result here is synthetic and
+Source: claim matrix rows P1 to P11. Every result here is synthetic and
 repository-only, and each is a conditional case of the central claim.
 Draft: [sections/08-policy-ladder.md](sections/08-policy-ladder.md).
 
@@ -208,7 +208,7 @@ Draft: [sections/08-policy-ladder.md](sections/08-policy-ladder.md).
   lacked power at the measured data shape before confirmatory outcomes were
   read. Quote the closure statement, including that it does not imply the
   absence of learning.
-- A second domain, information spread (P7 to P10, consolidation v6):
+- A second domain, information spread (P7 to P11, consolidations v6 and v7):
   - **Reuse.** The same comparison runs through a shared core. The Pivot
     ladder, re-expressed through that core, reproduces its record byte for
     byte (C47, C48).
@@ -216,12 +216,18 @@ Draft: [sections/08-policy-ladder.md](sections/08-policy-ladder.md).
     - In stationary worlds, a table written before the run from same-world
       donor runs is not detectably different from the closed loop in 11 of
       12 groups, and the four-donor table beats it in all 12.
-    - The closed loop wins only when the run carries information the donors
-      lack.
-    - State the same-world boundary.
+    - So does a four-donor table whose donors ran in other worlds of the
+      same generator.
+    - The closed loop beats the best table once about a quarter of runs
+      carry information the donors lack.
+    - State the one-generator boundary.
   - **LLM comparators (P8, P9).** NABM learners beat AgentTorch-style
-    archetypes in all 12 groups. An LLM prior adds nothing detectable inside
-    the learner. State the saturated Regime A readout.
+    archetypes in all 12 groups. On precision, an LLM prior adds nothing
+    detectable inside the learner, even read without the clip that saturated
+    Regime A.
+  - **Utility (P11).** Scored by the agents' own utility, the framework
+    comparisons hold and the LLM prior inside the learner lowers utility.
+    Report LLM-prior results on both measures.
   - **Protocol (P10).** A registered null check caught a leak before any study
     group was read, and the measure moved to unverified items.
   - **Package status.** Decision 0017 put the shared semantics in
@@ -237,16 +243,20 @@ Draft: [sections/08-policy-ladder.md](sections/08-policy-ladder.md).
 - What the policy ladder shows: fixed, adaptive, and prior-informed policies
   can be compared in one lifecycle, and when each is worth its cost.
 - When NABM is more than a precomputed table:
-  - In stationary, same-world designs, it is not.
+  - In stationary designs it is not, even when the table's donors ran in
+    other worlds of the same generator.
   - It is when a run carries information that no table written before the
-    run can hold.
-  - Where between the two the closed loop begins to matter is open (O26).
+    run can hold, here once about a quarter of runs did.
+- Why a second measure matters: precision rewards selectivity. Under the
+  agents' utility, an LLM prior that looked neutral inside the learner
+  lowers utility.
 - Limits of the evidence:
   - the worlds are synthetic and were designed by the authors;
   - the empirical test of learning closed without an answer;
   - the LLM comparisons cover one model family, and one of its readouts
     saturated;
-  - the table comparisons use donors from the same world;
+  - the table comparisons use one generator and veracity relation;
+  - the utility scores only the sharer, not the reach of false items;
   - neural necessity is not established.
 - Limits of the Transformer analogy.
 - Limits of parameter averaging.

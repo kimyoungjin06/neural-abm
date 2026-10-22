@@ -285,6 +285,8 @@ PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-policy-ladder-consolidation-v7.md",
     "experiments/configs/pivot_policy_ladder_consolidation_v7.yaml",
     "tests/test_pivot_policy_ladder_consolidation_v7.py",
+    "scripts/plot_info_spread_policy_ladder_follow_ups_v1.py",
+    "paper/figures/info_spread_policy_ladder_follow_ups.png",
 }
 PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-relative-delay-cost-v1.md",
