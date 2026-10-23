@@ -4,8 +4,8 @@ Status: draft prose candidate.
 
 **Sources.**
 - Claim-matrix rows P1 to P11.
-- The hash-audited consolidation ledgers v1 to v7:
-  `docs/research/pivot-policy-ladder-consolidation-v7.md` extends the others.
+- The hash-audited consolidation ledgers v1 to v8:
+  `docs/research/pivot-policy-ladder-consolidation-v8.md` extends the others.
   Ledger ids are in parentheses.
 - Decision 0017 for the package surface.
 
@@ -169,6 +169,7 @@ The second domain answers two questions at once:
 | X0 | AgentTorch-style archetypes: one LLM answer per archetype, item class, and public fact-check aggregate | Before the run (§8.7.3) |
 | L1 | The learner started from P0 instead of F1 | During the run |
 | P0u, L1u | P0 read without the inherited clip, and the learner started from it (§8.7.3) | Before / during the run |
+| L1_hcal, L0_pcal (and L1u_hcal, L0_ucal) | The learner started from the LLM prior's answers at F1's calibration, or from F1's answers at the LLM prior's calibration (§8.7.4) | During the run |
 
 Donors are runs of the same learner on disjoint seeds. For T0-1 and T0-4 they
 ran in the same world. For T0x-1 and T0x-4 they ran in other worlds with
@@ -318,13 +319,43 @@ each involves an LLM prior (Figure 2, panel c).
 - **In Regime B,** the closed loop on either prior raises utility over the
   prior alone, in 4 and 5 of 6 groups.
 
-**One explanation, not tested.** A learner started from a selective prior
-shares less at about the same precision, so it forgoes shares worth making.
-D5's recorded share counts put L1 below L0 in both regimes.
-
 So "adds nothing detectable" holds on precision only. For the agents, the
 LLM prior is not neutral (R19). The utility counts only the sharer's own
 gain and cost, not the reach of false items (O31).
+
+**Where the cost comes from.** A follow-up study split each LLM prior into
+two parts:
+- **its direction,** the model's answers;
+- **its calibration,** its location and steepness over the design cohort.
+
+The calibration step had set every LLM prior's mean probability over the
+cohort to the base rate 0.4. F1 sits near 0.68 there.
+
+Crossing the two parts against F1 gives two new learner arms per prior. One
+starts from the LLM's answers at F1's calibration, the other from F1's
+answers at the LLM's calibration. Each factor is then compared along both
+routes from L0 to L1. Below, each comparison is the arm with the LLM's part
+minus the arm with F1's, and the count is of study groups where it is
+material and negative, or positive where marked.
+
+| Prior and regime | Calibration, along both routes | Answers, along both routes | Attribution |
+|---|---|---|---|
+| P0, Regime A | 6 and 6 of 6 negative | 5 of 6 negative; 0 of 6 | Calibration |
+| P0, Regime B | 4 and 4 of 6 negative | 4 of 6 negative; mixed | Calibration |
+| P0u, Regime B | Mixed; 4 of 6 negative | 6 of 6 negative at F1's calibration; 4 of 6 *positive* at its own | Neither alone |
+
+- **For the once-elicited prior,** the utility loss traces to how it was
+  calibrated, not to the model's answers (C63).
+- **For the unclipped prior,** the two parts interact (C64). Its answers
+  pay off only with the selective calibration they came with. This was not
+  the expected result (R20).
+- **No starting point improves on F1's.** No LLM-informed start beats the
+  learner started from F1 under utility, in any prior and regime (C65).
+- **The cohort is not the world.** The recalibration was matched on the
+  design cohort, and in the world it overshot. At F1's calibration, an LLM
+  direction shares 1.35 to 1.48 times as much as F1 itself (C66). So the
+  answers comparisons at F1's calibration also carry a difference in how
+  much the starting prior shares.
 
 ### 8.7.5 Reuse
 
@@ -385,6 +416,10 @@ These rules apply wherever this section's results are cited.
 - **Share precision** rewards selectivity and is not the agents' utility.
   Comparisons that involve an LLM prior are reported on both, because they
   disagree in 5 of 20 summaries.
+- **An LLM prior's calibration** is named with any result about it: the
+  rule that set its location, and its steepness.
+- **A prior recalibrated on a design cohort** is reported with its share
+  counts in the world, which need not match its source's.
 
 ## 8.10 What This Section Claims
 
@@ -413,13 +448,16 @@ Four statements are supported, each with its boundary.
    - The NABM learner beats AgentTorch-style archetypes given the same
      public information, on precision and on utility.
    - A once-elicited prior adds nothing detectable inside the learner on
-     precision, and lowers the agents' utility.
+     precision, and lowers the agents' utility. The loss traces to how the
+     prior was calibrated, not to the model's answers.
    - The hybrid met its registered criteria against two LLM agents.
    - *Limitations:*
      - one small model and fixed prompts;
      - a readout that matters: the inherited clip saturated one regime;
      - asymmetric recalibration in the agent comparison;
-     - a utility that ignores harm to others.
+     - a utility that ignores harm to others;
+     - a calibration split matched on a design cohort, which overshot in
+       the world.
 
 The registration discipline is part of the evidence. It caught one leak and
 closed one underpowered test before either could be read as a result. A

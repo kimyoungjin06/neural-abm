@@ -1977,6 +1977,14 @@ def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
         "tests/test_pivot_policy_ladder_consolidation_v7.py",
         "scripts/plot_info_spread_policy_ladder_follow_ups_v1.py",
         "paper/figures/info_spread_policy_ladder_follow_ups.png",
+        "docs/research/info-spread-policy-ladder-prior-calibration-v1.md",
+        "experiments/configs/info_spread_policy_ladder_prior_calibration_v1.yaml",
+        "scripts/run_info_spread_policy_ladder_prior_calibration_v1.py",
+        "tests/test_info_spread_policy_ladder_prior_calibration_v1.py",
+        "tests/test_info_spread_policy_ladder_prior_calibration_v1_result.py",
+        "docs/research/pivot-policy-ladder-consolidation-v8.md",
+        "experiments/configs/pivot_policy_ladder_consolidation_v8.yaml",
+        "tests/test_pivot_policy_ladder_consolidation_v8.py",
     }
     assert repository_paths == inspector[
         "PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS"

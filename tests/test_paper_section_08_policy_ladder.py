@@ -105,6 +105,26 @@ def test_follow_up_numbers_come_from_the_records() -> None:
     assert "lowers utility in 6 of 6 Regime A groups and 4 of 6 Regime B" in text
 
 
+def test_calibration_numbers_come_from_the_record() -> None:
+    text = _text()
+    o28 = _load("info_spread_policy_ladder_prior_calibration_v1_20261023.summary.json")
+    cases = o28["dispositions"]["by_case"]
+    assert [cases[c]["attribution"] for c in ("P0/A", "P0/B", "P0u/B")] == [
+        "CALIBRATION", "CALIBRATION", "NEITHER_CONSISTENTLY"]
+    a, b, u = (cases[c]["counts"] for c in ("P0/A", "P0/B", "P0u/B"))
+    assert a["calibration_given_llm_answers"]["NEGATIVE"] == a["calibration_given_hand_answers"]["NEGATIVE"] == 6
+    assert b["calibration_given_llm_answers"]["NEGATIVE"] == b["calibration_given_hand_answers"]["NEGATIVE"] == 4
+    assert u["answers_given_hand_calibration"]["NEGATIVE"] == 6 and u["answers_given_llm_calibration"]["POSITIVE"] == 4
+    for row in ("| P0, Regime A | 6 and 6 of 6 negative | 5 of 6 negative; 0 of 6 | Calibration |",
+                "| P0u, Regime B | Mixed; 4 of 6 negative | 6 of 6 negative at F1's calibration; 4 of 6 *positive* at its own"):
+        assert row in text, row
+    check = o28["calibration_check"]
+    ratios = [check[f"{p}/{r}"]["mean_unverified_shares"] / check[f"{p}/{r}"]["calibration_source"]
+              for p in ("P0_hcal", "P0u_hcal") for r in ("A", "B")]
+    two = [str(Decimal(str(v)).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)) for v in (min(ratios), max(ratios))]
+    assert f"{two[0]} to {two[1]} times as much as F1" in text
+
+
 def test_the_section_keeps_its_boundaries() -> None:
     text = _text()
     for required in (
@@ -120,6 +140,8 @@ def test_the_section_keeps_its_boundaries() -> None:
         "Transfer across veracity relations or domains is not tested.",
         "not the reach of false items",
         "on precision only",
+        "not to the model's answers",
+        "overshot in the world",
     ):
         assert required in text, required
     for figure in (FIGURE, FOLLOW_UPS):

@@ -106,7 +106,7 @@ and P7 to P11 from its second domain, information spread. They are
 synthetic, stylized worlds, and their code is in prototype scripts, not in
 `src/neural_abm`. Each statement is hash-audited in the consolidation ledgers
 [v1](../docs/research/pivot-policy-ladder-consolidation-v1.md) to
-[v7](../docs/research/pivot-policy-ladder-consolidation-v7.md). Ledger ids are
+[v8](../docs/research/pivot-policy-ladder-consolidation-v8.md). Ledger ids are
 in parentheses. Use them as conditional cases for the central claim, never as
 general performance claims.
 
@@ -122,7 +122,7 @@ general performance claims.
 | P8 | NABM learners beat AgentTorch-style LLM archetypes given the same public information. | `scripts/run_info_spread_policy_ladder_llm_arms_v1.py` | `info_spread_policy_ladder_llm_arms_d5_20261019` summary; consolidation v6 (C52) and v7 (C60) | MOSTLY_POSITIVE in both regimes, 12 of 12 groups, by 0.16-0.23, and again under the agents' utility (C60). The archetypes also fell below the hand rule. | One local model (Qwen3-4B-Instruct-2507), one prompt, K = 2 threshold bins and 4 item classes, fixed in advance. Archetypes over-shared (1.4-1.7 times the hand rule). |
 | P9 | On share precision, an LLM prior adds nothing detectable inside the learner, even when the prior alone is informative. | `scripts/run_info_spread_policy_ladder_llm_arms_v1.py`, `scripts/run_info_spread_policy_ladder_unclipped_prior_v1.py` | `info_spread_policy_ladder_llm_arms_d5_20261019`, `info_spread_policy_ladder_unclipped_prior_v1_20261021` summaries; consolidation v6 (C53) and v7 (C58, C59) | L1 - L0 was MIXED_OR_NONE in both regimes. Read without the inherited clip, the prior carried the relation's direction and beat the hand rule in all 12 groups; started from it, the learner was ahead in 5 of 12 groups, by 0.012-0.020, and behind in none. | On precision only: under the agents' utility the prior lowers it (P11). One model, one prompt, and the readout matters: the inherited clip saturated Regime A. |
 | P10 | A registered null check caught a leak before any study group was read. | `scripts/run_info_spread_policy_ladder_study_v1.py`, `scripts/diagnose_info_spread_null_leak_v1.py` | `info_spread_policy_ladder_study_v1_d4_20261016`, `info_spread_policy_ladder_null_leak_diagnosis_20261018` summaries; consolidation v6 (C50, R16) | MLP learners recognized items already fact-checked and beat the hand rule in a world with nothing to learn. Study v1's groups were not read, and the measure moved to unverified items. | A protocol case, not a performance result. The diagnosis was exploratory. |
-| P11 | Scored by the agents' utility, the framework comparisons hold and the LLM-prior readings change. | `scripts/run_info_spread_policy_ladder_utility_v1.py`, `scripts/info_spread_utility_measure_v1.py` | `info_spread_policy_ladder_utility_v1_20261022` summary; consolidation v7 (C60, C61, R19) | 15 of 20 summaries agree with precision: the best table, the closed loop, the hand rule, and the archetypes. All 5 changes involve an LLM prior: L1 - L0 lowers utility in 6 of 6 Regime A and 4 of 6 Regime B groups. | The utility counts only the sharer's own gain and cost, not the reach of false items (O31). Why the prior lowers utility is not tested (O28). |
+| P11 | Scored by the agents' utility, the framework comparisons hold and the LLM-prior readings change; for the once-elicited prior the loss traces to its calibration, not the model's answers. | `scripts/run_info_spread_policy_ladder_utility_v1.py`, `scripts/info_spread_utility_measure_v1.py`, `scripts/run_info_spread_policy_ladder_prior_calibration_v1.py` | `info_spread_policy_ladder_utility_v1_20261022`, `info_spread_policy_ladder_prior_calibration_v1_20261023` summaries; consolidation v7 (C60, C61, R19) and v8 (C63-C66, R20) | 15 of 20 summaries agree with precision: the best table, the closed loop, the hand rule, and the archetypes. All 5 changes involve an LLM prior: L1 - L0 lowers utility in 6 of 6 Regime A and 4 of 6 Regime B groups. Crossing direction with calibration, D5's prior loses through its calibration in both regimes; the unclipped prior's answers and calibration interact. | The utility counts only the sharer's own gain and cost, not the reach of false items (O31). The calibration split was matched on the design cohort and overshot in the world (C66, O33); location and steepness moved together (O32). |
 
 ## Gaps the Central Claim Exposes
 
@@ -183,6 +183,12 @@ decision. Nothing here is authorized to run.
    - **O23 to O26.** Answered: P7, P9, and P11.
    - **New gaps.** O28 to O31, and a release that ships the package surface
      (N22). Each awaits the user's choice.
+8. **Resolved on 2026-10-23 (consolidation v8).**
+   - **O28.** Answered: P11. The once-elicited prior's utility loss comes
+     from its calibration (C63). The unclipped prior's two parts interact
+     (C64).
+   - **New gaps.** O32 and O33 join O29 to O31. The release is carried as
+     N26.
 
 ## Prospective Pivot-Feedback Claim Gates
 
@@ -273,8 +279,8 @@ rather than a post hoc field, endpoint, or model substitution.
    modeling assumption rather than an implementation default.
 9. Restructure the outline around the central claim, with a policy-ladder
    section built from P1 to P6.
-10. Section 8 is drafted from P1 to P11 with the consolidation v7 reporting
-    rules (`sections/08-policy-ladder.md`, N16, updated in N19). Its numbers
+10. Section 8 is drafted from P1 to P11 with the consolidation v8 reporting
+    rules (`sections/08-policy-ladder.md`, N16, updated in N19 and N23). Its numbers
     are checked against the recorded results by
     `tests/test_paper_section_08_policy_ladder.py`. Report every comparison
     that involves an LLM prior on both precision and utility (P11).
