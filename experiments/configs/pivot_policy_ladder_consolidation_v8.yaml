@@ -1,0 +1,269 @@
+schema_version: pivot_policy_ladder_consolidation.v8
+label: pivot_policy_ladder_consolidation_v8
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-10-23'
+purpose: 'Extend the v7 ledger with O28, the prior-calibration study the user chose on 2026-10-22 (N21): whether the
+  utility cost of an LLM prior inside the learner comes from its calibration or from the model''s answers. v1 to v7
+  remain the records for everything before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v7.yaml
+    sha256: 5221280040eeb6af1f45a794cc103402d63661b8f1bb883eec10780bfb04b7c9
+    record_commit: 109662b
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v7.md
+    sha256: 4cd9605dfde06d8038f5da939fb7327fa19480a3b49bf911fded6d628bdbaec1
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v7.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: o28_calibration
+  path: experiments/evidence/results/info_spread_policy_ladder_prior_calibration_v1_20261023.summary.json
+  sha256: cca5837d366ad2a1ae78a9afc830a687eae23685096da1b350caa8acd7c6003b
+  freeze_commit: 555fd49
+  record_commit: 629a49b
+claims:
+  confirmed:
+  - id: C63_for_d5s_prior_the_utility_cost_inside_the_learner_comes_from_its_calibration
+    statement: Crossing D5's prior P0 with the hand rule F1 in direction and calibration, giving the learner P0's
+      calibration lowers utility along both routes, in 6 and 6 of 6 Regime A groups and 4 and 4 of 6 Regime B groups,
+      while P0's answers do so along one route only (CALIBRATION in both regimes). At P0's own calibration its answers
+      make no material difference in Regime A, where its logit sd over the cohort is 0.06.
+    evidence:
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0~1A/attribution
+      equals: CALIBRATION
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0~1B/attribution
+      equals: CALIBRATION
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0~1A/counts/calibration_given_llm_answers/NEGATIVE
+      equals: 6
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0~1A/counts/calibration_given_hand_answers/NEGATIVE
+      equals: 6
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0~1B/counts/calibration_given_llm_answers/NEGATIVE
+      equals: 4
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0~1B/counts/calibration_given_hand_answers/NEGATIVE
+      equals: 4
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0~1A/counts/answers_given_llm_calibration/INDISTINGUISHABLE
+      equals: 6
+    - source: o28_calibration
+      pointer: priors/A/P0/logit_sd
+      less_than: 0.1
+  - id: C64_for_the_unclipped_prior_its_answers_and_calibration_interact
+    statement: For the unclipped prior P0u in Regime B, neither factor alone carries the cost (NEITHER_CONSISTENTLY).
+      Its answers lower utility at F1's calibration in 6 of 6 groups and raise it at their own calibration in 4 of 6,
+      as they do in Regime A (4 of 6). Its calibration lowers utility given F1's answers (4 of 6) and is mixed given
+      its own.
+    evidence:
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0u~1B/attribution
+      equals: NEITHER_CONSISTENTLY
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0u~1B/counts/answers_given_hand_calibration/NEGATIVE
+      equals: 6
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0u~1B/counts/answers_given_llm_calibration/POSITIVE
+      equals: 4
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0u~1A/counts/answers_given_llm_calibration/POSITIVE
+      equals: 4
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0u~1B/by_comparison/calibration_given_hand_answers
+      equals: MOSTLY_NEGATIVE
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0u~1B/by_comparison/calibration_given_llm_answers
+      equals: MIXED_OR_NONE
+  - id: C65_no_llm_informed_start_in_o28_beats_the_hand_rules_start_under_utility
+    statement: Against the learner started from F1 (L0), each LLM-informed start in O28 (F1's answers at an LLM
+      calibration, or an LLM's answers at F1's calibration) is MOSTLY_NEGATIVE under utility in 7 of the 8 prior and
+      regime cases and MIXED_OR_NONE in the eighth. None is MOSTLY_POSITIVE.
+    evidence:
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0~1A/by_comparison/calibration_given_hand_answers
+      equals: MOSTLY_NEGATIVE
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0~1A/by_comparison/answers_given_hand_calibration
+      equals: MOSTLY_NEGATIVE
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0~1B/by_comparison/calibration_given_hand_answers
+      equals: MOSTLY_NEGATIVE
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0~1B/by_comparison/answers_given_hand_calibration
+      equals: MOSTLY_NEGATIVE
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0u~1A/by_comparison/calibration_given_hand_answers
+      equals: MOSTLY_NEGATIVE
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0u~1A/by_comparison/answers_given_hand_calibration
+      equals: MIXED_OR_NONE
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0u~1B/by_comparison/calibration_given_hand_answers
+      equals: MOSTLY_NEGATIVE
+    - source: o28_calibration
+      pointer: dispositions/by_case/P0u~1B/by_comparison/answers_given_hand_calibration
+      equals: MOSTLY_NEGATIVE
+  - id: C66_a_prior_recalibrated_on_the_cohort_does_not_share_like_its_source_in_the_world
+    statement: Each recalibrated fixed prior moved toward its calibration source, as registered, but overshot it in
+      the world. LLM directions at F1's calibration share 1.35 to 1.48 times as much as F1. F1's direction at an LLM
+      calibration shares 20 to 46% as much as the LLM prior, or in Regime A with P0's calibration, as little.
+    evidence:
+    - source: o28_calibration
+      pointer: calibration_check/P0_hcal~1B/moves_to_its_calibration_source
+      equals: true
+    - source: o28_calibration
+      pointer: calibration_check/F1_ucal~1A/moves_to_its_calibration_source
+      equals: true
+    - source: o28_calibration
+      pointer: calibration_check/P0u_hcal~1B/mean_unverified_shares
+      greater_than: 550000
+    - source: o28_calibration
+      pointer: calibration_check/P0u_hcal~1B/calibration_source
+      less_than: 400000
+    - source: o28_calibration
+      pointer: calibration_check/F1_ucal~1A/mean_unverified_shares
+      less_than: 50000
+    - source: o28_calibration
+      pointer: calibration_check/F1_ucal~1A/calibration_source
+      greater_than: 200000
+  - id: C67_o28_reproduced_byte_for_byte_with_parity_and_consistency
+    statement: O28 reproduced its cells and summary byte for byte in a second run on GPU-Server. L0 recomputed in all
+      240 learner tasks equalled its record, utility included, and every group's L1 - L0 and L1u - L0 equalled O25's
+      recorded value.
+    evidence:
+    - source: o28_calibration
+      pointer: reproduction/byte_identical/cells.jsonl
+      equals: true
+    - source: o28_calibration
+      pointer: reproduction/byte_identical/summary.json
+      equals: true
+    - source: o28_calibration
+      pointer: parity_failures
+      equals: []
+    - source: o28_calibration
+      pointer: consistency_failures
+      equals: []
+  rejected:
+  - id: R20_calibration_carries_the_cost_in_every_costed_case
+    statement: The O28 expectation stated before the run, CALIBRATION in every costed case (P0/A, P0/B, P0u/B).
+    reason: It holds for D5's prior in both regimes, but the unclipped prior in Regime B is NEITHER_CONSISTENTLY.
+    evidence:
+    - source: o28_calibration
+      pointer: dispositions/overall
+      equals: O28_ATTRIBUTION_DIFFERS_ACROSS_COSTED_CASES
+  open:
+  - id: O32_location_or_steepness
+    question: Which part of the calibration carries the cost of D5's prior, its location (the base-rate shift) or its
+      steepness?
+    kind: SYNTHETIC
+    priority: 2
+    motivation: O28 moved both together.
+  - id: O33_calibration_matched_in_the_world
+    question: Do C63 and C64 hold when a prior is recalibrated to match its source's share rate in the world rather
+      than its calibration on the design cohort?
+    kind: SYNTHETIC
+    priority: 1
+    motivation: C66. The cohort-matched recalibration overshot in the world, so the answers comparisons at F1's
+      calibration also carry a difference in how much the starting prior shares.
+status_updates:
+- id: N19
+  previous: AFTER_THIS_CONSOLIDATION
+  status: DONE_AT_806974e_MERGED_INTO_MAIN_AT_52f89e1
+- id: N20
+  previous: USER_CONFIRMED_2026_10_22
+  status: DONE_MERGED_INTO_MAIN_AT_52f89e1
+- id: N21
+  previous: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+  status: DONE_O28_FROZEN_AT_555fd49_RECORDED_AT_629a49b
+  answered_by:
+  - C63_for_d5s_prior_the_utility_cost_inside_the_learner_comes_from_its_calibration
+  - C64_for_the_unclipped_prior_its_answers_and_calibration_interact
+  - C65_no_llm_informed_start_in_o28_beats_the_hand_rules_start_under_utility
+  - C66_a_prior_recalibrated_on_the_cohort_does_not_share_like_its_source_in_the_world
+  - R20_calibration_carries_the_cost_in_every_costed_case
+- id: N22
+  previous: USER_CONFIRMATION_REQUIRED
+  status: CARRIED_FORWARD_AS_N26
+answered_open_items:
+- id: O28_what_makes_an_llm_prior_lower_utility_inside_the_learner
+  answered_by:
+  - C63_for_d5s_prior_the_utility_cost_inside_the_learner_comes_from_its_calibration
+  - C64_for_the_unclipped_prior_its_answers_and_calibration_interact
+  - R20_calibration_carries_the_cost_in_every_costed_case
+carried_open_items:
+- O29_the_onset_with_larger_tables_and_shifts_within_a_run
+- O30_tables_across_relations
+- O31_scoring_harm_to_others
+explained_claims:
+- id: C61_under_utility_an_llm_prior_inside_the_learner_lowers_the_agents_utility
+  explanation: For D5's prior the cost comes from its calibration (C63). For the unclipped prior in Regime B, its
+    answers and calibration interact (C64).
+reporting_rules:
+- id: UNVERIFIED_MEASURE
+  rule: Information-spread comparisons from study v2 on are on share precision on unverified items, whose
+    fact-check is not public at the decision. Study v1's groups are not read.
+  carried_from: v7
+- id: TRANSFER_WITHIN_ONE_GENERATOR
+  rule: '"A table suffices" holds for donors in the same world and in other worlds of the same generator, which
+    share the veracity relation. Transfer across relations or domains is not tested.'
+  carried_from: v7
+- id: RARE_RUN_SPECIFIC_INFORMATION
+  rule: The table critique holds only while run-specific information is rare. In the flip study, a four-donor
+    table falls behind between a tenth and a quarter of runs carrying it. That is one kind of information and one
+    table size.
+  carried_from: v7
+- id: PRECISION_AND_UTILITY
+  rule: Report comparisons that involve an LLM prior under both share precision and the agents' utility, since
+    they disagree in 5 of 20 summaries. Utility scores only the sharer's own gain and cost, not the reach of false
+    items.
+  carried_from: v7
+- id: LLM_READOUT
+  rule: Name the readout with any LLM-prior result. P0 in Regime A saturated under the inherited clip and is
+    nearly constant; without the clip the same answers carry the relation's direction (C58). The X0 table is not
+    clipped.
+  carried_from: v7
+- id: LLM_PRIOR_CALIBRATION
+  rule: Name an LLM prior's calibration (the rule that set its location, and its steepness) with any result about
+    it. For D5's prior, the utility cost inside the learner came from that calibration, not from the model's
+    answers (C63).
+- id: COHORT_IS_NOT_THE_WORLD
+  rule: A prior matched to another's calibration on a design cohort need not share like it in the world. Report the
+    world share counts of any recalibrated prior beside the comparisons that use it (C66).
+paper_direction:
+  decided_by: USER_2026_10_13
+  central_claim: UNCHANGED_FROM_V5
+  updated_conditional_cases:
+  - AN_LLM_PRIOR_ADDS_NOTHING_DETECTABLE_INSIDE_THE_LEARNER_ON_PRECISION_AND_LOWERS_UTILITY_FOR_D5S_PRIOR_THROUGH_ITS_CALIBRATION
+  evidence:
+  - source: o28_calibration
+    pointer: dispositions/costed_cases
+    contains: P0/A
+next_steps:
+- id: N23
+  kind: PAPER
+  action: UPDATE_SECTION_8_THE_CLAIM_MATRIX_AND_THE_OUTLINE_WITH_C63_TO_C67_AND_THE_V8_REPORTING_RULES
+  authorization: AFTER_THIS_CONSOLIDATION
+- id: N24
+  kind: REPOSITORY
+  action: MERGE_THE_O28_BRANCH_INTO_MAIN_THROUGH_A_PULL_REQUEST
+  authorization: USER_CONFIRMED_2026_10_23
+- id: N25
+  kind: COMPARISON_DESIGN
+  action: CHOOSE_AMONG_O29_TO_O33_EACH_AS_A_SEPARATE_PRECOMMIT
+  authorization: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+- id: N26
+  kind: RELEASE
+  action: TAG_A_NEXT_ALPHA_THAT_SHIPS_THE_POLICY_LADDER_PACKAGE_SURFACE
+  authorization: USER_CONFIRMATION_REQUIRED
+boundaries:
+  new_execution: NONE
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: ACCEPTED_IN_DECISION_0017_ON_MAIN_SINCE_261b447_NOT_IN_A_RELEASED_TAG
