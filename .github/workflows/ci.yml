@@ -37,7 +37,10 @@ jobs:
         run: uv run ruff check src tests scripts
 
       - name: Run tests
-        run: uv run pytest -q
+        # pytest-xdist spreads the suite over the runner's 4 vCPUs. It is added
+        # here, not in pyproject.toml, which the source snapshot of the tracked
+        # Study 1 and Study 2 results binds.
+        run: uv run --with pytest-xdist==3.8.0 pytest -q -n 4 --dist worksteal
 
       - name: Check whitespace
         run: git diff --check
