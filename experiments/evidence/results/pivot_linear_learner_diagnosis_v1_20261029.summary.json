@@ -1,0 +1,584 @@
+{
+  "boundaries": {
+    "empirical_rows_read": 0,
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "new_llm_calls": 0,
+    "package_promotion": "NOT_AUTHORIZED",
+    "paid_api_calls": 0,
+    "repository_only": true,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "cells": [
+    {
+      "evidence_events": 147.05,
+      "evidence_productive_share": 0.4029,
+      "fits": {
+        "linear_converged": {
+          "auc": 0.998204,
+          "brier": 0.024701,
+          "log_loss": 0.093797,
+          "residual_norm": 30.1148,
+          "sharpness": 0.428594
+        },
+        "linear_converged_weak_penalty": {
+          "auc": 0.999212,
+          "brier": 0.010809,
+          "log_loss": 0.036245,
+          "residual_norm": 149.0865,
+          "sharpness": 0.482474
+        },
+        "linear_epochs_x10": {
+          "auc": 0.998217,
+          "brier": 0.024874,
+          "log_loss": 0.094619,
+          "sharpness": 0.42778
+        },
+        "linear_learning_rate_x10": {
+          "auc": 0.998095,
+          "brier": 0.026043,
+          "log_loss": 0.0992,
+          "sharpness": 0.424103
+        },
+        "registered_linear": {
+          "auc": 0.992554,
+          "brier": 0.057307,
+          "log_loss": 0.217567,
+          "sharpness": 0.330126
+        },
+        "registered_mlp": {
+          "auc": 0.999178,
+          "brier": 0.011682,
+          "log_loss": 0.039668,
+          "sharpness": 0.477301
+        }
+      },
+      "probe_base_rate": 0.3057,
+      "replicates": 16,
+      "run_probe_brier": 0.057307,
+      "source_arm": "linear_batch",
+      "world_id": "linear_fit"
+    },
+    {
+      "evidence_events": 137.81,
+      "evidence_productive_share": 0.4297,
+      "fits": {
+        "linear_converged": {
+          "auc": 0.996839,
+          "brier": 0.028925,
+          "log_loss": 0.104668,
+          "residual_norm": 28.6086,
+          "sharpness": 0.425798
+        },
+        "linear_converged_weak_penalty": {
+          "auc": 0.999005,
+          "brier": 0.012067,
+          "log_loss": 0.040223,
+          "residual_norm": 148.2576,
+          "sharpness": 0.482242
+        },
+        "linear_epochs_x10": {
+          "auc": 0.996834,
+          "brier": 0.029208,
+          "log_loss": 0.105889,
+          "sharpness": 0.424652
+        },
+        "linear_learning_rate_x10": {
+          "auc": 0.996417,
+          "brier": 0.031099,
+          "log_loss": 0.112371,
+          "sharpness": 0.420539
+        },
+        "registered_linear": {
+          "auc": 0.984549,
+          "brier": 0.066367,
+          "log_loss": 0.238865,
+          "sharpness": 0.327309
+        },
+        "registered_mlp": {
+          "auc": 0.998967,
+          "brier": 0.012924,
+          "log_loss": 0.043502,
+          "sharpness": 0.475807
+        }
+      },
+      "probe_base_rate": 0.3057,
+      "replicates": 16,
+      "run_probe_brier": 0.012924,
+      "source_arm": "mlp_batch",
+      "world_id": "linear_fit"
+    },
+    {
+      "evidence_events": 129.94,
+      "evidence_productive_share": 0.3755,
+      "fits": {
+        "linear_converged": {
+          "auc": 0.74093,
+          "brier": 0.167386,
+          "log_loss": 0.609537,
+          "residual_norm": 9.0767,
+          "sharpness": 0.307194
+        },
+        "linear_converged_weak_penalty": {
+          "auc": 0.740789,
+          "brier": 0.167736,
+          "log_loss": 0.620419,
+          "residual_norm": 9.6184,
+          "sharpness": 0.312555
+        },
+        "linear_epochs_x10": {
+          "auc": 0.740931,
+          "brier": 0.167384,
+          "log_loss": 0.60954,
+          "sharpness": 0.307199
+        },
+        "linear_learning_rate_x10": {
+          "auc": 0.740923,
+          "brier": 0.167371,
+          "log_loss": 0.60936,
+          "sharpness": 0.307132
+        },
+        "registered_linear": {
+          "auc": 0.739957,
+          "brier": 0.168166,
+          "log_loss": 0.568489,
+          "sharpness": 0.273917
+        },
+        "registered_mlp": {
+          "auc": 0.920453,
+          "brier": 0.1021,
+          "log_loss": 0.547134,
+          "sharpness": 0.447007
+        }
+      },
+      "probe_base_rate": 0.3057,
+      "replicates": 16,
+      "run_probe_brier": 0.168166,
+      "source_arm": "linear_batch",
+      "world_id": "smooth_interaction_fit"
+    },
+    {
+      "evidence_events": 133.12,
+      "evidence_productive_share": 0.4102,
+      "fits": {
+        "linear_converged": {
+          "auc": 0.721741,
+          "brier": 0.188388,
+          "log_loss": 0.609243,
+          "residual_norm": 7.7567,
+          "sharpness": 0.242462
+        },
+        "linear_converged_weak_penalty": {
+          "auc": 0.721027,
+          "brier": 0.189271,
+          "log_loss": 0.616144,
+          "residual_norm": 8.1404,
+          "sharpness": 0.2468
+        },
+        "linear_epochs_x10": {
+          "auc": 0.72174,
+          "brier": 0.188388,
+          "log_loss": 0.609242,
+          "sharpness": 0.242466
+        },
+        "linear_learning_rate_x10": {
+          "auc": 0.721766,
+          "brier": 0.188382,
+          "log_loss": 0.609147,
+          "sharpness": 0.242389
+        },
+        "registered_linear": {
+          "auc": 0.723671,
+          "brier": 0.18625,
+          "log_loss": 0.584314,
+          "sharpness": 0.220397
+        },
+        "registered_mlp": {
+          "auc": 0.932035,
+          "brier": 0.094573,
+          "log_loss": 0.471065,
+          "sharpness": 0.44461
+        }
+      },
+      "probe_base_rate": 0.3057,
+      "replicates": 16,
+      "run_probe_brier": 0.094573,
+      "source_arm": "mlp_batch",
+      "world_id": "smooth_interaction_fit"
+    },
+    {
+      "evidence_events": 129.7,
+      "evidence_productive_share": 0.3648,
+      "fits": {
+        "linear_converged": {
+          "auc": 0.6947,
+          "brier": 0.186788,
+          "log_loss": 0.621435,
+          "residual_norm": 7.1318,
+          "sharpness": 0.284417
+        },
+        "linear_converged_weak_penalty": {
+          "auc": 0.694644,
+          "brier": 0.187212,
+          "log_loss": 0.627214,
+          "residual_norm": 7.4391,
+          "sharpness": 0.288135
+        },
+        "linear_epochs_x10": {
+          "auc": 0.6947,
+          "brier": 0.186788,
+          "log_loss": 0.621435,
+          "sharpness": 0.284419
+        },
+        "linear_learning_rate_x10": {
+          "auc": 0.694679,
+          "brier": 0.186783,
+          "log_loss": 0.621368,
+          "sharpness": 0.284385
+        },
+        "registered_linear": {
+          "auc": 0.694162,
+          "brier": 0.185488,
+          "log_loss": 0.598101,
+          "sharpness": 0.265937
+        },
+        "registered_mlp": {
+          "auc": 0.886978,
+          "brier": 0.134283,
+          "log_loss": 0.619155,
+          "sharpness": 0.428383
+        }
+      },
+      "probe_base_rate": 0.3057,
+      "replicates": 16,
+      "run_probe_brier": 0.185488,
+      "source_arm": "linear_batch",
+      "world_id": "axis_interaction_fit"
+    },
+    {
+      "evidence_events": 137.11,
+      "evidence_productive_share": 0.3958,
+      "fits": {
+        "linear_converged": {
+          "auc": 0.674593,
+          "brier": 0.20147,
+          "log_loss": 0.616176,
+          "residual_norm": 5.9943,
+          "sharpness": 0.211062
+        },
+        "linear_converged_weak_penalty": {
+          "auc": 0.674001,
+          "brier": 0.20214,
+          "log_loss": 0.619439,
+          "residual_norm": 6.2235,
+          "sharpness": 0.213862
+        },
+        "linear_epochs_x10": {
+          "auc": 0.674593,
+          "brier": 0.201472,
+          "log_loss": 0.616178,
+          "sharpness": 0.211058
+        },
+        "linear_learning_rate_x10": {
+          "auc": 0.674624,
+          "brier": 0.201493,
+          "log_loss": 0.616124,
+          "sharpness": 0.210933
+        },
+        "registered_linear": {
+          "auc": 0.67517,
+          "brier": 0.199539,
+          "log_loss": 0.604739,
+          "sharpness": 0.201224
+        },
+        "registered_mlp": {
+          "auc": 0.901994,
+          "brier": 0.122221,
+          "log_loss": 0.538779,
+          "sharpness": 0.425214
+        }
+      },
+      "probe_base_rate": 0.3057,
+      "replicates": 16,
+      "run_probe_brier": 0.122221,
+      "source_arm": "mlp_batch",
+      "world_id": "axis_interaction_fit"
+    }
+  ],
+  "checks": "PASS_REFIT_PARITY_PROBE_BRIER_PARITY_AND_CONVERGENCE",
+  "contract_sha256": "8f0511269afa6e907fcc1aa8804af2388c458a38f7176e815d5d1c4384590615",
+  "decision_status": "FROZEN_SYNTHETIC_DECISION_COMPLETE",
+  "decisions": {
+    "by_world": {
+      "axis_interaction_fit": {
+        "converged_linear_minus_mlp": {
+          "high": 0.06475725108928071,
+          "low": 0.040253289199201486,
+          "mean": 0.0525052701442411,
+          "n": 16
+        },
+        "evidence_gap": {
+          "registered_linear": {
+            "high": -0.006557389799358339,
+            "low": -0.02154523482024269,
+            "material": true,
+            "mean": -0.014051312309800515,
+            "n": 16
+          },
+          "registered_mlp": {
+            "high": 0.017863764579539605,
+            "low": 0.00626096004107441,
+            "material": true,
+            "mean": 0.012062362310307008,
+            "n": 16
+          }
+        },
+        "learner_gap": {
+          "on_linear_batch_evidence": {
+            "high": 0.06370720160230094,
+            "low": 0.03870217578504578,
+            "material": true,
+            "mean": 0.05120468869367335,
+            "n": 16
+          },
+          "on_mlp_batch_evidence": {
+            "high": 0.09184432502947792,
+            "low": 0.06279240159808386,
+            "material": true,
+            "mean": 0.07731836331378089,
+            "n": 16
+          }
+        },
+        "mlp_minus_linear_auc_on_linear_evidence": {
+          "high": 0.21464253409724568,
+          "low": 0.17098954368070604,
+          "mean": 0.19281603888897586,
+          "n": 16
+        },
+        "optimization": "NOT_OPTIMIZATION",
+        "registered_minus_converged_linear": {
+          "high": 0.00040608830802791327,
+          "low": -0.003007251209163389,
+          "material": false,
+          "mean": -0.001300581450567738,
+          "n": 16
+        },
+        "source_of_the_gap": "BOTH"
+      },
+      "linear_fit": {
+        "converged_linear_minus_mlp": {
+          "high": 0.014731911657185478,
+          "low": 0.011306079306159471,
+          "mean": 0.013018995481672475,
+          "n": 16
+        },
+        "evidence_gap": {
+          "registered_linear": {
+            "high": -0.004396084104350895,
+            "low": -0.013725440716233533,
+            "material": false,
+            "mean": -0.009060762410292213,
+            "n": 16
+          },
+          "registered_mlp": {
+            "high": -6.075969828859889e-05,
+            "low": -0.0024232355124309034,
+            "material": false,
+            "mean": -0.0012419976053597512,
+            "n": 16
+          }
+        },
+        "learner_gap": {
+          "on_linear_batch_evidence": {
+            "high": 0.049264833949185155,
+            "low": 0.04198375447106226,
+            "material": true,
+            "mean": 0.045624294210123706,
+            "n": 16
+          },
+          "on_mlp_batch_evidence": {
+            "high": 0.06029388009282596,
+            "low": 0.04659223793728637,
+            "material": true,
+            "mean": 0.053443059015056166,
+            "n": 16
+          }
+        },
+        "mlp_minus_linear_auc_on_linear_evidence": {
+          "high": 0.008426254122610706,
+          "low": 0.004821422891941278,
+          "mean": 0.006623838507275992,
+          "n": 16
+        },
+        "optimization": "PARTLY_OPTIMIZATION",
+        "registered_minus_converged_linear": {
+          "high": 0.035251016776675644,
+          "low": 0.029959580680226826,
+          "material": true,
+          "mean": 0.032605298728451235,
+          "n": 16
+        },
+        "source_of_the_gap": "LEARNER"
+      },
+      "smooth_interaction_fit": {
+        "converged_linear_minus_mlp": {
+          "high": 0.08326825471180895,
+          "low": 0.0473024852330997,
+          "mean": 0.06528536997245432,
+          "n": 16
+        },
+        "evidence_gap": {
+          "registered_linear": {
+            "high": -0.0089012786650147,
+            "low": -0.027266682753404027,
+            "material": true,
+            "mean": -0.018083980709209364,
+            "n": 16
+          },
+          "registered_mlp": {
+            "high": 0.012972481377559283,
+            "low": 0.0020822750709999973,
+            "material": false,
+            "mean": 0.00752737822427964,
+            "n": 16
+          }
+        },
+        "learner_gap": {
+          "on_linear_batch_evidence": {
+            "high": 0.08361040225212191,
+            "low": 0.04852046310824909,
+            "material": true,
+            "mean": 0.0660654326801855,
+            "n": 16
+          },
+          "on_mlp_batch_evidence": {
+            "high": 0.10743933530781478,
+            "low": 0.07591424791953423,
+            "material": true,
+            "mean": 0.09167679161367451,
+            "n": 16
+          }
+        },
+        "mlp_minus_linear_auc_on_linear_evidence": {
+          "high": 0.20479243845992384,
+          "low": 0.1561995131603992,
+          "mean": 0.18049597581016152,
+          "n": 16
+        },
+        "optimization": "NOT_OPTIMIZATION",
+        "registered_minus_converged_linear": {
+          "high": 0.0020476189307276752,
+          "low": -0.0004874935152653346,
+          "material": false,
+          "mean": 0.0007800627077311703,
+          "n": 16
+        },
+        "source_of_the_gap": "BOTH"
+      }
+    },
+    "o35": "O35_LEARNER_PARTLY_OPTIMIZATION",
+    "primary_world": "linear_fit",
+    "status": "FROZEN_SYNTHETIC_DECISION_COMPLETE"
+  },
+  "execution": {
+    "estimate_quoted": "about 2 min per run, from two tasks (8.5 s and 7.8 s) timed on a throwaway seed namespace",
+    "host": {
+      "cpus": 64,
+      "device": "CPU",
+      "node": "kimyoungjin06-Workstation-KISTI",
+      "numpy": "2.4.4",
+      "python": "3.14.0",
+      "scikit_learn": "1.8.0",
+      "scipy": "1.17.1",
+      "torch": "2.11.0+cu130"
+    },
+    "new_llm_calls": 0,
+    "output_dirs": {
+      "development": "/ssd/pivot_linear_learner_diagnosis_v1_8c7ffd8_development",
+      "reproduction": "/ssd/pivot_linear_learner_diagnosis_v1_8c7ffd8_reproduction"
+    },
+    "profile": "development",
+    "tasks": 96,
+    "wall_seconds": {
+      "development": 113.1,
+      "reproduction": 108.4
+    },
+    "workers": 32
+  },
+  "expectations": {
+    "E1": {
+      "expected": "LEARNER",
+      "held": true,
+      "observed": "LEARNER"
+    },
+    "E2": {
+      "expected": "OPTIMIZATION_BUDGET",
+      "held": false,
+      "observed": "PARTLY_OPTIMIZATION"
+    },
+    "E3": {
+      "expected": "MLP minus linear probe AUC below 0.02 on the linear arm's evidence",
+      "held": true,
+      "observed": 0.0066
+    }
+  },
+  "label": "pivot_linear_learner_diagnosis_v1_20261029",
+  "post_hoc_descriptive": {
+    "converged_residual_norm_linear_world": {
+      "registered_penalty": 30.1148,
+      "weak_penalty": 149.0865
+    },
+    "epochs_x10_minus_converged": {
+      "high": 0.00023138393971199527,
+      "low": 0.00011486961379401693,
+      "mean": 0.0001731267767530061,
+      "n": 16
+    },
+    "interaction_world_auc_gap_mlp_minus_linear": {
+      "axis_interaction_fit": {
+        "high": 0.21464253409724568,
+        "low": 0.17098954368070604,
+        "mean": 0.19281603888897586,
+        "n": 16
+      },
+      "smooth_interaction_fit": {
+        "high": 0.20479243845992384,
+        "low": 0.1561995131603992,
+        "mean": 0.18049597581016152,
+        "n": 16
+      }
+    },
+    "learning_rate_x10_minus_converged": {
+      "high": 0.0018275170767775009,
+      "low": 0.0008565793450410053,
+      "mean": 0.0013420482109092532,
+      "n": 16
+    },
+    "note": "The weak-penalty fit and the 10x variants are descriptive. In the interaction worlds the linear policy is misspecified, converging changes nothing, and the MLP's AUC is 0.18 to 0.19 higher.",
+    "share_of_the_gap_closed_by_convergence_on_the_linear_arms_evidence": 0.7146,
+    "weak_penalty_converged_minus_registered_mlp": {
+      "high": -0.0004523227396663504,
+      "low": -0.001293989649830747,
+      "mean": -0.0008731561947485488,
+      "n": 16
+    }
+  },
+  "precommit_commit": "8c7ffd8b4e26625988e7cee4eae6f69614ae1164",
+  "reproduction": {
+    "artifact_sha256": {
+      "receipt.json": "4cbcb56667584cfcbc45ff514517b3aa90c7ce6fd80c2504f84a1106ab150c9b",
+      "runs.jsonl": "448c43ef96c550c45df80c5123cc2af032af3d8b9dd918e253b620027d511849",
+      "scorecard.json": "861ef2227597d128d4bad0a77f89a71a7b5ee290691edda815015a201f68abf3",
+      "scorecard.md": "62de09db3e4c50c08ef3ae98ca6e14831d65806d059070117900ecdf61fec401"
+    },
+    "byte_identical": {
+      "receipt.json": true,
+      "runs.jsonl": true,
+      "scorecard.json": true,
+      "scorecard.md": true
+    }
+  },
+  "schema_version": "pivot_linear_learner_diagnosis_record.v1",
+  "status": "O35_LEARNER_PARTLY_OPTIMIZATION"
+}
