@@ -1989,6 +1989,17 @@ def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
         "docs/research/pivot-policy-ladder-consolidation-v9.md",
         "experiments/configs/pivot_policy_ladder_consolidation_v9.yaml",
         "tests/test_pivot_policy_ladder_consolidation_v9.py",
+        "docs/research/pivot-policy-ladder-consolidation-v10.md",
+        "experiments/configs/pivot_policy_ladder_consolidation_v10.yaml",
+        "tests/test_pivot_policy_ladder_consolidation_v10.py",
+        "docs/research/pivot-linear-learner-diagnosis-v1.md",
+        "experiments/configs/pivot_linear_learner_diagnosis_v1.yaml",
+        "scripts/prototype_pivot_linear_learner_diagnosis_v1.py",
+        "tests/test_pivot_linear_learner_diagnosis_v1.py",
+        "tests/test_pivot_linear_learner_diagnosis_v1_result.py",
+        "docs/research/pivot-policy-ladder-consolidation-v11.md",
+        "experiments/configs/pivot_policy_ladder_consolidation_v11.yaml",
+        "tests/test_pivot_policy_ladder_consolidation_v11.py",
     }
     assert repository_paths == inspector[
         "PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS"
@@ -2088,6 +2099,11 @@ def test_release_inspector_rejects_llm_prior_pilot_paths() -> None:
         "experiments/configs/pivot_llm_persona_agent_v1.yaml",
         "scripts/prototype_pivot_llm_persona_agent_v1.py",
         "tests/test_pivot_llm_persona_agent_v1.py",
+        "docs/research/pivot-llm-prior-entry-matched-v1.md",
+        "experiments/configs/pivot_llm_prior_entry_matched_v1.yaml",
+        "scripts/prototype_pivot_llm_prior_entry_matched_v1.py",
+        "tests/test_pivot_llm_prior_entry_matched_v1.py",
+        "tests/test_pivot_llm_prior_entry_matched_v1_result.py",
     }
     assert repository_paths == inspector[
         "PIVOT_LLM_PRIOR_PILOT_REPOSITORY_ONLY_PATHS"

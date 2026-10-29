@@ -1,0 +1,271 @@
+schema_version: pivot_linear_learner_diagnosis.v1
+label: pivot_linear_learner_diagnosis_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+
+purpose:
+  primary_goal: >-
+    EXPLAIN_WHY_THE_POOLED_LINEAR_LEARNER_FORECASTS_WORSE_THAN_THE_MLP_IN_THE_LINEAR_WORLD
+  question: >-
+    In the linear world the productive label is a deterministic linear threshold
+    of the features, so the residual linear policy is correctly specified, and
+    the residual MLP nests it exactly. Yet under the hand rule the pooled linear
+    learner's probe Brier is about 0.060 against the MLP's 0.013 (O35, reopening
+    O12). Is the gap the learner or the evidence it saw, and is it the policy
+    class or its optimization budget?
+  open_item: O35_why_the_linear_learner_loses_in_the_linear_world
+  ledger: experiments/configs/pivot_policy_ladder_consolidation_v10.yaml
+  new_llm_calls: 0
+
+source_bindings:
+  - path: scripts/prototype_pivot_llm_prior_entry_matched_v1.py
+    sha256: 572fd560ee11958fb1fd1e44fa89008951977b0180eaa38464228e7edb5daa2c
+    role: IMPORTED_TASK_MAP_INTERVAL_AND_MODULE_CHAIN
+  - path: scripts/prototype_pivot_llm_prior_pilot_v3.py
+    sha256: 88b3a904efbb012a0760a667a29dfeefc080eef6be48d63e4df1d1c53336e184
+    role: IMPORTED_MODULE_CHAIN
+  - path: scripts/prototype_pivot_llm_prior_pilot_v1.py
+    sha256: ef6cd6f306e6499e9c4ec6649f0853f074cb73bb06169fc7553d556bb0b935c1
+    role: HAND_POLICY_REFERENCE
+  - path: scripts/prototype_pivot_nonlinear_policy_abm_v2.py
+    sha256: ed827c5b1cddf6a36e32bfd6ebb4e41a1773af10ebcab975bf5c54e5c5887436
+    role: ABM_ARM_RUNNER_PROBED_LEARNER_AND_CROSS_FIT_FIELD
+  - path: experiments/configs/pivot_nonlinear_policy_abm_v2.yaml
+    sha256: 0b00c3758ccecc387118c33842a79c5e3a6b11ec246e6fc224d93fa340cd3874
+    role: BATCH_LEARNER_SETTINGS_REFERENCE
+  - path: scripts/prototype_pivot_nonlinear_policy_abm_v1.py
+    sha256: c0fa1621eab02140f5b6bc0e0a54c35c0df8e3ed6498ac391c8665b17f754cdb
+    role: FIT_WORLDS_AND_FIT_BATCH
+  - path: scripts/prototype_pivot_matched_marginal_discriminator_v3.py
+    sha256: a4c7a54b839fb1c56af753484457fdff04d3e8af8267b8983327d75e4a9505ba
+    role: RESIDUAL_LINEAR_AND_REGISTERED_ADAM_LOOP
+  - path: scripts/prototype_pivot_matched_marginal_discriminator_v2.py
+    sha256: 19dc841ebcbaa0f97d5f7fef89b96b13bf92c2953877e52dfc5b5f888e40b520
+    role: RESIDUAL_MLP_AND_BASE_LOGIT
+  - path: scripts/prototype_pivot_persistence_exit_v1.py
+    sha256: e8c604ac33f34cc58496723c2adff8e4d30c05182ee40cad114d961be3b17991
+    role: NESTED_PERSISTENCE_ADAPTER
+  - path: scripts/prototype_pivot_delayed_feedback_learning_v1.py
+    sha256: 9555b0968293ec89620ff461e7c449fee098a7eb8809be2b936812b521358515
+    role: VISIBILITY_QUEUE_AND_PRECOMMIT_HELPERS
+  - path: examples/research_pivot_study.py
+    sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+    role: POPULATION_AND_LINEAR_PRODUCTIVE_FIT
+  - path: examples/research_pivot_learning_study.py
+    sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+    role: HAND_SET_PRIOR_AND_FEATURES
+  - path: src/neural_abm/api.py
+    sha256: 83005b43023d29640d96a8929aaab5e5c552542c7c9d797c288e5820a7061898
+    role: UNCHANGED_GENERIC_TORCH_API
+  - path: src/neural_abm/unit_core.py
+    sha256: d399a6fc29f1b2efd3a648f48c79d7f8cab927e704974223ffabf861333ff4da
+    role: UNCHANGED_GENERIC_LIFECYCLE_CORE
+  - path: experiments/configs/pivot_policy_ladder_consolidation_v10.yaml
+    sha256: e478bd6bcca015bb2ddf33005bdf6924de69da934fe45484fb21febc89b6c0c9
+    role: LEDGER_THAT_OPENED_O35
+  - path: experiments/evidence/results/pivot_llm_prior_entry_matched_v1_20261029.summary.json
+    sha256: a132eb0e308b6931969146cb6f05a43b53f337b74d7e0d8f280de162187c6acc
+    role: OPENED_RESULT_BEHIND_O35
+
+prior: HAND_RULE_IN_THE_PRIOR_SLOT
+
+recording:
+  method: >-
+    A_SUBCLASS_OF_THE_V2_PROBED_LEARNER_THAT_ONLY_LISTS_ITSELF_FILLS_THE_LEARNER_SLOT_DURING_THE_RUN_AND_IS_RESTORED
+  recorded_per_fold: FINAL_TRAINING_BUFFER_EVAL_AND_PROBE_FEATURES_SEED_COMPONENTS_AND_REFIT_COUNT
+  refit_seed: THE_SEED_OF_THE_FOLD_LEARNERS_LAST_REFIT
+
+source_arms: [linear_batch, mlp_batch]
+
+refits:
+  - id: registered_linear
+    learner: linear_batch
+    method: REGISTERED_ADAM
+  - id: registered_mlp
+    learner: mlp_batch
+    method: REGISTERED_ADAM
+  - id: linear_epochs_x10
+    learner: linear_batch
+    method: REGISTERED_ADAM
+    overrides: {epochs: 3000}
+  - id: linear_learning_rate_x10
+    learner: linear_batch
+    method: REGISTERED_ADAM
+    overrides: {learning_rate: 0.2}
+  - id: linear_converged
+    learner: linear_batch
+    method: LBFGS_TO_CONVERGENCE
+    weight_decay: 0.0001
+    objective: MEAN_BINARY_CROSS_ENTROPY_PLUS_HALF_THE_WEIGHT_DECAY_TIMES_THE_SQUARED_RESIDUAL_NORM_THE_ADAM_L2_OBJECTIVE
+  - id: linear_converged_weak_penalty
+    learner: linear_batch
+    method: LBFGS_TO_CONVERGENCE
+    weight_decay: 0.000001
+    role: DESCRIPTIVE_ONLY_ITS_CONVERGENCE_IS_RECORDED_NOT_REQUIRED
+
+convergence:
+  max_iterations: 20000
+  max_abs_gradient: 0.000001
+  required_for: [linear_converged]
+  failure_action: INVALID_IMPLEMENTATION_STOP
+
+common_environment:
+  scenario: hot_field_hype
+  state_model: persistence_exit_v1
+  learning_mode: imitative
+  transition:
+    failed_minimum_active_steps: 2
+    failed_continuation_score:
+      productive_fit_weight: 0.5
+      current_policy_output_weight: 0.5
+      exit_below: 0.4
+    reentry_after_exit: false
+
+inherited_learning_parameters:
+  neighbor_count: 4
+  within_stage_probability: 0.6
+  learning_rate: 1.5
+  prior_anchor: 0.25
+  local_alpha: 0.45
+  local_noise_scale: 0.02
+  social_alpha: 0.40
+  peer_similarity_threshold: 0.68
+  pivot_threshold: 0.34
+  productive_threshold: 0.40
+
+visibility_regimes:
+  - id: immediate
+    success_delay_steps: 0
+    failure_delay_steps: 0
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+
+fit_worlds:
+  worlds:
+    - id: linear_fit
+    - id: smooth_interaction_fit
+    - id: axis_interaction_fit
+  implementation: V1_APPLY_FIT_WORLD
+
+evidence_regimes:
+  - id: neighbor_local
+  - id: field_public
+    cross_fit_folds: 4
+    includes_own_public_outcome: false
+
+batch_learners:
+  source: EXACT_V2_BATCH_LEARNER_SETTINGS_UNCHANGED
+  scalar_batch:
+    epochs: 80
+    eta: 0.5
+    prior_anchor: 0.25
+  linear_batch:
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  mlp_batch:
+    hidden_width: 16
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  tree_batch:
+    initial_margin: FROZEN_PRIOR_LOGIT
+    rounds: 300
+    learning_rate: 0.1
+    max_depth: 3
+    min_samples_leaf: 5
+    leaf_l2: 1.0
+
+probe_cohort:
+  base_seed: 20261212
+  agent_count: 256
+  per_replicate: true
+
+profiles:
+  smoke:
+    agent_count: 48
+    steps: 12
+    burn_in_steps: 2
+    replicates: 2
+    base_seed: 20261211
+  development:
+    agent_count: 256
+    steps: 18
+    burn_in_steps: 2
+    replicates: 16
+    base_seed: 20261211
+
+decision_contract:
+  unit: REPLICATE_THE_MEAN_OVER_ITS_FOUR_FOLD_LEARNERS_AS_IN_THE_RUNS_PROBE_BRIER
+  metric: PROBE_BRIER_ON_THE_REPLICATES_PROBE_COHORT
+  interval: PAIRED_95_PERCENT_T_INTERVAL_OVER_16_REPLICATES
+  minimum_replicates: 12
+  material_brier_difference: 0.01
+  material_rule: THE_INTERVAL_EXCLUDES_ZERO_AND_THE_ABSOLUTE_MEAN_IS_AT_LEAST_THE_MATERIAL_DIFFERENCE
+  primary_world: linear_fit
+  source_of_the_gap:
+    learner_gap: REGISTERED_LINEAR_MINUS_REGISTERED_MLP_ON_THE_SAME_EVIDENCE_FOR_EACH_SOURCE_ARM
+    evidence_gap: THE_SAME_FIT_ON_THE_LINEAR_ARMS_EVIDENCE_MINUS_ON_THE_MLP_ARMS_EVIDENCE_FOR_EACH_REGISTERED_FIT
+    outcomes:
+      LEARNER: BOTH_LEARNER_GAPS_MATERIAL_AND_POSITIVE_AND_NO_EVIDENCE_GAP_MATERIAL
+      EVIDENCE: AN_EVIDENCE_GAP_MATERIAL_AND_NOT_BOTH_LEARNER_GAPS
+      BOTH: BOTH_LEARNER_GAPS_MATERIAL_AND_POSITIVE_AND_AN_EVIDENCE_GAP_MATERIAL
+      NEITHER: OTHERWISE
+  optimization:
+    on: THE_LINEAR_ARMS_OWN_EVIDENCE
+    outcomes:
+      NO_GAP_TO_EXPLAIN: THE_LEARNER_GAP_ON_THE_LINEAR_ARMS_EVIDENCE_IS_NOT_MATERIAL_AND_POSITIVE
+      OPTIMIZATION_BUDGET: UPPER_95_PERCENT_BOUND_OF_CONVERGED_LINEAR_MINUS_REGISTERED_MLP_AT_MOST_THE_MARGIN
+      PARTLY_OPTIMIZATION: NOT_THE_ABOVE_AND_REGISTERED_MINUS_CONVERGED_LINEAR_MATERIAL_AND_POSITIVE
+      NOT_OPTIMIZATION: OTHERWISE
+  optimization_noninferiority_margin: 0.005
+  study_status: O35_THEN_THE_PRIMARY_WORLDS_SOURCE_THEN_ITS_OPTIMIZATION_OUTCOME
+  other_worlds: SAME_QUANTITIES_REPORTED_THE_LINEAR_POLICY_IS_MISSPECIFIED_THERE
+  reported: [LOG_LOSS, AUC, SHARPNESS, RESIDUAL_NORM, EVIDENCE_EVENTS, EVIDENCE_PRODUCTIVE_SHARE]
+  checks:
+    required: true
+    conditions:
+      - THE_RECORDED_FOLD_LEARNERS_REPRODUCE_THE_RUNS_PROBE_BRIER_EXACTLY
+      - THE_SOURCE_ARMS_REGISTERED_REFIT_ON_EACH_FINAL_BUFFER_REPRODUCES_THE_RECORDED_PROBE_OUTPUT_EXACTLY
+      - THE_LEARNER_SLOT_IS_RESTORED_AND_THE_PRIOR_SLOT_IS_THE_HAND_RULE_AFTER_EVERY_TASK
+      - EVERY_LINEAR_CONVERGED_FIT_REACHES_THE_GRADIENT_TOLERANCE
+    failure_action: INVALID_IMPLEMENTATION_STOP
+  model_selection: FORBIDDEN
+
+expectations_before_the_run:
+  basis: >-
+    THE_LINEAR_LABEL_IS_A_DETERMINISTIC_LINEAR_THRESHOLD_SO_ITS_BEST_FORECAST_IS_A_STEP_WHICH_A_LOGISTIC_POLICY_APPROACHES_ONLY_WITH_LARGE_WEIGHTS_ADAM_AT_0.02_MOVES_EACH_RESIDUAL_PARAMETER_AT_MOST_ABOUT_6_IN_300_STEPS_WHILE_THE_MLP_MULTIPLIES_TWO_SUCH_MOVES_ACROSS_16_UNITS
+  E1: THE_PRIMARY_WORLDS_SOURCE_IS_LEARNER
+  E2: THE_PRIMARY_WORLDS_OPTIMIZATION_IS_OPTIMIZATION_BUDGET
+  E3: ON_THE_LINEAR_ARMS_EVIDENCE_THE_REGISTERED_MLP_MINUS_LINEAR_PROBE_AUC_IS_BELOW_0.02_SO_THE_GAP_IS_SHARPNESS_NOT_RANKING
+  recording: EACH_EXPECTATION_IS_RECORDED_AS_HELD_OR_FAILED_A_FAILED_EXPECTATION_IS_A_REJECTED_CLAIM
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+    - docs/research/pivot-linear-learner-diagnosis-v1.md
+    - experiments/configs/pivot_linear_learner_diagnosis_v1.yaml
+    - scripts/prototype_pivot_linear_learner_diagnosis_v1.py
+    - scripts/inspect_release_artifacts.py
+    - tests/test_pivot_linear_learner_diagnosis_v1.py
+    - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+
+outputs:
+  - runs.jsonl
+  - scorecard.json
+  - scorecard.md
+  - receipt.json
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  paid_api_calls: 0
+  new_llm_calls: 0
+  model_selected: "NO"
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED

@@ -1,0 +1,313 @@
+schema_version: pivot_llm_prior_entry_matched.v1
+label: pivot_llm_prior_entry_matched_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+
+purpose:
+  primary_goal: >-
+    TEST_WHETHER_THE_CALIBRATED_LLM_PRIOR_SELECTS_BETTER_ENTRANTS_THAN_THE_HAND_RULE_AT_EQUAL_SELECTIVITY
+  question: >-
+    C22 found that the calibrated LLM prior with a 20% exploration floor raised
+    entrant precision over the hand rule. The LLM prior also admits fewer agents
+    (fixed-rule entry about 0.34 against 0.80), and its design-cohort AUC
+    matches the hand rule's in both interaction worlds. Does its precision gain
+    survive when the hand rule is made equally selective in the world, keeping
+    its own feature weights?
+  result_informed_successor: true
+  informed_by:
+    - V2_HAND_LEVEL_CONTROL_MATCHED_THE_MEAN_BUT_NOT_ENTRY_0.465_AGAINST_0.823
+    - V3_C22_PRECISION_GAIN_MIXES_RANKING_WITH_SELECTIVITY
+    - V4_DESIGN_COHORT_AUC_OF_THE_V3_PRIOR_MATCHES_THE_HAND_RULE_IN_INTERACTION_WORLDS
+    - O33_CALIBRATION_MATCHED_IN_THE_WORLD_NOT_ON_A_DESIGN_COHORT
+  new_llm_calls: 0
+  reuses: V2_HASH_BOUND_CALIBRATED_PRIORS
+
+source_bindings:
+  - path: scripts/prototype_pivot_llm_prior_pilot_v3.py
+    sha256: 88b3a904efbb012a0760a667a29dfeefc080eef6be48d63e4df1d1c53336e184
+    role: IMPORTED_EXPLORATION_ADAPTER_AND_NESTING_CHECK
+  - path: scripts/prototype_pivot_llm_prior_pilot_v1.py
+    sha256: ef6cd6f306e6499e9c4ec6649f0853f074cb73bb06169fc7553d556bb0b935c1
+    role: IMPORTED_PRIOR_SLOT_AND_HAND_POLICY
+  - path: scripts/prototype_pivot_nonlinear_policy_abm_v2.py
+    sha256: ed827c5b1cddf6a36e32bfd6ebb4e41a1773af10ebcab975bf5c54e5c5887436
+    role: ABM_ARM_RUNNER_PROBE_COHORT_AND_CROSS_FIT_FIELD
+  - path: experiments/configs/pivot_nonlinear_policy_abm_v2.yaml
+    sha256: 0b00c3758ccecc387118c33842a79c5e3a6b11ec246e6fc224d93fa340cd3874
+    role: BATCH_LEARNER_SETTINGS_REFERENCE
+  - path: scripts/prototype_pivot_nonlinear_policy_abm_v1.py
+    sha256: c0fa1621eab02140f5b6bc0e0a54c35c0df8e3ed6498ac391c8665b17f754cdb
+    role: FIT_WORLDS_BATCH_LEARNERS_AND_JUDGE
+  - path: scripts/prototype_pivot_persistence_exit_v1.py
+    sha256: e8c604ac33f34cc58496723c2adff8e4d30c05182ee40cad114d961be3b17991
+    role: NESTED_PERSISTENCE_ADAPTER_AND_PREDECESSOR
+  - path: scripts/prototype_pivot_delayed_feedback_learning_v1.py
+    sha256: 9555b0968293ec89620ff461e7c449fee098a7eb8809be2b936812b521358515
+    role: VISIBILITY_QUEUE_AND_PRECOMMIT_HELPERS
+  - path: examples/research_pivot_study.py
+    sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+    role: POPULATION_AND_LINEAR_PRODUCTIVE_FIT
+  - path: examples/research_pivot_learning_study.py
+    sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+    role: HAND_SET_PRIOR_AND_PRIOR_SLOT
+  - path: src/neural_abm/api.py
+    sha256: 83005b43023d29640d96a8929aaab5e5c552542c7c9d797c288e5820a7061898
+    role: UNCHANGED_GENERIC_TORCH_API
+  - path: src/neural_abm/unit_core.py
+    sha256: d399a6fc29f1b2efd3a648f48c79d7f8cab927e704974223ffabf861333ff4da
+    role: UNCHANGED_GENERIC_LIFECYCLE_CORE
+  - path: experiments/configs/pivot_llm_prior_pilot_v2.yaml
+    sha256: 6e16336dd53455a2eb7f66dc476f881d63064bad9550426a43d639ccdaa20239
+    role: CALIBRATED_PRIOR_CONTRACT
+  - path: experiments/evidence/results/pivot_llm_prior_pilot_v2_20260929.summary.json
+    sha256: 703c463d147c0edb5d72d4afea95c7dc841eddc0557fb77d20d9faf67cad1ee7
+    role: OPENED_HAND_LEVEL_CONTROL_RESULT
+  - path: experiments/evidence/results/pivot_llm_prior_pilot_v3_20260929.summary.json
+    sha256: e110e15f8af0d1c4d2573268aba08e6fed325a7a21bc819b66bb2df2707faeea
+    role: OPENED_C22_RESULT
+  - path: experiments/evidence/results/pivot_llm_prior_pilot_v4_20260930.summary.json
+    sha256: 66ea6ce18c85e1c8ef723d2afc5280e6e9c31b3f8271827e25587c310da33408
+    role: OPENED_DESIGN_COHORT_AUC_BEHIND_THE_EXPECTATIONS
+
+v2_calibrated_priors:
+  path: /ssd/pivot_llm_prior_pilot_v2_2ddcd93_development/calibrated_priors.json
+  sha256: db4a910caa35153aea8608a7386b4b0f14f45743b65cae65a2103e2fb73ffa2b
+  prior_used: llm_base_rate
+
+priors:
+  direction: >-
+    THE_FEATURE_WEIGHTS_OF_A_PRIOR_KEPT_EXACTLY_HAND_FROM_THE_HAND_INITIAL_POLICY_LLM_FROM_THE_V2_BASE_RATE_PRIOR
+  selectivity: >-
+    THE_MEAN_FIXED_RULE_CUMULATIVE_ENTRY_RATE_THE_PRIOR_PRODUCES_IN_THE_WORLD
+  matched_level: >-
+    ONLY_THE_INTERCEPT_IS_SHIFTED_UNTIL_THE_FIXED_RULE_ENTRY_IN_THE_WORLD_EQUALS_THE_OTHER_DIRECTIONS_NATIVE_ENTRY
+  hand_through_the_slot: >-
+    THE_HAND_PRIOR_IS_PASSED_THROUGH_THE_PRIOR_SLOT_AS_ITS_FLOAT64_WEIGHTS_AND_BIAS_AND_MUST_REPRODUCE_THE_HAND_RULE_EXACTLY_AT_ZERO_SHIFT
+
+entry_calibration:
+  method: BISECTION_ON_THE_INTERCEPT_SHIFT_PER_WORLD_AND_MATCHED_LEVEL
+  arm: fixed_rule
+  exploration: NONE
+  base_seed: 20261203
+  probe_base_seed: 20261204
+  replicates: 16
+  target: MEAN_FIXED_RULE_ENTRY_OF_THE_SOURCE_DIRECTION_AT_ITS_NATIVE_LEVEL_ON_THE_SAME_CALIBRATION_REPLICATES
+  bracket: [-12.0, 12.0]
+  bisection_iterations: 40
+  chosen_shift: THE_EVALUATED_MIDPOINT_WITH_THE_SMALLEST_ABSOLUTE_ENTRY_GAP_FIRST_ON_TIES
+  in_sample_relative_tolerance: 0.01
+  out_of_sample_ratio_bounds: [0.95, 1.05]
+  out_of_sample_check: >-
+    IN_THE_STUDY_REPLICATES_THE_FIXED_RULE_ENTRY_OF_EACH_MATCHED_CONDITION_WITHOUT_EXPLORATION_OVER_ITS_SOURCE_IS_WITHIN_THE_BOUNDS_IN_EVERY_WORLD
+  failure_action: ENTRY_MATCH_FAILED_STOP_NO_DECISION_INTERPRETED
+
+exploration_floor:
+  rule: V3_EXPLORATION_ADAPTER_UNCHANGED
+  exploratory_share: 0.2
+  epsilon_from_share: ONE_MINUS_ONE_MINUS_SHARE_TO_THE_POWER_ONE_OVER_OPEN_STEPS
+  open_steps: 16
+
+conditions:
+  - {id: hand, direction: hand, level: native, exploratory_share: 0.0, role: INCUMBENT_RULE}
+  - {id: llm_selective, direction: llm, level: native, exploratory_share: 0.0, role: LLM_PRIOR_AT_ITS_OWN_SELECTIVITY}
+  - {id: hybrid_20, direction: llm, level: native, exploratory_share: 0.2, role: C22_HYBRID}
+  - {id: hand_at_llm_entry, direction: hand, level: llm_entry, exploratory_share: 0.0, role: HAND_DIRECTION_AT_LLM_SELECTIVITY}
+  - {id: hand_at_llm_entry_20, direction: hand, level: llm_entry, exploratory_share: 0.2, role: ENTRY_MATCHED_CONTROL_FOR_C22}
+  - {id: llm_at_hand_entry, direction: llm, level: hand_entry, exploratory_share: 0.0, role: LLM_DIRECTION_AT_HAND_SELECTIVITY}
+
+common_environment:
+  scenario: hot_field_hype
+  state_model: persistence_exit_v1
+  learning_mode: imitative
+  transition:
+    failed_minimum_active_steps: 2
+    failed_continuation_score:
+      productive_fit_weight: 0.5
+      current_policy_output_weight: 0.5
+      exit_below: 0.4
+    reentry_after_exit: false
+
+inherited_learning_parameters:
+  neighbor_count: 4
+  within_stage_probability: 0.6
+  learning_rate: 1.5
+  prior_anchor: 0.25
+  local_alpha: 0.45
+  local_noise_scale: 0.02
+  social_alpha: 0.40
+  peer_similarity_threshold: 0.68
+  pivot_threshold: 0.34
+  productive_threshold: 0.40
+
+visibility_regimes:
+  - id: immediate
+    success_delay_steps: 0
+    failure_delay_steps: 0
+    success_visibility_probability: 1.0
+    failure_visibility_probability: 1.0
+
+fit_worlds:
+  worlds:
+    - id: linear_fit
+    - id: smooth_interaction_fit
+    - id: axis_interaction_fit
+  implementation: V1_APPLY_FIT_WORLD
+
+evidence_regimes:
+  - id: neighbor_local
+  - id: field_public
+    cross_fit_folds: 4
+    includes_own_public_outcome: false
+
+abm_arms:
+  - [fixed_rule, none]
+  - [linear_batch, field_public]
+  - [tree_batch, field_public]
+  - [mlp_batch, field_public]
+
+batch_learners:
+  source: EXACT_V2_BATCH_LEARNER_SETTINGS_UNCHANGED
+  scalar_batch:
+    epochs: 80
+    eta: 0.5
+    prior_anchor: 0.25
+  linear_batch:
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  mlp_batch:
+    hidden_width: 16
+    optimizer: ADAM
+    epochs: 300
+    learning_rate: 0.02
+    weight_decay: 0.0001
+  tree_batch:
+    initial_margin: FROZEN_PRIOR_LOGIT
+    rounds: 300
+    learning_rate: 0.1
+    max_depth: 3
+    min_samples_leaf: 5
+    leaf_l2: 1.0
+
+probe_cohort:
+  base_seed: 20261202
+  agent_count: 256
+  per_replicate: true
+
+profiles:
+  smoke:
+    agent_count: 24
+    steps: 12
+    burn_in_steps: 2
+    replicates: 2
+    base_seed: 20261201
+  development:
+    agent_count: 256
+    steps: 18
+    burn_in_steps: 2
+    replicates: 16
+    base_seed: 20261201
+
+decision_contract:
+  improvement_rule: >-
+    MEAN_PAIRED_IMPROVEMENT_AT_LEAST_THRESHOLD_AND_STRICTLY_POSITIVE_IN_AT_LEAST_REQUIRED_REPLICATES
+  precision:
+    metric: PRODUCTIVE_SHARE_OF_ENTRANTS
+    improvement_at_least: 0.02
+    improved_replicates_at_least: 12
+    outcomes:
+      FIRST_BETTER: THE_RULE_PASSES_FOR_FIRST_MINUS_SECOND
+      SECOND_BETTER: THE_RULE_PASSES_FOR_SECOND_MINUS_FIRST
+      NO_CLEAR_DIFFERENCE: NEITHER_PASSES
+    reported: PAIRED_MEAN_AND_95_PERCENT_T_INTERVAL
+  learning_noninferiority:
+    metric: FIELD_ARM_PROBE_BRIER
+    margin: -0.005
+    rule: LOWER_BOUND_OF_THE_95_PERCENT_T_INTERVAL_OF_REFERENCE_MINUS_CONDITION_AT_LEAST_THE_MARGIN
+    mean_only_rule: REPORTED_FOR_CONTINUITY_WITH_C22_NOT_DECISIVE
+  comparisons:
+    ranking_at_llm_selectivity_fixed_rule:
+      first: llm_selective
+      second: hand_at_llm_entry
+      arms: [fixed_rule]
+      role: PRIMARY_TEST_OF_LLM_RANKING_WITHOUT_LEARNING
+    ranking_at_llm_selectivity_learners:
+      first: llm_selective
+      second: hand_at_llm_entry
+      arms: [linear_batch, tree_batch, mlp_batch]
+    ranking_at_hand_selectivity:
+      first: llm_at_hand_entry
+      second: hand
+      arms: [fixed_rule, linear_batch, tree_batch, mlp_batch]
+    c22_against_entry_matched_hand:
+      condition: hybrid_20
+      reference: hand_at_llm_entry_20
+      arms: [linear_batch, tree_batch, mlp_batch]
+      cell_dispositions:
+        LLM_DOMINATES: PRECISION_FIRST_BETTER_AND_LEARNING_NONINFERIOR
+        SELECTION_ONLY: PRECISION_FIRST_BETTER_ONLY
+        LEARNING_ONLY: LEARNING_NONINFERIOR_ONLY
+        NEITHER: NEITHER
+      study_status:
+        C22_PRECISION_SURVIVES_ENTRY_MATCHING: PRECISION_FIRST_BETTER_IN_5_TO_9_OF_9_CELLS
+        C22_PRECISION_SURVIVES_IN_MINORITY: PRECISION_FIRST_BETTER_IN_1_TO_4_OF_9_CELLS
+        C22_PRECISION_IS_SELECTIVITY: PRECISION_FIRST_BETTER_IN_NO_CELL
+    c22_replication_against_hand:
+      condition: hybrid_20
+      reference: hand
+      arms: [linear_batch, tree_batch, mlp_batch]
+      role: THIRD_SEED_SET_FOR_C22_UNDER_BOTH_NONINFERIORITY_RULES
+  count_labels:
+    ALL_CELLS: EVERY_CELL
+    MAJORITY: MORE_THAN_HALF
+    MINORITY: AT_LEAST_ONE_AND_AT_MOST_HALF
+    NO_CELL: ZERO
+  nesting_checks:
+    required: true
+    conditions:
+      - UNDER_THE_HAND_CONDITION_THE_FIXED_ARM_EQUALS_THE_PERSISTENCE_PREDECESSOR_IN_THE_LINEAR_WORLD
+      - THE_HAND_PRIOR_THROUGH_THE_SLOT_AT_ZERO_SHIFT_EQUALS_THE_HAND_RULE_ON_EVERY_CALIBRATION_REPLICATE
+      - THE_PRIOR_AND_ADAPTER_SLOTS_ARE_RESTORED_AFTER_EVERY_TASK
+      - THE_LLM_PRIOR_EQUALS_THE_V2_LLM_BASE_RATE_PRIOR_EXACTLY
+      - MATCHED_PRIORS_KEEP_THEIR_DIRECTIONS_WEIGHTS_EXACTLY
+    failure_action: INVALID_IMPLEMENTATION_STOP
+  model_selection: FORBIDDEN
+
+expectations_before_the_run:
+  basis: >-
+    V4_DESIGN_COHORT_AUC_OF_THE_V3_REFERENCE_PRIOR_AGAINST_THE_HAND_RULE_LINEAR_0.707_VS_0.647_SMOOTH_0.632_VS_0.622_AXIS_0.644_VS_0.643
+  E1: RANKING_AT_LLM_SELECTIVITY_FIXED_RULE_IS_FIRST_BETTER_IN_THE_LINEAR_WORLD
+  E2: RANKING_AT_LLM_SELECTIVITY_FIXED_RULE_IS_NO_CLEAR_DIFFERENCE_IN_BOTH_INTERACTION_WORLDS
+  E3: C22_AGAINST_ENTRY_MATCHED_HAND_IS_C22_PRECISION_SURVIVES_IN_MINORITY_WITH_EVERY_PRECISION_BETTER_CELL_IN_THE_LINEAR_WORLD
+  recording: EACH_EXPECTATION_IS_RECORDED_AS_HELD_OR_FAILED_A_FAILED_EXPECTATION_IS_A_REJECTED_CLAIM
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+    - docs/research/pivot-llm-prior-entry-matched-v1.md
+    - experiments/configs/pivot_llm_prior_entry_matched_v1.yaml
+    - scripts/prototype_pivot_llm_prior_entry_matched_v1.py
+    - scripts/inspect_release_artifacts.py
+    - tests/test_pivot_llm_prior_entry_matched_v1.py
+    - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+
+outputs:
+  - calibration.json
+  - runs.jsonl
+  - scorecard.json
+  - scorecard.md
+  - receipt.json
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  paid_api_calls: 0
+  new_llm_calls: 0
+  model_selected: "NO"
+  neural_necessity: NOT_ESTABLISHED
+  llm_knowledge_of_real_pivots: NOT_ESTABLISHED_THE_WORLDS_ARE_SYNTHETIC
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED

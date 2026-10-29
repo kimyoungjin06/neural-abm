@@ -1,0 +1,244 @@
+schema_version: pivot_policy_ladder_consolidation.v11
+label: pivot_policy_ladder_consolidation_v11
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-10-29'
+purpose: 'Extend the v10 ledger with the linear-learner diagnosis (O35), which the user confirmed on 2026-10-29: why
+  the pooled linear learner forecasts worse than the MLP in the linear world, where it is correctly specified. v1 to
+  v10 remain the records for everything before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v10.yaml
+    sha256: e478bd6bcca015bb2ddf33005bdf6924de69da934fe45484fb21febc89b6c0c9
+    record_commit: be14118
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v10.md
+    sha256: 2055efbcf3851f04a8757895068950d982e6503f69b519ab689f93cdc06c0e34
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v10.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: linear_learner_diagnosis
+  path: experiments/evidence/results/pivot_linear_learner_diagnosis_v1_20261029.summary.json
+  sha256: 7e6838c6efc759ea63573ec3dc663163c924e58ccafc834481c0c7eb789c7c60
+  freeze_commit: 8c7ffd8
+  record_commit: 0d01c3c
+claims:
+  confirmed:
+  - id: C79_in_the_linear_world_the_linear_learners_gap_is_the_learner_not_the_evidence
+    statement: Refitted on the evidence each fold learner actually saw, the registered linear learner is 0.046 (on
+      its own arm's evidence) and 0.053 (on the MLP arm's) worse in probe Brier than the registered MLP in the linear
+      world. Swapping the evidence makes no material difference to either learner.
+    evidence:
+    - source: linear_learner_diagnosis
+      pointer: decisions/by_world/linear_fit/source_of_the_gap
+      equals: LEARNER
+    - source: linear_learner_diagnosis
+      pointer: decisions/by_world/linear_fit/learner_gap/on_linear_batch_evidence/low
+      greater_than: 0.04
+    - source: linear_learner_diagnosis
+      pointer: decisions/by_world/linear_fit/evidence_gap/registered_linear/material
+      equals: false
+    - source: linear_learner_diagnosis
+      pointer: decisions/by_world/linear_fit/evidence_gap/registered_mlp/material
+      equals: false
+  - id: C80_most_of_that_gap_is_the_adam_budget_and_the_rest_the_penalty
+    statement: Converging the linear learner's registered objective closes 71% of its gap to the MLP in the linear
+      world, and 10x the Adam steps gets almost all of the way there. The converged fit is still 0.013 worse than the
+      MLP, outside the registered 0.005 margin. Descriptively, at a 100x weaker penalty the converged fit matches the
+      MLP; the MLP reaches a steep slope through products of smaller parameters, which the same L2 penalty charges
+      less. The MLP's ranking advantage is only 0.007 in AUC.
+    evidence:
+    - source: linear_learner_diagnosis
+      pointer: decisions/by_world/linear_fit/optimization
+      equals: PARTLY_OPTIMIZATION
+    - source: linear_learner_diagnosis
+      pointer: post_hoc_descriptive/share_of_the_gap_closed_by_convergence_on_the_linear_arms_evidence
+      greater_than: 0.7
+    - source: linear_learner_diagnosis
+      pointer: decisions/by_world/linear_fit/converged_linear_minus_mlp/low
+      greater_than: 0.005
+    - source: linear_learner_diagnosis
+      pointer: post_hoc_descriptive/weak_penalty_converged_minus_registered_mlp/high
+      less_than: 0.0
+    - source: linear_learner_diagnosis
+      pointer: post_hoc_descriptive/epochs_x10_minus_converged/high
+      less_than: 0.001
+    - source: linear_learner_diagnosis
+      pointer: decisions/by_world/linear_fit/mlp_minus_linear_auc_on_linear_evidence/high
+      less_than: 0.01
+  - id: C81_in_the_interaction_worlds_the_mlps_edge_is_the_policy_class
+    statement: In the smooth and axis interaction worlds, where the linear policy is misspecified, converging the
+      linear learner changes its Brier by about 0.001, and the MLP ranks far better (AUC higher by 0.18 and 0.19).
+      There the MLP's edge is its policy class.
+    evidence:
+    - source: linear_learner_diagnosis
+      pointer: decisions/by_world/smooth_interaction_fit/optimization
+      equals: NOT_OPTIMIZATION
+    - source: linear_learner_diagnosis
+      pointer: decisions/by_world/axis_interaction_fit/optimization
+      equals: NOT_OPTIMIZATION
+    - source: linear_learner_diagnosis
+      pointer: decisions/by_world/smooth_interaction_fit/mlp_minus_linear_auc_on_linear_evidence/low
+      greater_than: 0.15
+    - source: linear_learner_diagnosis
+      pointer: decisions/by_world/axis_interaction_fit/mlp_minus_linear_auc_on_linear_evidence/low
+      greater_than: 0.15
+  - id: C82_the_diagnosis_reproduced_with_exact_refit_parity
+    statement: The diagnosis reproduced byte for byte. Each source arm's registered refit on every recorded fold
+      buffer reproduced the run's probe output exactly, and every converged fit reached the gradient tolerance.
+    evidence:
+    - source: linear_learner_diagnosis
+      pointer: checks
+      equals: PASS_REFIT_PARITY_PROBE_BRIER_PARITY_AND_CONVERGENCE
+    - source: linear_learner_diagnosis
+      pointer: reproduction/byte_identical/runs.jsonl
+      equals: true
+    - source: linear_learner_diagnosis
+      pointer: reproduction/byte_identical/scorecard.json
+      equals: true
+  rejected:
+  - id: R23_the_linear_learners_gap_is_its_optimization_budget_alone
+    statement: The diagnosis's expectation stated before the run (E2), that the linear learner converged under its
+      registered objective is non-inferior to the MLP within 0.005 in the linear world.
+    reason: Converging closes 71% of the gap. The rest comes from the registered weight decay, which limits the
+      linear parameterization's slope more than the MLP's.
+    evidence:
+    - source: linear_learner_diagnosis
+      pointer: expectations/E2/held
+      equals: false
+    - source: linear_learner_diagnosis
+      pointer: expectations/E1/held
+      equals: true
+    - source: linear_learner_diagnosis
+      pointer: expectations/E3/held
+      equals: true
+  open:
+  - id: O36_capacity_comparisons_with_converged_fits
+    question: Do the ladder's capacity conclusions (C08 to C11, C14) hold when every learner's registered objective is
+      converged, or when the penalty is set per parameterization rather than shared?
+    kind: SYNTHETIC
+    priority: 2
+    motivation: Under the registered 300-step Adam budget, 71% of the linear learner's gap to the MLP in the linear
+      world is unconverged training (C80). The interaction-world edges are the policy class (C81), but no capacity
+      comparison has been run with converged fits.
+    evidence:
+    - source: linear_learner_diagnosis
+      pointer: cells/0/source_arm
+      equals: linear_batch
+    - source: linear_learner_diagnosis
+      pointer: cells/0/fits/registered_linear/brier
+      greater_than: 0.05
+    - source: linear_learner_diagnosis
+      pointer: cells/0/fits/linear_converged/brier
+      less_than: 0.03
+status_updates:
+- id: N31
+  previous: AFTER_THIS_CONSOLIDATION
+  status: CARRIED_FORWARD_AS_N35
+- id: N32
+  previous: USER_CONFIRMED_2026_10_29_SEPARATE_PRECOMMIT
+  status: DONE_O35_FROZEN_AT_8c7ffd8_RECORDED_AT_0d01c3c
+  answered_by:
+  - C79_in_the_linear_world_the_linear_learners_gap_is_the_learner_not_the_evidence
+  - C80_most_of_that_gap_is_the_adam_budget_and_the_rest_the_penalty
+  - C81_in_the_interaction_worlds_the_mlps_edge_is_the_policy_class
+  - R23_the_linear_learners_gap_is_its_optimization_budget_alone
+- id: N33
+  previous: USER_CONFIRMATION_REQUIRED
+  status: CARRIED_FORWARD_AS_N36
+- id: N34
+  previous: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+  status: CARRIED_FORWARD_AS_N37
+answered_open_items:
+- id: O35_why_the_linear_learner_loses_in_the_linear_world
+  answered_by:
+  - C79_in_the_linear_world_the_linear_learners_gap_is_the_learner_not_the_evidence
+  - C80_most_of_that_gap_is_the_adam_budget_and_the_rest_the_penalty
+  - C81_in_the_interaction_worlds_the_mlps_edge_is_the_policy_class
+  - R23_the_linear_learners_gap_is_its_optimization_budget_alone
+carried_open_items:
+- O29_the_onset_with_larger_tables_and_shifts_within_a_run
+- O30_tables_across_relations
+- O31_scoring_harm_to_others
+- O32_location_or_steepness
+- O34_steepness_matched_in_the_world
+narrowed_claims: []
+explained_claims: []
+reporting_rules:
+- id: UNVERIFIED_MEASURE
+  rule: Information-spread comparisons from study v2 on are on share precision on unverified items, whose
+    fact-check is not public at the decision. Study v1's groups are not read.
+  carried_from: v10
+- id: TRANSFER_WITHIN_ONE_GENERATOR
+  rule: '"A table suffices" holds for donors in the same world and in other worlds of the same generator, which
+    share the veracity relation. Transfer across relations or domains is not tested.'
+  carried_from: v10
+- id: RARE_RUN_SPECIFIC_INFORMATION
+  rule: The table critique holds only while run-specific information is rare. In the flip study, a four-donor
+    table falls behind between a tenth and a quarter of runs carrying it. That is one kind of information and one
+    table size.
+  carried_from: v10
+- id: PRECISION_AND_UTILITY
+  rule: Report comparisons that involve an LLM prior under both share precision and the agents' utility, since
+    they disagree in 5 of 20 summaries. Utility scores only the sharer's own gain and cost, not the reach of false
+    items.
+  carried_from: v10
+- id: LLM_READOUT
+  rule: Name the readout with any LLM-prior result. P0 in Regime A saturated under the inherited clip and is
+    nearly constant; without the clip the same answers carry the relation's direction (C58). The X0 table is not
+    clipped.
+  carried_from: v10
+- id: LLM_PRIOR_ATTRIBUTION_BY_REGIME
+  rule: Name an LLM prior's calibration (the rule that set its location, and its steepness) with any result about
+    it, and attribute its utility cost per regime. With share rates matched in the world, D5's prior costs utility
+    through its calibration in Regime A (C68) and through its calibration and the model's answers in Regime B (C69);
+    the unclipped prior in Regime B, through the model's answers (C70).
+  carried_from: v10
+- id: WORLD_MATCHED_ATTRIBUTION
+  rule: Attribute a prior's cost to its parts only with each recalibrated prior matched to its source's share rate
+    in the world, and report that match beside the comparisons. Under O28's cohort match two of the three costed
+    attributions differed (C69, C70). Only the location has been matched in the world; the steepness has not.
+  carried_from: v10
+- id: SELECTIVITY_MATCHED_PRECISION
+  rule: Compare two priors on the precision of whom they admit only beside a comparison at matched selectivity in
+    the world, made by shifting one prior's intercept. A more selective prior raises precision without ranking
+    better; C22's gain disappeared at matched entry (C75).
+  carried_from: v10
+- id: INTERVAL_NONINFERIORITY
+  rule: Judge non-inferiority by the lower bound of an interval, not by the mean, and name the seed set. Under that
+    change C22's dominance count is 2 of 9, against 7 of 9 as recorded (C77).
+  carried_from: v10
+- id: CONVERGED_CAPACITY_COMPARISON
+  rule: Name each learner's training budget with any comparison of policy classes, and report how far its
+    registered objective is from convergence. In the linear world, converging the linear learner closes 71% of its
+    gap to the MLP (C80); in the interaction worlds the gap is the policy class (C81).
+paper_direction:
+  decided_by: USER_2026_10_13
+  central_claim: UNCHANGED_FROM_V5
+  updated_conditional_cases:
+  - IN_THE_LINEAR_WORLD_THE_MLPS_EDGE_OVER_THE_LINEAR_LEARNER_IS_TRAINING_NOT_REPRESENTATION_IN_THE_INTERACTION_WORLDS_IT_IS_THE_POLICY_CLASS
+  evidence:
+  - source: linear_learner_diagnosis
+    pointer: status
+    equals: O35_LEARNER_PARTLY_OPTIMIZATION
+next_steps:
+- id: N35
+  kind: PAPER
+  action: REWRITE_THE_MANUSCRIPTS_LLM_PRIOR_AND_CAPACITY_PASSAGES_WITH_C74_TO_C82_IN_THE_MANUSCRIPT_KEPT_OUTSIDE_THE_REPOSITORY
+  authorization: AFTER_THIS_CONSOLIDATION
+- id: N36
+  kind: REPOSITORY
+  action: MERGE_THE_ENTRY_MATCHED_AND_DIAGNOSIS_BRANCH_INTO_MAIN_THROUGH_A_PULL_REQUEST
+  authorization: USER_CONFIRMATION_REQUIRED
+- id: N37
+  kind: COMPARISON_DESIGN
+  action: CHOOSE_AMONG_O29_TO_O32_O34_AND_O36_EACH_AS_A_SEPARATE_PRECOMMIT
+  authorization: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+boundaries:
+  new_execution: NONE
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: ACCEPTED_IN_DECISION_0017_RELEASED_IN_V0_1_0A6

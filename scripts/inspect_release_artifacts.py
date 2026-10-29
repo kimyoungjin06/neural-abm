@@ -299,6 +299,17 @@ PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-policy-ladder-consolidation-v9.md",
     "experiments/configs/pivot_policy_ladder_consolidation_v9.yaml",
     "tests/test_pivot_policy_ladder_consolidation_v9.py",
+    "docs/research/pivot-policy-ladder-consolidation-v10.md",
+    "experiments/configs/pivot_policy_ladder_consolidation_v10.yaml",
+    "tests/test_pivot_policy_ladder_consolidation_v10.py",
+    "docs/research/pivot-linear-learner-diagnosis-v1.md",
+    "experiments/configs/pivot_linear_learner_diagnosis_v1.yaml",
+    "scripts/prototype_pivot_linear_learner_diagnosis_v1.py",
+    "tests/test_pivot_linear_learner_diagnosis_v1.py",
+    "tests/test_pivot_linear_learner_diagnosis_v1_result.py",
+    "docs/research/pivot-policy-ladder-consolidation-v11.md",
+    "experiments/configs/pivot_policy_ladder_consolidation_v11.yaml",
+    "tests/test_pivot_policy_ladder_consolidation_v11.py",
 }
 PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-relative-delay-cost-v1.md",
@@ -376,6 +387,11 @@ PIVOT_LLM_PRIOR_PILOT_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_llm_persona_agent_v1.yaml",
     "scripts/prototype_pivot_llm_persona_agent_v1.py",
     "tests/test_pivot_llm_persona_agent_v1.py",
+    "docs/research/pivot-llm-prior-entry-matched-v1.md",
+    "experiments/configs/pivot_llm_prior_entry_matched_v1.yaml",
+    "scripts/prototype_pivot_llm_prior_entry_matched_v1.py",
+    "tests/test_pivot_llm_prior_entry_matched_v1.py",
+    "tests/test_pivot_llm_prior_entry_matched_v1_result.py",
 }
 PIVOT_GATE_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_feedback_g0_measurement_freeze_v0.yaml",

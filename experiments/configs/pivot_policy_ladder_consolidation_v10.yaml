@@ -1,0 +1,272 @@
+schema_version: pivot_policy_ladder_consolidation.v10
+label: pivot_policy_ladder_consolidation_v10
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-10-29'
+purpose: 'Extend the v9 ledger with the entry-matched control, the first study the user chose on 2026-10-29 after
+  an audit of the evidence: whether the calibrated LLM prior selects better entrants than the hand rule at equal
+  selectivity in the world. v1 to v9 remain the records for everything before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v9.yaml
+    sha256: 34727b7157c77e5d51317b4a8c2ca0b8899cf306882997e73c75283d27e67aa0
+    record_commit: c5be21e
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v9.md
+    sha256: 8c3eeb7e2f8c33a54a245c9e3a8962b1dabba3520b6e548f9c1d3d959fde9e6d
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v9.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: entry_matched_control
+  path: experiments/evidence/results/pivot_llm_prior_entry_matched_v1_20261029.summary.json
+  sha256: a132eb0e308b6931969146cb6f05a43b53f337b74d7e0d8f280de162187c6acc
+  freeze_commit: 243dad7
+  record_commit: bbdc3b0
+claims:
+  confirmed:
+  - id: C74_at_equal_selectivity_the_llm_prior_ranks_better_only_in_the_linear_world
+    statement: With the hand rule's intercept shifted so that its fixed-rule entry in the world equals the LLM
+      prior's, the LLM direction picks more productive entrants under the fixed rule only in the linear world
+      (+0.059, 95% interval +0.035 to +0.082). In the smooth and axis interaction worlds there is no clear
+      difference (+0.015 and -0.001), as the design-cohort AUC predicted.
+    evidence:
+    - source: entry_matched_control
+      pointer: decisions/ranking_at_llm_selectivity_fixed_rule/cells/linear_fit~1fixed_rule/outcome
+      equals: FIRST_BETTER
+    - source: entry_matched_control
+      pointer: decisions/ranking_at_llm_selectivity_fixed_rule/cells/linear_fit~1fixed_rule/interval_95/low
+      greater_than: 0.03
+    - source: entry_matched_control
+      pointer: decisions/ranking_at_llm_selectivity_fixed_rule/cells/smooth_interaction_fit~1fixed_rule/outcome
+      equals: NO_CLEAR_DIFFERENCE
+    - source: entry_matched_control
+      pointer: decisions/ranking_at_llm_selectivity_fixed_rule/cells/axis_interaction_fit~1fixed_rule/outcome
+      equals: NO_CLEAR_DIFFERENCE
+  - id: C75_c22s_precision_gain_is_selectivity
+    statement: Against a hand rule made equally selective by one intercept shift and given the same 20% exploration
+      floor, the calibrated LLM hybrid selects better entrants in none of the 9 world-and-learner cells and worse in
+      one (linear world, MLP learner). No cell is dominated.
+    evidence:
+    - source: entry_matched_control
+      pointer: decisions/c22_against_entry_matched_hand/status
+      equals: C22_PRECISION_IS_SELECTIVITY
+    - source: entry_matched_control
+      pointer: decisions/c22_against_entry_matched_hand/precision_better_cells
+      equals: []
+    - source: entry_matched_control
+      pointer: decisions/c22_against_entry_matched_hand/precision_worse_cells
+      equals: [linear_fit/mlp_batch]
+    - source: entry_matched_control
+      pointer: decisions/c22_against_entry_matched_hand/dominance
+      equals: NO_CELL
+  - id: C76_inside_pooled_learners_the_llm_direction_adds_nothing_at_either_selectivity
+    statement: Inside the pooled learners, at the LLM prior's selectivity the LLM direction is better in 1 of 9
+      cells and worse in 1. At the hand rule's selectivity it is better in none of 12 cells and worse in 7, all of
+      them learner cells.
+    evidence:
+    - source: entry_matched_control
+      pointer: decisions/ranking_at_llm_selectivity_learners/counts/FIRST_BETTER
+      equals: 1
+    - source: entry_matched_control
+      pointer: decisions/ranking_at_llm_selectivity_learners/counts/SECOND_BETTER
+      equals: 1
+    - source: entry_matched_control
+      pointer: decisions/ranking_at_hand_selectivity/counts/FIRST_BETTER
+      equals: 0
+    - source: entry_matched_control
+      pointer: decisions/ranking_at_hand_selectivity/counts/SECOND_BETTER
+      equals: 7
+  - id: C77_c22s_dominance_count_depends_on_the_seed_set_and_the_noninferiority_rule
+    statement: On a third seed set the hybrid still picks more productive entrants than the native hand rule in 9
+      of 9 cells, but it dominates in 4 of 9 by C22's mean-only non-inferiority rule and in 2 of 9 by an
+      interval rule. Recomputed from v3's record, C22's own cells pass the interval rule in 2 of 9.
+    evidence:
+    - source: entry_matched_control
+      pointer: c22_across_seed_sets/this_study_precision_better_than_native_hand
+      equals: 9 of 9
+    - source: entry_matched_control
+      pointer: c22_across_seed_sets/this_study_mean_only_rule
+      equals: 4 of 9
+    - source: entry_matched_control
+      pointer: c22_across_seed_sets/this_study_interval_rule
+      equals: 2 of 9
+    - source: entry_matched_control
+      pointer: c22_across_seed_sets/v3_interval_rule_recomputed_post_hoc
+      equals: 2 of 9
+  - id: C78_one_intercept_shift_matches_selectivity_in_the_world_and_the_control_reproduced
+    statement: Fixed-rule entry does not depend on the world. Shifting the hand rule's intercept by -0.28 matched
+      the LLM prior's entry (0.323) on 16 calibration replicates; on the study replicates the matched hand rule
+      admitted 0.959 times as many agents, inside the registered [0.95, 1.05], a gap worth at most +0.003 of
+      precision to the hand rule. Every artifact reproduced byte for byte.
+    evidence:
+    - source: entry_matched_control
+      pointer: calibration/records/0/intercept_shift
+      less_than: -0.27
+    - source: entry_matched_control
+      pointer: calibration/records/0/intercept_shift
+      greater_than: -0.29
+    - source: entry_matched_control
+      pointer: post_hoc_descriptive/entry_is_world_independent_under_the_fixed_rule
+      equals: true
+    - source: entry_matched_control
+      pointer: decisions/entry_match_check/status
+      equals: PASS
+    - source: entry_matched_control
+      pointer: decisions/entry_match_check/records/0/fixed_rule_entry_ratio
+      greater_than: 0.95
+    - source: entry_matched_control
+      pointer: post_hoc_descriptive/residual_entry_gap/axis_interaction_fit/implied_precision_advantage_to_the_matched_hand
+      less_than: 0.005
+    - source: entry_matched_control
+      pointer: reproduction/byte_identical/runs.jsonl
+      equals: true
+    - source: entry_matched_control
+      pointer: reproduction/byte_identical/scorecard.json
+      equals: true
+  rejected:
+  - id: R22_c22s_precision_survives_in_linear_world_cells
+    statement: The entry-matched control's expectation stated before the run (E3), that C22's precision gain
+      survives against the entry-matched hand rule in a minority of cells, all in the linear world.
+    reason: It survives in no cell. The LLM direction's fixed-rule advantage in the linear world (C74) does not
+      carry into the learners once the exploration floor is added.
+    evidence:
+    - source: entry_matched_control
+      pointer: expectations/E3/held
+      equals: false
+    - source: entry_matched_control
+      pointer: expectations/E1/held
+      equals: true
+    - source: entry_matched_control
+      pointer: expectations/E2/held
+      equals: true
+  open:
+  - id: O35_why_the_linear_learner_loses_in_the_linear_world
+    question: Why does the pooled linear learner forecast worse than the MLP in the linear world, where a linear
+      policy is correctly specified? This reopens O12 (v2), which was not carried after v2.
+    kind: SYNTHETIC
+    priority: 1
+    motivation: Under the hand rule in this study's linear world, the linear learner's probe Brier is 0.060 against
+      the MLP's 0.013. A correctly specified policy class losing in its own world points at the learner's fit or at
+      the evidence it sees, and any capacity comparison depends on the answer.
+    evidence:
+    - source: entry_matched_control
+      pointer: cells/1/arm_id
+      equals: linear_batch
+    - source: entry_matched_control
+      pointer: cells/1/means/probe_brier
+      greater_than: 0.05
+    - source: entry_matched_control
+      pointer: cells/3/arm_id
+      equals: mlp_batch
+    - source: entry_matched_control
+      pointer: cells/3/means/probe_brier
+      less_than: 0.02
+status_updates:
+- id: N27
+  previous: AFTER_THIS_CONSOLIDATION
+  status: DONE_AT_86f2da9_MERGED_INTO_MAIN_AT_10a1360_THE_MANUSCRIPT_LEFT_THE_REPOSITORY_AT_a6d3452
+- id: N28
+  previous: PULL_REQUEST_USER_CONFIRMED_2026_10_29_MERGE_ON_USER_REQUEST
+  status: DONE_MERGED_INTO_MAIN_AT_10a1360
+- id: N29
+  previous: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+  status: CARRIED_FORWARD_AS_N34
+- id: N30
+  previous: USER_CONFIRMATION_REQUIRED
+  status: DONE_RELEASED_AS_V0_1_0A6_RECORDED_AT_97d3e7f
+answered_open_items: []
+carried_open_items:
+- O29_the_onset_with_larger_tables_and_shifts_within_a_run
+- O30_tables_across_relations
+- O31_scoring_harm_to_others
+- O32_location_or_steepness
+- O34_steepness_matched_in_the_world
+narrowed_claims:
+- id: C20_calibrated_llm_prior_selects_better_entrants
+  scope: Holds against the native hand rule, which admits about 0.82 of agents against the LLM prior's 0.32. At
+    equal selectivity in the world, the LLM direction selects better only in the linear world under the fixed rule
+    (C74), and inside the pooled learners it adds nothing at either selectivity (C76).
+- id: C22_an_exploration_floor_separates_selection_from_exploration
+  scope: Its precision gain is selectivity. Against a hand rule made equally selective by one intercept shift, with
+    the same floor, the hybrid selects better in no cell (C75). Its dominance count also depends on the seed set and
+    the rule, 4 of 9 by its own mean-only rule on a third seed set and 2 of 9 by an interval rule (C77).
+- id: C29_the_v3_hybrid_replicates_on_fresh_seeds
+  scope: The majority replicated on the v4 seeds only. On a third seed set the hybrid dominates in 4 of 9 cells by
+    the mean-only rule and in 2 of 9 by an interval rule (C77).
+explained_claims: []
+reporting_rules:
+- id: UNVERIFIED_MEASURE
+  rule: Information-spread comparisons from study v2 on are on share precision on unverified items, whose
+    fact-check is not public at the decision. Study v1's groups are not read.
+  carried_from: v9
+- id: TRANSFER_WITHIN_ONE_GENERATOR
+  rule: '"A table suffices" holds for donors in the same world and in other worlds of the same generator, which
+    share the veracity relation. Transfer across relations or domains is not tested.'
+  carried_from: v9
+- id: RARE_RUN_SPECIFIC_INFORMATION
+  rule: The table critique holds only while run-specific information is rare. In the flip study, a four-donor
+    table falls behind between a tenth and a quarter of runs carrying it. That is one kind of information and one
+    table size.
+  carried_from: v9
+- id: PRECISION_AND_UTILITY
+  rule: Report comparisons that involve an LLM prior under both share precision and the agents' utility, since
+    they disagree in 5 of 20 summaries. Utility scores only the sharer's own gain and cost, not the reach of false
+    items.
+  carried_from: v9
+- id: LLM_READOUT
+  rule: Name the readout with any LLM-prior result. P0 in Regime A saturated under the inherited clip and is
+    nearly constant; without the clip the same answers carry the relation's direction (C58). The X0 table is not
+    clipped.
+  carried_from: v9
+- id: LLM_PRIOR_ATTRIBUTION_BY_REGIME
+  rule: Name an LLM prior's calibration (the rule that set its location, and its steepness) with any result about
+    it, and attribute its utility cost per regime. With share rates matched in the world, D5's prior costs utility
+    through its calibration in Regime A (C68) and through its calibration and the model's answers in Regime B (C69);
+    the unclipped prior in Regime B, through the model's answers (C70).
+  carried_from: v9
+- id: WORLD_MATCHED_ATTRIBUTION
+  rule: Attribute a prior's cost to its parts only with each recalibrated prior matched to its source's share rate
+    in the world, and report that match beside the comparisons. Under O28's cohort match two of the three costed
+    attributions differed (C69, C70). Only the location has been matched in the world; the steepness has not.
+  carried_from: v9
+- id: SELECTIVITY_MATCHED_PRECISION
+  rule: Compare two priors on the precision of whom they admit only beside a comparison at matched selectivity in
+    the world, made by shifting one prior's intercept. A more selective prior raises precision without ranking
+    better; C22's gain disappeared at matched entry (C75).
+- id: INTERVAL_NONINFERIORITY
+  rule: Judge non-inferiority by the lower bound of an interval, not by the mean, and name the seed set. Under that
+    change C22's dominance count is 2 of 9, against 7 of 9 as recorded (C77).
+paper_direction:
+  decided_by: USER_2026_10_13
+  central_claim: UNCHANGED_FROM_V5
+  updated_conditional_cases:
+  - THE_CALIBRATED_LLM_PRIOR_SELECTS_BETTER_ENTRANTS_THROUGH_SELECTIVITY_ITS_RANKING_HELPS_ONLY_IN_THE_LINEAR_WORLD_UNDER_THE_FIXED_RULE
+  evidence:
+  - source: entry_matched_control
+    pointer: status
+    equals: C22_PRECISION_IS_SELECTIVITY
+next_steps:
+- id: N31
+  kind: PAPER
+  action: REWRITE_THE_MANUSCRIPTS_LLM_PRIOR_PASSAGES_WITH_C74_TO_C78_IN_THE_MANUSCRIPT_KEPT_OUTSIDE_THE_REPOSITORY
+  authorization: AFTER_THIS_CONSOLIDATION
+- id: N32
+  kind: COMPARISON_DESIGN
+  action: FREEZE_A_STUDY_OF_O35_AS_A_SEPARATE_PRECOMMIT
+  authorization: USER_CONFIRMED_2026_10_29_SEPARATE_PRECOMMIT
+- id: N33
+  kind: REPOSITORY
+  action: MERGE_THE_ENTRY_MATCHED_BRANCH_INTO_MAIN_THROUGH_A_PULL_REQUEST
+  authorization: USER_CONFIRMATION_REQUIRED
+- id: N34
+  kind: COMPARISON_DESIGN
+  action: CHOOSE_AMONG_O29_TO_O32_AND_O34_EACH_AS_A_SEPARATE_PRECOMMIT
+  authorization: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+boundaries:
+  new_execution: NONE
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: ACCEPTED_IN_DECISION_0017_RELEASED_IN_V0_1_0A6
