@@ -317,8 +317,9 @@ torch-backed behavior. The early-user checklist is in
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
 - Repository-only policy-ladder ledger at
-  `docs/research/pivot-policy-ladder-consolidation-v8.md`, which extends
-  `docs/research/pivot-policy-ladder-consolidation-v7.md` and
+  `docs/research/pivot-policy-ladder-consolidation-v9.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v8.md`,
+  `docs/research/pivot-policy-ladder-consolidation-v7.md`, and
   `docs/research/pivot-policy-ladder-consolidation-v6.md` and, through
   them, v1 to v5: the hash-audited record of the researcher-pivot policy ladder,
   including the measured cost and behavior of each tier between rule-based
@@ -326,7 +327,7 @@ torch-backed behavior. The early-user checklist is in
   design before confirmatory scoring, the second domain (information spread)
   with the N14 reusability test, the N15 package parity, and the four
   information-spread follow-ups (table transfer, flip rate, unclipped prior,
-  utility, and prior calibration).
+  utility, prior calibration, and world calibration).
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
   and Granovetter special cases, plus explicitly labeled FJ-like anchored and
   self-excluding HK variants, as settings of the same lifecycle.
@@ -447,16 +448,18 @@ comparison through a shared core. The core's semantics are now the
   - The learner beat AgentTorch-style LLM archetypes in every setting.
   - An LLM prior added nothing detectable inside the learner on share
     precision. Scored by the agents' own utility, it mostly lowered it.
-    For the once-elicited prior, that loss traced to how the prior was
-    calibrated, not to the model's answers.
+    For the once-elicited prior, with share rates matched in the world,
+    that loss traced to how the prior was calibrated in one regime, and to
+    both its calibration and the model's answers in the other.
 - **Reproduction.** The Pivot ladder was re-expressed through the same core,
   and then through the package. Both times it reproduced its recorded runs
   byte for byte.
 
 These results are synthetic, and they are scored on items whose fact-check
 was not yet public. They make no claim about real information spread. The
-ledger is `docs/research/pivot-policy-ladder-consolidation-v8.md`, which
-extends `docs/research/pivot-policy-ladder-consolidation-v7.md` and
+ledger is `docs/research/pivot-policy-ladder-consolidation-v9.md`, which
+extends `docs/research/pivot-policy-ladder-consolidation-v8.md`,
+`docs/research/pivot-policy-ladder-consolidation-v7.md`, and
 `docs/research/pivot-policy-ladder-consolidation-v6.md`.
 
 ## Scope

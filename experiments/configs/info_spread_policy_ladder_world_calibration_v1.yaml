@@ -1,0 +1,204 @@
+schema_version: info_spread_policy_ladder_world_calibration.v1
+label: info_spread_policy_ladder_world_calibration_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-24'
+stage: O33 (N25, chosen by the user on 2026-10-24)
+purpose: 'O28 attributed the utility cost of D5''s prior inside the learner to its calibration (C63) and found the
+  unclipped prior''s answers and calibration interacting (C64), but its recalibration was matched on the design cohort
+  and overshot in the world (C66). This study repeats O28''s 2 x 2 with each recalibrated prior''s location matched in
+  the world, on separate calibration worlds, to its source''s share rate, and asks whether C63 and C64 hold.'
+design_document: docs/research/info-spread-policy-ladder-world-calibration-v1.md
+source_bindings:
+- path: scripts/policy_ladder_core_v1.py
+  role: DOMAIN_FREE_CORE
+  sha256: bc82caed34f1cf6542b8a144092137214c07939562c794fdfb865d02a302a579
+- path: scripts/prototype_info_spread_policy_ladder_v1.py
+  role: WORLD_ARMS_AND_SIMULATION
+  sha256: 09375ca88431b4a90f2539f8e2dc33c5acfb7a2bdc76721ced4611cef734304e
+- path: scripts/power_info_spread_policy_ladder_v2.py
+  role: GROUP_RULE_MODULE
+  sha256: d53d4ba99aeffcd63df37cce1f5b731817e7c80fa2940bd4a0273405c190080b
+- path: scripts/power_info_spread_policy_ladder_v1.py
+  role: BOOTSTRAP_RESAMPLES
+  sha256: d0f7f0b80ad69cf9d84c08815636de85eda062713559b50627d67e9d2f889da8
+- path: scripts/diagnose_info_spread_d2_v1.py
+  role: IMPORTED_BY_THE_GROUP_RULE_MODULE
+  sha256: 1ec9a630c41df2a36d34d801f04e8aabe47154d93dd4c2a526f1356fc77128a8
+- path: scripts/run_info_spread_policy_ladder_study_v1.py
+  role: V1_RUNNER_FUNCTIONS_REUSED_BY_STUDY_V2
+  sha256: 2e3b086ba35e53473fc64e5f8611a48a54e83a029959f482ec8f95a8caab77b2
+- path: scripts/info_spread_unverified_measure_v1.py
+  role: THE_UNVERIFIED_MEASURE
+  sha256: b1c43f385e1bbd440bd7a2a5176f8725625679f731ceabf0c395c882196eb14d
+- path: scripts/info_spread_utility_measure_v1.py
+  role: THE_UTILITY_MEASURE
+  sha256: 4a89106b2021a4b7164e58b402a787147558d2bbfacf7ade6902c169f2f9764e
+- path: scripts/run_info_spread_policy_ladder_study_v2.py
+  role: STUDY_V2_RUNNER
+  sha256: 3bcfb6162f1278067a562571eac22ba8d4f6d560b30820f8860b0a32656e9928
+- path: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+  role: STUDY_V2_CONTRACT
+  sha256: a679035540ae7292d097a28bb3b0fea1860560a2a2aa8e8a26e1701b972f4845
+- path: scripts/run_info_spread_policy_ladder_llm_arms_v1.py
+  role: D3B_RUNNER_P0_AND_THE_LEARNER
+  sha256: 17c3e35af8facb2b2a12254a022f9dbce5205f6eaf34189d74c8603031c91a5e
+- path: experiments/configs/info_spread_policy_ladder_llm_arms_v1.yaml
+  role: D3B_CONTRACT_COHORT_AND_CALIBRATION
+  sha256: ab06f4003501d2926ecfe4ba0dafd27a3c762b9c36543334cac3c759bdc883c4
+- path: scripts/run_info_spread_policy_ladder_unclipped_prior_v1.py
+  role: O24_RUNNER_P0U
+  sha256: 2cb58b359f0d6bed1d2b5913e0d269d262f7b948db6f4e4c4906717be971b530
+- path: experiments/configs/info_spread_policy_ladder_unclipped_prior_v1.yaml
+  role: O24_CONTRACT
+  sha256: 362ddf8552a5aa2f27e6c96b0e2e8142a6f98fab4be72840f5423c8eadb61473
+- path: scripts/run_info_spread_policy_ladder_utility_v1.py
+  role: O25_RUNNER_GROUP_RULE_AND_JOIN
+  sha256: ee5ecd2ca87c67b4b1002c1040de56f9782d1f02cefd4e34549677ac2f5346ca
+- path: experiments/configs/info_spread_policy_ladder_utility_v1.yaml
+  role: O25_CONTRACT
+  sha256: 9df48a43db5d0da48e2768a261d832ba9b19418ba95af13c8373d9be12ad7420
+- path: experiments/evidence/results/info_spread_policy_ladder_study_v2_d4_20261019.summary.json
+  role: STUDY_V2_RECORD
+  sha256: 771f59bda2e05e7e4d0e1b155d6f1a65912c20cc334b318f7734f551958d50bb
+- path: experiments/evidence/results/info_spread_policy_ladder_llm_arms_d5_20261019.summary.json
+  role: D5_RECORD
+  sha256: f08e16bf56ce50b92a46203d43e213b19d34d197785e9983144a1c881e4e7510
+- path: experiments/evidence/results/info_spread_policy_ladder_unclipped_prior_v1_20261021.summary.json
+  role: O24_RECORD
+  sha256: caa3e153d6557742ae23fb4051fd8980880f0410e66a6fdae5c9e0c3940dbe78
+- path: experiments/evidence/results/info_spread_policy_ladder_utility_v1_20261022.summary.json
+  role: O25_RECORD_MINIMUM_EFFECTS_AND_COSTED_CASES
+  sha256: e8b034a5b41b572da1e8b5ccdd418f239575f88c1f6d835331f17d1494f8bf43
+- path: scripts/run_info_spread_policy_ladder_prior_calibration_v1.py
+  role: O28_RUNNER_PRIORS_RECORDED_INPUTS_AND_CHECKS
+  sha256: 9665c06d3a1423da9f5d829b9b1e094d61bc5463befe1c827ad58de5c06fa82a
+- path: experiments/configs/info_spread_policy_ladder_prior_calibration_v1.yaml
+  role: O28_CONTRACT
+  sha256: 931f226fa2f4475bb8a4aee4aa2343db3dea9da383292737d352afc93f41050a
+- path: experiments/evidence/results/info_spread_policy_ladder_prior_calibration_v1_20261023.summary.json
+  role: O28_RECORD_ATTRIBUTIONS_COMPARED
+  sha256: cca5837d366ad2a1ae78a9afc830a687eae23685096da1b350caa8acd7c6003b
+- path: experiments/configs/pivot_policy_ladder_consolidation_v8.yaml
+  role: O33_THE_OPEN_ITEM_THIS_STUDY_ANSWERS
+  sha256: 498ff9b39ef51e956e097069fc0495fbb6e87a354c19b4efb5845a445a81285f
+inputs:
+  study_v2:
+    contract: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+    record: experiments/evidence/results/info_spread_policy_ladder_study_v2_d4_20261019.summary.json
+    arms_read: [F1, L0]
+  llm_arms:
+    contract: experiments/configs/info_spread_policy_ladder_llm_arms_v1.yaml
+    record: experiments/evidence/results/info_spread_policy_ladder_llm_arms_d5_20261019.summary.json
+    arms_read: [P0, L1]
+  unclipped_prior:
+    contract: experiments/configs/info_spread_policy_ladder_unclipped_prior_v1.yaml
+    record: experiments/evidence/results/info_spread_policy_ladder_unclipped_prior_v1_20261021.summary.json
+    arms_read: [P0u, L1u]
+  utility:
+    contract: experiments/configs/info_spread_policy_ladder_utility_v1.yaml
+    record: experiments/evidence/results/info_spread_policy_ladder_utility_v1_20261022.summary.json
+    read: REGIME B UTILITY OF F1, P0, P0u, L0, L1, AND L1u FROM O25'S DEVELOPMENT CELLS; THE MINIMUM EFFECTS AND THE
+      COSTED CASES FROM ITS RECORD
+  prior_calibration:
+    contract: experiments/configs/info_spread_policy_ladder_prior_calibration_v1.yaml
+    record: experiments/evidence/results/info_spread_policy_ladder_prior_calibration_v1_20261023.summary.json
+    read: O28'S RECALIBRATED WEIGHTS (REBUILT BY ITS RUNNER) AND ITS ATTRIBUTIONS, FOR COMPARISON
+  elicitation: D5'S FIRST REGISTERED ELICITATION, CHECKED AGAINST THE D5 RECORD, TO REBUILD P0 AND P0u EXACTLY
+profile_for_counts: development
+world_calibration:
+  weights: O28'S RECALIBRATED WEIGHTS, THE DIRECTION PRIOR'S WEIGHTS AT THE CALIBRATION SOURCE'S LOGIT SD OVER D3B'S
+    COHORT; ONLY THE INTERCEPT IS SET HERE
+  statistic: MEAN UNVERIFIED SHARES PER RUN OF THE FIXED PRIOR (DECIDED SHARES, POLICY AND EXPLORATION FLOOR, OF ITEMS
+    WHOSE FACT-CHECK IS NOT PUBLIC AT THE DECISION)
+  target: THE CALIBRATION SOURCE'S (F1, P0, OR P0u) MEAN UNVERIFIED SHARES PER RUN ON THE SAME CALIBRATION RUNS
+  world_seed_offset: 15000
+  worlds_per_geometry: 4
+  replicates: [0, 1]
+  calibration_runs: STUDY V2'S GENERATOR AND PROFILE AT WORLD SEEDS 15000-15011 (FOUR PER STUDY GEOMETRY, LINEAR,
+    SMOOTH, AXIS), TWO STREAM REPLICATES EACH, 24 RUNS PER REGIME; NO REGISTERED STUDY USES THESE SEEDS
+  keep_tolerance: 0.02
+  keep_rule: KEEP O28'S COHORT-MATCHED INTERCEPT IF ITS SHARE COUNT IS WITHIN 2% OF THE TARGET
+  bisection_rule: OTHERWISE THE LARGEST INTERCEPT IN THE INTERVAL WHOSE SHARE COUNT DOES NOT EXCEED THE TARGET
+  bisection_interval: [-40.0, 40.0]
+  bisection_steps: 32
+  reported: EVERY TARGET, METHOD, INTERCEPT, AND ACHIEVED SHARE COUNT
+priors:
+  P0_hcalw: P0_hcal
+  F1_pcalw: F1_pcal
+  P0u_hcalw: P0u_hcal
+  F1_ucalw: F1_ucal
+learner_arms:
+  L1_hcalw: P0_hcalw
+  L0_pcalw: F1_pcalw
+  L1u_hcalw: P0u_hcalw
+  L0_ucalw: F1_ucalw
+comparisons:
+  P0/calibration_given_llm_answers: [L1, L1_hcalw]
+  P0/calibration_given_hand_answers: [L0_pcalw, L0]
+  P0/answers_given_hand_calibration: [L1_hcalw, L0]
+  P0/answers_given_llm_calibration: [L1, L0_pcalw]
+  P0u/calibration_given_llm_answers: [L1u, L1u_hcalw]
+  P0u/calibration_given_hand_answers: [L0_ucalw, L0]
+  P0u/answers_given_hand_calibration: [L1u_hcalw, L0]
+  P0u/answers_given_llm_calibration: [L1u, L0_ucalw]
+consistency: EACH GROUP'S MEAN CELL DIFFERENCE L1 - L0 AND L1u - L0 MUST EQUAL O25'S RECORDED VALUE; ANY FAILURE BLOCKS
+  READING
+parity: L0 RECOMPUTED AT REPLICATE 0 OF EVERY LEARNER TASK MUST EQUAL ITS RECORDED COUNTS, PRECISIONS, REACH, DECISIONS,
+  AND UTILITY EXACTLY; ANY FAILURE BLOCKS READING
+measure:
+  primary: unverified_utility_per_agent (O25's measure)
+  reported_not_judged: unverified shares and unverified share precision of every learner arm
+design:
+  groups: STUDY V2'S 12 STUDY GROUPS (2 REGIMES x 2 FAMILIES x THE LINEAR, SMOOTH, AND AXIS WORLDS); THE NULL WORLD IS
+    NOT RUN
+  cells_and_replicates: STUDY V2'S, 20 CELLS PER GROUP AND 16 REPLICATES PER CELL
+seeds:
+  learner_seeds: STUDY V2'S, AS FOR L0, L1, AND L1u
+  rule_tag: 33
+rule:
+  comparison: paired difference in utility per agent per run
+  bootstrap_resamples: 2000
+  interval: 0.95
+  resampling: cells, with replacement
+  minimum_effect: O25'S RECORDED MINIMUM EFFECT PER REGIME (1% OF F1'S MEAN ABSOLUTE UTILITY), NOT RECOMPUTED
+  material: interval excludes zero and |mean cell delta| >= the regime's minimum effect
+dispositions:
+  per_comparison_and_regime: MOSTLY_POSITIVE if POSITIVE in at least 4 of the 6 study groups, MOSTLY_NEGATIVE if NEGATIVE
+    in at least 4 of 6, otherwise MIXED_OR_NONE
+  mostly_at_least: 4
+  world_match_tolerance: 0.1
+  world_match_check: 'Out of sample, on the study cells: each world-calibrated fixed prior''s mean unverified share
+    count must lie within 10% of its calibration source''s. If either world-calibrated prior of an LLM prior fails in
+    a regime, that case is WORLD_MATCH_FAILED.'
+  attribution_per_prior_and_regime: O28'S RULE. CALIBRATION if both calibration comparisons are MOSTLY_NEGATIVE and the
+    two answers comparisons are not both MOSTLY_NEGATIVE; ANSWERS in the reverse case; BOTH if all four are;
+    NEITHER_CONSISTENTLY otherwise
+  costed_cases: [P0/A, P0/B, P0u/B]
+  claims_tested: C63 HOLDS if P0/A AND P0/B ARE BOTH CALIBRATION; C64 HOLDS if P0u/B IS NEITHER_CONSISTENTLY
+  overall: O33_WORLD_MATCH_FAILED if any costed case failed the world-match check; otherwise O33_C63_AND_C64_HOLD,
+    O33_ONLY_C63_HOLDS, O33_ONLY_C64_HOLDS, or O33_NEITHER_HOLDS
+  expected_before_the_run: 'C63 holds, stated so it can be rejected: in Regime A, O28''s P0-calibrated prior already
+    shared exactly like P0, so one of the two calibration routes is unchanged there. Whether C64 holds is not
+    predicted, because its strongest part (the answers lowering utility at F1''s calibration) is the comparison the
+    overshoot affected most.'
+precommit:
+  precommit_paths:
+  - docs/research/info-spread-policy-ladder-world-calibration-v1.md
+  - experiments/configs/info_spread_policy_ladder_world_calibration_v1.yaml
+  - scripts/run_info_spread_policy_ladder_world_calibration_v1.py
+  - tests/test_info_spread_policy_ladder_world_calibration_v1.py
+runs:
+  pilot: --pilot-cells 2 under full load, for the time estimate only (its world calibration runs in full); its summary
+    is not opened
+  development: --profile development --precommit-sha <HEAD> --elicitation-dir <D5 first elicitation> --v2-cells --d5-cells
+    --o24-cells --o25-cells <the four development cells.jsonl> on GPU-Server, CUDA_VISIBLE_DEVICES=2, 24 workers
+  reproduction: the same command into a second output directory; cells.jsonl and summary.json must be byte identical
+outputs: [cells.jsonl, summary.json, progress.jsonl, receipt.json]
+boundaries:
+  empirical_rows_read: 0
+  llm_calls: 0
+  paid_api_calls: 0
+  generic_nabm_api_changed: false
+  location_only: ONLY THE LOCATION IS MATCHED IN THE WORLD; THE STEEPNESS STAYS O28'S, MATCHED ON THE COHORT
+  one_statistic: THE MATCH IS ON UNVERIFIED SHARE COUNTS, NOT ON WHICH ITEMS ARE SHARED
+  synthetic_only: true

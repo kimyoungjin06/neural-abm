@@ -227,9 +227,10 @@ Draft: [sections/08-policy-ladder.md](sections/08-policy-ladder.md).
     Regime A.
   - **Utility (P11).** Scored by the agents' own utility, the framework
     comparisons hold and the LLM prior inside the learner lowers utility.
-    For the once-elicited prior, that loss traces to its calibration, not
-    the model's answers. Report LLM-prior results on both measures, with
-    the prior's calibration.
+    With share rates matched in the world, the once-elicited prior's loss
+    traces to its calibration in Regime A, and to both its calibration and
+    the model's answers in Regime B. Report LLM-prior results on both
+    measures, with the prior's calibration and its match in the world.
   - **Protocol (P10).** A registered null check caught a leak before any study
     group was read, and the measure moved to unverified items.
   - **Package status.** Decision 0017 put the shared semantics in
@@ -252,8 +253,10 @@ Draft: [sections/08-policy-ladder.md](sections/08-policy-ladder.md).
 - Why a second measure matters: precision rewards selectivity. Under the
   agents' utility, an LLM prior that looked neutral inside the learner
   lowers utility. Swapping one part of the prior at a time traced the loss
-  to its calibration, which is the kind of attribution the lifecycle makes
-  possible.
+  to its parts, which is the kind of attribution the lifecycle makes
+  possible. The same slot also caught that the first split was matched on
+  the design cohort rather than in the world, and resetting the location in
+  the world narrowed the attribution.
 - Limits of the evidence:
   - the worlds are synthetic and were designed by the authors;
   - the empirical test of learning closed without an answer;
