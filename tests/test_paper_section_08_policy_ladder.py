@@ -105,24 +105,48 @@ def test_follow_up_numbers_come_from_the_records() -> None:
     assert "lowers utility in 6 of 6 Regime A groups and 4 of 6 Regime B" in text
 
 
-def test_calibration_numbers_come_from_the_record() -> None:
+def _two(value: float) -> str:
+    return str(Decimal(str(value)).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
+
+
+def test_calibration_numbers_come_from_the_records() -> None:
     text = _text()
     o28 = _load("info_spread_policy_ladder_prior_calibration_v1_20261023.summary.json")
-    cases = o28["dispositions"]["by_case"]
-    assert [cases[c]["attribution"] for c in ("P0/A", "P0/B", "P0u/B")] == [
+    o33 = _load("info_spread_policy_ladder_world_calibration_v1_20261024.summary.json")
+    costed = ("P0/A", "P0/B", "P0u/B")
+    assert [o28["dispositions"]["by_case"][c]["attribution"] for c in costed] == [
         "CALIBRATION", "CALIBRATION", "NEITHER_CONSISTENTLY"]
-    a, b, u = (cases[c]["counts"] for c in ("P0/A", "P0/B", "P0u/B"))
-    assert a["calibration_given_llm_answers"]["NEGATIVE"] == a["calibration_given_hand_answers"]["NEGATIVE"] == 6
-    assert b["calibration_given_llm_answers"]["NEGATIVE"] == b["calibration_given_hand_answers"]["NEGATIVE"] == 4
-    assert u["answers_given_hand_calibration"]["NEGATIVE"] == 6 and u["answers_given_llm_calibration"]["POSITIVE"] == 4
-    for row in ("| P0, Regime A | 6 and 6 of 6 negative | 5 of 6 negative; 0 of 6 | Calibration |",
-                "| P0u, Regime B | Mixed; 4 of 6 negative | 6 of 6 negative at F1's calibration; 4 of 6 *positive* at its own"):
+    cases = o33["dispositions"]["by_case"]
+    assert [cases[c]["attribution"] for c in costed] == ["CALIBRATION", "BOTH", "ANSWERS"]
+
+    def negative(case: str, comparison: str) -> int:
+        return cases[case]["counts"][comparison]["NEGATIVE"]
+
+    a, b, u = costed
+    assert negative(a, "calibration_given_llm_answers") == negative(a, "calibration_given_hand_answers") == 6
+    assert (negative(a, "answers_given_hand_calibration"), negative(a, "answers_given_llm_calibration")) == (5, 0)
+    assert negative(b, "calibration_given_llm_answers") == negative(b, "calibration_given_hand_answers") == 4
+    for case in (b, u):
+        assert (negative(case, "answers_given_hand_calibration"), negative(case, "answers_given_llm_calibration")) == (6, 5)
+    assert negative(u, "calibration_given_llm_answers") == 4
+    assert cases[u]["by_comparison"]["calibration_given_hand_answers"] == "MIXED_OR_NONE"
+    for row in ("| P0, Regime A | 6 and 6 of 6 negative | 5 of 6 negative; 0 of 6 | Calibration | Calibration |",
+                "| P0, Regime B | 4 and 4 of 6 negative | 6 and 5 of 6 negative | Both | Calibration |",
+                "| P0u, Regime B | 4 of 6 negative; mixed | 6 and 5 of 6 negative | Answers | Neither alone |"):
         assert row in text, row
     check = o28["calibration_check"]
     ratios = [check[f"{p}/{r}"]["mean_unverified_shares"] / check[f"{p}/{r}"]["calibration_source"]
               for p in ("P0_hcal", "P0u_hcal") for r in ("A", "B")]
-    two = [str(Decimal(str(v)).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)) for v in (min(ratios), max(ratios))]
-    assert f"{two[0]} to {two[1]} times as much as F1" in text
+    assert f"{_two(min(ratios))} to {_two(max(ratios))} times as much as F1" in text
+    world = [row["ratio_to_calibration_source"] for row in o33["world_match_check"].values()]
+    assert f"{_r(min(world))} to {_r(max(world))} times as much as their sources" in text
+    rows = [v for k, v in o33["learner_description"].items() if k.startswith("B/")]
+    pairs = (("L1_hcalw", "L0"), ("L1", "L0_pcalw"), ("L1u_hcalw", "L0"), ("L1u", "L0_ucalw"))
+    shares = [row[x]["mean_unverified_shares"] / row[y]["mean_unverified_shares"] - 1 for row in rows for x, y in pairs]
+    precision = [row[x]["mean_unverified_share_precision"] - row[y]["mean_unverified_share_precision"]
+                 for row in rows for x, y in pairs]
+    assert f"between {round(-100 * min(shares))}% fewer and {Decimal(str(100 * max(shares))).quantize(Decimal('0.1'), rounding=ROUND_HALF_UP)}% more" in text
+    assert f"from {_r(-min(precision))} lower to {_r(max(precision))} higher" in text
 
 
 def test_the_section_keeps_its_boundaries() -> None:
@@ -141,7 +165,7 @@ def test_the_section_keeps_its_boundaries() -> None:
         "not the reach of false items",
         "on precision only",
         "not to the model's answers",
-        "overshot in the world",
+        "Only the location was matched in the world.",
     ):
         assert required in text, required
     for figure in (FIGURE, FOLLOW_UPS):
