@@ -244,11 +244,8 @@ Status: first pass complete.
 
 Artifacts:
 
-- `paper/claim-matrix.md`
-- `paper/tables/nabm-unit-v1-manuscript-tables.md`
-- `paper/sections/03-neural-abm-node.md`
-- `paper/sections/06-calibration-and-analysis.md`
-- `paper/outline.md`
+- The claim matrix, the manuscript tables, and the draft sections are kept
+  with the manuscript outside this repository. `paper/` is ignored by Git.
 
 Completed work:
 

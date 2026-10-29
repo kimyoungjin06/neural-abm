@@ -60,7 +60,7 @@ These should not be added to a stable facade in the first pass.
 | Toy6-Toy10 runner modules | Internal or example-compatible | They are compatible migration cases, not stable framework APIs. Their run functions can remain importable through module paths. |
 | `experiments/evidence/*.yaml` | Paper-only | Manifests support named claims and diagnostics, not general library behavior. |
 | `scripts/` evidence and sweep commands | Paper-only or developer tooling | Reproducibility commands belong in evidence docs, not stable package imports. |
-| `paper/` and `experiments/results/` artifacts | Paper-only | They document claim support and limitations. |
+| `experiments/results/` artifacts | Paper-only | They document claim support and limitations. |
 | `basin_phase_critic`, learned diagnostics, time-to-ceiling diagnostics | Paper-only or experimental | Useful research tools, but not public core behavior. |
 
 ## Do Not Export as Stable

@@ -67,8 +67,9 @@ by the same comparison report used in the research studies.
 
 Related in-repo evidence at the game-theoretic end: the Toy 2 experiments
 compare neural policies against **Fermi-rule** and **replicator-dynamics**
-baselines (see `paper/claim-matrix.md`), so classical imitation dynamics are
-covered as maintained baselines rather than reductions.
+baselines (see `experiments/results/toy2_game_dynamics_gate_findings.md`),
+so classical imitation dynamics are covered as maintained baselines rather
+than reductions.
 
 ## The Switchboard
 

@@ -20,4 +20,4 @@ Each snapshot should include a `MANIFEST.md` with:
 - Notes on what changed since the previous snapshot.
 
 Do not use the archive as the primary working location. Active work belongs in
-`docs/`, `src/`, `scripts/`, `paper/`, and `experiments/`.
+`docs/`, `src/`, `scripts/`, and `experiments/`.

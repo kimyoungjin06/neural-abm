@@ -61,18 +61,5 @@ Current validation tables:
 - [toy_validation_representative_seeds01_03_runs.csv](toy_validation_representative_seeds01_03_runs.csv)
 - [toy_validation_representative_seeds01_03_metrics.csv](toy_validation_representative_seeds01_03_metrics.csv)
 
-Current figure candidates:
-
-- [../../paper/figures/toy1_output_alpha_accuracy_consensus.png](../../paper/figures/toy1_output_alpha_accuracy_consensus.png)
-- [../../paper/figures/toy1_mixer_comparison.png](../../paper/figures/toy1_mixer_comparison.png)
-- [../../paper/figures/toy1_parameter_independent_phase_diagram.png](../../paper/figures/toy1_parameter_independent_phase_diagram.png)
-- [../../paper/figures/toy1_parameter_independent_phase_diagram_seeds01_05.png](../../paper/figures/toy1_parameter_independent_phase_diagram_seeds01_05.png)
-- [../../paper/figures/toy1_parameter_alignment_diagnostic.png](../../paper/figures/toy1_parameter_alignment_diagnostic.png)
-- [../../paper/figures/toy1_parameter_independent_cluster_dynamics.png](../../paper/figures/toy1_parameter_independent_cluster_dynamics.png)
-- [../../paper/figures/toy1_parameter_cluster_comparison.png](../../paper/figures/toy1_parameter_cluster_comparison.png)
-- [../../paper/figures/toy2_initial_policy_mixing.png](../../paper/figures/toy2_initial_policy_mixing.png)
-- [../../paper/figures/toy2_regime_cooperation_payoff.png](../../paper/figures/toy2_regime_cooperation_payoff.png)
-- [../../paper/figures/toy2_neural_vs_fermi_vs_rd.png](../../paper/figures/toy2_neural_vs_fermi_vs_rd.png)
-- [../../paper/figures/toy2_alpha_sensitivity.png](../../paper/figures/toy2_alpha_sensitivity.png)
-- [../../paper/figures/toy2_basin_sensitivity.png](../../paper/figures/toy2_basin_sensitivity.png)
-- [../../paper/figures/toy_validation_representative_summary.png](../../paper/figures/toy_validation_representative_summary.png)
+Figure scripts (`scripts/plot_*.py`) write manuscript figures to a local
+`paper/figures/` directory, which is not tracked.
