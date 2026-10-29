@@ -324,7 +324,8 @@ torch-backed behavior. The early-user checklist is in
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
 - Repository-only policy-ladder ledger at
-  `docs/research/pivot-policy-ladder-consolidation-v10.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v11.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v10.md`,
   `docs/research/pivot-policy-ladder-consolidation-v9.md`,
   `docs/research/pivot-policy-ladder-consolidation-v8.md`,
   `docs/research/pivot-policy-ladder-consolidation-v7.md`, and
@@ -335,8 +336,8 @@ torch-backed behavior. The early-user checklist is in
   design before confirmatory scoring, the second domain (information spread)
   with the N14 reusability test, the N15 package parity, and the four
   information-spread follow-ups (table transfer, flip rate, unclipped prior,
-  utility, prior calibration, and world calibration), and the entry-matched
-  control of the Pivot LLM prior.
+  utility, prior calibration, and world calibration), the entry-matched
+  control of the Pivot LLM prior, and the linear-learner diagnosis.
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
   and Granovetter special cases, plus explicitly labeled FJ-like anchored and
   self-excluding HK variants, as settings of the same lifecycle.
@@ -409,7 +410,9 @@ synthetic, stylized worlds:
   ABM per agent-step. Separate per-agent learners cost about 60 times, and with only
   neighbor-scale evidence they do worse than the rule they start from.
 - The gain comes from learned policies rather than neural ones as such. An MLP
-  wins on smooth success boundaries and a tree on axis-aligned ones.
+  wins on smooth success boundaries and a tree on axis-aligned ones. Where the
+  boundary is linear, the linear learner's deficit against the MLP is mostly its
+  training budget, not its policy class.
 - A local LLM (Qwen3-4B) was consulted once, calibrated to a stated base rate,
   and paired with a small exploration floor. It then selected more productive
   entrants than the hand rule, but it also admitted far fewer agents, and the
@@ -468,8 +471,9 @@ released in `v0.1.0a6`.
 
 These results are synthetic, and they are scored on items whose fact-check
 was not yet public. They make no claim about real information spread. The
-ledger is `docs/research/pivot-policy-ladder-consolidation-v10.md`, which
-extends `docs/research/pivot-policy-ladder-consolidation-v9.md`,
+ledger is `docs/research/pivot-policy-ladder-consolidation-v11.md`, which
+extends `docs/research/pivot-policy-ladder-consolidation-v10.md`,
+`docs/research/pivot-policy-ladder-consolidation-v9.md`,
 `docs/research/pivot-policy-ladder-consolidation-v8.md`,
 `docs/research/pivot-policy-ladder-consolidation-v7.md`, and
 `docs/research/pivot-policy-ladder-consolidation-v6.md`.
