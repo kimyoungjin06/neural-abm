@@ -1,0 +1,308 @@
+schema_version: pivot_policy_ladder_consolidation.v12
+label: pivot_policy_ladder_consolidation_v12
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-10-30'
+purpose: 'Extend the v11 ledger with the converged capacity comparison (O36), which the user chose on 2026-10-29: do
+  the capacity conclusions hold when every residual objective is converged, and when each fit''s training is chosen
+  on its own evidence from one shared menu? v1 to v11 remain the records for everything before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v11.yaml
+    sha256: 116946f38b9e441c53e9bb815700ec3e07c4170f4c2583949ed81f988e95ca1b
+    record_commit: 6eef3de
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v11.md
+    sha256: 3a759ec038dc5f168613ba583e583ce6fc1fbe89d78e8689d4778b496948ac75
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v11.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: converged_capacity
+  path: experiments/evidence/results/pivot_converged_capacity_v2_20261030.summary.json
+  sha256: 96e17694a853c29304bc64e55e5a4ac632fe79a56860561eb91c4e500cca62c2
+  freeze_commit: 1cfd1ab
+  record_commit: ef712e7
+invalidated_executions:
+- id: CONVERGED_CAPACITY_V1
+  contract: experiments/configs/pivot_converged_capacity_v1.yaml
+  freeze_commit: 4062c8c
+  statement: v1 stopped at its registered convergence check before writing any output, after its registered phase
+    had reproduced both records. One inner fit of a tuned field MLP missed the gradient tolerance. v2 changed only
+    how such a fit is handled; no converged or tuned outcome was computed under v1.
+  evidence:
+  - source: converged_capacity
+    pointer: supersedes/status
+    equals: STOPPED_INVALID_IMPLEMENTATION_NO_OUTPUTS_WRITTEN
+  - source: converged_capacity
+    pointer: supersedes/results_read
+    equals: NONE_NO_CONVERGED_OR_TUNED_OUTCOME_WAS_COMPUTED
+  - source: converged_capacity
+    pointer: supersedes/freeze_commit
+    equals: 4062c8c
+claims:
+  confirmed:
+  - id: C83_the_capacity_conclusions_hold_with_converged_and_with_tuned_training
+    statement: The matched-marginal discriminator v3 and the nonlinear policy ABM v2 were rerun with every residual
+      objective converged, and with each fit's training chosen on its own evidence from one shared menu. Their own
+      decision code judges every capacity claim, C07 to C14, as recorded under both, and R01 stays rejected. The
+      registered regime reproduced both records row for row.
+    evidence:
+    - source: converged_capacity
+      pointer: status
+      equals: O36_HOLD_UNDER_BOTH
+    - source: converged_capacity
+      pointer: decisions/by_regime/converged/claims/outcome
+      equals: CLAIMS_HOLD
+    - source: converged_capacity
+      pointer: decisions/by_regime/tuned/claims/outcome
+      equals: CLAIMS_HOLD
+    - source: converged_capacity
+      pointer: checks/parity/row_for_row
+      equals: true
+    - source: converged_capacity
+      pointer: checks/registered/dispositions_equal_both_records
+      equals: true
+  - id: C84_with_tuned_training_the_linear_worlds_mlp_edge_vanishes
+    statement: In the linear world, with field evidence and immediate visibility, the MLP's probe-Brier edge over the
+      linear learner is 0.046 registered, 0.008 converged, and -0.001 [-0.002, +0.001] tuned. The policy layer's
+      linear-world gap falls from 0.028 and 0.038 to about zero. Tuned, the linear learner chose a converged fit in
+      every linear-world selection.
+    evidence:
+    - source: converged_capacity
+      pointer: decisions/registered_quantities/linear_world_mlp_edge/registered/low
+      greater_than: 0.04
+    - source: converged_capacity
+      pointer: decisions/registered_quantities/linear_world_mlp_edge/converged/mean
+      less_than: 0.01
+    - source: converged_capacity
+      pointer: decisions/registered_quantities/linear_world_mlp_edge/tuned/low
+      less_than: 0.0
+    - source: converged_capacity
+      pointer: decisions/registered_quantities/linear_world_mlp_edge/tuned/high
+      greater_than: 0.0
+    - source: converged_capacity
+      pointer: descriptive/policy_layer_brier/tuned/linear_support_aligned/matched_linear
+      less_than: 0.041
+    - source: converged_capacity
+      pointer: descriptive/policy_layer_brier/tuned/linear_support_aligned/residual_mlp
+      greater_than: 0.040
+    - source: converged_capacity
+      pointer: descriptive/tuned_abm_field_selection_counts_by_menu_index/linear_batch~1linear_fit/5
+      greater_than: 250
+  - id: C85_the_registered_budget_regularizes_the_mlp
+    statement: Converged at the registered penalty, the MLP forecasts the linear world 0.004 [0.002, 0.006] worse
+      than its 300-step fit, and the axis world 0.013 worse. Tuned, it chose 300 Adam steps in 62% of its
+      linear-world selections. The budget that handicaps the linear learner acts on the MLP as a regularizer.
+    evidence:
+    - source: converged_capacity
+      pointer: decisions/registered_quantities/mlp_budget_effect/low
+      greater_than: 0.0
+    - source: converged_capacity
+      pointer: descriptive/field_means/converged/immediate/axis_interaction_fit/mlp_batch/probe_brier
+      greater_than: 0.125
+    - source: converged_capacity
+      pointer: descriptive/field_means/registered/immediate/axis_interaction_fit/mlp_batch/probe_brier
+      less_than: 0.115
+    - source: converged_capacity
+      pointer: descriptive/tuned_abm_field_selection_counts_by_menu_index/mlp_batch~1linear_fit/0
+      greater_than: 150
+  - id: C86_the_interaction_world_comparisons_do_not_depend_on_training
+    statement: In the interaction worlds the linear learner's probe Brier moves by at most 0.002 across regimes, and
+      the crossover holds in 16 of 16 replicates under each (the MLP over the tree in the smooth world by 0.040,
+      0.037, and 0.038; the tree over the MLP in the axis world by 0.054, 0.067, and 0.052). The DiD margins grow
+      because they subtract a smaller linear-world gap. The MLP's field-learning DiD in the smooth world rises from
+      0.046 to 0.094, and the policy layer's nonlinear need from 0.13 to 0.16.
+    evidence:
+    - source: converged_capacity
+      pointer: reports/abm/converged/immediate/field_geometry_crossover/mlp_batch_over_tree_batch~1smooth_interaction_fit/positive_replicates
+      equals: 16
+    - source: converged_capacity
+      pointer: reports/abm/converged/immediate/field_geometry_crossover/tree_batch_over_mlp_batch~1axis_interaction_fit/positive_replicates
+      equals: 16
+    - source: converged_capacity
+      pointer: reports/abm/tuned/immediate/field_geometry_crossover/mlp_batch_over_tree_batch~1smooth_interaction_fit/positive_replicates
+      equals: 16
+    - source: converged_capacity
+      pointer: reports/abm/tuned/immediate/field_geometry_crossover/tree_batch_over_mlp_batch~1axis_interaction_fit/positive_replicates
+      equals: 16
+    - source: converged_capacity
+      pointer: reports/abm/registered/immediate/field_nonlinear_learning/mlp_batch~1smooth_interaction_fit/mean
+      less_than: 0.05
+    - source: converged_capacity
+      pointer: reports/abm/tuned/immediate/field_nonlinear_learning/mlp_batch~1smooth_interaction_fit/mean
+      greater_than: 0.09
+    - source: converged_capacity
+      pointer: reports/policy_layer/tuned/nonlinear_representation_need/smooth_interaction_aligned/mean
+      greater_than: 0.15
+  - id: C87_the_mlps_behavior_gains_are_interaction_specific_once_the_linear_learner_is_trained_to_its_optimum
+    statement: Registered, only the tree passed the entry and exit DiDs, because the MLP's linear-world edge was
+      subtracted. Converged and tuned, the MLP also passes the entry DiD in both interaction worlds, and tuned, the
+      exit DiD in the smooth world, with immediate visibility. In the linear world the tuned linear learner's entrant
+      precision and active failed stock match the MLP's (0.433 and 0.010, against 0.434 and 0.013).
+    evidence:
+    - source: converged_capacity
+      pointer: decisions/registered_quantities/behavior_passing_lists/tuned/immediate/entry
+      contains: mlp_batch/smooth_interaction_fit
+    - source: converged_capacity
+      pointer: decisions/registered_quantities/behavior_passing_lists/tuned/immediate/entry
+      contains: mlp_batch/axis_interaction_fit
+    - source: converged_capacity
+      pointer: decisions/registered_quantities/behavior_passing_lists/tuned/immediate/exit
+      contains: mlp_batch/smooth_interaction_fit
+    - source: converged_capacity
+      pointer: decisions/registered_quantities/behavior_passing_lists/converged/immediate/entry
+      contains: mlp_batch/axis_interaction_fit
+    - source: converged_capacity
+      pointer: expectations/E4/held
+      equals: true
+  - id: C88_the_comparison_reproduced_with_parity_and_every_acting_fit_converged
+    statement: The comparison reproduced byte for byte. Every acting L-BFGS fit reached the gradient tolerance; one
+      of 63,777 inner fits under tuning did not, and its candidate was unavailable for that one selection. Under
+      tuning every neighbor-learner fit kept the registered setting, and those rows equal the registered ones.
+    evidence:
+    - source: converged_capacity
+      pointer: reproduction/byte_identical/runs.jsonl
+      equals: true
+    - source: converged_capacity
+      pointer: reproduction/byte_identical/policy_rows.jsonl
+      equals: true
+    - source: converged_capacity
+      pointer: reproduction/byte_identical/scorecard.json
+      equals: true
+    - source: converged_capacity
+      pointer: checks/convergence/within_ceiling
+      equals: true
+    - source: converged_capacity
+      pointer: checks/convergence/by_study_and_regime/abm~1tuned/unconverged_inner_fits
+      equals: 1
+    - source: converged_capacity
+      pointer: tuned_neighbor_rows_equal_registered
+      equals: true
+  rejected: []
+  open:
+  - id: O37_llm_prior_comparisons_inside_tuned_learners
+    question: Does the LLM direction still add nothing inside the pooled learners (C76) when the learners' training is
+      chosen on their own evidence?
+    kind: SYNTHETIC
+    priority: 2
+    motivation: The entry-matched control's learner arms used the registered 300-step training. Tuning removed the
+      linear learner's linear-world deficit (C84) and changed which behavior DiDs the MLP passes (C87).
+    evidence:
+    - source: converged_capacity
+      pointer: decisions/registered_quantities/linear_world_mlp_edge/registered/mean
+      greater_than: 0.04
+    - source: converged_capacity
+      pointer: decisions/registered_quantities/linear_world_mlp_edge/tuned/mean
+      less_than: 0.0
+status_updates:
+- id: N35
+  previous: AFTER_THIS_CONSOLIDATION
+  status: DONE_IN_THE_MANUSCRIPT_KEPT_OUTSIDE_THE_REPOSITORY
+- id: N36
+  previous: USER_CONFIRMATION_REQUIRED
+  status: DONE_MERGED_AS_PULL_REQUEST_13_AT_8a64054
+- id: N37
+  previous: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+  status: DONE_O36_CHOSEN_2026_10_29_FROZEN_AT_1cfd1ab_RECORDED_AT_ef712e7
+  answered_by:
+  - C83_the_capacity_conclusions_hold_with_converged_and_with_tuned_training
+  - C84_with_tuned_training_the_linear_worlds_mlp_edge_vanishes
+  - C85_the_registered_budget_regularizes_the_mlp
+  - C86_the_interaction_world_comparisons_do_not_depend_on_training
+  - C87_the_mlps_behavior_gains_are_interaction_specific_once_the_linear_learner_is_trained_to_its_optimum
+answered_open_items:
+- id: O36_capacity_comparisons_with_converged_fits
+  answered_by:
+  - C83_the_capacity_conclusions_hold_with_converged_and_with_tuned_training
+  - C84_with_tuned_training_the_linear_worlds_mlp_edge_vanishes
+  - C85_the_registered_budget_regularizes_the_mlp
+  - C86_the_interaction_world_comparisons_do_not_depend_on_training
+  - C87_the_mlps_behavior_gains_are_interaction_specific_once_the_linear_learner_is_trained_to_its_optimum
+carried_open_items:
+- O29_the_onset_with_larger_tables_and_shifts_within_a_run
+- O30_tables_across_relations
+- O31_scoring_harm_to_others
+- O32_location_or_steepness
+- O34_steepness_matched_in_the_world
+narrowed_claims: []
+explained_claims: []
+reporting_rules:
+- id: UNVERIFIED_MEASURE
+  rule: Information-spread comparisons from study v2 on are on share precision on unverified items, whose
+    fact-check is not public at the decision. Study v1's groups are not read.
+  carried_from: v11
+- id: TRANSFER_WITHIN_ONE_GENERATOR
+  rule: '"A table suffices" holds for donors in the same world and in other worlds of the same generator, which
+    share the veracity relation. Transfer across relations or domains is not tested.'
+  carried_from: v11
+- id: RARE_RUN_SPECIFIC_INFORMATION
+  rule: The table critique holds only while run-specific information is rare. In the flip study, a four-donor
+    table falls behind between a tenth and a quarter of runs carrying it. That is one kind of information and one
+    table size.
+  carried_from: v11
+- id: PRECISION_AND_UTILITY
+  rule: Report comparisons that involve an LLM prior under both share precision and the agents' utility, since
+    they disagree in 5 of 20 summaries. Utility scores only the sharer's own gain and cost, not the reach of false
+    items.
+  carried_from: v11
+- id: LLM_READOUT
+  rule: Name the readout with any LLM-prior result. P0 in Regime A saturated under the inherited clip and is
+    nearly constant; without the clip the same answers carry the relation's direction (C58). The X0 table is not
+    clipped.
+  carried_from: v11
+- id: LLM_PRIOR_ATTRIBUTION_BY_REGIME
+  rule: Name an LLM prior's calibration (the rule that set its location, and its steepness) with any result about
+    it, and attribute its utility cost per regime. With share rates matched in the world, D5's prior costs utility
+    through its calibration in Regime A (C68) and through its calibration and the model's answers in Regime B (C69);
+    the unclipped prior in Regime B, through the model's answers (C70).
+  carried_from: v11
+- id: WORLD_MATCHED_ATTRIBUTION
+  rule: Attribute a prior's cost to its parts only with each recalibrated prior matched to its source's share rate
+    in the world, and report that match beside the comparisons. Under O28's cohort match two of the three costed
+    attributions differed (C69, C70). Only the location has been matched in the world; the steepness has not.
+  carried_from: v11
+- id: SELECTIVITY_MATCHED_PRECISION
+  rule: Compare two priors on the precision of whom they admit only beside a comparison at matched selectivity in
+    the world, made by shifting one prior's intercept. A more selective prior raises precision without ranking
+    better; C22's gain disappeared at matched entry (C75).
+  carried_from: v11
+- id: INTERVAL_NONINFERIORITY
+  rule: Judge non-inferiority by the lower bound of an interval, not by the mean, and name the seed set. Under that
+    change C22's dominance count is 2 of 9, against 7 of 9 as recorded (C77).
+  carried_from: v11
+- id: TUNED_CAPACITY_COMPARISON
+  rule: Compare policy classes with each class's training chosen on its own evidence from one shared menu, or report
+    beside each DiD the linear-world gap it subtracts and how far each learner is from its optimum. Under the
+    registered 300-step budget that gap was mostly the linear learner's training (C84), and the MLP failed the
+    behavior DiDs because of it (C87).
+  replaces: CONVERGED_CAPACITY_COMPARISON
+paper_direction:
+  decided_by: USER_2026_10_13
+  central_claim: UNCHANGED_FROM_V5
+  updated_conditional_cases:
+  - THE_CAPACITY_CONCLUSIONS_HOLD_WITH_CONVERGED_AND_WITH_TUNED_TRAINING_AND_WITH_TUNED_TRAINING_THE_MLPS_ENTRY_GAINS_ARE_INTERACTION_SPECIFIC_IN_BOTH_GEOMETRIES
+  evidence:
+  - source: converged_capacity
+    pointer: status
+    equals: O36_HOLD_UNDER_BOTH
+next_steps:
+- id: N38
+  kind: PAPER
+  action: REWRITE_THE_MANUSCRIPTS_CAPACITY_PASSAGES_WITH_C83_TO_C88_IN_THE_MANUSCRIPT_KEPT_OUTSIDE_THE_REPOSITORY
+  authorization: AFTER_THIS_CONSOLIDATION
+- id: N39
+  kind: REPOSITORY
+  action: MERGE_THE_CONVERGED_CAPACITY_BRANCH_INTO_MAIN_THROUGH_A_PULL_REQUEST
+  authorization: USER_CONFIRMATION_REQUIRED
+- id: N40
+  kind: COMPARISON_DESIGN
+  action: CHOOSE_AMONG_O29_TO_O32_O34_AND_O37_EACH_AS_A_SEPARATE_PRECOMMIT
+  authorization: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+boundaries:
+  new_execution: NONE
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: ACCEPTED_IN_DECISION_0017_RELEASED_IN_V0_1_0A6
