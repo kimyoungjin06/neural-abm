@@ -2088,6 +2088,10 @@ def test_release_inspector_rejects_llm_prior_pilot_paths() -> None:
         "experiments/configs/pivot_llm_persona_agent_v1.yaml",
         "scripts/prototype_pivot_llm_persona_agent_v1.py",
         "tests/test_pivot_llm_persona_agent_v1.py",
+        "docs/research/pivot-llm-prior-entry-matched-v1.md",
+        "experiments/configs/pivot_llm_prior_entry_matched_v1.yaml",
+        "scripts/prototype_pivot_llm_prior_entry_matched_v1.py",
+        "tests/test_pivot_llm_prior_entry_matched_v1.py",
     }
     assert repository_paths == inspector[
         "PIVOT_LLM_PRIOR_PILOT_REPOSITORY_ONLY_PATHS"
