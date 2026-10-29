@@ -2004,7 +2004,11 @@ def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
         "experiments/configs/pivot_converged_capacity_v1.yaml",
         "scripts/prototype_pivot_converged_capacity_v1.py",
         "tests/test_pivot_converged_capacity_v1.py",
-        "tests/test_pivot_converged_capacity_v1_result.py",
+        "docs/research/pivot-converged-capacity-v2.md",
+        "experiments/configs/pivot_converged_capacity_v2.yaml",
+        "scripts/prototype_pivot_converged_capacity_v2.py",
+        "tests/test_pivot_converged_capacity_v2.py",
+        "tests/test_pivot_converged_capacity_v2_result.py",
     }
     assert repository_paths == inspector[
         "PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS"
