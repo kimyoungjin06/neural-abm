@@ -156,7 +156,7 @@ def test_the_section_keeps_its_boundaries() -> None:
         "it is not statistical equivalence",
         "do not establish that a neural policy is necessary",
         "donors ran in the same world",
-        "not in the released `v0.1.0a5` tag",
+        "first ships in the `v0.1.0a6` tag",
         "is not the agents' utility",
         "not evidence about the model's knowledge",
         "about 31%",

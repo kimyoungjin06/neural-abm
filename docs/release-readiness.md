@@ -5,12 +5,12 @@ This document tracks the clone-first release path.
 ## Current Verdict
 
 Do not reserve final `0.1.0` yet. The repository has a validated clone-first
-alpha path, and the current verified alpha is `v0.1.0a5`.
+alpha path, and the current verified alpha is `v0.1.0a6`.
 
 The product-facing path is:
 
 ```bash
-git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm
+git clone --depth 1 --branch v0.1.0a6 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
@@ -68,18 +68,32 @@ The `v0.1.0a4` Git alpha gate is complete:
 5. Fresh remote clone and direct Git tag install smoke passed for the
    `v0.1.0a4` tag.
 
+The `v0.1.0a5` Git alpha gate is complete:
+
+1. The verified tag clone command is the first README and handoff path.
+2. Early Git issue intake asks users to reproduce the verified tag before
+   treating `main` failures as release-path regressions.
+3. Maintainer reproduction tooling covers fresh clone and direct Git tag
+   install reports.
+4. Package-boundary checks keep maintainer-only reproduction tooling out of
+   the source distribution.
+5. Fresh remote clone and direct Git tag install smoke passed for the
+   `v0.1.0a5` tag.
+
 ## Current Operational Gate
 
-The current operational gate is `v0.1.0a5`, a clone-first alpha that captures:
+The current operational gate is `v0.1.0a6`, a clone-first alpha that captures:
 
-1. The verified tag clone command as the first README and handoff path.
-2. Early Git issue intake that asks users to reproduce the verified tag before
-   treating `main` failures as release-path regressions.
-3. Maintainer reproduction tooling for fresh clone and direct Git tag install
-   reports.
-4. Package-boundary checks that keep maintainer-only reproduction tooling out
-   of the source distribution.
-5. Fresh remote clone and direct Git tag install smoke for the `v0.1.0a5` tag.
+1. The torch-free researcher scenario surface `neural_abm.scenario_lite` and
+   its example `examples/research_pivot_scenario_lite.py` (Decision 0015).
+2. Torch-free out-of-sample scoring of agent policies,
+   `neural_abm.policy_scoring` (Decision 0016).
+3. The policy-ladder primitives: torch-free `neural_abm.policy_ladder` and the
+   torch-backed residual learners in `neural_abm.policy_learners`
+   (Decision 0017).
+4. The same default-profile boundary: the clone-first path neither installs
+   nor loads `torch`.
+5. Fresh remote clone and direct Git tag install smoke for the `v0.1.0a6` tag.
 
 ## Final Release Rule
 

@@ -17,12 +17,12 @@ def test_readme_quick_start_prefers_clone_first_flow() -> None:
     scope = readme.index("## Scope")
 
     clone_command = (
-        "git clone --depth 1 --branch v0.1.0a5 "
+        "git clone --depth 1 --branch v0.1.0a6 "
         "https://github.com/kimyoungjin06/neural-abm.git neural-abm"
     )
     tag_install_command = (
         'uv pip install "neural-abm @ '
-        "git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5\""
+        "git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6\""
     )
     candidate_heading = "## Main / Next-Alpha Candidate"
     scenario_command = "uv run --no-dev python examples/research_pivot_scenario_lite.py"
@@ -51,11 +51,12 @@ def test_readme_quick_start_prefers_clone_first_flow() -> None:
     assert "The first-run output should report" in readme
     assert "Query the lightweight API from the clone" in readme
     assert "Use the default branch only when you intentionally want" in readme
-    assert "reproduce against `v0.1.0a5` first" in readme
-    assert scenario_command not in tag_path
-    assert "is not present in `v0.1.0a5`" in candidate_path
+    assert "reproduce against `v0.1.0a6` first" in readme
+    assert scenario_command in tag_path
+    assert "is not present in `v0.1.0a5`" in tag_path
     assert "--branch main" in candidate_path
-    assert scenario_command in candidate_path
+    assert "`main` currently matches `v0.1.0a6`" in candidate_path
+    assert scenario_command not in candidate_path
     assert "## Troubleshooting" in readme
     assert "git rev-parse --short HEAD" in readme
     assert "Open an issue with the failed command" in readme
@@ -64,8 +65,13 @@ def test_readme_quick_start_prefers_clone_first_flow() -> None:
 def test_git_distribution_flow_documents_fresh_clone_smoke() -> None:
     doc = (ROOT / "docs" / "git-distribution-flow.md").read_text(encoding="utf-8")
     tag_path = doc[doc.index("## Current Mode") : doc.index("Use the default branch")]
+    scenario_path = doc[
+        doc.index("`v0.1.0a6` is the first tag that carries") : doc.index(
+            "`main` currently matches `v0.1.0a6`"
+        )
+    ]
     candidate_path = doc[
-        doc.index("`examples/research_pivot_scenario_lite.py` is not part") : doc.index(
+        doc.index("`main` currently matches `v0.1.0a6`") : doc.index(
             "The repository can also be used locally"
         )
     ]
@@ -73,18 +79,20 @@ def test_git_distribution_flow_documents_fresh_clone_smoke() -> None:
 
     for required in (
         "primary user path is a fresh clone",
-        "git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm",
+        "git clone --depth 1 --branch v0.1.0a6 https://github.com/kimyoungjin06/neural-abm.git neural-abm",
         "uv run --no-dev python examples/first_run.py",
         "uv run --no-dev python examples/toy_catalog.py",
         'assert "torch" not in sys.modules',
-        "v0.1.0a5",
+        "v0.1.0a6",
     ):
         assert required in doc
 
     assert scenario_command not in tag_path
+    assert scenario_command in scenario_path
+    assert "it is not part of `v0.1.0a5`" in scenario_path
     assert "`main` / next-alpha candidate" in candidate_path
     assert "--branch main" in candidate_path
-    assert scenario_command in candidate_path
+    assert scenario_command not in candidate_path
 
 
 def test_ci_keeps_clone_first_default_profile_smoke() -> None:
@@ -111,8 +119,8 @@ def test_release_readiness_records_verified_alpha_and_clone_first_next_gate() ->
 
     for required in (
         "validated clone-first alpha path",
-        "current verified alpha is `v0.1.0a5`",
-        "git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm",
+        "current verified alpha is `v0.1.0a6`",
+        "git clone --depth 1 --branch v0.1.0a6 https://github.com/kimyoungjin06/neural-abm.git neural-abm",
         "uv run --no-dev python examples/first_run.py",
         "Smoke clone-first default environment",
         "A direct Git tag install reports matching",
@@ -120,10 +128,13 @@ def test_release_readiness_records_verified_alpha_and_clone_first_next_gate() ->
         "The `v0.1.0a4` Git alpha gate is complete",
         "CI is green on the release tag",
         "`pyproject.toml` and `neural_abm.__version__` both report `0.1.0a3`",
-        "The current operational gate is `v0.1.0a5`",
-        "The verified tag clone command as the first README and handoff path",
-        "Maintainer reproduction tooling for fresh clone and direct Git tag install",
-        "Fresh remote clone and direct Git tag install smoke for the `v0.1.0a5` tag",
+        "The `v0.1.0a5` Git alpha gate is complete",
+        "The verified tag clone command is the first README and handoff path",
+        "The current operational gate is `v0.1.0a6`",
+        "The torch-free researcher scenario surface `neural_abm.scenario_lite`",
+        "Torch-free out-of-sample scoring of agent policies",
+        "The policy-ladder primitives",
+        "Fresh remote clone and direct Git tag install smoke for the `v0.1.0a6` tag",
     ):
         assert required in compact_doc
 
@@ -149,7 +160,7 @@ def test_early_git_user_handoff_documents_surface_boundaries() -> None:
         "Early Git User Handoff",
         "uv run --no-dev python examples/first_run.py",
         "uv run --no-dev python examples/toy_catalog.py",
-        "git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm",
+        "git clone --depth 1 --branch v0.1.0a6 https://github.com/kimyoungjin06/neural-abm.git neural-abm",
         "`neural_abm.api_lite`: torch-free",
         "Intentionally Torch-Backed Surfaces",
         "`neural_abm.api`: stable v0 lifecycle facade",
@@ -159,14 +170,15 @@ def test_early_git_user_handoff_documents_surface_boundaries() -> None:
         "git rev-parse --short HEAD",
         "direct Git tag install failure",
         "torch_installed=false",
-        "v0.1.0a5",
+        "v0.1.0a6",
     ):
         assert required in compact_handoff
 
-    assert scenario_command not in tag_path
-    assert "is not present in `v0.1.0a5`" in candidate_path
+    assert scenario_command in tag_path
+    assert "is not present in `v0.1.0a5`" in tag_path
     assert "--branch main" in candidate_path
-    assert scenario_command in candidate_path
+    assert "`main` currently matches `v0.1.0a6`" in candidate_path
+    assert scenario_command not in candidate_path
 
 
 def test_early_git_issue_template_collects_reproducible_failure_context() -> None:
@@ -180,7 +192,7 @@ def test_early_git_issue_template_collects_reproducible_failure_context() -> Non
     for required in (
         "Early Git user report",
         "clone-first",
-        "git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm",
+        "git clone --depth 1 --branch v0.1.0a6 https://github.com/kimyoungjin06/neural-abm.git neural-abm",
         "docs/early-git-user-handoff.md",
         "Direct Git tag install",
         "uv run --no-dev python examples/first_run.py",
@@ -188,7 +200,7 @@ def test_early_git_issue_template_collects_reproducible_failure_context() -> Non
         "git rev-parse --short HEAD",
         "Did you expect torch-backed behavior?",
         "Default clone-first usage should not install or load torch",
-        "v0.1.0a5",
+        "v0.1.0a6",
     ):
         assert required in template
 
@@ -256,7 +268,7 @@ def test_early_git_labels_and_maintainer_checklist_match_taxonomy() -> None:
         "Fresh clone",
         "Direct Git tag install",
         "Preferred helper",
-        "uv run python scripts/reproduce_early_git.py --ref v0.1.0a5",
+        "uv run python scripts/reproduce_early_git.py --ref v0.1.0a6",
         "Fix Decision",
         "Regression Requirement",
         "Use a new alpha tag only when the fix changes",
@@ -330,3 +342,31 @@ def test_v010a5_release_note_records_clone_first_gate() -> None:
     assert "releases/v0.1.0a5.md" in docs_index
     assert "releases/v0.1.0a4.md" in docs_index
     assert "releases/v0.1.0a3.md" in docs_index
+
+
+def test_v010a6_release_note_records_the_researcher_surfaces() -> None:
+    note = (
+        ROOT / "docs" / "releases" / "v0.1.0a6.md"
+    ).read_text(encoding="utf-8")
+    compact_note = _compact(note)
+    docs_index = (ROOT / "docs" / "README.md").read_text(encoding="utf-8")
+
+    for required in (
+        "`v0.1.0a6` is a clone-first Git alpha release",
+        "git clone --depth 1 --branch v0.1.0a6",
+        "uv run --no-dev python examples/research_pivot_scenario_lite.py",
+        "`neural_abm.scenario_lite`",
+        "`neural_abm.policy_scoring`",
+        "`neural_abm.policy_ladder`",
+        "`neural_abm.policy_learners`",
+        "it is not a judgment that a scientific claim is supported",
+        "the default profile neither installs nor loads `torch`",
+        "Package metadata and `neural_abm.__version__` both report `0.1.0a6`",
+        "research_pivot_study_reproduction_20261029.json",
+        "## Troubleshooting",
+        "Open an early Git user report",
+    ):
+        assert required in compact_note, required
+
+    assert "releases/v0.1.0a6.md" in docs_index
+    assert "releases/v0.1.0a5.md" in docs_index

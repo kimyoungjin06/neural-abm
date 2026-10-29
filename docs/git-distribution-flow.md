@@ -10,7 +10,7 @@ should exercise the default package profile without installing the dev
 dependency group or loading torch:
 
 ```bash
-git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm
+git clone --depth 1 --branch v0.1.0a6 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
@@ -27,13 +27,22 @@ PY
 Use the default branch only when intentionally checking unreleased changes from
 `main`; support reports should reproduce the verified tag path first.
 
-`examples/research_pivot_scenario_lite.py` is not part of `v0.1.0a5`. It is a
-`main` / next-alpha candidate and should be exercised in a separate checkout:
+`v0.1.0a6` is the first tag that carries
+`examples/research_pivot_scenario_lite.py`; it is not part of `v0.1.0a5`. Run
+it from the same tag clone:
+
+```bash
+uv run --no-dev python examples/research_pivot_scenario_lite.py
+```
+
+`main` currently matches `v0.1.0a6` in its package surface. Changes added after
+that tag form the `main` / next-alpha candidate and should be exercised in a
+separate checkout:
 
 ```bash
 git clone --depth 1 --branch main https://github.com/kimyoungjin06/neural-abm.git neural-abm-next-alpha
 cd neural-abm-next-alpha
-uv run --no-dev python examples/research_pivot_scenario_lite.py
+uv run --no-dev python examples/first_run.py
 ```
 
 The repository can also be used locally before pushing a release tag:
@@ -73,7 +82,7 @@ uv run ruff check src tests scripts
 uv run pytest -q
 git diff --check
 uv run python scripts/inspect_release_artifacts.py --build
-uv run python scripts/smoke_package_profiles.py --wheel dist/neural_abm-0.1.0a5-py3-none-any.whl
+uv run python scripts/smoke_package_profiles.py --wheel dist/neural_abm-0.1.0a6-py3-none-any.whl
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
 ```
@@ -81,22 +90,22 @@ uv run --no-dev python examples/toy_catalog.py
 Then create and push an annotated tag:
 
 ```bash
-git tag -a v0.1.0a5 -m "neural-abm 0.1.0a5"
-git push origin v0.1.0a5
+git tag -a v0.1.0a6 -m "neural-abm 0.1.0a6"
+git push origin v0.1.0a6
 ```
 
 Users can install the default package profile from the tag:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
 ```
 
 Extras use the same direct URL shape:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
-uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
-uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
+uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
+uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
 ```
 
 ## Metadata

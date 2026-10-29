@@ -2,7 +2,8 @@
 
 ## Status
 
-Accepted for the `main` / next-alpha candidate.
+Accepted. Released in `v0.1.0a6`; until then it was accepted for the `main` /
+next-alpha candidate.
 
 ## Date
 
@@ -87,7 +88,7 @@ not import or require `torch`.
 
 This is an unreleased `main` / next-alpha candidate contract. The existing
 `v0.1.0a5` tag predates `scenario_lite` and must not be documented as containing
-these exports or examples.
+these exports or examples. `v0.1.0a6` is the first tag that contains them.
 
 ## Implementation Consequence
 

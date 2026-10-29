@@ -113,9 +113,9 @@ torch-backed API path.
 Toy feature-taxonomy helpers are shared by the full and lite facades because
 they are metadata-only and do not require torch.
 
-## Main / Next-Alpha Scenario Candidate
+## Researcher Scenario Surface (`v0.1.0a6`)
 
-The unreleased `main` / next-alpha candidate extends `neural_abm.api_lite`
+The `v0.1.0a6` tag extends `neural_abm.api_lite`
 with `ScenarioDefinition`, `BoundedScalarScenarioSpec`, deterministic and
 replicated comparison/result records, `ReplicationSpec`,
 `ScenarioReplicateContext`, and the two bounded-scalar scenario runners. The
@@ -134,11 +134,12 @@ hypothesis testing, calibration, or external-validity claims.
 
 See
 [Decision 0015](decisions/0015-researcher-scenario-lite-contract.md) for the
-complete contract. The released `v0.1.0a5` tag predates this scenario surface.
+complete contract. `v0.1.0a6` is the first tag with this scenario surface;
+the `v0.1.0a5` tag predates it.
 
-## Main / Next-Alpha Policy-Scoring Candidate
+## Policy-Scoring Surface (`v0.1.0a6`)
 
-The same candidate extends `neural_abm.api_lite` with `score_policies`, its
+The same tag extends `neural_abm.api_lite` with `score_policies`, its
 `PolicyScore` and `PolicyScoreReport` records, `PolicyScoringLeakError`, and
 `POLICY_SCORING_METRICS`. It scores every agent policy on held-out examples it
 never trained on, with Brier, log-loss, accuracy, and binary AUC, per policy,
@@ -152,11 +153,12 @@ comparing policies against a margin, and judging a claim remain caller-owned.
 
 See
 [Decision 0016](decisions/0016-out-of-sample-policy-scoring-contract.md) for
-the complete contract. The released `v0.1.0a5` tag predates this surface.
+the complete contract. `v0.1.0a6` is the first tag with this surface; the
+`v0.1.0a5` tag predates it.
 
-## Main / Next-Alpha Policy-Ladder Candidate
+## Policy-Ladder Surface (`v0.1.0a6`)
 
-The same candidate extends `neural_abm.api_lite` with the torch-free
+The same tag extends `neural_abm.api_lite` with the torch-free
 policy-ladder primitives of `neural_abm.policy_ladder`:
 
 - `LinearPrior`, a rule written as `logit = features @ weight + bias`, and
@@ -181,4 +183,5 @@ claim remain caller-owned.
 
 See
 [Decision 0017](decisions/0017-policy-ladder-semantics-extraction.md) for
-the complete contract. The released `v0.1.0a5` tag predates this surface.
+the complete contract. `v0.1.0a6` is the first tag with this surface; the
+`v0.1.0a5` tag predates it.
