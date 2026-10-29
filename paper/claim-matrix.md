@@ -294,3 +294,8 @@ rather than a post hoc field, endpoint, or model substitution.
 11. Cite the prior rule, outcome record, exploration floor, and prior-anchored
     learners as package API of the `v0.1.0a6` tag (Decision 0017), the first
     tag that ships them.
+12. Sections 1, 9, and 10 are drafted around the central claim
+    (`sections/01-introduction.md`, `sections/09-discussion.md`,
+    `sections/10-conclusion.md`). Every number in them restates an audited
+    source, which `tests/test_paper_sections_framing.py` checks. Sections 2,
+    4, and 5 remain to be drafted.

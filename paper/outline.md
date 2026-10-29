@@ -63,6 +63,8 @@ and `execution_authorized=false`.
 
 ## 1. Introduction
 
+Draft: [sections/01-introduction.md](sections/01-introduction.md)
+
 - Motivation: rule-based ABM agents are interpretable but limited in adaptive
   learning behavior; fully neural and LLM-agent simulations adapt but resist
   attribution, audit, and seeded replication.
@@ -240,6 +242,8 @@ Draft: [sections/08-policy-ladder.md](sections/08-policy-ladder.md).
 
 ## 9. Discussion
 
+Draft: [sections/09-discussion.md](sections/09-discussion.md)
+
 - What the toy models show.
 - What the research application shows: the contract carries a full study,
   and learning direction is a first-class experimental axis.
@@ -270,6 +274,8 @@ Draft: [sections/08-policy-ladder.md](sections/08-policy-ladder.md).
 - Path to richer ABM environments.
 
 ## 10. Conclusion
+
+Draft: [sections/10-conclusion.md](sections/10-conclusion.md)
 
 - Neural Social Nodes are a practical unit for NABM prototyping.
 - The lifecycle makes the choice between a fixed rule, a learned policy, and

@@ -303,6 +303,10 @@ PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-policy-ladder-consolidation-v9.md",
     "experiments/configs/pivot_policy_ladder_consolidation_v9.yaml",
     "tests/test_pivot_policy_ladder_consolidation_v9.py",
+    "paper/sections/01-introduction.md",
+    "paper/sections/09-discussion.md",
+    "paper/sections/10-conclusion.md",
+    "tests/test_paper_sections_framing.py",
 }
 PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-relative-delay-cost-v1.md",
