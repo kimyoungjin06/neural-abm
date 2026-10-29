@@ -386,8 +386,8 @@ ladder. Its arms nest exactly, with 14 checks (C47).
 Re-expressed through the same core, a recorded pivot study reproduced its
 recorded output byte for byte: 1,152 of 1,152 rows (C48).
 
-The shared semantics are now package API on the `main` / next-alpha
-candidate (Decision 0017):
+The shared semantics are now package API, released in the `v0.1.0a6` tag
+(Decision 0017):
 
 - **torch-free:** the prior rule, keyed randomness, the exploration floor,
   the outcome record, and prior-boosted trees;
@@ -457,7 +457,7 @@ Four statements are supported, each with its boundary.
    - A recorded study of the first domain reproduces byte for byte through
      the package, as do the delayed arms of a second.
    - *Limitation:* two consumers and two recorded configurations, on one
-     host. The surface is not in the released `v0.1.0a5` tag.
+     host. The surface first ships in the `v0.1.0a6` tag.
 3. **The lifecycle makes the table critique testable.**
    - In stationary designs, a table written before the run suffices, whether
      its donors ran in the same world or in other worlds of the same

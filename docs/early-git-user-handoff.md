@@ -9,7 +9,7 @@ newer.
 Start with the current verified alpha tag:
 
 ```bash
-git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm
+git clone --depth 1 --branch v0.1.0a6 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
@@ -20,29 +20,36 @@ The first-run output should report `status=ok`, `toy_count=10`, and
 
 Use `main` only when intentionally checking unreleased changes. If a user
 reports a failure from `main`, ask them to reproduce the same commands against
-`v0.1.0a5` before treating it as a release-path regression.
+`v0.1.0a6` before treating it as a release-path regression.
 
 Use a Git tag install only when consuming the package from another project:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
 ```
 
-## Main / Next-Alpha Candidate
-
-`examples/research_pivot_scenario_lite.py` is not present in `v0.1.0a5`.
-It is a candidate for the next alpha and currently must be tested from `main`,
-separately from the verified-tag support path:
+The same tag carries the researcher scenario example. `v0.1.0a6` is the
+first tag with it; it is not present in `v0.1.0a5`:
 
 ```bash
-git clone --depth 1 --branch main https://github.com/kimyoungjin06/neural-abm.git neural-abm-next-alpha
-cd neural-abm-next-alpha
 uv run --no-dev python examples/research_pivot_scenario_lite.py
 ```
 
 The researcher scenario should report `surface=neural_abm.scenario_lite`,
 `base_surface=neural_abm.api_lite`, `default_profile=torch-free`, and
 `torch_loaded=false`.
+
+## Main / Next-Alpha Candidate
+
+`main` currently matches `v0.1.0a6` in its package surface. Changes added to
+`main` after that tag are candidates for the next alpha and must be tested
+from `main`, separately from the verified-tag support path:
+
+```bash
+git clone --depth 1 --branch main https://github.com/kimyoungjin06/neural-abm.git neural-abm-next-alpha
+cd neural-abm-next-alpha
+uv run --no-dev python examples/first_run.py
+```
 
 ## Stable Surfaces
 
@@ -65,7 +72,7 @@ The researcher scenario should report `surface=neural_abm.scenario_lite`,
 Install these only when the torch-backed lifecycle or research stack is needed:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
 ```
 
 ## Experimental or Internal Surfaces
@@ -103,17 +110,16 @@ uv run --no-dev python examples/first_run.py
 uv run --no-dev python examples/toy_catalog.py
 ```
 
-The researcher-scenario command is intentionally excluded from this verified
-tag diagnostic bundle. For a report about the `main` / next-alpha candidate,
-record `git branch --show-current` and run
-`uv run --no-dev python examples/research_pivot_scenario_lite.py` separately.
+For a report about the researcher scenario, also run
+`uv run --no-dev python examples/research_pivot_scenario_lite.py`. For a report
+about the `main` / next-alpha candidate, record `git branch --show-current`.
 
 For a direct Git tag install failure, include the exact install command and a
 short import smoke:
 
 ```bash
 uv run --isolated --no-project --python 3.11 \
-  --with "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5" \
+  --with "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6" \
   python - <<'PY'
 import importlib.metadata
 import importlib.util
@@ -133,6 +139,6 @@ print(json.dumps({
 PY
 ```
 
-Expected default-profile values are `version=0.1.0a5`,
-`metadata_version=0.1.0a5`, `toy_count=10`, `torch_installed=false`, and
+Expected default-profile values are `version=0.1.0a6`,
+`metadata_version=0.1.0a6`, `toy_count=10`, `torch_installed=false`, and
 `torch_loaded=false`.

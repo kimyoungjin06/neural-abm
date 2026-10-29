@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted for the `main` / next-alpha candidate. Proposed on 2026-10-19 (N14).
+Accepted, and released in `v0.1.0a6`. Proposed on 2026-10-19 (N14).
 The user approved its implementation on 2026-10-20 (N15), and it was
 accepted once the parity conditions below held.
 
@@ -126,7 +126,7 @@ The placement follows Decision 0014.
 
 `neural_abm.policy_ladder` must not import `torch`, `scipy`, or
 `scikit-learn` at import time. The released `v0.1.0a5` tag predates both
-modules.
+modules; `v0.1.0a6` is the first tag that contains them.
 
 ## Implementation Consequence
 

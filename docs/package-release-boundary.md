@@ -3,12 +3,12 @@
 This release boundary fixes the product-facing entry points for the current v0
 package shape. It is a packaging contract, not a new simulation claim.
 
-## Released Tag: `v0.1.0a5`
+## Released Tag: `v0.1.0a6`
 
 Default Git tag install:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
 ```
 
 The default profile is the lightweight `api_lite` floor. It supports package
@@ -20,7 +20,7 @@ torch-free lifecycle reports/local-step helpers. It must not import or require
 Torch-backed API:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
 ```
 
 Use this profile for `neural_abm.api`, `NABMUnit`, `NABMStep`, `SocialBlock`,
@@ -29,20 +29,18 @@ tensor/state-dict social messages, and the full tensor-backed lifecycle.
 Research workflows:
 
 ```bash
-uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
-uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm[research] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
+uv pip install "neural-abm[full] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
 ```
 
 Use these profiles for toy runners, evidence matrices, paper workflows,
 plotting, and the full development/research stack.
 
-## Main / Next-Alpha Candidate
-
-The unreleased `main` / next-alpha candidate extends the default torch-free
-`api_lite` floor with `scenario_lite` bounded-scalar scenario comparison
-helpers, including seed-paired replicated runs with outcome distributions.
-Its package metadata uses `0.1.0a6.dev0` so artifacts from `main` cannot be
-mistaken for the verified `v0.1.0a5` release.
+`v0.1.0a6` is the first tag with the researcher-facing surfaces. It extends
+the default torch-free `api_lite` floor with `scenario_lite` bounded-scalar
+scenario comparison helpers, including seed-paired replicated runs with
+outcome distributions
+([Decision 0015](decisions/0015-researcher-scenario-lite-contract.md)).
 It also adds `policy_scoring`, torch-free out-of-sample scoring of agent
 policies
 ([Decision 0016](decisions/0016-out-of-sample-policy-scoring-contract.md)),
@@ -51,14 +49,23 @@ and the policy-ladder primitives of `policy_ladder` and `policy_learners`
 The `v0.1.0a5` tag predates `scenario_lite`, `policy_scoring`, and
 `policy_ladder`; do not use that tag when testing these researcher-facing
 exports or examples.
-Install that candidate explicitly when evaluating this surface:
+
+These surfaces do not change the dependency boundary: `api_lite`, the scenario
+helpers, `policy_scoring`, and `policy_ladder` must not import or require
+`torch`. The residual learners in `policy_learners` are torch-backed and need
+the `torch` extra.
+
+## Main / Next-Alpha Candidate
+
+`main` currently matches `v0.1.0a6` in its package surface. Surfaces added to
+`main` after that tag are listed here until the next alpha. While they are,
+`main` uses a development version such as `0.1.0a7.dev0`, so that artifacts
+from `main` cannot be mistaken for the verified `v0.1.0a6` release. Install
+the candidate explicitly only when evaluating such a surface:
 
 ```bash
 uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@main"
 ```
-
-This candidate does not change the dependency boundary: `api_lite` and the
-scenario helpers must not import or require `torch`.
 
 ## Public Entry Points
 
@@ -72,8 +79,8 @@ binary_toys = toys_by_taxonomy("output_family", "binary_probability")
 catalog = toy_catalog()
 ```
 
-On `main` / the next-alpha candidate, bounded-scalar researcher scenarios use
-the same no-torch facade:
+From `v0.1.0a6` on, bounded-scalar researcher scenarios use the same no-torch
+facade:
 
 ```python
 from neural_abm.api_lite import (
@@ -571,7 +578,7 @@ uv run python scripts/smoke_package_profiles.py --profiles default
 uv run --no-dev python examples/toy_catalog.py
 ```
 
-For the `main` / next-alpha candidate, also run:
+Also run the researcher scenario example:
 
 ```bash
 uv run --no-dev python examples/research_pivot_scenario_lite.py
@@ -597,5 +604,5 @@ installation from `https://github.com/kimyoungjin06/neural-abm`.
   display layer.
 - Do not treat a scenario comparison's `success=true` as scientific claim
   adjudication.
-- Do not document the `v0.1.0a5` tag as containing the unreleased
-  `scenario_lite` surface.
+- Do not document the `v0.1.0a5` tag as containing the `scenario_lite`
+  surface, which first ships in `v0.1.0a6`.

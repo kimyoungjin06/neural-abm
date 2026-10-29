@@ -22,7 +22,7 @@ and Git tags.
 Clone the current verified alpha tag and run the torch-free first-run check:
 
 ```bash
-git clone --depth 1 --branch v0.1.0a5 https://github.com/kimyoungjin06/neural-abm.git neural-abm
+git clone --depth 1 --branch v0.1.0a6 https://github.com/kimyoungjin06/neural-abm.git neural-abm
 cd neural-abm
 uv run --no-dev python examples/first_run.py
 ```
@@ -47,13 +47,13 @@ PY
 ```
 
 Use the default branch only when you intentionally want unreleased changes from
-`main`. For early-user reports, reproduce against `v0.1.0a5` first.
+`main`. For early-user reports, reproduce against `v0.1.0a6` first.
 
 Install from the current Git alpha tag only when you want to consume it as a
 dependency:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
 ```
 
 Then query the torch-free toy catalog from another project:
@@ -68,29 +68,36 @@ binary_probability_toys = toys_by_taxonomy("output_family", "binary_probability"
 Install the torch-backed lifecycle API only when needed:
 
 ```bash
-uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm[torch] @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
 ```
 
 ```python
 from neural_abm.api import NABMUnit, SocialBlock, SocialChannel
 ```
 
-## Main / Next-Alpha Candidate
-
-`examples/research_pivot_scenario_lite.py` is not present in `v0.1.0a5`.
-It is currently available on `main` as a candidate for the next alpha. Test it
-in a separate checkout so that its results are not confused with the verified
-tag path:
+The same tag carries a no-torch researcher scenario example. `v0.1.0a6` is
+the first tag with it; it is not present in `v0.1.0a5`. From the clone:
 
 ```bash
-git clone --depth 1 --branch main https://github.com/kimyoungjin06/neural-abm.git neural-abm-next-alpha
-cd neural-abm-next-alpha
 uv run --no-dev python examples/research_pivot_scenario_lite.py
 ```
 
 The example compares a science-of-science PIVOT question across baseline and
 counterfactual environments through local adaptation, typed peer exchange,
 domain-owned transition, and audit evidence.
+
+## Main / Next-Alpha Candidate
+
+`main` currently matches `v0.1.0a6` in its package surface. Changes added to
+`main` after that tag are candidates for the next alpha. Test them in a
+separate checkout so that their results are not confused with the verified
+tag path:
+
+```bash
+git clone --depth 1 --branch main https://github.com/kimyoungjin06/neural-abm.git neural-abm-next-alpha
+cd neural-abm-next-alpha
+uv run --no-dev python examples/first_run.py
+```
 
 ## What You Just Ran
 
@@ -99,8 +106,8 @@ domain-owned transition, and audit evidence.
 - The package currently exposes 10 toy capability entries.
 - The first toy families to inspect are binary-probability social-learning
   models; the full taxonomy is printed by `examples/toy_catalog.py`.
-- On the optional `main` / next-alpha candidate path,
-  `examples/research_pivot_scenario_lite.py` shows a no-torch
+- From the same tag, `examples/research_pivot_scenario_lite.py` shows a
+  no-torch
   science-of-science PIVOT scenario: baseline vs interdisciplinary seed grants
   vs hot-field hype, with productive-pivot outcomes and aggregate/micro audit
   rows.
@@ -431,8 +438,8 @@ repository-only, hash-audited ledger is at
 
 A second domain, information spread with delayed fact-checks, ran the same
 comparison through a shared core. The core's semantics are now the
-`neural_abm.policy_ladder` and `neural_abm.policy_learners` modules on
-`main`; they are not yet in a released tag.
+`neural_abm.policy_ladder` and `neural_abm.policy_learners` modules, first
+released in `v0.1.0a6`.
 
 - **Learners against the hand rule.** In the stationary worlds, every
   learner beat it.
@@ -516,7 +523,7 @@ The primary user path is a Git clone. Direct Git URL installs are also
 supported from committed refs or tags:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
 ```
 
 The package currently supports Python 3.11 or newer.

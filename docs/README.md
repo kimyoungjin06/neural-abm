@@ -41,8 +41,11 @@ Use this directory for internal project knowledge.
 
 ## Release Notes
 
-- [releases/v0.1.0a5.md](releases/v0.1.0a5.md): clone-first Git alpha
-  release note for the current tagged alpha.
+- [releases/v0.1.0a6.md](releases/v0.1.0a6.md): clone-first Git alpha
+  release note for the current tagged alpha, the first with the researcher
+  scenario, policy-scoring, and policy-ladder surfaces.
+- [releases/v0.1.0a5.md](releases/v0.1.0a5.md): historical clone-first Git
+  alpha release note.
 - [releases/v0.1.0a4.md](releases/v0.1.0a4.md): historical clone-first Git
   alpha release note.
 - [releases/v0.1.0a3.md](releases/v0.1.0a3.md): historical clone-first Git
@@ -433,14 +436,14 @@ Use this directory for internal project knowledge.
   the torch-free social-core and unit-core splits, torch-backed full lifecycle
   boundary, and optional-extra transition rules.
 - [decisions/0015-researcher-scenario-lite-contract.md](decisions/0015-researcher-scenario-lite-contract.md):
-  accepted main/next-alpha boundary for torch-free scenario comparison and
+  boundary, released in `v0.1.0a6`, for torch-free scenario comparison and
   caller-owned scientific interpretation.
 - [decisions/0016-out-of-sample-policy-scoring-contract.md](decisions/0016-out-of-sample-policy-scoring-contract.md):
-  accepted main/next-alpha torch-free scoring of agent policies on held-out
+  torch-free scoring of agent policies on held-out
   data, with a declared-unit leak check; comparison and claims stay with the
   caller.
 - [decisions/0017-policy-ladder-semantics-extraction.md](decisions/0017-policy-ladder-semantics-extraction.md):
-  accepted main/next-alpha extraction of the policy-ladder semantics two
+  extraction, released in `v0.1.0a6`, of the policy-ladder semantics two
   model families share byte for byte: the torch-free prior rule, keyed
   randomness, exploration floor, ordered outcome record, and boosted trees
   (`policy_ladder`), plus torch-backed residual learners (`policy_learners`).

@@ -26,8 +26,9 @@ Decision:
 
 Current status:
 
-- The verified Git alpha remains `v0.1.0a5`; unreleased `main` uses the
-  distinct next-alpha development identity `0.1.0a6.dev0`.
+- The verified Git alpha is `v0.1.0a6`. When `main` gains unreleased
+  changes, it uses a distinct next-alpha development identity such as
+  `0.1.0a7.dev0`.
 
 Decision:
 
@@ -80,13 +81,13 @@ Local artifact check:
 
 ```bash
 uv build --out-dir dist
-uv run --isolated --with dist/neural_abm-0.1.0a6.dev0-py3-none-any.whl python -c "import neural_abm.api_lite"
+uv run --isolated --with dist/neural_abm-0.1.0a6-py3-none-any.whl python -c "import neural_abm.api_lite"
 ```
 
 Git ref install after a remote/tag exists:
 
 ```bash
-uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a5"
+uv pip install "neural-abm @ git+https://github.com/kimyoungjin06/neural-abm.git@v0.1.0a6"
 ```
 
 ## Pre-Release Checklist

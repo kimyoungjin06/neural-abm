@@ -36,13 +36,13 @@ of them is the central claim.
 | --- | --- | --- | --- | --- |
 | Policy learning is separated from social interaction | The unit-contract and two adapter-holdout rows of the Primary Claim Path | None needed | Supported for binary lifecycles | None |
 | Fixed and adaptive policies are compared in one lifecycle | The Study 2 row: a frozen-versus-adaptive comparison with paired shocks and named-parameter traces | The Pivot policy ladder reproduces its fixed rule exactly before any learned arm is read (P1). The information-spread ladder adds tables written before the run (P7) | Supported | None. The outcome record is in the package with its ordering rule (Decision 0017, O27 answered by N15) |
-| External priors enter the same lifecycle | None | A once-elicited LLM prior in two domains (P3, P9), with an exploration floor | Supported. `neural_abm.policy_ladder` holds the prior rule and exploration floor on the `main` / next-alpha candidate (Decision 0017) | Not in the released `v0.1.0a5` tag |
+| External priors enter the same lifecycle | None | A once-elicited LLM prior in two domains (P3, P9), with an exploration floor | Supported. `neural_abm.policy_ladder` holds the prior rule and exploration floor, released in `v0.1.0a6` (Decision 0017) | None |
 | Policies are traced and scored out of sample | `neural_abm.policy_scoring` (Decision 0016) | Pivot probe-cohort scoring | Supported | None |
-| The structure is reusable across domains | The unit contract spans Toy2, Toy4, Toy5, and two adapters; `neural_abm.policy_ladder` and `neural_abm.policy_learners` (Decision 0017) | A second domain runs the comparison through a shared core, and both recorded Pivot runs reproduce byte for byte through the package (C47, C48, N15 parity) | Supported on the `main` / next-alpha candidate | Not in the released `v0.1.0a5` tag |
+| The structure is reusable across domains | The unit contract spans Toy2, Toy4, Toy5, and two adapters; `neural_abm.policy_ladder` and `neural_abm.policy_learners` (Decision 0017) | A second domain runs the comparison through a shared core, and both recorded Pivot runs reproduce byte for byte through the package (C47, C48, N15 parity) | Supported; the package surface is released in `v0.1.0a6` | Two consumers |
 
 Two consumers share the policy-ladder semantics byte for byte, and Decision
-0017 put them in the `main` / next-alpha package. Cite them as package API
-there, and note that the released `v0.1.0a5` tag predates them.
+0017 put them in the package. Cite them as package API of the `v0.1.0a6` tag,
+the first that ships them.
 
 ## Route Boundary
 
@@ -292,5 +292,5 @@ rather than a post hoc field, endpoint, or model substitution.
     `tests/test_paper_section_08_policy_ladder.py`. Report every comparison
     that involves an LLM prior on both precision and utility (P11).
 11. Cite the prior rule, outcome record, exploration floor, and prior-anchored
-    learners as `main` / next-alpha package API (Decision 0017), not as part
-    of the released `v0.1.0a5` tag.
+    learners as package API of the `v0.1.0a6` tag (Decision 0017), the first
+    tag that ships them.

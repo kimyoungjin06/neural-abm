@@ -27,7 +27,7 @@ def test_release_artifact_inspection_builds_and_reports_package_boundary() -> No
     assert payload["status"] == "pass"
     assert payload["blocking_issues"] == []
     assert payload["pyproject"]["name"] == "neural-abm"
-    assert payload["pyproject"]["version"] == "0.1.0a6.dev0"
+    assert payload["pyproject"]["version"] == "0.1.0a6"
     assert payload["pyproject"]["requires_python"] == ">=3.11"
     assert payload["pyproject"]["default_dependencies"] == ["numpy", "pyyaml"]
     assert payload["pyproject"]["has_authors"] is True
@@ -36,8 +36,8 @@ def test_release_artifact_inspection_builds_and_reports_package_boundary() -> No
     assert payload["pyproject"]["has_license"] is True
     assert payload["pyproject"]["has_urls"] is True
     assert payload["wheel"]["metadata_name"] == "neural-abm"
-    assert payload["wheel"]["metadata_version"] == "0.1.0a6.dev0"
-    assert payload["wheel"]["runtime_version"] == "0.1.0a6.dev0"
+    assert payload["wheel"]["metadata_version"] == "0.1.0a6"
+    assert payload["wheel"]["runtime_version"] == "0.1.0a6"
     assert payload["wheel"]["default_requires"] == ["numpy", "pyyaml"]
     assert "neural_abm/scenario_lite.py" in payload["wheel"]["required_modules"]
     assert "neural_abm/policy_scoring.py" in payload["wheel"]["required_modules"]
@@ -1176,7 +1176,7 @@ def test_sdist_member_boundary_rejects_archive_aliases_and_duplicates(
         with tarfile.open(archive_path, "r:gz") as archive:
             return check(archive.getmembers())
 
-    root = "neural_abm-0.1.0a6.dev0"
+    root = "neural_abm-0.1.0a6"
     regular = tarfile.REGTYPE
     assert (
         inspect_entries(
@@ -2175,7 +2175,7 @@ def test_cross_artifact_metadata_check_rejects_stale_dist() -> None:
     cross_check = inspector["_cross_artifact_metadata_issues"]
     pyproject = {
         "name": "neural-abm",
-        "version": "0.1.0a6.dev0",
+        "version": "0.1.0a6",
         "requires_python": ">=3.11",
     }
     stale = {

@@ -2,7 +2,8 @@
 
 ## Status
 
-Accepted for the `main` / next-alpha candidate.
+Accepted. Released in `v0.1.0a6`; until then it was accepted for the `main` /
+next-alpha candidate.
 
 ## Date
 
@@ -89,7 +90,8 @@ of held-out data and of the unit ids.
 ## Dependency and Release Boundary
 
 The module uses NumPy only and must not import `torch`, `scipy`, or
-`scikit-learn`. The released `v0.1.0a5` tag predates it.
+`scikit-learn`. The released `v0.1.0a5` tag predates it; `v0.1.0a6` is the
+first tag that contains it.
 
 ## Implementation Consequence
 
