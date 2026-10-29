@@ -324,7 +324,8 @@ torch-backed behavior. The early-user checklist is in
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
 - Repository-only policy-ladder ledger at
-  `docs/research/pivot-policy-ladder-consolidation-v9.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v10.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v9.md`,
   `docs/research/pivot-policy-ladder-consolidation-v8.md`,
   `docs/research/pivot-policy-ladder-consolidation-v7.md`, and
   `docs/research/pivot-policy-ladder-consolidation-v6.md` and, through
@@ -334,7 +335,8 @@ torch-backed behavior. The early-user checklist is in
   design before confirmatory scoring, the second domain (information spread)
   with the N14 reusability test, the N15 package parity, and the four
   information-spread follow-ups (table transfer, flip rate, unclipped prior,
-  utility, prior calibration, and world calibration).
+  utility, prior calibration, and world calibration), and the entry-matched
+  control of the Pivot LLM prior.
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
   and Granovetter special cases, plus explicitly labeled FJ-like anchored and
   self-excluding HK variants, as settings of the same lifecycle.
@@ -409,9 +411,11 @@ synthetic, stylized worlds:
 - The gain comes from learned policies rather than neural ones as such. An MLP
   wins on smooth success boundaries and a tree on axis-aligned ones.
 - A local LLM (Qwen3-4B) was consulted once, calibrated to a stated base rate,
-  and paired with a small exploration floor. It then selected better entrants
-  than the hand rule while keeping pooled learning within a registered margin,
-  in 7 of 9 world-and-learner settings. Eliciting it took under 10 GPU
+  and paired with a small exploration floor. It then selected more productive
+  entrants than the hand rule, but it also admitted far fewer agents, and the
+  same gain came from one shift of the hand rule's intercept. At equal
+  selectivity in the world, the LLM prior ranked better only in the linear
+  world under the fixed rule. Eliciting it took under 10 GPU
   minutes. Smaller models of the same family (0.6B, 1.7B) did not do the
   same job.
 - The same model was also run as an LLM agent, queried at every agent-step
@@ -464,8 +468,9 @@ released in `v0.1.0a6`.
 
 These results are synthetic, and they are scored on items whose fact-check
 was not yet public. They make no claim about real information spread. The
-ledger is `docs/research/pivot-policy-ladder-consolidation-v9.md`, which
-extends `docs/research/pivot-policy-ladder-consolidation-v8.md`,
+ledger is `docs/research/pivot-policy-ladder-consolidation-v10.md`, which
+extends `docs/research/pivot-policy-ladder-consolidation-v9.md`,
+`docs/research/pivot-policy-ladder-consolidation-v8.md`,
 `docs/research/pivot-policy-ladder-consolidation-v7.md`, and
 `docs/research/pivot-policy-ladder-consolidation-v6.md`.
 
