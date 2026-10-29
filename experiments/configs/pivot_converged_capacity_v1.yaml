@@ -1,0 +1,314 @@
+schema_version: pivot_converged_capacity.v1
+label: pivot_converged_capacity_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+
+purpose:
+  primary_goal: >-
+    TEST_WHETHER_THE_LADDERS_CAPACITY_CONCLUSIONS_SURVIVE_TRAINING_EACH_RESIDUAL_LEARNER_TO_ITS_OWN_OPTIMUM
+  question: >-
+    The capacity conclusions C07 to C14 were drawn with every residual learner
+    trained by 300 Adam steps from the frozen prior. O35 found that this budget
+    leaves the linear learner far from the optimum of its own objective where
+    its class is right (C80). A pilot on O35's recorded evidence found the
+    reverse for the MLP: converged at the registered penalty, it forecast the
+    linear world worse than its 300-step fit, so the budget also regularizes
+    it. Do the conclusions hold when every residual objective is converged, and
+    when each learner's training is tuned on its own evidence from one shared
+    menu?
+  open_item: O36_capacity_comparisons_with_converged_fits
+  ledger: experiments/configs/pivot_policy_ladder_consolidation_v11.yaml
+  new_llm_calls: 0
+
+source_bindings:
+  - path: scripts/prototype_pivot_nonlinear_policy_abm_v2.py
+    sha256: ed827c5b1cddf6a36e32bfd6ebb4e41a1773af10ebcab975bf5c54e5c5887436
+    role: ABM_ARM_RUNNER_PROBED_LEARNER_AND_REGISTERED_ABM_DECISIONS
+  - path: experiments/configs/pivot_nonlinear_policy_abm_v2.yaml
+    sha256: 0b00c3758ccecc387118c33842a79c5e3a6b11ec246e6fc224d93fa340cd3874
+    role: ABM_DESIGN_SEEDS_PROFILES_LEARNERS_AND_DECISION_RULES_UNCHANGED
+  - path: scripts/prototype_pivot_nonlinear_policy_abm_v1.py
+    sha256: c0fa1621eab02140f5b6bc0e0a54c35c0df8e3ed6498ac391c8665b17f754cdb
+    role: FIT_WORLDS_FIT_BATCH_AND_PRIOR_BOOSTED_TREES
+  - path: scripts/prototype_pivot_matched_marginal_discriminator_v3.py
+    sha256: a4c7a54b839fb1c56af753484457fdff04d3e8af8267b8983327d75e4a9505ba
+    role: POLICY_LAYER_RUNNER_INNER_FOLDS_RESIDUAL_LINEAR_AND_REGISTERED_POLICY_DECISIONS
+  - path: experiments/configs/pivot_matched_marginal_discriminator_v3.yaml
+    sha256: aa39e72799aae48dda2cc5b2c534de94e6d3a80274e9dc6eef4fc5e064e2568c
+    role: POLICY_LAYER_DESIGN_SEEDS_PROFILES_CANDIDATES_AND_DECISION_RULES_UNCHANGED
+  - path: scripts/prototype_pivot_matched_marginal_discriminator_v2.py
+    sha256: 19dc841ebcbaa0f97d5f7fef89b96b13bf92c2953877e52dfc5b5f888e40b520
+    role: RESIDUAL_MLP_COHORTS_AND_BASE_LOGIT
+  - path: scripts/prototype_pivot_persistence_exit_v1.py
+    sha256: e8c604ac33f34cc58496723c2adff8e4d30c05182ee40cad114d961be3b17991
+    role: NESTED_PERSISTENCE_ADAPTER
+  - path: scripts/prototype_pivot_delayed_feedback_learning_v1.py
+    sha256: 9555b0968293ec89620ff461e7c449fee098a7eb8809be2b936812b521358515
+    role: VISIBILITY_QUEUE_AND_PRECOMMIT_HELPERS
+  - path: examples/research_pivot_study.py
+    sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+    role: POPULATION_AND_LINEAR_PRODUCTIVE_FIT
+  - path: examples/research_pivot_learning_study.py
+    sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+    role: HAND_SET_PRIOR_AND_FEATURES
+  - path: src/neural_abm/api.py
+    sha256: 83005b43023d29640d96a8929aaab5e5c552542c7c9d797c288e5820a7061898
+    role: UNCHANGED_GENERIC_TORCH_API
+  - path: src/neural_abm/unit_core.py
+    sha256: d399a6fc29f1b2efd3a648f48c79d7f8cab927e704974223ffabf861333ff4da
+    role: UNCHANGED_GENERIC_LIFECYCLE_CORE
+  - path: experiments/configs/pivot_policy_ladder_consolidation_v1.yaml
+    sha256: e5ae6b26c8dc97fe3728b2b57d04b33a2fe60bc80a0826bbc9b197aeb3be97cd
+    role: LEDGER_THAT_STATES_C07_TO_C14_AND_R01
+  - path: experiments/configs/pivot_policy_ladder_consolidation_v11.yaml
+    sha256: 116946f38b9e441c53e9bb815700ec3e07c4170f4c2583949ed81f988e95ca1b
+    role: LEDGER_THAT_OPENED_O36
+  - path: experiments/evidence/results/pivot_nonlinear_policy_abm_v2_20260928.summary.json
+    sha256: 2309ff8078a68074f8728768be399dd9ee008927f55451a110e0ce284f4f18db
+    role: RECORDED_ABM_RESULT_AND_ROW_HASH
+  - path: experiments/evidence/results/pivot_matched_marginal_discriminator_v3_20260928.summary.json
+    sha256: 5a9bd6da56bad1518e9fe50ea2fd0c6c41e51d4ee0b1230b2c42e651dc6877f2
+    role: RECORDED_POLICY_LAYER_RESULT_AND_ROW_HASH
+  - path: experiments/evidence/results/pivot_linear_learner_diagnosis_v1_20261029.summary.json
+    sha256: 7e6838c6efc759ea63573ec3dc663163c924e58ccafc834481c0c7eb789c7c60
+    role: OPENED_RESULT_BEHIND_O36
+
+studies:
+  policy_layer:
+    module: prototype_pivot_matched_marginal_discriminator_v3
+    contract: experiments/configs/pivot_matched_marginal_discriminator_v3.yaml
+    recorded_summary: experiments/evidence/results/pivot_matched_marginal_discriminator_v3_20260928.summary.json
+    recorded_rows: /ssd/pivot_matched_marginal_discriminator_v3_14f37af_development/replicate_metrics.jsonl
+    recorded_rows_sha256: b15373ea482fc2dad934bcda80dcb5db94949e3bf8282777de40292f5da01eab
+    residual_models: [matched_linear, residual_mlp]
+    rows_per_regime: EVERY_MODEL_WORLD_AND_REPLICATE
+  abm:
+    module: prototype_pivot_nonlinear_policy_abm_v2
+    contract: experiments/configs/pivot_nonlinear_policy_abm_v2.yaml
+    recorded_summary: experiments/evidence/results/pivot_nonlinear_policy_abm_v2_20260928.summary.json
+    recorded_rows: /ssd/pivot_nonlinear_policy_abm_v2_c56d741_development/runs.jsonl
+    recorded_rows_sha256: 8088d43cbee6c5c19c1e8f08499eb734b725f5f0ccbe79c59482f00d7da4c41f
+    residual_arms: [linear_batch, mlp_batch]
+    arm_keys:
+      - [fixed_rule, none]
+      - [linear_batch, neighbor_local]
+      - [tree_batch, neighbor_local]
+      - [mlp_batch, neighbor_local]
+      - [linear_batch, field_public]
+      - [tree_batch, field_public]
+      - [mlp_batch, field_public]
+    excluded_arm_keys: >-
+      THE_SCALAR_AND_ONLINE_LOGISTIC_ARMS_WHICH_NO_ABM_DECISION_READS
+
+seed_policy: >-
+  REUSES_THE_V3_AND_V2_SEED_NAMESPACES_AND_PROFILES_UNCHANGED_SO_THE_REGISTERED_REGIME_REPRODUCES_BOTH_RECORDS_ROW_FOR_ROW_AND_EVERY_REGIME_IS_PAIRED_ON_THE_SAME_WORLDS_NO_NEW_WORLD_IS_DRAWN
+
+training_regimes:
+  - id: registered
+    residual_learners: THE_RECORDED_300_STEP_ADAM_TRAINING
+    trees: THE_RECORDED_TRAINING
+    purpose: PARITY_WITH_BOTH_RECORDS
+  - id: converged
+    residual_learners: THE_REGISTERED_OBJECTIVE_MINIMIZED_TO_CONVERGENCE
+    policy_layer_candidates: V3_WEIGHT_DECAY_CANDIDATES_EACH_CONVERGED_SELECTED_BY_V3_INNER_FOLDS_UNCHANGED
+    abm_weight_decay: 0.0001
+    trees: THE_RECORDED_TRAINING_WITH_ROWS_SHARED_WITH_THE_REGISTERED_REGIME
+    purpose: THE_LITERAL_O36_QUESTION
+  - id: tuned
+    residual_learners: SELECTED_FOR_EACH_FIT_FROM_THE_RESIDUAL_MENU_BY_INNER_FOLDS_ON_THAT_FITS_OWN_EVIDENCE
+    policy_layer_trees: THE_RECORDED_V3_TUNING_WHICH_ALREADY_SELECTS_FROM_THE_TREE_MENU
+    abm_trees: SELECTED_FOR_EACH_FIT_FROM_THE_TREE_MENU_BY_INNER_FOLDS_ON_THAT_FITS_OWN_EVIDENCE
+    purpose: EACH_FAMILY_REGULARIZED_BY_ITS_OWN_EVIDENCE_FROM_A_MENU_THAT_NESTS_THE_REGISTERED_AND_CONVERGED_SETTINGS
+
+convergence:
+  optimizer: LBFGS
+  learning_rate: 1.0
+  line_search: STRONG_WOLFE
+  history_size: 50
+  max_iterations: 20000
+  max_abs_gradient: 0.000001
+  restarts: 5
+  restart_rule: WHILE_THE_GRADIENT_EXCEEDS_THE_TOLERANCE_RESTART_FROM_THE_CURRENT_POINT_WITH_FRESH_HISTORY
+  precision: FLOAT64
+  objective: >-
+    MEAN_BINARY_CROSS_ENTROPY_PLUS_HALF_THE_WEIGHT_DECAY_TIMES_THE_SQUARED_NORM_OF_ALL_TRAINABLE_PARAMETERS_WHICH_IS_THE_OBJECTIVE_ADAM_WITH_COUPLED_WEIGHT_DECAY_DESCENDS
+  initialization: THE_REGISTERED_INITIALIZATION_FROM_THE_SAME_SEED
+  required_for: EVERY_CONVERGED_FIT_INNER_OR_ACTING
+  failure_action: INVALID_IMPLEMENTATION_STOP
+
+tuning:
+  residual_menu:
+    - {training: ADAM_REGISTERED_BUDGET, weight_decay: 0.000001}
+    - {training: ADAM_REGISTERED_BUDGET, weight_decay: 0.00001}
+    - {training: ADAM_REGISTERED_BUDGET, weight_decay: 0.0001}
+    - {training: ADAM_REGISTERED_BUDGET, weight_decay: 0.001}
+    - {training: ADAM_REGISTERED_BUDGET, weight_decay: 0.01}
+    - {training: LBFGS_TO_CONVERGENCE, weight_decay: 0.000001}
+    - {training: LBFGS_TO_CONVERGENCE, weight_decay: 0.00001}
+    - {training: LBFGS_TO_CONVERGENCE, weight_decay: 0.0001}
+    - {training: LBFGS_TO_CONVERGENCE, weight_decay: 0.001}
+    - {training: LBFGS_TO_CONVERGENCE, weight_decay: 0.01}
+  abm_tree_menu:
+    fixed: {initial_margin: FROZEN_PRIOR_LOGIT, leaf_l2: 1.0}
+    source: THE_V3_TREE_CANDIDATES_WITH_MAX_ITER_AS_ROUNDS
+    candidates:
+      - {rounds: 100, learning_rate: 0.05, max_depth: 2, min_samples_leaf: 5}
+      - {rounds: 100, learning_rate: 0.05, max_depth: 2, min_samples_leaf: 20}
+      - {rounds: 100, learning_rate: 0.05, max_depth: 3, min_samples_leaf: 5}
+      - {rounds: 100, learning_rate: 0.05, max_depth: 3, min_samples_leaf: 20}
+      - {rounds: 100, learning_rate: 0.05, max_depth: 5, min_samples_leaf: 5}
+      - {rounds: 100, learning_rate: 0.05, max_depth: 5, min_samples_leaf: 20}
+      - {rounds: 300, learning_rate: 0.1, max_depth: 2, min_samples_leaf: 5}
+      - {rounds: 300, learning_rate: 0.1, max_depth: 2, min_samples_leaf: 20}
+      - {rounds: 300, learning_rate: 0.1, max_depth: 3, min_samples_leaf: 5}
+      - {rounds: 300, learning_rate: 0.1, max_depth: 3, min_samples_leaf: 20}
+      - {rounds: 300, learning_rate: 0.1, max_depth: 5, min_samples_leaf: 5}
+      - {rounds: 300, learning_rate: 0.1, max_depth: 5, min_samples_leaf: 20}
+  abm_selection:
+    inner_folds: 4
+    fold_assignment: V3_INNER_FOLDS_WITHIN_EACH_LABEL_BY_AGENT_ID_ASCENDING_ROUND_ROBIN
+    criterion: MEAN_VALIDATION_BRIER_ACROSS_INNER_FOLDS
+    tie_break: FIRST_CANDIDATE_IN_MENU_ORDER
+    inner_fit_seed: SEED_SEQUENCE_OF_THE_REFIT_SEED_AND_THE_INNER_FOLD_PLUS_ONE
+    refit: THE_FULL_BUFFER_WITH_THE_SELECTED_CANDIDATE_AND_THE_REGISTERED_REFIT_SEED
+    minimum_events_per_label: 4
+    below_minimum: THE_REGISTERED_SETTING_WITHOUT_SELECTION
+    neighbor_evidence: >-
+      A_NEIGHBOR_LEARNER_SEES_AT_MOST_FOUR_EVENTS_SO_IT_NEVER_MEETS_THE_MINIMUM_AND_KEEPS_THE_REGISTERED_SETTING_UNDER_TUNING_C11S_NEIGHBOR_HALF_IS_RETESTED_ONLY_UNDER_CONVERGENCE
+  policy_layer_selection: V3_SELECTION_UNCHANGED_WITH_THE_RESIDUAL_MENU_AS_THE_CANDIDATES
+  menu_nests: [THE_REGISTERED_SETTING, THE_CONVERGED_REGIME_AT_EACH_V3_CANDIDATE]
+
+runtime_estimate:
+  basis: REPRESENTATIVE_DEVELOPMENT_TASKS_TIMED_ON_SCRATCH_SEEDS_WHOSE_OUTCOMES_WERE_NOT_READ
+  development_tasks: 2496
+  cpu_hours: 40_TO_75
+  wall_hours_per_run_at_40_workers: 1.5_TO_4
+  longest_task_minutes: 9_TO_20
+
+profiles:
+  smoke:
+    policy_layer: smoke
+    abm: smoke
+    parity_reference: THE_UNMODIFIED_RUNNERS_ON_THE_SAME_TASKS
+  development:
+    policy_layer: development
+    abm: development
+    parity_reference: THE_RECORDED_ROWS_VERIFIED_BY_SHA256
+
+decision_contract:
+  rules: >-
+    THE_V3_AND_V2_DECISION_FUNCTIONS_AND_THRESHOLDS_UNCHANGED_APPLIED_TO_EACH_REGIMES_ROWS
+  minimum_replicates: 12
+  regime_rows:
+    registered: ALL_SEVEN_ARM_KEYS_FROM_THE_REGISTERED_REGIME
+    converged: RESIDUAL_ARMS_FROM_THE_CONVERGED_REGIME_FIXED_RULE_AND_TREES_FROM_THE_REGISTERED_REGIME
+    tuned: RESIDUAL_ARMS_AND_TREES_FROM_THE_TUNED_REGIME_FIXED_RULE_FROM_THE_REGISTERED_REGIME
+  post_hoc_quantity_for_c14: >-
+    MEAN_OVER_REPLICATES_OF_THE_MLP_MINUS_TREE_PRODUCTIVE_SHARE_OF_ENTRANTS_FIELD_EVIDENCE_IMMEDIATE_VISIBILITY_AS_IN_V2
+  capacity_claims:
+    - id: C07_feature_conditional_learning_is_needed_when_structure_reverses
+      checks:
+        - {pointer: policy_layer/feature_conditional_need, equals: SUPPORTED_ON_FROZEN_GENERATOR}
+    - id: C08_nonlinear_representation_is_needed_for_interactions
+      checks:
+        - {pointer: policy_layer/nonlinear_representation_need, equals: SUPPORTED_BOTH_GEOMETRIES}
+    - id: C09_family_choice_depends_on_boundary_geometry
+      checks:
+        - {pointer: policy_layer/nonlinear_family_dominance, equals: GENERATOR_DEPENDENT_OR_TIED}
+        - {pointer: abm/immediate/geometry_crossover, equals: CROSSOVER_TRANSFERS_TO_ABM}
+        - {pointer: abm/failure_lag_2/geometry_crossover, equals: CROSSOVER_TRANSFERS_TO_ABM}
+        - {pointer: abm/failure_lag_4/geometry_crossover, equals: CROSSOVER_TRANSFERS_TO_ABM}
+    - id: C10_out_of_sample_nonlinear_learning_inside_the_abm
+      checks:
+        - {pointer: abm/immediate/field_nonlinear_learning, equals: OUT_OF_SAMPLE_NONLINEAR_LEARNING}
+        - {pointer: abm/failure_lag_2/field_nonlinear_learning, equals: OUT_OF_SAMPLE_NONLINEAR_LEARNING}
+        - {pointer: abm/failure_lag_4/field_nonlinear_learning, equals: OUT_OF_SAMPLE_NONLINEAR_LEARNING}
+    - id: C11_evidence_scale_gates_useful_learning
+      checks:
+        - {pointer: abm/immediate/evidence_scale, equals: EVIDENCE_SCALE_GATES_USEFUL_LEARNING}
+        - {pointer: abm/failure_lag_2/evidence_scale, equals: EVIDENCE_SCALE_GATES_USEFUL_LEARNING}
+        - {pointer: abm/failure_lag_4/evidence_scale, equals: EVIDENCE_SCALE_GATES_USEFUL_LEARNING}
+    - id: C12_entry_responds_to_learning_only_with_immediate_failure_visibility
+      checks:
+        - {pointer: abm/immediate/entry, equals: ENTRY_CHANNEL_ACTIVE}
+        - {pointer: abm/failure_lag_2/entry, equals: ENTRY_SATURATED}
+        - {pointer: abm/failure_lag_4/entry, equals: ENTRY_SATURATED}
+    - id: C13_tree_reduces_failed_stock_on_axis_boundaries
+      checks:
+        - {pointer: abm/immediate/exit_passing_family_geometries, contains: tree_batch/axis_interaction_fit}
+        - {pointer: abm/failure_lag_2/exit_passing_family_geometries, contains: tree_batch/axis_interaction_fit}
+        - {pointer: abm/failure_lag_4/exit_passing_family_geometries, contains: tree_batch/axis_interaction_fit}
+    - id: C14_raw_entry_precision_follows_the_crossover
+      checks:
+        - {pointer: post_hoc/raw_entry_share_mlp_minus_tree_immediate/smooth_interaction_fit/mean, greater_than: 0.0}
+        - {pointer: post_hoc/raw_entry_share_mlp_minus_tree_immediate/axis_interaction_fit/mean, less_than: 0.0}
+    - id: R01_neural_policy_is_necessary_stays_rejected
+      checks:
+        - {pointer: policy_layer/neural_specific_advantage, equals: NOT_SUPPORTED_ON_FROZEN_GENERATOR}
+  regime_outcome:
+    CLAIMS_HOLD: EVERY_CHECK_OF_EVERY_CAPACITY_CLAIM_HOLDS
+    CLAIMS_CHANGE: OTHERWISE_LISTING_EACH_CLAIM_WITH_A_FAILED_CHECK
+  study_status:
+    O36_HOLD_UNDER_BOTH: BOTH_REGIMES_CLAIMS_HOLD
+    O36_HOLD_WHEN_TUNED_ONLY: TUNED_CLAIMS_HOLD_CONVERGED_CLAIMS_CHANGE
+    O36_HOLD_WHEN_CONVERGED_ONLY: CONVERGED_CLAIMS_HOLD_TUNED_CLAIMS_CHANGE
+    O36_CHANGE_UNDER_BOTH: BOTH_REGIMES_CLAIMS_CHANGE
+  registered_quantities:
+    linear_world_mlp_edge: >-
+      LINEAR_MINUS_MLP_PROBE_BRIER_FIELD_EVIDENCE_IMMEDIATE_VISIBILITY_LINEAR_WORLD_PER_REPLICATE_FOR_EACH_REGIME_WITH_A_PAIRED_95_PERCENT_T_INTERVAL
+    mlp_budget_effect: >-
+      CONVERGED_MINUS_REGISTERED_MLP_PROBE_BRIER_FIELD_EVIDENCE_IMMEDIATE_VISIBILITY_LINEAR_WORLD_WITH_A_PAIRED_95_PERCENT_T_INTERVAL
+    behavior_passing_lists: ENTRY_AND_EXIT_PASSING_FAMILY_GEOMETRIES_FOR_EACH_REGIME_AND_VISIBILITY
+  reported:
+    - CELL_MEANS_FOR_EACH_REGIME
+    - POLICY_LAYER_LINEAR_WORLD_MATCHED_LINEAR_MINUS_RESIDUAL_MLP_BRIER
+    - TUNED_SELECTION_FREQUENCIES
+    - FIT_COUNTS_FALLBACKS_AND_LBFGS_RESTARTS
+    - WHETHER_THE_TUNED_NEIGHBOR_ROWS_EQUAL_THE_REGISTERED_NEIGHBOR_ROWS
+  checks:
+    required: true
+    conditions:
+      - THE_REGISTERED_REGIME_REPRODUCES_THE_PARITY_REFERENCE_ROW_FOR_ROW_IN_BOTH_STUDIES
+      - IN_DEVELOPMENT_THE_REGISTERED_REGIMES_DISPOSITIONS_EQUAL_BOTH_RECORDED_DISPOSITIONS
+      - IN_DEVELOPMENT_EVERY_CAPACITY_CLAIM_HOLDS_UNDER_THE_REGISTERED_REGIME
+      - THE_LEARNER_SLOT_AND_THE_CANDIDATE_SLOT_ARE_RESTORED_AFTER_EVERY_TASK
+      - EVERY_CONVERGED_FIT_REACHES_THE_GRADIENT_TOLERANCE
+    failure_action: INVALID_IMPLEMENTATION_STOP
+
+expectations_before_the_run:
+  basis: >-
+    O35_FOUND_THE_LINEAR_LEARNERS_LINEAR_WORLD_DEFICIT_IS_MOSTLY_TRAINING_AND_THE_INTERACTION_WORLD_EDGES_ARE_THE_POLICY_CLASS_A_PILOT_ON_O35S_RECORDED_EVIDENCE_FOUND_THE_CONVERGED_MLP_WORSE_THAN_ITS_300_STEP_FIT_IN_THE_LINEAR_WORLD_AND_V2S_MLP_FAILED_THE_BEHAVIOR_DIDS_BECAUSE_OF_ITS_LINEAR_WORLD_EDGE
+  E1: UNDER_THE_TUNED_REGIME_EVERY_CAPACITY_CLAIM_HOLDS
+  E2: UNDER_THE_TUNED_REGIME_THE_MEAN_LINEAR_WORLD_MLP_EDGE_IS_BELOW_0.01
+  E3: THE_LOWER_BOUND_OF_THE_MLP_BUDGET_EFFECT_IS_ABOVE_ZERO_CONVERGING_THE_MLP_WORSENS_ITS_LINEAR_WORLD_FORECAST
+  E4: UNDER_THE_TUNED_REGIME_THE_MLP_PASSES_THE_ENTRY_OR_EXIT_DID_IN_AT_LEAST_ONE_INTERACTION_WORLD_WITH_IMMEDIATE_VISIBILITY
+  recording: EACH_EXPECTATION_IS_RECORDED_AS_HELD_OR_FAILED_A_FAILED_EXPECTATION_IS_A_REJECTED_CLAIM
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+    - docs/research/pivot-converged-capacity-v1.md
+    - experiments/configs/pivot_converged_capacity_v1.yaml
+    - scripts/prototype_pivot_converged_capacity_v1.py
+    - scripts/inspect_release_artifacts.py
+    - tests/test_pivot_converged_capacity_v1.py
+    - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
+
+outputs:
+  - runs.jsonl
+  - policy_rows.jsonl
+  - scorecard.json
+  - scorecard.md
+  - receipt.json
+
+boundaries:
+  repository_only: true
+  generic_nabm_api_changed: false
+  empirical_rows_read: 0
+  paid_api_calls: 0
+  new_llm_calls: 0
+  model_selected: "NO"
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: NOT_AUTHORIZED
