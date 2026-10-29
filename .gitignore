@@ -11,3 +11,6 @@ experiments/runs/*
 # Keep curated results and configs trackable.
 !experiments/results/
 !experiments/configs/
+
+# Manuscript drafts are written outside version control.
+paper/

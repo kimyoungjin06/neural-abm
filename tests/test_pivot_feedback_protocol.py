@@ -190,35 +190,14 @@ def test_pivot_feedback_protocol_is_routed_without_promoting_current_results() -
     )
     docs_readme = (ROOT / "docs/README.md").read_text(encoding="utf-8")
     root_readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    paper_readme = (ROOT / "paper/README.md").read_text(encoding="utf-8")
-    paper_outline = (ROOT / "paper/outline.md").read_text(encoding="utf-8")
-    application_section = (
-        ROOT / "paper/sections/07-research-application.md"
-    ).read_text(encoding="utf-8")
-    claim_matrix = (ROOT / "paper/claim-matrix.md").read_text(encoding="utf-8")
 
     assert relative_protocol in case_readme
     assert relative_compute_contract in case_readme
     assert relative_compute_contract in docs_readme
     assert relative_compute_contract in PROTOCOL_PATH.read_text(encoding="utf-8")
     assert "hypothesis-generating inputs" in case_readme
-    for routed_text in (
-        docs_readme,
-        root_readme,
-        paper_readme,
-        paper_outline,
-        application_section,
-        claim_matrix,
-    ):
+    for routed_text in (docs_readme, root_readme):
         assert relative_protocol in routed_text
-
-    assert "method-first Neural Social Nodes track" in _plain(paper_readme)
-    assert "open a separate `paper/pivot-feedback/` companion track" in _plain(
-        paper_outline
-    )
-    assert "remains stylized lifecycle evidence" in _plain(application_section)
-    assert "These rows are planned tests, not supported claims" in claim_matrix
-    assert "Untested" in claim_matrix
 
 
 def test_routed_local_markdown_links_resolve() -> None:
@@ -228,9 +207,6 @@ def test_routed_local_markdown_links_resolve() -> None:
         ROOT / "docs/case-studies/researcher-pivot/README.md",
         PROTOCOL_PATH,
         COMPUTE_CONTRACT_PATH,
-        ROOT / "paper/README.md",
-        ROOT / "paper/outline.md",
-        ROOT / "paper/claim-matrix.md",
     )
 
     for source in routed_files:

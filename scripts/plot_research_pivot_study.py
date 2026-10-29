@@ -2,7 +2,7 @@
 
 Reads the JSON artifacts written by the researcher-pivot studies, writes the
 case-study figures, and refreshes the selected manuscript copies in
-``paper/figures``.
+``paper/figures``, a local directory that is not tracked.
 """
 
 from __future__ import annotations
@@ -631,7 +631,9 @@ def main() -> None:
                 paper_figures=paper_figures,
             )
             _assert_current(figures, args.figures, generated)
-            _assert_current(paper_figures, args.paper_figures, paper_generated)
+            # The manuscript copies live in a local directory that is not tracked.
+            if args.paper_figures.is_dir():
+                _assert_current(paper_figures, args.paper_figures, paper_generated)
         print("research-pivot figures are current")
         return
 

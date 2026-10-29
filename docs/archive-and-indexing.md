@@ -6,7 +6,7 @@ The archive system should support two needs:
 2. Search: make old decisions, configs, and results easy to locate.
 
 The archive should not become the main workspace. Active material stays in
-`docs/`, `paper/`, `src/`, `scripts/`, and `experiments/`.
+`docs/`, `src/`, `scripts/`, and `experiments/`.
 
 ## Snapshot Unit
 
@@ -21,7 +21,6 @@ Each snapshot should include:
 ```text
 MANIFEST.md
 docs/
-paper/
 experiments/configs/
 experiments/results/
 optional_run_summaries/
@@ -58,7 +57,6 @@ Recommended indexes:
 
 - `decision-index.md`: links to decision records and relevant snapshots.
 - `experiment-index.md`: maps experiment names to configs, runs, and results.
-- `paper-figure-index.md`: maps manuscript figures to source runs.
 - `snapshot-index.md`: one-line summary of each snapshot.
 
 ## Snapshot Cadence
@@ -76,7 +74,7 @@ Create snapshots at these moments:
 When implementation begins, add a script that:
 
 1. Creates a timestamped folder under `archive/snapshots/`.
-2. Copies `README.md`, `docs/`, `paper/`, `experiments/configs/`, and
+2. Copies `README.md`, `docs/`, `experiments/configs/`, and
    `experiments/results/`.
 3. Generates a `MANIFEST.md` stub.
 4. Updates `archive/index/snapshot-index.md`.

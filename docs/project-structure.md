@@ -14,7 +14,7 @@ claims, implementation, and results remain traceable.
 | `docs/guidelines/` | Stable engineering/research guidelines used by implementations. |
 | `docs/decisions/` | Short decision records for scope, architecture, and experiment choices. |
 | `docs/toy-models/` | Human-readable specs for toy models and benchmarks. |
-| `paper/` | Manuscript drafts, paper outline, figures for publication, and submission notes. |
+| `paper/` | Manuscript drafts, kept locally and ignored by Git; not part of the repository. |
 | `src/neural_abm/` | Reusable Python package or module code for the simulator. |
 | `scripts/` | Thin entry-point scripts for running experiments, exporting figures, and archiving. |
 | `experiments/configs/` | Versioned experiment configuration files. |
@@ -52,7 +52,6 @@ Archives are for quick recovery and navigation, not for hiding active work.
 Each archive snapshot should contain:
 
 - Key docs from `docs/`.
-- Current paper outline or draft from `paper/`.
 - Experiment configs used since the previous snapshot.
 - Result summaries and plots, not necessarily every raw checkpoint.
 - A short `MANIFEST.md` describing what changed.

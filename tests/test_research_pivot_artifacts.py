@@ -181,8 +181,6 @@ def test_claim_prose_drops_the_reviewed_overclaims() -> None:
         path.read_text(encoding="utf-8")
         for path in (
             CASE_ROOT / "README.md",
-            ROOT / "paper" / "sections" / "07-research-application.md",
-            ROOT / "paper" / "claim-matrix.md",
             ROOT / "docs" / "classical-reductions.md",
         )
     )
@@ -196,7 +194,6 @@ def test_claim_prose_drops_the_reviewed_overclaims() -> None:
         "acquired hype immunity",
     ):
         assert stale not in text
-    assert "not an equivalence claim" in text
     assert "not an identified single route" in text
 
 
