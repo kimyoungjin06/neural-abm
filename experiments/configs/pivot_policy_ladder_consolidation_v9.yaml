@@ -1,0 +1,301 @@
+schema_version: pivot_policy_ladder_consolidation.v9
+label: pivot_policy_ladder_consolidation_v9
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-10-29'
+purpose: 'Extend the v8 ledger with O33, the world-calibration study the user chose on 2026-10-24 (N25): whether C63
+  and C64 hold when each recalibrated prior''s location is matched to its source''s share rate in the world rather
+  than on the design cohort. v1 to v8 remain the records for everything before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v8.yaml
+    sha256: 498ff9b39ef51e956e097069fc0495fbb6e87a354c19b4efb5845a445a81285f
+    record_commit: b2fdc58
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v8.md
+    sha256: 5f4e2770b77790208d74448b1007e8f87fc325a1feea6c9036776b54140b9ef7
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v8.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: o33_world_calibration
+  path: experiments/evidence/results/info_spread_policy_ladder_world_calibration_v1_20261024.summary.json
+  sha256: 61bc0b7d133cc25d67c5e1044b332ab81e3d25f503df7852e8142d654d341308
+  freeze_commit: a926c25
+  record_commit: 423a942
+claims:
+  confirmed:
+  - id: C68_with_share_rates_matched_in_the_world_d5s_prior_costs_utility_through_its_calibration_in_regime_a
+    statement: With each recalibrated prior's location matched to its source's share rate in the world, giving the
+      learner P0's calibration still lowers utility along both routes in 6 and 6 of 6 Regime A groups, and P0's
+      answers make no material difference at its own calibration (6 of 6 groups). Regime A stays CALIBRATION, as in
+      O28.
+    evidence:
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1A/attribution
+      equals: CALIBRATION
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1A/o28_attribution
+      equals: CALIBRATION
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1A/counts/calibration_given_llm_answers/NEGATIVE
+      equals: 6
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1A/counts/calibration_given_hand_answers/NEGATIVE
+      equals: 6
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1A/counts/answers_given_llm_calibration/INDISTINGUISHABLE
+      equals: 6
+  - id: C69_in_regime_b_with_share_rates_matched_d5s_prior_costs_utility_through_its_calibration_and_the_models_answers
+    statement: In Regime B, with the location matched in the world, P0's answers also lower utility along both
+      routes (6 and 5 of 6 groups), and its calibration still does (4 and 4 of 6). The case is BOTH, where O28, with
+      the cohort match, found CALIBRATION.
+    evidence:
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1B/attribution
+      equals: BOTH
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1B/o28_attribution
+      equals: CALIBRATION
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1B/counts/answers_given_hand_calibration/NEGATIVE
+      equals: 6
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1B/counts/answers_given_llm_calibration/NEGATIVE
+      equals: 5
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1B/counts/calibration_given_llm_answers/NEGATIVE
+      equals: 4
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1B/counts/calibration_given_hand_answers/NEGATIVE
+      equals: 4
+  - id: C70_in_regime_b_with_share_rates_matched_the_unclipped_priors_cost_is_the_models_answers
+    statement: For the unclipped prior P0u in Regime B, with the location matched in the world, its answers lower
+      utility along both routes (6 and 5 of 6 groups), including at its own calibration, where O28 found them
+      raising it in 4 of 6. Its calibration lowers utility given its own answers (4 of 6) and is mixed given F1's.
+      The case is ANSWERS, where O28 found NEITHER_CONSISTENTLY. In Regime A, where this prior carries no utility
+      cost, its answers raise utility at its own calibration (5 of 6).
+    evidence:
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0u~1B/attribution
+      equals: ANSWERS
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0u~1B/o28_attribution
+      equals: NEITHER_CONSISTENTLY
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0u~1B/counts/answers_given_hand_calibration/NEGATIVE
+      equals: 6
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0u~1B/counts/answers_given_llm_calibration/NEGATIVE
+      equals: 5
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0u~1B/by_comparison/calibration_given_llm_answers
+      equals: MOSTLY_NEGATIVE
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0u~1B/by_comparison/calibration_given_hand_answers
+      equals: MIXED_OR_NONE
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0u~1A/counts/answers_given_llm_calibration/POSITIVE
+      equals: 5
+  - id: C71_with_world_matched_calibration_no_llm_informed_start_beats_the_hand_rules_start_under_utility
+    statement: Against the learner started from F1 (L0), each LLM-informed start in O33 is MOSTLY_NEGATIVE under
+      utility in 5 of the 8 prior and regime cases and MIXED_OR_NONE in 3. None is MOSTLY_POSITIVE. The closest is
+      F1's answers at the unclipped prior's Regime B calibration, positive in 3 of 6 groups.
+    evidence:
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1A/by_comparison/calibration_given_hand_answers
+      equals: MOSTLY_NEGATIVE
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1A/by_comparison/answers_given_hand_calibration
+      equals: MOSTLY_NEGATIVE
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1B/by_comparison/calibration_given_hand_answers
+      equals: MOSTLY_NEGATIVE
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0~1B/by_comparison/answers_given_hand_calibration
+      equals: MOSTLY_NEGATIVE
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0u~1A/by_comparison/calibration_given_hand_answers
+      equals: MIXED_OR_NONE
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0u~1A/by_comparison/answers_given_hand_calibration
+      equals: MIXED_OR_NONE
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0u~1B/by_comparison/answers_given_hand_calibration
+      equals: MOSTLY_NEGATIVE
+    - source: o33_world_calibration
+      pointer: dispositions/by_case/P0u~1B/counts/calibration_given_hand_answers/POSITIVE
+      equals: 3
+  - id: C72_a_location_set_on_calibration_worlds_matches_the_share_rates_out_of_sample
+    statement: Setting each recalibrated prior's intercept on 24 calibration runs per regime, at world seeds disjoint
+      from the study cells, matched its source's mean unverified share count on those runs within 0.02%. F1 at P0's
+      Regime A calibration kept O28's intercept and the other seven were bisected. On the study cells each
+      world-calibrated fixed prior shared 0.984 to 1.001 times as many unverified items as its source, against 0.20
+      to 1.48 under O28's cohort match. Only the location was set this way; the steepness stayed O28's.
+    evidence:
+    - source: o33_world_calibration
+      pointer: world_calibration/A/F1_pcalw/method
+      equals: KEPT_COHORT_LOCATION
+    - source: o33_world_calibration
+      pointer: world_calibration/B/F1_pcalw/method
+      equals: BISECTED
+    - source: o33_world_calibration
+      pointer: world_match_check/F1_pcalw~1B/matches
+      equals: true
+    - source: o33_world_calibration
+      pointer: world_match_check/F1_pcalw~1B/ratio_to_calibration_source
+      greater_than: 0.98
+    - source: o33_world_calibration
+      pointer: world_match_check/P0u_hcalw~1A/matches
+      equals: true
+    - source: o33_world_calibration
+      pointer: world_match_check/P0u_hcalw~1A/ratio_to_calibration_source
+      less_than: 1.002
+  - id: C73_o33_reproduced_byte_for_byte_with_parity_and_consistency
+    statement: O33 reproduced its cells and summary byte for byte in a second run on GPU-Server, world calibration
+      included. L0 recomputed in all 240 learner tasks equalled its record, and every group's L1 - L0 and L1u - L0
+      equalled O25's recorded value.
+    evidence:
+    - source: o33_world_calibration
+      pointer: reproduction/byte_identical/cells.jsonl
+      equals: true
+    - source: o33_world_calibration
+      pointer: reproduction/byte_identical/summary.json
+      equals: true
+    - source: o33_world_calibration
+      pointer: parity_failures
+      equals: []
+    - source: o33_world_calibration
+      pointer: consistency_failures
+      equals: []
+  rejected:
+  - id: R21_c63_holds_with_share_rates_matched_in_the_world
+    statement: The O33 expectation stated before the run, that C63 holds (CALIBRATION for P0/A and P0/B) when each
+      recalibrated prior's location is matched to its source's share rate in the world.
+    reason: It holds in Regime A. In Regime B, D5's prior is BOTH.
+    evidence:
+    - source: o33_world_calibration
+      pointer: dispositions/holds/C63
+      equals: false
+    - source: o33_world_calibration
+      pointer: dispositions/overall
+      equals: O33_NEITHER_HOLDS
+  open:
+  - id: O34_steepness_matched_in_the_world
+    question: Do the Regime B attributions (C69, C70) hold when a recalibrated prior's steepness, and not only its
+      location, is matched to its source in the world?
+    kind: SYNTHETIC
+    priority: 1
+    motivation: O33 matched only the location in the world. The steepness stayed O28's, matched on the cohort.
+status_updates:
+- id: N23
+  previous: AFTER_THIS_CONSOLIDATION
+  status: DONE_AT_434756e_MERGED_INTO_MAIN_AT_98789c4
+- id: N24
+  previous: USER_CONFIRMED_2026_10_23
+  status: DONE_MERGED_INTO_MAIN_AT_98789c4
+- id: N25
+  previous: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+  status: DONE_O33_FROZEN_AT_a926c25_RECORDED_AT_423a942
+  answered_by:
+  - C68_with_share_rates_matched_in_the_world_d5s_prior_costs_utility_through_its_calibration_in_regime_a
+  - C69_in_regime_b_with_share_rates_matched_d5s_prior_costs_utility_through_its_calibration_and_the_models_answers
+  - C70_in_regime_b_with_share_rates_matched_the_unclipped_priors_cost_is_the_models_answers
+  - C71_with_world_matched_calibration_no_llm_informed_start_beats_the_hand_rules_start_under_utility
+  - C72_a_location_set_on_calibration_worlds_matches_the_share_rates_out_of_sample
+  - R21_c63_holds_with_share_rates_matched_in_the_world
+- id: N26
+  previous: USER_CONFIRMATION_REQUIRED
+  status: CARRIED_FORWARD_AS_N30
+answered_open_items:
+- id: O33_calibration_matched_in_the_world
+  answered_by:
+  - C68_with_share_rates_matched_in_the_world_d5s_prior_costs_utility_through_its_calibration_in_regime_a
+  - C69_in_regime_b_with_share_rates_matched_d5s_prior_costs_utility_through_its_calibration_and_the_models_answers
+  - C70_in_regime_b_with_share_rates_matched_the_unclipped_priors_cost_is_the_models_answers
+  - R21_c63_holds_with_share_rates_matched_in_the_world
+carried_open_items:
+- O29_the_onset_with_larger_tables_and_shifts_within_a_run
+- O30_tables_across_relations
+- O31_scoring_harm_to_others
+- O32_location_or_steepness
+narrowed_claims:
+- id: C63_for_d5s_prior_the_utility_cost_inside_the_learner_comes_from_its_calibration
+  scope: Holds in Regime A with share rates matched in the world (C68). In Regime B, once the share rates match, the
+    model's answers lower utility too, and D5's prior is BOTH (C69).
+- id: C64_for_the_unclipped_prior_its_answers_and_calibration_interact
+  scope: Holds only under O28's cohort-matched calibration, which overshot in the world. With share rates matched in
+    the world, the unclipped prior's cost in Regime B is the model's answers (C70).
+explained_claims:
+- id: C61_under_utility_an_llm_prior_inside_the_learner_lowers_the_agents_utility
+  explanation: With share rates matched in the world, the cost of D5's prior is its calibration in Regime A (C68),
+    and both its calibration and the model's answers in Regime B (C69). For the unclipped prior in Regime B it is the
+    model's answers (C70).
+reporting_rules:
+- id: UNVERIFIED_MEASURE
+  rule: Information-spread comparisons from study v2 on are on share precision on unverified items, whose
+    fact-check is not public at the decision. Study v1's groups are not read.
+  carried_from: v8
+- id: TRANSFER_WITHIN_ONE_GENERATOR
+  rule: '"A table suffices" holds for donors in the same world and in other worlds of the same generator, which
+    share the veracity relation. Transfer across relations or domains is not tested.'
+  carried_from: v8
+- id: RARE_RUN_SPECIFIC_INFORMATION
+  rule: The table critique holds only while run-specific information is rare. In the flip study, a four-donor
+    table falls behind between a tenth and a quarter of runs carrying it. That is one kind of information and one
+    table size.
+  carried_from: v8
+- id: PRECISION_AND_UTILITY
+  rule: Report comparisons that involve an LLM prior under both share precision and the agents' utility, since
+    they disagree in 5 of 20 summaries. Utility scores only the sharer's own gain and cost, not the reach of false
+    items.
+  carried_from: v8
+- id: LLM_READOUT
+  rule: Name the readout with any LLM-prior result. P0 in Regime A saturated under the inherited clip and is
+    nearly constant; without the clip the same answers carry the relation's direction (C58). The X0 table is not
+    clipped.
+  carried_from: v8
+- id: LLM_PRIOR_ATTRIBUTION_BY_REGIME
+  rule: Name an LLM prior's calibration (the rule that set its location, and its steepness) with any result about
+    it, and attribute its utility cost per regime. With share rates matched in the world, D5's prior costs utility
+    through its calibration in Regime A (C68) and through its calibration and the model's answers in Regime B (C69);
+    the unclipped prior in Regime B, through the model's answers (C70).
+  replaces: LLM_PRIOR_CALIBRATION
+- id: WORLD_MATCHED_ATTRIBUTION
+  rule: Attribute a prior's cost to its parts only with each recalibrated prior matched to its source's share rate
+    in the world, and report that match beside the comparisons. Under O28's cohort match two of the three costed
+    attributions differed (C69, C70). Only the location has been matched in the world; the steepness has not.
+  replaces: COHORT_IS_NOT_THE_WORLD
+paper_direction:
+  decided_by: USER_2026_10_13
+  central_claim: UNCHANGED_FROM_V5
+  updated_conditional_cases:
+  - AN_LLM_PRIOR_LOWERS_UTILITY_INSIDE_THE_LEARNER_THROUGH_ITS_CALIBRATION_IN_REGIME_A_AND_ALSO_THROUGH_THE_MODELS_ANSWERS_IN_REGIME_B
+  evidence:
+  - source: o33_world_calibration
+    pointer: dispositions/costed_cases
+    contains: P0/B
+next_steps:
+- id: N27
+  kind: PAPER
+  action: UPDATE_SECTION_8_THE_CLAIM_MATRIX_AND_THE_OUTLINE_WITH_C68_TO_C73_AND_THE_V9_REPORTING_RULES
+  authorization: AFTER_THIS_CONSOLIDATION
+- id: N28
+  kind: REPOSITORY
+  action: MERGE_THE_O33_BRANCH_INTO_MAIN_THROUGH_A_PULL_REQUEST
+  authorization: PULL_REQUEST_USER_CONFIRMED_2026_10_29_MERGE_ON_USER_REQUEST
+- id: N29
+  kind: COMPARISON_DESIGN
+  action: CHOOSE_AMONG_O29_TO_O32_AND_O34_EACH_AS_A_SEPARATE_PRECOMMIT
+  authorization: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+- id: N30
+  kind: RELEASE
+  action: TAG_A_NEXT_ALPHA_THAT_SHIPS_THE_POLICY_LADDER_PACKAGE_SURFACE
+  authorization: USER_CONFIRMATION_REQUIRED
+boundaries:
+  new_execution: NONE
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: ACCEPTED_IN_DECISION_0017_ON_MAIN_SINCE_261b447_NOT_IN_A_RELEASED_TAG
