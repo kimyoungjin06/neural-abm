@@ -324,7 +324,8 @@ torch-backed behavior. The early-user checklist is in
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
 - Repository-only policy-ladder ledger at
-  `docs/research/pivot-policy-ladder-consolidation-v13.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v14.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v13.md`,
   `docs/research/pivot-policy-ladder-consolidation-v12.md`,
   `docs/research/pivot-policy-ladder-consolidation-v11.md`,
   `docs/research/pivot-policy-ladder-consolidation-v10.md`,
@@ -340,8 +341,9 @@ torch-backed behavior. The early-user checklist is in
   information-spread follow-ups (table transfer, flip rate, unclipped prior,
   utility, prior calibration, and world calibration), the entry-matched
   control of the Pivot LLM prior, the linear-learner diagnosis, the
-  converged capacity comparison, and the peer-outcome contrast of Study 2
-  against OpenAlex coauthor data.
+  converged capacity comparison, the peer-outcome contrast of Study 2
+  against OpenAlex coauthor data, and Study 2 at a learning strength those
+  data allow.
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
   and Granovetter special cases, plus explicitly labeled FJ-like anchored and
   self-excluding HK variants, as settings of the same lifecycle.
@@ -448,11 +450,17 @@ from anticipation. This does not imply the absence of learning. A later
 check of the learning rules postulated in the case study's Study 2, against
 coauthor data from the discovery partition only, could not read learning
 direction either: its registered placebo flagged learning in Study 2's own
-no-learning arm, so the data estimate was not interpreted. The
-repository-only, hash-audited ledgers are at
+no-learning arm, so the data estimate was not interpreted. Study 2 was
+then rerun with its learning rate cut to the largest value whose outcome
+dependence those data do not exclude under the same estimator. Its imitative
+loop of failed pivots fell below material size; that calibration puts agent
+steps and topic quarters on one log-odds scale. The repository-only,
+hash-audited ledgers are at
 `docs/research/pivot-policy-ladder-consolidation-v5.md`, which extends
 `docs/research/pivot-policy-ladder-consolidation-v4.md`, and at
-`docs/research/pivot-policy-ladder-consolidation-v13.md` for the later check.
+`docs/research/pivot-policy-ladder-consolidation-v13.md` and
+`docs/research/pivot-policy-ladder-consolidation-v14.md` for the later
+checks.
 
 A second domain, information spread with delayed fact-checks, ran the same
 comparison through a shared core. The core's semantics are now the
@@ -482,8 +490,9 @@ released in `v0.1.0a6`.
 
 These results are synthetic, and they are scored on items whose fact-check
 was not yet public. They make no claim about real information spread. The
-ledger is `docs/research/pivot-policy-ladder-consolidation-v13.md`, which
-extends `docs/research/pivot-policy-ladder-consolidation-v12.md`,
+ledger is `docs/research/pivot-policy-ladder-consolidation-v14.md`, which
+extends `docs/research/pivot-policy-ladder-consolidation-v13.md`,
+`docs/research/pivot-policy-ladder-consolidation-v12.md`,
 `docs/research/pivot-policy-ladder-consolidation-v11.md`,
 `docs/research/pivot-policy-ladder-consolidation-v10.md`,
 `docs/research/pivot-policy-ladder-consolidation-v9.md`,

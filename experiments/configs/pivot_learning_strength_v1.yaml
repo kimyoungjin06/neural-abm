@@ -1,0 +1,207 @@
+schema_version: pivot_learning_strength.v1
+label: pivot_learning_strength_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-30'
+open_item: O39_study2_at_a_learning_strength_the_data_allow
+purpose: >-
+  Study 2's imitative arm raises failed pivots by +0.281 at baseline and
+  +0.289 under seed grants against the frozen arm (R5 of the case study), a
+  pattern the case study calls a self-reinforcing outcome-learning loop.
+  Under the peer-outcome estimator of recommended experiment 4, that arm
+  answers a neighbor's outcome far more strongly than the OpenAlex coauthor
+  data allow: its visible outcome gap is at least 6.95 log-odds, and the
+  data's upper bound is 0.79 (C93, post hoc). Does the loop survive when the
+  learning rate is cut until the same estimator finds a gap the data allow,
+  and when outcomes become visible only after a delay?
+
+source_bindings:
+- path: examples/research_pivot_learning_study.py
+  sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+  role: STUDY2_SCRIPT_RUN_UNCHANGED_THROUGH_THE_E4_SLOTS
+- path: examples/research_pivot_study.py
+  sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+  role: STUDY1_SCRIPT_IMPORTED_BY_STUDY2
+- path: docs/case-studies/researcher-pivot/data/learning_study_results.json
+  sha256: 98c97cac1a4d18b0e3fc0c087d63adc717b470374aae861f87696c7389d314b8
+  role: STUDY2_TRACKED_REPLICATE_RUNS_AND_COMPARISONS_FOR_PARITY
+- path: docs/case-studies/researcher-pivot/README.md
+  sha256: 5752f8e1028e242b245fe7be1460fcb9c837ffd8e361051f2b9e3e5ca3fd25a8
+  role: CASE_STUDY_THAT_STATES_R5_AND_R6
+- path: scripts/prototype_pivot_peer_outcome_contrast_v1.py
+  sha256: 0c963cd8beac4fef7d7cf0b9d6145425df4f097ebbc797ac54bdce86597ea484
+  role: E4_SCRIPT_SLOTS_ROWS_AND_ESTIMATOR_REUSED_BY_HASH_BOUND_IMPORT
+- path: experiments/configs/pivot_peer_outcome_contrast_v1.yaml
+  sha256: 2ce27b1577fbaa839f302f98a1b2209be62363256388ec1e8c5374f33217c2ef
+  role: E4_CONTRACT_ESTIMATOR_SETTINGS_SCENARIOS_AND_STUDY2_BINDINGS
+- path: experiments/evidence/results/pivot_peer_outcome_contrast_v1_20261030.summary.json
+  sha256: 82cec6fe493ad81c0726e1172aad13c4c3042f3dc527480dd862593b2f27c70a
+  role: E4_RECORD_DATA_BOUND_AND_SIMULATION_ROWS_FOR_PARITY
+- path: experiments/configs/pivot_policy_ladder_consolidation_v13.yaml
+  sha256: 00b15306cd9e90001b71da25c0890687f826330c828ba6493cac7d5ce68cf977
+  role: LEDGER_V13_THAT_OPENED_O39
+
+simulation:
+  study2_config: THE_TRACKED_LEARNING_STUDY_CONFIG_WITH_ONLY_THE_LEARNING_RATE_CHANGED
+  scenarios: [baseline, interdisciplinary_seed_grants, hot_field_hype]
+  arms: [frozen, imitative, cautionary]
+  estimated_arms: [frozen, imitative]
+  replicates: 30
+  outcome_delays: [0, 3]
+  learning_rates: [1.5, 0.75, 0.375, 0.1875, 0.09375, 0.046875, 0.0234375, 0.01171875]
+  learning_rate_grid: THE_TRACKED_RATE_1_5_HALVED_SEVEN_TIMES_EVERY_VALUE_EXACT_IN_BINARY
+  learning_rate_meaning: >-
+    Study 2's step size for the vicarious cross-entropy update. It scales
+    both the pull toward observed outcomes and the pull of the prior anchor,
+    whose strength 0.25 is unchanged. The frozen arm never learns, so it is
+    run once per scenario and delay.
+  delay_meaning: THE_E4_ENVIRONMENT_SLOT_AGENTS_LEARN_FROM_A_NEIGHBOR_OUTCOME_1_PLUS_DELAY_STEPS_AFTER_THE_PIVOT
+  slots: THE_E4_SLOTS_IMPORTED_UNCHANGED
+  seeds: STUDY2S_COMPONENT_KEYED_STREAMS_UNCHANGED_SO_EVERY_RATE_AND_ARM_IS_PAIRED_ON_THE_SAME_POPULATIONS_NETWORKS_AND_NOISE
+  parity:
+  - THE_TRACKED_RATE_AT_DELAY_0_REPRODUCES_ALL_270_TRACKED_REPLICATE_RUNS_EXACTLY
+  - THE_TRACKED_RATE_AT_DELAY_0_REPRODUCES_ALL_12_TRACKED_COMPARISON_ROWS_EXACTLY
+  - THE_FROZEN_ARM_AT_DELAY_3_EQUALS_THE_FROZEN_ARM_AT_DELAY_0
+  - AT_THE_TRACKED_RATE_THE_ESTIMATOR_ROWS_OF_THE_FROZEN_AND_IMITATIVE_ARMS_EQUAL_THE_E4_RECORD_WITHIN_1E_5
+
+estimator:
+  source: THE_E4_ESTIMATOR_ITS_CONTRACT_SETTINGS_AND_ITS_FUNCTIONS_IMPORTED_UNCHANGED
+  models: [EXPOSURE, STATE, ENTRY_ORDER]
+  bootstrap:
+    draws: THE_E4_DRAWS_2000
+    seed: THE_E4_SEED_20261030
+    streams: THE_E4_KEY_1_SCENARIO_INDEX_DELAY_SHARED_BY_EVERY_RATE_SO_RATES_ARE_COMPARED_ON_THE_SAME_REPLICATE_DRAWS
+  undefined_when: THE_E4_RULE_A_STATE_IN_THE_CONTRAST_HAS_FEWER_THAN_10_EVENTS_IN_THE_FULL_SAMPLE
+  full_sample_fit_not_converged: >-
+    ITS_QUANTITIES_ARE_UNDEFINED_AND_IT_IS_LISTED_AND_THE_RUN_WRITES_ITS_ROWS_WITHOUT_A_DISPOSITION
+  bootstrap_fit_not_converged: THE_E4_RULE_COUNTED_AND_ITS_DRAW_LEFT_OUT
+  learning_attributable: THE_E4_RULE_THE_IMITATIVE_ROW_MINUS_THE_FROZEN_ROW_ON_THE_SAME_DRAWS
+
+calibration:
+  quantity: state/outcome_gap_visible
+  why_this_quantity: >-
+    It is the quantity behind C93, defined at both delays, and the direct
+    reading of imitative learning: entry after a neighbor's visible success
+    against entry after a visible failure.
+  primary:
+    name: THE_DATA_UPPER_95_PERCENT_BOUND
+    pointer: /data/estimates/state~1outcome_gap_visible/high
+    value: 0.789381
+    reading: THE_LARGEST_GAP_THE_DATA_DO_NOT_EXCLUDE_THE_MOST_GENEROUS_READING_FOR_STUDY2
+  secondary:
+    name: THE_DATA_POINT_ESTIMATE
+    pointer: /data/estimates/state~1outcome_gap_visible/mean
+    value: 0.228246
+    use: REPORTED_NOT_DECIDED
+  allowed_rate: >-
+    A grid rate is allowed when the imitative arm's visible outcome gap,
+    the full-sample estimate, is defined in at least one scenario and is at
+    or below the bound in every scenario where it is defined.
+  data_allowed_rate: >-
+    For each delay, the largest grid rate such that it and every smaller
+    grid rate are allowed. If the smallest grid rate is not allowed, there
+    is none.
+  scale_note: >-
+    The bound comes from coauthors and topic quarters, the gaps from Study 2
+    neighbors and agent steps, on one log-odds scale. The calibration takes
+    the data bound at face value; it does not map one scale onto the other.
+
+outcome:
+  quantity: FAILED_PIVOT_RATE_OF_THE_IMITATIVE_ARM_MINUS_THE_FROZEN_ARM_PAIRED_BY_REPLICATE
+  interval: STUDY2S_OWN_DISTRIBUTION_FUNCTION_10000_RESAMPLE_PERCENTILE_BOOTSTRAP_OF_THE_PAIRED_MEAN
+  also_reported:
+  - PRODUCTIVE_PIVOT_RATE_DELTAS
+  - THE_CAUTIONARY_ARM_DELTAS_FOR_R6_AND_R7_AT_EVERY_RATE
+  - EVERY_RATE_SCENARIO_AND_DELAY
+  - PIVOT_FAILED_PRODUCTIVE_RATES_AND_PRODUCTIVE_SHARE_OF_EACH_ARM
+  - EVERY_E4_QUANTITY_FOR_EVERY_RATE_INCLUDING_THE_ENTRY_ORDER_GRADIENT
+
+decision:
+  checks_before_any_estimate: [STUDY2_RUN_PARITY, STUDY2_COMPARISON_PARITY, FROZEN_DELAY_PARITY]
+  stop_if_one_fails: INVALID_IMPLEMENTATION_STOP_NO_OUTPUTS
+  checks_before_the_disposition: [E4_ESTIMATOR_PARITY, EVERY_FULL_SAMPLE_FIT_CONVERGED]
+  if_one_fails: THE_ROWS_ARE_WRITTEN_WITH_STATUS_O39_INVALID_THE_E4_ESTIMATOR_IS_NOT_REPRODUCED_AND_NO_DISPOSITION
+  primary_delay: 3
+  primary_delay_why: O39_ASKS_FOR_DELAYED_VISIBILITY_AND_THE_DATA_SHOW_OUTCOMES_ONLY_FIVE_QUARTERS_AFTER_ENTRY
+  loop_scenarios: [baseline, interdisciplinary_seed_grants]
+  loop_scenarios_why: R5_CLAIMS_THE_LOOP_IN_THESE_TWO_AND_NOT_UNDER_HYPE
+  material_failed_pivot_delta: 0.05
+  material_why: >-
+    Six of 120 researchers, about a sixth of R5's registered deltas, and the
+    size of the smallest effect the case study reports as a finding (R6's
+    productive-pivot delta, -0.050).
+  classes:
+    MATERIAL: THE_95_PERCENT_INTERVAL_LOW_AT_OR_ABOVE_0_05
+    BELOW_MATERIAL_DETECTED: THE_HIGH_BELOW_0_05_AND_THE_LOW_ABOVE_0
+    BELOW_MATERIAL_NOT_DETECTED: THE_HIGH_BELOW_0_05_AND_THE_LOW_AT_OR_BELOW_0
+    UNRESOLVED: OTHERWISE
+  dispositions:
+    no_data_allowed_rate: NOT_CALIBRATED_THE_SMALLEST_RATE_EXCEEDS_THE_DATA_BOUND
+    material_in_both: THE_LOOP_HOLDS_AT_THE_DATA_ALLOWED_STRENGTH
+    below_material_in_both: THE_LOOP_FALLS_BELOW_MATERIAL_AT_THE_DATA_ALLOWED_STRENGTH
+    material_under_grants_below_at_baseline: THE_LOOP_HOLDS_ONLY_UNDER_GRANTS
+    material_at_baseline_below_under_grants: THE_LOOP_HOLDS_ONLY_AT_BASELINE
+    otherwise: UNRESOLVED_AT_THE_DATA_ALLOWED_STRENGTH
+  status_prefix: O39_
+  delay_0: THE_SAME_RULE_REPORTED_AS_A_SECONDARY_DISPOSITION
+  reading: >-
+    A disposition says whether Study 2's registered loop is still there when
+    its learning is no stronger than the coauthor data allow under one
+    estimator. It does not calibrate Study 2, identify learning in real
+    researchers, or say which rule they use.
+
+expectations:
+  X1:
+    statement: The imitative arm's visible outcome gap rises with the learning rate.
+    check: SPEARMAN_OF_RATE_AND_GAP_OVER_DEFINED_GRID_POINTS_AT_LEAST_0_9_IN_GRANTS_AND_HYPE_AT_BOTH_DELAYS
+  X2:
+    statement: The data-allowed rate at delay 3 is at least eight times below the tracked rate.
+    check: THE_DELAY_3_DATA_ALLOWED_RATE_AT_MOST_0_1875
+  X3:
+    statement: >-
+      At that rate the baseline loop falls below material, because frozen
+      baseline agents pivot rarely (4.9%) and leave few outcomes to learn
+      from.
+    check: BASELINE_CLASS_AT_THE_DELAY_3_DATA_ALLOWED_RATE_IS_BELOW_MATERIAL
+  X4:
+    statement: At that rate the grant loop is still detected.
+    check: GRANTS_FAILED_PIVOT_DELTA_LOW_ABOVE_0_AT_THE_DELAY_3_DATA_ALLOWED_RATE
+  gating: NONE_THE_EXPECTATIONS_ARE_RECORDED_AND_DO_NOT_CHANGE_THE_DISPOSITION
+
+execution:
+  host: THE_WORKSTATION
+  workers: 32
+  thread_variables: [OMP_NUM_THREADS, OPENBLAS_NUM_THREADS, MKL_NUM_THREADS]
+  thread_setting: EACH_SET_TO_1_IN_THE_RUN_ENVIRONMENT_AND_CHECKED_TORCH_ONE_THREAD_IN_EACH_SIMULATION_WORKER
+  runs: [development, reproduction]
+  output_root: /ssd
+  identity_artifacts: [o39_summary.json, o39_receipt.json]
+  timing: o39_timing.json
+  runtime_estimate_minutes_per_run: [3, 20]
+  runtime_basis: >-
+    A timing pilot on scratch seed 1 that printed no estimate. A 30-replicate
+    simulation task took 6 to 8 s and a bootstrap fit 2.6 ms on one thread:
+    102 tasks and 324,000 fits, about 26 CPU minutes before worker start-up.
+  memory_estimate_gib: [2, 16]
+  rerun_must_be_byte_identical: true
+
+boundary:
+  empirical_rows_read: 0
+  data_bound_source: A_NUMBER_IN_THE_RECORDED_E4_RESULT
+  identifies_learning: false
+  calibrates_study2: false
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  study2_code_changed: false
+  model_selected: 'NO'
+
+precommit:
+  run_requires_full_commit_sha: true
+  run_requires_clean_bound_paths: true
+  precommit_paths:
+  - docs/research/pivot-learning-strength-v1.md
+  - experiments/configs/pivot_learning_strength_v1.yaml
+  - scripts/prototype_pivot_learning_strength_v1.py
+  - tests/test_pivot_learning_strength_v1.py
+  - scripts/inspect_release_artifacts.py
+  - tests/test_release_artifact_inspection.py
+  interpretation_before_frozen_execution: FORBIDDEN
