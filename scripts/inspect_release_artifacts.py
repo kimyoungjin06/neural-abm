@@ -335,6 +335,7 @@ PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/pivot_learning_strength_v1.yaml",
     "scripts/prototype_pivot_learning_strength_v1.py",
     "tests/test_pivot_learning_strength_v1.py",
+    "tests/test_pivot_learning_strength_v1_result.py",
 }
 PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-relative-delay-cost-v1.md",
