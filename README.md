@@ -324,7 +324,8 @@ torch-backed behavior. The early-user checklist is in
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
 - Repository-only policy-ladder ledger at
-  `docs/research/pivot-policy-ladder-consolidation-v14.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v15.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v14.md`,
   `docs/research/pivot-policy-ladder-consolidation-v13.md`,
   `docs/research/pivot-policy-ladder-consolidation-v12.md`,
   `docs/research/pivot-policy-ladder-consolidation-v11.md`,
@@ -342,8 +343,9 @@ torch-backed behavior. The early-user checklist is in
   utility, prior calibration, and world calibration), the entry-matched
   control of the Pivot LLM prior, the linear-learner diagnosis, the
   converged capacity comparison, the peer-outcome contrast of Study 2
-  against OpenAlex coauthor data, and Study 2 at a learning strength those
-  data allow.
+  against OpenAlex coauthor data, Study 2 at a learning strength those
+  data allow, and a rule that predicts where a table written before the run
+  loses to the closed loop.
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
   and Granovetter special cases, plus explicitly labeled FJ-like anchored and
   self-excluding HK variants, as settings of the same lifecycle.
@@ -477,6 +479,14 @@ released in `v0.1.0a6`.
     generator.
 - **When the closed loop wins.** It won when a run carried information the
   donors lacked. It beat the best table once about a quarter of runs did.
+  - **Where it starts depends on the table and the evidence.** Across tables
+    of 1 to 8 donors and three levels of within-run evidence, the closed
+    loop's first material win came when about 5% to 25% of runs carried such
+    information.
+  - **A rule predicts it partly.** The rule uses between-run heterogeneity
+    and within-run evidence, measured before the comparison. It placed the
+    crossing within 0.05 in 6 of 9 settings, against 2 of 9 for two
+    baselines. It was too late when evidence was scarce.
 - **LLM comparators.**
   - The learner beat AgentTorch-style LLM archetypes in every setting.
   - An LLM prior added nothing detectable inside the learner on share
@@ -490,8 +500,9 @@ released in `v0.1.0a6`.
 
 These results are synthetic, and they are scored on items whose fact-check
 was not yet public. They make no claim about real information spread. The
-ledger is `docs/research/pivot-policy-ladder-consolidation-v14.md`, which
-extends `docs/research/pivot-policy-ladder-consolidation-v13.md`,
+ledger is `docs/research/pivot-policy-ladder-consolidation-v15.md`, which
+extends `docs/research/pivot-policy-ladder-consolidation-v14.md`,
+`docs/research/pivot-policy-ladder-consolidation-v13.md`,
 `docs/research/pivot-policy-ladder-consolidation-v12.md`,
 `docs/research/pivot-policy-ladder-consolidation-v11.md`,
 `docs/research/pivot-policy-ladder-consolidation-v10.md`,
