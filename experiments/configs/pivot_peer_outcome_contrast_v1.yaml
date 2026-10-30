@@ -1,0 +1,301 @@
+schema_version: pivot_peer_outcome_contrast.v1
+label: pivot_peer_outcome_contrast_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-30'
+experiment: RECOMMENDED_EXPERIMENT_4_STUDY_2_AGAINST_OPENALEX
+purpose: >-
+  Study 2 postulates that researchers learn from the visible pivot outcomes
+  of their network neighbors, and that the direction of that learning,
+  imitative or failure-only, decides whether failed pivots grow. This study
+  puts one observable of that mechanism to the OpenAlex discovery partition.
+  When a coauthor enters a surge topic, does an author's own entry depend on
+  the coauthor's outcome there once it becomes visible, beyond the
+  association it already has before it is visible? The same estimator is
+  first run on Study 2's own arms, so the data can be read against what each
+  learning rule produces, including the arm that does not learn.
+
+source_bindings:
+- path: examples/research_pivot_learning_study.py
+  sha256: cd0e4cdd28028c402a84405354aef81a22713584b76f03ba210734bdcbc28c40
+  role: STUDY2_SCRIPT_RUN_UNCHANGED_THROUGH_TWO_SLOTS
+- path: examples/research_pivot_study.py
+  sha256: 5b6111b0a32d344aea303d8f0800299528a98464716c4595605b71aef5052c04
+  role: STUDY1_SCRIPT_IMPORTED_BY_STUDY2
+- path: docs/case-studies/researcher-pivot/data/learning_study_results.json
+  sha256: 98c97cac1a4d18b0e3fc0c087d63adc717b470374aae861f87696c7389d314b8
+  role: STUDY2_TRACKED_REPLICATE_RUNS_FOR_PARITY
+- path: scripts/build_pivot_empirical_ladder_risk_sets_v1.py
+  sha256: a1d5194df3ad2e10f7aa87d180b6cdb5190a32d0d2cd4f9dbc79c8055507dfb9
+  role: N11B_BUILDER_REUSED_BY_HASH_BOUND_IMPORT
+- path: experiments/configs/pivot_empirical_ladder_risk_sets_v1.yaml
+  sha256: 4a8e02382dd67a96136162e054ebe92916410e477425335fe8ac113f1eb386fd
+  role: N11B_CONTRACT_S1_INPUTS_CLOCK_AND_G4_GUARD
+- path: experiments/evidence/results/pivot_empirical_ladder_risk_sets_v1_20261012.summary.json
+  sha256: e19b041f569b69efe66177247eddf5f31cbd66f7ee6df503e55beb4d5edde134
+  role: N11B_RECORDED_RESULT_RECEIPT_HASH_AND_BYTE_IDENTITY
+- path: experiments/configs/pivot_empirical_ladder_recovery_v3.yaml
+  sha256: 28477cbc6003ab69a767c31c93eb9dba460f49f783687133635b963883fbe855
+  role: N11A_V3_ANALYST_LABEL_VISIBILITY_AND_CENSORING_RULES
+- path: experiments/evidence/results/pivot_empirical_ladder_recovery_v3_20261012.summary.json
+  sha256: 2edbca9ccc78a231afd1e0a8be827ea0b11816df3168d8e97b61e74d254a0467
+  role: N11A_V3_RESULT_WHY_THIS_IS_NOT_THE_N11_LADDER
+- path: experiments/configs/pivot_policy_ladder_consolidation_v5.yaml
+  sha256: c8692d24de617af1397ffe4996197c6b5d097ebcfd546c76ac45d37c1311e8c2
+  role: LEDGER_V5_N11_CLOSURE_AND_DATA_ACCESS
+- path: experiments/configs/pivot_policy_ladder_consolidation_v12.yaml
+  sha256: dc5f6764c5533b3e6ed86e1951664695f18c557198d51fb609a840a4f6ca43f0
+  role: LEDGER_V12_CURRENT_STATE
+- path: docs/research/pivot-nabm-case-study-bridge-v1.md
+  sha256: 383209f62bb21adad651b1df5d056a91c5a075e8638b7e12c64c62dd43df7dd9
+  role: BRIDGE_REGISTERED_RESULT_SPACE
+
+precondition:
+  n11b_status: N11B_PASS_RISK_SETS_REPRODUCED_NO_OUTCOME
+  n11a_v3_status: UNDERPOWERED_AT_THE_EMPIRICAL_SHAPE_NO_FALSE_RECOVERY
+  why_not_the_n11_ladder: >-
+    N11 asked whether entry selectivity rotates toward the revealed success
+    relation across an episode, and could not separate that from
+    anticipation with episode-level variation. This study uses dyad-level
+    variation inside an episode and quarter, and it does not claim to
+    identify learning.
+
+inputs:
+  n11b_root: /ssd/pivot_empirical_ladder_risk_sets_v1_d6b7f98_development
+  n11b_receipt_sha256: cc918fdb439f5d12a7dee5f4ac1b72bdf0027d1ff623c2448294483e46e28ebf
+  n11b_files: [private/panel.parquet, private/episodes_sampling.parquet]
+  s1: THE_N11B_CONTRACT_S1_ROOT_FILES_AND_RECEIPT_CHECKED_BY_THE_N11B_PREFLIGHT
+  g4_guard: THE_S1_CONTRACT_GUARD_PATH_HASH_ROWS_AND_COLUMN
+
+data_access:
+  partition: DISCOVERY_ONLY
+  episodes: THE_24_S1_DISCOVERY_EPISODES
+  reads:
+  - S1_EXTRACT_WORKS_AND_AUTHORSHIPS
+  - N11B_PANEL_ROWS_OF_DISCOVERY_EPISODES
+  - FOLLOW_UP_TOPIC_WORKS_OF_DISCOVERY_S1_ENTRANTS_IN_THEIR_LABEL_WINDOW
+  - ENTRY_WORK_COAUTHORS_OF_DISCOVERY_S1_ENTRANTS
+  not_read:
+  - ANY_FOLLOW_UP_OR_LABEL_OF_A_CONFIRMATORY_EPISODE
+  - ANY_FOLLOW_UP_OF_A_COAUTHOR_ENTRANT_WHO_IS_NOT_AN_S1_ENTRANT_OF_THE_EPISODE
+  - ANY_G4_OUTCOME
+  boundary_check: A_FIXTURE_TEST_ADDS_CONFIRMATORY_AND_NON_S1_FOLLOW_UPS_AND_EVERY_OUTPUT_IS_UNCHANGED
+  confirmatory_outcomes: SEALED_A_REPLICATION_NEEDS_ITS_OWN_PRECOMMIT_AND_AUTHORIZATION
+
+clock:
+  quarter_offset: THE_N11B_CLOCK_4_TIMES_YEAR_PLUS_MONTH_MINUS_1_DIV_3_MINUS_4_TIMES_T
+  quarters: 12
+  imprecise_date: JANUARY_1
+
+empirical_units:
+  risk_set: THE_N11B_RULE_FIELD_WORK_IN_Y_MINUS_3_TO_Y_MINUS_1_NO_TOPIC_WORK_BEFORE_Y_NOT_G4_GUARDED
+  dyad: >-
+    An author at risk in response year y and a coauthor of one of the
+    author's extract works dated in y-3 to y-1 whose first work in the
+    episode topic falls in the episode's response years. This is the set
+    N11b counts as coauthor entry exposure.
+  coauthor_entry_visible_from: THE_N11B_RULE_PRECISE_NEXT_QUARTER_IMPRECISE_FIRST_QUARTER_OF_THE_NEXT_YEAR
+  coauthor_outcome:
+    applies_to: COAUTHORS_WHO_ARE_S1_ENTRANTS_OF_THE_SAME_DISCOVERY_EPISODE
+    precise:
+      label: A_FOLLOW_UP_TOPIC_WORK_IN_THE_FOUR_QUARTERS_AFTER_THE_ENTRY_QUARTER_DATED_TO_THE_QUARTER_OR_DATED_TO_A_YEAR_LYING_WHOLLY_IN_THAT_WINDOW
+      visible_from: ENTRY_QUARTER_PLUS_5
+    imprecise:
+      label: A_FOLLOW_UP_TOPIC_WORK_DATED_IN_THE_CALENDAR_YEAR_AFTER_THE_ENTRY_YEAR
+      visible_from: FIRST_QUARTER_OF_THE_ENTRY_YEAR_PLUS_2
+    source: THE_N11A_V3_ANALYST_RULES_UNCHANGED
+    other_coauthor_entrants: STATE_U_OUTCOME_NOT_READ
+  states_at_quarter_q:
+    S: OUTCOME_VISIBLE_AND_A_FOLLOW_UP
+    F: OUTCOME_VISIBLE_AND_NO_FOLLOW_UP
+    P_S: ENTRY_VISIBLE_OUTCOME_NOT_YET_VISIBLE_EVENTUALLY_A_FOLLOW_UP
+    P_F: ENTRY_VISIBLE_OUTCOME_NOT_YET_VISIBLE_EVENTUALLY_NO_FOLLOW_UP
+    U: ENTRY_VISIBLE_COAUTHOR_NOT_AN_S1_ENTRANT
+  events: PRECISE_NOT_RECRUITED_ENTRIES_IN_THEIR_ENTRY_QUARTER
+  censoring:
+    imprecise_entrant: FROM_THE_FIRST_QUARTER_OF_THE_ENTRY_YEAR
+    recruited_precise_entrant: FROM_THE_ENTRY_QUARTER_AS_A_COMPETING_RISK
+    recruited_flag: THE_ENTRY_WORK_HAS_AS_COAUTHOR_AN_AUTHOR_WHOSE_FIRST_TOPIC_WORK_IS_EARLIER_AND_IN_THE_RESPONSE_YEARS
+    source: THE_N11A_V3_RULES
+  sampling:
+    exposed_authors: EVERY_AUTHOR_AT_RISK_WITH_AT_LEAST_ONE_DYAD_IN_THE_EPISODE_WEIGHT_1
+    other_authors: THE_N11B_CASE_COHORT_ROWS_ENTRANTS_WEIGHT_1_SUBCOHORT_WEIGHT_1_OVER_THE_EPISODE_PROBABILITY
+    why: EXPOSURE_IS_RARE_SO_EVERY_EXPOSED_AUTHOR_IS_KEPT_AND_THE_HORVITZ_THOMPSON_WEIGHTS_STAY_KNOWN
+  parity_with_n11b:
+  - EVERY_N11B_PANEL_ROW_OF_AN_EXPOSED_AUTHOR_IS_REBUILT_WITH_THE_SAME_QUARTER_EVENT_FEATURES_AND_COAUTHOR_ENTRY_COUNT
+  - EVERY_N11B_PANEL_ROW_OF_ANOTHER_AUTHOR_HAS_NO_VISIBLE_COAUTHOR_ENTRY
+  - EVERY_DISCOVERY_S1_ENTRANT_HAS_A_LABEL
+
+simulation:
+  study2_config: THE_TRACKED_LEARNING_STUDY_CONFIG_UNCHANGED
+  scenarios: [baseline, interdisciplinary_seed_grants, hot_field_hype]
+  arms: [frozen, imitative, cautionary]
+  replicates: 30
+  outcome_delays: [0, 3]
+  delay_meaning: >-
+    An agent learns from a neighbor's pivot outcome 1 + delay steps after the
+    pivot. Delay 0 is Study 2 as tracked. The environment slot keeps every
+    step's events and hands the agents those of step s - 1 - delay; nothing
+    else changes.
+  slots:
+    environment: THE_STUDY2_ENVIRONMENT_WITH_AN_EVENT_HISTORY
+    agent: THE_STUDY2_AGENT_REGISTERED_FOR_ITS_LOG
+  parity:
+  - DELAY_0_REPRODUCES_EVERY_TRACKED_REPLICATE_RUN_EXACTLY
+  - THE_FROZEN_ARM_AT_DELAY_3_EQUALS_THE_FROZEN_ARM_AT_DELAY_0
+  units:
+    decision_steps: THE_STEPS_AFTER_BURN_IN_3_TO_14
+    dyad: AN_AGENT_AND_A_NEIGHBOR_IN_ITS_OWN_NEIGHBOR_LIST
+    neighbor_entry_visible_from: THE_STEP_AFTER_THE_NEIGHBOR_PIVOT
+    neighbor_outcome_visible_from: THE_PIVOT_STEP_PLUS_1_PLUS_DELAY
+    label: THE_PRODUCTIVE_FLAG
+    events: PIVOTS
+    fixed_effects: REPLICATE_X_STEP
+    features: CAREER_STAGE_INDICATORS
+    features_why: >-
+      The data observe only proxies of an author's position, so the
+      simulation controls only for career stage. Controlling for all nine
+      features would remove the homophily that the placebo must face.
+
+estimator:
+  model: DISCRETE_TIME_LOGISTIC_HAZARD_ON_CELLS_OF_IDENTICAL_COVARIATES_WITH_WEIGHTED_TRIALS_AND_EVENTS
+  fixed_effects: EPISODE_X_QUARTER_UNPENALIZED_GROUPS_WITH_NO_EVENTS_OR_ONLY_EVENTS_DROPPED
+  features:
+    productivity_works: [[1, 1], [2, 2], [3, 5], [6, null]]
+    subfield_share: [ZERO, BELOW_ONE_HALF, ONE_HALF_OR_MORE]
+    career_age_years: [[null, 2], [3, 5], [6, 10], [11, null]]
+    incumbent_coauthors: AT_LEAST_ONE
+  exposure_model:
+    rows: EVERY_ROW
+    term: AT_LEAST_ONE_VISIBLE_COAUTHOR_ENTRY
+  state_model:
+    rows: ROWS_WITH_AT_LEAST_ONE_VISIBLE_COAUTHOR_ENTRY
+    terms: [S, F, P_S, U]
+    reference: P_F
+    reference_if_absent: F
+    controls:
+      visible_coauthor_entries: [[1, 1], [2, 2], [3, null]]
+      quarters_since_the_first_visible_entry: [[0, 0], [1, 1], [2, 2], [3, 3], [4, 4], [5, 7], [8, 11]]
+  ridge_on_non_fixed_effect_coefficients: 1.0
+  newton:
+    tolerance: 1.0e-10
+    max_iterations: 200
+    max_step_log_odds: 5.0
+    a_step_that_does_not_raise_the_likelihood: NEVER_TAKEN_THE_FIT_STOPS_UNCONVERGED
+    full_sample_fit_not_converged: INVALID_IMPLEMENTATION_STOP
+    bootstrap_fit_not_converged: COUNTED_AND_ITS_DRAW_LEFT_OUT_OF_THAT_INTERVAL
+  contrasts:
+    outcome_gap_visible: S_MINUS_F
+    outcome_gap_before_visible: P_S_MINUS_P_F
+    visibility_did: OUTCOME_GAP_VISIBLE_MINUS_OUTCOME_GAP_BEFORE_VISIBLE
+    success_following: S_MINUS_P_S
+    failure_avoidance: F_MINUS_P_F
+  entry_order_model:
+    rows: PRECISE_ENTRANTS_OR_PIVOTERS
+    outcome: THE_LABEL
+    term: ENTRY_QUARTER_OR_DECISION_STEP_INDEX_OVER_11
+    fixed_effects: EPISODE_OR_REPLICATE
+  undefined_when: A_STATE_IN_THE_CONTRAST_HAS_FEWER_THAN_10_EVENTS_IN_THE_FULL_SAMPLE
+  bootstrap:
+    clusters: EPISODES_IN_THE_DATA_REPLICATES_IN_THE_SIMULATION
+    draws: 2000
+    seed: 20261030
+    interval: PERCENTILE_2_5_TO_97_5
+    streams: SEEDSEQUENCE_OF_THE_SEED_WITH_KEY_1_SCENARIO_INDEX_DELAY_IN_THE_SIMULATION_AND_KEY_2_IN_THE_DATA
+    joint_across_arms: THE_SAME_REPLICATE_DRAWS_FOR_EVERY_ARM_OF_A_SCENARIO_AND_DELAY
+  learning_attributable: AN_ARM_CONTRAST_MINUS_THE_FROZEN_CONTRAST_ON_THE_SAME_DRAWS
+
+expectations:
+  ES2:
+    statement: >-
+      In Study 2 as tracked, the imitative arm's outcome gap exceeds the
+      frozen arm's in the baseline and seed-grant scenarios.
+    check: IMITATIVE_DELAY_0_OUTCOME_GAP_VISIBLE_LEARNING_ATTRIBUTABLE_LOW_ABOVE_0_IN_BASELINE_AND_GRANTS
+  ES3:
+    statement: >-
+      With a three-step delay, the visibility DiD of the frozen arm, which
+      does not learn, covers zero in every scenario. If it does not, the
+      estimator flags learning where there is none, and the data DiD is not
+      interpretable.
+    check: FROZEN_DELAY_3_VISIBILITY_DID_INTERVAL_COVERS_0_IN_ALL_THREE_SCENARIOS
+  EE1:
+    statement: A visible coauthor entry is associated with a higher entry hazard.
+    check: DATA_EXPOSURE_TERM_LOW_ABOVE_0
+  EE2:
+    statement: >-
+      Before the coauthor's outcome is visible, authors whose coauthor will
+      follow up already enter more often than authors whose coauthor will not
+      (homophily).
+    check: DATA_OUTCOME_GAP_BEFORE_VISIBLE_LOW_ABOVE_0
+  none_on_the_did: THE_STUDY_STATES_NO_EXPECTATION_ON_THE_DATA_VISIBILITY_DID
+
+decision:
+  checks_before_any_outcome:
+  - STUDY2_PARITY
+  - N11B_PREFLIGHT
+  - N11B_OUTPUT_HASHES
+  - N11B_PARITY_ON_EXPOSED_AND_UNEXPOSED_ROWS
+  stop_if_a_check_fails: INVALID_IMPLEMENTATION_STOP_NO_DISPOSITION
+  estimator_validity: ES3
+  data_disposition:
+    if_es3_failed: NOT_INTERPRETABLE_THE_ESTIMATOR_FLAGS_STUDY2_FROZEN_ARM
+    if_did_undefined: UNDEFINED_TOO_FEW_EVENTS
+    if_did_low_above_0:
+      success_following_low_above_0_and_failure_avoidance_high_below_0: CONSISTENT_WITH_IMITATIVE
+      failure_avoidance_high_below_0_only: CONSISTENT_WITH_CAUTIONARY
+      success_following_low_above_0_only: SUCCESS_FOLLOWING_ONLY_NO_STUDY2_ARM
+      neither: OUTCOME_DEPENDENCE_EMERGES_WITHOUT_A_DIRECTION
+    if_did_high_below_0: OUTCOME_ASSOCIATION_WEAKENS_ONCE_VISIBLE
+    otherwise: NO_VISIBILITY_EFFECT_DETECTED
+  status_prefix: E4_
+  reading: >-
+    A disposition says which Study 2 arm the data pattern resembles. It does
+    not identify learning. Homophily that changes over time, such as a group
+    moving into the topic together, can produce the same pattern; the
+    placebo removes only the part fixed before the outcome is visible.
+  sign_map: EVERY_CONTRAST_FOR_EVERY_SCENARIO_ARM_AND_DELAY_REPORTED_BESIDE_THE_DATA
+
+reported_not_decided:
+- ENTRY_ORDER_GRADIENT_IN_THE_DATA_AND_IN_EACH_ARM
+- THE_EXPOSURE_TERM_ALSO_WITH_RECRUITED_ENTRIES_COUNTED_AS_EVENTS
+- RECRUITED_SHARE_OF_PRECISE_ENTRANTS_AND_SHARE_WITH_AN_INCUMBENT_ENTRY_COAUTHOR
+- COUNTS_OF_DYADS_ROWS_AND_EVENTS_BY_STATE
+- LABEL_RATE_OF_DISCOVERY_ENTRANTS
+
+execution:
+  host: THE_WORKSTATION
+  workers: 32
+  runs: [development, reproduction]
+  output_root: /ssd
+  identity_artifacts: [e4_summary.json, e4_receipt.json, private/cells.parquet]
+  timing: e4_timing.json
+  private_mode: '0700'
+  runtime_estimate_minutes_per_run: [10, 60]
+  runtime_basis: STRUCTURE_DRY_RUN_40_S_AND_SIMULATION_SMOKE_ABOUT_3_MIN_BOTH_WITHOUT_ANY_LABEL
+  memory_estimate_gib: [20, 80]
+  rerun_must_be_byte_identical: true
+
+authorization:
+  file: experiments/configs/pivot_peer_outcome_contrast_authorization_v1.json
+  outcomes: DISCOVERY_PARTITION_ONLY
+  confirmatory_outcomes: NOT_AUTHORIZED
+  g4_outcomes: NOT_AUTHORIZED
+
+boundary:
+  identifies_learning: false
+  causal_claim: NONE
+  partition: DISCOVERY_ONLY
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  study2_code_changed: false
+  model_selected: 'NO'
+
+precommit:
+  precommit_paths:
+  - docs/research/pivot-peer-outcome-contrast-v1.md
+  - experiments/configs/pivot_peer_outcome_contrast_v1.yaml
+  - experiments/configs/pivot_peer_outcome_contrast_authorization_v1.json
+  - scripts/prototype_pivot_peer_outcome_contrast_v1.py
+  - tests/test_pivot_peer_outcome_contrast_v1.py
+  - scripts/inspect_release_artifacts.py
+  - tests/test_release_artifact_inspection.py
+  - tests/duckdb_overlay_tests.txt

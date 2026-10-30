@@ -1,0 +1,29 @@
+{
+  "schema_version": "pivot_peer_outcome_contrast_authorization.v1",
+  "status": "AUTHORIZED_DISCOVERY_PEER_OUTCOME_CONTRAST",
+  "authorized_on": "2026-10-30",
+  "contract": "experiments/configs/pivot_peer_outcome_contrast_v1.yaml",
+  "contract_sha256": "2ce27b1577fbaa839f302f98a1b2209be62363256388ec1e8c5374f33217c2ef",
+  "script": "scripts/prototype_pivot_peer_outcome_contrast_v1.py",
+  "script_sha256": "0c963cd8beac4fef7d7cf0b9d6145425df4f097ebbc797ac54bdce86597ea484",
+  "human_authorization": {
+    "user_instruction": "PR 만들어서 병합하고 실험 4 진행하자",
+    "earlier_instructions": [
+      "좋아. 그럼 권고실헙무터 진행하자",
+      "좋아 차례대로 진행하자"
+    ],
+    "context": "THE_USER_DIRECTED_RECOMMENDED_EXPERIMENT_4_STUDY_2_AGAINST_OPENALEX_FIELD_MOVEMENT_DATA_THIS_RUN_READS_DISCOVERY_OUTCOMES_ONLY"
+  },
+  "role": "STUDY_2_LEARNING_DIRECTION_AGAINST_THE_DISCOVERY_PARTITION",
+  "scope": {
+    "reads": "THE_HASH_BOUND_PRIVATE_S1_EXTRACT_THE_N11B_PANEL_AND_SAMPLING_OF_DISCOVERY_EPISODES_AND_THE_G4_GUARD_AUTHOR_ID_COLUMN",
+    "writes": "PRIVATE_MODE_0700_OUTPUTS_UNDER_SSD_A_COUNTS_AND_ESTIMATES_SUMMARY_AND_AGGREGATED_CELLS_WITHOUT_IDENTIFIERS",
+    "runs": [
+      "development",
+      "reproduction"
+    ]
+  },
+  "outcomes": "DISCOVERY_PARTITION_ONLY",
+  "confirmatory_outcomes": "NOT_AUTHORIZED",
+  "g4_outcomes": "NOT_AUTHORIZED"
+}

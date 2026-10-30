@@ -1,0 +1,1861 @@
+{
+  "boundary": {
+    "causal_claim": "NONE",
+    "generic_nabm_api_changed": false,
+    "identifies_learning": false,
+    "llm_calls": 0,
+    "model_selected": "NO",
+    "partition": "DISCOVERY_ONLY",
+    "study2_code_changed": false
+  },
+  "checks": {
+    "n11b_output_drift": [],
+    "n11b_parity": {
+      "discovery_entrants_without_a_label": 0,
+      "discovery_episodes_without_a_probability": 0,
+      "exposed_panel_rows_differing": 0,
+      "exposed_panel_rows_extra": 0,
+      "exposed_panel_rows_missing": 0,
+      "rows_outside_a_registered_bin": 0,
+      "s1_entrants_missing_from_their_rows": 0,
+      "state_rows_differing_from_structure": 0,
+      "unexposed_panel_rows_with_a_visible_entry": 0
+    },
+    "n11b_preflight": "PASS_N11B_PREFLIGHT_HASHES_ONLY",
+    "n11b_receipt_identity": true,
+    "study2_parity": {
+      "delay_0_runs_checked": 270,
+      "delay_0_runs_equal": 270,
+      "frozen_delay_3_runs_equal": 90,
+      "passes": true
+    }
+  },
+  "data": {
+    "counts": {
+      "coauthor_entrants": 50847,
+      "discovery_entrants": 10418,
+      "discovery_episodes": 24,
+      "discovery_precise_entrants": 6291,
+      "dyads": 503879,
+      "dyads_with_an_s1_coauthor": 230800,
+      "exposed_authors": 177254,
+      "exposed_rows": 1613078,
+      "exposed_rows_with_a_visible_entry": 634492,
+      "labelled_imprecise_entrants": 304,
+      "labelled_precise_entrants": 920,
+      "n11b_discovery_rows_replaced": 82714,
+      "precise_entrants_with_an_incumbent_entry_coauthor": 3231,
+      "recruited_precise_entrants": 769
+    },
+    "estimates": {
+      "entry_order/entry_time": {
+        "finite_draws": 2000,
+        "high": 0.286745,
+        "low": -0.224447,
+        "mean": 0.010148
+      },
+      "exposure/exposed": {
+        "finite_draws": 2000,
+        "high": 0.739374,
+        "low": 0.366647,
+        "mean": 0.519796
+      },
+      "exposure_recruited_as_events/exposed": {
+        "finite_draws": 2000,
+        "high": 1.323049,
+        "low": 0.947639,
+        "mean": 1.077772
+      },
+      "state/failure_avoidance": {
+        "finite_draws": 2000,
+        "high": 0.113755,
+        "low": -0.749031,
+        "mean": -0.301549
+      },
+      "state/outcome_gap_before_visible": {
+        "finite_draws": 2000,
+        "high": 0.582636,
+        "low": -0.552679,
+        "mean": 0.289867
+      },
+      "state/outcome_gap_visible": {
+        "finite_draws": 2000,
+        "high": 0.789381,
+        "low": -0.519113,
+        "mean": 0.228246
+      },
+      "state/success_following": {
+        "finite_draws": 2000,
+        "high": 0.246602,
+        "low": -0.727378,
+        "mean": -0.36317
+      },
+      "state/visibility_did": {
+        "finite_draws": 2000,
+        "high": 0.537867,
+        "low": -0.491744,
+        "mean": -0.061621
+      }
+    },
+    "state_events": {
+      "F": 60.0,
+      "P_F": 110.0,
+      "P_S": 32.0,
+      "S": 17.0,
+      "U": 212.0,
+      "reference": "P_F"
+    },
+    "unconverged_fits": 0
+  },
+  "data_access": {
+    "confirmatory_outcome_rows_read": 0,
+    "g4_outcome_rows_read": 0,
+    "partition": "DISCOVERY_ONLY"
+  },
+  "date": "2026-10-30",
+  "decision": {
+    "disposition": "NOT_INTERPRETABLE_THE_ESTIMATOR_FLAGS_STUDY2_FROZEN_ARM",
+    "expectations": {
+      "EE1": {
+        "held": true,
+        "row": {
+          "finite_draws": 2000,
+          "high": 0.739374,
+          "low": 0.366647,
+          "mean": 0.519796
+        }
+      },
+      "EE2": {
+        "held": false,
+        "row": {
+          "finite_draws": 2000,
+          "high": 0.582636,
+          "low": -0.552679,
+          "mean": 0.289867
+        }
+      },
+      "ES2": {
+        "held": false,
+        "rows": {
+          "baseline": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "interdisciplinary_seed_grants": {
+            "finite_draws": 2000,
+            "high": 7.693771,
+            "low": 6.435367,
+            "mean": 7.02857
+          }
+        }
+      },
+      "ES3": {
+        "covers_zero": {
+          "baseline": null,
+          "hot_field_hype": true,
+          "interdisciplinary_seed_grants": false
+        },
+        "defined_in": [
+          "interdisciplinary_seed_grants",
+          "hot_field_hype"
+        ],
+        "held": false,
+        "rows": {
+          "baseline": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "hot_field_hype": {
+            "finite_draws": 2000,
+            "high": 0.736866,
+            "low": -0.294878,
+            "mean": 0.199009
+          },
+          "interdisciplinary_seed_grants": {
+            "finite_draws": 2000,
+            "high": -0.371394,
+            "low": -1.156219,
+            "mean": -0.785081
+          }
+        }
+      }
+    },
+    "status": "E4_NOT_INTERPRETABLE_THE_ESTIMATOR_FLAGS_STUDY2_FROZEN_ARM"
+  },
+  "decision_status": "FROZEN_DECISION_COMPLETE_DATA_DID_NOT_INTERPRETED",
+  "execution": {
+    "byte_identical": {
+      "e4_receipt.json": true,
+      "e4_summary.json": true,
+      "private/cells.parquet": true
+    },
+    "duckdb_threads": 16,
+    "host": "THE_WORKSTATION",
+    "peak_memory_gib": {
+      "development": 7.1,
+      "reproduction": 7.1
+    },
+    "phase_seconds_development": {
+      "empirical_build": 58.9,
+      "estimation": 1176.8,
+      "simulation_runs": 146.7
+    },
+    "receipt_sha256": "83d3d1774a5b497aa9856f37073792df3205283ffaeb9b8a5a9304751085e88c",
+    "runs": {
+      "development": "/ssd/pivot_peer_outcome_contrast_v1_586f33b_development",
+      "reproduction": "/ssd/pivot_peer_outcome_contrast_v1_586f33b_reproduction"
+    },
+    "runtime_estimate_minutes": [
+      10,
+      60
+    ],
+    "summary_sha256": "60f09696afd3ae55091f98d7a1b33a1ce183d87e0486bb34d600968807ceaf20",
+    "wall_seconds": {
+      "development": 1383.6,
+      "reproduction": 1487.4
+    },
+    "workers": 32
+  },
+  "experiment": "RECOMMENDED_EXPERIMENT_4_STUDY_2_AGAINST_OPENALEX",
+  "label": "pivot_peer_outcome_contrast_v1",
+  "post_hoc": {
+    "data_outcome_gap_visible_high": 0.789381,
+    "data_visibility_did_high": 0.537867,
+    "entry_order_means": {
+      "cautionary": {
+        "baseline/delay_0": 0.560767,
+        "baseline/delay_3": 0.715519,
+        "hot_field_hype/delay_0": 0.335762,
+        "hot_field_hype/delay_3": -0.515638,
+        "interdisciplinary_seed_grants/delay_0": -0.286503,
+        "interdisciplinary_seed_grants/delay_3": -0.877768
+      },
+      "data": {
+        "finite_draws": 2000,
+        "high": 0.286745,
+        "low": -0.224447,
+        "mean": 0.010148
+      },
+      "frozen": {
+        "baseline/delay_0": 0.557604,
+        "baseline/delay_3": 0.557604,
+        "hot_field_hype/delay_0": -0.738806,
+        "hot_field_hype/delay_3": -0.738806,
+        "interdisciplinary_seed_grants/delay_0": -1.371252,
+        "interdisciplinary_seed_grants/delay_3": -1.371252
+      },
+      "imitative": {
+        "baseline/delay_0": -3.476989,
+        "baseline/delay_3": -1.752542,
+        "hot_field_hype/delay_0": -0.982852,
+        "hot_field_hype/delay_3": -0.432118,
+        "interdisciplinary_seed_grants/delay_0": -8.040865,
+        "interdisciplinary_seed_grants/delay_3": -3.736085
+      }
+    },
+    "exposure_means": {
+      "cautionary": {
+        "baseline/delay_0": 0.959411,
+        "baseline/delay_3": 1.056442,
+        "hot_field_hype/delay_0": -0.332993,
+        "hot_field_hype/delay_3": 0.282024,
+        "interdisciplinary_seed_grants/delay_0": 0.180212,
+        "interdisciplinary_seed_grants/delay_3": 0.171966
+      },
+      "data": {
+        "finite_draws": 2000,
+        "high": 0.739374,
+        "low": 0.366647,
+        "mean": 0.519796
+      },
+      "frozen": {
+        "baseline/delay_0": 1.274072,
+        "baseline/delay_3": 1.274072,
+        "hot_field_hype/delay_0": 0.40263,
+        "hot_field_hype/delay_3": 0.40263,
+        "interdisciplinary_seed_grants/delay_0": 0.385899,
+        "interdisciplinary_seed_grants/delay_3": 0.385899
+      },
+      "imitative": {
+        "baseline/delay_0": 4.53594,
+        "baseline/delay_3": 4.143734,
+        "hot_field_hype/delay_0": 0.604821,
+        "hot_field_hype/delay_3": 0.662323,
+        "interdisciplinary_seed_grants/delay_0": 1.485377,
+        "interdisciplinary_seed_grants/delay_3": 0.902523
+      }
+    },
+    "frozen_arm_visibility_did_at_delay_3": {
+      "baseline": {
+        "finite_draws": 2000,
+        "high": null,
+        "low": null,
+        "mean": null
+      },
+      "hot_field_hype": {
+        "finite_draws": 2000,
+        "high": 0.736866,
+        "low": -0.294878,
+        "mean": 0.199009
+      },
+      "interdisciplinary_seed_grants": {
+        "finite_draws": 2000,
+        "high": -0.371394,
+        "low": -1.156219,
+        "mean": -0.785081
+      }
+    },
+    "frozen_grants_bias_exceeds_the_data_interval_half_width": true,
+    "imitative_outcome_gap_visible_min_mean": 6.952085,
+    "imitative_visibility_did_at_delay_3_min_mean": 9.674923,
+    "incumbent_entry_coauthor_share_of_precise_entrants": 0.5136,
+    "label_rate_of_precise_entrants": 0.1462,
+    "recruited_share_of_precise_entrants": 0.1222,
+    "s1_coauthor_share_of_dyads": 0.458,
+    "status": "POST_HOC_DESCRIPTIVE_NOT_REGISTERED",
+    "study2_productive_share_of_pivots": {
+      "baseline": {
+        "cautionary": 0.7889,
+        "frozen": 0.8217,
+        "imitative": 0.4165
+      },
+      "hot_field_hype": {
+        "cautionary": 0.3533,
+        "frozen": 0.3291,
+        "imitative": 0.3513
+      },
+      "interdisciplinary_seed_grants": {
+        "cautionary": 0.7589,
+        "frozen": 0.7048,
+        "imitative": 0.5361
+      }
+    }
+  },
+  "precommit_commit": "586f33bff0b50b4d7363555bb8d718d008be369a",
+  "schema_version": "pivot_peer_outcome_contrast_record.v1",
+  "simulation": {
+    "simulation/baseline/delay_0": {
+      "by_arm": {
+        "cautionary": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 1.440318,
+            "low": -0.314694,
+            "mean": 0.560767
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 1.629389,
+            "low": 0.320021,
+            "mean": 0.959411
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "frozen": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 1.635487,
+            "low": -0.505511,
+            "mean": 0.557604
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 1.943109,
+            "low": 0.668589,
+            "mean": 1.274072
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "imitative": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -2.780192,
+            "low": -4.272722,
+            "mean": -3.476989
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 4.946689,
+            "low": 4.197919,
+            "mean": 4.53594
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 10.073982,
+            "low": 9.090273,
+            "mean": 9.543123
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        }
+      },
+      "learning_attributable": {
+        "cautionary": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 1.024273,
+            "low": -0.974448,
+            "mean": 0.003163
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.094173,
+            "low": -0.884185,
+            "mean": -0.314661
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "imitative": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -2.850206,
+            "low": -5.186733,
+            "mean": -4.034593
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 4.035841,
+            "low": 2.497874,
+            "mean": 3.261868
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        }
+      },
+      "state_events": {
+        "cautionary": {
+          "F": 0.0,
+          "P_F": 0.0,
+          "P_S": 0.0,
+          "S": 28.0,
+          "U": 0.0,
+          "reference": "F"
+        },
+        "frozen": {
+          "F": 9.0,
+          "P_F": 0.0,
+          "P_S": 0.0,
+          "S": 36.0,
+          "U": 0.0,
+          "reference": "F"
+        },
+        "imitative": {
+          "F": 536.0,
+          "P_F": 0.0,
+          "P_S": 0.0,
+          "S": 1629.0,
+          "U": 0.0,
+          "reference": "F"
+        }
+      },
+      "unconverged_fits": 0
+    },
+    "simulation/baseline/delay_3": {
+      "by_arm": {
+        "cautionary": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 1.601467,
+            "low": -0.179696,
+            "mean": 0.715519
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 1.789398,
+            "low": 0.432676,
+            "mean": 1.056442
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "frozen": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 1.606034,
+            "low": -0.471023,
+            "mean": 0.557604
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 1.958178,
+            "low": 0.680418,
+            "mean": 1.274072
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": 1.244869,
+            "low": -0.524334,
+            "mean": 0.278644
+          },
+          "state/visibility_did": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "imitative": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -1.410915,
+            "low": -2.102097,
+            "mean": -1.752542
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 4.61155,
+            "low": 3.770286,
+            "mean": 4.143734
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 2000,
+            "high": -3.624731,
+            "low": -4.870861,
+            "mean": -4.290992
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": 0.56484,
+            "low": -0.353582,
+            "mean": 0.12738
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 11.871299,
+            "low": 10.489605,
+            "mean": 11.150239
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": 7.458211,
+            "low": 6.200128,
+            "mean": 6.731867
+          },
+          "state/visibility_did": {
+            "finite_draws": 2000,
+            "high": 11.882633,
+            "low": 10.245454,
+            "mean": 11.022859
+          }
+        }
+      },
+      "learning_attributable": {
+        "cautionary": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 1.127767,
+            "low": -0.707683,
+            "mean": 0.157915
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.051552,
+            "low": -0.552853,
+            "mean": -0.21763
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "imitative": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -1.302566,
+            "low": -3.300044,
+            "mean": -2.310146
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 3.624888,
+            "low": 2.182974,
+            "mean": 2.869662
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": 7.299816,
+            "low": 5.591706,
+            "mean": 6.453223
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        }
+      },
+      "state_events": {
+        "cautionary": {
+          "F": 0.0,
+          "P_F": 3.0,
+          "P_S": 21.0,
+          "S": 7.0,
+          "U": 0.0,
+          "reference": "P_F"
+        },
+        "frozen": {
+          "F": 6.0,
+          "P_F": 3.0,
+          "P_S": 22.0,
+          "S": 14.0,
+          "U": 0.0,
+          "reference": "P_F"
+        },
+        "imitative": {
+          "F": 74.0,
+          "P_F": 127.0,
+          "P_S": 166.0,
+          "S": 769.0,
+          "U": 0.0,
+          "reference": "P_F"
+        }
+      },
+      "unconverged_fits": 0
+    },
+    "simulation/hot_field_hype/delay_0": {
+      "by_arm": {
+        "cautionary": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 1.142022,
+            "low": -0.529806,
+            "mean": 0.335762
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.716863,
+            "low": -1.351732,
+            "mean": -0.332993
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "frozen": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -0.330241,
+            "low": -1.201523,
+            "mean": -0.738806
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.866241,
+            "low": 0.014778,
+            "mean": 0.40263
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 0.14756,
+            "low": -0.253761,
+            "mean": -0.058833
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "imitative": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -0.309406,
+            "low": -1.76858,
+            "mean": -0.982852
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 1.045814,
+            "low": 0.212801,
+            "mean": 0.604821
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 7.33911,
+            "low": 6.830563,
+            "mean": 7.072978
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        }
+      },
+      "learning_attributable": {
+        "cautionary": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 1.822305,
+            "low": 0.2224,
+            "mean": 1.074568
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.291522,
+            "low": -1.717066,
+            "mean": -0.735623
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "imitative": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 0.37477,
+            "low": -0.916107,
+            "mean": -0.244046
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.654634,
+            "low": -0.291961,
+            "mean": 0.202191
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 7.458424,
+            "low": 6.862601,
+            "mean": 7.131811
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        }
+      },
+      "state_events": {
+        "cautionary": {
+          "F": 0.0,
+          "P_F": 0.0,
+          "P_S": 0.0,
+          "S": 17.0,
+          "U": 0.0,
+          "reference": "F"
+        },
+        "frozen": {
+          "F": 618.0,
+          "P_F": 0.0,
+          "P_S": 0.0,
+          "S": 379.0,
+          "U": 0.0,
+          "reference": "F"
+        },
+        "imitative": {
+          "F": 457.0,
+          "P_F": 0.0,
+          "P_S": 0.0,
+          "S": 746.0,
+          "U": 0.0,
+          "reference": "F"
+        }
+      },
+      "unconverged_fits": 0
+    },
+    "simulation/hot_field_hype/delay_3": {
+      "by_arm": {
+        "cautionary": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 0.36042,
+            "low": -1.521322,
+            "mean": -0.515638
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.757565,
+            "low": -0.157365,
+            "mean": 0.282024
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": 0.152288,
+            "low": -0.392727,
+            "mean": -0.129681
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": 1.600668,
+            "low": 0.83223,
+            "mean": 1.265711
+          },
+          "state/visibility_did": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "frozen": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -0.319919,
+            "low": -1.20004,
+            "mean": -0.738806
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.838178,
+            "low": 0.012185,
+            "mean": 0.40263
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 2000,
+            "high": 0.472573,
+            "low": -0.329651,
+            "mean": 0.073642
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": 0.099292,
+            "low": -0.383991,
+            "mean": -0.138262
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 0.537677,
+            "low": -0.360432,
+            "mean": 0.060747
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": 0.601812,
+            "low": 0.002515,
+            "mean": 0.272651
+          },
+          "state/visibility_did": {
+            "finite_draws": 2000,
+            "high": 0.736866,
+            "low": -0.294878,
+            "mean": 0.199009
+          }
+        },
+        "imitative": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -0.073172,
+            "low": -0.820949,
+            "mean": -0.432118
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 1.185771,
+            "low": 0.204291,
+            "mean": 0.662323
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 2000,
+            "high": -4.278001,
+            "low": -5.077794,
+            "mean": -4.68137
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": 0.121001,
+            "low": -0.389958,
+            "mean": -0.140692
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 10.449125,
+            "low": 9.756694,
+            "mean": 10.06443
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": 5.907487,
+            "low": 5.231823,
+            "mean": 5.523752
+          },
+          "state/visibility_did": {
+            "finite_draws": 2000,
+            "high": 10.576951,
+            "low": 9.852387,
+            "mean": 10.205122
+          }
+        }
+      },
+      "learning_attributable": {
+        "cautionary": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 0.935522,
+            "low": -0.593528,
+            "mean": 0.223168
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.083171,
+            "low": -0.279879,
+            "mean": -0.120606
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": 0.128182,
+            "low": -0.095839,
+            "mean": 0.008581
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": 1.349082,
+            "low": 0.481584,
+            "mean": 0.99306
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "imitative": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 0.695961,
+            "low": -0.082893,
+            "mean": 0.306688
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.508892,
+            "low": 0.06661,
+            "mean": 0.259693
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 2000,
+            "high": -4.242722,
+            "low": -5.243839,
+            "mean": -4.755012
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": 0.158467,
+            "low": -0.145386,
+            "mean": -0.00243
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 10.575446,
+            "low": 9.425956,
+            "mean": 10.003683
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": 5.644227,
+            "low": 4.890801,
+            "mean": 5.251101
+          },
+          "state/visibility_did": {
+            "finite_draws": 2000,
+            "high": 10.618515,
+            "low": 9.376705,
+            "mean": 10.006113
+          }
+        }
+      },
+      "state_events": {
+        "cautionary": {
+          "F": 0.0,
+          "P_F": 356.0,
+          "P_S": 203.0,
+          "S": 13.0,
+          "U": 0.0,
+          "reference": "P_F"
+        },
+        "frozen": {
+          "F": 247.0,
+          "P_F": 429.0,
+          "P_S": 226.0,
+          "S": 169.0,
+          "U": 0.0,
+          "reference": "P_F"
+        },
+        "imitative": {
+          "F": 338.0,
+          "P_F": 514.0,
+          "P_S": 295.0,
+          "S": 569.0,
+          "U": 0.0,
+          "reference": "P_F"
+        }
+      },
+      "unconverged_fits": 0
+    },
+    "simulation/interdisciplinary_seed_grants/delay_0": {
+      "by_arm": {
+        "cautionary": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 0.419076,
+            "low": -0.943531,
+            "mean": -0.286503
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.629458,
+            "low": -0.165038,
+            "mean": 0.180212
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "frozen": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -1.052375,
+            "low": -1.717097,
+            "mean": -1.371252
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.706616,
+            "low": 0.11544,
+            "mean": 0.385899
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 0.19394,
+            "low": -0.301651,
+            "mean": -0.076485
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "imitative": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -6.953106,
+            "low": -9.180724,
+            "mean": -8.040865
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 1.758438,
+            "low": 1.207448,
+            "mean": 1.485377
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 7.5945,
+            "low": 6.375998,
+            "mean": 6.952085
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        }
+      },
+      "learning_attributable": {
+        "cautionary": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 1.679584,
+            "low": 0.559202,
+            "mean": 1.084749
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.217676,
+            "low": -0.549459,
+            "mean": -0.205687
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "imitative": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -5.68099,
+            "low": -7.67862,
+            "mean": -6.669613
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 1.464268,
+            "low": 0.705737,
+            "mean": 1.099478
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 7.693771,
+            "low": 6.435367,
+            "mean": 7.02857
+          },
+          "state/success_following": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        }
+      },
+      "state_events": {
+        "cautionary": {
+          "F": 0.0,
+          "P_F": 0.0,
+          "P_S": 0.0,
+          "S": 190.0,
+          "U": 0.0,
+          "reference": "F"
+        },
+        "frozen": {
+          "F": 282.0,
+          "P_F": 0.0,
+          "P_S": 0.0,
+          "S": 571.0,
+          "U": 0.0,
+          "reference": "F"
+        },
+        "imitative": {
+          "F": 646.0,
+          "P_F": 0.0,
+          "P_S": 0.0,
+          "S": 1974.0,
+          "U": 0.0,
+          "reference": "F"
+        }
+      },
+      "unconverged_fits": 0
+    },
+    "simulation/interdisciplinary_seed_grants/delay_3": {
+      "by_arm": {
+        "cautionary": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -0.170819,
+            "low": -1.614822,
+            "mean": -0.877768
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.491918,
+            "low": -0.105047,
+            "mean": 0.171966
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": 0.909297,
+            "low": 0.112124,
+            "mean": 0.499891
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": 0.639054,
+            "low": -0.544099,
+            "mean": -0.08706
+          },
+          "state/visibility_did": {
+            "finite_draws": 2000,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "frozen": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -1.034096,
+            "low": -1.696407,
+            "mean": -1.371252
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.704736,
+            "low": 0.126246,
+            "mean": 0.385899
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 2000,
+            "high": 0.431492,
+            "low": 0.080116,
+            "mean": 0.267771
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": 0.620783,
+            "low": 0.117931,
+            "mean": 0.36509
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": -0.030937,
+            "low": -0.775382,
+            "mean": -0.419991
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": -0.086767,
+            "low": -0.9056,
+            "mean": -0.51731
+          },
+          "state/visibility_did": {
+            "finite_draws": 2000,
+            "high": -0.371394,
+            "low": -1.156219,
+            "mean": -0.785081
+          }
+        },
+        "imitative": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -3.27486,
+            "low": -4.245009,
+            "mean": -3.736085
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 1.161711,
+            "low": 0.635612,
+            "mean": 0.902523
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 2000,
+            "high": -4.20453,
+            "low": -4.842566,
+            "mean": -4.523497
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": 0.683048,
+            "low": 0.156428,
+            "mean": 0.402257
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 10.770249,
+            "low": 9.461643,
+            "mean": 10.07718
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": 5.74615,
+            "low": 4.655382,
+            "mean": 5.151425
+          },
+          "state/visibility_did": {
+            "finite_draws": 2000,
+            "high": 10.428149,
+            "low": 8.998663,
+            "mean": 9.674923
+          }
+        }
+      },
+      "learning_attributable": {
+        "cautionary": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": 1.029986,
+            "low": -0.047052,
+            "mean": 0.493484
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": -0.067455,
+            "low": -0.349823,
+            "mean": -0.213933
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": 0.471211,
+            "low": -0.201596,
+            "mean": 0.134801
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": 1.216187,
+            "low": -0.156238,
+            "mean": 0.43025
+          },
+          "state/visibility_did": {
+            "finite_draws": 0,
+            "high": null,
+            "low": null,
+            "mean": null
+          }
+        },
+        "imitative": {
+          "entry_order/entry_time": {
+            "finite_draws": 2000,
+            "high": -1.961607,
+            "low": -2.798436,
+            "mean": -2.364833
+          },
+          "exposure/exposed": {
+            "finite_draws": 2000,
+            "high": 0.788863,
+            "low": 0.23089,
+            "mean": 0.516624
+          },
+          "state/failure_avoidance": {
+            "finite_draws": 2000,
+            "high": -4.465714,
+            "low": -5.113035,
+            "mean": -4.791268
+          },
+          "state/outcome_gap_before_visible": {
+            "finite_draws": 2000,
+            "high": 0.314556,
+            "low": -0.206653,
+            "mean": 0.037167
+          },
+          "state/outcome_gap_visible": {
+            "finite_draws": 2000,
+            "high": 11.22041,
+            "low": 9.807929,
+            "mean": 10.497171
+          },
+          "state/success_following": {
+            "finite_draws": 2000,
+            "high": 6.401483,
+            "low": 4.990481,
+            "mean": 5.668735
+          },
+          "state/visibility_did": {
+            "finite_draws": 2000,
+            "high": 11.316524,
+            "low": 9.703955,
+            "mean": 10.460004
+          }
+        }
+      },
+      "state_events": {
+        "cautionary": {
+          "F": 0.0,
+          "P_F": 113.0,
+          "P_S": 296.0,
+          "S": 81.0,
+          "U": 0.0,
+          "reference": "P_F"
+        },
+        "frozen": {
+          "F": 148.0,
+          "P_F": 152.0,
+          "P_S": 350.0,
+          "S": 283.0,
+          "U": 0.0,
+          "reference": "P_F"
+        },
+        "imitative": {
+          "F": 482.0,
+          "P_F": 531.0,
+          "P_S": 808.0,
+          "S": 1659.0,
+          "U": 0.0,
+          "reference": "P_F"
+        }
+      },
+      "unconverged_fits": 0
+    }
+  },
+  "status": "E4_NOT_INTERPRETABLE_THE_ESTIMATOR_FLAGS_STUDY2_FROZEN_ARM"
+}
