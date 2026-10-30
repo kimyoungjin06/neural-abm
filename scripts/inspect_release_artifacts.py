@@ -343,6 +343,7 @@ PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS = {
     "experiments/configs/info_spread_crossover_prediction_v1.yaml",
     "scripts/run_info_spread_crossover_prediction_v1.py",
     "tests/test_info_spread_crossover_prediction_v1.py",
+    "tests/test_info_spread_crossover_prediction_v1_result.py",
 }
 PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-relative-delay-cost-v1.md",
