@@ -1,0 +1,4062 @@
+{
+  "boundaries": {
+    "empirical_rows_read": 0,
+    "generic_nabm_api_changed": false,
+    "model_selected": "NO",
+    "neural_necessity": "NOT_ESTABLISHED",
+    "new_llm_calls": 0,
+    "package_promotion": "NOT_AUTHORIZED",
+    "paid_api_calls": 0,
+    "repository_only": true,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "checks": {
+    "convergence": {
+      "acting_ceiling_share": 0.001,
+      "by_study_and_regime": {
+        "abm/converged": {
+          "lbfgs_acting_fits": 165615,
+          "lbfgs_inner_fits": 0,
+          "max_acting_gradient": 9.999895597628486e-07,
+          "unavailable_candidates": 0,
+          "unconverged_acting_fits": 0,
+          "unconverged_acting_share": 0.0,
+          "unconverged_inner_fits": 0
+        },
+        "abm/registered": {
+          "lbfgs_acting_fits": 0,
+          "lbfgs_inner_fits": 0,
+          "max_acting_gradient": 0.0,
+          "unavailable_candidates": 0,
+          "unconverged_acting_fits": 0,
+          "unconverged_acting_share": 0.0,
+          "unconverged_inner_fits": 0
+        },
+        "abm/tuned": {
+          "lbfgs_acting_fits": 1644,
+          "lbfgs_inner_fits": 63777,
+          "max_acting_gradient": 9.999717033746733e-07,
+          "unavailable_candidates": 1,
+          "unconverged_acting_fits": 0,
+          "unconverged_acting_share": 0.0,
+          "unconverged_inner_fits": 1
+        },
+        "policy_layer/converged": {
+          "lbfgs_acting_fits": 192,
+          "lbfgs_inner_fits": 2304,
+          "max_acting_gradient": 9.997823735177595e-07,
+          "unavailable_candidates": 0,
+          "unconverged_acting_fits": 0,
+          "unconverged_acting_share": 0.0,
+          "unconverged_inner_fits": 0
+        },
+        "policy_layer/registered": {
+          "lbfgs_acting_fits": 0,
+          "lbfgs_inner_fits": 0,
+          "max_acting_gradient": 0.0,
+          "unavailable_candidates": 0,
+          "unconverged_acting_fits": 0,
+          "unconverged_acting_share": 0.0,
+          "unconverged_inner_fits": 0
+        },
+        "policy_layer/tuned": {
+          "lbfgs_acting_fits": 114,
+          "lbfgs_inner_fits": 3840,
+          "max_acting_gradient": 9.998417581997158e-07,
+          "unavailable_candidates": 0,
+          "unconverged_acting_fits": 0,
+          "unconverged_acting_share": 0.0,
+          "unconverged_inner_fits": 0
+        }
+      },
+      "within_ceiling": true
+    },
+    "parity": {
+      "abm_rows": 1008,
+      "policy_layer_rows": 480,
+      "reference": "THE_RECORDED_ROWS",
+      "row_for_row": true
+    },
+    "registered": {
+      "dispositions_equal_both_records": true,
+      "every_claim_holds": true
+    },
+    "slots_restored": true
+  },
+  "contract_sha256": "81981dcc26b6957af6939c0ae8336ae84f9ac1e17fb691cd48526228928c1af7",
+  "decision_status": "FROZEN_SYNTHETIC_DECISION_COMPLETE",
+  "decisions": {
+    "by_regime": {
+      "converged": {
+        "claims": {
+          "changed": [],
+          "claims": {
+            "C07_feature_conditional_learning_is_needed_when_structure_reverses": {
+              "checks": [
+                {
+                  "equals": "SUPPORTED_ON_FROZEN_GENERATOR",
+                  "holds": true,
+                  "observed": "SUPPORTED_ON_FROZEN_GENERATOR",
+                  "pointer": "policy_layer/feature_conditional_need"
+                }
+              ],
+              "holds": true
+            },
+            "C08_nonlinear_representation_is_needed_for_interactions": {
+              "checks": [
+                {
+                  "equals": "SUPPORTED_BOTH_GEOMETRIES",
+                  "holds": true,
+                  "observed": "SUPPORTED_BOTH_GEOMETRIES",
+                  "pointer": "policy_layer/nonlinear_representation_need"
+                }
+              ],
+              "holds": true
+            },
+            "C09_family_choice_depends_on_boundary_geometry": {
+              "checks": [
+                {
+                  "equals": "GENERATOR_DEPENDENT_OR_TIED",
+                  "holds": true,
+                  "observed": "GENERATOR_DEPENDENT_OR_TIED",
+                  "pointer": "policy_layer/nonlinear_family_dominance"
+                },
+                {
+                  "equals": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "holds": true,
+                  "observed": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "pointer": "abm/immediate/geometry_crossover"
+                },
+                {
+                  "equals": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "holds": true,
+                  "observed": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "pointer": "abm/failure_lag_2/geometry_crossover"
+                },
+                {
+                  "equals": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "holds": true,
+                  "observed": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "pointer": "abm/failure_lag_4/geometry_crossover"
+                }
+              ],
+              "holds": true
+            },
+            "C10_out_of_sample_nonlinear_learning_inside_the_abm": {
+              "checks": [
+                {
+                  "equals": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "holds": true,
+                  "observed": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "pointer": "abm/immediate/field_nonlinear_learning"
+                },
+                {
+                  "equals": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "holds": true,
+                  "observed": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "pointer": "abm/failure_lag_2/field_nonlinear_learning"
+                },
+                {
+                  "equals": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "holds": true,
+                  "observed": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "pointer": "abm/failure_lag_4/field_nonlinear_learning"
+                }
+              ],
+              "holds": true
+            },
+            "C11_evidence_scale_gates_useful_learning": {
+              "checks": [
+                {
+                  "equals": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "holds": true,
+                  "observed": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "pointer": "abm/immediate/evidence_scale"
+                },
+                {
+                  "equals": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "holds": true,
+                  "observed": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "pointer": "abm/failure_lag_2/evidence_scale"
+                },
+                {
+                  "equals": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "holds": true,
+                  "observed": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "pointer": "abm/failure_lag_4/evidence_scale"
+                }
+              ],
+              "holds": true
+            },
+            "C12_entry_responds_to_learning_only_with_immediate_failure_visibility": {
+              "checks": [
+                {
+                  "equals": "ENTRY_CHANNEL_ACTIVE",
+                  "holds": true,
+                  "observed": "ENTRY_CHANNEL_ACTIVE",
+                  "pointer": "abm/immediate/entry"
+                },
+                {
+                  "equals": "ENTRY_SATURATED",
+                  "holds": true,
+                  "observed": "ENTRY_SATURATED",
+                  "pointer": "abm/failure_lag_2/entry"
+                },
+                {
+                  "equals": "ENTRY_SATURATED",
+                  "holds": true,
+                  "observed": "ENTRY_SATURATED",
+                  "pointer": "abm/failure_lag_4/entry"
+                }
+              ],
+              "holds": true
+            },
+            "C13_tree_reduces_failed_stock_on_axis_boundaries": {
+              "checks": [
+                {
+                  "contains": "tree_batch/axis_interaction_fit",
+                  "holds": true,
+                  "observed": [
+                    "mlp_batch/smooth_interaction_fit",
+                    "tree_batch/axis_interaction_fit",
+                    "tree_batch/smooth_interaction_fit"
+                  ],
+                  "pointer": "abm/immediate/exit_passing_family_geometries"
+                },
+                {
+                  "contains": "tree_batch/axis_interaction_fit",
+                  "holds": true,
+                  "observed": [
+                    "tree_batch/axis_interaction_fit"
+                  ],
+                  "pointer": "abm/failure_lag_2/exit_passing_family_geometries"
+                },
+                {
+                  "contains": "tree_batch/axis_interaction_fit",
+                  "holds": true,
+                  "observed": [
+                    "tree_batch/axis_interaction_fit"
+                  ],
+                  "pointer": "abm/failure_lag_4/exit_passing_family_geometries"
+                }
+              ],
+              "holds": true
+            },
+            "C14_raw_entry_precision_follows_the_crossover": {
+              "checks": [
+                {
+                  "greater_than": 0.0,
+                  "holds": true,
+                  "observed": 0.022764,
+                  "pointer": "post_hoc/raw_entry_share_mlp_minus_tree_immediate/smooth_interaction_fit/mean"
+                },
+                {
+                  "holds": true,
+                  "less_than": 0.0,
+                  "observed": -0.023887,
+                  "pointer": "post_hoc/raw_entry_share_mlp_minus_tree_immediate/axis_interaction_fit/mean"
+                }
+              ],
+              "holds": true
+            },
+            "R01_neural_policy_is_necessary_stays_rejected": {
+              "checks": [
+                {
+                  "equals": "NOT_SUPPORTED_ON_FROZEN_GENERATOR",
+                  "holds": true,
+                  "observed": "NOT_SUPPORTED_ON_FROZEN_GENERATOR",
+                  "pointer": "policy_layer/neural_specific_advantage"
+                }
+              ],
+              "holds": true
+            }
+          },
+          "outcome": "CLAIMS_HOLD"
+        },
+        "dispositions": {
+          "abm": {
+            "failure_lag_2": {
+              "entry": "ENTRY_SATURATED",
+              "entry_passing_family_geometries": [],
+              "evidence_scale": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+              "exit": "EXIT_CHANNEL_ACTIVE",
+              "exit_passing_family_geometries": [
+                "tree_batch/axis_interaction_fit"
+              ],
+              "field_nonlinear_learning": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+              "geometry_crossover": "CROSSOVER_TRANSFERS_TO_ABM",
+              "learned_family_geometries": [
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_field": [
+                "linear_batch/axis_interaction_fit",
+                "linear_batch/smooth_interaction_fit",
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_local": []
+            },
+            "failure_lag_4": {
+              "entry": "ENTRY_SATURATED",
+              "entry_passing_family_geometries": [],
+              "evidence_scale": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+              "exit": "EXIT_CHANNEL_ACTIVE",
+              "exit_passing_family_geometries": [
+                "tree_batch/axis_interaction_fit"
+              ],
+              "field_nonlinear_learning": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+              "geometry_crossover": "CROSSOVER_TRANSFERS_TO_ABM",
+              "learned_family_geometries": [
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_field": [
+                "linear_batch/axis_interaction_fit",
+                "linear_batch/smooth_interaction_fit",
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_local": []
+            },
+            "immediate": {
+              "entry": "ENTRY_CHANNEL_ACTIVE",
+              "entry_passing_family_geometries": [
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "evidence_scale": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+              "exit": "EXIT_CHANNEL_ACTIVE",
+              "exit_passing_family_geometries": [
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "field_nonlinear_learning": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+              "geometry_crossover": "CROSSOVER_TRANSFERS_TO_ABM",
+              "learned_family_geometries": [
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_field": [
+                "linear_batch/axis_interaction_fit",
+                "linear_batch/smooth_interaction_fit",
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_local": []
+            }
+          },
+          "policy_layer": {
+            "abm_route": "PAIRED_CLASSICAL_AND_NEURAL_NONLINEAR_ARMS",
+            "feature_conditional_need": "SUPPORTED_ON_FROZEN_GENERATOR",
+            "neural_interaction_specificity": "PASS",
+            "neural_specific_advantage": "NOT_SUPPORTED_ON_FROZEN_GENERATOR",
+            "nonlinear_family_dominance": "GENERATOR_DEPENDENT_OR_TIED",
+            "nonlinear_representation_need": "SUPPORTED_BOTH_GEOMETRIES"
+          },
+          "post_hoc": {
+            "raw_entry_share_mlp_minus_tree_immediate": {
+              "axis_interaction_fit": {
+                "max": -0.006121,
+                "mean": -0.023887,
+                "min": -0.040728,
+                "positive_replicates": 0
+              },
+              "smooth_interaction_fit": {
+                "max": 0.035164,
+                "mean": 0.022764,
+                "min": -0.00109,
+                "positive_replicates": 15
+              }
+            }
+          }
+        }
+      },
+      "registered": {
+        "claims": {
+          "changed": [],
+          "claims": {
+            "C07_feature_conditional_learning_is_needed_when_structure_reverses": {
+              "checks": [
+                {
+                  "equals": "SUPPORTED_ON_FROZEN_GENERATOR",
+                  "holds": true,
+                  "observed": "SUPPORTED_ON_FROZEN_GENERATOR",
+                  "pointer": "policy_layer/feature_conditional_need"
+                }
+              ],
+              "holds": true
+            },
+            "C08_nonlinear_representation_is_needed_for_interactions": {
+              "checks": [
+                {
+                  "equals": "SUPPORTED_BOTH_GEOMETRIES",
+                  "holds": true,
+                  "observed": "SUPPORTED_BOTH_GEOMETRIES",
+                  "pointer": "policy_layer/nonlinear_representation_need"
+                }
+              ],
+              "holds": true
+            },
+            "C09_family_choice_depends_on_boundary_geometry": {
+              "checks": [
+                {
+                  "equals": "GENERATOR_DEPENDENT_OR_TIED",
+                  "holds": true,
+                  "observed": "GENERATOR_DEPENDENT_OR_TIED",
+                  "pointer": "policy_layer/nonlinear_family_dominance"
+                },
+                {
+                  "equals": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "holds": true,
+                  "observed": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "pointer": "abm/immediate/geometry_crossover"
+                },
+                {
+                  "equals": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "holds": true,
+                  "observed": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "pointer": "abm/failure_lag_2/geometry_crossover"
+                },
+                {
+                  "equals": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "holds": true,
+                  "observed": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "pointer": "abm/failure_lag_4/geometry_crossover"
+                }
+              ],
+              "holds": true
+            },
+            "C10_out_of_sample_nonlinear_learning_inside_the_abm": {
+              "checks": [
+                {
+                  "equals": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "holds": true,
+                  "observed": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "pointer": "abm/immediate/field_nonlinear_learning"
+                },
+                {
+                  "equals": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "holds": true,
+                  "observed": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "pointer": "abm/failure_lag_2/field_nonlinear_learning"
+                },
+                {
+                  "equals": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "holds": true,
+                  "observed": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "pointer": "abm/failure_lag_4/field_nonlinear_learning"
+                }
+              ],
+              "holds": true
+            },
+            "C11_evidence_scale_gates_useful_learning": {
+              "checks": [
+                {
+                  "equals": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "holds": true,
+                  "observed": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "pointer": "abm/immediate/evidence_scale"
+                },
+                {
+                  "equals": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "holds": true,
+                  "observed": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "pointer": "abm/failure_lag_2/evidence_scale"
+                },
+                {
+                  "equals": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "holds": true,
+                  "observed": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "pointer": "abm/failure_lag_4/evidence_scale"
+                }
+              ],
+              "holds": true
+            },
+            "C12_entry_responds_to_learning_only_with_immediate_failure_visibility": {
+              "checks": [
+                {
+                  "equals": "ENTRY_CHANNEL_ACTIVE",
+                  "holds": true,
+                  "observed": "ENTRY_CHANNEL_ACTIVE",
+                  "pointer": "abm/immediate/entry"
+                },
+                {
+                  "equals": "ENTRY_SATURATED",
+                  "holds": true,
+                  "observed": "ENTRY_SATURATED",
+                  "pointer": "abm/failure_lag_2/entry"
+                },
+                {
+                  "equals": "ENTRY_SATURATED",
+                  "holds": true,
+                  "observed": "ENTRY_SATURATED",
+                  "pointer": "abm/failure_lag_4/entry"
+                }
+              ],
+              "holds": true
+            },
+            "C13_tree_reduces_failed_stock_on_axis_boundaries": {
+              "checks": [
+                {
+                  "contains": "tree_batch/axis_interaction_fit",
+                  "holds": true,
+                  "observed": [
+                    "tree_batch/axis_interaction_fit",
+                    "tree_batch/smooth_interaction_fit"
+                  ],
+                  "pointer": "abm/immediate/exit_passing_family_geometries"
+                },
+                {
+                  "contains": "tree_batch/axis_interaction_fit",
+                  "holds": true,
+                  "observed": [
+                    "tree_batch/axis_interaction_fit"
+                  ],
+                  "pointer": "abm/failure_lag_2/exit_passing_family_geometries"
+                },
+                {
+                  "contains": "tree_batch/axis_interaction_fit",
+                  "holds": true,
+                  "observed": [
+                    "tree_batch/axis_interaction_fit"
+                  ],
+                  "pointer": "abm/failure_lag_4/exit_passing_family_geometries"
+                }
+              ],
+              "holds": true
+            },
+            "C14_raw_entry_precision_follows_the_crossover": {
+              "checks": [
+                {
+                  "greater_than": 0.0,
+                  "holds": true,
+                  "observed": 0.01998,
+                  "pointer": "post_hoc/raw_entry_share_mlp_minus_tree_immediate/smooth_interaction_fit/mean"
+                },
+                {
+                  "holds": true,
+                  "less_than": 0.0,
+                  "observed": -0.021524,
+                  "pointer": "post_hoc/raw_entry_share_mlp_minus_tree_immediate/axis_interaction_fit/mean"
+                }
+              ],
+              "holds": true
+            },
+            "R01_neural_policy_is_necessary_stays_rejected": {
+              "checks": [
+                {
+                  "equals": "NOT_SUPPORTED_ON_FROZEN_GENERATOR",
+                  "holds": true,
+                  "observed": "NOT_SUPPORTED_ON_FROZEN_GENERATOR",
+                  "pointer": "policy_layer/neural_specific_advantage"
+                }
+              ],
+              "holds": true
+            }
+          },
+          "outcome": "CLAIMS_HOLD"
+        },
+        "dispositions": {
+          "abm": {
+            "failure_lag_2": {
+              "entry": "ENTRY_SATURATED",
+              "entry_passing_family_geometries": [],
+              "evidence_scale": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+              "exit": "EXIT_CHANNEL_ACTIVE",
+              "exit_passing_family_geometries": [
+                "tree_batch/axis_interaction_fit"
+              ],
+              "field_nonlinear_learning": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+              "geometry_crossover": "CROSSOVER_TRANSFERS_TO_ABM",
+              "learned_family_geometries": [
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_field": [
+                "linear_batch/axis_interaction_fit",
+                "linear_batch/smooth_interaction_fit",
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_local": []
+            },
+            "failure_lag_4": {
+              "entry": "ENTRY_SATURATED",
+              "entry_passing_family_geometries": [],
+              "evidence_scale": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+              "exit": "EXIT_CHANNEL_ACTIVE",
+              "exit_passing_family_geometries": [
+                "tree_batch/axis_interaction_fit"
+              ],
+              "field_nonlinear_learning": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+              "geometry_crossover": "CROSSOVER_TRANSFERS_TO_ABM",
+              "learned_family_geometries": [
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_field": [
+                "linear_batch/axis_interaction_fit",
+                "linear_batch/smooth_interaction_fit",
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_local": []
+            },
+            "immediate": {
+              "entry": "ENTRY_CHANNEL_ACTIVE",
+              "entry_passing_family_geometries": [
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "evidence_scale": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+              "exit": "EXIT_CHANNEL_ACTIVE",
+              "exit_passing_family_geometries": [
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "field_nonlinear_learning": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+              "geometry_crossover": "CROSSOVER_TRANSFERS_TO_ABM",
+              "learned_family_geometries": [
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_field": [
+                "linear_batch/axis_interaction_fit",
+                "linear_batch/smooth_interaction_fit",
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_local": []
+            }
+          },
+          "policy_layer": {
+            "abm_route": "PAIRED_CLASSICAL_AND_NEURAL_NONLINEAR_ARMS",
+            "feature_conditional_need": "SUPPORTED_ON_FROZEN_GENERATOR",
+            "neural_interaction_specificity": "PASS",
+            "neural_specific_advantage": "NOT_SUPPORTED_ON_FROZEN_GENERATOR",
+            "nonlinear_family_dominance": "GENERATOR_DEPENDENT_OR_TIED",
+            "nonlinear_representation_need": "SUPPORTED_BOTH_GEOMETRIES"
+          },
+          "post_hoc": {
+            "raw_entry_share_mlp_minus_tree_immediate": {
+              "axis_interaction_fit": {
+                "max": 0.000208,
+                "mean": -0.021524,
+                "min": -0.045714,
+                "positive_replicates": 1
+              },
+              "smooth_interaction_fit": {
+                "max": 0.041037,
+                "mean": 0.01998,
+                "min": -0.003995,
+                "positive_replicates": 15
+              }
+            }
+          }
+        }
+      },
+      "tuned": {
+        "claims": {
+          "changed": [],
+          "claims": {
+            "C07_feature_conditional_learning_is_needed_when_structure_reverses": {
+              "checks": [
+                {
+                  "equals": "SUPPORTED_ON_FROZEN_GENERATOR",
+                  "holds": true,
+                  "observed": "SUPPORTED_ON_FROZEN_GENERATOR",
+                  "pointer": "policy_layer/feature_conditional_need"
+                }
+              ],
+              "holds": true
+            },
+            "C08_nonlinear_representation_is_needed_for_interactions": {
+              "checks": [
+                {
+                  "equals": "SUPPORTED_BOTH_GEOMETRIES",
+                  "holds": true,
+                  "observed": "SUPPORTED_BOTH_GEOMETRIES",
+                  "pointer": "policy_layer/nonlinear_representation_need"
+                }
+              ],
+              "holds": true
+            },
+            "C09_family_choice_depends_on_boundary_geometry": {
+              "checks": [
+                {
+                  "equals": "GENERATOR_DEPENDENT_OR_TIED",
+                  "holds": true,
+                  "observed": "GENERATOR_DEPENDENT_OR_TIED",
+                  "pointer": "policy_layer/nonlinear_family_dominance"
+                },
+                {
+                  "equals": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "holds": true,
+                  "observed": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "pointer": "abm/immediate/geometry_crossover"
+                },
+                {
+                  "equals": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "holds": true,
+                  "observed": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "pointer": "abm/failure_lag_2/geometry_crossover"
+                },
+                {
+                  "equals": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "holds": true,
+                  "observed": "CROSSOVER_TRANSFERS_TO_ABM",
+                  "pointer": "abm/failure_lag_4/geometry_crossover"
+                }
+              ],
+              "holds": true
+            },
+            "C10_out_of_sample_nonlinear_learning_inside_the_abm": {
+              "checks": [
+                {
+                  "equals": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "holds": true,
+                  "observed": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "pointer": "abm/immediate/field_nonlinear_learning"
+                },
+                {
+                  "equals": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "holds": true,
+                  "observed": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "pointer": "abm/failure_lag_2/field_nonlinear_learning"
+                },
+                {
+                  "equals": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "holds": true,
+                  "observed": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+                  "pointer": "abm/failure_lag_4/field_nonlinear_learning"
+                }
+              ],
+              "holds": true
+            },
+            "C11_evidence_scale_gates_useful_learning": {
+              "checks": [
+                {
+                  "equals": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "holds": true,
+                  "observed": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "pointer": "abm/immediate/evidence_scale"
+                },
+                {
+                  "equals": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "holds": true,
+                  "observed": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "pointer": "abm/failure_lag_2/evidence_scale"
+                },
+                {
+                  "equals": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "holds": true,
+                  "observed": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+                  "pointer": "abm/failure_lag_4/evidence_scale"
+                }
+              ],
+              "holds": true
+            },
+            "C12_entry_responds_to_learning_only_with_immediate_failure_visibility": {
+              "checks": [
+                {
+                  "equals": "ENTRY_CHANNEL_ACTIVE",
+                  "holds": true,
+                  "observed": "ENTRY_CHANNEL_ACTIVE",
+                  "pointer": "abm/immediate/entry"
+                },
+                {
+                  "equals": "ENTRY_SATURATED",
+                  "holds": true,
+                  "observed": "ENTRY_SATURATED",
+                  "pointer": "abm/failure_lag_2/entry"
+                },
+                {
+                  "equals": "ENTRY_SATURATED",
+                  "holds": true,
+                  "observed": "ENTRY_SATURATED",
+                  "pointer": "abm/failure_lag_4/entry"
+                }
+              ],
+              "holds": true
+            },
+            "C13_tree_reduces_failed_stock_on_axis_boundaries": {
+              "checks": [
+                {
+                  "contains": "tree_batch/axis_interaction_fit",
+                  "holds": true,
+                  "observed": [
+                    "mlp_batch/smooth_interaction_fit",
+                    "tree_batch/axis_interaction_fit",
+                    "tree_batch/smooth_interaction_fit"
+                  ],
+                  "pointer": "abm/immediate/exit_passing_family_geometries"
+                },
+                {
+                  "contains": "tree_batch/axis_interaction_fit",
+                  "holds": true,
+                  "observed": [
+                    "tree_batch/axis_interaction_fit",
+                    "tree_batch/smooth_interaction_fit"
+                  ],
+                  "pointer": "abm/failure_lag_2/exit_passing_family_geometries"
+                },
+                {
+                  "contains": "tree_batch/axis_interaction_fit",
+                  "holds": true,
+                  "observed": [
+                    "tree_batch/axis_interaction_fit",
+                    "tree_batch/smooth_interaction_fit"
+                  ],
+                  "pointer": "abm/failure_lag_4/exit_passing_family_geometries"
+                }
+              ],
+              "holds": true
+            },
+            "C14_raw_entry_precision_follows_the_crossover": {
+              "checks": [
+                {
+                  "greater_than": 0.0,
+                  "holds": true,
+                  "observed": 0.017135,
+                  "pointer": "post_hoc/raw_entry_share_mlp_minus_tree_immediate/smooth_interaction_fit/mean"
+                },
+                {
+                  "holds": true,
+                  "less_than": 0.0,
+                  "observed": -0.017206,
+                  "pointer": "post_hoc/raw_entry_share_mlp_minus_tree_immediate/axis_interaction_fit/mean"
+                }
+              ],
+              "holds": true
+            },
+            "R01_neural_policy_is_necessary_stays_rejected": {
+              "checks": [
+                {
+                  "equals": "NOT_SUPPORTED_ON_FROZEN_GENERATOR",
+                  "holds": true,
+                  "observed": "NOT_SUPPORTED_ON_FROZEN_GENERATOR",
+                  "pointer": "policy_layer/neural_specific_advantage"
+                }
+              ],
+              "holds": true
+            }
+          },
+          "outcome": "CLAIMS_HOLD"
+        },
+        "dispositions": {
+          "abm": {
+            "failure_lag_2": {
+              "entry": "ENTRY_SATURATED",
+              "entry_passing_family_geometries": [],
+              "evidence_scale": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+              "exit": "EXIT_CHANNEL_ACTIVE",
+              "exit_passing_family_geometries": [
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "field_nonlinear_learning": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+              "geometry_crossover": "CROSSOVER_TRANSFERS_TO_ABM",
+              "learned_family_geometries": [
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_field": [
+                "linear_batch/axis_interaction_fit",
+                "linear_batch/smooth_interaction_fit",
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_local": []
+            },
+            "failure_lag_4": {
+              "entry": "ENTRY_SATURATED",
+              "entry_passing_family_geometries": [],
+              "evidence_scale": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+              "exit": "EXIT_CHANNEL_ACTIVE",
+              "exit_passing_family_geometries": [
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "field_nonlinear_learning": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+              "geometry_crossover": "CROSSOVER_TRANSFERS_TO_ABM",
+              "learned_family_geometries": [
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_field": [
+                "linear_batch/axis_interaction_fit",
+                "linear_batch/smooth_interaction_fit",
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_local": []
+            },
+            "immediate": {
+              "entry": "ENTRY_CHANNEL_ACTIVE",
+              "entry_passing_family_geometries": [
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "evidence_scale": "EVIDENCE_SCALE_GATES_USEFUL_LEARNING",
+              "exit": "EXIT_CHANNEL_ACTIVE",
+              "exit_passing_family_geometries": [
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "field_nonlinear_learning": "OUT_OF_SAMPLE_NONLINEAR_LEARNING",
+              "geometry_crossover": "CROSSOVER_TRANSFERS_TO_ABM",
+              "learned_family_geometries": [
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_field": [
+                "linear_batch/axis_interaction_fit",
+                "linear_batch/smooth_interaction_fit",
+                "mlp_batch/axis_interaction_fit",
+                "mlp_batch/smooth_interaction_fit",
+                "tree_batch/axis_interaction_fit",
+                "tree_batch/smooth_interaction_fit"
+              ],
+              "useful_learners_local": []
+            }
+          },
+          "policy_layer": {
+            "abm_route": "PAIRED_CLASSICAL_AND_NEURAL_NONLINEAR_ARMS",
+            "feature_conditional_need": "SUPPORTED_ON_FROZEN_GENERATOR",
+            "neural_interaction_specificity": "PASS",
+            "neural_specific_advantage": "NOT_SUPPORTED_ON_FROZEN_GENERATOR",
+            "nonlinear_family_dominance": "GENERATOR_DEPENDENT_OR_TIED",
+            "nonlinear_representation_need": "SUPPORTED_BOTH_GEOMETRIES"
+          },
+          "post_hoc": {
+            "raw_entry_share_mlp_minus_tree_immediate": {
+              "axis_interaction_fit": {
+                "max": 0.002974,
+                "mean": -0.017206,
+                "min": -0.038648,
+                "positive_replicates": 1
+              },
+              "smooth_interaction_fit": {
+                "max": 0.042476,
+                "mean": 0.017135,
+                "min": -0.001201,
+                "positive_replicates": 15
+              }
+            }
+          }
+        }
+      }
+    },
+    "o36": "O36_HOLD_UNDER_BOTH",
+    "registered_quantities": {
+      "behavior_passing_lists": {
+        "converged": {
+          "failure_lag_2": {
+            "entry": [],
+            "exit": [
+              "tree_batch/axis_interaction_fit"
+            ]
+          },
+          "failure_lag_4": {
+            "entry": [],
+            "exit": [
+              "tree_batch/axis_interaction_fit"
+            ]
+          },
+          "immediate": {
+            "entry": [
+              "mlp_batch/axis_interaction_fit",
+              "mlp_batch/smooth_interaction_fit",
+              "tree_batch/axis_interaction_fit",
+              "tree_batch/smooth_interaction_fit"
+            ],
+            "exit": [
+              "mlp_batch/smooth_interaction_fit",
+              "tree_batch/axis_interaction_fit",
+              "tree_batch/smooth_interaction_fit"
+            ]
+          }
+        },
+        "registered": {
+          "failure_lag_2": {
+            "entry": [],
+            "exit": [
+              "tree_batch/axis_interaction_fit"
+            ]
+          },
+          "failure_lag_4": {
+            "entry": [],
+            "exit": [
+              "tree_batch/axis_interaction_fit"
+            ]
+          },
+          "immediate": {
+            "entry": [
+              "tree_batch/axis_interaction_fit",
+              "tree_batch/smooth_interaction_fit"
+            ],
+            "exit": [
+              "tree_batch/axis_interaction_fit",
+              "tree_batch/smooth_interaction_fit"
+            ]
+          }
+        },
+        "tuned": {
+          "failure_lag_2": {
+            "entry": [],
+            "exit": [
+              "tree_batch/axis_interaction_fit",
+              "tree_batch/smooth_interaction_fit"
+            ]
+          },
+          "failure_lag_4": {
+            "entry": [],
+            "exit": [
+              "tree_batch/axis_interaction_fit",
+              "tree_batch/smooth_interaction_fit"
+            ]
+          },
+          "immediate": {
+            "entry": [
+              "mlp_batch/axis_interaction_fit",
+              "mlp_batch/smooth_interaction_fit",
+              "tree_batch/axis_interaction_fit",
+              "tree_batch/smooth_interaction_fit"
+            ],
+            "exit": [
+              "mlp_batch/smooth_interaction_fit",
+              "tree_batch/axis_interaction_fit",
+              "tree_batch/smooth_interaction_fit"
+            ]
+          }
+        }
+      },
+      "linear_world_mlp_edge": {
+        "converged": {
+          "high": 0.011669862075605407,
+          "low": 0.004070495342675524,
+          "mean": 0.007870178709140465,
+          "n": 16
+        },
+        "registered": {
+          "high": 0.05035194031502814,
+          "low": 0.04239031913781548,
+          "mean": 0.04637112972642181,
+          "n": 16
+        },
+        "tuned": {
+          "high": 0.0005035857090976238,
+          "low": -0.0021897780275783396,
+          "mean": -0.000843096159240358,
+          "n": 16
+        }
+      },
+      "mlp_budget_effect": {
+        "high": 0.005992157181294908,
+        "low": 0.0023682912456820734,
+        "mean": 0.0041802242134884905,
+        "n": 16
+      }
+    },
+    "status": "FROZEN_SYNTHETIC_DECISION_COMPLETE"
+  },
+  "descriptive": {
+    "field_means": {
+      "converged": {
+        "failure_lag_2": {
+          "axis_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.047119,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.192458,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.054932,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.11464,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.008545,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.054828,
+              "productive_share_of_entrants": 0.307129
+            }
+          },
+          "linear_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.019043,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.025736,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.008301,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.015633,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.037598,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.067715,
+              "productive_share_of_entrants": 0.307129
+            }
+          },
+          "smooth_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.046631,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.18324,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.032959,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.074244,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.049561,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.114034,
+              "productive_share_of_entrants": 0.307129
+            }
+          }
+        },
+        "failure_lag_4": {
+          "axis_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.047119,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.192458,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.053711,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.115181,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.008545,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.054832,
+              "productive_share_of_entrants": 0.307129
+            }
+          },
+          "linear_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.019043,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.025736,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.008545,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.014984,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.037598,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.06774,
+              "productive_share_of_entrants": 0.307129
+            }
+          },
+          "smooth_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.046631,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.18324,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.032715,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.074667,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.049561,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.114054,
+              "productive_share_of_entrants": 0.307129
+            }
+          }
+        },
+        "immediate": {
+          "axis_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.067139,
+              "cumulative_entry_rate": 0.6604,
+              "probe_brier": 0.187912,
+              "productive_share_of_entrants": 0.354202
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.048584,
+              "cumulative_entry_rate": 0.732178,
+              "probe_brier": 0.127398,
+              "productive_share_of_entrants": 0.393827
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.016602,
+              "cumulative_entry_rate": 0.717773,
+              "probe_brier": 0.060353,
+              "productive_share_of_entrants": 0.417714
+            }
+          },
+          "linear_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.026611,
+              "cumulative_entry_rate": 0.722412,
+              "probe_brier": 0.025043,
+              "productive_share_of_entrants": 0.424603
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.01416,
+              "cumulative_entry_rate": 0.705811,
+              "probe_brier": 0.017173,
+              "productive_share_of_entrants": 0.434435
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.051025,
+              "cumulative_entry_rate": 0.75415,
+              "probe_brier": 0.072667,
+              "productive_share_of_entrants": 0.402101
+            }
+          },
+          "smooth_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.066406,
+              "cumulative_entry_rate": 0.664307,
+              "probe_brier": 0.17604,
+              "productive_share_of_entrants": 0.369969
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.036133,
+              "cumulative_entry_rate": 0.708496,
+              "probe_brier": 0.087368,
+              "productive_share_of_entrants": 0.412841
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.048584,
+              "cumulative_entry_rate": 0.710938,
+              "probe_brier": 0.124328,
+              "productive_share_of_entrants": 0.390077
+            }
+          }
+        }
+      },
+      "registered": {
+        "failure_lag_2": {
+          "axis_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.045898,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.192474,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.058594,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.10417,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.008545,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.054828,
+              "productive_share_of_entrants": 0.307129
+            }
+          },
+          "linear_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.031738,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.059624,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.008301,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.012139,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.037598,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.067715,
+              "productive_share_of_entrants": 0.307129
+            }
+          },
+          "smooth_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.044678,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.183267,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.037842,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.069195,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.049561,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.114034,
+              "productive_share_of_entrants": 0.307129
+            }
+          }
+        },
+        "failure_lag_4": {
+          "axis_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.045898,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.192474,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.059814,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.103656,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.008545,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.054832,
+              "productive_share_of_entrants": 0.307129
+            }
+          },
+          "linear_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.031738,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.059624,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.007812,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.012174,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.037598,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.06774,
+              "productive_share_of_entrants": 0.307129
+            }
+          },
+          "smooth_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.044678,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.183267,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.036133,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.069406,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.049561,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.114054,
+              "productive_share_of_entrants": 0.307129
+            }
+          }
+        },
+        "immediate": {
+          "axis_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.062988,
+              "cumulative_entry_rate": 0.662109,
+              "probe_brier": 0.187433,
+              "productive_share_of_entrants": 0.355239
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.052734,
+              "cumulative_entry_rate": 0.717529,
+              "probe_brier": 0.11423,
+              "productive_share_of_entrants": 0.39619
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.016602,
+              "cumulative_entry_rate": 0.717773,
+              "probe_brier": 0.060353,
+              "productive_share_of_entrants": 0.417714
+            }
+          },
+          "linear_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.043945,
+              "cumulative_entry_rate": 0.748779,
+              "probe_brier": 0.059364,
+              "productive_share_of_entrants": 0.408281
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.010986,
+              "cumulative_entry_rate": 0.703857,
+              "probe_brier": 0.012993,
+              "productive_share_of_entrants": 0.435782
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.051025,
+              "cumulative_entry_rate": 0.75415,
+              "probe_brier": 0.072667,
+              "productive_share_of_entrants": 0.402101
+            }
+          },
+          "smooth_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.058594,
+              "cumulative_entry_rate": 0.66748,
+              "probe_brier": 0.17646,
+              "productive_share_of_entrants": 0.368381
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.039307,
+              "cumulative_entry_rate": 0.695068,
+              "probe_brier": 0.084517,
+              "productive_share_of_entrants": 0.410057
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.048584,
+              "cumulative_entry_rate": 0.710938,
+              "probe_brier": 0.124328,
+              "productive_share_of_entrants": 0.390077
+            }
+          }
+        }
+      },
+      "tuned": {
+        "failure_lag_2": {
+          "axis_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.036865,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.194287,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.056885,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.10311,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.007324,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.055524,
+              "productive_share_of_entrants": 0.307129
+            }
+          },
+          "linear_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.008057,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.012223,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.008057,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.012997,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.036621,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.063805,
+              "productive_share_of_entrants": 0.307129
+            }
+          },
+          "smooth_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.043945,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.184137,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.037354,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.070892,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.046875,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.109217,
+              "productive_share_of_entrants": 0.307129
+            }
+          }
+        },
+        "failure_lag_4": {
+          "axis_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.036865,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.194287,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.055664,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.103588,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.00708,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.055616,
+              "productive_share_of_entrants": 0.307129
+            }
+          },
+          "linear_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.008057,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.012223,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.007812,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.012981,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.036621,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.063927,
+              "productive_share_of_entrants": 0.307129
+            }
+          },
+          "smooth_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.043945,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.184137,
+              "productive_share_of_entrants": 0.307129
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.037354,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.072197,
+              "productive_share_of_entrants": 0.307129
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.046631,
+              "cumulative_entry_rate": 1.0,
+              "probe_brier": 0.109208,
+              "productive_share_of_entrants": 0.307129
+            }
+          }
+        },
+        "immediate": {
+          "axis_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.059326,
+              "cumulative_entry_rate": 0.661865,
+              "probe_brier": 0.187738,
+              "productive_share_of_entrants": 0.355783
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.051514,
+              "cumulative_entry_rate": 0.724609,
+              "probe_brier": 0.112437,
+              "productive_share_of_entrants": 0.399221
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.012695,
+              "cumulative_entry_rate": 0.722168,
+              "probe_brier": 0.060521,
+              "productive_share_of_entrants": 0.416427
+            }
+          },
+          "linear_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.010254,
+              "cumulative_entry_rate": 0.708008,
+              "probe_brier": 0.01339,
+              "productive_share_of_entrants": 0.433363
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.013428,
+              "cumulative_entry_rate": 0.70752,
+              "probe_brier": 0.014233,
+              "productive_share_of_entrants": 0.433665
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.044678,
+              "cumulative_entry_rate": 0.757324,
+              "probe_brier": 0.070858,
+              "productive_share_of_entrants": 0.400328
+            }
+          },
+          "smooth_interaction_fit": {
+            "linear_batch": {
+              "active_failed_rate": 0.062744,
+              "cumulative_entry_rate": 0.666992,
+              "probe_brier": 0.176058,
+              "productive_share_of_entrants": 0.369657
+            },
+            "mlp_batch": {
+              "active_failed_rate": 0.036133,
+              "cumulative_entry_rate": 0.706787,
+              "probe_brier": 0.083117,
+              "productive_share_of_entrants": 0.409247
+            },
+            "tree_batch": {
+              "active_failed_rate": 0.037598,
+              "cumulative_entry_rate": 0.727295,
+              "probe_brier": 0.120984,
+              "productive_share_of_entrants": 0.392112
+            }
+          }
+        }
+      }
+    },
+    "menus": {
+      "abm_tree": [
+        {
+          "learning_rate": 0.05,
+          "max_depth": 2,
+          "min_samples_leaf": 5,
+          "rounds": 100
+        },
+        {
+          "learning_rate": 0.05,
+          "max_depth": 2,
+          "min_samples_leaf": 20,
+          "rounds": 100
+        },
+        {
+          "learning_rate": 0.05,
+          "max_depth": 3,
+          "min_samples_leaf": 5,
+          "rounds": 100
+        },
+        {
+          "learning_rate": 0.05,
+          "max_depth": 3,
+          "min_samples_leaf": 20,
+          "rounds": 100
+        },
+        {
+          "learning_rate": 0.05,
+          "max_depth": 5,
+          "min_samples_leaf": 5,
+          "rounds": 100
+        },
+        {
+          "learning_rate": 0.05,
+          "max_depth": 5,
+          "min_samples_leaf": 20,
+          "rounds": 100
+        },
+        {
+          "learning_rate": 0.1,
+          "max_depth": 2,
+          "min_samples_leaf": 5,
+          "rounds": 300
+        },
+        {
+          "learning_rate": 0.1,
+          "max_depth": 2,
+          "min_samples_leaf": 20,
+          "rounds": 300
+        },
+        {
+          "learning_rate": 0.1,
+          "max_depth": 3,
+          "min_samples_leaf": 5,
+          "rounds": 300
+        },
+        {
+          "learning_rate": 0.1,
+          "max_depth": 3,
+          "min_samples_leaf": 20,
+          "rounds": 300
+        },
+        {
+          "learning_rate": 0.1,
+          "max_depth": 5,
+          "min_samples_leaf": 5,
+          "rounds": 300
+        },
+        {
+          "learning_rate": 0.1,
+          "max_depth": 5,
+          "min_samples_leaf": 20,
+          "rounds": 300
+        }
+      ],
+      "policy_layer_converged": [
+        {
+          "training": "LBFGS_TO_CONVERGENCE",
+          "weight_decay": 0.0001
+        },
+        {
+          "training": "LBFGS_TO_CONVERGENCE",
+          "weight_decay": 0.001
+        },
+        {
+          "training": "LBFGS_TO_CONVERGENCE",
+          "weight_decay": 0.01
+        }
+      ],
+      "residual": [
+        {
+          "training": "ADAM_REGISTERED_BUDGET",
+          "weight_decay": 1e-06
+        },
+        {
+          "training": "ADAM_REGISTERED_BUDGET",
+          "weight_decay": 1e-05
+        },
+        {
+          "training": "ADAM_REGISTERED_BUDGET",
+          "weight_decay": 0.0001
+        },
+        {
+          "training": "ADAM_REGISTERED_BUDGET",
+          "weight_decay": 0.001
+        },
+        {
+          "training": "ADAM_REGISTERED_BUDGET",
+          "weight_decay": 0.01
+        },
+        {
+          "training": "LBFGS_TO_CONVERGENCE",
+          "weight_decay": 1e-06
+        },
+        {
+          "training": "LBFGS_TO_CONVERGENCE",
+          "weight_decay": 1e-05
+        },
+        {
+          "training": "LBFGS_TO_CONVERGENCE",
+          "weight_decay": 0.0001
+        },
+        {
+          "training": "LBFGS_TO_CONVERGENCE",
+          "weight_decay": 0.001
+        },
+        {
+          "training": "LBFGS_TO_CONVERGENCE",
+          "weight_decay": 0.01
+        }
+      ]
+    },
+    "policy_layer_brier": {
+      "converged": {
+        "axis_interaction_aligned": {
+          "fixed_rule": 0.258142,
+          "histogram_tree": 0.060358,
+          "matched_linear": 0.230437,
+          "residual_mlp": 0.106355,
+          "scalar_delta": 0.247823
+        },
+        "axis_interaction_reversed": {
+          "fixed_rule": 0.296168,
+          "histogram_tree": 0.060358,
+          "matched_linear": 0.230298,
+          "residual_mlp": 0.109565,
+          "scalar_delta": 0.287122
+        },
+        "linear_support_aligned": {
+          "fixed_rule": 0.260714,
+          "histogram_tree": 0.061943,
+          "matched_linear": 0.034553,
+          "residual_mlp": 0.036328,
+          "scalar_delta": 0.250466
+        },
+        "linear_support_reversed": {
+          "fixed_rule": 0.293596,
+          "histogram_tree": 0.061943,
+          "matched_linear": 0.034839,
+          "residual_mlp": 0.037329,
+          "scalar_delta": 0.28448
+        },
+        "smooth_interaction_aligned": {
+          "fixed_rule": 0.260074,
+          "histogram_tree": 0.109552,
+          "matched_linear": 0.226574,
+          "residual_mlp": 0.068709,
+          "scalar_delta": 0.24978
+        },
+        "smooth_interaction_reversed": {
+          "fixed_rule": 0.294236,
+          "histogram_tree": 0.109552,
+          "matched_linear": 0.227184,
+          "residual_mlp": 0.066919,
+          "scalar_delta": 0.285165
+        }
+      },
+      "registered": {
+        "axis_interaction_aligned": {
+          "fixed_rule": 0.258142,
+          "histogram_tree": 0.060358,
+          "matched_linear": 0.229774,
+          "residual_mlp": 0.107301,
+          "scalar_delta": 0.247823
+        },
+        "axis_interaction_reversed": {
+          "fixed_rule": 0.296168,
+          "histogram_tree": 0.060358,
+          "matched_linear": 0.230053,
+          "residual_mlp": 0.10676,
+          "scalar_delta": 0.287122
+        },
+        "linear_support_aligned": {
+          "fixed_rule": 0.260714,
+          "histogram_tree": 0.061943,
+          "matched_linear": 0.065551,
+          "residual_mlp": 0.037536,
+          "scalar_delta": 0.250466
+        },
+        "linear_support_reversed": {
+          "fixed_rule": 0.293596,
+          "histogram_tree": 0.061943,
+          "matched_linear": 0.075014,
+          "residual_mlp": 0.03717,
+          "scalar_delta": 0.28448
+        },
+        "smooth_interaction_aligned": {
+          "fixed_rule": 0.260074,
+          "histogram_tree": 0.109552,
+          "matched_linear": 0.226186,
+          "residual_mlp": 0.064202,
+          "scalar_delta": 0.24978
+        },
+        "smooth_interaction_reversed": {
+          "fixed_rule": 0.294236,
+          "histogram_tree": 0.109552,
+          "matched_linear": 0.22572,
+          "residual_mlp": 0.067491,
+          "scalar_delta": 0.285165
+        }
+      },
+      "tuned": {
+        "axis_interaction_aligned": {
+          "fixed_rule": 0.258142,
+          "histogram_tree": 0.060358,
+          "matched_linear": 0.230212,
+          "residual_mlp": 0.105501,
+          "scalar_delta": 0.247823
+        },
+        "axis_interaction_reversed": {
+          "fixed_rule": 0.296168,
+          "histogram_tree": 0.060358,
+          "matched_linear": 0.230472,
+          "residual_mlp": 0.11052,
+          "scalar_delta": 0.287122
+        },
+        "linear_support_aligned": {
+          "fixed_rule": 0.260714,
+          "histogram_tree": 0.061943,
+          "matched_linear": 0.03999,
+          "residual_mlp": 0.040498,
+          "scalar_delta": 0.250466
+        },
+        "linear_support_reversed": {
+          "fixed_rule": 0.293596,
+          "histogram_tree": 0.061943,
+          "matched_linear": 0.039941,
+          "residual_mlp": 0.039643,
+          "scalar_delta": 0.28448
+        },
+        "smooth_interaction_aligned": {
+          "fixed_rule": 0.260074,
+          "histogram_tree": 0.109552,
+          "matched_linear": 0.226743,
+          "residual_mlp": 0.066135,
+          "scalar_delta": 0.24978
+        },
+        "smooth_interaction_reversed": {
+          "fixed_rule": 0.294236,
+          "histogram_tree": 0.109552,
+          "matched_linear": 0.226271,
+          "residual_mlp": 0.067607,
+          "scalar_delta": 0.285165
+        }
+      }
+    },
+    "policy_layer_selection_counts_by_candidate_index": {
+      "converged/matched_linear/axis_interaction_aligned": {
+        "0": 4,
+        "1": 10,
+        "2": 2
+      },
+      "converged/matched_linear/axis_interaction_reversed": {
+        "0": 5,
+        "1": 11
+      },
+      "converged/matched_linear/linear_support_aligned": {
+        "0": 16
+      },
+      "converged/matched_linear/linear_support_reversed": {
+        "0": 16
+      },
+      "converged/matched_linear/smooth_interaction_aligned": {
+        "0": 2,
+        "1": 12,
+        "2": 2
+      },
+      "converged/matched_linear/smooth_interaction_reversed": {
+        "0": 4,
+        "1": 11,
+        "2": 1
+      },
+      "converged/residual_mlp/axis_interaction_aligned": {
+        "0": 3,
+        "1": 13
+      },
+      "converged/residual_mlp/axis_interaction_reversed": {
+        "0": 5,
+        "1": 11
+      },
+      "converged/residual_mlp/linear_support_aligned": {
+        "0": 11,
+        "1": 5
+      },
+      "converged/residual_mlp/linear_support_reversed": {
+        "0": 10,
+        "1": 6
+      },
+      "converged/residual_mlp/smooth_interaction_aligned": {
+        "0": 2,
+        "1": 14
+      },
+      "converged/residual_mlp/smooth_interaction_reversed": {
+        "0": 5,
+        "1": 11
+      },
+      "tuned/matched_linear/axis_interaction_aligned": {
+        "0": 1,
+        "2": 2,
+        "3": 4,
+        "4": 1,
+        "7": 3,
+        "8": 4,
+        "9": 1
+      },
+      "tuned/matched_linear/axis_interaction_reversed": {
+        "0": 4,
+        "2": 1,
+        "3": 3,
+        "7": 4,
+        "8": 4
+      },
+      "tuned/matched_linear/linear_support_aligned": {
+        "5": 15,
+        "6": 1
+      },
+      "tuned/matched_linear/linear_support_reversed": {
+        "5": 15,
+        "6": 1
+      },
+      "tuned/matched_linear/smooth_interaction_aligned": {
+        "0": 4,
+        "1": 1,
+        "2": 1,
+        "3": 2,
+        "7": 2,
+        "8": 4,
+        "9": 2
+      },
+      "tuned/matched_linear/smooth_interaction_reversed": {
+        "0": 4,
+        "3": 4,
+        "7": 4,
+        "8": 4
+      },
+      "tuned/residual_mlp/axis_interaction_aligned": {
+        "0": 1,
+        "1": 2,
+        "2": 2,
+        "6": 1,
+        "7": 2,
+        "8": 8
+      },
+      "tuned/residual_mlp/axis_interaction_reversed": {
+        "0": 1,
+        "1": 1,
+        "2": 2,
+        "7": 5,
+        "8": 7
+      },
+      "tuned/residual_mlp/linear_support_aligned": {
+        "0": 6,
+        "1": 1,
+        "2": 3,
+        "5": 1,
+        "6": 2,
+        "7": 3
+      },
+      "tuned/residual_mlp/linear_support_reversed": {
+        "0": 9,
+        "2": 1,
+        "6": 3,
+        "7": 3
+      },
+      "tuned/residual_mlp/smooth_interaction_aligned": {
+        "0": 4,
+        "2": 6,
+        "7": 2,
+        "8": 4
+      },
+      "tuned/residual_mlp/smooth_interaction_reversed": {
+        "1": 1,
+        "2": 6,
+        "7": 4,
+        "8": 5
+      }
+    },
+    "tuned_abm_field_selection_counts_by_menu_index": {
+      "linear_batch/axis_interaction_fit": {
+        "0": 79,
+        "1": 2,
+        "2": 36,
+        "3": 210,
+        "4": 64,
+        "5": 14,
+        "6": 4,
+        "7": 19,
+        "8": 66,
+        "9": 44
+      },
+      "linear_batch/linear_fit": {
+        "5": 296,
+        "6": 139,
+        "7": 15
+      },
+      "linear_batch/smooth_interaction_fit": {
+        "0": 106,
+        "1": 3,
+        "2": 35,
+        "3": 122,
+        "4": 11,
+        "5": 40,
+        "6": 8,
+        "7": 48,
+        "8": 83,
+        "9": 18
+      },
+      "mlp_batch/axis_interaction_fit": {
+        "0": 23,
+        "1": 24,
+        "2": 52,
+        "3": 178,
+        "5": 13,
+        "6": 22,
+        "7": 35,
+        "8": 272
+      },
+      "mlp_batch/linear_fit": {
+        "0": 171,
+        "1": 35,
+        "2": 73,
+        "3": 16,
+        "5": 37,
+        "6": 26,
+        "7": 61,
+        "8": 54
+      },
+      "mlp_batch/smooth_interaction_fit": {
+        "0": 46,
+        "1": 35,
+        "2": 103,
+        "3": 121,
+        "5": 9,
+        "6": 12,
+        "7": 51,
+        "8": 258
+      },
+      "tree_batch/axis_interaction_fit": {
+        "0": 1,
+        "10": 80,
+        "11": 23,
+        "2": 22,
+        "4": 55,
+        "6": 129,
+        "7": 25,
+        "8": 176,
+        "9": 14
+      },
+      "tree_batch/linear_fit": {
+        "0": 4,
+        "1": 37,
+        "10": 10,
+        "11": 35,
+        "2": 19,
+        "3": 29,
+        "4": 9,
+        "5": 13,
+        "6": 131,
+        "7": 161,
+        "8": 18,
+        "9": 53
+      },
+      "tree_batch/smooth_interaction_fit": {
+        "0": 19,
+        "1": 11,
+        "10": 59,
+        "11": 71,
+        "2": 92,
+        "3": 25,
+        "4": 135,
+        "5": 9,
+        "6": 29,
+        "7": 53,
+        "8": 71,
+        "9": 93
+      }
+    }
+  },
+  "execution": {
+    "abm_rows": 2448,
+    "estimate_quoted": "2 to 5 hours per run at 40 workers",
+    "host": {
+      "cpus": 64,
+      "device": "CPU",
+      "node": "kimyoungjin06-Workstation-KISTI",
+      "numpy": "2.4.4",
+      "python": "3.14.0",
+      "scikit_learn": "1.8.0",
+      "scipy": "1.17.1",
+      "torch": "2.11.0+cu130"
+    },
+    "new_llm_calls": 0,
+    "output_dirs": {
+      "development": "/ssd/pivot_converged_capacity_v2_1cfd1ab_development",
+      "reproduction": "/ssd/pivot_converged_capacity_v2_1cfd1ab_reproduction"
+    },
+    "policy_layer_rows": 1440,
+    "profile": "development",
+    "wall_seconds": {
+      "development": 4609.9,
+      "reproduction": 4627.4
+    },
+    "workers": 40
+  },
+  "expectations": {
+    "E1": {
+      "held": true,
+      "observed": []
+    },
+    "E2": {
+      "held": true,
+      "observed": -0.000843096159240358
+    },
+    "E3": {
+      "held": true,
+      "observed": {
+        "high": 0.005992157181294908,
+        "low": 0.0023682912456820734,
+        "mean": 0.0041802242134884905,
+        "n": 16
+      }
+    },
+    "E4": {
+      "held": true,
+      "observed": {
+        "entry": [
+          "mlp_batch/axis_interaction_fit",
+          "mlp_batch/smooth_interaction_fit",
+          "tree_batch/axis_interaction_fit",
+          "tree_batch/smooth_interaction_fit"
+        ],
+        "exit": [
+          "mlp_batch/smooth_interaction_fit",
+          "tree_batch/axis_interaction_fit",
+          "tree_batch/smooth_interaction_fit"
+        ]
+      }
+    }
+  },
+  "label": "pivot_converged_capacity_v2_20261030",
+  "precommit_commit": "1cfd1abb4ea9f7261209d61bbe48a59d5d6d9995",
+  "reports": {
+    "abm": {
+      "converged": {
+        "failure_lag_2": {
+          "entry_behavior": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "exit_channel": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": -0.018555,
+              "pass": false,
+              "positive_replicates": 2
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.00293,
+              "pass": false,
+              "positive_replicates": 8
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.057129,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.015625,
+              "pass": false,
+              "positive_replicates": 11
+            }
+          },
+          "field_geometry_crossover": {
+            "mlp_batch_over_tree_batch/axis_interaction_fit": {
+              "mean": -0.059812,
+              "pass": false,
+              "positive_replicates": 1
+            },
+            "mlp_batch_over_tree_batch/smooth_interaction_fit": {
+              "mean": 0.03979,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch_over_mlp_batch/axis_interaction_fit": {
+              "mean": 0.059812,
+              "pass": true,
+              "positive_replicates": 15
+            },
+            "tree_batch_over_mlp_batch/smooth_interaction_fit": {
+              "mean": -0.03979,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "field_nonlinear_learning": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.067714,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.098893,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.179609,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.111185,
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "useful_learning": {
+            "field_public": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": 0.013658,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": 0.021679,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": 0.091475,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": 0.130676,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": 0.151287,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": 0.090885,
+                "pass": true,
+                "positive_replicates": 16
+              }
+            },
+            "neighbor_local": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": -0.115069,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": -0.109889,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": -0.131237,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": -0.126174,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": -0.056423,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": -0.055492,
+                "pass": false,
+                "positive_replicates": 0
+              }
+            }
+          }
+        },
+        "failure_lag_4": {
+          "entry_behavior": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "exit_channel": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": -0.01709,
+              "pass": false,
+              "positive_replicates": 3
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.003418,
+              "pass": false,
+              "positive_replicates": 8
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.057129,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.015625,
+              "pass": false,
+              "positive_replicates": 11
+            }
+          },
+          "field_geometry_crossover": {
+            "mlp_batch_over_tree_batch/axis_interaction_fit": {
+              "mean": -0.060349,
+              "pass": false,
+              "positive_replicates": 1
+            },
+            "mlp_batch_over_tree_batch/smooth_interaction_fit": {
+              "mean": 0.039387,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch_over_mlp_batch/axis_interaction_fit": {
+              "mean": 0.060349,
+              "pass": true,
+              "positive_replicates": 15
+            },
+            "tree_batch_over_mlp_batch/smooth_interaction_fit": {
+              "mean": -0.039387,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "field_nonlinear_learning": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.066524,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.09782,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.17963,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.11119,
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "useful_learning": {
+            "field_public": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": 0.013658,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": 0.021679,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": 0.090934,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": 0.130252,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": 0.151284,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": 0.090865,
+                "pass": true,
+                "positive_replicates": 16
+              }
+            },
+            "neighbor_local": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": -0.113832,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": -0.109368,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": -0.130089,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": -0.125698,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": -0.054884,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": -0.054412,
+                "pass": false,
+                "positive_replicates": 0
+              }
+            }
+          }
+        },
+        "immediate": {
+          "entry_behavior": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.029792,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.033038,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.086013,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.042609,
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "exit_channel": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.006104,
+              "pass": false,
+              "positive_replicates": 9
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.017822,
+              "pass": true,
+              "positive_replicates": 14
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.074951,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.042236,
+              "pass": true,
+              "positive_replicates": 13
+            }
+          },
+          "field_geometry_crossover": {
+            "mlp_batch_over_tree_batch/axis_interaction_fit": {
+              "mean": -0.067045,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "mlp_batch_over_tree_batch/smooth_interaction_fit": {
+              "mean": 0.036961,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch_over_mlp_batch/axis_interaction_fit": {
+              "mean": 0.067045,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch_over_mlp_batch/smooth_interaction_fit": {
+              "mean": -0.036961,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "field_nonlinear_learning": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.052644,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.080802,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.175182,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.099336,
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "useful_learning": {
+            "field_public": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": 0.018203,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": 0.028879,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": 0.078717,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": 0.117551,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": 0.145762,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": 0.080591,
+                "pass": true,
+                "positive_replicates": 16
+              }
+            },
+            "neighbor_local": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": -0.131624,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": -0.130019,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": -0.146559,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": -0.145137,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": -0.073855,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": -0.074106,
+                "pass": false,
+                "positive_replicates": 0
+              }
+            }
+          }
+        }
+      },
+      "registered": {
+        "failure_lag_2": {
+          "entry_behavior": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "exit_channel": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": -0.036133,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": -0.016602,
+              "pass": false,
+              "positive_replicates": 4
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.043213,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.000977,
+              "pass": false,
+              "positive_replicates": 6
+            }
+          },
+          "field_geometry_crossover": {
+            "mlp_batch_over_tree_batch/axis_interaction_fit": {
+              "mean": -0.049342,
+              "pass": false,
+              "positive_replicates": 1
+            },
+            "mlp_batch_over_tree_batch/smooth_interaction_fit": {
+              "mean": 0.044839,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch_over_mlp_batch/axis_interaction_fit": {
+              "mean": 0.049342,
+              "pass": true,
+              "positive_replicates": 15
+            },
+            "tree_batch_over_mlp_batch/smooth_interaction_fit": {
+              "mean": -0.044839,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "field_nonlinear_learning": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.04082,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.066587,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.145737,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.077324,
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "useful_learning": {
+            "field_public": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": 0.013641,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": 0.021653,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": 0.101946,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": 0.135725,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": 0.151287,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": 0.090885,
+                "pass": true,
+                "positive_replicates": 16
+              }
+            },
+            "neighbor_local": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": -0.081105,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": -0.07888,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": -0.128702,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": -0.124287,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": -0.056423,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": -0.055492,
+                "pass": false,
+                "positive_replicates": 0
+              }
+            }
+          }
+        },
+        "failure_lag_4": {
+          "entry_behavior": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "exit_channel": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": -0.037842,
+              "pass": false,
+              "positive_replicates": 1
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": -0.015381,
+              "pass": false,
+              "positive_replicates": 3
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.043213,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.000977,
+              "pass": false,
+              "positive_replicates": 6
+            }
+          },
+          "field_geometry_crossover": {
+            "mlp_batch_over_tree_batch/axis_interaction_fit": {
+              "mean": -0.048825,
+              "pass": false,
+              "positive_replicates": 1
+            },
+            "mlp_batch_over_tree_batch/smooth_interaction_fit": {
+              "mean": 0.044648,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch_over_mlp_batch/axis_interaction_fit": {
+              "mean": 0.048825,
+              "pass": true,
+              "positive_replicates": 15
+            },
+            "tree_batch_over_mlp_batch/smooth_interaction_fit": {
+              "mean": -0.044648,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "field_nonlinear_learning": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.041368,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.066411,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.145759,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.077329,
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "useful_learning": {
+            "field_public": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": 0.013641,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": 0.021653,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": 0.102459,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": 0.135513,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": 0.151284,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": 0.090865,
+                "pass": true,
+                "positive_replicates": 16
+              }
+            },
+            "neighbor_local": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": -0.079997,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": -0.077623,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": -0.12743,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": -0.123656,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": -0.054884,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": -0.054412,
+                "pass": false,
+                "positive_replicates": 0
+              }
+            }
+          }
+        },
+        "immediate": {
+          "entry_behavior": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.01345,
+              "pass": false,
+              "positive_replicates": 13
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.014174,
+              "pass": false,
+              "positive_replicates": 13
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.068655,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.027876,
+              "pass": true,
+              "positive_replicates": 15
+            }
+          },
+          "exit_channel": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": -0.022705,
+              "pass": false,
+              "positive_replicates": 2
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": -0.013672,
+              "pass": false,
+              "positive_replicates": 3
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.053467,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.01709,
+              "pass": true,
+              "positive_replicates": 13
+            }
+          },
+          "field_geometry_crossover": {
+            "mlp_batch_over_tree_batch/axis_interaction_fit": {
+              "mean": -0.053877,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "mlp_batch_over_tree_batch/smooth_interaction_fit": {
+              "mean": 0.039811,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch_over_mlp_batch/axis_interaction_fit": {
+              "mean": 0.053877,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch_over_mlp_batch/smooth_interaction_fit": {
+              "mean": -0.039811,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "field_nonlinear_learning": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.026832,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.045571,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.140383,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.065434,
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "useful_learning": {
+            "field_public": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": 0.018682,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": 0.028459,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": 0.091885,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": 0.120402,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": 0.145762,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": 0.080591,
+                "pass": true,
+                "positive_replicates": 16
+              }
+            },
+            "neighbor_local": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": -0.102739,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": -0.101042,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": -0.14545,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": -0.143411,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": -0.073855,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": -0.074106,
+                "pass": false,
+                "positive_replicates": 0
+              }
+            }
+          }
+        }
+      },
+      "tuned": {
+        "failure_lag_2": {
+          "entry_behavior": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "exit_channel": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": -0.02002,
+              "pass": false,
+              "positive_replicates": 3
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.006592,
+              "pass": false,
+              "positive_replicates": 8
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.058105,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.025635,
+              "pass": true,
+              "positive_replicates": 15
+            }
+          },
+          "field_geometry_crossover": {
+            "mlp_batch_over_tree_batch/axis_interaction_fit": {
+              "mean": -0.047586,
+              "pass": false,
+              "positive_replicates": 1
+            },
+            "mlp_batch_over_tree_batch/smooth_interaction_fit": {
+              "mean": 0.038325,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch_over_mlp_batch/axis_interaction_fit": {
+              "mean": 0.047586,
+              "pass": true,
+              "positive_replicates": 15
+            },
+            "tree_batch_over_mlp_batch/smooth_interaction_fit": {
+              "mean": -0.038325,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "field_nonlinear_learning": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.09195,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.114019,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.190344,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.126502,
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "useful_learning": {
+            "field_public": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": 0.011829,
+                "pass": true,
+                "positive_replicates": 15
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": 0.020782,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": 0.103006,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": 0.134027,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": 0.150591,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": 0.095702,
+                "pass": true,
+                "positive_replicates": 16
+              }
+            },
+            "neighbor_local": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": -0.081105,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": -0.07888,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": -0.128702,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": -0.124287,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": -0.056423,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": -0.055492,
+                "pass": false,
+                "positive_replicates": 0
+              }
+            }
+          }
+        },
+        "failure_lag_4": {
+          "entry_behavior": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.0,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "exit_channel": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": -0.019043,
+              "pass": false,
+              "positive_replicates": 2
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.006348,
+              "pass": false,
+              "positive_replicates": 8
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.05835,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.025879,
+              "pass": true,
+              "positive_replicates": 15
+            }
+          },
+          "field_geometry_crossover": {
+            "mlp_batch_over_tree_batch/axis_interaction_fit": {
+              "mean": -0.047972,
+              "pass": false,
+              "positive_replicates": 1
+            },
+            "mlp_batch_over_tree_batch/smooth_interaction_fit": {
+              "mean": 0.037011,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch_over_mlp_batch/axis_interaction_fit": {
+              "mean": 0.047972,
+              "pass": true,
+              "positive_replicates": 15
+            },
+            "tree_batch_over_mlp_batch/smooth_interaction_fit": {
+              "mean": -0.037011,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "field_nonlinear_learning": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.091456,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.112697,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.190374,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.126633,
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "useful_learning": {
+            "field_public": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": 0.011829,
+                "pass": true,
+                "positive_replicates": 15
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": 0.020782,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": 0.102527,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": 0.132722,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": 0.150499,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": 0.095711,
+                "pass": true,
+                "positive_replicates": 16
+              }
+            },
+            "neighbor_local": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": -0.079997,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": -0.077623,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": -0.12743,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": -0.123656,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": -0.054884,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": -0.054412,
+                "pass": false,
+                "positive_replicates": 0
+              }
+            }
+          }
+        },
+        "immediate": {
+          "entry_behavior": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.043137,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.039288,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.093679,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.05549,
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "exit_channel": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.010986,
+              "pass": false,
+              "positive_replicates": 11
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.029785,
+              "pass": true,
+              "positive_replicates": 15
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.081055,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.05957,
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "field_geometry_crossover": {
+            "mlp_batch_over_tree_batch/axis_interaction_fit": {
+              "mean": -0.051915,
+              "pass": false,
+              "positive_replicates": 0
+            },
+            "mlp_batch_over_tree_batch/smooth_interaction_fit": {
+              "mean": 0.037867,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch_over_mlp_batch/axis_interaction_fit": {
+              "mean": 0.051915,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch_over_mlp_batch/smooth_interaction_fit": {
+              "mean": -0.037867,
+              "pass": false,
+              "positive_replicates": 0
+            }
+          },
+          "field_nonlinear_learning": {
+            "mlp_batch/axis_interaction_fit": {
+              "mean": 0.076145,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "mlp_batch/smooth_interaction_fit": {
+              "mean": 0.093785,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/axis_interaction_fit": {
+              "mean": 0.184686,
+              "pass": true,
+              "positive_replicates": 16
+            },
+            "tree_batch/smooth_interaction_fit": {
+              "mean": 0.112543,
+              "pass": true,
+              "positive_replicates": 16
+            }
+          },
+          "useful_learning": {
+            "field_public": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": 0.018377,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": 0.028861,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": 0.093679,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": 0.121803,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": 0.145594,
+                "pass": true,
+                "positive_replicates": 16
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": 0.083935,
+                "pass": true,
+                "positive_replicates": 16
+              }
+            },
+            "neighbor_local": {
+              "linear_batch/axis_interaction_fit": {
+                "mean": -0.102739,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "linear_batch/smooth_interaction_fit": {
+                "mean": -0.101042,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/axis_interaction_fit": {
+                "mean": -0.14545,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "mlp_batch/smooth_interaction_fit": {
+                "mean": -0.143411,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/axis_interaction_fit": {
+                "mean": -0.073855,
+                "pass": false,
+                "positive_replicates": 0
+              },
+              "tree_batch/smooth_interaction_fit": {
+                "mean": -0.074106,
+                "pass": false,
+                "positive_replicates": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "policy_layer": {
+      "converged": {
+        "feature_conditional_need": {
+          "linear_support_aligned": {
+            "mean": 0.215913,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "linear_support_reversed": {
+            "mean": 0.24964,
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "mlp_over_tree": {
+          "axis_interaction_aligned": {
+            "mean": -0.045998,
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "axis_interaction_reversed": {
+            "mean": -0.049207,
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "smooth_interaction_aligned": {
+            "mean": 0.040843,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "smooth_interaction_reversed": {
+            "mean": 0.042633,
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "neural_interaction_specificity": {
+          "smooth_interaction_aligned": {
+            "mean": 0.015229,
+            "pass": true,
+            "positive_replicates": 14
+          },
+          "smooth_interaction_reversed": {
+            "mean": 0.018019,
+            "pass": true,
+            "positive_replicates": 15
+          }
+        },
+        "nonlinear_representation_need": {
+          "axis_interaction_aligned": {
+            "mean": 0.125857,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "axis_interaction_reversed": {
+            "mean": 0.123223,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "smooth_interaction_aligned": {
+            "mean": 0.159641,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "smooth_interaction_reversed": {
+            "mean": 0.162754,
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "tree_over_mlp": {
+          "axis_interaction_aligned": {
+            "mean": 0.045998,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "axis_interaction_reversed": {
+            "mean": 0.049207,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "smooth_interaction_aligned": {
+            "mean": -0.040843,
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "smooth_interaction_reversed": {
+            "mean": -0.042633,
+            "pass": false,
+            "positive_replicates": 0
+          }
+        }
+      },
+      "registered": {
+        "feature_conditional_need": {
+          "linear_support_aligned": {
+            "mean": 0.184915,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "linear_support_reversed": {
+            "mean": 0.209466,
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "mlp_over_tree": {
+          "axis_interaction_aligned": {
+            "mean": -0.046944,
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "axis_interaction_reversed": {
+            "mean": -0.046402,
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "smooth_interaction_aligned": {
+            "mean": 0.04535,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "smooth_interaction_reversed": {
+            "mean": 0.042061,
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "neural_interaction_specificity": {
+          "smooth_interaction_aligned": {
+            "mean": 0.020943,
+            "pass": true,
+            "positive_replicates": 15
+          },
+          "smooth_interaction_reversed": {
+            "mean": 0.017288,
+            "pass": true,
+            "positive_replicates": 14
+          }
+        },
+        "nonlinear_representation_need": {
+          "axis_interaction_aligned": {
+            "mean": 0.094457,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "axis_interaction_reversed": {
+            "mean": 0.08545,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "smooth_interaction_aligned": {
+            "mean": 0.133969,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "smooth_interaction_reversed": {
+            "mean": 0.120385,
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "tree_over_mlp": {
+          "axis_interaction_aligned": {
+            "mean": 0.046944,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "axis_interaction_reversed": {
+            "mean": 0.046402,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "smooth_interaction_aligned": {
+            "mean": -0.04535,
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "smooth_interaction_reversed": {
+            "mean": -0.042061,
+            "pass": false,
+            "positive_replicates": 0
+          }
+        }
+      },
+      "tuned": {
+        "feature_conditional_need": {
+          "linear_support_aligned": {
+            "mean": 0.210476,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "linear_support_reversed": {
+            "mean": 0.244539,
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "mlp_over_tree": {
+          "axis_interaction_aligned": {
+            "mean": -0.045144,
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "axis_interaction_reversed": {
+            "mean": -0.050162,
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "smooth_interaction_aligned": {
+            "mean": 0.043417,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "smooth_interaction_reversed": {
+            "mean": 0.041945,
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "neural_interaction_specificity": {
+          "smooth_interaction_aligned": {
+            "mean": 0.021972,
+            "pass": true,
+            "positive_replicates": 15
+          },
+          "smooth_interaction_reversed": {
+            "mean": 0.019645,
+            "pass": true,
+            "positive_replicates": 15
+          }
+        },
+        "nonlinear_representation_need": {
+          "axis_interaction_aligned": {
+            "mean": 0.125219,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "axis_interaction_reversed": {
+            "mean": 0.119655,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "smooth_interaction_aligned": {
+            "mean": 0.161115,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "smooth_interaction_reversed": {
+            "mean": 0.158366,
+            "pass": true,
+            "positive_replicates": 16
+          }
+        },
+        "tree_over_mlp": {
+          "axis_interaction_aligned": {
+            "mean": 0.045144,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "axis_interaction_reversed": {
+            "mean": 0.050162,
+            "pass": true,
+            "positive_replicates": 16
+          },
+          "smooth_interaction_aligned": {
+            "mean": -0.043417,
+            "pass": false,
+            "positive_replicates": 0
+          },
+          "smooth_interaction_reversed": {
+            "mean": -0.041945,
+            "pass": false,
+            "positive_replicates": 0
+          }
+        }
+      }
+    }
+  },
+  "reproduction": {
+    "artifact_sha256": {
+      "policy_rows.jsonl": "d0d6b68bdfc653007724d1e61aef150188871e5f7ba9d0b876f5efa9e3f1bf4a",
+      "receipt.json": "8f517b06c68ba52108fb819a1a12772f65f31a51053c105941b45b1513d4da0e",
+      "runs.jsonl": "86020c3e4d3441e0271c5b24edba844a927680c669a7128093ee6ff06aed9835",
+      "scorecard.json": "a43349fedca0b803c91fc7aae4b4ce44c7bd9466bdedf3bf5b00c84c0d15431d",
+      "scorecard.md": "c7b82cde67828a775d5facf0bfbc177008ba3174d1a8fd76cb261778821b3918"
+    },
+    "byte_identical": {
+      "policy_rows.jsonl": true,
+      "receipt.json": true,
+      "runs.jsonl": true,
+      "scorecard.json": true,
+      "scorecard.md": true
+    }
+  },
+  "schema_version": "pivot_converged_capacity_record.v2",
+  "status": "O36_HOLD_UNDER_BOTH",
+  "supersedes": {
+    "changed": [
+      "CONVERGENCE_NON_CONVERGED_HANDLING",
+      "CONVERGENCE_RESTARTS",
+      "TASK_ORDER",
+      "RUNTIME_ESTIMATE"
+    ],
+    "contract": "experiments/configs/pivot_converged_capacity_v1.yaml",
+    "diagnosis": "ON_SCRATCH_SEEDS_ALL_OF_ABOUT_7200_INSTRUMENTED_LBFGS_FITS_CONVERGED_WITHIN_3_SECONDS_SO_A_MISS_IS_A_RARE_NUMERICAL_CASE_THAT_SHOULD_NOT_STOP_THE_STUDY",
+    "freeze_commit": "4062c8c",
+    "registered_phase": "PASSED_ROW_FOR_ROW_PARITY_WITH_BOTH_RECORDS",
+    "results_read": "NONE_NO_CONVERGED_OR_TUNED_OUTCOME_WAS_COMPUTED",
+    "status": "STOPPED_INVALID_IMPLEMENTATION_NO_OUTPUTS_WRITTEN",
+    "stop": "IN_THE_CONVERGED_AND_TUNED_PHASE_ONE_INNER_FIT_OF_A_TUNED_FIELD_MLP_MISSED_THE_GRADIENT_TOLERANCE_AFTER_FIVE_RESTARTS",
+    "unchanged": "EVERYTHING_ELSE_INCLUDING_THE_REGIMES_MENUS_SEEDS_DECISIONS_AND_EXPECTATIONS"
+  },
+  "training": {
+    "abm": {
+      "converged": {
+        "acting_fits": 165615,
+        "fallbacks": 0,
+        "inner_fits": 0,
+        "lbfgs_acting_fits": 165615,
+        "lbfgs_fits": 165615,
+        "lbfgs_restarts": 0,
+        "lbfgs_unconverged_acting": 0,
+        "lbfgs_unconverged_inner": 0,
+        "max_acting_gradient": 9.999895597628486e-07,
+        "max_lbfgs_gradient": 9.999895597628486e-07,
+        "selected": {},
+        "unavailable_candidates": 0
+      },
+      "registered": {
+        "acting_fits": 249224,
+        "fallbacks": 0,
+        "inner_fits": 0,
+        "lbfgs_acting_fits": 0,
+        "lbfgs_fits": 0,
+        "lbfgs_restarts": 0,
+        "lbfgs_unconverged_acting": 0,
+        "lbfgs_unconverged_inner": 0,
+        "max_acting_gradient": 0.0,
+        "max_lbfgs_gradient": 0.0,
+        "selected": {},
+        "unavailable_candidates": 0
+      },
+      "tuned": {
+        "acting_fits": 249547,
+        "fallbacks": 244647,
+        "inner_fits": 209685,
+        "lbfgs_acting_fits": 1644,
+        "lbfgs_fits": 65421,
+        "lbfgs_restarts": 1,
+        "lbfgs_unconverged_acting": 0,
+        "lbfgs_unconverged_inner": 1,
+        "max_acting_gradient": 9.999717033746733e-07,
+        "max_lbfgs_gradient": 1.3204003424084967e-06,
+        "selected": {
+          "0": 449,
+          "1": 147,
+          "10": 149,
+          "11": 129,
+          "2": 432,
+          "3": 701,
+          "4": 274,
+          "5": 431,
+          "6": 500,
+          "7": 468,
+          "8": 998,
+          "9": 222
+        },
+        "unavailable_candidates": 1
+      }
+    },
+    "policy_layer": {
+      "converged": {
+        "acting_fits": 0,
+        "fallbacks": 0,
+        "inner_fits": 0,
+        "lbfgs_acting_fits": 192,
+        "lbfgs_fits": 2496,
+        "lbfgs_restarts": 0,
+        "lbfgs_unconverged_acting": 0,
+        "lbfgs_unconverged_inner": 0,
+        "max_acting_gradient": 9.997823735177595e-07,
+        "max_lbfgs_gradient": 9.998775888658438e-07,
+        "selected": {},
+        "unavailable_candidates": 0
+      },
+      "registered": {
+        "acting_fits": 0,
+        "fallbacks": 0,
+        "inner_fits": 0,
+        "lbfgs_acting_fits": 0,
+        "lbfgs_fits": 0,
+        "lbfgs_restarts": 0,
+        "lbfgs_unconverged_acting": 0,
+        "lbfgs_unconverged_inner": 0,
+        "max_acting_gradient": 0.0,
+        "max_lbfgs_gradient": 0.0,
+        "selected": {},
+        "unavailable_candidates": 0
+      },
+      "tuned": {
+        "acting_fits": 0,
+        "fallbacks": 0,
+        "inner_fits": 0,
+        "lbfgs_acting_fits": 114,
+        "lbfgs_fits": 3954,
+        "lbfgs_restarts": 0,
+        "lbfgs_unconverged_acting": 0,
+        "lbfgs_unconverged_inner": 0,
+        "max_acting_gradient": 9.998417581997158e-07,
+        "max_lbfgs_gradient": 9.998775888658438e-07,
+        "selected": {},
+        "unavailable_candidates": 0
+      }
+    }
+  },
+  "tuned_neighbor_rows_equal_registered": true
+}
