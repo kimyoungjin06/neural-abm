@@ -1,0 +1,320 @@
+schema_version: pivot_policy_ladder_consolidation.v14
+label: pivot_policy_ladder_consolidation_v14
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-10-30'
+purpose: 'Extend the v13 ledger with the learning-strength study, which answers O39 and which the user directed on
+  2026-10-30: does Study 2''s imitative loop survive when its learning rate is cut until experiment 4''s estimator
+  finds an outcome dependence the coauthor data allow, and when outcomes become visible only after a delay? v1 to
+  v13 remain the records for everything before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v13.yaml
+    sha256: 00b15306cd9e90001b71da25c0890687f826330c828ba6493cac7d5ce68cf977
+    record_commit: 23c2143
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v13.md
+    sha256: 56aca598217f09cecc286623d2de6ec137350a8f615f77247eb7f123821460b0
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v13.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: learning_strength
+  path: experiments/evidence/results/pivot_learning_strength_v1_20261030.summary.json
+  sha256: 37d5fbd3cfbd47960102a9ecadf94a1d4930ce24be1959856df142e2e85a1b54
+  freeze_commit: 42b682e
+  record_commit: da5f772
+invalidated_executions: []
+claims:
+  confirmed:
+  - id: C95_at_the_data_allowed_learning_rate_study2s_imitative_loop_falls_below_material
+    statement: At the largest grid rate whose outcome dependence the coauthor data do not exclude, 0.0234375, the
+      imitative arm's failed pivots exceed the frozen arm's by +0.0003 [+0.0000, +0.0008] at baseline and by +0.0161
+      [+0.0117, +0.0208] under seed grants with a three-step delay (+0.0222 [+0.0169, +0.0275] at once). Both are
+      below the registered material size of 0.05, against +0.281 and +0.289 at the tracked rate. The grant
+      difference is still detected.
+    evidence:
+    - source: learning_strength
+      pointer: status
+      equals: O39_THE_LOOP_FALLS_BELOW_MATERIAL_AT_THE_DATA_ALLOWED_STRENGTH
+    - source: learning_strength
+      pointer: decision/by_delay/delay_0/disposition
+      equals: THE_LOOP_FALLS_BELOW_MATERIAL_AT_THE_DATA_ALLOWED_STRENGTH
+    - source: learning_strength
+      pointer: decision/by_delay/delay_3/classes/baseline
+      equals: BELOW_MATERIAL_NOT_DETECTED
+    - source: learning_strength
+      pointer: decision/by_delay/delay_3/classes/interdisciplinary_seed_grants
+      equals: BELOW_MATERIAL_DETECTED
+    - source: learning_strength
+      pointer: decision/by_delay/delay_3/loop_rows/interdisciplinary_seed_grants/mean_ci95/1
+      less_than: 0.05
+    - source: learning_strength
+      pointer: decision/by_delay/delay_0/loop_rows/interdisciplinary_seed_grants/mean_ci95/1
+      less_than: 0.05
+    - source: learning_strength
+      pointer: comparisons/imitative~10~1interdisciplinary_seed_grants~1delay_0~1failed_pivot_rate/mean
+      equals: 0.2889
+  - id: C96_the_data_allowed_rate_is_one_sixty_fourth_of_study2s_rate
+    statement: The imitative arm's visible outcome gap falls with the learning rate in every scenario where it is
+      defined, from +7.0 to +11.2 log-odds at the tracked rate 1.5. The largest grid rate that keeps it within the
+      data's upper bound, 0.789, everywhere is 0.0234375 at both delays. One step up, the gap is +0.82 under grants
+      at once and +1.18 under hype with the delay. With the data's point estimate, 0.228, as the bound, the delayed
+      calibration allows no grid rate.
+    evidence:
+    - source: learning_strength
+      pointer: calibration/primary/delay_0/rate
+      equals: 0.0234375
+    - source: learning_strength
+      pointer: calibration/primary/delay_3/rate
+      equals: 0.0234375
+    - source: learning_strength
+      pointer: decision/expectations/X1/held
+      equals: true
+    - source: learning_strength
+      pointer: calibration/primary/delay_0/rows/2/gaps/interdisciplinary_seed_grants
+      greater_than: 0.789381
+    - source: learning_strength
+      pointer: calibration/primary/delay_3/rows/2/gaps/hot_field_hype
+      greater_than: 0.789381
+    - source: learning_strength
+      pointer: calibration/secondary/delay_3/rate
+      equals: null
+  - id: C97_delay_alone_halves_the_baseline_loop_and_leaves_the_grant_loop
+    statement: At the tracked rate, a three-step outcome delay lowers the baseline loop from +0.281 to +0.138 [+0.110,
+      +0.167], leaves the grant loop at +0.301 [+0.280, +0.320], and turns the hype difference positive, +0.0506
+      [+0.0383, +0.0625].
+    evidence:
+    - source: learning_strength
+      pointer: comparisons/imitative~10~1baseline~1delay_3~1failed_pivot_rate/mean_ci95/1
+      less_than: 0.2
+    - source: learning_strength
+      pointer: comparisons/imitative~10~1interdisciplinary_seed_grants~1delay_3~1failed_pivot_rate/mean_ci95/0
+      greater_than: 0.27
+    - source: learning_strength
+      pointer: comparisons/imitative~10~1hot_field_hype~1delay_3~1failed_pivot_rate/mean_ci95/0
+      greater_than: 0.0
+  - id: C98_failure_only_learning_shrinks_with_the_rate_and_the_delay
+    statement: Failure-only learning's cut in hype failures (R6 of the case study), -0.1436 at the tracked rate,
+      is -0.0583 with the delay, and at the data-allowed rate -0.0200 [-0.0247, -0.0153] at once and -0.0119
+      [-0.0164, -0.0081] with the delay. Its cost in productive grant pivots (R7), -0.0694, is -0.0047 at that rate.
+      The cautionary arm itself cannot be calibrated, because it never pivots after a visible failure (C89).
+    evidence:
+    - source: learning_strength
+      pointer: comparisons/cautionary~10~1hot_field_hype~1delay_3~1failed_pivot_rate/mean
+      equals: -0.0583
+    - source: learning_strength
+      pointer: comparisons/cautionary~16~1hot_field_hype~1delay_0~1failed_pivot_rate/mean_ci95/0
+      greater_than: -0.05
+    - source: learning_strength
+      pointer: comparisons/cautionary~16~1hot_field_hype~1delay_3~1failed_pivot_rate/mean_ci95/1
+      less_than: 0.0
+    - source: learning_strength
+      pointer: comparisons/cautionary~16~1interdisciplinary_seed_grants~1delay_0~1productive_pivot_rate/mean
+      equals: -0.0047
+  - id: C99_post_hoc_a_material_loop_needs_four_to_thirty_two_times_the_data_allowed_rate
+    statement: 'Post hoc and descriptive. Counting down from the tracked rate, the loop stays material under grants
+      to four times the data-allowed rate, and at baseline to 16 times (at once) and 32 times (with the delay). At the
+      data-allowed rate learning adds more productive than failed grant pivots, +0.0217 against +0.0161 with the
+      delay, where at the tracked rate it adds +0.289 failed against +0.156 productive. The imitative entry-order
+      gradient there equals the frozen arm''s (-1.32 against -1.37 under grants), so the falling gradient is Study
+      2''s structure, not its learning. The estimator still finds learning at that rate: the learning-attributable
+      gap is +0.615 [+0.424, +0.837] under grants with the delay, because the simulation has hundreds of entries per
+      state.'
+    evidence:
+    - source: learning_strength
+      pointer: post_hoc/status
+      equals: POST_HOC_DESCRIPTIVE_NOT_REGISTERED
+    - source: learning_strength
+      pointer: post_hoc/smallest_rate_from_the_top_with_a_material_loop/interdisciplinary_seed_grants~1delay_3/multiple_of_the_data_allowed_rate
+      equals: 4.0
+    - source: learning_strength
+      pointer: post_hoc/smallest_rate_from_the_top_with_a_material_loop/baseline~1delay_3/multiple_of_the_data_allowed_rate
+      equals: 32.0
+    - source: learning_strength
+      pointer: post_hoc/imitative_failed_and_productive_at_the_tracked_and_allowed_rates/interdisciplinary_seed_grants~1delay_3~1allowed/productive/mean
+      greater_than: 0.0161
+    - source: learning_strength
+      pointer: post_hoc/estimator_at_the_allowed_rate/interdisciplinary_seed_grants~1delay_3/imitative_entry_order/mean
+      greater_than: -1.371252
+    - source: learning_strength
+      pointer: post_hoc/estimator_at_the_allowed_rate/interdisciplinary_seed_grants~1delay_3/learning_attributable_outcome_gap_visible/low
+      greater_than: 0.0
+  - id: C100_the_study_reproduced_study2_and_experiment_4_and_read_no_empirical_row
+    statement: The study reproduced byte for byte. At the tracked rate it reproduced all 270 tracked Study 2 runs, all
+      12 tracked comparisons, and all 378 compared values of experiment 4's estimator rows exactly; every fit
+      converged; and no empirical row was read.
+    evidence:
+    - source: learning_strength
+      pointer: execution/byte_identical/o39_summary.json
+      equals: true
+    - source: learning_strength
+      pointer: checks/study2_parity/tracked_runs_equal
+      equals: 270
+    - source: learning_strength
+      pointer: checks/study2_parity/tracked_comparisons_equal
+      equals: 12
+    - source: learning_strength
+      pointer: checks/e4_estimator_parity/largest_difference
+      equals: 0.0
+    - source: learning_strength
+      pointer: checks/bootstrap_unconverged_fits
+      equals: 0
+    - source: learning_strength
+      pointer: data_access/empirical_rows_read
+      equals: 0
+  rejected: []
+  open:
+  - id: O40_a_calibration_that_does_not_rest_on_one_log_odds_scale
+    question: Does R5's narrowing hold under a calibration that does not take an agent step and a topic quarter to be
+      one unit, for example one that also matches the exposure association or the follow-up rate, which Study 2 and
+      the data both have?
+    kind: SYNTHETIC
+    priority: 3
+    motivation: The data-allowed rate (C96) takes the data's bound on one log-odds scale for agent steps and topic
+      quarters, which the study does not justify.
+    evidence:
+    - source: learning_strength
+      pointer: calibration/primary/delay_3/rate
+      equals: 0.0234375
+narrowed_case_study_results:
+- id: CASE_STUDY_R5_IMITATIVE_LEARNING_AMPLIFIES_BASELINE_AND_GRANT_PIVOTING
+  source: docs/case-studies/researcher-pivot/README.md
+  scope: Holds at Study 2's hand-set learning rate. At the largest rate whose outcome dependence the coauthor data do
+    not exclude under experiment 4's estimator, the loop is below material in both scenarios (C95); a material loop
+    needs 4 to 32 times that rate (C99).
+- id: CASE_STUDY_R6_FAILURE_ONLY_LEARNING_REDUCES_HYPE_FAILURES
+  source: docs/case-studies/researcher-pivot/README.md
+  scope: Holds at the hand-set rate with immediate visibility. A three-step delay cuts it by about three fifths, and
+    at the data-allowed rate it is -0.012 to -0.020 (C98).
+narrowed_claims: []
+explained_claims: []
+status_updates:
+- id: N41
+  previous: AFTER_THIS_CONSOLIDATION
+  status: DONE_IN_THE_MANUSCRIPT_KEPT_OUTSIDE_THE_REPOSITORY
+- id: N42
+  previous: USER_CONFIRMATION_REQUIRED
+  status: DONE_MERGED_AS_PULL_REQUEST_15_AT_6cf7f09
+- id: N43
+  previous: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+  status: DONE_THE_USER_CHOSE_O39_ON_2026_10_30_FROZEN_AT_42b682e_RECORDED_AT_da5f772
+  answered_by:
+  - C95_at_the_data_allowed_learning_rate_study2s_imitative_loop_falls_below_material
+  - C96_the_data_allowed_rate_is_one_sixty_fourth_of_study2s_rate
+  - C97_delay_alone_halves_the_baseline_loop_and_leaves_the_grant_loop
+answered_open_items:
+- id: O39_study2_at_a_learning_strength_the_data_allow
+  answered_by:
+  - C95_at_the_data_allowed_learning_rate_study2s_imitative_loop_falls_below_material
+  - C96_the_data_allowed_rate_is_one_sixty_fourth_of_study2s_rate
+  - C97_delay_alone_halves_the_baseline_loop_and_leaves_the_grant_loop
+carried_open_items:
+- O29_the_onset_with_larger_tables_and_shifts_within_a_run
+- O30_tables_across_relations
+- O31_scoring_harm_to_others
+- O32_location_or_steepness
+- O34_steepness_matched_in_the_world
+- O37_llm_prior_comparisons_inside_tuned_learners
+- O38_a_learning_direction_test_that_leaves_study2s_frozen_arm_flat
+data_access_state:
+  discovery_outcomes: READ_BY_THE_PEER_OUTCOME_CONTRAST_NOT_READ_AGAIN
+  confirmatory_outcomes: SEALED
+  g4_outcomes: SEALED
+  evidence:
+  - source: learning_strength
+    pointer: data_access/source_of_the_data_bound
+    equals: THE_RECORDED_E4_RESULT
+reporting_rules:
+- id: UNVERIFIED_MEASURE
+  rule: Information-spread comparisons from study v2 on are on share precision on unverified items, whose
+    fact-check is not public at the decision. Study v1's groups are not read.
+  carried_from: v13
+- id: TRANSFER_WITHIN_ONE_GENERATOR
+  rule: '"A table suffices" holds for donors in the same world and in other worlds of the same generator, which
+    share the veracity relation. Transfer across relations or domains is not tested.'
+  carried_from: v13
+- id: RARE_RUN_SPECIFIC_INFORMATION
+  rule: The table critique holds only while run-specific information is rare. In the flip study, a four-donor
+    table falls behind between a tenth and a quarter of runs carrying it. That is one kind of information and one
+    table size.
+  carried_from: v13
+- id: PRECISION_AND_UTILITY
+  rule: Report comparisons that involve an LLM prior under both share precision and the agents' utility, since
+    they disagree in 5 of 20 summaries. Utility scores only the sharer's own gain and cost, not the reach of false
+    items.
+  carried_from: v13
+- id: LLM_READOUT
+  rule: Name the readout with any LLM-prior result. P0 in Regime A saturated under the inherited clip and is
+    nearly constant; without the clip the same answers carry the relation's direction (C58). The X0 table is not
+    clipped.
+  carried_from: v13
+- id: LLM_PRIOR_ATTRIBUTION_BY_REGIME
+  rule: Name an LLM prior's calibration (the rule that set its location, and its steepness) with any result about
+    it, and attribute its utility cost per regime. With share rates matched in the world, D5's prior costs utility
+    through its calibration in Regime A (C68) and through its calibration and the model's answers in Regime B (C69);
+    the unclipped prior in Regime B, through the model's answers (C70).
+  carried_from: v13
+- id: WORLD_MATCHED_ATTRIBUTION
+  rule: Attribute a prior's cost to its parts only with each recalibrated prior matched to its source's share rate
+    in the world, and report that match beside the comparisons. Under O28's cohort match two of the three costed
+    attributions differed (C69, C70). Only the location has been matched in the world; the steepness has not.
+  carried_from: v13
+- id: SELECTIVITY_MATCHED_PRECISION
+  rule: Compare two priors on the precision of whom they admit only beside a comparison at matched selectivity in
+    the world, made by shifting one prior's intercept. A more selective prior raises precision without ranking
+    better; C22's gain disappeared at matched entry (C75).
+  carried_from: v13
+- id: INTERVAL_NONINFERIORITY
+  rule: Judge non-inferiority by the lower bound of an interval, not by the mean, and name the seed set. Under that
+    change C22's dominance count is 2 of 9, against 7 of 9 as recorded (C77).
+  carried_from: v13
+- id: TUNED_CAPACITY_COMPARISON
+  rule: Compare policy classes with each class's training chosen on its own evidence from one shared menu, or report
+    beside each DiD the linear-world gap it subtracts and how far each learner is from its optimum. Under the
+    registered 300-step budget that gap was mostly the linear learner's training (C84), and the MLP failed the
+    behavior DiDs because of it (C87).
+  carried_from: v13
+- id: GENERATOR_FIRST_PLACEBO
+  rule: Read an observational learning-direction estimate from data only after the same estimator, at the same
+    delay, leaves a generator's no-learning arm flat. A before-and-after-visibility placebo showed -0.79 log-odds in
+    Study 2's frozen seed-grant world, where no agent learns (C90).
+  carried_from: v13
+- id: LEARNING_STRENGTH_WITH_STUDY2
+  rule: State Study 2's learning results with the learning rate they need. At the rate whose outcome dependence the
+    coauthor data do not exclude under experiment 4's estimator, the imitative loop is below material (C95); a
+    material loop needs 4 to 32 times that rate (C99).
+  new: true
+paper_direction:
+  decided_by: USER_2026_10_13
+  central_claim: UNCHANGED_FROM_V5
+  updated_conditional_cases:
+  - STUDY_2S_IMITATIVE_LOOP_NEEDS_LEARNING_FAR_STRONGER_THAN_THE_COAUTHOR_DATA_ALLOW_UNDER_ONE_ESTIMATOR_AND_ONE_SCALE
+  - THE_SIMULATION_LIFECYCLE_CARRIED_A_DATA_BOUND_BACK_INTO_THE_GENERATOR_THROUGH_THE_SAME_ESTIMATOR
+  evidence:
+  - source: learning_strength
+    pointer: status
+    equals: O39_THE_LOOP_FALLS_BELOW_MATERIAL_AT_THE_DATA_ALLOWED_STRENGTH
+next_steps:
+- id: N44
+  kind: PAPER
+  action: ADD_THE_LEARNING_STRENGTH_STUDY_C95_TO_C100_AND_NARROW_R5_AND_R6_IN_THE_MANUSCRIPT_KEPT_OUTSIDE_THE_REPOSITORY
+  authorization: AFTER_THIS_CONSOLIDATION
+- id: N45
+  kind: REPOSITORY
+  action: MERGE_THE_LEARNING_STRENGTH_BRANCH_INTO_MAIN_THROUGH_A_PULL_REQUEST
+  authorization: USER_CONFIRMATION_REQUIRED
+- id: N46
+  kind: COMPARISON_DESIGN
+  action: CHOOSE_AMONG_O29_TO_O32_O34_O37_O38_AND_O40_EACH_AS_A_SEPARATE_PRECOMMIT
+  authorization: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+boundaries:
+  new_execution: NONE
+  empirical_rows_read_by_this_consolidation: 0
+  empirical_rows_read_by_its_source: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  identifies_learning: false
+  calibrates_study2: false
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: ACCEPTED_IN_DECISION_0017_RELEASED_IN_V0_1_0A6
