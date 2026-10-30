@@ -1,0 +1,353 @@
+schema_version: pivot_policy_ladder_consolidation.v13
+label: pivot_policy_ladder_consolidation_v13
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-10-30'
+purpose: 'Extend the v12 ledger with the peer-outcome contrast, recommended experiment 4, which the user directed on
+  2026-10-30: does an author''s entry into a surge topic depend on a coauthor''s visible outcome there, as Study 2''s
+  learning rules postulate? It is the first study to read outcome rows from OpenAlex, from the discovery partition
+  only. v1 to v12 remain the records for everything before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v12.yaml
+    sha256: dc5f6764c5533b3e6ed86e1951664695f18c557198d51fb609a840a4f6ca43f0
+    record_commit: 0067f96
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v12.md
+    sha256: f63edcf676fbbaf1f16171ce34476dfc717c4d7e13e7c1f943ce5e9de33d5f54
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v12.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: peer_outcome_contrast
+  path: experiments/evidence/results/pivot_peer_outcome_contrast_v1_20261030.summary.json
+  sha256: 82cec6fe493ad81c0726e1172aad13c4c3042f3dc527480dd862593b2f27c70a
+  freeze_commit: 586f33b
+  record_commit: e037f26
+invalidated_executions: []
+claims:
+  confirmed:
+  - id: C89_the_visibility_estimator_recovers_study2s_imitative_direction
+    statement: Run on Study 2's own arms with a three-step outcome delay, the visibility estimator finds the imitative
+      arm's direction in every scenario. Entry rises once a neighbor's success becomes visible (+5.2 to +6.7
+      log-odds) and falls once a failure does (-4.3 to -4.7). The visibility DiD is +9.7 to +11.0. The cautionary
+      arm never pivots after a visible failure.
+    evidence:
+    - source: peer_outcome_contrast
+      pointer: simulation/simulation~1baseline~1delay_3/by_arm/imitative/state~1success_following/low
+      greater_than: 0.0
+    - source: peer_outcome_contrast
+      pointer: simulation/simulation~1interdisciplinary_seed_grants~1delay_3/by_arm/imitative/state~1success_following/low
+      greater_than: 0.0
+    - source: peer_outcome_contrast
+      pointer: simulation/simulation~1hot_field_hype~1delay_3/by_arm/imitative/state~1success_following/low
+      greater_than: 0.0
+    - source: peer_outcome_contrast
+      pointer: simulation/simulation~1baseline~1delay_3/by_arm/imitative/state~1failure_avoidance/high
+      less_than: 0.0
+    - source: peer_outcome_contrast
+      pointer: simulation/simulation~1interdisciplinary_seed_grants~1delay_3/by_arm/imitative/state~1failure_avoidance/high
+      less_than: 0.0
+    - source: peer_outcome_contrast
+      pointer: simulation/simulation~1hot_field_hype~1delay_3/by_arm/imitative/state~1failure_avoidance/high
+      less_than: 0.0
+    - source: peer_outcome_contrast
+      pointer: post_hoc/imitative_visibility_did_at_delay_3_min_mean
+      greater_than: 9.0
+    - source: peer_outcome_contrast
+      pointer: simulation/simulation~1interdisciplinary_seed_grants~1delay_3/state_events/cautionary/F
+      equals: 0.0
+  - id: C90_the_visibility_placebo_is_biased_in_study2s_frozen_arm
+    statement: In Study 2's seed-grant world, the frozen arm, which never learns, shows a visibility DiD of -0.785
+      [-1.156, -0.371] at the three-step delay. Its outcome gap is positive while outcomes are pending and negative
+      once they are visible, though its dynamics do not depend on the delay. The placebo removes only the
+      association fixed before visibility, and this one changes over time. By the registered rule the data DiD is
+      not interpreted.
+    evidence:
+    - source: peer_outcome_contrast
+      pointer: status
+      equals: E4_NOT_INTERPRETABLE_THE_ESTIMATOR_FLAGS_STUDY2_FROZEN_ARM
+    - source: peer_outcome_contrast
+      pointer: simulation/simulation~1interdisciplinary_seed_grants~1delay_3/by_arm/frozen/state~1visibility_did/high
+      less_than: 0.0
+    - source: peer_outcome_contrast
+      pointer: simulation/simulation~1interdisciplinary_seed_grants~1delay_3/by_arm/frozen/state~1outcome_gap_before_visible/low
+      greater_than: 0.0
+    - source: peer_outcome_contrast
+      pointer: simulation/simulation~1interdisciplinary_seed_grants~1delay_3/by_arm/frozen/state~1outcome_gap_visible/high
+      less_than: 0.0
+    - source: peer_outcome_contrast
+      pointer: checks/study2_parity/frozen_delay_3_runs_equal
+      equals: 90
+    - source: peer_outcome_contrast
+      pointer: post_hoc/frozen_grants_bias_exceeds_the_data_interval_half_width
+      equals: true
+  - id: C91_a_visible_coauthor_entry_goes_with_more_entry_in_the_discovery_partition
+    statement: In the 24 discovery episodes, an author at risk with a coauthor's entry in view enters the topic more
+      often, without recruitment, by +0.520 [+0.367, +0.739] log-odds. Counting entries recruited by an earlier
+      entrant, the association is +1.078 [+0.948, +1.323]. These are associations, not effects.
+    evidence:
+    - source: peer_outcome_contrast
+      pointer: decision/expectations/EE1/held
+      equals: true
+    - source: peer_outcome_contrast
+      pointer: data/estimates/exposure~1exposed/low
+      greater_than: 0.36
+    - source: peer_outcome_contrast
+      pointer: data/estimates/exposure_recruited_as_events~1exposed/low
+      greater_than: 0.9
+    - source: peer_outcome_contrast
+      pointer: data/counts/exposed_authors
+      equals: 177254
+  - id: C92_discovery_entrants_rarely_follow_up_and_show_no_entry_order_gradient
+    statement: Of 6,291 precise discovery entrants, 14.6% publish again in the topic within four quarters, 12.2% enter
+      with an earlier entrant as coauthor, and 51.4% with a topic incumbent. The follow-up rate shows no gradient
+      with entry quarter, +0.010 [-0.224, +0.287] log-odds across the twelve quarters.
+    evidence:
+    - source: peer_outcome_contrast
+      pointer: post_hoc/label_rate_of_precise_entrants
+      equals: 0.1462
+    - source: peer_outcome_contrast
+      pointer: post_hoc/recruited_share_of_precise_entrants
+      equals: 0.1222
+    - source: peer_outcome_contrast
+      pointer: data/estimates/entry_order~1entry_time/low
+      less_than: 0.0
+    - source: peer_outcome_contrast
+      pointer: data/estimates/entry_order~1entry_time/high
+      greater_than: 0.0
+  - id: C93_post_hoc_the_data_bound_outcome_dependence_far_below_study2s_imitative_arm
+    statement: 'Post hoc and descriptive. Under the same estimator, Study 2''s imitative arm shows a visible outcome
+      gap of at least 6.95 log-odds; the data''s upper bound is 0.79, and the frozen arm''s largest bias is 0.79.
+      Study 2''s learning rate makes agents answer one neighbor''s outcome far more strongly than coauthors'' entries
+      answer it here. Pivots and topic entries are different events; the comparison puts them on one log-odds
+      scale. Study 2''s imitative arm also shows a falling entry-order gradient (-0.43 to -8.04), which the data do
+      not (C92).'
+    evidence:
+    - source: peer_outcome_contrast
+      pointer: post_hoc/status
+      equals: POST_HOC_DESCRIPTIVE_NOT_REGISTERED
+    - source: peer_outcome_contrast
+      pointer: post_hoc/imitative_outcome_gap_visible_min_mean
+      greater_than: 6.9
+    - source: peer_outcome_contrast
+      pointer: post_hoc/data_outcome_gap_visible_high
+      less_than: 0.8
+    - source: peer_outcome_contrast
+      pointer: post_hoc/entry_order_means/imitative/hot_field_hype~1delay_3
+      less_than: 0.0
+  - id: C94_the_contrast_reproduced_with_parity_and_read_no_confirmatory_outcome
+    statement: The contrast reproduced byte for byte. Study 2's slots reproduced all 270 tracked runs, the rebuilt
+      rows of every exposed author equal N11b's, every fit converged, and no confirmatory or G4 outcome row was
+      read.
+    evidence:
+    - source: peer_outcome_contrast
+      pointer: execution/byte_identical/e4_summary.json
+      equals: true
+    - source: peer_outcome_contrast
+      pointer: execution/byte_identical/private~1cells.parquet
+      equals: true
+    - source: peer_outcome_contrast
+      pointer: checks/study2_parity/delay_0_runs_equal
+      equals: 270
+    - source: peer_outcome_contrast
+      pointer: checks/n11b_parity/exposed_panel_rows_differing
+      equals: 0
+    - source: peer_outcome_contrast
+      pointer: data/unconverged_fits
+      equals: 0
+    - source: peer_outcome_contrast
+      pointer: data_access/confirmatory_outcome_rows_read
+      equals: 0
+  rejected:
+  - id: R24_es2_the_imitative_gap_could_not_be_checked_in_the_baseline_world
+    statement: 'ES2 failed as registered. In the seed-grant world the imitative arm''s outcome gap exceeds the frozen
+      arm''s by +7.03 [+6.44, +7.69], but in the baseline world the frozen arm had only 9 entries after a visible
+      failure, below the registered 10, so the difference is undefined there.'
+    evidence:
+    - source: peer_outcome_contrast
+      pointer: decision/expectations/ES2/held
+      equals: false
+    - source: peer_outcome_contrast
+      pointer: simulation/simulation~1baseline~1delay_0/state_events/frozen/F
+      equals: 9.0
+    - source: peer_outcome_contrast
+      pointer: decision/expectations/ES2/rows/interdisciplinary_seed_grants/low
+      greater_than: 6.0
+  - id: R25_es3_the_estimator_is_not_flat_in_study2s_no_learning_arm
+    statement: ES3 failed. The frozen arm's visibility DiD excludes zero in the seed-grant world (C90), covers it in
+      the hype world, and is undefined in the baseline world.
+    evidence:
+    - source: peer_outcome_contrast
+      pointer: decision/expectations/ES3/held
+      equals: false
+    - source: peer_outcome_contrast
+      pointer: decision/expectations/ES3/covers_zero/interdisciplinary_seed_grants
+      equals: false
+    - source: peer_outcome_contrast
+      pointer: decision/expectations/ES3/covers_zero/hot_field_hype
+      equals: true
+  - id: R26_ee2_homophily_before_visibility_was_not_detected
+    statement: EE2 failed. Before a coauthor's outcome is visible, authors whose coauthor will follow up do not
+      detectably enter more often, +0.290 [-0.553, +0.583]. The interval is wide; 32 and 110 entries fall in the two
+      pending states.
+    evidence:
+    - source: peer_outcome_contrast
+      pointer: decision/expectations/EE2/held
+      equals: false
+    - source: peer_outcome_contrast
+      pointer: data/estimates/state~1outcome_gap_before_visible/low
+      less_than: 0.0
+    - source: peer_outcome_contrast
+      pointer: data/state_events/P_S
+      equals: 32.0
+  open:
+  - id: O38_a_learning_direction_test_that_leaves_study2s_frozen_arm_flat
+    question: Is there a coauthor-outcome design that leaves Study 2's frozen arm flat at the study's delay, and that
+      has the power to read learning direction at the empirical shape, before the confirmatory partition is read?
+    kind: SYNTHETIC_THEN_EMPIRICAL
+    priority: 2
+    motivation: The before-and-after-visibility placebo is biased without learning (C90), and the discovery data hold
+      17 entries after a visible success and 60 after a visible failure. The confirmatory partition stays sealed.
+    evidence:
+    - source: peer_outcome_contrast
+      pointer: data/state_events/S
+      equals: 17.0
+    - source: peer_outcome_contrast
+      pointer: data/state_events/F
+      equals: 60.0
+  - id: O39_study2_at_a_learning_strength_the_data_allow
+    question: Does Study 2's imitative loop, more failed pivots under supportive environments, survive when its
+      learning strength is cut to an outcome dependence the coauthor data allow, and when outcomes become visible
+      only after a delay?
+    kind: SYNTHETIC
+    priority: 2
+    motivation: Study 2's imitative arm answers one neighbor's outcome far more strongly than the data bound (C93), and
+      its loop rests on a falling entry-order gradient that the data do not show (C92).
+    evidence:
+    - source: peer_outcome_contrast
+      pointer: post_hoc/imitative_outcome_gap_visible_min_mean
+      greater_than: 6.9
+status_updates:
+- id: N38
+  previous: AFTER_THIS_CONSOLIDATION
+  status: DONE_IN_THE_MANUSCRIPT_KEPT_OUTSIDE_THE_REPOSITORY
+- id: N39
+  previous: USER_CONFIRMATION_REQUIRED
+  status: DONE_MERGED_AS_PULL_REQUEST_14_AT_1a0d596
+- id: N40
+  previous: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+  status: DONE_THE_USER_CHOSE_RECOMMENDED_EXPERIMENT_4_ON_2026_10_30_FROZEN_AT_586f33b_RECORDED_AT_e037f26
+  answered_by:
+  - C89_the_visibility_estimator_recovers_study2s_imitative_direction
+  - C90_the_visibility_placebo_is_biased_in_study2s_frozen_arm
+  - C91_a_visible_coauthor_entry_goes_with_more_entry_in_the_discovery_partition
+  - C92_discovery_entrants_rarely_follow_up_and_show_no_entry_order_gradient
+answered_open_items: []
+carried_open_items:
+- O29_the_onset_with_larger_tables_and_shifts_within_a_run
+- O30_tables_across_relations
+- O31_scoring_harm_to_others
+- O32_location_or_steepness
+- O34_steepness_matched_in_the_world
+- O37_llm_prior_comparisons_inside_tuned_learners
+narrowed_claims: []
+explained_claims: []
+data_access_state:
+  discovery_outcomes: READ_BY_THE_PEER_OUTCOME_CONTRAST_FOLLOW_UP_LABELS_OF_DISCOVERY_S1_ENTRANTS_AND_ENTRY_WORK_COAUTHORS
+  confirmatory_outcomes: SEALED
+  g4_outcomes: SEALED
+  evidence:
+  - source: peer_outcome_contrast
+    pointer: data_access/partition
+    equals: DISCOVERY_ONLY
+  - source: peer_outcome_contrast
+    pointer: data_access/g4_outcome_rows_read
+    equals: 0
+reporting_rules:
+- id: UNVERIFIED_MEASURE
+  rule: Information-spread comparisons from study v2 on are on share precision on unverified items, whose
+    fact-check is not public at the decision. Study v1's groups are not read.
+  carried_from: v12
+- id: TRANSFER_WITHIN_ONE_GENERATOR
+  rule: '"A table suffices" holds for donors in the same world and in other worlds of the same generator, which
+    share the veracity relation. Transfer across relations or domains is not tested.'
+  carried_from: v12
+- id: RARE_RUN_SPECIFIC_INFORMATION
+  rule: The table critique holds only while run-specific information is rare. In the flip study, a four-donor
+    table falls behind between a tenth and a quarter of runs carrying it. That is one kind of information and one
+    table size.
+  carried_from: v12
+- id: PRECISION_AND_UTILITY
+  rule: Report comparisons that involve an LLM prior under both share precision and the agents' utility, since
+    they disagree in 5 of 20 summaries. Utility scores only the sharer's own gain and cost, not the reach of false
+    items.
+  carried_from: v12
+- id: LLM_READOUT
+  rule: Name the readout with any LLM-prior result. P0 in Regime A saturated under the inherited clip and is
+    nearly constant; without the clip the same answers carry the relation's direction (C58). The X0 table is not
+    clipped.
+  carried_from: v12
+- id: LLM_PRIOR_ATTRIBUTION_BY_REGIME
+  rule: Name an LLM prior's calibration (the rule that set its location, and its steepness) with any result about
+    it, and attribute its utility cost per regime. With share rates matched in the world, D5's prior costs utility
+    through its calibration in Regime A (C68) and through its calibration and the model's answers in Regime B (C69);
+    the unclipped prior in Regime B, through the model's answers (C70).
+  carried_from: v12
+- id: WORLD_MATCHED_ATTRIBUTION
+  rule: Attribute a prior's cost to its parts only with each recalibrated prior matched to its source's share rate
+    in the world, and report that match beside the comparisons. Under O28's cohort match two of the three costed
+    attributions differed (C69, C70). Only the location has been matched in the world; the steepness has not.
+  carried_from: v12
+- id: SELECTIVITY_MATCHED_PRECISION
+  rule: Compare two priors on the precision of whom they admit only beside a comparison at matched selectivity in
+    the world, made by shifting one prior's intercept. A more selective prior raises precision without ranking
+    better; C22's gain disappeared at matched entry (C75).
+  carried_from: v12
+- id: INTERVAL_NONINFERIORITY
+  rule: Judge non-inferiority by the lower bound of an interval, not by the mean, and name the seed set. Under that
+    change C22's dominance count is 2 of 9, against 7 of 9 as recorded (C77).
+  carried_from: v12
+- id: TUNED_CAPACITY_COMPARISON
+  rule: Compare policy classes with each class's training chosen on its own evidence from one shared menu, or report
+    beside each DiD the linear-world gap it subtracts and how far each learner is from its optimum. Under the
+    registered 300-step budget that gap was mostly the linear learner's training (C84), and the MLP failed the
+    behavior DiDs because of it (C87).
+  carried_from: v12
+- id: GENERATOR_FIRST_PLACEBO
+  rule: Read an observational learning-direction estimate from data only after the same estimator, at the same
+    delay, leaves a generator's no-learning arm flat. A before-and-after-visibility placebo showed -0.79 log-odds in
+    Study 2's frozen seed-grant world, where no agent learns (C90).
+  new: true
+paper_direction:
+  decided_by: USER_2026_10_13
+  central_claim: UNCHANGED_FROM_V5
+  updated_conditional_cases:
+  - STUDY_2S_LEARNING_RULES_REMAIN_POSTULATED_THE_FIRST_COAUTHOR_DATA_CHECK_WAS_NOT_INTERPRETABLE_AND_THE_DATA_BOUND_OUTCOME_DEPENDENCE_FAR_BELOW_THE_IMITATIVE_ARM
+  - THE_SIMULATION_LIFECYCLE_TESTED_AN_EMPIRICAL_ESTIMATOR_ON_KNOWN_TRUTH_BEFORE_ITS_DATA_READING_AND_WITHHELD_THE_READING
+  evidence:
+  - source: peer_outcome_contrast
+    pointer: status
+    equals: E4_NOT_INTERPRETABLE_THE_ESTIMATOR_FLAGS_STUDY2_FROZEN_ARM
+next_steps:
+- id: N41
+  kind: PAPER
+  action: ADD_THE_PEER_OUTCOME_CONTRAST_C89_TO_C94_TO_THE_MANUSCRIPT_KEPT_OUTSIDE_THE_REPOSITORY
+  authorization: AFTER_THIS_CONSOLIDATION
+- id: N42
+  kind: REPOSITORY
+  action: MERGE_THE_PEER_OUTCOME_CONTRAST_BRANCH_INTO_MAIN_THROUGH_A_PULL_REQUEST
+  authorization: USER_CONFIRMATION_REQUIRED
+- id: N43
+  kind: COMPARISON_DESIGN
+  action: CHOOSE_AMONG_O29_TO_O32_O34_O37_O38_AND_O39_EACH_AS_A_SEPARATE_PRECOMMIT
+  authorization: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+boundaries:
+  new_execution: NONE
+  empirical_rows_read_by_this_consolidation: 0
+  empirical_rows_read_by_its_source: DISCOVERY_PARTITION_ONLY
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  identifies_learning: false
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: ACCEPTED_IN_DECISION_0017_RELEASED_IN_V0_1_0A6

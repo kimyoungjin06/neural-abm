@@ -324,7 +324,8 @@ torch-backed behavior. The early-user checklist is in
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
 - Repository-only policy-ladder ledger at
-  `docs/research/pivot-policy-ladder-consolidation-v12.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v13.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v12.md`,
   `docs/research/pivot-policy-ladder-consolidation-v11.md`,
   `docs/research/pivot-policy-ladder-consolidation-v10.md`,
   `docs/research/pivot-policy-ladder-consolidation-v9.md`,
@@ -338,8 +339,9 @@ torch-backed behavior. The early-user checklist is in
   with the N14 reusability test, the N15 package parity, and the four
   information-spread follow-ups (table transfer, flip rate, unclipped prior,
   utility, prior calibration, and world calibration), the entry-matched
-  control of the Pivot LLM prior, the linear-learner diagnosis, and the
-  converged capacity comparison.
+  control of the Pivot LLM prior, the linear-learner diagnosis, the
+  converged capacity comparison, and the peer-outcome contrast of Study 2
+  against OpenAlex coauthor data.
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
   and Granovetter special cases, plus explicitly labeled FJ-like anchored and
   self-excluding HK variants, as settings of the same lifecycle.
@@ -442,10 +444,15 @@ learned arms include linear and tree learners, so they do not establish that a
 neural policy is necessary. An empirical test of whether real researchers'
 entry follows visible outcomes was closed before confirmatory scoring: at the
 measured data shape, the registered analysis lacked the power to tell learning
-from anticipation. This does not imply the absence of learning. The
-repository-only, hash-audited ledger is at
+from anticipation. This does not imply the absence of learning. A later
+check of the learning rules postulated in the case study's Study 2, against
+coauthor data from the discovery partition only, could not read learning
+direction either: its registered placebo flagged learning in Study 2's own
+no-learning arm, so the data estimate was not interpreted. The
+repository-only, hash-audited ledgers are at
 `docs/research/pivot-policy-ladder-consolidation-v5.md`, which extends
-`docs/research/pivot-policy-ladder-consolidation-v4.md`.
+`docs/research/pivot-policy-ladder-consolidation-v4.md`, and at
+`docs/research/pivot-policy-ladder-consolidation-v13.md` for the later check.
 
 A second domain, information spread with delayed fact-checks, ran the same
 comparison through a shared core. The core's semantics are now the
@@ -475,8 +482,9 @@ released in `v0.1.0a6`.
 
 These results are synthetic, and they are scored on items whose fact-check
 was not yet public. They make no claim about real information spread. The
-ledger is `docs/research/pivot-policy-ladder-consolidation-v12.md`, which
-extends `docs/research/pivot-policy-ladder-consolidation-v11.md`,
+ledger is `docs/research/pivot-policy-ladder-consolidation-v13.md`, which
+extends `docs/research/pivot-policy-ladder-consolidation-v12.md`,
+`docs/research/pivot-policy-ladder-consolidation-v11.md`,
 `docs/research/pivot-policy-ladder-consolidation-v10.md`,
 `docs/research/pivot-policy-ladder-consolidation-v9.md`,
 `docs/research/pivot-policy-ladder-consolidation-v8.md`,
