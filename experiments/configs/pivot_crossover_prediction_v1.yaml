@@ -1,0 +1,321 @@
+schema_version: pivot_crossover_prediction.v1
+label: pivot_crossover_prediction_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-11-02'
+experiment: RECOMMENDED_EXPERIMENT_3_STAGE_2_OPENALEX_DISCOVERY_EPISODES
+purpose: >-
+  Stage 1 registered a rule that places where a table written before the run
+  loses to the in-run learner, from between-run heterogeneity and within-run
+  evidence measured outside the comparison. It beat two baselines in the
+  information-spread generator but missed its accuracy bound, late where
+  evidence was scarce (C101, C104). This stage applies the rule to a
+  generator we did not build: the OpenAlex discovery episodes. The policy is
+  an entrant's chance of a follow-up topic work. A table gives the mean
+  follow-up share of k other episodes; the in-episode learner gives the
+  episode's own share among entrants whose outcome is already visible. The
+  rule predicts, from other episodes only, which of the two has the lower
+  Brier score at each table size and evidence level, and it is scored against
+  the observed forecasts.
+open_items:
+  answers: O42_the_crossover_rule_on_openalex_discovery_episodes
+  relates_to: O30_tables_across_relations
+development_note: >-
+  The design was written after reading only these: E4's recorded aggregates
+  (920 of 6,291 discovery precise entrants follow up); a count of discovery
+  precise entrants by episode and entry quarter, which reads no label; and
+  synthetic pilots at that shape with scratch seeds (777, 778, 999, 5, 31, 32, 424242),
+  which set the evidence bins and the generator-check thresholds. E4 read
+  the discovery labels once and reported pooled aggregates only; no
+  per-episode share was computed or seen before this freeze.
+
+source_bindings:
+- path: scripts/build_pivot_empirical_ladder_risk_sets_v1.py
+  sha256: a1d5194df3ad2e10f7aa87d180b6cdb5190a32d0d2cd4f9dbc79c8055507dfb9
+  role: N11B_BUILDER_PREFLIGHT_AND_CLOCK_REUSED_BY_HASH_BOUND_IMPORT
+- path: experiments/configs/pivot_empirical_ladder_risk_sets_v1.yaml
+  sha256: 4a8e02382dd67a96136162e054ebe92916410e477425335fe8ac113f1eb386fd
+  role: N11B_CONTRACT_S1_INPUTS_AND_CLOCK
+- path: experiments/configs/pivot_peer_outcome_contrast_v1.yaml
+  sha256: 2ce27b1577fbaa839f302f98a1b2209be62363256388ec1e8c5374f33217c2ef
+  role: E4_CONTRACT_LABEL_RULE_AND_DISCOVERY_SCOPE
+- path: scripts/prototype_pivot_peer_outcome_contrast_v1.py
+  sha256: 0c963cd8beac4fef7d7cf0b9d6145425df4f097ebbc797ac54bdce86597ea484
+  role: E4_BUILD_WHOSE_LABEL_RULE_THIS_STUDY_REPRODUCES
+- path: experiments/evidence/results/pivot_peer_outcome_contrast_v1_20261030.summary.json
+  sha256: 82cec6fe493ad81c0726e1172aad13c4c3042f3dc527480dd862593b2f27c70a
+  role: E4_RECORD_DISCOVERY_COUNTS_FOR_PARITY_AND_THE_MINIMUM_EFFECT
+- path: experiments/configs/pivot_empirical_ladder_recovery_v3.yaml
+  sha256: 28477cbc6003ab69a767c31c93eb9dba460f49f783687133635b963883fbe855
+  role: N11A_V3_ANALYST_LABEL_AND_ITS_VISIBILITY
+- path: experiments/configs/info_spread_crossover_prediction_v1.yaml
+  sha256: 3b9c69658c58ee9806d1d5663dca40658c7e40e65d76044a422a53e40557e163
+  role: STAGE_1_CONTRACT_THE_RULE
+- path: experiments/evidence/results/info_spread_crossover_prediction_v1_20261030.summary.json
+  sha256: f3edeec88ec7388f06ab9cd4d71e2a69c7d465489642cad42e50d237dcd13865
+  role: STAGE_1_RECORD
+- path: experiments/configs/pivot_policy_ladder_consolidation_v15.yaml
+  sha256: 2e7599c466889d0ee8c3bb432c017e9f72a5612fc51ea3c54b9cad1747c2432f
+  role: CURRENT_LEDGER_CARRYING_O42
+
+precondition:
+  e4_parity_counts:
+    discovery_episodes: 24
+    discovery_precise_entrants: 6291
+    labelled_precise_entrants: 920
+  stage_1_status: E3_THE_RULE_BEATS_THE_BASELINES_BUT_MISSES_BY_MORE_THAN_THE_BOUND
+
+inputs:
+  s1: THE_N11B_CONTRACT_S1_ROOT_FILES_AND_RECEIPT_CHECKED_BY_THE_N11B_PREFLIGHT
+  files_read: [private/works.parquet, private/authorships.parquet, private/episodes.parquet, private/entrants.parquet]
+  n11b_panel: NOT_READ
+
+data_access:
+  partition: DISCOVERY_ONLY
+  episodes: THE_24_S1_DISCOVERY_EPISODES
+  reads:
+  - S1_EPISODES_AND_ENTRANTS_OF_DISCOVERY_EPISODES
+  - TOPIC_WORKS_OF_DISCOVERY_PRECISE_ENTRANTS_IN_THE_EPISODE_TOPIC
+  label_scope: A_FOLLOW_UP_COUNTS_ONLY_INSIDE_ITS_ENTRANTS_LABEL_WINDOW
+  not_read:
+  - ANY_FOLLOW_UP_OR_LABEL_OF_A_CONFIRMATORY_EPISODE
+  - ANY_FOLLOW_UP_OF_AN_IMPRECISE_ENTRANT
+  - ANY_COAUTHOR_ROW
+  - ANY_G4_OUTCOME
+  - THE_N11B_PANEL
+  boundary_check: A_FIXTURE_TEST_ADDS_CONFIRMATORY_AND_IMPRECISE_ENTRANT_FOLLOW_UPS_AND_EVERY_OUTPUT_IS_UNCHANGED
+  confirmatory_outcomes: SEALED_A_REPLICATION_NEEDS_ITS_OWN_PRECOMMIT_AND_AUTHORIZATION
+authorization:
+  file: experiments/configs/pivot_crossover_prediction_authorization_v1.json
+  outcomes: DISCOVERY_PARTITION_ONLY
+  confirmatory_outcomes: NOT_AUTHORIZED
+  g4_outcomes: NOT_AUTHORIZED
+
+units:
+  run: A_DISCOVERY_EPISODE
+  entrants: THE_EPISODES_PRECISE_S1_ENTRANTS
+  entry_quarter: THE_N11B_CLOCK_OFFSET_0_TO_11
+  label:
+    rule: E4_AND_N11A_V3_A_FOLLOW_UP_TOPIC_WORK_IN_THE_FOUR_QUARTERS_AFTER_THE_ENTRY_QUARTER_DATED_TO_THE_QUARTER_OR_TO_A_YEAR_LYING_WHOLLY_IN_THAT_WINDOW
+    visible_from: ENTRY_QUARTER_PLUS_5
+  imprecise_entrants: EXCLUDED_FROM_TABLES_LEARNERS_AND_FORECASTS
+  why_no_entrant_features: >-
+    The episodes hold 920 follow-ups across 24 episodes, so an entrant-level
+    model inside one episode is barely identified. The follow-up share is
+    the quantity an entry decision rests on in Study 1. With one share per
+    episode, the rule below is exact in expectation for exchangeable
+    entrants, so what is tested is its transport, not an approximation.
+
+policies:
+  learner:
+    id: L
+    forecast: THE_FOLLOW_UP_SHARE_AMONG_THE_EPISODES_PRECISE_ENTRANTS_WHOSE_LABEL_IS_VISIBLE
+    evidence_at_quarter_q: PRECISE_ENTRANTS_WITH_ENTRY_QUARTER_AT_MOST_Q_MINUS_5
+    closed_loop: THE_FORECAST_USES_ONLY_THIS_EPISODES_OWN_VISIBLE_OUTCOMES
+  table:
+    id: T_k
+    forecast: THE_MEAN_FOLLOW_UP_SHARE_OF_K_OTHER_DISCOVERY_EPISODES_EACH_OVER_ALL_ITS_PRECISE_ENTRANTS
+    donors: ALL_K_SUBSETS_OF_THE_OTHER_23_EPISODES_EQUALLY_LIKELY
+    score: THE_EXACT_EXPECTED_BRIER_OVER_THOSE_SUBSETS
+    exact_form: (MEAN_SHARE_OF_THE_23_MINUS_Y)^2_PLUS_THEIR_VARIANCE_TIMES_(23_MINUS_K)_OVER_(K_TIMES_22)
+    written_before_the_run: THE_DONORS_ARE_OTHER_EPISODES_WHOSE_OUTCOMES_THE_EPISODE_NEVER_SEES
+  table_sizes: [1, 2, 4, 8, 16]
+  forecasts:
+    entrants: PRECISE_ENTRANTS_WITH_ENTRY_QUARTER_5_TO_11
+    excluded: FORECASTS_WHOSE_LEARNER_HAS_NO_VISIBLE_LABEL
+    score: BRIER_SCORE_ON_THE_ENTRANTS_OWN_LABEL
+  gap: TABLE_BRIER_MINUS_LEARNER_BRIER_POSITIVE_WHEN_THE_LEARNER_WINS
+
+rule:
+  source: STAGE_1_CONTRACT_PREDICTION_RULE_APPLIED_TO_SHARES
+  form: >-
+    The predicted gap for episode e at a forecast quarter with n visible
+    labels and table size k is H_k(-e) - V(-e) / n. Both come from the other
+    23 episodes only (leave one episode out), so no label of e enters its
+    own prediction.
+  heterogeneity: >-
+    H_k(-e) is the mean, over worlds d other than e, of the table's squared
+    error against d's share: (mean share of the 22 episodes other than d and
+    e minus d's share)^2, plus their variance times (22 - k)/(k 21), minus
+    d's share (1 - d's share)/(N_d - 1), which removes d's own sampling
+    noise. It is the between-episode heterogeneity as a k-table sees it.
+  evidence: >-
+    V(-e) is the mean, over the same worlds, of d's share (1 - d's share)
+    N_d/(N_d - 1), the per-label variance of an episode's own share. A
+    learner with n visible labels has squared error V/n.
+  derivation: >-
+    For exchangeable entrants, the Brier score of a forecast f on an episode
+    with follow-up probability pi is (f - pi)^2 + pi(1 - pi), so the label
+    noise cancels in the gap. The learner's share of n labels has squared
+    error pi(1 - pi)/n; the table's is fixed by the donors.
+  simple_reading: >-
+    The learner wins once n > V / H_k. With H_k close to D(1 + 1/k) + W/k,
+    where D is the between-episode variance of true shares and W a donor
+    share's sampling variance, a larger table moves the crossing later and
+    more heterogeneity moves it earlier. In stage 1 the donors' tables had
+    the learner's own evidence; here they have every donor outcome.
+  fitted_parameters: NONE
+  reported_not_decided:
+  - H_K_V_AND_V_OVER_H_K_FROM_ALL_24_EPISODES
+  - THE_BETWEEN_EPISODE_VARIANCE_OF_SHARES_CORRECTED_FOR_SAMPLING
+  - THE_SHARE_OF_FORECASTS_WITH_AT_LEAST_V_OVER_H_K_VISIBLE_LABELS
+
+groups:
+  table_sizes: [1, 2, 4, 8, 16]
+  evidence_bins:
+    edges: [1, 15, 50, 150]
+    last_bin_open: true
+    meaning: VISIBLE_LABELS_OF_THE_FORECASTS_LEARNER
+    structural_forecast_counts: [248, 558, 1045, 1984]
+    structural_episode_counts: [17, 16, 12, 7]
+  count: 20
+  observed_mean: SUM_OF_GAPS_OVER_SUM_OF_FORECASTS_EACH_FORECAST_WEIGHTED_EQUALLY
+  predicted_mean: THE_SAME_AVERAGE_OF_THE_RULES_PREDICTED_GAPS
+  bootstrap:
+    clusters: TARGET_EPISODES
+    draws: 2000
+    interval: PERCENTILE_2_5_TO_97_5_OVER_DRAWS_WITH_A_FORECAST_IN_THE_GROUP
+    predictions_held_fixed: true
+  minimum_effect:
+    value: 0.0012485
+    meaning: ONE_PERCENT_OF_THE_BASE_RATE_BRIER_P0_(1_MINUS_P0)_WITH_P0_920_OVER_6291_FROM_E4
+  observed_label:
+    POSITIVE: LOW_ABOVE_0_AND_MEAN_AT_LEAST_THE_MINIMUM_EFFECT
+    NEGATIVE: HIGH_BELOW_0_AND_MEAN_AT_MOST_MINUS_THE_MINIMUM_EFFECT
+    INDISTINGUISHABLE: OTHERWISE
+  predicted_label:
+    POSITIVE: PREDICTED_MEAN_AT_LEAST_THE_MINIMUM_EFFECT
+    NEGATIVE: PREDICTED_MEAN_AT_MOST_MINUS_THE_MINIMUM_EFFECT
+    NEUTRAL: OTHERWISE
+
+scoring:
+  determined: GROUPS_WITH_AN_OBSERVED_POSITIVE_OR_NEGATIVE_LABEL
+  agreement: THE_PREDICTED_MEAN_HAS_THE_SIGN_OF_THE_OBSERVED_LABEL
+  reversal: THE_PREDICTED_LABEL_IS_THE_OPPOSITE_SIGN_OF_THE_OBSERVED_LABEL
+  label_match_reported: THE_PREDICTED_LABEL_EQUALS_THE_OBSERVED_LABEL_A_NEUTRAL_PREDICTION_COUNTS_AS_A_MISS
+  agreement_floor: 0.8
+  minimum_determined_groups: 2
+  why_agreement_decides: >-
+    In the pilots most label misses were neutral predictions of gaps that
+    were realized above the minimum effect; label matches ran 0.84 to 1.00,
+    near the floor. A reversal, a decisive prediction of the wrong side, is
+    the error that would misplace the crossing, and it is ruled out
+    separately.
+  baselines_reported:
+    THE_TABLE_ALWAYS_WINS: EVERY_GROUP_PREDICTED_NEGATIVE
+    THE_LEARNER_ALWAYS_WINS: EVERY_GROUP_PREDICTED_POSITIVE
+  baseline_reading: >-
+    If every determined group has one sign, one baseline matches as well as
+    the rule, and the data do not test the rule beyond that sign.
+  also_reported:
+  - EVERY_GROUP_OBSERVED_MEAN_INTERVAL_LABEL_AND_PREDICTED_MEAN
+  - THE_LABEL_MATCH_SHARE
+  - COVERAGE_THE_SHARE_OF_GROUPS_WHOSE_PREDICTED_MEAN_LIES_IN_THE_OBSERVED_INTERVAL
+  - FOR_EACH_K_THE_FIRST_EVIDENCE_BIN_FROM_WHICH_EVERY_LABEL_IS_POSITIVE
+  coverage_note: >-
+    The synthetic pilots covered 62 to 83 percent: the high-evidence bins
+    rest on a few large episodes, and the rule predicts the expected gap,
+    not the realized one. Coverage therefore decides nothing.
+
+generator_check:
+  purpose: >-
+    The same pipeline, at the empirical shape, on synthetic labels whose
+    truth the rule's assumptions hold. Real labels are read only if it
+    passes.
+  shape: THE_DISCOVERY_PRECISE_ENTRANT_COUNTS_BY_EPISODE_AND_ENTRY_QUARTER
+  labels: >-
+    Episode e's entrants follow up independently with probability
+    expit(logit(p0) + tau z_e), z_e standard normal, p0 = 920/6291.
+  taus: [0.0, 0.25, 0.5, 1.0]
+  replicates: 40
+  streams:
+    labels: SEEDSEQUENCE_20261102_1_TAU_INDEX_REPLICATE_Z_THEN_BINOMIALS_BY_EPISODE_AND_QUARTER
+    bootstrap: SEEDSEQUENCE_20261102_2_TAU_INDEX_REPLICATE
+  passes_at_each_tau:
+    agreement_share_of_determined_at_least: 0.8
+    reversal_share_of_determined_at_most: 0.05
+  pilot_basis: >-
+    Scratch pilots of 40 replicates gave agreements of 0.91 to 1.00, label
+    matches of 0.84 to 1.00, and reversals of 0 to 3.5 percent of determined
+    groups.
+  reported:
+  - REPLICATES_WITH_A_POSITIVE_GROUP_AT_EACH_TAU
+  - REPLICATES_WITH_ANY_REVERSAL_AT_EACH_TAU
+  failure: STOP_BEFORE_ANY_LABEL_IS_READ
+
+decision:
+  checks_before_any_label:
+  - N11B_PREFLIGHT_INPUT_HASHES_AND_G4_GUARD_IDENTITY
+  - DISCOVERY_EPISODES_AND_PRECISE_ENTRANTS_EQUAL_E4S_RECORD
+  - EVERY_DISCOVERY_EPISODE_HAS_AT_LEAST_TWO_PRECISE_ENTRANTS
+  check_after_the_labels: LABELLED_PRECISE_ENTRANTS_EQUAL_E4S_RECORD
+  stop_if_a_check_fails: INVALID_IMPLEMENTATION_STOP_NO_DISPOSITION
+  order:
+    - STOPPED_THE_RULE_FAILS_ON_KNOWN_TRUTH: THE_GENERATOR_CHECK_FAILS_AT_ANY_TAU_AND_NO_LABEL_IS_READ
+    - UNDETERMINED_TOO_FEW_DETERMINED_GROUPS: FEWER_THAN_2_DETERMINED_GROUPS
+    - THE_RULE_REVERSES_A_DETERMINED_COMPARISON: AT_LEAST_ONE_REVERSAL
+    - THE_RULE_MISSES_DETERMINED_COMPARISONS: AGREEMENT_SHARE_BELOW_0_8
+    - THE_RULE_ORDERS_THE_TABLE_AND_THE_LEARNER: DETERMINED_GROUPS_OF_BOTH_SIGNS
+    - THE_TABLE_WINS_WHERE_DETERMINED_AND_THE_RULE_AGREES: ONLY_NEGATIVE_DETERMINED_GROUPS
+    - THE_LEARNER_WINS_WHERE_DETERMINED_AND_THE_RULE_AGREES: ONLY_POSITIVE_DETERMINED_GROUPS
+  status_prefix: E3S2_
+
+expectations:
+  X1: THE_GENERATOR_CHECK_PASSES_AT_EVERY_TAU
+  X2: AT_TAU_0_5_AT_LEAST_HALF_OF_THE_REPLICATES_HAVE_A_POSITIVE_GROUP
+  X3: IN_THE_DATA_EVERY_TABLE_BEATS_THE_LEARNER_IN_THE_LOWEST_EVIDENCE_BIN
+  X4: IN_THE_DATA_THE_LEARNER_BEATS_THE_16_EPISODE_TABLE_IN_THE_HIGHEST_EVIDENCE_BIN
+  X5: IN_THE_DATA_THE_RULE_MAKES_NO_REVERSAL_AND_AGREES_WITH_AT_LEAST_0_8_OF_DETERMINED_GROUPS
+  gating: X1_ONLY_THROUGH_THE_GENERATOR_CHECK
+
+known_risks:
+  stage_1: >-
+    Stage 1 found the rule late where evidence was scarce (C104), possibly
+    because its squared-error proxy was scored against share precision.
+    Here the score is the Brier score, a squared error, so that cause cannot
+    arise, and the rule is exact in expectation for exchangeable entrants.
+    This stage therefore does not test the stage 1 explanation.
+  transport: >-
+    The rule averages heterogeneity over other episodes. The high-evidence
+    bins rest on a few large episodes, whose shares may sit nearer to or
+    farther from the others than the average episode's.
+  real_time: >-
+    The learner sees outcomes in entry order, five quarters late. A share
+    that drifts within an episode would make it worse than the rule's
+    exchangeable learner. E4 found no entry-order gradient in the label
+    (+0.010 [-0.224, +0.287]).
+  scarcity: >-
+    920 follow-ups in 24 episodes. Many groups may be indistinguishable.
+
+execution:
+  host: WORKSTATION
+  host_why: THE_PRIVATE_S1_EXTRACT_IS_ON_LOCAL_SSD
+  duckdb_threads: 8
+  runs: [development, reproduction]
+  identity_artifacts: [summary.json, receipt.json, private/episode_quarters.parquet]
+  outputs: PRIVATE_MODE_0700_DIRECTORY_UNDER_SSD
+  runtime_estimate_minutes_per_run: [2, 15]
+  runtime_basis: >-
+    A structure-only count took seconds; the synthetic pilots took about a
+    minute for 200 replicates. The label query reads two S1 files of about
+    0.4 GB.
+  rerun_must_be_byte_identical: true
+
+boundary:
+  empirical_rows_read: DISCOVERY_PRECISE_ENTRANTS_AND_THEIR_TOPIC_WORKS
+  confirmatory_outcome_rows_read: 0
+  g4_outcome_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  identifies_learning: false
+  scientific_effect: NOT_ESTABLISHED
+
+precommit:
+  precommit_paths:
+  - docs/research/pivot-crossover-prediction-v1.md
+  - experiments/configs/pivot_crossover_prediction_v1.yaml
+  - experiments/configs/pivot_crossover_prediction_authorization_v1.json
+  - scripts/run_pivot_crossover_prediction_v1.py
+  - tests/test_pivot_crossover_prediction_v1.py
+  - tests/duckdb_overlay_tests.txt
+  - scripts/inspect_release_artifacts.py
+  - tests/test_release_artifact_inspection.py

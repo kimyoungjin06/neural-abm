@@ -1,0 +1,328 @@
+schema_version: pivot_policy_ladder_consolidation.v16
+label: pivot_policy_ladder_consolidation_v16
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-11-02'
+purpose: 'Extend the v15 ledger with stage 2 of recommended experiment 3, which the user directed on 2026-11-02: applied
+  to the OpenAlex discovery episodes, does the crossover rule tell from other episodes alone whether a table pooled
+  from them or the episode''s own learner forecasts an entrant''s follow-up better? v1 to v15 remain the records for
+  everything before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v15.yaml
+    sha256: 2e7599c466889d0ee8c3bb432c017e9f72a5612fc51ea3c54b9cad1747c2432f
+    record_commit: f18315f
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v15.md
+    sha256: 932fc7f5adc0ddd0298f685a789bbf15c6ef37f6571e18673c12d2f8a584bb37
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v15.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: crossover_openalex
+  path: experiments/evidence/results/pivot_crossover_prediction_v1_20261102.summary.json
+  sha256: b8043b909bc8963cdeb9931abe587478c35fc8b50c8166f1683a7d020320a30b
+  freeze_commit: 015eea5
+  record_commit: 39e1aec
+- id: peer_outcome_contrast
+  path: experiments/evidence/results/pivot_peer_outcome_contrast_v1_20261030.summary.json
+  sha256: 82cec6fe493ad81c0726e1172aad13c4c3042f3dc527480dd862593b2f27c70a
+  freeze_commit: 586f33b
+  record_commit: e037f26
+invalidated_executions: []
+claims:
+  confirmed:
+  - id: C107_the_rule_passed_its_generator_check_at_the_empirical_shape
+    statement: Before any label was read, the whole pipeline ran on synthetic labels at the discovery episodes' shape,
+      with episode heterogeneity tau of 0, 0.25, 0.5, and 1 and 40 replicates each. The rule's predicted gap had the
+      sign of 92% to 99.6% of the determined groups, and it put at most 2.9% of them on the wrong side, so the
+      registered check passed and the labels were read.
+    evidence:
+    - source: crossover_openalex
+      pointer: generator_check/passes
+      equals: true
+    - source: crossover_openalex
+      pointer: generator_check/taus/tau=0.25/agreement_share
+      greater_than: 0.919
+    - source: crossover_openalex
+      pointer: generator_check/taus/tau=0.25/reversal_share
+      less_than: 0.03
+    - source: crossover_openalex
+      pointer: expectations/X1/held
+      equals: true
+  - id: C108_in_the_discovery_episodes_the_learner_wins_where_determined_and_the_rule_agrees
+    statement: With an entrant's chance of a follow-up topic work as the policy, an episode's own visible follow-up
+      share beat a table of other discovery episodes' shares in all 7 determined groups, every table size at 150 or
+      more visible labels and the one-episode table from 15. The rule agreed with all 7 and put none on the wrong
+      side. No group was determined for the table, so the baseline that the learner always wins agrees as well, and
+      the data test the rule on the learner's side only.
+    evidence:
+    - source: crossover_openalex
+      pointer: status
+      equals: E3S2_THE_LEARNER_WINS_WHERE_DETERMINED_AND_THE_RULE_AGREES
+    - source: crossover_openalex
+      pointer: score/agreements
+      equals: 7
+    - source: crossover_openalex
+      pointer: score/reversals
+      equals: 0
+    - source: crossover_openalex
+      pointer: score/negative
+      equals: 0
+    - source: crossover_openalex
+      pointer: score/baseline_learner_always_wins_agreements
+      equals: 7
+    - source: crossover_openalex
+      pointer: groups/k=16~1bin=3/label
+      equals: POSITIVE
+    - source: crossover_openalex
+      pointer: groups/k=16~1bin=3/low
+      greater_than: 0.0026
+    - source: crossover_openalex
+      pointer: groups/k=1~1bin=1/label
+      equals: POSITIVE
+  - id: C109_the_rule_places_the_crossing_at_7_to_14_visible_outcomes_which_most_forecasts_reach
+    statement: From all 24 episodes, the within-episode variance per label was 0.068 and the between-episode standard
+      deviation of follow-up shares 0.065, corrected for sampling, around an unweighted mean share of 0.079. The rule
+      puts the crossing at 6.8 visible labels for a one-episode table and 14.1 for a 16-episode table; 93.5% to
+      97.9% of the forecasts had at least that many. For a large table the crossing approaches V over the
+      between-episode variance, which is Bühlmann's credibility constant.
+    evidence:
+    - source: crossover_openalex
+      pointer: described/tables/k=1/crossing_labels
+      greater_than: 6.77
+    - source: crossover_openalex
+      pointer: described/tables/k=16/crossing_labels
+      less_than: 14.08
+    - source: crossover_openalex
+      pointer: described/tables/k=16/share_of_forecasts_beyond_the_crossing
+      greater_than: 0.935
+    - source: crossover_openalex
+      pointer: described/between_episode_sd_of_shares
+      greater_than: 0.065
+    - source: crossover_openalex
+      pointer: described/V
+      less_than: 0.0683
+  - id: C110_post_hoc_the_observed_gap_rises_more_steeply_with_evidence_than_the_rule
+    statement: 'Post hoc and descriptive. Below 50 visible labels the observed gap lay below the rule''s prediction;
+      from 50 on, above it. At 150 or more it was +0.0163 to +0.0211 against the rule''s +0.0041 to +0.0090, though
+      every predicted mean lay inside its observed interval, which rests on 7 episodes. The unweighted mean share,
+      0.079, is about half the pooled share, 0.146, so larger episodes follow up more often; an equally weighted
+      table then misses a large episode by more than the average heterogeneity. That is not tested.'
+    evidence:
+    - source: crossover_openalex
+      pointer: groups/k=16~1bin=3/mean
+      greater_than: 0.0162
+    - source: crossover_openalex
+      pointer: groups/k=16~1bin=3/predicted
+      less_than: 0.0042
+    - source: crossover_openalex
+      pointer: score/coverage
+      equals: 1.0
+    - source: crossover_openalex
+      pointer: described/mean_episode_share
+      less_than: 0.0788
+    - source: peer_outcome_contrast
+      pointer: data/counts/labelled_precise_entrants
+      equals: 920
+  - id: C111_the_study_reproduced_byte_for_byte_and_read_the_discovery_partition_only
+    statement: The development and reproduction runs on the workstation (42 and 44 s) wrote byte-identical summary,
+      receipt, and episode-quarter files. They read the 6,291 discovery precise entrants and their topic works, and
+      their counts equal experiment 4's record; no confirmatory or G4 outcome was read.
+    evidence:
+    - source: crossover_openalex
+      pointer: execution/byte_identical/summary.json
+      equals: true
+    - source: crossover_openalex
+      pointer: execution/byte_identical/private~1episode_quarters.parquet
+      equals: true
+    - source: crossover_openalex
+      pointer: checks/after_the_labels/labelled_precise_entrants
+      equals: true
+    - source: crossover_openalex
+      pointer: data_access/confirmatory_outcome_rows_read
+      equals: 0
+    - source: crossover_openalex
+      pointer: data_access/g4_outcome_rows_read
+      equals: 0
+  rejected:
+  - id: R28_x3_no_table_win_is_determined_at_the_least_evidence
+    statement: X3 failed. Below 15 visible labels the observed gap favoured every table (-0.0095 to -0.0041), but
+      every interval covered zero, so no table win was determined.
+    evidence:
+    - source: crossover_openalex
+      pointer: expectations/X3/held
+      equals: false
+    - source: crossover_openalex
+      pointer: groups/k=16~1bin=0/label
+      equals: INDISTINGUISHABLE
+    - source: crossover_openalex
+      pointer: groups/k=16~1bin=0/mean
+      less_than: 0
+  open:
+  - id: O43_a_credibility_weighted_policy
+    question: Does a policy that starts from the table and weights the episode's visible share by n / (n + V/H_k), a
+      table as prior with a closed-loop update, beat both the table and the episode's own share?
+    kind: EMPIRICAL_DISCOVERY_PARTITION_AFTER_A_SYNTHETIC_CHECK
+    priority: 2
+    motivation: The crossing is Bühlmann's credibility constant (C109), and NABM's prior-plus-learner arms are this
+      policy. Neither the table nor the episode's share alone is the textbook optimum.
+    evidence:
+    - source: crossover_openalex
+      pointer: described/tables/k=16/H
+      greater_than: 0.0048
+  - id: O44_the_crossover_rule_on_the_confirmatory_partition
+    question: Does the ordering replicate on the sealed confirmatory episodes, and do they decide a comparison for the
+      table?
+    kind: EMPIRICAL_CONFIRMATORY_PARTITION_SEALED
+    priority: 3
+    motivation: The discovery episodes decided only the learner's side (C108), and their labels have now been read
+      twice. A confirmatory reading needs its own precommit and the user's authorization.
+    evidence:
+    - source: crossover_openalex
+      pointer: score/negative
+      equals: 0
+partially_answered_open_items:
+- id: O42_the_crossover_rule_on_openalex_discovery_episodes
+  answered_part: THE_RULE_AGREES_WITH_EVERY_DETERMINED_COMPARISON_AND_EVERY_ONE_IS_A_LEARNER_WIN
+  answered_by:
+  - C108_in_the_discovery_episodes_the_learner_wins_where_determined_and_the_rule_agrees
+  still_open: A_COMPARISON_DETERMINED_FOR_THE_TABLE
+narrowed_case_study_results: []
+narrowed_claims: []
+explained_claims: []
+status_updates:
+- id: N47
+  previous: AFTER_THIS_CONSOLIDATION
+  status: DONE_IN_THE_MANUSCRIPT_KEPT_OUTSIDE_THE_REPOSITORY
+- id: N48
+  previous: USER_CONFIRMATION_REQUIRED
+  status: DONE_MERGED_AS_PULL_REQUEST_17_AT_5d84c25
+- id: N49
+  previous: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+  status: DONE_THE_USER_CHOSE_STAGE_2_OF_EXPERIMENT_3_O42_ON_2026_11_02_FROZEN_AT_015eea5_RECORDED_AT_39e1aec
+  answered_by:
+  - C108_in_the_discovery_episodes_the_learner_wins_where_determined_and_the_rule_agrees
+answered_open_items: []
+carried_open_items:
+- O29_the_onset_with_larger_tables_and_shifts_within_a_run
+- O30_tables_across_relations
+- O31_scoring_harm_to_others
+- O32_location_or_steepness
+- O34_steepness_matched_in_the_world
+- O37_llm_prior_comparisons_inside_tuned_learners
+- O38_a_learning_direction_test_that_leaves_study2s_frozen_arm_flat
+- O40_a_calibration_that_does_not_rest_on_one_log_odds_scale
+- O41_a_decision_weighted_crossover_rule
+- O42_the_crossover_rule_on_openalex_discovery_episodes
+data_access_state:
+  discovery_outcomes: READ_BY_THE_PEER_OUTCOME_CONTRAST_AND_BY_THE_CROSSOVER_PREDICTION
+  confirmatory_outcomes: SEALED
+  g4_outcomes: SEALED
+  evidence:
+  - source: crossover_openalex
+    pointer: data_access/partition
+    equals: DISCOVERY_ONLY
+  - source: crossover_openalex
+    pointer: data_access/confirmatory_outcome_rows_read
+    equals: 0
+reporting_rules:
+- id: UNVERIFIED_MEASURE
+  rule: Information-spread comparisons from study v2 on are on share precision on unverified items, whose
+    fact-check is not public at the decision. Study v1's groups are not read.
+  carried_from: v15
+- id: TRANSFER_WITHIN_ONE_GENERATOR
+  rule: '"A table suffices" holds for donors in the same world and in other worlds of the same generator, which
+    share the veracity relation. Transfer across relations or domains is not tested.'
+  carried_from: v15
+- id: RARE_RUN_SPECIFIC_INFORMATION
+  rule: The table critique holds only while run-specific information is rare. In the flip study, a four-donor
+    table falls behind between a tenth and a quarter of runs carrying it. That is one kind of information and one
+    table size.
+  carried_from: v15
+- id: PRECISION_AND_UTILITY
+  rule: Report comparisons that involve an LLM prior under both share precision and the agents' utility, since
+    they disagree in 5 of 20 summaries. Utility scores only the sharer's own gain and cost, not the reach of false
+    items.
+  carried_from: v15
+- id: LLM_READOUT
+  rule: Name the readout with any LLM-prior result. P0 in Regime A saturated under the inherited clip and is
+    nearly constant; without the clip the same answers carry the relation's direction (C58). The X0 table is not
+    clipped.
+  carried_from: v15
+- id: LLM_PRIOR_ATTRIBUTION_BY_REGIME
+  rule: Name an LLM prior's calibration (the rule that set its location, and its steepness) with any result about
+    it, and attribute its utility cost per regime. With share rates matched in the world, D5's prior costs utility
+    through its calibration in Regime A (C68) and through its calibration and the model's answers in Regime B (C69);
+    the unclipped prior in Regime B, through the model's answers (C70).
+  carried_from: v15
+- id: WORLD_MATCHED_ATTRIBUTION
+  rule: Attribute a prior's cost to its parts only with each recalibrated prior matched to its source's share rate
+    in the world, and report that match beside the comparisons. Under O28's cohort match two of the three costed
+    attributions differed (C69, C70). Only the location has been matched in the world; the steepness has not.
+  carried_from: v15
+- id: SELECTIVITY_MATCHED_PRECISION
+  rule: Compare two priors on the precision of whom they admit only beside a comparison at matched selectivity in
+    the world, made by shifting one prior's intercept. A more selective prior raises precision without ranking
+    better; C22's gain disappeared at matched entry (C75).
+  carried_from: v15
+- id: INTERVAL_NONINFERIORITY
+  rule: Judge non-inferiority by the lower bound of an interval, not by the mean, and name the seed set. Under that
+    change C22's dominance count is 2 of 9, against 7 of 9 as recorded (C77).
+  carried_from: v15
+- id: TUNED_CAPACITY_COMPARISON
+  rule: Compare policy classes with each class's training chosen on its own evidence from one shared menu, or report
+    beside each DiD the linear-world gap it subtracts and how far each learner is from its optimum. Under the
+    registered 300-step budget that gap was mostly the linear learner's training (C84), and the MLP failed the
+    behavior DiDs because of it (C87).
+  carried_from: v15
+- id: GENERATOR_FIRST_PLACEBO
+  rule: Read an observational learning-direction estimate from data only after the same estimator, at the same
+    delay, leaves a generator's no-learning arm flat. A before-and-after-visibility placebo showed -0.79 log-odds in
+    Study 2's frozen seed-grant world, where no agent learns (C90).
+  carried_from: v15
+- id: LEARNING_STRENGTH_WITH_STUDY2
+  rule: State Study 2's learning results with the learning rate they need. At the rate whose outcome dependence the
+    coauthor data do not exclude under experiment 4's estimator, the imitative loop is below material (C95); a
+    material loop needs 4 to 32 times that rate (C99).
+  carried_from: v15
+- id: CROSSOVER_WITH_TABLE_SIZE_AND_EVIDENCE
+  rule: State where a table written before the run loses to the in-run learner together with the table's size and
+    the within-run evidence. Across 1 to 8 donors and visibility 0.2 to 1.0, the first material loss came at flip
+    rates from 0.05 to 0.25 (C102).
+  carried_from: v15
+- id: ONE_SIDED_REAL_DATA_CROSSOVER
+  rule: State the OpenAlex crossover result with its policy and its one side. With a topic's follow-up share as the
+    policy, an episode's own visible share beat a table of other episodes' shares wherever the discovery data
+    decided, as the rule predicted; no comparison was decided for the table (C108).
+  new: true
+paper_direction:
+  decided_by: USER_2026_10_13
+  central_claim: UNCHANGED_FROM_V5
+  updated_conditional_cases:
+  - IN_OPENALEX_DISCOVERY_EPISODES_AN_EPISODES_OWN_VISIBLE_FOLLOW_UP_SHARE_BEATS_A_TABLE_OF_OTHER_EPISODES_WHEREVER_DETERMINED_AS_THE_CROSSOVER_RULE_PREDICTS_THE_TABLE_SIDE_IS_UNDECIDED
+  evidence:
+  - source: crossover_openalex
+    pointer: status
+    equals: E3S2_THE_LEARNER_WINS_WHERE_DETERMINED_AND_THE_RULE_AGREES
+next_steps:
+- id: N50
+  kind: PAPER
+  action: ADD_THE_OPENALEX_CROSSOVER_C107_TO_C111_TO_THE_MANUSCRIPT_KEPT_OUTSIDE_THE_REPOSITORY
+  authorization: AFTER_THIS_CONSOLIDATION
+- id: N51
+  kind: REPOSITORY
+  action: MERGE_THE_OPENALEX_CROSSOVER_BRANCH_INTO_MAIN_THROUGH_A_PULL_REQUEST
+  authorization: USER_CONFIRMATION_REQUIRED
+- id: N52
+  kind: COMPARISON_DESIGN
+  action: CHOOSE_BETWEEN_A_CREDIBILITY_WEIGHTED_POLICY_O43_THE_CONFIRMATORY_REPLICATION_O44_A_DECISION_WEIGHTED_RULE_O41_THE_OTHER_OPEN_ITEMS_OR_THE_REMAINING_MANUSCRIPT_SECTIONS
+  authorization: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+boundaries:
+  new_execution: NONE
+  empirical_rows_read_by_this_consolidation: 0
+  empirical_rows_read_by_its_source: DISCOVERY_PRECISE_ENTRANTS_AND_THEIR_TOPIC_WORKS
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: ACCEPTED_IN_DECISION_0017_RELEASED_IN_V0_1_0A6

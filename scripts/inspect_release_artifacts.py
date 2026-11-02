@@ -347,6 +347,15 @@ PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-policy-ladder-consolidation-v15.md",
     "experiments/configs/pivot_policy_ladder_consolidation_v15.yaml",
     "tests/test_pivot_policy_ladder_consolidation_v15.py",
+    "docs/research/pivot-crossover-prediction-v1.md",
+    "experiments/configs/pivot_crossover_prediction_v1.yaml",
+    "experiments/configs/pivot_crossover_prediction_authorization_v1.json",
+    "scripts/run_pivot_crossover_prediction_v1.py",
+    "tests/test_pivot_crossover_prediction_v1.py",
+    "tests/test_pivot_crossover_prediction_v1_result.py",
+    "docs/research/pivot-policy-ladder-consolidation-v16.md",
+    "experiments/configs/pivot_policy_ladder_consolidation_v16.yaml",
+    "tests/test_pivot_policy_ladder_consolidation_v16.py",
 }
 PIVOT_RELATIVE_DELAY_COST_REPOSITORY_ONLY_PATHS = {
     "docs/research/pivot-relative-delay-cost-v1.md",

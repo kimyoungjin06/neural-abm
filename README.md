@@ -324,7 +324,8 @@ torch-backed behavior. The early-user checklist is in
   redesign and reselection. Those pilot choices and author rows are not final
   G0 fields, final eligible researchers, or scientific results.
 - Repository-only policy-ladder ledger at
-  `docs/research/pivot-policy-ladder-consolidation-v15.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v16.md`, which extends
+  `docs/research/pivot-policy-ladder-consolidation-v15.md`,
   `docs/research/pivot-policy-ladder-consolidation-v14.md`,
   `docs/research/pivot-policy-ladder-consolidation-v13.md`,
   `docs/research/pivot-policy-ladder-consolidation-v12.md`,
@@ -344,8 +345,9 @@ torch-backed behavior. The early-user checklist is in
   control of the Pivot LLM prior, the linear-learner diagnosis, the
   converged capacity comparison, the peer-outcome contrast of Study 2
   against OpenAlex coauthor data, Study 2 at a learning strength those
-  data allow, and a rule that predicts where a table written before the run
-  loses to the closed loop.
+  data allow, a rule that predicts where a table written before the run
+  loses to the closed loop, and that rule's check on OpenAlex discovery
+  episodes.
 - [docs/classical-reductions.md](docs/classical-reductions.md): exact DeGroot
   and Granovetter special cases, plus explicitly labeled FJ-like anchored and
   self-excluding HK variants, as settings of the same lifecycle.
@@ -456,12 +458,18 @@ no-learning arm, so the data estimate was not interpreted. Study 2 was
 then rerun with its learning rate cut to the largest value whose outcome
 dependence those data do not exclude under the same estimator. Its imitative
 loop of failed pivots fell below material size; that calibration puts agent
-steps and topic quarters on one log-odds scale. The repository-only,
-hash-audited ledgers are at
+steps and topic quarters on one log-odds scale. Last, the rule described
+below for where a table written before the run loses to the closed loop was
+applied to the same discovery episodes, with a topic's follow-up share as
+the policy. Wherever the data decided, an episode's own visible share beat a
+table of other episodes' shares, as the rule predicted. But no comparison
+was decided for the table, so the rule was tested on one side only. The
+repository-only, hash-audited ledgers are at
 `docs/research/pivot-policy-ladder-consolidation-v5.md`, which extends
 `docs/research/pivot-policy-ladder-consolidation-v4.md`, and at
-`docs/research/pivot-policy-ladder-consolidation-v13.md` and
-`docs/research/pivot-policy-ladder-consolidation-v14.md` for the later
+`docs/research/pivot-policy-ladder-consolidation-v13.md`,
+`docs/research/pivot-policy-ladder-consolidation-v14.md`, and
+`docs/research/pivot-policy-ladder-consolidation-v16.md` for the later
 checks.
 
 A second domain, information spread with delayed fact-checks, ran the same
@@ -500,8 +508,9 @@ released in `v0.1.0a6`.
 
 These results are synthetic, and they are scored on items whose fact-check
 was not yet public. They make no claim about real information spread. The
-ledger is `docs/research/pivot-policy-ladder-consolidation-v15.md`, which
-extends `docs/research/pivot-policy-ladder-consolidation-v14.md`,
+ledger is `docs/research/pivot-policy-ladder-consolidation-v16.md`, which
+extends `docs/research/pivot-policy-ladder-consolidation-v15.md`,
+`docs/research/pivot-policy-ladder-consolidation-v14.md`,
 `docs/research/pivot-policy-ladder-consolidation-v13.md`,
 `docs/research/pivot-policy-ladder-consolidation-v12.md`,
 `docs/research/pivot-policy-ladder-consolidation-v11.md`,

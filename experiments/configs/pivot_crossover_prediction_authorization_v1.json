@@ -1,0 +1,29 @@
+{
+  "schema_version": "pivot_crossover_prediction_authorization.v1",
+  "status": "AUTHORIZED_DISCOVERY_CROSSOVER_PREDICTION",
+  "authorized_on": "2026-11-02",
+  "contract": "experiments/configs/pivot_crossover_prediction_v1.yaml",
+  "contract_sha256": "ec8fb8f0a232708263d5b62bd62a2d3a2abad7a2174852c7f3b1f7e9bb28da0b",
+  "script": "scripts/run_pivot_crossover_prediction_v1.py",
+  "script_sha256": "21b917c06d51d75f795f00f3470b8472717c78ea6bbd8d96818a995fd9b21da0",
+  "human_authorization": {
+    "user_instruction": "PR 만들어서 병합하고 2단계 진행하자",
+    "earlier_instructions": [
+      "PR 만들어서 병합하고 실험 3 진행하자",
+      "합성 먼저, 그다음 OpenAlex (권장)"
+    ],
+    "context": "THE_USER_DIRECTED_STAGE_2_OF_RECOMMENDED_EXPERIMENT_3_AFTER_BEING_TOLD_IT_REREADS_DISCOVERY_LABELS_UNDER_A_NEW_AUTHORIZATION_WITH_CONFIRMATORY_AND_G4_SEALED"
+  },
+  "role": "THE_CROSSOVER_RULE_AGAINST_THE_DISCOVERY_PARTITION",
+  "scope": {
+    "reads": "THE_HASH_BOUND_PRIVATE_S1_EXTRACT_EPISODES_ENTRANTS_AND_THE_EPISODE_TOPIC_WORKS_OF_DISCOVERY_PRECISE_ENTRANTS",
+    "writes": "PRIVATE_MODE_0700_OUTPUTS_UNDER_SSD_A_SUMMARY_OF_POOLED_ESTIMATES_AND_EPISODE_QUARTER_COUNTS_WITHOUT_AUTHOR_IDENTIFIERS",
+    "runs": [
+      "development",
+      "reproduction"
+    ]
+  },
+  "outcomes": "DISCOVERY_PARTITION_ONLY",
+  "confirmatory_outcomes": "NOT_AUTHORIZED",
+  "g4_outcomes": "NOT_AUTHORIZED"
+}
