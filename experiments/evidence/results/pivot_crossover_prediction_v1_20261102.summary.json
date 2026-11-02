@@ -1,0 +1,446 @@
+{
+  "boundary": {
+    "confirmatory_outcome_rows_read": 0,
+    "empirical_rows_read": "DISCOVERY_PRECISE_ENTRANTS_AND_THEIR_TOPIC_WORKS",
+    "g4_outcome_rows_read": 0,
+    "generic_nabm_api_changed": false,
+    "identifies_learning": false,
+    "llm_calls": 0,
+    "scientific_effect": "NOT_ESTABLISHED"
+  },
+  "checks": {
+    "after_the_labels": {
+      "labelled_precise_entrants": true
+    },
+    "before_any_label": {
+      "discovery_episodes": true,
+      "discovery_precise_entrants": true,
+      "every_episode_has_two_precise_entrants": true
+    },
+    "n11b_preflight": "PASS_N11B_PREFLIGHT_HASHES_ONLY"
+  },
+  "crossings": {
+    "k=1": 1,
+    "k=16": 3,
+    "k=2": 3,
+    "k=4": 3,
+    "k=8": 3
+  },
+  "data_access": {
+    "confirmatory_outcome_rows_read": 0,
+    "g4_outcome_rows_read": 0,
+    "labels_read": 6291,
+    "partition": "DISCOVERY_ONLY"
+  },
+  "date": "2026-11-02",
+  "described": {
+    "V": 0.06829699,
+    "between_episode_sd_of_shares": 0.06534437,
+    "between_episode_variance_of_shares": 0.00426989,
+    "forecasts": 3835,
+    "mean_episode_share": 0.07877189,
+    "tables": {
+      "k=1": {
+        "H": 0.01007837,
+        "crossing_labels": 6.77659042,
+        "share_of_forecasts_beyond_the_crossing": 0.97861799
+      },
+      "k=16": {
+        "H": 0.00485074,
+        "crossing_labels": 14.07971847,
+        "share_of_forecasts_beyond_the_crossing": 0.93533246
+      },
+      "k=2": {
+        "H": 0.0072903,
+        "crossing_labels": 9.36820206,
+        "share_of_forecasts_beyond_the_crossing": 0.96636245
+      },
+      "k=4": {
+        "H": 0.00589626,
+        "crossing_labels": 11.58309858,
+        "share_of_forecasts_beyond_the_crossing": 0.95619296
+      },
+      "k=8": {
+        "H": 0.00519924,
+        "crossing_labels": 13.13594505,
+        "share_of_forecasts_beyond_the_crossing": 0.94628422
+      }
+    }
+  },
+  "execution": {
+    "byte_identical": {
+      "private/episode_quarters.parquet": true,
+      "receipt.json": true,
+      "summary.json": true
+    },
+    "duckdb_threads": 8,
+    "host": "THE_WORKSTATION",
+    "outputs_sha256": {
+      "private/episode_quarters.parquet": "a96bbb1f64a9254a8a9da68d857adb0773ecdb9ec20bace4755f4d2d953f55b9",
+      "receipt.json": "2b1da02e02c83e9aa07ee8c6462010d7201cf55ea1e36390f0fe9f90678f3c3c",
+      "summary.json": "5b69dbf555b895b81c22663ade553a840060d70580e2506421fc52b328a3d2f1"
+    },
+    "peak_memory_gib": {
+      "development": 0.2,
+      "reproduction": 0.2
+    },
+    "phase_seconds_development": {
+      "comparison": 0.2,
+      "generator_check": 30.9,
+      "labels": 3.3,
+      "structure": 7.4
+    },
+    "runs": {
+      "development": "/ssd/pivot_crossover_prediction_v1_015eea5_development",
+      "reproduction": "/ssd/pivot_crossover_prediction_v1_015eea5_reproduction"
+    },
+    "runtime_estimate_minutes": [
+      2,
+      15
+    ],
+    "wall_seconds": {
+      "development": 41.8,
+      "reproduction": 43.5
+    }
+  },
+  "expectations": {
+    "X1": {
+      "held": true
+    },
+    "X2": {
+      "held": true,
+      "replicates_with_a_positive_group": 40
+    },
+    "X3": {
+      "held": false
+    },
+    "X4": {
+      "held": true
+    },
+    "X5": {
+      "held": true
+    }
+  },
+  "experiment": "RECOMMENDED_EXPERIMENT_3_STAGE_2_OPENALEX_DISCOVERY_EPISODES",
+  "generator_check": {
+    "passes": true,
+    "replicates": 40,
+    "taus": {
+      "tau=0": {
+        "agreement_share": 0.95689655,
+        "agreements": 333,
+        "determined": 348,
+        "match_share": 0.9137931,
+        "matches": 318,
+        "passes": true,
+        "replicates_with_a_positive_group": 35,
+        "replicates_with_a_reversal": 3,
+        "reversal_share": 0.00862069,
+        "reversals": 3
+      },
+      "tau=0.25": {
+        "agreement_share": 0.91909385,
+        "agreements": 284,
+        "determined": 309,
+        "match_share": 0.82524272,
+        "matches": 255,
+        "passes": true,
+        "replicates_with_a_positive_group": 40,
+        "replicates_with_a_reversal": 4,
+        "reversal_share": 0.02912621,
+        "reversals": 9
+      },
+      "tau=0.5": {
+        "agreement_share": 0.98789346,
+        "agreements": 408,
+        "determined": 413,
+        "match_share": 0.95157385,
+        "matches": 393,
+        "passes": true,
+        "replicates_with_a_positive_group": 40,
+        "replicates_with_a_reversal": 0,
+        "reversal_share": 0.0,
+        "reversals": 0
+      },
+      "tau=1": {
+        "agreement_share": 0.99643494,
+        "agreements": 559,
+        "determined": 561,
+        "match_share": 0.99465241,
+        "matches": 558,
+        "passes": true,
+        "replicates_with_a_positive_group": 40,
+        "replicates_with_a_reversal": 0,
+        "reversal_share": 0.0,
+        "reversals": 0
+      }
+    }
+  },
+  "groups": {
+    "k=1/bin=0": {
+      "covered": true,
+      "episodes": 17,
+      "finite_draws": 2000,
+      "forecasts": 248,
+      "high": 0.00675399,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.02113008,
+      "mean": -0.00414171,
+      "predicted": -0.00065666,
+      "predicted_label": "NEUTRAL"
+    },
+    "k=1/bin=1": {
+      "covered": true,
+      "episodes": 16,
+      "finite_draws": 2000,
+      "forecasts": 558,
+      "high": 0.00938721,
+      "label": "POSITIVE",
+      "low": 0.00063513,
+      "mean": 0.00510871,
+      "predicted": 0.00789205,
+      "predicted_label": "POSITIVE"
+    },
+    "k=1/bin=2": {
+      "covered": true,
+      "episodes": 12,
+      "finite_draws": 2000,
+      "forecasts": 1045,
+      "high": 0.02002329,
+      "label": "POSITIVE",
+      "low": 0.00184128,
+      "mean": 0.0101663,
+      "predicted": 0.00885966,
+      "predicted_label": "POSITIVE"
+    },
+    "k=1/bin=3": {
+      "covered": true,
+      "episodes": 7,
+      "finite_draws": 1999,
+      "forecasts": 1984,
+      "high": 0.0451451,
+      "label": "POSITIVE",
+      "low": 0.00791252,
+      "mean": 0.02106894,
+      "predicted": 0.00896024,
+      "predicted_label": "POSITIVE"
+    },
+    "k=16/bin=0": {
+      "covered": true,
+      "episodes": 17,
+      "finite_draws": 2000,
+      "forecasts": 248,
+      "high": 0.00142013,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.02648727,
+      "mean": -0.00946813,
+      "predicted": -0.00598308,
+      "predicted_label": "NEGATIVE"
+    },
+    "k=16/bin=1": {
+      "covered": true,
+      "episodes": 16,
+      "finite_draws": 2000,
+      "forecasts": 558,
+      "high": 0.00405829,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.00475941,
+      "mean": -0.00024672,
+      "predicted": 0.00253661,
+      "predicted_label": "POSITIVE"
+    },
+    "k=16/bin=2": {
+      "covered": true,
+      "episodes": 12,
+      "finite_draws": 2000,
+      "forecasts": 1045,
+      "high": 0.0154001,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.00339585,
+      "mean": 0.00515486,
+      "predicted": 0.00384822,
+      "predicted_label": "POSITIVE"
+    },
+    "k=16/bin=3": {
+      "covered": true,
+      "episodes": 7,
+      "finite_draws": 1999,
+      "forecasts": 1984,
+      "high": 0.04110464,
+      "label": "POSITIVE",
+      "low": 0.00268541,
+      "mean": 0.01625554,
+      "predicted": 0.00414684,
+      "predicted_label": "POSITIVE"
+    },
+    "k=2/bin=0": {
+      "covered": true,
+      "episodes": 17,
+      "finite_draws": 2000,
+      "forecasts": 248,
+      "high": 0.00390935,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.02398725,
+      "mean": -0.00698247,
+      "predicted": -0.00349741,
+      "predicted_label": "NEGATIVE"
+    },
+    "k=2/bin=1": {
+      "covered": true,
+      "episodes": 16,
+      "finite_draws": 2000,
+      "forecasts": 558,
+      "high": 0.00654706,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.00223944,
+      "mean": 0.00225248,
+      "predicted": 0.00503582,
+      "predicted_label": "POSITIVE"
+    },
+    "k=2/bin=2": {
+      "covered": true,
+      "episodes": 12,
+      "finite_draws": 2000,
+      "forecasts": 1045,
+      "high": 0.01754072,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.00094592,
+      "mean": 0.00749353,
+      "predicted": 0.00618689,
+      "predicted_label": "POSITIVE"
+    },
+    "k=2/bin=3": {
+      "covered": true,
+      "episodes": 7,
+      "finite_draws": 1999,
+      "forecasts": 1984,
+      "high": 0.04297456,
+      "label": "POSITIVE",
+      "low": 0.00511868,
+      "mean": 0.0185018,
+      "predicted": 0.00639309,
+      "predicted_label": "POSITIVE"
+    },
+    "k=4/bin=0": {
+      "covered": true,
+      "episodes": 17,
+      "finite_draws": 2000,
+      "forecasts": 248,
+      "high": 0.00248694,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.02541584,
+      "mean": -0.00840285,
+      "predicted": -0.00491779,
+      "predicted_label": "NEGATIVE"
+    },
+    "k=4/bin=1": {
+      "covered": true,
+      "episodes": 16,
+      "finite_draws": 2000,
+      "forecasts": 558,
+      "high": 0.0051249,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.00367942,
+      "mean": 0.00082436,
+      "predicted": 0.0036077,
+      "predicted_label": "POSITIVE"
+    },
+    "k=4/bin=2": {
+      "covered": true,
+      "episodes": 12,
+      "finite_draws": 2000,
+      "forecasts": 1045,
+      "high": 0.01629944,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.00234588,
+      "mean": 0.00615714,
+      "predicted": 0.0048505,
+      "predicted_label": "POSITIVE"
+    },
+    "k=4/bin=3": {
+      "covered": true,
+      "episodes": 7,
+      "finite_draws": 1999,
+      "forecasts": 1984,
+      "high": 0.0419053,
+      "label": "POSITIVE",
+      "low": 0.0037344,
+      "mean": 0.01721822,
+      "predicted": 0.00510952,
+      "predicted_label": "POSITIVE"
+    },
+    "k=8/bin=0": {
+      "covered": true,
+      "episodes": 17,
+      "finite_draws": 2000,
+      "forecasts": 248,
+      "high": 0.00177573,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.02613013,
+      "mean": -0.00911304,
+      "predicted": -0.00562798,
+      "predicted_label": "NEGATIVE"
+    },
+    "k=8/bin=1": {
+      "covered": true,
+      "episodes": 16,
+      "finite_draws": 2000,
+      "forecasts": 558,
+      "high": 0.00441382,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.00439941,
+      "mean": 0.00011031,
+      "predicted": 0.00289364,
+      "predicted_label": "POSITIVE"
+    },
+    "k=8/bin=2": {
+      "covered": true,
+      "episodes": 12,
+      "finite_draws": 2000,
+      "forecasts": 1045,
+      "high": 0.01569301,
+      "label": "INDISTINGUISHABLE",
+      "low": -0.00304586,
+      "mean": 0.00548895,
+      "predicted": 0.00418231,
+      "predicted_label": "POSITIVE"
+    },
+    "k=8/bin=3": {
+      "covered": true,
+      "episodes": 7,
+      "finite_draws": 1999,
+      "forecasts": 1984,
+      "high": 0.04137153,
+      "label": "POSITIVE",
+      "low": 0.0030417,
+      "mean": 0.01657644,
+      "predicted": 0.00446773,
+      "predicted_label": "POSITIVE"
+    }
+  },
+  "label": "pivot_crossover_prediction_v1",
+  "minimum_effect": 0.00124854,
+  "precommit_commit": "015eea5fa5720406491b1504433dbd6dea4d257f",
+  "schema_version": "pivot_crossover_prediction_record.v1",
+  "score": {
+    "agreement_share": 1.0,
+    "agreements": 7,
+    "baseline_learner_always_wins_agreements": 7,
+    "baseline_table_always_wins_agreements": 0,
+    "coverage": 1.0,
+    "determined": 7,
+    "match_share": 1.0,
+    "matches": 7,
+    "negative": 0,
+    "positive": 7,
+    "reversals": 0,
+    "signs": [
+      "POSITIVE"
+    ]
+  },
+  "status": "E3S2_THE_LEARNER_WINS_WHERE_DETERMINED_AND_THE_RULE_AGREES",
+  "structure": {
+    "episodes": 24,
+    "precise_entrants": 6291
+  }
+}
