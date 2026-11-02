@@ -2043,6 +2043,9 @@ def test_release_inspector_rejects_policy_ladder_consolidation_paths() -> None:
         "scripts/run_pivot_crossover_prediction_v1.py",
         "tests/test_pivot_crossover_prediction_v1.py",
         "tests/test_pivot_crossover_prediction_v1_result.py",
+        "docs/research/pivot-policy-ladder-consolidation-v16.md",
+        "experiments/configs/pivot_policy_ladder_consolidation_v16.yaml",
+        "tests/test_pivot_policy_ladder_consolidation_v16.py",
     }
     assert repository_paths == inspector[
         "PIVOT_POLICY_LADDER_CONSOLIDATION_REPOSITORY_ONLY_PATHS"
