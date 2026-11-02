@@ -1,0 +1,319 @@
+schema_version: pivot_policy_ladder_consolidation.v15
+label: pivot_policy_ladder_consolidation_v15
+status: CONSOLIDATION_OF_RECORDED_RESULTS_NO_NEW_EXECUTION
+date: '2026-10-30'
+purpose: 'Extend the v14 ledger with stage 1 of recommended experiment 3, which the user directed on 2026-10-30 and
+  chose to run in two stages, synthetic first and OpenAlex second: can the crossing where an in-run learner overtakes a
+  table written before the run be predicted from between-run heterogeneity and within-run evidence measured before
+  the comparison? v1 to v14 remain the records for everything before.'
+inherits:
+  ledger:
+    path: experiments/configs/pivot_policy_ladder_consolidation_v14.yaml
+    sha256: 0bf08f3a1fea592f5aeab1e02dddf711f7bfd47088ed4f4cfa544fc9ea4cb305
+    record_commit: c202414
+  document:
+    path: docs/research/pivot-policy-ladder-consolidation-v14.md
+    sha256: 1246888116596ea57c2be73fe8c9818f5a37f1351d0faac9ae1e101001e1cb21
+  inherited_claims_remain_audited_by: tests/test_pivot_policy_ladder_consolidation_v14.py
+pointer_syntax: SLASH_SEPARATED_KEYS_OR_LIST_INDICES_WITH_TILDE_ONE_FOR_A_LITERAL_SLASH_AS_IN_JSON_POINTER
+sources:
+- id: crossover_prediction
+  path: experiments/evidence/results/info_spread_crossover_prediction_v1_20261030.summary.json
+  sha256: f3edeec88ec7388f06ab9cd4d71e2a69c7d465489642cad42e50d237dcd13865
+  freeze_commit: 871ace3
+  record_commit: '9144929'
+- id: flip_rate
+  path: experiments/evidence/results/info_spread_policy_ladder_flip_rate_v1_20261021.summary.json
+  sha256: 9778b9eb47d5b46e2f4cf9661c5d3b19813ee8341e14154add28866c1a6ff2f5
+  freeze_commit: 86d3e80
+  record_commit: 38120b1
+invalidated_executions: []
+claims:
+  confirmed:
+  - id: C101_a_rule_from_heterogeneity_and_evidence_beats_both_baselines_but_misses_the_bound
+    statement: A parameter-free rule, computed from learner runs with one fixed sign on separate worlds, placed the
+      crossing of the in-run learner and a k-donor table with a mean absolute error of 0.0549 over nine series
+      (visibility 0.2, 0.5, 1.0; 2, 4, 8 donors). A constant baseline erred by 0.1052 and a table-size-only rule by
+      0.0987. The rule was within 0.05 in 6 of 9 series, each baseline in 2 of 9. Its mean error misses the
+      registered bound of 0.05.
+    evidence:
+    - source: crossover_prediction
+      pointer: status
+      equals: E3_THE_RULE_BEATS_THE_BASELINES_BUT_MISSES_BY_MORE_THAN_THE_BOUND
+    - source: crossover_prediction
+      pointer: scoring/mean_absolute_error/predicted
+      equals: 0.0549
+    - source: crossover_prediction
+      pointer: scoring/mean_absolute_error/baseline_table_size_only
+      equals: 0.0987
+    - source: crossover_prediction
+      pointer: scoring/mean_absolute_error/baseline_constant
+      equals: 0.1052
+    - source: crossover_prediction
+      pointer: scoring/within_bound/predicted
+      equals: 6
+    - source: crossover_prediction
+      pointer: scoring/within_bound/baseline_table_size_only
+      equals: 2
+  - id: C102_the_crossing_moves_later_with_table_size_and_earlier_with_evidence
+    statement: The learner's crossing rose with the table size (2, 4, 8 donors) at every visibility and fell with the
+      visibility (0.2, 0.5, 1.0) at every table size. Within-run variance fell in proportion to the visibility (0.032,
+      0.013, 0.0067) while between-run heterogeneity changed little (0.092 to 0.103). The first material advantage
+      came at flip rates from 0.05 (one donor) to 0.25 (four or eight donors at visibility 0.2); at visibility 0.5 it
+      came at 0.05, 0.05, 0.1, and 0.15 for 1, 2, 4, and 8 donors.
+    evidence:
+    - source: crossover_prediction
+      pointer: expectations/X2/held
+      equals: true
+    - source: crossover_prediction
+      pointer: expectations/X3/held
+      equals: true
+    - source: crossover_prediction
+      pointer: predicted/pi=0.2~1components/mean_V
+      greater_than: 0.03
+    - source: crossover_prediction
+      pointer: predicted/pi=1~1components/mean_V
+      less_than: 0.007
+    - source: crossover_prediction
+      pointer: observed/pi=0.5~1k=8~1p=0.1/label
+      equals: INDISTINGUISHABLE
+    - source: crossover_prediction
+      pointer: observed/pi=0.5~1k=8~1p=0.15/label
+      equals: POSITIVE
+    - source: crossover_prediction
+      pointer: observed/pi=0.2~1k=4~1p=0.2/label
+      equals: INDISTINGUISHABLE
+  - id: C103_without_heterogeneity_a_larger_table_wins_and_one_donor_ties
+    statement: With no flips, every table of 2 or more donors matched or beat the in-run learner at every visibility,
+      and the one-donor table was indistinguishable from it, as the rule implies.
+    evidence:
+    - source: crossover_prediction
+      pointer: expectations/X1/held
+      equals: true
+    - source: crossover_prediction
+      pointer: expectations/X5/held
+      equals: true
+    - source: crossover_prediction
+      pointer: observed/pi=0.2~1k=8~1p=0/label
+      equals: NEGATIVE
+  - id: C104_post_hoc_the_rule_misses_only_where_evidence_is_scarce
+    statement: 'Post hoc and descriptive. At visibility 1.0 the rule was within 0.010 of every observed crossing, on
+      either side; at 0.5 it was late in all three series by at most 0.030; at 0.2 it was late by 0.062 to 0.236.
+      Without visibility 0.2 its mean error would be 0.017. Its squared-error proxy on uniform probe items may
+      overweight items far from the share cutoff; that is not tested.'
+    evidence:
+    - source: crossover_prediction
+      pointer: scoring/series/pi=0.2~1k=8/predicted
+      greater_than: 0.4
+    - source: crossover_prediction
+      pointer: scoring/series/pi=0.2~1k=8/observed
+      less_than: 0.19
+    - source: crossover_prediction
+      pointer: scoring/series/pi=1~1k=8/predicted
+      greater_than: 0.049
+    - source: crossover_prediction
+      pointer: scoring/series/pi=1~1k=8/observed
+      less_than: 0.053
+  - id: C105_o26s_four_donor_comparison_replicates_on_new_worlds
+    statement: At visibility 0.5, the four-donor comparison on new worlds gave -0.015, +0.017, and +0.067 at flip rates
+      0, 0.1, and 0.25, against O26's Regime A linear -0.017, +0.010, and +0.069. O26's interval at 0.1 covered zero
+      and this one does not, so the onset reads 0.1 here and 0.25 in O26.
+    evidence:
+    - source: crossover_prediction
+      pointer: observed/pi=0.5~1k=4~1p=0.25/mean_cell_delta
+      equals: 0.0668
+    - source: flip_rate
+      pointer: table/A~1linear_exact~1p=0.25/unverified_share_precision/best_table/mean_cell_delta
+      equals: 0.0688
+    - source: crossover_prediction
+      pointer: observed/pi=0.5~1k=4~1p=0.1/material
+      equals: true
+    - source: flip_rate
+      pointer: table/A~1linear_exact~1p=0.1/unverified_share_precision/best_table/material
+      equals: false
+  - id: C106_the_study_reproduced_byte_for_byte_on_one_host
+    statement: The development and reproduction runs on GPU-Server's CPU (3,475 and 3,509 s) wrote byte-identical
+      measurement, cell, and summary files, and no empirical row was read.
+    evidence:
+    - source: crossover_prediction
+      pointer: execution/byte_identical/measurement.jsonl
+      equals: true
+    - source: crossover_prediction
+      pointer: execution/byte_identical/cells.jsonl
+      equals: true
+    - source: crossover_prediction
+      pointer: execution/byte_identical/summary.json
+      equals: true
+    - source: crossover_prediction
+      pointer: boundary/empirical_rows_read
+      equals: 0
+  rejected:
+  - id: R27_x4_the_rule_does_not_meet_the_registered_accuracy_bound
+    statement: X4 failed. The rule's mean crossing error, 0.0549, exceeds the registered bound of 0.05, though it is
+      below both baselines' (C101).
+    evidence:
+    - source: crossover_prediction
+      pointer: expectations/X4/held
+      equals: false
+    - source: crossover_prediction
+      pointer: scoring/mean_absolute_error/predicted
+      greater_than: 0.05
+  open:
+  - id: O41_a_decision_weighted_crossover_rule
+    question: Does a rule whose error weights items near the share cutoff, or is computed on the decisions learners
+      actually face, place the crossing within the bound where within-run evidence is scarce?
+    kind: SYNTHETIC
+    priority: 2
+    motivation: The squared-error rule is late only at visibility 0.2 (C104), the regime of sparse labels.
+    evidence:
+    - source: crossover_prediction
+      pointer: scoring/series/pi=0.2~1k=4/predicted
+      greater_than: 0.25
+  - id: O42_the_crossover_rule_on_openalex_discovery_episodes
+    question: Applied to the discovery episodes, does the rule order a table pooled from other episodes against a
+      within-episode learner of the follow-up label as the observed forecasts do?
+    kind: EMPIRICAL_DISCOVERY_PARTITION
+    priority: 3
+    motivation: The user chose this as stage 2 of experiment 3. Stage 1 found the rule late where evidence is scarce
+      (C104), and the episodes give few labels, each visible five quarters after entry.
+    evidence:
+    - source: crossover_prediction
+      pointer: experiment
+      equals: RECOMMENDED_EXPERIMENT_3_STAGE_1_SYNTHETIC
+partially_answered_open_items:
+- id: O29_the_onset_with_larger_tables_and_shifts_within_a_run
+  answered_part: A_LARGER_TABLE_DELAYS_THE_ONSET_AND_MORE_WITHIN_RUN_EVIDENCE_BRINGS_IT_FORWARD
+  answered_by:
+  - C102_the_crossing_moves_later_with_table_size_and_earlier_with_evidence
+  still_open: SHIFTS_WITHIN_A_RUN
+narrowed_case_study_results: []
+narrowed_claims: []
+explained_claims: []
+status_updates:
+- id: N44
+  previous: AFTER_THIS_CONSOLIDATION
+  status: DONE_IN_THE_MANUSCRIPT_KEPT_OUTSIDE_THE_REPOSITORY
+- id: N45
+  previous: USER_CONFIRMATION_REQUIRED
+  status: DONE_MERGED_AS_PULL_REQUEST_16_AT_4e57fd4
+- id: N46
+  previous: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+  status: DONE_THE_USER_CHOSE_RECOMMENDED_EXPERIMENT_3_ON_2026_10_30_FROZEN_AT_871ace3_RECORDED_AT_9144929
+  answered_by:
+  - C101_a_rule_from_heterogeneity_and_evidence_beats_both_baselines_but_misses_the_bound
+  - C102_the_crossing_moves_later_with_table_size_and_earlier_with_evidence
+answered_open_items: []
+carried_open_items:
+- O29_the_onset_with_larger_tables_and_shifts_within_a_run
+- O30_tables_across_relations
+- O31_scoring_harm_to_others
+- O32_location_or_steepness
+- O34_steepness_matched_in_the_world
+- O37_llm_prior_comparisons_inside_tuned_learners
+- O38_a_learning_direction_test_that_leaves_study2s_frozen_arm_flat
+- O40_a_calibration_that_does_not_rest_on_one_log_odds_scale
+data_access_state:
+  discovery_outcomes: READ_BY_THE_PEER_OUTCOME_CONTRAST_NOT_READ_AGAIN
+  confirmatory_outcomes: SEALED
+  g4_outcomes: SEALED
+  evidence:
+  - source: crossover_prediction
+    pointer: boundary/empirical_rows_read
+    equals: 0
+reporting_rules:
+- id: UNVERIFIED_MEASURE
+  rule: Information-spread comparisons from study v2 on are on share precision on unverified items, whose
+    fact-check is not public at the decision. Study v1's groups are not read.
+  carried_from: v14
+- id: TRANSFER_WITHIN_ONE_GENERATOR
+  rule: '"A table suffices" holds for donors in the same world and in other worlds of the same generator, which
+    share the veracity relation. Transfer across relations or domains is not tested.'
+  carried_from: v14
+- id: RARE_RUN_SPECIFIC_INFORMATION
+  rule: The table critique holds only while run-specific information is rare. In the flip study, a four-donor
+    table falls behind between a tenth and a quarter of runs carrying it. That is one kind of information and one
+    table size.
+  carried_from: v14
+- id: PRECISION_AND_UTILITY
+  rule: Report comparisons that involve an LLM prior under both share precision and the agents' utility, since
+    they disagree in 5 of 20 summaries. Utility scores only the sharer's own gain and cost, not the reach of false
+    items.
+  carried_from: v14
+- id: LLM_READOUT
+  rule: Name the readout with any LLM-prior result. P0 in Regime A saturated under the inherited clip and is
+    nearly constant; without the clip the same answers carry the relation's direction (C58). The X0 table is not
+    clipped.
+  carried_from: v14
+- id: LLM_PRIOR_ATTRIBUTION_BY_REGIME
+  rule: Name an LLM prior's calibration (the rule that set its location, and its steepness) with any result about
+    it, and attribute its utility cost per regime. With share rates matched in the world, D5's prior costs utility
+    through its calibration in Regime A (C68) and through its calibration and the model's answers in Regime B (C69);
+    the unclipped prior in Regime B, through the model's answers (C70).
+  carried_from: v14
+- id: WORLD_MATCHED_ATTRIBUTION
+  rule: Attribute a prior's cost to its parts only with each recalibrated prior matched to its source's share rate
+    in the world, and report that match beside the comparisons. Under O28's cohort match two of the three costed
+    attributions differed (C69, C70). Only the location has been matched in the world; the steepness has not.
+  carried_from: v14
+- id: SELECTIVITY_MATCHED_PRECISION
+  rule: Compare two priors on the precision of whom they admit only beside a comparison at matched selectivity in
+    the world, made by shifting one prior's intercept. A more selective prior raises precision without ranking
+    better; C22's gain disappeared at matched entry (C75).
+  carried_from: v14
+- id: INTERVAL_NONINFERIORITY
+  rule: Judge non-inferiority by the lower bound of an interval, not by the mean, and name the seed set. Under that
+    change C22's dominance count is 2 of 9, against 7 of 9 as recorded (C77).
+  carried_from: v14
+- id: TUNED_CAPACITY_COMPARISON
+  rule: Compare policy classes with each class's training chosen on its own evidence from one shared menu, or report
+    beside each DiD the linear-world gap it subtracts and how far each learner is from its optimum. Under the
+    registered 300-step budget that gap was mostly the linear learner's training (C84), and the MLP failed the
+    behavior DiDs because of it (C87).
+  carried_from: v14
+- id: GENERATOR_FIRST_PLACEBO
+  rule: Read an observational learning-direction estimate from data only after the same estimator, at the same
+    delay, leaves a generator's no-learning arm flat. A before-and-after-visibility placebo showed -0.79 log-odds in
+    Study 2's frozen seed-grant world, where no agent learns (C90).
+  carried_from: v14
+- id: LEARNING_STRENGTH_WITH_STUDY2
+  rule: State Study 2's learning results with the learning rate they need. At the rate whose outcome dependence the
+    coauthor data do not exclude under experiment 4's estimator, the imitative loop is below material (C95); a
+    material loop needs 4 to 32 times that rate (C99).
+  carried_from: v14
+- id: CROSSOVER_WITH_TABLE_SIZE_AND_EVIDENCE
+  rule: State where a table written before the run loses to the in-run learner together with the table's size and
+    the within-run evidence. Across 1 to 8 donors and visibility 0.2 to 1.0, the first material loss came at flip
+    rates from 0.05 to 0.25 (C102).
+  new: true
+paper_direction:
+  decided_by: USER_2026_10_13
+  central_claim: UNCHANGED_FROM_V5
+  updated_conditional_cases:
+  - THE_TABLE_VERSUS_CLOSED_LOOP_CROSSING_IS_ORDERED_BY_BETWEEN_RUN_HETEROGENEITY_AND_WITHIN_RUN_EVIDENCE_AND_A_RULE_FROM_THEM_IS_ACCURATE_WHERE_EVIDENCE_IS_AMPLE_AND_LATE_WHERE_IT_IS_SCARCE
+  evidence:
+  - source: crossover_prediction
+    pointer: status
+    equals: E3_THE_RULE_BEATS_THE_BASELINES_BUT_MISSES_BY_MORE_THAN_THE_BOUND
+next_steps:
+- id: N47
+  kind: PAPER
+  action: ADD_THE_CROSSOVER_PREDICTION_C101_TO_C106_TO_THE_MANUSCRIPT_KEPT_OUTSIDE_THE_REPOSITORY
+  authorization: AFTER_THIS_CONSOLIDATION
+- id: N48
+  kind: REPOSITORY
+  action: MERGE_THE_CROSSOVER_PREDICTION_BRANCH_INTO_MAIN_THROUGH_A_PULL_REQUEST
+  authorization: USER_CONFIRMATION_REQUIRED
+- id: N49
+  kind: COMPARISON_DESIGN
+  action: CHOOSE_BETWEEN_STAGE_2_ON_OPENALEX_O42_A_DECISION_WEIGHTED_RULE_O41_AND_THE_OTHER_OPEN_ITEMS_EACH_AS_A_SEPARATE_PRECOMMIT
+  authorization: USER_CHOICE_THEN_SEPARATE_PRECOMMIT
+boundaries:
+  new_execution: NONE
+  empirical_rows_read_by_this_consolidation: 0
+  empirical_rows_read_by_its_source: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  model_selected: 'NO'
+  neural_necessity: NOT_ESTABLISHED
+  scientific_effect: NOT_ESTABLISHED
+  package_promotion: ACCEPTED_IN_DECISION_0017_RELEASED_IN_V0_1_0A6

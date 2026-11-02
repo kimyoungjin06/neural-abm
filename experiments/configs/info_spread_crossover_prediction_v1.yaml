@@ -1,0 +1,217 @@
+schema_version: info_spread_crossover_prediction.v1
+label: info_spread_crossover_prediction_v1
+status: PRECOMMIT_DESIGN_NO_RESULT_INTERPRETATION
+registered_on: '2026-10-30'
+experiment: RECOMMENDED_EXPERIMENT_3_STAGE_1_SYNTHETIC
+purpose: >-
+  The flip-rate study (O26) found that the in-run learner L0 overtakes the
+  four-donor table T0-4 between flip rates 0.1 and 0.25, and the one-donor
+  table already at 0.1. That is one evidence level and one table size. This
+  study registers a rule that predicts where a k-donor trajectory table is
+  overtaken, from between-run heterogeneity and within-run evidence measured
+  in runs with one fixed sign, and tests it at visibilities, table sizes, and
+  flip rates that O26 did not run. Stage 2, a separate precommit, applies the
+  rule to OpenAlex discovery episodes.
+open_items:
+  answers_in_part: O29_the_onset_with_larger_tables_and_shifts_within_a_run
+  answered_part: THE_TABLE_SIZE_HALF
+  not_answered: SHIFTS_WITHIN_A_RUN
+  stage_2_relates_to: O30_tables_across_relations
+development_note: >-
+  The rule was written with O26's onsets in view: its k = 1 and k = 4
+  implications at visibility 0.5 match them qualitatively. It has no fitted
+  parameter, and no measurement or comparison of this study was run before
+  this freeze. A timing pilot on scratch seeds printed timings only. A
+  smoke-profile run (60 agents, 20 steps) went through the scoring code to
+  exercise it; nothing in the design changed after it.
+
+source_bindings:
+- path: scripts/policy_ladder_core_v1.py
+  sha256: bc82caed34f1cf6542b8a144092137214c07939562c794fdfb865d02a302a579
+  role: DOMAIN_FREE_CORE
+- path: scripts/prototype_info_spread_policy_ladder_v1.py
+  sha256: 09375ca88431b4a90f2539f8e2dc33c5acfb7a2bdc76721ced4611cef734304e
+  role: WORLD_ARMS_TABLE_REPLAY_SIMULATION_AND_PROBE_ROW
+- path: scripts/power_info_spread_policy_ladder_v2.py
+  sha256: d53d4ba99aeffcd63df37cce1f5b731817e7c80fa2940bd4a0273405c190080b
+  role: GROUP_RULE
+- path: scripts/power_info_spread_policy_ladder_v1.py
+  sha256: d0f7f0b80ad69cf9d84c08815636de85eda062713559b50627d67e9d2f889da8
+  role: BOOTSTRAP_RESAMPLES
+- path: scripts/diagnose_info_spread_d2_v1.py
+  sha256: 1ec9a630c41df2a36d34d801f04e8aabe47154d93dd4c2a526f1356fc77128a8
+  role: IMPORTED_BY_THE_GROUP_RULE_MODULE
+- path: scripts/run_info_spread_policy_ladder_study_v1.py
+  sha256: 2e3b086ba35e53473fc64e5f8611a48a54e83a029959f482ec8f95a8caab77b2
+  role: V1_RUNNER_FUNCTIONS_REUSED_BY_STUDY_V2
+- path: scripts/info_spread_unverified_measure_v1.py
+  sha256: b1c43f385e1bbd440bd7a2a5176f8725625679f731ceabf0c395c882196eb14d
+  role: THE_UNVERIFIED_MEASURE
+- path: scripts/run_info_spread_policy_ladder_study_v2.py
+  sha256: 3bcfb6162f1278067a562571eac22ba8d4f6d560b30820f8860b0a32656e9928
+  role: STUDY_V2_LEARNERS_METRICS_AND_RULE
+- path: experiments/configs/info_spread_policy_ladder_study_v2.yaml
+  sha256: a679035540ae7292d097a28bb3b0fea1860560a2a2aa8e8a26e1701b972f4845
+  role: STUDY_V2_WORLD_PROFILES_LEARNERS_OBSERVABILITY_AND_RULE
+- path: scripts/run_info_spread_policy_ladder_flip_rate_v1.py
+  sha256: 38738b31368e103d88de20ea98b23dcac7c9d8d490571f1017d838acf77e7f85
+  role: FLIP_RATE_STREAM
+- path: experiments/configs/info_spread_policy_ladder_flip_rate_v1.yaml
+  sha256: 75d57f546d149198d0a39af8c2c6584b480f36be54ad8a3f7130f9cbf241363d
+  role: O26_DESIGN
+- path: experiments/evidence/results/info_spread_policy_ladder_flip_rate_v1_20261021.summary.json
+  sha256: 9778b9eb47d5b46e2f4cf9661c5d3b19813ee8341e14154add28866c1a6ff2f5
+  role: O26_RESULT_THE_RULE_WAS_WRITTEN_WITH_IN_VIEW
+- path: experiments/configs/pivot_policy_ladder_consolidation_v14.yaml
+  sha256: 0bf08f3a1fea592f5aeab1e02dddf711f7bfd47088ed4f4cfa544fc9ea4cb305
+  role: CURRENT_LEDGER_CARRYING_O29_AND_O30
+
+design:
+  regime: A
+  family: linear_exact
+  geometry: linear
+  why_one_family: >-
+    The rule needs one policy function per run on a probe set, which the
+    pooled learner gives. O26's onsets did not depend on the regime or the
+    family. Regime B and the MLP are not run.
+  visibilities: [0.2, 0.5, 1.0]
+  visibility_meaning: >-
+    The share of items whose fact-check becomes public, which sets how much
+    within-run evidence a learner gets. 0.5 is O26's. The revealed items nest
+    across visibilities, because the stream draws them from one keyed uniform.
+  flip_rates: [0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4, 0.5]
+  stream: THE_FLIP_RATE_STUDY_STREAM_IMPORTED_UNCHANGED
+  table_sizes: [1, 2, 4, 8]
+  arms: [L0, T0_1, T0_2, T0_4, T0_8]
+  tables: TRAJECTORY_TABLES_OF_THE_FIRST_K_DONORS_AS_IN_O26
+  pairing: >-
+    Within a cell, every flip rate and visibility shares the world, the item
+    features, the veracities, and the learner seeds; flips nest across rates.
+
+seeds:
+  world_seed_offset: 18000
+  donor_replicates: [1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007]
+  donor_note: THE_FIRST_FOUR_ARE_STUDY_V2S_AND_O26S
+  learner_seeds: STUDY_V2S_LEARNER_TAG_9_WITH_THE_CELL_AND_GEOMETRY_INDEX_0
+  rule_tag: 40
+profiles: STUDY_V2S_DEVELOPMENT_PROFILE_1000_AGENTS_60_STEPS_20_ITEMS_16_REPLICATES_20_CELLS
+
+measurement:
+  world_seed_offset: 19000
+  cells: 8
+  replicates: 16
+  signs: [PLUS_FLIP_RATE_0, MINUS_FLIP_RATE_1]
+  learner: THE_L0_LEARNER_OF_THE_COMPARISON
+  probe_size: 2000
+  probe: >-
+    Keyed uniform item features (tag 40) at the prototype's probe exposure,
+    an exposure share of 0.3 and log1p(2) exposures. The truth is the
+    generator's veracity probability under each sign.
+  per_step_components:
+    A_plus: MEAN_SQUARED_GAP_OF_THE_MEAN_PLUS_LEARNER_TO_THE_PLUS_TRUTH
+    A_minus: MEAN_SQUARED_GAP_OF_THE_MEAN_PLUS_LEARNER_TO_THE_MINUS_TRUTH
+    C_plus: MEAN_PRODUCT_OF_THAT_GAP_AND_THE_MINUS_MINUS_PLUS_LEARNER_DIFFERENCE_UNDER_THE_PLUS_TRUTH
+    C_minus: THE_SAME_UNDER_THE_MINUS_TRUTH
+    Dd: MEAN_SQUARED_DIFFERENCE_OF_THE_MEAN_LEARNERS_THE_BETWEEN_RUN_HETEROGENEITY
+    V_plus: MEAN_ACROSS_REPLICATE_VARIANCE_OF_THE_PLUS_LEARNER_THE_WITHIN_RUN_ESTIMATION_VARIANCE
+    V_minus: THE_SAME_FOR_THE_MINUS_LEARNER
+  separation: NO_MEASUREMENT_WORLD_OR_RUN_IS_USED_BY_THE_COMPARISON
+
+rule:
+  comparison: paired difference in the primary measure
+  minimum_effect: 0.01
+  bootstrap_resamples: 2000
+  interval: 0.95
+  resampling: cells, with replacement
+  material: interval excludes zero and |mean cell delta| >= minimum_effect
+measures:
+  primary: unverified_share_precision (study v2's)
+
+prediction:
+  rule: >-
+    For a k-donor trajectory table at flip rate p, the predicted gap is the
+    table's expected squared error minus the learner's, against the true
+    probability on the probe, averaged over steps and measurement cells.
+    Donor signs are binomial(k, p); donor and run errors are independent
+    given their signs. The learner is predicted to beat the table where the
+    gap is positive.
+  symmetric_reading: >-
+    With no learner bias, the gap is positive when p(1 - p) Dd / V exceeds
+    (k - 1)/(k + 1): heterogeneity against evidence, with a threshold set by
+    the table size. This simple index is reported and decides nothing.
+  fitted_parameters: NONE
+  predicted_crossing: THE_FLIP_RATE_WHERE_THE_GAP_LAST_RISES_ABOVE_ZERO_TO_STAY_ON_A_0_001_GRID_LINEARLY_INTERPOLATED_OR_NONE_UP_TO_0_5
+
+scoring:
+  observed_crossing: >-
+    Where the mean cell delta of L0 - T0_k last rises above zero to stay
+    there, across the registered flip rates, linearly interpolated; none if
+    it is at or below zero at 0.5.
+  scored_table_sizes: [2, 4, 8]
+  why_not_k_1: THE_RULE_PUTS_THE_ONE_DONOR_CROSSING_AT_ZERO_BY_CONSTRUCTION_SO_K_1_IS_AN_EXPECTATION_NOT_A_SCORE
+  series: 9
+  none_crossing_value: 0.55
+  error: ABSOLUTE_DIFFERENCE_OF_PREDICTED_AND_OBSERVED_CROSSINGS_WITH_NONE_AS_0_55
+  prediction_grid_step: 0.001
+  accuracy_bound: 0.05
+  baselines:
+    constant:
+      crossing: 0.175
+      meaning: O26S_FOUR_DONOR_BRACKET_MIDPOINT_FOR_EVERY_SERIES
+    table_size_only:
+      c: 0.240625
+      meaning: >-
+        The symmetric reading with p(1 - p) = c (k - 1)/(k + 1) and c set so
+        that k = 4 crosses at 0.175, ignoring the measured evidence.
+  dispositions:
+    THE_RULE_PREDICTS_THE_CROSSOVER: MEAN_ERROR_AT_MOST_0_05_AND_BELOW_BOTH_BASELINES
+    THE_RULE_BEATS_THE_BASELINES_BUT_MISSES_BY_MORE_THAN_THE_BOUND: BELOW_BOTH_BASELINES_ABOVE_0_05
+    THE_RULE_DOES_NOT_BEAT_THE_BASELINES: OTHERWISE
+  status_prefix: E3_
+  also_reported:
+  - EVERY_GROUP_RULE_LABEL_AND_MEAN_CELL_DELTA
+  - THE_NUMBER_OF_SERIES_WITHIN_THE_BOUND_FOR_EACH_PREDICTOR
+  - THE_MEASURED_COMPONENTS_AND_THE_SIMPLE_INDEX
+
+expectations:
+  X1: AT_P_0_EVERY_TABLE_WITH_K_AT_LEAST_2_MATCHES_OR_BEATS_L0_MEAN_CELL_DELTA_AT_MOST_0_AT_EVERY_VISIBILITY
+  X2: THE_OBSERVED_CROSSING_DOES_NOT_FALL_AS_K_GROWS_2_4_8_AT_EVERY_VISIBILITY
+  X3: THE_OBSERVED_CROSSING_DOES_NOT_RISE_AS_VISIBILITY_GROWS_0_2_0_5_1_0_AT_EVERY_K
+  X4: THE_RULE_PREDICTS_THE_CROSSOVER
+  X5: AT_P_0_L0_MINUS_T0_1_IS_INDISTINGUISHABLE_AT_EVERY_VISIBILITY
+  gating: NONE
+
+execution:
+  host: GPU_SERVER_CPU_ONLY
+  host_why: A_LOCAL_PILOT_RAN_ABOUT_FIVE_TIMES_SLOWER_THAN_THE_SERVER_UNDER_OTHER_USERS_LOAD
+  workers: 36
+  code_on_the_server: A_GIT_BUNDLE_CHECKED_OUT_AT_THE_PRECOMMIT_SHA
+  thread_variables: [OMP_NUM_THREADS, OPENBLAS_NUM_THREADS, MKL_NUM_THREADS]
+  thread_setting: EACH_SET_TO_1_AND_CHECKED
+  runs: [development, reproduction]
+  identity_artifacts: [measurement.jsonl, cells.jsonl, summary.json]
+  runtime_estimate_minutes_per_run: [40, 120]
+  runtime_basis: >-
+    A full-load pilot on GPU-Server with scratch seeds (98000+, 99000+) and
+    two cells per group, which printed timings only: 60 tasks in 246 s at 36
+    workers; comparison cells took 48 to 230 s (mean 140) and measurement
+    cells 50 to 131 s. The full run has 540 comparison and 24 measurement
+    cells, about 36 minutes at that throughput.
+  rerun_must_be_byte_identical: true
+
+boundary:
+  empirical_rows_read: 0
+  llm_calls: 0
+  generic_nabm_api_changed: false
+  synthetic_only: true
+  one_regime_one_family: true
+  scientific_effect: NOT_ESTABLISHED
+
+precommit:
+  precommit_paths:
+  - docs/research/info-spread-crossover-prediction-v1.md
+  - experiments/configs/info_spread_crossover_prediction_v1.yaml
+  - scripts/run_info_spread_crossover_prediction_v1.py
+  - tests/test_info_spread_crossover_prediction_v1.py
+  - scripts/inspect_release_artifacts.py
+  - tests/test_release_artifact_inspection.py
