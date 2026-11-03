@@ -1,4 +1,4 @@
-"""Figure for paper Section 8: the information-spread policy ladder.
+"""Paper figure: the information-spread policy-ladder comparisons.
 
 Reads only recorded, hash-audited results (consolidation v6 sources):
 - study v2 (D4 v2): L0 against the hand rule and the two tables;

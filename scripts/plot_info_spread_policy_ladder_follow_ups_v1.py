@@ -1,4 +1,4 @@
-"""Second figure for paper Section 8: the information-spread follow-ups O23, O26, and O25.
+"""Paper figure: the information-spread follow-ups O23, O26, and O25.
 
 Reads only recorded, hash-audited results (consolidation v7 sources, and D5 and O24 for precision):
 - O23 transfer: L0 - T0x-4 and T0-4 - T0x-4 by study group;
